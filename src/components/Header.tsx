@@ -4,14 +4,18 @@ import { Menu, X } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const navigation = [
-  { name: "Nonprofits", href: "/nonprofits", active: true },
-  { name: "Funders", href: "/funders", active: false },
-  { name: "Consultants", href: "/consultants", active: false },
-  { name: "Resources", href: "/resources", active: false },
-  { name: "Company", href: "/company", active: false },
+  { name: "Nonprofits", href: "/" },
+  { name: "Funders", href: "/funders" },
+  { name: "Consultants", href: "/consultants" },
+  { name: "Resources", href: "/resources" },
+  { name: "Company", href: "/company" },
 ];
 
-export const Header = () => {
+interface HeaderProps {
+  activeRoute?: string;
+}
+
+export const Header = ({ activeRoute = "/" }: HeaderProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const scrollToForm = () => {
@@ -37,7 +41,7 @@ export const Header = () => {
                   key={item.name}
                   href={item.href}
                   className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                    item.active
+                    item.href === activeRoute
                       ? "text-primary"
                       : "text-muted-foreground hover:text-foreground"
                   }`}
@@ -78,7 +82,7 @@ export const Header = () => {
                       key={item.name}
                       href={item.href}
                       className={`text-base font-medium ${
-                        item.active ? "text-primary" : "text-foreground"
+                        item.href === activeRoute ? "text-primary" : "text-foreground"
                       }`}
                       onClick={() => setIsOpen(false)}
                     >
