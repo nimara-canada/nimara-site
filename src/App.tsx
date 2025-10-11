@@ -9,6 +9,9 @@ import Company from "./pages/Company";
 import BookACall from "./pages/BookACall";
 import SignIn from "./pages/SignIn";
 import SampleBrief from "./pages/SampleBrief";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
+import Accessibility from "./pages/Accessibility";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +29,9 @@ const App = () => (
           <Route path="/book-a-call" element={<BookACall />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/sample-brief" element={<SampleBrief />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/accessibility" element={<Accessibility />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

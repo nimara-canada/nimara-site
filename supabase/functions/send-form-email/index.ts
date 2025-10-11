@@ -60,6 +60,10 @@ const buildEmailSubject = (formCode: string, payload: Record<string, any>): stri
       orgOrName = payload.om_name || payload.email || "";
       keyField = payload.om_role || "";
       break;
+    case "NEWSLETTER":
+      orgOrName = payload.email || "";
+      keyField = "newsletter";
+      break;
     default:
       orgOrName = payload.email || payload.name || "";
   }

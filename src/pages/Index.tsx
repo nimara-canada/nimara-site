@@ -1,4 +1,5 @@
 import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { HeroSection } from "@/components/HeroSection";
 import { ThreeColumnSection } from "@/components/ThreeColumnSection";
 import { ExpertsSection } from "@/components/ExpertsSection";
@@ -24,34 +25,7 @@ const Index = () => {
         <FAQSection />
         <FinalCTA />
       </main>
-      <footer className="bg-foreground text-background py-12">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="font-bold text-lg mb-4">Nimara</h3>
-              <p className="text-sm opacity-80">
-                Audit-ready by design. Vetted Canadian nonprofit experts.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-3">For</h4>
-              <ul className="space-y-2 text-sm opacity-80">
-                <li><a href="/" className="hover:opacity-100">Nonprofits</a></li>
-                <li><a href="/consultants" className="hover:opacity-100">Consultants</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-3">Company</h4>
-              <ul className="space-y-2 text-sm opacity-80">
-                <li><a href="/company" className="hover:opacity-100">About</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="mt-12 pt-8 border-t border-background/20 text-center text-sm opacity-60">
-            <p>&copy; {new Date().getFullYear()} Nimara. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

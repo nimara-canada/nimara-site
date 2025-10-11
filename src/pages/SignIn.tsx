@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { PortalNotifyModal } from "@/components/signin/PortalNotifyModal";
@@ -203,6 +204,7 @@ export default function SignIn() {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       />
+      <Footer />
     </div>
   );
 }

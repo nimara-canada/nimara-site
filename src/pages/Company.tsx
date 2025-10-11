@@ -1,4 +1,5 @@
 import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { CompanyHero } from "@/components/company/CompanyHero";
 import { OurStory } from "@/components/company/OurStory";
 import { WhatWeBelieve } from "@/components/company/WhatWeBelieve";
@@ -42,43 +43,7 @@ const Company = () => {
 
         <CompanyFinalCTA />
       </main>
-
-      {/* Footer */}
-      <footer className="border-t border-border bg-muted/30 py-12 mt-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-            <div>
-              <h3 className="font-semibold text-foreground mb-4">Nimara</h3>
-              <p className="text-sm text-muted-foreground">
-                Building infrastructure for Canada's nonprofit ecosystem.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-4">For</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="/" className="text-muted-foreground hover:text-foreground">Nonprofits</a></li>
-                <li><a href="/consultants" className="text-muted-foreground hover:text-foreground">Consultants</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-4">Company</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="/company" className="text-muted-foreground hover:text-foreground">About</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-4">Contact</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="mailto:hello@nimara.ca" className="text-muted-foreground hover:text-foreground">hello@nimara.ca</a></li>
-                <li><a href="/book-a-call" className="text-muted-foreground hover:text-foreground">Book a call</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="mt-8 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-            <p>© {new Date().getFullYear()} Nimara. Built for Canada's nonprofit sector.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
