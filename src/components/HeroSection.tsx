@@ -82,6 +82,31 @@ export const HeroSection = ({
     form?.scrollIntoView({
       behavior: "smooth"
     });
+
+    // Track analytics
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'cta_quotes_click', {
+        source: 'hero'
+      });
+    }
+
+    // Focus first empty required field after scroll
+    setTimeout(() => {
+      const emailField = document.getElementById("q_email") as HTMLInputElement;
+      const orgField = document.getElementById("q_org") as HTMLInputElement;
+      const categoryField = document.getElementById("q_category") as HTMLInputElement;
+
+      if (!formData.email && emailField) {
+        emailField.focus();
+      } else if (!formData.organization && orgField) {
+        orgField.focus();
+      } else if (!formData.category && categoryField) {
+        categoryField.focus();
+      } else if (emailField) {
+        // If all required fields are filled, focus email anyway
+        emailField.focus();
+      }
+    }, 500);
   };
 
   // Listen for category prefill events from CategoryTiles
