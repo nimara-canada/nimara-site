@@ -226,6 +226,9 @@ const Terms = () => {
             <p className="text-[#202654] leading-relaxed">
               We provide delivery standards and practical guidance, not legal, tax, or financial advice. For those matters, please consult a qualified professional.
             </p>
+            <p className="text-[#202654] leading-relaxed">
+              Compliance support means organizing documentation and aligning deliverables with common Canadian funder requirements. Nimara doesn't determine eligibility, issue legal opinions, or guarantee funding or audit outcomes.
+            </p>
           </section>
 
           <section className="space-y-4">
