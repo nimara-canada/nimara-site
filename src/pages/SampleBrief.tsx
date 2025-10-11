@@ -2,7 +2,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Download, Target, ListChecks, CheckCircle2, Zap, Shield } from "lucide-react";
+import { Target, ListChecks, CheckCircle2, Zap, Shield } from "lucide-react";
 
 const SampleBrief = () => {
   return (
@@ -20,21 +20,6 @@ const SampleBrief = () => {
               The one-page scope we use for 3 free quotes and projects. Clear outcomes. Simple acceptance. Fast starts.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
-              <Button size="lg" asChild>
-                <a href="/assets/nimara-sample-brief.pdf" download>
-                  <Download className="mr-2 h-4 w-4" />
-                  Download sample brief (PDF)
-                </a>
-              </Button>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground mb-8">
-              <a href="/" className="hover:text-primary transition-colors">Get 3 free quotes</a>
-              <span>·</span>
-              <a href="/consultants" className="hover:text-primary transition-colors">Apply to join (consultants)</a>
-            </div>
-
             <div className="bg-accent/30 border border-accent rounded-2xl p-4">
               <p className="text-sm text-foreground">
                 Same format across categories—so proposals are easy to compare.
@@ -306,20 +291,6 @@ const SampleBrief = () => {
 
         {/* Final band */}
         <section className="container mx-auto px-4 py-16 text-center">
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-            <Button size="lg" asChild>
-              <a href="/assets/nimara-sample-brief.pdf" download>
-                <Download className="mr-2 h-4 w-4" />
-                Download sample brief (PDF)
-              </a>
-            </Button>
-          </div>
-
-          <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
-            <a href="/" className="hover:text-primary transition-colors">Get 3 free quotes</a>
-            <span>·</span>
-            <a href="/consultants" className="hover:text-primary transition-colors">Apply to join (consultants)</a>
-          </div>
         </section>
       </main>
       <Footer />
