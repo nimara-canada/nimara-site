@@ -122,6 +122,13 @@ export const Footer = () => {
           </div>
         </div>
 
+        {/* Legal Note */}
+        <div className="mb-6">
+          <p className="text-sm text-[#96A0B5] font-normal max-w-[720px] mx-auto text-center leading-relaxed">
+            Nimara connects nonprofits with vetted independent consultants and provides project tools and PM coordination. We're not a law, accounting, or audit firm and don't provide legal, tax, or assurance advice. Consultants are independent. <a href="/terms" className="hover:text-[#6945D8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#6945D8] rounded">Terms</a>
+          </p>
+        </div>
+
         {/* Footer Bar */}
         <div className="flex justify-end">
           <p className="text-sm text-[#96A0B5]">© Nimara Technology</p>
