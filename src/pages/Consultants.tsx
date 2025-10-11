@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ConsultantHero } from "@/components/consultant/ConsultantHero";
@@ -13,9 +14,13 @@ import { ConsultantFinalCTA } from "@/components/consultant/ConsultantFinalCTA";
 const Consultants = () => {
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>For Consultants | Nimara</title>
+        <meta name="description" content="Join Nimara's founding bench of Canadian experts. Standard briefs, clean scopes, PM-led delivery, on-time pay." />
+      </Helmet>
       <Header activeRoute="/consultants" />
       
-      <main id="main-content" className="pb-20 md:pb-0">
+      <main id="main" className="pb-20 md:pb-0">
         <ConsultantHero />
         <WhyJoin />
         <WhoWereLookingFor />

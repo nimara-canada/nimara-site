@@ -12,7 +12,7 @@ const Company = () => {
     <div className="min-h-screen bg-background">
       <Header activeRoute="/company" />
       
-      <main id="main-content">
+      <main id="main">
         <CompanyHero />
         <OurStory />
         <WhatWeBelieve />

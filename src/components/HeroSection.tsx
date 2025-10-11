@@ -259,14 +259,14 @@ export const HeroSection = ({ prefillCategory }: HeroFormProps) => {
   }, [isPanelExpanded]);
 
   return (
-    <section className="py-16 lg:py-24" id="main-content">
+    <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left: Hero Content */}
           <div className="space-y-6">
             <p className="text-sm text-muted-foreground font-medium">Audit-ready by design</p>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-              Get 3 free nonprofit consulting quotes in 72 hours
+              For Nonprofits: Get 3 free consulting quotes in 72 hours
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl">
               We turn your outcome into a simple brief, request up to 3 comparable proposals from vetted Canadian experts, and a Nimara PM manages delivery.
