@@ -108,12 +108,12 @@ export const HeroSection = ({ prefillCategory }: HeroFormProps) => {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left: Hero Content */}
           <div className="space-y-6">
+            <p className="text-sm text-muted-foreground font-medium">Audit-ready by design</p>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-              Audit-ready by design.
+              Get 3 free nonprofit consulting quotes in 72 hours
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl">
-              Get 3 free quotes in 72 hours from Canada's vetted nonprofit experts who've solved this
-              before. Clean scope, comparable proposals, PM oversight.
+              We turn your outcome into a simple brief, request up to 3 comparable proposals from vetted Canadian experts, and a Nimara PM manages delivery.
             </p>
             <div className="space-y-4">
               <Button onClick={scrollToForm} size="lg">
@@ -122,9 +122,18 @@ export const HeroSection = ({ prefillCategory }: HeroFormProps) => {
               <p className="text-sm text-muted-foreground">
                 If we deliver fewer than 2 proposals in 72 hours, you get a $500 credit.
               </p>
-              <Button variant="link" asChild>
-                <a href="/book-a-call">Prefer a call? Book a 15-minute chat →</a>
+              <Button variant="link" asChild className="p-0 h-auto">
+                <a href="/book-a-call">Prefer a call? Book a 15-minute chat</a>
               </Button>
+            </div>
+            
+            {/* Micro-benefits */}
+            <div className="flex flex-wrap gap-4 text-sm text-muted-foreground pt-4">
+              <span>Plain brief</span>
+              <span>·</span>
+              <span>Comparable proposals</span>
+              <span>·</span>
+              <span>PM oversight</span>
             </div>
           </div>
 
