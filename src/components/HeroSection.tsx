@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
+import { OneMoreThingModal } from "./OneMoreThingModal";
 
 const categories = [
   "Governance",
@@ -38,6 +39,7 @@ interface HeroFormProps {
 
 export const HeroSection = ({ prefillCategory }: HeroFormProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showOneMoreThing, setShowOneMoreThing] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     organization: "",
@@ -87,6 +89,9 @@ export const HeroSection = ({ prefillCategory }: HeroFormProps) => {
         "Thanks — expect a project scoping call in the next 48 hours to understand your needs better before matching you with a consultant."
       );
 
+      // Open the one more thing modal
+      setShowOneMoreThing(true);
+
       // Reset form
       setFormData({
         email: "",
@@ -103,8 +108,15 @@ export const HeroSection = ({ prefillCategory }: HeroFormProps) => {
   };
 
   return (
-    <section className="py-16 lg:py-24" id="main-content">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <>
+      <OneMoreThingModal
+        isOpen={showOneMoreThing}
+        onClose={() => setShowOneMoreThing(false)}
+        leadEmail={formData.email}
+      />
+      
+      <section className="py-16 lg:py-24" id="main-content">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left: Hero Content */}
           <div className="space-y-6">
@@ -231,5 +243,6 @@ export const HeroSection = ({ prefillCategory }: HeroFormProps) => {
         </div>
       </div>
     </section>
+    </>
   );
 };
