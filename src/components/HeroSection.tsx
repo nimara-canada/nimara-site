@@ -71,7 +71,6 @@ export const HeroSection = ({ prefillCategory }: HeroFormProps) => {
       return;
     }
 
-    // Simulate API call
     try {
       const payload = {
         flow: "3quotes",
@@ -86,13 +85,6 @@ export const HeroSection = ({ prefillCategory }: HeroFormProps) => {
         referrer: document.referrer,
         timestamp: new Date().toISOString(),
       };
-
-      // Send to webhook
-      await fetch("https://example.com/webhook", { 
-        method: "POST", 
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload) 
-      });
 
       // Send email (non-blocking)
       supabase.functions.invoke("send-form-email", {
