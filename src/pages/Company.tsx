@@ -5,7 +5,6 @@ import { OurStory } from "@/components/company/OurStory";
 import { WhatWeBelieve } from "@/components/company/WhatWeBelieve";
 import { HowWeWork } from "@/components/company/HowWeWork";
 import { TheTeam } from "@/components/company/TheTeam";
-import { WhyNow } from "@/components/company/WhyNow";
 import { CompanyFinalCTA } from "@/components/company/CompanyFinalCTA";
 
 const Company = () => {
@@ -19,7 +18,6 @@ const Company = () => {
         <WhatWeBelieve />
         <HowWeWork />
         <TheTeam />
-        <WhyNow />
         
         {/* Trust micro-strip */}
         <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 border-t border-border">
