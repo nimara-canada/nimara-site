@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
 import { OneMoreThingModal } from "./OneMoreThingModal";
+import { supabase } from "@/integrations/supabase/client";
 
 const categories = [
   "Governance",
@@ -74,7 +75,11 @@ export const HeroSection = ({ prefillCategory }: HeroFormProps) => {
     try {
       const payload = {
         flow: "3quotes",
-        ...formData,
+        q_email: formData.email,
+        q_org: formData.organization,
+        q_region: formData.region,
+        q_category: formData.category,
+        q_outcome: formData.outcome,
         utm_source: new URLSearchParams(window.location.search).get("utm_source"),
         utm_medium: new URLSearchParams(window.location.search).get("utm_medium"),
         utm_campaign: new URLSearchParams(window.location.search).get("utm_campaign"),
@@ -82,8 +87,17 @@ export const HeroSection = ({ prefillCategory }: HeroFormProps) => {
         timestamp: new Date().toISOString(),
       };
 
-      // In production: await fetch("https://example.com/webhook", { method: "POST", body: JSON.stringify(payload) });
-      console.log("Form submission:", payload);
+      // Send to webhook
+      await fetch("https://example.com/webhook", { 
+        method: "POST", 
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload) 
+      });
+
+      // Send email (non-blocking)
+      supabase.functions.invoke("send-form-email", {
+        body: { formCode: "3QUOTES", payload }
+      }).catch(err => console.error("Email error:", err));
 
       toast.success(
         "Thanks — expect a project scoping call in the next 48 hours to understand your needs better before matching you with a consultant."

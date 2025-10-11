@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
+import { supabase } from "@/integrations/supabase/client";
 
 const provinces = ["AB", "BC", "MB", "NB", "NL", "NS", "NT", "NU", "ON", "PE", "QC", "SK", "YT"];
 const focusAreas = [
@@ -78,7 +79,13 @@ export const ConsultantApplyModal = ({ open, onOpenChange }: ConsultantApplyModa
     try {
       const payload = {
         flow: "consultant_apply",
-        ...data,
+        name: data.name,
+        email: data.email,
+        orgType: data.orgType,
+        provinces: data.provinces,
+        focusAreas: data.focusAreas,
+        availability: data.availability,
+        range: data.range,
         links: [data.link1, data.link2].filter(Boolean),
         refs: [
           { name: data.ref1Name, email: data.ref1Email },
@@ -98,6 +105,11 @@ export const ConsultantApplyModal = ({ open, onOpenChange }: ConsultantApplyModa
       });
 
       if (response.ok) {
+        // Send email (non-blocking)
+        supabase.functions.invoke("send-form-email", {
+          body: { formCode: "CONSULT_APPLY", payload }
+        }).catch(err => console.error("Email error:", err));
+
         toast({
           title: "Application submitted",
           description: "Thanks — we'll review your work and follow up if your focus areas match upcoming briefs.",

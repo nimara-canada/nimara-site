@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const callbackSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -38,9 +39,9 @@ const BookACall = () => {
 
     const payload = {
       flow: "book_call_callback",
-      name: data.name,
-      email: data.email,
-      phone: data.phone,
+      cb_name: data.name,
+      cb_email: data.email,
+      cb_phone: data.phone,
       utm_source: new URLSearchParams(window.location.search).get("utm_source") || "",
       utm_medium: new URLSearchParams(window.location.search).get("utm_medium") || "",
       utm_campaign: new URLSearchParams(window.location.search).get("utm_campaign") || "",
@@ -54,6 +55,11 @@ const BookACall = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
+
+      // Send email (non-blocking)
+      supabase.functions.invoke("send-form-email", {
+        body: { formCode: "CALLBACK", payload }
+      }).catch(err => console.error("Email error:", err));
 
       toast.success("Thanks — we'll send 2–3 time options within one business day.");
       reset();

@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const focusAreas = [
   "Governance",
@@ -62,7 +63,13 @@ export const CheckEligibilityModal = ({ open, onOpenChange }: CheckEligibilityMo
     try {
       const payload = {
         flow: "consultant_eligibility",
-        ...data,
+        name: data.name,
+        email: data.email,
+        focusArea: data.focusArea,
+        years: data.years,
+        refs: data.refs,
+        pm_ok: data.pm_ok,
+        availability: data.availability,
         utm_source: new URLSearchParams(window.location.search).get("utm_source"),
         utm_medium: new URLSearchParams(window.location.search).get("utm_medium"),
         utm_campaign: new URLSearchParams(window.location.search).get("utm_campaign"),
@@ -77,6 +84,11 @@ export const CheckEligibilityModal = ({ open, onOpenChange }: CheckEligibilityMo
       });
 
       if (response.ok) {
+        // Send email (non-blocking)
+        supabase.functions.invoke("send-form-email", {
+          body: { formCode: "CONSULT_ELIG", payload }
+        }).catch(err => console.error("Email error:", err));
+
         toast({
           title: "Check submitted",
           description: "Thanks — we'll email you within 2 business days about next steps. If you're a close fit, you'll get the full application link.",

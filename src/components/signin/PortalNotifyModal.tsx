@@ -28,6 +28,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const formSchema = z.object({
   email: z.string().trim().email({ message: "Invalid email address" }).max(255),
@@ -74,13 +75,17 @@ export function PortalNotifyModal({ isOpen, onClose }: PortalNotifyModalProps) {
         timestamp: new Date().toISOString(),
       };
 
-      // Simulate POST to webhook
-      console.log("Portal notify submission:", payload);
+      // Send to webhook
       await fetch("https://example.com/webhook", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
+
+      // Send email (non-blocking)
+      supabase.functions.invoke("send-form-email", {
+        body: { formCode: "PORTAL_NOTIFY", payload }
+      }).catch(err => console.error("Email error:", err));
 
       toast.success("Thanks — we'll send your invite on Nov 5, 2025 and a short setup note beforehand.");
       form.reset();

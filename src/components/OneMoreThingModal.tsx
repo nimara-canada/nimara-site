@@ -13,6 +13,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 interface OneMoreThingModalProps {
   isOpen: boolean;
@@ -70,10 +71,10 @@ export const OneMoreThingModal = ({ isOpen, onClose, leadEmail, leadId }: OneMor
         flow: "3quotes_more",
         lead_id: leadId || undefined,
         email: leadEmail,
-        name: formData.name || undefined,
-        role: formData.role || undefined,
-        start: formData.start || undefined,
-        budget: formData.budget || undefined,
+        om_name: formData.name || undefined,
+        om_role: formData.role || undefined,
+        om_start: formData.start || undefined,
+        om_budget: formData.budget || undefined,
         utm_source: new URLSearchParams(window.location.search).get("utm_source") || undefined,
         utm_medium: new URLSearchParams(window.location.search).get("utm_medium") || undefined,
         utm_campaign: new URLSearchParams(window.location.search).get("utm_campaign") || undefined,
@@ -88,8 +89,17 @@ export const OneMoreThingModal = ({ isOpen, onClose, leadEmail, leadId }: OneMor
         budget: formData.budget,
       });
 
-      // In production: await fetch("https://example.com/webhook", { method: "POST", body: JSON.stringify(payload) });
-      console.log("OneMoreThing submission:", payload);
+      // Send to webhook
+      await fetch("https://example.com/webhook", { 
+        method: "POST", 
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload) 
+      });
+
+      // Send email (non-blocking)
+      supabase.functions.invoke("send-form-email", {
+        body: { formCode: "3QUOTES_MORE", payload }
+      }).catch(err => console.error("Email error:", err));
 
       toast.success("Thanks — we've added this to your request.");
       onClose();

@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Rocket, BarChart, LineChart } from "lucide-react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const packages = [
   {
@@ -80,11 +81,25 @@ export const PackagesSection = () => {
       timestamp: new Date().toISOString(),
     };
 
-    console.log("Packages waitlist submission:", payload);
+    try {
+      // Send to webhook
+      await fetch("https://example.com/webhook", { 
+        method: "POST", 
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload) 
+      });
 
-    toast.success("Thanks — we'll notify you when packages launch on Nov 1, 2025.");
-    setIsOpen(false);
-    setFormData({ email: "", organization: "", areas: [], notes: "" });
+      // Send email (non-blocking)
+      supabase.functions.invoke("send-form-email", {
+        body: { formCode: "PKG_WAITLIST", payload }
+      }).catch(err => console.error("Email error:", err));
+
+      toast.success("Thanks — we'll notify you when packages launch on Nov 1, 2025.");
+      setIsOpen(false);
+      setFormData({ email: "", organization: "", areas: [], notes: "" });
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+    }
   };
 
   return (
