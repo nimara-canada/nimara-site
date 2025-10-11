@@ -115,13 +115,6 @@ export const Footer = () => {
         {/* Divider */}
         <div className="border-t border-[#E9ECF4]/20 mb-8"></div>
 
-        {/* Trust Pill */}
-        <div className="mb-8">
-          <div className="inline-block bg-[#ACFCE3] text-[#202654] px-6 py-3 rounded-full text-sm font-medium shadow-[0_8px_24px_rgba(32,38,84,0.08)]">
-            Data stored in Canada • Records kept 7 years
-          </div>
-        </div>
-
         {/* Legal Note */}
         <div className="mb-6">
           <p className="text-sm text-[#96A0B5] font-normal max-w-[720px] mx-auto text-center leading-relaxed">
