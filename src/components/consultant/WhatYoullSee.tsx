@@ -30,8 +30,14 @@ export const WhatYoullSee = () => {
           What you'll see
         </h2>
         
-        <p className="text-center text-muted-foreground mb-12">
+        <p className="text-center text-muted-foreground mb-4">
           Preview the documents and templates you'll work with.
+        </p>
+        
+        <p className="text-center mb-12">
+          <a href="/sample-brief" className="text-sm text-primary hover:underline">
+            Want to see the format? View a sample brief →
+          </a>
         </p>
 
         <div className="grid md:grid-cols-3 gap-6">
