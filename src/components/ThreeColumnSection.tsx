@@ -56,14 +56,6 @@ const needs = [
     problem: "Month-end is messy",
     solution: "A simple close checklist and a small view of what matters. Files ready for review.",
   },
-  {
-    problem: "Tight budget",
-    solution: (
-      <>
-        Quotes are <span className="text-primary font-semibold">free</span>. Pick by price and timeline. Packages open soon for multi-area work.
-      </>
-    ),
-  },
 ];
 
 export const ThreeColumnSection = () => {
