@@ -18,7 +18,7 @@ export const CompanyHero = () => {
             asChild
             className="w-full sm:w-auto"
           >
-            <a href="/book-a-call">Book a call</a>
+            <a href="/trust">View our commitment</a>
           </Button>
         </div>
 
