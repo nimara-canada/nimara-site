@@ -274,11 +274,9 @@ export const HeroSection = ({
               <Button onClick={scrollToForm} size="lg">
                 Get 3 free quotes
               </Button>
-              <p className="text-sm text-muted-foreground">
-                If we deliver fewer than 2 proposals in 72 hours, you get a $500 credit.
-              </p>
+              <p className="text-sm text-muted-foreground">If we don’t bring you at least 2 quotes in 3 days, you get a $500 credit.</p>
               <Button variant="link" asChild className="p-0 h-auto">
-                <a href="/book-a-call">Prefer a call? Book a 15-minute chat</a>
+                <a href="/book-a-call">Book a 15-min call</a>
               </Button>
             </div>
             
