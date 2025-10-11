@@ -35,6 +35,7 @@ const areaOptions = [
   "Fundraising",
   "Research",
   "Legal & Compliance",
+  "Not sure / Other",
 ];
 
 export const PackagesSection = () => {

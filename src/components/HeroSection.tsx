@@ -18,6 +18,7 @@ const categories = [
   "Fundraising",
   "Research",
   "Legal & Compliance",
+  "Not sure / Other",
 ];
 
 const provinces = [
@@ -69,6 +70,19 @@ export const HeroSection = ({ prefillCategory }: HeroFormProps) => {
     const form = document.getElementById("form_3quotes");
     form?.scrollIntoView({ behavior: "smooth" });
   };
+
+  // Listen for category prefill events from CategoryTiles
+  useEffect(() => {
+    const handleCategoryPrefill = (e: CustomEvent) => {
+      const value = e.detail?.value;
+      if (value) {
+        setFormData(prev => ({ ...prev, category: value }));
+      }
+    };
+
+    window.addEventListener('categoryPrefill' as any, handleCategoryPrefill);
+    return () => window.removeEventListener('categoryPrefill' as any, handleCategoryPrefill);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -333,20 +347,39 @@ export const HeroSection = ({ prefillCategory }: HeroFormProps) => {
                 </Label>
                 <Select
                   value={formData.category}
-                  onValueChange={(value) => setFormData({ ...formData, category: value })}
+                  onValueChange={(value) => {
+                    setFormData({ ...formData, category: value });
+                    console.log("category_select_not_sure", { category: value, source: "hero_select" });
+                    
+                    // If "not_sure", focus outcome field
+                    if (value === "not_sure" || value === "Not sure / Other") {
+                      setTimeout(() => {
+                        const outcomeField = document.getElementById("q_outcome");
+                        outcomeField?.focus();
+                      }, 100);
+                    }
+                  }}
                   required
                 >
                   <SelectTrigger id="q_category" className="rounded-xl">
                     <SelectValue placeholder="Select a category" />
                   </SelectTrigger>
                   <SelectContent>
-                    {categories.map((category) => (
-                      <SelectItem key={category} value={category}>
-                        {category}
-                      </SelectItem>
-                    ))}
+                    {categories.map((category) => {
+                      const value = category === "Not sure / Other" ? "not_sure" : category;
+                      return (
+                        <SelectItem key={category} value={value}>
+                          {category}
+                        </SelectItem>
+                      );
+                    })}
                   </SelectContent>
                 </Select>
+                {(formData.category === "not_sure" || formData.category === "Not sure / Other") && (
+                  <p className="text-xs text-muted-foreground">
+                    If you choose "Not sure / Other," just tell us the outcome you want.
+                  </p>
+                )}
               </div>
 
               <div className="space-y-2">
