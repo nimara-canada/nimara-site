@@ -2,16 +2,11 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Shield, FileText, CheckCircle2, Lock, Users, AlertCircle } from "lucide-react";
 import { Helmet } from "react-helmet";
-
 const Trust = () => {
-  return (
-    <>
+  return <>
       <Helmet>
         <title>Our Commitment | Nimara</title>
-        <meta 
-          name="description" 
-          content="Nimara's plain-English trust page: PM oversight, standard templates, evidence-ready files, data stored in Canada, and 7-year records. No legal or audit advice." 
-        />
+        <meta name="description" content="Nimara's plain-English trust page: PM oversight, standard templates, evidence-ready files, data stored in Canada, and 7-year records. No legal or audit advice." />
       </Helmet>
 
       <div className="min-h-screen bg-background">
@@ -64,11 +59,7 @@ const Trust = () => {
                 </div>
               </div>
 
-              <div className="text-center text-sm text-muted-foreground">
-                <span>Data stored in Canada</span>
-                <span className="mx-2">·</span>
-                <span>Records kept 7 years</span>
-              </div>
+              
             </div>
           </section>
 
@@ -178,10 +169,7 @@ const Trust = () => {
               <div className="space-y-4">
                 <p className="text-muted-foreground">
                   • <strong className="text-foreground">Report an issue:</strong>{" "}
-                  <a 
-                    href="mailto:hello@nimara.ca" 
-                    className="text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
-                  >
+                  <a href="mailto:hello@nimara.ca" className="text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded">
                     hello@nimara.ca
                   </a>
                 </p>
@@ -210,10 +198,7 @@ const Trust = () => {
             <div className="max-w-4xl mx-auto text-center">
               <p className="text-muted-foreground">
                 Questions?{" "}
-                <a 
-                  href="mailto:hello@nimara.ca" 
-                  className="text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
-                >
+                <a href="mailto:hello@nimara.ca" className="text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded">
                   hello@nimara.ca
                 </a>
                 {" "}— we'll help.
@@ -224,8 +209,6 @@ const Trust = () => {
 
         <Footer />
       </div>
-    </>
-  );
+    </>;
 };
-
 export default Trust;
