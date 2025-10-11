@@ -12,7 +12,7 @@ import { supabase } from "@/integrations/supabase/client";
 const callbackSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
   email: z.string().trim().email("Invalid email address").max(255),
-  phone: z.string().trim().min(1, "Phone is required").max(20),
+  phone: z.string().trim().min(1, "Phone is required").max(10),
 });
 
 type CallbackFormData = z.infer<typeof callbackSchema>;
@@ -57,9 +57,11 @@ const BookACall = () => {
       });
 
       // Send email (non-blocking)
-      supabase.functions.invoke("send-form-email", {
-        body: { formCode: "CALLBACK", payload }
-      }).catch(err => console.error("Email error:", err));
+      supabase.functions
+        .invoke("send-form-email", {
+          body: { formCode: "CALLBACK", payload },
+        })
+        .catch((err) => console.error("Email error:", err));
 
       toast.success("Thanks — we'll send 2–3 time options within one business day.");
       reset();
@@ -73,31 +75,21 @@ const BookACall = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header activeRoute="/book-a-call" />
-      
+
       {/* Hero */}
       <section className="pt-32 pb-16 px-4">
         <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Book a 30-minute call
-          </h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Book a 30-minute call</h1>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-            We'll map your outcome, choose the fastest path (3 free quotes or packages waitlist), 
-            and answer compliance/data questions. We hold 30 minutes in case you need it—most calls 
-            wrap in ~15.
+            We'll map your outcome, choose the fastest path (3 free quotes or packages waitlist), and answer
+            compliance/data questions. We hold 30 minutes in case you need it—most calls wrap in ~15.
           </p>
-          <Button
-            size="lg"
-            onClick={scrollToScheduler}
-            className="mb-4"
-          >
+          <Button size="lg" onClick={scrollToScheduler} className="mb-4">
             Schedule a 30-minute call
           </Button>
           <p className="text-sm text-muted-foreground">
             Times show in your local timezone. Prefer email?{" "}
-            <a
-              href="mailto:hello@nimara.ca"
-              className="text-primary hover:underline"
-            >
+            <a href="mailto:hello@nimara.ca" className="text-primary hover:underline">
               hello@nimara.ca
             </a>
           </p>
@@ -107,10 +99,8 @@ const BookACall = () => {
       {/* Scheduler */}
       <section id="scheduler" className="py-16 px-4 bg-muted/30">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-foreground mb-12">
-            Pick a time
-          </h2>
-          
+          <h2 className="text-3xl font-bold text-center text-foreground mb-12">Pick a time</h2>
+
           <div className="bg-background rounded-2xl shadow-lg overflow-hidden mb-4">
             <div className="w-full" style={{ minHeight: "680px" }}>
               <iframe
@@ -123,7 +113,7 @@ const BookACall = () => {
               />
             </div>
           </div>
-          
+
           <div className="text-center">
             <a
               href="https://calendly.com/hello-nimara/30min"
@@ -132,12 +122,7 @@ const BookACall = () => {
               className="text-primary hover:underline inline-flex items-center gap-2"
             >
               Open in Calendly
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -154,12 +139,8 @@ const BookACall = () => {
       <section className="py-16 px-4">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-foreground mb-3">
-              Can't use the scheduler?
-            </h2>
-            <p className="text-muted-foreground">
-              Leave your details and we'll send 2–3 time options.
-            </p>
+            <h2 className="text-3xl font-bold text-foreground mb-3">Can't use the scheduler?</h2>
+            <p className="text-muted-foreground">Leave your details and we'll send 2–3 time options.</p>
           </div>
 
           <form
@@ -178,9 +159,7 @@ const BookACall = () => {
                 {...register("name")}
                 className={errors.name ? "border-destructive" : ""}
               />
-              {errors.name && (
-                <p className="text-destructive text-sm mt-1">{errors.name.message}</p>
-              )}
+              {errors.name && <p className="text-destructive text-sm mt-1">{errors.name.message}</p>}
             </div>
 
             <div>
@@ -194,9 +173,7 @@ const BookACall = () => {
                 {...register("email")}
                 className={errors.email ? "border-destructive" : ""}
               />
-              {errors.email && (
-                <p className="text-destructive text-sm mt-1">{errors.email.message}</p>
-              )}
+              {errors.email && <p className="text-destructive text-sm mt-1">{errors.email.message}</p>}
             </div>
 
             <div>
@@ -211,19 +188,10 @@ const BookACall = () => {
                 {...register("phone")}
                 className={errors.phone ? "border-destructive" : ""}
               />
-              {errors.phone && (
-                <p className="text-destructive text-sm mt-1">{errors.phone.message}</p>
-              )}
+              {errors.phone && <p className="text-destructive text-sm mt-1">{errors.phone.message}</p>}
             </div>
 
-            <Button
-              id="cb_submit"
-              type="submit"
-              variant="outline"
-              size="lg"
-              className="w-full"
-              disabled={isSubmitting}
-            >
+            <Button id="cb_submit" type="submit" variant="outline" size="lg" className="w-full" disabled={isSubmitting}>
               {isSubmitting ? "Submitting..." : "Request a callback"}
             </Button>
           </form>
