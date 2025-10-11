@@ -268,15 +268,15 @@ export const HeroSection = ({
           {/* Left: Hero Content */}
           <div className="space-y-6">
             <p className="text-sm text-muted-foreground font-medium">Audit-ready by design</p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">Get 3 free quotes in 3 days.</h1>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">Get 3 free nonprofit consulting quotes in 72 hours</h1>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl">Tell us what you want. We make a simple plan, get up to 3 quotes from trusted Canadian experts, and our Nimara project manager makes sure it gets done.</p>
             <div className="space-y-4">
               <Button onClick={scrollToForm} size="lg">
                 Get 3 free quotes
               </Button>
-              <p className="text-sm text-muted-foreground">If we don’t bring you at least 2 quotes in 3 days, you get a $500 credit.</p>
+              <p className="text-sm text-muted-foreground">If we deliver fewer than 2 proposals in 72 hours, you get a $500 credit.</p>
               <Button variant="link" asChild className="p-0 h-auto">
-                <a href="/book-a-call">Book a 15-min call</a>
+                <a href="/book-a-call">Prefer a call? Book a 15-minute chat</a>
               </Button>
             </div>
             
@@ -456,83 +456,100 @@ export const HeroSection = ({
                     om_role: value
                   })}>
                           <SelectTrigger id="om_role" className="rounded-xl">
-                            <SelectValue placeholder="Select role" />
+                            <SelectValue placeholder="Select your role" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="ED/CEO">ED/CEO</SelectItem>
-                            <SelectItem value="Operations">Operations</SelectItem>
-                            <SelectItem value="Finance">Finance</SelectItem>
-                            <SelectItem value="Program">Program</SelectItem>
-                            <SelectItem value="Fundraising">Fundraising</SelectItem>
-                            <SelectItem value="Other">Other</SelectItem>
+                            <SelectItem value="ed">Executive Director</SelectItem>
+                            <SelectItem value="board">Board Member</SelectItem>
+                            <SelectItem value="mgmt">Management</SelectItem>
+                            <SelectItem value="staff">Staff</SelectItem>
+                            <SelectItem value="other">Other</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
 
                       <div className="space-y-2">
-                        <Label>When do you want to start?</Label>
-                        <RadioGroup value={optionalData.om_start} onValueChange={value => setOptionalData({
+                        <Label htmlFor="om_start">Ideal project start</Label>
+                        <RadioGroup id="om_start" value={optionalData.om_start} onValueChange={value => setOptionalData({
                     ...optionalData,
                     om_start: value
-                  })}>
+                  })} className="space-y-2">
                           <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="Immediately" id="start_immediate" />
-                            <Label htmlFor="start_immediate" className="font-normal cursor-pointer">
-                              Immediately
+                            <RadioGroupItem value="asap" id="asap" />
+                            <Label htmlFor="asap" className="font-normal cursor-pointer">
+                              ASAP
                             </Label>
                           </div>
                           <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="In a few weeks" id="start_weeks" />
-                            <Label htmlFor="start_weeks" className="font-normal cursor-pointer">
-                              In a few weeks
+                            <RadioGroupItem value="this_month" id="this_month" />
+                            <Label htmlFor="this_month" className="font-normal cursor-pointer">
+                              This month
                             </Label>
                           </div>
                           <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="Not sure yet" id="start_unsure" />
-                            <Label htmlFor="start_unsure" className="font-normal cursor-pointer">
-                              Not sure yet
+                            <RadioGroupItem value="next_month" id="next_month" />
+                            <Label htmlFor="next_month" className="font-normal cursor-pointer">
+                              Next month
+                            </Label>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="flexible" id="flexible" />
+                            <Label htmlFor="flexible" className="font-normal cursor-pointer">
+                              Flexible
                             </Label>
                           </div>
                         </RadioGroup>
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="om_budget">Budget estimate</Label>
-                        <Select value={optionalData.om_budget} onValueChange={value => setOptionalData({
+                        <Label htmlFor="om_budget">Estimated budget</Label>
+                        <RadioGroup id="om_budget" value={optionalData.om_budget} onValueChange={value => setOptionalData({
                     ...optionalData,
                     om_budget: value
-                  })}>
-                          <SelectTrigger id="om_budget" className="rounded-xl">
-                            <SelectValue placeholder="Select budget" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="<$5k">&lt;$5k</SelectItem>
-                            <SelectItem value="$5–10k">$5–10k</SelectItem>
-                            <SelectItem value="$10–20k">$10–20k</SelectItem>
-                            <SelectItem value="$20–40k">$20–40k</SelectItem>
-                            <SelectItem value=">$40k">&gt;$40k</SelectItem>
-                            <SelectItem value="Not sure">Not sure</SelectItem>
-                          </SelectContent>
-                        </Select>
+                  })} className="space-y-2">
+                          <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="under_5k" id="under_5k" />
+                            <Label htmlFor="under_5k" className="font-normal cursor-pointer">
+                              Under $5,000
+                            </Label>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="5k_15k" id="5k_15k" />
+                            <Label htmlFor="5k_15k" className="font-normal cursor-pointer">
+                              $5,000 - $15,000
+                            </Label>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="15k_30k" id="15k_30k" />
+                            <Label htmlFor="15k_30k" className="font-normal cursor-pointer">
+                              $15,000 - $30,000
+                            </Label>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="over_30k" id="over_30k" />
+                            <Label htmlFor="over_30k" className="font-normal cursor-pointer">
+                              Over $30,000
+                            </Label>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="not_sure" id="budget_not_sure" />
+                            <Label htmlFor="budget_not_sure" className="font-normal cursor-pointer">
+                              Not sure
+                            </Label>
+                          </div>
+                        </RadioGroup>
                       </div>
 
-                      <div className="flex items-center gap-3 pt-2 sticky bottom-0 bg-card pb-2">
-                        <Button variant="outline" onClick={handleSaveOptional} disabled={isSavingOptional} className="focus:ring-2 focus:ring-primary focus:ring-offset-2">
-                          {isSavingOptional ? "Saving..." : "Save details"}
+                      <div className="flex gap-3 pt-2">
+                        <Button type="button" onClick={handleSaveOptional} disabled={isSavingOptional} className="focus:ring-2 focus:ring-primary focus:ring-offset-2">
+                          {isSavingOptional ? "Saving..." : "Save"}
                         </Button>
-                        <Button variant="link" onClick={handleSkip} className="p-0 h-auto">
-                          Skip for now
+                        <Button type="button" variant="ghost" onClick={handleSkip}>
+                          Skip
                         </Button>
                       </div>
                     </CollapsibleContent>}
                 </Collapsible>
-              </div>}
-
-            {/* Persistent "Add details" link */}
-            {showOneMorePanel && !isPanelExpanded && !saveSuccess && <div className="mt-3 text-center">
-                <Button variant="link" onClick={handleExpandClick} className="p-0 h-auto text-sm">
-                  Add details (30 sec)
-                </Button>
               </div>}
           </div>
         </div>
