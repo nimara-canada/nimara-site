@@ -8,7 +8,6 @@ const navigation = [
   { name: "Nonprofits", href: "/" },
   { name: "Consultants", href: "/consultants" },
   { name: "Company", href: "/company" },
-  { name: "Trust", href: "/trust" },
 ];
 
 interface HeaderProps {
