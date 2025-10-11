@@ -5,8 +5,8 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import nimaraLogo from "@/assets/nimara-logo.png";
 
 const navigation = [
-  { name: "Nonprofits", href: "/" },
-  { name: "Consultants", href: "/consultants" },
+  { name: "For Nonprofits", href: "/" },
+  { name: "For Consultants", href: "/consultants" },
   { name: "Company", href: "/company" },
 ];
 
