@@ -25,7 +25,6 @@ const features = [
 
 const inlineLinks = [
   { label: "Nonprofits: Get 3 free quotes", href: "/" },
-  { label: "Funders: Request demo", href: "/funders" },
   { label: "Consultants: Apply to the bench", href: "/consultants" },
 ];
 

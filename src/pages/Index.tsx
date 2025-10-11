@@ -34,17 +34,10 @@ const Index = () => {
               </p>
             </div>
             <div>
-              <h4 className="font-semibold mb-3">Users</h4>
+              <h4 className="font-semibold mb-3">For</h4>
               <ul className="space-y-2 text-sm opacity-80">
-                <li><a href="/nonprofits" className="hover:opacity-100">Nonprofits</a></li>
-                <li><a href="/funders" className="hover:opacity-100">Funders</a></li>
+                <li><a href="/" className="hover:opacity-100">Nonprofits</a></li>
                 <li><a href="/consultants" className="hover:opacity-100">Consultants</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-3">Learn</h4>
-              <ul className="space-y-2 text-sm opacity-80">
-                <li><a href="/resources" className="hover:opacity-100">Resources</a></li>
               </ul>
             </div>
             <div>

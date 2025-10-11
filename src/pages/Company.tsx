@@ -57,7 +57,6 @@ const Company = () => {
               <h4 className="font-semibold text-foreground mb-4">For</h4>
               <ul className="space-y-2 text-sm">
                 <li><a href="/" className="text-muted-foreground hover:text-foreground">Nonprofits</a></li>
-                <li><a href="/funders" className="text-muted-foreground hover:text-foreground">Funders</a></li>
                 <li><a href="/consultants" className="text-muted-foreground hover:text-foreground">Consultants</a></li>
               </ul>
             </div>
@@ -65,8 +64,6 @@ const Company = () => {
               <h4 className="font-semibold text-foreground mb-4">Company</h4>
               <ul className="space-y-2 text-sm">
                 <li><a href="/company" className="text-muted-foreground hover:text-foreground">About</a></li>
-                <li><a href="/trust" className="text-muted-foreground hover:text-foreground">Trust</a></li>
-                <li><a href="/resources" className="text-muted-foreground hover:text-foreground">Resources</a></li>
               </ul>
             </div>
             <div>

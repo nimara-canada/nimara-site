@@ -39,11 +39,6 @@ export default function SignIn() {
       description: "Use Get 3 free quotes for one category, or join the packages waitlist for multi-area work.",
     },
     {
-      icon: Building2,
-      title: "Funders",
-      description: "Request a demo to see portfolio-level oversight (pilot).",
-    },
-    {
       icon: Users,
       title: "Consultants",
       description: "Apply to join the founding bench.",
@@ -80,9 +75,6 @@ export default function SignIn() {
           <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
             <Link to="/" className="text-primary hover:underline font-medium">
               Get 3 free quotes
-            </Link>
-            <Link to="/funders" className="text-primary hover:underline font-medium">
-              Request a demo (funders)
             </Link>
             <Link to="/consultants" className="text-primary hover:underline font-medium">
               Apply to the bench (consultants)
@@ -199,9 +191,6 @@ export default function SignIn() {
           <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
             <Link to="/" className="text-primary hover:underline font-medium">
               Get 3 free quotes
-            </Link>
-            <Link to="/funders" className="text-primary hover:underline font-medium">
-              Request a demo
             </Link>
             <Link to="/consultants" className="text-primary hover:underline font-medium">
               Apply to the bench
