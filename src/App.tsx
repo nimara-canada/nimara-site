@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import Consultants from "./pages/Consultants";
 import Company from "./pages/Company";
@@ -34,6 +34,12 @@ const App = () => (
           <Route path="/terms" element={<Terms />} />
           <Route path="/accessibility" element={<Accessibility />} />
           <Route path="/trust" element={<Trust />} />
+          
+          {/* Redirects for removed pages */}
+          <Route path="/funders" element={<Navigate to="/company" replace />} />
+          <Route path="/resources" element={<Navigate to="/company" replace />} />
+          <Route path="/ux-pilot" element={<Navigate to="/company" replace />} />
+          
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
