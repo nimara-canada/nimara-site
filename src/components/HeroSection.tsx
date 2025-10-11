@@ -398,7 +398,46 @@ export const HeroSection = ({ prefillCategory }: HeroFormProps) => {
                 </p>
               </div>
 
-              <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
+              {/* Privacy/Terms Notice */}
+              <p 
+                id="q_privacy_notice" 
+                className="text-xs leading-relaxed max-w-[560px]"
+                style={{ color: '#96A0B5' }}
+              >
+                We are committed to protecting your privacy. By providing your information you acknowledge and agree to Nimara's{' '}
+                <a 
+                  href="/privacy" 
+                  className="underline hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6945D8] focus-visible:ring-offset-2 rounded-sm"
+                  onClick={() => {
+                    if (typeof window !== 'undefined' && (window as any).gtag) {
+                      (window as any).gtag('event', 'privacy_notice_click', { target: 'privacy' });
+                    }
+                  }}
+                >
+                  Privacy Policy
+                </a>
+                {' '}and{' '}
+                <a 
+                  href="/terms" 
+                  className="underline hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6945D8] focus-visible:ring-offset-2 rounded-sm"
+                  onClick={() => {
+                    if (typeof window !== 'undefined' && (window as any).gtag) {
+                      (window as any).gtag('event', 'privacy_notice_click', { target: 'terms' });
+                    }
+                  }}
+                >
+                  Terms of Use
+                </a>.
+              </p>
+
+              <Button 
+                type="submit" 
+                className="w-full" 
+                size="lg" 
+                disabled={isSubmitting}
+                id="cta_quotes_submit"
+                aria-describedby="q_privacy_notice"
+              >
                 {isSubmitting ? "Submitting..." : "Get 3 free quotes"}
               </Button>
             </form>
