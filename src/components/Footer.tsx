@@ -4,12 +4,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
-
 export const Footer = () => {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -22,7 +20,6 @@ export const Footer = () => {
       setIsSubmitting(false);
       return;
     }
-
     try {
       const payload = {
         flow: "newsletter",
@@ -31,14 +28,16 @@ export const Footer = () => {
         utm_source: new URLSearchParams(window.location.search).get("utm_source"),
         utm_medium: new URLSearchParams(window.location.search).get("utm_medium"),
         utm_campaign: new URLSearchParams(window.location.search).get("utm_campaign"),
-        timestamp: new Date().toISOString(),
+        timestamp: new Date().toISOString()
       };
 
       // Send email (non-blocking)
       supabase.functions.invoke("send-form-email", {
-        body: { formCode: "NEWSLETTER", payload }
+        body: {
+          formCode: "NEWSLETTER",
+          payload
+        }
       }).catch(err => console.error("Email error:", err));
-
       toast.success("Thanks — you're on the list.");
       setEmail("");
     } catch (error) {
@@ -47,9 +46,7 @@ export const Footer = () => {
       setIsSubmitting(false);
     }
   };
-
-  return (
-    <footer className="bg-[#202654] text-white">
+  return <footer className="bg-[#202654] text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1280px] py-12 sm:py-16 lg:py-20">
         {/* Main Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
@@ -65,10 +62,7 @@ export const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-semibold text-sm">Contact</h4>
             <div className="space-y-2 text-sm text-[#96A0B5]">
-              <a
-                href="mailto:hello@nimara.ca"
-                className="block hover:text-[#6945D8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#6945D8] rounded"
-              >
+              <a href="mailto:hello@nimara.ca" className="block hover:text-[#6945D8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#6945D8] rounded">
                 hello@nimara.ca
               </a>
               <address className="not-italic leading-relaxed">
@@ -83,24 +77,15 @@ export const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-semibold text-sm">Legal</h4>
             <div className="flex flex-wrap gap-2 text-sm text-[#96A0B5]">
-              <a
-                href="/privacy"
-                className="hover:text-[#6945D8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#6945D8] rounded"
-              >
+              <a href="/privacy" className="hover:text-[#6945D8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#6945D8] rounded">
                 Privacy
               </a>
               <span>·</span>
-              <a
-                href="/terms"
-                className="hover:text-[#6945D8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#6945D8] rounded"
-              >
+              <a href="/terms" className="hover:text-[#6945D8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#6945D8] rounded">
                 Terms
               </a>
               <span>·</span>
-              <a
-                href="/accessibility"
-                className="hover:text-[#6945D8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#6945D8] rounded"
-              >
+              <a href="/accessibility" className="hover:text-[#6945D8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#6945D8] rounded">
                 Accessibility
               </a>
             </div>
@@ -114,28 +99,13 @@ export const Footer = () => {
                 <Label htmlFor="nl_email" className="sr-only">
                   Your email
                 </Label>
-                <Input
-                  type="email"
-                  id="nl_email"
-                  placeholder="Your email"
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                    setError("");
-                  }}
-                  aria-invalid={!!error}
-                  className="bg-white/10 border-white/20 text-white placeholder:text-[#96A0B5] rounded-xl focus:ring-2 focus:ring-[#6945D8] focus:border-[#6945D8]"
-                />
-                {error && (
-                  <p className="text-xs text-red-400 mt-1">{error}</p>
-                )}
+                <Input type="email" id="nl_email" placeholder="Your email" value={email} onChange={e => {
+                setEmail(e.target.value);
+                setError("");
+              }} aria-invalid={!!error} className="bg-white/10 border-white/20 text-white placeholder:text-[#96A0B5] rounded-xl focus:ring-2 focus:ring-[#6945D8] focus:border-[#6945D8]" />
+                {error && <p className="text-xs text-red-400 mt-1">{error}</p>}
               </div>
-              <Button
-                type="submit"
-                variant="outline"
-                disabled={isSubmitting}
-                className="w-full border-white text-white hover:bg-white hover:text-[#202654] rounded-xl focus:ring-2 focus:ring-[#6945D8]"
-              >
+              <Button type="submit" variant="outline" disabled={isSubmitting} className="w-full border-white hover:bg-white rounded-xl focus:ring-2 focus:ring-[#6945D8] text-gray-900">
                 {isSubmitting ? "Subscribing..." : "Subscribe"}
               </Button>
             </form>
@@ -157,6 +127,5 @@ export const Footer = () => {
           <p className="text-sm text-[#96A0B5]">© Nimara Technology</p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
