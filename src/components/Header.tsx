@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import nimaraLogo from "@/assets/nimara-logo.png";
 
 const navigation = [
   { name: "Nonprofits", href: "/" },
@@ -29,7 +30,7 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
             <a href="/" className="flex items-center space-x-2">
-              <span className="text-xl font-bold text-foreground">Nimara</span>
+              <img src={nimaraLogo} alt="Nimara" className="h-8" />
             </a>
 
             {/* Desktop Navigation */}
