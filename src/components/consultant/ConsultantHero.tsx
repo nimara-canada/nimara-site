@@ -38,7 +38,7 @@ export const ConsultantHero = () => {
           </div>
 
           <a 
-            href="/assets/nimara-sample-brief.pdf" 
+            href="/sample-brief" 
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             Want to see the format? <span className="underline">View a sample brief</span>
