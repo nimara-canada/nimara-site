@@ -294,7 +294,7 @@ export const HeroSection = ({
           {/* Left: Hero Content */}
           <div className="space-y-6">
             <p className="text-sm text-muted-foreground font-medium">Audit-ready by design</p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">Get 3 free nonprofit consulting quotes in 72 hours</h1>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">Get 3 free nonprofit consulting quotes in 3 days</h1>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl">Tell us what you want. We make a simple plan, get up to 3 quotes from trusted Canadian experts, and our Nimara project manager makes sure it gets done.</p>
             <div className="pt-2 pb-4">
               <a 
@@ -313,7 +313,7 @@ export const HeroSection = ({
               <Button onClick={scrollToForm} size="lg">
                 Get 3 free quotes
               </Button>
-              <p className="text-sm text-muted-foreground">If we deliver fewer than 2 proposals in 72 hours, you get a $500 credit.</p>
+              <p className="text-sm text-muted-foreground">If we deliver fewer than 2 proposals in 3 days, you get a $500 credit.</p>
               <Button variant="link" asChild className="p-0 h-auto">
                 <a href="/book-a-call">Prefer a call? Book a 15-minute chat</a>
               </Button>

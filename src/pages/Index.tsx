@@ -20,20 +20,20 @@ const Index = () => {
     <div className="min-h-screen">
       <Helmet>
         <title>For Nonprofits | Nimara</title>
-        <meta name="description" content="Get 3 vetted nonprofit consulting quotes in 72 hours. Free scope. PM oversight. Data in Canada; records kept 7 years." />
+        <meta name="description" content="Get 3 vetted nonprofit consulting quotes in 3 days. Free scope. PM oversight. Data in Canada; records kept 7 years." />
         
         <link rel="canonical" href="https://nimara.ca/" />
         
         <meta property="og:site_name" content="Nimara" />
         <meta property="og:title" content="For Nonprofits | Nimara" />
-        <meta property="og:description" content="Get 3 vetted nonprofit consulting quotes in 72 hours. Free scope. PM oversight. Data in Canada; records kept 7 years." />
+        <meta property="og:description" content="Get 3 vetted nonprofit consulting quotes in 3 days. Free scope. PM oversight. Data in Canada; records kept 7 years." />
         <meta property="og:url" content="https://nimara.ca/" />
         <meta property="og:image" content="https://nimara.ca/og.jpg" />
         <meta property="og:type" content="website" />
         
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="For Nonprofits | Nimara" />
-        <meta name="twitter:description" content="Get 3 vetted nonprofit consulting quotes in 72 hours. Free scope. PM oversight. Data in Canada; records kept 7 years." />
+        <meta name="twitter:description" content="Get 3 vetted nonprofit consulting quotes in 3 days. Free scope. PM oversight. Data in Canada; records kept 7 years." />
         <meta name="twitter:image" content="https://nimara.ca/og.jpg" />
         
         <script type="application/ld+json">

@@ -8,7 +8,7 @@ const steps = [
   },
   {
     icon: FileText,
-    title: "Up to 3 proposals (72 hours)",
+    title: "Up to 3 proposals (3 days)",
     description: "Comparable quotes: price, timeline, outcomes, \"done\" checklist.",
   },
   {

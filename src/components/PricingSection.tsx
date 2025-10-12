@@ -52,7 +52,7 @@ export const PricingSection = ({ onOpenPackagesWaitlist }: PricingSectionProps) 
 
               <Alert className="bg-accent/10 border-accent">
                 <AlertDescription className="text-sm font-medium">
-                  If we deliver fewer than 2 proposals within 72 hours after your brief is finalized, you get a $500 credit toward your first project.
+                  If we deliver fewer than 2 proposals within 3 days after your brief is finalized, you get a $500 credit toward your first project.
                 </AlertDescription>
               </Alert>
             </CardContent>

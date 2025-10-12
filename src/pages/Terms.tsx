@@ -136,7 +136,7 @@ const Terms = () => {
           <section className="space-y-6">
             <h2 className="text-2xl font-semibold text-[#202654]">6) SLA credit for quotes (plain rules)</h2>
             <p className="text-[#202654] leading-relaxed">
-              If we deliver fewer than 2 proposals within 72 hours after we finalize your brief, you receive a $500 credit toward your first package or project.
+              If we deliver fewer than 2 proposals within 3 days after we finalize your brief, you receive a $500 credit toward your first package or project.
             </p>
             <ul className="space-y-3 list-none">
               <li className="text-[#202654] leading-relaxed">

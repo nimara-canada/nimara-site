@@ -6,7 +6,7 @@ const needs = [
     solution: (
       <>
         Share one outcome. We turn it into a short brief and get up to{" "}
-        <span className="text-primary font-semibold">3 quotes in 72 hours</span>.
+        <span className="text-primary font-semibold">3 quotes in 3 days</span>.
       </>
     ),
   },
