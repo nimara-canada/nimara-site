@@ -63,6 +63,7 @@ export const HeroSection = ({
   const [saveError, setSaveError] = useState("");
   const [saveSuccess, setSaveSuccess] = useState(false);
   const [submittedEmail, setSubmittedEmail] = useState("");
+  const [showExamples, setShowExamples] = useState(false);
   const panelTitleRef = useRef<HTMLHeadingElement>(null);
   const [formData, setFormData] = useState({
     email: "",
@@ -396,13 +397,140 @@ export const HeroSection = ({
 
               <div className="space-y-2">
                 <Label htmlFor="q_outcome">What outcome do you want?</Label>
-                <Textarea id="q_outcome" maxLength={140} placeholder="Reconcile funds and be audit-ready by April 31." value={formData.outcome} onChange={e => setFormData({
-                ...formData,
-                outcome: e.target.value
-              })} className="rounded-xl resize-none" rows={3} />
                 <p className="text-xs text-muted-foreground">
-                  One sentence. {formData.outcome.length}/140 characters.
+                  One sentence, up to 140 characters. Plain English is perfect.
                 </p>
+                <Textarea 
+                  id="q_outcome" 
+                  maxLength={140} 
+                  placeholder="Reconcile Q4 grant spend and be audit-ready by Apr 30." 
+                  value={formData.outcome} 
+                  onChange={e => setFormData({
+                    ...formData,
+                    outcome: e.target.value
+                  })} 
+                  className="rounded-xl resize-none" 
+                  rows={3}
+                  aria-describedby="q_outcome_counter"
+                />
+                <div className="flex items-center justify-between gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setShowExamples(!showExamples)}
+                    className="text-xs text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                  >
+                    {showExamples ? "Hide examples" : "Show examples →"}
+                  </button>
+                  <p id="q_outcome_counter" className="text-xs text-muted-foreground" aria-live="polite">
+                    {formData.outcome.length} / 140
+                  </p>
+                </div>
+                
+                {showExamples && (
+                  <div className="border border-border rounded-xl p-4 space-y-3 bg-muted/30">
+                    <p className="text-xs font-semibold text-foreground">Example outcomes by category:</p>
+                    
+                    <div className="space-y-2">
+                      <div>
+                        <p className="text-xs font-medium text-foreground mb-1">Finance & Audit</p>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setFormData({ ...formData, outcome: "Reconcile Q4 grant spend and be audit-ready by Apr 30." });
+                            setShowExamples(false);
+                          }}
+                          className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left"
+                        >
+                          "Reconcile Q4 grant spend and be audit-ready by Apr 30."
+                        </button>
+                      </div>
+                      
+                      <div>
+                        <p className="text-xs font-medium text-foreground mb-1">Digital & Data</p>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setFormData({ ...formData, outcome: "Migrate our donor database to a CRM by June 15." });
+                            setShowExamples(false);
+                          }}
+                          className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left"
+                        >
+                          "Migrate our donor database to a CRM by June 15."
+                        </button>
+                      </div>
+                      
+                      <div>
+                        <p className="text-xs font-medium text-foreground mb-1">Governance</p>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setFormData({ ...formData, outcome: "Update our board policies to meet new ONCA requirements by May 1." });
+                            setShowExamples(false);
+                          }}
+                          className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left"
+                        >
+                          "Update our board policies to meet new ONCA requirements by May 1."
+                        </button>
+                      </div>
+                      
+                      <div>
+                        <p className="text-xs font-medium text-foreground mb-1">Fundraising</p>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setFormData({ ...formData, outcome: "Design a corporate partnership pitch deck ready to send by March 31." });
+                            setShowExamples(false);
+                          }}
+                          className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left"
+                        >
+                          "Design a corporate partnership pitch deck ready to send by March 31."
+                        </button>
+                      </div>
+                      
+                      <div>
+                        <p className="text-xs font-medium text-foreground mb-1">Program Design</p>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setFormData({ ...formData, outcome: "Create a logic model for our youth mentorship program by April 15." });
+                            setShowExamples(false);
+                          }}
+                          className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left"
+                        >
+                          "Create a logic model for our youth mentorship program by April 15."
+                        </button>
+                      </div>
+                      
+                      <div>
+                        <p className="text-xs font-medium text-foreground mb-1">Research</p>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setFormData({ ...formData, outcome: "Survey 200 stakeholders and deliver insights report by May 31." });
+                            setShowExamples(false);
+                          }}
+                          className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left"
+                        >
+                          "Survey 200 stakeholders and deliver insights report by May 31."
+                        </button>
+                      </div>
+                      
+                      <div>
+                        <p className="text-xs font-medium text-foreground mb-1">Legal & Compliance</p>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setFormData({ ...formData, outcome: "Draft a privacy policy that meets PIPEDA standards by June 1." });
+                            setShowExamples(false);
+                          }}
+                          className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left"
+                        >
+                          "Draft a privacy policy that meets PIPEDA standards by June 1."
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Privacy/Terms Notice */}
