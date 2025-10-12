@@ -56,6 +56,10 @@ const needs = [
     problem: "Month-end is messy",
     solution: "A simple close checklist and a small view of what matters. Files ready for review.",
   },
+  {
+    problem: "Budget is tight",
+    solution: "Flat project fees. No surprises, no hourly padding.",
+  },
 ];
 
 export const ThreeColumnSection = () => {
