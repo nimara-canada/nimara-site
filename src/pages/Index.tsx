@@ -8,10 +8,14 @@ import { HowItWorksSection } from "@/components/HowItWorksSection";
 import { CategoryTiles } from "@/components/CategoryTiles";
 import { BenefitsSection } from "@/components/BenefitsSection";
 import { PackagesSection } from "@/components/PackagesSection";
+import { PricingSection } from "@/components/PricingSection";
 import { FAQSection } from "@/components/FAQSection";
 import { FinalCTA } from "@/components/FinalCTA";
+import { useState } from "react";
 
 const Index = () => {
+  const [isPackagesWaitlistOpen, setIsPackagesWaitlistOpen] = useState(false);
+
   return (
     <div className="min-h-screen">
       <Helmet>
@@ -72,9 +76,10 @@ const Index = () => {
         <HowItWorksSection />
         <CategoryTiles />
         <BenefitsSection />
-        <PackagesSection />
+        <PricingSection onOpenPackagesWaitlist={() => setIsPackagesWaitlistOpen(true)} />
         <FAQSection />
         <FinalCTA />
+        <PackagesSection isOpen={isPackagesWaitlistOpen} onClose={() => setIsPackagesWaitlistOpen(false)} />
       </main>
       <Footer />
     </div>

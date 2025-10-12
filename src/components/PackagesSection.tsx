@@ -38,8 +38,15 @@ const areaOptions = [
   "Not sure / Other",
 ];
 
-export const PackagesSection = () => {
-  const [isOpen, setIsOpen] = useState(false);
+interface PackagesSectionProps {
+  isOpen?: boolean;
+  onClose?: () => void;
+}
+
+export const PackagesSection = ({ isOpen: externalIsOpen, onClose }: PackagesSectionProps = {}) => {
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
+  const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;
+  const setIsOpen = onClose ? (value: boolean) => { if (!value) onClose(); } : setInternalIsOpen;
   const [formData, setFormData] = useState({
     email: "",
     organization: "",

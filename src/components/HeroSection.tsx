@@ -296,6 +296,19 @@ export const HeroSection = ({
             <p className="text-sm text-muted-foreground font-medium">Audit-ready by design</p>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">Get 3 free nonprofit consulting quotes in 72 hours</h1>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl">Tell us what you want. We make a simple plan, get up to 3 quotes from trusted Canadian experts, and our Nimara project manager makes sure it gets done.</p>
+            <div className="pt-2 pb-4">
+              <a 
+                href="#pricing" 
+                className="text-sm text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const pricingSection = document.getElementById('pricing');
+                  pricingSection?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                How fees work →
+              </a>
+            </div>
             <div className="space-y-4">
               <Button onClick={scrollToForm} size="lg">
                 Get 3 free quotes
