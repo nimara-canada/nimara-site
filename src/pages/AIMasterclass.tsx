@@ -394,67 +394,6 @@ const AIMasterclass = () => {
           </div>
         </section>
 
-        {/* What makes this different */}
-        <section className="py-16 px-4 bg-gray-50">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-3xl font-bold text-[#202654] text-center mb-12">What makes this different</h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                {
-                  icon: Target,
-                  title: "Canadian nonprofit-focused",
-                  desc: "Built for Canadian context, with examples from real nonprofit work—not generic corporate use cases.",
-                },
-                {
-                  icon: Shield,
-                  title: "No tech background needed",
-                  desc: "Plain language, practical frameworks, reusable templates. Leave with tools you can use Monday morning.",
-                },
-                {
-                  icon: Heart,
-                  title: "Responsible-first",
-                  desc: "Introduce bias checks and safe AI practices from day one—not as an afterthought.",
-                },
-              ].map((item, index) => (
-                <div key={index} className="bg-white p-6 rounded-2xl shadow-sm text-center">
-                  <item.icon className="w-10 h-10 text-[#6945D8] mx-auto mb-4" />
-                  <h3 className="font-semibold text-[#202654] mb-3">{item.title}</h3>
-                  <p className="text-sm text-[#96A0B5]">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* What nonprofit leaders are saying */}
-        <section className="py-16 px-4">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-3xl font-bold text-[#202654] text-center mb-12">What nonprofit leaders are saying</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              {[
-                {
-                  name: "Sarah Chen",
-                  role: "Executive Director, Community Housing Network",
-                  quote: "After the session I rewrote our entire fundraising outreach in 20 minutes. It used to take me three days. I'm still in shock.",
-                },
-                {
-                  name: "Marcus Thompson",
-                  role: "Development Lead, Youth Mental Health Fund",
-                  quote: "The prompt blueprint alone changed everything. We're now using AI for donor stewardship, program summaries, and board reporting—safely and consistently.",
-                },
-              ].map((item, index) => (
-                <div key={index} className="bg-[#ACFCE3]/30 p-8 rounded-2xl">
-                  <p className="text-[#202654] mb-6 italic">"{item.quote}"</p>
-                  <div>
-                    <p className="font-semibold text-[#202654]">{item.name}</p>
-                    <p className="text-sm text-[#96A0B5]">{item.role}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* FAQ */}
         <section className="py-16 px-4 bg-gray-50">
           <div className="container mx-auto max-w-3xl">
