@@ -7,6 +7,20 @@ const Trust = () => {
       <Helmet>
         <title>Our Commitment | Nimara</title>
         <meta name="description" content="PM oversight, standard templates, evidence-ready files, data stored in Canada, 7-year retention." />
+        
+        <link rel="canonical" href="https://nimara.ca/trust" />
+        
+        <meta property="og:site_name" content="Nimara" />
+        <meta property="og:title" content="Our Commitment | Nimara" />
+        <meta property="og:description" content="PM oversight, standard templates, evidence-ready files, data stored in Canada, 7-year retention." />
+        <meta property="og:url" content="https://nimara.ca/trust" />
+        <meta property="og:image" content="https://nimara.ca/og.jpg" />
+        <meta property="og:type" content="website" />
+        
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Our Commitment | Nimara" />
+        <meta name="twitter:description" content="PM oversight, standard templates, evidence-ready files, data stored in Canada, 7-year retention." />
+        <meta name="twitter:image" content="https://nimara.ca/og.jpg" />
       </Helmet>
 
       <div className="min-h-screen bg-background">

@@ -8,6 +8,20 @@ const Privacy = () => {
       <Helmet>
         <title>Privacy Policy | Nimara</title>
         <meta name="description" content="What we collect, why, where we store it (Canada), how long we keep it, and your choices." />
+        
+        <link rel="canonical" href="https://nimara.ca/privacy" />
+        
+        <meta property="og:site_name" content="Nimara" />
+        <meta property="og:title" content="Privacy Policy | Nimara" />
+        <meta property="og:description" content="What we collect, why, where we store it (Canada), how long we keep it, and your choices." />
+        <meta property="og:url" content="https://nimara.ca/privacy" />
+        <meta property="og:image" content="https://nimara.ca/og.jpg" />
+        <meta property="og:type" content="website" />
+        
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Privacy Policy | Nimara" />
+        <meta name="twitter:description" content="What we collect, why, where we store it (Canada), how long we keep it, and your choices." />
+        <meta name="twitter:image" content="https://nimara.ca/og.jpg" />
       </Helmet>
       
       <a 

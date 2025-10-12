@@ -79,6 +79,20 @@ const BookACall = () => {
       <Helmet>
         <title>Book a Call | Nimara</title>
         <meta name="description" content="30-minute hold, most calls ~15 minutes. Map your outcome and pick the fastest path." />
+        
+        <link rel="canonical" href="https://nimara.ca/book-a-call" />
+        
+        <meta property="og:site_name" content="Nimara" />
+        <meta property="og:title" content="Book a Call | Nimara" />
+        <meta property="og:description" content="30-minute hold, most calls ~15 minutes. Map your outcome and pick the fastest path." />
+        <meta property="og:url" content="https://nimara.ca/book-a-call" />
+        <meta property="og:image" content="https://nimara.ca/og.jpg" />
+        <meta property="og:type" content="website" />
+        
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Book a Call | Nimara" />
+        <meta name="twitter:description" content="30-minute hold, most calls ~15 minutes. Map your outcome and pick the fastest path." />
+        <meta name="twitter:image" content="https://nimara.ca/og.jpg" />
       </Helmet>
       <Header activeRoute="/book-a-call" />
 

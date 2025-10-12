@@ -14,6 +14,20 @@ const Company = () => {
       <Helmet>
         <title>Company | Nimara</title>
         <meta name="description" content="Building the infrastructure for Canada's nonprofit ecosystem. People first, simple rules, clean files." />
+        
+        <link rel="canonical" href="https://nimara.ca/company" />
+        
+        <meta property="og:site_name" content="Nimara" />
+        <meta property="og:title" content="Company | Nimara" />
+        <meta property="og:description" content="Building the infrastructure for Canada's nonprofit ecosystem. People first, simple rules, clean files." />
+        <meta property="og:url" content="https://nimara.ca/company" />
+        <meta property="og:image" content="https://nimara.ca/og.jpg" />
+        <meta property="og:type" content="website" />
+        
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Company | Nimara" />
+        <meta name="twitter:description" content="Building the infrastructure for Canada's nonprofit ecosystem. People first, simple rules, clean files." />
+        <meta name="twitter:image" content="https://nimara.ca/og.jpg" />
       </Helmet>
       <Header activeRoute="/company" />
       

@@ -8,6 +8,20 @@ const Accessibility = () => {
       <Helmet>
         <title>Accessibility | Nimara</title>
         <meta name="description" content="WCAG 2.1 AA with plain language, keyboard access, captions, and accessible documents. Need a different format? Email hello@nimara.ca." />
+        
+        <link rel="canonical" href="https://nimara.ca/accessibility" />
+        
+        <meta property="og:site_name" content="Nimara" />
+        <meta property="og:title" content="Accessibility | Nimara" />
+        <meta property="og:description" content="WCAG 2.1 AA with plain language, keyboard access, captions, and accessible documents. Need a different format? Email hello@nimara.ca." />
+        <meta property="og:url" content="https://nimara.ca/accessibility" />
+        <meta property="og:image" content="https://nimara.ca/og.jpg" />
+        <meta property="og:type" content="website" />
+        
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Accessibility | Nimara" />
+        <meta name="twitter:description" content="WCAG 2.1 AA with plain language, keyboard access, captions, and accessible documents. Need a different format? Email hello@nimara.ca." />
+        <meta name="twitter:image" content="https://nimara.ca/og.jpg" />
       </Helmet>
       
       <Header activeRoute="/accessibility" />

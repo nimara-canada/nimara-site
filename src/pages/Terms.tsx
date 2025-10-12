@@ -8,6 +8,20 @@ const Terms = () => {
       <Helmet>
         <title>Terms of Service | Nimara</title>
         <meta name="description" content="How our quotes, projects, PM oversight, data residency, and limits of liability work." />
+        
+        <link rel="canonical" href="https://nimara.ca/terms" />
+        
+        <meta property="og:site_name" content="Nimara" />
+        <meta property="og:title" content="Terms of Service | Nimara" />
+        <meta property="og:description" content="How our quotes, projects, PM oversight, data residency, and limits of liability work." />
+        <meta property="og:url" content="https://nimara.ca/terms" />
+        <meta property="og:image" content="https://nimara.ca/og.jpg" />
+        <meta property="og:type" content="website" />
+        
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Terms of Service | Nimara" />
+        <meta name="twitter:description" content="How our quotes, projects, PM oversight, data residency, and limits of liability work." />
+        <meta name="twitter:image" content="https://nimara.ca/og.jpg" />
       </Helmet>
       
       <a 
