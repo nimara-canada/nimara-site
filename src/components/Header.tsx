@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { useLanguage } from "@/contexts/LanguageContext";
 import nimaraLogo from "@/assets/nimara-logo.png";
 
 const navigation = [
@@ -16,6 +18,7 @@ interface HeaderProps {
 
 export const Header = ({ activeRoute = "/" }: HeaderProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useLanguage();
 
   const scrollToForm = () => {
     const form = document.getElementById("form_3quotes");
@@ -66,14 +69,15 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
 
             {/* Desktop CTA */}
             <div className="hidden md:flex items-center space-x-4">
+              <LanguageSwitcher />
               <Button onClick={scrollToForm} size="default" className="min-h-[44px]">
                 Get 3 free quotes
               </Button>
               <Button variant="link" asChild className="min-h-[44px]">
-                <a href="/book-a-call">Book a call</a>
+                <a href="/book-a-call">{t('nav.bookCall')}</a>
               </Button>
               <Button variant="link" asChild className="min-h-[44px]">
-                <a href="/signin">Sign in</a>
+                <a href="/signin">{t('nav.signin')}</a>
               </Button>
             </div>
 
@@ -107,14 +111,15 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                     </a>
                   ))}
                   <div className="pt-4 space-y-3">
+                    <LanguageSwitcher />
                     <Button onClick={scrollToForm} className="w-full min-h-[44px]">
                       Get 3 free quotes
                     </Button>
                     <Button variant="outline" asChild className="w-full min-h-[44px]">
-                      <a href="/book-a-call">Book a call</a>
+                      <a href="/book-a-call">{t('nav.bookCall')}</a>
                     </Button>
                     <Button variant="link" asChild className="min-h-[44px]">
-                      <a href="/signin">Sign in</a>
+                      <a href="/signin">{t('nav.signin')}</a>
                     </Button>
                   </div>
                 </nav>

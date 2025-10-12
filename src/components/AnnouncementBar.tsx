@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { X } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const STORAGE_KEY = "nim_announce_ai_2025";
 const END_DATE = new Date("2025-10-31T00:00:00");
 
 export const AnnouncementBar = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { t, language } = useLanguage();
 
   useEffect(() => {
     // Check if announcement should be visible
@@ -48,18 +50,18 @@ export const AnnouncementBar = () => {
       <div className="container mx-auto px-4 py-3 sm:py-3.5">
         <div className="flex items-center justify-between gap-4">
           <p className="text-[15px] sm:text-base font-semibold leading-tight flex-1">
-            AI for Nonprofit Leaders—Free 60-min live class (Canada) • Oct 30, 2025 • Seats limited →{" "}
+            {t('announce.text')}{" "}
             <a
-              href="/resources/ai-masterclass?utm_source=site&utm_medium=announcement&utm_campaign=aimc-oct30"
+              href={`/resources/ai-masterclass?utm_source=site&utm_medium=announcement&utm_campaign=aimc-oct30&lang=${language}`}
               onClick={handleLinkClick}
               className="underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-primary-foreground focus:ring-offset-2 focus:ring-offset-primary rounded-sm"
             >
-              Save your seat
+              {t('announce.cta')}
             </a>
           </p>
           <button
             type="button"
-            aria-label="Dismiss announcement"
+            aria-label={t('announce.dismiss')}
             id="announcement_close"
             onClick={handleDismiss}
             className="flex-shrink-0 w-11 h-11 flex items-center justify-center rounded-sm hover:bg-primary-foreground/10 focus:outline-none focus:ring-2 focus:ring-primary-foreground focus:ring-offset-2 focus:ring-offset-primary transition-colors"
