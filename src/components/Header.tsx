@@ -73,9 +73,6 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                 Get 3 free quotes
               </Button>
               <Button variant="link" asChild className="min-h-[44px]">
-                <a href="/book-a-call">{t('nav.bookCall')}</a>
-              </Button>
-              <Button variant="link" asChild className="min-h-[44px]">
                 <a href="/signin">{t('nav.signin')}</a>
               </Button>
               <LanguageSwitcher />
@@ -113,9 +110,6 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                   <div className="pt-4 space-y-3">
                     <Button onClick={scrollToForm} className="w-full min-h-[44px]">
                       Get 3 free quotes
-                    </Button>
-                    <Button variant="outline" asChild className="w-full min-h-[44px]">
-                      <a href="/book-a-call">{t('nav.bookCall')}</a>
                     </Button>
                     <Button variant="link" asChild className="min-h-[44px]">
                       <a href="/signin">{t('nav.signin')}</a>
