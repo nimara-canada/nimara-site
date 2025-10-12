@@ -35,7 +35,7 @@ export const HowItWorksSection = () => {
               <div key={index} className="bg-card border border-border rounded-2xl p-6 space-y-4 shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex justify-center">
                   <div className="p-3 bg-primary/10 rounded-xl">
-                    <step.icon className="h-6 w-6 text-primary" />
+                    <step.icon className="h-6 w-6 text-primary" aria-hidden="true" />
                   </div>
                 </div>
                 <h3 className="text-lg font-semibold">{step.title}</h3>

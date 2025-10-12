@@ -124,7 +124,7 @@ export const PackagesSection = () => {
               >
                 <div className="flex justify-center">
                   <div className="p-3 bg-primary/10 rounded-xl">
-                    <pkg.icon className="h-6 w-6 text-primary" />
+                    <pkg.icon className="h-6 w-6 text-primary" aria-hidden="true" />
                   </div>
                 </div>
                 <h3 className="text-xl font-semibold">{pkg.name}</h3>

@@ -38,7 +38,14 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
             <a href="/" className="flex items-center space-x-2">
-              <img src={nimaraLogo} alt="Nimara" className="h-14" />
+              <img 
+                src={nimaraLogo} 
+                alt="Nimara" 
+                className="h-14" 
+                width="140" 
+                height="56"
+                fetchPriority="high"
+              />
             </a>
 
             {/* Desktop Navigation */}

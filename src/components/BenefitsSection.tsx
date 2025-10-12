@@ -32,7 +32,7 @@ export const BenefitsSection = () => {
               >
                 <div className="flex justify-center">
                   <div className="p-3 bg-primary/10 rounded-xl">
-                    <benefit.icon className="h-6 w-6 text-primary" />
+                    <benefit.icon className="h-6 w-6 text-primary" aria-hidden="true" />
                   </div>
                 </div>
                 <p className="font-medium">{benefit.title}</p>

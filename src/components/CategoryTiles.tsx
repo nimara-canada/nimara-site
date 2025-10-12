@@ -98,7 +98,7 @@ export const CategoryTiles = () => {
                 >
                   <div className="flex justify-center">
                     <div className="p-3 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors">
-                      <category.icon className="h-6 w-6 text-primary" />
+                      <category.icon className="h-6 w-6 text-primary" aria-hidden="true" />
                     </div>
                   </div>
                   <h3 className="font-semibold text-sm">{category.name}</h3>

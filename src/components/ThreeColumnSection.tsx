@@ -104,7 +104,7 @@ export const ThreeColumnSection = () => {
               <dt className="flex items-start gap-2 font-semibold text-foreground mb-2 text-base lg:text-lg">
                 <CircleDot 
                   className="h-5 w-5 mt-0.5 flex-shrink-0 text-foreground" 
-                  aria-hidden="true" 
+                  aria-hidden="true"
                 />
                 <span className="max-w-[60ch]">{item.problem}</span>
               </dt>
