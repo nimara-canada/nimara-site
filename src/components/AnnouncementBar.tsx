@@ -45,26 +45,28 @@ export const AnnouncementBar = () => {
       role="region"
       aria-label="Site announcement"
       id="announcement_ai_2025"
-      className="bg-primary text-primary-foreground"
+      className="bg-[#6945D8] text-white"
     >
       <div className="container mx-auto px-4 py-3 sm:py-3.5">
         <div className="flex items-center justify-between gap-4">
-          <p className="text-[15px] sm:text-base font-semibold leading-tight flex-1">
-            {t('announce.text')}{" "}
+          <p className="text-base font-normal leading-tight flex-1 text-center sm:text-left">
+            {language === 'fr' 
+              ? "Classe de maître IA pour les dirigeants d'organismes à but non lucratif — 30 octobre. Quelques places restantes — " 
+              : "AI Masterclass for Nonprofit Leaders — Oct 30. Few spots left — "}
             <a
-              href={`/resources/ai-masterclass?utm_source=site&utm_medium=announcement&utm_campaign=aimc-oct30&lang=${language}`}
+              href={`/ai-masterclass?utm_source=site&utm_medium=announcement_bar&utm_campaign=aimc-oct30-2025&lang=${language}`}
               onClick={handleLinkClick}
-              className="underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-primary-foreground focus:ring-offset-2 focus:ring-offset-primary rounded-sm"
+              className="underline hover:underline focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#6945D8] rounded-sm"
             >
-              {t('announce.cta')}
+              {language === 'fr' ? "inscrivez-vous maintenant" : "register now"}
             </a>
           </p>
           <button
             type="button"
-            aria-label={t('announce.dismiss')}
+            aria-label="Dismiss announcement"
             id="announcement_close"
             onClick={handleDismiss}
-            className="flex-shrink-0 w-11 h-11 flex items-center justify-center rounded-sm hover:bg-primary-foreground/10 focus:outline-none focus:ring-2 focus:ring-primary-foreground focus:ring-offset-2 focus:ring-offset-primary transition-colors"
+            className="flex-shrink-0 w-11 h-11 flex items-center justify-center rounded-sm hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#6945D8] transition-colors"
           >
             <X className="w-5 h-5" aria-hidden="true" />
           </button>
