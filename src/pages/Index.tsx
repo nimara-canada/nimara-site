@@ -77,9 +77,9 @@ const Index = () => {
         <CategoryTiles />
         <BenefitsSection />
         <PricingSection onOpenPackagesWaitlist={() => setIsPackagesWaitlistOpen(true)} />
+        <PackagesSection isOpen={isPackagesWaitlistOpen} onClose={() => setIsPackagesWaitlistOpen(false)} />
         <FAQSection />
         <FinalCTA />
-        <PackagesSection isOpen={isPackagesWaitlistOpen} onClose={() => setIsPackagesWaitlistOpen(false)} />
       </main>
       <Footer />
     </div>
