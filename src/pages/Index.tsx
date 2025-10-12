@@ -17,6 +17,37 @@ const Index = () => {
       <Helmet>
         <title>For Nonprofits | Nimara</title>
         <meta name="description" content="Get 3 vetted nonprofit consulting quotes in 72 hours. Free scope. PM oversight. Data in Canada; records kept 7 years." />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Nimara Technology",
+            "url": "https://nimara.ca",
+            "logo": "https://nimara.ca/assets/logo.png",
+            "email": "hello@nimara.ca",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "#1017 - 9580 170th St NW",
+              "addressLocality": "Edmonton",
+              "addressRegion": "AB",
+              "postalCode": "T5T 5R5",
+              "addressCountry": "CA"
+            }
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Nimara",
+            "url": "https://nimara.ca",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://nimara.ca/?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          })}
+        </script>
       </Helmet>
       <Header />
       <main id="main">
