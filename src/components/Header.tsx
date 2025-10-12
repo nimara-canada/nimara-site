@@ -69,7 +69,6 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
 
             {/* Desktop CTA */}
             <div className="hidden md:flex items-center space-x-4">
-              <LanguageSwitcher />
               <Button onClick={scrollToForm} size="default" className="min-h-[44px]">
                 Get 3 free quotes
               </Button>
@@ -79,6 +78,7 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
               <Button variant="link" asChild className="min-h-[44px]">
                 <a href="/signin">{t('nav.signin')}</a>
               </Button>
+              <LanguageSwitcher />
             </div>
 
             {/* Mobile Menu */}
@@ -111,7 +111,6 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                     </a>
                   ))}
                   <div className="pt-4 space-y-3">
-                    <LanguageSwitcher />
                     <Button onClick={scrollToForm} className="w-full min-h-[44px]">
                       Get 3 free quotes
                     </Button>
@@ -121,6 +120,7 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                     <Button variant="link" asChild className="min-h-[44px]">
                       <a href="/signin">{t('nav.signin')}</a>
                     </Button>
+                    <LanguageSwitcher />
                   </div>
                 </nav>
               </SheetContent>
