@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 
 const STORAGE_KEY = "nim_announce_ai_2025";
-const END_DATE = new Date("2025-11-05T00:00:00");
+const END_DATE = new Date("2025-10-31T00:00:00");
 
 export const AnnouncementBar = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -48,15 +48,14 @@ export const AnnouncementBar = () => {
       <div className="container mx-auto px-4 py-3 sm:py-3.5">
         <div className="flex items-center justify-between gap-4">
           <p className="text-[15px] sm:text-base font-semibold leading-tight flex-1">
-            AI Masterclass for Nonprofit Leaders — Nov 4. Few spots left —{" "}
+            AI for Nonprofit Leaders—Free 60-min live class (Canada) • Oct 30, 2025 • Seats limited →{" "}
             <a
-              href="/resources/ai-masterclass?utm_source=site&utm_medium=announcement&utm_campaign=aimc-nov4"
+              href="/resources/ai-masterclass?utm_source=site&utm_medium=announcement&utm_campaign=aimc-oct30"
               onClick={handleLinkClick}
               className="underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-primary-foreground focus:ring-offset-2 focus:ring-offset-primary rounded-sm"
             >
-              Register now
+              Save your seat
             </a>
-            .
           </p>
           <button
             type="button"
