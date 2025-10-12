@@ -7,7 +7,7 @@ const Accessibility = () => {
     <div className="min-h-screen flex flex-col bg-background">
       <Helmet>
         <title>Accessibility | Nimara</title>
-        <meta name="description" content="Our site and app aim for WCAG 2.1 AA with plain language, keyboard access, captions, and accessible documents. Need a different format? Email hello@nimara.ca." />
+        <meta name="description" content="WCAG 2.1 AA with plain language, keyboard access, captions, and accessible documents. Need a different format? Email hello@nimara.ca." />
       </Helmet>
       
       <Header activeRoute="/accessibility" />

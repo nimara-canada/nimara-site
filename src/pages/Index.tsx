@@ -16,7 +16,7 @@ const Index = () => {
     <div className="min-h-screen">
       <Helmet>
         <title>For Nonprofits | Nimara</title>
-        <meta name="description" content="Get 3 free nonprofit consulting quotes in 72 hours. We turn your outcome into a simple brief, match you with vetted Canadian experts, and a Nimara PM manages delivery." />
+        <meta name="description" content="Get 3 vetted nonprofit consulting quotes in 72 hours. Free scope. PM oversight. Data in Canada; records kept 7 years." />
       </Helmet>
       <Header />
       <main id="main">

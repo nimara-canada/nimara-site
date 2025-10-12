@@ -7,7 +7,7 @@ const Terms = () => {
     <div className="min-h-screen flex flex-col">
       <Helmet>
         <title>Terms of Service | Nimara</title>
-        <meta name="description" content="Plain-language Terms of Service for Nimara (Canada). How our quotes, projects, PM oversight, data residency, and limits of liability work." />
+        <meta name="description" content="How our quotes, projects, PM oversight, data residency, and limits of liability work." />
       </Helmet>
       
       <a 

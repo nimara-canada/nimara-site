@@ -16,7 +16,7 @@ const Consultants = () => {
     <div className="min-h-screen bg-background">
       <Helmet>
         <title>For Consultants | Nimara</title>
-        <meta name="description" content="Join Nimara's founding bench of Canadian experts. Standard briefs, clean scopes, PM-led delivery, on-time pay." />
+        <meta name="description" content="Join the founding bench. Standard briefs, PM-led delivery, on-time pay." />
       </Helmet>
       <Header activeRoute="/consultants" />
       

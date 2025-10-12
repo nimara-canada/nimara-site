@@ -7,7 +7,7 @@ const Privacy = () => {
     <div className="min-h-screen flex flex-col">
       <Helmet>
         <title>Privacy Policy | Nimara</title>
-        <meta name="description" content="Plain-language privacy policy for Nimara (Canada). What we collect, why, where we store it (Canada), how long we keep it, and your choices." />
+        <meta name="description" content="What we collect, why, where we store it (Canada), how long we keep it, and your choices." />
       </Helmet>
       
       <a 

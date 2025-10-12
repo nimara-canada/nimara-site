@@ -6,7 +6,7 @@ const Trust = () => {
   return <>
       <Helmet>
         <title>Our Commitment | Nimara</title>
-        <meta name="description" content="Nimara's plain-English trust page: PM oversight, standard templates, evidence-ready files, data stored in Canada, and 7-year records. No legal or audit advice." />
+        <meta name="description" content="PM oversight, standard templates, evidence-ready files, data stored in Canada, 7-year retention." />
       </Helmet>
 
       <div className="min-h-screen bg-background">
