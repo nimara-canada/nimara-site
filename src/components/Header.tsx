@@ -44,7 +44,7 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
               <img 
                 src={nimaraLogo} 
                 alt="Nimara" 
-                className="h-14 w-auto" 
+                className="h-10 md:h-12 w-auto" 
                 fetchPriority="high"
               />
             </a>
