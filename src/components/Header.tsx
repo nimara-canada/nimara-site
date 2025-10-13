@@ -41,12 +41,14 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
-            <a href="/" className="flex items-center space-x-2 min-h-[44px]">
+            <a href="/" className="flex items-center space-x-2 min-h-[44px]" aria-label="Nimara home">
               <img 
                 src={nimaraLogo} 
-                alt="Nimara" 
+                alt="Nimara logo" 
                 className="h-10 md:h-12 w-auto" 
                 fetchPriority="high"
+                width="120"
+                height="48"
               />
             </a>
 
