@@ -30,8 +30,12 @@ export const ConsultantHero = () => {
       <div className="max-w-4xl mx-auto text-center">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">Do meaningful work. Get real projects. No fluff.</h1>
         
-        <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">Nimara is building Canada’s consulting bench for nonprofits and public-interest orgs.
-If you have 3–10+ years of experience and a bias for execution — you might be eligible.</p>
+        <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl my-0 mx-0 px-0">Nimara is building Canada’s consulting bench for nonprofits and public-interest orgs. If you have 3–10+ years of experience and a bias for execution — you might be eligible.
+
+
+We match vetted consultants with scoped projects in finance, strategy, systems, compliance, HR, and more.
+
+You stay independent. We handle the noise.</p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
           <Button size="lg" onClick={handleSubmitInterest} className="w-full sm:w-auto">
