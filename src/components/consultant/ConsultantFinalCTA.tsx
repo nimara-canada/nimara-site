@@ -35,32 +35,22 @@ export const ConsultantFinalCTA = () => {
     <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-          Ready to join our consultant roster?
+          Ready to join?
         </h2>
         
         <p className="text-lg text-muted-foreground mb-8">
-          Submit your interest and we'll reach out when there's a fit.
+          Check eligibility to get started.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
-          <Button 
-            size="lg" 
-            onClick={handleSubmitInterest}
-            className="w-full sm:w-auto"
-          >
-            Submit interest
-          </Button>
-          <Button 
-            variant="outline" 
-            size="lg"
-            onClick={handleCheckEligibility}
-            className="w-full sm:w-auto"
-          >
-            Check eligibility
-          </Button>
-        </div>
+        <Button 
+          size="lg" 
+          onClick={handleCheckEligibility}
+          className="w-full sm:w-auto"
+        >
+          Check eligibility
+        </Button>
 
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm text-muted-foreground mt-6">
           Questions?{" "}
           <a href="mailto:hello@nimara.ca" className="text-primary hover:underline focus:underline">
             hello@nimara.ca

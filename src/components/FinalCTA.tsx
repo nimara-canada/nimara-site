@@ -58,16 +58,11 @@ export const FinalCTA = () => {
   return <>
       <section className="py-16 lg:py-24 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">Ready to stop guessing and start fixing?</h2>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">Ready to get quotes?</h2>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button onClick={scrollToForm} size="lg" variant="outline" className="bg-background text-foreground hover:bg-background/90">
-              Get 3 free quotes
-            </Button>
-            <Button variant="link" onClick={() => setIsOpen(true)} className="text-primary-foreground hover:text-primary-foreground/80">
-              Join the Nov 5 Waitlist
-            </Button>
-          </div>
+          <Button onClick={scrollToForm} size="lg" variant="outline" className="bg-background text-foreground hover:bg-background/90">
+            Get 3 free quotes
+          </Button>
         </div>
       </section>
 

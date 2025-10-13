@@ -37,14 +37,9 @@ We match vetted consultants with scoped projects in finance, strategy, systems, 
 
 You stay independent. We handle the noise.</p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
-          <Button size="lg" onClick={handleSubmitInterest} className="w-full sm:w-auto">
-            Submit interest
-          </Button>
-          <Button variant="outline" size="lg" onClick={handleCheckEligibility} className="w-full sm:w-auto">
-            Check Your Eligibility
-          </Button>
-        </div>
+        <Button size="lg" onClick={handleCheckEligibility} className="w-full sm:w-auto">
+          Check Your Eligibility
+        </Button>
 
         <p className="text-sm text-muted-foreground mb-2">
           Clear briefs. PM oversight. Net-15 after acceptance.
