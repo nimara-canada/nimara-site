@@ -65,7 +65,7 @@ export const FinalCTA = () => {
               Get 3 free quotes
             </Button>
             <Button variant="link" onClick={() => setIsOpen(true)} className="text-primary-foreground hover:text-primary-foreground/80">
-              Join the packages waitlist →
+              Join the Nov 5 Waitlist
             </Button>
           </div>
         </div>
