@@ -125,7 +125,7 @@ export const PackagesSection = ({ isOpen: externalIsOpen, onClose }: PackagesSec
           <div className="space-y-4">
             <h2 className="text-3xl sm:text-4xl font-bold flex items-center gap-3">
               <Package className="h-8 w-8" aria-hidden="true" />
-              COMING NOVEMBER 5: FUNDABILITY PACKAGES
+              COMING NOVEMBER 5 2025: FUNDABILITY PACKAGES
             </h2>
             <p className="text-lg text-muted-foreground">
               Launching Nov 5, 2025 — Nimara's Fundability Packages:
