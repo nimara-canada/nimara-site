@@ -1,60 +1,18 @@
-import { CircleDot } from "lucide-react";
-
-const needs = [
+const steps = [
   {
-    problem: "RFPs take too long",
-    solution: (
-      <>
-        Share one outcome. We turn it into a short brief and get up to{" "}
-        <span className="text-primary font-semibold">3 quotes in 3 days</span>.
-      </>
-    ),
+    number: "1",
+    title: "You tell us what's broken",
+    description: "Budget, systems, compliance, etc.",
   },
   {
-    problem: "Not sure what we need",
-    solution: (
-      <>
-        Choose <span className="text-primary font-semibold">Not sure / Other</span> and write one sentence. We'll route it to the right experts.
-      </>
-    ),
+    number: "2",
+    title: "We match you with 3 quote options",
+    description: "From vetted consultants on our bench",
   },
   {
-    problem: "Worried about audits and funder rules",
-    solution: (
-      <>
-        Clear "what done looks like," organized files,{" "}
-        <span className="text-primary font-semibold">data in Canada</span>, records kept{" "}
-        <span className="text-primary font-semibold">7 years</span>.
-      </>
-    ),
-  },
-  {
-    problem: "Projects drift and never finish",
-    solution: (
-      <>
-        A Nimara <span className="text-primary font-semibold">PM</span> runs one checklist with weekly check-ins and acceptance.
-      </>
-    ),
-  },
-  {
-    problem: "Picked the wrong consultant before",
-    solution: (
-      <>
-        <span className="text-primary font-semibold">Vetted Canadian experts.</span> Proposals use the same format so you can compare.
-      </>
-    ),
-  },
-  {
-    problem: "Small team; we need simple",
-    solution: "Right-sized scope, quick wins, templates you can reuse.",
-  },
-  {
-    problem: "CRM isn't used",
-    solution: "Setup that fits, two short trainings, simple acceptance (logins + basic use).",
-  },
-  {
-    problem: "Month-end is messy",
-    solution: "A simple close checklist and a small view of what matters. Files ready for review.",
+    number: "3",
+    title: "You get to compare",
+    description: "Approaches, timelines, and pricing — all for free",
   },
 ];
 
@@ -84,54 +42,38 @@ export const ThreeColumnSection = () => {
     <section className="py-16 lg:py-24 bg-secondary">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4">
-          What we hear from nonprofits (and how we help)
+          What You Get
         </h2>
         <p className="text-center text-lg text-foreground/80 mb-12 max-w-2xl mx-auto">
-          Tell us what's hard. We'll make a simple plan and get you moving.
+          Here's how it works
         </p>
 
-        {/* Definition list with card grid */}
-        <dl className="grid sm:grid-cols-2 gap-4 lg:gap-6 mb-8">
-          {needs.map((item, index) => (
+        <div className="grid md:grid-cols-3 gap-8 mb-8 max-w-5xl mx-auto">
+          {steps.map((step, index) => (
             <div
               key={index}
-              className="bg-card rounded-2xl p-5 lg:p-6 shadow-[0_8px_24px_rgba(32,38,84,0.08)]"
+              className="bg-card rounded-2xl p-6 shadow-[0_8px_24px_rgba(32,38,84,0.08)] space-y-4"
             >
-              <dt className="flex items-start gap-2 font-semibold text-foreground mb-2 text-base lg:text-lg">
-                <CircleDot 
-                  className="h-5 w-5 mt-0.5 flex-shrink-0 text-foreground" 
-                  aria-hidden="true"
-                />
-                <span className="max-w-[60ch]">{item.problem}</span>
-              </dt>
-              <dd className="text-foreground/90 leading-relaxed ml-7 text-base">
-                <span className="font-medium">We help: </span>
-                {item.solution}
-              </dd>
+              <div className="flex justify-center">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <span className="text-2xl font-bold text-primary">
+                    {step.number}
+                  </span>
+                </div>
+              </div>
+              <h3 className="text-lg font-semibold text-center">
+                {step.title}
+              </h3>
+              <p className="text-foreground/80 text-center">
+                {step.description}
+              </p>
             </div>
           ))}
-        </dl>
-
-        {/* Helper row */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-4 border-t border-border">
-          <button
-            onClick={scrollToForm}
-            className="text-primary font-semibold hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm min-h-[44px] inline-flex items-center"
-          >
-            Get 3 free quotes
-          </button>
-          <p className="text-sm text-muted-foreground max-w-md">
-            Don't see your area—or not sure what to pick?{" "}
-            <a
-              href="mailto:hello@nimara.ca"
-              onClick={handleEmailClick}
-              className="text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm"
-            >
-              Email hello@nimara.ca
-            </a>{" "}
-            and we'll help.
-          </p>
         </div>
+
+        <p className="text-center text-lg text-foreground/90 max-w-2xl mx-auto">
+          💡 No pressure. No sales calls. Just real solutions you can act on.
+        </p>
       </div>
     </section>
   );
