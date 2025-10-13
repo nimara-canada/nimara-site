@@ -5,25 +5,33 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Rocket, BarChart, LineChart } from "lucide-react";
+import { Package } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 const packages = [
   {
-    icon: Rocket,
     name: "Launch",
-    description: "Get your nonprofit off the ground with foundational setup.",
+    whoItsFor: "New or small orgs",
+    whatsIncluded: "Budget, receipt system, basic ops setup",
   },
   {
-    icon: BarChart,
-    name: "Standardize",
-    description: "Streamline operations with consistent processes and systems.",
+    name: "Standard",
+    whoItsFor: "Growing orgs",
+    whatsIncluded: "Budgeting + system upgrades + grant tracker",
   },
   {
-    icon: LineChart,
     name: "Data-Driven",
-    description: "Make informed decisions with comprehensive data analysis.",
+    whoItsFor: "Scaling orgs",
+    whatsIncluded: "Full data tools + funding pipeline design",
   },
 ];
 
@@ -111,41 +119,48 @@ export const PackagesSection = ({ isOpen: externalIsOpen, onClose }: PackagesSec
   };
 
   return (
-    <section className="py-16 lg:py-24">
+    <section className="py-16 lg:py-24 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-          <div>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Capacity Packages (waitlist)
+        <div className="max-w-5xl mx-auto space-y-8">
+          <div className="space-y-4">
+            <h2 className="text-3xl sm:text-4xl font-bold flex items-center gap-3">
+              <Package className="h-8 w-8" aria-hidden="true" />
+              COMING NOVEMBER 5: FUNDABILITY PACKAGES
             </h2>
-            <p className="text-muted-foreground text-lg">
-              Multi-area work opens Nov 1, 2025.
+            <p className="text-lg text-muted-foreground">
+              Launching Nov 5, 2025 — Nimara's Fundability Packages:
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {packages.map((pkg, index) => (
-              <div
-                key={index}
-                className="bg-card border border-border rounded-2xl p-6 space-y-4"
-              >
-                <div className="flex justify-center">
-                  <div className="p-3 bg-primary/10 rounded-xl">
-                    <pkg.icon className="h-6 w-6 text-primary" aria-hidden="true" />
-                  </div>
-                </div>
-                <h3 className="text-xl font-semibold">{pkg.name}</h3>
-                <p className="text-muted-foreground text-sm">{pkg.description}</p>
-              </div>
-            ))}
+          <div className="bg-card border border-border rounded-lg overflow-hidden">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="font-bold text-base">Package</TableHead>
+                  <TableHead className="font-bold text-base">Who it's for</TableHead>
+                  <TableHead className="font-bold text-base">What's included</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {packages.map((pkg, index) => (
+                  <TableRow key={index}>
+                    <TableCell className="font-semibold">{pkg.name}</TableCell>
+                    <TableCell>{pkg.whoItsFor}</TableCell>
+                    <TableCell>{pkg.whatsIncluded}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
           </div>
 
-          <Dialog open={isOpen} onOpenChange={setIsOpen}>
-            <DialogTrigger asChild>
-              <Button variant="outline" size="lg">
-                Join the packages waitlist
-              </Button>
-            </DialogTrigger>
+          <div className="flex items-start gap-2 text-lg">
+            <span className="text-xl">→</span>
+            <Dialog open={isOpen} onOpenChange={setIsOpen}>
+              <DialogTrigger asChild>
+                <button className="text-left hover:underline underline-offset-4">
+                  <span className="font-semibold">Join the waitlist now</span> to get early access and discounted pricing.
+                </button>
+              </DialogTrigger>
             <DialogContent className="sm:max-w-md">
               <DialogHeader>
                 <DialogTitle>Join the packages waitlist</DialogTitle>
@@ -220,7 +235,8 @@ export const PackagesSection = ({ isOpen: externalIsOpen, onClose }: PackagesSec
                 </Button>
               </form>
             </DialogContent>
-          </Dialog>
+            </Dialog>
+          </div>
         </div>
       </div>
     </section>
