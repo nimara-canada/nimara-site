@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { X } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useTranslation } from "react-i18next";
 
 const STORAGE_KEY = "nim_announce_ai_2025";
 const END_DATE = new Date("2025-10-31T00:00:00");
 
 export const AnnouncementBar = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const { t, language } = useLanguage();
+  const { i18n } = useTranslation();
+  const language = i18n.language as 'en' | 'fr';
 
   useEffect(() => {
     // Check if announcement should be visible

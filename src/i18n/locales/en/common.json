@@ -1,0 +1,84 @@
+{
+  "nav": {
+    "company": "Company",
+    "consultants": "Consultants",
+    "signin": "Sign In",
+    "bookCall": "Book a call"
+  },
+  "hero": {
+    "title": "Expert Nonprofit Consulting. On Demand.",
+    "subtitle": "Get matched with a vetted nonprofit consultant within 48 hours. No contracts. Just expert help when you need it.",
+    "cta": "Get started"
+  },
+  "announce": {
+    "text": "AI for Nonprofit Leaders—Free 60-min live class (Canada) • Oct 30, 2025 • Seats limited →",
+    "cta": "Save your seat",
+    "dismiss": "Dismiss announcement"
+  },
+  "three": {
+    "speed": {
+      "title": "Speed",
+      "desc": "Get matched with the right consultant in 48 hours or less"
+    },
+    "quality": {
+      "title": "Quality",
+      "desc": "All consultants are pre-vetted and have deep nonprofit experience"
+    },
+    "trust": {
+      "title": "Trust",
+      "desc": "Fixed rates, clear deliverables, and satisfaction guaranteed"
+    }
+  },
+  "experts": {
+    "title": "Meet our experts",
+    "subtitle": "Every consultant in our network has been carefully vetted for expertise and cultural fit with the nonprofit sector."
+  },
+  "how": {
+    "title": "How it works",
+    "step1": {
+      "title": "Tell us what you need",
+      "desc": "Share your challenge and timeline"
+    },
+    "step2": {
+      "title": "Get matched",
+      "desc": "We connect you with the right expert within 48 hours"
+    },
+    "step3": {
+      "title": "Start working",
+      "desc": "Clear scope, fixed price, satisfaction guaranteed"
+    }
+  },
+  "categories": {
+    "title": "We can help with..."
+  },
+  "benefits": {
+    "title": "Why nonprofits choose Nimara"
+  },
+  "pricing": {
+    "title": "Simple, transparent pricing",
+    "subtitle": "No hidden fees. No surprises. Just expert help at fair rates."
+  },
+  "faq": {
+    "title": "Frequently asked questions"
+  },
+  "final": {
+    "title": "Ready to get started?",
+    "subtitle": "Tell us what you need and get matched with the perfect consultant.",
+    "cta": "Book a free consultation"
+  },
+  "footer": {
+    "tagline": "Expert nonprofit consulting, on demand",
+    "company": "Company",
+    "about": "About us",
+    "consultants": "For consultants",
+    "resources": "Resources",
+    "blog": "Blog",
+    "contact": "Contact",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "accessibility": "Accessibility",
+    "trust": "Trust & Safety",
+    "rights": "All rights reserved."
+  }
+}

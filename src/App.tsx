@@ -3,8 +3,6 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { LanguageProvider } from "@/contexts/LanguageContext";
-import { AnnouncementBar } from "@/components/AnnouncementBar";
 import Index from "./pages/Index";
 import Consultants from "./pages/Consultants";
 import Company from "./pages/Company";
@@ -22,38 +20,33 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <LanguageProvider>
-      <TooltipProvider>
+    <TooltipProvider>
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <AnnouncementBar />
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/nonprofits" element={<Index />} />
-          <Route path="/for-nonprofits" element={<Index />} />
           <Route path="/consultants" element={<Consultants />} />
           <Route path="/company" element={<Company />} />
-          <Route path="/book-a-call" element={<BookACall />} />
           <Route path="/signin" element={<SignIn />} />
-          <Route path="/sample-brief" element={<SampleBrief />} />
+          <Route path="/book-a-call" element={<BookACall />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/accessibility" element={<Accessibility />} />
           <Route path="/trust" element={<Trust />} />
+          <Route path="/sample-brief" element={<SampleBrief />} />
           <Route path="/ai-masterclass" element={<AIMasterclass />} />
           
-          {/* Redirects for removed pages */}
-          <Route path="/funders" element={<Navigate to="/company" replace />} />
-          <Route path="/resources" element={<Navigate to="/company" replace />} />
-          <Route path="/ux-pilot" element={<Navigate to="/company" replace />} />
+          {/* Redirects for old routes */}
+          <Route path="/for-nonprofits" element={<Navigate to="/" replace />} />
+          <Route path="/for-consultants" element={<Navigate to="/consultants" replace />} />
+          <Route path="/about" element={<Navigate to="/company" replace />} />
           
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          {/* 404 */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
-    </LanguageProvider>
   </QueryClientProvider>
 );
 

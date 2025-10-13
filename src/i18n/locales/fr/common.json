@@ -1,0 +1,84 @@
+{
+  "nav": {
+    "company": "Entreprise",
+    "consultants": "Consultants",
+    "signin": "Connexion",
+    "bookCall": "Réserver un appel"
+  },
+  "hero": {
+    "title": "Consultation experte pour OBNL. Sur demande.",
+    "subtitle": "Soyez jumelé avec un consultant OBNL qualifié en 48 heures. Sans contrat. Juste de l'aide experte quand vous en avez besoin.",
+    "cta": "Commencer"
+  },
+  "announce": {
+    "text": "IA pour dirigeants d'OBNL—Cours en direct gratuit de 60 min (Canada) • 30 oct 2025 • Places limitées →",
+    "cta": "Réservez votre place",
+    "dismiss": "Fermer l'annonce"
+  },
+  "three": {
+    "speed": {
+      "title": "Rapidité",
+      "desc": "Jumelé avec le bon consultant en 48 heures ou moins"
+    },
+    "quality": {
+      "title": "Qualité",
+      "desc": "Tous les consultants sont présélectionnés avec une expérience approfondie en OBNL"
+    },
+    "trust": {
+      "title": "Confiance",
+      "desc": "Tarifs fixes, livrables clairs et satisfaction garantie"
+    }
+  },
+  "experts": {
+    "title": "Rencontrez nos experts",
+    "subtitle": "Chaque consultant de notre réseau a été soigneusement sélectionné pour son expertise et son adéquation culturelle avec le secteur OBNL."
+  },
+  "how": {
+    "title": "Comment ça fonctionne",
+    "step1": {
+      "title": "Dites-nous ce dont vous avez besoin",
+      "desc": "Partagez votre défi et votre échéancier"
+    },
+    "step2": {
+      "title": "Soyez jumelé",
+      "desc": "Nous vous connectons avec le bon expert en 48 heures"
+    },
+    "step3": {
+      "title": "Commencez à travailler",
+      "desc": "Portée claire, prix fixe, satisfaction garantie"
+    }
+  },
+  "categories": {
+    "title": "Nous pouvons vous aider avec..."
+  },
+  "benefits": {
+    "title": "Pourquoi les OBNL choisissent Nimara"
+  },
+  "pricing": {
+    "title": "Tarification simple et transparente",
+    "subtitle": "Pas de frais cachés. Pas de surprises. Juste de l'aide experte à des tarifs équitables."
+  },
+  "faq": {
+    "title": "Questions fréquemment posées"
+  },
+  "final": {
+    "title": "Prêt à commencer?",
+    "subtitle": "Dites-nous ce dont vous avez besoin et soyez jumelé avec le consultant parfait.",
+    "cta": "Réserver une consultation gratuite"
+  },
+  "footer": {
+    "tagline": "Consultation experte pour OBNL, sur demande",
+    "company": "Entreprise",
+    "about": "À propos",
+    "consultants": "Pour consultants",
+    "resources": "Ressources",
+    "blog": "Blogue",
+    "contact": "Contact",
+    "legal": "Légal",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation",
+    "accessibility": "Accessibilité",
+    "trust": "Confiance et sécurité",
+    "rights": "Tous droits réservés."
+  }
+}
