@@ -1,117 +1,66 @@
-import { Button } from "@/components/ui/button";
-import { 
-  Scale, 
-  Calculator, 
-  Target, 
-  Database, 
-  DollarSign, 
-  Search, 
-  FileCheck,
-  HelpCircle
-} from "lucide-react";
-
 const categories = [
-  { name: "Governance", icon: Scale },
-  { name: "Finance & Audit", icon: Calculator },
-  { name: "Program Design", icon: Target },
-  { name: "Digital & Data", icon: Database },
-  { name: "Fundraising", icon: DollarSign },
-  { name: "Research", icon: Search },
-  { name: "Legal & Compliance", icon: FileCheck },
-  { name: "Not sure", icon: HelpCircle, value: "not_sure", description: "Tell us the outcome and we'll route it to the right experts." },
+  {
+    title: "Finance & Compliance",
+    description: "Budgeting, CRA-ready processes, month-end close, audits",
+  },
+  {
+    title: "Data & Systems",
+    description: "Grant trackers, Airtable/Notion builds, CRM & tool setups",
+  },
+  {
+    title: "Governance & Strategy",
+    description: "Strategic planning, board support, risk management",
+  },
+  {
+    title: "Fundraising Support",
+    description: "Donor systems, grant planning, funding data tools",
+  },
+  {
+    title: "HR & People Ops",
+    description: "Hiring systems, staff handbooks, role clarity",
+  },
+  {
+    title: "Program Design & Evaluation",
+    description: "Logic models, metrics dashboards, evaluation planning",
+  },
+  {
+    title: "Operations & Admin",
+    description: "Internal workflows, policies, procurement tools",
+  },
 ];
 
 export const CategoryTiles = () => {
-  const handleCategoryClick = (categoryName: string, categoryValue?: string) => {
-    const valueToSet = categoryValue || categoryName;
-    
-    // Prefill the category in the form using a custom event
-    const categorySelect = document.getElementById("q_category");
-    if (categorySelect) {
-      // Dispatch custom event with the category value
-      const event = new CustomEvent("categoryPrefill", { detail: { value: valueToSet } });
-      window.dispatchEvent(event);
-    }
-    
-    // Scroll to form
-    const form = document.getElementById("form_3quotes");
-    form?.scrollIntoView({ behavior: "smooth" });
-    
-    // Focus logic
-    setTimeout(() => {
-      const emailField = document.getElementById("q_email") as HTMLInputElement;
-      const orgField = document.getElementById("q_org") as HTMLInputElement;
-      const outcomeField = document.getElementById("q_outcome") as HTMLTextAreaElement;
-      
-      // If "not_sure", focus outcome if email/org are filled
-      if (valueToSet === "not_sure") {
-        if (emailField?.value && orgField?.value) {
-          outcomeField?.focus();
-        } else if (!emailField?.value) {
-          emailField?.focus();
-        } else if (!orgField?.value) {
-          orgField?.focus();
-        }
-      } else {
-        // Normal flow
-        if (!emailField?.value) {
-          emailField?.focus();
-        } else if (!orgField?.value) {
-          orgField?.focus();
-        }
-      }
-    }, 500);
-    
-    // Track click
-    console.log("category_not_sure_tile_click", { category: categoryName, source: "tile" });
-  };
-
   return (
     <section className="py-16 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto text-center space-y-8">
-          <h2 className="text-3xl sm:text-4xl font-bold">Pick a category</h2>
-          <p className="text-muted-foreground text-lg">
-            Choose your area of need to get started.
+          <h2 className="text-3xl sm:text-4xl font-bold">💡 WHAT WE SUPPORT</h2>
+          <p className="text-lg text-foreground/80">
+            We send expert help for nonprofits in these areas:
           </p>
           
-          <p className="text-sm text-muted-foreground">
-            Don't see your area—or not sure what to pick?{" "}
-            <a 
-              href="mailto:hello@nimara.ca?subject=Help%20choosing%20a%20category" 
-              className="text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
-              onClick={() => console.log("email_help_choose_click", { source: "helper_text" })}
-            >
-              Email us at hello@nimara.ca
-            </a>{" "}
-            and we'll help you choose.
-          </p>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {categories.map((category) => {
-              const isNotSure = category.name === "Not sure";
-              return (
-                <button
-                  key={category.name}
-                  onClick={() => handleCategoryClick(category.name, category.value)}
-                  className="group p-6 bg-card border border-border rounded-2xl hover:border-primary hover:shadow-md transition-all text-center space-y-3"
+          <div className="text-left max-w-3xl mx-auto">
+            <h3 className="text-xl font-semibold mb-6">✳️ Core Categories:</h3>
+            <div className="space-y-4">
+              {categories.map((category, index) => (
+                <div
+                  key={index}
+                  className="bg-card rounded-xl p-5 shadow-sm border border-border"
                 >
-                  <div className="flex justify-center">
-                    <div className="p-3 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors">
-                      <category.icon className="h-6 w-6 text-primary" aria-hidden="true" />
-                    </div>
-                  </div>
-                  <h3 className="font-semibold text-sm">{category.name}</h3>
-                  {category.description && (
-                    <p className="text-xs text-muted-foreground">{category.description}</p>
-                  )}
-                  <p className="text-xs text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                    {isNotSure ? "Help me choose →" : "Get 3 quotes →"}
+                  <h4 className="font-semibold text-foreground mb-1">
+                    {category.title}
+                  </h4>
+                  <p className="text-sm text-foreground/80">
+                    {category.description}
                   </p>
-                </button>
-              );
-            })}
+                </div>
+              ))}
+            </div>
           </div>
+
+          <p className="text-lg text-foreground/90 pt-4">
+            We'll scope your request, match you with experts, and return 3 real quote options.
+          </p>
         </div>
       </div>
     </section>
