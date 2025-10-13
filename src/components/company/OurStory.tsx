@@ -1,30 +1,37 @@
 export const OurStory = () => {
   return (
     <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div className="max-w-3xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8 text-center">
-          Our Story
+      <div className="max-w-4xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
+          Our story (why we started)
         </h2>
         
-        <div className="space-y-6 text-lg text-foreground leading-relaxed">
-          <p>
-            We started on the front lines. We ran programs. We chased receipts. We closed month-end at midnight.
-          </p>
-          
-          <p>
-            We sat on the funder side. We read reports that didn't match the work. We saw good projects drag on.
-          </p>
-          
-          <p>
-            So we built Nimara. People + simple rules + clear files. Vetted experts, standard templates, and PM oversight—so delivery is faster and close-outs are clean.
-          </p>
-        </div>
+        <p className="text-lg text-foreground mb-4">
+          We kept seeing the same problems:
+        </p>
 
-        <div className="mt-8 p-6 bg-[#ACFCE3]/20 border-2 border-[#ACFCE3] rounded-2xl">
-          <p className="text-center text-foreground font-medium">
-            We keep things human. Short calls. Plain words. One way of working across teams.
-          </p>
-        </div>
+        <ul className="space-y-3 mb-6">
+          <li className="flex items-start gap-3 text-lg text-foreground">
+            <span className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+            <span>Scopes took weeks. Work started late.</span>
+          </li>
+          <li className="flex items-start gap-3 text-lg text-foreground">
+            <span className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+            <span>Proposals were apples vs. oranges.</span>
+          </li>
+          <li className="flex items-start gap-3 text-lg text-foreground">
+            <span className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+            <span>Files lived everywhere; evidence was hard to find.</span>
+          </li>
+          <li className="flex items-start gap-3 text-lg text-foreground">
+            <span className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+            <span>Funder rules were unclear until close-out day.</span>
+          </li>
+        </ul>
+
+        <p className="text-lg text-foreground">
+          So we built Nimara: outcome-first scoping, vetted Canadian experts, <strong>PM oversight on every project</strong>, and a simple way to keep proof tidy.
+        </p>
       </div>
     </section>
   );
