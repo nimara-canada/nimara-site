@@ -548,7 +548,7 @@ export const HeroSection = ({
               </p>
 
               <Button type="submit" className="w-full" size="lg" disabled={isSubmitting} id="cta_quotes_submit" aria-describedby="q_privacy_notice">
-                {isSubmitting ? "Submitting..." : "Get 3 free quotes"}
+                {isSubmitting ? "Submitting..." : "Get My Free Quotes"}
               </Button>
             </form>
 
