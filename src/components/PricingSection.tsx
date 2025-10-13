@@ -1,5 +1,4 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Check } from "lucide-react";
 
 interface PricingSectionProps {
   onOpenPackagesWaitlist?: () => void;
@@ -10,64 +9,60 @@ export const PricingSection = ({ onOpenPackagesWaitlist }: PricingSectionProps) 
     <section id="pricing" className="py-16 lg:py-24 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4">
-            Pricing (simple & transparent)
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            🛠️ Pricing, made simple — and auditable
           </h2>
           
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Quotes are free. If you start a project, your proposal shows one extra line for Nimara platform & PM oversight so delivery is clear and auditable.
+          <p className="text-lg mb-4">
+            Quotes are free. You only pay if you move forward with a project.
           </p>
 
-          <Card className="mb-6">
-            <CardHeader>
-              <CardTitle className="text-2xl">Single-category (PM oversight included)</CardTitle>
-              <CardDescription className="text-base">
-                Typical: <span className="font-semibold text-foreground">22–28%</span> Nimara platform & PM oversight
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <p className="text-sm text-muted-foreground">Minimum</p>
-                  <p className="text-xl font-semibold">$1,250</p>
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">Cap</p>
-                  <p className="text-xl font-semibold">$9,000</p>
-                </div>
-              </div>
+          <p className="text-lg mb-12">
+            When you do, your proposal includes one clear line for Nimara's platform and project oversight fee — so delivery is <strong>transparent, trackable, and audit-friendly.</strong>
+          </p>
 
-              <div>
-                <p className="text-sm font-medium mb-2">Covers:</p>
-                <p className="text-sm text-muted-foreground">
-                  Brief & matching, PM (light), acceptance, secure records, payments ops
-                </p>
-              </div>
-
-              <Alert className="bg-muted/50 border-muted">
-                <AlertDescription className="text-sm">
-                  <span className="font-medium">Example:</span> $12,000 project → Nimara $3,000 (25%), Consultant $9,000.
-                </AlertDescription>
-              </Alert>
-
-              <Alert className="bg-accent/10 border-accent">
-                <AlertDescription className="text-sm font-medium">
-                  If we deliver fewer than 2 proposals within 3 days after your brief is finalized, you get a $500 credit toward your first project.
-                </AlertDescription>
-              </Alert>
-            </CardContent>
-          </Card>
-
-          <div className="text-center text-sm text-muted-foreground">
-            <p className="mb-2">
-              Need more than one area? Packages launch Nov 1, 2025. Pricing will be announced at launch.
+          <div className="border-t border-border pt-12 mb-12">
+            <h3 className="text-2xl font-semibold mb-2">
+              🔧 Single-category projects
+            </h3>
+            
+            <p className="text-muted-foreground mb-6">
+              (That's one area like Finance, Systems, or Strategy)
             </p>
-            <button
-              onClick={onOpenPackagesWaitlist}
-              className="text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
-            >
-              Join the packages waitlist
-            </button>
+
+            <ul className="space-y-3 mb-8">
+              <li className="text-lg">
+                <strong>Project minimum:</strong> $1,250
+              </li>
+              <li className="text-lg">
+                <strong>Platform & PM fee:</strong> 22–28%
+              </li>
+              <li className="text-lg">
+                <strong>Consultant fee cap:</strong> $9,000 per category
+              </li>
+            </ul>
+          </div>
+
+          <div className="border-t border-border pt-12">
+            <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
+              <Check className="w-6 h-6 text-primary" />
+              What the Nimara fee covers:
+            </h3>
+            
+            <ul className="space-y-3">
+              <li className="text-lg">
+                Briefing + consultant matching
+              </li>
+              <li className="text-lg">
+                Light project management (oversight, check-ins)
+              </li>
+              <li className="text-lg">
+                Secure payment + records
+              </li>
+              <li className="text-lg">
+                Final delivery confirmation
+              </li>
+            </ul>
           </div>
         </div>
       </div>
