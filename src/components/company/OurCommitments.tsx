@@ -1,25 +1,23 @@
-import { CheckCircle } from "lucide-react";
-
 const commitments = [
   {
     title: "Plain language.",
-    description: "Forms, briefs, and reports you can read at a glance.",
+    description: "Briefs and reports you can skim and act on.",
   },
   {
     title: "Privacy by default.",
-    description: "Canada-hosted services; careful with data; no sensitive pasting into AI tools.",
+    description: "Canada-hosted services; no sensitive pasting into AI tools.",
   },
   {
     title: "Equity & access.",
     description: "Templates and timelines that work for small teams.",
   },
   {
-    title: "Open hand, not lock-in.",
-    description: "You can export your files anytime.",
+    title: "No lock-in.",
+    description: "Export your files anytime.",
   },
   {
     title: "Give back.",
-    description: "We publish starter policies, checklists, and short guides—free to use, not legal advice.",
+    description: "Free templates, checklists, and short guides (not legal advice).",
   },
 ];
 
@@ -27,22 +25,26 @@ export const OurCommitments = () => {
   return (
     <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
-          Our commitments to the sector
-        </h2>
+        <div className="flex items-center gap-3 mb-8">
+          <div className="w-10 h-10 rounded-full bg-[#6945D8] flex items-center justify-center flex-shrink-0">
+            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#202654]">
+            Our commitments to the sector
+          </h2>
+        </div>
         
         <div className="space-y-4">
           {commitments.map((commitment, index) => (
-            <div key={index} className="flex items-start gap-3">
-              <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
-              <div>
-                <h3 className="font-semibold text-foreground mb-1">
-                  {commitment.title}
-                </h3>
-                <p className="text-muted-foreground">
-                  {commitment.description}
-                </p>
-              </div>
+            <div key={index} className="bg-[#F8F9FC] border border-[#E5E7EB] rounded-2xl p-6">
+              <h3 className="font-semibold text-[#202654] mb-2">
+                {commitment.title}
+              </h3>
+              <p className="text-[#96A0B5]">
+                {commitment.description}
+              </p>
             </div>
           ))}
         </div>
