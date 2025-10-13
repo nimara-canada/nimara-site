@@ -312,7 +312,7 @@ export const HeroSection = ({
               </Button>
               
               <Button variant="link" asChild className="p-0 h-auto">
-                <a href="/book-a-call">Prefer a call? Book a 15-minute chat</a>
+                
               </Button>
             </div>
             
