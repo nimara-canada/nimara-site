@@ -28,7 +28,7 @@ export const ConsultantHero = () => {
   };
   return <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
       <div className="max-w-4xl mx-auto text-center">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">Join Our Consultant Community</h1>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">Do meaningful work. Get real projects. No fluff.</h1>
         
         <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
           We're building a small, high-signal team. You stay independent. If your category isn't active yet, we'll add you to the waitlist and reach out as demand opens.
