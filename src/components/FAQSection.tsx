@@ -2,28 +2,32 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 const faqs = [
   {
-    question: "Is requesting quotes free?",
-    answer: "Yes. You only pay if you start a project.",
+    question: "How fast will I get quotes?",
+    answer: "Usually within 3 business days of finalizing your brief. If we deliver fewer than 2 proposals, you get a $500 credit toward your first project.",
   },
   {
-    question: "How is the Nimara fee shown?",
-    answer: "As Professional services — Nimara platform & PM oversight on your proposal/budget.",
+    question: "Who are the consultants? Can I see their background?",
+    answer: "All Nimara consultants are vetted, experienced, and Canada-based. Most have 3–10+ years of nonprofit or public-sector experience. Once matched, you'll see their profiles and proposed approach before you decide.",
   },
   {
-    question: "What's the fee for single-category work?",
-    answer: "Typically 22–28% (minimum $1,250, cap $9,000). It covers brief, PM, acceptance, secure records (kept 7 years), and payments ops.",
+    question: "Do you only work with Canadian nonprofits?",
+    answer: "Yes. We're built for the Canadian nonprofit and public-interest sector. We understand CRA rules, funding structures, bilingual needs, and provincial differences.",
   },
   {
-    question: "What if my need spans multiple areas?",
-    answer: "We can start today as simple single-category work, or you can join the Packages waitlist (launching Nov 1, 2025). Package pricing will be shared at launch.",
+    question: "What does Nimara do vs. the consultant?",
+    answer: "We: Scope your project, Match you to the right consultant(s), Oversee delivery, Manage payments + secure records. The consultant does the hands-on work. You focus on results — we handle the rest.",
   },
   {
-    question: "Does this reduce the consultant's rate?",
-    answer: "No. The Nimara line is in addition to the consultant's delivery line.",
+    question: "What if I'm not ready to start right away?",
+    answer: "That's fine. Submit your brief now, and we'll keep your quotes on file. You can also join the waitlist for our Fundability Packages launching Nov 5, 2025.",
   },
   {
-    question: "How do payments work?",
-    answer: "Default milestones 60% kickoff / 30% UAT / 10% close. Consultants are paid net-15 on acceptance.",
+    question: "Can I get a quote for more than one area?",
+    answer: "Right now we focus on one area per quote. If you need multiple areas (ex: finance + HR + fundraising), you'll want to join the Fundability waitlist — bundled packages launch soon.",
+  },
+  {
+    question: "Do you work with very small or grassroots orgs?",
+    answer: "Yes — especially if you're building structure, applying for funding, or professionalizing systems. We match based on your stage and budget, not just your size.",
   },
 ];
 
