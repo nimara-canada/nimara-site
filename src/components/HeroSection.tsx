@@ -308,7 +308,7 @@ export const HeroSection = ({
             </div>
             <div className="space-y-4">
               <Button onClick={scrollToForm} size="lg">
-                Get 3 free quotes
+                Get My Free Quotes
               </Button>
               
               <Button variant="link" asChild className="p-0 h-auto">
