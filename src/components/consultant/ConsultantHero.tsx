@@ -42,7 +42,7 @@ You stay independent. We handle the noise.</p>
             Submit interest
           </Button>
           <Button variant="outline" size="lg" onClick={handleCheckEligibility} className="w-full sm:w-auto">
-            Check eligibility
+            Check Your Eligibility
           </Button>
         </div>
 
