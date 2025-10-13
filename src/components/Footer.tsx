@@ -76,19 +76,31 @@ export const Footer = () => {
           {/* Column 3 - Legal */}
           <div className="space-y-4">
             <h4 className="font-semibold text-sm">Legal</h4>
-            <div className="flex flex-wrap gap-2 text-sm text-[#96A0B5]">
-              <a href="/privacy" className="hover:text-[#6945D8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#6945D8] rounded">
-                Privacy
-              </a>
-              <span>·</span>
-              <a href="/terms" className="hover:text-[#6945D8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#6945D8] rounded">
-                Terms
-              </a>
-              <span>·</span>
-              <a href="/accessibility" className="hover:text-[#6945D8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#6945D8] rounded">
-                Accessibility
-              </a>
-            </div>
+          <nav className="flex flex-wrap gap-2 text-sm" aria-label="Legal information">
+            <a 
+              href="/privacy" 
+              className="text-[#96A0B5] hover:text-[#6945D8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#6945D8] focus:underline rounded px-2 py-1 min-h-[44px] min-w-[44px] inline-flex items-center justify-center"
+              aria-label="View privacy policy"
+            >
+              Privacy
+            </a>
+            <span className="text-[#96A0B5] flex items-center" aria-hidden="true">·</span>
+            <a 
+              href="/terms" 
+              className="text-[#96A0B5] hover:text-[#6945D8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#6945D8] focus:underline rounded px-2 py-1 min-h-[44px] min-w-[44px] inline-flex items-center justify-center"
+              aria-label="View terms of service"
+            >
+              Terms
+            </a>
+            <span className="text-[#96A0B5] flex items-center" aria-hidden="true">·</span>
+            <a 
+              href="/accessibility" 
+              className="text-[#96A0B5] hover:text-[#6945D8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#6945D8] focus:underline rounded px-2 py-1 min-h-[44px] min-w-[44px] inline-flex items-center justify-center"
+              aria-label="View accessibility statement"
+            >
+              Accessibility
+            </a>
+          </nav>
           </div>
 
           {/* Column 4 - Newsletter */}
