@@ -15,11 +15,31 @@ export const AnnouncementBar = () => {
     const isExpired = new Date() >= END_DATE;
 
     setIsVisible(!isDismissed && !isExpired);
+
+    // Set CSS variable for announcement height
+    if (!isDismissed && !isExpired) {
+      const updateHeight = () => {
+        const bar = document.getElementById("announcement_ai_2025");
+        if (bar) {
+          document.documentElement.style.setProperty(
+            "--announcement-height",
+            `${bar.offsetHeight}px`
+          );
+        }
+      };
+      
+      updateHeight();
+      window.addEventListener("resize", updateHeight);
+      return () => window.removeEventListener("resize", updateHeight);
+    } else {
+      document.documentElement.style.setProperty("--announcement-height", "0px");
+    }
   }, []);
 
   const handleDismiss = () => {
     localStorage.setItem(STORAGE_KEY, "dismissed");
     setIsVisible(false);
+    document.documentElement.style.setProperty("--announcement-height", "0px");
     
     // Fire analytics event (if you have analytics setup)
     if (typeof window !== "undefined" && (window as any).gtag) {
@@ -45,7 +65,7 @@ export const AnnouncementBar = () => {
       role="region"
       aria-label="Site announcement"
       id="announcement_ai_2025"
-      className="sticky top-0 z-50 bg-[#6945D8] text-white"
+      className="sticky top-0 z-[60] bg-[#6945D8] text-white"
     >
       <div className="container mx-auto px-4 py-3 sm:py-3.5">
         <div className="flex items-center justify-between gap-4">
