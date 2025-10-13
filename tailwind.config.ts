@@ -57,11 +57,31 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        nim: {
+          navy: "hsl(var(--nim-navy))",
+          purple: "hsl(var(--nim-purple))",
+          mint: "hsl(var(--nim-mint))",
+          slate: "hsl(var(--nim-slate))",
+          white: "hsl(var(--nim-white))",
+          mist: "hsl(var(--nim-mist))",
+          cloud: "hsl(var(--nim-cloud))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        xl: "var(--radius-xl)",
+      },
+      boxShadow: {
+        soft: "var(--shadow-soft)",
+      },
+      fontFamily: {
+        sans: ['Inter Variable', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        mono: ['IBM Plex Mono', 'monospace'],
+      },
+      spacing: {
+        '18': '4.5rem',
       },
       keyframes: {
         "accordion-down": {

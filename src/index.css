@@ -8,95 +8,100 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 229 48% 25%;
+    /* Nimara brand tokens */
+    --nim-navy: 229 48% 25%; /* #202654 */
+    --nim-purple: 252 58% 56%; /* #6945D8 */
+    --nim-mint: 162 91% 83%; /* #ACFCE3 */
+    --nim-slate: 221 24% 64%; /* #96A0B5 */
+    --nim-white: 0 0% 100%; /* #FFFFFF */
+    --nim-mist: 226 33% 93%; /* #E9ECF4 */
+    --nim-cloud: 220 50% 97%; /* #F7F9FC */
 
-    --card: 0 0% 100%;
-    --card-foreground: 229 48% 25%;
+    /* Semantic tokens mapped to brand */
+    --background: var(--nim-white);
+    --foreground: var(--nim-navy);
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 229 48% 25%;
+    --card: var(--nim-white);
+    --card-foreground: var(--nim-navy);
 
-    --primary: 252 70% 56%;
-    --primary-foreground: 0 0% 100%;
+    --popover: var(--nim-white);
+    --popover-foreground: var(--nim-navy);
 
-    --secondary: 162 91% 83%;
-    --secondary-foreground: 229 48% 25%;
+    --primary: var(--nim-purple);
+    --primary-foreground: var(--nim-white);
 
-    --muted: 220 23% 95%;
-    --muted-foreground: 221 24% 64%;
+    --secondary: var(--nim-cloud);
+    --secondary-foreground: var(--nim-navy);
 
-    --accent: 162 91% 83%;
-    --accent-foreground: 229 48% 25%;
+    --muted: var(--nim-cloud);
+    --muted-foreground: var(--nim-slate);
+
+    --accent: var(--nim-mint);
+    --accent-foreground: var(--nim-navy);
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive-foreground: var(--nim-white);
 
-    --border: 221 24% 64%;
-    --input: 221 24% 64%;
-    --ring: 252 70% 56%;
+    --border: var(--nim-mist);
+    --input: var(--nim-mist);
+    --ring: var(--nim-purple);
 
-    --radius: 1.25rem;
+    --radius: 1rem;
+    --radius-xl: 1rem;
 
-    /* Nimara brand tokens */
-    --purple: 252 70% 56%;
-    --navy: 229 48% 25%;
-    --mint: 162 91% 83%;
-    --slate: 221 24% 64%;
-    --white: 0 0% 100%;
-
-    /* Elevation */
-    --shadow-sm: 0 2px 8px rgba(32, 38, 84, 0.04);
+    /* Elevation - modernized shadows */
+    --shadow-soft: 0 8px 24px rgba(32, 38, 84, 0.08);
     --shadow-md: 0 8px 24px rgba(32, 38, 84, 0.08);
     --shadow-lg: 0 16px 48px rgba(32, 38, 84, 0.12);
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar tokens */
+    --sidebar-background: var(--nim-white);
+    --sidebar-foreground: var(--nim-navy);
+    --sidebar-primary: var(--nim-purple);
+    --sidebar-primary-foreground: var(--nim-white);
+    --sidebar-accent: var(--nim-cloud);
+    --sidebar-accent-foreground: var(--nim-navy);
+    --sidebar-border: var(--nim-mist);
+    --sidebar-ring: var(--nim-purple);
   }
 
   .dark {
-    --background: 228 44% 23%;
-    --foreground: 0 0% 100%;
+    --background: 229 48% 15%;
+    --foreground: var(--nim-white);
 
-    --card: 228 44% 23%;
-    --card-foreground: 0 0% 100%;
+    --card: 229 48% 18%;
+    --card-foreground: var(--nim-white);
 
-    --popover: 228 44% 23%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 229 48% 18%;
+    --popover-foreground: var(--nim-white);
 
-    --primary: 252 61% 56%;
-    --primary-foreground: 0 0% 100%;
+    --primary: var(--nim-purple);
+    --primary-foreground: var(--nim-white);
 
-    --secondary: 228 40% 18%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 229 40% 22%;
+    --secondary-foreground: var(--nim-white);
 
-    --muted: 228 40% 18%;
-    --muted-foreground: 228 20% 65%;
+    --muted: 229 40% 22%;
+    --muted-foreground: var(--nim-slate);
 
-    --accent: 162 92% 83%;
-    --accent-foreground: 228 44% 23%;
+    --accent: var(--nim-mint);
+    --accent-foreground: 229 48% 15%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive-foreground: var(--nim-white);
 
-    --border: 228 40% 18%;
-    --input: 228 40% 18%;
-    --ring: 252 61% 56%;
+    --border: 229 40% 25%;
+    --input: 229 40% 25%;
+    --ring: var(--nim-purple);
     
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 229 48% 12%;
+    --sidebar-foreground: var(--nim-white);
+    --sidebar-primary: var(--nim-purple);
+    --sidebar-primary-foreground: var(--nim-white);
+    --sidebar-accent: 229 40% 18%;
+    --sidebar-accent-foreground: var(--nim-white);
+    --sidebar-border: 229 40% 20%;
+    --sidebar-ring: var(--nim-purple);
   }
 }
 
@@ -107,7 +112,10 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground antialiased;
+    font-family: 'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-feature-settings: "kern" 1, "liga" 1;
+    font-size: 16px;
+    line-height: 1.5;
   }
 
   html {
@@ -122,9 +130,52 @@ All colors MUST be HSL.
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-semibold tracking-tight;
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-size: 40px;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  h3 {
+    font-size: 24px;
+    font-weight: 600;
   }
 
   .mono {
     font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* Container utilities */
+  .container {
+    max-width: 1280px;
+  }
+
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    outline: 2px solid hsl(var(--nim-purple));
+    outline-offset: 2px;
+  }
+
+  /* Skip to content link */
+  .skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: hsl(var(--nim-purple));
+    color: hsl(var(--nim-white));
+    padding: 8px 16px;
+    text-decoration: none;
+    z-index: 100;
+  }
+
+  .skip-to-content:focus {
+    top: 0;
   }
 }
