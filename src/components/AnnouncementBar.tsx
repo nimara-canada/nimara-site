@@ -45,7 +45,7 @@ export const AnnouncementBar = () => {
       role="region"
       aria-label="Site announcement"
       id="announcement_ai_2025"
-      className="bg-[#6945D8] text-white"
+      className="sticky top-0 z-50 bg-[#6945D8] text-white"
     >
       <div className="container mx-auto px-4 py-3 sm:py-3.5">
         <div className="flex items-center justify-between gap-4">
