@@ -96,7 +96,6 @@ export const HeroSection = ({
       const emailField = document.getElementById("q_email") as HTMLInputElement;
       const orgField = document.getElementById("q_org") as HTMLInputElement;
       const categoryField = document.getElementById("q_category") as HTMLInputElement;
-
       if (!formData.email && emailField) {
         emailField.focus();
       } else if (!formData.organization && orgField) {
@@ -294,18 +293,16 @@ export const HeroSection = ({
           {/* Left: Hero Content */}
           <div className="space-y-6">
             <p className="text-sm text-muted-foreground font-medium">Audit-ready by design</p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">Get 3 free nonprofit consulting quotes in 3 days</h1>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">Get 3 Free Quotes for Nonprofit Support</h1>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl">Tell us what you want. We make a simple plan, get up to 3 quotes from trusted Canadian experts, and our Nimara project manager makes sure it gets done.</p>
             <div className="pt-2 pb-4">
-              <a 
-                href="#pricing" 
-                className="text-sm text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
-                onClick={(e) => {
-                  e.preventDefault();
-                  const pricingSection = document.getElementById('pricing');
-                  pricingSection?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
+              <a href="#pricing" className="text-sm text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded" onClick={e => {
+              e.preventDefault();
+              const pricingSection = document.getElementById('pricing');
+              pricingSection?.scrollIntoView({
+                behavior: 'smooth'
+              });
+            }}>
                 How fees work →
               </a>
             </div>
@@ -313,7 +310,7 @@ export const HeroSection = ({
               <Button onClick={scrollToForm} size="lg">
                 Get 3 free quotes
               </Button>
-              <p className="text-sm text-muted-foreground">If we deliver fewer than 2 proposals in 3 days, you get a $500 credit.</p>
+              
               <Button variant="link" asChild className="p-0 h-auto">
                 <a href="/book-a-call">Prefer a call? Book a 15-minute chat</a>
               </Button>
@@ -413,25 +410,12 @@ export const HeroSection = ({
                 <p className="text-xs text-muted-foreground">
                   One sentence, up to 140 characters. Plain English is perfect.
                 </p>
-                <Textarea 
-                  id="q_outcome" 
-                  maxLength={140} 
-                  placeholder="Reconcile Q4 grant spend and be audit-ready by Apr 30." 
-                  value={formData.outcome} 
-                  onChange={e => setFormData({
-                    ...formData,
-                    outcome: e.target.value
-                  })} 
-                  className="rounded-xl resize-none" 
-                  rows={3}
-                  aria-describedby="q_outcome_counter"
-                />
+                <Textarea id="q_outcome" maxLength={140} placeholder="Reconcile Q4 grant spend and be audit-ready by Apr 30." value={formData.outcome} onChange={e => setFormData({
+                ...formData,
+                outcome: e.target.value
+              })} className="rounded-xl resize-none" rows={3} aria-describedby="q_outcome_counter" />
                 <div className="flex items-center justify-between gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setShowExamples(!showExamples)}
-                    className="text-xs text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
-                  >
+                  <button type="button" onClick={() => setShowExamples(!showExamples)} className="text-xs text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded">
                     {showExamples ? "Hide examples" : "Show examples →"}
                   </button>
                   <p id="q_outcome_counter" className="text-xs text-muted-foreground" aria-live="polite">
@@ -439,111 +423,102 @@ export const HeroSection = ({
                   </p>
                 </div>
                 
-                {showExamples && (
-                  <div className="border border-border rounded-xl p-4 space-y-3 bg-muted/30">
+                {showExamples && <div className="border border-border rounded-xl p-4 space-y-3 bg-muted/30">
                     <p className="text-xs font-semibold text-foreground">Example outcomes by category:</p>
                     
                     <div className="space-y-2">
                       <div>
                         <p className="text-xs font-medium text-foreground mb-1">Finance & Audit</p>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setFormData({ ...formData, outcome: "Reconcile Q4 grant spend and be audit-ready by Apr 30." });
-                            setShowExamples(false);
-                          }}
-                          className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left"
-                        >
+                        <button type="button" onClick={() => {
+                      setFormData({
+                        ...formData,
+                        outcome: "Reconcile Q4 grant spend and be audit-ready by Apr 30."
+                      });
+                      setShowExamples(false);
+                    }} className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left">
                           "Reconcile Q4 grant spend and be audit-ready by Apr 30."
                         </button>
                       </div>
                       
                       <div>
                         <p className="text-xs font-medium text-foreground mb-1">Digital & Data</p>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setFormData({ ...formData, outcome: "Migrate our donor database to a CRM by June 15." });
-                            setShowExamples(false);
-                          }}
-                          className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left"
-                        >
+                        <button type="button" onClick={() => {
+                      setFormData({
+                        ...formData,
+                        outcome: "Migrate our donor database to a CRM by June 15."
+                      });
+                      setShowExamples(false);
+                    }} className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left">
                           "Migrate our donor database to a CRM by June 15."
                         </button>
                       </div>
                       
                       <div>
                         <p className="text-xs font-medium text-foreground mb-1">Governance</p>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setFormData({ ...formData, outcome: "Update our board policies to meet new ONCA requirements by May 1." });
-                            setShowExamples(false);
-                          }}
-                          className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left"
-                        >
+                        <button type="button" onClick={() => {
+                      setFormData({
+                        ...formData,
+                        outcome: "Update our board policies to meet new ONCA requirements by May 1."
+                      });
+                      setShowExamples(false);
+                    }} className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left">
                           "Update our board policies to meet new ONCA requirements by May 1."
                         </button>
                       </div>
                       
                       <div>
                         <p className="text-xs font-medium text-foreground mb-1">Fundraising</p>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setFormData({ ...formData, outcome: "Design a corporate partnership pitch deck ready to send by March 31." });
-                            setShowExamples(false);
-                          }}
-                          className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left"
-                        >
+                        <button type="button" onClick={() => {
+                      setFormData({
+                        ...formData,
+                        outcome: "Design a corporate partnership pitch deck ready to send by March 31."
+                      });
+                      setShowExamples(false);
+                    }} className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left">
                           "Design a corporate partnership pitch deck ready to send by March 31."
                         </button>
                       </div>
                       
                       <div>
                         <p className="text-xs font-medium text-foreground mb-1">Program Design</p>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setFormData({ ...formData, outcome: "Create a logic model for our youth mentorship program by April 15." });
-                            setShowExamples(false);
-                          }}
-                          className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left"
-                        >
+                        <button type="button" onClick={() => {
+                      setFormData({
+                        ...formData,
+                        outcome: "Create a logic model for our youth mentorship program by April 15."
+                      });
+                      setShowExamples(false);
+                    }} className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left">
                           "Create a logic model for our youth mentorship program by April 15."
                         </button>
                       </div>
                       
                       <div>
                         <p className="text-xs font-medium text-foreground mb-1">Research</p>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setFormData({ ...formData, outcome: "Survey 200 stakeholders and deliver insights report by May 31." });
-                            setShowExamples(false);
-                          }}
-                          className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left"
-                        >
+                        <button type="button" onClick={() => {
+                      setFormData({
+                        ...formData,
+                        outcome: "Survey 200 stakeholders and deliver insights report by May 31."
+                      });
+                      setShowExamples(false);
+                    }} className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left">
                           "Survey 200 stakeholders and deliver insights report by May 31."
                         </button>
                       </div>
                       
                       <div>
                         <p className="text-xs font-medium text-foreground mb-1">Legal & Compliance</p>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setFormData({ ...formData, outcome: "Draft a privacy policy that meets PIPEDA standards by June 1." });
-                            setShowExamples(false);
-                          }}
-                          className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left"
-                        >
+                        <button type="button" onClick={() => {
+                      setFormData({
+                        ...formData,
+                        outcome: "Draft a privacy policy that meets PIPEDA standards by June 1."
+                      });
+                      setShowExamples(false);
+                    }} className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left">
                           "Draft a privacy policy that meets PIPEDA standards by June 1."
                         </button>
                       </div>
                     </div>
-                  </div>
-                )}
+                  </div>}
               </div>
 
               {/* Privacy/Terms Notice */}
