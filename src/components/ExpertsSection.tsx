@@ -1,15 +1,18 @@
 import { Shield } from "lucide-react";
-
-const expertTypes = [
-  "Former EDs/COOs",
-  "CPAs/Finance leads",
-  "Evaluators",
-  "CRM admins",
-  "Fundraising strategists",
-  "Privacy/compliance advisors",
-];
+import { useTranslation } from "react-i18next";
 
 export const ExpertsSection = () => {
+  const { t } = useTranslation();
+  
+  const expertTypes = [
+    t('experts.types.ed'),
+    t('experts.types.cpa'),
+    t('experts.types.evaluator'),
+    t('experts.types.crm'),
+    t('experts.types.fundraising'),
+    t('experts.types.privacy'),
+  ];
+
   return (
     <section className="py-16 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -20,7 +23,7 @@ export const ExpertsSection = () => {
             </div>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold">
-            Who you'll work with (vetted Canadian experts)
+            {t('experts.title')}
           </h2>
           <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
             {expertTypes.map((type, index) => (
@@ -33,7 +36,7 @@ export const ExpertsSection = () => {
             ))}
           </div>
           <p className="text-muted-foreground text-lg">
-            We verify references and recent nonprofit work before anyone joins the bench.
+            {t('experts.subtitle')}
           </p>
         </div>
       </div>

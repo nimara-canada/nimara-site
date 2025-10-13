@@ -1,27 +1,30 @@
 import { UserCheck, FileText, FolderCheck } from "lucide-react";
-
-const benefits = [
-  {
-    icon: UserCheck,
-    title: "PM oversight on pace and quality",
-  },
-  {
-    icon: FileText,
-    title: "Standard templates for scope, acceptance, handoff",
-  },
-  {
-    icon: FolderCheck,
-    title: "Evidence-ready files (deliverables, approvals, simple index)",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 export const BenefitsSection = () => {
+  const { t } = useTranslation();
+  
+  const benefits = [
+    {
+      icon: UserCheck,
+      title: t('benefits.items.pm'),
+    },
+    {
+      icon: FileText,
+      title: t('benefits.items.templates'),
+    },
+    {
+      icon: FolderCheck,
+      title: t('benefits.items.evidence'),
+    },
+  ];
+
   return (
     <section className="py-16 lg:py-24 bg-secondary">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto space-y-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-center">
-            What you get on every project
+            {t('benefits.title')}
           </h2>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -42,8 +45,7 @@ export const BenefitsSection = () => {
 
           <div className="bg-accent/30 border border-accent rounded-xl p-4 text-center">
             <p className="text-sm text-muted-foreground">
-              <span className="font-medium text-foreground">Data stored in Canada</span> · Records
-              kept 7 years
+              <span className="font-medium text-foreground">{t('benefits.dataNote')}</span> {t('benefits.recordsNote')}
             </p>
           </div>
         </div>

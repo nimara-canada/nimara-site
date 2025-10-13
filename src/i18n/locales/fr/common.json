@@ -6,9 +6,38 @@
     "bookCall": "Réserver un appel"
   },
   "hero": {
-    "title": "Consultation experte pour OBNL. Sur demande.",
-    "subtitle": "Soyez jumelé avec un consultant OBNL qualifié en 48 heures. Sans contrat. Juste de l'aide experte quand vous en avez besoin.",
-    "cta": "Commencer"
+    "badge": "Prêt pour l'audit dès la conception",
+    "title": "Obtenez 3 soumissions gratuites de consultation pour OBNL en 3 jours",
+    "subtitle": "Dites-nous ce dont vous avez besoin. Nous élaborons un plan simple, obtenons jusqu'à 3 soumissions d'experts canadiens de confiance, et notre chef de projet Nimara s'assure que tout soit fait.",
+    "feesLink": "Comment fonctionnent les frais →",
+    "cta": "Obtenir 3 soumissions gratuites",
+    "guarantee": "Si nous livrons moins de 2 propositions en 3 jours, vous obtenez un crédit de 500$.",
+    "callCTA": "Vous préférez un appel? Réservez une discussion de 15 minutes",
+    "microBenefit1": "Mandat simple",
+    "microBenefit2": "Propositions comparables",
+    "microBenefit3": "Supervision GP",
+    "form": {
+      "email": "Courriel",
+      "organization": "Organisation",
+      "region": "Province/Territoire",
+      "regionPlaceholder": "Sélectionnez une province",
+      "category": "Catégorie",
+      "categoryPlaceholder": "Sélectionnez une catégorie",
+      "categoryNotSureHint": "Si vous choisissez « Pas sûr / Autre », dites-nous simplement le résultat que vous voulez.",
+      "outcome": "Quel résultat voulez-vous?",
+      "outcomeHint": "Une phrase, jusqu'à 140 caractères. Le langage simple est parfait.",
+      "outcomePlaceholder": "Réconcilier les dépenses de subvention du T4 et être prêt pour l'audit d'ici le 30 avril.",
+      "showExamples": "Afficher les exemples →",
+      "hideExamples": "Masquer les exemples",
+      "examplesTitle": "Exemples de résultats par catégorie:",
+      "submit": "Soumettre la demande",
+      "submitting": "Envoi en cours...",
+      "successToast": "Merci — attendez-vous à un appel de cadrage de projet dans les prochaines 48 heures pour mieux comprendre vos besoins avant de vous jumeler avec un consultant.",
+      "errorRequired": "Veuillez remplir tous les champs obligatoires",
+      "errorOutcomeLength": "Le résultat doit contenir 140 caractères ou moins",
+      "errorGeneric": "Une erreur s'est produite. Veuillez réessayer.",
+      "required": "*"
+    }
   },
   "announce": {
     "text": "IA pour dirigeants d'OBNL—Cours en direct gratuit de 60 min (Canada) • 30 oct 2025 • Places limitées →",
@@ -16,69 +45,249 @@
     "dismiss": "Fermer l'annonce"
   },
   "three": {
-    "speed": {
-      "title": "Rapidité",
-      "desc": "Jumelé avec le bon consultant en 48 heures ou moins"
-    },
-    "quality": {
-      "title": "Qualité",
-      "desc": "Tous les consultants sont présélectionnés avec une expérience approfondie en OBNL"
-    },
-    "trust": {
-      "title": "Confiance",
-      "desc": "Tarifs fixes, livrables clairs et satisfaction garantie"
+    "title": "Ce que nous entendons des OBNL (et comment nous aidons)",
+    "subtitle": "Dites-nous ce qui est difficile. Nous ferons un plan simple et vous mettrons en action.",
+    "weHelp": "Nous aidons: ",
+    "ctaButton": "Obtenir 3 soumissions gratuites",
+    "helperText": "Vous ne voyez pas votre domaine—ou pas sûr de quoi choisir? ",
+    "helperEmail": "Écrivez à hello@nimara.ca",
+    "helperSuffix": " et nous vous aiderons.",
+    "needs": {
+      "rfp": {
+        "problem": "Les ADP prennent trop de temps",
+        "solution": "Partagez un résultat. Nous le transformons en un court mandat et obtenons jusqu'à 3 soumissions en 3 jours."
+      },
+      "notSure": {
+        "problem": "Pas sûr de ce dont nous avons besoin",
+        "solution": "Choisissez Pas sûr / Autre et écrivez une phrase. Nous l'acheminerons aux bons experts."
+      },
+      "audit": {
+        "problem": "Inquiet au sujet des audits et des règles de financement",
+        "solution": "Définition claire de « ce à quoi ressemble terminé », fichiers organisés, données au Canada, dossiers conservés 7 ans."
+      },
+      "drift": {
+        "problem": "Les projets dérivent et ne finissent jamais",
+        "solution": "Un GP de Nimara gère une liste de contrôle avec points hebdomadaires et acceptation."
+      },
+      "wrongConsultant": {
+        "problem": "Choisi le mauvais consultant auparavant",
+        "solution": "Experts canadiens vérifiés. Les propositions utilisent le même format pour que vous puissiez comparer."
+      },
+      "smallTeam": {
+        "problem": "Petite équipe; nous avons besoin de simple",
+        "solution": "Portée adaptée, gains rapides, modèles réutilisables."
+      },
+      "crmNotUsed": {
+        "problem": "Le CRM n'est pas utilisé",
+        "solution": "Configuration adaptée, deux courtes formations, acceptation simple (connexions + utilisation de base)."
+      },
+      "monthEnd": {
+        "problem": "La fin du mois est compliquée",
+        "solution": "Une simple liste de contrôle de clôture et un petit aperçu de ce qui compte. Fichiers prêts pour révision."
+      }
     }
   },
   "experts": {
-    "title": "Rencontrez nos experts",
-    "subtitle": "Chaque consultant de notre réseau a été soigneusement sélectionné pour son expertise et son adéquation culturelle avec le secteur OBNL."
+    "title": "Avec qui vous travaillerez (experts canadiens vérifiés)",
+    "subtitle": "Nous vérifions les références et le travail récent en OBNL avant que quiconque ne se joigne à l'équipe.",
+    "types": {
+      "ed": "Anciens DG/DGA",
+      "cpa": "CPA/Responsables financiers",
+      "evaluator": "Évaluateurs",
+      "crm": "Admins CRM",
+      "fundraising": "Stratèges en collecte de fonds",
+      "privacy": "Conseillers en confidentialité/conformité"
+    }
   },
   "how": {
     "title": "Comment ça fonctionne",
-    "step1": {
-      "title": "Dites-nous ce dont vous avez besoin",
-      "desc": "Partagez votre défi et votre échéancier"
-    },
-    "step2": {
-      "title": "Soyez jumelé",
-      "desc": "Nous vous connectons avec le bon expert en 48 heures"
-    },
-    "step3": {
-      "title": "Commencez à travailler",
-      "desc": "Portée claire, prix fixe, satisfaction garantie"
+    "subtitle": "Trois étapes simples pour réaliser votre projet correctement.",
+    "note": "Note: Aucun ADP nécessaire pour les soumissions.",
+    "steps": {
+      "scope": {
+        "title": "Cadrage (≈10 minutes)",
+        "desc": "Nous transformons votre résultat en un mandat simple et standard."
+      },
+      "proposals": {
+        "title": "Jusqu'à 3 propositions (3 jours)",
+        "desc": "Soumissions comparables: prix, échéancier, résultats, liste « terminé »."
+      },
+      "proceed": {
+        "title": "Choisissez et procédez (supervision GP)",
+        "desc": "Vous choisissez; un GP de Nimara gère la livraison et la qualité."
+      }
     }
   },
   "categories": {
-    "title": "Nous pouvons vous aider avec..."
+    "title": "Choisissez une catégorie",
+    "subtitle": "Choisissez votre domaine de besoin pour commencer.",
+    "helperText": "Vous ne voyez pas votre domaine—ou pas sûr de quoi choisir? ",
+    "helperLink": "Écrivez-nous à hello@nimara.ca",
+    "helperSuffix": " et nous vous aiderons à choisir.",
+    "items": {
+      "governance": "Gouvernance",
+      "finance": "Finance et audit",
+      "program": "Conception de programme",
+      "digital": "Numérique et données",
+      "fundraising": "Collecte de fonds",
+      "research": "Recherche",
+      "legal": "Juridique et conformité",
+      "notSure": "Pas sûr",
+      "notSureDesc": "Dites-nous le résultat et nous l'acheminerons aux bons experts."
+    },
+    "ctaNotSure": "Aidez-moi à choisir →",
+    "ctaQuotes": "Obtenir 3 soumissions →"
   },
   "benefits": {
-    "title": "Pourquoi les OBNL choisissent Nimara"
+    "title": "Ce que vous obtenez sur chaque projet",
+    "dataNote": "Données stockées au Canada",
+    "recordsNote": "· Dossiers conservés 7 ans",
+    "items": {
+      "pm": "Supervision GP sur le rythme et la qualité",
+      "templates": "Modèles standard pour portée, acceptation, passation",
+      "evidence": "Fichiers prêts pour preuve (livrables, approbations, index simple)"
+    }
   },
   "pricing": {
-    "title": "Tarification simple et transparente",
-    "subtitle": "Pas de frais cachés. Pas de surprises. Juste de l'aide experte à des tarifs équitables."
+    "title": "Tarification (simple et transparente)",
+    "subtitle": "Les soumissions sont gratuites. Si vous démarrez un projet, votre proposition montre une ligne supplémentaire pour la plateforme Nimara et la supervision GP afin que la livraison soit claire et vérifiable.",
+    "packageTitle": "Catégorie unique (supervision GP incluse)",
+    "packageDesc": "Typique: 22–28% plateforme Nimara et supervision GP",
+    "minimum": "Minimum",
+    "minimumAmount": "1 250$",
+    "cap": "Plafond",
+    "capAmount": "9 000$",
+    "covers": "Couvre:",
+    "coversText": "Mandat et jumelage, GP (léger), acceptation, dossiers sécurisés, opérations de paiement",
+    "example": "Exemple:",
+    "exampleText": "Projet de 12 000$ → Nimara 3 000$ (25%), Consultant 9 000$.",
+    "guarantee": "Si nous livrons moins de 2 propositions dans les 3 jours suivant la finalisation de votre mandat, vous obtenez un crédit de 500$ pour votre premier projet.",
+    "packagesNote": "Besoin de plus d'un domaine? Les forfaits sont lancés le 1er nov 2025. La tarification sera annoncée au lancement.",
+    "packagesWaitlistCTA": "Rejoindre la liste d'attente des forfaits"
   },
   "faq": {
-    "title": "Questions fréquemment posées"
+    "title": "Questions fréquemment posées",
+    "contactText": "Besoin de plus de détails? Écrivez à ",
+    "contactEmail": "hello@nimara.ca",
+    "items": {
+      "free": {
+        "q": "Demander des soumissions est-il gratuit?",
+        "a": "Oui. Vous ne payez que si vous démarrez un projet."
+      },
+      "feeShown": {
+        "q": "Comment les frais de Nimara sont-ils affichés?",
+        "a": "Comme Services professionnels — plateforme Nimara et supervision GP sur votre proposition/budget."
+      },
+      "feeAmount": {
+        "q": "Quels sont les frais pour un travail de catégorie unique?",
+        "a": "Typiquement 22–28% (minimum 1 250$, plafond 9 000$). Cela couvre le mandat, GP, acceptation, dossiers sécurisés (conservés 7 ans) et opérations de paiement."
+      },
+      "multiArea": {
+        "q": "Que se passe-t-il si mon besoin couvre plusieurs domaines?",
+        "a": "Nous pouvons commencer aujourd'hui comme simple travail de catégorie unique, ou vous pouvez rejoindre la liste d'attente des Forfaits (lancement le 1er nov 2025). La tarification des forfaits sera partagée au lancement."
+      },
+      "consultantRate": {
+        "q": "Cela réduit-il le tarif du consultant?",
+        "a": "Non. La ligne Nimara s'ajoute à la ligne de livraison du consultant."
+      },
+      "payments": {
+        "q": "Comment fonctionnent les paiements?",
+        "a": "Jalons par défaut 60% démarrage / 30% UAT / 10% clôture. Les consultants sont payés net-15 sur acceptation."
+      }
+    }
+  },
+  "packages": {
+    "title": "Forfaits de capacité (liste d'attente)",
+    "subtitle": "Travail multi-domaines disponible le 1er nov 2025.",
+    "waitlistCTA": "Rejoindre la liste d'attente des forfaits",
+    "types": {
+      "launch": {
+        "name": "Lancement",
+        "desc": "Lancez votre OBNL avec une configuration fondamentale."
+      },
+      "standardize": {
+        "name": "Standardiser",
+        "desc": "Rationalisez les opérations avec des processus et systèmes cohérents."
+      },
+      "dataDriven": {
+        "name": "Axé sur les données",
+        "desc": "Prenez des décisions éclairées avec une analyse de données complète."
+      }
+    },
+    "form": {
+      "title": "Rejoindre la liste d'attente des forfaits",
+      "email": "Courriel",
+      "organization": "Organisation",
+      "areasLabel": "Domaines d'intérêt",
+      "notes": "Notes (≤140 caractères)",
+      "submit": "Rejoindre la liste d'attente",
+      "successToast": "Merci — nous vous aviserons lors du lancement des forfaits le 1er nov 2025.",
+      "errorRequired": "Veuillez remplir tous les champs obligatoires",
+      "errorNotesLength": "Les notes doivent contenir 140 caractères ou moins",
+      "errorGeneric": "Une erreur s'est produite. Veuillez réessayer.",
+      "required": "*"
+    }
   },
   "final": {
-    "title": "Prêt à commencer?",
-    "subtitle": "Dites-nous ce dont vous avez besoin et soyez jumelé avec le consultant parfait.",
-    "cta": "Réserver une consultation gratuite"
+    "title": "Prêt à régler cela de façon simple?",
+    "ctaQuotes": "Obtenir 3 soumissions gratuites",
+    "ctaWaitlist": "Rejoindre la liste d'attente des forfaits →"
+  },
+  "oneMore": {
+    "title": "Une dernière chose...",
+    "subtitle": "Aidez-nous à mieux vous jumeler (tout est optionnel)",
+    "name": "Votre nom",
+    "role": "Votre rôle",
+    "rolePlaceholder": "Sélectionnez votre rôle",
+    "start": "Quand aimeriez-vous commencer?",
+    "budget": "Budget estimé",
+    "budgetPlaceholder": "Sélectionnez une fourchette",
+    "save": "Sauvegarder les détails",
+    "saving": "Sauvegarde...",
+    "skip": "Passer pour l'instant",
+    "successToast": "Merci — nous avons ajouté ceci à votre demande.",
+    "error": "Impossible de sauvegarder maintenant — vous pouvez passer ou réessayer.",
+    "roles": {
+      "ed": "DG/PDG",
+      "ops": "Opérations",
+      "finance": "Finance",
+      "program": "Programme",
+      "fundraising": "Collecte de fonds",
+      "other": "Autre"
+    },
+    "startOptions": {
+      "immediately": "Immédiatement",
+      "fewWeeks": "Dans quelques semaines",
+      "notSure": "Pas encore sûr"
+    },
+    "budgetRanges": {
+      "under5": "<5k$",
+      "5to10": "5–10k$",
+      "10to20": "10–20k$",
+      "20to40": "20–40k$",
+      "over40": ">40k$",
+      "notSure": "Pas sûr"
+    }
   },
   "footer": {
-    "tagline": "Consultation experte pour OBNL, sur demande",
-    "company": "Entreprise",
-    "about": "À propos",
-    "consultants": "Pour consultants",
-    "resources": "Ressources",
-    "blog": "Blogue",
+    "tagline": "Prêt pour l'audit dès la conception. Experts OBNL canadiens vérifiés.",
     "contact": "Contact",
+    "email": "hello@nimara.ca",
+    "address1": "#1017 - 9580 170th St NW",
+    "address2": "Edmonton, AB T5T 5R5",
+    "address3": "Canada",
     "legal": "Légal",
-    "privacy": "Politique de confidentialité",
-    "terms": "Conditions d'utilisation",
+    "privacy": "Confidentialité",
+    "terms": "Conditions",
     "accessibility": "Accessibilité",
-    "trust": "Confiance et sécurité",
-    "rights": "Tous droits réservés."
+    "newsletter": "Infolettre",
+    "newsletterPlaceholder": "Votre courriel",
+    "newsletterCTA": "S'abonner",
+    "newsletterSubmitting": "Abonnement...",
+    "newsletterSuccess": "Merci — vous êtes sur la liste.",
+    "newsletterError": "Veuillez entrer un courriel valide.",
+    "legalNote": "Nimara connecte les OBNL avec des consultants indépendants vérifiés et fournit des outils de projet et une coordination GP. Nous ne sommes pas un cabinet juridique, comptable ou d'audit et ne fournissons pas de conseils juridiques, fiscaux ou d'assurance. Les consultants sont indépendants. ",
+    "legalLink": "Conditions",
+    "copyright": "© Nimara Technology"
   }
 }

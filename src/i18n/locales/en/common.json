@@ -6,9 +6,38 @@
     "bookCall": "Book a call"
   },
   "hero": {
-    "title": "Expert Nonprofit Consulting. On Demand.",
-    "subtitle": "Get matched with a vetted nonprofit consultant within 48 hours. No contracts. Just expert help when you need it.",
-    "cta": "Get started"
+    "badge": "Audit-ready by design",
+    "title": "Get 3 free nonprofit consulting quotes in 3 days",
+    "subtitle": "Tell us what you want. We make a simple plan, get up to 3 quotes from trusted Canadian experts, and our Nimara project manager makes sure it gets done.",
+    "feesLink": "How fees work →",
+    "cta": "Get 3 free quotes",
+    "guarantee": "If we deliver fewer than 2 proposals in 3 days, you get a $500 credit.",
+    "callCTA": "Prefer a call? Book a 15-minute chat",
+    "microBenefit1": "Plain brief",
+    "microBenefit2": "Comparable proposals",
+    "microBenefit3": "PM oversight",
+    "form": {
+      "email": "Email",
+      "organization": "Organization",
+      "region": "Province/Territory",
+      "regionPlaceholder": "Select a province",
+      "category": "Category",
+      "categoryPlaceholder": "Select a category",
+      "categoryNotSureHint": "If you choose \"Not sure / Other,\" just tell us the outcome you want.",
+      "outcome": "What outcome do you want?",
+      "outcomeHint": "One sentence, up to 140 characters. Plain English is perfect.",
+      "outcomePlaceholder": "Reconcile Q4 grant spend and be audit-ready by Apr 30.",
+      "showExamples": "Show examples →",
+      "hideExamples": "Hide examples",
+      "examplesTitle": "Example outcomes by category:",
+      "submit": "Submit request",
+      "submitting": "Submitting...",
+      "successToast": "Thanks — expect a project scoping call in the next 48 hours to understand your needs better before matching you with a consultant.",
+      "errorRequired": "Please fill in all required fields",
+      "errorOutcomeLength": "Outcome must be 140 characters or less",
+      "errorGeneric": "Something went wrong. Please try again.",
+      "required": "*"
+    }
   },
   "announce": {
     "text": "AI for Nonprofit Leaders—Free 60-min live class (Canada) • Oct 30, 2025 • Seats limited →",
@@ -16,69 +45,249 @@
     "dismiss": "Dismiss announcement"
   },
   "three": {
-    "speed": {
-      "title": "Speed",
-      "desc": "Get matched with the right consultant in 48 hours or less"
-    },
-    "quality": {
-      "title": "Quality",
-      "desc": "All consultants are pre-vetted and have deep nonprofit experience"
-    },
-    "trust": {
-      "title": "Trust",
-      "desc": "Fixed rates, clear deliverables, and satisfaction guaranteed"
+    "title": "What we hear from nonprofits (and how we help)",
+    "subtitle": "Tell us what's hard. We'll make a simple plan and get you moving.",
+    "weHelp": "We help: ",
+    "ctaButton": "Get 3 free quotes",
+    "helperText": "Don't see your area—or not sure what to pick? ",
+    "helperEmail": "Email hello@nimara.ca",
+    "helperSuffix": " and we'll help.",
+    "needs": {
+      "rfp": {
+        "problem": "RFPs take too long",
+        "solution": "Share one outcome. We turn it into a short brief and get up to 3 quotes in 3 days."
+      },
+      "notSure": {
+        "problem": "Not sure what we need",
+        "solution": "Choose Not sure / Other and write one sentence. We'll route it to the right experts."
+      },
+      "audit": {
+        "problem": "Worried about audits and funder rules",
+        "solution": "Clear \"what done looks like,\" organized files, data in Canada, records kept 7 years."
+      },
+      "drift": {
+        "problem": "Projects drift and never finish",
+        "solution": "A Nimara PM runs one checklist with weekly check-ins and acceptance."
+      },
+      "wrongConsultant": {
+        "problem": "Picked the wrong consultant before",
+        "solution": "Vetted Canadian experts. Proposals use the same format so you can compare."
+      },
+      "smallTeam": {
+        "problem": "Small team; we need simple",
+        "solution": "Right-sized scope, quick wins, templates you can reuse."
+      },
+      "crmNotUsed": {
+        "problem": "CRM isn't used",
+        "solution": "Setup that fits, two short trainings, simple acceptance (logins + basic use)."
+      },
+      "monthEnd": {
+        "problem": "Month-end is messy",
+        "solution": "A simple close checklist and a small view of what matters. Files ready for review."
+      }
     }
   },
   "experts": {
-    "title": "Meet our experts",
-    "subtitle": "Every consultant in our network has been carefully vetted for expertise and cultural fit with the nonprofit sector."
+    "title": "Who you'll work with (vetted Canadian experts)",
+    "subtitle": "We verify references and recent nonprofit work before anyone joins the bench.",
+    "types": {
+      "ed": "Former EDs/COOs",
+      "cpa": "CPAs/Finance leads",
+      "evaluator": "Evaluators",
+      "crm": "CRM admins",
+      "fundraising": "Fundraising strategists",
+      "privacy": "Privacy/compliance advisors"
+    }
   },
   "how": {
     "title": "How it works",
-    "step1": {
-      "title": "Tell us what you need",
-      "desc": "Share your challenge and timeline"
-    },
-    "step2": {
-      "title": "Get matched",
-      "desc": "We connect you with the right expert within 48 hours"
-    },
-    "step3": {
-      "title": "Start working",
-      "desc": "Clear scope, fixed price, satisfaction guaranteed"
+    "subtitle": "Three simple steps to get your project done right.",
+    "note": "Note: No RFP needed for quotes.",
+    "steps": {
+      "scope": {
+        "title": "Scope (≈10 minutes)",
+        "desc": "We turn your outcome into a simple, standard brief."
+      },
+      "proposals": {
+        "title": "Up to 3 proposals (3 days)",
+        "desc": "Comparable quotes: price, timeline, outcomes, \"done\" checklist."
+      },
+      "proceed": {
+        "title": "Pick & proceed (PM oversight)",
+        "desc": "You choose; a Nimara PM runs delivery and quality."
+      }
     }
   },
   "categories": {
-    "title": "We can help with..."
+    "title": "Pick a category",
+    "subtitle": "Choose your area of need to get started.",
+    "helperText": "Don't see your area—or not sure what to pick? ",
+    "helperLink": "Email us at hello@nimara.ca",
+    "helperSuffix": " and we'll help you choose.",
+    "items": {
+      "governance": "Governance",
+      "finance": "Finance & Audit",
+      "program": "Program Design",
+      "digital": "Digital & Data",
+      "fundraising": "Fundraising",
+      "research": "Research",
+      "legal": "Legal & Compliance",
+      "notSure": "Not sure",
+      "notSureDesc": "Tell us the outcome and we'll route it to the right experts."
+    },
+    "ctaNotSure": "Help me choose →",
+    "ctaQuotes": "Get 3 quotes →"
   },
   "benefits": {
-    "title": "Why nonprofits choose Nimara"
+    "title": "What you get on every project",
+    "dataNote": "Data stored in Canada",
+    "recordsNote": "· Records kept 7 years",
+    "items": {
+      "pm": "PM oversight on pace and quality",
+      "templates": "Standard templates for scope, acceptance, handoff",
+      "evidence": "Evidence-ready files (deliverables, approvals, simple index)"
+    }
   },
   "pricing": {
-    "title": "Simple, transparent pricing",
-    "subtitle": "No hidden fees. No surprises. Just expert help at fair rates."
+    "title": "Pricing (simple & transparent)",
+    "subtitle": "Quotes are free. If you start a project, your proposal shows one extra line for Nimara platform & PM oversight so delivery is clear and auditable.",
+    "packageTitle": "Single-category (PM oversight included)",
+    "packageDesc": "Typical: 22–28% Nimara platform & PM oversight",
+    "minimum": "Minimum",
+    "minimumAmount": "$1,250",
+    "cap": "Cap",
+    "capAmount": "$9,000",
+    "covers": "Covers:",
+    "coversText": "Brief & matching, PM (light), acceptance, secure records, payments ops",
+    "example": "Example:",
+    "exampleText": "$12,000 project → Nimara $3,000 (25%), Consultant $9,000.",
+    "guarantee": "If we deliver fewer than 2 proposals within 3 days after your brief is finalized, you get a $500 credit toward your first project.",
+    "packagesNote": "Need more than one area? Packages launch Nov 1, 2025. Pricing will be announced at launch.",
+    "packagesWaitlistCTA": "Join the packages waitlist"
   },
   "faq": {
-    "title": "Frequently asked questions"
+    "title": "Frequently Asked Questions",
+    "contactText": "Need more detail? Email ",
+    "contactEmail": "hello@nimara.ca",
+    "items": {
+      "free": {
+        "q": "Is requesting quotes free?",
+        "a": "Yes. You only pay if you start a project."
+      },
+      "feeShown": {
+        "q": "How is the Nimara fee shown?",
+        "a": "As Professional services — Nimara platform & PM oversight on your proposal/budget."
+      },
+      "feeAmount": {
+        "q": "What's the fee for single-category work?",
+        "a": "Typically 22–28% (minimum $1,250, cap $9,000). It covers brief, PM, acceptance, secure records (kept 7 years), and payments ops."
+      },
+      "multiArea": {
+        "q": "What if my need spans multiple areas?",
+        "a": "We can start today as simple single-category work, or you can join the Packages waitlist (launching Nov 1, 2025). Package pricing will be shared at launch."
+      },
+      "consultantRate": {
+        "q": "Does this reduce the consultant's rate?",
+        "a": "No. The Nimara line is in addition to the consultant's delivery line."
+      },
+      "payments": {
+        "q": "How do payments work?",
+        "a": "Default milestones 60% kickoff / 30% UAT / 10% close. Consultants are paid net-15 on acceptance."
+      }
+    }
+  },
+  "packages": {
+    "title": "Capacity Packages (waitlist)",
+    "subtitle": "Multi-area work opens Nov 1, 2025.",
+    "waitlistCTA": "Join the packages waitlist",
+    "types": {
+      "launch": {
+        "name": "Launch",
+        "desc": "Get your nonprofit off the ground with foundational setup."
+      },
+      "standardize": {
+        "name": "Standardize",
+        "desc": "Streamline operations with consistent processes and systems."
+      },
+      "dataDriven": {
+        "name": "Data-Driven",
+        "desc": "Make informed decisions with comprehensive data analysis."
+      }
+    },
+    "form": {
+      "title": "Join the packages waitlist",
+      "email": "Email",
+      "organization": "Organization",
+      "areasLabel": "Areas of interest",
+      "notes": "Notes (≤140 characters)",
+      "submit": "Join waitlist",
+      "successToast": "Thanks — we'll notify you when packages launch on Nov 1, 2025.",
+      "errorRequired": "Please fill in all required fields",
+      "errorNotesLength": "Notes must be 140 characters or less",
+      "errorGeneric": "Something went wrong. Please try again.",
+      "required": "*"
+    }
   },
   "final": {
-    "title": "Ready to get started?",
-    "subtitle": "Tell us what you need and get matched with the perfect consultant.",
-    "cta": "Book a free consultation"
+    "title": "Ready to fix this the simple way?",
+    "ctaQuotes": "Get 3 free quotes",
+    "ctaWaitlist": "Join the packages waitlist →"
+  },
+  "oneMore": {
+    "title": "One more thing...",
+    "subtitle": "Help us match you even better (all optional)",
+    "name": "Your name",
+    "role": "Your role",
+    "rolePlaceholder": "Select your role",
+    "start": "When would you like to start?",
+    "budget": "Estimated budget",
+    "budgetPlaceholder": "Select a range",
+    "save": "Save details",
+    "saving": "Saving...",
+    "skip": "Skip for now",
+    "successToast": "Thanks — we've added this to your request.",
+    "error": "Couldn't save right now — you can skip or try again.",
+    "roles": {
+      "ed": "ED/CEO",
+      "ops": "Operations",
+      "finance": "Finance",
+      "program": "Program",
+      "fundraising": "Fundraising",
+      "other": "Other"
+    },
+    "startOptions": {
+      "immediately": "Immediately",
+      "fewWeeks": "In a few weeks",
+      "notSure": "Not sure yet"
+    },
+    "budgetRanges": {
+      "under5": "<$5k",
+      "5to10": "$5–10k",
+      "10to20": "$10–20k",
+      "20to40": "$20–40k",
+      "over40": ">$40k",
+      "notSure": "Not sure"
+    }
   },
   "footer": {
-    "tagline": "Expert nonprofit consulting, on demand",
-    "company": "Company",
-    "about": "About us",
-    "consultants": "For consultants",
-    "resources": "Resources",
-    "blog": "Blog",
+    "tagline": "Audit-ready by design. Vetted Canadian nonprofit experts.",
     "contact": "Contact",
+    "email": "hello@nimara.ca",
+    "address1": "#1017 - 9580 170th St NW",
+    "address2": "Edmonton, AB T5T 5R5",
+    "address3": "Canada",
     "legal": "Legal",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Service",
+    "privacy": "Privacy",
+    "terms": "Terms",
     "accessibility": "Accessibility",
-    "trust": "Trust & Safety",
-    "rights": "All rights reserved."
+    "newsletter": "Newsletter",
+    "newsletterPlaceholder": "Your email",
+    "newsletterCTA": "Subscribe",
+    "newsletterSubmitting": "Subscribing...",
+    "newsletterSuccess": "Thanks — you're on the list.",
+    "newsletterError": "Please enter a valid email.",
+    "legalNote": "Nimara connects nonprofits with vetted independent consultants and provides project tools and PM coordination. We're not a law, accounting, or audit firm and don't provide legal, tax, or assurance advice. Consultants are independent. ",
+    "legalLink": "Terms",
+    "copyright": "© Nimara Technology"
   }
 }
