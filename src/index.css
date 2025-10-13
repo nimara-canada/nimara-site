@@ -9,41 +9,41 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 228 44% 23%;
+    --foreground: 229 48% 25%;
 
     --card: 0 0% 100%;
-    --card-foreground: 228 44% 23%;
+    --card-foreground: 229 48% 25%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 228 44% 23%;
+    --popover-foreground: 229 48% 25%;
 
-    --primary: 252 61% 56%;
+    --primary: 252 70% 56%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 221 33% 97%;
-    --secondary-foreground: 228 44% 23%;
+    --secondary: 162 91% 83%;
+    --secondary-foreground: 229 48% 25%;
 
-    --muted: 224 33% 93%;
-    --muted-foreground: 228 20% 55%;
+    --muted: 220 23% 95%;
+    --muted-foreground: 221 24% 64%;
 
-    --accent: 162 92% 83%;
-    --accent-foreground: 228 44% 23%;
+    --accent: 162 91% 83%;
+    --accent-foreground: 229 48% 25%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 224 33% 93%;
-    --input: 224 33% 93%;
-    --ring: 252 61% 56%;
+    --border: 221 24% 64%;
+    --input: 221 24% 64%;
+    --ring: 252 70% 56%;
 
-    --radius: 1rem;
+    --radius: 1.25rem;
 
     /* Nimara brand tokens */
-    --purple: 252 61% 56%;
-    --navy: 228 44% 23%;
-    --mint: 162 92% 83%;
-    --mist: 224 33% 93%;
-    --cloud: 221 33% 97%;
+    --purple: 252 70% 56%;
+    --navy: 229 48% 25%;
+    --mint: 162 91% 83%;
+    --slate: 221 24% 64%;
+    --white: 0 0% 100%;
 
     /* Elevation */
     --shadow-sm: 0 2px 8px rgba(32, 38, 84, 0.04);

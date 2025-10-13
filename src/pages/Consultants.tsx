@@ -1,15 +1,15 @@
 import { Helmet } from "react-helmet";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { ConsultantHero } from "@/components/consultant/ConsultantHero";
-import { WhatYouGet } from "@/components/consultant/WhatYouGet";
-import { HowItWorksNew } from "@/components/consultant/HowItWorksNew";
-import { WhoWereLookingFor } from "@/components/consultant/WhoWereLookingFor";
-import { WhoShouldApplyNew } from "@/components/consultant/WhoShouldApplyNew";
-import { ExpectationsNew } from "@/components/consultant/ExpectationsNew";
-import { IndependenceCompliance } from "@/components/consultant/IndependenceCompliance";
-import { QuickFAQ } from "@/components/consultant/QuickFAQ";
-import { ConsultantFinalCTA } from "@/components/consultant/ConsultantFinalCTA";
+import { NewConsultantHero } from "@/components/consultant/NewConsultantHero";
+import { NewWhyJoin } from "@/components/consultant/NewWhyJoin";
+import { NewWorkTypes } from "@/components/consultant/NewWorkTypes";
+import { NewWhoWeWant } from "@/components/consultant/NewWhoWeWant";
+import { NewHowItWorks } from "@/components/consultant/NewHowItWorks";
+import { NewTestimonials } from "@/components/consultant/NewTestimonials";
+import { NewPrimaryCTA } from "@/components/consultant/NewPrimaryCTA";
+import { NewComingSoon } from "@/components/consultant/NewComingSoon";
+import { NewTrustLine } from "@/components/consultant/NewTrustLine";
 
 const Consultants = () => {
   return (
@@ -35,15 +35,15 @@ const Consultants = () => {
       <Header activeRoute="/consultants" />
       
       <main id="main" className="pb-20 md:pb-0">
-        <ConsultantHero />
-        <WhatYouGet />
-        <HowItWorksNew />
-        <WhoWereLookingFor />
-        <WhoShouldApplyNew />
-        <ExpectationsNew />
-        <IndependenceCompliance />
-        <QuickFAQ />
-        <ConsultantFinalCTA />
+        <NewConsultantHero />
+        <NewWhyJoin />
+        <NewWorkTypes />
+        <NewWhoWeWant />
+        <NewHowItWorks />
+        <NewTestimonials />
+        <NewPrimaryCTA />
+        <NewComingSoon />
+        <NewTrustLine />
       </main>
       <Footer />
     </div>
