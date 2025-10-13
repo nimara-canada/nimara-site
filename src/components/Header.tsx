@@ -76,13 +76,6 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                 asChild 
                 className="min-h-[44px] px-4"
               >
-                <a href="/book">Book a call</a>
-              </Button>
-              <Button 
-                variant="link" 
-                asChild 
-                className="min-h-[44px] px-4"
-              >
                 <a href="/signin">{t('nav.signin')}</a>
               </Button>
               <LanguageSwitcher />
@@ -121,13 +114,6 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                     </a>
                   ))}
                   <div className="pt-4 space-y-3 border-t border-border">
-                    <Button 
-                      variant="ghost" 
-                      asChild 
-                      className="w-full min-h-[44px] justify-start"
-                    >
-                      <a href="/book">Book a call</a>
-                    </Button>
                     <Button 
                       variant="ghost" 
                       asChild 
