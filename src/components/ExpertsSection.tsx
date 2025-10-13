@@ -1,42 +1,35 @@
-import { Shield } from "lucide-react";
-import { useTranslation } from "react-i18next";
+const problems = [
+  "Our month-end process is a mess",
+  "We have no system to track grants or donors",
+  "We need a budget that makes sense to funders",
+  "We're doing everything in spreadsheets — and it's failing",
+  "We don't know if we're CRA compliant",
+  "We need to write a plan… but we don't know where to start",
+];
 
 export const ExpertsSection = () => {
-  const { t } = useTranslation();
-  
-  const expertTypes = [
-    t('experts.types.ed'),
-    t('experts.types.cpa'),
-    t('experts.types.evaluator'),
-    t('experts.types.crm'),
-    t('experts.types.fundraising'),
-    t('experts.types.privacy'),
-  ];
-
   return (
     <section className="py-16 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center space-y-8">
-          <div className="flex justify-center">
-            <div className="p-3 bg-primary/10 rounded-xl">
-              <Shield className="h-8 w-8 text-primary" />
-            </div>
-          </div>
           <h2 className="text-3xl sm:text-4xl font-bold">
-            {t('experts.title')}
+            Problems We Can Quote On
           </h2>
-          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
-            {expertTypes.map((type, index) => (
-              <span
+          <p className="text-lg text-foreground/80">
+            Most orgs come to us when…
+          </p>
+          <div className="space-y-3">
+            {problems.map((problem, index) => (
+              <div
                 key={index}
-                className="px-4 py-2 bg-accent/50 text-accent-foreground rounded-full text-sm font-medium"
+                className="bg-card rounded-xl p-4 shadow-sm text-left border border-border"
               >
-                {type}
-              </span>
+                <p className="text-foreground font-medium">"{problem}"</p>
+              </div>
             ))}
           </div>
-          <p className="text-muted-foreground text-lg">
-            {t('experts.subtitle')}
+          <p className="text-lg text-foreground/90 pt-4">
+            👀 If any of these sound familiar — let's quote it out.
           </p>
         </div>
       </div>
