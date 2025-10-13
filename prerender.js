@@ -20,7 +20,15 @@ const routesToPrerender = fs
     const appHtml = render(url);
     const html = template.replace(`<!--app-html-->`, appHtml)
 
-    const filePath = `dist${url === '/' ? '/index' : url}.html`
+    let filePath
+    if (url === '/') {
+      filePath = 'dist/index.html'
+    } else {
+      const routeDir = `dist${url}`
+      fs.mkdirSync(toAbsolute(routeDir), { recursive: true })
+      filePath = `${routeDir}/index.html`
+    }
+    
     fs.writeFileSync(toAbsolute(filePath), html)
     console.log('pre-rendered:', filePath)
   }
