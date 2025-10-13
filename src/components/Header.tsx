@@ -9,6 +9,7 @@ import nimaraLogo from "@/assets/nimara-logo.png";
 const navigation = [
   { name: "For Nonprofits", href: "/" },
   { name: "For Consultants", href: "/consultants" },
+  { name: "Resources", href: "#resources" },
   { name: "Company", href: "/company" },
 ];
 
@@ -36,11 +37,11 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
         Skip to content
       </a>
 
-      <header className="sticky top-[var(--announcement-height,0px)] z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
-            <a href="/" className="flex items-center space-x-2">
+            <a href="/" className="flex items-center space-x-2 min-h-[44px]">
               <img 
                 src={nimaraLogo} 
                 alt="Nimara" 
@@ -50,16 +51,16 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
             </a>
 
             {/* Desktop Navigation */}
-            <nav aria-label="Primary" className="hidden md:flex items-center space-x-3">
+            <nav aria-label="Primary" className="hidden lg:flex items-center space-x-1">
               {navigation.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
                   aria-current={item.href === activeRoute ? "page" : undefined}
-                  className={`px-4 py-2.5 rounded-lg text-base font-medium transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center ${
+                  className={`px-4 py-2.5 rounded-lg text-base font-medium transition-colors min-h-[44px] inline-flex items-center justify-center ${
                     item.href === activeRoute
                       ? "text-primary"
-                      : "text-foreground hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                      : "text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                   }`}
                 >
                   {item.name}
@@ -67,20 +68,31 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
               ))}
             </nav>
 
-            {/* Desktop CTA */}
-            <div className="hidden md:flex items-center space-x-4">
-              <Button onClick={scrollToForm} size="default" className="min-h-[44px]">
-                Get 3 free quotes
+            {/* Desktop Utilities */}
+            <div className="hidden lg:flex items-center space-x-3">
+              <Button 
+                variant="link" 
+                asChild 
+                className="min-h-[44px] px-4"
+              >
+                <a href="/book">Book a call</a>
               </Button>
-              <Button variant="link" asChild className="min-h-[44px]">
+              <Button 
+                variant="link" 
+                asChild 
+                className="min-h-[44px] px-4"
+              >
                 <a href="/signin">{t('nav.signin')}</a>
               </Button>
               <LanguageSwitcher />
+              <Button onClick={scrollToForm} size="default" className="min-h-[44px]">
+                Get 3 free quotes
+              </Button>
             </div>
 
             {/* Mobile Menu */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild className="md:hidden">
+              <SheetTrigger asChild className="lg:hidden">
                 <Button 
                   variant="ghost" 
                   size="icon" 
@@ -99,22 +111,35 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                       key={item.name}
                       href={item.href}
                       aria-current={item.href === activeRoute ? "page" : undefined}
-                      className={`text-base font-medium py-2.5 px-4 rounded-lg min-h-[44px] flex items-center transition-colors ${
-                        item.href === activeRoute ? "text-primary" : "text-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                      className={`text-base font-medium py-3 px-4 rounded-lg min-h-[44px] flex items-center transition-colors ${
+                        item.href === activeRoute ? "text-primary bg-muted" : "text-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                       }`}
                       onClick={() => setIsOpen(false)}
                     >
                       {item.name}
                     </a>
                   ))}
-                  <div className="pt-4 space-y-3">
+                  <div className="pt-4 space-y-3 border-t border-border">
+                    <Button 
+                      variant="ghost" 
+                      asChild 
+                      className="w-full min-h-[44px] justify-start"
+                    >
+                      <a href="/book">Book a call</a>
+                    </Button>
+                    <Button 
+                      variant="ghost" 
+                      asChild 
+                      className="w-full min-h-[44px] justify-start"
+                    >
+                      <a href="/signin">{t('nav.signin')}</a>
+                    </Button>
+                    <div className="flex justify-center py-2">
+                      <LanguageSwitcher />
+                    </div>
                     <Button onClick={scrollToForm} className="w-full min-h-[44px]">
                       Get 3 free quotes
                     </Button>
-                    <Button variant="link" asChild className="min-h-[44px]">
-                      <a href="/signin">{t('nav.signin')}</a>
-                    </Button>
-                    <LanguageSwitcher />
                   </div>
                 </nav>
               </SheetContent>
