@@ -21,11 +21,6 @@ const trackClick = (eventName: string) => {
 };
 
 export const NewConsultantHero = () => {
-  const handleSubmitInterest = () => {
-    trackClick('consultant_submit_interest_click');
-    window.open(getTypeformUrl('consultant-interest'), '_blank');
-  };
-
   const handleCheckEligibility = () => {
     trackClick('consultant_check_eligibility_click');
     window.open(getTypeformUrl('consultant-eligibility'), '_blank');
@@ -53,31 +48,20 @@ export const NewConsultantHero = () => {
           HR, and more. You stay independent. We handle the noise.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Button 
-            size="lg" 
-            onClick={handleSubmitInterest}
-            className="w-full sm:w-auto min-w-[200px]"
-          >
-            Submit interest
-          </Button>
-          <Button 
-            variant="outline" 
             size="lg" 
             onClick={handleCheckEligibility}
-            className="w-full sm:w-auto min-w-[200px]"
+            className="w-full sm:w-auto"
           >
             Check Your Eligibility
           </Button>
-        </div>
-
-        <div className="space-y-2">
-          <p className="text-muted-foreground">
-            Clear briefs. PM oversight. Net-15 after acceptance.
-          </p>
-          <p className="text-muted-foreground">
-            We don't cut your rate—Nimara's platform & PM fee is a separate client line.
-          </p>
+          <button
+            onClick={scrollToWhyJoin}
+            className="text-primary hover:underline font-medium"
+          >
+            Why join the bench
+          </button>
         </div>
       </div>
     </section>
