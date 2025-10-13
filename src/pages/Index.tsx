@@ -19,52 +19,90 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <Helmet>
-        <title>For Nonprofits | Nimara</title>
-        <meta name="description" content="Get 3 vetted nonprofit consulting quotes in 3 days. Free scope. PM oversight. Data in Canada; records kept 7 years." />
+        <title>Get 3 Free Nonprofit Consulting Quotes in 72 Hours | Nimara</title>
+        <meta name="description" content="Get 3 vetted nonprofit consulting quotes in 72 hours. Free scope. PM oversight. Clear briefs. Audit-ready work from trusted Canadian experts." />
         
         <link rel="canonical" href="https://nimara.ca/" />
         
         <meta property="og:site_name" content="Nimara" />
-        <meta property="og:title" content="For Nonprofits | Nimara" />
-        <meta property="og:description" content="Get 3 vetted nonprofit consulting quotes in 3 days. Free scope. PM oversight. Data in Canada; records kept 7 years." />
+        <meta property="og:title" content="Get 3 Free Nonprofit Consulting Quotes in 72 Hours" />
+        <meta property="og:description" content="Get 3 vetted nonprofit consulting quotes in 72 hours. Free scope. PM oversight. Clear briefs. Audit-ready work from trusted Canadian experts." />
         <meta property="og:url" content="https://nimara.ca/" />
-        <meta property="og:image" content="https://nimara.ca/og.jpg" />
+        <meta property="og:image" content="https://nimara.ca/og-image.jpg" />
         <meta property="og:type" content="website" />
         
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="For Nonprofits | Nimara" />
-        <meta name="twitter:description" content="Get 3 vetted nonprofit consulting quotes in 3 days. Free scope. PM oversight. Data in Canada; records kept 7 years." />
-        <meta name="twitter:image" content="https://nimara.ca/og.jpg" />
+        <meta name="twitter:title" content="Get 3 Free Nonprofit Consulting Quotes in 72 Hours" />
+        <meta name="twitter:description" content="Get 3 vetted nonprofit consulting quotes in 72 hours. Free scope. PM oversight. Clear briefs. Audit-ready work from trusted Canadian experts." />
+        <meta name="twitter:image" content="https://nimara.ca/og-image.jpg" />
         
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "Nimara Technology",
+            "name": "Nimara",
             "url": "https://nimara.ca",
-            "logo": "https://nimara.ca/assets/logo.png",
-            "email": "hello@nimara.ca",
+            "logo": "https://nimara.ca/assets/nimara-logo.png",
+            "description": "Nimara matches Canadian nonprofits with vetted consultants for finance, governance, digital systems, and strategic work.",
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "#1017 - 9580 170th St NW",
               "addressLocality": "Edmonton",
               "addressRegion": "AB",
-              "postalCode": "T5T 5R5",
               "addressCountry": "CA"
+            },
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "Customer Service",
+              "email": "hello@nimara.ca"
             }
           })}
         </script>
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "Nimara",
-            "url": "https://nimara.ca",
-            "potentialAction": {
-              "@type": "SearchAction",
-              "target": "https://nimara.ca/?q={search_term_string}",
-              "query-input": "required name=search_term_string"
-            }
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How much does it cost to get quotes?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Getting quotes is completely free. You only pay if you choose to work with one of the consultants we match you with."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How long does it take to get quotes?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "You'll receive up to 3 vetted quotes within 72 hours of submitting your request."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What categories do you support?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We support Governance, Finance & Audit, Program Design, Digital & Data, Fundraising, Research, Legal & Compliance, and custom projects."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does pricing work?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Single-category projects: Consultant rate + 12% Nimara PM fee (separate line). Multi-category projects: Consultant rate + 15% PM fee. Payment terms are Net-15 after acceptance."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Are your consultants vetted?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. All consultants are independently vetted, have 3-10+ years of experience, and are matched based on their expertise and your specific needs."
+                }
+              }
+            ]
           })}
         </script>
       </Helmet>

@@ -15,22 +15,22 @@ const Consultants = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>For Consultants | Nimara — Consultant Roster (Canada)</title>
-        <meta name="description" content="We're building a small, high-signal roster of independent consultants for Canadian nonprofits. Submit interest to join the waitlist or check eligibility. PM oversight, clear briefs, net-15." />
+        <title>Join the Nimara Bench — Vetted Consultant Roster (Canada) | Nimara</title>
+        <meta name="description" content="Real projects for independent consultants. Clear briefs, PM oversight, Net-15 payment. Join Canada's consulting bench for nonprofits and public-interest work." />
         
         <link rel="canonical" href="https://nimara.ca/consultants" />
         
         <meta property="og:site_name" content="Nimara" />
-        <meta property="og:title" content="For Consultants | Nimara — Consultant Roster (Canada)" />
-        <meta property="og:description" content="We're building a small, high-signal roster of independent consultants for Canadian nonprofits. Submit interest to join the waitlist or check eligibility. PM oversight, clear briefs, net-15." />
+        <meta property="og:title" content="Join the Nimara Bench — Vetted Consultant Roster" />
+        <meta property="og:description" content="Real projects for independent consultants. Clear briefs, PM oversight, Net-15 payment. Join Canada's consulting bench for nonprofits and public-interest work." />
         <meta property="og:url" content="https://nimara.ca/consultants" />
-        <meta property="og:image" content="https://nimara.ca/og.jpg" />
+        <meta property="og:image" content="https://nimara.ca/og-image.jpg" />
         <meta property="og:type" content="website" />
         
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="For Consultants | Nimara — Consultant Roster (Canada)" />
-        <meta name="twitter:description" content="We're building a small, high-signal roster of independent consultants for Canadian nonprofits. Submit interest to join the waitlist or check eligibility. PM oversight, clear briefs, net-15." />
-        <meta name="twitter:image" content="https://nimara.ca/og.jpg" />
+        <meta name="twitter:title" content="Join the Nimara Bench — Vetted Consultant Roster" />
+        <meta name="twitter:description" content="Real projects for independent consultants. Clear briefs, PM oversight, Net-15 payment. Join Canada's consulting bench for nonprofits and public-interest work." />
+        <meta name="twitter:image" content="https://nimara.ca/og-image.jpg" />
       </Helmet>
       <Header activeRoute="/consultants" />
       

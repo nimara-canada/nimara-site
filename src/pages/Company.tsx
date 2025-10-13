@@ -15,22 +15,22 @@ const Company = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Company | Nimara</title>
-        <meta name="description" content="Building the infrastructure for Canada's nonprofit ecosystem. People first, simple rules, clean files." />
+        <title>About Nimara — Building Infrastructure for Canada's Nonprofit Sector</title>
+        <meta name="description" content="Nimara connects Canadian nonprofits with vetted consultants. People first, simple rules, clean files. Building the infrastructure nonprofits deserve." />
         
         <link rel="canonical" href="https://nimara.ca/company" />
         
         <meta property="og:site_name" content="Nimara" />
-        <meta property="og:title" content="Company | Nimara" />
-        <meta property="og:description" content="Building the infrastructure for Canada's nonprofit ecosystem. People first, simple rules, clean files." />
+        <meta property="og:title" content="About Nimara — Building Infrastructure for Canada's Nonprofit Sector" />
+        <meta property="og:description" content="Nimara connects Canadian nonprofits with vetted consultants. People first, simple rules, clean files. Building the infrastructure nonprofits deserve." />
         <meta property="og:url" content="https://nimara.ca/company" />
-        <meta property="og:image" content="https://nimara.ca/og.jpg" />
+        <meta property="og:image" content="https://nimara.ca/og-image.jpg" />
         <meta property="og:type" content="website" />
         
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Company | Nimara" />
-        <meta name="twitter:description" content="Building the infrastructure for Canada's nonprofit ecosystem. People first, simple rules, clean files." />
-        <meta name="twitter:image" content="https://nimara.ca/og.jpg" />
+        <meta name="twitter:title" content="About Nimara — Building Infrastructure for Canada's Nonprofit Sector" />
+        <meta name="twitter:description" content="Nimara connects Canadian nonprofits with vetted consultants. People first, simple rules, clean files. Building the infrastructure nonprofits deserve." />
+        <meta name="twitter:image" content="https://nimara.ca/og-image.jpg" />
       </Helmet>
       <Header activeRoute="/company" />
       

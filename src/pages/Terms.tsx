@@ -6,22 +6,22 @@ const Terms = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Helmet>
-        <title>Terms of Service | Nimara</title>
-        <meta name="description" content="How our quotes, projects, PM oversight, data residency, and limits of liability work." />
+        <title>Terms of Service — Projects, Pricing & PM Oversight | Nimara</title>
+        <meta name="description" content="How quotes, projects, PM oversight, data residency, limits of liability, and cancellations work. Net-15 payment terms. Canada-based project storage." />
         
         <link rel="canonical" href="https://nimara.ca/terms" />
         
         <meta property="og:site_name" content="Nimara" />
-        <meta property="og:title" content="Terms of Service | Nimara" />
-        <meta property="og:description" content="How our quotes, projects, PM oversight, data residency, and limits of liability work." />
+        <meta property="og:title" content="Terms of Service — Projects, Pricing & PM Oversight" />
+        <meta property="og:description" content="How quotes, projects, PM oversight, data residency, limits of liability, and cancellations work. Net-15 payment terms. Canada-based project storage." />
         <meta property="og:url" content="https://nimara.ca/terms" />
-        <meta property="og:image" content="https://nimara.ca/og.jpg" />
+        <meta property="og:image" content="https://nimara.ca/og-image.jpg" />
         <meta property="og:type" content="website" />
         
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Terms of Service | Nimara" />
-        <meta name="twitter:description" content="How our quotes, projects, PM oversight, data residency, and limits of liability work." />
-        <meta name="twitter:image" content="https://nimara.ca/og.jpg" />
+        <meta name="twitter:title" content="Terms of Service — Projects, Pricing & PM Oversight" />
+        <meta name="twitter:description" content="How quotes, projects, PM oversight, data residency, limits of liability, and cancellations work. Net-15 payment terms. Canada-based project storage." />
+        <meta name="twitter:image" content="https://nimara.ca/og-image.jpg" />
       </Helmet>
       
       <a 
