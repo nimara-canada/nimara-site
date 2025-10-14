@@ -75,7 +75,7 @@ const SampleBrief = () => {
             {/* Outcome */}
             <Card className="p-6">
               <h3 className="font-semibold text-foreground mb-2">Outcome (one sentence)</h3>
-              <p className="text-xs text-muted-foreground mb-2">What outcome do you want?</p>
+              <p className="text-xs text-muted-foreground mb-2">What result do you want?</p>
               <p className="text-sm text-foreground">
                 Team signs in and uses the CRM for basic tracking within the first month.
               </p>

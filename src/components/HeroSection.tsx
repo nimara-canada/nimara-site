@@ -400,7 +400,7 @@ export const HeroSection = ({
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="q_outcome">What outcome do you want?</Label>
+                <Label htmlFor="q_outcome">What result do you want?</Label>
                 <p className="text-xs text-muted-foreground">
                   One sentence, up to 140 characters. Plain English is perfect.
                 </p>
