@@ -16,7 +16,5 @@ const commitments = [{
   description: "We publish starter policies, checklists, and short guides—free to use, not legal advice."
 }];
 export const OurCommitments = () => {
-  return <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
-      
-    </section>;
+  return;
 };
