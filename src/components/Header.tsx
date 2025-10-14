@@ -19,9 +19,12 @@ interface HeaderProps {
 export const Header = ({ activeRoute = "/" }: HeaderProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const scrollToForm = () => {
-    const form = document.getElementById("form_3quotes");
-    form?.scrollIntoView({ behavior: "smooth" });
+  const scrollToGetInTouch = () => {
+    const section = document.querySelector('section');
+    const getInTouchSection = Array.from(document.querySelectorAll('section')).find(
+      section => section.textContent?.includes('Get in touch!')
+    );
+    getInTouchSection?.scrollIntoView({ behavior: "smooth" });
     setIsOpen(false);
   };
 
@@ -70,8 +73,8 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
 
             {/* Desktop Utilities */}
             <div className="hidden lg:flex items-center space-x-3">
-              <Button onClick={scrollToForm} size="default" className="min-h-[44px]">
-                Get 3 free quotes
+              <Button onClick={scrollToGetInTouch} size="default" className="min-h-[44px]">
+                Schedule A Call
               </Button>
             </div>
 
@@ -105,8 +108,8 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                     </a>
                   ))}
                   <div className="pt-4 space-y-3 border-t border-border">
-                    <Button onClick={scrollToForm} className="w-full min-h-[44px]">
-                      Get 3 free quotes
+                    <Button onClick={scrollToGetInTouch} className="w-full min-h-[44px]">
+                      Schedule A Call
                     </Button>
                   </div>
                 </nav>
@@ -118,8 +121,8 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
 
       {/* Mobile Sticky Bottom CTA */}
       <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden p-4 bg-background/95 backdrop-blur border-t border-border">
-        <Button onClick={scrollToForm} className="w-full min-h-[44px]">
-          Get 3 free quotes
+        <Button onClick={scrollToGetInTouch} className="w-full min-h-[44px]">
+          Schedule A Call
         </Button>
       </div>
     </>
