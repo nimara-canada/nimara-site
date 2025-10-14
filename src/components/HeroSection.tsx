@@ -292,7 +292,7 @@ export const HeroSection = ({
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left: Hero Content */}
           <div className="space-y-6">
-            <p className="text-sm text-muted-foreground font-medium">Audit-ready by design</p>
+            <p className="text-sm text-muted-foreground font-medium">For nonprofits & charities • Premium consulting</p>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">Get 3 Free Quotes in 72 Hours</h1>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl">Vetted Canadian experts. Clear scope. PM oversight.</p>
             <div className="pt-2 pb-4">
