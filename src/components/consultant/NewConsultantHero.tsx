@@ -35,7 +35,7 @@ export const NewConsultantHero = () => {
     <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
       <div className="max-w-4xl mx-auto text-center">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-          Do meaningful work.<br />Get real projects.<br />No fluff.
+          Do meaningful work.<br />Get real projects.
         </h1>
         
         <p className="text-lg md:text-xl text-foreground mb-6 max-w-3xl mx-auto">
