@@ -15,7 +15,7 @@ const packages = [{
 }, {
   name: "Standard",
   whoItsFor: "Growing orgs",
-  whatsIncluded: "Budgeting + system upgrades + grant tracker"
+  whatsIncluded: "Operations run without hand-holding"
 }, {
   name: "Data-Driven",
   whoItsFor: "Scaling orgs",
