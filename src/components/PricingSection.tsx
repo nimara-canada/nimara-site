@@ -27,7 +27,7 @@ export const PricingSection = ({
 
             <ul className="space-y-3 mb-8">
               <li className="text-lg">
-                <strong>Project minimum:</strong> $1,250
+                <strong>Nimara project minimum cap:</strong> $1,250
               </li>
               <li className="text-lg">
                 <strong>Platform & PM fee:</strong> 22–28%
