@@ -1,3 +1,3 @@
 export const WhereWeAre = () => {
-  return;
+  return null;
 };

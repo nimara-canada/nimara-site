@@ -16,5 +16,5 @@ const commitments = [{
   description: "We publish starter policies, checklists, and short guides—free to use, not legal advice."
 }];
 export const OurCommitments = () => {
-  return;
+  return null;
 };

@@ -1,3 +1,3 @@
 export const TLDR = () => {
-  return;
+  return null;
 };

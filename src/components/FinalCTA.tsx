@@ -10,7 +10,7 @@ export const FinalCTA = () => {
     lastName: "",
     email: "",
     phone: "",
-    trainWho: ""
+    support: ""
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -26,7 +26,7 @@ export const FinalCTA = () => {
       lastName: formData.lastName,
       email: formData.email,
       phone: formData.phone,
-      trainWho: formData.trainWho,
+      support: formData.support,
       utm_source: new URLSearchParams(window.location.search).get("utm_source"),
       utm_medium: new URLSearchParams(window.location.search).get("utm_medium"),
       utm_campaign: new URLSearchParams(window.location.search).get("utm_campaign"),
@@ -41,7 +41,7 @@ export const FinalCTA = () => {
       lastName: "",
       email: "",
       phone: "",
-      trainWho: ""
+      support: ""
     });
   };
   return (
@@ -113,16 +113,20 @@ export const FinalCTA = () => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="trainWho" className="sr-only">Who do you want to train?</Label>
-            <Select value={formData.trainWho} onValueChange={(value) => setFormData({ ...formData, trainWho: value })}>
+            <Label htmlFor="support" className="sr-only">What support are you looking for?</Label>
+            <Select value={formData.support} onValueChange={(value) => setFormData({ ...formData, support: value })}>
               <SelectTrigger className="h-14 text-base">
-                <SelectValue placeholder="Who do you want to train?" />
+                <SelectValue placeholder="What support are you looking for?" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="team">My team</SelectItem>
-                <SelectItem value="myself">Myself</SelectItem>
-                <SelectItem value="organization">My organization</SelectItem>
-                <SelectItem value="other">Other</SelectItem>
+                <SelectItem value="Governance">Governance</SelectItem>
+                <SelectItem value="Finance & Audit">Finance & Audit</SelectItem>
+                <SelectItem value="Program Design">Program Design</SelectItem>
+                <SelectItem value="Digital & Data">Digital & Data</SelectItem>
+                <SelectItem value="Fundraising">Fundraising</SelectItem>
+                <SelectItem value="Research">Research</SelectItem>
+                <SelectItem value="Legal & Compliance">Legal & Compliance</SelectItem>
+                <SelectItem value="Other">Other</SelectItem>
               </SelectContent>
             </Select>
           </div>
