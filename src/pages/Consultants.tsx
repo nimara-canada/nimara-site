@@ -6,7 +6,7 @@ import { NewWhyJoin } from "@/components/consultant/NewWhyJoin";
 import { NewWorkTypes } from "@/components/consultant/NewWorkTypes";
 import { NewWhoWeWant } from "@/components/consultant/NewWhoWeWant";
 import { NewHowItWorks } from "@/components/consultant/NewHowItWorks";
-import { NewTestimonials } from "@/components/consultant/NewTestimonials";
+
 import { NewPrimaryCTA } from "@/components/consultant/NewPrimaryCTA";
 import { NewComingSoon } from "@/components/consultant/NewComingSoon";
 import { NewTrustLine } from "@/components/consultant/NewTrustLine";
@@ -40,7 +40,6 @@ const Consultants = () => {
         <NewWorkTypes />
         <NewWhoWeWant />
         <NewHowItWorks />
-        <NewTestimonials />
         <NewPrimaryCTA />
         <NewComingSoon />
         <NewTrustLine />
