@@ -11,7 +11,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 const packages = [{
   name: "Launch",
   whoItsFor: "New or small orgs",
-  whatsIncluded: "Budget, receipt system, basic ops setup"
+  whatsIncluded: "Grant-ready basics are in place"
 }, {
   name: "Standard",
   whoItsFor: "Growing orgs",
