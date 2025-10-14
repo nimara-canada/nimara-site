@@ -1,125 +1,152 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
-const areaOptions = ["Governance", "Finance & Audit", "Program Design", "Digital & Data", "Fundraising", "Research", "Legal & Compliance"];
 export const FinalCTA = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
     email: "",
-    organization: "",
-    areas: [] as string[],
-    notes: ""
+    phone: "",
+    trainWho: ""
   });
-  const scrollToForm = () => {
-    const form = document.getElementById("form_3quotes");
-    form?.scrollIntoView({
-      behavior: "smooth"
-    });
-  };
-  const handleAreaToggle = (area: string) => {
-    setFormData(prev => ({
-      ...prev,
-      areas: prev.areas.includes(area) ? prev.areas.filter(a => a !== area) : [...prev.areas, area]
-    }));
-  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.email || !formData.organization) {
+    if (!formData.firstName || !formData.lastName || !formData.email) {
       toast.error("Please fill in all required fields");
       return;
     }
+
     const payload = {
-      flow: "packages_waitlist",
+      flow: "get_in_touch",
+      firstName: formData.firstName,
+      lastName: formData.lastName,
       email: formData.email,
-      org: formData.organization,
-      areas: formData.areas,
-      notes: formData.notes,
+      phone: formData.phone,
+      trainWho: formData.trainWho,
       utm_source: new URLSearchParams(window.location.search).get("utm_source"),
       utm_medium: new URLSearchParams(window.location.search).get("utm_medium"),
       utm_campaign: new URLSearchParams(window.location.search).get("utm_campaign"),
       referrer: document.referrer,
       timestamp: new Date().toISOString()
     };
-    console.log("Packages waitlist submission:", payload);
-    toast.success("Thanks — we'll notify you when packages launch on Nov 1, 2025.");
-    setIsOpen(false);
+
+    console.log("Get in touch submission:", payload);
+    toast.success("Thanks! We'll be in touch shortly.");
     setFormData({
+      firstName: "",
+      lastName: "",
       email: "",
-      organization: "",
-      areas: [],
-      notes: ""
+      phone: "",
+      trainWho: ""
     });
   };
-  return <>
-      <section className="py-16 lg:py-24 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">Ready to get quotes?</h2>
-          
-          <Button onClick={scrollToForm} size="lg" variant="outline" className="bg-background text-foreground hover:bg-background/90">
-            Get 3 free quotes
-          </Button>
+  return (
+    <section className="py-16 lg:py-24 bg-background">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+        <div className="text-center space-y-6 mb-12">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground">
+            Get in touch!
+          </h2>
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
+            Whether you're leading a team or growing your own career, we're here to help you take the next step. Share a few details, and we'll be in touch shortly.
+          </p>
         </div>
-      </section>
 
-      <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle>Join the packages waitlist</DialogTitle>
-          </DialogHeader>
-          <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <Label htmlFor="final_email">
-                Email <span className="text-destructive">*</span>
-              </Label>
-              <Input type="email" id="final_email" required value={formData.email} onChange={e => setFormData({
-              ...formData,
-              email: e.target.value
-            })} className="rounded-xl" />
+              <Label htmlFor="firstName" className="sr-only">First Name</Label>
+              <Input
+                type="text"
+                id="firstName"
+                placeholder="First Name"
+                required
+                value={formData.firstName}
+                onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                className="h-14 text-base"
+              />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="final_org">
-                Organization <span className="text-destructive">*</span>
-              </Label>
-              <Input type="text" id="final_org" required value={formData.organization} onChange={e => setFormData({
-              ...formData,
-              organization: e.target.value
-            })} className="rounded-xl" />
+              <Label htmlFor="lastName" className="sr-only">Last Name</Label>
+              <Input
+                type="text"
+                id="lastName"
+                placeholder="Last Name"
+                required
+                value={formData.lastName}
+                onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                className="h-14 text-base"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-2">
+              <Label htmlFor="email" className="sr-only">Email</Label>
+              <Input
+                type="email"
+                id="email"
+                placeholder="Email"
+                required
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                className="h-14 text-base"
+              />
             </div>
 
             <div className="space-y-2">
-              <Label>Areas of interest</Label>
-              <div className="space-y-2 max-h-48 overflow-y-auto">
-                {areaOptions.map(area => <div key={area} className="flex items-center space-x-2">
-                    <Checkbox id={`final_area_${area}`} checked={formData.areas.includes(area)} onCheckedChange={() => handleAreaToggle(area)} />
-                    <label htmlFor={`final_area_${area}`} className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer">
-                      {area}
-                    </label>
-                  </div>)}
-              </div>
+              <Label htmlFor="phone" className="sr-only">Phone Number</Label>
+              <Input
+                type="tel"
+                id="phone"
+                placeholder="Phone Number*"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                className="h-14 text-base"
+              />
             </div>
+          </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="final_notes">Notes (≤140 characters)</Label>
-              <Textarea id="final_notes" maxLength={140} value={formData.notes} onChange={e => setFormData({
-              ...formData,
-              notes: e.target.value
-            })} className="rounded-xl resize-none" rows={3} />
-              <p className="text-xs text-muted-foreground">
-                {formData.notes.length}/140 characters
-              </p>
-            </div>
+          <div className="space-y-2">
+            <Label htmlFor="trainWho" className="sr-only">Who do you want to train?</Label>
+            <Select value={formData.trainWho} onValueChange={(value) => setFormData({ ...formData, trainWho: value })}>
+              <SelectTrigger className="h-14 text-base">
+                <SelectValue placeholder="Who do you want to train?" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="team">My team</SelectItem>
+                <SelectItem value="myself">Myself</SelectItem>
+                <SelectItem value="organization">My organization</SelectItem>
+                <SelectItem value="other">Other</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
 
-            <Button type="submit" className="w-full">
-              Join waitlist
-            </Button>
-          </form>
-        </DialogContent>
-      </Dialog>
-    </>;
+          <Button 
+            type="submit" 
+            size="lg"
+            className="w-full h-14 text-base uppercase tracking-wide font-semibold"
+          >
+            SCHEDULE A CALL
+          </Button>
+
+          <p className="text-sm text-muted-foreground text-center">
+            By sharing your email, you agree to our{" "}
+            <a href="/privacy" className="text-foreground underline hover:no-underline">
+              Privacy Policy
+            </a>
+            {" "}and{" "}
+            <a href="/terms" className="text-foreground underline hover:no-underline">
+              Terms of Service
+            </a>
+          </p>
+        </form>
+      </div>
+    </section>
+  );
 };
