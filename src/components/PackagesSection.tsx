@@ -114,7 +114,7 @@ export const PackagesSection = ({
                 <TableRow>
                   <TableHead className="font-bold text-base">Package</TableHead>
                   <TableHead className="font-bold text-base">Who it's for</TableHead>
-                  <TableHead className="font-bold text-base">What's included</TableHead>
+                  <TableHead className="font-bold text-base">Core outcome</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
