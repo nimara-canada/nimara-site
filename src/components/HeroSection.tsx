@@ -293,7 +293,7 @@ export const HeroSection = ({
           {/* Left: Hero Content */}
           <div className="space-y-6">
             <p className="text-sm text-muted-foreground font-medium">For nonprofits & charities • Premium consulting</p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">Get 3 Free Quotes in 72 Hours</h1>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">Premium nonprofit consulting — Get 3 quotes in 72 hours</h1>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl">Vetted Canadian experts. Clear scope. PM oversight.</p>
             <div className="pt-2 pb-4">
               <a href="#pricing" className="text-sm text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded" onClick={e => {
