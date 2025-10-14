@@ -19,7 +19,7 @@ const packages = [{
 }, {
   name: "Data-Driven",
   whoItsFor: "Scaling orgs",
-  whatsIncluded: "Full data tools + funding pipeline design"
+  whatsIncluded: "Lead with data; close out clean"
 }];
 const areaOptions = ["Governance", "Finance & Audit", "Program Design", "Digital & Data", "Fundraising", "Research", "Legal & Compliance", "Not sure / Other"];
 interface PackagesSectionProps {
