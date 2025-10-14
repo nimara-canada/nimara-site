@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+
 import { useTranslation } from "react-i18next";
 import nimaraLogo from "@/assets/nimara-logo.png";
 
@@ -78,7 +78,6 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
               >
                 <a href="/signin">{t('nav.signin')}</a>
               </Button>
-              <LanguageSwitcher />
               <Button onClick={scrollToForm} size="default" className="min-h-[44px]">
                 Get 3 free quotes
               </Button>
@@ -121,9 +120,6 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                     >
                       <a href="/signin">{t('nav.signin')}</a>
                     </Button>
-                    <div className="flex justify-center py-2">
-                      <LanguageSwitcher />
-                    </div>
                     <Button onClick={scrollToForm} className="w-full min-h-[44px]">
                       Get 3 free quotes
                     </Button>
