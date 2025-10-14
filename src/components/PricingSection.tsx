@@ -49,9 +49,7 @@ export const PricingSection = ({
               <li className="text-lg">
                 Light project management (oversight, check-ins)
               </li>
-              <li className="text-lg">
-                Secure payment + records
-              </li>
+              <li className="text-lg">Secure payment + records keeping</li>
               <li className="text-lg">
                 Final delivery confirmation
               </li>
