@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
-import { useTranslation } from "react-i18next";
+
 import nimaraLogo from "@/assets/nimara-logo.png";
 
 const navigation = [
@@ -18,7 +18,6 @@ interface HeaderProps {
 
 export const Header = ({ activeRoute = "/" }: HeaderProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { t } = useTranslation();
 
   const scrollToForm = () => {
     const form = document.getElementById("form_3quotes");
@@ -71,13 +70,6 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
 
             {/* Desktop Utilities */}
             <div className="hidden lg:flex items-center space-x-3">
-              <Button 
-                variant="link" 
-                asChild 
-                className="min-h-[44px] px-4"
-              >
-                <a href="/signin">{t('nav.signin')}</a>
-              </Button>
               <Button onClick={scrollToForm} size="default" className="min-h-[44px]">
                 Get 3 free quotes
               </Button>
@@ -113,13 +105,6 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                     </a>
                   ))}
                   <div className="pt-4 space-y-3 border-t border-border">
-                    <Button 
-                      variant="ghost" 
-                      asChild 
-                      className="w-full min-h-[44px] justify-start"
-                    >
-                      <a href="/signin">{t('nav.signin')}</a>
-                    </Button>
                     <Button onClick={scrollToForm} className="w-full min-h-[44px]">
                       Get 3 free quotes
                     </Button>
