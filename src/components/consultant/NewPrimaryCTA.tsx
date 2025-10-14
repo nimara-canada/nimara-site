@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 
-const getTypeformUrl = (formId: string) => {
+const getTypeformUrl = () => {
   const params = new URLSearchParams({
     utm_source: new URLSearchParams(window.location.search).get('utm_source') || 'direct',
     utm_medium: new URLSearchParams(window.location.search).get('utm_medium') || 'web',
@@ -8,7 +8,7 @@ const getTypeformUrl = (formId: string) => {
     ref: document.referrer || '',
     page: 'consultants'
   });
-  return `https://nimara.typeform.com/${formId}?${params.toString()}`;
+  return `https://form.typeform.com/to/I6zHdy6K?${params.toString()}`;
 };
 
 const trackClick = (eventName: string) => {
@@ -23,7 +23,7 @@ const trackClick = (eventName: string) => {
 export const NewPrimaryCTA = () => {
   const handleCheckEligibility = () => {
     trackClick('consultant_check_eligibility_cta_click');
-    window.open(getTypeformUrl('consultant-eligibility'), '_blank');
+    window.open(getTypeformUrl(), '_blank');
   };
 
   return (
