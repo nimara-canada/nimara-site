@@ -7,9 +7,7 @@ export const TeamSection = () => {
         
         <div className="space-y-6">
           <div>
-            <h3 className="text-lg font-semibold text-foreground mb-2">
-              Founder / Technology & Infrastructure
-            </h3>
+            <h3 className="text-lg font-semibold text-foreground mb-2">Benard Serunyigo - Founder / Technology & Infrastructure</h3>
             <p className="text-muted-foreground">
               Builds the rails and keeps them fast, secure, and boring (the good kind).
             </p>
