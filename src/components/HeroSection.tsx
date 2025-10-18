@@ -304,22 +304,22 @@ export const HeroSection = ({
         Skip to form
       </a>
 
-      <div className="mx-auto max-w-[1240px] px-5 py-16 lg:py-28">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+      <div className="mx-auto max-w-[1240px] px-5 py-24 lg:py-28">
+        <div className="grid grid-cols-12 gap-x-12 items-center">
           
           {/* Left Column: Text & CTA */}
-          <div className="space-y-4">
+          <div className="col-span-12 lg:col-span-6 xl:col-span-7">
             {/* Eyebrow Pill */}
-            <div>
-              <span className="inline-block rounded-full bg-[#ACFCE3] text-[#202654] px-3 py-1 text-sm font-semibold">
+            <div className="mb-3">
+              <span className="inline-block rounded-full bg-[#ACFCE3] text-[#202654] px-3 py-1 text-xs font-semibold">
                 For nonprofits & charities • Premium consulting
               </span>
             </div>
 
-            {/* H1 - Compact Three-Line Lockup (Default) */}
+            {/* H1 - Compact Three-Line Lockup */}
             <h1 
               id="hero-title"
-              className="font-extrabold tracking-tight leading-[0.95] text-[clamp(40px,5.2vw,64px)] max-w-[19ch]"
+              className="font-extrabold tracking-tight leading-[0.95] text-[clamp(36px,4.6vw,60px)] max-w-[18ch]"
               style={{ textWrap: 'balance' }}
             >
               <span>Premium&nbsp;nonprofit&nbsp;consulting</span><br />
@@ -327,30 +327,13 @@ export const HeroSection = ({
               <span>in&nbsp;72&nbsp;hours</span>
             </h1>
 
-            {/* Alternative: Two-Line Version (commented out, ready to toggle)
-            <h1 
-              id="hero-title"
-              className="font-extrabold tracking-tight leading-[0.95] text-[clamp(40px,5.2vw,64px)] max-w-[28ch]"
-              style={{ textWrap: 'balance' }}
-            >
-              Premium nonprofit consulting — Get&nbsp;3&nbsp;quotes in 72&nbsp;hours
-            </h1>
-            */}
-
             {/* Subhead */}
-            <p 
-              className="max-w-prose"
-              style={{
-                fontSize: 'clamp(16px, 2.2vw, 20px)',
-                lineHeight: '1.45',
-                opacity: '0.9'
-              }}
-            >
+            <p className="mt-4 max-w-prose text-white/90 text-[clamp(16px,2.2vw,20px)] leading-[1.45]">
               We match you with senior Canadian experts. Clear scope. PM oversight. Audit-ready files.
             </p>
 
             {/* Primary CTA */}
-            <div className="pt-2">
+            <div className="mt-6">
               <button
                 onClick={scrollToForm}
                 className="inline-flex items-center justify-center rounded-xl bg-[#6945D8] text-white font-bold px-5 py-3 min-h-[44px] min-w-[44px] hover:brightness-95 focus:outline-2 focus:outline-[#6945D8] focus:outline-offset-2 active:brightness-90 transition-all"
@@ -360,7 +343,7 @@ export const HeroSection = ({
             </div>
 
             {/* Secondary Link */}
-            <div>
+            <div className="mt-2">
               <a 
                 href="#pricing" 
                 onClick={(e) => {
@@ -368,8 +351,7 @@ export const HeroSection = ({
                   const pricingSection = document.getElementById('pricing');
                   pricingSection?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="text-white/90 hover:text-white underline-offset-4 focus:outline-2 focus:outline-[#6945D8] focus:outline-offset-2 rounded inline-block transition-colors"
-                style={{ fontSize: '16px' }}
+                className="inline-block text-white/80 hover:text-white underline-offset-4 focus:outline-2 focus:outline-[#6945D8] focus:outline-offset-2 rounded transition-colors"
               >
                 How fees work →
               </a>
@@ -377,11 +359,12 @@ export const HeroSection = ({
           </div>
 
           {/* Right Column: Form Card */}
-          <div 
-            id="get-quotes"
-            className="rounded-2xl bg-white text-[#202654] border border-[#E9ECF4] p-6 lg:p-8 mt-6 sm:mt-8 lg:mt-0"
-            style={{ boxShadow: '0 8px 24px rgba(32, 38, 84, 0.08)' }}
-          >
+          <div className="col-span-12 lg:col-span-6 xl:col-span-5 xl:pl-8 mt-8 lg:mt-0">
+            <div 
+              id="get-quotes"
+              className="rounded-2xl bg-white text-[#202654] border border-[#E9ECF4] p-6 lg:p-7 max-w-[560px] w-full ml-auto"
+              style={{ boxShadow: '0 8px 24px rgba(32, 38, 84, 0.08)' }}
+            >
             <form onSubmit={handleSubmit} className="space-y-5">
               
               {/* Email Field */}
@@ -666,14 +649,9 @@ export const HeroSection = ({
                 </a>.
               </p>
             </form>
-
-            {/* Trust Strip (under form, centered) */}
-            <p className="mt-3 text-center text-sm text-[#96A0B5]">
-              Data in Canada • Records kept 7 years • Vetted senior consultants • PM oversight
-            </p>
           </div>
-
         </div>
+      </div>
       </div>
 
       {/* "One More Thing" Panel */}
@@ -850,6 +828,19 @@ export const HeroSection = ({
           </div>
         </div>
       )}
+
+      {/* Trust micro-strip (centered under form) */}
+      <div className="mx-auto max-w-[1240px] px-5">
+        <div className="grid grid-cols-12 gap-x-12">
+          <div className="col-span-12 lg:col-span-6 xl:col-span-5 lg:col-start-7 xl:col-start-8 xl:pl-8">
+            <div className="max-w-[560px] w-full ml-auto">
+              <p className="mt-3 text-center text-sm text-[#96A0B5]">
+                Data in Canada • Records kept 7 years • Vetted senior consultants • PM oversight
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* 
         VARIANT B (Light Alternative - Commented)
