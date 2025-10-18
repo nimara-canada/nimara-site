@@ -17,6 +17,14 @@ export default function NextSteps() {
   const [showOptionalModal, setShowOptionalModal] = useState(false);
   const optionalButtonRef = useRef<HTMLButtonElement>(null);
 
+  // Set initial focus to the optional card button on page load
+  useState(() => {
+    const timer = setTimeout(() => {
+      optionalButtonRef.current?.focus();
+    }, 150);
+    return () => clearTimeout(timer);
+  });
+
   const handleSaveOptional = async (data: OptionalData) => {
     const payload = {
       flow: "3quotes_more",
@@ -65,6 +73,7 @@ export default function NextSteps() {
   const handleOptionalOpen = () => {
     if (typeof window !== "undefined" && (window as any).gtag) {
       (window as any).gtag("event", "next_steps_optional_opened");
+      (window as any).gtag("event", "next_steps_improve_match_clicked");
     }
     setShowOptionalModal(true);
   };
@@ -76,9 +85,10 @@ export default function NextSteps() {
     setShowOptionalModal(false);
   };
 
-  // Track page view
+  // Track page view and improve match card viewed
   if (typeof window !== "undefined" && (window as any).gtag) {
     (window as any).gtag("event", "next_steps_viewed");
+    (window as any).gtag("event", "next_steps_improve_match_viewed");
   }
 
   return (
@@ -94,28 +104,48 @@ export default function NextSteps() {
       <Header activeRoute="/next-steps" />
 
       <main id="main" className="min-h-screen bg-background">
-        {/* Header Section */}
-        <section className="bg-nim-navy text-white py-12 sm:py-16">
+        {/* Success Line */}
+        <section className="bg-background pt-12 sm:pt-16 pb-6">
           <div className="mx-auto max-w-[1240px] px-5">
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-nim-mint flex items-center justify-center">
-                <Check className="w-6 h-6 text-nim-navy" strokeWidth={3} />
+            <div className="flex items-center gap-3">
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-nim-mint flex items-center justify-center">
+                <Check className="w-5 h-5 text-nim-navy" strokeWidth={3} />
               </div>
-              <div>
-                <h1 className="text-3xl sm:text-4xl font-bold mb-3">
-                  Thanks—your request is in.
-                </h1>
-                <p className="text-lg opacity-90">
-                  Expect a quick scoping call within 48 hours so we can match you with the right consultant.
-                </p>
-              </div>
+              <p className="text-lg font-semibold text-foreground">
+                Thanks—your request is in.
+              </p>
             </div>
           </div>
         </section>
 
         {/* Main Content */}
-        <div className="mx-auto max-w-[1240px] px-5 py-12 sm:py-16 space-y-12 sm:space-y-14">
+        <div className="mx-auto max-w-[1240px] px-5 pb-12 sm:pb-16 space-y-12 sm:space-y-14">
           
+          {/* Optional Info Card - Immediate Next Step */}
+          <section className="rounded-2xl border-2 border-nim-mint bg-nim-mint/5 p-6 sm:p-8">
+            <div className="flex items-center gap-2 mb-3">
+              <Badge variant="secondary" className="bg-nim-mint text-nim-navy font-semibold">
+                Optional
+              </Badge>
+            </div>
+            <h2 className="text-xl font-bold text-nim-navy mb-2">
+              Improve your match (30s)
+            </h2>
+            <p className="text-muted-foreground mb-6">
+              Share a few details—totally optional.
+            </p>
+            <button
+              ref={optionalButtonRef}
+              onClick={handleOptionalOpen}
+              className="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 font-bold text-primary-foreground hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 min-h-[44px]"
+            >
+              Add details (30s)
+            </button>
+            <p className="text-xs text-muted-foreground mt-4">
+              Skipping won't affect your request.
+            </p>
+          </section>
+
           {/* What Happens Next */}
           <section>
             <h2 className="text-2xl font-bold text-foreground mb-6">
@@ -191,31 +221,6 @@ export default function NextSteps() {
                 Prefer email? We'll reach out within 48 hours
               </a>
             </div>
-          </section>
-
-          {/* Optional Info Card */}
-          <section className="rounded-2xl border border-accent bg-accent/10 p-6 sm:p-8">
-            <div className="flex items-center gap-2 mb-2">
-              <Badge variant="secondary" className="bg-accent text-accent-foreground">
-                Optional
-              </Badge>
-            </div>
-            <h2 className="text-xl font-bold text-foreground mb-2">
-              Improve your match (30s)
-            </h2>
-            <p className="text-muted-foreground mb-4">
-              Share a few details—totally optional.
-            </p>
-            <button
-              ref={optionalButtonRef}
-              onClick={handleOptionalOpen}
-              className="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 font-bold text-primary-foreground hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 min-h-[44px]"
-            >
-              Add details (30s)
-            </button>
-            <p className="text-xs text-muted-foreground mt-3">
-              Skipping won't affect your request.
-            </p>
           </section>
 
           {/* Trust Strip */}
