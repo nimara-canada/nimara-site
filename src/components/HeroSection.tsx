@@ -316,24 +316,26 @@ export const HeroSection = ({
               </span>
             </div>
 
-            {/* H1 - Stacked Headline */}
+            {/* H1 - Compact Three-Line Lockup (Default) */}
             <h1 
               id="hero-title"
-              className="font-extrabold tracking-tight"
-              style={{
-                fontSize: 'clamp(40px, 6vw, 72px)',
-                lineHeight: '0.95'
-              }}
+              className="font-extrabold tracking-tight leading-[0.95] text-[clamp(40px,5.2vw,64px)] max-w-[19ch]"
+              style={{ textWrap: 'balance' }}
             >
-              <span className="hidden lg:block">Premium nonprofit consulting —</span>
-              <span className="hidden lg:block">Get 3 quotes in</span>
-              <span className="hidden lg:block">72&nbsp;hours</span>
-
-              {/* Mobile fallback: natural wrapping */}
-              <span className="lg:hidden">
-                Premium nonprofit consulting — Get 3 quotes in 72&nbsp;hours
-              </span>
+              <span>Premium&nbsp;nonprofit&nbsp;consulting</span><br />
+              <span>Get&nbsp;3&nbsp;quotes</span><br />
+              <span>in&nbsp;72&nbsp;hours</span>
             </h1>
+
+            {/* Alternative: Two-Line Version (commented out, ready to toggle)
+            <h1 
+              id="hero-title"
+              className="font-extrabold tracking-tight leading-[0.95] text-[clamp(40px,5.2vw,64px)] max-w-[28ch]"
+              style={{ textWrap: 'balance' }}
+            >
+              Premium nonprofit consulting — Get&nbsp;3&nbsp;quotes in 72&nbsp;hours
+            </h1>
+            */}
 
             {/* Subhead */}
             <p 
