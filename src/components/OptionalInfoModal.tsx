@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
 interface OptionalInfoModalProps {
@@ -11,8 +10,7 @@ interface OptionalInfoModalProps {
 }
 
 export interface OptionalData {
-  om_name: string;
-  om_role: string;
+  om_note: string;
   om_start: string;
   om_budget: string;
 }
@@ -26,8 +24,7 @@ export const OptionalInfoModal = ({
   const [isSaving, setIsSaving] = useState(false);
   const [saveError, setSaveError] = useState("");
   const [formData, setFormData] = useState<OptionalData>({
-    om_name: "",
-    om_role: "",
+    om_note: "",
     om_start: "",
     om_budget: "",
   });
@@ -40,7 +37,7 @@ export const OptionalInfoModal = ({
   // Track analytics on open
   useEffect(() => {
     if (isOpen && typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'quotes_optional_modal_shown');
+      (window as any).gtag('event', 'optional_modal_shown');
     }
   }, [isOpen]);
 
@@ -117,17 +114,8 @@ export const OptionalInfoModal = ({
   const handleClose = () => {
     // Track skip event
     if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'quotes_optional_modal_skip');
+      (window as any).gtag('event', 'optional_modal_skip');
     }
-    onClose();
-  };
-
-  const handleProceed = () => {
-    // Track proceed event
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'quotes_optional_modal_proceed');
-    }
-    // Close modal and let parent handle navigation if needed
     onClose();
   };
 
@@ -140,8 +128,7 @@ export const OptionalInfoModal = ({
       
       // Track save event
       if (typeof window !== 'undefined' && (window as any).gtag) {
-        (window as any).gtag('event', 'quotes_optional_modal_save', {
-          role: formData.om_role,
+        (window as any).gtag('event', 'optional_modal_proceed', {
           start: formData.om_start,
           budget: formData.om_budget,
         });
@@ -213,98 +200,59 @@ export const OptionalInfoModal = ({
         {/* Form fields */}
         <div className="mt-6 space-y-5">
           <div className="space-y-2">
-            <label htmlFor="om_name" className="block text-sm font-medium text-[#202654]">
-              Your name
+            <label htmlFor="om_note" className="block text-sm font-medium text-[#202654]">
+              Anything else we should know? <span className="text-[#96A0B5] font-normal">(optional)</span>
             </label>
             <input
               type="text"
-              id="om_name"
-              value={formData.om_name}
-              onChange={(e) => setFormData({ ...formData, om_name: e.target.value })}
+              id="om_note"
+              value={formData.om_note}
+              onChange={(e) => setFormData({ ...formData, om_note: e.target.value })}
               className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2"
+              placeholder="e.g., tight deadline, specific expertise needed"
             />
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="om_role" className="block text-sm font-medium text-[#202654]">
-              Your role
-            </label>
-            <input
-              type="text"
-              id="om_role"
-              value={formData.om_role}
-              onChange={(e) => setFormData({ ...formData, om_role: e.target.value })}
-              className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2"
-              placeholder="e.g., Executive Director"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <label className="block text-sm font-medium text-[#202654]">
+            <label htmlFor="om_start" className="block text-sm font-medium text-[#202654]">
               When do you want to start?
             </label>
-            <RadioGroup
+            <select
+              id="om_start"
               value={formData.om_start}
-              onValueChange={(value) => setFormData({ ...formData, om_start: value })}
-              className="space-y-2"
+              onChange={(e) => setFormData({ ...formData, om_start: e.target.value })}
+              className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2"
             >
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="asap" id="start_asap" className="border-[#E9ECF4] text-[#6945D8]" />
-                <label htmlFor="start_asap" className="text-sm text-[#202654] cursor-pointer">
-                  ASAP (within 2 weeks)
-                </label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="1month" id="start_1month" className="border-[#E9ECF4] text-[#6945D8]" />
-                <label htmlFor="start_1month" className="text-sm text-[#202654] cursor-pointer">
-                  Within a month
-                </label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="flexible" id="start_flexible" className="border-[#E9ECF4] text-[#6945D8]" />
-                <label htmlFor="start_flexible" className="text-sm text-[#202654] cursor-pointer">
-                  Flexible / just exploring
-                </label>
-              </div>
-            </RadioGroup>
+              <option value="">Select timeline</option>
+              <option value="asap">ASAP (within 2 weeks)</option>
+              <option value="1month">Within a month</option>
+              <option value="flexible">Flexible / just exploring</option>
+            </select>
           </div>
 
           <div className="space-y-2">
-            <label className="block text-sm font-medium text-[#202654]">
+            <label htmlFor="om_budget" className="block text-sm font-medium text-[#202654]">
               Budget range (CAD)
             </label>
-            <RadioGroup
+            <select
+              id="om_budget"
               value={formData.om_budget}
-              onValueChange={(value) => setFormData({ ...formData, om_budget: value })}
-              className="space-y-2"
+              onChange={(e) => setFormData({ ...formData, om_budget: e.target.value })}
+              className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2"
             >
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="under5k" id="budget_under5k" className="border-[#E9ECF4] text-[#6945D8]" />
-                <label htmlFor="budget_under5k" className="text-sm text-[#202654] cursor-pointer">
-                  Under $5,000
-                </label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="5k-15k" id="budget_5k15k" className="border-[#E9ECF4] text-[#6945D8]" />
-                <label htmlFor="budget_5k15k" className="text-sm text-[#202654] cursor-pointer">
-                  $5,000 - $15,000
-                </label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="15k-30k" id="budget_15k30k" className="border-[#E9ECF4] text-[#6945D8]" />
-                <label htmlFor="budget_15k30k" className="text-sm text-[#202654] cursor-pointer">
-                  $15,000 - $30,000
-                </label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="30k+" id="budget_30kplus" className="border-[#E9ECF4] text-[#6945D8]" />
-                <label htmlFor="budget_30kplus" className="text-sm text-[#202654] cursor-pointer">
-                  $30,000+
-                </label>
-              </div>
-            </RadioGroup>
+              <option value="">Select budget</option>
+              <option value="under5k">Under $5,000</option>
+              <option value="5k-15k">$5,000 - $15,000</option>
+              <option value="15k-30k">$15,000 - $30,000</option>
+              <option value="30k+">$30,000+</option>
+            </select>
           </div>
         </div>
+
+        {/* Reassurance note */}
+        <p className="mt-4 text-xs text-[#96A0B5]">
+          We respect your time. Skipping won't affect your request.
+        </p>
 
         {/* Action buttons */}
         <div className="mt-6 flex flex-wrap gap-3">
@@ -314,13 +262,13 @@ export const OptionalInfoModal = ({
             onClick={handleSave}
             disabled={isSaving}
           >
-            {isSaving ? "Saving..." : "Save details"}
+            {isSaving ? "Submitting..." : "Submit & continue"}
           </button>
           <button
             className="inline-flex items-center justify-center rounded-xl border border-[#E9ECF4] bg-white px-5 py-3 font-semibold text-[#202654] hover:bg-[#F8F9FC] focus:outline-2 focus:outline-[#6945D8] focus:outline-offset-2"
             onClick={handleClose}
           >
-            Skip
+            Skip for now
           </button>
         </div>
       </div>
