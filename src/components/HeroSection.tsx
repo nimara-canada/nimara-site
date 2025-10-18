@@ -325,6 +325,14 @@ export const HeroSection = ({
                 lineHeight: '0.95'
               }}
             >
+              <span className="hidden lg:block">Premium nonprofit consulting —</span>
+              <span className="hidden lg:block">Get 3 quotes in</span>
+              <span className="hidden lg:block">72&nbsp;hours</span>
+
+              {/* Mobile fallback: natural wrapping */}
+              <span className="lg:hidden">
+                Premium nonprofit consulting — Get 3 quotes in 72&nbsp;hours
+              </span>
             </h1>
 
             {/* Subhead */}
