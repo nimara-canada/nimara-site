@@ -287,407 +287,547 @@ export const HeroSection = ({
     document.addEventListener('keydown', handleEscape);
     return () => document.removeEventListener('keydown', handleEscape);
   }, [isPanelExpanded]);
-  return <section className="py-16 lg:py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          {/* Left: Hero Content */}
-          <div className="space-y-6">
-            <p className="text-sm text-muted-foreground font-medium">For nonprofits & charities • Premium consulting</p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">Premium nonprofit consulting — Get 3 quotes in 72 hours</h1>
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl">Vetted Canadian experts. Clear scope. PM oversight.</p>
-            <div className="pt-2 pb-4">
-              <a href="#pricing" className="text-sm text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded" onClick={e => {
-              e.preventDefault();
-              const pricingSection = document.getElementById('pricing');
-              pricingSection?.scrollIntoView({
-                behavior: 'smooth'
-              });
-            }}>
+  return (
+    <section 
+      aria-labelledby="hero-title" 
+      className="bg-[#202654] text-white relative overflow-hidden"
+    >
+      {/* Skip link for accessibility */}
+      <a 
+        href="#get-quotes" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-white focus:text-[#202654] focus:px-3 focus:py-2 focus:rounded focus:z-50 focus:outline-none focus:ring-2 focus:ring-[#6945D8] focus:ring-offset-2"
+      >
+        Skip to form
+      </a>
+
+      <div className="mx-auto max-w-[1240px] px-5 py-16 lg:py-28">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+          
+          {/* Left Column: Text & CTA */}
+          <div className="space-y-6 lg:space-y-8">
+            {/* Eyebrow Pill */}
+            <div>
+              <span className="inline-block rounded-full bg-[#ACFCE3] text-[#202654] px-3 py-1 text-sm font-semibold">
+                For nonprofits & charities • Premium consulting
+              </span>
+            </div>
+
+            {/* H1 - Stacked Headline */}
+            <h1 
+              id="hero-title"
+              className="font-extrabold tracking-tight"
+              style={{
+                fontSize: 'clamp(40px, 6vw, 72px)',
+                lineHeight: '0.95'
+              }}
+            >
+              Premium nonprofit consulting —<br />
+              Get 3 quotes in 72 hours
+            </h1>
+
+            {/* Subhead */}
+            <p 
+              className="max-w-prose"
+              style={{
+                fontSize: 'clamp(16px, 2.2vw, 20px)',
+                lineHeight: '1.45',
+                opacity: '0.9'
+              }}
+            >
+              We match you with senior Canadian experts. Clear scope. PM oversight. Audit-ready files.
+            </p>
+
+            {/* Primary CTA */}
+            <div className="pt-2">
+              <button
+                onClick={scrollToForm}
+                className="rounded-xl bg-[#6945D8] text-white font-bold px-5 py-3 min-h-[44px] min-w-[44px] hover:brightness-95 focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 transition-all"
+              >
+                Get 3 free quotes
+              </button>
+            </div>
+
+            {/* Secondary Link */}
+            <div>
+              <a 
+                href="#pricing" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  const pricingSection = document.getElementById('pricing');
+                  pricingSection?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="text-white hover:underline focus:outline-none focus:ring-2 focus:ring-[#6945D8] focus:ring-offset-2 focus:ring-offset-[#202654] rounded inline-block"
+                style={{ fontSize: '16px' }}
+              >
                 How fees work →
               </a>
             </div>
-            <Button onClick={scrollToForm} size="lg">
-              Get 3 free quotes
-            </Button>
-            
-            {/* Micro-benefits */}
-            <div className="flex flex-wrap gap-4 text-sm text-muted-foreground pt-4">
-              <span>Plain brief</span>
-              <span>·</span>
-              <span>Comparable proposals</span>
-              <span>·</span>
-              <span>PM oversight</span>
+
+            {/* Trust Strip */}
+            <div className="pt-4">
+              <p className="text-[#96A0B5] text-sm">
+                Data in Canada • Records kept 7 years • Vetted senior consultants • PM oversight
+              </p>
             </div>
           </div>
 
-          {/* Right: Quote Form */}
-          <div className="bg-card border border-border rounded-2xl p-6 lg:p-8 shadow-md" id="form_3quotes">
+          {/* Right Column: Form Card */}
+          <div 
+            id="get-quotes"
+            className="rounded-2xl bg-white text-[#202654] border border-[#E9ECF4] p-6 lg:p-8"
+            style={{ boxShadow: '0 8px 24px rgba(32, 38, 84, 0.08)' }}
+          >
             <form onSubmit={handleSubmit} className="space-y-5">
+              
+              {/* Email Field */}
               <div className="space-y-2">
-                <Label htmlFor="q_email">
-                  Email <span className="text-destructive">*</span>
-                </Label>
-                <Input type="email" id="q_email" autoComplete="email" required value={formData.email} onChange={e => setFormData({
-                ...formData,
-                email: e.target.value
-              })} className="rounded-xl" />
+                <label 
+                  htmlFor="q_email"
+                  className="block text-sm font-medium text-[#202654]"
+                >
+                  Email <span className="text-red-600">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="q_email"
+                  autoComplete="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] placeholder:text-[#96A0B5] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2"
+                  placeholder="you@organization.org"
+                />
               </div>
 
+              {/* Organization Field */}
               <div className="space-y-2">
-                <Label htmlFor="q_org">
-                  Organization <span className="text-destructive">*</span>
-                </Label>
-                <Input type="text" id="q_org" required value={formData.organization} onChange={e => setFormData({
-                ...formData,
-                organization: e.target.value
-              })} className="rounded-xl" />
+                <label 
+                  htmlFor="q_org"
+                  className="block text-sm font-medium text-[#202654]"
+                >
+                  Organization <span className="text-red-600">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="q_org"
+                  required
+                  value={formData.organization}
+                  onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
+                  className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] placeholder:text-[#96A0B5] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2"
+                  placeholder="Your organization name"
+                />
               </div>
 
+              {/* Province/Territory Field */}
               <div className="space-y-2">
-                <Label htmlFor="q_region">Province/Territory</Label>
-                <Select value={formData.region} onValueChange={value => setFormData({
-                ...formData,
-                region: value
-              })}>
-                  <SelectTrigger id="q_region" className="rounded-xl">
-                    <SelectValue placeholder="Select a province" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {provinces.map(province => <SelectItem key={province.code} value={province.code}>
+                <label 
+                  htmlFor="q_region"
+                  className="block text-sm font-medium text-[#202654]"
+                >
+                  Province/Territory <span className="text-red-600">*</span>
+                </label>
+                <div className="relative">
+                  <select
+                    id="q_region"
+                    value={formData.region}
+                    onChange={(e) => setFormData({ ...formData, region: e.target.value })}
+                    className="w-full appearance-none rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 pr-10 text-[#202654] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 min-h-[44px]"
+                  >
+                    <option value="">Select a province</option>
+                    {provinces.map((province) => (
+                      <option key={province.code} value={province.code}>
                         {province.name}
-                      </SelectItem>)}
-                  </SelectContent>
-                </Select>
+                      </option>
+                    ))}
+                  </select>
+                  <svg 
+                    className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none w-4 h-4 text-[#96A0B5]" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
               </div>
 
+              {/* Category Field */}
               <div className="space-y-2">
-                <Label htmlFor="q_category">
-                  Category <span className="text-destructive">*</span>
-                </Label>
-                <Select value={formData.category} onValueChange={value => {
-                setFormData({
-                  ...formData,
-                  category: value
-                });
-                console.log("category_select_not_sure", {
-                  category: value,
-                  source: "hero_select"
-                });
-
-                // If "not_sure", focus outcome field
-                if (value === "not_sure" || value === "Not sure / Other") {
-                  setTimeout(() => {
-                    const outcomeField = document.getElementById("q_outcome");
-                    outcomeField?.focus();
-                  }, 100);
-                }
-              }} required>
-                  <SelectTrigger id="q_category" className="rounded-xl">
-                    <SelectValue placeholder="Select a category" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {categories.map(category => {
-                    const value = category === "Not sure / Other" ? "not_sure" : category;
-                    return <SelectItem key={category} value={value}>
+                <label 
+                  htmlFor="q_category"
+                  className="block text-sm font-medium text-[#202654]"
+                >
+                  Category <span className="text-red-600">*</span>
+                </label>
+                <div className="relative">
+                  <select
+                    id="q_category"
+                    value={formData.category}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setFormData({ ...formData, category: value });
+                      
+                      if (value === "not_sure" || value === "Not sure / Other") {
+                        setTimeout(() => {
+                          document.getElementById("q_outcome")?.focus();
+                        }, 100);
+                      }
+                    }}
+                    required
+                    className="w-full appearance-none rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 pr-10 text-[#202654] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 min-h-[44px]"
+                  >
+                    <option value="">Select a category</option>
+                    {categories.map((category) => {
+                      const value = category === "Not sure / Other" ? "not_sure" : category;
+                      return (
+                        <option key={category} value={value}>
                           {category}
-                        </SelectItem>;
-                  })}
-                  </SelectContent>
-                </Select>
-                {(formData.category === "not_sure" || formData.category === "Not sure / Other") && <p className="text-xs text-muted-foreground">
+                        </option>
+                      );
+                    })}
+                  </select>
+                  <svg 
+                    className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none w-4 h-4 text-[#96A0B5]" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+                {(formData.category === "not_sure" || formData.category === "Not sure / Other") && (
+                  <p className="text-xs text-[#96A0B5]">
                     If you choose "Not sure / Other," just tell us the outcome you want.
-                  </p>}
+                  </p>
+                )}
               </div>
 
+              {/* Outcome Field */}
               <div className="space-y-2">
-                <Label htmlFor="q_outcome">What result do you want?</Label>
-                <p className="text-xs text-muted-foreground">
+                <label 
+                  htmlFor="q_outcome"
+                  className="block text-sm font-medium text-[#202654]"
+                >
+                  What result do you want?
+                </label>
+                <p className="text-xs text-[#96A0B5]" id="q_outcome_helper">
                   One sentence, up to 140 characters. Plain English is perfect.
                 </p>
-                <Textarea id="q_outcome" maxLength={140} placeholder="Reconcile Q4 grant spend and be audit-ready by Apr 30." value={formData.outcome} onChange={e => setFormData({
-                ...formData,
-                outcome: e.target.value
-              })} className="rounded-xl resize-none" rows={3} aria-describedby="q_outcome_counter" />
+                <input
+                  type="text"
+                  id="q_outcome"
+                  maxLength={140}
+                  value={formData.outcome}
+                  onChange={(e) => setFormData({ ...formData, outcome: e.target.value })}
+                  className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] placeholder:text-[#96A0B5] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2"
+                  placeholder="Reconcile Q4 grant spend and be audit-ready by Apr 30."
+                  aria-describedby="q_outcome_helper q_outcome_counter"
+                />
                 <div className="flex items-center justify-between gap-2">
-                  <button type="button" onClick={() => setShowExamples(!showExamples)} className="text-xs text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded">
+                  <button
+                    type="button"
+                    onClick={() => setShowExamples(!showExamples)}
+                    className="text-xs text-[#6945D8] hover:underline focus:outline-none focus:ring-2 focus:ring-[#6945D8] focus:ring-offset-2 rounded px-1"
+                  >
                     {showExamples ? "Hide examples" : "Show examples →"}
                   </button>
-                  <p id="q_outcome_counter" className="text-xs text-muted-foreground" aria-live="polite">
+                  <p 
+                    id="q_outcome_counter" 
+                    className={`text-xs ${formData.outcome.length >= 120 ? 'text-[#202654] font-medium' : 'text-[#96A0B5]'}`}
+                    aria-live="polite"
+                  >
                     {formData.outcome.length} / 140
                   </p>
                 </div>
-                
-                {showExamples && <div className="border border-border rounded-xl p-4 space-y-3 bg-muted/30">
-                    <p className="text-xs font-semibold text-foreground">Example outcomes by category:</p>
+
+                {/* Examples Panel */}
+                {showExamples && (
+                  <div className="border border-[#E9ECF4] rounded-xl p-4 space-y-3 bg-[#E9ECF4]/30">
+                    <p className="text-xs font-semibold text-[#202654]">Example outcomes by category:</p>
                     
                     <div className="space-y-2">
                       <div>
-                        <p className="text-xs font-medium text-foreground mb-1">Finance & Audit</p>
-                        <button type="button" onClick={() => {
-                      setFormData({
-                        ...formData,
-                        outcome: "Reconcile Q4 grant spend and be audit-ready by Apr 30."
-                      });
-                      setShowExamples(false);
-                    }} className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left">
+                        <p className="text-xs font-medium text-[#202654] mb-1">Finance & Audit</p>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setFormData({ ...formData, outcome: "Reconcile Q4 grant spend and be audit-ready by Apr 30." });
+                            setShowExamples(false);
+                          }}
+                          className="text-xs text-[#96A0B5] hover:text-[#202654] transition-colors text-left"
+                        >
                           "Reconcile Q4 grant spend and be audit-ready by Apr 30."
                         </button>
                       </div>
                       
                       <div>
-                        <p className="text-xs font-medium text-foreground mb-1">Digital & Data</p>
-                        <button type="button" onClick={() => {
-                      setFormData({
-                        ...formData,
-                        outcome: "Migrate our donor database to a CRM by June 15."
-                      });
-                      setShowExamples(false);
-                    }} className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left">
+                        <p className="text-xs font-medium text-[#202654] mb-1">Digital & Data</p>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setFormData({ ...formData, outcome: "Migrate our donor database to a CRM by June 15." });
+                            setShowExamples(false);
+                          }}
+                          className="text-xs text-[#96A0B5] hover:text-[#202654] transition-colors text-left"
+                        >
                           "Migrate our donor database to a CRM by June 15."
                         </button>
                       </div>
                       
                       <div>
-                        <p className="text-xs font-medium text-foreground mb-1">Governance</p>
-                        <button type="button" onClick={() => {
-                      setFormData({
-                        ...formData,
-                        outcome: "Update our board policies to meet new ONCA requirements by May 1."
-                      });
-                      setShowExamples(false);
-                    }} className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left">
+                        <p className="text-xs font-medium text-[#202654] mb-1">Governance</p>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setFormData({ ...formData, outcome: "Update our board policies to meet new ONCA requirements by May 1." });
+                            setShowExamples(false);
+                          }}
+                          className="text-xs text-[#96A0B5] hover:text-[#202654] transition-colors text-left"
+                        >
                           "Update our board policies to meet new ONCA requirements by May 1."
                         </button>
                       </div>
-                      
-                      <div>
-                        <p className="text-xs font-medium text-foreground mb-1">Fundraising</p>
-                        <button type="button" onClick={() => {
-                      setFormData({
-                        ...formData,
-                        outcome: "Design a corporate partnership pitch deck ready to send by March 31."
-                      });
-                      setShowExamples(false);
-                    }} className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left">
-                          "Design a corporate partnership pitch deck ready to send by March 31."
-                        </button>
-                      </div>
-                      
-                      <div>
-                        <p className="text-xs font-medium text-foreground mb-1">Program Design</p>
-                        <button type="button" onClick={() => {
-                      setFormData({
-                        ...formData,
-                        outcome: "Create a logic model for our youth mentorship program by April 15."
-                      });
-                      setShowExamples(false);
-                    }} className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left">
-                          "Create a logic model for our youth mentorship program by April 15."
-                        </button>
-                      </div>
-                      
-                      <div>
-                        <p className="text-xs font-medium text-foreground mb-1">Research</p>
-                        <button type="button" onClick={() => {
-                      setFormData({
-                        ...formData,
-                        outcome: "Survey 200 stakeholders and deliver insights report by May 31."
-                      });
-                      setShowExamples(false);
-                    }} className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left">
-                          "Survey 200 stakeholders and deliver insights report by May 31."
-                        </button>
-                      </div>
-                      
-                      <div>
-                        <p className="text-xs font-medium text-foreground mb-1">Legal & Compliance</p>
-                        <button type="button" onClick={() => {
-                      setFormData({
-                        ...formData,
-                        outcome: "Draft a privacy policy that meets PIPEDA standards by June 1."
-                      });
-                      setShowExamples(false);
-                    }} className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left">
-                          "Draft a privacy policy that meets PIPEDA standards by June 1."
-                        </button>
-                      </div>
                     </div>
-                  </div>}
+                  </div>
+                )}
               </div>
 
-              {/* Privacy/Terms Notice */}
-              <p id="q_privacy_notice" className="text-xs leading-relaxed max-w-[560px]" style={{
-              color: '#96A0B5'
-            }}>
-                We are committed to protecting your privacy. By providing your information you acknowledge and agree to Nimara's{' '}
-                <a href="/privacy" className="underline hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6945D8] focus-visible:ring-offset-2 rounded-sm" onClick={() => {
-                if (typeof window !== 'undefined' && (window as any).gtag) {
-                  (window as any).gtag('event', 'privacy_notice_click', {
-                    target: 'privacy'
-                  });
-                }
-              }}>
+              {/* Submit Button */}
+              <div className="pt-2">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full rounded-xl bg-[#6945D8] text-white font-bold px-5 py-3 min-h-[44px] hover:brightness-95 focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? "Sending..." : "Get My Free Quotes"}
+                </button>
+              </div>
+
+              {/* Privacy Notice */}
+              <p className="text-xs text-[#96A0B5] leading-relaxed">
+                We protect your privacy. By sending this, you agree to Nimara's{' '}
+                <a href="/privacy" className="text-[#6945D8] hover:underline focus:outline-none focus:ring-1 focus:ring-[#6945D8] rounded">
                   Privacy Policy
                 </a>
                 {' '}and{' '}
-                <a href="/terms" className="underline hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6945D8] focus-visible:ring-offset-2 rounded-sm" onClick={() => {
-                if (typeof window !== 'undefined' && (window as any).gtag) {
-                  (window as any).gtag('event', 'privacy_notice_click', {
-                    target: 'terms'
-                  });
-                }
-              }}>
+                <a href="/terms" className="text-[#6945D8] hover:underline focus:outline-none focus:ring-1 focus:ring-[#6945D8] rounded">
                   Terms of Use
                 </a>.
               </p>
-
-              <Button type="submit" className="w-full" size="lg" disabled={isSubmitting} id="cta_quotes_submit" aria-describedby="q_privacy_notice">
-                {isSubmitting ? "Submitting..." : "Get My Free Quotes"}
-              </Button>
             </form>
-
-            {/* Inline Optional Details Panel */}
-            {showOneMorePanel && <div className="mt-6 border border-border rounded-2xl p-6 bg-card/50" id="panel_one_more_thing" role="region" aria-label="One more thing">
-                <h3 ref={panelTitleRef} tabIndex={-1} className="text-lg font-semibold mb-1">
-                  One more thing (30 sec)
-                </h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  This helps us match you faster. Optional.
-                </p>
-
-                {saveSuccess && <Alert className="mb-4 bg-accent/10 border-accent">
-                    <AlertDescription>
-                      Thanks — we've added this to your request.
-                    </AlertDescription>
-                  </Alert>}
-
-                {saveError && <Alert className="mb-4 bg-destructive/10 border-destructive">
-                    <AlertDescription>{saveError}</AlertDescription>
-                  </Alert>}
-
-                <Collapsible open={isPanelExpanded} onOpenChange={setIsPanelExpanded}>
-                  {!isPanelExpanded ? <div className="flex items-center gap-3">
-                      <CollapsibleTrigger asChild>
-                        <Button variant="outline" onClick={handleExpandClick} className="focus:ring-2 focus:ring-primary focus:ring-offset-2">
-                          Add details
-                        </Button>
-                      </CollapsibleTrigger>
-                      <Button variant="link" onClick={handleSkip} className="p-0 h-auto">
-                        Skip for now
-                      </Button>
-                    </div> : <CollapsibleContent className="space-y-4 motion-safe:animate-accordion-down motion-reduce:animate-none">
-                      <div className="space-y-2">
-                        <Label htmlFor="om_name">Full name</Label>
-                        <Input type="text" id="om_name" value={optionalData.om_name} onChange={e => setOptionalData({
-                    ...optionalData,
-                    om_name: e.target.value
-                  })} className="rounded-xl" />
-                      </div>
-
-                      <div className="space-y-2">
-                        <Label htmlFor="om_role">Position/role</Label>
-                        <Select value={optionalData.om_role} onValueChange={value => setOptionalData({
-                    ...optionalData,
-                    om_role: value
-                  })}>
-                          <SelectTrigger id="om_role" className="rounded-xl">
-                            <SelectValue placeholder="Select your role" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="ed">Executive Director</SelectItem>
-                            <SelectItem value="board">Board Member</SelectItem>
-                            <SelectItem value="mgmt">Management</SelectItem>
-                            <SelectItem value="staff">Staff</SelectItem>
-                            <SelectItem value="other">Other</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-
-                      <div className="space-y-2">
-                        <Label htmlFor="om_start">Ideal project start</Label>
-                        <RadioGroup id="om_start" value={optionalData.om_start} onValueChange={value => setOptionalData({
-                    ...optionalData,
-                    om_start: value
-                  })} className="space-y-2">
-                          <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="asap" id="asap" />
-                            <Label htmlFor="asap" className="font-normal cursor-pointer">
-                              ASAP
-                            </Label>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="this_month" id="this_month" />
-                            <Label htmlFor="this_month" className="font-normal cursor-pointer">
-                              This month
-                            </Label>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="next_month" id="next_month" />
-                            <Label htmlFor="next_month" className="font-normal cursor-pointer">
-                              Next month
-                            </Label>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="flexible" id="flexible" />
-                            <Label htmlFor="flexible" className="font-normal cursor-pointer">
-                              Flexible
-                            </Label>
-                          </div>
-                        </RadioGroup>
-                      </div>
-
-                      <div className="space-y-2">
-                        <Label htmlFor="om_budget">Estimated budget</Label>
-                        <RadioGroup id="om_budget" value={optionalData.om_budget} onValueChange={value => setOptionalData({
-                    ...optionalData,
-                    om_budget: value
-                  })} className="space-y-2">
-                          <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="under_5k" id="under_5k" />
-                            <Label htmlFor="under_5k" className="font-normal cursor-pointer">
-                              Under $5,000
-                            </Label>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="5k_15k" id="5k_15k" />
-                            <Label htmlFor="5k_15k" className="font-normal cursor-pointer">
-                              $5,000 - $15,000
-                            </Label>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="15k_30k" id="15k_30k" />
-                            <Label htmlFor="15k_30k" className="font-normal cursor-pointer">
-                              $15,000 - $30,000
-                            </Label>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="over_30k" id="over_30k" />
-                            <Label htmlFor="over_30k" className="font-normal cursor-pointer">
-                              Over $30,000
-                            </Label>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="not_sure" id="budget_not_sure" />
-                            <Label htmlFor="budget_not_sure" className="font-normal cursor-pointer">
-                              Not sure
-                            </Label>
-                          </div>
-                        </RadioGroup>
-                      </div>
-
-                      <div className="flex gap-3 pt-2">
-                        <Button type="button" onClick={handleSaveOptional} disabled={isSavingOptional} className="focus:ring-2 focus:ring-primary focus:ring-offset-2">
-                          {isSavingOptional ? "Saving..." : "Save"}
-                        </Button>
-                        <Button type="button" variant="ghost" onClick={handleSkip}>
-                          Skip
-                        </Button>
-                      </div>
-                    </CollapsibleContent>}
-                </Collapsible>
-              </div>}
           </div>
+
         </div>
       </div>
-    </section>;
+
+      {/* "One More Thing" Panel */}
+      {showOneMorePanel && (
+        <div className="mx-auto max-w-[1240px] px-5 pb-16">
+          <div 
+            className="rounded-2xl bg-white text-[#202654] border border-[#E9ECF4] p-6 lg:p-8 max-w-2xl mx-auto"
+            style={{ boxShadow: '0 8px 24px rgba(32, 38, 84, 0.08)' }}
+          >
+            <Collapsible open={isPanelExpanded} onOpenChange={setIsPanelExpanded}>
+              <div className="space-y-4">
+                <h2 
+                  ref={panelTitleRef}
+                  tabIndex={-1}
+                  className="text-xl font-semibold text-[#202654]"
+                >
+                  One more thing (optional)
+                </h2>
+                
+                {!isPanelExpanded && (
+                  <div className="space-y-3">
+                    <p className="text-sm text-[#96A0B5]">
+                      Help us match you better. Takes 30 seconds.
+                    </p>
+                    <div className="flex gap-3">
+                      <CollapsibleTrigger asChild>
+                        <button
+                          onClick={handleExpandClick}
+                          className="rounded-xl bg-[#6945D8] text-white font-bold px-5 py-2 min-h-[44px] hover:brightness-95 focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 transition-all"
+                        >
+                          Sure, 30 seconds
+                        </button>
+                      </CollapsibleTrigger>
+                      <button
+                        onClick={handleSkip}
+                        className="rounded-xl border border-[#E9ECF4] bg-white text-[#202654] font-medium px-5 py-2 min-h-[44px] hover:bg-[#E9ECF4]/50 focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 transition-all"
+                      >
+                        Skip
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                <CollapsibleContent>
+                  <div className="space-y-5 pt-4">
+                    {saveSuccess && (
+                      <Alert className="bg-green-50 border-green-200">
+                        <AlertDescription className="text-green-800">
+                          ✓ Saved. This helps us match you with the right consultant.
+                        </AlertDescription>
+                      </Alert>
+                    )}
+
+                    {saveError && (
+                      <Alert className="bg-red-50 border-red-200">
+                        <AlertDescription className="text-red-800">
+                          {saveError}
+                        </AlertDescription>
+                      </Alert>
+                    )}
+
+                    <div className="space-y-2">
+                      <label htmlFor="om_name" className="block text-sm font-medium text-[#202654]">
+                        Your name
+                      </label>
+                      <input
+                        type="text"
+                        id="om_name"
+                        value={optionalData.om_name}
+                        onChange={(e) => setOptionalData({ ...optionalData, om_name: e.target.value })}
+                        className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <label htmlFor="om_role" className="block text-sm font-medium text-[#202654]">
+                        Your role
+                      </label>
+                      <input
+                        type="text"
+                        id="om_role"
+                        value={optionalData.om_role}
+                        onChange={(e) => setOptionalData({ ...optionalData, om_role: e.target.value })}
+                        className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2"
+                        placeholder="e.g., Executive Director"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="block text-sm font-medium text-[#202654]">
+                        When do you want to start?
+                      </label>
+                      <RadioGroup
+                        value={optionalData.om_start}
+                        onValueChange={(value) => setOptionalData({ ...optionalData, om_start: value })}
+                        className="space-y-2"
+                      >
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="asap" id="start_asap" className="border-[#E9ECF4] text-[#6945D8]" />
+                          <label htmlFor="start_asap" className="text-sm text-[#202654] cursor-pointer">
+                            ASAP (within 2 weeks)
+                          </label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="1month" id="start_1month" className="border-[#E9ECF4] text-[#6945D8]" />
+                          <label htmlFor="start_1month" className="text-sm text-[#202654] cursor-pointer">
+                            Within a month
+                          </label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="flexible" id="start_flexible" className="border-[#E9ECF4] text-[#6945D8]" />
+                          <label htmlFor="start_flexible" className="text-sm text-[#202654] cursor-pointer">
+                            Flexible / just exploring
+                          </label>
+                        </div>
+                      </RadioGroup>
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="block text-sm font-medium text-[#202654]">
+                        Budget range (CAD)
+                      </label>
+                      <RadioGroup
+                        value={optionalData.om_budget}
+                        onValueChange={(value) => setOptionalData({ ...optionalData, om_budget: value })}
+                        className="space-y-2"
+                      >
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="under5k" id="budget_under5k" className="border-[#E9ECF4] text-[#6945D8]" />
+                          <label htmlFor="budget_under5k" className="text-sm text-[#202654] cursor-pointer">
+                            Under $5,000
+                          </label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="5k-15k" id="budget_5k15k" className="border-[#E9ECF4] text-[#6945D8]" />
+                          <label htmlFor="budget_5k15k" className="text-sm text-[#202654] cursor-pointer">
+                            $5,000 - $15,000
+                          </label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="15k-30k" id="budget_15k30k" className="border-[#E9ECF4] text-[#6945D8]" />
+                          <label htmlFor="budget_15k30k" className="text-sm text-[#202654] cursor-pointer">
+                            $15,000 - $30,000
+                          </label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="30k+" id="budget_30kplus" className="border-[#E9ECF4] text-[#6945D8]" />
+                          <label htmlFor="budget_30kplus" className="text-sm text-[#202654] cursor-pointer">
+                            $30,000+
+                          </label>
+                        </div>
+                      </RadioGroup>
+                    </div>
+
+                    <div className="flex gap-3 pt-2">
+                      <button
+                        onClick={handleSaveOptional}
+                        disabled={isSavingOptional}
+                        className="rounded-xl bg-[#6945D8] text-white font-bold px-5 py-2 min-h-[44px] hover:brightness-95 focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 transition-all disabled:opacity-50"
+                      >
+                        {isSavingOptional ? "Saving..." : "Save"}
+                      </button>
+                      <button
+                        onClick={handleSkip}
+                        className="rounded-xl border border-[#E9ECF4] bg-white text-[#202654] font-medium px-5 py-2 min-h-[44px] hover:bg-[#E9ECF4]/50 focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 transition-all"
+                      >
+                        Skip
+                      </button>
+                    </div>
+                  </div>
+                </CollapsibleContent>
+              </div>
+            </Collapsible>
+          </div>
+        </div>
+      )}
+
+      {/* 
+        VARIANT B (Light Alternative - Commented)
+        
+        To switch to Variant B (light hero with navy band behind card):
+        
+        1. Change section className from:
+           className="bg-[#202654] text-white"
+           to:
+           className="bg-white text-[#202654] relative"
+        
+        2. Update left column text colors:
+           - Pill: bg-[#ACFCE3] text-[#202654] (stays same)
+           - H1: add class "text-[#202654]"
+           - Subhead: add class "text-[#96A0B5]"
+           - Primary CTA: stays same (purple)
+           - Secondary link: change to "text-[#202654]"
+           - Trust strip: change to "text-[#96A0B5]"
+        
+        3. Add navy band behind right column using grid approach:
+           - Wrap the grid in a parent div with relative positioning
+           - Add a pseudo-element or background div positioned absolutely
+           - Set it to span 45-55% width from the right
+           - Give it bg-[#202654]
+           - Ensure form card has relative z-index to appear above band
+        
+        Example structure:
+        <div className="relative">
+          <div className="absolute right-0 top-0 bottom-0 w-1/2 bg-[#202654] -z-10" />
+          <div className="mx-auto max-w-[1240px] px-5 py-16 lg:py-28 relative z-10">
+            {/* grid content *\/}
+          </div>
+        </div>
+      */}
+    </section>
+  );
 };
