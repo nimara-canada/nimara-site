@@ -20,11 +20,22 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const scrollToGetInTouch = () => {
-    const section = document.querySelector('section');
-    const getInTouchSection = Array.from(document.querySelectorAll('section')).find(
-      section => section.textContent?.includes('Get in touch!')
-    );
-    getInTouchSection?.scrollIntoView({ behavior: "smooth" });
+    // First, try to find form by ID
+    const form = document.getElementById('form_3quotes');
+    if (form) {
+      form.scrollIntoView({ behavior: "smooth" });
+      // Focus the first input field after scrolling
+      setTimeout(() => {
+        const emailField = document.getElementById('q_email') as HTMLInputElement;
+        emailField?.focus();
+      }, 500);
+    } else {
+      // Fallback: look for section containing "Talk to the Nimara team"
+      const getInTouchSection = Array.from(document.querySelectorAll('section')).find(
+        section => section.textContent?.includes('Talk to the Nimara team') || section.textContent?.includes('Get in touch!')
+      );
+      getInTouchSection?.scrollIntoView({ behavior: "smooth" });
+    }
     setIsOpen(false);
   };
 
