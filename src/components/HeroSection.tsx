@@ -1,4 +1,9 @@
 import { useState, useRef, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { toast } from "sonner";
@@ -60,15 +65,6 @@ export const HeroSection = ({
   const [submittedEmail, setSubmittedEmail] = useState("");
   const [showExamples, setShowExamples] = useState(false);
   const panelTitleRef = useRef<HTMLHeadingElement>(null);
-  
-  // Field validation states
-  const [fieldErrors, setFieldErrors] = useState({
-    email: false,
-    organization: false,
-    region: false,
-    category: false
-  });
-  
   const [formData, setFormData] = useState({
     email: "",
     organization: "",
@@ -304,46 +300,55 @@ export const HeroSection = ({
         Skip to form
       </a>
 
-      <div className="mx-auto max-w-[1240px] px-5 py-24 lg:py-28">
-        <div className="grid grid-cols-12 gap-x-12 items-center">
+      <div className="mx-auto max-w-[1240px] px-5 py-16 lg:py-28">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
           
           {/* Left Column: Text & CTA */}
-          <div className="col-span-12 lg:col-span-6 xl:col-span-7">
+          <div className="space-y-6 lg:space-y-8">
             {/* Eyebrow Pill */}
-            <div className="mb-3">
-              <span className="inline-block rounded-full bg-[#ACFCE3] text-[#202654] px-3 py-1 text-xs font-semibold">
+            <div>
+              <span className="inline-block rounded-full bg-[#ACFCE3] text-[#202654] px-3 py-1 text-sm font-semibold">
                 For nonprofits & charities • Premium consulting
               </span>
             </div>
 
-            {/* H1 - Compact Three-Line Lockup */}
+            {/* H1 - Stacked Headline */}
             <h1 
               id="hero-title"
-              className="font-extrabold tracking-tight leading-[0.95] text-[clamp(36px,4.6vw,60px)] max-w-[18ch]"
-              style={{ textWrap: 'balance' }}
+              className="font-extrabold tracking-tight"
+              style={{
+                fontSize: 'clamp(40px, 6vw, 72px)',
+                lineHeight: '0.95'
+              }}
             >
-              <span>Premium&nbsp;nonprofit&nbsp;consulting</span><br />
-              <span>Get&nbsp;3&nbsp;quotes</span><br />
-              <span>in&nbsp;72&nbsp;hours</span>
+              Premium nonprofit consulting —<br />
+              Get 3 quotes in 72 hours
             </h1>
 
             {/* Subhead */}
-            <p className="mt-4 max-w-prose text-white/90 text-[clamp(16px,2.2vw,20px)] leading-[1.45]">
+            <p 
+              className="max-w-prose"
+              style={{
+                fontSize: 'clamp(16px, 2.2vw, 20px)',
+                lineHeight: '1.45',
+                opacity: '0.9'
+              }}
+            >
               We match you with senior Canadian experts. Clear scope. PM oversight. Audit-ready files.
             </p>
 
             {/* Primary CTA */}
-            <div className="mt-6">
+            <div className="pt-2">
               <button
                 onClick={scrollToForm}
-                className="inline-flex items-center justify-center rounded-xl bg-[#6945D8] text-white font-bold px-5 py-3 min-h-[44px] min-w-[44px] hover:brightness-95 focus:outline-2 focus:outline-[#6945D8] focus:outline-offset-2 active:brightness-90 transition-all"
+                className="rounded-xl bg-[#6945D8] text-white font-bold px-5 py-3 min-h-[44px] min-w-[44px] hover:brightness-95 focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 transition-all"
               >
                 Get 3 free quotes
               </button>
             </div>
 
             {/* Secondary Link */}
-            <div className="mt-2">
+            <div>
               <a 
                 href="#pricing" 
                 onClick={(e) => {
@@ -351,20 +356,27 @@ export const HeroSection = ({
                   const pricingSection = document.getElementById('pricing');
                   pricingSection?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="inline-block text-white/80 hover:text-white underline-offset-4 focus:outline-2 focus:outline-[#6945D8] focus:outline-offset-2 rounded transition-colors"
+                className="text-white hover:underline focus:outline-none focus:ring-2 focus:ring-[#6945D8] focus:ring-offset-2 focus:ring-offset-[#202654] rounded inline-block"
+                style={{ fontSize: '16px' }}
               >
                 How fees work →
               </a>
             </div>
+
+            {/* Trust Strip */}
+            <div className="pt-4">
+              <p className="text-[#96A0B5] text-sm">
+                Data in Canada • Records kept 7 years • Vetted senior consultants • PM oversight
+              </p>
+            </div>
           </div>
 
           {/* Right Column: Form Card */}
-          <div className="col-span-12 lg:col-span-6 xl:col-span-5 xl:pl-8 mt-8 lg:mt-0">
-            <div 
-              id="get-quotes"
-              className="rounded-2xl bg-white text-[#202654] border border-[#E9ECF4] p-6 lg:p-7 max-w-[560px] w-full ml-auto"
-              style={{ boxShadow: '0 8px 24px rgba(32, 38, 84, 0.08)' }}
-            >
+          <div 
+            id="get-quotes"
+            className="rounded-2xl bg-white text-[#202654] border border-[#E9ECF4] p-6 lg:p-8"
+            style={{ boxShadow: '0 8px 24px rgba(32, 38, 84, 0.08)' }}
+          >
             <form onSubmit={handleSubmit} className="space-y-5">
               
               {/* Email Field */}
@@ -381,22 +393,10 @@ export const HeroSection = ({
                   autoComplete="email"
                   required
                   value={formData.email}
-                  onChange={(e) => {
-                    setFormData({ ...formData, email: e.target.value });
-                    setFieldErrors({ ...fieldErrors, email: false });
-                  }}
-                  onBlur={(e) => {
-                    if (!e.target.value.trim()) {
-                      setFieldErrors({ ...fieldErrors, email: true });
-                    }
-                  }}
-                  aria-invalid={fieldErrors.email}
-                  className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] placeholder:text-[#96A0B5] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 min-h-[44px]"
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] placeholder:text-[#96A0B5] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2"
                   placeholder="you@organization.org"
                 />
-                {fieldErrors.email && (
-                  <p className="mt-1 text-xs text-[#96A0B5]">This field is required.</p>
-                )}
               </div>
 
               {/* Organization Field */}
@@ -412,22 +412,10 @@ export const HeroSection = ({
                   id="q_org"
                   required
                   value={formData.organization}
-                  onChange={(e) => {
-                    setFormData({ ...formData, organization: e.target.value });
-                    setFieldErrors({ ...fieldErrors, organization: false });
-                  }}
-                  onBlur={(e) => {
-                    if (!e.target.value.trim()) {
-                      setFieldErrors({ ...fieldErrors, organization: true });
-                    }
-                  }}
-                  aria-invalid={fieldErrors.organization}
-                  className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] placeholder:text-[#96A0B5] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 min-h-[44px]"
+                  onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
+                  className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] placeholder:text-[#96A0B5] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2"
                   placeholder="Your organization name"
                 />
-                {fieldErrors.organization && (
-                  <p className="mt-1 text-xs text-[#96A0B5]">This field is required.</p>
-                )}
               </div>
 
               {/* Province/Territory Field */}
@@ -442,16 +430,7 @@ export const HeroSection = ({
                   <select
                     id="q_region"
                     value={formData.region}
-                    onChange={(e) => {
-                      setFormData({ ...formData, region: e.target.value });
-                      setFieldErrors({ ...fieldErrors, region: false });
-                    }}
-                    onBlur={(e) => {
-                      if (!e.target.value) {
-                        setFieldErrors({ ...fieldErrors, region: true });
-                      }
-                    }}
-                    aria-invalid={fieldErrors.region}
+                    onChange={(e) => setFormData({ ...formData, region: e.target.value })}
                     className="w-full appearance-none rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 pr-10 text-[#202654] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 min-h-[44px]"
                   >
                     <option value="">Select a province</option>
@@ -470,9 +449,6 @@ export const HeroSection = ({
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>
-                {fieldErrors.region && (
-                  <p className="mt-1 text-xs text-[#96A0B5]">This field is required.</p>
-                )}
               </div>
 
               {/* Category Field */}
@@ -490,7 +466,6 @@ export const HeroSection = ({
                     onChange={(e) => {
                       const value = e.target.value;
                       setFormData({ ...formData, category: value });
-                      setFieldErrors({ ...fieldErrors, category: false });
                       
                       if (value === "not_sure" || value === "Not sure / Other") {
                         setTimeout(() => {
@@ -498,13 +473,7 @@ export const HeroSection = ({
                         }, 100);
                       }
                     }}
-                    onBlur={(e) => {
-                      if (!e.target.value) {
-                        setFieldErrors({ ...fieldErrors, category: true });
-                      }
-                    }}
                     required
-                    aria-invalid={fieldErrors.category}
                     className="w-full appearance-none rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 pr-10 text-[#202654] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 min-h-[44px]"
                   >
                     <option value="">Select a category</option>
@@ -526,9 +495,6 @@ export const HeroSection = ({
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>
-                {fieldErrors.category && (
-                  <p className="mt-1 text-xs text-[#96A0B5]">This field is required.</p>
-                )}
                 {(formData.category === "not_sure" || formData.category === "Not sure / Other") && (
                   <p className="text-xs text-[#96A0B5]">
                     If you choose "Not sure / Other," just tell us the outcome you want.
@@ -631,7 +597,7 @@ export const HeroSection = ({
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="inline-flex items-center justify-center w-full rounded-xl bg-[#6945D8] text-white font-bold px-5 py-3 min-h-[44px] hover:brightness-95 focus:outline-2 focus:outline-[#6945D8] focus:outline-offset-2 active:brightness-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full rounded-xl bg-[#6945D8] text-white font-bold px-5 py-3 min-h-[44px] hover:brightness-95 focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? "Sending..." : "Get My Free Quotes"}
                 </button>
@@ -650,8 +616,8 @@ export const HeroSection = ({
               </p>
             </form>
           </div>
+
         </div>
-      </div>
       </div>
 
       {/* "One More Thing" Panel */}
@@ -828,19 +794,6 @@ export const HeroSection = ({
           </div>
         </div>
       )}
-
-      {/* Trust micro-strip (centered under form) */}
-      <div className="mx-auto max-w-[1240px] px-5">
-        <div className="grid grid-cols-12 gap-x-12">
-          <div className="col-span-12 lg:col-span-6 xl:col-span-5 lg:col-start-7 xl:col-start-8 xl:pl-8">
-            <div className="max-w-[560px] w-full ml-auto">
-              <p className="mt-3 text-center text-sm text-[#96A0B5]">
-                Data in Canada • Records kept 7 years • Vetted senior consultants • PM oversight
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* 
         VARIANT B (Light Alternative - Commented)
