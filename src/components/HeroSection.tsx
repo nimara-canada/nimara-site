@@ -1,9 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { toast } from "sonner";
@@ -65,6 +60,15 @@ export const HeroSection = ({
   const [submittedEmail, setSubmittedEmail] = useState("");
   const [showExamples, setShowExamples] = useState(false);
   const panelTitleRef = useRef<HTMLHeadingElement>(null);
+  
+  // Field validation states
+  const [fieldErrors, setFieldErrors] = useState({
+    email: false,
+    organization: false,
+    region: false,
+    category: false
+  });
+  
   const [formData, setFormData] = useState({
     email: "",
     organization: "",
@@ -304,7 +308,7 @@ export const HeroSection = ({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
           
           {/* Left Column: Text & CTA */}
-          <div className="space-y-6 lg:space-y-8">
+          <div className="space-y-4">
             {/* Eyebrow Pill */}
             <div>
               <span className="inline-block rounded-full bg-[#ACFCE3] text-[#202654] px-3 py-1 text-sm font-semibold">
@@ -341,7 +345,7 @@ export const HeroSection = ({
             <div className="pt-2">
               <button
                 onClick={scrollToForm}
-                className="rounded-xl bg-[#6945D8] text-white font-bold px-5 py-3 min-h-[44px] min-w-[44px] hover:brightness-95 focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 transition-all"
+                className="inline-flex items-center justify-center rounded-xl bg-[#6945D8] text-white font-bold px-5 py-3 min-h-[44px] min-w-[44px] hover:brightness-95 focus:outline-2 focus:outline-[#6945D8] focus:outline-offset-2 active:brightness-90 transition-all"
               >
                 Get 3 free quotes
               </button>
@@ -356,25 +360,18 @@ export const HeroSection = ({
                   const pricingSection = document.getElementById('pricing');
                   pricingSection?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="text-white hover:underline focus:outline-none focus:ring-2 focus:ring-[#6945D8] focus:ring-offset-2 focus:ring-offset-[#202654] rounded inline-block"
+                className="text-white/90 hover:text-white underline-offset-4 focus:outline-2 focus:outline-[#6945D8] focus:outline-offset-2 rounded inline-block transition-colors"
                 style={{ fontSize: '16px' }}
               >
                 How fees work →
               </a>
-            </div>
-
-            {/* Trust Strip */}
-            <div className="pt-4">
-              <p className="text-[#96A0B5] text-sm">
-                Data in Canada • Records kept 7 years • Vetted senior consultants • PM oversight
-              </p>
             </div>
           </div>
 
           {/* Right Column: Form Card */}
           <div 
             id="get-quotes"
-            className="rounded-2xl bg-white text-[#202654] border border-[#E9ECF4] p-6 lg:p-8"
+            className="rounded-2xl bg-white text-[#202654] border border-[#E9ECF4] p-6 lg:p-8 mt-6 sm:mt-8 lg:mt-0"
             style={{ boxShadow: '0 8px 24px rgba(32, 38, 84, 0.08)' }}
           >
             <form onSubmit={handleSubmit} className="space-y-5">
@@ -393,10 +390,22 @@ export const HeroSection = ({
                   autoComplete="email"
                   required
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] placeholder:text-[#96A0B5] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2"
+                  onChange={(e) => {
+                    setFormData({ ...formData, email: e.target.value });
+                    setFieldErrors({ ...fieldErrors, email: false });
+                  }}
+                  onBlur={(e) => {
+                    if (!e.target.value.trim()) {
+                      setFieldErrors({ ...fieldErrors, email: true });
+                    }
+                  }}
+                  aria-invalid={fieldErrors.email}
+                  className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] placeholder:text-[#96A0B5] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 min-h-[44px]"
                   placeholder="you@organization.org"
                 />
+                {fieldErrors.email && (
+                  <p className="mt-1 text-xs text-[#96A0B5]">This field is required.</p>
+                )}
               </div>
 
               {/* Organization Field */}
@@ -412,10 +421,22 @@ export const HeroSection = ({
                   id="q_org"
                   required
                   value={formData.organization}
-                  onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
-                  className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] placeholder:text-[#96A0B5] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2"
+                  onChange={(e) => {
+                    setFormData({ ...formData, organization: e.target.value });
+                    setFieldErrors({ ...fieldErrors, organization: false });
+                  }}
+                  onBlur={(e) => {
+                    if (!e.target.value.trim()) {
+                      setFieldErrors({ ...fieldErrors, organization: true });
+                    }
+                  }}
+                  aria-invalid={fieldErrors.organization}
+                  className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] placeholder:text-[#96A0B5] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 min-h-[44px]"
                   placeholder="Your organization name"
                 />
+                {fieldErrors.organization && (
+                  <p className="mt-1 text-xs text-[#96A0B5]">This field is required.</p>
+                )}
               </div>
 
               {/* Province/Territory Field */}
@@ -430,7 +451,16 @@ export const HeroSection = ({
                   <select
                     id="q_region"
                     value={formData.region}
-                    onChange={(e) => setFormData({ ...formData, region: e.target.value })}
+                    onChange={(e) => {
+                      setFormData({ ...formData, region: e.target.value });
+                      setFieldErrors({ ...fieldErrors, region: false });
+                    }}
+                    onBlur={(e) => {
+                      if (!e.target.value) {
+                        setFieldErrors({ ...fieldErrors, region: true });
+                      }
+                    }}
+                    aria-invalid={fieldErrors.region}
                     className="w-full appearance-none rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 pr-10 text-[#202654] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 min-h-[44px]"
                   >
                     <option value="">Select a province</option>
@@ -449,6 +479,9 @@ export const HeroSection = ({
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>
+                {fieldErrors.region && (
+                  <p className="mt-1 text-xs text-[#96A0B5]">This field is required.</p>
+                )}
               </div>
 
               {/* Category Field */}
@@ -466,6 +499,7 @@ export const HeroSection = ({
                     onChange={(e) => {
                       const value = e.target.value;
                       setFormData({ ...formData, category: value });
+                      setFieldErrors({ ...fieldErrors, category: false });
                       
                       if (value === "not_sure" || value === "Not sure / Other") {
                         setTimeout(() => {
@@ -473,7 +507,13 @@ export const HeroSection = ({
                         }, 100);
                       }
                     }}
+                    onBlur={(e) => {
+                      if (!e.target.value) {
+                        setFieldErrors({ ...fieldErrors, category: true });
+                      }
+                    }}
                     required
+                    aria-invalid={fieldErrors.category}
                     className="w-full appearance-none rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 pr-10 text-[#202654] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 min-h-[44px]"
                   >
                     <option value="">Select a category</option>
@@ -495,6 +535,9 @@ export const HeroSection = ({
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>
+                {fieldErrors.category && (
+                  <p className="mt-1 text-xs text-[#96A0B5]">This field is required.</p>
+                )}
                 {(formData.category === "not_sure" || formData.category === "Not sure / Other") && (
                   <p className="text-xs text-[#96A0B5]">
                     If you choose "Not sure / Other," just tell us the outcome you want.
@@ -597,7 +640,7 @@ export const HeroSection = ({
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full rounded-xl bg-[#6945D8] text-white font-bold px-5 py-3 min-h-[44px] hover:brightness-95 focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="inline-flex items-center justify-center w-full rounded-xl bg-[#6945D8] text-white font-bold px-5 py-3 min-h-[44px] hover:brightness-95 focus:outline-2 focus:outline-[#6945D8] focus:outline-offset-2 active:brightness-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? "Sending..." : "Get My Free Quotes"}
                 </button>
@@ -615,6 +658,11 @@ export const HeroSection = ({
                 </a>.
               </p>
             </form>
+
+            {/* Trust Strip (under form, centered) */}
+            <p className="mt-3 text-center text-sm text-[#96A0B5]">
+              Data in Canada • Records kept 7 years • Vetted senior consultants • PM oversight
+            </p>
           </div>
 
         </div>
