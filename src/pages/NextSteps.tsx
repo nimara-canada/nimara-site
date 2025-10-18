@@ -6,6 +6,8 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
+import { useLocation } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 import {
   Accordion,
   AccordionContent,
@@ -14,6 +16,8 @@ import {
 } from "@/components/ui/accordion";
 
 export default function NextSteps() {
+  const location = useLocation();
+  const requestId = (location.state as any)?.requestId || "";
   const [showOptionalModal, setShowOptionalModal] = useState(false);
   const optionalButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -28,9 +32,10 @@ export default function NextSteps() {
   const handleSaveOptional = async (data: OptionalData) => {
     const payload = {
       flow: "3quotes_more",
-      note: data.om_note,
-      start: data.om_start,
-      budget: data.om_budget,
+      request_id: requestId,
+      om_note: data.om_note,
+      om_start: data.om_start,
+      om_budget: data.om_budget,
       utm_source: new URLSearchParams(window.location.search).get("utm_source"),
       utm_medium: new URLSearchParams(window.location.search).get("utm_medium"),
       utm_campaign: new URLSearchParams(window.location.search).get("utm_campaign"),
@@ -38,28 +43,31 @@ export default function NextSteps() {
       timestamp: new Date().toISOString(),
     };
 
-    // POST to webhook (replace with actual endpoint)
-    const response = await fetch("https://example.com/webhook", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
+    // Send email via edge function
+    const { error } = await supabase.functions.invoke("send-form-email", {
+      body: {
+        formCode: "3QUOTES_MORE",
+        payload
+      }
     });
 
-    if (!response.ok) {
-      throw new Error("Failed to save");
+    if (error) {
+      console.error("Email error:", error);
+      console.log(`Failed to send optional details email for Request ID: ${requestId}`);
+      throw error;
     }
+
+    // Log client event
+    console.log(`Event: optional_submit | Status: success | Request ID: ${requestId} | Timestamp: ${new Date().toISOString()}`);
 
     // Track analytics
     if (typeof window !== "undefined" && (window as any).gtag) {
       (window as any).gtag("event", "next_steps_optional_submitted", {
         start: data.om_start,
         budget: data.om_budget,
+        request_id: requestId,
       });
     }
-
-    toast.success("Thanks — we've added this to your request.");
   };
 
   const handleScheduleCallClick = () => {
@@ -293,6 +301,7 @@ export default function NextSteps() {
         onClose={handleOptionalClose}
         onSave={handleSaveOptional}
         returnFocusRef={optionalButtonRef}
+        requestId={requestId}
       />
     </>
   );

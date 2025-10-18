@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { toast } from "sonner";
 
 interface OptionalInfoModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSave: (data: OptionalData) => Promise<void>;
   returnFocusRef?: React.RefObject<HTMLElement>;
+  requestId?: string;
 }
 
 export interface OptionalData {
@@ -20,6 +22,7 @@ export const OptionalInfoModal = ({
   onClose,
   onSave,
   returnFocusRef,
+  requestId,
 }: OptionalInfoModalProps) => {
   const [isSaving, setIsSaving] = useState(false);
   const [saveError, setSaveError] = useState("");
@@ -123,23 +126,46 @@ export const OptionalInfoModal = ({
     setIsSaving(true);
     setSaveError("");
 
-    try {
-      await onSave(formData);
-      
-      // Track save event
-      if (typeof window !== 'undefined' && (window as any).gtag) {
-        (window as any).gtag('event', 'optional_modal_proceed', {
-          start: formData.om_start,
-          budget: formData.om_budget,
-        });
+    const attemptSave = async (attemptNumber: number): Promise<boolean> => {
+      try {
+        await onSave(formData);
+        return true;
+      } catch (error) {
+        console.error(`Save attempt ${attemptNumber} failed:`, error);
+        
+        if (attemptNumber < 3) {
+          const backoffDelay = attemptNumber === 1 ? 400 : 1000;
+          await new Promise(resolve => setTimeout(resolve, backoffDelay));
+          return attemptSave(attemptNumber + 1);
+        }
+        
+        return false;
       }
+    };
 
-      // Close after successful save
-      setTimeout(() => {
+    try {
+      const success = await attemptSave(1);
+      
+      if (success) {
+        // Track save event
+        if (typeof window !== 'undefined' && (window as any).gtag) {
+          (window as any).gtag('event', 'optional_modal_proceed', {
+            start: formData.om_start,
+            budget: formData.om_budget,
+            request_id: requestId,
+          });
+        }
+
+        // Show success toast
+        toast.success("Extra details received — thanks.");
+        
+        // Close modal
         onClose();
-      }, 500);
+      } else {
+        setSaveError("We couldn't save right now. You can try again or skip—your quote request is already in.");
+      }
     } catch (error) {
-      setSaveError("Couldn't save right now — you can skip or try again.");
+      setSaveError("We couldn't save right now. You can try again or skip—your quote request is already in.");
     } finally {
       setIsSaving(false);
     }
@@ -192,8 +218,12 @@ export const OptionalInfoModal = ({
 
         {/* Error alert */}
         {saveError && (
-          <Alert variant="destructive" className="mt-4">
-            <AlertDescription>{saveError}</AlertDescription>
+          <Alert variant="destructive" className="mt-4 border-red-200 bg-red-50">
+            <AlertDescription className="text-red-800 text-sm">
+              <strong className="font-semibold">Couldn't save right now</strong>
+              <br />
+              You can try again, or skip — your request is already in.
+            </AlertDescription>
           </Alert>
         )}
 

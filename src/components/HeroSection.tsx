@@ -126,8 +126,12 @@ export const HeroSection = ({
       return;
     }
     try {
+      // Generate request ID
+      const requestId = `REQ-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
+      
       const payload = {
         flow: "3quotes",
+        request_id: requestId,
         q_email: formData.email,
         q_org: formData.organization,
         q_region: formData.region,
@@ -146,7 +150,13 @@ export const HeroSection = ({
           formCode: "3QUOTES",
           payload
         }
-      }).catch(err => console.error("Email error:", err));
+      }).catch(err => {
+        console.error("Email error:", err);
+        console.log(`Failed to send email for Request ID: ${requestId}`);
+      });
+      
+      // Log client event
+      console.log(`Event: quotes_submit | Status: success | Request ID: ${requestId} | Timestamp: ${new Date().toISOString()}`);
       
       // Show brief success message
       toast.success("Request submitted! Redirecting...", {
@@ -162,11 +172,12 @@ export const HeroSection = ({
         outcome: ""
       });
 
-      // Redirect to Next Steps page after brief delay
+      // Redirect to Next Steps page after brief delay with request ID
       setTimeout(() => {
-        navigate("/next-steps");
+        navigate("/next-steps", { state: { requestId } });
       }, 2000);
     } catch (error) {
+      console.error("Form submission error:", error);
       toast.error("Something went wrong. Please try again.");
     } finally {
       setTimeout(() => setIsSubmitting(false), 2000);
