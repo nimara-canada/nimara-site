@@ -4,11 +4,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { OptionalInfoModal, type OptionalData } from "@/components/OptionalInfoModal";
 const categories = ["Governance", "Finance & Audit", "Program Design", "Digital & Data", "Fundraising", "Research", "Legal & Compliance", "Not sure / Other"];
 const provinces = [{
   code: "AB",
@@ -57,26 +55,16 @@ export const HeroSection = ({
   prefillCategory
 }: HeroFormProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showOneMorePanel, setShowOneMorePanel] = useState(false);
-  const [isPanelExpanded, setIsPanelExpanded] = useState(false);
-  const [isSavingOptional, setIsSavingOptional] = useState(false);
-  const [saveError, setSaveError] = useState("");
-  const [saveSuccess, setSaveSuccess] = useState(false);
+  const [showOptionalModal, setShowOptionalModal] = useState(false);
   const [submittedEmail, setSubmittedEmail] = useState("");
   const [showExamples, setShowExamples] = useState(false);
-  const panelTitleRef = useRef<HTMLHeadingElement>(null);
+  const submitButtonRef = useRef<HTMLButtonElement>(null);
   const [formData, setFormData] = useState({
     email: "",
     organization: "",
     region: "",
     category: prefillCategory || "",
     outcome: ""
-  });
-  const [optionalData, setOptionalData] = useState({
-    om_name: "",
-    om_role: "",
-    om_start: "",
-    om_budget: ""
   });
   const scrollToForm = () => {
     const form = document.getElementById("form_3quotes");
@@ -165,24 +153,10 @@ export const HeroSection = ({
       // Store email for optional details
       setSubmittedEmail(formData.email);
 
-      // Store lead_id in sessionStorage if available
-      // (webhook response would need to be captured if it returns lead_id)
-
-      // Show the inline panel
-      setShowOneMorePanel(true);
-      setIsPanelExpanded(false);
-      setSaveSuccess(false);
-      setSaveError("");
-
-      // Focus management - move to panel title after toast
+      // Show the modal after a short delay
       setTimeout(() => {
-        panelTitleRef.current?.focus();
+        setShowOptionalModal(true);
       }, 500);
-
-      // Track analytics
-      if (typeof window !== 'undefined' && (window as any).gtag) {
-        (window as any).gtag('event', 'one_more_shown');
-      }
 
       // Reset form
       setFormData({
@@ -198,95 +172,38 @@ export const HeroSection = ({
       setTimeout(() => setIsSubmitting(false), 2000);
     }
   };
-  const handleSkip = () => {
-    setIsPanelExpanded(false);
-
-    // Track analytics
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'one_more_skip');
-    }
-  };
-  const handleExpandClick = () => {
-    setIsPanelExpanded(true);
-
-    // Track analytics
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'one_more_expand_click');
-    }
-  };
-  const handleSaveOptional = async () => {
-    setIsSavingOptional(true);
-    setSaveError("");
-    try {
-      const lead_id = sessionStorage.getItem('lead_id');
-      const payload = {
-        flow: "3quotes_more",
-        lead_id: lead_id || null,
-        email: submittedEmail,
-        name: optionalData.om_name,
-        role: optionalData.om_role,
-        start: optionalData.om_start,
-        budget: optionalData.om_budget,
-        utm_source: new URLSearchParams(window.location.search).get("utm_source"),
-        utm_medium: new URLSearchParams(window.location.search).get("utm_medium"),
-        utm_campaign: new URLSearchParams(window.location.search).get("utm_campaign"),
-        referrer: document.referrer,
-        timestamp: new Date().toISOString()
-      };
-
-      // POST to webhook
-      const response = await fetch("https://example.com/webhook", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-      });
-      if (!response.ok) {
-        throw new Error("Failed to save");
-      }
-
-      // Track analytics
-      if (typeof window !== 'undefined' && (window as any).gtag) {
-        (window as any).gtag('event', 'one_more_save', {
-          role: optionalData.om_role,
-          start: optionalData.om_start,
-          budget: optionalData.om_budget
-        });
-      }
-
-      // Show success
-      setSaveSuccess(true);
-
-      // Auto-collapse after 2s
-      setTimeout(() => {
-        setIsPanelExpanded(false);
-      }, 2000);
-
-      // Reset optional data
-      setOptionalData({
-        om_name: "",
-        om_role: "",
-        om_start: "",
-        om_budget: ""
-      });
-    } catch (error) {
-      setSaveError("Couldn't save right now — you can skip or try again.");
-    } finally {
-      setIsSavingOptional(false);
-    }
-  };
-
-  // Handle ESC key to collapse panel
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isPanelExpanded) {
-        setIsPanelExpanded(false);
-      }
+  const handleSaveOptional = async (data: OptionalData) => {
+    const lead_id = sessionStorage.getItem('lead_id');
+    const payload = {
+      flow: "3quotes_more",
+      lead_id: lead_id || null,
+      email: submittedEmail,
+      name: data.om_name,
+      role: data.om_role,
+      start: data.om_start,
+      budget: data.om_budget,
+      utm_source: new URLSearchParams(window.location.search).get("utm_source"),
+      utm_medium: new URLSearchParams(window.location.search).get("utm_medium"),
+      utm_campaign: new URLSearchParams(window.location.search).get("utm_campaign"),
+      referrer: document.referrer,
+      timestamp: new Date().toISOString()
     };
-    document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
-  }, [isPanelExpanded]);
+
+    // POST to webhook
+    const response = await fetch("https://example.com/webhook", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+    
+    if (!response.ok) {
+      throw new Error("Failed to save");
+    }
+
+    toast.success("Thanks — we've added this to your request.");
+  };
   return (
     <section 
       aria-labelledby="hero-title" 
@@ -593,6 +510,7 @@ export const HeroSection = ({
               {/* Submit Button */}
               <div className="pt-2">
                 <button
+                  ref={submitButtonRef}
                   type="submit"
                   disabled={isSubmitting}
                   className="w-full rounded-xl bg-[#6945D8] text-white font-bold px-5 py-3 min-h-[44px] hover:brightness-95 focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
@@ -618,180 +536,13 @@ export const HeroSection = ({
         </div>
       </div>
 
-      {/* "One More Thing" Panel */}
-      {showOneMorePanel && (
-        <div className="mx-auto max-w-[1240px] px-5 pb-16">
-          <div 
-            className="rounded-2xl bg-white text-[#202654] border border-[#E9ECF4] p-6 lg:p-8 max-w-2xl mx-auto"
-            style={{ boxShadow: '0 8px 24px rgba(32, 38, 84, 0.08)' }}
-          >
-            <Collapsible open={isPanelExpanded} onOpenChange={setIsPanelExpanded}>
-              <div className="space-y-4">
-                <h2 
-                  ref={panelTitleRef}
-                  tabIndex={-1}
-                  className="text-xl font-semibold text-[#202654]"
-                >
-                  One more thing (optional)
-                </h2>
-                
-                {!isPanelExpanded && (
-                  <div className="space-y-3">
-                    <p className="text-sm text-[#96A0B5]">
-                      Help us match you better. Takes 30 seconds.
-                    </p>
-                    <div className="flex gap-3">
-                      <CollapsibleTrigger asChild>
-                        <button
-                          onClick={handleExpandClick}
-                          className="rounded-xl bg-[#6945D8] text-white font-bold px-5 py-2 min-h-[44px] hover:brightness-95 focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 transition-all"
-                        >
-                          Sure, 30 seconds
-                        </button>
-                      </CollapsibleTrigger>
-                      <button
-                        onClick={handleSkip}
-                        className="rounded-xl border border-[#E9ECF4] bg-white text-[#202654] font-medium px-5 py-2 min-h-[44px] hover:bg-[#E9ECF4]/50 focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 transition-all"
-                      >
-                        Skip
-                      </button>
-                    </div>
-                  </div>
-                )}
-
-                <CollapsibleContent>
-                  <div className="space-y-5 pt-4">
-                    {saveSuccess && (
-                      <Alert className="bg-green-50 border-green-200">
-                        <AlertDescription className="text-green-800">
-                          ✓ Saved. This helps us match you with the right consultant.
-                        </AlertDescription>
-                      </Alert>
-                    )}
-
-                    {saveError && (
-                      <Alert className="bg-red-50 border-red-200">
-                        <AlertDescription className="text-red-800">
-                          {saveError}
-                        </AlertDescription>
-                      </Alert>
-                    )}
-
-                    <div className="space-y-2">
-                      <label htmlFor="om_name" className="block text-sm font-medium text-[#202654]">
-                        Your name
-                      </label>
-                      <input
-                        type="text"
-                        id="om_name"
-                        value={optionalData.om_name}
-                        onChange={(e) => setOptionalData({ ...optionalData, om_name: e.target.value })}
-                        className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <label htmlFor="om_role" className="block text-sm font-medium text-[#202654]">
-                        Your role
-                      </label>
-                      <input
-                        type="text"
-                        id="om_role"
-                        value={optionalData.om_role}
-                        onChange={(e) => setOptionalData({ ...optionalData, om_role: e.target.value })}
-                        className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2"
-                        placeholder="e.g., Executive Director"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <label className="block text-sm font-medium text-[#202654]">
-                        When do you want to start?
-                      </label>
-                      <RadioGroup
-                        value={optionalData.om_start}
-                        onValueChange={(value) => setOptionalData({ ...optionalData, om_start: value })}
-                        className="space-y-2"
-                      >
-                        <div className="flex items-center space-x-2">
-                          <RadioGroupItem value="asap" id="start_asap" className="border-[#E9ECF4] text-[#6945D8]" />
-                          <label htmlFor="start_asap" className="text-sm text-[#202654] cursor-pointer">
-                            ASAP (within 2 weeks)
-                          </label>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <RadioGroupItem value="1month" id="start_1month" className="border-[#E9ECF4] text-[#6945D8]" />
-                          <label htmlFor="start_1month" className="text-sm text-[#202654] cursor-pointer">
-                            Within a month
-                          </label>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <RadioGroupItem value="flexible" id="start_flexible" className="border-[#E9ECF4] text-[#6945D8]" />
-                          <label htmlFor="start_flexible" className="text-sm text-[#202654] cursor-pointer">
-                            Flexible / just exploring
-                          </label>
-                        </div>
-                      </RadioGroup>
-                    </div>
-
-                    <div className="space-y-2">
-                      <label className="block text-sm font-medium text-[#202654]">
-                        Budget range (CAD)
-                      </label>
-                      <RadioGroup
-                        value={optionalData.om_budget}
-                        onValueChange={(value) => setOptionalData({ ...optionalData, om_budget: value })}
-                        className="space-y-2"
-                      >
-                        <div className="flex items-center space-x-2">
-                          <RadioGroupItem value="under5k" id="budget_under5k" className="border-[#E9ECF4] text-[#6945D8]" />
-                          <label htmlFor="budget_under5k" className="text-sm text-[#202654] cursor-pointer">
-                            Under $5,000
-                          </label>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <RadioGroupItem value="5k-15k" id="budget_5k15k" className="border-[#E9ECF4] text-[#6945D8]" />
-                          <label htmlFor="budget_5k15k" className="text-sm text-[#202654] cursor-pointer">
-                            $5,000 - $15,000
-                          </label>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <RadioGroupItem value="15k-30k" id="budget_15k30k" className="border-[#E9ECF4] text-[#6945D8]" />
-                          <label htmlFor="budget_15k30k" className="text-sm text-[#202654] cursor-pointer">
-                            $15,000 - $30,000
-                          </label>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <RadioGroupItem value="30k+" id="budget_30kplus" className="border-[#E9ECF4] text-[#6945D8]" />
-                          <label htmlFor="budget_30kplus" className="text-sm text-[#202654] cursor-pointer">
-                            $30,000+
-                          </label>
-                        </div>
-                      </RadioGroup>
-                    </div>
-
-                    <div className="flex gap-3 pt-2">
-                      <button
-                        onClick={handleSaveOptional}
-                        disabled={isSavingOptional}
-                        className="rounded-xl bg-[#6945D8] text-white font-bold px-5 py-2 min-h-[44px] hover:brightness-95 focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 transition-all disabled:opacity-50"
-                      >
-                        {isSavingOptional ? "Saving..." : "Save"}
-                      </button>
-                      <button
-                        onClick={handleSkip}
-                        className="rounded-xl border border-[#E9ECF4] bg-white text-[#202654] font-medium px-5 py-2 min-h-[44px] hover:bg-[#E9ECF4]/50 focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 transition-all"
-                      >
-                        Skip
-                      </button>
-                    </div>
-                  </div>
-                </CollapsibleContent>
-              </div>
-            </Collapsible>
-          </div>
-        </div>
-      )}
+      {/* Optional Info Modal */}
+      <OptionalInfoModal
+        isOpen={showOptionalModal}
+        onClose={() => setShowOptionalModal(false)}
+        onSave={handleSaveOptional}
+        returnFocusRef={submitButtonRef}
+      />
 
       {/* 
         VARIANT B (Light Alternative - Commented)
