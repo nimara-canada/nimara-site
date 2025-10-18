@@ -62,7 +62,7 @@ export const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-semibold text-sm">Contact</h4>
             <div className="space-y-2 text-sm text-[#96A0B5]">
-              <a href="mailto:hello@nimara.ca" className="block hover:text-[#6945D8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#6945D8] rounded">
+              <a href="mailto:hello@nimara.ca" className="block text-white hover:text-[#6945D8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#6945D8] rounded">
                 hello@nimara.ca
               </a>
               <address className="not-italic leading-relaxed">
