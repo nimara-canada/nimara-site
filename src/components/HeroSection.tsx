@@ -315,12 +315,11 @@ export const HeroSection = ({
             {/* H1 - Stacked Headline */}
             <h1 
               id="hero-title"
-              className="font-extrabold tracking-tight leading-[0.95] text-[clamp(40px,5.2vw,64px)] max-w-[19ch]"
+              className="font-extrabold tracking-tight leading-[0.95] text-[clamp(40px,5.2vw,64px)] max-w-[28ch]"
               style={{ textWrap: 'balance' }}
             >
-              <span>Premium&nbsp;nonprofit&nbsp;consulting</span><br />
-              <span>Get&nbsp;3&nbsp;quotes</span><br />
-              <span>in&nbsp;72&nbsp;hours</span>
+              <span>Premium&nbsp;nonprofit</span><br />
+              <span>consulting&nbsp;—&nbsp;Get&nbsp;3&nbsp;quotes&nbsp;in&nbsp;72&nbsp;hours</span>
             </h1>
 
             {/* Subhead */}
