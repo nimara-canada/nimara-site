@@ -364,7 +364,7 @@ export const HeroSection = ({
             {/* Trust Strip */}
             <div className="pt-4">
               <p className="text-[#96A0B5] text-sm">
-                Data in Canada • Records kept 7 years • Vetted senior consultants • Project Manager Oversight
+                Records kept 7 years • Vetted senior consultants • Project Manager Oversight
               </p>
             </div>
           </div>
