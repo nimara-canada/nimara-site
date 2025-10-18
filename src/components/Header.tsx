@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 
-import nimaraLogo from "@/assets/nimara-logo.svg";
+import nimaraLogo from "@/assets/nimara-logo.png";
 
 const navigation = [
   { name: "For Nonprofits", href: "/" },
