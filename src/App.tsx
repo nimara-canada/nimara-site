@@ -18,6 +18,7 @@ import Accessibility from "./pages/Accessibility";
 import Trust from "./pages/Trust";
 import NotFound from "./pages/NotFound";
 import AIMasterclass from "./pages/AIMasterclass";
+import NextSteps from "./pages/NextSteps";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +41,7 @@ const App = () => (
             <Route path="/trust" element={<Trust />} />
             <Route path="/sample-brief" element={<SampleBrief />} />
             <Route path="/ai-masterclass" element={<AIMasterclass />} />
+            <Route path="/next-steps" element={<NextSteps />} />
             
             {/* Redirects for old routes */}
             <Route path="/for-nonprofits" element={<Navigate to="/" replace />} />

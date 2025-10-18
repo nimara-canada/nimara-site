@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
-import { OptionalInfoModal, type OptionalData } from "@/components/OptionalInfoModal";
+import { useNavigate } from "react-router-dom";
 const categories = ["Governance", "Finance & Audit", "Program Design", "Digital & Data", "Fundraising", "Research", "Legal & Compliance", "Not sure / Other"];
 const provinces = [{
   code: "AB",
@@ -54,9 +54,8 @@ interface HeroFormProps {
 export const HeroSection = ({
   prefillCategory
 }: HeroFormProps) => {
+  const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showOptionalModal, setShowOptionalModal] = useState(false);
-  const [submittedEmail, setSubmittedEmail] = useState("");
   const [showExamples, setShowExamples] = useState(false);
   const submitButtonRef = useRef<HTMLButtonElement>(null);
   const [formData, setFormData] = useState({
@@ -148,15 +147,11 @@ export const HeroSection = ({
           payload
         }
       }).catch(err => console.error("Email error:", err));
-      toast.success("Thanks — expect a project scoping call in the next 48 hours to understand your needs better before matching you with a consultant.");
-
-      // Store email for optional details
-      setSubmittedEmail(formData.email);
-
-      // Show the modal after a short delay
-      setTimeout(() => {
-        setShowOptionalModal(true);
-      }, 500);
+      
+      // Show brief success message
+      toast.success("Request submitted! Redirecting...", {
+        duration: 2000,
+      });
 
       // Reset form
       setFormData({
@@ -166,42 +161,16 @@ export const HeroSection = ({
         category: "",
         outcome: ""
       });
+
+      // Redirect to Next Steps page after brief delay
+      setTimeout(() => {
+        navigate("/next-steps");
+      }, 2000);
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
     } finally {
       setTimeout(() => setIsSubmitting(false), 2000);
     }
-  };
-  const handleSaveOptional = async (data: OptionalData) => {
-    const lead_id = sessionStorage.getItem('lead_id');
-    const payload = {
-      flow: "3quotes_more",
-      lead_id: lead_id || null,
-      email: submittedEmail,
-      note: data.om_note,
-      start: data.om_start,
-      budget: data.om_budget,
-      utm_source: new URLSearchParams(window.location.search).get("utm_source"),
-      utm_medium: new URLSearchParams(window.location.search).get("utm_medium"),
-      utm_campaign: new URLSearchParams(window.location.search).get("utm_campaign"),
-      referrer: document.referrer,
-      timestamp: new Date().toISOString()
-    };
-
-    // POST to webhook
-    const response = await fetch("https://example.com/webhook", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(payload)
-    });
-    
-    if (!response.ok) {
-      throw new Error("Failed to save");
-    }
-
-    toast.success("Thanks — we've added this to your request.");
   };
   return (
     <section 
@@ -534,14 +503,6 @@ export const HeroSection = ({
 
         </div>
       </div>
-
-      {/* Optional Info Modal */}
-      <OptionalInfoModal
-        isOpen={showOptionalModal}
-        onClose={() => setShowOptionalModal(false)}
-        onSave={handleSaveOptional}
-        returnFocusRef={submitButtonRef}
-      />
 
       {/* 
         VARIANT B (Light Alternative - Commented)
