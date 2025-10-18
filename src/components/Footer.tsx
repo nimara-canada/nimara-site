@@ -65,6 +65,9 @@ export const Footer = () => {
               <a href="mailto:hello@nimara.ca" className="block text-white hover:text-[#6945D8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#6945D8] rounded">
                 hello@nimara.ca
               </a>
+              <a href="tel:+17808514986" className="block text-white hover:text-[#6945D8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#6945D8] rounded">
+                🇨🇦 780 851 4986
+              </a>
               <address className="not-italic leading-relaxed">
                 #1017 - 9580 170th St NW<br />
                 Edmonton, AB T5T 5R5<br />
