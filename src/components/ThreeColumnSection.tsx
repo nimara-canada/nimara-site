@@ -39,11 +39,11 @@ export const ThreeColumnSection = () => {
           What You Get
         </h2>
         <p className="text-center text-lg text-foreground/80 mb-12 max-w-2xl mx-auto">
-          Here's how it works
+          Here's how it works: <strong>3 free quotes in 72 hours</strong> from <strong>vetted Canadian nonprofit consultants</strong>
         </p>
 
         <div className="grid md:grid-cols-3 gap-8 mb-8 max-w-5xl mx-auto">
-          {steps.map((step, index) => <div key={index} className="bg-card rounded-2xl p-6 shadow-[0_8px_24px_rgba(32,38,84,0.08)] space-y-4">
+          {steps.map((step, index) => <article key={index} className="bg-card rounded-2xl p-6 shadow-[0_8px_24px_rgba(32,38,84,0.08)] space-y-4">
               <div className="flex justify-center">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
                   <span className="text-2xl font-bold text-primary">
@@ -57,10 +57,10 @@ export const ThreeColumnSection = () => {
               <p className="text-foreground/80 text-center">
                 {step.description}
               </p>
-            </div>)}
+            </article>)}
         </div>
 
-        <p className="text-center text-lg text-foreground/90 max-w-2xl mx-auto">No pressure. No sales calls. Just real solutions you can act on.</p>
+        <p className="text-center text-lg text-foreground/90 max-w-2xl mx-auto"><strong>No pressure. No sales calls.</strong> Just real solutions you can act on.</p>
       </div>
     </section>;
 };

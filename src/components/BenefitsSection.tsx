@@ -29,7 +29,7 @@ export const BenefitsSection = () => {
 
           <div className="grid md:grid-cols-3 gap-6">
             {benefits.map((benefit, index) => (
-              <div
+              <article
                 key={index}
                 className="bg-card border border-border rounded-2xl p-6 space-y-4 text-center"
               >
@@ -38,8 +38,8 @@ export const BenefitsSection = () => {
                     <benefit.icon className="h-6 w-6 text-primary" aria-hidden="true" />
                   </div>
                 </div>
-                <p className="font-medium">{benefit.title}</p>
-              </div>
+                <h3 className="font-semibold text-lg">{benefit.title}</h3>
+              </article>
             ))}
           </div>
 

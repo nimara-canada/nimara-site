@@ -7,21 +7,21 @@ export const HowItWorksSection = () => {
           <div>
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">Why It's Free</h2>
             <p className="text-foreground/90 text-lg max-w-3xl mx-auto">
-              We don't do vague "consultation" calls. You get real scoping, timelines, and options from real experts — because that's how we earn your trust.
+              We don't do vague "consultation" calls. You get <strong>real scoping, timelines, and options from real experts</strong> — because that's how we earn your trust.
             </p>
           </div>
 
-          <div className="bg-card rounded-2xl p-8 shadow-sm border border-border">
+          <article className="bg-card rounded-2xl p-8 shadow-sm border border-border">
             <h3 className="text-xl font-semibold mb-6 text-left">Our consultants are:</h3>
-            <div className="space-y-4">
-              {consultantFeatures.map((feature, index) => <div key={index} className="flex items-start gap-3 text-left">
+            <ul className="space-y-4">
+              {consultantFeatures.map((feature, index) => <li key={index} className="flex items-start gap-3 text-left">
                   <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" aria-hidden="true" />
                   <p className="text-foreground/90 text-lg">{feature}</p>
-                </div>)}
-            </div>
-          </div>
+                </li>)}
+            </ul>
+          </article>
 
-          <p className="text-lg text-foreground/90 pt-4">You keep the quotes. We hope you choose Nimara — but you don't have to.</p>
+          <p className="text-lg text-foreground/90 pt-4">You keep the quotes. We hope you choose Nimara — but <strong>you don't have to.</strong></p>
         </div>
       </div>
     </section>;

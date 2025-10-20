@@ -56,7 +56,7 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
             <a href="/" className="flex items-center space-x-2 min-h-[44px]" aria-label="Nimara home">
               <img 
                 src={nimaraLogo} 
-                alt="Nimara logo" 
+                alt="Nimara - Canadian Nonprofit Consulting Platform for Governance, Finance, and Compliance" 
                 className="h-16 md:h-20 w-auto" 
                 fetchPriority="high"
                 width="120"

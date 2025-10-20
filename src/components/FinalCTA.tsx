@@ -45,7 +45,7 @@ export const FinalCTA = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
         <div className="text-center space-y-6 mb-12">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground">Talk to the Nimara team</h2>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">Nonprofit—tell us what you need. We’ll help you choose the simplest next step. Share a few details. We’ll reply within 5 business day.</p>
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto"><strong>Nonprofit—tell us what you need.</strong> We'll help you choose the simplest next step. Share a few details. <strong>We'll reply within 5 business days.</strong></p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">

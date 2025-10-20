@@ -11,14 +11,14 @@ export const PricingSection = ({
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Pricing, made simple — and auditable</h2>
           
           <p className="text-lg mb-4">
-            Quotes are free. You only pay if you move forward with a project.
+            <strong>Quotes are free.</strong> You only pay if you move forward with a project.
           </p>
 
           <p className="text-lg mb-12">
-            When you do, your proposal includes one clear line for Nimara's platform and project oversight fee — so delivery is <strong>transparent, trackable, and audit-friendly.</strong>
+            When you do, your proposal includes one clear line for <strong>Nimara's platform and project oversight fee</strong> — so delivery is <strong>transparent, trackable, and audit-friendly.</strong>
           </p>
 
-          <div className="border-t border-border pt-12 mb-12">
+          <article className="border-t border-border pt-12 mb-12">
             <h3 className="text-2xl font-semibold mb-2">Single-category projects</h3>
             
             <p className="text-muted-foreground mb-6">
@@ -34,27 +34,27 @@ export const PricingSection = ({
               </li>
               
             </ul>
-          </div>
+          </article>
 
-          <div className="border-t border-border pt-12">
+          <article className="border-t border-border pt-12">
             <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
-              <Check className="w-6 h-6 text-primary" />
+              <Check className="w-6 h-6 text-primary" aria-hidden="true" />
               What the Nimara fee covers:
             </h3>
             
             <ul className="space-y-3">
               <li className="text-lg">
-                Briefing + consultant matching
+                <strong>Briefing + consultant matching</strong>
               </li>
               <li className="text-lg">
-                Light project management (oversight, check-ins)
+                <strong>Light project management</strong> (oversight, check-ins)
               </li>
-              <li className="text-lg">Secure payment + records keeping</li>
+              <li className="text-lg"><strong>Secure payment + records keeping</strong></li>
               <li className="text-lg">
-                Final delivery confirmation
+                <strong>Final delivery confirmation</strong>
               </li>
             </ul>
-          </div>
+          </article>
         </div>
       </div>
     </section>;

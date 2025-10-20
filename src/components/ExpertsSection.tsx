@@ -7,14 +7,14 @@ export const ExpertsSection = () => {
             Problems We Can Quote On
           </h2>
           <p className="text-lg text-foreground/80">
-            Most orgs come to us when…
+            Most <strong>Canadian nonprofits</strong> come to us when…
           </p>
           <div className="space-y-3">
-            {problems.map((problem, index) => <div key={index} className="bg-card rounded-xl p-4 shadow-sm text-left border border-border">
+            {problems.map((problem, index) => <article key={index} className="bg-card rounded-xl p-4 shadow-sm text-left border border-border">
                 <p className="text-foreground font-medium">"{problem}"</p>
-              </div>)}
+              </article>)}
           </div>
-          <p className="text-lg text-foreground/90 pt-4">If any of these sound familiar — let's quote it out.</p>
+          <p className="text-lg text-foreground/90 pt-4">If any of these sound familiar — <strong>let's quote it out.</strong></p>
         </div>
       </div>
     </section>;

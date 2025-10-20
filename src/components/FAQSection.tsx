@@ -36,7 +36,7 @@ export const FAQSection = () => {
     <section id="faq" className="py-16 lg:py-24 bg-secondary">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto space-y-8">
-          <h2 className="text-3xl sm:text-4xl text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center">
             Frequently Asked Questions
           </h2>
 
