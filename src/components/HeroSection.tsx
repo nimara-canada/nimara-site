@@ -128,7 +128,6 @@ export const HeroSection = ({
     try {
       // Generate request ID
       const requestId = `REQ-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
-      
       const payload = {
         flow: "3quotes",
         request_id: requestId,
@@ -154,13 +153,13 @@ export const HeroSection = ({
         console.error("Email error:", err);
         console.log(`Failed to send email for Request ID: ${requestId}`);
       });
-      
+
       // Log client event
       console.log(`Event: quotes_submit | Status: success | Request ID: ${requestId} | Timestamp: ${new Date().toISOString()}`);
-      
+
       // Show brief success message
       toast.success("Request submitted! Redirecting...", {
-        duration: 2000,
+        duration: 2000
       });
 
       // Reset form
@@ -174,7 +173,11 @@ export const HeroSection = ({
 
       // Redirect to Next Steps page after brief delay with request ID
       setTimeout(() => {
-        navigate("/next-steps", { state: { requestId } });
+        navigate("/next-steps", {
+          state: {
+            requestId
+          }
+        });
       }, 2000);
     } catch (error) {
       console.error("Form submission error:", error);
@@ -183,16 +186,9 @@ export const HeroSection = ({
       setTimeout(() => setIsSubmitting(false), 2000);
     }
   };
-  return (
-    <section 
-      aria-labelledby="hero-title" 
-      className="bg-[#202654] text-white relative overflow-hidden"
-    >
+  return <section aria-labelledby="hero-title" className="bg-[#202654] text-white relative overflow-hidden">
       {/* Skip link for accessibility */}
-      <a 
-        href="#get-quotes" 
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-white focus:text-[#202654] focus:px-3 focus:py-2 focus:rounded focus:z-50 focus:outline-none focus:ring-2 focus:ring-[#6945D8] focus:ring-offset-2"
-      >
+      <a href="#get-quotes" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-white focus:text-[#202654] focus:px-3 focus:py-2 focus:rounded focus:z-50 focus:outline-none focus:ring-2 focus:ring-[#6945D8] focus:ring-offset-2">
         Skip to form
       </a>
 
@@ -203,56 +199,45 @@ export const HeroSection = ({
           <div className="space-y-6 lg:space-y-8">
             {/* Eyebrow Pill */}
             <div>
-              <span className="inline-block rounded-full bg-[#ACFCE3] text-[#202654] px-3 py-1 text-sm font-semibold">
-                For nonprofits & charities • Premium consulting
-              </span>
+              <span className="inline-block rounded-full bg-[#ACFCE3] text-[#202654] px-3 py-1 text-sm font-semibold">For Nonprofits Charities & Funders</span>
             </div>
 
             {/* H1 - Stacked Headline */}
-            <h1 
-              id="hero-title"
-              className="font-extrabold tracking-tight leading-[0.95] text-[clamp(40px,5.2vw,64px)] max-w-[22ch]"
-              style={{ textWrap: 'balance' }}
-            >
+            <h1 id="hero-title" className="font-extrabold tracking-tight leading-[0.95] text-[clamp(40px,5.2vw,64px)] max-w-[22ch]" style={{
+            textWrap: 'balance'
+          }}>
               <span>Premium&nbsp;nonprofit</span><br />
               <span>consulting&nbsp;—&nbsp;Get&nbsp;3</span><br />
               <span>quotes&nbsp;in&nbsp;72&nbsp;hours</span>
             </h1>
 
             {/* Subhead */}
-            <p 
-              className="max-w-prose"
-              style={{
-                fontSize: 'clamp(16px, 2.2vw, 20px)',
-                lineHeight: '1.45',
-                opacity: '0.9'
-              }}
-            >
+            <p className="max-w-prose" style={{
+            fontSize: 'clamp(16px, 2.2vw, 20px)',
+            lineHeight: '1.45',
+            opacity: '0.9'
+          }}>
               We match you with senior Canadian experts. Clear scope. PM oversight. Audit-ready files.
             </p>
 
             {/* Primary CTA */}
             <div className="pt-2">
-              <button
-                onClick={scrollToForm}
-                className="rounded-xl bg-[#6945D8] text-white font-bold px-5 py-3 min-h-[44px] min-w-[44px] hover:brightness-95 focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 transition-all"
-              >
+              <button onClick={scrollToForm} className="rounded-xl bg-[#6945D8] text-white font-bold px-5 py-3 min-h-[44px] min-w-[44px] hover:brightness-95 focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 transition-all">
                 Get 3 free quotes
               </button>
             </div>
 
             {/* Secondary Link */}
             <div>
-              <a 
-                href="#pricing" 
-                onClick={(e) => {
-                  e.preventDefault();
-                  const pricingSection = document.getElementById('pricing');
-                  pricingSection?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="text-white hover:underline focus:outline-none focus:ring-2 focus:ring-[#6945D8] focus:ring-offset-2 focus:ring-offset-[#202654] rounded inline-block"
-                style={{ fontSize: '16px' }}
-              >
+              <a href="#pricing" onClick={e => {
+              e.preventDefault();
+              const pricingSection = document.getElementById('pricing');
+              pricingSection?.scrollIntoView({
+                behavior: 'smooth'
+              });
+            }} className="text-white hover:underline focus:outline-none focus:ring-2 focus:ring-[#6945D8] focus:ring-offset-2 focus:ring-offset-[#202654] rounded inline-block" style={{
+              fontSize: '16px'
+            }}>
                 How fees work →
               </a>
             </div>
@@ -266,80 +251,49 @@ export const HeroSection = ({
           </div>
 
           {/* Right Column: Form Card */}
-          <div 
-            id="get-quotes"
-            className="rounded-2xl bg-white text-[#202654] border border-[#E9ECF4] p-6 lg:p-8"
-            style={{ boxShadow: '0 8px 24px rgba(32, 38, 84, 0.08)' }}
-          >
+          <div id="get-quotes" className="rounded-2xl bg-white text-[#202654] border border-[#E9ECF4] p-6 lg:p-8" style={{
+          boxShadow: '0 8px 24px rgba(32, 38, 84, 0.08)'
+        }}>
             <form onSubmit={handleSubmit} className="space-y-5">
               
               {/* Email Field */}
               <div className="space-y-2">
-                <label 
-                  htmlFor="q_email"
-                  className="block text-sm font-medium text-[#202654]"
-                >
+                <label htmlFor="q_email" className="block text-sm font-medium text-[#202654]">
                   Email <span className="text-red-600">*</span>
                 </label>
-                <input
-                  type="email"
-                  id="q_email"
-                  autoComplete="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] placeholder:text-[#96A0B5] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2"
-                  placeholder="you@organization.org"
-                />
+                <input type="email" id="q_email" autoComplete="email" required value={formData.email} onChange={e => setFormData({
+                ...formData,
+                email: e.target.value
+              })} className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] placeholder:text-[#96A0B5] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2" placeholder="you@organization.org" />
               </div>
 
               {/* Organization Field */}
               <div className="space-y-2">
-                <label 
-                  htmlFor="q_org"
-                  className="block text-sm font-medium text-[#202654]"
-                >
+                <label htmlFor="q_org" className="block text-sm font-medium text-[#202654]">
                   Organization <span className="text-red-600">*</span>
                 </label>
-                <input
-                  type="text"
-                  id="q_org"
-                  required
-                  value={formData.organization}
-                  onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
-                  className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] placeholder:text-[#96A0B5] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2"
-                  placeholder="Your organization name"
-                />
+                <input type="text" id="q_org" required value={formData.organization} onChange={e => setFormData({
+                ...formData,
+                organization: e.target.value
+              })} className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] placeholder:text-[#96A0B5] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2" placeholder="Your organization name" />
               </div>
 
               {/* Province/Territory Field */}
               <div className="space-y-2">
-                <label 
-                  htmlFor="q_region"
-                  className="block text-sm font-medium text-[#202654]"
-                >
+                <label htmlFor="q_region" className="block text-sm font-medium text-[#202654]">
                   Province/Territory <span className="text-red-600">*</span>
                 </label>
                 <div className="relative">
-                  <select
-                    id="q_region"
-                    value={formData.region}
-                    onChange={(e) => setFormData({ ...formData, region: e.target.value })}
-                    className="w-full appearance-none rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 pr-10 text-[#202654] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 min-h-[44px]"
-                  >
+                  <select id="q_region" value={formData.region} onChange={e => setFormData({
+                  ...formData,
+                  region: e.target.value
+                })} className="w-full appearance-none rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 pr-10 text-[#202654] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 min-h-[44px]">
                     <option value="">Select a province</option>
-                    {provinces.map((province) => (
-                      <option key={province.code} value={province.code}>
+                    {provinces.map(province => <option key={province.code} value={province.code}>
                         {province.name}
-                      </option>
-                    ))}
+                      </option>)}
                   </select>
-                  <svg 
-                    className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none w-4 h-4 text-[#96A0B5]" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
+                  <svg className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none w-4 h-4 text-[#96A0B5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>
@@ -347,153 +301,110 @@ export const HeroSection = ({
 
               {/* Category Field */}
               <div className="space-y-2">
-                <label 
-                  htmlFor="q_category"
-                  className="block text-sm font-medium text-[#202654]"
-                >
+                <label htmlFor="q_category" className="block text-sm font-medium text-[#202654]">
                   Category <span className="text-red-600">*</span>
                 </label>
                 <div className="relative">
-                  <select
-                    id="q_category"
-                    value={formData.category}
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      setFormData({ ...formData, category: value });
-                      
-                      if (value === "not_sure" || value === "Not sure / Other") {
-                        setTimeout(() => {
-                          document.getElementById("q_outcome")?.focus();
-                        }, 100);
-                      }
-                    }}
-                    required
-                    className="w-full appearance-none rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 pr-10 text-[#202654] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 min-h-[44px]"
-                  >
+                  <select id="q_category" value={formData.category} onChange={e => {
+                  const value = e.target.value;
+                  setFormData({
+                    ...formData,
+                    category: value
+                  });
+                  if (value === "not_sure" || value === "Not sure / Other") {
+                    setTimeout(() => {
+                      document.getElementById("q_outcome")?.focus();
+                    }, 100);
+                  }
+                }} required className="w-full appearance-none rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 pr-10 text-[#202654] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 min-h-[44px]">
                     <option value="">Select a category</option>
-                    {categories.map((category) => {
-                      const value = category === "Not sure / Other" ? "not_sure" : category;
-                      return (
-                        <option key={category} value={value}>
+                    {categories.map(category => {
+                    const value = category === "Not sure / Other" ? "not_sure" : category;
+                    return <option key={category} value={value}>
                           {category}
-                        </option>
-                      );
-                    })}
+                        </option>;
+                  })}
                   </select>
-                  <svg 
-                    className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none w-4 h-4 text-[#96A0B5]" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
+                  <svg className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none w-4 h-4 text-[#96A0B5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>
-                {(formData.category === "not_sure" || formData.category === "Not sure / Other") && (
-                  <p className="text-xs text-[#96A0B5]">
+                {(formData.category === "not_sure" || formData.category === "Not sure / Other") && <p className="text-xs text-[#96A0B5]">
                     If you choose "Not sure / Other," just tell us the outcome you want.
-                  </p>
-                )}
+                  </p>}
               </div>
 
               {/* Outcome Field */}
               <div className="space-y-2">
-                <label 
-                  htmlFor="q_outcome"
-                  className="block text-sm font-medium text-[#202654]"
-                >
+                <label htmlFor="q_outcome" className="block text-sm font-medium text-[#202654]">
                   What result do you want?
                 </label>
                 <p className="text-xs text-[#96A0B5]" id="q_outcome_helper">
                   One sentence, up to 140 characters. Plain English is perfect.
                 </p>
-                <input
-                  type="text"
-                  id="q_outcome"
-                  maxLength={140}
-                  value={formData.outcome}
-                  onChange={(e) => setFormData({ ...formData, outcome: e.target.value })}
-                  className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] placeholder:text-[#96A0B5] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2"
-                  placeholder="Reconcile Q4 grant spend and be audit-ready by Apr 30."
-                  aria-describedby="q_outcome_helper q_outcome_counter"
-                />
+                <input type="text" id="q_outcome" maxLength={140} value={formData.outcome} onChange={e => setFormData({
+                ...formData,
+                outcome: e.target.value
+              })} className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] placeholder:text-[#96A0B5] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2" placeholder="Reconcile Q4 grant spend and be audit-ready by Apr 30." aria-describedby="q_outcome_helper q_outcome_counter" />
                 <div className="flex items-center justify-between gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setShowExamples(!showExamples)}
-                    className="text-xs text-[#6945D8] hover:underline focus:outline-none focus:ring-2 focus:ring-[#6945D8] focus:ring-offset-2 rounded px-1"
-                  >
+                  <button type="button" onClick={() => setShowExamples(!showExamples)} className="text-xs text-[#6945D8] hover:underline focus:outline-none focus:ring-2 focus:ring-[#6945D8] focus:ring-offset-2 rounded px-1">
                     {showExamples ? "Hide examples" : "Show examples →"}
                   </button>
-                  <p 
-                    id="q_outcome_counter" 
-                    className={`text-xs ${formData.outcome.length >= 120 ? 'text-[#202654] font-medium' : 'text-[#96A0B5]'}`}
-                    aria-live="polite"
-                  >
+                  <p id="q_outcome_counter" className={`text-xs ${formData.outcome.length >= 120 ? 'text-[#202654] font-medium' : 'text-[#96A0B5]'}`} aria-live="polite">
                     {formData.outcome.length} / 140
                   </p>
                 </div>
 
                 {/* Examples Panel */}
-                {showExamples && (
-                  <div className="border border-[#E9ECF4] rounded-xl p-4 space-y-3 bg-[#E9ECF4]/30">
+                {showExamples && <div className="border border-[#E9ECF4] rounded-xl p-4 space-y-3 bg-[#E9ECF4]/30">
                     <p className="text-xs font-semibold text-[#202654]">Example outcomes by category:</p>
                     
                     <div className="space-y-2">
                       <div>
                         <p className="text-xs font-medium text-[#202654] mb-1">Finance & Audit</p>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setFormData({ ...formData, outcome: "Reconcile Q4 grant spend and be audit-ready by Apr 30." });
-                            setShowExamples(false);
-                          }}
-                          className="text-xs text-[#96A0B5] hover:text-[#202654] transition-colors text-left"
-                        >
+                        <button type="button" onClick={() => {
+                      setFormData({
+                        ...formData,
+                        outcome: "Reconcile Q4 grant spend and be audit-ready by Apr 30."
+                      });
+                      setShowExamples(false);
+                    }} className="text-xs text-[#96A0B5] hover:text-[#202654] transition-colors text-left">
                           "Reconcile Q4 grant spend and be audit-ready by Apr 30."
                         </button>
                       </div>
                       
                       <div>
                         <p className="text-xs font-medium text-[#202654] mb-1">Digital & Data</p>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setFormData({ ...formData, outcome: "Migrate our donor database to a CRM by June 15." });
-                            setShowExamples(false);
-                          }}
-                          className="text-xs text-[#96A0B5] hover:text-[#202654] transition-colors text-left"
-                        >
+                        <button type="button" onClick={() => {
+                      setFormData({
+                        ...formData,
+                        outcome: "Migrate our donor database to a CRM by June 15."
+                      });
+                      setShowExamples(false);
+                    }} className="text-xs text-[#96A0B5] hover:text-[#202654] transition-colors text-left">
                           "Migrate our donor database to a CRM by June 15."
                         </button>
                       </div>
                       
                       <div>
                         <p className="text-xs font-medium text-[#202654] mb-1">Governance</p>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setFormData({ ...formData, outcome: "Update our board policies to meet new ONCA requirements by May 1." });
-                            setShowExamples(false);
-                          }}
-                          className="text-xs text-[#96A0B5] hover:text-[#202654] transition-colors text-left"
-                        >
+                        <button type="button" onClick={() => {
+                      setFormData({
+                        ...formData,
+                        outcome: "Update our board policies to meet new ONCA requirements by May 1."
+                      });
+                      setShowExamples(false);
+                    }} className="text-xs text-[#96A0B5] hover:text-[#202654] transition-colors text-left">
                           "Update our board policies to meet new ONCA requirements by May 1."
                         </button>
                       </div>
                     </div>
-                  </div>
-                )}
+                  </div>}
               </div>
 
               {/* Submit Button */}
               <div className="pt-2">
-                <button
-                  ref={submitButtonRef}
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full rounded-xl bg-[#6945D8] text-white font-bold px-5 py-3 min-h-[44px] hover:brightness-95 focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                >
+                <button ref={submitButtonRef} type="submit" disabled={isSubmitting} className="w-full rounded-xl bg-[#6945D8] text-white font-bold px-5 py-3 min-h-[44px] hover:brightness-95 focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed">
                   {isSubmitting ? "Sending..." : "Get My Free Quotes"}
                 </button>
               </div>
@@ -547,7 +458,6 @@ export const HeroSection = ({
             {/* grid content *\/}
           </div>
         </div>
-      */}
-    </section>
-  );
+       */}
+    </section>;
 };
