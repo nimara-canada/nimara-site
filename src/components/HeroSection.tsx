@@ -206,9 +206,9 @@ export const HeroSection = ({
             <h1 id="hero-title" className="font-extrabold tracking-tight leading-[0.95] text-[clamp(40px,5.2vw,64px)] max-w-[22ch]" style={{
             textWrap: 'balance'
           }}>
-              <span>Premium&nbsp;nonprofit</span><br />
-              <span>consulting&nbsp;—&nbsp;Get&nbsp;3</span><br />
-              <span>quotes&nbsp;in&nbsp;72&nbsp;hours</span>
+              <span>Premium Nonprofit</span><br />
+              <span>Consulting — Get 3</span><br />
+              <span>Quotes in 72 Hours</span>
             </h1>
 
             {/* Subhead */}
