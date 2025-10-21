@@ -199,7 +199,7 @@ export const HeroSection = ({
           <div className="space-y-6 lg:space-y-8">
             {/* Eyebrow Pill */}
             <div>
-              <span className="inline-block rounded-full bg-[#ACFCE3] text-[#202654] px-3 py-1 text-sm font-semibold">For Nonprofits Charities & Funders</span>
+              <span className="inline-block rounded-full bg-[#ACFCE3] text-[#202654] px-3 py-1 text-sm font-semibold">For Nonprofits, Charities & Funders</span>
             </div>
 
             {/* H1 - Stacked Headline */}
