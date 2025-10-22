@@ -131,6 +131,7 @@ export const HeroSection = ({
       // Get UTM parameters
       const urlParams = new URLSearchParams(window.location.search);
       
+      // Build nested payload for organization
       const payload = {
         form_id: "nimara_free_quote_v2",
         submitted_at: new Date().toISOString(),
@@ -164,6 +165,17 @@ export const HeroSection = ({
         }
       };
 
+      // Flatten payload for Make webhook
+      const flatPayload = {
+        "email": payload.contact.email,
+        "organization": payload.organization.name,
+        "province/territory": payload.organization.province,
+        "category": payload.project.category,
+        "what result would you want?": payload.project.result_goal,
+        "submitted_at": payload.submitted_at,
+        "page_url": payload.page_url
+      };
+
       // Send to webhook - US2 region
       const response = await fetch("https://hook.us2.make.com/oor7l72qi48e8o5ydnenu56r3y9d27v5", {
         method: "POST",
@@ -172,7 +184,7 @@ export const HeroSection = ({
           "Content-Type": "application/json",
           "Accept": "*/*"
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(flatPayload),
         keepalive: true
       });
 
