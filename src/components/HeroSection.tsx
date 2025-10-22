@@ -7,47 +7,33 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
-const categories = ["Governance", "Finance & Audit", "Program Design", "Digital & Data", "Fundraising", "Research", "Legal & Compliance", "Not sure / Other"];
-const provinces = [{
-  code: "AB",
-  name: "Alberta"
-}, {
-  code: "BC",
-  name: "British Columbia"
-}, {
-  code: "MB",
-  name: "Manitoba"
-}, {
-  code: "NB",
-  name: "New Brunswick"
-}, {
-  code: "NL",
-  name: "Newfoundland and Labrador"
-}, {
-  code: "NS",
-  name: "Nova Scotia"
-}, {
-  code: "NT",
-  name: "Northwest Territories"
-}, {
-  code: "NU",
-  name: "Nunavut"
-}, {
-  code: "ON",
-  name: "Ontario"
-}, {
-  code: "PE",
-  name: "Prince Edward Island"
-}, {
-  code: "QC",
-  name: "Quebec"
-}, {
-  code: "SK",
-  name: "Saskatchewan"
-}, {
-  code: "YT",
-  name: "Yukon"
-}];
+const categories = [
+  "Strategy & Planning",
+  "Grant Writing / Reviews",
+  "Financial Systems (QBO) & Controls",
+  "Monday.com Setup & Automation",
+  "Monitoring & Evaluation (M&E)",
+  "Policies, Compliance & Governance",
+  "Training & Workshops",
+  "Website / CRM & Data",
+  "Other"
+];
+
+const provinces = [
+  "Alberta",
+  "British Columbia",
+  "Manitoba",
+  "New Brunswick",
+  "Newfoundland and Labrador",
+  "Nova Scotia",
+  "Ontario",
+  "Prince Edward Island",
+  "Quebec",
+  "Saskatchewan",
+  "Northwest Territories",
+  "Nunavut",
+  "Yukon"
+];
 interface HeroFormProps {
   prefillCategory?: string;
 }
@@ -58,12 +44,14 @@ export const HeroSection = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showExamples, setShowExamples] = useState(false);
   const submitButtonRef = useRef<HTMLButtonElement>(null);
+  const [formRenderedAt] = useState(new Date().toISOString());
   const [formData, setFormData] = useState({
     email: "",
     organization: "",
     region: "",
     category: prefillCategory || "",
-    outcome: ""
+    outcome: "",
+    honeypot: ""
   });
   const scrollToForm = () => {
     const form = document.getElementById("form_3quotes");
@@ -115,7 +103,7 @@ export const HeroSection = ({
     setIsSubmitting(true);
 
     // Validation
-    if (!formData.email || !formData.organization || !formData.category) {
+    if (!formData.email || !formData.organization || !formData.region || !formData.category || !formData.outcome) {
       toast.error("Please fill in all required fields");
       setIsSubmitting(false);
       return;
@@ -125,52 +113,71 @@ export const HeroSection = ({
       setIsSubmitting(false);
       return;
     }
+
+    // Bot detection - if honeypot is filled, show success but don't send
+    if (formData.honeypot) {
+      toast.success("Thanks — expect a scoping call within 48 hours so we can match you with the right consultant.", {
+        duration: 2000
+      });
+      setTimeout(() => {
+        navigate("/next-steps");
+      }, 2000);
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      // Generate request ID
-      const requestId = `REQ-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
+      // Get UTM parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      
       const payload = {
-        flow: "3quotes",
-        request_id: requestId,
-        q_email: formData.email,
-        q_org: formData.organization,
-        q_region: formData.region,
-        q_category: formData.category,
-        q_outcome: formData.outcome,
-        utm_source: new URLSearchParams(window.location.search).get("utm_source"),
-        utm_medium: new URLSearchParams(window.location.search).get("utm_medium"),
-        utm_campaign: new URLSearchParams(window.location.search).get("utm_campaign"),
+        form_id: "nimara_free_quote_v2",
+        submitted_at: new Date().toISOString(),
+        page_url: window.location.href,
         referrer: document.referrer,
-        timestamp: new Date().toISOString()
+        utm: {
+          source: urlParams.get("utm_source"),
+          medium: urlParams.get("utm_medium"),
+          campaign: urlParams.get("utm_campaign"),
+          term: urlParams.get("utm_term"),
+          content: urlParams.get("utm_content"),
+          gclid: urlParams.get("gclid")
+        },
+        client: {
+          user_agent: navigator.userAgent
+        },
+        spam: {
+          honeypot_website: formData.honeypot,
+          form_rendered_at: formRenderedAt
+        },
+        contact: {
+          email: formData.email
+        },
+        organization: {
+          name: formData.organization,
+          province: formData.region
+        },
+        project: {
+          category: formData.category,
+          result_goal: formData.outcome
+        }
       };
 
       // Send to webhook
-      fetch("https://hook.us2.make.com/oor7l72qi48e8o5ydnenu56r3y9d27v5", {
+      const response = await fetch("https://hook.us2.make.com/oor7l72qi48e8o5ydnenu56r3y9d27v5", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
-      }).catch(err => {
-        console.error("Webhook error:", err);
-        console.log(`Failed to send to webhook for Request ID: ${requestId}`);
       });
 
-      // Send email (non-blocking)
-      supabase.functions.invoke("send-form-email", {
-        body: {
-          formCode: "3QUOTES",
-          payload
-        }
-      }).catch(err => {
-        console.error("Email error:", err);
-        console.log(`Failed to send email for Request ID: ${requestId}`);
-      });
+      if (!response.ok) {
+        throw new Error("Webhook request failed");
+      }
 
-      // Log client event
-      console.log(`Event: quotes_submit | Status: success | Request ID: ${requestId} | Timestamp: ${new Date().toISOString()}`);
-
-      // Show brief success message
-      toast.success("Request submitted! Redirecting...", {
+      // Show success message
+      toast.success("Thanks — expect a scoping call within 48 hours so we can match you with the right consultant.", {
         duration: 2000
       });
 
@@ -180,22 +187,18 @@ export const HeroSection = ({
         organization: "",
         region: "",
         category: "",
-        outcome: ""
+        outcome: "",
+        honeypot: ""
       });
 
-      // Redirect to Next Steps page after brief delay with request ID
+      // Redirect to Next Steps page after brief delay
       setTimeout(() => {
-        navigate("/next-steps", {
-          state: {
-            requestId
-          }
-        });
+        navigate("/next-steps");
       }, 2000);
     } catch (error) {
       console.error("Form submission error:", error);
-      toast.error("Something went wrong. Please try again.");
-    } finally {
-      setTimeout(() => setIsSubmitting(false), 2000);
+      toast.error("We couldn't send your request. Please try again.");
+      setIsSubmitting(false);
     }
   };
   return <section aria-labelledby="hero-title" className="bg-[#202654] text-white relative overflow-hidden">
@@ -268,6 +271,20 @@ export const HeroSection = ({
         }}>
             <form onSubmit={handleSubmit} className="space-y-5">
               
+              {/* Honeypot Field - Hidden */}
+              <div style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true">
+                <label htmlFor="q_website">Website</label>
+                <input 
+                  type="text" 
+                  id="q_website" 
+                  name="website" 
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={formData.honeypot}
+                  onChange={e => setFormData({ ...formData, honeypot: e.target.value })}
+                />
+              </div>
+
               {/* Email Field */}
               <div className="space-y-2">
                 <label htmlFor="q_email" className="block text-sm font-medium text-[#202654]">
@@ -296,13 +313,13 @@ export const HeroSection = ({
                   Province/Territory <span className="text-red-600">*</span>
                 </label>
                 <div className="relative">
-                  <select id="q_region" value={formData.region} onChange={e => setFormData({
+                  <select id="q_region" required value={formData.region} onChange={e => setFormData({
                   ...formData,
                   region: e.target.value
                 })} className="w-full appearance-none rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 pr-10 text-[#202654] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 min-h-[44px]">
                     <option value="">Select a province</option>
-                    {provinces.map(province => <option key={province.code} value={province.code}>
-                        {province.name}
+                    {provinces.map(province => <option key={province} value={province}>
+                        {province}
                       </option>)}
                   </select>
                   <svg className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none w-4 h-4 text-[#96A0B5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -323,38 +340,35 @@ export const HeroSection = ({
                     ...formData,
                     category: value
                   });
-                  if (value === "not_sure" || value === "Not sure / Other") {
+                  if (value === "Other") {
                     setTimeout(() => {
                       document.getElementById("q_outcome")?.focus();
                     }, 100);
                   }
                 }} required className="w-full appearance-none rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 pr-10 text-[#202654] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 min-h-[44px]">
                     <option value="">Select a category</option>
-                    {categories.map(category => {
-                    const value = category === "Not sure / Other" ? "not_sure" : category;
-                    return <option key={category} value={value}>
+                    {categories.map(category => <option key={category} value={category}>
                           {category}
-                        </option>;
-                  })}
+                        </option>)}
                   </select>
                   <svg className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none w-4 h-4 text-[#96A0B5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>
-                {(formData.category === "not_sure" || formData.category === "Not sure / Other") && <p className="text-xs text-[#96A0B5]">
-                    If you choose "Not sure / Other," just tell us the outcome you want.
+                {formData.category === "Other" && <p className="text-xs text-[#96A0B5]">
+                    If you choose "Other," just tell us the outcome you want.
                   </p>}
               </div>
 
               {/* Outcome Field */}
               <div className="space-y-2">
                 <label htmlFor="q_outcome" className="block text-sm font-medium text-[#202654]">
-                  What result do you want?
+                  What result do you want? <span className="text-red-600">*</span>
                 </label>
                 <p className="text-xs text-[#96A0B5]" id="q_outcome_helper">
                   One sentence, up to 140 characters. Plain English is perfect.
                 </p>
-                <input type="text" id="q_outcome" maxLength={140} value={formData.outcome} onChange={e => setFormData({
+                <input type="text" id="q_outcome" required maxLength={140} value={formData.outcome} onChange={e => setFormData({
                 ...formData,
                 outcome: e.target.value
               })} className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] placeholder:text-[#96A0B5] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2" placeholder="Reconcile Q4 grant spend and be audit-ready by Apr 30." aria-describedby="q_outcome_helper q_outcome_counter" />
@@ -373,20 +387,20 @@ export const HeroSection = ({
                     
                     <div className="space-y-2">
                       <div>
-                        <p className="text-xs font-medium text-[#202654] mb-1">Finance & Audit</p>
+                        <p className="text-xs font-medium text-[#202654] mb-1">Financial Systems (QBO) & Controls</p>
                         <button type="button" onClick={() => {
                       setFormData({
                         ...formData,
-                        outcome: "Reconcile Q4 grant spend and be audit-ready by Apr 30."
+                        outcome: "Set up QBO tracking for three separate programs by March 31."
                       });
                       setShowExamples(false);
                     }} className="text-xs text-[#96A0B5] hover:text-[#202654] transition-colors text-left">
-                          "Reconcile Q4 grant spend and be audit-ready by Apr 30."
+                          "Set up QBO tracking for three separate programs by March 31."
                         </button>
                       </div>
                       
                       <div>
-                        <p className="text-xs font-medium text-[#202654] mb-1">Digital & Data</p>
+                        <p className="text-xs font-medium text-[#202654] mb-1">Website / CRM & Data</p>
                         <button type="button" onClick={() => {
                       setFormData({
                         ...formData,
@@ -399,7 +413,7 @@ export const HeroSection = ({
                       </div>
                       
                       <div>
-                        <p className="text-xs font-medium text-[#202654] mb-1">Governance</p>
+                        <p className="text-xs font-medium text-[#202654] mb-1">Policies, Compliance & Governance</p>
                         <button type="button" onClick={() => {
                       setFormData({
                         ...formData,
