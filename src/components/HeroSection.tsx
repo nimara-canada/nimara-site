@@ -100,6 +100,7 @@ export const HeroSection = ({
   }, []);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    e.stopPropagation();
     setIsSubmitting(true);
 
     // Validation
@@ -134,45 +135,49 @@ export const HeroSection = ({
         form_id: "nimara_free_quote_v2",
         submitted_at: new Date().toISOString(),
         page_url: window.location.href,
-        referrer: document.referrer,
+        referrer: document.referrer || "",
         utm: {
-          source: urlParams.get("utm_source"),
-          medium: urlParams.get("utm_medium"),
-          campaign: urlParams.get("utm_campaign"),
-          term: urlParams.get("utm_term"),
-          content: urlParams.get("utm_content"),
-          gclid: urlParams.get("gclid")
+          source: urlParams.get("utm_source") || null,
+          medium: urlParams.get("utm_medium") || null,
+          campaign: urlParams.get("utm_campaign") || null,
+          term: urlParams.get("utm_term") || null,
+          content: urlParams.get("utm_content") || null,
+          gclid: urlParams.get("gclid") || null
         },
         client: {
           user_agent: navigator.userAgent
         },
         spam: {
-          honeypot_website: formData.honeypot,
+          honeypot_website: formData.honeypot || "",
           form_rendered_at: formRenderedAt
         },
         contact: {
-          email: formData.email
+          email: formData.email.trim()
         },
         organization: {
-          name: formData.organization,
+          name: formData.organization.trim(),
           province: formData.region
         },
         project: {
           category: formData.category,
-          result_goal: formData.outcome
+          result_goal: formData.outcome.trim()
         }
       };
 
-      // Send to webhook
+      // Send to webhook - US2 region
       const response = await fetch("https://hook.us2.make.com/oor7l72qi48e8o5ydnenu56r3y9d27v5", {
         method: "POST",
+        mode: "cors",
         headers: {
           "Content-Type": "application/json",
+          "Accept": "*/*"
         },
         body: JSON.stringify(payload),
+        keepalive: true
       });
 
-      if (!response.ok) {
+      // Handle response - may be opaque if CORS not exposed
+      if (!response.ok && response.type !== "opaque") {
         throw new Error("Webhook request failed");
       }
 
@@ -269,7 +274,7 @@ export const HeroSection = ({
           <div id="get-quotes" className="rounded-2xl bg-white text-[#202654] border border-[#E9ECF4] p-6 lg:p-8" style={{
           boxShadow: '0 8px 24px rgba(32, 38, 84, 0.08)'
         }}>
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form id="form_3quotes" onSubmit={handleSubmit} className="space-y-5" noValidate>
               
               {/* Honeypot Field - Hidden */}
               <div style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true">
