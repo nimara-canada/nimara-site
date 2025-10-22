@@ -143,6 +143,18 @@ export const HeroSection = ({
         timestamp: new Date().toISOString()
       };
 
+      // Send to webhook
+      fetch("https://hook.us2.make.com/oor7l72qi48e8o5ydnenu56r3y9d27v5", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      }).catch(err => {
+        console.error("Webhook error:", err);
+        console.log(`Failed to send to webhook for Request ID: ${requestId}`);
+      });
+
       // Send email (non-blocking)
       supabase.functions.invoke("send-form-email", {
         body: {
