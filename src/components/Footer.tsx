@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 export const Footer = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
@@ -23,6 +24,7 @@ export const Footer = () => {
     try {
       const payload = {
         flow: "newsletter",
+        name: name,
         email: email,
         referrer: document.referrer,
         utm_source: new URLSearchParams(window.location.search).get("utm_source"),
@@ -39,6 +41,7 @@ export const Footer = () => {
         }
       }).catch(err => console.error("Email error:", err));
       toast.success("Thanks — you're on the list.");
+      setName("");
       setEmail("");
     } catch (error) {
       setError("Please enter a valid email.");
@@ -110,6 +113,22 @@ export const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-semibold text-sm">Newsletter</h4>
             <form onSubmit={handleSubmit} id="newsletter_form" className="space-y-3">
+              <div className="space-y-2">
+                <Label htmlFor="nl_name" className="sr-only">
+                  Your name
+                </Label>
+                <Input 
+                  type="text" 
+                  id="nl_name" 
+                  placeholder="Your name" 
+                  value={name} 
+                  onChange={e => {
+                    setName(e.target.value);
+                    setError("");
+                  }} 
+                  className="bg-white/10 border-white/20 text-white placeholder:text-[#96A0B5] rounded-xl focus:ring-2 focus:ring-[#6945D8] focus:border-[#6945D8]" 
+                />
+              </div>
               <div className="space-y-2">
                 <Label htmlFor="nl_email" className="sr-only">
                   Your email
