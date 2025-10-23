@@ -1,13 +1,13 @@
 import { CheckCircle2 } from "lucide-react";
 const consultantFeatures = ["Vetted for nonprofit experience (3–10+ years)", "Trained for audit-ready, EDI-informed delivery", "Based in Canada, bilingual where needed"];
 export const HowItWorksSection = () => {
-  return <section className="py-16 lg:py-24 bg-secondary">
+  return <section className="py-16 lg:py-24 bg-secondary" aria-labelledby="how-works-heading">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <div>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Why It's Free</h2>
+            <h2 id="how-works-heading" className="text-3xl sm:text-4xl font-bold mb-4">Why It's Free</h2>
             <p className="text-foreground/90 text-lg max-w-3xl mx-auto">
-              We don't do vague "consultation" calls. You get <strong>real scoping, timelines, and options from real experts</strong> — because that's how we earn your trust.
+              We don't do vague "consultation" calls. You get <strong>real scoping, timelines, and options from real experts</strong> who specialize in <strong>nonprofit strategic planning</strong>, <strong>CRA compliance requirements</strong>, and <strong>program evaluation frameworks</strong> — because that's how we earn your trust.
             </p>
           </div>
 

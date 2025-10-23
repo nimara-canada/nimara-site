@@ -21,10 +21,10 @@ const categories = [{
   description: "Internal workflows, policies, procurement tools"
 }];
 export const CategoryTiles = () => {
-  return <section className="py-16 lg:py-24">
+  return <section className="py-16 lg:py-24" aria-labelledby="categories-heading">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto text-center space-y-8">
-          <h2 className="text-3xl sm:text-4xl font-bold">What We Support</h2>
+          <h2 id="categories-heading" className="text-3xl sm:text-4xl font-bold">What We Support</h2>
           <p className="text-lg text-foreground/80">
             We send <strong>expert help for Canadian nonprofits</strong> in these areas:
           </p>
