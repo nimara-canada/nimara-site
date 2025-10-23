@@ -20,6 +20,8 @@ import NotFound from "./pages/NotFound";
 import AIMasterclass from "./pages/AIMasterclass";
 import NextSteps from "./pages/NextSteps";
 import FreeResources from "./pages/FreeResources";
+import Resources from "./pages/Resources";
+import ResourceDetail from "./pages/ResourceDetail";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +46,8 @@ const App = () => (
             <Route path="/ai-masterclass" element={<AIMasterclass />} />
             <Route path="/next-steps" element={<NextSteps />} />
             <Route path="/free-resources" element={<FreeResources />} />
+            <Route path="/resources" element={<Resources />} />
+            <Route path="/resources/:slug" element={<ResourceDetail />} />
             
             {/* Redirects for old routes */}
             <Route path="/for-nonprofits" element={<Navigate to="/" replace />} />

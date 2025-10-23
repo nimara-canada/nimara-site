@@ -10,7 +10,7 @@ const navigation = [
   { name: "For Nonprofits", href: "/" },
   { name: "For Consultants", href: "/consultants" },
   { name: "Company", href: "/company" },
-  { name: "Free Resources", href: "/free-resources" },
+  { name: "Free Resources", href: "/resources" },
 ];
 
 interface HeaderProps {
