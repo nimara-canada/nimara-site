@@ -19,6 +19,7 @@ import Trust from "./pages/Trust";
 import NotFound from "./pages/NotFound";
 import AIMasterclass from "./pages/AIMasterclass";
 import NextSteps from "./pages/NextSteps";
+import FreeResources from "./pages/FreeResources";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +43,7 @@ const App = () => (
             <Route path="/sample-brief" element={<SampleBrief />} />
             <Route path="/ai-masterclass" element={<AIMasterclass />} />
             <Route path="/next-steps" element={<NextSteps />} />
+            <Route path="/free-resources" element={<FreeResources />} />
             
             {/* Redirects for old routes */}
             <Route path="/for-nonprofits" element={<Navigate to="/" replace />} />
