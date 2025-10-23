@@ -1,12 +1,14 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { templates } from "@/data/templates";
 import { TemplateCard } from "@/components/TemplateCard";
 import { SubscribeForm } from "@/components/SubscribeForm";
 
 export default function Resources() {
   return (
-    <>
+    <div className="min-h-screen">
       <Helmet>
         <title>Free Resources - Nimara Templates | Nonprofit Management Tools</title>
         <meta 
@@ -16,6 +18,8 @@ export default function Resources() {
         <meta name="keywords" content="nonprofit templates, grant management, audit checklist, nonprofit resources" />
         <link rel="canonical" href="https://yourdomain.com/resources" />
       </Helmet>
+      
+      <Header />
       
       {/* Skip to main content link */}
       <a 
@@ -86,6 +90,8 @@ export default function Resources() {
           </main>
         </div>
       </div>
-    </>
+      
+      <Footer />
+    </div>
   );
 }

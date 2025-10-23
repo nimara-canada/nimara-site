@@ -1,6 +1,8 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { Link, useParams, Navigate } from "react-router-dom";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { getTemplateBySlug } from "@/data/templates";
@@ -74,7 +76,7 @@ export default function ResourceDetail() {
   }
 
   return (
-    <>
+    <div className="min-h-screen">
       <Helmet>
         <title>{template.title} - Nimara Templates | Free Nonprofit Resources</title>
         <meta 
@@ -83,6 +85,8 @@ export default function ResourceDetail() {
         />
         <meta name="keywords" content={`nonprofit, ${template.title.toLowerCase()}, template, free download`} />
       </Helmet>
+      
+      <Header />
       
       <div className="min-h-screen" style={{ background: brand.bg }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
@@ -176,6 +180,8 @@ export default function ResourceDetail() {
           </div>
         </div>
       </div>
-    </>
+      
+      <Footer />
+    </div>
   );
 }
