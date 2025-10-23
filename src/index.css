@@ -9,6 +9,11 @@ All colors MUST be HSL.
 @layer base {
   :root {
     /* Nimara brand tokens */
+    --nimara-navy: 210 56% 23%;
+    --nimara-purple: 256 69% 57%;
+    --nimara-mint: 165 94% 83%;
+    --nimara-bg: 220 50% 97%;
+    /* Nimara brand tokens */
     --nim-navy: 229 48% 25%; /* #202654 */
     --nim-purple: 252 58% 56%; /* #6945D8 */
     --nim-mint: 162 91% 83%; /* #ACFCE3 */
