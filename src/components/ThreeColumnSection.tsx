@@ -33,13 +33,13 @@ export const ThreeColumnSection = () => {
       });
     }
   };
-  return <section className="py-16 lg:py-24 bg-secondary">
+  return <section className="py-16 lg:py-24 bg-secondary" aria-labelledby="three-column-heading">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4">
+        <h2 id="three-column-heading" className="text-3xl sm:text-4xl font-bold text-center mb-4">
           What You Get
         </h2>
         <p className="text-center text-lg text-foreground/80 mb-12 max-w-2xl mx-auto">
-          Here's how it works: <strong>3 free quotes in 72 hours</strong> from <strong>vetted Canadian nonprofit consultants</strong>
+          Here's how it works: <strong>3 free quotes in 72 hours</strong> from <strong>vetted Canadian nonprofit consultants</strong> who understand <strong>nonprofit finance compliance</strong> and <strong>governance best practices</strong>
         </p>
 
         <div className="grid md:grid-cols-3 gap-8 mb-8 max-w-5xl mx-auto">

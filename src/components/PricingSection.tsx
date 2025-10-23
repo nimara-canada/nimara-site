@@ -5,10 +5,10 @@ interface PricingSectionProps {
 export const PricingSection = ({
   onOpenPackagesWaitlist
 }: PricingSectionProps) => {
-  return <section id="pricing" className="py-16 lg:py-24 bg-background">
+  return <section id="pricing" className="py-16 lg:py-24 bg-background" aria-labelledby="pricing-heading">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Pricing, made simple — and auditable</h2>
+          <h2 id="pricing-heading" className="text-3xl sm:text-4xl font-bold mb-4">Pricing, made simple — and auditable</h2>
           
           <p className="text-lg mb-4">
             <strong>Quotes are free.</strong> You only pay if you move forward with a project.

@@ -20,10 +20,10 @@ export const BenefitsSection = () => {
   ];
 
   return (
-    <section className="py-16 lg:py-24 bg-secondary">
+    <section className="py-16 lg:py-24 bg-secondary" aria-labelledby="benefits-heading">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto space-y-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center">
+          <h2 id="benefits-heading" className="text-3xl sm:text-4xl font-bold text-center">
             {t('benefits.title')}
           </h2>
 
