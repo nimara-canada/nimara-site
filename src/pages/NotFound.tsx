@@ -2,6 +2,8 @@ import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import React from "react";
+import { Helmet } from "react-helmet-async";
 
 const NotFound = () => {
   const location = useLocation();
@@ -11,7 +13,12 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <Helmet>
+        <title>404 — Page not found | Nimara</title>
+        <meta name="robots" content="noindex" />
+      </Helmet>
+
       <Header />
       <main id="main" className="flex items-center justify-center py-16 md:py-24 min-h-[60vh]">
         <div className="container mx-auto px-4 text-center">
@@ -46,7 +53,7 @@ const NotFound = () => {
         </div>
       </main>
       <Footer />
-    </div>
+    </>
   );
 };
 
