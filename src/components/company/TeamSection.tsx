@@ -19,7 +19,7 @@ export const TeamSection = () => {
           <div>
             <h3 className="text-lg font-semibold text-foreground mb-2">Darryl De Dios -Impact & Research Lead</h3>
             <p className="text-muted-foreground">
-              Runs the weekly cadence, keeps scope tight, and lands acceptance.
+              Connects data to meaning. Tracks progress, measures real impact, and turns program learnings into insights that strengthen every future grant and partnership.
             </p>
           </div>
 
