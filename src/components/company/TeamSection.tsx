@@ -8,7 +8,7 @@ export const TeamSection = () => {
         <div className="space-y-6">
           <div>
             <h3 className="text-lg font-semibold text-foreground mb-2">Benard Serunyigo - Founder </h3>
-            <p className="text-muted-foreground">Builds the backbone of Nimara — turning messy nonprofit workflows into seamless systems that run fast, stay secure, and never break under pressure.</p>
+            <p className="text-muted-foreground">Builds the rails, keeps the system running fast, secure, and boring — the reliable kind every nonprofit dreams of.</p>
           </div>
 
           <div>
@@ -19,7 +19,7 @@ export const TeamSection = () => {
           <div>
             <h3 className="text-lg font-semibold text-foreground mb-2">Darryl De Dios -Impact & Research Lead</h3>
             <p className="text-muted-foreground">
-              Connects data to meaning. Tracks progress, measures real impact, and turns program learnings into insights that strengthen every future grant and partnership.
+              Runs the weekly cadence, keeps scope tight, and lands acceptance.
             </p>
           </div>
 
