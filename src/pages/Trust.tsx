@@ -6,6 +6,10 @@ const Trust = () => {
   return <>
       <Helmet>
         <title>Trust &amp; Security — Nimara</title>
+        <meta
+          name="description"
+          content="How Nimara ensures trust: consultant vetting, project oversight, and secure practices for Canadian nonprofits. Edmonton HQ; serving Alberta and Canada."
+        />
         <link rel="canonical" href="https://nimara.ca/trust" />
       </Helmet>
 
