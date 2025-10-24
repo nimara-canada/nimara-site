@@ -14,9 +14,7 @@ export const TeamSection = () => {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold text-foreground mb-2">
-              Evaluation & Learning Lead
-            </h3>
+            <h3 className="text-lg font-semibold text-foreground mb-2">Thabani Conrad Bhala - Head of Delivery</h3>
             <p className="text-muted-foreground">
               Turns outcomes into simple measures and honest insights.
             </p>
