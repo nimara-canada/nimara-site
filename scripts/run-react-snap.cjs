@@ -1,37 +1,33 @@
-const { spawnSync } = require('child_process');
-const fs = require('fs');
-const path = require('path');
+const { spawnSync } = require("child_process");
+const { existsSync } = require("fs");
 
-function ensureChrome() {
-  // Try current puppeteer path
-  let execPath = '';
-  try {
-    execPath = require('puppeteer').executablePath();
-  } catch (_) {}
+const candidates = [
+  process.env.CHROME_PATH,
+  process.env.PUPPETEER_EXECUTABLE_PATH,
+  "/usr/bin/chromium-browser",
+  "/usr/bin/google-chrome",
+  "/usr/bin/chrome",
+  "/usr/bin/chromium",
+  "/snap/bin/chromium",
+].filter(Boolean);
 
-  const badSystemPath = execPath && execPath.includes('/usr/bin/chromium-browser');
-  const missingFile = !execPath || (execPath && !fs.existsSync(execPath));
+const found = candidates.find(p => existsSync(p));
 
-  if (badSystemPath || missingFile) {
-    console.log('⬇️  Installing Chrome for Testing via Puppeteer…');
-    const res = spawnSync('npx', ['puppeteer', 'browsers', 'install', 'chrome@stable'], { stdio: 'inherit' });
-    try {
-      execPath = require('puppeteer').executablePath();
-    } catch (_) {}
-  }
-
-  if (!execPath || !fs.existsSync(execPath)) {
-    console.warn('⚠️  Skipping react-snap: no Chrome binary found.');
-    process.exit(0);
-  }
-  return execPath;
+if (!found) {
+  console.warn(
+    "⚠️  Skipping react-snap: no Chrome/Chromium binary found in common locations.\n" +
+    "If you want full static snapshotting, install Chrome/Chromium and required libs, or set PUPPETEER_EXECUTABLE_PATH.\n" +
+    "See: https://github.com/GoogleChrome/puppeteer/blob/main/docs/troubleshooting.md"
+  );
+  process.exit(0);
 }
 
-const execPath = ensureChrome();
-process.env.PUPPETEER_EXECUTABLE_PATH = execPath;
-process.env.PUPPETEER_CACHE_DIR = path.resolve('.cache', 'puppeteer');
-process.env.PUPPETEER_PRODUCT = 'chrome'; // be explicit
+process.env.PUPPETEER_EXECUTABLE_PATH = found;
+console.log("Using Chrome executable:", found);
 
-// Pass through the env and run react-snap
-const result = spawnSync('npx', ['react-snap'], { stdio: 'inherit', env: process.env });
-process.exit(result.status ?? 0);
+const result = spawnSync("npx", ["react-snap"], { stdio: "inherit", env: process.env });
+if (result.error) {
+  console.error("react-snap failed to start:", result.error);
+  process.exit(result.status || 1);
+}
+process.exit(result.status || 0);

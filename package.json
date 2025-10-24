@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/run-react-snap.cjs && npm run sitemap",
+    "build": "vite build && rm -rf build && cp -r dist build && node scripts/run-react-snap.cjs && npm run sitemap",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
@@ -69,7 +69,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",
-    "@puppeteer/browsers": "2.10.12",
     "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^22.16.5",
     "@types/react": "^18.3.23",
@@ -82,7 +81,7 @@
     "globals": "^15.15.0",
     "lovable-tagger": "^1.1.10",
     "postcss": "^8.5.6",
-    "puppeteer": "24.15.0",
+    "puppeteer": "^24.26.1",
     "react-helmet-async": "^2.0.5",
     "react-snap": "^1.23.0",
     "sitemap": "^8.0.1",
@@ -92,27 +91,23 @@
     "vite": "^5.4.19"
   },
   "reactSnap": {
-    "source": "dist",
-    "destination": "dist",
+    "inlineCss": true,
+    "skipThirdPartyRequests": true,
+    "minifyHtml": {
+      "collapseWhitespace": true
+    },
     "include": [
       "/",
       "/company",
       "/consultants",
       "/privacy",
       "/accessibility",
-      "/trust",
-      "/book-a-call"
+      "/trust"
     ],
-    "inlineCss": false,
-    "skipThirdPartyRequests": true,
-    "minifyHtml": {
-      "collapseWhitespace": true
-    },
-    "crawl": false,
+    "source": "build",
     "puppeteerArgs": [
       "--no-sandbox",
       "--disable-setuid-sandbox"
-    ],
-    "concurrency": 2
+    ]
   }
 }
