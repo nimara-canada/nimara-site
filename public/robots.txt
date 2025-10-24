@@ -1,3 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /funders
+Disallow: /resources
+Disallow: /ux-pilot
+
 Sitemap: https://nimara.ca/sitemap.xml
