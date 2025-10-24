@@ -8,16 +8,12 @@ export const TeamSection = () => {
         <div className="space-y-6">
           <div>
             <h3 className="text-lg font-semibold text-foreground mb-2">Benard Serunyigo - Founder </h3>
-            <p className="text-muted-foreground">
-              Builds the rails and keeps them fast, secure, and boring (the good kind).
-            </p>
+            <p className="text-muted-foreground">Builds the backbone of Nimara — turning messy nonprofit workflows into seamless systems that run fast, stay secure, and never break under pressure.</p>
           </div>
 
           <div>
             <h3 className="text-lg font-semibold text-foreground mb-2">Thabani Conrad Bhala - Head of Delivery</h3>
-            <p className="text-muted-foreground">
-              Turns outcomes into simple measures and honest insights.
-            </p>
+            <p className="text-muted-foreground">Owns execution from start to finish. Translates strategy into measurable outcomes, keeps delivery on time and funders happy, and ensures no project slips through the cracks.</p>
           </div>
 
           <div>
