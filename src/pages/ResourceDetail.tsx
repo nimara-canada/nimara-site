@@ -156,7 +156,7 @@ export default function ResourceDetail() {
                       {section.title}
                     </AccordionTrigger>
                     <AccordionContent 
-                      className="text-sm pb-4"
+                      className="text-sm pb-4 whitespace-pre-line"
                       style={{ color: "#475569" }}
                     >
                       {section.content}
