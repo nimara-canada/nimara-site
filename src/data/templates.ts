@@ -22,117 +22,39 @@ export const templates: Template[] = [
     sections: [
       {
         title: "1. Purpose and Fit",
-        content: `**Does this spending help us reach our goals?**
-• Is it part of our approved plan or budget?
-• Are we staying within limits, like keeping admin costs under 15%?
-
-**Example:**
-If your plan says "buy a laptop for training," that fits.
-Buying new office chairs "just because" does not.
-
-**Stop and check:**
-If it's not in the plan, pause and get written approval from your board or funder.`
+        content: "Learn how to verify spending aligns with your mission, approved plans, and funder requirements before you commit."
       },
       {
         title: "2. What You Can and Cannot Buy",
-        content: `**Check if the item or service follows your funder's or group's rules.**
-• Some things are not allowed, like personal gifts, food for staff, or bonuses.
-• Some things need pre-approval, like travel or renovations.
-
-**Example:**
-It's fine to buy Zoom software for workshops.
-It's not okay to buy birthday gifts for team members.
-
-**Stop and check:**
-When unsure, ask first. Wrong spending can block future funding.`
+        content: "Clear guidance on eligible vs. ineligible expenses, plus what requires pre-approval from your board or funder."
       },
       {
         title: "3. Before You Buy",
-        content: `**Get at least two price quotes if possible.**
-• Record who approved the purchase and when.
-• Use traceable payments like e-transfer or card.
-• Avoid cash or personal accounts unless your policy allows it.
-
-**Example:**
-Two quotes for a printer: $250 from Staples, $210 from Walmart.
-Choose one, note the reason, and record approval before buying.
-
-**Stop and check:**
-Two people should review and approve each purchase.`
+        content: "Step-by-step checklist for getting quotes, recording approvals, and using traceable payment methods."
       },
       {
         title: "4. Paying People",
-        content: `**Write down what each payment is for (task, rate, total).**
-• Use invoices for contractors and timesheets for staff.
-• Record volunteer or honorarium payments with name, date, and reason.
-• Never pay yourself or board members without written board approval.
-
-**Example:**
-"John – Graphic Design, 10 hours at $30/hour = $300."
-Save the invoice and approval email.
-
-**Stop and check:**
-Every payment needs a record. No record means no pay.`
+        content: "Documentation requirements for staff, contractors, volunteers, and honorariums with real examples."
       },
       {
         title: "5. Receipts That Pass Audit",
-        content: `**Keep every receipt or proof of payment.**
-• Make sure it shows vendor name, date, total, and item.
-• Label files like "2025-03-10_Printer_$210."
-• Store them in one shared folder or binder.
-
-**Example:**
-Take a photo of the receipt, upload it to Google Drive under "Receipts."
-Write "training laptop" next to it.
-
-**Stop and check:**
-If a receipt is missing, write a short note explaining what was bought and why.`
+        content: "What makes a valid receipt, how to label and store them, and what to do when receipts go missing."
       },
       {
         title: "6. Monthly Review",
-        content: `**Match your receipts to your bank statement each month.**
-• Record every payment in a simple spreadsheet or accounting app.
-• Have someone who didn't make the purchase review and sign off.
-• Note issues like missing receipts or unspent money.
-
-**Example:**
-Check: "We spent $500 in March. Receipts match. One missing – explained."
-
-**Stop and check:**
-Reconcile every month, even if you only spent a few dollars.`
+        content: "Simple reconciliation process to match receipts with bank statements and catch issues early."
       },
       {
         title: "Good Habits",
-        content: `**Keep one folder for all money documents:** Budget, Approvals, Receipts, Reports.
-• Print this checklist and sign it with your treasurer each month.
-• Ask for help early if something feels unclear.
-• Keep things simple, clear, and honest.
-
-**Example:**
-Create a folder called "2025 Spending."
-Inside it: one subfolder for each month.`
+        content: "Practical tips for organizing financial documents and building sustainable accountability systems."
       },
       {
         title: "Monthly Sign-Off Table",
-        content: `| Month    | Completed By | Reviewed By | Notes |
-|----------|--------------|-------------|-------|
-| January  | Program Lead | Treasurer   |       |
-| February | Program Lead | Treasurer   |       |
-| March    | Program Lead | Treasurer   |       |
-
-Track your monthly reviews to stay organized and accountable.`
+        content: "Ready-to-use tracking table to document who completed and reviewed each month's spending."
       },
       {
         title: "Why This Checklist Matters",
-        content: `Many small organizations lose funding not because they misuse money, but because they can't prove they used it correctly.
-
-**This checklist helps you:**
-• Keep your records clear
-• Build trust with funders
-• Make audits easy
-• Protect your reputation
-
-Simple practices today prevent big problems tomorrow.`
+        content: "Understanding how clear records protect your funding, reputation, and ability to prove proper use of resources."
       }
     ]
   },
