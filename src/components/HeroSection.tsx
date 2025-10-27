@@ -7,33 +7,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
-const categories = [
-  "Strategy & Planning",
-  "Grant Writing / Reviews",
-  "Financial Systems (QBO) & Controls",
-  "Monday.com Setup & Automation",
-  "Monitoring & Evaluation (M&E)",
-  "Policies, Compliance & Governance",
-  "Training & Workshops",
-  "Website / CRM & Data",
-  "Other"
-];
-
-const provinces = [
-  "Alberta",
-  "British Columbia",
-  "Manitoba",
-  "New Brunswick",
-  "Newfoundland and Labrador",
-  "Nova Scotia",
-  "Ontario",
-  "Prince Edward Island",
-  "Quebec",
-  "Saskatchewan",
-  "Northwest Territories",
-  "Nunavut",
-  "Yukon"
-];
+const categories = ["Strategy & Planning", "Grant Writing / Reviews", "Financial Systems (QBO) & Controls", "Monday.com Setup & Automation", "Monitoring & Evaluation (M&E)", "Policies, Compliance & Governance", "Training & Workshops", "Website / CRM & Data", "Other"];
+const provinces = ["Alberta", "British Columbia", "Manitoba", "New Brunswick", "Newfoundland and Labrador", "Nova Scotia", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan", "Northwest Territories", "Nunavut", "Yukon"];
 interface HeroFormProps {
   prefillCategory?: string;
 }
@@ -126,11 +101,10 @@ export const HeroSection = ({
       setIsSubmitting(false);
       return;
     }
-
     try {
       // Get UTM parameters
       const urlParams = new URLSearchParams(window.location.search);
-      
+
       // Build nested payload for organization
       const payload = {
         form_id: "nimara_free_quote_v2",
@@ -231,7 +205,7 @@ export const HeroSection = ({
           <div className="space-y-6 lg:space-y-8">
             {/* Eyebrow Pill */}
             <div>
-              <span className="inline-block rounded-full bg-[#ACFCE3] text-[#202654] px-3 py-1 text-sm font-semibold">For Nonprofits, Charities & Funders</span>
+              <span className="inline-block rounded-full bg-[#ACFCE3] text-[#202654] px-3 py-1 text-sm font-semibold">For Nonprofits & Charities - Premium Nonprofit Consulting</span>
             </div>
 
             {/* H1 - Stacked Headline */}
@@ -287,17 +261,15 @@ export const HeroSection = ({
             <form id="form_3quotes" onSubmit={handleSubmit} className="space-y-5" noValidate>
               
               {/* Honeypot Field - Hidden */}
-              <div style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true">
+              <div style={{
+              position: 'absolute',
+              left: '-9999px'
+            }} aria-hidden="true">
                 <label htmlFor="q_website">Website</label>
-                <input 
-                  type="text" 
-                  id="q_website" 
-                  name="website" 
-                  tabIndex={-1}
-                  autoComplete="off"
-                  value={formData.honeypot}
-                  onChange={e => setFormData({ ...formData, honeypot: e.target.value })}
-                />
+                <input type="text" id="q_website" name="website" tabIndex={-1} autoComplete="off" value={formData.honeypot} onChange={e => setFormData({
+                ...formData,
+                honeypot: e.target.value
+              })} />
               </div>
 
               {/* Email Field */}
