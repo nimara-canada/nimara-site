@@ -7,10 +7,10 @@
   },
   "hero": {
     "badge": "Audit-ready by design",
-    "title": "Get 3 free nonprofit consulting quotes in 3 days",
+    "title": "Get up to 3 free nonprofit consulting quotes in 3 days",
     "subtitle": "Tell us what you want. We make a simple plan, get up to 3 quotes from trusted Canadian experts, and our Nimara project manager makes sure it gets done.",
     "feesLink": "How fees work →",
-    "cta": "Get 3 free quotes",
+    "cta": "Get up to 3 free quotes",
     "guarantee": "If we deliver fewer than 2 proposals in 3 days, you get a $500 credit.",
     "callCTA": "Prefer a call? Book a 15-minute chat",
     "microBenefit1": "Plain brief",
@@ -48,7 +48,7 @@
     "title": "What we hear from nonprofits (and how we help)",
     "subtitle": "Tell us what's hard. We'll make a simple plan and get you moving.",
     "weHelp": "We help: ",
-    "ctaButton": "Get 3 free quotes",
+    "ctaButton": "Get up to 3 free quotes",
     "helperText": "Don't see your area—or not sure what to pick? ",
     "helperEmail": "Email hello@nimara.ca",
     "helperSuffix": " and we'll help.",
@@ -136,7 +136,7 @@
       "notSureDesc": "Tell us the outcome and we'll route it to the right experts."
     },
     "ctaNotSure": "Help me choose →",
-    "ctaQuotes": "Get 3 quotes →"
+    "ctaQuotes": "Get up to 3 quotes →"
   },
   "benefits": {
     "title": "What you get on every project",
@@ -230,7 +230,7 @@
   },
   "final": {
     "title": "Ready to fix this the simple way?",
-    "ctaQuotes": "Get 3 free quotes",
+    "ctaQuotes": "Get up to 3 free quotes",
     "ctaWaitlist": "Join the packages waitlist →"
   },
   "oneMore": {

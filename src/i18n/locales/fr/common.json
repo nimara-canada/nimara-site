@@ -7,10 +7,10 @@
   },
   "hero": {
     "badge": "Prêt pour l'audit dès la conception",
-    "title": "Obtenez 3 soumissions gratuites de consultation pour OBNL en 3 jours",
+    "title": "Obtenez jusqu'à 3 soumissions gratuites de consultation pour OBNL en 3 jours",
     "subtitle": "Dites-nous ce dont vous avez besoin. Nous élaborons un plan simple, obtenons jusqu'à 3 soumissions d'experts canadiens de confiance, et notre chef de projet Nimara s'assure que tout soit fait.",
     "feesLink": "Comment fonctionnent les frais →",
-    "cta": "Obtenir 3 soumissions gratuites",
+    "cta": "Obtenir jusqu'à 3 soumissions gratuites",
     "guarantee": "Si nous livrons moins de 2 propositions en 3 jours, vous obtenez un crédit de 500$.",
     "callCTA": "Vous préférez un appel? Réservez une discussion de 15 minutes",
     "microBenefit1": "Mandat simple",
@@ -48,7 +48,7 @@
     "title": "Ce que nous entendons des OBNL (et comment nous aidons)",
     "subtitle": "Dites-nous ce qui est difficile. Nous ferons un plan simple et vous mettrons en action.",
     "weHelp": "Nous aidons: ",
-    "ctaButton": "Obtenir 3 soumissions gratuites",
+    "ctaButton": "Obtenir jusqu'à 3 soumissions gratuites",
     "helperText": "Vous ne voyez pas votre domaine—ou pas sûr de quoi choisir? ",
     "helperEmail": "Écrivez à hello@nimara.ca",
     "helperSuffix": " et nous vous aiderons.",
@@ -136,7 +136,7 @@
       "notSureDesc": "Dites-nous le résultat et nous l'acheminerons aux bons experts."
     },
     "ctaNotSure": "Aidez-moi à choisir →",
-    "ctaQuotes": "Obtenir 3 soumissions →"
+    "ctaQuotes": "Obtenir jusqu'à 3 soumissions →"
   },
   "benefits": {
     "title": "Ce que vous obtenez sur chaque projet",
@@ -230,7 +230,7 @@
   },
   "final": {
     "title": "Prêt à régler cela de façon simple?",
-    "ctaQuotes": "Obtenir 3 soumissions gratuites",
+    "ctaQuotes": "Obtenir jusqu'à 3 soumissions gratuites",
     "ctaWaitlist": "Rejoindre la liste d'attente des forfaits →"
   },
   "oneMore": {

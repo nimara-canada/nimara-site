@@ -37,7 +37,7 @@ export default function SignIn() {
     {
       icon: Heart,
       title: "Nonprofits",
-      description: "Use Get 3 free quotes for one category, or join the packages waitlist for multi-area work.",
+      description: "Use Get up to 3 free quotes for one category, or join the packages waitlist for multi-area work.",
     },
     {
       icon: Users,
@@ -75,7 +75,7 @@ export default function SignIn() {
           
           <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
             <Link to="/" className="text-primary hover:underline font-medium">
-              Get 3 free quotes
+              Get up to 3 free quotes
             </Link>
             <Link to="/consultants" className="text-primary hover:underline font-medium">
               Apply to the bench (consultants)
@@ -191,7 +191,7 @@ export default function SignIn() {
           
           <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
             <Link to="/" className="text-primary hover:underline font-medium">
-              Get 3 free quotes
+              Get up to 3 free quotes
             </Link>
             <Link to="/consultants" className="text-primary hover:underline font-medium">
               Apply to the bench

@@ -17,7 +17,7 @@ const SampleBrief = () => {
               See the Nimara brief format
             </h1>
             <p className="text-lg text-muted-foreground mb-8">
-              The one-page scope we use for 3 free quotes and projects. Clear outcomes. Simple acceptance. Fast starts.
+              The one-page scope we use for up to 3 free quotes and projects. Clear outcomes. Simple acceptance. Fast starts.
             </p>
             
             <div className="bg-accent/30 border border-accent rounded-2xl p-4">

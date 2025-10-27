@@ -20,7 +20,7 @@ export const CompanyFinalCTA = () => {
 
         <div className="flex flex-wrap justify-center gap-4 text-sm">
           <a href="/" className="text-muted-foreground hover:text-foreground transition-colors">
-            Get 3 free quotes →
+            Get up to 3 free quotes →
           </a>
           <span className="text-muted-foreground">·</span>
           <a href="/consultants" className="text-muted-foreground hover:text-foreground transition-colors">

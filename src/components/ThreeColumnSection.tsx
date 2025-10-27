@@ -39,7 +39,7 @@ export const ThreeColumnSection = () => {
           What You Get
         </h2>
         <p className="text-center text-lg text-foreground/80 mb-12 max-w-2xl mx-auto">
-          Here's how it works: <strong>3 free quotes in 72 hours</strong> from <strong>vetted Canadian nonprofit consultants</strong> who understand <strong>nonprofit finance compliance</strong> and <strong>governance best practices</strong>
+          Here's how it works: <strong>up to 3 free quotes in 72 hours</strong> from <strong>vetted Canadian nonprofit consultants</strong> who understand <strong>nonprofit finance compliance</strong> and <strong>governance best practices</strong>
         </p>
 
         <div className="grid md:grid-cols-3 gap-8 mb-8 max-w-5xl mx-auto">

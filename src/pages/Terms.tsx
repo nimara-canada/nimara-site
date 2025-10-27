@@ -38,7 +38,7 @@ const Terms = () => {
           <header>
             <h1 className="text-4xl font-bold text-[#202654] mb-6">Terms of Service — Nimara</h1>
             <p className="text-lg text-[#202654] leading-relaxed max-w-4xl">
-              These terms explain how Nimara Technology Inc. ("Nimara", "we", "us") provides our website and services. By using nimara.ca, requesting 3 free quotes, joining the packages waitlist, applying as a consultant, or using our web app when sign-in opens, you agree to these terms.
+              These terms explain how Nimara Technology Inc. ("Nimara", "we", "us") provides our website and services. By using nimara.ca, requesting up to 3 free quotes, joining the packages waitlist, applying as a consultant, or using our web app when sign-in opens, you agree to these terms.
             </p>
           </header>
 
@@ -88,7 +88,7 @@ const Terms = () => {
             <h2 className="text-2xl font-semibold text-[#202654]">3) Services we provide</h2>
             <ul className="space-y-3 list-none">
               <li className="text-[#202654] leading-relaxed">
-                <strong>3 free quotes (single category):</strong> we turn your outcome into a brief and request up to three comparable proposals from vetted Canadian experts.
+                <strong>Up to 3 free quotes (single category):</strong> we turn your outcome into a brief and request up to three comparable proposals from vetted Canadian experts.
               </li>
               <li className="text-[#202654] leading-relaxed">
                 <strong>Packages (multi-area):</strong> fixed-scope options (waitlist until launch).

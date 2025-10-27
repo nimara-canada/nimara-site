@@ -227,7 +227,7 @@ export const HeroSection = ({
             {/* Primary CTA */}
             <div className="pt-2">
               <button onClick={scrollToForm} className="rounded-xl bg-[#6945D8] text-white font-bold px-5 py-3 min-h-[44px] min-w-[44px] hover:brightness-95 focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2 transition-all">
-                Get 3 free quotes
+                Get up to 3 free quotes
               </button>
             </div>
 

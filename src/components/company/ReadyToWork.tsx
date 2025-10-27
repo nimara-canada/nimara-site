@@ -15,7 +15,7 @@ export const ReadyToWork = () => {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
           <Button size="lg" asChild className="w-full sm:w-auto">
-            <a href="/#form_3quotes">Get 3 free quotes</a>
+            <a href="/#form_3quotes">Get up to 3 free quotes</a>
           </Button>
         </div>
 
