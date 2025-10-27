@@ -221,7 +221,7 @@ export const HeroSection = ({
             lineHeight: '1.45',
             opacity: '0.9'
           }}>
-              We match you with senior Canadian experts. Clear scope. PM oversight. Audit-ready files.
+              Nimara connects nonprofits with trusted consultants — fast, fair, and ready to deliver.
             </p>
 
             {/* Primary CTA */}
