@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import teamBenard from "@/assets/team-benard-new.jpg";
+import teamBenard from "@/assets/team-benard-new.png";
 import teamThabani from "@/assets/team-thabani.jpg";
 import teamDarryl from "@/assets/team-darryl.jpg";
 
