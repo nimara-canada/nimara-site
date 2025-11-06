@@ -102,8 +102,8 @@ export const PackagesSection = ({
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto space-y-8">
           <div className="space-y-4">
-            <h2 className="text-3xl sm:text-4xl font-bold">Coming Nov 10, 2025: Capacity Systems Packages</h2>
-            <p className="text-lg text-muted-foreground">Launching Nov 1-, 2025 — Nimara's Fundability Packages:</p>
+            <h2 className="text-3xl sm:text-4xl font-bold">Coming Nov 15, 2025: Capacity Systems Packages</h2>
+            <p className="text-lg text-muted-foreground">Launching Nov 15-, 2025 — Nimara's Fundability Packages:</p>
           </div>
 
           <div className="bg-card border border-border rounded-lg overflow-hidden">
