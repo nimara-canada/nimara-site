@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import teamBenard from "@/assets/team-benard-new.png";
 import teamThabani from "@/assets/team-thabani-new.jpg";
 import teamDarryl from "@/assets/team-darryl-new.jpg";
+import teamDavid from "@/assets/team-david.jpg";
 
 const teamMembers = [
   {
@@ -29,7 +30,7 @@ const teamMembers = [
     name: "David Ton-Lai",
     role: "Technology Lead",
     description: "Leads technical architecture and ensures our platform scales with reliability and security.",
-    image: teamDarryl, // Placeholder - replace with actual photo
+    image: teamDavid,
     alt: "Portrait of David Ton-Lai, Technology Lead at Nimara"
   }
 ];
