@@ -24,6 +24,13 @@ const teamMembers = [
     description: "Turns program data into proof of impact that moves funders and strengthens partners.",
     image: teamDarryl,
     alt: "Portrait of Darryl De Dios, Impact & Research Lead at Nimara"
+  },
+  {
+    name: "David Ton-Lai",
+    role: "Technology Lead",
+    description: "Leads technical architecture and ensures our platform scales with reliability and security.",
+    image: teamDarryl, // Placeholder - replace with actual photo
+    alt: "Portrait of David Ton-Lai, Technology Lead at Nimara"
   }
 ];
 
