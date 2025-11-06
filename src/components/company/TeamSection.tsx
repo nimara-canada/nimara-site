@@ -6,7 +6,7 @@ import teamDarryl from "@/assets/team-darryl-new.jpg";
 const teamMembers = [
   {
     name: "Benard Serunyigo",
-    role: "Founder",
+    role: "Founder & CEO",
     description: "Builds the rails and keeps Nimara's ecosystem fast, secure, and quietly reliable.",
     image: teamBenard,
     alt: "Portrait of Benard Serunyigo, Founder of Nimara"
