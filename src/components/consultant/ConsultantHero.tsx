@@ -24,7 +24,13 @@ export const ConsultantHero = () => {
   };
   const handleCheckEligibility = () => {
     trackClick('consultant_check_eligibility_click');
-    window.open(getTypeformUrl('consultant-eligibility'), '_blank');
+    window.open('https://form.typeform.com/to/IeUH5TlU?' + new URLSearchParams({
+      utm_source: new URLSearchParams(window.location.search).get('utm_source') || 'direct',
+      utm_medium: new URLSearchParams(window.location.search).get('utm_medium') || 'web',
+      utm_campaign: new URLSearchParams(window.location.search).get('utm_campaign') || 'consultants',
+      ref: document.referrer || '',
+      page: 'consultants'
+    }).toString(), '_blank');
   };
   return <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
       <div className="max-w-4xl mx-auto text-center">

@@ -28,7 +28,13 @@ export const ConsultantFinalCTA = () => {
 
   const handleCheckEligibility = () => {
     trackClick('consultant_check_eligibility_click');
-    window.open(getTypeformUrl('consultant-eligibility'), '_blank');
+    window.open('https://form.typeform.com/to/IeUH5TlU?' + new URLSearchParams({
+      utm_source: new URLSearchParams(window.location.search).get('utm_source') || 'direct',
+      utm_medium: new URLSearchParams(window.location.search).get('utm_medium') || 'web',
+      utm_campaign: new URLSearchParams(window.location.search).get('utm_campaign') || 'consultants',
+      ref: document.referrer || '',
+      page: 'consultants'
+    }).toString(), '_blank');
   };
 
   return (

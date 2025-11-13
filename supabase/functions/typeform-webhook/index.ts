@@ -47,7 +47,7 @@ const extractAnswerValue = (answer: TypeformAnswer): string => {
 
 const getFormCode = (formId: string): string => {
   // Map Typeform form IDs to internal form codes
-  if (formId === 'I6zHdy6K') return 'CONSULT_ELIG';
+  if (formId === 'IeUH5TlU') return 'CONSULT_ELIG';
   return 'TYPEFORM_SUBMISSION';
 };
 
