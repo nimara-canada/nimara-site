@@ -2,3 +2,6 @@ project_id = "xqugydhdtlzmtctdbrai"
 
 [functions.send-form-email]
 verify_jwt = false
+
+[functions.typeform-webhook]
+verify_jwt = false
