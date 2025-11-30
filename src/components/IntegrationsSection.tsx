@@ -6,10 +6,7 @@ import softrLogo from "@/assets/integrations/softr.svg";
 import outlookLogo from "@/assets/integrations/outlook.svg";
 import mondayLogo from "@/assets/integrations/monday.svg";
 import docusignLogo from "@/assets/integrations/docusign.svg";
-import zoomLogo from "@/assets/integrations/zoom.svg";
 import salesforceLogo from "@/assets/integrations/salesforce.svg";
-import sage50Logo from "@/assets/integrations/sage50.svg";
-import smapplyLogo from "@/assets/integrations/smapply.png";
 
 const integrations = [
   {
@@ -18,19 +15,9 @@ const integrations = [
     logo: quickbooksLogo,
   },
   {
-    name: "Sage 50",
-    subtitle: "Manage accounting and finances.",
-    logo: sage50Logo,
-  },
-  {
     name: "Salesforce",
     subtitle: "Connect donor and CRM data.",
     logo: salesforceLogo,
-  },
-  {
-    name: "SMApply",
-    subtitle: "Streamline grant applications.",
-    logo: smapplyLogo,
   },
   {
     name: "Slack",
@@ -48,8 +35,8 @@ const integrations = [
     logo: softrLogo,
   },
   {
-    name: "Outlook",
-    subtitle: "Link your calendar and email.",
+    name: "Microsoft 365",
+    subtitle: "Connect calendar, email, and productivity tools.",
     logo: outlookLogo,
   },
   {
@@ -61,11 +48,6 @@ const integrations = [
     name: "DocuSign",
     subtitle: "Collect secure digital signatures.",
     logo: docusignLogo,
-  },
-  {
-    name: "Zoom",
-    subtitle: "Schedule and run live sessions.",
-    logo: zoomLogo,
   },
 ];
 
