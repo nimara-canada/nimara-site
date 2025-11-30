@@ -67,8 +67,7 @@ export const HowWeHelp = () => {
       className="relative py-16 md:py-24 lg:py-32 overflow-hidden bg-gradient-to-b from-slate-50 to-white"
       id="how-we-help"
     >
-      {/* Subtle accent line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-200 to-transparent" />
+      {/* Subtle accent line removed for smooth transition */}
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
