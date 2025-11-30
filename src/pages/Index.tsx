@@ -10,6 +10,7 @@ import { Expertise } from "@/components/Expertise";
 import { ExpertsSection } from "@/components/ExpertsSection";
 import { FAQSection } from "@/components/FAQSection";
 import { FinalCTA } from "@/components/FinalCTA";
+import { AnnouncementBar } from "@/components/AnnouncementBar";
 
 
 const Index = () => {
@@ -107,6 +108,7 @@ const Index = () => {
           })}
         </script>
       </Helmet>
+      <AnnouncementBar />
       <Header />
       <main id="main" className="space-y-0">
         <HeroSection />
