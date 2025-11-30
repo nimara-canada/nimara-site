@@ -114,19 +114,30 @@ const Index = () => {
         </script>
       </Helmet>
       <Header />
-      <main id="main">
+      <main id="main" className="space-y-0">
         <HeroSection />
+        <div className="pb-8" />
         <FitCheck />
+        <div className="pb-12" />
         <HowWeHelp />
+        <div className="pb-4" />
         <SystemLadder />
+        <div className="pb-16" />
         <ThreeColumnSection />
+        <div className="pb-12" />
         <ExpertsSection />
+        <div className="pb-12" />
         <HowItWorksSection />
+        <div className="pb-12" />
         <CategoryTiles />
+        <div className="pb-12" />
         <BenefitsSection />
+        <div className="pb-12" />
         <PricingSection onOpenPackagesWaitlist={() => setIsPackagesWaitlistOpen(true)} />
         <PackagesSection isOpen={isPackagesWaitlistOpen} onClose={() => setIsPackagesWaitlistOpen(false)} />
+        <div className="pb-12" />
         <FAQSection />
+        <div className="pb-8" />
         <FinalCTA />
       </main>
       <Footer />
