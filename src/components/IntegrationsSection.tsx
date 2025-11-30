@@ -100,7 +100,7 @@ export const IntegrationsSection = () => {
               return (
                 <article
                   key={integration.name}
-                  className="bg-card rounded-2xl p-6 text-center shadow-soft border border-border hover:shadow-md transition-shadow duration-200"
+                  className="bg-card rounded-2xl p-6 text-center shadow-soft border border-border hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                 >
                   {/* Logo */}
                   <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center">
