@@ -1,55 +1,56 @@
-import { useState } from 'react';
-import { motion, Variants } from 'framer-motion';
-import { Check, ChevronDown, Shield, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { 
+  Zap, 
+  Layers, 
+  Clock, 
+  Package, 
+  ChevronDown, 
+  ChevronUp,
+  Shield,
+  CheckCircle,
+  ArrowRight
+} from "lucide-react";
 
-const pathAIncludes = [
-  'Health check on one area (board, money, HR, fundraising, volunteers, or systems)',
-  '1-3 clear things done (like a policy, a budget, or a volunteer flow)',
-  '2-4 week plan that fits your team',
-  '3 months of support to help you use what we built'
-];
+interface PathDetails {
+  included: string[];
+  guarantee: string[];
+}
 
-const pathAGuarantees = [
-  "If we don't finish what we promised, you get your money back",
-  '3 months of support is always included'
-];
-
-const pathBIncludes = [
-  'Full health check on board, money, people, fundraising, volunteers, and systems',
-  'A set of modules that match your size and stage (Tier 0-4)',
-  'An 8-12 week plan with clear jobs for board and staff',
-  '3 months of support after the build, with an option for 12-month follow-up'
-];
-
-const pathBGuarantees = [
-  "If we don't finish what we promised, you get your money back",
-  '3 months of support included',
-  'You see the full price and scope before we start. No hidden extras'
-];
-
-const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' }
-  }
-};
-
-const staggerContainer: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15
-    }
+const pathDetails: { [key: string]: PathDetails } = {
+  pathA: {
+    included: [
+      'Health Check focused on one area (board, money, HR, fundraising, volunteers, or systems)',
+      '1-3 clear deliverables, such as a policy set, a simple budget system, or a volunteer flow',
+      '2-4 week timeline, built to fit around your team\'s real life',
+      '3 months of follow-up support and light evaluation to help you see what we built'
+    ],
+    guarantee: [
+      'Money-back guarantee if we don\'t finish the agreed deliverables',
+      '3 months of support included in every project'
+    ]
+  },
+  pathB: {
+    included: [
+      'Full Health Check across board, money, people, fundraising, volunteers, and systems',
+      'Tiered package of modules matched to your size and stage (Tier 0-4)',
+      '8-12 week workplan with clear roles for board and staff',
+      '3 months of follow-up support and light evaluation after the main build, with an optional 12-month follow-up plan'
+    ],
+    guarantee: [
+      'Money-back guarantee if we don\'t complete the agreed package',
+      '3 months of support included, plus optional 12-month follow-up',
+      'No hidden extras: price and scope are set before we start'
+    ]
   }
 };
 
 export const TwoDoorsSection = () => {
-  const [expandedPathA, setExpandedPathA] = useState(false);
-  const [expandedPathB, setExpandedPathB] = useState(false);
+  const [expandedPath, setExpandedPath] = useState<string | null>(null);
+
+  const toggleDetails = (path: string) => {
+    setExpandedPath(expandedPath === path ? null : path);
+  };
 
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
@@ -62,283 +63,235 @@ export const TwoDoorsSection = () => {
   };
 
   return (
-    <section 
-      className="relative py-20 md:py-28 lg:py-32 overflow-hidden bg-[hsl(var(--nimara-navy))]"
-      aria-labelledby="two-doors-heading"
-      aria-describedby="two-doors-description"
-    >
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-        <div className="absolute -top-48 right-1/4 w-96 h-96 rounded-full bg-[hsl(var(--nimara-purple))]/10 blur-3xl" />
-        <div className="absolute -bottom-48 left-1/4 w-96 h-96 rounded-full bg-[hsl(var(--nimara-mint))]/10 blur-3xl" />
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 md:py-32 bg-background">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div 
-          className="text-center max-w-3xl mx-auto mb-16"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={fadeInUp}
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
-          <h2
-            id="two-doors-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight mb-6"
-          >
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
             Two Doors. One System.
           </h2>
-          
-          <p id="two-doors-description" className="text-lg text-[hsl(var(--nim-slate))] leading-relaxed">
-            Pick what you need right now. Go fast on one problem or build your full system.
+          <p className="text-xl text-muted-foreground">
+            Choose the speed and depth that fits your reality today.
           </p>
         </motion.div>
 
-        {/* Two Cards */}
-        <motion.div 
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12"
-          initial="hidden"
-          animate="visible"
-          variants={staggerContainer}
-        >
+        {/* Cards Grid */}
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
           {/* Path A Card */}
-          <motion.article 
-            className="relative bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 overflow-hidden"
-            variants={fadeInUp}
-            aria-labelledby="path-a-heading"
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            {/* Tag */}
-            <div className="absolute top-6 right-6" aria-hidden="true">
-              <span className="inline-block px-3 py-1 rounded-full bg-[hsl(var(--nimara-mint))] text-[hsl(var(--nimara-navy))] text-xs font-bold uppercase tracking-wider">
-                Rapid Response
-              </span>
-            </div>
-
-            <div className="p-8">
-              {/* Title */}
-              <h3 id="path-a-heading" className="text-2xl font-bold text-white mb-4 mt-6">
-                Path A: Fast Help
-              </h3>
-
-              {/* Description */}
-              <p className="text-[hsl(var(--nim-slate))] leading-relaxed mb-6">
-                We fix one big problem fast. Think audits, grants, or one key policy.
-              </p>
-
-              <dl className="space-y-3 mb-8">
-                <div className="flex items-center justify-between py-3 px-4 rounded-lg bg-white/5">
-                  <dt className="text-sm font-medium text-white">Timeline</dt>
-                  <dd className="text-sm font-semibold text-[hsl(var(--nimara-mint))]">1-4 weeks</dd>
-                </div>
-                <div className="flex items-center justify-between py-3 px-4 rounded-lg bg-white/5">
-                  <dt className="text-sm font-medium text-white">The Asset</dt>
-                  <dd className="text-sm font-semibold text-[hsl(var(--nimara-mint))]">Mini Acceptance Bundle</dd>
-                </div>
-              </dl>
-
-              {/* CTA Button */}
-              <Button
-                onClick={scrollToContact}
-                className="w-full mb-4 bg-[hsl(var(--nimara-mint))] hover:bg-[hsl(var(--nimara-mint))]/90 text-[hsl(var(--nimara-navy))] font-semibold shadow-lg"
-                size="lg"
-              >
-                Start Path A
-                <ArrowRight size={16} className="ml-2" />
-              </Button>
-
-              {/* Expandable Section */}
-              <button
-                onClick={() => setExpandedPathA(!expandedPathA)}
-                aria-expanded={expandedPathA}
-                aria-controls="path-a-details"
-                className="flex items-center justify-center gap-2 w-full text-sm text-[hsl(var(--nimara-mint))] hover:text-white transition-colors mb-6 min-h-[44px] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--nimara-purple))] focus:ring-offset-2 focus:ring-offset-[hsl(var(--nimara-navy))] rounded"
-              >
-                <span>See what's included</span>
-                <motion.div
-                  animate={{ rotate: expandedPathA ? 180 : 0 }}
-                  transition={{ duration: 0.2 }}
-                  aria-hidden="true"
+            <div className="relative h-full">
+              {/* Tag */}
+              <div className="absolute -top-3 left-6 z-10">
+                <span 
+                  className="inline-flex items-center gap-1 px-3 py-1 text-xs font-bold rounded-full uppercase tracking-wide bg-accent text-accent-foreground"
                 >
-                  <ChevronDown size={16} />
-                </motion.div>
-              </button>
+                  <Zap className="w-3 h-3" />
+                  Rapid Response
+                </span>
+              </div>
 
-              <motion.div
-                id="path-a-details"
-                role="region"
-                aria-labelledby="path-a-heading"
-                initial={false}
-                animate={{ 
-                  height: expandedPathA ? 'auto' : 0,
-                  opacity: expandedPathA ? 1 : 0,
-                  marginBottom: expandedPathA ? 24 : 0
-                }}
-                transition={{ duration: 0.3 }}
-                className="overflow-hidden"
-              >
-                <ul className="space-y-3" role="list">
-                  {pathAIncludes.map((item, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-5 h-5 rounded-full bg-[hsl(var(--nimara-mint))]/20 flex items-center justify-center mt-0.5" aria-hidden="true">
-                        <Check size={12} className="text-[hsl(var(--nimara-mint))]" strokeWidth={3} />
+              {/* Card Content */}
+              <div className="rounded-2xl p-8 h-full flex flex-col border border-border bg-card shadow-soft">
+                <div className="mb-6">
+                  <h3 className="text-2xl sm:text-3xl font-bold mb-3 text-foreground">
+                    Path A: Fast Help
+                  </h3>
+                  <p className="text-lg text-muted-foreground">
+                    Fix one urgent problem (Audit, Grant, Policy).
+                  </p>
+                </div>
+
+                <div className="space-y-4 mb-8 flex-grow">
+                  <div className="flex items-center gap-3">
+                    <Clock className="w-5 h-5 flex-shrink-0 text-accent" />
+                    <div>
+                      <p className="text-sm text-muted-foreground">Timeline</p>
+                      <p className="font-semibold text-foreground">1–4 Weeks</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3">
+                    <Package className="w-5 h-5 flex-shrink-0 text-accent" />
+                    <div>
+                      <p className="text-sm text-muted-foreground">The Asset</p>
+                      <p className="font-semibold text-foreground">Mini Acceptance Bundle</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* CTA Button */}
+                <button 
+                  onClick={scrollToContact}
+                  className="w-full py-4 font-bold rounded-xl transition-all duration-200 flex items-center justify-center gap-2 group bg-accent text-accent-foreground hover:opacity-90 mb-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 min-h-[44px]"
+                >
+                  Start Path A
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </button>
+
+                {/* Expandable Details */}
+                <button
+                  onClick={() => toggleDetails('pathA')}
+                  className="text-sm font-medium flex items-center justify-center gap-1 transition-colors text-accent hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 min-h-[44px]"
+                  aria-expanded={expandedPath === 'pathA'}
+                  aria-controls="path-a-details"
+                >
+                  See what's included
+                  {expandedPath === 'pathA' ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                </button>
+
+                <AnimatePresence>
+                  {expandedPath === 'pathA' && (
+                    <motion.div
+                      id="path-a-details"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="mt-4 pt-4 border-t border-border">
+                        <h4 className="text-sm font-semibold mb-3 text-muted-foreground">WHAT'S INCLUDED</h4>
+                        <ul className="space-y-2">
+                          {pathDetails.pathA.included.map((item, index) => (
+                            <li key={index} className="flex items-start gap-2">
+                              <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 text-accent" />
+                              <span className="text-sm text-muted-foreground">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                      <span className="text-sm text-[hsl(var(--nim-slate))] leading-relaxed">
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-
-              {/* Guarantees */}
-              <div className="pt-6 border-t border-white/10">
-                <h4 className="text-sm font-semibold text-white mb-3">Our Promise</h4>
-                <ul className="space-y-2" role="list">
-                  {pathAGuarantees.map((item, index) => (
-                    <li key={index} className="flex items-start gap-2">
-                      <Check size={14} className="text-[hsl(var(--nimara-mint))] flex-shrink-0 mt-0.5" aria-hidden="true" strokeWidth={3} />
-                      <span className="text-xs text-[hsl(var(--nim-slate))]">
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </div>
-          </motion.article>
+          </motion.div>
 
           {/* Path B Card */}
-          <motion.article 
-            className="relative bg-white/5 backdrop-blur-sm rounded-2xl border border-[hsl(var(--nimara-purple))]/30 overflow-hidden"
-            variants={fadeInUp}
-            aria-labelledby="path-b-heading"
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
           >
-            {/* Tag */}
-            <div className="absolute top-6 right-6" aria-hidden="true">
-              <span className="inline-block px-3 py-1 rounded-full bg-[hsl(var(--nimara-purple))] text-white text-xs font-bold uppercase tracking-wider">
-                Most Popular
-              </span>
-            </div>
-
-            {/* Accent glow */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--nimara-purple))]/5 to-transparent pointer-events-none" aria-hidden="true" />
-
-            <div className="p-8 relative z-10">
-              {/* Title */}
-              <h3 id="path-b-heading" className="text-2xl font-bold text-white mb-4 mt-6">
-                Path B: System Build
-              </h3>
-
-              {/* Description */}
-              <p className="text-[hsl(var(--nim-slate))] leading-relaxed mb-6">
-                We build your full system so you can move up a Tier.
-              </p>
-
-              <dl className="space-y-3 mb-8">
-                <div className="flex items-center justify-between py-3 px-4 rounded-lg bg-white/5">
-                  <dt className="text-sm font-medium text-white">Timeline</dt>
-                  <dd className="text-sm font-semibold text-[hsl(var(--nimara-purple))]">8-12 weeks</dd>
-                </div>
-                <div className="flex items-center justify-between py-3 px-4 rounded-lg bg-white/5">
-                  <dt className="text-sm font-medium text-white">The Asset</dt>
-                  <dd className="text-sm font-semibold text-[hsl(var(--nimara-purple))]">Full Acceptance Bundle + NOHC Score</dd>
-                </div>
-              </dl>
-
-              {/* CTA Button */}
-              <Button
-                onClick={scrollToContact}
-                className="w-full mb-4 bg-[hsl(var(--nimara-purple))] hover:bg-[hsl(var(--nimara-purple))]/90 text-white font-semibold shadow-lg"
-                size="lg"
-              >
-                Start Path B
-                <ArrowRight size={16} className="ml-2" />
-              </Button>
-
-              {/* Expandable Section */}
-              <button
-                onClick={() => setExpandedPathB(!expandedPathB)}
-                aria-expanded={expandedPathB}
-                aria-controls="path-b-details"
-                className="flex items-center justify-center gap-2 w-full text-sm text-[hsl(var(--nimara-purple))] hover:text-white transition-colors mb-6 min-h-[44px] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--nimara-purple))] focus:ring-offset-2 focus:ring-offset-[hsl(var(--nimara-navy))] rounded"
-              >
-                <span>See what's included</span>
-                <motion.div
-                  animate={{ rotate: expandedPathB ? 180 : 0 }}
-                  transition={{ duration: 0.2 }}
-                  aria-hidden="true"
+            <div className="relative h-full">
+              {/* Tag */}
+              <div className="absolute -top-3 left-6 z-10">
+                <span 
+                  className="inline-flex items-center gap-1 px-3 py-1 text-xs font-bold rounded-full uppercase tracking-wide bg-primary text-primary-foreground"
                 >
-                  <ChevronDown size={16} />
-                </motion.div>
-              </button>
+                  <Layers className="w-3 h-3" />
+                  Most Popular
+                </span>
+              </div>
 
-              <motion.div
-                id="path-b-details"
-                role="region"
-                aria-labelledby="path-b-heading"
-                initial={false}
-                animate={{ 
-                  height: expandedPathB ? 'auto' : 0,
-                  opacity: expandedPathB ? 1 : 0,
-                  marginBottom: expandedPathB ? 24 : 0
-                }}
-                transition={{ duration: 0.3 }}
-                className="overflow-hidden"
-              >
-                <ul className="space-y-3" role="list">
-                  {pathBIncludes.map((item, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-5 h-5 rounded-full bg-[hsl(var(--nimara-purple))]/20 flex items-center justify-center mt-0.5" aria-hidden="true">
-                        <Check size={12} className="text-[hsl(var(--nimara-purple))]" strokeWidth={3} />
+              {/* Card Content */}
+              <div className="rounded-2xl p-8 h-full flex flex-col border border-primary/30 bg-card shadow-soft">
+                <div className="mb-6">
+                  <h3 className="text-2xl sm:text-3xl font-bold mb-3 text-foreground">
+                    Path B: System Build
+                  </h3>
+                  <p className="text-lg text-muted-foreground">
+                    Install full infrastructure to move up a Tier.
+                  </p>
+                </div>
+
+                <div className="space-y-4 mb-8 flex-grow">
+                  <div className="flex items-center gap-3">
+                    <Clock className="w-5 h-5 flex-shrink-0 text-primary" />
+                    <div>
+                      <p className="text-sm text-muted-foreground">Timeline</p>
+                      <p className="font-semibold text-foreground">8–12 Weeks</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3">
+                    <Package className="w-5 h-5 flex-shrink-0 text-primary" />
+                    <div>
+                      <p className="text-sm text-muted-foreground">The Asset</p>
+                      <p className="font-semibold text-foreground">Full Acceptance Bundle + NOHC Score</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* CTA Button */}
+                <button 
+                  onClick={scrollToContact}
+                  className="w-full py-4 font-bold rounded-xl transition-all duration-200 flex items-center justify-center gap-2 group bg-primary text-primary-foreground hover:bg-[#5835B8] mb-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 min-h-[44px]"
+                >
+                  Start Path B
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </button>
+
+                {/* Expandable Details */}
+                <button
+                  onClick={() => toggleDetails('pathB')}
+                  className="text-sm font-medium flex items-center justify-center gap-1 transition-colors text-primary hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 min-h-[44px]"
+                  aria-expanded={expandedPath === 'pathB'}
+                  aria-controls="path-b-details"
+                >
+                  See what's included
+                  {expandedPath === 'pathB' ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                </button>
+
+                <AnimatePresence>
+                  {expandedPath === 'pathB' && (
+                    <motion.div
+                      id="path-b-details"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="mt-4 pt-4 border-t border-border">
+                        <h4 className="text-sm font-semibold mb-3 text-muted-foreground">WHAT'S INCLUDED</h4>
+                        <ul className="space-y-2">
+                          {pathDetails.pathB.included.map((item, index) => (
+                            <li key={index} className="flex items-start gap-2">
+                              <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 text-primary" />
+                              <span className="text-sm text-muted-foreground">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                      <span className="text-sm text-[hsl(var(--nim-slate))] leading-relaxed">
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-
-              {/* Guarantees */}
-              <div className="pt-6 border-t border-white/10">
-                <h4 className="text-sm font-semibold text-white mb-3">Our Promise</h4>
-                <ul className="space-y-2" role="list">
-                  {pathBGuarantees.map((item, index) => (
-                    <li key={index} className="flex items-start gap-2">
-                      <Check size={14} className="text-[hsl(var(--nimara-purple))] flex-shrink-0 mt-0.5" aria-hidden="true" strokeWidth={3} />
-                      <span className="text-xs text-[hsl(var(--nim-slate))]">
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </div>
-          </motion.article>
-        </motion.div>
+          </motion.div>
+        </div>
 
         {/* Nimara Promise Banner */}
-        <motion.aside 
-          className="relative bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-8 text-center"
-          initial="hidden"
-          whileInView="visible"
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          variants={fadeInUp}
-          aria-labelledby="nimara-promise-heading"
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="relative"
         >
-          <div className="flex flex-col items-center">
-            <div className="w-12 h-12 rounded-full bg-[hsl(var(--nimara-mint))]/20 flex items-center justify-center mb-4" aria-hidden="true">
-              <Shield size={24} className="text-[hsl(var(--nimara-mint))]" />
+          <div className="rounded-2xl p-6 sm:p-8 text-center border border-border bg-card shadow-soft">
+            <div className="flex items-center justify-center gap-2 mb-3">
+              <Shield className="w-6 h-6 text-accent" />
+              <h3 className="text-xl font-bold text-foreground">The Nimara Promise</h3>
             </div>
-            <h3 id="nimara-promise-heading" className="text-xl font-bold text-white mb-3">
-              The Nimara Promise
-            </h3>
-            <p className="text-[hsl(var(--nim-slate))] max-w-2xl">
-              Every project comes with a 14-Day Acceptance Bundle, a Fix-Loop, and a fair refund promise.
+            <p className="max-w-3xl mx-auto text-muted-foreground">
+              Every project includes a 14-Day Acceptance Bundle, a Fix-Loop window, and a fair refund policy.
             </p>
           </div>
-        </motion.aside>
+        </motion.div>
       </div>
     </section>
   );
