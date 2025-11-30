@@ -6,20 +6,12 @@ import { FitCheck } from "@/components/FitCheck";
 import { HowWeHelp } from "@/components/HowWeHelp";
 import { SystemLadder } from "@/components/SystemLadder";
 import { TwoDoorsSection } from "@/components/TwoDoorsSection";
-import { ThreeColumnSection } from "@/components/ThreeColumnSection";
 import { ExpertsSection } from "@/components/ExpertsSection";
-import { HowItWorksSection } from "@/components/HowItWorksSection";
-import { CategoryTiles } from "@/components/CategoryTiles";
-import { BenefitsSection } from "@/components/BenefitsSection";
-import { PackagesSection } from "@/components/PackagesSection";
-import { PricingSection } from "@/components/PricingSection";
 import { FAQSection } from "@/components/FAQSection";
 import { FinalCTA } from "@/components/FinalCTA";
-import { useState } from "react";
+
 
 const Index = () => {
-  const [isPackagesWaitlistOpen, setIsPackagesWaitlistOpen] = useState(false);
-
   return (
     <div className="min-h-screen">
       <Helmet>
@@ -126,18 +118,7 @@ const Index = () => {
         <div className="pb-4" />
         <TwoDoorsSection />
         <div className="pb-16" />
-        <ThreeColumnSection />
-        <div className="pb-12" />
         <ExpertsSection />
-        <div className="pb-12" />
-        <HowItWorksSection />
-        <div className="pb-12" />
-        <CategoryTiles />
-        <div className="pb-12" />
-        <BenefitsSection />
-        <div className="pb-12" />
-        <PricingSection onOpenPackagesWaitlist={() => setIsPackagesWaitlistOpen(true)} />
-        <PackagesSection isOpen={isPackagesWaitlistOpen} onClose={() => setIsPackagesWaitlistOpen(false)} />
         <div className="pb-12" />
         <FAQSection />
         <div className="pb-8" />
