@@ -41,7 +41,7 @@ export const FinalCTA = () => {
       support: ""
     });
   };
-  return <section className="py-16 lg:py-24 bg-background">
+  return <section className="py-16 md:py-24 lg:py-32 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
         <div className="text-center space-y-6 mb-12">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground">Talk to the Nimara team</h2>

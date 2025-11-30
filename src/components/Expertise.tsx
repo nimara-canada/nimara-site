@@ -272,7 +272,7 @@ export const Expertise = () => {
 
   return (
     <section 
-      className="relative py-20 md:py-28 lg:py-32 overflow-hidden bg-slate-50"
+      className="relative py-16 md:py-24 lg:py-32 overflow-hidden bg-slate-50"
       aria-labelledby="expertise-heading"
       id="expertise"
     >

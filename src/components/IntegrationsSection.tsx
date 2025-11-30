@@ -53,7 +53,7 @@ const integrations = [
 
 export const IntegrationsSection = () => {
   return (
-    <section className="py-16 lg:py-24 bg-muted" aria-labelledby="integrations-heading">
+    <section className="py-16 md:py-24 lg:py-32 bg-muted" aria-labelledby="integrations-heading">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           {/* Eyebrow */}

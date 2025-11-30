@@ -79,7 +79,7 @@ export const SystemLadder = () => {
   return (
     <section 
       id="system" 
-      className="relative py-20 md:py-28 lg:py-32 overflow-hidden bg-slate-900"
+      className="relative py-16 md:py-24 lg:py-32 overflow-hidden bg-slate-900"
       aria-labelledby="system-heading"
     >
       {/* Background Elements */}
