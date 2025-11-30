@@ -78,7 +78,7 @@ export const HeroSection = () => {
           setWordIndex((prev) => (prev + 1) % rotatingWords.length);
         }
       }
-    }, isDeleting ? 50 : 80);
+    }, isDeleting ? 80 : 80);
 
     return () => clearInterval(interval);
   }, [wordIndex, isDeleting, prefersReduced]);
