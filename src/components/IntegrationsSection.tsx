@@ -2,9 +2,9 @@ import { ArrowRight } from "lucide-react";
 import quickbooksLogo from "@/assets/integrations/quickbooks.svg";
 import slackLogo from "@/assets/integrations/slack.svg";
 import googleLogo from "@/assets/integrations/google.svg";
-import salesforceLogo from "@/assets/integrations/salesforce.svg";
+import softrLogo from "@/assets/integrations/softr.svg";
 import outlookLogo from "@/assets/integrations/outlook.svg";
-import asanaLogo from "@/assets/integrations/asana.svg";
+import mondayLogo from "@/assets/integrations/monday.svg";
 import docusignLogo from "@/assets/integrations/docusign.svg";
 import zoomLogo from "@/assets/integrations/zoom.svg";
 
@@ -25,9 +25,9 @@ const integrations = [
     logo: googleLogo,
   },
   {
-    name: "Salesforce",
-    subtitle: "Connect and clean your donor data.",
-    logo: salesforceLogo,
+    name: "Softr",
+    subtitle: "Build client portals without code.",
+    logo: softrLogo,
   },
   {
     name: "Outlook",
@@ -35,9 +35,9 @@ const integrations = [
     logo: outlookLogo,
   },
   {
-    name: "Asana",
+    name: "Monday.com",
     subtitle: "Track tasks and project steps.",
-    logo: asanaLogo,
+    logo: mondayLogo,
   },
   {
     name: "DocuSign",
