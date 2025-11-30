@@ -5,6 +5,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { FitCheck } from "@/components/FitCheck";
 import { HowWeHelp } from "@/components/HowWeHelp";
 import { SystemLadder } from "@/components/SystemLadder";
+import { TwoDoorsSection } from "@/components/TwoDoorsSection";
 import { ThreeColumnSection } from "@/components/ThreeColumnSection";
 import { ExpertsSection } from "@/components/ExpertsSection";
 import { HowItWorksSection } from "@/components/HowItWorksSection";
@@ -122,6 +123,8 @@ const Index = () => {
         <HowWeHelp />
         <div className="pb-4" />
         <SystemLadder />
+        <div className="pb-4" />
+        <TwoDoorsSection />
         <div className="pb-16" />
         <ThreeColumnSection />
         <div className="pb-12" />
