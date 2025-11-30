@@ -56,7 +56,7 @@ export const AnnouncementBar = () => {
         <div className="flex items-center justify-between gap-4">
           <p className="text-base leading-tight flex-1 text-center px-[2px] py-[2px] sm:text-center font-medium text-secondary-foreground">
             {language === 'fr' ? "Nimara recrute les meilleurs experts canadiens sans but lucratif pour notre première équipe de livraison. " : "Nimara is hiring top Canadian nonprofit experts for our first delivery team. "}
-            <a href={`/consultants?utm_source=site&utm_medium=announcement_bar&utm_campaign=hiring-2025`} onClick={handleLinkClick} className="underline hover:underline focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-accent rounded-sm font-semibold">
+            <a href="https://www.notion.so/Consultant-Hire-2bb227f1ee3a8018b693d47e9610c583?source=copy_link" target="_blank" rel="noopener noreferrer" onClick={handleLinkClick} className="underline hover:underline focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-accent rounded-sm font-semibold">
               {language === 'fr' ? "Postulez maintenant →" : "Apply now →"}
             </a>
           </p>
