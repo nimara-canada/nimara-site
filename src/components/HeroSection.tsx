@@ -165,8 +165,8 @@ export const HeroSection = () => {
 
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight text-white tracking-tight mb-8">
             Finish the work that keeps you{' '}
-            <span className="inline-block relative align-baseline" style={{ minWidth: '300px', height: '1.2em', verticalAlign: 'baseline' }}>
-              <span className="text-accent absolute left-0 top-0 inline-flex items-baseline">
+            <span className="inline-block relative align-baseline min-w-[280px]">
+              <span className="text-accent inline-flex items-baseline">
                 {displayedText}
                 {(isTyping || isDeleting) && (
                   <motion.span
