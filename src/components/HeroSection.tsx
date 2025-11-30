@@ -100,7 +100,7 @@ export const HeroSection = () => {
   };
 
   return (
-    <section className="bg-[hsl(var(--nimara-navy))] pt-24 pb-12 lg:pt-32 lg:pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section className="bg-secondary-background pt-24 pb-12 lg:pt-32 lg:pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Background gradients for depth */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/5 to-transparent pointer-events-none" aria-hidden="true" />
 

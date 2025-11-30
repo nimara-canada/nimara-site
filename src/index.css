@@ -51,6 +51,8 @@ All colors MUST be HSL.
     --input: var(--nim-mist);
     --ring: var(--nim-purple);
 
+    --secondary-background: var(--nim-navy);
+
     --radius: 1rem;
     --radius-xl: 1rem;
 
@@ -98,6 +100,8 @@ All colors MUST be HSL.
     --border: 229 40% 25%;
     --input: 229 40% 25%;
     --ring: var(--nim-purple);
+
+    --secondary-background: var(--nim-navy);
     
     --sidebar-background: 229 48% 12%;
     --sidebar-foreground: var(--nim-white);

@@ -102,7 +102,7 @@ const Index = () => {
       <AnnouncementBar />
       <Header />
       <main id="main" className="space-y-0">
-        <HeroSection className="bg-secondary-foreground" />
+        <HeroSection />
         <div className="pb-8" />
         <FitCheck />
         <div className="pb-12" />
