@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { HeroSection } from "@/components/HeroSection";
 import { FitCheck } from "@/components/FitCheck";
 import { HowWeHelp } from "@/components/HowWeHelp";
+import { SystemLadder } from "@/components/SystemLadder";
 import { ThreeColumnSection } from "@/components/ThreeColumnSection";
 import { ExpertsSection } from "@/components/ExpertsSection";
 import { HowItWorksSection } from "@/components/HowItWorksSection";
@@ -117,6 +118,7 @@ const Index = () => {
         <HeroSection />
         <FitCheck />
         <HowWeHelp />
+        <SystemLadder />
         <ThreeColumnSection />
         <ExpertsSection />
         <HowItWorksSection />
