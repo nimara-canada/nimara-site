@@ -30,6 +30,7 @@ export const HeroSection = () => {
   const [wordIndex, setWordIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [step, setStep] = useState(0);
   const prefersReduced = useReducedMotion();
 
@@ -38,7 +39,7 @@ export const HeroSection = () => {
   const y1 = useTransform(scrollY, [0, 1000], [0, 200]);
   const y2 = useTransform(scrollY, [0, 1000], [0, -100]);
 
-  // Typing animation for rotating words
+  // Typing animation with backspace effect
   useEffect(() => {
     if (prefersReduced) {
       setDisplayedText(rotatingWords[wordIndex]);
@@ -46,28 +47,41 @@ export const HeroSection = () => {
     }
 
     const currentWord = rotatingWords[wordIndex];
-    let currentIndex = 0;
-    setDisplayedText('');
-    setIsTyping(true);
+    let currentIndex = isDeleting ? currentWord.length : 0;
 
-    // Typing effect
-    const typingInterval = setInterval(() => {
-      if (currentIndex <= currentWord.length) {
-        setDisplayedText(currentWord.slice(0, currentIndex));
-        currentIndex++;
+    const interval = setInterval(() => {
+      if (!isDeleting) {
+        // Typing forward
+        if (currentIndex <= currentWord.length) {
+          setDisplayedText(currentWord.slice(0, currentIndex));
+          currentIndex++;
+        } else {
+          clearInterval(interval);
+          setIsTyping(false);
+          
+          // Wait before starting to delete
+          setTimeout(() => {
+            setIsDeleting(true);
+          }, 1500);
+        }
       } else {
-        clearInterval(typingInterval);
-        setIsTyping(false);
-        
-        // Wait before moving to next word
-        setTimeout(() => {
+        // Deleting backward
+        if (currentIndex >= 0) {
+          setDisplayedText(currentWord.slice(0, currentIndex));
+          currentIndex--;
+        } else {
+          clearInterval(interval);
+          setIsDeleting(false);
+          setIsTyping(true);
+          
+          // Move to next word
           setWordIndex((prev) => (prev + 1) % rotatingWords.length);
-        }, 2000);
+        }
       }
-    }, 80);
+    }, isDeleting ? 50 : 80);
 
-    return () => clearInterval(typingInterval);
-  }, [wordIndex, prefersReduced]);
+    return () => clearInterval(interval);
+  }, [wordIndex, isDeleting, prefersReduced]);
 
   // Animation Loop (Right Side)
   useEffect(() => {
@@ -154,7 +168,7 @@ export const HeroSection = () => {
             <span className="inline-block relative align-baseline" style={{ minWidth: '300px', height: '1.2em', verticalAlign: 'baseline' }}>
               <span className="text-accent absolute left-0 top-0 inline-flex items-baseline">
                 {displayedText}
-                {isTyping && (
+                {(isTyping || isDeleting) && (
                   <motion.span
                     animate={{ opacity: [1, 0] }}
                     transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
