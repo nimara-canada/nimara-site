@@ -99,8 +99,7 @@ export const TwoDoorsSection = () => {
         <motion.div 
           className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12"
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
+          animate="visible"
           variants={staggerContainer}
         >
           {/* Path A Card */}
