@@ -1,5 +1,3 @@
-import nimaraLogo from "@/assets/nimara-logo.svg";
-
 const navigation = [
   { name: "For Nonprofits", href: "/" },
   { name: "For Funders", href: "/#funders" },
@@ -35,11 +33,9 @@ export const Footer = () => {
 
         {/* Large Logo */}
         <div className="flex justify-center mb-16 sm:mb-20">
-          <img 
-            src={nimaraLogo} 
-            alt="Nimara" 
-            className="h-24 sm:h-32 md:h-40 w-auto opacity-90"
-          />
+          <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-white">
+            Nimara
+          </h2>
         </div>
 
         {/* Bottom Bar */}
