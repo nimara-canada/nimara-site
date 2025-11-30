@@ -128,7 +128,7 @@ export const HeroSection = () => {
 
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight text-white tracking-tight mb-8">
             Finish the work that keeps you{' '}
-            <span className="inline-flex min-w-[20px] align-top">
+            <span className="inline-block relative" style={{ minWidth: '280px', height: '1.2em' }}>
               <AnimatePresence mode="wait">
                 <motion.span
                   key={rotatingWords[wordIndex]}
@@ -136,7 +136,7 @@ export const HeroSection = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -15 }}
                   transition={{ duration: 0.35, ease: "easeOut" }}
-                  className="bg-clip-text text-transparent bg-gradient-to-r from-[hsl(var(--nimara-purple))] to-[hsl(var(--nimara-mint))] inline-block"
+                  className="bg-clip-text text-transparent bg-gradient-to-r from-[hsl(var(--nimara-purple))] to-[hsl(var(--nimara-mint))] absolute left-0 top-0"
                 >
                   {rotatingWords[wordIndex]}
                 </motion.span>
