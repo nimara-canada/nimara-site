@@ -77,7 +77,7 @@ export const IntegrationsSection = () => {
           </p>
 
           {/* Integration Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 mb-8">
             {integrations.map((integration) => {
               return (
                 <article
