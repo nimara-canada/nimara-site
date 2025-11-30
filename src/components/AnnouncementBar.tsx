@@ -52,7 +52,7 @@ export const AnnouncementBar = () => {
   };
   if (!isVisible) return null;
   return <aside role="region" aria-label="Site announcement" id="announcement_hiring_2025" className="sticky top-0 z-[60] bg-[hsl(var(--nimara-purple))] text-white">
-      <div className="container mx-auto px-4 py-3 sm:py-3.5 rounded border-accent">
+      <div className="container mx-auto px-4 py-3 sm:py-3.5 rounded border-accent bg-accent">
         <div className="flex items-center justify-between gap-4">
           <p className="text-base font-normal leading-tight flex-1 text-center sm:text-left">
             {language === 'fr' ? "Nimara recrute les meilleurs experts canadiens sans but lucratif pour notre première équipe de livraison. " : "Nimara is hiring top Canadian nonprofit experts for our first delivery team. "}
