@@ -110,7 +110,7 @@ export const FAQ = () => {
   return (
     <section 
       id="faq" 
-      className="relative py-20 md:py-28 lg:py-32 overflow-hidden bg-background"
+      className="relative py-16 md:py-24 lg:py-32 overflow-hidden bg-background"
       aria-labelledby="faq-heading"
     >
       {/* Background Elements */}
