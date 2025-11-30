@@ -87,7 +87,7 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
             <div className="hidden lg:flex items-center space-x-3">
               <a
                 href="/consultants"
-                className="px-4 py-2.5 text-base font-medium text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 min-h-[44px] inline-flex items-center justify-center"
+                className="px-3 py-2 text-sm font-normal text-muted-foreground hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 min-h-[44px] inline-flex items-center justify-center transition-colors"
               >
                 For consultants
               </a>
@@ -128,7 +128,7 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                   <div className="pt-4 space-y-3 border-t border-border">
                     <a
                       href="/consultants"
-                      className="text-base font-medium py-3 px-4 rounded-lg min-h-[44px] flex items-center transition-colors text-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                      className="text-sm font-normal py-2 px-4 rounded-lg min-h-[44px] flex items-center transition-colors text-muted-foreground hover:text-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                       onClick={() => setIsOpen(false)}
                     >
                       For consultants
