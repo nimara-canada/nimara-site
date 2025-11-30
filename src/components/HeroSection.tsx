@@ -162,12 +162,14 @@ export const HeroSection = () => {
             <p className="text-sm text-gray-200">
               Takes about 7 minutes. We'll send you a simple plan for what to fix first.
             </p>
-            <button
-              onClick={scrollToContact}
+            <a
+              href="https://calendly.com/hello-nimara/30min"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-sm text-[hsl(var(--nimara-mint))] hover:text-white transition-colors underline decoration-1 underline-offset-4 focus:outline-none focus:ring-2 focus:ring-[hsl(var(--nimara-mint))] rounded px-1"
             >
               Prefer to talk? Book a quick call.
-            </button>
+            </a>
           </div>
         </div>
 
