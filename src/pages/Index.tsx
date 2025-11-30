@@ -8,8 +8,6 @@ import { SystemLadder } from "@/components/SystemLadder";
 import { TwoDoorsSection } from "@/components/TwoDoorsSection";
 import { Expertise } from "@/components/Expertise";
 import { IntegrationsSection } from "@/components/IntegrationsSection";
-import { ExpertsSection } from "@/components/ExpertsSection";
-import { FAQSection } from "@/components/FAQSection";
 import { FinalCTA } from "@/components/FinalCTA";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 const Index = () => {
@@ -116,10 +114,6 @@ const Index = () => {
         <div className="pb-16" />
         <IntegrationsSection />
         <div className="pb-16" />
-        <ExpertsSection />
-        <div className="pb-12" />
-        <FAQSection />
-        <div className="pb-8" />
         <FinalCTA />
       </main>
       <Footer />
