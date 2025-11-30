@@ -136,7 +136,7 @@ export const HeroSection = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -15 }}
                   transition={{ duration: 0.35, ease: "easeOut" }}
-                  className="bg-clip-text text-transparent bg-gradient-to-r from-[hsl(var(--nimara-purple))] to-[hsl(var(--nimara-mint))] absolute left-0 top-0"
+                  className="text-accent absolute left-0 top-0"
                 >
                   {rotatingWords[wordIndex]}
                 </motion.span>
