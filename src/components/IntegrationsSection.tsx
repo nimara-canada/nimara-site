@@ -1,3 +1,4 @@
+import { ArrowRight } from "lucide-react";
 import quickbooksLogo from "@/assets/integrations/quickbooks.svg";
 import slackLogo from "@/assets/integrations/slack.svg";
 import googleLogo from "@/assets/integrations/google.svg";
@@ -76,7 +77,7 @@ export const IntegrationsSection = () => {
           </p>
 
           {/* Integration Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 mb-8">
             {integrations.map((integration) => {
               return (
                 <article
@@ -104,6 +105,17 @@ export const IntegrationsSection = () => {
                 </article>
               );
             })}
+          </div>
+
+          {/* View All CTA */}
+          <div className="text-center">
+            <a 
+              href="#" 
+              className="inline-flex items-center gap-2 text-base font-semibold text-primary hover:text-primary/80 transition-colors duration-200"
+            >
+              View all integrations
+              <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            </a>
           </div>
         </div>
       </div>
