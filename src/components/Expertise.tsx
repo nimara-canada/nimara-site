@@ -278,7 +278,6 @@ export const Expertise = () => {
     >
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
         <div className="absolute -top-48 -right-48 w-96 h-96 rounded-full bg-violet-100/50 blur-3xl" />
         <div className="absolute -bottom-48 -left-48 w-96 h-96 rounded-full bg-emerald-100/50 blur-3xl" />
       </div>

@@ -84,7 +84,6 @@ export const SystemLadder = () => {
     >
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent" />
         <div className="absolute -top-48 left-1/4 w-96 h-96 rounded-full bg-violet-600/10 blur-3xl" />
         <div className="absolute -bottom-48 right-1/4 w-96 h-96 rounded-full bg-emerald-600/10 blur-3xl" />
       </div>
