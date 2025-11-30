@@ -7,12 +7,30 @@ import outlookLogo from "@/assets/integrations/outlook.svg";
 import mondayLogo from "@/assets/integrations/monday.svg";
 import docusignLogo from "@/assets/integrations/docusign.svg";
 import zoomLogo from "@/assets/integrations/zoom.svg";
+import salesforceLogo from "@/assets/integrations/salesforce.svg";
+import sage50Logo from "@/assets/integrations/sage50.svg";
+import smapplyLogo from "@/assets/integrations/smapply.png";
 
 const integrations = [
   {
     name: "QuickBooks",
     subtitle: "Sync financial data automatically.",
     logo: quickbooksLogo,
+  },
+  {
+    name: "Sage 50",
+    subtitle: "Manage accounting and finances.",
+    logo: sage50Logo,
+  },
+  {
+    name: "Salesforce",
+    subtitle: "Connect donor and CRM data.",
+    logo: salesforceLogo,
+  },
+  {
+    name: "SMApply",
+    subtitle: "Streamline grant applications.",
+    logo: smapplyLogo,
   },
   {
     name: "Slack",
