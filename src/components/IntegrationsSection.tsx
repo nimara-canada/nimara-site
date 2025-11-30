@@ -1,54 +1,52 @@
-import { 
-  DollarSign, 
-  MessageSquare, 
-  Cloud, 
-  Database, 
-  Mail, 
-  CheckSquare, 
-  FileSignature, 
-  Video 
-} from "lucide-react";
+import quickbooksLogo from "@/assets/integrations/quickbooks.svg";
+import slackLogo from "@/assets/integrations/slack.svg";
+import googleLogo from "@/assets/integrations/google.svg";
+import salesforceLogo from "@/assets/integrations/salesforce.svg";
+import outlookLogo from "@/assets/integrations/outlook.svg";
+import asanaLogo from "@/assets/integrations/asana.svg";
+import docusignLogo from "@/assets/integrations/docusign.svg";
+import zoomLogo from "@/assets/integrations/zoom.svg";
 
 const integrations = [
   {
     name: "QuickBooks",
     subtitle: "Sync financial data automatically.",
-    icon: DollarSign,
+    logo: quickbooksLogo,
   },
   {
     name: "Slack",
     subtitle: "Get updates where your team chats.",
-    icon: MessageSquare,
+    logo: slackLogo,
   },
   {
     name: "Google Workspace",
     subtitle: "Store and share files in one place.",
-    icon: Cloud,
+    logo: googleLogo,
   },
   {
     name: "Salesforce",
     subtitle: "Connect and clean your donor data.",
-    icon: Database,
+    logo: salesforceLogo,
   },
   {
     name: "Outlook",
     subtitle: "Link your calendar and email.",
-    icon: Mail,
+    logo: outlookLogo,
   },
   {
     name: "Asana",
     subtitle: "Track tasks and project steps.",
-    icon: CheckSquare,
+    logo: asanaLogo,
   },
   {
     name: "DocuSign",
     subtitle: "Collect secure digital signatures.",
-    icon: FileSignature,
+    logo: docusignLogo,
   },
   {
     name: "Zoom",
     subtitle: "Schedule and run live sessions.",
-    icon: Video,
+    logo: zoomLogo,
   },
 ];
 
@@ -80,15 +78,18 @@ export const IntegrationsSection = () => {
           {/* Integration Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
             {integrations.map((integration) => {
-              const Icon = integration.icon;
               return (
                 <article
                   key={integration.name}
                   className="bg-card rounded-2xl p-6 text-center shadow-soft border border-border hover:shadow-md transition-shadow duration-200"
                 >
-                  {/* Icon */}
-                  <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <Icon className="w-6 h-6 text-primary" aria-hidden="true" />
+                  {/* Logo */}
+                  <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center">
+                    <img 
+                      src={integration.logo} 
+                      alt={`${integration.name} logo`}
+                      className="w-10 h-10 object-contain"
+                    />
                   </div>
 
                   {/* Name */}
