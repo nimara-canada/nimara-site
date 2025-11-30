@@ -28,6 +28,8 @@ const SYSTEM_ROWS = [
 
 export const HeroSection = () => {
   const [wordIndex, setWordIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState('');
+  const [isTyping, setIsTyping] = useState(true);
   const [step, setStep] = useState(0);
   const prefersReduced = useReducedMotion();
 
@@ -36,15 +38,36 @@ export const HeroSection = () => {
   const y1 = useTransform(scrollY, [0, 1000], [0, 200]);
   const y2 = useTransform(scrollY, [0, 1000], [0, -100]);
 
-  // Cycle the H1 rotating word (Left Side)
+  // Typing animation for rotating words
   useEffect(() => {
-    if (prefersReduced) return;
+    if (prefersReduced) {
+      setDisplayedText(rotatingWords[wordIndex]);
+      return;
+    }
 
-    const interval = setInterval(() => {
-      setWordIndex((prev) => (prev + 1) % rotatingWords.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [prefersReduced]);
+    const currentWord = rotatingWords[wordIndex];
+    let currentIndex = 0;
+    setDisplayedText('');
+    setIsTyping(true);
+
+    // Typing effect
+    const typingInterval = setInterval(() => {
+      if (currentIndex <= currentWord.length) {
+        setDisplayedText(currentWord.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(typingInterval);
+        setIsTyping(false);
+        
+        // Wait before moving to next word
+        setTimeout(() => {
+          setWordIndex((prev) => (prev + 1) % rotatingWords.length);
+        }, 2000);
+      }
+    }, 100);
+
+    return () => clearInterval(typingInterval);
+  }, [wordIndex, prefersReduced]);
 
   // Animation Loop (Right Side)
   useEffect(() => {
@@ -128,19 +151,17 @@ export const HeroSection = () => {
 
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight text-white tracking-tight mb-8">
             Finish the work that keeps you{' '}
-            <span className="inline-block relative" style={{ minWidth: '280px', height: '1.2em' }}>
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={rotatingWords[wordIndex]}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -15 }}
-                  transition={{ duration: 0.35, ease: "easeOut" }}
-                  className="text-accent absolute left-0 top-0"
-                >
-                  {rotatingWords[wordIndex]}
-                </motion.span>
-              </AnimatePresence>
+            <span className="inline-block relative align-baseline" style={{ minWidth: '300px', height: '1.2em', verticalAlign: 'baseline' }}>
+              <span className="text-accent absolute left-0 top-0 inline-flex items-baseline">
+                {displayedText}
+                {isTyping && (
+                  <motion.span
+                    animate={{ opacity: [1, 0] }}
+                    transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+                    className="inline-block w-0.5 h-[0.9em] bg-accent ml-1"
+                  />
+                )}
+              </span>
             </span>
           </h1>
 
