@@ -49,7 +49,7 @@ export const Footer = () => {
       setIsSubmitting(false);
     }
   };
-  return <footer className="bg-[#202654] text-white">
+  return <footer className="bg-secondary-background text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1280px] py-12 sm:py-16 lg:py-20">
         {/* Main Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
