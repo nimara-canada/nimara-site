@@ -86,7 +86,9 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
             {/* Desktop Utilities */}
             <div className="hidden lg:flex items-center space-x-3">
               <a
-                href="/consultants"
+                href="https://www.notion.so/Consultant-Hire-2bb227f1ee3a8018b693d47e9610c583?source=copy_link"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-3 py-2 text-sm font-normal text-muted-foreground hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 min-h-[44px] inline-flex items-center justify-center transition-colors"
               >
                 For consultants
@@ -127,7 +129,9 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                   ))}
                   <div className="pt-4 space-y-3 border-t border-border">
                     <a
-                      href="/consultants"
+                      href="https://www.notion.so/Consultant-Hire-2bb227f1ee3a8018b693d47e9610c583?source=copy_link"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-sm font-normal py-2 px-4 rounded-lg min-h-[44px] flex items-center transition-colors text-muted-foreground hover:text-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                       onClick={() => setIsOpen(false)}
                     >
