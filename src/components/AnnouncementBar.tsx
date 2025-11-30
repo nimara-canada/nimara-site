@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { useTranslation } from "react-i18next";
-const STORAGE_KEY = "nim_announce_hiring_2025";
+const STORAGE_KEY = "nim_announce_hiring_2025_v2";
 const END_DATE = new Date("2026-03-31T00:00:00");
 export const AnnouncementBar = () => {
   const [isVisible, setIsVisible] = useState(false);
