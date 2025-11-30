@@ -11,11 +11,8 @@ import { ExpertsSection } from "@/components/ExpertsSection";
 import { FAQSection } from "@/components/FAQSection";
 import { FinalCTA } from "@/components/FinalCTA";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
-
-
 const Index = () => {
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       <Helmet>
         <title>Get Up to 3 Free Nonprofit Consulting Quotes in 72 Hours | Nimara</title>
         <meta name="description" content="Get up to 3 vetted nonprofit consulting quotes in 72 hours. Free scope. PM oversight. Clear briefs. Audit-ready work from trusted Canadian experts." />
@@ -40,78 +37,72 @@ const Index = () => {
         
         <script type="application/ld+json">
           {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Nimara",
-            "url": "https://nimara.ca",
-            "logo": "https://nimara.ca/assets/nimara-logo.png",
-            "description": "Nimara matches Canadian nonprofits with vetted consultants for finance, governance, digital systems, and strategic work.",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Edmonton",
-              "addressRegion": "AB",
-              "addressCountry": "CA"
-            },
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "contactType": "Customer Service",
-              "email": "hello@nimara.ca"
-            }
-          })}
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Nimara",
+          "url": "https://nimara.ca",
+          "logo": "https://nimara.ca/assets/nimara-logo.png",
+          "description": "Nimara matches Canadian nonprofits with vetted consultants for finance, governance, digital systems, and strategic work.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Edmonton",
+            "addressRegion": "AB",
+            "addressCountry": "CA"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Customer Service",
+            "email": "hello@nimara.ca"
+          }
+        })}
         </script>
         <script type="application/ld+json">
           {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "How much does it cost to get quotes?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Getting quotes is completely free. You only pay if you choose to work with one of the consultants we match you with."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How long does it take to get quotes?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "You'll receive up to 3 vetted quotes within 72 hours of submitting your request."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What categories do you support?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "We support Governance, Finance & Audit, Program Design, Digital & Data, Fundraising, Research, Legal & Compliance, and custom projects."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How does pricing work?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Single-category projects: Consultant rate + 12% Nimara PM fee (separate line). Multi-category projects: Consultant rate + 15% PM fee. Payment terms are Net-15 after acceptance."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Are your consultants vetted?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes. All consultants are independently vetted, have 3-10+ years of experience, and are matched based on their expertise and your specific needs."
-                }
-              }
-            ]
-          })}
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [{
+            "@type": "Question",
+            "name": "How much does it cost to get quotes?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Getting quotes is completely free. You only pay if you choose to work with one of the consultants we match you with."
+            }
+          }, {
+            "@type": "Question",
+            "name": "How long does it take to get quotes?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You'll receive up to 3 vetted quotes within 72 hours of submitting your request."
+            }
+          }, {
+            "@type": "Question",
+            "name": "What categories do you support?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We support Governance, Finance & Audit, Program Design, Digital & Data, Fundraising, Research, Legal & Compliance, and custom projects."
+            }
+          }, {
+            "@type": "Question",
+            "name": "How does pricing work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Single-category projects: Consultant rate + 12% Nimara PM fee (separate line). Multi-category projects: Consultant rate + 15% PM fee. Payment terms are Net-15 after acceptance."
+            }
+          }, {
+            "@type": "Question",
+            "name": "Are your consultants vetted?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. All consultants are independently vetted, have 3-10+ years of experience, and are matched based on their expertise and your specific needs."
+            }
+          }]
+        })}
         </script>
       </Helmet>
       <AnnouncementBar />
       <Header />
       <main id="main" className="space-y-0">
-        <HeroSection />
+        <HeroSection className="bg-secondary-foreground" />
         <div className="pb-8" />
         <FitCheck />
         <div className="pb-12" />
@@ -129,8 +120,6 @@ const Index = () => {
         <FinalCTA />
       </main>
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
