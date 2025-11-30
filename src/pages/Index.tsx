@@ -103,20 +103,13 @@ const Index = () => {
       <Header />
       <main id="main" className="space-y-0">
         <HeroSection />
-        <div className="pb-8" />
         <FitCheck />
-        <div className="pb-12" />
         <HowWeHelp />
-        <div className="pb-4" />
         <SystemLadder />
-        <div className="pb-4" />
         <TwoDoorsSection />
         <Expertise />
-        <div className="pb-16" />
         <IntegrationsSection />
-        <div className="pb-16" />
         <FAQ />
-        <div className="pb-16" />
         <FinalCTA />
       </main>
       <Footer />
