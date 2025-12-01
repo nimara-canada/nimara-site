@@ -93,8 +93,14 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
               >
                 For consultants
               </a>
-              <Button onClick={scrollToGetInTouch} size="default" className="min-h-[44px]">
-                Schedule A Call
+              <Button asChild size="default" className="min-h-[44px]">
+                <a 
+                  href="https://calendly.com/hello-nimara/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Schedule A Call
+                </a>
               </Button>
             </div>
 
@@ -137,8 +143,14 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                     >
                       For consultants
                     </a>
-                    <Button onClick={scrollToGetInTouch} className="w-full min-h-[44px]">
-                      Schedule A Call
+                    <Button asChild className="w-full min-h-[44px]">
+                      <a 
+                        href="https://calendly.com/hello-nimara/30min"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Schedule A Call
+                      </a>
                     </Button>
                   </div>
                 </nav>
@@ -150,8 +162,14 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
 
       {/* Mobile Sticky Bottom CTA */}
       <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden p-4 bg-background/95 backdrop-blur border-t border-border">
-        <Button onClick={scrollToGetInTouch} className="w-full min-h-[44px]">
-          Schedule A Call
+        <Button asChild className="w-full min-h-[44px]">
+          <a 
+            href="https://calendly.com/hello-nimara/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Schedule A Call
+          </a>
         </Button>
       </div>
     </>
