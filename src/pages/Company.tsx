@@ -5,7 +5,6 @@ import { CompanyHero } from "@/components/company/CompanyHero";
 import { OurStory } from "@/components/company/OurStory";
 import { TheGap } from "@/components/company/TheGap";
 import { WhatWeBuilt } from "@/components/company/WhatWeBuilt";
-import { HowWeWork } from "@/components/company/HowWeWork";
 import { WhatWeBelieve } from "@/components/company/WhatWeBelieve";
 import { OurCommitments } from "@/components/company/OurCommitments";
 import { TeamSection } from "@/components/company/TeamSection";
@@ -70,7 +69,6 @@ const Company = () => {
         <CompanyHero />
         <OurStory />
         <TheGap />
-        <HowWeWork />
         <WhatWeBuilt />
         <WhatWeBelieve />
         <OurCommitments />

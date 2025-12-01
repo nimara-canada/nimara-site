@@ -23,6 +23,7 @@ import FreeResources from "./pages/FreeResources";
 import Resources from "./pages/Resources";
 import ResourceDetail from "./pages/ResourceDetail";
 import Integrations from "./pages/Integrations";
+import HowNimaraWorks from "./pages/HowNimaraWorks";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,7 @@ const App = () => (
             <Route path="/resources" element={<Resources />} />
             <Route path="/resources/:slug" element={<ResourceDetail />} />
             <Route path="/integrations" element={<Integrations />} />
+            <Route path="/how-nimara-works" element={<HowNimaraWorks />} />
             
             {/* Redirects for old routes */}
             <Route path="/for-nonprofits" element={<Navigate to="/" replace />} />
