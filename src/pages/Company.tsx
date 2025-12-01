@@ -3,6 +3,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CompanyHero } from "@/components/company/CompanyHero";
 import { OurStory } from "@/components/company/OurStory";
+import { TheGap } from "@/components/company/TheGap";
 import { WhatWeBuilt } from "@/components/company/WhatWeBuilt";
 import { HowWeWork } from "@/components/company/HowWeWork";
 import { WhatWeBelieve } from "@/components/company/WhatWeBelieve";
@@ -68,6 +69,7 @@ const Company = () => {
       <main id="main">
         <CompanyHero />
         <OurStory />
+        <TheGap />
         <WhatWeBuilt />
         <HowWeWork />
         <WhatWeBelieve />
