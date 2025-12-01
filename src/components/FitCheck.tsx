@@ -239,7 +239,7 @@ export const FitCheck = () => {
                 className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-[hsl(var(--nimara-purple))]/90 text-primary-foreground px-6 py-3.5 rounded-xl text-sm font-semibold transition-all duration-200 shadow-lg shadow-primary/20 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 min-h-[44px]"
               >
                 <Play size={18} fill="currentColor" />
-                Watch 2-minute intro
+                Watch 1-minute intro
               </button>
               <a
                 href="#health-check"
