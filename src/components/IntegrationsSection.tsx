@@ -110,7 +110,7 @@ export const IntegrationsSection = () => {
           {/* View All CTA */}
           <div className="text-center">
             <a 
-              href="#" 
+              href="/integrations" 
               className="inline-flex items-center gap-2 text-base font-semibold text-primary hover:text-primary/80 transition-colors duration-200"
             >
               View all integrations
