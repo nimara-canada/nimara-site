@@ -3,7 +3,7 @@ import quickbooksLogo from "@/assets/integrations/quickbooks.svg";
 import slackLogo from "@/assets/integrations/slack.svg";
 import googleLogo from "@/assets/integrations/google.jpg";
 import softrLogo from "@/assets/integrations/softr.svg";
-import outlookLogo from "@/assets/integrations/outlook.svg";
+import microsoftLogo from "@/assets/integrations/microsoft.png";
 import mondayLogo from "@/assets/integrations/monday.svg";
 import bamboohrLogo from "@/assets/integrations/bamboohr.webp";
 import salesforceLogo from "@/assets/integrations/salesforce.svg";
@@ -30,7 +30,7 @@ const integrations = [{
 }, {
   name: "Microsoft 365",
   subtitle: "Connect calendar, email, and productivity tools.",
-  logo: outlookLogo
+  logo: microsoftLogo
 }, {
   name: "Monday.com",
   subtitle: "Track tasks and project steps.",
