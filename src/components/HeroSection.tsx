@@ -166,8 +166,8 @@ export const HeroSection = () => {
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight text-white tracking-tight mb-8">
             Finish the work that keeps you{' '}
             <br className="sm:hidden" />
-            <span className="text-accent inline-block relative align-baseline" style={{ width: '8.5ch', minHeight: '1.2em' }}>
-              <span className="absolute left-0 top-0 whitespace-nowrap">
+            <span className="text-accent inline-block relative" style={{ width: '8.5ch', minHeight: '1.2em', verticalAlign: 'baseline' }}>
+              <span className="absolute left-0 bottom-0 whitespace-nowrap">
                 {displayedText}
                 {(isTyping || isDeleting) && (
                   <motion.span
