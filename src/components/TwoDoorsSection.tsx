@@ -142,7 +142,7 @@ export const TwoDoorsSection = () => {
                 {/* Expandable Details */}
                 <button
                   onClick={() => toggleDetails('pathA')}
-                  className="text-sm font-medium flex items-center justify-center gap-1 transition-colors text-accent hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 min-h-[44px]"
+                  className="text-sm font-medium flex items-center justify-center gap-1 transition-colors text-[hsl(var(--nimara-navy))] hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 min-h-[44px]"
                   aria-expanded={expandedPath === 'pathA'}
                   aria-controls="path-a-details"
                 >
