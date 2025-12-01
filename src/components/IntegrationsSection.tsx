@@ -3,7 +3,7 @@ import quickbooksLogo from "@/assets/integrations/quickbooks.svg";
 import slackLogo from "@/assets/integrations/slack.svg";
 import googleLogo from "@/assets/integrations/google.jpg";
 import softrLogo from "@/assets/integrations/softr.svg";
-import microsoftLogo from "@/assets/integrations/microsoft.png";
+import microsoftLogo from "@/assets/integrations/microsoft-icon.png";
 import mondayLogo from "@/assets/integrations/monday.svg";
 import bamboohrLogo from "@/assets/integrations/bamboohr.webp";
 import salesforceLogo from "@/assets/integrations/salesforce.svg";
