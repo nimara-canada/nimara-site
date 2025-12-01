@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Shield, FileCheck, HeartHandshake, BarChart3, Scale } from 'lucide-react';
 
 const tiers = [
   {
@@ -27,6 +28,34 @@ const tiers = [
     label: 'Tier 4',
     title: 'Complex or multi-site',
     description: 'Larger, more complex orgs with many programs, sites, or partners.'
+  }
+];
+
+const guardrails = [
+  {
+    icon: Shield,
+    label: 'Standardized packages',
+    description: 'Clear scope, timelines, and deliverables. No mystery projects or endless change requests.'
+  },
+  {
+    icon: FileCheck,
+    label: 'Refund and fix loops',
+    description: 'If a deliverable misses the mark, we fix it. If we cannot fix it, we do not keep the money for that piece of work.'
+  },
+  {
+    icon: HeartHandshake,
+    label: '3-month support',
+    description: 'Each install includes light follow-up support for about three months so systems do not die on day one.'
+  },
+  {
+    icon: BarChart3,
+    label: 'Embedded evaluation',
+    description: 'Every engagement feeds data back into the Nimara model so we can learn what works and stop repeating the same mistakes.'
+  },
+  {
+    icon: Scale,
+    label: 'Ethics and conflict rules',
+    description: 'We use clear rules to protect communities, staff, and partners from conflicts of interest and harmful practices.'
   }
 ];
 
@@ -124,6 +153,57 @@ export const TheNimaraModel = () => {
                 </Card>
               </motion.div>
             ))}
+          </motion.div>
+        </div>
+
+        {/* Protection section */}
+        <div className="mb-20 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-16 bg-secondary/5">
+          <motion.div variants={itemVariants} className="text-center mb-10 max-w-6xl mx-auto">
+            <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">
+              How we protect missions, money, and people
+            </h3>
+            <p className="text-base text-muted-foreground max-w-2xl mx-auto">
+              We design Nimara so that support is clear, fair, and safe for organizations, funders, and consultants.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto"
+          >
+            {guardrails.map((guardrail) => {
+              const Icon = guardrail.icon;
+              return (
+                <motion.div
+                  key={guardrail.label}
+                  variants={itemVariants}
+                  whileHover={{ 
+                    y: -4,
+                    transition: { duration: 0.2, ease: [0.4, 0, 0.2, 1] }
+                  }}
+                >
+                  <Card className="h-full hover:shadow-md transition-shadow duration-300">
+                    <CardHeader>
+                      <div className="flex items-start gap-3">
+                        <div className="p-2 rounded-lg bg-primary/10 text-primary shrink-0">
+                          <Icon className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <CardTitle className="text-base font-semibold">
+                            {guardrail.label}
+                          </CardTitle>
+                        </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <CardDescription className="text-sm leading-relaxed">
+                        {guardrail.description}
+                      </CardDescription>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
 
