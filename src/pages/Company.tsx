@@ -70,8 +70,8 @@ const Company = () => {
         <CompanyHero />
         <OurStory />
         <TheGap />
-        <WhatWeBuilt />
         <HowWeWork />
+        <WhatWeBuilt />
         <WhatWeBelieve />
         <OurCommitments />
         <TeamSection />
