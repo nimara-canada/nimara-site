@@ -165,17 +165,18 @@ export const HeroSection = () => {
 
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight text-white tracking-tight mb-8">
             Finish the work that keeps you{' '}
-            <span className="text-accent inline-block relative" style={{ minWidth: '0.9em', width: '5.5em' }}>
-              <span className="inline-block">
+            <br className="sm:hidden" />
+            <span className="text-accent inline-block relative align-baseline" style={{ width: '9.5ch', minHeight: '1.2em' }}>
+              <span className="absolute left-0 top-0 whitespace-nowrap">
                 {displayedText}
+                {(isTyping || isDeleting) && (
+                  <motion.span
+                    animate={{ opacity: [1, 0] }}
+                    transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+                    className="inline-block w-0.5 h-[0.9em] bg-accent ml-1 align-middle"
+                  />
+                )}
               </span>
-              {(isTyping || isDeleting) && (
-                <motion.span
-                  animate={{ opacity: [1, 0] }}
-                  transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
-                  className="inline-block w-0.5 h-[0.9em] bg-accent ml-1 align-baseline"
-                />
-              )}
             </span>
           </h1>
 
