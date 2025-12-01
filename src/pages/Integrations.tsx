@@ -12,12 +12,12 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import quickbooksLogo from "@/assets/integrations/quickbooks.svg";
-import slackLogo from "@/assets/integrations/slack.svg";
-import googleLogo from "@/assets/integrations/google.svg";
-import softrLogo from "@/assets/integrations/softr.svg";
-import outlookLogo from "@/assets/integrations/outlook.svg";
-import mondayLogo from "@/assets/integrations/monday.svg";
-import docusignLogo from "@/assets/integrations/docusign.svg";
+import slackLogo from "@/assets/integrations/slack.png";
+import googleLogo from "@/assets/integrations/google.jpg";
+import softrLogo from "@/assets/integrations/softr.png";
+import microsoftLogo from "@/assets/integrations/microsoft-icon.png";
+import mondayLogo from "@/assets/integrations/monday.png";
+import bamboohrLogo from "@/assets/integrations/bamboohr.webp";
 import salesforceLogo from "@/assets/integrations/salesforce.svg";
 import asanaLogo from "@/assets/integrations/asana.svg";
 
@@ -125,7 +125,7 @@ const integrations: Integration[] = [
     id: "microsoft365",
     name: "Microsoft 365",
     subtitle: "Connect calendar, email, and productivity tools.",
-    logo: outlookLogo,
+    logo: microsoftLogo,
     category: "Productivity",
     description: "Integrate Microsoft 365 to sync calendars, automate email communications, and connect productivity tools across your organization's workflow.",
     benefits: [
@@ -152,19 +152,19 @@ const integrations: Integration[] = [
     setupGuide: "Connect your Monday.com workspace through API authentication. Choose which boards and items to sync with Nimara. Set up automation rules to trigger updates between platforms."
   },
   {
-    id: "docusign",
-    name: "DocuSign",
-    subtitle: "Collect secure digital signatures.",
-    logo: docusignLogo,
+    id: "bamboohr",
+    name: "BambooHR",
+    subtitle: "Manage employee records and HR workflows.",
+    logo: bamboohrLogo,
     category: "Document Management",
-    description: "Streamline document signing with DocuSign integration. Send, track, and manage legally binding signatures without printing, scanning, or mailing documents.",
+    description: "Streamline HR management with BambooHR integration. Manage employee records, track time off, and maintain personnel files in one centralized system.",
     benefits: [
-      "Legally binding electronic signatures",
-      "Automated signature request workflows",
-      "Real-time document tracking and status updates",
-      "Secure audit trails for compliance"
+      "Centralized employee records and documentation",
+      "Automated time-off tracking and approval workflows",
+      "Performance review management and tracking",
+      "Secure storage of personnel files and compliance documents"
     ],
-    setupGuide: "Link your DocuSign account via OAuth connection. Configure document templates and signing workflows. Set up automatic triggers for signature requests based on Nimara workflows."
+    setupGuide: "Link your BambooHR account via OAuth connection. Configure employee data sync preferences and field mappings. Set up automatic triggers for onboarding and HR workflow notifications."
   },
   {
     id: "asana",
@@ -258,11 +258,11 @@ export default function Integrations() {
                   >
                     <AccordionTrigger className="px-6 py-5 hover:no-underline hover:bg-muted/50 transition-colors">
                       <div className="flex items-center gap-4 text-left">
-                        <div className="w-12 h-12 flex items-center justify-center flex-shrink-0">
+                        <div className="w-14 h-14 flex items-center justify-center flex-shrink-0">
                           <img 
                             src={integration.logo} 
                             alt={`${integration.name} logo`}
-                            className="w-10 h-10 object-contain"
+                            className="w-12 h-12 object-contain"
                           />
                         </div>
                         <div className="flex-1">
