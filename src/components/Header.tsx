@@ -8,7 +8,7 @@ import nimaraLogo from "@/assets/nimara-logo.png";
 
 const navigation = [
   { name: "For Nonprofits", href: "/" },
-  { name: "How Nimara Works", href: "/#how-it-works" },
+  { name: "How Nimara Works", href: "/how-nimara-works" },
   { name: "About Us", href: "/company" },
   { name: "Resources", href: "/resources" },
 ];
