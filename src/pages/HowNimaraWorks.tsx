@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { HowWeWork } from "@/components/company/HowWeWork";
+import { TheNimaraModel } from "@/components/company/TheNimaraModel";
 
 const HowNimaraWorks = () => {
   return (
@@ -41,7 +41,7 @@ const HowNimaraWorks = () => {
           </div>
         </section>
 
-        <HowWeWork />
+        <TheNimaraModel />
       </main>
       
       <Footer />
