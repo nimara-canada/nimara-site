@@ -203,14 +203,17 @@ export const HowWeHelp = () => {
                   <br />
                   The complete Nimara loop
                 </p>
-                <motion.button 
+                <motion.a 
+                  href="https://www.notion.so/Nimara-Refund-Policy-2bc227f1ee3a80f299fbc42501d338ac?source=copy_link"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200 hover:bg-violet-600 focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Start your loop
+                  Check Out our Refund Policy
                   <ArrowRight size={16} />
-                </motion.button>
+                </motion.a>
               </div>
             </motion.div>
           </div>
