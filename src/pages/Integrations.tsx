@@ -3,12 +3,14 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
 import quickbooksLogo from "@/assets/integrations/quickbooks.svg";
 import slackLogo from "@/assets/integrations/slack.svg";
 import googleLogo from "@/assets/integrations/google.svg";
@@ -19,15 +21,29 @@ import docusignLogo from "@/assets/integrations/docusign.svg";
 import salesforceLogo from "@/assets/integrations/salesforce.svg";
 import asanaLogo from "@/assets/integrations/asana.svg";
 
+type Category = "All" | "Accounting & Finance" | "CRM & Fundraising" | "Communication" | "Productivity" | "Project Management" | "Document Management" | "No-Code Tools";
+
 interface Integration {
   id: string;
   name: string;
   subtitle: string;
   logo: string;
+  category: Category;
   description: string;
   benefits: string[];
   setupGuide: string;
 }
+
+const categories: Category[] = [
+  "All",
+  "Accounting & Finance",
+  "CRM & Fundraising",
+  "Communication",
+  "Productivity",
+  "Project Management",
+  "Document Management",
+  "No-Code Tools"
+];
 
 const integrations: Integration[] = [
   {
@@ -35,6 +51,7 @@ const integrations: Integration[] = [
     name: "QuickBooks",
     subtitle: "Sync financial data automatically.",
     logo: quickbooksLogo,
+    category: "Accounting & Finance",
     description: "QuickBooks integration ensures your financial data flows seamlessly between your accounting system and Nimara's management platform. Maintain accurate records without manual data entry.",
     benefits: [
       "Automatic synchronization of transactions and balances",
@@ -49,6 +66,7 @@ const integrations: Integration[] = [
     name: "Salesforce",
     subtitle: "Connect donor and CRM data.",
     logo: salesforceLogo,
+    category: "CRM & Fundraising",
     description: "The Salesforce integration brings your donor relationships and CRM data into Nimara's ecosystem, enabling better stewardship and more informed decision-making across your organization.",
     benefits: [
       "Unified view of donor relationships and interactions",
@@ -63,6 +81,7 @@ const integrations: Integration[] = [
     name: "Slack",
     subtitle: "Get updates where your team chats.",
     logo: slackLogo,
+    category: "Communication",
     description: "Stay informed with real-time notifications delivered directly to your Slack workspace. Keep your team aligned on important updates without switching between applications.",
     benefits: [
       "Real-time alerts for critical updates and deadlines",
@@ -77,6 +96,7 @@ const integrations: Integration[] = [
     name: "Google Workspace",
     subtitle: "Store and share files in one place.",
     logo: googleLogo,
+    category: "Productivity",
     description: "Connect your Google Workspace to centralize document storage, enable seamless file sharing, and maintain version control across your organization's important files.",
     benefits: [
       "Centralized document storage and management",
@@ -91,6 +111,7 @@ const integrations: Integration[] = [
     name: "Softr",
     subtitle: "Build client portals without code.",
     logo: softrLogo,
+    category: "No-Code Tools",
     description: "Create custom client portals and member areas using Softr's no-code platform, powered by data from Nimara. Give stakeholders secure access to relevant information without technical complexity.",
     benefits: [
       "No-code portal creation for donors and stakeholders",
@@ -105,6 +126,7 @@ const integrations: Integration[] = [
     name: "Microsoft 365",
     subtitle: "Connect calendar, email, and productivity tools.",
     logo: outlookLogo,
+    category: "Productivity",
     description: "Integrate Microsoft 365 to sync calendars, automate email communications, and connect productivity tools across your organization's workflow.",
     benefits: [
       "Synchronized calendars and meeting schedules",
@@ -119,6 +141,7 @@ const integrations: Integration[] = [
     name: "Monday.com",
     subtitle: "Track tasks and project steps.",
     logo: mondayLogo,
+    category: "Project Management",
     description: "Connect Monday.com to track projects, manage tasks, and maintain visibility across your nonprofit's operational workflow from within Nimara's platform.",
     benefits: [
       "Centralized project and task management",
@@ -133,6 +156,7 @@ const integrations: Integration[] = [
     name: "DocuSign",
     subtitle: "Collect secure digital signatures.",
     logo: docusignLogo,
+    category: "Document Management",
     description: "Streamline document signing with DocuSign integration. Send, track, and manage legally binding signatures without printing, scanning, or mailing documents.",
     benefits: [
       "Legally binding electronic signatures",
@@ -147,6 +171,7 @@ const integrations: Integration[] = [
     name: "Asana",
     subtitle: "Manage projects and workflows.",
     logo: asanaLogo,
+    category: "Project Management",
     description: "Integrate Asana to coordinate projects, assign tasks, and maintain team accountability across your nonprofit's operations from Nimara's centralized platform.",
     benefits: [
       "Streamlined project planning and execution",
@@ -159,6 +184,12 @@ const integrations: Integration[] = [
 ];
 
 export default function Integrations() {
+  const [selectedCategory, setSelectedCategory] = useState<Category>("All");
+
+  const filteredIntegrations = selectedCategory === "All" 
+    ? integrations 
+    : integrations.filter(integration => integration.category === selectedCategory);
+
   return (
     <>
       <Helmet>
@@ -184,7 +215,7 @@ export default function Integrations() {
             </Link>
 
             {/* Page Header */}
-            <div className="max-w-4xl mb-16">
+            <div className="max-w-4xl mb-12">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6">
                 Integrations
               </h1>
@@ -193,10 +224,33 @@ export default function Integrations() {
               </p>
             </div>
 
+            {/* Category Filter */}
+            <div className="max-w-5xl mx-auto mb-8">
+              <div className="flex flex-wrap gap-2 justify-center">
+                {categories.map((category) => (
+                  <Button
+                    key={category}
+                    variant={selectedCategory === category ? "default" : "outline"}
+                    onClick={() => setSelectedCategory(category)}
+                    className="text-sm"
+                  >
+                    {category}
+                  </Button>
+                ))}
+              </div>
+            </div>
+
+            {/* Results Count */}
+            <div className="max-w-5xl mx-auto mb-4">
+              <p className="text-sm text-muted-foreground text-center">
+                Showing {filteredIntegrations.length} {filteredIntegrations.length === 1 ? 'integration' : 'integrations'}
+              </p>
+            </div>
+
             {/* Integrations Accordion */}
             <div className="max-w-5xl mx-auto">
               <Accordion type="single" collapsible className="space-y-4">
-                {integrations.map((integration) => (
+                {filteredIntegrations.map((integration) => (
                   <AccordionItem 
                     key={integration.id} 
                     value={integration.id}
