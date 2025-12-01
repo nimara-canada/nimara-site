@@ -1,7 +1,7 @@
 const navigation = [
   { name: "For Nonprofits", href: "/" },
   { name: "For Funders", href: "/#funders" },
-  { name: "How Nimara Works", href: "/#how-it-works" },
+  { name: "How Nimara Works", href: "/how-nimara-works" },
   { name: "Resources", href: "/resources" },
   { name: "Become a Consultant", href: "https://www.notion.so/Consultant-Hire-2bb227f1ee3a8018b693d47e9610c583?source=copy_link", external: true },
 ];
