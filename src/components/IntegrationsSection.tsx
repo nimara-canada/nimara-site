@@ -5,7 +5,7 @@ import googleLogo from "@/assets/integrations/google.svg";
 import softrLogo from "@/assets/integrations/softr.svg";
 import outlookLogo from "@/assets/integrations/outlook.svg";
 import mondayLogo from "@/assets/integrations/monday.svg";
-import docusignLogo from "@/assets/integrations/docusign.svg";
+import bamboohrLogo from "@/assets/integrations/bamboohr.webp";
 import salesforceLogo from "@/assets/integrations/salesforce.svg";
 const integrations = [{
   name: "QuickBooks",
@@ -38,7 +38,7 @@ const integrations = [{
 }, {
   name: "BambooHR",
   subtitle: "Manage employee records and HR workflows.",
-  logo: docusignLogo
+  logo: bamboohrLogo
 }];
 export const IntegrationsSection = () => {
   return <section className="py-16 md:py-24 lg:py-32 bg-muted" aria-labelledby="integrations-heading">
