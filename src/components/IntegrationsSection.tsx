@@ -36,8 +36,8 @@ const integrations = [{
   subtitle: "Track tasks and project steps.",
   logo: mondayLogo
 }, {
-  name: "DocuSign",
-  subtitle: "Collect secure digital signatures.",
+  name: "BambooHR",
+  subtitle: "Manage employee records and HR workflows.",
   logo: docusignLogo
 }];
 export const IntegrationsSection = () => {
