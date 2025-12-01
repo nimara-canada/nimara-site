@@ -96,26 +96,26 @@ const itemVariants = {
 
 export const TheNimaraModel = () => {
   return (
-    <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-background">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={containerVariants}
-        className="max-w-6xl mx-auto"
-      >
-        {/* Section header */}
-        <motion.div variants={itemVariants} className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">
-            The Nimara model
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            One shared system. Five tiers and two paths to match each organization with the right kind of support.
-          </p>
-        </motion.div>
+    <section className="py-16 md:py-24 lg:py-32 bg-background">
+      {/* Five tiers section */}
+      <div className="px-4 sm:px-6 lg:px-8 mb-20">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+          className="max-w-6xl mx-auto"
+        >
+          {/* Section header */}
+          <motion.div variants={itemVariants} className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">
+              The Nimara model
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              One shared system. Five tiers and two paths to match each organization with the right kind of support.
+            </p>
+          </motion.div>
 
-        {/* Five tiers section */}
-        <div className="mb-20">
           <motion.div variants={itemVariants} className="text-center mb-10">
             <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">
               Five tiers of organizational health
@@ -154,11 +154,19 @@ export const TheNimaraModel = () => {
               </motion.div>
             ))}
           </motion.div>
-        </div>
+        </motion.div>
+      </div>
 
-        {/* Protection section */}
-        <div className="mb-20 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-16 bg-secondary/5">
-          <motion.div variants={itemVariants} className="text-center mb-10 max-w-6xl mx-auto">
+      {/* Protection section */}
+      <div className="py-16 bg-secondary/5">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+          className="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto"
+        >
+          <motion.div variants={itemVariants} className="text-center mb-10">
             <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">
               How we protect missions, money, and people
             </h3>
@@ -169,7 +177,7 @@ export const TheNimaraModel = () => {
 
           <motion.div
             variants={containerVariants}
-            className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto"
+            className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
           >
             {guardrails.map((guardrail) => {
               const Icon = guardrail.icon;
@@ -205,10 +213,18 @@ export const TheNimaraModel = () => {
               );
             })}
           </motion.div>
-        </div>
+        </motion.div>
+      </div>
 
-        {/* Two paths section */}
-        <div>
+      {/* Two paths section */}
+      <div className="px-4 sm:px-6 lg:px-8 mt-20">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+          className="max-w-6xl mx-auto"
+        >
           <motion.div variants={itemVariants} className="text-center mb-10">
             <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">
               Two ways to work with Nimara
@@ -249,8 +265,8 @@ export const TheNimaraModel = () => {
               </motion.div>
             ))}
           </motion.div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 };
