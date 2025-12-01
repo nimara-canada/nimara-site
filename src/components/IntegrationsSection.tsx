@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import quickbooksLogo from "@/assets/integrations/quickbooks.svg";
-import slackLogo from "@/assets/integrations/slack.svg";
+import slackLogo from "@/assets/integrations/slack.png";
 import googleLogo from "@/assets/integrations/google.jpg";
 import softrLogo from "@/assets/integrations/softr.png";
 import microsoftLogo from "@/assets/integrations/microsoft-icon.png";
