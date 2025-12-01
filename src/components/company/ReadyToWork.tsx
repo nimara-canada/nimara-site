@@ -1,31 +1,83 @@
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+const nextSteps = [
+  {
+    heading: "I run or support a nonprofit",
+    description: "I want to see if Nimara is a good fit for our team.",
+    buttonText: "Start the Organizational Health Check",
+    link: "/organizational-health-check"
+  },
+  {
+    heading: "I'm a consultant or operator",
+    description: "I want to learn more about Nimara Practice Partner roles.",
+    buttonText: "See consultant roles",
+    link: "/for-consultants"
+  },
+  {
+    heading: "I'm a funder or ecosystem partner",
+    description: "I want to stay in the loop as you build for funders.",
+    buttonText: "Join the funder waitlist",
+    link: "#funder-waitlist"
+  }
+];
+
 export const ReadyToWork = () => {
-  return <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
-      <div className="max-w-4xl mx-auto">
-        <div className="flex items-center gap-3 mb-8">
-          
-          <h2 className="text-3xl md:text-4xl font-bold text-[#202654]">
-            Ready to work together?
-          </h2>
-        </div>
-        
-        <p className="text-[#96A0B5] text-center mb-8 max-w-3xl mx-auto">
-          We'll scope your need, match the right expert, and get you 3 free quotes—fast, clear, pressure-free.
-        </p>
+  return (
+    <section className="py-16 md:py-24 lg:py-32 bg-muted/30">
+      <div className="container max-w-6xl mx-auto px-4">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground text-center mb-12 md:mb-16"
+        >
+          Choose your next step
+        </motion.h2>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-          <Button size="lg" asChild className="w-full sm:w-auto">
-            <a href="/#form_3quotes">Get up to 3 free quotes</a>
-          </Button>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          {nextSteps.map((step, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -8 }}
+              className="h-full"
+            >
+              <Card className="h-full flex flex-col transition-shadow hover:shadow-lg">
+                <CardHeader>
+                  <CardTitle className="text-xl md:text-2xl">
+                    {step.heading}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="flex-1 flex flex-col justify-between gap-6">
+                  <p className="text-muted-foreground">
+                    {step.description}
+                  </p>
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Button
+                      size="lg"
+                      asChild
+                      className="w-full"
+                    >
+                      <a href={step.link}>
+                        {step.buttonText}
+                      </a>
+                    </Button>
+                  </motion.div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
         </div>
-
-        <p className="text-[#96A0B5] text-center">
-          Prefer a chat?{" "}
-          <a href="/book-a-call" className="text-[#6945D8] hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-[#6945D8] rounded">
-            Book a call
-          </a>{" "}
-          (we hold 30 minutes; most calls take ~15).
-        </p>
       </div>
-    </section>;
+    </section>
+  );
 };
