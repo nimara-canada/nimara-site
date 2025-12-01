@@ -66,8 +66,8 @@ export const IntegrationsSection = () => {
             {integrations.map(integration => {
             return <article key={integration.name} className="bg-card rounded-2xl p-6 text-center shadow-soft border border-border hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                   {/* Logo */}
-                  <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center">
-                    <img src={integration.logo} alt={`${integration.name} logo`} className="w-10 h-10 object-contain" />
+                  <div className="w-14 h-14 mx-auto mb-4 flex items-center justify-center">
+                    <img src={integration.logo} alt={`${integration.name} logo`} className="w-12 h-12 object-contain" />
                   </div>
 
                   {/* Name */}
