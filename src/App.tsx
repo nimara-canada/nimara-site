@@ -22,6 +22,7 @@ import NextSteps from "./pages/NextSteps";
 import FreeResources from "./pages/FreeResources";
 import Resources from "./pages/Resources";
 import ResourceDetail from "./pages/ResourceDetail";
+import Integrations from "./pages/Integrations";
 
 const queryClient = new QueryClient();
 
@@ -48,6 +49,7 @@ const App = () => (
             <Route path="/free-resources" element={<FreeResources />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/resources/:slug" element={<ResourceDetail />} />
+            <Route path="/integrations" element={<Integrations />} />
             
             {/* Redirects for old routes */}
             <Route path="/for-nonprofits" element={<Navigate to="/" replace />} />
