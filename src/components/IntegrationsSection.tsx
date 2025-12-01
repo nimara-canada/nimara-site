@@ -4,7 +4,7 @@ import slackLogo from "@/assets/integrations/slack.svg";
 import googleLogo from "@/assets/integrations/google.jpg";
 import softrLogo from "@/assets/integrations/softr.png";
 import microsoftLogo from "@/assets/integrations/microsoft-icon.png";
-import mondayLogo from "@/assets/integrations/monday.svg";
+import mondayLogo from "@/assets/integrations/monday.png";
 import bamboohrLogo from "@/assets/integrations/bamboohr.webp";
 import salesforceLogo from "@/assets/integrations/salesforce.svg";
 const integrations = [{
