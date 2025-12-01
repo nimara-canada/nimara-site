@@ -9,6 +9,7 @@ const navigation = [
 const legalLinks = [
   { name: "Privacy Policy", href: "/privacy" },
   { name: "Terms of Service", href: "/terms" },
+  { name: "Refund Policy", href: "/refund-policy" },
   { name: "Contact", href: "mailto:hello@nimara.ca" },
 ];
 
