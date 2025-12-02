@@ -67,10 +67,10 @@ export const TheNimaraModel: React.FC = () => {
 
   const paths = [
     {
-      letter: "A",
+      letter: "1",
       title: "Fast fixes",
       description: "Short, clearly scoped modules to solve one main problem, like cash flow, board basics, or simple HR setup. When possible, we match organizations into these modules within about 72 hours.",
-      icon: "⚡",
+      icon: "",
       color: "from-[#ACFCE3]/20 to-[#ACFCE3]/5 border-[#4CBFA6]"
     },
     {
@@ -249,9 +249,11 @@ export const TheNimaraModel: React.FC = () => {
                   <div className={`h-full p-8 rounded-2xl bg-gradient-to-br border-2 transition-all hover:shadow-xl ${path.color}`}>
                     {/* Path Header */}
                     <div className="flex items-start gap-4 mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center text-xl">
-                        {path.icon}
-                      </div>
+                      {path.icon && (
+                        <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center text-xl">
+                          {path.icon}
+                        </div>
+                      )}
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-sm font-medium text-slate-500">
