@@ -21,7 +21,9 @@ export const SmallPrint = () => {
         <p className="text-sm text-muted-foreground/80">
           Data stored in Canada • Records kept at least 7 years • Built to align with typical Canadian funder requirements •{" "}
           <a 
-            href="/engagement-terms" 
+            href="https://www.notion.so/Nimara-Terms-of-Use-2bd227f1ee3a80a2a3ddd8a5ddb9dcd8?source=copy_link"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-primary hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-primary rounded transition-colors"
           >
             Engagement terms
