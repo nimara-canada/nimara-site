@@ -6,7 +6,7 @@ import { OurStory } from "@/components/company/OurStory";
 import { TheGap } from "@/components/company/TheGap";
 import { FunderWaitlist } from "@/components/company/FunderWaitlist";
 import { OurCommitments } from "@/components/company/OurCommitments";
-import { TeamSection } from "@/components/company/TeamSection";
+import { OperatorsSection } from "@/components/company/OperatorsSection";
 import { WhereWeAre } from "@/components/company/WhereWeAre";
 import { ReadyToWork } from "@/components/company/ReadyToWork";
 import { TLDR } from "@/components/company/TLDR";
@@ -70,7 +70,7 @@ const Company = () => {
         <TheGap />
         <FunderWaitlist />
         <OurCommitments />
-        <TeamSection />
+        <OperatorsSection />
         <WhereWeAre />
         <ReadyToWork />
         <TLDR />
