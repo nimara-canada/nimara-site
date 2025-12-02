@@ -1,8 +1,10 @@
 import { Helmet } from "react-helmet";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { ArrowLeft, CheckCircle2, Zap, Users, Link2, FileSpreadsheet, FileText, FormInput, Mail } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Zap, Users, Link2, FileSpreadsheet, FileText, FormInput, Mail, ArrowRight, RefreshCw } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import quickbooksLogo from "@/assets/integrations/quickbooks.svg";
 import salesforceLogo from "@/assets/integrations/salesforce.svg";
 import googleLogo from "@/assets/integrations/google.jpg";
@@ -13,7 +15,145 @@ import asanaLogo from "@/assets/integrations/asana.svg";
 import zoomLogo from "@/assets/integrations/zoom.svg";
 import sage50Logo from "@/assets/integrations/sage50.svg";
 
+interface QuizQuestion {
+  id: string;
+  question: string;
+  options: {
+    text: string;
+    value: number; // Points: Level 1 = 3, Level 2 = 2, Level 3 = 1
+    description: string;
+  }[];
+}
+
+const quizQuestions: QuizQuestion[] = [
+  {
+    id: "criticality",
+    question: "How critical is this tool to your daily operations?",
+    options: [
+      { text: "Mission-critical", value: 3, description: "We can't operate without it" },
+      { text: "Important", value: 2, description: "We use it regularly but have workarounds" },
+      { text: "Nice to have", value: 1, description: "We use it occasionally" }
+    ]
+  },
+  {
+    id: "sync-frequency",
+    question: "How often do you need data synced?",
+    options: [
+      { text: "Real-time or hourly", value: 3, description: "We need instant updates" },
+      { text: "Daily or weekly", value: 2, description: "Regular updates are fine" },
+      { text: "Monthly or as needed", value: 1, description: "Periodic updates work for us" }
+    ]
+  },
+  {
+    id: "data-volume",
+    question: "How much data flows through this tool?",
+    options: [
+      { text: "High volume", value: 3, description: "Hundreds of transactions daily" },
+      { text: "Moderate volume", value: 2, description: "Dozens of transactions weekly" },
+      { text: "Low volume", value: 1, description: "Occasional transactions" }
+    ]
+  },
+  {
+    id: "technical-capacity",
+    question: "What's your team's technical capacity?",
+    options: [
+      { text: "Limited", value: 3, description: "We need it to just work automatically" },
+      { text: "Moderate", value: 2, description: "We can handle some setup and maintenance" },
+      { text: "Strong", value: 1, description: "We're comfortable with DIY solutions" }
+    ]
+  },
+  {
+    id: "setup-time",
+    question: "How much time can you invest in initial setup?",
+    options: [
+      { text: "Minimal", value: 3, description: "We need quick implementation" },
+      { text: "Moderate", value: 2, description: "We can dedicate a few hours" },
+      { text: "Flexible", value: 1, description: "We can take time to set it up right" }
+    ]
+  }
+];
+
 export default function Integrations() {
+  const [quizStep, setQuizStep] = useState(0);
+  const [answers, setAnswers] = useState<Record<string, number>>({});
+  const [showResult, setShowResult] = useState(false);
+
+  const handleAnswer = (questionId: string, value: number) => {
+    setAnswers(prev => ({ ...prev, [questionId]: value }));
+    
+    if (quizStep < quizQuestions.length - 1) {
+      setTimeout(() => setQuizStep(prev => prev + 1), 300);
+    } else {
+      setTimeout(() => setShowResult(true), 300);
+    }
+  };
+
+  const resetQuiz = () => {
+    setQuizStep(0);
+    setAnswers({});
+    setShowResult(false);
+  };
+
+  const calculateRecommendation = () => {
+    const total = Object.values(answers).reduce((sum, val) => sum + val, 0);
+    const average = total / Object.keys(answers).length;
+    
+    if (average >= 2.5) {
+      return {
+        level: 1,
+        title: "Level 1 – Core connections",
+        color: "#6945D8",
+        bgColor: "from-[#6945D8]/10 to-[#6945D8]/5",
+        borderColor: "border-[#6945D8]/30",
+        icon: Zap,
+        description: "Based on your needs, we recommend our core integration level with deep API connections, real-time sync, and managed maintenance.",
+        features: [
+          "Real-time or hourly data synchronization",
+          "Priority support with dedicated help",
+          "Fully managed by Nimara team",
+          "Deep API integration with custom field mapping",
+          "Best for mission-critical daily operations"
+        ]
+      };
+    } else if (average >= 1.8) {
+      return {
+        level: 2,
+        title: "Level 2 – Common tools",
+        color: "#4CBFA6",
+        bgColor: "from-[#ACFCE3]/10 to-[#ACFCE3]/5",
+        borderColor: "border-[#ACFCE3]/30",
+        icon: Users,
+        description: "Your needs align well with our common tool support, offering template-based connections with regular sync and shared maintenance.",
+        features: [
+          "Daily or weekly data synchronization",
+          "Standard support as-needed",
+          "Shared maintenance responsibility",
+          "Template-based with preset options",
+          "Best for important regular workflows"
+        ]
+      };
+    } else {
+      return {
+        level: 3,
+        title: "Level 3 – Flexible connections",
+        color: "#6B7280",
+        bgColor: "from-muted/50 to-muted/20",
+        borderColor: "border-border",
+        icon: Link2,
+        description: "Your workflow is well-suited for our flexible data bridge approach using simple imports, exports, and forms that your team can manage.",
+        features: [
+          "Monthly or as-needed data updates",
+          "Self-service with documentation",
+          "Your team manages the process",
+          "DIY approach with your preferred format",
+          "Best for occasional data needs"
+        ]
+      };
+    }
+  };
+
+  const recommendation = showResult ? calculateRecommendation() : null;
+
   return (
     <>
       <Helmet>
@@ -78,6 +218,153 @@ export default function Integrations() {
                 </div>
               </div>
             </div>
+
+            {/* Interactive Quiz */}
+            <section className="mb-24">
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center gap-2 bg-[#ACFCE3]/20 text-[#202654] px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                  <CheckCircle2 className="w-4 h-4" />
+                  Personalized Recommendation
+                </div>
+                <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                  Find your perfect integration level
+                </h2>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                  Answer a few quick questions and we'll recommend the best integration approach for your needs
+                </p>
+              </div>
+
+              <div className="max-w-3xl mx-auto">
+                <div className="bg-gradient-to-br from-card to-muted/20 border-2 border-border rounded-3xl p-8 shadow-xl">
+                  {!showResult ? (
+                    <>
+                      {/* Progress Bar */}
+                      <div className="mb-8">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-sm font-semibold text-muted-foreground">
+                            Question {quizStep + 1} of {quizQuestions.length}
+                          </span>
+                          <span className="text-sm font-semibold text-[#6945D8]">
+                            {Math.round(((quizStep + 1) / quizQuestions.length) * 100)}%
+                          </span>
+                        </div>
+                        <div className="h-2 bg-muted rounded-full overflow-hidden">
+                          <div 
+                            className="h-full bg-gradient-to-r from-[#6945D8] to-[#7A5DE0] transition-all duration-500 ease-out"
+                            style={{ width: `${((quizStep + 1) / quizQuestions.length) * 100}%` }}
+                          ></div>
+                        </div>
+                      </div>
+
+                      {/* Question */}
+                      <div className="animate-fade-in">
+                        <h3 className="text-2xl font-bold text-foreground mb-8">
+                          {quizQuestions[quizStep].question}
+                        </h3>
+
+                        {/* Answer Options */}
+                        <div className="space-y-4">
+                          {quizQuestions[quizStep].options.map((option, index) => (
+                            <button
+                              key={index}
+                              onClick={() => handleAnswer(quizQuestions[quizStep].id, option.value)}
+                              className="group w-full text-left bg-card hover:bg-[#6945D8]/5 border-2 border-border hover:border-[#6945D8]/40 rounded-2xl p-6 transition-all hover:scale-[1.02] hover:shadow-lg"
+                            >
+                              <div className="flex items-start gap-4">
+                                <div className="w-8 h-8 rounded-full bg-muted group-hover:bg-[#6945D8] flex items-center justify-center flex-shrink-0 transition-colors">
+                                  <span className="text-sm font-bold text-muted-foreground group-hover:text-white transition-colors">
+                                    {String.fromCharCode(65 + index)}
+                                  </span>
+                                </div>
+                                <div className="flex-1">
+                                  <p className="font-bold text-foreground mb-1 group-hover:text-[#6945D8] transition-colors">
+                                    {option.text}
+                                  </p>
+                                  <p className="text-sm text-muted-foreground">
+                                    {option.description}
+                                  </p>
+                                </div>
+                              </div>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Reset Button */}
+                      {quizStep > 0 && (
+                        <div className="mt-6 text-center">
+                          <button
+                            onClick={resetQuiz}
+                            className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-2"
+                          >
+                            <RefreshCw className="w-4 h-4" />
+                            Start over
+                          </button>
+                        </div>
+                      )}
+                    </>
+                  ) : recommendation && (
+                    <>
+                      {/* Result */}
+                      <div className="animate-fade-in text-center">
+                        <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br flex items-center justify-center shadow-xl animate-scale-in" style={{ backgroundColor: recommendation.color }}>
+                          <recommendation.icon className="w-10 h-10 text-white" />
+                        </div>
+
+                        <h3 className="text-3xl font-bold text-foreground mb-2">
+                          We recommend
+                        </h3>
+                        <p className="text-2xl font-bold mb-6" style={{ color: recommendation.color }}>
+                          {recommendation.title}
+                        </p>
+
+                        <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                          {recommendation.description}
+                        </p>
+
+                        {/* Features */}
+                        <div className={`bg-gradient-to-br ${recommendation.bgColor} border-2 ${recommendation.borderColor} rounded-2xl p-6 mb-8 text-left`}>
+                          <h4 className="font-bold text-foreground mb-4 flex items-center gap-2">
+                            <CheckCircle2 className="w-5 h-5" style={{ color: recommendation.color }} />
+                            What this includes:
+                          </h4>
+                          <ul className="space-y-3">
+                            {recommendation.features.map((feature, index) => (
+                              <li key={index} className="flex items-start gap-3">
+                                <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: recommendation.color }}></div>
+                                <span className="text-muted-foreground">{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* Actions */}
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                          <a
+                            href="https://calendly.com/hello-nimara/30min"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center gap-2 font-bold px-8 py-4 rounded-xl shadow-lg transition-all hover:scale-105 min-h-[44px]"
+                            style={{ backgroundColor: recommendation.color, color: 'white' }}
+                          >
+                            Schedule A Call
+                            <ArrowRight className="w-5 h-5" />
+                          </a>
+                          <Button
+                            variant="outline"
+                            onClick={resetQuiz}
+                            className="px-8 py-4 h-auto font-semibold"
+                          >
+                            <RefreshCw className="w-4 h-4 mr-2" />
+                            Retake Quiz
+                          </Button>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
+              </div>
+            </section>
 
             {/* Comparison Table */}
             <section className="mb-24">
