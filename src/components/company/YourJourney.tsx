@@ -79,8 +79,8 @@ const YourJourney: React.FC = () => {
       color: "from-[#ACFCE3]/20 to-[#ACFCE3]/5 border-[#4CBFA6]"
     },
     {
-      title: "Functional Systems Manager (ongoing)",
-      description: "For organizations that need more hands-on help, you can hire a Nimara Functional Systems Manager on an ongoing basis. This person helps manage and update the systems we installed, supports your team, and keeps the day-to-day operations of those systems on track.",
+      title: "Fractional Partner (ongoing)",
+      description: "For organizations that need more hands-on help, you can hire a Nimara Fractional Partner on an ongoing basis. This person helps manage and update the systems we installed, supports your team, and keeps the day-to-day operations of those systems on track. Ideal for growing nonprofits with ongoing capacity building needs needs but not enough for a full-time staff",
       color: "from-[#6945D8]/10 to-[#6945D8]/5 border-[#6945D8]"
     }
   ];
