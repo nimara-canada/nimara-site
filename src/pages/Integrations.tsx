@@ -3,6 +3,15 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ArrowLeft, CheckCircle2, Zap, Users, Link2 } from "lucide-react";
 import { Link } from "react-router-dom";
+import quickbooksLogo from "@/assets/integrations/quickbooks.svg";
+import salesforceLogo from "@/assets/integrations/salesforce.svg";
+import googleLogo from "@/assets/integrations/google.jpg";
+import microsoftLogo from "@/assets/integrations/microsoft-icon.png";
+import slackLogo from "@/assets/integrations/slack.png";
+import mondayLogo from "@/assets/integrations/monday.png";
+import asanaLogo from "@/assets/integrations/asana.svg";
+import zoomLogo from "@/assets/integrations/zoom.svg";
+import sage50Logo from "@/assets/integrations/sage50.svg";
 
 export default function Integrations() {
   return (
@@ -80,48 +89,85 @@ export default function Integrations() {
                 {/* Accounting & Finance */}
                 <div className="bg-card border border-border rounded-2xl p-6">
                   <h3 className="text-xl font-bold text-foreground mb-4">Accounting & finance</h3>
-                  <ul className="space-y-2">
-                    <li className="text-muted-foreground">• QuickBooks Online</li>
-                  </ul>
+                  <div className="space-y-3">
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
+                        <img 
+                          src={quickbooksLogo} 
+                          alt="QuickBooks logo"
+                          className="w-8 h-8 object-contain"
+                        />
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">QuickBooks Online</span>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Donor & Fundraising */}
                 <div className="bg-card border border-border rounded-2xl p-6">
                   <h3 className="text-xl font-bold text-foreground mb-4">Donor & fundraising stack</h3>
-                  <ul className="space-y-2">
-                    <li className="text-muted-foreground">• Keela (nonprofit CRM)</li>
-                    <li className="text-muted-foreground">• Salesforce Nonprofit Cloud / NPSP</li>
-                    <li className="text-muted-foreground">• CanadaHelps (online donations)</li>
-                  </ul>
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
+                      <span className="text-muted-foreground">• Keela (nonprofit CRM)</span>
+                    </div>
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
+                        <img 
+                          src={salesforceLogo} 
+                          alt="Salesforce logo"
+                          className="w-8 h-8 object-contain"
+                        />
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">Salesforce Nonprofit Cloud / NPSP</span>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
+                      <span className="text-muted-foreground">• CanadaHelps (online donations)</span>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Payments */}
                 <div className="bg-card border border-border rounded-2xl p-6">
                   <h3 className="text-xl font-bold text-foreground mb-4">Payments</h3>
-                  <ul className="space-y-2">
-                    <li className="text-muted-foreground">• Stripe</li>
-                    <li className="text-muted-foreground">• PayPal</li>
-                  </ul>
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
+                      <span className="text-muted-foreground">• Stripe</span>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
+                      <span className="text-muted-foreground">• PayPal</span>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Email, files, everyday work */}
                 <div className="bg-card border border-border rounded-2xl p-6">
                   <h3 className="text-xl font-bold text-foreground mb-4">Email, files, and everyday work</h3>
                   <div className="space-y-3">
-                    <div>
-                      <p className="font-semibold text-foreground mb-1">Google Workspace</p>
-                      <ul className="space-y-1 ml-4">
-                        <li className="text-muted-foreground text-sm">• Gmail</li>
-                        <li className="text-muted-foreground text-sm">• Google Drive / Docs / Sheets / Forms</li>
-                      </ul>
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
+                        <img 
+                          src={googleLogo} 
+                          alt="Google Workspace logo"
+                          className="w-8 h-8 object-contain"
+                        />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-foreground group-hover:text-[#6945D8] transition-colors">Google Workspace</p>
+                        <p className="text-sm text-muted-foreground">Gmail, Drive, Docs, Sheets, Forms</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="font-semibold text-foreground mb-1">Microsoft 365</p>
-                      <ul className="space-y-1 ml-4">
-                        <li className="text-muted-foreground text-sm">• Outlook</li>
-                        <li className="text-muted-foreground text-sm">• OneDrive / SharePoint</li>
-                        <li className="text-muted-foreground text-sm">• Teams</li>
-                      </ul>
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
+                        <img 
+                          src={microsoftLogo} 
+                          alt="Microsoft 365 logo"
+                          className="w-8 h-8 object-contain"
+                        />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-foreground group-hover:text-[#6945D8] transition-colors">Microsoft 365</p>
+                        <p className="text-sm text-muted-foreground">Outlook, OneDrive, SharePoint, Teams</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -129,9 +175,11 @@ export default function Integrations() {
                 {/* Email Marketing */}
                 <div className="bg-card border border-border rounded-2xl p-6">
                   <h3 className="text-xl font-bold text-foreground mb-4">Email marketing</h3>
-                  <ul className="space-y-2">
-                    <li className="text-muted-foreground">• Mailchimp</li>
-                  </ul>
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
+                      <span className="text-muted-foreground">• Mailchimp</span>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -159,71 +207,148 @@ export default function Integrations() {
                 {/* Accounting & Finance */}
                 <div className="bg-card border border-border rounded-2xl p-6">
                   <h3 className="text-xl font-bold text-foreground mb-4">Accounting & finance</h3>
-                  <ul className="space-y-2">
-                    <li className="text-muted-foreground">• Sage 50cloud / Sage 300</li>
-                    <li className="text-muted-foreground">• Xero</li>
-                    <li className="text-muted-foreground">• Aplos</li>
-                  </ul>
+                  <div className="space-y-3">
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
+                        <img 
+                          src={sage50Logo} 
+                          alt="Sage logo"
+                          className="w-8 h-8 object-contain"
+                        />
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">Sage 50cloud / Sage 300</span>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
+                      <span className="text-muted-foreground">• Xero</span>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
+                      <span className="text-muted-foreground">• Aplos</span>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Donor CRM */}
                 <div className="bg-card border border-border rounded-2xl p-6">
                   <h3 className="text-xl font-bold text-foreground mb-4">Donor CRM & fundraising</h3>
-                  <ul className="space-y-2">
-                    <li className="text-muted-foreground">• Sumac</li>
-                    <li className="text-muted-foreground">• Raiser's Edge NXT</li>
-                    <li className="text-muted-foreground">• Bloomerang</li>
-                    <li className="text-muted-foreground">• DonorPerfect</li>
-                    <li className="text-muted-foreground">• Neon CRM</li>
-                    <li className="text-muted-foreground">• Kindful</li>
-                  </ul>
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
+                      <span className="text-muted-foreground">• Sumac</span>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
+                      <span className="text-muted-foreground">• Raiser's Edge NXT</span>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
+                      <span className="text-muted-foreground">• Bloomerang</span>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
+                      <span className="text-muted-foreground">• DonorPerfect</span>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
+                      <span className="text-muted-foreground">• Neon CRM</span>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
+                      <span className="text-muted-foreground">• Kindful</span>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Online Donations */}
                 <div className="bg-card border border-border rounded-2xl p-6">
                   <h3 className="text-xl font-bold text-foreground mb-4">Online donations & campaigns</h3>
-                  <ul className="space-y-2">
-                    <li className="text-muted-foreground">• Zeffy</li>
-                    <li className="text-muted-foreground">• Raisely</li>
-                  </ul>
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
+                      <span className="text-muted-foreground">• Zeffy</span>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
+                      <span className="text-muted-foreground">• Raisely</span>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Membership */}
                 <div className="bg-card border border-border rounded-2xl p-6">
                   <h3 className="text-xl font-bold text-foreground mb-4">Membership, advocacy, and "all-in-one" platforms</h3>
-                  <ul className="space-y-2">
-                    <li className="text-muted-foreground">• Wild Apricot</li>
-                    <li className="text-muted-foreground">• NationBuilder</li>
-                    <li className="text-muted-foreground">• Member365</li>
-                  </ul>
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
+                      <span className="text-muted-foreground">• Wild Apricot</span>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
+                      <span className="text-muted-foreground">• NationBuilder</span>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
+                      <span className="text-muted-foreground">• Member365</span>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Email Marketing */}
                 <div className="bg-card border border-border rounded-2xl p-6">
                   <h3 className="text-xl font-bold text-foreground mb-4">Email marketing and mass communication</h3>
-                  <ul className="space-y-2">
-                    <li className="text-muted-foreground">• Constant Contact</li>
-                    <li className="text-muted-foreground">• Campaign Monitor</li>
-                  </ul>
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
+                      <span className="text-muted-foreground">• Constant Contact</span>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
+                      <span className="text-muted-foreground">• Campaign Monitor</span>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Project Management */}
                 <div className="bg-card border border-border rounded-2xl p-6">
                   <h3 className="text-xl font-bold text-foreground mb-4">Project and work management</h3>
-                  <ul className="space-y-2">
-                    <li className="text-muted-foreground">• Asana</li>
-                    <li className="text-muted-foreground">• Trello</li>
-                    <li className="text-muted-foreground">• monday.com</li>
-                  </ul>
+                  <div className="space-y-3">
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
+                        <img 
+                          src={asanaLogo} 
+                          alt="Asana logo"
+                          className="w-8 h-8 object-contain"
+                        />
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">Asana</span>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
+                      <span className="text-muted-foreground">• Trello</span>
+                    </div>
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
+                        <img 
+                          src={mondayLogo} 
+                          alt="Monday.com logo"
+                          className="w-8 h-8 object-contain"
+                        />
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">monday.com</span>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Communication */}
                 <div className="bg-card border border-border rounded-2xl p-6">
                   <h3 className="text-xl font-bold text-foreground mb-4">Communication and meetings</h3>
-                  <ul className="space-y-2">
-                    <li className="text-muted-foreground">• Zoom</li>
-                    <li className="text-muted-foreground">• Slack</li>
-                  </ul>
+                  <div className="space-y-3">
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
+                        <img 
+                          src={zoomLogo} 
+                          alt="Zoom logo"
+                          className="w-8 h-8 object-contain"
+                        />
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">Zoom</span>
+                    </div>
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
+                        <img 
+                          src={slackLogo} 
+                          alt="Slack logo"
+                          className="w-8 h-8 object-contain"
+                        />
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">Slack</span>
+                    </div>
+                  </div>
                 </div>
               </div>
 
