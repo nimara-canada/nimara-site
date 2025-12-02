@@ -86,7 +86,7 @@ const YourJourney: React.FC = () => {
   ];
 
   return (
-    <section className="w-full py-20 sm:py-24 lg:py-32 bg-white">
+    <section className="w-full py-16 sm:py-20 lg:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
