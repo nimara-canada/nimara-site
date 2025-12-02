@@ -81,7 +81,7 @@ const HeroSection: React.FC = () => {
 
           {/* RIGHT: SNAPSHOT CARD */}
           <div className="lg:justify-self-end">
-            <div className="bg-white/5 border border-white/10 rounded-3xl shadow-2xl backdrop-blur px-5 py-5 sm:px-7 sm:py-7 max-w-md w-full mx-auto">
+            <div className="bg-nimara-purple/90 border border-white/20 rounded-3xl shadow-2xl backdrop-blur px-5 py-5 sm:px-7 sm:py-7 max-w-md w-full mx-auto">
               {/* Card header */}
               <div className="bg-nimara-purple rounded-2xl px-4 py-3 mb-4 shadow-md">
                 <p className="text-xs font-semibold tracking-[0.16em] uppercase text-white/80">
