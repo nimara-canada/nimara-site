@@ -94,6 +94,57 @@ export default function Integrations() {
     setShowResult(false);
   };
 
+  const generateReasoningPoints = () => {
+    const points: string[] = [];
+    
+    // Analyze criticality
+    if (answers.criticality === 3) {
+      points.push("This tool is mission-critical to your operations, requiring reliable and immediate access");
+    } else if (answers.criticality === 2) {
+      points.push("You use this tool regularly for important workflows");
+    } else if (answers.criticality === 1) {
+      points.push("This tool serves occasional needs rather than daily operations");
+    }
+    
+    // Analyze sync frequency
+    if (answers["sync-frequency"] === 3) {
+      points.push("You need real-time or hourly data updates to stay current");
+    } else if (answers["sync-frequency"] === 2) {
+      points.push("Daily or weekly data synchronization meets your timing needs");
+    } else if (answers["sync-frequency"] === 1) {
+      points.push("Monthly or on-demand updates are sufficient for your workflow");
+    }
+    
+    // Analyze data volume
+    if (answers["data-volume"] === 3) {
+      points.push("High transaction volume requires automated, scalable integration");
+    } else if (answers["data-volume"] === 2) {
+      points.push("Moderate data flow can be managed with semi-automated processes");
+    } else if (answers["data-volume"] === 1) {
+      points.push("Low transaction volume allows for manual data management");
+    }
+    
+    // Analyze technical capacity
+    if (answers["technical-capacity"] === 3) {
+      points.push("Limited technical resources mean you need a fully managed solution");
+    } else if (answers["technical-capacity"] === 2) {
+      points.push("Your team can handle some technical setup and maintenance tasks");
+    } else if (answers["technical-capacity"] === 1) {
+      points.push("Strong technical capacity allows you to manage DIY solutions effectively");
+    }
+    
+    // Analyze setup time
+    if (answers["setup-time"] === 3) {
+      points.push("Quick implementation is a priority for your organization");
+    } else if (answers["setup-time"] === 2) {
+      points.push("You can invest moderate time in initial setup for better long-term results");
+    } else if (answers["setup-time"] === 1) {
+      points.push("You have flexibility to invest time setting up custom processes");
+    }
+    
+    return points;
+  };
+
   const calculateRecommendation = () => {
     const total = Object.values(answers).reduce((sum, val) => sum + val, 0);
     const average = total / Object.keys(answers).length;
@@ -107,6 +158,7 @@ export default function Integrations() {
         borderColor: "border-[#6945D8]/30",
         icon: Zap,
         description: "Based on your needs, we recommend our core integration level with deep API connections, real-time sync, and managed maintenance.",
+        reasoning: generateReasoningPoints(),
         features: [
           "Real-time or hourly data synchronization",
           "Priority support with dedicated help",
@@ -124,6 +176,7 @@ export default function Integrations() {
         borderColor: "border-[#ACFCE3]/30",
         icon: Users,
         description: "Your needs align well with our common tool support, offering template-based connections with regular sync and shared maintenance.",
+        reasoning: generateReasoningPoints(),
         features: [
           "Daily or weekly data synchronization",
           "Standard support as-needed",
@@ -141,6 +194,7 @@ export default function Integrations() {
         borderColor: "border-border",
         icon: Link2,
         description: "Your workflow is well-suited for our flexible data bridge approach using simple imports, exports, and forms that your team can manage.",
+        reasoning: generateReasoningPoints(),
         features: [
           "Monthly or as-needed data updates",
           "Self-service with documentation",
@@ -321,6 +375,29 @@ export default function Integrations() {
                         <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                           {recommendation.description}
                         </p>
+
+                        {/* Why This Recommendation */}
+                        <div className="bg-card border-2 border-border rounded-2xl p-6 mb-6 text-left">
+                          <h4 className="font-bold text-foreground mb-4 flex items-center gap-2 text-lg">
+                            <CheckCircle2 className="w-5 h-5" style={{ color: recommendation.color }} />
+                            Why this recommendation?
+                          </h4>
+                          <p className="text-sm text-muted-foreground mb-4">
+                            Based on your answers, we identified these key factors:
+                          </p>
+                          <ul className="space-y-3">
+                            {recommendation.reasoning.map((reason, index) => (
+                              <li key={index} className="flex items-start gap-3">
+                                <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ backgroundColor: `${recommendation.color}20` }}>
+                                  <span className="text-xs font-bold" style={{ color: recommendation.color }}>
+                                    {index + 1}
+                                  </span>
+                                </div>
+                                <span className="text-muted-foreground text-sm leading-relaxed">{reason}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
 
                         {/* Features */}
                         <div className={`bg-gradient-to-br ${recommendation.bgColor} border-2 ${recommendation.borderColor} rounded-2xl p-6 mb-8 text-left`}>
