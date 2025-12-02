@@ -79,6 +79,168 @@ export default function Integrations() {
               </div>
             </div>
 
+            {/* Comparison Table */}
+            <section className="mb-24">
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center gap-2 bg-[#6945D8]/10 text-[#6945D8] px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                  <CheckCircle2 className="w-4 h-4" />
+                  Quick Comparison
+                </div>
+                <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                  Compare integration levels
+                </h2>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                  See what each level offers and find the right fit for your tools
+                </p>
+              </div>
+
+              <div className="overflow-x-auto">
+                <div className="min-w-[800px]">
+                  {/* Header Row */}
+                  <div className="grid grid-cols-4 gap-4 mb-4">
+                    <div className="p-4"></div>
+                    <div className="group bg-gradient-to-br from-[#6945D8]/10 to-[#6945D8]/5 border-2 border-[#6945D8]/30 rounded-2xl p-6 hover:border-[#6945D8]/50 transition-all hover:-translate-y-1">
+                      <div className="w-10 h-10 bg-[#6945D8] rounded-xl flex items-center justify-center mb-3">
+                        <Zap className="w-5 h-5 text-white" />
+                      </div>
+                      <h3 className="text-xl font-bold text-foreground mb-1">Level 1</h3>
+                      <p className="text-sm text-[#6945D8] font-semibold">Core</p>
+                    </div>
+                    <div className="group bg-gradient-to-br from-[#ACFCE3]/10 to-[#ACFCE3]/5 border-2 border-[#ACFCE3]/30 rounded-2xl p-6 hover:border-[#ACFCE3]/50 transition-all hover:-translate-y-1">
+                      <div className="w-10 h-10 bg-[#ACFCE3] rounded-xl flex items-center justify-center mb-3">
+                        <Users className="w-5 h-5 text-[#202654]" />
+                      </div>
+                      <h3 className="text-xl font-bold text-foreground mb-1">Level 2</h3>
+                      <p className="text-sm font-semibold" style={{ color: '#4CBFA6' }}>Common</p>
+                    </div>
+                    <div className="group bg-gradient-to-br from-muted/50 to-muted/20 border-2 border-border rounded-2xl p-6 hover:border-border/60 transition-all hover:-translate-y-1">
+                      <div className="w-10 h-10 bg-muted rounded-xl flex items-center justify-center mb-3">
+                        <Link2 className="w-5 h-5 text-foreground" />
+                      </div>
+                      <h3 className="text-xl font-bold text-foreground mb-1">Level 3</h3>
+                      <p className="text-sm text-muted-foreground font-semibold">Flexible</p>
+                    </div>
+                  </div>
+
+                  {/* Feature Rows */}
+                  <div className="space-y-2">
+                    {/* Integration Depth */}
+                    <div className="grid grid-cols-4 gap-4 items-center group hover:bg-muted/30 rounded-2xl p-4 transition-colors">
+                      <div className="font-semibold text-foreground">Integration depth</div>
+                      <div className="bg-[#6945D8]/5 rounded-xl p-4 border border-[#6945D8]/20 group-hover:border-[#6945D8]/40 transition-colors">
+                        <p className="text-sm text-foreground font-medium">Deep API integration</p>
+                      </div>
+                      <div className="bg-[#ACFCE3]/5 rounded-xl p-4 border border-[#ACFCE3]/20 group-hover:border-[#ACFCE3]/40 transition-colors">
+                        <p className="text-sm text-foreground font-medium">Light API + templates</p>
+                      </div>
+                      <div className="bg-muted/30 rounded-xl p-4 border border-border group-hover:border-border/60 transition-colors">
+                        <p className="text-sm text-foreground font-medium">Manual data bridges</p>
+                      </div>
+                    </div>
+
+                    {/* Setup Time */}
+                    <div className="grid grid-cols-4 gap-4 items-center group hover:bg-muted/30 rounded-2xl p-4 transition-colors">
+                      <div className="font-semibold text-foreground">Setup time</div>
+                      <div className="bg-[#6945D8]/5 rounded-xl p-4 border border-[#6945D8]/20 group-hover:border-[#6945D8]/40 transition-colors">
+                        <p className="text-sm text-foreground font-medium">1-2 hours</p>
+                        <p className="text-xs text-muted-foreground mt-1">One-time setup</p>
+                      </div>
+                      <div className="bg-[#ACFCE3]/5 rounded-xl p-4 border border-[#ACFCE3]/20 group-hover:border-[#ACFCE3]/40 transition-colors">
+                        <p className="text-sm text-foreground font-medium">2-4 hours</p>
+                        <p className="text-xs text-muted-foreground mt-1">Custom mapping</p>
+                      </div>
+                      <div className="bg-muted/30 rounded-xl p-4 border border-border group-hover:border-border/60 transition-colors">
+                        <p className="text-sm text-foreground font-medium">30 min - 1 hour</p>
+                        <p className="text-xs text-muted-foreground mt-1">Simple process</p>
+                      </div>
+                    </div>
+
+                    {/* Data Sync */}
+                    <div className="grid grid-cols-4 gap-4 items-center group hover:bg-muted/30 rounded-2xl p-4 transition-colors">
+                      <div className="font-semibold text-foreground">Data sync</div>
+                      <div className="bg-[#6945D8]/5 rounded-xl p-4 border border-[#6945D8]/20 group-hover:border-[#6945D8]/40 transition-colors">
+                        <p className="text-sm text-foreground font-medium">Real-time / Hourly</p>
+                        <p className="text-xs text-muted-foreground mt-1">Automatic</p>
+                      </div>
+                      <div className="bg-[#ACFCE3]/5 rounded-xl p-4 border border-[#ACFCE3]/20 group-hover:border-[#ACFCE3]/40 transition-colors">
+                        <p className="text-sm text-foreground font-medium">Daily / Weekly</p>
+                        <p className="text-xs text-muted-foreground mt-1">Semi-automatic</p>
+                      </div>
+                      <div className="bg-muted/30 rounded-xl p-4 border border-border group-hover:border-border/60 transition-colors">
+                        <p className="text-sm text-foreground font-medium">Monthly / As needed</p>
+                        <p className="text-xs text-muted-foreground mt-1">Manual trigger</p>
+                      </div>
+                    </div>
+
+                    {/* Support Level */}
+                    <div className="grid grid-cols-4 gap-4 items-center group hover:bg-muted/30 rounded-2xl p-4 transition-colors">
+                      <div className="font-semibold text-foreground">Support level</div>
+                      <div className="bg-[#6945D8]/5 rounded-xl p-4 border border-[#6945D8]/20 group-hover:border-[#6945D8]/40 transition-colors">
+                        <p className="text-sm text-foreground font-medium">Priority</p>
+                        <p className="text-xs text-muted-foreground mt-1">Dedicated help</p>
+                      </div>
+                      <div className="bg-[#ACFCE3]/5 rounded-xl p-4 border border-[#ACFCE3]/20 group-hover:border-[#ACFCE3]/40 transition-colors">
+                        <p className="text-sm text-foreground font-medium">Standard</p>
+                        <p className="text-xs text-muted-foreground mt-1">As-needed</p>
+                      </div>
+                      <div className="bg-muted/30 rounded-xl p-4 border border-border group-hover:border-border/60 transition-colors">
+                        <p className="text-sm text-foreground font-medium">Self-service</p>
+                        <p className="text-xs text-muted-foreground mt-1">Documentation</p>
+                      </div>
+                    </div>
+
+                    {/* Customization */}
+                    <div className="grid grid-cols-4 gap-4 items-center group hover:bg-muted/30 rounded-2xl p-4 transition-colors">
+                      <div className="font-semibold text-foreground">Customization</div>
+                      <div className="bg-[#6945D8]/5 rounded-xl p-4 border border-[#6945D8]/20 group-hover:border-[#6945D8]/40 transition-colors">
+                        <p className="text-sm text-foreground font-medium">Fully configurable</p>
+                        <p className="text-xs text-muted-foreground mt-1">Field mapping</p>
+                      </div>
+                      <div className="bg-[#ACFCE3]/5 rounded-xl p-4 border border-[#ACFCE3]/20 group-hover:border-[#ACFCE3]/40 transition-colors">
+                        <p className="text-sm text-foreground font-medium">Template-based</p>
+                        <p className="text-xs text-muted-foreground mt-1">Preset options</p>
+                      </div>
+                      <div className="bg-muted/30 rounded-xl p-4 border border-border group-hover:border-border/60 transition-colors">
+                        <p className="text-sm text-foreground font-medium">DIY approach</p>
+                        <p className="text-xs text-muted-foreground mt-1">Your format</p>
+                      </div>
+                    </div>
+
+                    {/* Maintenance */}
+                    <div className="grid grid-cols-4 gap-4 items-center group hover:bg-muted/30 rounded-2xl p-4 transition-colors">
+                      <div className="font-semibold text-foreground">Maintenance</div>
+                      <div className="bg-[#6945D8]/5 rounded-xl p-4 border border-[#6945D8]/20 group-hover:border-[#6945D8]/40 transition-colors">
+                        <p className="text-sm text-foreground font-medium">Managed by Nimara</p>
+                        <p className="text-xs text-muted-foreground mt-1">Auto-updates</p>
+                      </div>
+                      <div className="bg-[#ACFCE3]/5 rounded-xl p-4 border border-[#ACFCE3]/20 group-hover:border-[#ACFCE3]/40 transition-colors">
+                        <p className="text-sm text-foreground font-medium">Shared responsibility</p>
+                        <p className="text-xs text-muted-foreground mt-1">Periodic checks</p>
+                      </div>
+                      <div className="bg-muted/30 rounded-xl p-4 border border-border group-hover:border-border/60 transition-colors">
+                        <p className="text-sm text-foreground font-medium">Your team manages</p>
+                        <p className="text-xs text-muted-foreground mt-1">Simple processes</p>
+                      </div>
+                    </div>
+
+                    {/* Best For */}
+                    <div className="grid grid-cols-4 gap-4 items-center group hover:bg-muted/30 rounded-2xl p-4 transition-colors">
+                      <div className="font-semibold text-foreground">Best for</div>
+                      <div className="bg-[#6945D8]/5 rounded-xl p-4 border border-[#6945D8]/20 group-hover:border-[#6945D8]/40 transition-colors">
+                        <p className="text-sm text-foreground font-medium">Critical daily operations</p>
+                      </div>
+                      <div className="bg-[#ACFCE3]/5 rounded-xl p-4 border border-[#ACFCE3]/20 group-hover:border-[#ACFCE3]/40 transition-colors">
+                        <p className="text-sm text-foreground font-medium">Important workflows</p>
+                      </div>
+                      <div className="bg-muted/30 rounded-xl p-4 border border-border group-hover:border-border/60 transition-colors">
+                        <p className="text-sm text-foreground font-medium">Occasional data needs</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
             {/* Level 1 - Core Connections */}
             <section className="mb-24">
               <div className="bg-gradient-to-r from-[#6945D8]/5 to-transparent rounded-3xl p-8 mb-8 border-l-4 border-[#6945D8]">
