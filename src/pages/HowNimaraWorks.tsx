@@ -61,7 +61,7 @@ const HowNimaraWorks = () => {
                       aria-label="Scroll to tier section"
                     >
                       {/* Pulsing glow effect */}
-                      <div className="absolute inset-0 rounded-lg bg-[#ACFCE3]/20 animate-pulse blur-md" />
+                      <div className="absolute inset-0 rounded-lg bg-[#ACFCE3]/40 animate-pulse blur-lg scale-110" />
                       <div className="relative z-10 flex flex-col items-center gap-1">
                 {/* Animated arrows pointing down */}
                 <div className="flex flex-col items-center animate-bounce">
