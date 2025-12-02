@@ -12,19 +12,6 @@ const HeroSection: React.FC = () => {
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           {/* LEFT: COPY + CTA */}
           <div>
-            {/* Trust strip (optional – keep subtle) */}
-            <div className="flex items-center gap-6 text-[11px] text-white/60 mb-8">
-              <span className="inline-flex items-center gap-2">
-                <span className="w-1 h-1 rounded-full bg-nimara-mint" />
-                Trusted by nonprofits across Canada
-              </span>
-              <span className="hidden sm:inline-block">|</span>
-              <span className="hidden sm:inline-flex items-center gap-2">
-                <span className="w-1 h-1 rounded-full bg-nimara-mint" />
-                100% refund guarantee
-              </span>
-            </div>
-
             <p className="text-xs font-semibold tracking-[0.18em] uppercase text-nimara-mint mb-4">
               For Canadian nonprofits & charities
             </p>
