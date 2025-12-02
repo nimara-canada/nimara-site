@@ -1,269 +1,220 @@
-import { motion } from 'framer-motion';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Shield, FileCheck, HeartHandshake, BarChart3, Scale } from 'lucide-react';
+import React from 'react';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
+import { ArrowRight } from 'lucide-react';
 
-const tiers = [
-  {
-    label: 'Tier 0',
-    title: 'Too early / DIY support',
-    description: 'Very early or fragile. We share tools and light support instead of deep installs.'
-  },
-  {
-    label: 'Tier 1',
-    title: 'Basic stability',
-    description: 'The basics are in place, but systems are still informal and fragile.'
-  },
-  {
-    label: 'Tier 2',
-    title: 'Audit-ready',
-    description: 'Core systems like finance, HR, and governance are strong enough to pass checks.'
-  },
-  {
-    label: 'Tier 3',
-    title: 'Growth-ready',
-    description: 'The org can handle more funding, more staff, and more programs without breaking.'
-  },
-  {
-    label: 'Tier 4',
-    title: 'Complex or multi-site',
-    description: 'Larger, more complex orgs with many programs, sites, or partners.'
-  }
-];
+export const TheNimaraModel: React.FC = () => {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
-const guardrails = [
-  {
-    icon: Shield,
-    label: 'Standardized packages',
-    description: 'Clear scope, timelines, and deliverables. No mystery projects or endless change requests.'
-  },
-  {
-    icon: FileCheck,
-    label: 'Refund and fix loops',
-    description: 'If a deliverable misses the mark, we fix it. If we cannot fix it, we do not keep the money for that piece of work.'
-  },
-  {
-    icon: HeartHandshake,
-    label: '3-month support',
-    description: 'Each install includes light follow-up support for about three months so systems do not die on day one.'
-  },
-  {
-    icon: BarChart3,
-    label: 'Embedded evaluation',
-    description: 'Every engagement feeds data back into the Nimara model so we can learn what works and stop repeating the same mistakes.'
-  },
-  {
-    icon: Scale,
-    label: 'Ethics and conflict rules',
-    description: 'We use clear rules to protect communities, staff, and partners from conflicts of interest and harmful practices.'
-  }
-];
-
-const paths = [
-  {
-    label: 'Path A',
-    title: 'Fast fixes',
-    description: 'Fast, clearly scoped modules for one main problem, like cash flow, board basics, or simple HR setup. When possible, we match organizations into these modules within about 72 hours so they can get quick relief.'
-  },
-  {
-    label: 'Path B',
-    title: 'Tiered packages',
-    description: 'Deeper, pre-built bundles for organizations that need a full install across more than one area. For example, a package that covers finance + HR + governance for a Tier 2 or Tier 3 team.'
-  }
-];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.1
+      }
     }
-  }
-};
+  };
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: [0.4, 0, 0.2, 1] as const
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0
     }
-  }
-};
+  };
 
-export const TheNimaraModel = () => {
+  const tiers = [
+    {
+      level: "0",
+      title: "Too early / DIY support",
+      description: "Very early or fragile. We share tools and light support instead of deep installs.",
+      color: "bg-slate-50 border-slate-200"
+    },
+    {
+      level: "1",
+      title: "Basic stability",
+      description: "Some basics are in place, but systems are informal and fragile.",
+      color: "bg-slate-50 border-slate-300"
+    },
+    {
+      level: "2",
+      title: "Audit-ready",
+      description: "Core systems like finance, HR, and governance can stand up to checks.",
+      color: "bg-purple-50 border-purple-200"
+    },
+    {
+      level: "3",
+      title: "Growth-ready",
+      description: "The org can handle more funding, staff, and programs without breaking.",
+      color: "bg-purple-50 border-purple-300"
+    },
+    {
+      level: "4",
+      title: "Complex or multi-site",
+      description: "Larger, more complex orgs with many programs, sites, or partners.",
+      color: "bg-purple-100 border-purple-400"
+    }
+  ];
+
+  const paths = [
+    {
+      letter: "A",
+      title: "Fast fixes",
+      description: "Short, clearly scoped modules to solve one main problem, like cash flow, board basics, or simple HR setup. When possible, we match organizations into these modules within about 72 hours.",
+      icon: "⚡",
+      color: "from-[#ACFCE3]/20 to-[#ACFCE3]/5 border-[#4CBFA6]"
+    },
+    {
+      letter: "B",
+      title: "Tiered packages",
+      description: "Deeper, pre-built bundles for organizations that need a full install across more than one area, such as finance + HR + governance for a Tier 2 or Tier 3 team.",
+      icon: "📦",
+      color: "from-[#6945D8]/10 to-[#6945D8]/5 border-[#6945D8]"
+    }
+  ];
+
   return (
-    <section className="py-16 md:py-24 lg:py-32 bg-background">
-      {/* Five tiers section */}
-      <div className="px-4 sm:px-6 lg:px-8 mb-20">
+    <section ref={sectionRef} className="w-full py-20 sm:py-24 lg:py-32 bg-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         <motion.div
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
-          className="max-w-6xl mx-auto"
         >
-          {/* Section header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">
-              The Nimara model
+          {/* Section Header */}
+          <motion.div variants={itemVariants} className="mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+              The Nimara model: tiers and paths
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              One shared system. Five tiers and two paths to match each organization with the right kind of support.
+            <p className="text-lg text-slate-600 max-w-3xl">
+              Nimara uses a shared model so we can match each organization with the right kind of support. 
+              First we place you in a tier. Then we choose the right path.
             </p>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="text-center mb-10">
-            <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">
+          {/* Five Tiers Section */}
+          <motion.div variants={itemVariants} className="mb-20">
+            <h3 className="text-2xl font-semibold text-slate-900 mb-3">
               Five tiers of organizational health
             </h3>
-            <p className="text-base text-muted-foreground max-w-2xl mx-auto">
-              We sort organizations into five tiers, from "too early" to "ready for complex work." This helps us pick the right kind of help, at the right time.
+            <p className="text-slate-600 mb-10 max-w-2xl">
+              We sort organizations into five tiers, from 'too early' to 'ready for complex work.' 
+              This keeps the work at the right size.
             </p>
-          </motion.div>
 
-          <motion.div
-            variants={containerVariants}
-            className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-          >
-            {tiers.map((tier) => (
-              <motion.div
-                key={tier.label}
-                variants={itemVariants}
-                whileHover={{ 
-                  scale: 1.02,
-                  transition: { duration: 0.2, ease: [0.4, 0, 0.2, 1] }
-                }}
-              >
-                <Card className="h-full hover:shadow-lg transition-shadow duration-300">
-                  <CardHeader>
-                    <Badge variant="secondary" className="w-fit mb-2">
-                      {tier.label}
-                    </Badge>
-                    <CardTitle className="text-lg">{tier.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-sm leading-relaxed">
-                      {tier.description}
-                    </CardDescription>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.div>
-      </div>
-
-      {/* Protection section */}
-      <div className="py-16 bg-secondary/5">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-          className="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto"
-        >
-          <motion.div variants={itemVariants} className="text-center mb-10">
-            <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">
-              How we protect missions, money, and people
-            </h3>
-            <p className="text-base text-muted-foreground max-w-2xl mx-auto">
-              We design Nimara so that support is clear, fair, and safe for organizations, funders, and consultants.
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-          >
-            {guardrails.map((guardrail) => {
-              const Icon = guardrail.icon;
-              return (
+            {/* Tiers Grid */}
+            <motion.div 
+              variants={containerVariants}
+              className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4"
+            >
+              {tiers.map((tier, index) => (
                 <motion.div
-                  key={guardrail.label}
+                  key={tier.level}
                   variants={itemVariants}
                   whileHover={{ 
                     y: -4,
-                    transition: { duration: 0.2, ease: [0.4, 0, 0.2, 1] }
+                    transition: { duration: 0.2, ease: "easeOut" }
                   }}
+                  className="group"
                 >
-                  <Card className="h-full hover:shadow-md transition-shadow duration-300">
-                    <CardHeader>
-                      <div className="flex items-start gap-3">
-                        <div className="p-2 rounded-lg bg-primary/10 text-primary shrink-0">
-                          <Icon className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <CardTitle className="text-base font-semibold">
-                            {guardrail.label}
-                          </CardTitle>
-                        </div>
+                  <div className={`h-full p-5 rounded-xl border-2 transition-shadow hover:shadow-lg ${tier.color}`}>
+                    {/* Tier Number */}
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold
+                        ${index === 0 ? 'bg-slate-200 text-slate-600' :
+                          index < 2 ? 'bg-slate-300 text-slate-700' :
+                          index < 4 ? 'bg-[#6945D8]/20 text-[#6945D8]' :
+                          'bg-[#6945D8] text-white'}`}>
+                        {tier.level}
                       </div>
-                    </CardHeader>
-                    <CardContent>
-                      <CardDescription className="text-sm leading-relaxed">
-                        {guardrail.description}
-                      </CardDescription>
-                    </CardContent>
-                  </Card>
+                      <span className="text-xs font-medium text-slate-500 uppercase tracking-wide">
+                        Tier {tier.level}
+                      </span>
+                    </div>
+                    
+                    {/* Title */}
+                    <h4 className="font-semibold text-slate-900 mb-2 text-sm">
+                      {tier.title}
+                    </h4>
+                    
+                    {/* Description */}
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      {tier.description}
+                    </p>
+                  </div>
                 </motion.div>
-              );
-            })}
+              ))}
+            </motion.div>
           </motion.div>
-        </motion.div>
-      </div>
 
-      {/* Two paths section */}
-      <div className="px-4 sm:px-6 lg:px-8 mt-20">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-          className="max-w-6xl mx-auto"
-        >
-          <motion.div variants={itemVariants} className="text-center mb-10">
-            <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">
-              Two ways to work with Nimara
+          {/* Two Paths Section */}
+          <motion.div variants={itemVariants}>
+            <h3 className="text-2xl font-semibold text-slate-900 mb-3">
+              Two paths through the system
             </h3>
-            <p className="text-base text-muted-foreground max-w-2xl mx-auto">
-              We run support through two main paths, depending on how deep the work needs to go.
+            <p className="text-slate-600 mb-10 max-w-2xl">
+              Once we know your tier, we pick the right path based on how deep the work needs to go.
             </p>
+
+            {/* Paths Grid */}
+            <motion.div 
+              variants={containerVariants}
+              className="grid md:grid-cols-2 gap-6"
+            >
+              {paths.map((path) => (
+                <motion.div
+                  key={path.letter}
+                  variants={itemVariants}
+                  whileHover={{ 
+                    y: -6,
+                    transition: { duration: 0.2, ease: "easeOut" }
+                  }}
+                  className="group"
+                >
+                  <div className={`h-full p-8 rounded-2xl bg-gradient-to-br border-2 transition-all hover:shadow-xl ${path.color}`}>
+                    {/* Path Header */}
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center text-xl">
+                        {path.icon}
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-sm font-medium text-slate-500">
+                            Path {path.letter}
+                          </span>
+                        </div>
+                        <h4 className="text-xl font-bold text-slate-900">
+                          {path.title}
+                        </h4>
+                      </div>
+                    </div>
+                    
+                    {/* Description */}
+                    <p className="text-slate-600 leading-relaxed">
+                      {path.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
           </motion.div>
 
-          <motion.div
-            variants={containerVariants}
-            className="grid gap-6 md:grid-cols-2"
+          {/* Optional Link */}
+          <motion.div 
+            variants={itemVariants}
+            className="mt-12 text-center"
           >
-            {paths.map((path) => (
-              <motion.div
-                key={path.label}
-                variants={itemVariants}
-                whileHover={{ 
-                  scale: 1.02,
-                  transition: { duration: 0.2, ease: [0.4, 0, 0.2, 1] }
-                }}
-              >
-                <Card className="h-full hover:shadow-lg transition-shadow duration-300">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-3 text-xl">
-                      <Badge variant={path.label === 'Path A' ? 'mint' : 'default'}>
-                        {path.label}
-                      </Badge>
-                      <span>{path.title}</span>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-base leading-relaxed">
-                      {path.description}
-                    </CardDescription>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+            <a 
+              href="#nimara-offers"
+              className="inline-flex items-center gap-2 text-[#6945D8] hover:text-[#5a38c7] font-medium transition-colors group"
+            >
+              See example modules and packages
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </a>
           </motion.div>
         </motion.div>
       </div>
