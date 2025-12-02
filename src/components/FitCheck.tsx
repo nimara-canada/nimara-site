@@ -3,7 +3,7 @@ import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { Play, Check, ArrowRight, X } from 'lucide-react';
 const fitCriteria = [{
   id: 'size',
-  text: 'You are a nonprofit or charity with 2–100 staff, or a very active ED with at least 4 active board members.'
+  text: 'You are a nonprofit or charity with 2–100 staff, or a very active ED with at least 3 active board members.'
 }, {
   id: 'messy',
   text: 'Your work in the community is strong, but your board, money, HR, or fundraising systems feel messy or unclear.'
