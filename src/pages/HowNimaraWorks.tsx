@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { TheNimaraModel } from "@/components/company/TheNimaraModel";
+import HowItWorksHero from "@/components/company/HowItWorksHero";
 
 const HowNimaraWorks = () => {
   return (
@@ -29,18 +30,7 @@ const HowNimaraWorks = () => {
       <Header />
       
       <main id="main">
-        {/* Hero Section */}
-        <section className="relative py-20 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-background via-secondary-background/5 to-background overflow-hidden">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight">
-              How Nimara Works
-            </h1>
-            <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto">
-              A simple but strict model for matching nonprofits with the right support
-            </p>
-          </div>
-        </section>
-
+        <HowItWorksHero />
         <TheNimaraModel />
       </main>
       
