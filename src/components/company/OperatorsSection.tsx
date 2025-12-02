@@ -89,29 +89,29 @@ export const OperatorsSection = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12"
         >
           {operators.map((operator) => (
             <motion.div
               key={operator.name}
               variants={cardVariants}
             >
-              <Card className="p-6 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-card border-border">
-                <Avatar className="w-24 h-24 mx-auto mb-4">
+              <Card className="p-8 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-card border-border">
+                <Avatar className="w-32 h-32 mx-auto mb-6 ring-4 ring-primary/10">
                   <AvatarImage 
                     src={operator.image} 
                     alt={operator.alt}
                     className="object-cover"
                   />
-                  <AvatarFallback className="bg-primary/10 text-primary text-xl">
+                  <AvatarFallback className="bg-primary/10 text-primary text-2xl">
                     {operator.initials}
                   </AvatarFallback>
                 </Avatar>
                 
-                <h3 className="text-lg font-bold text-foreground mb-2">
+                <h3 className="text-xl font-bold text-foreground mb-3">
                   {operator.name}
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-base text-muted-foreground leading-relaxed">
                   {operator.role}
                 </p>
               </Card>
