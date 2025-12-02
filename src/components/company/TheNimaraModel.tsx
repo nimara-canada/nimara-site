@@ -118,7 +118,20 @@ export const TheNimaraModel: React.FC = () => {
                 className="relative"
               >
                 {/* Vertical connecting line */}
-                <div className="absolute left-8 top-12 bottom-12 w-0.5 bg-slate-200 hidden sm:block" />
+                <div className="absolute left-8 top-20 bottom-20 w-0.5 bg-slate-200 hidden sm:block" />
+                
+                {/* Top Label */}
+                <motion.div 
+                  variants={itemVariants}
+                  className="flex items-center justify-center mb-6"
+                >
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 border border-emerald-300">
+                    <div className="w-2 h-2 rounded-full bg-emerald-600" />
+                    <span className="text-sm font-semibold text-emerald-900 uppercase tracking-wide">
+                      Most Complex
+                    </span>
+                  </div>
+                </motion.div>
                 
                 {tiers.map((tier, index) => (
                   <React.Fragment key={tier.level}>
@@ -192,6 +205,19 @@ export const TheNimaraModel: React.FC = () => {
                     )}
                   </React.Fragment>
                 ))}
+                
+                {/* Bottom Label */}
+                <motion.div 
+                  variants={itemVariants}
+                  className="flex items-center justify-center mt-6"
+                >
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-100 border border-rose-300">
+                    <div className="w-2 h-2 rounded-full bg-rose-500" />
+                    <span className="text-sm font-semibold text-rose-900 uppercase tracking-wide">
+                      Early Stage
+                    </span>
+                  </div>
+                </motion.div>
               </motion.div>
             </div>
           </motion.div>
