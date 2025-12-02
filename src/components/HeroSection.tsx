@@ -1,7 +1,7 @@
 import React from "react";
-import { Button } from "./ui/Button";
+import { Button } from "./ui/button";
 
-export const Hero: React.FC = () => {
+const HeroSection: React.FC = () => {
   return (
     <section className="relative bg-nimara-navy text-white overflow-hidden">
       {/* Background gradient + glow */}
@@ -40,14 +40,14 @@ export const Hero: React.FC = () => {
 
             {/* CTA row */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
-              <Button
-                variant="primary"
-                size="lg"
-                className="bg-nimara-mint text-nimara-navy hover:bg-white hover:text-nimara-purple border-0 font-semibold px-8"
-                href="#how-we-help"
-              >
-                Start free capacity check
-              </Button>
+              <a href="#how-we-help">
+                <Button
+                  size="lg"
+                  className="bg-nimara-mint text-nimara-navy hover:bg-white hover:text-nimara-purple border-0 font-semibold px-8"
+                >
+                  Start free capacity check
+                </Button>
+              </a>
 
               <button
                 type="button"
@@ -125,3 +125,5 @@ export const Hero: React.FC = () => {
     </section>
   );
 };
+
+export default HeroSection;
