@@ -172,10 +172,22 @@ export const TheNimaraModel: React.FC = () => {
                         variants={itemVariants}
                         className="flex items-center justify-center py-3 relative"
                       >
-                        <div className="relative z-10 flex flex-col items-center">
+                        <motion.div 
+                          className="relative z-10 flex flex-col items-center"
+                          animate={{
+                            y: [0, 4, 0],
+                            opacity: [0.4, 1, 0.4]
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: index * 0.2
+                          }}
+                        >
                           <ArrowDown className="w-6 h-6 text-slate-400" strokeWidth={2.5} />
                           <ArrowDown className="w-6 h-6 text-slate-400 -mt-3" strokeWidth={2.5} />
-                        </div>
+                        </motion.div>
                       </motion.div>
                     )}
                   </React.Fragment>
