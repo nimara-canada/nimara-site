@@ -67,6 +67,12 @@ export default {
           mist: "hsl(var(--nim-mist))",
           cloud: "hsl(var(--nim-cloud))",
         },
+        nimara: {
+          navy: "hsl(var(--nimara-navy))",
+          purple: "hsl(var(--nimara-purple))",
+          mint: "hsl(var(--nimara-mint))",
+          bg: "hsl(var(--nimara-bg))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
