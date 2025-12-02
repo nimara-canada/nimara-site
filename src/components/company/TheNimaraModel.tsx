@@ -67,7 +67,7 @@ export const TheNimaraModel: React.FC = () => {
 
   const paths = [
     {
-      letter: "1",
+      letter: "A",
       title: "Fast fixes",
       description: "Short, clearly scoped modules to solve one main problem, like cash flow, board basics, or simple HR setup. When possible, we match organizations into these modules within about 72 hours.",
       icon: "",
