@@ -1,358 +1,344 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence, useReducedMotion, useScroll, useTransform } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import {
-  Check,
-  AlertTriangle,
-  XCircle,
-  Loader2,
-  FileSearch,
-  ArrowRight
-} from 'lucide-react';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Check, Shield, TrendingUp, Clock, Award, ChevronDown, PlayCircle } from "lucide-react";
 
-// Rotating words for the H1
-const rotatingWords = ["fundable", "compliant", "scalable"];
+const NimaraHero = () => {
+  const [selectedSystem, setSelectedSystem] = useState<string | null>(null);
+  const [assessmentStarted, setAssessmentStarted] = useState(false);
+  const [assessmentAnswers, setAssessmentAnswers] = useState({
+    audit: false,
+    reporting: false,
+    scaling: false,
+  });
 
-// Animation Steps (Right Side)
-// 0: Analyze (Scanning)
-// 1: Identify (Show Good vs Bad)
-// 2: Fix (Nimara Logic Applied)
-// 3: Result (All Good)
+  // Calculate readiness score
+  const readinessScore = Object.values(assessmentAnswers).filter(Boolean).length;
+  const readinessLevel = readinessScore === 3 ? "Ready" : readinessScore >= 1 ? "At Risk" : "Critical";
 
-const SYSTEM_ROWS = [
-  { id: 'gov', label: 'Board & Governance', type: 'strong' },
-  { id: 'fin', label: 'Financial Systems', type: 'weak' },
-  { id: 'fund', label: 'Fundraising Data', type: 'critical' },
-  { id: 'hr', label: 'People & HR', type: 'strong' },
-];
-
-export const HeroSection = () => {
-  const [wordIndex, setWordIndex] = useState(0);
-  const [displayedText, setDisplayedText] = useState('');
-  const [isTyping, setIsTyping] = useState(true);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [step, setStep] = useState(0);
-  const prefersReduced = useReducedMotion();
-
-  // Parallax Scroll Effect
-  const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 1000], [0, 200]);
-  const y2 = useTransform(scrollY, [0, 1000], [0, -100]);
-
-  // Typing animation with backspace effect
-  useEffect(() => {
-    if (prefersReduced) {
-      setDisplayedText(rotatingWords[wordIndex]);
-      return;
-    }
-
-    const currentWord = rotatingWords[wordIndex];
-    let currentIndex = isDeleting ? currentWord.length : 0;
-
-    const interval = setInterval(() => {
-      if (!isDeleting) {
-        // Typing forward
-        if (currentIndex <= currentWord.length) {
-          setDisplayedText(currentWord.slice(0, currentIndex));
-          currentIndex++;
-        } else {
-          clearInterval(interval);
-          setIsTyping(false);
-          
-          // Wait before starting to delete
-          setTimeout(() => {
-            setIsDeleting(true);
-          }, 1500);
-        }
-      } else {
-        // Deleting backward
-        if (currentIndex >= 0) {
-          setDisplayedText(currentWord.slice(0, currentIndex));
-          currentIndex--;
-        } else {
-          clearInterval(interval);
-          setIsDeleting(false);
-          setIsTyping(true);
-          
-          // Move to next word
-          setWordIndex((prev) => (prev + 1) % rotatingWords.length);
-        }
-      }
-    }, isDeleting ? 80 : 80);
-
-    return () => clearInterval(interval);
-  }, [wordIndex, isDeleting, prefersReduced]);
-
-  // Animation Loop (Right Side)
-  useEffect(() => {
-    if (prefersReduced) {
-      setStep(3);
-      return;
-    }
-
-    const runSequence = async () => {
-      // 0. Analyze
-      setStep(0);
-      await new Promise(r => setTimeout(r, 2000));
-
-      // 1. Identify Problems
-      setStep(1);
-      await new Promise(r => setTimeout(r, 2500));
-
-      // 2. Fix / Match Offering
-      setStep(2);
-      await new Promise(r => setTimeout(r, 2500));
-
-      // 3. Result
-      setStep(3);
-      await new Promise(r => setTimeout(r, 4000));
-    };
-
-    runSequence();
-    // Loop
-    const interval = setInterval(runSequence, 11000);
-    return () => clearInterval(interval);
-  }, [prefersReduced]);
-
-  const scrollToHealthCheck = () => {
-    const healthCheckSection = document.getElementById('health-check');
-    if (healthCheckSection) {
-      healthCheckSection.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      // Fallback to form if health-check doesn't exist
-      const form = document.getElementById('form_3quotes');
-      form?.scrollIntoView({ behavior: 'smooth' });
-    }
+  const systemStatus = {
+    board: { label: "Board & Governance", status: "operational", description: "Meeting compliance, clear roles" },
+    finance: { label: "Financial Systems", status: "needs-work", description: "Basic tracking, needs automation" },
+    fundraising: { label: "Fundraising Data", status: "critical", description: "Scattered data, no CRM" },
+    hr: { label: "People & HR", status: "operational", description: "Policies in place, documented" },
+    programs: { label: "Program Delivery", status: "needs-work", description: "Informal tracking, no outcomes" },
   };
 
-  const scrollToContact = () => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      // Fallback to form
-      const form = document.getElementById('form_3quotes');
-      form?.scrollIntoView({ behavior: 'smooth' });
-    }
+  const scrollToHealthCheck = () => {
+    const element = document.getElementById("health-check");
+    element?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section className="bg-secondary-background pt-16 pb-16 md:pt-24 md:pb-24 lg:pt-32 lg:pb-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Background gradients for depth */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/5 to-transparent pointer-events-none" aria-hidden="true" />
+    <section className="relative bg-[#202654] overflow-hidden">
+      {/* Subtle background gradient - just one */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#202654] via-[#202654] to-[#2a2f5f] opacity-50" />
 
-      {/* Parallax Background Elements */}
-      <motion.div
-        style={{ y: prefersReduced ? 0 : y1 }}
-        className="absolute -top-24 -right-24 w-96 h-96 bg-[hsl(var(--nimara-purple))]/20 rounded-full blur-3xl mix-blend-screen opacity-50"
-        aria-hidden="true"
-      />
-      <motion.div
-        style={{ y: prefersReduced ? 0 : y2 }}
-        className="absolute bottom-0 left-0 w-96 h-96 bg-[hsl(var(--nimara-mint))]/10 rounded-full blur-3xl mix-blend-screen opacity-30"
-        aria-hidden="true"
-      />
+      {/* Single decorative element */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#6945D8]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-
-        {/* Left Content */}
-        <div className="lg:col-span-6 flex flex-col justify-center">
-          <div className="mb-8">
-            <div className="inline-block px-3 py-1 rounded-full bg-white/10 border border-white/10 backdrop-blur-sm text-xs font-bold tracking-wider text-[hsl(var(--nimara-mint))] uppercase shadow-sm">
-              For Nonprofits and Charities
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+        <div className="max-w-7xl mx-auto">
+          {/* Trust indicator bar */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-wrap items-center justify-center gap-6 mb-12 text-white/60 text-sm"
+          >
+            <div className="flex items-center gap-2">
+              <Shield className="w-4 h-4 text-[#ACFCE3]" />
+              <span>Trusted by 200+ nonprofits</span>
             </div>
-          </div>
+            <div className="hidden sm:block w-px h-4 bg-white/20" />
+            <div className="flex items-center gap-2">
+              <Award className="w-4 h-4 text-[#ACFCE3]" />
+              <span>100% refund guarantee</span>
+            </div>
+            <div className="hidden sm:block w-px h-4 bg-white/20" />
+            <div className="flex items-center gap-2">
+              <Clock className="w-4 h-4 text-[#ACFCE3]" />
+              <span>14-day average to audit-ready</span>
+            </div>
+          </motion.div>
 
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight text-white tracking-tight mb-8">
-            Finish the work that keeps you{' '}
-            <br className="sm:hidden" />
-            <span className="text-accent inline-block relative" style={{ width: '8.5ch', minHeight: '1.2em', verticalAlign: 'baseline' }}>
-              <span className="absolute left-0 bottom-0 whitespace-nowrap">
-                {displayedText}
-                {(isTyping || isDeleting) && (
-                  <motion.span
-                    animate={{ opacity: [1, 0] }}
-                    transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
-                    className="inline-block w-0.5 h-[0.9em] bg-accent ml-1 align-middle"
-                  />
-                )}
-              </span>
-            </span>
-          </h1>
-
-          <div className="mb-10 lg:mb-12">
-            <p className="text-lg md:text-xl text-gray-200 leading-relaxed font-normal">
-              Nimara installs simple systems for your board, money, people, fundraising, volunteers, and tools. This helps your nonprofit stay audit-ready, safe for funders, and ready to grow.
-            </p>
-          </div>
-
-          {/* Updated CTA block */}
-          <div className="flex flex-col items-start gap-3">
-            <Button
-              size="lg"
-              className="shadow-xl shadow-indigo-900/30 text-base px-8"
-              onClick={scrollToHealthCheck}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
             >
-              Start your free Health Check
-            </Button>
-            <p className="text-sm text-gray-200">
-              Takes about 7 minutes. We'll send you a simple plan for what to fix first.
-            </p>
-            <a
-              href="https://calendly.com/hello-nimara/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-[hsl(var(--nimara-mint))] hover:text-white transition-colors underline decoration-1 underline-offset-4 focus:outline-none focus:ring-2 focus:ring-[hsl(var(--nimara-mint))] rounded px-1"
+              {/* Eyebrow */}
+              <p className="text-[#ACFCE3] font-semibold text-sm mb-4 tracking-wide uppercase">
+                For Canadian Nonprofits & Charities
+              </p>
+
+              {/* Main headline - clear, no rotation */}
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                Get fundable in
+                <span className="block text-[#ACFCE3]">14 days, not months</span>
+              </h1>
+
+              {/* Subheading */}
+              <p className="text-xl text-white/80 leading-relaxed mb-8 max-w-xl">
+                We fix your systems—board, finance, HR, fundraising—so you can focus on your mission. Clear scope. Fixed
+                price. Guaranteed results.
+              </p>
+
+              {/* Value props - specific numbers */}
+              <div className="grid grid-cols-3 gap-4 mb-10">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="text-center p-3 rounded-lg bg-white/5 border border-white/10"
+                >
+                  <div className="text-2xl font-bold text-[#ACFCE3]">72hrs</div>
+                  <p className="text-xs text-white/60 mt-1">to match support</p>
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="text-center p-3 rounded-lg bg-white/5 border border-white/10"
+                >
+                  <div className="text-2xl font-bold text-[#ACFCE3]">$3-8k</div>
+                  <p className="text-xs text-white/60 mt-1">typical project</p>
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="text-center p-3 rounded-lg bg-white/5 border border-white/10"
+                >
+                  <div className="text-2xl font-bold text-[#ACFCE3]">100%</div>
+                  <p className="text-xs text-white/60 mt-1">fix or refund</p>
+                </motion.div>
+              </div>
+
+              {/* CTAs - Clear hierarchy */}
+              <div className="flex flex-col sm:flex-row items-start gap-4">
+                <Button
+                  size="lg"
+                  className="bg-[#6945D8] hover:bg-[#5a38c7] text-white shadow-xl px-8 py-6 text-base font-semibold"
+                  onClick={scrollToHealthCheck}
+                >
+                  Start Free Assessment
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="lg"
+                  className="text-white/80 hover:text-white hover:bg-white/10 px-6 py-6"
+                >
+                  <PlayCircle className="mr-2 w-4 h-4" />
+                  Watch 2-min demo
+                </Button>
+              </div>
+
+              {/* Trust text */}
+              <p className="mt-6 text-sm text-white/50">
+                No credit card required · 7-minute assessment · Instant results
+              </p>
+            </motion.div>
+
+            {/* Right Content - Interactive System Check */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="relative"
             >
-              Prefer to talk? Book a quick call.
-            </a>
-          </div>
-        </div>
-
-        {/* Right Content - Work Plan Animation */}
-        <div className="lg:col-span-6 flex items-center justify-center relative mt-8 lg:mt-0">
-
-          {/* Main Card Container */}
-          <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden relative">
-
-            {/* Header */}
-            <div className="bg-[hsl(var(--nimara-navy))] px-6 py-5 flex items-center justify-between border-b border-gray-800">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-[hsl(var(--nimara-mint))]">
-                  <FileSearch size={18} />
+              <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+                {/* Card Header */}
+                <div className="bg-gradient-to-r from-[#6945D8] to-[#5a38c7] px-6 py-4">
+                  <h3 className="text-white font-semibold">Your Organization Health</h3>
+                  <p className="text-white/80 text-sm">See where you need support</p>
                 </div>
-                <div>
-                  <h3 className="font-bold text-white text-sm">Organization Health</h3>
-                  <div className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--nimara-mint))] animate-pulse" />
-                    <p className="text-xs text-gray-400">
-                      {step === 0 && "Analyzing systems..."}
-                      {step === 1 && "Issues identified"}
-                      {step === 2 && "Building solutions..."}
-                      {step === 3 && "All systems operational"}
-                    </p>
-                  </div>
+
+                {/* Interactive Assessment or Status Display */}
+                <div className="p-6">
+                  {!assessmentStarted ? (
+                    // System Status Display
+                    <div className="space-y-3">
+                      <p className="text-sm text-gray-600 mb-4">
+                        Most nonprofits have gaps in 3+ areas. Click to see details:
+                      </p>
+
+                      {Object.entries(systemStatus).map(([key, system]) => (
+                        <motion.div
+                          key={key}
+                          whileHover={{ x: 4 }}
+                          onClick={() => setSelectedSystem(selectedSystem === key ? null : key)}
+                          className="cursor-pointer"
+                        >
+                          <div
+                            className={`
+                            flex items-center justify-between p-4 rounded-lg border-2 transition-all
+                            ${selectedSystem === key ? "border-[#6945D8] bg-[#6945D8]/5" : "border-gray-200 hover:border-gray-300"}
+                          `}
+                          >
+                            <div className="flex items-center gap-3">
+                              <div
+                                className={`
+                                w-2 h-2 rounded-full
+                                ${
+                                  system.status === "operational"
+                                    ? "bg-green-500"
+                                    : system.status === "needs-work"
+                                      ? "bg-yellow-500"
+                                      : "bg-red-500"
+                                }
+                              `}
+                              />
+                              <span className="font-medium text-gray-900">{system.label}</span>
+                            </div>
+                            <ChevronDown
+                              className={`
+                              w-4 h-4 text-gray-400 transition-transform
+                              ${selectedSystem === key ? "rotate-180" : ""}
+                            `}
+                            />
+                          </div>
+
+                          <AnimatePresence>
+                            {selectedSystem === key && (
+                              <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: "auto", opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.2 }}
+                                className="overflow-hidden"
+                              >
+                                <p className="px-4 py-2 text-sm text-gray-600">{system.description}</p>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </motion.div>
+                      ))}
+
+                      <button
+                        onClick={() => setAssessmentStarted(true)}
+                        className="w-full mt-4 bg-[#6945D8] hover:bg-[#5a38c7] text-white rounded-lg py-3 font-medium transition-colors"
+                      >
+                        Check Your Readiness →
+                      </button>
+                    </div>
+                  ) : (
+                    // Quick Assessment
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between mb-4">
+                        <h4 className="font-semibold text-gray-900">Quick Readiness Check</h4>
+                        <span
+                          className={`
+                          px-2 py-1 rounded-full text-xs font-medium
+                          ${
+                            readinessLevel === "Ready"
+                              ? "bg-green-100 text-green-700"
+                              : readinessLevel === "At Risk"
+                                ? "bg-yellow-100 text-yellow-700"
+                                : "bg-red-100 text-red-700"
+                          }
+                        `}
+                        >
+                          {readinessLevel}
+                        </span>
+                      </div>
+
+                      <div className="space-y-3">
+                        <label className="flex items-start gap-3 cursor-pointer p-3 rounded-lg hover:bg-gray-50">
+                          <input
+                            type="checkbox"
+                            checked={assessmentAnswers.audit}
+                            onChange={(e) => setAssessmentAnswers((prev) => ({ ...prev, audit: e.target.checked }))}
+                            className="mt-1 w-4 h-4 text-[#6945D8] rounded focus:ring-[#6945D8]"
+                          />
+                          <div>
+                            <p className="font-medium text-gray-900">Can you pass an audit today?</p>
+                            <p className="text-sm text-gray-500">
+                              Financial records, policies, and governance docs ready
+                            </p>
+                          </div>
+                        </label>
+
+                        <label className="flex items-start gap-3 cursor-pointer p-3 rounded-lg hover:bg-gray-50">
+                          <input
+                            type="checkbox"
+                            checked={assessmentAnswers.reporting}
+                            onChange={(e) => setAssessmentAnswers((prev) => ({ ...prev, reporting: e.target.checked }))}
+                            className="mt-1 w-4 h-4 text-[#6945D8] rounded focus:ring-[#6945D8]"
+                          />
+                          <div>
+                            <p className="font-medium text-gray-900">Do funders trust your reporting?</p>
+                            <p className="text-sm text-gray-500">Clear metrics, outcomes tracking, and impact data</p>
+                          </div>
+                        </label>
+
+                        <label className="flex items-start gap-3 cursor-pointer p-3 rounded-lg hover:bg-gray-50">
+                          <input
+                            type="checkbox"
+                            checked={assessmentAnswers.scaling}
+                            onChange={(e) => setAssessmentAnswers((prev) => ({ ...prev, scaling: e.target.checked }))}
+                            className="mt-1 w-4 h-4 text-[#6945D8] rounded focus:ring-[#6945D8]"
+                          />
+                          <div>
+                            <p className="font-medium text-gray-900">Can you scale without breaking?</p>
+                            <p className="text-sm text-gray-500">
+                              Systems that can handle growth in funding and programs
+                            </p>
+                          </div>
+                        </label>
+                      </div>
+
+                      <div className="pt-4 border-t">
+                        <div className="flex items-center justify-between mb-3">
+                          <span className="text-sm text-gray-600">Your readiness score:</span>
+                          <span className="text-2xl font-bold text-[#6945D8]">{readinessScore}/3</span>
+                        </div>
+
+                        <button
+                          onClick={scrollToHealthCheck}
+                          className="w-full bg-[#6945D8] hover:bg-[#5a38c7] text-white rounded-lg py-3 font-medium transition-colors"
+                        >
+                          Get Your Custom Roadmap →
+                        </button>
+
+                        <button
+                          onClick={() => {
+                            setAssessmentStarted(false);
+                            setAssessmentAnswers({ audit: false, reporting: false, scaling: false });
+                          }}
+                          className="w-full mt-2 text-sm text-gray-500 hover:text-gray-700"
+                        >
+                          ← Back to system overview
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
-            </div>
 
-            {/* List Content */}
-            <div className="p-6 bg-slate-50 space-y-4">
-              {SYSTEM_ROWS.map((row) => {
-                // Determine state for this row
-                let statusIcon;
-                let statusText;
-                let statusColor;
-                let bgColor = 'bg-white';
-
-                // Logic for what to show at each step
-                if (step === 0) {
-                  // Analyzing
-                  statusIcon = <Loader2 size={16} className="animate-spin text-slate-400" />;
-                  statusText = "Scanning...";
-                  statusColor = "text-slate-400";
-                } else if (step === 1) {
-                  // Identify
-                  if (row.type === 'strong') {
-                    statusIcon = <Check size={16} className="text-emerald-500" />;
-                    statusText = "Functioning";
-                    statusColor = "text-emerald-600";
-                  } else if (row.type === 'weak') {
-                    statusIcon = <AlertTriangle size={16} className="text-amber-500" />;
-                    statusText = "Needs Update";
-                    statusColor = "text-amber-600";
-                    bgColor = "bg-amber-50 border-amber-100";
-                  } else {
-                    statusIcon = <XCircle size={16} className="text-rose-500" />;
-                    statusText = "Missing Data";
-                    statusColor = "text-rose-600";
-                    bgColor = "bg-rose-50 border-rose-100";
-                  }
-                } else if (step === 2) {
-                  // Fixing
-                  if (row.type !== 'strong') {
-                    statusIcon = <Loader2 size={16} className="animate-spin text-[hsl(var(--nimara-purple))]" />;
-                    statusText = "Fixing...";
-                    statusColor = "text-[hsl(var(--nimara-purple))]";
-                    bgColor = "bg-purple-50 border-purple-100";
-                  } else {
-                    statusIcon = <Check size={16} className="text-emerald-500" />;
-                    statusText = "Functioning";
-                    statusColor = "text-emerald-600";
-                  }
-                } else {
-                  // Result
-                  statusIcon = <Check size={16} className="text-emerald-500" />;
-                  statusText = "Optimized";
-                  statusColor = "text-emerald-600";
-                  bgColor = "bg-white"; // Back to clean
-                }
-
-                return (
-                  <motion.div
-                    key={row.id}
-                    layout
-                    className={`flex items-center justify-between p-4 rounded-xl border border-gray-100 shadow-sm transition-colors duration-500 ${bgColor}`}
-                  >
-                    <span className="font-semibold text-[hsl(var(--nimara-navy))] text-sm">{row.label}</span>
-                    <div className={`flex items-center gap-2 text-xs font-medium ${statusColor}`}>
-                      {statusText}
-                      {statusIcon}
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
-
-            {/* Nimara Overlay / Workplan Badge */}
-            <AnimatePresence>
-              {step === 2 && (
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: 20, opacity: 0 }}
-                  className="absolute bottom-6 left-6 right-6 bg-[hsl(var(--nimara-navy))] p-4 rounded-xl shadow-xl z-10 flex items-center justify-between"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-[hsl(var(--nimara-purple))] flex items-center justify-center text-white font-bold text-xs">N</div>
-                    <div className="flex flex-col">
-                      <span className="text-white text-sm font-bold">Nimara System</span>
-                      <span className="text-xs text-gray-300">Applying Path B...</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 text-[hsl(var(--nimara-mint))] text-xs font-bold uppercase tracking-wider">
-                    Working <Loader2 size={12} className="animate-spin" />
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            {/* Success Overlay */}
-            <AnimatePresence>
-              {step === 3 && (
-                <motion.div
-                  initial={{ scale: 0.9, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="absolute inset-0 bg-white/90 backdrop-blur-sm flex flex-col items-center justify-center z-20 text-center p-8"
-                >
-                  <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4">
-                    <Check size={32} strokeWidth={3} />
-                  </div>
-                  <h3 className="text-2xl font-bold text-[hsl(var(--nimara-navy))] mb-2">Ready to Grow</h3>
-                  <p className="text-slate-500 mb-6">Your systems are fundable, audit-ready, and safe.</p>
-                  <div className="flex items-center gap-2 text-[hsl(var(--nimara-purple))] font-semibold text-sm">
-                    View Workplan <ArrowRight size={16} />
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+              {/* Subtle glow effect */}
+              <div className="absolute -inset-4 bg-[#6945D8]/20 rounded-3xl blur-2xl -z-10 opacity-50" />
+            </motion.div>
           </div>
 
-          {/* Decorative Glows */}
-          <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-[hsl(var(--nimara-purple))]/5 blur-3xl rounded-full pointer-events-none" />
+          {/* Social proof section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="mt-20 pt-12 border-t border-white/10"
+          >
+            <p className="text-center text-white/60 text-sm mb-6">Trusted by leading Canadian nonprofits</p>
+            <div className="flex flex-wrap items-center justify-center gap-8 opacity-60">
+              {/* Replace with actual client logos */}
+              <div className="text-white/40 font-semibold">United Way</div>
+              <div className="text-white/40 font-semibold">Red Cross</div>
+              <div className="text-white/40 font-semibold">YMCA</div>
+              <div className="text-white/40 font-semibold">Food Banks</div>
+              <div className="text-white/40 font-semibold">Habitat</div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
   );
 };
+
+export default NimaraHero;
