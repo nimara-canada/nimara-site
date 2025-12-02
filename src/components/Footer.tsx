@@ -7,7 +7,7 @@ const navigation = [
 ];
 
 const legalLinks = [
-  { name: "Privacy Policy", href: "/privacy" },
+  { name: "Privacy Policy", href: "https://www.notion.so/Nimara-Privacy-Policy-2bd227f1ee3a802389c1d58346f61ff7?source=copy_link", external: true },
   { name: "Terms of Service", href: "/terms" },
   { name: "Refund Policy", href: "https://www.notion.so/Nimara-Refund-Policy-2bc227f1ee3a80f299fbc42501d338ac?source=copy_link", external: true },
   { name: "Contact", href: "mailto:hello@nimara.ca" },
