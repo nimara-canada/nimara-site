@@ -3,6 +3,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { TheNimaraModel } from "@/components/company/TheNimaraModel";
 import HowItWorksHero from "@/components/company/HowItWorksHero";
+import YourJourney from "@/components/company/YourJourney";
 import { ChevronDown } from "lucide-react";
 
 const HowNimaraWorks = () => {
@@ -65,6 +66,8 @@ const HowNimaraWorks = () => {
         </div>
         
         <TheNimaraModel />
+        
+        <YourJourney />
       </main>
       
       <Footer />
