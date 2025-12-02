@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowDown } from 'lucide-react';
 
 export const TheNimaraModel: React.FC = () => {
   const sectionRef = useRef(null);
@@ -115,56 +115,70 @@ export const TheNimaraModel: React.FC = () => {
             <div className="max-w-3xl mx-auto">
               <motion.div 
                 variants={containerVariants}
-                className="relative space-y-4"
+                className="relative"
               >
                 {/* Vertical connecting line */}
                 <div className="absolute left-8 top-12 bottom-12 w-0.5 bg-slate-200 hidden sm:block" />
                 
                 {tiers.map((tier, index) => (
-                  <motion.div
-                    key={tier.level}
-                    variants={itemVariants}
-                    whileHover={{ 
-                      x: 8,
-                      transition: { duration: 0.2, ease: "easeOut" }
-                    }}
-                    className="relative"
-                    style={{ 
-                      marginLeft: index % 2 === 0 ? '0' : '2rem'
-                    }}
-                  >
-                    <div className={`p-6 rounded-xl border-2 transition-all hover:shadow-lg ${tier.color} relative`}>
-                      {/* Connector dot */}
-                      <div className="absolute -left-10 top-1/2 -translate-y-1/2 hidden sm:block">
-                        <div className={`w-4 h-4 rounded-full ${tier.badgeColor} ring-4 ring-white`} />
-                      </div>
-                      
-                      <div className="flex items-start gap-4">
-                        {/* Tier Badge */}
-                        <div className={`flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center text-lg font-bold ${tier.badgeColor}`}>
-                          {tier.level}
+                  <React.Fragment key={tier.level}>
+                    <motion.div
+                      variants={itemVariants}
+                      whileHover={{ 
+                        x: 8,
+                        transition: { duration: 0.2, ease: "easeOut" }
+                      }}
+                      className="relative"
+                      style={{ 
+                        marginLeft: index % 2 === 0 ? '0' : '2rem'
+                      }}
+                    >
+                      <div className={`p-6 rounded-xl border-2 transition-all hover:shadow-lg ${tier.color} relative`}>
+                        {/* Connector dot */}
+                        <div className="absolute -left-10 top-1/2 -translate-y-1/2 hidden sm:block">
+                          <div className={`w-4 h-4 rounded-full ${tier.badgeColor} ring-4 ring-white`} />
                         </div>
                         
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2 mb-2">
-                            <span className="text-xs font-medium text-slate-500 uppercase tracking-wider">
-                              Tier {tier.level}
-                            </span>
+                        <div className="flex items-start gap-4">
+                          {/* Tier Badge */}
+                          <div className={`flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center text-lg font-bold ${tier.badgeColor}`}>
+                            {tier.level}
                           </div>
                           
-                          {/* Title */}
-                          <h4 className="font-bold text-slate-900 mb-2 text-base">
-                            {tier.title}
-                          </h4>
-                          
-                          {/* Description */}
-                          <p className="text-sm text-slate-600 leading-relaxed">
-                            {tier.description}
-                          </p>
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-2">
+                              <span className="text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                Tier {tier.level}
+                              </span>
+                            </div>
+                            
+                            {/* Title */}
+                            <h4 className="font-bold text-slate-900 mb-2 text-base">
+                              {tier.title}
+                            </h4>
+                            
+                            {/* Description */}
+                            <p className="text-sm text-slate-600 leading-relaxed">
+                              {tier.description}
+                            </p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </motion.div>
+                    </motion.div>
+                    
+                    {/* Arrow between tiers */}
+                    {index < tiers.length - 1 && (
+                      <motion.div
+                        variants={itemVariants}
+                        className="flex items-center justify-center py-3 relative"
+                      >
+                        <div className="relative z-10 flex flex-col items-center">
+                          <ArrowDown className="w-6 h-6 text-slate-400" strokeWidth={2.5} />
+                          <ArrowDown className="w-6 h-6 text-slate-400 -mt-3" strokeWidth={2.5} />
+                        </div>
+                      </motion.div>
+                    )}
+                  </React.Fragment>
                 ))}
               </motion.div>
             </div>
