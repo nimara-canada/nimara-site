@@ -39,51 +39,64 @@ export default function Integrations() {
             </Link>
 
             {/* Page Header */}
-            <div className="mb-16">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-                Nimara supported tools map
-              </h1>
-              <div className="prose prose-lg max-w-none text-muted-foreground">
-                <p className="text-xl leading-relaxed mb-4">
-                  Nimara fits around the tools you already use. We don't force you to rip and replace your whole tech stack.
-                </p>
-                <p className="text-lg leading-relaxed">
-                  This page shows the tools we see most in small and mid-size Canadian nonprofits, and how Nimara connects to them.
-                </p>
+            <div className="mb-20">
+              <div className="inline-flex items-center gap-2 bg-[#6945D8]/10 text-[#6945D8] px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                <CheckCircle2 className="w-4 h-4" />
+                Integration Guide
               </div>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
+                Tools that work with Nimara
+              </h1>
+              <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mb-8">
+                Nimara fits around the tools you already use. We don't force you to rip and replace your whole tech stack—we connect to what you have and make it work better.
+              </p>
               
-              <div className="mt-8 bg-card border border-border rounded-2xl p-6">
-                <p className="text-muted-foreground mb-4">
-                  We group tools into three levels:
-                </p>
-                <ul className="space-y-2">
-                  <li className="flex items-start gap-3">
-                    <Zap className="w-5 h-5 text-[#6945D8] mt-0.5 flex-shrink-0" />
-                    <span><strong className="text-foreground">Level 1 – Core connections:</strong> focus for our MVP and fastest to support.</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Users className="w-5 h-5 text-[#ACFCE3] mt-0.5 flex-shrink-0" />
-                    <span><strong className="text-foreground">Level 2 – Common add-ons:</strong> we support where there is demand.</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Link2 className="w-5 h-5 text-muted-foreground mt-0.5 flex-shrink-0" />
-                    <span><strong className="text-foreground">Level 3 – Flexible connections:</strong> anything else via imports, exports, and light automation.</span>
-                  </li>
-                </ul>
+              {/* Three Level Cards */}
+              <div className="grid sm:grid-cols-3 gap-4 mt-10">
+                <div className="group bg-gradient-to-br from-[#6945D8]/10 to-[#6945D8]/5 border-2 border-[#6945D8]/20 rounded-2xl p-6 hover:border-[#6945D8]/40 transition-all hover:-translate-y-1">
+                  <div className="w-12 h-12 bg-[#6945D8] rounded-xl flex items-center justify-center mb-4">
+                    <Zap className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-foreground mb-2">Level 1 – Core</h3>
+                  <p className="text-sm text-muted-foreground">Our main focus. Fastest to support with deep integrations.</p>
+                </div>
+
+                <div className="group bg-gradient-to-br from-[#ACFCE3]/10 to-[#ACFCE3]/5 border-2 border-[#ACFCE3]/30 rounded-2xl p-6 hover:border-[#ACFCE3]/50 transition-all hover:-translate-y-1">
+                  <div className="w-12 h-12 bg-[#ACFCE3] rounded-xl flex items-center justify-center mb-4">
+                    <Users className="w-6 h-6 text-[#202654]" />
+                  </div>
+                  <h3 className="text-lg font-bold text-foreground mb-2">Level 2 – Common</h3>
+                  <p className="text-sm text-muted-foreground">We support where there's demand using templates and imports.</p>
+                </div>
+
+                <div className="group bg-gradient-to-br from-muted/50 to-muted/20 border-2 border-border rounded-2xl p-6 hover:border-border/60 transition-all hover:-translate-y-1">
+                  <div className="w-12 h-12 bg-muted rounded-xl flex items-center justify-center mb-4">
+                    <Link2 className="w-6 h-6 text-foreground" />
+                  </div>
+                  <h3 className="text-lg font-bold text-foreground mb-2">Level 3 – Flexible</h3>
+                  <p className="text-sm text-muted-foreground">Simple data bridges via exports, imports, and forms.</p>
+                </div>
               </div>
             </div>
 
             {/* Level 1 - Core Connections */}
-            <section className="mb-16">
-              <div className="flex items-center gap-3 mb-6">
-                <Zap className="w-8 h-8 text-[#6945D8]" />
-                <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
-                  Level 1 – Core connections (our main focus)
-                </h2>
+            <section className="mb-24">
+              <div className="bg-gradient-to-r from-[#6945D8]/5 to-transparent rounded-3xl p-8 mb-8 border-l-4 border-[#6945D8]">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-14 h-14 bg-[#6945D8] rounded-2xl flex items-center justify-center shadow-lg">
+                    <Zap className="w-7 h-7 text-white" />
+                  </div>
+                  <div>
+                    <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
+                      Level 1 – Core connections
+                    </h2>
+                    <p className="text-sm text-[#6945D8] font-semibold mt-1">Our main focus</p>
+                  </div>
+                </div>
+                <p className="text-lg text-muted-foreground">
+                  These are the tools we expect to see in most Nimara clients. We design workplans and templates assuming some mix of these.
+                </p>
               </div>
-              <p className="text-lg text-muted-foreground mb-8">
-                These are the tools we expect to see in most Nimara clients. We design workplans and templates assuming some mix of these.
-              </p>
 
               <div className="grid gap-6 md:grid-cols-2">
                 {/* Accounting & Finance */}
@@ -198,25 +211,38 @@ export default function Integrations() {
                 </div>
               </div>
 
-              <div className="mt-8 bg-[#6945D8]/10 border border-[#6945D8]/20 rounded-2xl p-6">
-                <p className="text-foreground font-semibold mb-2">In plain language:</p>
-                <p className="text-muted-foreground">
-                  If your finance lives in QuickBooks and your donations live in Keela, Salesforce, or CanadaHelps, and your team lives in Google or Microsoft, you are in our "happy path" for Nimara.
-                </p>
+              <div className="mt-10 relative overflow-hidden bg-gradient-to-br from-[#6945D8]/10 via-[#6945D8]/5 to-transparent border-2 border-[#6945D8]/20 rounded-3xl p-8">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-[#6945D8]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                <div className="relative">
+                  <div className="inline-flex items-center gap-2 bg-[#6945D8] text-white px-3 py-1 rounded-full text-xs font-bold mb-4">
+                    <CheckCircle2 className="w-3 h-3" />
+                    IN PLAIN LANGUAGE
+                  </div>
+                  <p className="text-lg text-foreground font-medium leading-relaxed">
+                    If your finance lives in QuickBooks and your donations live in Keela, Salesforce, or CanadaHelps, and your team lives in Google or Microsoft, you are in our <span className="text-[#6945D8] font-bold">"happy path"</span> for Nimara.
+                  </p>
+                </div>
               </div>
             </section>
 
             {/* Level 2 - Common Add-ons */}
-            <section className="mb-16">
-              <div className="flex items-center gap-3 mb-6">
-                <Users className="w-8 h-8 text-[#ACFCE3]" />
-                <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
-                  Level 2 – Common tools we see and support
-                </h2>
+            <section className="mb-24">
+              <div className="bg-gradient-to-r from-[#ACFCE3]/10 to-transparent rounded-3xl p-8 mb-8 border-l-4 border-[#ACFCE3]">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-14 h-14 bg-[#ACFCE3] rounded-2xl flex items-center justify-center shadow-lg">
+                    <Users className="w-7 h-7 text-[#202654]" />
+                  </div>
+                  <div>
+                    <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
+                      Level 2 – Common tools
+                    </h2>
+                    <p className="text-sm text-[#ACFCE3] font-semibold mt-1" style={{ color: '#4CBFA6' }}>We see and support</p>
+                  </div>
+                </div>
+                <p className="text-lg text-muted-foreground">
+                  These are tools we see often in small–mid nonprofits. We support them where it makes sense, using a mix of direct connections, templates, and imports.
+                </p>
               </div>
-              <p className="text-lg text-muted-foreground mb-8">
-                These are tools we see often in small–mid nonprofits. We support them where it makes sense, using a mix of direct connections, templates, and imports.
-              </p>
 
               <div className="grid gap-6 md:grid-cols-2">
                 {/* Accounting & Finance */}
@@ -415,30 +441,41 @@ export default function Integrations() {
                 </div>
               </div>
 
-              <div className="mt-8 bg-[#ACFCE3]/10 border border-[#ACFCE3]/30 rounded-2xl p-6">
-                <p className="text-foreground font-semibold mb-2">In plain language:</p>
-                <p className="text-muted-foreground">
-                  If you use any of these tools, Nimara can still plug in. We may use a mix of light integrations, exports/imports, and clear process maps to keep your systems talking to each other.
-                </p>
+              <div className="mt-10 relative overflow-hidden bg-gradient-to-br from-[#ACFCE3]/10 via-[#ACFCE3]/5 to-transparent border-2 border-[#ACFCE3]/30 rounded-3xl p-8">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-[#ACFCE3]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                <div className="relative">
+                  <div className="inline-flex items-center gap-2 bg-[#ACFCE3] text-[#202654] px-3 py-1 rounded-full text-xs font-bold mb-4">
+                    <CheckCircle2 className="w-3 h-3" />
+                    IN PLAIN LANGUAGE
+                  </div>
+                  <p className="text-lg text-foreground font-medium leading-relaxed">
+                    If you use any of these tools, Nimara can still plug in. We may use a mix of light integrations, exports/imports, and clear process maps to keep your systems talking to each other.
+                  </p>
+                </div>
               </div>
             </section>
 
             {/* Level 3 - Flexible Connections */}
-            <section className="mb-16">
-              <div className="flex items-center gap-3 mb-6">
-                <Link2 className="w-8 h-8 text-muted-foreground" />
-                <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
-                  Level 3 – Flexible connections (long tail tools)
-                </h2>
-              </div>
-              <p className="text-lg text-muted-foreground mb-8">
-                Nonprofits use a long list of "other" tools: smaller CRMs, ticketing tools, custom databases, or legacy systems.
-              </p>
-
-              <div className="bg-card border border-border rounded-2xl p-8">
-                <p className="text-muted-foreground mb-6">
-                  For these, Nimara uses simple ways to connect:
+            <section className="mb-24">
+              <div className="bg-gradient-to-r from-muted/50 to-transparent rounded-3xl p-8 mb-8 border-l-4 border-border">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-14 h-14 bg-muted rounded-2xl flex items-center justify-center shadow-lg">
+                    <Link2 className="w-7 h-7 text-foreground" />
+                  </div>
+                  <div>
+                    <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
+                      Level 3 – Flexible connections
+                    </h2>
+                    <p className="text-sm text-muted-foreground font-semibold mt-1">Long tail tools</p>
+                  </div>
+                </div>
+                <p className="text-lg text-muted-foreground">
+                  Nonprofits use a long list of "other" tools: smaller CRMs, ticketing tools, custom databases, or legacy systems.
                 </p>
+              </div>
+
+              <div className="bg-card border-2 border-border rounded-3xl p-8 shadow-sm">
+                <h3 className="text-xl font-bold text-foreground mb-6">Simple connection methods</h3>
                 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="group bg-muted/30 rounded-xl p-4 hover:bg-muted/50 transition-all cursor-pointer hover-scale">
@@ -491,164 +528,184 @@ export default function Integrations() {
                   </div>
                 </div>
 
-                <div className="mt-6 pt-6 border-t border-border">
-                  <p className="text-muted-foreground">
-                    We treat these as <strong className="text-foreground">"data bridges"</strong>, not big IT projects. The goal is simple: your systems stay updated enough to make decisions and pass audits.
-                  </p>
+                <div className="mt-8 pt-8 border-t border-border">
+                  <div className="bg-muted/30 rounded-2xl p-6">
+                    <p className="text-foreground font-medium text-lg leading-relaxed">
+                      We treat these as <span className="text-[#6945D8] font-bold">"data bridges"</span>, not big IT projects. The goal is simple: your systems stay updated enough to make decisions and pass audits.
+                    </p>
+                  </div>
                 </div>
               </div>
             </section>
 
             {/* How Nimara Uses Tools */}
-            <section className="mb-16">
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
-                How Nimara uses your tools in practice
-              </h2>
+            <section className="mb-24">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                  How Nimara uses your tools in practice
+                </h2>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                  A simple three-step process to get your tools working together
+                </p>
+              </div>
               
-              <div className="space-y-6">
-                <div className="bg-card border border-border rounded-2xl p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full bg-[#6945D8]/10 flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-[#6945D8] font-bold">1</span>
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="group bg-card border-2 border-border rounded-3xl p-8 hover:border-[#6945D8]/30 hover:shadow-xl transition-all hover:-translate-y-1">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#6945D8] to-[#7A5DE0] flex items-center justify-center flex-shrink-0 mb-6 shadow-lg">
+                    <span className="text-white font-bold text-2xl">1</span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-[#6945D8] transition-colors">Ask what tools you already use</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    In our intake and Organizational Health Check, we ask you to tick off tools from the list above and add anything else.
+                  </p>
+                </div>
+
+                <div className="group bg-card border-2 border-border rounded-3xl p-8 hover:border-[#6945D8]/30 hover:shadow-xl transition-all hover:-translate-y-1">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#6945D8] to-[#7A5DE0] flex items-center justify-center flex-shrink-0 mb-6 shadow-lg">
+                    <span className="text-white font-bold text-2xl">2</span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-[#6945D8] transition-colors">Pick the simplest path that works</h3>
+                  <div className="space-y-4">
+                    <div className="bg-muted/30 rounded-xl p-4">
+                      <p className="font-semibold text-foreground text-sm mb-2">Path A (single fix)</p>
+                      <ul className="space-y-1 text-sm text-muted-foreground">
+                        <li>• Pull data from existing tools</li>
+                        <li>• Fix the system</li>
+                        <li>• Show you how to maintain it</li>
+                      </ul>
                     </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-foreground mb-2">Ask what tools you already use</h3>
-                      <p className="text-muted-foreground">
-                        In our intake and Organizational Health Check, we ask you to tick off tools from the list above and add anything else.
-                      </p>
+                    <div className="bg-muted/30 rounded-xl p-4">
+                      <p className="font-semibold text-foreground text-sm mb-2">Path B (full packages)</p>
+                      <ul className="space-y-1 text-sm text-muted-foreground">
+                        <li>• Set up automations</li>
+                        <li>• Standardize reports</li>
+                        <li>• Create playbooks</li>
+                      </ul>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-card border border-border rounded-2xl p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full bg-[#6945D8]/10 flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-[#6945D8] font-bold">2</span>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-foreground mb-3">Pick the simplest path that works</h3>
-                      <div className="space-y-4">
-                        <div>
-                          <p className="font-semibold text-foreground mb-2">For Path A (single fix), we usually:</p>
-                          <ul className="space-y-1 ml-4 text-muted-foreground">
-                            <li>• Pull the data we need from your existing tools</li>
-                            <li>• Fix the process or system</li>
-                            <li>• Show you how to keep it updated</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <p className="font-semibold text-foreground mb-2">For Path B (bundles and bigger packages), we may:</p>
-                          <ul className="space-y-1 ml-4 text-muted-foreground">
-                            <li>• Set up light automations</li>
-                            <li>• Standardize reports across tools</li>
-                            <li>• Create playbooks so staff and volunteers know exactly what to do</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
+                <div className="group bg-card border-2 border-border rounded-3xl p-8 hover:border-[#6945D8]/30 hover:shadow-xl transition-all hover:-translate-y-1">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#6945D8] to-[#7A5DE0] flex items-center justify-center flex-shrink-0 mb-6 shadow-lg">
+                    <span className="text-white font-bold text-2xl">3</span>
                   </div>
-                </div>
-
-                <div className="bg-card border border-border rounded-2xl p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full bg-[#6945D8]/10 flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-[#6945D8] font-bold">3</span>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-foreground mb-2">Leave you with clear instructions</h3>
-                      <p className="text-muted-foreground">
-                        You get simple "how-to" steps in plain language, so your team can run the system without Nimara holding the pen forever.
-                      </p>
-                    </div>
-                  </div>
+                  <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-[#6945D8] transition-colors">Leave you with clear instructions</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    You get simple "how-to" steps in plain language, so your team can run the system without Nimara holding the pen forever.
+                  </p>
                 </div>
               </div>
             </section>
 
             {/* Integration Philosophy */}
-            <section className="mb-16">
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
-                Our integration philosophy
-              </h2>
-              
-              <div className="bg-card border border-border rounded-2xl p-8">
-                <p className="text-muted-foreground mb-6">
-                  We design Nimara to be:
+            <section className="mb-24">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                  Our integration philosophy
+                </h2>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                  The principles that guide how we connect your tools
                 </p>
-                
-                <div className="space-y-6">
-                  <div>
-                    <h3 className="text-lg font-bold text-foreground mb-2">Tool-neutral</h3>
-                    <p className="text-muted-foreground">
-                      We do not sell software. We work with what you have where possible.
-                    </p>
+              </div>
+              
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="bg-card border-2 border-border rounded-2xl p-6 hover:border-[#6945D8]/30 hover:shadow-lg transition-all hover:-translate-y-1">
+                  <div className="w-12 h-12 bg-[#6945D8]/10 rounded-xl flex items-center justify-center mb-4">
+                    <CheckCircle2 className="w-6 h-6 text-[#6945D8]" />
                   </div>
+                  <h3 className="text-lg font-bold text-foreground mb-2">Tool-neutral</h3>
+                  <p className="text-sm text-muted-foreground">
+                    We do not sell software. We work with what you have where possible.
+                  </p>
+                </div>
 
-                  <div>
-                    <h3 className="text-lg font-bold text-foreground mb-2">Lightweight</h3>
-                    <p className="text-muted-foreground">
-                      We prefer simple, low-risk connections over heavy custom builds.
-                    </p>
+                <div className="bg-card border-2 border-border rounded-2xl p-6 hover:border-[#6945D8]/30 hover:shadow-lg transition-all hover:-translate-y-1">
+                  <div className="w-12 h-12 bg-[#6945D8]/10 rounded-xl flex items-center justify-center mb-4">
+                    <Zap className="w-6 h-6 text-[#6945D8]" />
                   </div>
+                  <h3 className="text-lg font-bold text-foreground mb-2">Lightweight</h3>
+                  <p className="text-sm text-muted-foreground">
+                    We prefer simple, low-risk connections over heavy custom builds.
+                  </p>
+                </div>
 
-                  <div>
-                    <h3 className="text-lg font-bold text-foreground mb-2">Data-first</h3>
-                    <p className="text-muted-foreground">
-                      The main goal is clean, reliable data for decisions, audits, and funders.
-                    </p>
+                <div className="bg-card border-2 border-border rounded-2xl p-6 hover:border-[#6945D8]/30 hover:shadow-lg transition-all hover:-translate-y-1">
+                  <div className="w-12 h-12 bg-[#6945D8]/10 rounded-xl flex items-center justify-center mb-4">
+                    <FileSpreadsheet className="w-6 h-6 text-[#6945D8]" />
                   </div>
+                  <h3 className="text-lg font-bold text-foreground mb-2">Data-first</h3>
+                  <p className="text-sm text-muted-foreground">
+                    The main goal is clean, reliable data for decisions, audits, and funders.
+                  </p>
+                </div>
 
-                  <div>
-                    <h3 className="text-lg font-bold text-foreground mb-2">Evidence-based</h3>
-                    <p className="text-muted-foreground mb-2">
-                      We decide which tools to integrate deeper with based on:
-                    </p>
-                    <ul className="space-y-1 ml-4 text-muted-foreground">
-                      <li>• How many clients use it</li>
-                      <li>• How critical it is to operations</li>
-                      <li>• How messy it is today</li>
-                    </ul>
+                <div className="bg-card border-2 border-border rounded-2xl p-6 hover:border-[#6945D8]/30 hover:shadow-lg transition-all hover:-translate-y-1">
+                  <div className="w-12 h-12 bg-[#6945D8]/10 rounded-xl flex items-center justify-center mb-4">
+                    <Users className="w-6 h-6 text-[#6945D8]" />
                   </div>
+                  <h3 className="text-lg font-bold text-foreground mb-2">Evidence-based</h3>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    We decide which tools to integrate deeper with based on:
+                  </p>
+                  <ul className="space-y-1 text-xs text-muted-foreground">
+                    <li>• Client usage</li>
+                    <li>• Operational criticality</li>
+                    <li>• Current data quality</li>
+                  </ul>
                 </div>
               </div>
             </section>
 
             {/* CTA Section */}
             <section>
-              <div className="bg-card border border-border rounded-2xl p-8 text-center">
-                <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">
-                  Don't see your tool here?
-                </h2>
-                <p className="text-muted-foreground mb-3 max-w-2xl mx-auto">
-                  That's okay.
-                </p>
-                <div className="space-y-4 text-left max-w-2xl mx-auto mb-8">
-                  <div>
-                    <p className="font-semibold text-foreground mb-2">If you are a nonprofit:</p>
-                    <p className="text-muted-foreground">
-                      Tell us what you use in your intake form. We will map it to the closest path and tell you what is possible inside your Nimara workplan.
-                    </p>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground mb-2">If you are a vendor or partner:</p>
-                    <p className="text-muted-foreground">
-                      Reach out if you want to explore a deeper connection with Nimara. We are happy to talk if your tool is serving small and mid-size nonprofits in Canada.
-                    </p>
-                  </div>
-                </div>
-                <a
-                  href="https://calendly.com/hello-nimara/30min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground hover:bg-[#7A5DE0] font-semibold px-8 py-3 rounded-xl shadow-soft transition-all min-h-[44px]"
-                >
-                  Schedule A Call
-                </a>
+              <div className="relative overflow-hidden bg-gradient-to-br from-[#202654] to-[#1a1f45] rounded-3xl p-12 text-center">
+                <div className="absolute top-0 right-0 w-96 h-96 bg-[#6945D8]/20 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#ACFCE3]/10 rounded-full blur-3xl"></div>
                 
-                <div className="mt-8 pt-8 border-t border-border">
-                  <p className="text-muted-foreground">
-                    <strong className="text-foreground">Bottom line:</strong> Nimara is built to sit on top of the tools you already have, clean them up, and make them work together so your team can focus on the real work, not the systems.
+                <div className="relative z-10">
+                  <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+                    Don't see your tool here?
+                  </h2>
+                  <p className="text-white/80 text-lg mb-10 max-w-2xl mx-auto">
+                    That's okay. We work with what you have.
                   </p>
+                  
+                  <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto mb-10">
+                    <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-left hover:bg-white/15 transition-all">
+                      <div className="w-10 h-10 bg-[#ACFCE3] rounded-lg flex items-center justify-center mb-4">
+                        <Users className="w-5 h-5 text-[#202654]" />
+                      </div>
+                      <p className="font-bold text-white mb-2">If you are a nonprofit</p>
+                      <p className="text-white/70 text-sm">
+                        Tell us what you use in your intake form. We will map it to the closest path and tell you what is possible inside your Nimara workplan.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-left hover:bg-white/15 transition-all">
+                      <div className="w-10 h-10 bg-[#ACFCE3] rounded-lg flex items-center justify-center mb-4">
+                        <Link2 className="w-5 h-5 text-[#202654]" />
+                      </div>
+                      <p className="font-bold text-white mb-2">If you are a vendor or partner</p>
+                      <p className="text-white/70 text-sm">
+                        Reach out if you want to explore a deeper connection with Nimara. We are happy to talk if your tool is serving small and mid-size nonprofits in Canada.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <a
+                    href="https://calendly.com/hello-nimara/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 bg-[#ACFCE3] text-[#202654] hover:bg-[#9EEBD4] font-bold px-10 py-4 rounded-xl shadow-xl transition-all min-h-[44px] hover:scale-105"
+                  >
+                    Schedule A Call
+                  </a>
+                  
+                  <div className="mt-10 pt-8 border-t border-white/20">
+                    <p className="text-white/80 text-lg max-w-3xl mx-auto">
+                      <span className="text-white font-bold">Bottom line:</span> Nimara is built to sit on top of the tools you already have, clean them up, and make them work together so your team can focus on the real work, not the systems.
+                    </p>
+                  </div>
                 </div>
               </div>
             </section>
