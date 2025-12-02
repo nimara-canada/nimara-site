@@ -19,7 +19,37 @@ import {
   Shield,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { QuizQuestion, Recommendation } from "../types";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+
+// --- Type Definitions ---
+interface QuizOption {
+  text: string;
+  value: number;
+  description: string;
+}
+
+interface QuizQuestion {
+  id: string;
+  question: string;
+  options: QuizOption[];
+}
+
+interface Recommendation {
+  level: number;
+  title: string;
+  badge: string;
+  color: string;
+  bgColor: string;
+  icon: React.ElementType;
+  description: string;
+  reasoning: string[];
+  features: string[];
+}
 
 // --- Mock Data & Constants ---
 
@@ -151,14 +181,55 @@ export default function Integrations() {
   const calculateRecommendation = (): Recommendation | null => {
     if (!showResult) return null;
 
-    // Simple logic generation for demo
+    // Calculate total and average
     const total = Object.values(answers).reduce((sum, val) => sum + val, 0);
     const average = total / Object.keys(answers).length;
-    const reasoning = [
-      "Your high volume of daily transactions requires automation.",
-      "The criticality of this tool demands real-time synchronization.",
-      "Limited technical capacity suggests a fully managed solution.",
-    ]; // Simplified for display
+    
+    // Generate personalized reasoning based on actual answers
+    const generateReasoningPoints = (): string[] => {
+      const points: string[] = [];
+      
+      if (answers['criticality'] === 3) {
+        points.push("This tool is mission-critical to your operations, requiring robust, automated integration.");
+      } else if (answers['criticality'] === 2) {
+        points.push("This tool plays an important role in your workflow, warranting reliable connectivity.");
+      }
+      
+      if (answers['sync-frequency'] === 3) {
+        points.push("Real-time or hourly sync needs demand deep API integration for continuous data flow.");
+      } else if (answers['sync-frequency'] === 2) {
+        points.push("Daily or weekly sync requirements can be met with scheduled, template-based connections.");
+      } else if (answers['sync-frequency'] === 1) {
+        points.push("Monthly or as-needed sync works well with simple manual data bridges.");
+      }
+      
+      if (answers['data-volume'] === 3) {
+        points.push("High transaction volume requires automated processes to avoid manual bottlenecks.");
+      } else if (answers['data-volume'] === 1) {
+        points.push("Low data volume makes lightweight, flexible solutions cost-effective.");
+      }
+      
+      if (answers['technical-capacity'] === 3) {
+        points.push("Limited technical capacity means a fully managed solution will save significant time and stress.");
+      } else if (answers['technical-capacity'] === 1) {
+        points.push("Your strong technical capacity allows you to leverage DIY solutions effectively.");
+      }
+      
+      if (answers['setup-time'] === 3) {
+        points.push("Quick implementation needs justify investing in pre-built, turnkey integrations.");
+      } else if (answers['setup-time'] === 1) {
+        points.push("Time flexibility allows for customized setup that exactly fits your needs.");
+      }
+      
+      // Ensure we have at least 3 points
+      if (points.length < 3) {
+        points.push("Your overall needs profile aligns well with this integration level.");
+      }
+      
+      return points;
+    };
+    
+    const reasoning = generateReasoningPoints();
 
     if (average >= 2.5) {
       return {
@@ -345,6 +416,194 @@ export default function Integrations() {
                         ))}
                       </ul>
                     </div>
+
+                    {/* Score Breakdown - Expandable with animations */}
+                    <details className="w-full mb-8 group">
+                      <summary className="flex items-center justify-between cursor-pointer list-none p-4 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition-all duration-200">
+                        <div className="flex items-center gap-3">
+                          <div className={`w-10 h-10 rounded-lg ${recommendation.bgColor} ${recommendation.color} flex items-center justify-center`}>
+                            <Activity className="w-5 h-5" />
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-slate-900">Score Breakdown</h4>
+                            <p className="text-xs text-slate-500">See how your answers contributed</p>
+                          </div>
+                        </div>
+                        <ChevronRight className="w-5 h-5 text-slate-400 transition-transform duration-300 group-open:rotate-90" />
+                      </summary>
+
+                      <div className="overflow-hidden">
+                        <div className="pt-6 pb-2 animate-in fade-in slide-in-from-top-2 duration-300">
+                          <TooltipProvider>
+                            {/* Overall Score Summary */}
+                            <div className="mb-6 p-4 rounded-xl bg-gradient-to-br from-slate-50 to-slate-100/50 border border-slate-200">
+                              <div className="flex items-start justify-between mb-3">
+                                <div>
+                                  <h5 className="font-bold text-slate-900 mb-1">Overall Score</h5>
+                                  <p className="text-sm text-slate-600">
+                                    {Object.values(answers).reduce((sum, val) => sum + val, 0)} out of{" "}
+                                    {Object.keys(answers).length * 3} points
+                                  </p>
+                                </div>
+                                <Tooltip>
+                                  <TooltipTrigger asChild>
+                                    <button className="text-slate-400 hover:text-slate-600 transition-colors">
+                                      <HelpCircle className="w-4 h-4" />
+                                    </button>
+                                  </TooltipTrigger>
+                                  <TooltipContent className="max-w-xs">
+                                    <p className="text-sm">
+                                      Your answers are scored 1-3 per question. Higher scores indicate stronger need for
+                                      automated, managed integrations.
+                                    </p>
+                                  </TooltipContent>
+                                </Tooltip>
+                              </div>
+
+                              {/* Overall progress bar with gradient and level markers */}
+                              <div className="relative">
+                                <div className="h-3 bg-slate-200 rounded-full overflow-hidden">
+                                  <div
+                                    className={`h-full bg-gradient-to-r ${
+                                      recommendation.level === 1
+                                        ? "from-indigo-500 to-indigo-600"
+                                        : recommendation.level === 2
+                                        ? "from-teal-500 to-teal-600"
+                                        : "from-slate-400 to-slate-500"
+                                    } transition-all duration-700 ease-out`}
+                                    style={{
+                                      width: `${
+                                        (Object.values(answers).reduce((sum, val) => sum + val, 0) /
+                                          (Object.keys(answers).length * 3)) *
+                                        100
+                                      }%`,
+                                    }}
+                                  />
+                                </div>
+                                {/* Level territory markers */}
+                                <div className="flex justify-between mt-2 text-xs">
+                                  <Tooltip>
+                                    <TooltipTrigger asChild>
+                                      <span className="text-slate-500 cursor-help flex items-center gap-1">
+                                        <span className="w-2 h-2 rounded-full bg-slate-400" />
+                                        Level 3
+                                      </span>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                      <p className="text-sm">Average score below 1.8</p>
+                                    </TooltipContent>
+                                  </Tooltip>
+                                  <Tooltip>
+                                    <TooltipTrigger asChild>
+                                      <span className="text-teal-600 cursor-help flex items-center gap-1">
+                                        <span className="w-2 h-2 rounded-full bg-teal-500" />
+                                        Level 2
+                                      </span>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                      <p className="text-sm">Average score 1.8 - 2.49</p>
+                                    </TooltipContent>
+                                  </Tooltip>
+                                  <Tooltip>
+                                    <TooltipTrigger asChild>
+                                      <span className="text-indigo-600 cursor-help flex items-center gap-1">
+                                        <span className="w-2 h-2 rounded-full bg-indigo-500" />
+                                        Level 1
+                                      </span>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                      <p className="text-sm">Average score 2.5 or higher</p>
+                                    </TooltipContent>
+                                  </Tooltip>
+                                </div>
+                                <div className="mt-2 text-center">
+                                  <Tooltip>
+                                    <TooltipTrigger asChild>
+                                      <span className="text-xs text-slate-500 cursor-help inline-flex items-center gap-1">
+                                        Your average: {(Object.values(answers).reduce((sum, val) => sum + val, 0) / Object.keys(answers).length).toFixed(2)}
+                                        <Info className="w-3 h-3" />
+                                      </span>
+                                    </TooltipTrigger>
+                                    <TooltipContent className="max-w-xs">
+                                      <p className="text-sm font-semibold mb-1">Score thresholds:</p>
+                                      <ul className="text-xs space-y-1">
+                                        <li>• ≥2.5: Level 1 (Deep automation needed)</li>
+                                        <li>• 1.8-2.49: Level 2 (Balanced approach)</li>
+                                        <li>• &lt;1.8: Level 3 (Flexible, lightweight)</li>
+                                      </ul>
+                                    </TooltipContent>
+                                  </Tooltip>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Individual Question Scores */}
+                            <div className="space-y-4">
+                              <h5 className="font-semibold text-slate-900 text-sm">Question-by-Question</h5>
+                              {quizQuestions.map((q, idx) => {
+                                const userAnswer = answers[q.id];
+                                const selectedOption = q.options.find((opt) => opt.value === userAnswer);
+                                if (!userAnswer || !selectedOption) return null;
+
+                                return (
+                                  <div
+                                    key={q.id}
+                                    className="p-4 rounded-lg border border-slate-100 bg-white hover:border-slate-200 transition-all duration-200 animate-in fade-in slide-in-from-left-4"
+                                    style={{ animationDelay: `${idx * 50}ms` }}
+                                  >
+                                    <div className="flex items-start justify-between mb-3">
+                                      <div className="flex-1">
+                                        <p className="text-sm font-medium text-slate-700 mb-1">{q.question}</p>
+                                        <p className="text-xs text-slate-500">Your answer: {selectedOption.text}</p>
+                                      </div>
+                                      <Tooltip>
+                                        <TooltipTrigger asChild>
+                                          <div className="flex items-center gap-2 ml-3">
+                                            <span className="text-sm font-bold text-slate-900">{userAnswer}/3</span>
+                                            <Info className="w-3.5 h-3.5 text-slate-400 cursor-help" />
+                                          </div>
+                                        </TooltipTrigger>
+                                        <TooltipContent className="max-w-xs">
+                                          <p className="text-xs">
+                                            {userAnswer === 3 && "High score: Indicates strong need for automation"}
+                                            {userAnswer === 2 && "Medium score: Balanced need for support"}
+                                            {userAnswer === 1 && "Low score: Can manage with lighter solutions"}
+                                          </p>
+                                        </TooltipContent>
+                                      </Tooltip>
+                                    </div>
+
+                                    {/* Progress bar for individual question */}
+                                    <div className="relative">
+                                      <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
+                                        <div
+                                          className={`h-full transition-all duration-500 ease-out ${
+                                            userAnswer === 3
+                                              ? "bg-indigo-500"
+                                              : userAnswer === 2
+                                              ? "bg-teal-500"
+                                              : "bg-slate-400"
+                                          }`}
+                                          style={{
+                                            width: `${(userAnswer / 3) * 100}%`,
+                                            transitionDelay: `${idx * 50 + 150}ms`,
+                                          }}
+                                        />
+                                      </div>
+                                      <div className="flex justify-between mt-1.5 text-xs text-slate-400">
+                                        <span>Level 3</span>
+                                        <span>Level 2</span>
+                                        <span>Level 1</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </TooltipProvider>
+                        </div>
+                      </div>
+                    </details>
 
                     <div className="flex gap-4 w-full sm:w-auto">
                       <a
