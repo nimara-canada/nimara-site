@@ -5,6 +5,12 @@ import { TheNimaraModel } from "@/components/company/TheNimaraModel";
 import HowItWorksHero from "@/components/company/HowItWorksHero";
 import YourJourney from "@/components/company/YourJourney";
 import { ChevronDown } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const HowNimaraWorks = () => {
   const handleScrollToTiers = () => {
@@ -46,11 +52,17 @@ const HowNimaraWorks = () => {
           <div className="absolute inset-x-0 -top-20 h-20 bg-gradient-to-b from-white/0 to-white pointer-events-none" />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
             <div className="flex items-center justify-center py-8">
-              <button
-                onClick={handleScrollToTiers}
-                className="flex flex-col items-center gap-1 cursor-pointer hover:scale-110 transition-transform duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6945D8] focus-visible:ring-offset-2 rounded-lg p-2"
-                aria-label="Scroll to tier section"
-              >
+              <TooltipProvider>
+                <Tooltip delayDuration={200}>
+                  <TooltipTrigger asChild>
+                    <button
+                      onClick={handleScrollToTiers}
+                      className="flex flex-col items-center gap-1 cursor-pointer hover:scale-110 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6945D8] focus-visible:ring-offset-2 rounded-lg p-2 relative"
+                      aria-label="Scroll to tier section"
+                    >
+                      {/* Pulsing glow effect */}
+                      <div className="absolute inset-0 rounded-lg bg-[#6945D8]/20 animate-pulse blur-md" />
+                      <div className="relative z-10 flex flex-col items-center gap-1">
                 {/* Animated arrows pointing down */}
                 <div className="flex flex-col items-center animate-bounce">
                   <ChevronDown className="w-5 h-5 text-slate-400" strokeWidth={2} />
@@ -71,7 +83,17 @@ const HowNimaraWorks = () => {
                   <ChevronDown className="w-5 h-5 text-slate-400 -mb-3" strokeWidth={2} />
                   <ChevronDown className="w-5 h-5 text-slate-400" strokeWidth={2} />
                 </div>
-              </button>
+                      </div>
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent 
+                    side="bottom" 
+                    className="bg-slate-900 text-white border-slate-700"
+                  >
+                    <p className="font-medium">See our tier model</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             </div>
           </div>
         </div>
