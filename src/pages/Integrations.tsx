@@ -1,202 +1,17 @@
 import { Helmet } from "react-helmet";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { ArrowLeft, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Zap, Users, Link2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
-import quickbooksLogo from "@/assets/integrations/quickbooks.svg";
-import slackLogo from "@/assets/integrations/slack.png";
-import googleLogo from "@/assets/integrations/google.jpg";
-import softrLogo from "@/assets/integrations/softr.png";
-import microsoftLogo from "@/assets/integrations/microsoft-icon.png";
-import mondayLogo from "@/assets/integrations/monday.png";
-import bamboohrLogo from "@/assets/integrations/bamboohr.webp";
-import salesforceLogo from "@/assets/integrations/salesforce.svg";
-import asanaLogo from "@/assets/integrations/asana.svg";
-
-type Category = "All" | "Accounting & Finance" | "CRM & Fundraising" | "Communication" | "Productivity" | "Project Management" | "Document Management" | "No-Code Tools";
-
-interface Integration {
-  id: string;
-  name: string;
-  subtitle: string;
-  logo: string;
-  category: Category;
-  description: string;
-  benefits: string[];
-  setupGuide: string;
-}
-
-const categories: Category[] = [
-  "All",
-  "Accounting & Finance",
-  "CRM & Fundraising",
-  "Communication",
-  "Productivity",
-  "Project Management",
-  "Document Management",
-  "No-Code Tools"
-];
-
-const integrations: Integration[] = [
-  {
-    id: "quickbooks",
-    name: "QuickBooks",
-    subtitle: "Sync financial data automatically.",
-    logo: quickbooksLogo,
-    category: "Accounting & Finance",
-    description: "QuickBooks integration ensures your financial data flows seamlessly between your accounting system and Nimara's management platform. Maintain accurate records without manual data entry.",
-    benefits: [
-      "Automatic synchronization of transactions and balances",
-      "Real-time visibility into financial health",
-      "Reduced errors from manual data entry",
-      "Simplified month-end reconciliation processes"
-    ],
-    setupGuide: "Connect your QuickBooks account using secure OAuth authentication. Grant Nimara read access to your financial data. The integration syncs automatically every hour to keep your records current."
-  },
-  {
-    id: "salesforce",
-    name: "Salesforce",
-    subtitle: "Connect donor and CRM data.",
-    logo: salesforceLogo,
-    category: "CRM & Fundraising",
-    description: "The Salesforce integration brings your donor relationships and CRM data into Nimara's ecosystem, enabling better stewardship and more informed decision-making across your organization.",
-    benefits: [
-      "Unified view of donor relationships and interactions",
-      "Automated donor communication tracking",
-      "Enhanced gift processing workflows",
-      "Better insights into donor engagement patterns"
-    ],
-    setupGuide: "Authorize Nimara to connect with your Salesforce instance through their secure API. Select which objects and fields to sync (contacts, donations, campaigns). Data refreshes automatically to keep donor information up-to-date."
-  },
-  {
-    id: "slack",
-    name: "Slack",
-    subtitle: "Get updates where your team chats.",
-    logo: slackLogo,
-    category: "Communication",
-    description: "Stay informed with real-time notifications delivered directly to your Slack workspace. Keep your team aligned on important updates without switching between applications.",
-    benefits: [
-      "Real-time alerts for critical updates and deadlines",
-      "Team collaboration on tasks without leaving Slack",
-      "Customizable notification preferences by channel",
-      "Quick status updates and approvals via Slack"
-    ],
-    setupGuide: "Install the Nimara app from the Slack App Directory to your workspace. Choose which channels receive specific notification types. Configure alert preferences for your team's workflow needs."
-  },
-  {
-    id: "google",
-    name: "Google Workspace",
-    subtitle: "Store and share files in one place.",
-    logo: googleLogo,
-    category: "Productivity",
-    description: "Connect your Google Workspace to centralize document storage, enable seamless file sharing, and maintain version control across your organization's important files.",
-    benefits: [
-      "Centralized document storage and management",
-      "Real-time collaboration on shared files",
-      "Automatic version history and backup",
-      "Integrated calendar and email workflows"
-    ],
-    setupGuide: "Connect your Google Workspace account via OAuth. Grant permissions for Drive, Calendar, and Gmail access as needed. Select folders to sync with Nimara for organized file management."
-  },
-  {
-    id: "softr",
-    name: "Softr",
-    subtitle: "Build client portals without code.",
-    logo: softrLogo,
-    category: "No-Code Tools",
-    description: "Create custom client portals and member areas using Softr's no-code platform, powered by data from Nimara. Give stakeholders secure access to relevant information without technical complexity.",
-    benefits: [
-      "No-code portal creation for donors and stakeholders",
-      "Secure, role-based access to information",
-      "Branded experience matching your organization",
-      "Real-time data sync from Nimara databases"
-    ],
-    setupGuide: "Link your Softr account to Nimara's data sources through API connection. Map data fields to portal views and configure access permissions. Customize the portal design to match your brand."
-  },
-  {
-    id: "microsoft365",
-    name: "Microsoft 365",
-    subtitle: "Connect calendar, email, and productivity tools.",
-    logo: microsoftLogo,
-    category: "Productivity",
-    description: "Integrate Microsoft 365 to sync calendars, automate email communications, and connect productivity tools across your organization's workflow.",
-    benefits: [
-      "Synchronized calendars and meeting schedules",
-      "Automated email workflows and templates",
-      "SharePoint document integration",
-      "Teams collaboration space connections"
-    ],
-    setupGuide: "Authenticate your Microsoft 365 account through secure OAuth. Select services to integrate (Outlook, Calendar, SharePoint, Teams). Configure sync preferences and notification settings for your workflow."
-  },
-  {
-    id: "monday",
-    name: "Monday.com",
-    subtitle: "Track tasks and project steps.",
-    logo: mondayLogo,
-    category: "Project Management",
-    description: "Connect Monday.com to track projects, manage tasks, and maintain visibility across your nonprofit's operational workflow from within Nimara's platform.",
-    benefits: [
-      "Centralized project and task management",
-      "Visual workflow tracking and status updates",
-      "Automated task assignments and reminders",
-      "Cross-team collaboration and accountability"
-    ],
-    setupGuide: "Connect your Monday.com workspace through API authentication. Choose which boards and items to sync with Nimara. Set up automation rules to trigger updates between platforms."
-  },
-  {
-    id: "bamboohr",
-    name: "BambooHR",
-    subtitle: "Manage employee records and HR workflows.",
-    logo: bamboohrLogo,
-    category: "Document Management",
-    description: "Streamline HR management with BambooHR integration. Manage employee records, track time off, and maintain personnel files in one centralized system.",
-    benefits: [
-      "Centralized employee records and documentation",
-      "Automated time-off tracking and approval workflows",
-      "Performance review management and tracking",
-      "Secure storage of personnel files and compliance documents"
-    ],
-    setupGuide: "Link your BambooHR account via OAuth connection. Configure employee data sync preferences and field mappings. Set up automatic triggers for onboarding and HR workflow notifications."
-  },
-  {
-    id: "asana",
-    name: "Asana",
-    subtitle: "Manage projects and workflows.",
-    logo: asanaLogo,
-    category: "Project Management",
-    description: "Integrate Asana to coordinate projects, assign tasks, and maintain team accountability across your nonprofit's operations from Nimara's centralized platform.",
-    benefits: [
-      "Streamlined project planning and execution",
-      "Clear task ownership and deadlines",
-      "Progress tracking across multiple initiatives",
-      "Team workload balancing and capacity planning"
-    ],
-    setupGuide: "Authorize Nimara to access your Asana workspace through API connection. Select projects and tasks to sync. Configure bidirectional updates to keep both platforms current."
-  }
-];
 
 export default function Integrations() {
-  const [selectedCategory, setSelectedCategory] = useState<Category>("All");
-
-  const filteredIntegrations = selectedCategory === "All" 
-    ? integrations 
-    : integrations.filter(integration => integration.category === selectedCategory);
-
   return (
     <>
       <Helmet>
-        <title>Integrations - Nimara</title>
+        <title>Supported Tools Map - Nimara</title>
         <meta 
           name="description" 
-          content="Connect Nimara with your existing tools. Explore integrations with QuickBooks, Salesforce, Slack, Google Workspace, and more to streamline your nonprofit operations." 
+          content="Nimara fits around the tools you already use. See how we connect to QuickBooks, Salesforce, Keela, Google Workspace, Microsoft 365, and dozens more nonprofit tools." 
         />
       </Helmet>
 
@@ -204,7 +19,7 @@ export default function Integrations() {
         <Header />
 
         <main className="pt-24 pb-16">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
             {/* Back Link */}
             <Link 
               to="/"
@@ -215,125 +30,420 @@ export default function Integrations() {
             </Link>
 
             {/* Page Header */}
-            <div className="max-w-4xl mb-12">
+            <div className="mb-16">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-                Integrations
+                Nimara supported tools map
               </h1>
-              <p className="text-xl text-muted-foreground leading-relaxed">
-                Connect Nimara with the tools you already use. Our integrations help your nonprofit work more efficiently by syncing data, automating workflows, and centralizing information across platforms.
-              </p>
-            </div>
-
-            {/* Category Filter */}
-            <div className="max-w-5xl mx-auto mb-8">
-              <div className="flex flex-wrap gap-2 justify-center">
-                {categories.map((category) => (
-                  <Button
-                    key={category}
-                    variant={selectedCategory === category ? "default" : "outline"}
-                    onClick={() => setSelectedCategory(category)}
-                    className="text-sm"
-                  >
-                    {category}
-                  </Button>
-                ))}
+              <div className="prose prose-lg max-w-none text-muted-foreground">
+                <p className="text-xl leading-relaxed mb-4">
+                  Nimara fits around the tools you already use. We don't force you to rip and replace your whole tech stack.
+                </p>
+                <p className="text-lg leading-relaxed">
+                  This page shows the tools we see most in small and mid-size Canadian nonprofits, and how Nimara connects to them.
+                </p>
+              </div>
+              
+              <div className="mt-8 bg-card border border-border rounded-2xl p-6">
+                <p className="text-muted-foreground mb-4">
+                  We group tools into three levels:
+                </p>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-3">
+                    <Zap className="w-5 h-5 text-[#6945D8] mt-0.5 flex-shrink-0" />
+                    <span><strong className="text-foreground">Level 1 – Core connections:</strong> focus for our MVP and fastest to support.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Users className="w-5 h-5 text-[#ACFCE3] mt-0.5 flex-shrink-0" />
+                    <span><strong className="text-foreground">Level 2 – Common add-ons:</strong> we support where there is demand.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Link2 className="w-5 h-5 text-muted-foreground mt-0.5 flex-shrink-0" />
+                    <span><strong className="text-foreground">Level 3 – Flexible connections:</strong> anything else via imports, exports, and light automation.</span>
+                  </li>
+                </ul>
               </div>
             </div>
 
-            {/* Results Count */}
-            <div className="max-w-5xl mx-auto mb-4">
-              <p className="text-sm text-muted-foreground text-center">
-                Showing {filteredIntegrations.length} {filteredIntegrations.length === 1 ? 'integration' : 'integrations'}
+            {/* Level 1 - Core Connections */}
+            <section className="mb-16">
+              <div className="flex items-center gap-3 mb-6">
+                <Zap className="w-8 h-8 text-[#6945D8]" />
+                <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
+                  Level 1 – Core connections (our main focus)
+                </h2>
+              </div>
+              <p className="text-lg text-muted-foreground mb-8">
+                These are the tools we expect to see in most Nimara clients. We design workplans and templates assuming some mix of these.
               </p>
-            </div>
 
-            {/* Integrations Accordion */}
-            <div className="max-w-5xl mx-auto">
-              <Accordion type="single" collapsible className="space-y-4">
-                {filteredIntegrations.map((integration) => (
-                  <AccordionItem 
-                    key={integration.id} 
-                    value={integration.id}
-                    className="bg-card rounded-2xl border border-border shadow-soft overflow-hidden"
-                  >
-                    <AccordionTrigger className="px-6 py-5 hover:no-underline hover:bg-muted/50 transition-colors">
-                      <div className="flex items-center gap-4 text-left">
-                        <div className="w-14 h-14 flex items-center justify-center flex-shrink-0">
-                          <img 
-                            src={integration.logo} 
-                            alt={`${integration.name} logo`}
-                            className="w-12 h-12 object-contain"
-                          />
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="font-bold text-lg text-foreground mb-1">
-                            {integration.name}
-                          </h3>
-                          <p className="text-sm text-muted-foreground">
-                            {integration.subtitle}
-                          </p>
-                        </div>
-                      </div>
-                    </AccordionTrigger>
-                    
-                    <AccordionContent className="px-6 pb-6">
-                      <div className="space-y-6 pt-4">
-                        {/* Description */}
-                        <div>
-                          <p className="text-muted-foreground leading-relaxed">
-                            {integration.description}
-                          </p>
-                        </div>
+              <div className="grid gap-6 md:grid-cols-2">
+                {/* Accounting & Finance */}
+                <div className="bg-card border border-border rounded-2xl p-6">
+                  <h3 className="text-xl font-bold text-foreground mb-4">Accounting & finance</h3>
+                  <ul className="space-y-2">
+                    <li className="text-muted-foreground">• QuickBooks Online</li>
+                  </ul>
+                </div>
 
-                        {/* Benefits */}
+                {/* Donor & Fundraising */}
+                <div className="bg-card border border-border rounded-2xl p-6">
+                  <h3 className="text-xl font-bold text-foreground mb-4">Donor & fundraising stack</h3>
+                  <ul className="space-y-2">
+                    <li className="text-muted-foreground">• Keela (nonprofit CRM)</li>
+                    <li className="text-muted-foreground">• Salesforce Nonprofit Cloud / NPSP</li>
+                    <li className="text-muted-foreground">• CanadaHelps (online donations)</li>
+                  </ul>
+                </div>
+
+                {/* Payments */}
+                <div className="bg-card border border-border rounded-2xl p-6">
+                  <h3 className="text-xl font-bold text-foreground mb-4">Payments</h3>
+                  <ul className="space-y-2">
+                    <li className="text-muted-foreground">• Stripe</li>
+                    <li className="text-muted-foreground">• PayPal</li>
+                  </ul>
+                </div>
+
+                {/* Email, files, everyday work */}
+                <div className="bg-card border border-border rounded-2xl p-6">
+                  <h3 className="text-xl font-bold text-foreground mb-4">Email, files, and everyday work</h3>
+                  <div className="space-y-3">
+                    <div>
+                      <p className="font-semibold text-foreground mb-1">Google Workspace</p>
+                      <ul className="space-y-1 ml-4">
+                        <li className="text-muted-foreground text-sm">• Gmail</li>
+                        <li className="text-muted-foreground text-sm">• Google Drive / Docs / Sheets / Forms</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-foreground mb-1">Microsoft 365</p>
+                      <ul className="space-y-1 ml-4">
+                        <li className="text-muted-foreground text-sm">• Outlook</li>
+                        <li className="text-muted-foreground text-sm">• OneDrive / SharePoint</li>
+                        <li className="text-muted-foreground text-sm">• Teams</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Email Marketing */}
+                <div className="bg-card border border-border rounded-2xl p-6">
+                  <h3 className="text-xl font-bold text-foreground mb-4">Email marketing</h3>
+                  <ul className="space-y-2">
+                    <li className="text-muted-foreground">• Mailchimp</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="mt-8 bg-[#6945D8]/10 border border-[#6945D8]/20 rounded-2xl p-6">
+                <p className="text-foreground font-semibold mb-2">In plain language:</p>
+                <p className="text-muted-foreground">
+                  If your finance lives in QuickBooks and your donations live in Keela, Salesforce, or CanadaHelps, and your team lives in Google or Microsoft, you are in our "happy path" for Nimara.
+                </p>
+              </div>
+            </section>
+
+            {/* Level 2 - Common Add-ons */}
+            <section className="mb-16">
+              <div className="flex items-center gap-3 mb-6">
+                <Users className="w-8 h-8 text-[#ACFCE3]" />
+                <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
+                  Level 2 – Common tools we see and support
+                </h2>
+              </div>
+              <p className="text-lg text-muted-foreground mb-8">
+                These are tools we see often in small–mid nonprofits. We support them where it makes sense, using a mix of direct connections, templates, and imports.
+              </p>
+
+              <div className="grid gap-6 md:grid-cols-2">
+                {/* Accounting & Finance */}
+                <div className="bg-card border border-border rounded-2xl p-6">
+                  <h3 className="text-xl font-bold text-foreground mb-4">Accounting & finance</h3>
+                  <ul className="space-y-2">
+                    <li className="text-muted-foreground">• Sage 50cloud / Sage 300</li>
+                    <li className="text-muted-foreground">• Xero</li>
+                    <li className="text-muted-foreground">• Aplos</li>
+                  </ul>
+                </div>
+
+                {/* Donor CRM */}
+                <div className="bg-card border border-border rounded-2xl p-6">
+                  <h3 className="text-xl font-bold text-foreground mb-4">Donor CRM & fundraising</h3>
+                  <ul className="space-y-2">
+                    <li className="text-muted-foreground">• Sumac</li>
+                    <li className="text-muted-foreground">• Raiser's Edge NXT</li>
+                    <li className="text-muted-foreground">• Bloomerang</li>
+                    <li className="text-muted-foreground">• DonorPerfect</li>
+                    <li className="text-muted-foreground">• Neon CRM</li>
+                    <li className="text-muted-foreground">• Kindful</li>
+                  </ul>
+                </div>
+
+                {/* Online Donations */}
+                <div className="bg-card border border-border rounded-2xl p-6">
+                  <h3 className="text-xl font-bold text-foreground mb-4">Online donations & campaigns</h3>
+                  <ul className="space-y-2">
+                    <li className="text-muted-foreground">• Zeffy</li>
+                    <li className="text-muted-foreground">• Raisely</li>
+                  </ul>
+                </div>
+
+                {/* Membership */}
+                <div className="bg-card border border-border rounded-2xl p-6">
+                  <h3 className="text-xl font-bold text-foreground mb-4">Membership, advocacy, and "all-in-one" platforms</h3>
+                  <ul className="space-y-2">
+                    <li className="text-muted-foreground">• Wild Apricot</li>
+                    <li className="text-muted-foreground">• NationBuilder</li>
+                    <li className="text-muted-foreground">• Member365</li>
+                  </ul>
+                </div>
+
+                {/* Email Marketing */}
+                <div className="bg-card border border-border rounded-2xl p-6">
+                  <h3 className="text-xl font-bold text-foreground mb-4">Email marketing and mass communication</h3>
+                  <ul className="space-y-2">
+                    <li className="text-muted-foreground">• Constant Contact</li>
+                    <li className="text-muted-foreground">• Campaign Monitor</li>
+                  </ul>
+                </div>
+
+                {/* Project Management */}
+                <div className="bg-card border border-border rounded-2xl p-6">
+                  <h3 className="text-xl font-bold text-foreground mb-4">Project and work management</h3>
+                  <ul className="space-y-2">
+                    <li className="text-muted-foreground">• Asana</li>
+                    <li className="text-muted-foreground">• Trello</li>
+                    <li className="text-muted-foreground">• monday.com</li>
+                  </ul>
+                </div>
+
+                {/* Communication */}
+                <div className="bg-card border border-border rounded-2xl p-6">
+                  <h3 className="text-xl font-bold text-foreground mb-4">Communication and meetings</h3>
+                  <ul className="space-y-2">
+                    <li className="text-muted-foreground">• Zoom</li>
+                    <li className="text-muted-foreground">• Slack</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="mt-8 bg-[#ACFCE3]/10 border border-[#ACFCE3]/30 rounded-2xl p-6">
+                <p className="text-foreground font-semibold mb-2">In plain language:</p>
+                <p className="text-muted-foreground">
+                  If you use any of these tools, Nimara can still plug in. We may use a mix of light integrations, exports/imports, and clear process maps to keep your systems talking to each other.
+                </p>
+              </div>
+            </section>
+
+            {/* Level 3 - Flexible Connections */}
+            <section className="mb-16">
+              <div className="flex items-center gap-3 mb-6">
+                <Link2 className="w-8 h-8 text-muted-foreground" />
+                <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
+                  Level 3 – Flexible connections (long tail tools)
+                </h2>
+              </div>
+              <p className="text-lg text-muted-foreground mb-8">
+                Nonprofits use a long list of "other" tools: smaller CRMs, ticketing tools, custom databases, or legacy systems.
+              </p>
+
+              <div className="bg-card border border-border rounded-2xl p-8">
+                <p className="text-muted-foreground mb-6">
+                  For these, Nimara uses simple ways to connect:
+                </p>
+                
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="bg-muted/30 rounded-xl p-4">
+                    <h4 className="font-semibold text-foreground mb-2">CSV imports and exports</h4>
+                    <ul className="space-y-1 text-sm text-muted-foreground">
+                      <li>• Clean data in Sheets</li>
+                      <li>• Import into your CRM or finance tool</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-muted/30 rounded-xl p-4">
+                    <h4 className="font-semibold text-foreground mb-2">Standard reports</h4>
+                    <ul className="space-y-1 text-sm text-muted-foreground">
+                      <li>• Build report templates you can pull every month or quarter</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-muted/30 rounded-xl p-4">
+                    <h4 className="font-semibold text-foreground mb-2">Online forms</h4>
+                    <ul className="space-y-1 text-sm text-muted-foreground">
+                      <li>• Use Google Forms or your website to capture data in a clean format</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-muted/30 rounded-xl p-4">
+                    <h4 className="font-semibold text-foreground mb-2">Email parsing</h4>
+                    <ul className="space-y-1 text-sm text-muted-foreground">
+                      <li>• Turn common email workflows into tracked tasks and records</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-6 border-t border-border">
+                  <p className="text-muted-foreground">
+                    We treat these as <strong className="text-foreground">"data bridges"</strong>, not big IT projects. The goal is simple: your systems stay updated enough to make decisions and pass audits.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            {/* How Nimara Uses Tools */}
+            <section className="mb-16">
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
+                How Nimara uses your tools in practice
+              </h2>
+              
+              <div className="space-y-6">
+                <div className="bg-card border border-border rounded-2xl p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-[#6945D8]/10 flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-[#6945D8] font-bold">1</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-foreground mb-2">Ask what tools you already use</h3>
+                      <p className="text-muted-foreground">
+                        In our intake and Organizational Health Check, we ask you to tick off tools from the list above and add anything else.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-card border border-border rounded-2xl p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-[#6945D8]/10 flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-[#6945D8] font-bold">2</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-foreground mb-3">Pick the simplest path that works</h3>
+                      <div className="space-y-4">
                         <div>
-                          <h4 className="font-semibold text-foreground mb-3 flex items-center gap-2">
-                            <CheckCircle2 className="w-5 h-5 text-primary" />
-                            Key Benefits
-                          </h4>
-                          <ul className="space-y-2">
-                            {integration.benefits.map((benefit, index) => (
-                              <li key={index} className="flex items-start gap-2 text-muted-foreground">
-                                <span className="text-primary mt-1">•</span>
-                                <span>{benefit}</span>
-                              </li>
-                            ))}
+                          <p className="font-semibold text-foreground mb-2">For Path A (single fix), we usually:</p>
+                          <ul className="space-y-1 ml-4 text-muted-foreground">
+                            <li>• Pull the data we need from your existing tools</li>
+                            <li>• Fix the process or system</li>
+                            <li>• Show you how to keep it updated</li>
                           </ul>
                         </div>
-
-                        {/* Setup Guide */}
-                        <div className="bg-muted/30 rounded-xl p-4 border border-border/50">
-                          <h4 className="font-semibold text-foreground mb-2">
-                            Quick Setup
-                          </h4>
-                          <p className="text-sm text-muted-foreground leading-relaxed">
-                            {integration.setupGuide}
-                          </p>
+                        <div>
+                          <p className="font-semibold text-foreground mb-2">For Path B (bundles and bigger packages), we may:</p>
+                          <ul className="space-y-1 ml-4 text-muted-foreground">
+                            <li>• Set up light automations</li>
+                            <li>• Standardize reports across tools</li>
+                            <li>• Create playbooks so staff and volunteers know exactly what to do</li>
+                          </ul>
                         </div>
                       </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-card border border-border rounded-2xl p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-[#6945D8]/10 flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-[#6945D8] font-bold">3</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-foreground mb-2">Leave you with clear instructions</h3>
+                      <p className="text-muted-foreground">
+                        You get simple "how-to" steps in plain language, so your team can run the system without Nimara holding the pen forever.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Integration Philosophy */}
+            <section className="mb-16">
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
+                Our integration philosophy
+              </h2>
+              
+              <div className="bg-card border border-border rounded-2xl p-8">
+                <p className="text-muted-foreground mb-6">
+                  We design Nimara to be:
+                </p>
+                
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="text-lg font-bold text-foreground mb-2">Tool-neutral</h3>
+                    <p className="text-muted-foreground">
+                      We do not sell software. We work with what you have where possible.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg font-bold text-foreground mb-2">Lightweight</h3>
+                    <p className="text-muted-foreground">
+                      We prefer simple, low-risk connections over heavy custom builds.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg font-bold text-foreground mb-2">Data-first</h3>
+                    <p className="text-muted-foreground">
+                      The main goal is clean, reliable data for decisions, audits, and funders.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg font-bold text-foreground mb-2">Evidence-based</h3>
+                    <p className="text-muted-foreground mb-2">
+                      We decide which tools to integrate deeper with based on:
+                    </p>
+                    <ul className="space-y-1 ml-4 text-muted-foreground">
+                      <li>• How many clients use it</li>
+                      <li>• How critical it is to operations</li>
+                      <li>• How messy it is today</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </section>
 
             {/* CTA Section */}
-            <div className="max-w-3xl mx-auto text-center mt-16 bg-card rounded-2xl p-8 border border-border shadow-soft">
-              <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">
-                Need help with integrations?
-              </h2>
-              <p className="text-muted-foreground mb-6">
-                Our team can help you set up and optimize your integrations for maximum efficiency.
-              </p>
-              <a
-                href="https://calendly.com/hello-nimara/30min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground hover:bg-[#7A5DE0] font-semibold px-8 py-3 rounded-xl shadow-soft transition-all min-h-[44px]"
-              >
-                Schedule A Call
-              </a>
-            </div>
+            <section>
+              <div className="bg-card border border-border rounded-2xl p-8 text-center">
+                <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">
+                  Don't see your tool here?
+                </h2>
+                <p className="text-muted-foreground mb-3 max-w-2xl mx-auto">
+                  That's okay.
+                </p>
+                <div className="space-y-4 text-left max-w-2xl mx-auto mb-8">
+                  <div>
+                    <p className="font-semibold text-foreground mb-2">If you are a nonprofit:</p>
+                    <p className="text-muted-foreground">
+                      Tell us what you use in your intake form. We will map it to the closest path and tell you what is possible inside your Nimara workplan.
+                    </p>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground mb-2">If you are a vendor or partner:</p>
+                    <p className="text-muted-foreground">
+                      Reach out if you want to explore a deeper connection with Nimara. We are happy to talk if your tool is serving small and mid-size nonprofits in Canada.
+                    </p>
+                  </div>
+                </div>
+                <a
+                  href="https://calendly.com/hello-nimara/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground hover:bg-[#7A5DE0] font-semibold px-8 py-3 rounded-xl shadow-soft transition-all min-h-[44px]"
+                >
+                  Schedule A Call
+                </a>
+                
+                <div className="mt-8 pt-8 border-t border-border">
+                  <p className="text-muted-foreground">
+                    <strong className="text-foreground">Bottom line:</strong> Nimara is built to sit on top of the tools you already have, clean them up, and make them work together so your team can focus on the real work, not the systems.
+                  </p>
+                </div>
+              </div>
+            </section>
           </div>
         </main>
 
