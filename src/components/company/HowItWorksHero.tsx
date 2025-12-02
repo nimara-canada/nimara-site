@@ -81,7 +81,7 @@ const HowItWorksHero: React.FC = () => {
               {/* Buttons */}
               <motion.div 
                 variants={itemVariants}
-                className="flex flex-col sm:flex-row gap-4 mb-6"
+                className="flex flex-col gap-4 mb-6"
               >
                 <Link
                   to="/organizational-health-check"
