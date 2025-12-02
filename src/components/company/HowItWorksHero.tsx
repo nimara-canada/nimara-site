@@ -38,7 +38,7 @@ const HowItWorksHero: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-slate-50/50 via-white to-slate-50/30" />
       
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        <div className="py-20 sm:py-24 lg:py-28 pb-12 sm:pb-16 lg:pb-20">
+        <div className="py-20 sm:py-24 lg:py-28 pb-8 sm:pb-12 lg:pb-16">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             
             {/* Text Content */}

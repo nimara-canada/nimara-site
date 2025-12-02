@@ -48,10 +48,10 @@ const HowNimaraWorks = () => {
         <HowItWorksHero />
         
         {/* Subtle visual connector with arrows */}
-        <div className="relative -mt-1 bg-white">
+        <div className="relative bg-white">
           <div className="absolute inset-x-0 -top-20 h-20 bg-gradient-to-b from-white/0 to-white pointer-events-none" />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-            <div className="flex items-center justify-center py-8">
+            <div className="flex items-center justify-center py-6 sm:py-8">
               <TooltipProvider>
                 <Tooltip delayDuration={200}>
                   <TooltipTrigger asChild>
