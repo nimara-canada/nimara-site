@@ -248,22 +248,15 @@ export const TheNimaraModel: React.FC = () => {
                 >
                   <div className={`h-full p-8 rounded-2xl bg-gradient-to-br border-2 transition-all hover:shadow-xl ${path.color}`}>
                     {/* Path Header */}
-                    <div className="flex items-start gap-4 mb-4">
-                      {path.icon && (
-                        <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center text-xl">
-                          {path.icon}
-                        </div>
-                      )}
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="text-sm font-medium text-slate-500">
-                            Path {path.letter}
-                          </span>
-                        </div>
-                        <h4 className="text-xl font-bold text-slate-900">
-                          {path.title}
-                        </h4>
+                    <div className="mb-4">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-sm font-medium text-slate-500">
+                          Path {path.letter}
+                        </span>
                       </div>
+                      <h4 className="text-xl font-bold text-slate-900">
+                        {path.title}
+                      </h4>
                     </div>
                     
                     {/* Description */}
