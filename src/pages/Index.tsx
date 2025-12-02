@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { HeroSection } from "@/components/HeroSection";
+import HeroSection from "@/components/HeroSection";
 import { FitCheck } from "@/components/FitCheck";
 import { HowWeHelp } from "@/components/HowWeHelp";
 import { SystemLadder } from "@/components/SystemLadder";
