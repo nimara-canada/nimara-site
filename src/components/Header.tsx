@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -19,6 +19,16 @@ interface HeaderProps {
 
 export const Header = ({ activeRoute = "/" }: HeaderProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollToGetInTouch = () => {
     // First, try to find form by ID
@@ -50,15 +60,15 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
         Skip to content
       </a>
 
-      <header className="sticky z-50 w-full border-b border-border bg-background shadow-sm" style={{ top: 'var(--announcement-height, 0px)' }}>
+      <header className={`sticky z-50 w-full border-b border-border bg-background shadow-sm transition-all duration-300 ${isScrolled ? 'py-1' : 'py-0'}`} style={{ top: 'var(--announcement-height, 0px)' }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
+          <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-14' : 'h-16'}`}>
             {/* Logo */}
             <a href="/" className="flex items-center space-x-2 min-h-[44px]" aria-label="Nimara home">
               <img 
                 src={nimaraLogo} 
                 alt="Nimara - Canadian Nonprofit Consulting Platform for Governance, Finance, and Compliance" 
-                className="h-16 md:h-20 w-auto" 
+                className={`w-auto transition-all duration-300 ${isScrolled ? 'h-12 md:h-16' : 'h-16 md:h-20'}`}
                 fetchPriority="high"
                 width="120"
                 height="48"
