@@ -10,7 +10,7 @@ import teamDavid from "@/assets/team-david.jpg";
 const operators = [
   {
     name: "Benard Serunyigo",
-    role: "Founder & CEO, Governance + Strategy",
+    role: "Founder & CEO",
     image: teamBenard,
     alt: "Portrait of Benard Serunyigo, Founder of Nimara",
     initials: "BS"
