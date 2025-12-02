@@ -399,6 +399,99 @@ export default function Integrations() {
                           </ul>
                         </div>
 
+                        {/* Score Breakdown */}
+                        <details className="bg-muted/30 border border-border rounded-2xl mb-6 group">
+                          <summary className="p-4 cursor-pointer hover:bg-muted/50 rounded-2xl transition-colors list-none">
+                            <div className="flex items-center justify-between">
+                              <h4 className="font-bold text-foreground flex items-center gap-2">
+                                <FileSpreadsheet className="w-5 h-5" style={{ color: recommendation.color }} />
+                                View detailed score breakdown
+                              </h4>
+                              <ArrowRight className="w-5 h-5 text-muted-foreground group-open:rotate-90 transition-transform" />
+                            </div>
+                          </summary>
+                          <div className="p-6 pt-2 space-y-4">
+                            <p className="text-sm text-muted-foreground mb-4">
+                              Here's how each of your answers contributed to the final recommendation:
+                            </p>
+                            
+                            {quizQuestions.map((question) => {
+                              const userAnswer = answers[question.id];
+                              const selectedOption = question.options.find(opt => opt.value === userAnswer);
+                              const percentage = (userAnswer / 3) * 100;
+                              
+                              return (
+                                <div key={question.id} className="space-y-2">
+                                  <div className="flex items-start justify-between gap-4">
+                                    <div className="flex-1">
+                                      <p className="text-sm font-semibold text-foreground mb-1">
+                                        {question.question}
+                                      </p>
+                                      <p className="text-xs text-muted-foreground">
+                                        Your answer: <span className="font-medium text-foreground">{selectedOption?.text}</span>
+                                      </p>
+                                    </div>
+                                    <div className="flex items-center gap-2 flex-shrink-0">
+                                      <span className="text-sm font-bold" style={{ color: recommendation.color }}>
+                                        {userAnswer}/3
+                                      </span>
+                                    </div>
+                                  </div>
+                                  
+                                  {/* Visual Score Bar */}
+                                  <div className="relative h-2 bg-muted rounded-full overflow-hidden">
+                                    <div 
+                                      className="absolute left-0 top-0 h-full rounded-full transition-all duration-500"
+                                      style={{ 
+                                        width: `${percentage}%`,
+                                        backgroundColor: recommendation.color
+                                      }}
+                                    ></div>
+                                  </div>
+                                  
+                                  {/* Level Indicators */}
+                                  <div className="flex justify-between text-xs">
+                                    <span className={userAnswer === 1 ? "font-semibold text-foreground" : "text-muted-foreground"}>
+                                      Level 3
+                                    </span>
+                                    <span className={userAnswer === 2 ? "font-semibold text-foreground" : "text-muted-foreground"}>
+                                      Level 2
+                                    </span>
+                                    <span className={userAnswer === 3 ? "font-semibold text-foreground" : "text-muted-foreground"}>
+                                      Level 1
+                                    </span>
+                                  </div>
+                                </div>
+                              );
+                            })}
+                            
+                            {/* Total Score */}
+                            <div className="mt-6 pt-6 border-t border-border">
+                              <div className="bg-gradient-to-r from-muted to-transparent rounded-xl p-4">
+                                <div className="flex items-center justify-between mb-3">
+                                  <span className="font-bold text-foreground">Overall Score</span>
+                                  <span className="text-2xl font-bold" style={{ color: recommendation.color }}>
+                                    {Object.values(answers).reduce((sum, val) => sum + val, 0)}/{quizQuestions.length * 3}
+                                  </span>
+                                </div>
+                                <div className="relative h-3 bg-muted rounded-full overflow-hidden">
+                                  <div 
+                                    className="absolute left-0 top-0 h-full rounded-full bg-gradient-to-r from-[#6945D8] to-[#7A5DE0] transition-all duration-700"
+                                    style={{ 
+                                      width: `${(Object.values(answers).reduce((sum, val) => sum + val, 0) / (quizQuestions.length * 3)) * 100}%`
+                                    }}
+                                  ></div>
+                                </div>
+                                <div className="flex justify-between text-xs text-muted-foreground mt-2">
+                                  <span>Level 3 territory</span>
+                                  <span>Level 2 territory</span>
+                                  <span>Level 1 territory</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </details>
+
                         {/* Features */}
                         <div className={`bg-gradient-to-br ${recommendation.bgColor} border-2 ${recommendation.borderColor} rounded-2xl p-6 mb-8 text-left`}>
                           <h4 className="font-bold text-foreground mb-4 flex items-center gap-2">
