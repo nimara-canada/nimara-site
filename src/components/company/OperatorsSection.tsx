@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card } from "@/components/ui/card";
-import { Link } from "react-router-dom";
+
 import teamBenard from "@/assets/team-benard-new.png";
 import teamThabani from "@/assets/team-thabani-new.jpg";
 import teamDarryl from "@/assets/team-darryl-new.jpg";
@@ -130,8 +130,10 @@ export const OperatorsSection = () => {
             We also work with a cross-Canada bench of Nimara Practice Partners in finance, HR, governance, fundraising, technology, and operations.
           </p>
           
-          <Link 
-            to="/consultants"
+          <a 
+            href="https://www.notion.so/Consultant-Hire-2bb227f1ee3a8018b693d47e9610c583"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors group"
           >
             Learn about Nimara Practice Partners
@@ -148,7 +150,7 @@ export const OperatorsSection = () => {
                 d="M9 5l7 7-7 7" 
               />
             </svg>
-          </Link>
+          </a>
         </motion.div>
       </div>
     </section>
