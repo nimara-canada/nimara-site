@@ -77,7 +77,7 @@ export const TheNimaraModel: React.FC = () => {
       letter: "B",
       title: "Tiered packages",
       description: "Deeper, pre-built bundles for organizations that need a full install across more than one area, such as finance + HR + governance for a Tier 2 or Tier 3 team.",
-      icon: "📦",
+      icon: "",
       color: "from-[#6945D8]/10 to-[#6945D8]/5 border-[#6945D8]"
     }
   ];
