@@ -98,11 +98,17 @@ const HowNimaraWorks = () => {
           </div>
         </div>
         
-        <div id="tier-section">
+        <div id="tier-section" className="relative">
+          {/* Subtle top divider */}
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
           <TheNimaraModel />
         </div>
         
-        <YourJourney />
+        {/* Section divider before YourJourney */}
+        <div className="relative">
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+          <YourJourney />
+        </div>
       </main>
       
       <Footer />
