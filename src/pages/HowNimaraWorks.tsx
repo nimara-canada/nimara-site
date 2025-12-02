@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { TheNimaraModel } from "@/components/company/TheNimaraModel";
 import HowItWorksHero from "@/components/company/HowItWorksHero";
 import YourJourney from "@/components/company/YourJourney";
+import QualityAndRefundsAlt from "@/components/company/QualityAndRefundsAlt";
 import { ChevronDown } from "lucide-react";
 import {
   Tooltip,
@@ -108,6 +109,12 @@ const HowNimaraWorks = () => {
         <div className="relative">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
           <YourJourney />
+        </div>
+        
+        {/* Quality and Refunds section */}
+        <div className="relative">
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+          <QualityAndRefundsAlt />
         </div>
       </main>
       
