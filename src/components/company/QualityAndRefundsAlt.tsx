@@ -53,11 +53,10 @@ const QualityAndRefundsAlt: React.FC = () => {
   return (
     <section 
       ref={sectionRef}
-      className="w-full py-20 sm:py-24 lg:py-32"
+      className="w-full py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-slate-50 to-white"
     >
-      <div className="bg-gradient-to-br from-blue-50/30 via-purple-50/20 to-slate-50/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl py-16">
-          <motion.div
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+        <motion.div
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={containerVariants}
@@ -124,8 +123,7 @@ const QualityAndRefundsAlt: React.FC = () => {
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </motion.div>
-          </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
