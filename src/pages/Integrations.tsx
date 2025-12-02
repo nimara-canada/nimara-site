@@ -1,10 +1,16 @@
 import { Helmet } from "react-helmet";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { ArrowLeft, CheckCircle2, Zap, Users, Link2, FileSpreadsheet, FileText, FormInput, Mail, ArrowRight, RefreshCw } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Zap, Users, Link2, FileSpreadsheet, FileText, FormInput, Mail, ArrowRight, RefreshCw, HelpCircle, Info } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import quickbooksLogo from "@/assets/integrations/quickbooks.svg";
 import salesforceLogo from "@/assets/integrations/salesforce.svg";
 import googleLogo from "@/assets/integrations/google.jpg";
@@ -411,9 +417,27 @@ export default function Integrations() {
                             </div>
                           </summary>
                           <div className="p-6 pt-2 space-y-4">
-                            <p className="text-sm text-muted-foreground mb-4">
-                              Here's how each of your answers contributed to the final recommendation:
-                            </p>
+                            <div className="flex items-start gap-2 mb-4">
+                              <p className="text-sm text-muted-foreground flex-1">
+                                Here's how each of your answers contributed to the final recommendation:
+                              </p>
+                              <TooltipProvider>
+                                <Tooltip>
+                                  <TooltipTrigger asChild>
+                                    <button className="text-muted-foreground hover:text-foreground transition-colors">
+                                      <HelpCircle className="w-4 h-4" />
+                                    </button>
+                                  </TooltipTrigger>
+                                  <TooltipContent className="max-w-xs">
+                                    <p className="text-sm">
+                                      <strong>Scoring system:</strong> Each answer is worth 1-3 points. 
+                                      3 points = needs Level 1 (core), 2 points = Level 2 (common), 
+                                      1 point = Level 3 (flexible). Your average determines the recommendation.
+                                    </p>
+                                  </TooltipContent>
+                                </Tooltip>
+                              </TooltipProvider>
+                            </div>
                             
                             {quizQuestions.map((question) => {
                               const userAnswer = answers[question.id];
@@ -432,9 +456,25 @@ export default function Integrations() {
                                       </p>
                                     </div>
                                     <div className="flex items-center gap-2 flex-shrink-0">
-                                      <span className="text-sm font-bold" style={{ color: recommendation.color }}>
-                                        {userAnswer}/3
-                                      </span>
+                                      <TooltipProvider>
+                                        <Tooltip>
+                                          <TooltipTrigger asChild>
+                                            <div className="flex items-center gap-1 cursor-help">
+                                              <span className="text-sm font-bold" style={{ color: recommendation.color }}>
+                                                {userAnswer}/3
+                                              </span>
+                                              <Info className="w-3.5 h-3.5 text-muted-foreground" />
+                                            </div>
+                                          </TooltipTrigger>
+                                          <TooltipContent className="max-w-xs">
+                                            <p className="text-sm">
+                                              {userAnswer === 3 && "3 points = High needs, best fit for Level 1 (core connections with real-time sync and full management)"}
+                                              {userAnswer === 2 && "2 points = Moderate needs, aligns with Level 2 (common tools with regular sync and shared maintenance)"}
+                                              {userAnswer === 1 && "1 point = Low needs, suitable for Level 3 (flexible connections with manual processes)"}
+                                            </p>
+                                          </TooltipContent>
+                                        </Tooltip>
+                                      </TooltipProvider>
                                     </div>
                                   </div>
                                   
@@ -469,10 +509,46 @@ export default function Integrations() {
                             <div className="mt-6 pt-6 border-t border-border">
                               <div className="bg-gradient-to-r from-muted to-transparent rounded-xl p-4">
                                 <div className="flex items-center justify-between mb-3">
-                                  <span className="font-bold text-foreground">Overall Score</span>
-                                  <span className="text-2xl font-bold" style={{ color: recommendation.color }}>
-                                    {Object.values(answers).reduce((sum, val) => sum + val, 0)}/{quizQuestions.length * 3}
-                                  </span>
+                                  <div className="flex items-center gap-2">
+                                    <span className="font-bold text-foreground">Overall Score</span>
+                                    <TooltipProvider>
+                                      <Tooltip>
+                                        <TooltipTrigger asChild>
+                                          <button className="text-muted-foreground hover:text-foreground transition-colors">
+                                            <HelpCircle className="w-4 h-4" />
+                                          </button>
+                                        </TooltipTrigger>
+                                        <TooltipContent className="max-w-sm">
+                                          <div className="space-y-2 text-sm">
+                                            <p className="font-semibold">Score thresholds:</p>
+                                            <p><strong>Average ≥ 2.5:</strong> Level 1 recommended (mission-critical needs requiring deep integration)</p>
+                                            <p><strong>Average ≥ 1.8:</strong> Level 2 recommended (important workflows needing regular sync)</p>
+                                            <p><strong>Average &lt; 1.8:</strong> Level 3 recommended (occasional needs with simple data bridges)</p>
+                                            <p className="pt-2 border-t border-border/50 text-xs text-muted-foreground">
+                                              These thresholds ensure you get the right balance of automation, support, and cost-effectiveness.
+                                            </p>
+                                          </div>
+                                        </TooltipContent>
+                                      </Tooltip>
+                                    </TooltipProvider>
+                                  </div>
+                                  <TooltipProvider>
+                                    <Tooltip>
+                                      <TooltipTrigger asChild>
+                                        <div className="flex items-center gap-1 cursor-help">
+                                          <span className="text-2xl font-bold" style={{ color: recommendation.color }}>
+                                            {Object.values(answers).reduce((sum, val) => sum + val, 0)}/{quizQuestions.length * 3}
+                                          </span>
+                                          <Info className="w-4 h-4 text-muted-foreground" />
+                                        </div>
+                                      </TooltipTrigger>
+                                      <TooltipContent>
+                                        <p className="text-sm">
+                                          Average: {(Object.values(answers).reduce((sum, val) => sum + val, 0) / quizQuestions.length).toFixed(2)} points per question
+                                        </p>
+                                      </TooltipContent>
+                                    </Tooltip>
+                                  </TooltipProvider>
                                 </div>
                                 <div className="relative h-3 bg-muted rounded-full overflow-hidden">
                                   <div 
@@ -483,9 +559,38 @@ export default function Integrations() {
                                   ></div>
                                 </div>
                                 <div className="flex justify-between text-xs text-muted-foreground mt-2">
-                                  <span>Level 3 territory</span>
-                                  <span>Level 2 territory</span>
-                                  <span>Level 1 territory</span>
+                                  <TooltipProvider>
+                                    <Tooltip>
+                                      <TooltipTrigger asChild>
+                                        <span className="cursor-help hover:text-foreground transition-colors">Level 3 territory</span>
+                                      </TooltipTrigger>
+                                      <TooltipContent>
+                                        <p className="text-sm">Average score below 1.8 (27/15 points)</p>
+                                      </TooltipContent>
+                                    </Tooltip>
+                                  </TooltipProvider>
+                                  
+                                  <TooltipProvider>
+                                    <Tooltip>
+                                      <TooltipTrigger asChild>
+                                        <span className="cursor-help hover:text-foreground transition-colors">Level 2 territory</span>
+                                      </TooltipTrigger>
+                                      <TooltipContent>
+                                        <p className="text-sm">Average score 1.8 to 2.5 (27-37.5/15 points)</p>
+                                      </TooltipContent>
+                                    </Tooltip>
+                                  </TooltipProvider>
+                                  
+                                  <TooltipProvider>
+                                    <Tooltip>
+                                      <TooltipTrigger asChild>
+                                        <span className="cursor-help hover:text-foreground transition-colors">Level 1 territory</span>
+                                      </TooltipTrigger>
+                                      <TooltipContent>
+                                        <p className="text-sm">Average score 2.5 or above (37.5+/15 points)</p>
+                                      </TooltipContent>
+                                    </Tooltip>
+                                  </TooltipProvider>
                                 </div>
                               </div>
                             </div>
