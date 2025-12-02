@@ -83,7 +83,7 @@ export const TheNimaraModel: React.FC = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="w-full pt-8 sm:pt-12 lg:pt-16 pb-16 sm:pb-20 lg:pb-24 bg-white">
+    <section ref={sectionRef} className="w-full pt-8 sm:pt-12 lg:pt-16 pb-16 sm:pb-20 lg:pb-24 bg-gradient-to-b from-white to-slate-50/30">{/* Added subtle gradient background */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         <motion.div
           initial="hidden"
