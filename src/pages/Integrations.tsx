@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { ArrowLeft, CheckCircle2, Zap, Users, Link2 } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Zap, Users, Link2, FileSpreadsheet, FileText, FormInput, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import quickbooksLogo from "@/assets/integrations/quickbooks.svg";
 import salesforceLogo from "@/assets/integrations/salesforce.svg";
@@ -107,8 +107,11 @@ export default function Integrations() {
                 <div className="bg-card border border-border rounded-2xl p-6">
                   <h3 className="text-xl font-bold text-foreground mb-4">Donor & fundraising stack</h3>
                   <div className="space-y-3">
-                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
-                      <span className="text-muted-foreground">• Keela (nonprofit CRM)</span>
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-[#6945D8]/10 rounded-lg">
+                        <span className="text-[#6945D8] font-bold text-sm">K</span>
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">Keela (nonprofit CRM)</span>
                     </div>
                     <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
                       <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
@@ -120,8 +123,11 @@ export default function Integrations() {
                       </div>
                       <span className="text-muted-foreground group-hover:text-foreground transition-colors">Salesforce Nonprofit Cloud / NPSP</span>
                     </div>
-                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
-                      <span className="text-muted-foreground">• CanadaHelps (online donations)</span>
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-[#6945D8]/10 rounded-lg">
+                        <span className="text-[#6945D8] font-bold text-sm">CH</span>
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">CanadaHelps (online donations)</span>
                     </div>
                   </div>
                 </div>
@@ -130,11 +136,17 @@ export default function Integrations() {
                 <div className="bg-card border border-border rounded-2xl p-6">
                   <h3 className="text-xl font-bold text-foreground mb-4">Payments</h3>
                   <div className="space-y-3">
-                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
-                      <span className="text-muted-foreground">• Stripe</span>
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-[#635BFF]/10 rounded-lg">
+                        <span className="text-[#635BFF] font-bold text-sm">S</span>
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">Stripe</span>
                     </div>
-                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
-                      <span className="text-muted-foreground">• PayPal</span>
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-[#00457C]/10 rounded-lg">
+                        <span className="text-[#00457C] font-bold text-sm">PP</span>
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">PayPal</span>
                     </div>
                   </div>
                 </div>
@@ -176,8 +188,11 @@ export default function Integrations() {
                 <div className="bg-card border border-border rounded-2xl p-6">
                   <h3 className="text-xl font-bold text-foreground mb-4">Email marketing</h3>
                   <div className="space-y-3">
-                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
-                      <span className="text-muted-foreground">• Mailchimp</span>
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-[#FFE01B]/20 rounded-lg">
+                        <span className="text-[#241C15] font-bold text-sm">MC</span>
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">Mailchimp</span>
                     </div>
                   </div>
                 </div>
@@ -218,11 +233,17 @@ export default function Integrations() {
                       </div>
                       <span className="text-muted-foreground group-hover:text-foreground transition-colors">Sage 50cloud / Sage 300</span>
                     </div>
-                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
-                      <span className="text-muted-foreground">• Xero</span>
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-[#13B5EA]/10 rounded-lg">
+                        <span className="text-[#13B5EA] font-bold text-sm">X</span>
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">Xero</span>
                     </div>
-                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
-                      <span className="text-muted-foreground">• Aplos</span>
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-[#6945D8]/10 rounded-lg">
+                        <span className="text-[#6945D8] font-bold text-sm">A</span>
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">Aplos</span>
                     </div>
                   </div>
                 </div>
@@ -231,23 +252,41 @@ export default function Integrations() {
                 <div className="bg-card border border-border rounded-2xl p-6">
                   <h3 className="text-xl font-bold text-foreground mb-4">Donor CRM & fundraising</h3>
                   <div className="space-y-3">
-                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
-                      <span className="text-muted-foreground">• Sumac</span>
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-[#6945D8]/10 rounded-lg">
+                        <span className="text-[#6945D8] font-bold text-sm">S</span>
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">Sumac</span>
                     </div>
-                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
-                      <span className="text-muted-foreground">• Raiser's Edge NXT</span>
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-[#6945D8]/10 rounded-lg">
+                        <span className="text-[#6945D8] font-bold text-sm">RE</span>
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">Raiser's Edge NXT</span>
                     </div>
-                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
-                      <span className="text-muted-foreground">• Bloomerang</span>
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-[#6945D8]/10 rounded-lg">
+                        <span className="text-[#6945D8] font-bold text-sm">B</span>
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">Bloomerang</span>
                     </div>
-                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
-                      <span className="text-muted-foreground">• DonorPerfect</span>
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-[#6945D8]/10 rounded-lg">
+                        <span className="text-[#6945D8] font-bold text-sm">DP</span>
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">DonorPerfect</span>
                     </div>
-                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
-                      <span className="text-muted-foreground">• Neon CRM</span>
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-[#6945D8]/10 rounded-lg">
+                        <span className="text-[#6945D8] font-bold text-sm">N</span>
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">Neon CRM</span>
                     </div>
-                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
-                      <span className="text-muted-foreground">• Kindful</span>
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-[#6945D8]/10 rounded-lg">
+                        <span className="text-[#6945D8] font-bold text-sm">K</span>
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">Kindful</span>
                     </div>
                   </div>
                 </div>
@@ -256,11 +295,17 @@ export default function Integrations() {
                 <div className="bg-card border border-border rounded-2xl p-6">
                   <h3 className="text-xl font-bold text-foreground mb-4">Online donations & campaigns</h3>
                   <div className="space-y-3">
-                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
-                      <span className="text-muted-foreground">• Zeffy</span>
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-[#6945D8]/10 rounded-lg">
+                        <span className="text-[#6945D8] font-bold text-sm">Z</span>
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">Zeffy</span>
                     </div>
-                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
-                      <span className="text-muted-foreground">• Raisely</span>
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-[#6945D8]/10 rounded-lg">
+                        <span className="text-[#6945D8] font-bold text-sm">R</span>
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">Raisely</span>
                     </div>
                   </div>
                 </div>
@@ -269,14 +314,23 @@ export default function Integrations() {
                 <div className="bg-card border border-border rounded-2xl p-6">
                   <h3 className="text-xl font-bold text-foreground mb-4">Membership, advocacy, and "all-in-one" platforms</h3>
                   <div className="space-y-3">
-                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
-                      <span className="text-muted-foreground">• Wild Apricot</span>
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-[#6945D8]/10 rounded-lg">
+                        <span className="text-[#6945D8] font-bold text-sm">WA</span>
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">Wild Apricot</span>
                     </div>
-                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
-                      <span className="text-muted-foreground">• NationBuilder</span>
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-[#6945D8]/10 rounded-lg">
+                        <span className="text-[#6945D8] font-bold text-sm">NB</span>
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">NationBuilder</span>
                     </div>
-                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
-                      <span className="text-muted-foreground">• Member365</span>
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-[#6945D8]/10 rounded-lg">
+                        <span className="text-[#6945D8] font-bold text-sm">M365</span>
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">Member365</span>
                     </div>
                   </div>
                 </div>
@@ -285,11 +339,17 @@ export default function Integrations() {
                 <div className="bg-card border border-border rounded-2xl p-6">
                   <h3 className="text-xl font-bold text-foreground mb-4">Email marketing and mass communication</h3>
                   <div className="space-y-3">
-                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
-                      <span className="text-muted-foreground">• Constant Contact</span>
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-[#6945D8]/10 rounded-lg">
+                        <span className="text-[#6945D8] font-bold text-sm">CC</span>
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">Constant Contact</span>
                     </div>
-                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
-                      <span className="text-muted-foreground">• Campaign Monitor</span>
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-[#6945D8]/10 rounded-lg">
+                        <span className="text-[#6945D8] font-bold text-sm">CM</span>
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">Campaign Monitor</span>
                     </div>
                   </div>
                 </div>
@@ -308,8 +368,11 @@ export default function Integrations() {
                       </div>
                       <span className="text-muted-foreground group-hover:text-foreground transition-colors">Asana</span>
                     </div>
-                    <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all">
-                      <span className="text-muted-foreground">• Trello</span>
+                    <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-[#0079BF]/10 rounded-lg">
+                        <span className="text-[#0079BF] font-bold text-sm">T</span>
+                      </div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors">Trello</span>
                     </div>
                     <div className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all cursor-pointer hover-scale">
                       <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
@@ -378,31 +441,51 @@ export default function Integrations() {
                 </p>
                 
                 <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="bg-muted/30 rounded-xl p-4">
-                    <h4 className="font-semibold text-foreground mb-2">CSV imports and exports</h4>
-                    <ul className="space-y-1 text-sm text-muted-foreground">
+                  <div className="group bg-muted/30 rounded-xl p-4 hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                    <div className="flex items-start gap-3 mb-3">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-[#ACFCE3]/20 rounded-lg">
+                        <FileSpreadsheet className="w-5 h-5 text-[#6945D8]" />
+                      </div>
+                      <h4 className="font-semibold text-foreground group-hover:text-[#6945D8] transition-colors">CSV imports and exports</h4>
+                    </div>
+                    <ul className="space-y-1 text-sm text-muted-foreground ml-13">
                       <li>• Clean data in Sheets</li>
                       <li>• Import into your CRM or finance tool</li>
                     </ul>
                   </div>
 
-                  <div className="bg-muted/30 rounded-xl p-4">
-                    <h4 className="font-semibold text-foreground mb-2">Standard reports</h4>
-                    <ul className="space-y-1 text-sm text-muted-foreground">
+                  <div className="group bg-muted/30 rounded-xl p-4 hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                    <div className="flex items-start gap-3 mb-3">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-[#ACFCE3]/20 rounded-lg">
+                        <FileText className="w-5 h-5 text-[#6945D8]" />
+                      </div>
+                      <h4 className="font-semibold text-foreground group-hover:text-[#6945D8] transition-colors">Standard reports</h4>
+                    </div>
+                    <ul className="space-y-1 text-sm text-muted-foreground ml-13">
                       <li>• Build report templates you can pull every month or quarter</li>
                     </ul>
                   </div>
 
-                  <div className="bg-muted/30 rounded-xl p-4">
-                    <h4 className="font-semibold text-foreground mb-2">Online forms</h4>
-                    <ul className="space-y-1 text-sm text-muted-foreground">
+                  <div className="group bg-muted/30 rounded-xl p-4 hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                    <div className="flex items-start gap-3 mb-3">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-[#ACFCE3]/20 rounded-lg">
+                        <FormInput className="w-5 h-5 text-[#6945D8]" />
+                      </div>
+                      <h4 className="font-semibold text-foreground group-hover:text-[#6945D8] transition-colors">Online forms</h4>
+                    </div>
+                    <ul className="space-y-1 text-sm text-muted-foreground ml-13">
                       <li>• Use Google Forms or your website to capture data in a clean format</li>
                     </ul>
                   </div>
 
-                  <div className="bg-muted/30 rounded-xl p-4">
-                    <h4 className="font-semibold text-foreground mb-2">Email parsing</h4>
-                    <ul className="space-y-1 text-sm text-muted-foreground">
+                  <div className="group bg-muted/30 rounded-xl p-4 hover:bg-muted/50 transition-all cursor-pointer hover-scale">
+                    <div className="flex items-start gap-3 mb-3">
+                      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-[#ACFCE3]/20 rounded-lg">
+                        <Mail className="w-5 h-5 text-[#6945D8]" />
+                      </div>
+                      <h4 className="font-semibold text-foreground group-hover:text-[#6945D8] transition-colors">Email parsing</h4>
+                    </div>
+                    <ul className="space-y-1 text-sm text-muted-foreground ml-13">
                       <li>• Turn common email workflows into tracked tasks and records</li>
                     </ul>
                   </div>
