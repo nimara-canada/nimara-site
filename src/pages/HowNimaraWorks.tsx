@@ -7,6 +7,13 @@ import YourJourney from "@/components/company/YourJourney";
 import { ChevronDown } from "lucide-react";
 
 const HowNimaraWorks = () => {
+  const handleScrollToTiers = () => {
+    const tiersSection = document.getElementById('tier-section');
+    if (tiersSection) {
+      tiersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
@@ -39,7 +46,11 @@ const HowNimaraWorks = () => {
           <div className="absolute inset-x-0 -top-20 h-20 bg-gradient-to-b from-white/0 to-white pointer-events-none" />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
             <div className="flex items-center justify-center py-8">
-              <div className="flex flex-col items-center gap-1">
+              <button
+                onClick={handleScrollToTiers}
+                className="flex flex-col items-center gap-1 cursor-pointer hover:scale-110 transition-transform duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6945D8] focus-visible:ring-offset-2 rounded-lg p-2"
+                aria-label="Scroll to tier section"
+              >
                 {/* Animated arrows pointing down */}
                 <div className="flex flex-col items-center animate-bounce">
                   <ChevronDown className="w-5 h-5 text-slate-400" strokeWidth={2} />
@@ -60,12 +71,14 @@ const HowNimaraWorks = () => {
                   <ChevronDown className="w-5 h-5 text-slate-400 -mb-3" strokeWidth={2} />
                   <ChevronDown className="w-5 h-5 text-slate-400" strokeWidth={2} />
                 </div>
-              </div>
+              </button>
             </div>
           </div>
         </div>
         
-        <TheNimaraModel />
+        <div id="tier-section">
+          <TheNimaraModel />
+        </div>
         
         <YourJourney />
       </main>
