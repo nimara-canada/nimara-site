@@ -174,7 +174,7 @@ export const SystemLadder = () => {
                           transition-all duration-300 
                           ${isActive 
                             ? `${colors.bg} shadow-lg` 
-                            : 'bg-muted/80'
+                            : 'bg-white/10'
                           }
                         `}
                         animate={{ 
@@ -186,7 +186,7 @@ export const SystemLadder = () => {
                         <Icon 
                           size={26} 
                           className={`transition-colors duration-300 ${
-                            isActive ? 'text-primary-foreground' : 'text-muted-foreground'
+                            isActive ? 'text-white' : 'text-white/70'
                           }`}
                         />
                       </motion.div>
@@ -197,8 +197,8 @@ export const SystemLadder = () => {
                           absolute -top-1 -right-1 w-6 h-6 rounded-lg flex items-center justify-center 
                           text-xs font-bold transition-all duration-300
                           ${isActive 
-                            ? `${colors.bg} text-primary-foreground shadow-md` 
-                            : 'bg-muted text-muted-foreground'
+                            ? `${colors.bg} text-white shadow-md` 
+                            : 'bg-white/20 text-white/80'
                           }
                         `}
                         animate={{ scale: isActive ? 1.1 : 1 }}
@@ -211,7 +211,7 @@ export const SystemLadder = () => {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-3 mb-1">
                       <h3 className={`text-lg font-semibold transition-colors duration-300 ${
-                          isActive ? 'text-primary-foreground' : 'text-foreground'
+                          isActive ? 'text-white' : 'text-white'
                         }`}>
                           {step.title}
                         </h3>
@@ -226,7 +226,7 @@ export const SystemLadder = () => {
                         )}
                       </div>
                     <p className={`text-sm leading-relaxed transition-colors duration-300 ${
-                        isActive ? 'text-foreground/80' : 'text-muted-foreground'
+                        isActive ? 'text-white/90' : 'text-white/70'
                       }`}>
                         {step.desc}
                       </p>
@@ -326,15 +326,15 @@ export const SystemLadder = () => {
                   >
                     <div className="flex items-center gap-3 mb-2">
                       <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-300 ${
-                        isActive ? colors.bg : 'bg-muted'
+                        isActive ? colors.bg : 'bg-white/10'
                       }`}>
-                        <Icon size={20} className={isActive ? 'text-primary-foreground' : 'text-muted-foreground'} />
+                        <Icon size={20} className={isActive ? 'text-white' : 'text-white/70'} />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-base font-semibold text-primary-foreground">{step.title}</h3>
+                        <h3 className="text-base font-semibold text-white">{step.title}</h3>
                       </div>
                     </div>
-                    <p className="text-sm text-muted-foreground">{step.desc}</p>
+                    <p className="text-sm text-white/70">{step.desc}</p>
                     
                     {isActive && (
                       <motion.div
