@@ -60,7 +60,7 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
         Skip to content
       </a>
 
-      <header className={`fixed left-0 right-0 z-50 w-full bg-background transition-all duration-300 ${isScrolled ? 'shadow-md border-b border-border/50' : 'border-b border-transparent'}`} style={{ top: 'var(--announcement-height, 0px)' }}>
+      <header className={`fixed left-0 right-0 z-[70] w-full bg-background transition-all duration-300 ${isScrolled ? 'shadow-md border-b border-border/50' : 'border-b border-transparent'}`} style={{ top: 'var(--announcement-height, 0px)' }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
