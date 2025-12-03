@@ -219,3 +219,27 @@ All colors MUST be HSL.
     font-variant-numeric: tabular-nums;
   }
 }
+
+/* Hero section animations */
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-float {
+  animation: float 20s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float 25s ease-in-out infinite reverse;
+}
+
+.animate-shimmer {
+  animation: shimmer 3s infinite;
+}
