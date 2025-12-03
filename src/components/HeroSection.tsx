@@ -98,7 +98,6 @@ const HeroSectionLuxe = () => {
               that keep you
               <br />
               <span className="relative inline-flex items-baseline">
-                <span className="absolute inset-0 bg-accent/20 blur-2xl" />
                 <span className="font-normal text-accent">
                   {displayText}
                   <span className="animate-pulse ml-0.5 inline-block w-[3px] h-[1em] bg-accent align-middle" />
