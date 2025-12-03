@@ -23,7 +23,10 @@ export const AnnouncementBar = () => {
           document.documentElement.style.setProperty("--announcement-height", `${bar.offsetHeight}px`);
         }
       };
-      updateHeight();
+      // Use requestAnimationFrame to ensure element is rendered before measuring
+      requestAnimationFrame(() => {
+        requestAnimationFrame(updateHeight);
+      });
       window.addEventListener("resize", updateHeight);
       return () => window.removeEventListener("resize", updateHeight);
     } else {
