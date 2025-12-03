@@ -12,124 +12,109 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* ===== BRAND COLOR TOKENS ===== */
-    /* Primary brand accent - bright mint/green */
-    --brand-mint: 162 91% 83%; /* #ACFCE3 */
-    --brand-mint-dark: 162 70% 45%; /* Darker mint for text on light bg */
-    
-    /* Primary text color - very dark navy */
-    --brand-ink: 229 48% 23%; /* #1a1f4a - dark navy for headings */
-    
-    /* Secondary text - mid-tone grey-blue */
-    --brand-soft-ink: 221 24% 50%; /* #6b7599 - secondary text */
-    
-    /* Backgrounds */
-    --brand-bg: 0 0% 100%; /* #FFFFFF - main background */
-    --brand-bg-soft: 220 50% 97%; /* #F7F9FC - soft card/section bg */
-    --brand-bg-mist: 226 33% 93%; /* #E9ECF4 - borders/dividers */
-    
-    /* Danger/Error */
-    --brand-danger: 0 72% 51%; /* #dc2626 - errors only */
-    
-    /* Legacy tokens (mapped to brand for compatibility) */
-    --nim-navy: var(--brand-ink);
-    --nim-purple: 252 58% 56%; /* #6945D8 - secondary accent */
-    --nim-mint: var(--brand-mint);
-    --nim-slate: var(--brand-soft-ink);
-    --nim-white: var(--brand-bg);
-    --nim-mist: var(--brand-bg-mist);
-    --nim-cloud: var(--brand-bg-soft);
+    /* Nimara brand tokens */
+    --nimara-navy: 210 56% 23%;
+    --nimara-purple: 256 69% 57%;
+    --nimara-mint: 165 94% 83%;
+    --nimara-bg: 220 50% 97%;
+    /* Nimara brand tokens */
+    --nim-navy: 229 48% 25%; /* #202654 */
+    --nim-purple: 252 58% 56%; /* #6945D8 */
+    --nim-mint: 162 91% 83%; /* #ACFCE3 */
+    --nim-slate: 221 24% 64%; /* #96A0B5 */
+    --nim-white: 0 0% 100%; /* #FFFFFF */
+    --nim-mist: 226 33% 93%; /* #E9ECF4 */
+    --nim-cloud: 220 50% 97%; /* #F7F9FC */
 
-    /* ===== SEMANTIC TOKENS ===== */
-    --background: var(--brand-bg);
-    --foreground: var(--brand-ink);
+    /* Semantic tokens mapped to brand */
+    --background: var(--nim-white);
+    --foreground: var(--nim-navy);
 
-    --card: var(--brand-bg);
-    --card-foreground: var(--brand-ink);
+    --card: var(--nim-white);
+    --card-foreground: var(--nim-navy);
 
-    --popover: var(--brand-bg);
-    --popover-foreground: var(--brand-ink);
+    --popover: var(--nim-white);
+    --popover-foreground: var(--nim-navy);
 
-    /* Primary = mint (brand accent for buttons) */
-    --primary: var(--brand-mint);
-    --primary-foreground: var(--brand-ink);
+    --primary: var(--nim-purple);
+    --primary-foreground: var(--nim-white);
 
-    --secondary: var(--brand-bg-soft);
-    --secondary-foreground: var(--brand-ink);
+    --secondary: var(--nim-cloud);
+    --secondary-foreground: var(--nim-navy);
 
-    --muted: var(--brand-bg-soft);
-    --muted-foreground: var(--brand-soft-ink);
+    --muted: var(--nim-cloud);
+    --muted-foreground: var(--nim-slate);
 
-    --accent: var(--brand-mint);
-    --accent-foreground: var(--brand-ink);
+    --accent: var(--nim-mint);
+    --accent-foreground: var(--nim-navy);
 
-    --destructive: var(--brand-danger);
-    --destructive-foreground: var(--brand-bg);
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: var(--nim-white);
 
-    --border: var(--brand-bg-mist);
-    --input: var(--brand-bg-mist);
-    --ring: var(--brand-mint);
+    --border: var(--nim-mist);
+    --input: var(--nim-mist);
+    --ring: var(--nim-purple);
 
-    --secondary-background: var(--brand-ink);
+    --secondary-background: var(--nim-navy);
 
-    --radius: 1.25rem; /* 20px - visibly rounded */
-    --radius-xl: 1.5rem; /* 24px */
+    --radius: 1rem;
+    --radius-xl: 1rem;
 
-    /* Elevation - subtle shadows */
-    --shadow-soft: 0 4px 16px rgba(26, 31, 74, 0.06);
-    --shadow-md: 0 8px 24px rgba(26, 31, 74, 0.08);
-    --shadow-lg: 0 16px 48px rgba(26, 31, 74, 0.12);
+    /* Elevation - modernized shadows */
+    --shadow-soft: 0 8px 24px rgba(32, 38, 84, 0.08);
+    --shadow-md: 0 8px 24px rgba(32, 38, 84, 0.08);
+    --shadow-lg: 0 16px 48px rgba(32, 38, 84, 0.12);
 
     /* Sidebar tokens */
-    --sidebar-background: var(--brand-bg);
-    --sidebar-foreground: var(--brand-ink);
-    --sidebar-primary: var(--brand-mint);
-    --sidebar-primary-foreground: var(--brand-ink);
-    --sidebar-accent: var(--brand-bg-soft);
-    --sidebar-accent-foreground: var(--brand-ink);
-    --sidebar-border: var(--brand-bg-mist);
-    --sidebar-ring: var(--brand-mint);
+    --sidebar-background: var(--nim-white);
+    --sidebar-foreground: var(--nim-navy);
+    --sidebar-primary: var(--nim-purple);
+    --sidebar-primary-foreground: var(--nim-white);
+    --sidebar-accent: var(--nim-cloud);
+    --sidebar-accent-foreground: var(--nim-navy);
+    --sidebar-border: var(--nim-mist);
+    --sidebar-ring: var(--nim-purple);
   }
 
   .dark {
-    --background: 229 48% 12%;
-    --foreground: 0 0% 98%;
+    --background: 229 48% 15%;
+    --foreground: var(--nim-white);
 
-    --card: 229 48% 15%;
-    --card-foreground: 0 0% 98%;
+    --card: 229 48% 18%;
+    --card-foreground: var(--nim-white);
 
-    --popover: 229 48% 15%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 229 48% 18%;
+    --popover-foreground: var(--nim-white);
 
-    --primary: var(--brand-mint);
-    --primary-foreground: var(--brand-ink);
+    --primary: var(--nim-purple);
+    --primary-foreground: var(--nim-white);
 
-    --secondary: 229 40% 20%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 229 40% 22%;
+    --secondary-foreground: var(--nim-white);
 
-    --muted: 229 40% 20%;
-    --muted-foreground: 221 24% 60%;
+    --muted: 229 40% 22%;
+    --muted-foreground: var(--nim-slate);
 
-    --accent: var(--brand-mint);
-    --accent-foreground: var(--brand-ink);
+    --accent: var(--nim-mint);
+    --accent-foreground: 229 48% 15%;
 
-    --destructive: 0 62.8% 50%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: var(--nim-white);
 
     --border: 229 40% 25%;
     --input: 229 40% 25%;
-    --ring: var(--brand-mint);
+    --ring: var(--nim-purple);
 
-    --secondary-background: var(--brand-ink);
+    --secondary-background: var(--nim-navy);
     
-    --sidebar-background: 229 48% 10%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: var(--brand-mint);
-    --sidebar-primary-foreground: var(--brand-ink);
+    --sidebar-background: 229 48% 12%;
+    --sidebar-foreground: var(--nim-white);
+    --sidebar-primary: var(--nim-purple);
+    --sidebar-primary-foreground: var(--nim-white);
     --sidebar-accent: 229 40% 18%;
-    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-accent-foreground: var(--nim-white);
     --sidebar-border: 229 40% 20%;
-    --sidebar-ring: var(--brand-mint);
+    --sidebar-ring: var(--nim-purple);
   }
 }
 
