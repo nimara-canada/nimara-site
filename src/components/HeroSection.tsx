@@ -1,200 +1,307 @@
-import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Play } from "lucide-react";
+import React, { useEffect, useState, useRef } from "react";
 
-export const HeroSection = () => {
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+const HeroSectionLuxe = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [wordIndex, setWordIndex] = useState(0);
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
   const words = ["Fundable", "Compliant", "Impactful"];
 
+  // Chart animation states
+  const [chartValues, setChartValues] = useState([0, 0, 0]);
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentWordIndex((prev) => (prev + 1) % words.length);
+    // Smooth entrance
+    const timer = setTimeout(() => setIsVisible(true), 100);
+
+    // Word rotation with smooth transition
+    const wordInterval = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % words.length);
     }, 3500);
-    return () => clearInterval(interval);
+
+    // Animate charts after delay
+    const chartTimer = setTimeout(() => {
+      setChartValues([98, 92, 88]);
+    }, 1200);
+
+    // Smooth cursor tracking
+    const handleMouseMove = (e: MouseEvent) => {
+      setCursorPosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(chartTimer);
+      clearInterval(wordInterval);
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center bg-gradient-to-b from-background via-muted/30 to-background overflow-hidden">
-      {/* Background elements */}
+    <section className="relative min-h-screen flex items-center bg-gradient-to-b from-white via-gray-50/30 to-white overflow-hidden">
+      {/* Premium background elements */}
       <div className="absolute inset-0">
-        {/* Floating orbs */}
+        {/* Noise texture */}
+        <div
+          className="absolute inset-0 opacity-[0.015]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E")`,
+          }}
+        />
+
+        {/* Floating gradient orbs */}
         <div className="absolute top-0 left-1/4 w-[500px] h-[500px]">
-          <div className="w-full h-full rounded-full bg-gradient-to-br from-accent/40 to-transparent blur-3xl animate-float" />
+          <div
+            className="w-full h-full rounded-full bg-gradient-to-br from-teal-100/40 to-transparent blur-3xl"
+            style={{
+              animation: "float 20s ease-in-out infinite",
+            }}
+          />
         </div>
         <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px]">
-          <div className="w-full h-full rounded-full bg-gradient-to-tr from-muted/40 to-transparent blur-3xl animate-float-reverse" />
+          <div
+            className="w-full h-full rounded-full bg-gradient-to-tr from-slate-100/40 to-transparent blur-3xl"
+            style={{
+              animation: "float 25s ease-in-out infinite reverse",
+            }}
+          />
         </div>
       </div>
 
       <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          {/* Left: Content */}
+          {/* Left: Premium content */}
           <div className="max-w-xl">
-            {/* Badge */}
-            <div className="inline-block mb-8 animate-fade-in">
-              <div className="flex items-center gap-3 px-5 py-2.5 bg-card rounded-full shadow-sm border border-border">
+            {/* Animated badge */}
+            <div
+              className={`inline-block mb-8 transition-all duration-1200 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              }`}
+            >
+              <div className="flex items-center gap-3 px-5 py-2.5 bg-white rounded-full shadow-sm border border-gray-100">
                 <div className="flex gap-1">
-                  <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
-                  <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" style={{ animationDelay: "200ms" }} />
-                  <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" style={{ animationDelay: "400ms" }} />
+                  <span className="w-1.5 h-1.5 bg-teal-500 rounded-full animate-pulse" />
+                  <span
+                    className="w-1.5 h-1.5 bg-teal-500 rounded-full animate-pulse"
+                    style={{ animationDelay: "0.2s" }}
+                  />
+                  <span
+                    className="w-1.5 h-1.5 bg-teal-500 rounded-full animate-pulse"
+                    style={{ animationDelay: "0.4s" }}
+                  />
                 </div>
-                <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">
-                  Trusted by 200+ Canadian Nonprofits
+                <span className="text-xs font-medium text-gray-600 tracking-wide">
+                  TRUSTED BY 200+ CANADIAN NONPROFITS
                 </span>
               </div>
             </div>
 
-            {/* Headline */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extralight text-foreground leading-[1.05] mb-8 animate-fade-in">
+            {/* Premium headline with word rotation */}
+            <h1
+              className={`text-5xl sm:text-6xl lg:text-7xl font-extralight text-gray-900 leading-[1.05] mb-8 transition-all duration-1200 delay-100 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              }`}
+            >
               Close the gaps
               <br />
               that keep you
               <br />
               <span className="relative inline-flex items-baseline">
-                <span className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary/10 blur-2xl" />
-                <span className="relative font-normal bg-gradient-to-r from-primary to-primary bg-clip-text text-transparent">
-                  {words[currentWordIndex]}
-                </span>
+                <span className="absolute inset-0 bg-gradient-to-r from-teal-500/10 to-teal-600/10 blur-2xl" />
+                {words.map((word, index) => (
+                  <span
+                    key={word}
+                    className={`absolute font-normal bg-gradient-to-r from-teal-600 to-teal-700 bg-clip-text text-transparent transition-all duration-700 ${
+                      index === wordIndex ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-95"
+                    }`}
+                  >
+                    {word}
+                  </span>
+                ))}
+                <span className="invisible font-normal">{words[0]}</span>
               </span>
             </h1>
 
-            {/* Description */}
-            <p className="text-xl text-muted-foreground mb-12 leading-relaxed font-light animate-fade-in">
+            {/* Refined description */}
+            <p
+              className={`text-xl text-gray-600 mb-12 leading-relaxed font-light transition-all duration-1200 delay-200 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              }`}
+            >
               We install the files that pass audits and satisfy funders—
-              <span className="text-foreground font-normal">board rules</span>,{" "}
-              <span className="text-foreground font-normal">money tracking</span>,{" "}
-              <span className="text-foreground font-normal">staff folders</span>.
+              <span className="text-gray-800 font-normal">board rules</span>,{" "}
+              <span className="text-gray-800 font-normal">money tracking</span>,{" "}
+              <span className="text-gray-800 font-normal">staff folders</span>.
             </p>
 
-            {/* CTAs */}
-            <div className="space-y-4 mb-16 animate-fade-in">
+            {/* Premium CTA buttons */}
+            <div
+              className={`space-y-4 mb-16 transition-all duration-1200 delay-300 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              }`}
+            >
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="group">
-                  Get Your Health Score
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </Button>
-                <Button variant="outline" size="lg" className="group">
-                  <div className="relative w-5 h-5 mr-2">
-                    <div className="absolute inset-0 bg-muted-foreground/20 rounded-full animate-ping" />
-                    <Play className="relative w-5 h-5" />
-                  </div>
-                  Watch Overview
-                </Button>
+                <button
+                  className="group relative px-8 py-4 overflow-hidden rounded-2xl bg-gradient-to-r from-gray-900 to-gray-800 text-white font-medium shadow-xl transition-all duration-500 hover:shadow-2xl hover:scale-[1.02]"
+                  onMouseEnter={() => setIsHovering(true)}
+                  onMouseLeave={() => setIsHovering(false)}
+                >
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    Get Your Health Score
+                    <svg
+                      className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-teal-600 to-teal-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                </button>
+
+                <button className="group px-8 py-4 rounded-2xl border border-gray-200 bg-white/80 backdrop-blur text-gray-700 font-medium transition-all duration-300 hover:border-gray-300 hover:bg-white hover:shadow-lg">
+                  <span className="flex items-center justify-center gap-2">
+                    <div className="relative w-5 h-5">
+                      <div className="absolute inset-0 bg-gray-400 rounded-full opacity-20 animate-ping" />
+                      <svg className="relative w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                    Watch Overview
+                  </span>
+                </button>
               </div>
             </div>
 
-            {/* Stats */}
-            <div className="flex items-center gap-8 animate-fade-in">
+            {/* Elegant stats */}
+            <div
+              className={`flex items-center gap-8 transition-all duration-1200 delay-400 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              }`}
+            >
               <div className="flex items-baseline gap-2">
-                <span className="text-4xl font-extralight text-foreground">6</span>
-                <span className="text-sm font-medium text-muted-foreground uppercase tracking-wider">weeks</span>
+                <span className="text-4xl font-extralight text-gray-900">6</span>
+                <span className="text-sm font-medium text-gray-500 uppercase tracking-wider">weeks</span>
               </div>
-              <div className="w-px h-8 bg-border" />
+              <div className="w-px h-8 bg-gray-200" />
               <div className="flex items-baseline gap-2">
-                <span className="text-4xl font-extralight text-foreground">100%</span>
-                <span className="text-sm font-medium text-muted-foreground uppercase tracking-wider">guarantee</span>
+                <span className="text-4xl font-extralight text-gray-900">100%</span>
+                <span className="text-sm font-medium text-gray-500 uppercase tracking-wider">guarantee</span>
               </div>
             </div>
           </div>
 
-          {/* Right: Dashboard */}
-          <div className="relative animate-scale-in">
-            {/* Glow */}
-            <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 via-transparent to-muted/20 rounded-3xl blur-2xl opacity-50" />
+          {/* Right: Ultra-premium dashboard */}
+          <div
+            ref={cardRef}
+            className={`relative transition-all duration-1500 delay-600 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            {/* Glow effect */}
+            <div className="absolute -inset-4 bg-gradient-to-r from-teal-500/20 via-transparent to-slate-500/20 rounded-3xl blur-2xl opacity-50" />
 
-            {/* Card */}
-            <div className="relative bg-card rounded-3xl shadow-2xl overflow-hidden border border-border">
-              {/* Header */}
-              <div className="px-8 pt-8 pb-6 border-b border-border bg-gradient-to-b from-muted/50 to-transparent">
-                <div className="flex items-center justify-between">
+            {/* Main card */}
+            <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
+              {/* Card header */}
+              <div className="px-8 pt-8 pb-6 border-b border-gray-100 bg-gradient-to-b from-gray-50/50 to-transparent">
+                <div className="flex items-center justify-between mb-1">
                   <div className="flex items-center gap-4">
                     <div className="relative">
-                      <div className="w-14 h-14 bg-gradient-to-br from-primary to-primary rounded-2xl flex items-center justify-center">
-                        <span className="text-primary-foreground font-bold text-2xl">N</span>
+                      <div className="w-14 h-14 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center">
+                        <span className="text-white font-bold text-2xl">N</span>
                       </div>
-                      <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-card animate-pulse" />
+                      <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-white animate-pulse" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-foreground">Health Dashboard</h3>
-                      <p className="text-xs text-muted-foreground font-medium mt-0.5">Live monitoring</p>
+                      <h3 className="text-lg font-semibold text-gray-900">Health Dashboard</h3>
+                      <p className="text-xs text-gray-500 font-medium mt-0.5">Live monitoring</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-xs text-muted-foreground">LIVE</span>
+                    <span className="text-xs text-gray-400">LIVE</span>
                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                   </div>
                 </div>
               </div>
 
-              {/* Body */}
+              {/* Card body */}
               <div className="p-8">
                 {/* Metrics */}
                 <div className="space-y-8">
-                  {/* Metric 1 */}
-                  <div className="relative">
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="flex items-center gap-3">
-                        <span className="text-2xl">📋</span>
-                        <span className="text-sm font-medium text-foreground">Governance & Board</span>
+                  {[
+                    {
+                      label: "Governance & Board",
+                      value: chartValues[0],
+                      icon: "📋",
+                      color: "from-teal-500 to-teal-600",
+                    },
+                    {
+                      label: "Financial Systems",
+                      value: chartValues[1],
+                      icon: "💰",
+                      color: "from-blue-500 to-blue-600",
+                    },
+                    {
+                      label: "HR & Compliance",
+                      value: chartValues[2],
+                      icon: "👥",
+                      color: "from-purple-500 to-purple-600",
+                    },
+                  ].map((item, i) => (
+                    <div key={i} className="relative">
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="flex items-center gap-3">
+                          <span className="text-2xl">{item.icon}</span>
+                          <span className="text-sm font-medium text-gray-700">{item.label}</span>
+                        </div>
+                        <span
+                          className="text-sm font-bold text-gray-900 tabular-nums"
+                          style={{
+                            opacity: chartValues[i] > 0 ? 1 : 0,
+                            transition: "opacity 0.5s ease-out",
+                            transitionDelay: `${1200 + i * 200}ms`,
+                          }}
+                        >
+                          {item.value}%
+                        </span>
                       </div>
-                      <span className="text-sm font-bold text-foreground tabular-nums">98%</span>
-                    </div>
-                    <div className="relative h-3 bg-muted rounded-full overflow-hidden">
-                      <div
-                        className="absolute inset-y-0 left-0 bg-gradient-to-r from-primary to-primary rounded-full"
-                        style={{ width: "98%" }}
-                      >
-                        <div className="absolute inset-0 bg-white/30 animate-shimmer" />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Metric 2 */}
-                  <div className="relative">
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="flex items-center gap-3">
-                        <span className="text-2xl">💰</span>
-                        <span className="text-sm font-medium text-foreground">Financial Systems</span>
-                      </div>
-                      <span className="text-sm font-bold text-foreground tabular-nums">92%</span>
-                    </div>
-                    <div className="relative h-3 bg-muted rounded-full overflow-hidden">
-                      <div
-                        className="absolute inset-y-0 left-0 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"
-                        style={{ width: "92%" }}
-                      >
-                        <div className="absolute inset-0 bg-white/30 animate-shimmer" />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Metric 3 */}
-                  <div className="relative">
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="flex items-center gap-3">
-                        <span className="text-2xl">👥</span>
-                        <span className="text-sm font-medium text-foreground">HR & Compliance</span>
-                      </div>
-                      <span className="text-sm font-bold text-foreground tabular-nums">88%</span>
-                    </div>
-                    <div className="relative h-3 bg-muted rounded-full overflow-hidden">
-                      <div
-                        className="absolute inset-y-0 left-0 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full"
-                        style={{ width: "88%" }}
-                      >
-                        <div className="absolute inset-0 bg-white/30 animate-shimmer" />
+                      <div className="relative h-3 bg-gray-100 rounded-full overflow-hidden">
+                        <div
+                          className={`absolute inset-y-0 left-0 bg-gradient-to-r ${item.color} rounded-full transition-all duration-2000 ease-out`}
+                          style={{
+                            width: `${item.value}%`,
+                            transitionDelay: `${1200 + i * 200}ms`,
+                          }}
+                        >
+                          <div className="absolute inset-0 bg-white/30 animate-shimmer" />
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  ))}
                 </div>
 
-                {/* Score */}
-                <div className="mt-10 pt-8 border-t border-border">
+                {/* Overall score */}
+                <div className="mt-10 pt-8 border-t border-gray-100">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">
-                        Overall Score
-                      </p>
+                      <p className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">Overall Score</p>
                       <div className="flex items-center gap-2">
                         <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                           <path
@@ -203,11 +310,23 @@ export const HeroSection = () => {
                             clipRule="evenodd"
                           />
                         </svg>
-                        <span className="text-sm font-semibold text-foreground">Funding Ready</span>
+                        <span className="text-sm font-semibold text-gray-700">Funding Ready</span>
                       </div>
                     </div>
                     <div className="text-right">
-                      <span className="text-6xl font-extralight text-foreground">92</span>
+                      <div className="relative overflow-hidden">
+                        <span
+                          className="text-6xl font-extralight text-gray-900 inline-block"
+                          style={{
+                            transform: chartValues[0] > 0 ? "translateY(0)" : "translateY(20px)",
+                            opacity: chartValues[0] > 0 ? 1 : 0,
+                            transition: "all 0.8s ease-out",
+                            transitionDelay: "1800ms",
+                          }}
+                        >
+                          92
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -216,6 +335,25 @@ export const HeroSection = () => {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          33% { transform: translate(30px, -30px) scale(1.05); }
+          66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+        
+        @keyframes shimmer {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+        
+        .animate-shimmer {
+          animation: shimmer 3s infinite;
+        }
+      `}</style>
     </section>
   );
 };
+
+export default HeroSectionLuxe;
