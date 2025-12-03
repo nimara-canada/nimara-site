@@ -95,7 +95,7 @@ const HeroSectionLuxe = () => {
                   />
                 </div>
                 <span className="text-xs font-medium text-white/70 tracking-wide">
-                  TRUSTED BY 200+ CANADIAN NONPROFITS
+                  BUILT FOR CANADIAN NONPROFITS AND CHARITIES
                 </span>
               </div>
             </div>
