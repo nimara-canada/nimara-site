@@ -75,7 +75,7 @@ const HeroSectionLuxe = () => {
             </div>
 
             {/* Premium headline with word rotation */}
-            <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold text-primary-foreground leading-[1.05] tracking-tight mb-8 transition-all duration-1200 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+            <h1 className={`text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-[1.1] tracking-tight mb-6 sm:mb-8 transition-all duration-1200 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
               On a Mission to Keep Nonprofits
               <br />
               <span className="relative inline-flex items-baseline">
@@ -90,7 +90,7 @@ const HeroSectionLuxe = () => {
             </h1>
 
             {/* Refined description */}
-            <p className={`text-xl text-white/60 mb-12 leading-relaxed font-light transition-all duration-1200 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+            <p className={`text-base sm:text-xl text-white/60 mb-8 sm:mb-12 leading-relaxed font-light transition-all duration-1200 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
               We install the files that pass audits and satisfy funders—
               <span className="text-white/90 font-normal">board rules</span>,{" "}
               <span className="text-white/90 font-normal">money tracking</span>,{" "}
@@ -98,9 +98,9 @@ const HeroSectionLuxe = () => {
             </p>
 
             {/* Premium CTA buttons */}
-            <div className={`space-y-4 mb-16 transition-all duration-1200 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="group relative px-8 py-4 overflow-hidden rounded-xl bg-accent text-accent-foreground font-semibold shadow-soft transition-all duration-500 hover:shadow-lg hover:scale-[1.02]" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+            <div className={`space-y-4 mb-10 sm:mb-16 transition-all duration-1200 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <button className="group relative px-6 sm:px-8 py-3.5 sm:py-4 overflow-hidden rounded-xl bg-accent text-accent-foreground font-semibold shadow-soft transition-all duration-500 hover:shadow-lg hover:scale-[1.02] text-sm sm:text-base" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
                   <span className="relative z-10 flex items-center justify-center gap-2">
                     Get Your Health Score
                     <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -110,7 +110,7 @@ const HeroSectionLuxe = () => {
                   <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </button>
 
-                <button className="group px-8 py-4 rounded-xl border border-white/20 bg-white/5 backdrop-blur text-primary-foreground font-semibold transition-all duration-300 hover:border-white/40 hover:bg-white/10 hover:shadow-lg">
+                <button className="group px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl border border-white/20 bg-white/5 backdrop-blur text-primary-foreground font-semibold transition-all duration-300 hover:border-white/40 hover:bg-white/10 hover:shadow-lg text-sm sm:text-base">
                   <span className="flex items-center justify-center gap-2">
                     <div className="relative w-5 h-5">
                       <div className="absolute inset-0 bg-accent rounded-full opacity-30 animate-ping" />
@@ -126,15 +126,15 @@ const HeroSectionLuxe = () => {
             </div>
 
             {/* Elegant stats */}
-            <div className={`flex items-center gap-8 transition-all duration-1200 delay-400 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-              <div className="flex items-baseline gap-2">
-                <span className="text-4xl font-extralight text-primary-foreground">6</span>
-                <span className="text-sm font-medium text-white/50 uppercase tracking-wider">weeks</span>
+            <div className={`flex items-center gap-4 sm:gap-8 transition-all duration-1200 delay-400 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+              <div className="flex items-baseline gap-1.5 sm:gap-2">
+                <span className="text-3xl sm:text-4xl font-extralight text-primary-foreground">6</span>
+                <span className="text-xs sm:text-sm font-medium text-white/50 uppercase tracking-wider">weeks</span>
               </div>
-              <div className="w-px h-8 bg-white/20" />
-              <div className="flex items-baseline gap-2">
-                <span className="text-4xl font-extralight text-primary-foreground">100%</span>
-                <span className="text-sm font-medium text-white/50 uppercase tracking-wider">guarantee</span>
+              <div className="w-px h-6 sm:h-8 bg-white/20" />
+              <div className="flex items-baseline gap-1.5 sm:gap-2">
+                <span className="text-3xl sm:text-4xl font-extralight text-primary-foreground">100%</span>
+                <span className="text-xs sm:text-sm font-medium text-white/50 uppercase tracking-wider">guarantee</span>
               </div>
             </div>
           </div>
@@ -145,7 +145,7 @@ const HeroSectionLuxe = () => {
             <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-white/20 transition-all duration-500 hover:-translate-y-2 cursor-pointer group/card">
               <div className="absolute inset-0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none shadow-2xl" />
               {/* Card header */}
-              <div className="px-10 pt-10 pb-7 border-b border-gray-100/60 bg-gradient-to-b from-gray-50/30 to-transparent">
+              <div className="px-5 sm:px-10 pt-6 sm:pt-10 pb-5 sm:pb-7 border-b border-gray-100/60 bg-gradient-to-b from-gray-50/30 to-transparent">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-5">
                     <div className="relative">
@@ -167,7 +167,7 @@ const HeroSectionLuxe = () => {
               </div>
 
               {/* Card body */}
-              <div className="px-10 py-9">
+              <div className="px-5 sm:px-10 py-6 sm:py-9">
                 {/* Metrics */}
                 <div className="space-y-7">
                 {[{
