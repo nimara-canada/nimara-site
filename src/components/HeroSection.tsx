@@ -42,7 +42,7 @@ const HeroSectionLuxe = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center bg-primary overflow-hidden">
+    <section className="relative min-h-screen flex items-center bg-secondary-background overflow-hidden">
       {/* Premium background elements */}
       <div className="absolute inset-0">
         {/* Noise texture */}
