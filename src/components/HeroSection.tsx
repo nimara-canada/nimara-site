@@ -146,7 +146,7 @@ const HeroSectionLuxe = () => {
             >
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
-                  className="group relative px-8 py-4 overflow-hidden rounded-2xl bg-gradient-to-r from-gray-900 to-gray-800 text-white font-medium shadow-xl transition-all duration-500 hover:shadow-2xl hover:scale-[1.02]"
+                  className="group relative px-8 py-4 overflow-hidden rounded-2xl bg-primary text-primary-foreground font-medium shadow-xl transition-all duration-500 hover:shadow-2xl hover:scale-[1.02]"
                   onMouseEnter={() => setIsHovering(true)}
                   onMouseLeave={() => setIsHovering(false)}
                 >
@@ -161,13 +161,13 @@ const HeroSectionLuxe = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-teal-600 to-teal-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-accent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </button>
 
-                <button className="group px-8 py-4 rounded-2xl border border-gray-200 bg-white/80 backdrop-blur text-gray-700 font-medium transition-all duration-300 hover:border-gray-300 hover:bg-white hover:shadow-lg">
+                <button className="group px-8 py-4 rounded-2xl border border-border bg-background/80 backdrop-blur text-foreground font-medium transition-all duration-300 hover:border-accent hover:bg-background hover:shadow-lg">
                   <span className="flex items-center justify-center gap-2">
                     <div className="relative w-5 h-5">
-                      <div className="absolute inset-0 bg-gray-400 rounded-full opacity-20 animate-ping" />
+                      <div className="absolute inset-0 bg-accent rounded-full opacity-20 animate-ping" />
                       <svg className="relative w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path
                           strokeLinecap="round"
