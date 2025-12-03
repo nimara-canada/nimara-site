@@ -101,7 +101,7 @@ const Index = () => {
       </Helmet>
       <AnnouncementBar />
       <Header />
-      <main id="main" className="space-y-0 pt-16">
+      <main id="main" className="space-y-0" style={{ paddingTop: 'calc(var(--announcement-height, 0px) + 4rem)' }}>
         <HeroSection />
         <FitCheck />
         <HowWeHelp />
