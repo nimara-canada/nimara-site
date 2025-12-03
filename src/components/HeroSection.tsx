@@ -3,8 +3,9 @@ import { Leaf } from "lucide-react";
 
 const HeroSectionLuxe = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [displayText, setDisplayText] = useState("");
   const [wordIndex, setWordIndex] = useState(0);
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  const [isDeleting, setIsDeleting] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -13,32 +14,55 @@ const HeroSectionLuxe = () => {
   // Chart animation states
   const [chartValues, setChartValues] = useState([0, 0, 0]);
 
+  // Typing animation effect
+  useEffect(() => {
+    const currentWord = words[wordIndex];
+    const typeSpeed = 100;
+    const deleteSpeed = 60;
+    const pauseTime = 2000;
+
+    let timeout: NodeJS.Timeout;
+
+    if (!isDeleting) {
+      // Typing
+      if (displayText.length < currentWord.length) {
+        timeout = setTimeout(() => {
+          setDisplayText(currentWord.slice(0, displayText.length + 1));
+        }, typeSpeed);
+      } else {
+        // Pause before deleting
+        timeout = setTimeout(() => {
+          setIsDeleting(true);
+        }, pauseTime);
+      }
+    } else {
+      // Deleting
+      if (displayText.length > 0) {
+        timeout = setTimeout(() => {
+          setDisplayText(displayText.slice(0, -1));
+        }, deleteSpeed);
+      } else {
+        // Move to next word
+        setIsDeleting(false);
+        setWordIndex((prev) => (prev + 1) % words.length);
+      }
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, wordIndex]);
+
   useEffect(() => {
     // Smooth entrance
     const timer = setTimeout(() => setIsVisible(true), 100);
-
-    // Word rotation with smooth transition
-    const wordInterval = setInterval(() => {
-      setWordIndex((prev) => (prev + 1) % words.length);
-    }, 3500);
 
     // Animate charts after delay
     const chartTimer = setTimeout(() => {
       setChartValues([98, 92, 88]);
     }, 1200);
 
-    // Smooth cursor tracking
-    const handleMouseMove = (e: MouseEvent) => {
-      setCursorPosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-
     return () => {
       clearTimeout(timer);
       clearTimeout(chartTimer);
-      clearInterval(wordInterval);
-      window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
 
@@ -75,17 +99,10 @@ const HeroSectionLuxe = () => {
               <br />
               <span className="relative inline-flex items-baseline">
                 <span className="absolute inset-0 bg-accent/20 blur-2xl" />
-                {words.map((word, index) => (
-                  <span
-                    key={word}
-                    className={`absolute font-normal text-accent transition-all duration-700 ${
-                      index === wordIndex ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-95"
-                    }`}
-                  >
-                    {word}
-                  </span>
-                ))}
-                <span className="invisible font-normal">{words[0]}</span>
+                <span className="font-normal text-accent">
+                  {displayText}
+                  <span className="animate-pulse ml-0.5 inline-block w-[3px] h-[1em] bg-accent align-middle" />
+                </span>
               </span>
             </h1>
 
