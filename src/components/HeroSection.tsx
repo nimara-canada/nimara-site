@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import { CheckCircle2, MoreHorizontal } from "lucide-react";
-
 const HeroSection: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -9,7 +8,6 @@ const HeroSection: React.FC = () => {
   const [wordIndex, setWordIndex] = useState(0);
   const [isFading, setIsFading] = useState(false);
   const words = ["Fundable", "Compliant", "Impactful"];
-
   useEffect(() => {
     // Card entry animation with slight delay to ensure browser paints initial state
     const timer = setTimeout(() => {
@@ -20,7 +18,7 @@ const HeroSection: React.FC = () => {
     const interval = setInterval(() => {
       setIsFading(true);
       setTimeout(() => {
-        setWordIndex((prev) => (prev + 1) % words.length);
+        setWordIndex(prev => (prev + 1) % words.length);
         setIsFading(false);
       }, 300); // Wait for fade out transition to complete
     }, 3000); // Change word every 3 seconds
@@ -30,9 +28,7 @@ const HeroSection: React.FC = () => {
       clearTimeout(timer);
     };
   }, []);
-
-  return (
-    <section className="relative bg-secondary-background text-primary-foreground overflow-hidden min-h-[90vh] flex items-center">
+  return <section className="relative bg-secondary-background text-primary-foreground overflow-hidden min-h-[90vh] flex items-center">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 -mr-20 -mt-20 w-[600px] h-[600px] bg-primary rounded-full blur-[128px] opacity-20 pointer-events-none" />
       <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-[400px] h-[400px] bg-accent rounded-full blur-[128px] opacity-10 pointer-events-none" />
@@ -46,34 +42,22 @@ const HeroSection: React.FC = () => {
             </p>
             <h1 className="text-6xl sm:text-7xl font-extrabold tracking-tight text-primary-foreground mb-8 leading-tight">
               Close the gaps that keep you{" "}
-              <span
-                className={`text-accent inline-block transition-all duration-300 ease-in-out transform ${
-                  isFading ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"
-                }`}
-              >
+              <span className={`text-accent inline-block transition-all duration-300 ease-in-out transform ${isFading ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"}`}>
                 {words[wordIndex]}
               </span>
             </h1>
 
             <p className="text-xl text-primary-foreground/70 mb-10 max-w-2xl leading-relaxed">
-              We install the files that pass audits and satisfy funders—board rules, money tracking, staff folders. Done
-              in 14 days or your money back
+              ​We install the files that pass audits and satisfy funders—board rules, money tracking, staff folders.
             </p>
 
             {/* CTA row */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-10">
-              <Button
-                size="lg"
-                className="bg-accent text-accent-foreground hover:bg-background hover:text-foreground border-0 font-bold px-8 shadow-lg shadow-accent/20"
-                asChild
-              >
+              <Button size="lg" className="bg-accent text-accent-foreground hover:bg-background hover:text-foreground border-0 font-bold px-8 shadow-lg shadow-accent/20" asChild>
                 <a href="#capacity-check">Get Your Health Score</a>
               </Button>
 
-              <button
-                type="button"
-                className="text-sm font-semibold text-primary-foreground/60 hover:text-primary-foreground underline-offset-4 hover:underline px-2 transition-colors"
-              >
+              <button type="button" className="text-sm font-semibold text-primary-foreground/60 hover:text-primary-foreground underline-offset-4 hover:underline px-2 transition-colors">
                 Watch 2-minute overview
               </button>
             </div>
@@ -92,9 +76,7 @@ const HeroSection: React.FC = () => {
           </div>
 
           {/* RIGHT: THE PROOF VISUAL (Dashboard Card) */}
-          <div
-            className={`relative lg:justify-self-end w-full max-w-[500px] transition-all duration-1000 ease-out transform ${isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-12 scale-95"}`}
-          >
+          <div className={`relative lg:justify-self-end w-full max-w-[500px] transition-all duration-1000 ease-out transform ${isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-12 scale-95"}`}>
             {/* Glassy Back Card (Offset Layer) */}
             <div className="absolute inset-0 bg-primary-foreground/5 backdrop-blur-md rounded-[2.5rem] transform translate-x-4 translate-y-4 border border-primary-foreground/10" />
 
@@ -120,33 +102,26 @@ const HeroSection: React.FC = () => {
 
               {/* Health Indicators List */}
               <div className="space-y-8">
-                {[
-                  { label: "Governance & Board", status: "Healthy" },
-                  { label: "Financial Systems", status: "Healthy" },
-                  { label: "HR & Compliance", status: "Healthy" },
-                ].map((item, i) => (
-                  <div
-                    key={i}
-                    className={`group transition-all duration-1000 transform ${
-                      isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
-                    }`}
-                    style={{
-                      transitionDelay: `${600 + i * 200}ms`,
-                      transitionTimingFunction: "cubic-bezier(0.2, 0.8, 0.2, 1)",
-                    }}
-                  >
+                {[{
+                label: "Governance & Board",
+                status: "Healthy"
+              }, {
+                label: "Financial Systems",
+                status: "Healthy"
+              }, {
+                label: "HR & Compliance",
+                status: "Healthy"
+              }].map((item, i) => <div key={i} className={`group transition-all duration-1000 transform ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}`} style={{
+                transitionDelay: `${600 + i * 200}ms`,
+                transitionTimingFunction: "cubic-bezier(0.2, 0.8, 0.2, 1)"
+              }}>
                     <div className="flex items-center justify-between mb-3">
                       <span className="text-card-foreground font-bold text-sm">{item.label}</span>
 
-                      <div
-                        className={`flex items-center gap-1.5 bg-accent/20 px-3 py-1 rounded-full transition-all duration-500 origin-center ${
-                          isVisible ? "scale-100 opacity-100" : "scale-0 opacity-0"
-                        }`}
-                        style={{
-                          transitionDelay: `${900 + i * 200}ms`,
-                          transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
-                        }}
-                      >
+                      <div className={`flex items-center gap-1.5 bg-accent/20 px-3 py-1 rounded-full transition-all duration-500 origin-center ${isVisible ? "scale-100 opacity-100" : "scale-0 opacity-0"}`} style={{
+                    transitionDelay: `${900 + i * 200}ms`,
+                    transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)"
+                  }}>
                         <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
                         <span className="text-[10px] font-bold text-accent-foreground uppercase tracking-wider">
                           {item.status}
@@ -155,22 +130,17 @@ const HeroSection: React.FC = () => {
                     </div>
                     {/* Progress Bar */}
                     <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
-                      <div
-                        className={`h-full bg-accent rounded-full transition-all duration-1000 ease-out w-full transform origin-left ${isVisible ? "scale-x-100" : "scale-x-0"}`}
-                        style={{ transitionDelay: `${800 + i * 200}ms` }}
-                      />
+                      <div className={`h-full bg-accent rounded-full transition-all duration-1000 ease-out w-full transform origin-left ${isVisible ? "scale-x-100" : "scale-x-0"}`} style={{
+                    transitionDelay: `${800 + i * 200}ms`
+                  }} />
                     </div>
-                  </div>
-                ))}
+                  </div>)}
               </div>
 
               {/* Footer */}
-              <div
-                className={`mt-10 pt-8 border-t border-border flex items-end justify-between transition-all duration-700 transform ${
-                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                }`}
-                style={{ transitionDelay: "1400ms" }}
-              >
+              <div className={`mt-10 pt-8 border-t border-border flex items-end justify-between transition-all duration-700 transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`} style={{
+              transitionDelay: "1400ms"
+            }}>
                 <div>
                   <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-2">
                     Fundability Score
@@ -189,8 +159,6 @@ const HeroSection: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HeroSection;
