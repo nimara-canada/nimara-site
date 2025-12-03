@@ -91,7 +91,7 @@ export const SystemLadder = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div 
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-10 sm:mb-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -103,12 +103,12 @@ export const SystemLadder = () => {
           
           <h2
             id="system-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-foreground leading-tight tracking-tight mb-6"
+            className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-primary-foreground leading-tight tracking-tight mb-4 sm:mb-6"
           >
             Where are you on the ladder?
           </h2>
           
-          <p className="text-lg text-muted-foreground leading-relaxed">
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
             We place every nonprofit on a simple 5-tier ladder so we know exactly where to start and what to build first.
           </p>
         </motion.div>
@@ -314,7 +314,7 @@ export const SystemLadder = () => {
                     type="button"
                     onClick={() => setSelectedLevel(isSelected ? null : step.level)}
                     className={`
-                      relative w-full p-4 rounded-xl border text-left 
+                      relative w-full p-3 sm:p-4 rounded-xl border text-left
                       transition-all duration-300
                       focus:outline-none focus:ring-2 focus:ring-primary
                       ${isActive 
@@ -324,17 +324,17 @@ export const SystemLadder = () => {
                     `}
                     aria-pressed={isSelected}
                   >
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-300 ${
+                    <div className="flex items-center gap-2.5 sm:gap-3 mb-1.5 sm:mb-2">
+                      <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center transition-colors duration-300 ${
                         isActive ? colors.bg : 'bg-white/10'
                       }`}>
-                        <Icon size={20} className={isActive ? 'text-white' : 'text-white/70'} />
+                        <Icon size={18} className={isActive ? 'text-white' : 'text-white/70'} />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-base font-semibold text-white">{step.title}</h3>
+                        <h3 className="text-sm sm:text-base font-semibold text-white">{step.title}</h3>
                       </div>
                     </div>
-                    <p className="text-sm text-white/70">{step.desc}</p>
+                    <p className="text-xs sm:text-sm text-white/70">{step.desc}</p>
                     
                     {isActive && (
                       <motion.div
@@ -354,14 +354,14 @@ export const SystemLadder = () => {
 
         {/* Bottom CTA */}
         <motion.div 
-          className="mt-16 text-center"
+          className="mt-10 sm:mt-16 text-center"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <div className="inline-flex flex-col sm:flex-row items-center gap-6 p-6 rounded-2xl bg-slate-800/80 border border-white/10">
-            <p className="text-foreground/80 text-sm">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-6 p-4 sm:p-6 rounded-2xl bg-slate-800/80 border border-white/10">
+            <p className="text-foreground/80 text-xs sm:text-sm text-center sm:text-left">
               Not sure where you fall?{' '}
               <span className="text-primary-foreground font-medium">Our free Health Check will place you.</span>
             </p>

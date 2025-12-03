@@ -160,7 +160,7 @@ const AccordionItem = ({ item, isOpen, onToggle, index }: AccordionItemProps) =>
     >
       <button
         onClick={onToggle}
-        className="w-full p-5 flex items-start gap-4 text-left focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset rounded-xl"
+        className="w-full p-4 sm:p-5 flex items-start gap-3 sm:gap-4 text-left focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset rounded-xl"
         aria-expanded={isOpen}
         aria-controls={panelId}
         id={headerId}
@@ -168,14 +168,14 @@ const AccordionItem = ({ item, isOpen, onToggle, index }: AccordionItemProps) =>
         {/* Icon */}
         <motion.div 
           className={`
-            flex-shrink-0 w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300
+            flex-shrink-0 w-9 h-9 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center transition-all duration-300
             ${isOpen ? colors.bg : 'bg-muted'}
           `}
           animate={{ rotate: isOpen ? 5 : 0 }}
           transition={{ duration: 0.2 }}
         >
           <Icon 
-            size={22} 
+            size={18}
             className={`transition-colors duration-300 ${isOpen ? 'text-white' : 'text-muted-foreground'}`} 
           />
         </motion.div>
@@ -195,7 +195,7 @@ const AccordionItem = ({ item, isOpen, onToggle, index }: AccordionItemProps) =>
         {/* Toggle icon */}
         <motion.div 
           className={`
-            flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center transition-colors duration-300
+            flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center transition-colors duration-300
             ${isOpen ? colors.bg : 'bg-muted'}
           `}
           animate={{ rotate: isOpen ? 180 : 0 }}
@@ -221,8 +221,8 @@ const AccordionItem = ({ item, isOpen, onToggle, index }: AccordionItemProps) =>
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="px-5 pb-5 pt-0">
-              <div className="ml-15 pl-4 border-l-2 border-border">
+            <div className="px-4 sm:px-5 pb-4 sm:pb-5 pt-0">
+              <div className="ml-12 sm:ml-15 pl-3 sm:pl-4 border-l-2 border-border">
                 <ul className="space-y-2.5">
                   {item.bullets.map((bullet, idx) => (
                     <motion.li 
@@ -285,7 +285,7 @@ export const Expertise = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div 
-          className="text-center max-w-3xl mx-auto mb-12"
+          className="text-center max-w-3xl mx-auto mb-8 sm:mb-12"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -297,12 +297,12 @@ export const Expertise = () => {
           
           <h2
             id="expertise-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight tracking-tight mb-6"
+            className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground leading-tight tracking-tight mb-4 sm:mb-6"
           >
             What we help you fix
           </h2>
           
-          <p className="text-lg text-muted-foreground leading-relaxed">
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
             We focus on the boring but critical systems that keep your nonprofit safe, fundable, and ready for growth.
           </p>
         </motion.div>
@@ -333,10 +333,10 @@ export const Expertise = () => {
         </motion.div>
 
         {/* Accordion Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
           {/* Left Column */}
           <motion.div 
-            className="space-y-4"
+            className="space-y-3 sm:space-y-4"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -355,7 +355,7 @@ export const Expertise = () => {
 
           {/* Right Column */}
           <motion.div 
-            className="space-y-4"
+            className="space-y-3 sm:space-y-4"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -378,13 +378,13 @@ export const Expertise = () => {
 
         {/* Bottom CTA */}
         <motion.div 
-          className="mt-12 text-center"
+          className="mt-8 sm:mt-12 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
         >
-          <div className="inline-flex flex-col sm:flex-row items-center gap-4 p-6 rounded-2xl bg-card border border-border shadow-sm">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-3 sm:gap-4 p-4 sm:p-6 rounded-2xl bg-card border border-border shadow-sm">
             <div className="flex -space-x-2" aria-hidden="true">
               {expertiseItems.slice(0, 4).map((item, i) => {
                 const colors = colorClasses[item.color];
