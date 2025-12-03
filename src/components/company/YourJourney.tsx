@@ -66,7 +66,7 @@ const YourJourney: React.FC = () => {
     description: "We match you with a Nimara Practice Partner who has the right skills and context. We agree on scope, timelines, and deliverables in a simple Statement of Work (SOW)."
   }, {
     number: 4,
-    title: "Delivery with clear check-ins",
+    title: "Confirm your Tier and Path",
     description: "The Practice Partner runs the work using Nimara tools and templates. Your team stays involved. We check progress against the SOW, not vague goals."
   }, {
     number: 5,
