@@ -64,7 +64,7 @@ export const HowWeHelp = () => {
 
   return (
     <section
-      className="relative py-16 md:py-24 lg:py-32 overflow-hidden bg-gradient-to-b from-slate-50 to-white"
+      className="relative py-16 md:py-24 lg:py-32 overflow-hidden bg-gradient-to-b from-muted to-background"
       id="how-we-help"
     >
       {/* Subtle accent line removed for smooth transition */}
@@ -81,15 +81,15 @@ export const HowWeHelp = () => {
             variants={fadeUpVariants}
           >
             {/* Label */}
-            <span className="text-xs font-medium tracking-widest text-violet-600 uppercase mb-4 block">
+            <span className="text-xs font-medium tracking-widest text-primary uppercase mb-4 block">
               How Nimara Helps
             </span>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-slate-900 mb-6 leading-tight tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground mb-6 leading-tight tracking-tight">
               One simple loop we run with every nonprofit
             </h2>
 
-            <p className="text-lg text-slate-600 leading-relaxed mb-8 max-w-md">
+            <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-md">
               We don't guess—we run the same clear loop each time: check, plan, build, support. 
               The only thing that changes is how much we fix at once.
             </p>
@@ -100,15 +100,15 @@ export const HowWeHelp = () => {
                 <div
                   key={index}
                   className={`flex items-center gap-3 py-3 transition-colors duration-200 ${
-                    promise.highlight ? 'text-violet-600' : 'text-slate-600'
+                    promise.highlight ? 'text-primary' : 'text-muted-foreground'
                   }`}
                 >
                   <div className={`flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center ${
-                    promise.highlight ? 'bg-violet-600' : 'bg-slate-200'
+                    promise.highlight ? 'bg-primary' : 'bg-border'
                   }`}>
                     <Check
                       size={12}
-                      className={promise.highlight ? 'text-white' : 'text-slate-500'}
+                      className={promise.highlight ? 'text-primary-foreground' : 'text-muted-foreground'}
                       strokeWidth={3}
                     />
                   </div>
@@ -130,7 +130,7 @@ export const HowWeHelp = () => {
               variants={containerVariants}
             >
               {/* Timeline line */}
-              <div className="absolute left-4 top-10 bottom-10 w-px bg-slate-200" />
+              <div className="absolute left-4 top-10 bottom-10 w-px bg-border" />
 
               {steps.map((step, index) => {
                 const isLastStep = index === steps.length - 1;
@@ -150,8 +150,8 @@ export const HowWeHelp = () => {
                         <motion.div 
                           className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${
                             isLastStep 
-                              ? 'bg-emerald-200 text-emerald-800' 
-                              : 'bg-violet-600 text-white'
+                              ? 'bg-accent text-accent-foreground' 
+                              : 'bg-primary text-primary-foreground'
                           }`}
                           animate={{ scale: isHovered ? 1.1 : 1 }}
                           transition={{ duration: 0.2 }}
@@ -163,17 +163,17 @@ export const HowWeHelp = () => {
                       {/* Content */}
                       <div className="flex-1 pb-2">
                         <h3 className={`text-lg font-semibold mb-2 transition-colors duration-200 ${
-                          isHovered ? 'text-violet-600' : 'text-slate-900'
+                          isHovered ? 'text-primary' : 'text-foreground'
                         }`}>
                           {step.title}
                         </h3>
-                        <p className="text-base text-slate-500 leading-relaxed">
+                        <p className="text-base text-muted-foreground leading-relaxed">
                           {step.text}
                         </p>
                         
                         {/* Guarantee for last step */}
                         {isLastStep && (
-                          <div className="mt-4 inline-flex items-center gap-2 text-violet-600">
+                          <div className="mt-4 inline-flex items-center gap-2 text-primary">
                             <Check size={16} strokeWidth={2.5} />
                             <span className="text-sm font-medium">
                               Money-back guarantee
@@ -189,15 +189,15 @@ export const HowWeHelp = () => {
 
             {/* Footer CTA */}
             <motion.div 
-              className="mt-10 pt-8 border-t border-slate-200"
+              className="mt-10 pt-8 border-t border-border"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeUpVariants}
             >
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-                <p className="text-sm text-slate-500">
-                  <span className="font-medium text-slate-900">
+                <p className="text-sm text-muted-foreground">
+                  <span className="font-medium text-foreground">
                     Check → Plan → Build → Support
                   </span>
                   <br />
@@ -207,7 +207,7 @@ export const HowWeHelp = () => {
                   href="https://www.notion.so/Nimara-Refund-Policy-2bc227f1ee3a80f299fbc42501d338ac?source=copy_link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200 hover:bg-violet-600 focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2"
+                  className="inline-flex items-center justify-center gap-2 bg-foreground text-background px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200 hover:bg-primary focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >

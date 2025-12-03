@@ -112,7 +112,7 @@ export const FitCheck = () => {
                 }} exit={{
                   scale: 0,
                   opacity: 0
-                }} className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold transition-colors duration-300 ${isGoodFit ? 'bg-emerald-100 text-emerald-700' : 'bg-muted text-muted-foreground'}`}>
+                }} className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold transition-colors duration-300 ${isGoodFit ? 'bg-accent/30 text-accent-foreground' : 'bg-muted text-muted-foreground'}`}>
                       {isGoodFit && <Check size={12} strokeWidth={3} />}
                       {matchCount}/{fitCriteria.length} selected
                     </motion.div>}
@@ -170,11 +170,11 @@ export const FitCheck = () => {
                   opacity: 0,
                   y: -10
                 }} className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center">
-                        <Check size={20} className="text-emerald-600" strokeWidth={3} />
+                      <div className="w-10 h-10 rounded-xl bg-accent/30 flex items-center justify-center">
+                        <Check size={20} className="text-accent-foreground" strokeWidth={3} />
                       </div>
                       <div>
-                        <p className="text-sm font-semibold text-emerald-700">
+                        <p className="text-sm font-semibold text-accent-foreground">
                           Great match!
                         </p>
                         <p className="text-xs text-muted-foreground">
@@ -271,8 +271,8 @@ export const FitCheck = () => {
 
                 {/* Bottom content */}
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <p className="text-white font-semibold mb-1">See how Nimara works</p>
-                  <p className="text-gray-300 text-sm">
+                  <p className="text-primary-foreground font-semibold mb-1">See how Nimara works</p>
+                  <p className="text-primary-foreground/70 text-sm">
                     Who we help, what we install, and what working together feels like.
                   </p>
                 </div>
@@ -337,8 +337,8 @@ export const FitCheck = () => {
                   <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center mx-auto mb-4">
                     <Play size={32} className="text-primary-foreground ml-1" fill="currentColor" />
                   </div>
-                  <p className="text-white font-semibold mb-1">Video Player</p>
-                  <p className="text-gray-400 text-sm">Replace with your video embed</p>
+                  <p className="text-primary-foreground font-semibold mb-1">Video Player</p>
+                  <p className="text-muted-foreground text-sm">Replace with your video embed</p>
                 </div>
               </div>
             </motion.div>
