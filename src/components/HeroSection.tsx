@@ -79,7 +79,10 @@ const HeroSectionLuxe = () => {
               On a Mission to Keep Nonprofits
               <br />
               <span className="relative inline-flex items-baseline">
-                <span className="font-normal text-accent">
+                <span 
+                  key={wordIndex}
+                  className="font-normal text-accent transition-all duration-300 animate-fade-in"
+                >
                   {displayText}
                   <span className="animate-pulse ml-0.5 inline-block w-[3px] h-[1em] bg-accent align-middle" />
                 </span>
