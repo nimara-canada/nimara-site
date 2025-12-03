@@ -60,7 +60,7 @@ const Consultants = () => {
       </Helmet>
       <Header activeRoute="/consultants" />
       
-      <main id="main" className="pb-20 md:pb-0">
+      <main id="main" className="pb-20 md:pb-0" style={{ paddingTop: 'calc(var(--announcement-height, 0px) + 4rem)' }}>
         <NewConsultantHero />
         <NewWhyJoin />
         <NewWorkTypes />
