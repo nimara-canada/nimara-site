@@ -44,7 +44,10 @@ export const FinalCTA = () => {
   return <section className="py-16 md:py-24 lg:py-32 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
         <div className="text-center space-y-6 mb-12">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground">Talk to the Nimara team</h2>
+          <span className="text-xs font-semibold tracking-widest text-primary uppercase mb-4 block">
+            Get In Touch
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">Talk to the Nimara team</h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto"><strong>Nonprofit—tell us what you need.</strong> We'll help you choose the simplest next step. Share a few details. <strong>We'll reply within 5 business days.</strong></p>
         </div>
 
