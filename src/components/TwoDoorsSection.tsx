@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Zap, 
@@ -131,13 +132,13 @@ export const TwoDoorsSection = () => {
                 </div>
 
                 {/* CTA Button */}
-                <button 
-                  onClick={scrollToContact}
+                <Link 
+                  to="/path-a"
                   className="w-full py-4 font-bold rounded-xl transition-all duration-200 flex items-center justify-center gap-2 group bg-accent text-accent-foreground hover:opacity-90 mb-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 min-h-[44px]"
                 >
                   Start Path A
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
+                </Link>
 
                 {/* Expandable Details */}
                 <button
