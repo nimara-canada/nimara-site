@@ -82,7 +82,7 @@ const YourJourney: React.FC = () => {
     description: "For organizations that need more hands-on help, you can hire a Nimara Fractional Partner on an ongoing basis. This person helps manage and update the systems we installed, supports your team, and keeps the day-to-day operations of those systems on track. Ideal for growing nonprofits with ongoing capacity building needs needs but not enough for a full-time staff",
     color: "from-[#6945D8]/10 to-[#6945D8]/5 border-[#6945D8]"
   }];
-  return <section className="w-full py-16 sm:py-20 lg:py-24 bg-slate-50">{/* Changed from bg-white */}
+  return <section className="w-full py-16 sm:py-20 lg:py-24 bg-muted">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         <motion.div initial={{
         opacity: 0,
@@ -97,8 +97,8 @@ const YourJourney: React.FC = () => {
         duration: 0.6,
         ease: [0.21, 0.47, 0.32, 0.98]
       }} className="mb-16 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Your Journey with Nimara</h2>
-          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">Your Journey with Nimara</h2>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Most projects follow the same basic path. The details change by organization, 
             but these are the main steps from 'we need help' to 'this is working in real life.'
           </p>
@@ -106,7 +106,7 @@ const YourJourney: React.FC = () => {
 
         <div ref={sectionRef} className="mb-24">
           <div className="hidden lg:block relative">
-            <motion.div initial="hidden" animate={isInView ? "visible" : "hidden"} variants={lineVariants} className="absolute top-1/2 left-0 right-0 h-[2px] bg-gradient-to-r from-[#6945D8]/20 via-[#6945D8]/40 to-[#6945D8]/20 -translate-y-1/2 origin-left" style={{
+            <motion.div initial="hidden" animate={isInView ? "visible" : "hidden"} variants={lineVariants} className="absolute top-1/2 left-0 right-0 h-[2px] bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20 -translate-y-1/2 origin-left" style={{
             zIndex: 0
           }} />
 
@@ -119,7 +119,7 @@ const YourJourney: React.FC = () => {
                   type: "spring",
                   stiffness: 400
                 }} className="flex-shrink-0">
-                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#6945D8] to-[#6945D8]/80 text-white flex items-center justify-center text-2xl font-bold shadow-lg">
+                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-primary/80 text-primary-foreground flex items-center justify-center text-2xl font-bold shadow-lg">
                         {step.number}
                       </div>
                     </motion.div>
@@ -129,11 +129,11 @@ const YourJourney: React.FC = () => {
                 }} transition={{
                   type: "spring",
                   stiffness: 300
-                }} className={`bg-white p-6 rounded-2xl border-2 border-slate-200 shadow-sm hover:shadow-xl transition-shadow ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
-                      <h3 className="text-xl font-semibold text-slate-900 mb-3">
+                }} className={`bg-card p-6 rounded-2xl border-2 border-border shadow-sm hover:shadow-xl transition-shadow ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
+                      <h3 className="text-xl font-semibold text-foreground mb-3">
                         {step.title}
                       </h3>
-                      <p className="text-slate-600 leading-relaxed">
+                      <p className="text-muted-foreground leading-relaxed">
                         {step.description}
                       </p>
                     </motion.div>
@@ -153,7 +153,7 @@ const YourJourney: React.FC = () => {
             duration: 1.2,
             ease: "easeInOut",
             delay: 0.3
-          }} className="absolute left-8 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#6945D8]/20 via-[#6945D8]/40 to-[#6945D8]/20 origin-top" style={{
+          }} className="absolute left-8 top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary/20 via-primary/40 to-primary/20 origin-top" style={{
             zIndex: 0
           }} />
 
@@ -165,16 +165,16 @@ const YourJourney: React.FC = () => {
                 }} transition={{
                   type: "spring",
                   stiffness: 400
-                }} className="w-16 h-16 rounded-full bg-gradient-to-br from-[#6945D8] to-[#6945D8]/80 text-white flex items-center justify-center text-xl font-bold shadow-lg">
+                }} className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-primary/80 text-primary-foreground flex items-center justify-center text-xl font-bold shadow-lg">
                       {step.number}
                     </motion.div>
                   </div>
 
                   <div className="flex-1 pb-2">
-                    <h3 className="text-lg font-semibold text-slate-900 mb-2">
+                    <h3 className="text-lg font-semibold text-foreground mb-2">
                       {step.title}
                     </h3>
-                    <p className="text-slate-600 text-sm leading-relaxed">
+                    <p className="text-muted-foreground text-sm leading-relaxed">
                       {step.description}
                     </p>
                   </div>
@@ -184,14 +184,14 @@ const YourJourney: React.FC = () => {
         </div>
 
         <div ref={addOnsRef} className="relative">
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
           
-          <motion.div initial="hidden" animate={addOnsInView ? "visible" : "hidden"} variants={containerVariants} className="pt-16 pb-8 px-8 bg-slate-50/50 rounded-3xl">
+          <motion.div initial="hidden" animate={addOnsInView ? "visible" : "hidden"} variants={containerVariants} className="pt-16 pb-8 px-8 bg-muted/50 rounded-3xl">
             <motion.div variants={itemVariants} className="text-center mb-10">
-              <div className="inline-flex items-center gap-2 text-sm font-medium text-slate-600 mb-3">
+              <div className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground mb-3">
                 Optional add-ons after your project
               </div>
-              <p className="text-slate-600 max-w-2xl mx-auto">
+              <p className="text-muted-foreground max-w-2xl mx-auto">
                 Some organizations want deeper follow-up. These add-ons are optional and come with a separate simple fee.
               </p>
             </motion.div>
@@ -205,14 +205,14 @@ const YourJourney: React.FC = () => {
               }
             }} className="group">
                   <div className={`h-full p-8 rounded-2xl bg-gradient-to-br border-2 transition-all hover:shadow-2xl ${addon.color}`}>
-                    <h3 className="text-xl font-semibold text-slate-900 mb-3">
+                    <h3 className="text-xl font-semibold text-foreground mb-3">
                       {addon.title}
                     </h3>
-                    <p className="text-slate-600 leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed">
                       {addon.description}
                     </p>
                     
-                    <div className="mt-4 flex items-center gap-2 text-sm font-medium text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="mt-4 flex items-center gap-2 text-sm font-medium text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
                       Learn more
                       <ArrowRight className="w-3.5 h-3.5" />
                     </div>
