@@ -55,20 +55,10 @@ const HeroSectionLuxe = () => {
 
         {/* Floating gradient orbs */}
         <div className="absolute top-0 left-1/4 w-[500px] h-[500px]">
-          <div
-            className="w-full h-full rounded-full bg-gradient-to-br from-teal-100/40 to-transparent blur-3xl"
-            style={{
-              animation: "float 20s ease-in-out infinite",
-            }}
-          />
+          <div className="w-full h-full rounded-full bg-gradient-to-br from-teal-100/40 to-transparent blur-3xl animate-float" />
         </div>
         <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px]">
-          <div
-            className="w-full h-full rounded-full bg-gradient-to-tr from-slate-100/40 to-transparent blur-3xl"
-            style={{
-              animation: "float 25s ease-in-out infinite reverse",
-            }}
-          />
+          <div className="w-full h-full rounded-full bg-gradient-to-tr from-slate-100/40 to-transparent blur-3xl animate-float-reverse" />
         </div>
       </div>
 
@@ -336,22 +326,6 @@ const HeroSectionLuxe = () => {
         </div>
       </div>
 
-      <style jsx>{`
-        @keyframes float {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          33% { transform: translate(30px, -30px) scale(1.05); }
-          66% { transform: translate(-20px, 20px) scale(0.95); }
-        }
-        
-        @keyframes shimmer {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
-        }
-        
-        .animate-shimmer {
-          animation: shimmer 3s infinite;
-        }
-      `}</style>
     </section>
   );
 };
