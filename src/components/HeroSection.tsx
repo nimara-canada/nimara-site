@@ -82,19 +82,19 @@ const HeroSectionLuxe = () => {
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
             >
-              <div className="flex items-center gap-3 px-5 py-2.5 bg-white rounded-full shadow-sm border border-gray-100">
+              <div className="flex items-center gap-3 px-5 py-2.5 bg-card rounded-full shadow-sm border border-border">
                 <div className="flex gap-1">
-                  <span className="w-1.5 h-1.5 bg-teal-500 rounded-full animate-pulse" />
+                  <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse" />
                   <span
-                    className="w-1.5 h-1.5 bg-teal-500 rounded-full animate-pulse"
+                    className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse"
                     style={{ animationDelay: "0.2s" }}
                   />
                   <span
-                    className="w-1.5 h-1.5 bg-teal-500 rounded-full animate-pulse"
+                    className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse"
                     style={{ animationDelay: "0.4s" }}
                   />
                 </div>
-                <span className="text-xs font-medium text-gray-600 tracking-wide">
+                <span className="text-xs font-medium text-muted-foreground tracking-wide">
                   TRUSTED BY 200+ CANADIAN NONPROFITS
                 </span>
               </div>
@@ -102,7 +102,7 @@ const HeroSectionLuxe = () => {
 
             {/* Premium headline with word rotation */}
             <h1
-              className={`text-5xl sm:text-6xl lg:text-7xl font-extralight text-gray-900 leading-[1.05] mb-8 transition-all duration-1200 delay-100 ${
+              className={`text-5xl sm:text-6xl lg:text-7xl font-extralight text-foreground leading-[1.05] mb-8 transition-all duration-1200 delay-100 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
             >
@@ -111,11 +111,11 @@ const HeroSectionLuxe = () => {
               that keep you
               <br />
               <span className="relative inline-flex items-baseline">
-                <span className="absolute inset-0 bg-gradient-to-r from-teal-500/10 to-teal-600/10 blur-2xl" />
+                <span className="absolute inset-0 bg-accent/10 blur-2xl" />
                 {words.map((word, index) => (
                   <span
                     key={word}
-                    className={`absolute font-normal bg-gradient-to-r from-teal-600 to-teal-700 bg-clip-text text-transparent transition-all duration-700 ${
+                    className={`absolute font-normal text-accent transition-all duration-700 ${
                       index === wordIndex ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-95"
                     }`}
                   >
@@ -128,14 +128,14 @@ const HeroSectionLuxe = () => {
 
             {/* Refined description */}
             <p
-              className={`text-xl text-gray-600 mb-12 leading-relaxed font-light transition-all duration-1200 delay-200 ${
+              className={`text-xl text-muted-foreground mb-12 leading-relaxed font-light transition-all duration-1200 delay-200 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
             >
               We install the files that pass audits and satisfy funders—
-              <span className="text-gray-800 font-normal">board rules</span>,{" "}
-              <span className="text-gray-800 font-normal">money tracking</span>,{" "}
-              <span className="text-gray-800 font-normal">staff folders</span>.
+              <span className="text-foreground font-normal">board rules</span>,{" "}
+              <span className="text-foreground font-normal">money tracking</span>,{" "}
+              <span className="text-foreground font-normal">staff folders</span>.
             </p>
 
             {/* Premium CTA buttons */}
@@ -196,13 +196,13 @@ const HeroSectionLuxe = () => {
               }`}
             >
               <div className="flex items-baseline gap-2">
-                <span className="text-4xl font-extralight text-gray-900">6</span>
-                <span className="text-sm font-medium text-gray-500 uppercase tracking-wider">weeks</span>
+                <span className="text-4xl font-extralight text-foreground">6</span>
+                <span className="text-sm font-medium text-muted-foreground uppercase tracking-wider">weeks</span>
               </div>
-              <div className="w-px h-8 bg-gray-200" />
+              <div className="w-px h-8 bg-border" />
               <div className="flex items-baseline gap-2">
-                <span className="text-4xl font-extralight text-gray-900">100%</span>
-                <span className="text-sm font-medium text-gray-500 uppercase tracking-wider">guarantee</span>
+                <span className="text-4xl font-extralight text-foreground">100%</span>
+                <span className="text-sm font-medium text-muted-foreground uppercase tracking-wider">guarantee</span>
               </div>
             </div>
           </div>
