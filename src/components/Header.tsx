@@ -60,15 +60,15 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
         Skip to content
       </a>
 
-      <header className={`sticky z-50 w-full border-b border-border bg-background shadow-sm transition-all duration-300 ${isScrolled ? 'py-1' : 'py-0'}`} style={{ top: 'var(--announcement-height, 0px)' }}>
+      <header className={`fixed top-0 left-0 right-0 z-50 w-full bg-background transition-all duration-300 ${isScrolled ? 'shadow-md border-b border-border/50' : 'border-b border-transparent'}`}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-14' : 'h-16'}`}>
+          <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <a href="/" className="flex items-center space-x-2 min-h-[44px]" aria-label="Nimara home">
               <img 
                 src={nimaraLogo} 
                 alt="Nimara - Canadian Nonprofit Consulting Platform for Governance, Finance, and Compliance" 
-                className={`w-auto transition-all duration-300 ${isScrolled ? 'h-12 md:h-16' : 'h-16 md:h-20'}`}
+                className="w-auto h-12 md:h-14 transition-all duration-300"
                 fetchPriority="high"
                 width="120"
                 height="48"
