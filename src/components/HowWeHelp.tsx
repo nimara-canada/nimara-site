@@ -85,7 +85,7 @@ export const HowWeHelp = () => {
               How Nimara Helps
             </span>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground mb-6 leading-tight tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight tracking-tight">
               One simple loop we run with every nonprofit
             </h2>
 
