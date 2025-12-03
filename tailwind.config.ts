@@ -58,6 +58,17 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        /* Brand tokens - use these for new code */
+        brand: {
+          mint: "hsl(var(--brand-mint))",
+          "mint-dark": "hsl(var(--brand-mint-dark))",
+          ink: "hsl(var(--brand-ink))",
+          "soft-ink": "hsl(var(--brand-soft-ink))",
+          bg: "hsl(var(--brand-bg))",
+          "bg-soft": "hsl(var(--brand-bg-soft))",
+          danger: "hsl(var(--brand-danger))",
+        },
+        /* Legacy tokens - mapped to brand for compatibility */
         nim: {
           navy: "hsl(var(--nim-navy))",
           purple: "hsl(var(--nim-purple))",
@@ -66,12 +77,6 @@ export default {
           white: "hsl(var(--nim-white))",
           mist: "hsl(var(--nim-mist))",
           cloud: "hsl(var(--nim-cloud))",
-        },
-        nimara: {
-          navy: "hsl(var(--nimara-navy))",
-          purple: "hsl(var(--nimara-purple))",
-          mint: "hsl(var(--nimara-mint))",
-          bg: "hsl(var(--nimara-bg))",
         },
       },
       borderRadius: {
