@@ -177,15 +177,11 @@ const HeroSectionLuxe = () => {
               isVisible ? "opacity-100 translate-y-0 animate-float-subtle" : "opacity-0 translate-y-8"
             }`}
           >
-            {/* Glow effect */}
-            <div className="absolute -inset-6 bg-gradient-to-r from-accent/30 via-transparent to-white/10 rounded-3xl blur-3xl opacity-60" />
-
             {/* Main card */}
             <div 
               className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-white/20 transition-all duration-500 hover:-translate-y-2 cursor-pointer group/card" 
-              style={{ boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 60px rgba(172, 252, 227, 0.15)" }}
             >
-              <div className="absolute inset-0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ boxShadow: "0 35px 60px -15px rgba(0, 0, 0, 0.35), 0 0 80px rgba(172, 252, 227, 0.25)" }} />
+              <div className="absolute inset-0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none shadow-2xl" />
               {/* Card header */}
               <div className="px-10 pt-10 pb-7 border-b border-gray-100/60 bg-gradient-to-b from-gray-50/30 to-transparent">
                 <div className="flex items-center justify-between">
