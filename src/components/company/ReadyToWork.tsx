@@ -6,8 +6,8 @@ const nextSteps = [
   {
     heading: "I run or support a nonprofit",
     description: "I want to see if Nimara is a good fit for our team.",
-    buttonText: "Start the Organizational Health Check",
-    link: "/organizational-health-check"
+    buttonText: "Start the Health Check",
+    link: "/health-score"
   },
   {
     heading: "I'm a consultant or operator",

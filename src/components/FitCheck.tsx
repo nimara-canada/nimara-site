@@ -200,7 +200,7 @@ export const FitCheck = () => {
                 <Play size={18} fill="currentColor" />
                 Watch 1-minute intro
               </button>
-              <a href="#health-check" className="inline-flex items-center justify-center gap-2 text-foreground hover:text-primary px-4 py-3.5 text-sm font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-xl min-h-[44px]">
+              <a href="/health-score" className="inline-flex items-center justify-center gap-2 text-foreground hover:text-primary px-4 py-3.5 text-sm font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-xl min-h-[44px]">
                 Skip to free Health Check
                 <ArrowRight size={16} />
               </a>
