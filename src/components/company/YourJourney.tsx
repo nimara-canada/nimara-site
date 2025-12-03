@@ -78,7 +78,7 @@ const YourJourney: React.FC = () => {
     description: "For a small add-on fee, our team stays close for up to 12 months. We check in at agreed points, help you see what is working, and adjust tools or processes where needed. You also get light evaluation support so you can show funders how the changes are landing.",
     color: "from-[#ACFCE3]/20 to-[#ACFCE3]/5 border-[#4CBFA6]"
   }, {
-    title: "Fractional Partner (ongoing)",
+    title: "Fractional Partner (Ongoing)",
     description: "For organizations that need more hands-on help, you can hire a Nimara Fractional Partner on an ongoing basis. This person helps manage and update the systems we installed, supports your team, and keeps the day-to-day operations of those systems on track. Ideal for growing nonprofits with ongoing capacity building needs needs but not enough for a full-time staff",
     color: "from-[#6945D8]/10 to-[#6945D8]/5 border-[#6945D8]"
   }];
