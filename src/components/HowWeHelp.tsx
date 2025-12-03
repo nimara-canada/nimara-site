@@ -70,7 +70,7 @@ export const HowWeHelp = () => {
       {/* Subtle accent line removed for smooth transition */}
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-20 items-start">
           
           {/* LEFT COLUMN */}
           <motion.div 
@@ -85,11 +85,11 @@ export const HowWeHelp = () => {
               How Nimara Helps
             </span>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight tracking-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground mb-4 sm:mb-6 leading-tight tracking-tight">
               One simple loop we run with every nonprofit
             </h2>
 
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-md">
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-6 sm:mb-8 max-w-md">
               We don't guess—we run the same clear loop each time: check, plan, build, support. 
               The only thing that changes is how much we fix at once.
             </p>
@@ -130,7 +130,7 @@ export const HowWeHelp = () => {
               variants={containerVariants}
             >
               {/* Timeline line */}
-              <div className="absolute left-4 top-10 bottom-10 w-px bg-border" />
+              <div className="absolute left-3 sm:left-4 top-10 bottom-10 w-px bg-border" />
 
               {steps.map((step, index) => {
                 const isLastStep = index === steps.length - 1;
@@ -144,11 +144,11 @@ export const HowWeHelp = () => {
                     onMouseEnter={() => setHoveredStep(index)}
                     onMouseLeave={() => setHoveredStep(null)}
                   >
-                    <div className="flex gap-6">
+                    <div className="flex gap-4 sm:gap-6">
                       {/* Step number */}
                       <div className="flex-shrink-0 relative z-10">
                         <motion.div 
-                          className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${
+                          className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm font-semibold ${
                             isLastStep 
                               ? 'bg-accent text-accent-foreground' 
                               : 'bg-primary text-primary-foreground'
@@ -162,12 +162,12 @@ export const HowWeHelp = () => {
 
                       {/* Content */}
                       <div className="flex-1 pb-2">
-                        <h3 className={`text-lg font-semibold mb-2 transition-colors duration-200 ${
+                        <h3 className={`text-base sm:text-lg font-semibold mb-1.5 sm:mb-2 transition-colors duration-200 ${
                           isHovered ? 'text-primary' : 'text-foreground'
                         }`}>
                           {step.title}
                         </h3>
-                        <p className="text-base text-muted-foreground leading-relaxed">
+                        <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                           {step.text}
                         </p>
                         
