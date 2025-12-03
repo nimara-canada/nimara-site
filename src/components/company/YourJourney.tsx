@@ -54,7 +54,7 @@ const YourJourney: React.FC = () => {
   };
   const steps = [{
     number: 1,
-    title: "Start the Organizational Health Check",
+    title: "Start the Health Check",
     description: "You complete a short online check about your team, money, systems, and risks. This gives us a clear picture of what is strong and what is fragile."
   }, {
     number: 2,
