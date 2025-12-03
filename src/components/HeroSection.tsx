@@ -89,7 +89,7 @@ const HeroSectionLuxe = () => {
 
             {/* Premium headline with word rotation */}
             <h1
-              className={`text-5xl sm:text-6xl lg:text-7xl font-extralight text-primary-foreground leading-[1.05] mb-8 transition-all duration-1200 delay-100 ${
+              className={`text-5xl sm:text-6xl lg:text-7xl font-bold text-primary-foreground leading-[1.05] tracking-tight mb-8 transition-all duration-1200 delay-100 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
             >
