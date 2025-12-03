@@ -101,7 +101,7 @@ const Index = () => {
       </Helmet>
       <AnnouncementBar />
       <Header />
-      <main id="main" className="space-y-0">
+      <main id="main" className="space-y-0 pt-16">
         <HeroSection />
         <FitCheck />
         <HowWeHelp />
