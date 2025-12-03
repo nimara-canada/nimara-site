@@ -218,55 +218,55 @@ const HeroSectionLuxe = () => {
             <div className="absolute -inset-4 bg-gradient-to-r from-teal-500/20 via-transparent to-slate-500/20 rounded-3xl blur-2xl opacity-50" />
 
             {/* Main card */}
-            <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
+            <div className="relative bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100/80">
               {/* Card header */}
-              <div className="px-8 pt-8 pb-6 border-b border-gray-100 bg-gradient-to-b from-gray-50/50 to-transparent">
-                <div className="flex items-center justify-between mb-1">
-                  <div className="flex items-center gap-4">
+              <div className="px-10 pt-10 pb-7 border-b border-gray-100/60 bg-gradient-to-b from-gray-50/30 to-transparent">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-5">
                     <div className="relative">
-                      <div className="w-14 h-14 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center">
-                        <span className="text-white font-bold text-2xl">N</span>
+                      <div className="w-12 h-12 bg-gradient-to-br from-gray-700 to-gray-800 rounded-xl flex items-center justify-center">
+                        <span className="text-white font-medium text-lg">N</span>
                       </div>
-                      <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-white animate-pulse" />
+                      <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-400 rounded-full border-2 border-white" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900">Health Dashboard</h3>
-                      <p className="text-xs text-gray-500 font-medium mt-0.5">Live monitoring</p>
+                      <h3 className="text-base font-medium text-gray-800 tracking-tight">Health Dashboard</h3>
+                      <p className="text-[11px] text-gray-400 font-normal mt-1 tracking-wide uppercase">Live monitoring</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-xs text-gray-400">LIVE</span>
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                    <span className="text-[10px] text-gray-400 tracking-wider">LIVE</span>
+                    <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
                   </div>
                 </div>
               </div>
 
               {/* Card body */}
-              <div className="p-8">
+              <div className="px-10 py-9">
                 {/* Metrics */}
-                <div className="space-y-8">
+                <div className="space-y-7">
                 {[
                     {
                       label: "Governance & Board",
                       value: chartValues[0],
-                      color: "from-teal-500 to-teal-600",
+                      color: "from-teal-400/80 to-teal-500/80",
                     },
                     {
                       label: "Financial Systems",
                       value: chartValues[1],
-                      color: "from-blue-500 to-blue-600",
+                      color: "from-slate-400/80 to-slate-500/80",
                     },
                     {
                       label: "HR & Compliance",
                       value: chartValues[2],
-                      color: "from-purple-500 to-purple-600",
+                      color: "from-violet-400/80 to-violet-500/80",
                     },
                   ].map((item, i) => (
                     <div key={i} className="relative">
-                      <div className="flex items-center justify-between mb-3">
-                        <span className="text-sm font-medium text-gray-700">{item.label}</span>
+                      <div className="flex items-center justify-between mb-2.5">
+                        <span className="text-[13px] font-normal text-gray-600 tracking-tight">{item.label}</span>
                         <span
-                          className="text-sm font-bold text-gray-900 tabular-nums"
+                          className="text-[13px] font-medium text-gray-700 tabular-nums"
                           style={{
                             opacity: chartValues[i] > 0 ? 1 : 0,
                             transition: "opacity 0.5s ease-out",
@@ -276,41 +276,39 @@ const HeroSectionLuxe = () => {
                           {item.value}%
                         </span>
                       </div>
-                      <div className="relative h-3 bg-gray-100 rounded-full overflow-hidden">
+                      <div className="relative h-2 bg-gray-100/80 rounded-full overflow-hidden">
                         <div
                           className={`absolute inset-y-0 left-0 bg-gradient-to-r ${item.color} rounded-full transition-all duration-2000 ease-out`}
                           style={{
                             width: `${item.value}%`,
                             transitionDelay: `${1200 + i * 200}ms`,
                           }}
-                        >
-                          <div className="absolute inset-0 bg-white/30 animate-shimmer" />
-                        </div>
+                        />
                       </div>
                     </div>
                   ))}
                 </div>
 
                 {/* Overall score */}
-                <div className="mt-10 pt-8 border-t border-gray-100">
+                <div className="mt-10 pt-8 border-t border-gray-100/60">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">Overall Score</p>
+                      <p className="text-[10px] font-normal text-gray-400 uppercase tracking-widest mb-2.5">Overall Score</p>
                       <div className="flex items-center gap-2">
-                        <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
                           <path
                             fillRule="evenodd"
                             d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                             clipRule="evenodd"
                           />
                         </svg>
-                        <span className="text-sm font-semibold text-gray-700">Funding Ready</span>
+                        <span className="text-[13px] font-normal text-gray-600">Funding Ready</span>
                       </div>
                     </div>
                     <div className="text-right">
                       <div className="relative overflow-hidden">
                         <span
-                          className="text-6xl font-extralight text-gray-900 inline-block"
+                          className="text-5xl font-extralight text-gray-800 inline-block tracking-tight"
                           style={{
                             transform: chartValues[0] > 0 ? "translateY(0)" : "translateY(20px)",
                             opacity: chartValues[0] > 0 ? 1 : 0,
