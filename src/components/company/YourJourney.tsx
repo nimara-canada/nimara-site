@@ -74,7 +74,7 @@ const YourJourney: React.FC = () => {
     description: "We close out the project with a handover and next steps. For about three months, we are available for light support and questions. We also ask for feedback so we can improve the Nimara model."
   }];
   const addOns = [{
-    title: "12-month evaluation & support",
+    title: "12-month Evaluation & Support",
     description: "For a small add-on fee, our team stays close for up to 12 months. We check in at agreed points, help you see what is working, and adjust tools or processes where needed. You also get light evaluation support so you can show funders how the changes are landing.",
     color: "from-[#ACFCE3]/20 to-[#ACFCE3]/5 border-[#4CBFA6]"
   }, {
