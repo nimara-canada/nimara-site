@@ -146,8 +146,8 @@ export const SystemLadder = () => {
                       transition-all duration-300
                       focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary-background
                       ${isActive 
-                        ? `bg-card/80 ${colors.border} shadow-xl shadow-black/20` 
-                        : 'bg-card/40 border-border/50 hover:bg-card/60'
+                        ? `bg-slate-800/95 ${colors.border} shadow-xl shadow-black/20` 
+                        : 'bg-slate-800/70 border-white/10 hover:bg-slate-800/85'
                       }
                     `}
                     aria-pressed={isSelected}
@@ -318,8 +318,8 @@ export const SystemLadder = () => {
                       transition-all duration-300
                       focus:outline-none focus:ring-2 focus:ring-primary
                       ${isActive 
-                        ? `bg-card/80 ${colors.border}` 
-                        : 'bg-card/50 border-border/50'
+                        ? `bg-slate-800/95 ${colors.border}` 
+                        : 'bg-slate-800/70 border-white/10'
                       }
                     `}
                     aria-pressed={isSelected}
@@ -360,7 +360,7 @@ export const SystemLadder = () => {
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <div className="inline-flex flex-col sm:flex-row items-center gap-6 p-6 rounded-2xl bg-card/50 border border-border/50">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-6 p-6 rounded-2xl bg-slate-800/80 border border-white/10">
             <p className="text-foreground/80 text-sm">
               Not sure where you fall?{' '}
               <span className="text-primary-foreground font-medium">Our free Health Check will place you.</span>
