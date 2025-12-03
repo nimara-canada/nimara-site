@@ -211,14 +211,14 @@ const HeroSectionLuxe = () => {
           <div
             ref={cardRef}
             className={`relative transition-all duration-1500 delay-600 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              isVisible ? "opacity-100 translate-y-0 animate-float-subtle" : "opacity-0 translate-y-8"
             }`}
           >
             {/* Glow effect */}
-            <div className="absolute -inset-4 bg-gradient-to-r from-teal-500/20 via-transparent to-slate-500/20 rounded-3xl blur-2xl opacity-50" />
+            <div className="absolute -inset-6 bg-gradient-to-r from-accent/30 via-transparent to-white/10 rounded-3xl blur-3xl opacity-60" />
 
             {/* Main card */}
-            <div className="relative bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100/80">
+            <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-white/20" style={{ boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 60px rgba(172, 252, 227, 0.15)" }}>
               {/* Card header */}
               <div className="px-10 pt-10 pb-7 border-b border-gray-100/60 bg-gradient-to-b from-gray-50/30 to-transparent">
                 <div className="flex items-center justify-between">
