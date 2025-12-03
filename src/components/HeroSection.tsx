@@ -228,10 +228,10 @@ const HeroSectionLuxe = () => {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-5">
                     <div className="relative">
-                      <div className="w-12 h-12 bg-gradient-to-br from-gray-700 to-gray-800 rounded-xl flex items-center justify-center">
+                      <div className="w-12 h-12 bg-secondary-background rounded-xl flex items-center justify-center">
                         <span className="text-white font-medium text-lg">N</span>
                       </div>
-                      <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-400 rounded-full border-2 border-white" />
+                      <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-accent rounded-full border-2 border-white" />
                     </div>
                     <div>
                       <h3 className="text-base font-medium text-gray-800 tracking-tight">Health Dashboard</h3>
