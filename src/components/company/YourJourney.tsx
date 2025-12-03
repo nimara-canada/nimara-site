@@ -192,7 +192,7 @@ const YourJourney: React.FC = () => {
                 Optional add-ons after your project
               </div>
               <p className="text-slate-600 max-w-2xl mx-auto">
-                Some organizations want deeper follow-up. These add-ons are optional and come with a separate, simple fee.
+                Some organizations want deeper follow-up. These add-ons are optional and come with a separate simple fee.
               </p>
             </motion.div>
 
