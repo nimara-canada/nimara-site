@@ -46,7 +46,7 @@ export const IntegrationsSection = () => {
         <div className="max-w-5xl mx-auto">
           {/* Eyebrow */}
           <div className="text-center mb-6">
-            <span className="text-xs font-semibold tracking-wider uppercase text-muted-foreground">
+            <span className="text-xs font-semibold tracking-widest text-primary uppercase mb-4 block">
               Integrations
             </span>
           </div>
