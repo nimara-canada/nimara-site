@@ -16,7 +16,7 @@ type FaqItem = {
 const faqs: FaqItem[] = [
   {
     question: "What kind of nonprofits is Nimara for?",
-    answer: "Nimara is for nonprofits and charities with 2–100 staff, or very new groups where the ED is hands-on and there are at least 4 active board members. If you are still just an idea or a one-person project with no active board, we are too early for you.",
+    answer: "Nimara is for nonprofits and charities with 2–100 staff, or very new groups where the ED is hands-on and there are at least 3 active board members. If you are still just an idea or a one-person project with no active board, we are too early for you.",
     category: 'getting-started'
   },
   {
