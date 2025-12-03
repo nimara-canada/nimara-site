@@ -67,21 +67,15 @@ const PathA = () => {
       <main id="main-content" className="min-h-screen bg-background">
         {/* Hero Section */}
         <section 
-          className="pt-28 pb-16 md:pt-36 md:pb-24 relative overflow-hidden bg-secondary"
+          className="pt-28 pb-16 md:pt-36 md:pb-24 relative overflow-hidden bg-primary"
           aria-labelledby="hero-heading"
         >
           {/* Navy blue layered background with depth */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[hsl(232,45%,18%)] via-secondary to-[hsl(232,45%,12%)]" aria-hidden="true" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary/95" aria-hidden="true" />
           
           {/* Subtle radial glow for depth */}
-          <div className="absolute top-1/4 -left-1/4 w-[800px] h-[800px] bg-primary/8 rounded-full blur-3xl" aria-hidden="true" />
+          <div className="absolute top-1/4 -left-1/4 w-[800px] h-[800px] bg-accent/10 rounded-full blur-3xl" aria-hidden="true" />
           <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl" aria-hidden="true" />
-          
-          {/* Diagonal overlay for visual interest */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-secondary-foreground/[0.02] to-transparent" aria-hidden="true" />
-          
-          {/* Subtle noise texture overlay */}
-          <div className="absolute inset-0 opacity-[0.015]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")' }} aria-hidden="true" />
           
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <motion.div
@@ -92,7 +86,7 @@ const PathA = () => {
             >
               {/* Badge */}
               <motion.div variants={fadeInUp}>
-                <span className="inline-flex items-center px-4 py-2 mb-8 text-sm font-medium rounded-md bg-secondary-foreground/10 text-secondary-foreground border border-secondary-foreground/20">
+                <span className="inline-flex items-center px-4 py-2 mb-8 text-sm font-medium rounded-md bg-primary-foreground/10 text-primary-foreground border border-primary-foreground/20">
                   Urgent Response Service
                 </span>
               </motion.div>
@@ -101,17 +95,17 @@ const PathA = () => {
               <motion.h1 
                 id="hero-heading"
                 variants={fadeInUp}
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold text-secondary-foreground mb-6 tracking-tight leading-[1.1]"
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 tracking-tight leading-[1.1]"
               >
                 Path A: Fast Help.
                 <br />
-                <span className="text-secondary-foreground">Fix one urgent problem so you can breathe again.</span>
+                <span className="text-primary-foreground">Fix one urgent problem so you can breathe again.</span>
               </motion.h1>
               
               {/* Description */}
               <motion.p 
                 variants={fadeInUp}
-                className="text-lg sm:text-xl text-secondary-foreground/70 max-w-2xl mb-10 leading-relaxed"
+                className="text-lg sm:text-xl text-primary-foreground/70 max-w-2xl mb-10 leading-relaxed"
               >
                 Path A is for moments when something can't wait. An audit, a grant, a policy gap, or a scary email from a funder. We come in, fix one clear problem, and leave you with a small set of tools you can actually use.
               </motion.p>
@@ -130,7 +124,7 @@ const PathA = () => {
                   size="lg" 
                   variant="outline"
                   onClick={() => document.getElementById('fit-check')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="text-base px-8 py-6 h-auto bg-transparent border-secondary-foreground/30 text-secondary-foreground hover:bg-secondary-foreground/10 hover:border-secondary-foreground/50"
+                  className="text-base px-8 py-6 h-auto bg-transparent border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:border-primary-foreground/50"
                 >
                   Is this right for me?
                 </Button>
@@ -139,7 +133,7 @@ const PathA = () => {
               {/* Key Stats */}
               <motion.div 
                 variants={fadeInUp}
-                className="flex flex-col sm:flex-row gap-8 sm:gap-12 pt-8 border-t border-secondary-foreground/10"
+                className="flex flex-col sm:flex-row gap-8 sm:gap-12 pt-8 border-t border-primary-foreground/10"
               >
                 {[
                   { icon: Clock, label: "Timeline", value: "1–4 weeks" },
@@ -154,8 +148,8 @@ const PathA = () => {
                       <stat.icon className="w-5 h-5 text-accent" aria-hidden="true" />
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-secondary-foreground mb-1">{stat.label}</p>
-                      <p className="text-sm text-secondary-foreground/60 leading-snug max-w-[220px]">{stat.value}</p>
+                      <p className="text-sm font-semibold text-primary-foreground mb-1">{stat.label}</p>
+                      <p className="text-sm text-primary-foreground/60 leading-snug max-w-[220px]">{stat.value}</p>
                     </div>
                   </div>
                 ))}
