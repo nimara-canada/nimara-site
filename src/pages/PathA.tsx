@@ -14,7 +14,8 @@ import {
   Shield,
   Users,
   Calendar,
-  MessageSquare
+  MessageSquare,
+  Sparkles
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -29,9 +30,23 @@ import { Footer } from "@/components/Footer";
 const TYPEFORM_URL = "https://form.typeform.com/to/IeUH5TlU";
 const CALENDLY_URL = "https://calendly.com/hello-nimara/30min";
 
+const fadeInUp = {
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }
+};
+
+const staggerContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
 const PathA = () => {
   const openTypeform = () => {
-    window.open(TYPEFORM_URL, "_blank");
+    window.open(TYPEFORM_URL, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -44,131 +59,181 @@ const PathA = () => {
         />
       </Helmet>
       
+      <a href="#main-content" className="skip-to-content">
+        Skip to main content
+      </a>
+      
       <Header />
       
-      <main className="min-h-screen bg-background">
+      <main id="main-content" className="min-h-screen bg-background">
         {/* Hero Section */}
-        <section className="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-b from-accent/10 to-background">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <section 
+          className="pt-28 pb-20 md:pt-36 md:pb-28 relative overflow-hidden"
+          aria-labelledby="hero-heading"
+        >
+          {/* Subtle gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-b from-accent/8 via-accent/4 to-background" aria-hidden="true" />
+          
+          {/* Decorative elements */}
+          <div className="absolute top-20 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl" aria-hidden="true" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" aria-hidden="true" />
+          
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              initial="initial"
+              animate="animate"
+              variants={staggerContainer}
             >
-              <span className="inline-flex items-center gap-2 px-4 py-2 mb-6 text-sm font-semibold rounded-full bg-accent text-accent-foreground">
-                <Zap className="w-4 h-4" />
-                Path A
-              </span>
+              <motion.div variants={fadeInUp}>
+                <span className="inline-flex items-center gap-2 px-4 py-2 mb-8 text-sm font-semibold rounded-full bg-accent text-accent-foreground shadow-soft">
+                  <Zap className="w-4 h-4" aria-hidden="true" />
+                  Path A
+                </span>
+              </motion.div>
               
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-4">
+              <motion.h1 
+                id="hero-heading"
+                variants={fadeInUp}
+                className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground mb-6 tracking-tight"
+              >
                 Fast Help
-              </h1>
+              </motion.h1>
               
-              <p className="text-xl sm:text-2xl text-muted-foreground mb-6">
+              <motion.p 
+                variants={fadeInUp}
+                className="text-xl sm:text-2xl text-muted-foreground mb-6 font-medium"
+              >
                 Fix one urgent problem so you can breathe again.
-              </p>
+              </motion.p>
               
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
+              <motion.p 
+                variants={fadeInUp}
+                className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed"
+              >
                 Path A is for moments when something can't wait. An audit, a grant, a policy gap, a scary email from a funder.
                 We come in, fix one clear problem, and leave you with a small set of tools you can actually use.
-              </p>
+              </motion.p>
               
               {/* Key Stats */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
-                <div className="p-4 rounded-xl bg-card border border-border">
-                  <Clock className="w-6 h-6 mx-auto mb-2 text-accent" />
-                  <p className="text-sm text-muted-foreground">Timeline</p>
-                  <p className="text-lg font-bold text-foreground">1–4 Weeks</p>
-                </div>
-                <div className="p-4 rounded-xl bg-card border border-border">
-                  <Target className="w-6 h-6 mx-auto mb-2 text-accent" />
-                  <p className="text-sm text-muted-foreground">Focus</p>
-                  <p className="text-lg font-bold text-foreground">One Urgent Problem</p>
-                </div>
-                <div className="p-4 rounded-xl bg-card border border-border">
-                  <Package className="w-6 h-6 mx-auto mb-2 text-accent" />
-                  <p className="text-sm text-muted-foreground">Deliverable</p>
-                  <p className="text-lg font-bold text-foreground">Mini Acceptance Bundle</p>
-                </div>
-              </div>
+              <motion.div 
+                variants={fadeInUp}
+                className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-12 max-w-3xl mx-auto"
+              >
+                {[
+                  { icon: Clock, label: "Timeline", value: "1–4 Weeks" },
+                  { icon: Target, label: "Focus", value: "One Urgent Problem" },
+                  { icon: Package, label: "Deliverable", value: "Mini Acceptance Bundle" }
+                ].map((stat, index) => (
+                  <div 
+                    key={stat.label}
+                    className="group p-5 rounded-2xl bg-card border border-border hover:border-accent/50 transition-all duration-300 hover:shadow-soft"
+                  >
+                    <stat.icon className="w-6 h-6 mx-auto mb-3 text-accent group-hover:scale-110 transition-transform duration-300" aria-hidden="true" />
+                    <p className="text-sm text-muted-foreground mb-1">{stat.label}</p>
+                    <p className="text-lg font-bold text-foreground">{stat.value}</p>
+                  </div>
+                ))}
+              </motion.div>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" onClick={openTypeform} className="text-lg">
+              <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Button 
+                  size="lg" 
+                  onClick={openTypeform} 
+                  className="text-lg px-8 py-6 h-auto shadow-soft hover:shadow-lg transition-shadow"
+                >
                   Start Path A – 7-minute intake
-                  <ArrowRight className="w-5 h-5 ml-2" />
+                  <ArrowRight className="w-5 h-5 ml-2" aria-hidden="true" />
                 </Button>
-              </div>
+              </motion.div>
               
-              <p className="mt-4 text-sm text-muted-foreground">
+              <motion.p variants={fadeInUp} className="mt-6 text-sm text-muted-foreground">
                 Not sure if this is right?{" "}
-                <Link to="/how-nimara-works" className="text-primary hover:underline">
+                <Link to="/how-nimara-works" className="text-primary hover:underline font-medium">
                   See other options
                 </Link>
-              </p>
+              </motion.p>
             </motion.div>
           </div>
         </section>
 
         {/* Is Path A Right for You? */}
-        <section className="py-16 md:py-24 bg-background">
+        <section 
+          className="py-20 md:py-28 bg-background"
+          aria-labelledby="fit-heading"
+        >
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5 }}
             >
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-3 text-center">
-                Is Path A a good fit?
-              </h2>
-              <p className="text-lg text-muted-foreground text-center mb-8">
-                Use this when you need relief, not a big project.
-              </p>
+              <div className="text-center mb-12">
+                <h2 id="fit-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+                  Is Path A a good fit?
+                </h2>
+                <p className="text-lg text-muted-foreground">
+                  Use this when you need relief, not a big project.
+                </p>
+              </div>
               
-              <p className="text-muted-foreground mb-6">
-                Path A is a match if at least one of these sounds like you:
-              </p>
-              
-              <ul className="space-y-4 mb-10">
-                {[
-                  "We have a funder, auditor, or regulator asking for something we don't have ready.",
-                  "We're about to submit a grant and our systems feel shaky.",
-                  "We got a scary email and don't know where to start.",
-                  "We know the exact problem. We just don't have the time or in-house skills to fix it.",
-                  "We don't want a 6–12 month project. We just need one important thing fixed, properly."
-                ].map((item, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5 text-accent" />
-                    <span className="text-foreground">"{item}"</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-soft mb-8">
+                <p className="text-muted-foreground mb-8 text-lg">
+                  Path A is a match if at least one of these sounds like you:
+                </p>
+                
+                <ul className="space-y-5" role="list">
+                  {[
+                    "We have a funder, auditor, or regulator asking for something we don't have ready.",
+                    "We're about to submit a grant and our systems feel shaky.",
+                    "We got a scary email and don't know where to start.",
+                    "We know the exact problem. We just don't have the time or in-house skills to fix it.",
+                    "We don't want a 6–12 month project. We just need one important thing fixed, properly."
+                  ].map((item, index) => (
+                    <motion.li 
+                      key={index} 
+                      className="flex items-start gap-4"
+                      initial={{ opacity: 0, x: -16 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: index * 0.1 }}
+                    >
+                      <span className="flex-shrink-0 w-7 h-7 rounded-full bg-accent/20 flex items-center justify-center mt-0.5">
+                        <CheckCircle className="w-4 h-4 text-accent-foreground" aria-hidden="true" />
+                      </span>
+                      <span className="text-foreground text-lg leading-relaxed">"{item}"</span>
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
               
               {/* Not for you block */}
-              <div className="p-6 rounded-xl bg-muted border border-border">
-                <h3 className="font-semibold text-foreground mb-4 flex items-center gap-2">
-                  <XCircle className="w-5 h-5 text-destructive" />
+              <div className="p-8 rounded-2xl bg-muted/50 border border-border">
+                <h3 className="font-semibold text-foreground mb-5 flex items-center gap-3 text-lg">
+                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-destructive/10 flex items-center justify-center">
+                    <XCircle className="w-4 h-4 text-destructive" aria-hidden="true" />
+                  </span>
                   Path A is not a match if:
                 </h3>
-                <ul className="space-y-2 mb-4">
+                <ul className="space-y-3 mb-6 ml-10" role="list">
                   {[
                     "You want to redesign your whole organization at once.",
                     "You don't know what the problem is yet.",
                     "No one on your team can give 1–2 hours over the next few weeks."
                   ].map((item, index) => (
-                    <li key={index} className="flex items-start gap-2 text-muted-foreground">
-                      <span className="text-destructive">•</span>
+                    <li key={index} className="text-muted-foreground flex items-start gap-2">
+                      <span className="text-destructive mt-1.5" aria-hidden="true">•</span>
                       <span>{item}</span>
                     </li>
                   ))}
                 </ul>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-muted-foreground ml-10">
                   In those cases,{" "}
-                  <Link to="/how-nimara-works" className="text-primary hover:underline">
+                  <Link to="/how-nimara-works" className="text-primary hover:underline font-medium">
                     Path B (system build)
                   </Link>{" "}
                   or a{" "}
-                  <Link to="/organizational-health-check" className="text-primary hover:underline">
+                  <Link to="/organizational-health-check" className="text-primary hover:underline font-medium">
                     quick Health Check
                   </Link>{" "}
                   is better.
@@ -179,87 +244,106 @@ const PathA = () => {
         </section>
 
         {/* How Path A Works */}
-        <section className="py-16 md:py-24 bg-muted/50">
+        <section 
+          className="py-20 md:py-28 bg-secondary"
+          aria-labelledby="how-it-works-heading"
+        >
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5 }}
             >
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-3 text-center">
-                How Path A works
-              </h2>
-              <p className="text-lg text-muted-foreground text-center mb-12">
-                Simple, clear, and light on your time.
-              </p>
+              <div className="text-center mb-16">
+                <h2 id="how-it-works-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+                  How Path A works
+                </h2>
+                <p className="text-lg text-muted-foreground">
+                  Simple, clear, and light on your time.
+                </p>
+              </div>
               
-              <div className="space-y-8">
-                {[
-                  {
-                    step: 1,
-                    title: "Quick intake (today)",
-                    description: "You complete a short 7-minute form and tell us what's on fire. We review it within 1 business day and confirm if Path A is a good fit."
-                  },
-                  {
-                    step: 2,
-                    title: "Matching & plan (within 72 hours)",
-                    description: "We match you with a Nimara consultant who has done this before. Together, you agree on the exact problem to solve, what \"done\" looks like, and what we can deliver in 1–4 weeks."
-                  },
-                  {
-                    step: 3,
-                    title: "Fast work + check-ins (1–4 weeks)",
-                    description: "We do the heavy lifting. You stay in the loop with short check-ins. We keep your time to about 1 hour per week."
-                  },
-                  {
-                    step: 4,
-                    title: "Mini Acceptance Bundle (at the end)",
-                    description: "You leave with the thing you needed, simple instructions so your team can keep using it, and a short note you can share with funders or your board."
-                  }
-                ].map((item, index) => (
-                  <motion.div
-                    key={item.step}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="flex gap-6"
-                  >
-                    <div className="flex-shrink-0">
-                      <div className="w-10 h-10 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold">
-                        {item.step}
+              <div className="relative">
+                {/* Connecting line */}
+                <div className="absolute left-5 top-8 bottom-8 w-0.5 bg-gradient-to-b from-accent via-accent/50 to-accent/20 hidden md:block" aria-hidden="true" />
+                
+                <div className="space-y-8 md:space-y-0">
+                  {[
+                    {
+                      step: 1,
+                      title: "Quick intake (today)",
+                      description: "You complete a short 7-minute form and tell us what's on fire. We review it within 1 business day and confirm if Path A is a good fit."
+                    },
+                    {
+                      step: 2,
+                      title: "Matching & plan (within 72 hours)",
+                      description: "We match you with a Nimara consultant who has done this before. Together, you agree on the exact problem to solve, what \"done\" looks like, and what we can deliver in 1–4 weeks."
+                    },
+                    {
+                      step: 3,
+                      title: "Fast work + check-ins (1–4 weeks)",
+                      description: "We do the heavy lifting. You stay in the loop with short check-ins. We keep your time to about 1 hour per week."
+                    },
+                    {
+                      step: 4,
+                      title: "Mini Acceptance Bundle (at the end)",
+                      description: "You leave with the thing you needed, simple instructions so your team can keep using it, and a short note you can share with funders or your board."
+                    }
+                  ].map((item, index) => (
+                    <motion.div
+                      key={item.step}
+                      initial={{ opacity: 0, x: -24 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.15 }}
+                      className="flex gap-6 md:gap-8 md:pb-12 last:pb-0"
+                    >
+                      <div className="flex-shrink-0 relative z-10">
+                        <div className="w-10 h-10 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold text-lg shadow-soft">
+                          {item.step}
+                        </div>
                       </div>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-foreground mb-2">
-                        {item.title}
-                      </h3>
-                      <p className="text-muted-foreground">
-                        {item.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
+                      <div className="bg-card rounded-2xl border border-border p-6 flex-1 shadow-soft hover:shadow-lg transition-shadow duration-300">
+                        <h3 className="text-xl font-semibold text-foreground mb-3">
+                          {item.title}
+                        </h3>
+                        <p className="text-muted-foreground leading-relaxed">
+                          {item.description}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </motion.div>
           </div>
         </section>
 
         {/* Mini Acceptance Bundle */}
-        <section className="py-16 md:py-24 bg-background">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section 
+          className="py-20 md:py-28 bg-background"
+          aria-labelledby="bundle-heading"
+        >
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5 }}
             >
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-3 text-center">
-                What's inside the Mini Acceptance Bundle?
-              </h2>
-              <p className="text-lg text-muted-foreground text-center mb-12">
-                A small, useful set of tools you can use the next day.
-              </p>
+              <div className="text-center mb-16">
+                <span className="inline-flex items-center gap-2 px-4 py-2 mb-6 text-sm font-semibold rounded-full bg-primary/10 text-primary">
+                  <Sparkles className="w-4 h-4" aria-hidden="true" />
+                  What You Get
+                </span>
+                <h2 id="bundle-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+                  The Mini Acceptance Bundle
+                </h2>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                  A small, useful set of tools you can use the next day.
+                </p>
+              </div>
               
               <div className="grid sm:grid-cols-2 gap-6">
                 {[
@@ -280,23 +364,31 @@ const PathA = () => {
                   },
                   {
                     icon: MessageSquare,
-                    title: "Light follow-up support (optional)",
-                    description: "For some Path A projects, you can add 2–3 quick check-ins over the next 3 months. We'll tell you if that makes sense for your case."
+                    title: "Light follow-up support",
+                    description: "For some Path A projects, you can add 2–3 quick check-ins over the next 3 months. We'll tell you if that makes sense.",
+                    optional: true
                   }
                 ].map((item, index) => (
                   <motion.div
                     key={item.title}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="p-6 rounded-xl bg-card border border-border"
+                    className="group p-8 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 shadow-soft hover:shadow-lg relative"
                   >
-                    <item.icon className="w-8 h-8 mb-4 text-accent" />
-                    <h3 className="text-lg font-semibold text-foreground mb-2">
+                    {item.optional && (
+                      <span className="absolute top-4 right-4 text-xs font-medium px-2 py-1 rounded-full bg-muted text-muted-foreground">
+                        Optional
+                      </span>
+                    )}
+                    <div className="w-14 h-14 rounded-2xl bg-accent/15 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-300">
+                      <item.icon className="w-7 h-7 text-accent-foreground" aria-hidden="true" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-foreground mb-3">
                       {item.title}
                     </h3>
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-muted-foreground leading-relaxed">
                       {item.description}
                     </p>
                   </motion.div>
@@ -307,83 +399,118 @@ const PathA = () => {
         </section>
 
         {/* Timeline & Commitment */}
-        <section className="py-16 md:py-24 bg-muted/50">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section 
+          className="py-20 md:py-28 bg-secondary"
+          aria-labelledby="timeline-heading"
+        >
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5 }}
             >
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-3 text-center">
-                Timeline and what this will ask of you
-              </h2>
+              <div className="text-center mb-16">
+                <h2 id="timeline-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+                  Timeline & Commitment
+                </h2>
+                <p className="text-lg text-muted-foreground">
+                  What we'll each bring to the table
+                </p>
+              </div>
               
-              <div className="grid md:grid-cols-2 gap-8 mt-12">
-                <div className="p-6 rounded-xl bg-card border border-border">
-                  <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-                    <Calendar className="w-5 h-5 text-accent" />
-                    Our side
-                  </h3>
-                  <ul className="space-y-3">
+              <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+                <motion.div 
+                  initial={{ opacity: 0, x: -24 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="p-8 rounded-2xl bg-card border border-border shadow-soft"
+                >
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <Calendar className="w-6 h-6 text-primary" aria-hidden="true" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-foreground">Our side</h3>
+                  </div>
+                  <ul className="space-y-4" role="list">
                     {[
                       "We respond to your intake within 1 business day.",
                       "We propose a plan within 72 hours.",
                       "We aim to complete the work in 1–4 weeks, depending on the problem."
                     ].map((item, index) => (
-                      <li key={index} className="flex items-start gap-2 text-muted-foreground">
-                        <CheckCircle className="w-4 h-4 flex-shrink-0 mt-1 text-accent" />
+                      <li key={index} className="flex items-start gap-3 text-muted-foreground">
+                        <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5 text-primary" aria-hidden="true" />
                         <span>{item}</span>
                       </li>
                     ))}
                   </ul>
-                </div>
+                </motion.div>
                 
-                <div className="p-6 rounded-xl bg-card border border-border">
-                  <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-                    <Users className="w-5 h-5 text-accent" />
-                    Your side
-                  </h3>
-                  <ul className="space-y-3">
+                <motion.div 
+                  initial={{ opacity: 0, x: 24 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="p-8 rounded-2xl bg-card border border-border shadow-soft"
+                >
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center">
+                      <Users className="w-6 h-6 text-accent-foreground" aria-hidden="true" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-foreground">Your side</h3>
+                  </div>
+                  <ul className="space-y-4" role="list">
                     {[
                       "Name one main contact person.",
                       "Join 1 short scoping call and 1–2 check-ins.",
                       "Share any documents we need (policies, letters, past reports)."
                     ].map((item, index) => (
-                      <li key={index} className="flex items-start gap-2 text-muted-foreground">
-                        <CheckCircle className="w-4 h-4 flex-shrink-0 mt-1 text-accent" />
+                      <li key={index} className="flex items-start gap-3 text-muted-foreground">
+                        <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5 text-accent-foreground" aria-hidden="true" />
                         <span>{item}</span>
                       </li>
                     ))}
                   </ul>
-                </div>
+                </motion.div>
               </div>
               
-              <p className="text-center text-muted-foreground mt-8 italic">
+              <motion.p 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="text-center text-muted-foreground mt-10 italic max-w-2xl mx-auto"
+              >
                 We keep your time low on purpose. You don't need to run a big project. You just need to show up for a few focused decisions.
-              </p>
+              </motion.p>
             </motion.div>
           </div>
         </section>
 
         {/* What We Need to Know */}
-        <section className="py-16 md:py-24 bg-background">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section 
+          className="py-20 md:py-28 bg-background"
+          aria-labelledby="intake-heading"
+        >
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5 }}
             >
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-3 text-center">
-                What we'll ask in the Path A intake
-              </h2>
-              <p className="text-lg text-muted-foreground text-center mb-10">
-                No long forms. Just the basics we need to help.
-              </p>
+              <div className="text-center mb-12">
+                <h2 id="intake-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+                  What we'll ask
+                </h2>
+                <p className="text-lg text-muted-foreground">
+                  No long forms. Just the basics we need to help.
+                </p>
+              </div>
               
-              <div className="p-6 rounded-xl bg-card border border-border">
-                <ul className="space-y-4">
+              <div className="p-8 md:p-10 rounded-2xl bg-card border border-border shadow-soft">
+                <ol className="space-y-5" role="list">
                   {[
                     "What is the one urgent problem?",
                     "Who is asking for it? (A funder, an auditor, a regulator, your board.)",
@@ -391,52 +518,66 @@ const PathA = () => {
                     "Roughly how many staff do you have?",
                     "Have you tried anything already?"
                   ].map((item, index) => (
-                    <li key={index} className="flex items-start gap-3 text-foreground">
-                      <span className="w-6 h-6 rounded-full bg-accent/20 text-accent flex items-center justify-center text-sm font-semibold flex-shrink-0">
+                    <li key={index} className="flex items-start gap-4 text-foreground">
+                      <span className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-primary to-primary/70 text-primary-foreground flex items-center justify-center text-sm font-bold shadow-sm">
                         {index + 1}
                       </span>
-                      <span>{item}</span>
+                      <span className="text-lg pt-0.5">{item}</span>
                     </li>
                   ))}
-                </ul>
+                </ol>
                 
-                <p className="mt-6 text-sm text-muted-foreground">
-                  We won't ask for detailed financials or private data in this first step.
-                </p>
+                <div className="mt-8 pt-6 border-t border-border">
+                  <p className="text-sm text-muted-foreground flex items-start gap-2">
+                    <Shield className="w-4 h-4 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                    We won't ask for detailed financials or private data in this first step.
+                  </p>
+                </div>
               </div>
             </motion.div>
           </div>
         </section>
 
         {/* Start Path A CTA */}
-        <section className="py-16 md:py-24 bg-accent/10">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <section 
+          className="py-20 md:py-28 relative overflow-hidden"
+          aria-labelledby="cta-heading"
+        >
+          {/* Background gradient */}
+          <div className="absolute inset-0 bg-gradient-to-br from-accent/15 via-accent/8 to-primary/5" aria-hidden="true" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-accent/20 rounded-full blur-3xl" aria-hidden="true" />
+          
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5 }}
             >
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              <h2 id="cta-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
                 Ready to start Path A?
               </h2>
-              <p className="text-lg text-muted-foreground mb-8">
+              <p className="text-lg text-muted-foreground mb-10 max-w-xl mx-auto">
                 If you're facing one clear problem and need real help, start here.
-                A Nimara team member will review your intake and reply within <strong>1 business day</strong>.
+                A Nimara team member will review your intake and reply within <strong className="text-foreground">1 business day</strong>.
               </p>
               
-              <Button size="lg" onClick={openTypeform} className="text-lg">
+              <Button 
+                size="lg" 
+                onClick={openTypeform} 
+                className="text-lg px-10 py-6 h-auto shadow-lg hover:shadow-xl transition-all duration-300"
+              >
                 Start Path A – 7-minute intake
-                <ArrowRight className="w-5 h-5 ml-2" />
+                <ArrowRight className="w-5 h-5 ml-2" aria-hidden="true" />
               </Button>
               
-              <p className="mt-6 text-sm text-muted-foreground">
+              <p className="mt-8 text-muted-foreground">
                 Prefer to talk first?{" "}
                 <a 
                   href={CALENDLY_URL} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-primary hover:underline"
+                  className="text-primary hover:underline font-medium"
                 >
                   Book a short call instead
                 </a>
@@ -446,19 +587,22 @@ const PathA = () => {
         </section>
 
         {/* FAQ */}
-        <section className="py-16 md:py-24 bg-background">
+        <section 
+          className="py-20 md:py-28 bg-background"
+          aria-labelledby="faq-heading"
+        >
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5 }}
             >
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-10 text-center">
+              <h2 id="faq-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-12 text-center">
                 Quick questions
               </h2>
               
-              <Accordion type="single" collapsible className="w-full">
+              <Accordion type="single" collapsible className="w-full space-y-4">
                 {[
                   {
                     question: "What if we don't know exactly what the problem is?",
@@ -481,11 +625,15 @@ const PathA = () => {
                     answer: "Path A can be funded by some grants or paid directly by your organization. In our reply, we'll be clear about cost and funding options before you decide anything."
                   }
                 ].map((item, index) => (
-                  <AccordionItem key={index} value={`item-${index}`}>
-                    <AccordionTrigger className="text-left text-foreground hover:no-underline">
+                  <AccordionItem 
+                    key={index} 
+                    value={`item-${index}`}
+                    className="bg-card border border-border rounded-2xl px-6 data-[state=open]:shadow-soft transition-shadow"
+                  >
+                    <AccordionTrigger className="text-left text-foreground hover:no-underline text-lg py-5 font-medium">
                       {item.question}
                     </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground">
+                    <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
                       {item.answer}
                     </AccordionContent>
                   </AccordionItem>
