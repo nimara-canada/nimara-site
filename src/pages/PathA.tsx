@@ -2,7 +2,6 @@ import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { 
-  Zap, 
   Clock, 
   Target, 
   Package, 
@@ -68,96 +67,102 @@ const PathA = () => {
       <main id="main-content" className="min-h-screen bg-background">
         {/* Hero Section */}
         <section 
-          className="pt-28 pb-20 md:pt-36 md:pb-28 relative overflow-hidden"
+          className="pt-28 pb-16 md:pt-36 md:pb-24 relative overflow-hidden bg-secondary"
           aria-labelledby="hero-heading"
         >
-          {/* Subtle gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-b from-accent/8 via-accent/4 to-background" aria-hidden="true" />
+          {/* Background overlay with subtle gradient */}
+          <div className="absolute inset-0 bg-gradient-to-br from-secondary via-secondary to-secondary/95" aria-hidden="true" />
           
-          {/* Decorative elements */}
-          <div className="absolute top-20 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl" aria-hidden="true" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" aria-hidden="true" />
+          {/* Subtle decorative elements */}
+          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent" aria-hidden="true" />
           
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <motion.div
               initial="initial"
               animate="animate"
               variants={staggerContainer}
+              className="max-w-3xl"
             >
+              {/* Badge */}
               <motion.div variants={fadeInUp}>
-                <span className="inline-flex items-center gap-2 px-4 py-2 mb-8 text-sm font-semibold rounded-full bg-accent text-accent-foreground shadow-soft">
-                  <Zap className="w-4 h-4" aria-hidden="true" />
-                  Path A
+                <span className="inline-flex items-center px-4 py-2 mb-8 text-sm font-medium rounded-md bg-secondary-foreground/10 text-secondary-foreground border border-secondary-foreground/20">
+                  Urgent Response Service
                 </span>
               </motion.div>
               
+              {/* Main Heading */}
               <motion.h1 
                 id="hero-heading"
                 variants={fadeInUp}
-                className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground mb-6 tracking-tight"
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold text-secondary-foreground mb-6 tracking-tight leading-[1.1]"
               >
-                Fast Help
+                Path A: Fast Help.
+                <br />
+                <span className="text-secondary-foreground">Fix one urgent problem so you can breathe again.</span>
               </motion.h1>
               
+              {/* Description */}
               <motion.p 
                 variants={fadeInUp}
-                className="text-xl sm:text-2xl text-muted-foreground mb-6 font-medium"
+                className="text-lg sm:text-xl text-secondary-foreground/70 max-w-2xl mb-10 leading-relaxed"
               >
-                Fix one urgent problem so you can breathe again.
+                Path A is for moments when something can't wait. An audit, a grant, a policy gap, or a scary email from a funder. We come in, fix one clear problem, and leave you with a small set of tools you can actually use.
               </motion.p>
               
-              <motion.p 
-                variants={fadeInUp}
-                className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed"
-              >
-                Path A is for moments when something can't wait. An audit, a grant, a policy gap, a scary email from a funder.
-                We come in, fix one clear problem, and leave you with a small set of tools you can actually use.
-              </motion.p>
-              
-              {/* Key Stats */}
-              <motion.div 
-                variants={fadeInUp}
-                className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-12 max-w-3xl mx-auto"
-              >
-                {[
-                  { icon: Clock, label: "Timeline", value: "1–4 Weeks" },
-                  { icon: Target, label: "Focus", value: "One Urgent Problem" },
-                  { icon: Package, label: "Deliverable", value: "Mini Acceptance Bundle" }
-                ].map((stat, index) => (
-                  <div 
-                    key={stat.label}
-                    className="group p-5 rounded-2xl bg-card border border-border hover:border-accent/50 transition-all duration-300 hover:shadow-soft"
-                  >
-                    <stat.icon className="w-6 h-6 mx-auto mb-3 text-accent group-hover:scale-110 transition-transform duration-300" aria-hidden="true" />
-                    <p className="text-sm text-muted-foreground mb-1">{stat.label}</p>
-                    <p className="text-lg font-bold text-foreground">{stat.value}</p>
-                  </div>
-                ))}
-              </motion.div>
-              
-              <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              {/* CTAs */}
+              <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 mb-16">
                 <Button 
                   size="lg" 
                   onClick={openTypeform} 
-                  className="text-lg px-8 py-6 h-auto shadow-soft hover:shadow-lg transition-shadow"
+                  className="text-base px-8 py-6 h-auto bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg hover:shadow-xl transition-all"
                 >
                   Start Path A – 7-minute intake
                   <ArrowRight className="w-5 h-5 ml-2" aria-hidden="true" />
                 </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline"
+                  onClick={() => document.getElementById('fit-check')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="text-base px-8 py-6 h-auto bg-transparent border-secondary-foreground/30 text-secondary-foreground hover:bg-secondary-foreground/10 hover:border-secondary-foreground/50"
+                >
+                  Is this right for me?
+                </Button>
               </motion.div>
               
-              <motion.p variants={fadeInUp} className="mt-6 text-sm text-muted-foreground">
-                Not sure if this is right?{" "}
-                <Link to="/how-nimara-works" className="text-primary hover:underline font-medium">
-                  See other options
-                </Link>
-              </motion.p>
+              {/* Key Stats */}
+              <motion.div 
+                variants={fadeInUp}
+                className="flex flex-col sm:flex-row gap-8 sm:gap-12 pt-8 border-t border-secondary-foreground/10"
+              >
+                {[
+                  { icon: Clock, label: "Timeline", value: "1–4 weeks" },
+                  { icon: Target, label: "Focus", value: "One urgent problem (Audit, Grant, Policy, Finance, HR)" },
+                  { icon: Package, label: "Deliverable", value: "Mini Acceptance Bundle (done-with-you, not a PDF dump)" }
+                ].map((stat) => (
+                  <div 
+                    key={stat.label}
+                    className="flex items-start gap-4"
+                  >
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center">
+                      <stat.icon className="w-5 h-5 text-accent" aria-hidden="true" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-secondary-foreground mb-1">{stat.label}</p>
+                      <p className="text-sm text-secondary-foreground/60 leading-snug max-w-[220px]">{stat.value}</p>
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
             </motion.div>
           </div>
         </section>
 
+        {/* Smooth transition line to next section */}
+        <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" aria-hidden="true" />
+
         {/* Is Path A Right for You? */}
         <section 
+          id="fit-check"
           className="py-20 md:py-28 bg-background"
           aria-labelledby="fit-heading"
         >
