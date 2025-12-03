@@ -16,7 +16,7 @@ const legalLinks = [
 
 export const Footer = () => {
   return (
-    <footer className="bg-[hsl(var(--nimara-navy))] text-white">
+    <footer className="bg-secondary-background text-primary-foreground">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         {/* Navigation Links */}
         <nav aria-label="Footer navigation" className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 mb-16">
@@ -26,7 +26,7 @@ export const Footer = () => {
               href={item.href}
               target={item.external ? "_blank" : undefined}
               rel={item.external ? "noopener noreferrer" : undefined}
-              className="text-sm sm:text-base text-white/70 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[hsl(var(--nimara-navy))] rounded px-2 py-1"
+              className="text-sm sm:text-base text-primary-foreground/70 hover:text-primary-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary-foreground focus:ring-offset-2 focus:ring-offset-secondary-background rounded px-2 py-1"
             >
               {item.name}
             </a>
@@ -35,16 +35,16 @@ export const Footer = () => {
 
         {/* Large Logo */}
         <div className="flex justify-center mb-16 sm:mb-20">
-          <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-white">
+          <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-primary-foreground">
             Nimara
           </h2>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-8">
+        <div className="border-t border-primary-foreground/10 pt-8">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             {/* Copyright */}
-            <p className="text-sm text-white/50">
+            <p className="text-sm text-primary-foreground/50">
               © {new Date().getFullYear()} Nimara. All rights reserved.
             </p>
 
@@ -54,12 +54,12 @@ export const Footer = () => {
                 <span key={item.name} className="flex items-center gap-4 sm:gap-6">
                   <a
                     href={item.href}
-                    className="text-sm text-white/50 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[hsl(var(--nimara-navy))] rounded px-2 py-1"
+                    className="text-sm text-primary-foreground/50 hover:text-primary-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary-foreground focus:ring-offset-2 focus:ring-offset-secondary-background rounded px-2 py-1"
                   >
                     {item.name}
                   </a>
                   {index < legalLinks.length - 1 && (
-                    <span className="text-white/30 hidden sm:inline">|</span>
+                    <span className="text-primary-foreground/30 hidden sm:inline">|</span>
                   )}
                 </span>
               ))}
