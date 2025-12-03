@@ -82,18 +82,7 @@ const HeroSectionLuxe = () => {
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
             >
-              <div className="flex items-center gap-3 px-5 py-2.5 bg-white/10 rounded-full backdrop-blur-sm border border-white/20">
-                <div className="flex gap-1">
-                  <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse" />
-                  <span
-                    className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse"
-                    style={{ animationDelay: "0.2s" }}
-                  />
-                  <span
-                    className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse"
-                    style={{ animationDelay: "0.4s" }}
-                  />
-                </div>
+              <div className="px-5 py-2.5 bg-white/10 rounded-full backdrop-blur-sm border border-white/20">
                 <span className="text-xs font-medium text-white/70 tracking-wide">
                   BUILT FOR CANADIAN NONPROFITS AND CHARITIES
                 </span>
