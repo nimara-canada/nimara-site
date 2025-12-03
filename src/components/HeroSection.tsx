@@ -44,34 +44,6 @@ const HeroSectionLuxe = () => {
 
   return (
     <section className="relative min-h-screen flex items-center bg-secondary-background overflow-hidden">
-      {/* Premium background elements */}
-      <div className="absolute inset-0">
-        {/* Noise texture */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E")`,
-          }}
-        />
-
-        {/* Floating gradient orbs */}
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px]">
-          <div
-            className="w-full h-full rounded-full bg-gradient-to-br from-accent/20 to-transparent blur-3xl"
-            style={{
-              animation: "float 20s ease-in-out infinite",
-            }}
-          />
-        </div>
-        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px]">
-          <div
-            className="w-full h-full rounded-full bg-gradient-to-tr from-white/5 to-transparent blur-3xl"
-            style={{
-              animation: "float 25s ease-in-out infinite reverse",
-            }}
-          />
-        </div>
-      </div>
 
       <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
