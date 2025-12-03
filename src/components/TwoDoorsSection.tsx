@@ -74,6 +74,9 @@ export const TwoDoorsSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
+          <span className="text-xs font-semibold tracking-widest text-primary uppercase mb-4 block">
+            Choose Your Path
+          </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
             Two Doors. One System.
           </h2>
