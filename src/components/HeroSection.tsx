@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "./ui/Button";
+import { Button } from "./ui/button";
 import { CheckCircle2, MoreHorizontal } from "lucide-react";
 
-export const Hero: React.FC = () => {
+const HeroSection: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   // Rotating text state
@@ -63,12 +63,11 @@ export const Hero: React.FC = () => {
             {/* CTA row */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-10">
               <Button
-                variant="primary"
                 size="lg"
                 className="bg-nimara-mint text-nimara-navy hover:bg-white hover:text-nimara-navy border-0 font-bold px-8 shadow-lg shadow-nimara-mint/20"
-                href="#capacity-check"
+                asChild
               >
-                Get Your Health Score
+                <a href="#capacity-check">Get Your Health Score</a>
               </Button>
 
               <button
@@ -193,3 +192,5 @@ export const Hero: React.FC = () => {
     </section>
   );
 };
+
+export default HeroSection;
