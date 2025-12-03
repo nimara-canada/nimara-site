@@ -32,7 +32,7 @@ export default function Resources() {
 
       <div 
         className="min-h-screen"
-        style={{ backgroundColor: "hsl(var(--nimara-bg))" }}
+        style={{ backgroundColor: "hsl(var(--nimara-bg))", paddingTop: 'calc(var(--announcement-height, 0px) + 4rem)' }}
       >
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 py-16 lg:py-24">
           <main id="main-content" className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">

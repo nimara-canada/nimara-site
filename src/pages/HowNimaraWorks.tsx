@@ -45,7 +45,7 @@ const HowNimaraWorks = () => {
       
       <Header />
       
-      <main id="main">
+      <main id="main" style={{ paddingTop: 'calc(var(--announcement-height, 0px) + 4rem)' }}>
         <HowItWorksHero />
         
         {/* Subtle visual connector with arrows */}

@@ -51,7 +51,7 @@ export const AnnouncementBar = () => {
     }
   };
   if (!isVisible) return null;
-  return <aside role="region" aria-label="Site announcement" id="announcement_hiring_2025" className="sticky top-0 z-[60] bg-accent text-white">
+  return <aside role="region" aria-label="Site announcement" id="announcement_hiring_2025" className="fixed top-0 left-0 right-0 z-[60] bg-accent text-white">
       <div className="container mx-auto px-4 py-3 sm:py-3.5">
         <div className="flex items-center justify-between gap-4">
           <p className="text-base leading-tight flex-1 text-center px-[2px] py-[2px] sm:text-center font-medium text-secondary-foreground">
