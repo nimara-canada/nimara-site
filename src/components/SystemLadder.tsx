@@ -79,13 +79,13 @@ export const SystemLadder = () => {
   return (
     <section 
       id="system" 
-      className="relative py-16 md:py-24 lg:py-32 overflow-hidden bg-slate-900"
+      className="relative py-16 md:py-24 lg:py-32 overflow-hidden bg-secondary-background"
       aria-labelledby="system-heading"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div className="absolute -top-48 left-1/4 w-96 h-96 rounded-full bg-violet-600/10 blur-3xl" />
-        <div className="absolute -bottom-48 right-1/4 w-96 h-96 rounded-full bg-emerald-600/10 blur-3xl" />
+        <div className="absolute -top-48 left-1/4 w-96 h-96 rounded-full bg-primary/10 blur-3xl" />
+        <div className="absolute -bottom-48 right-1/4 w-96 h-96 rounded-full bg-accent/10 blur-3xl" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -97,18 +97,18 @@ export const SystemLadder = () => {
           viewport={{ once: true, margin: "-50px" }}
           variants={fadeInUp}
         >
-          <span className="text-xs font-semibold tracking-widest text-violet-400 uppercase mb-4 block">
+          <span className="text-xs font-semibold tracking-widest text-primary uppercase mb-4 block">
             The Nimara System
           </span>
           
           <h2
             id="system-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight mb-6"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-foreground leading-tight tracking-tight mb-6"
           >
             Where are you on the ladder?
           </h2>
           
-          <p className="text-lg text-slate-400 leading-relaxed">
+          <p className="text-lg text-muted-foreground leading-relaxed">
             We place every nonprofit on a simple 5-tier ladder so we know exactly where to start and what to build first.
           </p>
         </motion.div>
@@ -144,10 +144,10 @@ export const SystemLadder = () => {
                     className={`
                       group relative w-full flex items-center gap-5 p-5 rounded-xl border text-left 
                       transition-all duration-300
-                      focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 focus:ring-offset-slate-900
+                      focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary-background
                       ${isActive 
-                        ? `bg-slate-800 ${colors.border} shadow-xl shadow-black/20` 
-                        : 'bg-slate-800/60 border-slate-700/50 hover:bg-slate-800/90'
+                        ? `bg-card/80 ${colors.border} shadow-xl shadow-black/20` 
+                        : 'bg-card/40 border-border/50 hover:bg-card/60'
                       }
                     `}
                     aria-pressed={isSelected}
@@ -156,7 +156,7 @@ export const SystemLadder = () => {
                     {/* Step connector - vertical riser */}
                     {index < reversedSteps.length - 1 && (
                       <motion.div 
-                        className="absolute -bottom-3 left-8 w-0.5 h-3 bg-gradient-to-b from-slate-600 to-slate-700"
+                        className="absolute -bottom-3 left-8 w-0.5 h-3 bg-gradient-to-b from-border to-border/70"
                         initial={{ scaleY: 0 }}
                         whileInView={{ scaleY: 1 }}
                         viewport={{ once: true }}
@@ -174,7 +174,7 @@ export const SystemLadder = () => {
                           transition-all duration-300 
                           ${isActive 
                             ? `${colors.bg} shadow-lg` 
-                            : 'bg-slate-700/80'
+                            : 'bg-muted/80'
                           }
                         `}
                         animate={{ 
@@ -186,7 +186,7 @@ export const SystemLadder = () => {
                         <Icon 
                           size={26} 
                           className={`transition-colors duration-300 ${
-                            isActive ? 'text-white' : 'text-slate-400'
+                            isActive ? 'text-primary-foreground' : 'text-muted-foreground'
                           }`}
                         />
                       </motion.div>
@@ -197,8 +197,8 @@ export const SystemLadder = () => {
                           absolute -top-1 -right-1 w-6 h-6 rounded-lg flex items-center justify-center 
                           text-xs font-bold transition-all duration-300
                           ${isActive 
-                            ? `${colors.bg} text-white shadow-md` 
-                            : 'bg-slate-600 text-slate-300'
+                            ? `${colors.bg} text-primary-foreground shadow-md` 
+                            : 'bg-muted text-muted-foreground'
                           }
                         `}
                         animate={{ scale: isActive ? 1.1 : 1 }}
@@ -210,8 +210,8 @@ export const SystemLadder = () => {
                     {/* Content */}
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-3 mb-1">
-                        <h3 className={`text-lg font-semibold transition-colors duration-300 ${
-                          isActive ? 'text-white' : 'text-slate-200'
+                      <h3 className={`text-lg font-semibold transition-colors duration-300 ${
+                          isActive ? 'text-primary-foreground' : 'text-foreground'
                         }`}>
                           {step.title}
                         </h3>
@@ -225,8 +225,8 @@ export const SystemLadder = () => {
                           </motion.span>
                         )}
                       </div>
-                      <p className={`text-sm leading-relaxed transition-colors duration-300 ${
-                        isActive ? 'text-slate-300' : 'text-slate-400'
+                    <p className={`text-sm leading-relaxed transition-colors duration-300 ${
+                        isActive ? 'text-foreground/80' : 'text-muted-foreground'
                       }`}>
                         {step.desc}
                       </p>
@@ -256,7 +256,7 @@ export const SystemLadder = () => {
                       className="flex-shrink-0"
                     >
                       <ArrowRight size={20} className={`transition-colors duration-300 ${
-                        isActive ? colors.text : 'text-slate-600'
+                        isActive ? colors.text : 'text-muted-foreground/50'
                       }`} />
                     </motion.div>
 
@@ -279,7 +279,7 @@ export const SystemLadder = () => {
         {/* Mobile: Vertical Timeline */}
         <div className="md:hidden relative max-w-lg mx-auto">
           {/* Vertical ladder rail */}
-          <div className="absolute left-5 top-4 bottom-4 w-1 rounded-full bg-gradient-to-b from-amber-500 via-violet-500 via-teal-500 via-emerald-500 to-slate-500 opacity-30" aria-hidden="true" />
+          <div className="absolute left-5 top-4 bottom-4 w-1 rounded-full bg-gradient-to-b from-amber-500 via-primary via-teal-500 via-emerald-500 to-muted opacity-30" aria-hidden="true" />
           
           <div className="space-y-3">
             {reversedSteps.map((step, index) => {
@@ -299,13 +299,13 @@ export const SystemLadder = () => {
                 >
                   {/* Rung indicator */}
                   <motion.div 
-                    className={`absolute left-3 top-6 w-5 h-5 rounded-lg border-2 border-slate-900 transition-all duration-300 ${
-                      isActive ? colors.bg : 'bg-slate-700'
+                    className={`absolute left-3 top-6 w-5 h-5 rounded-lg border-2 border-secondary-background transition-all duration-300 ${
+                      isActive ? colors.bg : 'bg-muted'
                     }`}
                     animate={{ scale: isActive ? 1.2 : 1 }}
                     aria-hidden="true"
                   >
-                    <span className="absolute inset-0 flex items-center justify-center text-[10px] font-bold text-white">
+                    <span className="absolute inset-0 flex items-center justify-center text-[10px] font-bold text-primary-foreground">
                       {step.level}
                     </span>
                   </motion.div>
@@ -316,25 +316,25 @@ export const SystemLadder = () => {
                     className={`
                       relative w-full p-4 rounded-xl border text-left 
                       transition-all duration-300
-                      focus:outline-none focus:ring-2 focus:ring-violet-500
+                      focus:outline-none focus:ring-2 focus:ring-primary
                       ${isActive 
-                        ? `bg-slate-800 ${colors.border}` 
-                        : 'bg-slate-800/50 border-slate-700/50'
+                        ? `bg-card/80 ${colors.border}` 
+                        : 'bg-card/50 border-border/50'
                       }
                     `}
                     aria-pressed={isSelected}
                   >
                     <div className="flex items-center gap-3 mb-2">
                       <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-300 ${
-                        isActive ? colors.bg : 'bg-slate-700'
+                        isActive ? colors.bg : 'bg-muted'
                       }`}>
-                        <Icon size={20} className={isActive ? 'text-white' : 'text-slate-400'} />
+                        <Icon size={20} className={isActive ? 'text-primary-foreground' : 'text-muted-foreground'} />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-base font-semibold text-white">{step.title}</h3>
+                        <h3 className="text-base font-semibold text-primary-foreground">{step.title}</h3>
                       </div>
                     </div>
-                    <p className="text-sm text-slate-400">{step.desc}</p>
+                    <p className="text-sm text-muted-foreground">{step.desc}</p>
                     
                     {isActive && (
                       <motion.div
@@ -360,14 +360,14 @@ export const SystemLadder = () => {
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <div className="inline-flex flex-col sm:flex-row items-center gap-6 p-6 rounded-2xl bg-slate-800/50 border border-slate-700/50">
-            <p className="text-slate-300 text-sm">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-6 p-6 rounded-2xl bg-card/50 border border-border/50">
+            <p className="text-foreground/80 text-sm">
               Not sure where you fall?{' '}
-              <span className="text-white font-medium">Our free Health Check will place you.</span>
+              <span className="text-primary-foreground font-medium">Our free Health Check will place you.</span>
             </p>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-500 text-white px-6 py-3 rounded-full text-sm font-semibold transition-all duration-200 shadow-lg shadow-violet-600/25 focus:outline-none focus:ring-2 focus:ring-violet-400 focus:ring-offset-2 focus:ring-offset-slate-900"
+              className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-full text-sm font-semibold transition-all duration-200 shadow-lg shadow-primary/25 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary-background"
             >
               Find your level
               <ArrowRight size={16} />
@@ -377,7 +377,7 @@ export const SystemLadder = () => {
 
         {/* Footer note */}
         <motion.p 
-          className="mt-10 text-center text-sm text-slate-500"
+          className="mt-10 text-center text-sm text-muted-foreground"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
