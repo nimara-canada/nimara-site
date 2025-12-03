@@ -43,9 +43,9 @@ const HeroSectionLuxe = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center bg-secondary-background overflow-hidden">
+    <section className="relative min-h-screen flex items-center bg-secondary-background overflow-hidden pt-16">
 
-      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Left: Premium content */}
           <div className="max-w-xl">
