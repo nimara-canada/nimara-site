@@ -75,9 +75,9 @@ const HeroSectionLuxe = () => {
             </div>
 
             {/* Premium headline with word rotation */}
-            <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold text-primary-foreground leading-[1.05] tracking-tight mb-8 transition-all duration-1200 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>On a Mission to Keep Nonprofits
+            <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold text-primary-foreground leading-[1.05] tracking-tight mb-8 transition-all duration-1200 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>On a Mission to Keep Nonprofits 
 
-Compl<br />
+Impactful<br />
               that keep you
               <br />
               <span className="relative inline-flex items-baseline">
