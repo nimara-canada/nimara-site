@@ -42,12 +42,12 @@ const HeroSectionLuxe = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center bg-gradient-to-b from-white via-gray-50/30 to-white overflow-hidden">
+    <section className="relative min-h-screen flex items-center bg-primary overflow-hidden">
       {/* Premium background elements */}
       <div className="absolute inset-0">
         {/* Noise texture */}
         <div
-          className="absolute inset-0 opacity-[0.015]"
+          className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E")`,
           }}
@@ -56,7 +56,7 @@ const HeroSectionLuxe = () => {
         {/* Floating gradient orbs */}
         <div className="absolute top-0 left-1/4 w-[500px] h-[500px]">
           <div
-            className="w-full h-full rounded-full bg-gradient-to-br from-teal-100/40 to-transparent blur-3xl"
+            className="w-full h-full rounded-full bg-gradient-to-br from-accent/20 to-transparent blur-3xl"
             style={{
               animation: "float 20s ease-in-out infinite",
             }}
@@ -64,7 +64,7 @@ const HeroSectionLuxe = () => {
         </div>
         <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px]">
           <div
-            className="w-full h-full rounded-full bg-gradient-to-tr from-slate-100/40 to-transparent blur-3xl"
+            className="w-full h-full rounded-full bg-gradient-to-tr from-white/5 to-transparent blur-3xl"
             style={{
               animation: "float 25s ease-in-out infinite reverse",
             }}
@@ -82,7 +82,7 @@ const HeroSectionLuxe = () => {
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
             >
-              <div className="flex items-center gap-3 px-5 py-2.5 bg-card rounded-full shadow-sm border border-border">
+              <div className="flex items-center gap-3 px-5 py-2.5 bg-white/10 rounded-full backdrop-blur-sm border border-white/20">
                 <div className="flex gap-1">
                   <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse" />
                   <span
@@ -94,7 +94,7 @@ const HeroSectionLuxe = () => {
                     style={{ animationDelay: "0.4s" }}
                   />
                 </div>
-                <span className="text-xs font-medium text-muted-foreground tracking-wide">
+                <span className="text-xs font-medium text-white/70 tracking-wide">
                   TRUSTED BY 200+ CANADIAN NONPROFITS
                 </span>
               </div>
@@ -102,7 +102,7 @@ const HeroSectionLuxe = () => {
 
             {/* Premium headline with word rotation */}
             <h1
-              className={`text-5xl sm:text-6xl lg:text-7xl font-extralight text-foreground leading-[1.05] mb-8 transition-all duration-1200 delay-100 ${
+              className={`text-5xl sm:text-6xl lg:text-7xl font-extralight text-primary-foreground leading-[1.05] mb-8 transition-all duration-1200 delay-100 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
             >
@@ -111,7 +111,7 @@ const HeroSectionLuxe = () => {
               that keep you
               <br />
               <span className="relative inline-flex items-baseline">
-                <span className="absolute inset-0 bg-accent/10 blur-2xl" />
+                <span className="absolute inset-0 bg-accent/20 blur-2xl" />
                 {words.map((word, index) => (
                   <span
                     key={word}
@@ -128,14 +128,14 @@ const HeroSectionLuxe = () => {
 
             {/* Refined description */}
             <p
-              className={`text-xl text-muted-foreground mb-12 leading-relaxed font-light transition-all duration-1200 delay-200 ${
+              className={`text-xl text-white/60 mb-12 leading-relaxed font-light transition-all duration-1200 delay-200 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
             >
               We install the files that pass audits and satisfy funders—
-              <span className="text-foreground font-normal">board rules</span>,{" "}
-              <span className="text-foreground font-normal">money tracking</span>,{" "}
-              <span className="text-foreground font-normal">staff folders</span>.
+              <span className="text-white/90 font-normal">board rules</span>,{" "}
+              <span className="text-white/90 font-normal">money tracking</span>,{" "}
+              <span className="text-white/90 font-normal">staff folders</span>.
             </p>
 
             {/* Premium CTA buttons */}
@@ -146,7 +146,7 @@ const HeroSectionLuxe = () => {
             >
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
-                  className="group relative px-8 py-4 overflow-hidden rounded-2xl bg-primary text-primary-foreground font-medium shadow-xl transition-all duration-500 hover:shadow-2xl hover:scale-[1.02]"
+                  className="group relative px-8 py-4 overflow-hidden rounded-2xl bg-accent text-primary font-medium shadow-xl transition-all duration-500 hover:shadow-2xl hover:scale-[1.02]"
                   onMouseEnter={() => setIsHovering(true)}
                   onMouseLeave={() => setIsHovering(false)}
                 >
@@ -161,13 +161,13 @@ const HeroSectionLuxe = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
                   </span>
-                  <div className="absolute inset-0 bg-accent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </button>
 
-                <button className="group px-8 py-4 rounded-2xl border border-border bg-background/80 backdrop-blur text-foreground font-medium transition-all duration-300 hover:border-accent hover:bg-background hover:shadow-lg">
+                <button className="group px-8 py-4 rounded-2xl border border-white/20 bg-white/5 backdrop-blur text-primary-foreground font-medium transition-all duration-300 hover:border-white/40 hover:bg-white/10 hover:shadow-lg">
                   <span className="flex items-center justify-center gap-2">
                     <div className="relative w-5 h-5">
-                      <div className="absolute inset-0 bg-accent rounded-full opacity-20 animate-ping" />
+                      <div className="absolute inset-0 bg-accent rounded-full opacity-30 animate-ping" />
                       <svg className="relative w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path
                           strokeLinecap="round"
@@ -196,13 +196,13 @@ const HeroSectionLuxe = () => {
               }`}
             >
               <div className="flex items-baseline gap-2">
-                <span className="text-4xl font-extralight text-foreground">6</span>
-                <span className="text-sm font-medium text-muted-foreground uppercase tracking-wider">weeks</span>
+                <span className="text-4xl font-extralight text-primary-foreground">6</span>
+                <span className="text-sm font-medium text-white/50 uppercase tracking-wider">weeks</span>
               </div>
-              <div className="w-px h-8 bg-border" />
+              <div className="w-px h-8 bg-white/20" />
               <div className="flex items-baseline gap-2">
-                <span className="text-4xl font-extralight text-foreground">100%</span>
-                <span className="text-sm font-medium text-muted-foreground uppercase tracking-wider">guarantee</span>
+                <span className="text-4xl font-extralight text-primary-foreground">100%</span>
+                <span className="text-sm font-medium text-white/50 uppercase tracking-wider">guarantee</span>
               </div>
             </div>
           </div>
