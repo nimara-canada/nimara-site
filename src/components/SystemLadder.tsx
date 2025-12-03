@@ -53,11 +53,11 @@ const ladderSteps = [
 ];
 
 const colorClasses: Record<string, { bg: string; text: string; border: string; light: string; gradient: string }> = {
-  slate: { bg: 'bg-slate-500', text: 'text-slate-400', border: 'border-slate-500/30', light: 'bg-slate-500/10', gradient: 'from-slate-500' },
-  emerald: { bg: 'bg-emerald-500', text: 'text-emerald-400', border: 'border-emerald-500/30', light: 'bg-emerald-500/10', gradient: 'from-emerald-500' },
-  teal: { bg: 'bg-teal-500', text: 'text-teal-400', border: 'border-teal-500/30', light: 'bg-teal-500/10', gradient: 'from-teal-500' },
-  violet: { bg: 'bg-violet-500', text: 'text-violet-400', border: 'border-violet-500/30', light: 'bg-violet-500/10', gradient: 'from-violet-500' },
-  amber: { bg: 'bg-amber-500', text: 'text-amber-400', border: 'border-amber-500/30', light: 'bg-amber-500/10', gradient: 'from-amber-500' }
+  slate: { bg: 'bg-slate-500', text: 'text-slate-200', border: 'border-slate-400/40', light: 'bg-slate-500/20', gradient: 'from-slate-500' },
+  emerald: { bg: 'bg-emerald-500', text: 'text-emerald-300', border: 'border-emerald-400/40', light: 'bg-emerald-500/20', gradient: 'from-emerald-500' },
+  teal: { bg: 'bg-teal-500', text: 'text-teal-300', border: 'border-teal-400/40', light: 'bg-teal-500/20', gradient: 'from-teal-500' },
+  violet: { bg: 'bg-violet-500', text: 'text-violet-300', border: 'border-violet-400/40', light: 'bg-violet-500/20', gradient: 'from-violet-500' },
+  amber: { bg: 'bg-amber-500', text: 'text-amber-300', border: 'border-amber-400/40', light: 'bg-amber-500/20', gradient: 'from-amber-500' }
 };
 
 const fadeInUp: Variants = {
