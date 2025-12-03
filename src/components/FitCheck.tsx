@@ -73,7 +73,7 @@ export const FitCheck = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center">
           
           {/* LEFT – WHO NIMARA IS FOR */}
           <motion.div initial="hidden" whileInView="visible" viewport={{
@@ -85,7 +85,7 @@ export const FitCheck = () => {
               Who Nimara Is For
             </span>
 
-            <h2 id="fit-check-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight tracking-tight">
+            <h2 id="fit-check-heading" className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground mb-4 sm:mb-6 leading-tight tracking-tight">
               Is Nimara right for{' '}
               <span className="relative inline-block">
                 <span className="relative z-10">your nonprofit?</span>
@@ -93,10 +93,10 @@ export const FitCheck = () => {
               </span>
             </h2>
 
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-xl">We help nonprofits and charities that do strong work in the community, but feel messy on the inside. If the "back-end" keeps you up at night, this is for you.</p>
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-6 sm:mb-8 max-w-xl">We help nonprofits and charities that do strong work in the community, but feel messy on the inside. If the "back-end" keeps you up at night, this is for you.</p>
 
             {/* Interactive Checklist */}
-            <div className="bg-muted/50 rounded-2xl border border-border p-6 lg:p-8 mb-8">
+            <div className="bg-muted/50 rounded-2xl border border-border p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8">
               {/* Header with counter */}
               <div className="flex items-center justify-between mb-6">
                 <p className="text-sm font-semibold text-foreground">
@@ -127,7 +127,7 @@ export const FitCheck = () => {
                 const isChecked = checkedItems.includes(item.id);
                 return <motion.div key={item.id} variants={itemVariants}>
                       <button type="button" onClick={() => toggleItem(item.id)} className={`
-                          w-full flex items-start gap-4 p-4 rounded-xl border-2 transition-all duration-200 text-left
+                          w-full flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl border-2 transition-all duration-200 text-left
                           focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2
                           ${isChecked ? 'bg-[hsl(var(--nimara-purple))]/5 border-[hsl(var(--nimara-purple))]/30 shadow-sm' : 'bg-background border-border hover:border-[hsl(var(--nimara-purple))]/20 hover:shadow-sm'}
                         `} aria-pressed={isChecked}>
