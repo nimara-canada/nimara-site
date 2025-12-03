@@ -245,32 +245,26 @@ const HeroSectionLuxe = () => {
               <div className="p-8">
                 {/* Metrics */}
                 <div className="space-y-8">
-                  {[
+                {[
                     {
                       label: "Governance & Board",
                       value: chartValues[0],
-                      icon: "📋",
                       color: "from-teal-500 to-teal-600",
                     },
                     {
                       label: "Financial Systems",
                       value: chartValues[1],
-                      icon: "💰",
                       color: "from-blue-500 to-blue-600",
                     },
                     {
                       label: "HR & Compliance",
                       value: chartValues[2],
-                      icon: "👥",
                       color: "from-purple-500 to-purple-600",
                     },
                   ].map((item, i) => (
                     <div key={i} className="relative">
                       <div className="flex items-center justify-between mb-3">
-                        <div className="flex items-center gap-3">
-                          <span className="text-2xl">{item.icon}</span>
-                          <span className="text-sm font-medium text-gray-700">{item.label}</span>
-                        </div>
+                        <span className="text-sm font-medium text-gray-700">{item.label}</span>
                         <span
                           className="text-sm font-bold text-gray-900 tabular-nums"
                           style={{
