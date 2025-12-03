@@ -146,7 +146,7 @@ const HeroSectionLuxe = () => {
             >
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
-                  className="group relative px-8 py-4 overflow-hidden rounded-2xl bg-accent text-primary font-medium shadow-xl transition-all duration-500 hover:shadow-2xl hover:scale-[1.02]"
+                  className="group relative px-8 py-4 overflow-hidden rounded-2xl bg-accent text-accent-foreground font-medium shadow-xl transition-all duration-500 hover:shadow-2xl hover:scale-[1.02]"
                   onMouseEnter={() => setIsHovering(true)}
                   onMouseLeave={() => setIsHovering(false)}
                 >
