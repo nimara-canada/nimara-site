@@ -100,7 +100,7 @@ const HeroSectionLuxe = () => {
             {/* Premium CTA buttons */}
             <div className={`space-y-4 mb-16 transition-all duration-1200 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="group relative px-8 py-4 overflow-hidden rounded-2xl bg-accent text-accent-foreground font-medium shadow-xl transition-all duration-500 hover:shadow-2xl hover:scale-[1.02]" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+                <button className="group relative px-8 py-4 overflow-hidden rounded-xl bg-accent text-accent-foreground font-semibold shadow-soft transition-all duration-500 hover:shadow-lg hover:scale-[1.02]" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
                   <span className="relative z-10 flex items-center justify-center gap-2">
                     Get Your Health Score
                     <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -110,7 +110,7 @@ const HeroSectionLuxe = () => {
                   <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </button>
 
-                <button className="group px-8 py-4 rounded-2xl border border-white/20 bg-white/5 backdrop-blur text-primary-foreground font-medium transition-all duration-300 hover:border-white/40 hover:bg-white/10 hover:shadow-lg">
+                <button className="group px-8 py-4 rounded-xl border border-white/20 bg-white/5 backdrop-blur text-primary-foreground font-semibold transition-all duration-300 hover:border-white/40 hover:bg-white/10 hover:shadow-lg">
                   <span className="flex items-center justify-center gap-2">
                     <div className="relative w-5 h-5">
                       <div className="absolute inset-0 bg-accent rounded-full opacity-30 animate-ping" />
