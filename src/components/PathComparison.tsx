@@ -110,49 +110,14 @@ export const PathComparison = () => {
         duration: 0.6
       }}>
           <span className="text-xs font-semibold tracking-widest text-primary uppercase mb-4 block">
-            Choose Your Path
+            Compare Options
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-foreground">
-            Two Doors. One System.
+            Path A vs Path B
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-            Choose the speed and depth that fits your reality today.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Not sure which path fits? Here's a side-by-side breakdown.
           </p>
-          
-          {/* Path Descriptions */}
-          <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto text-left">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="p-5 rounded-xl bg-accent/10 border border-accent/30"
-            >
-              <div className="flex items-center gap-2 mb-2">
-                <Zap className="w-5 h-5 text-accent" />
-                <span className="font-bold text-foreground">Path A: Fast Help</span>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Fix one urgent problem—audit prep, grant deadline, or policy gap—in 1–4 weeks.
-              </p>
-            </motion.div>
-            
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="p-5 rounded-xl bg-primary/10 border border-primary/30"
-            >
-              <div className="flex items-center gap-2 mb-2">
-                <Layers className="w-5 h-5 text-primary" />
-                <span className="font-bold text-foreground">Path B: System Build</span>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Install full infrastructure across your organization in 8–12 weeks to move up a Tier.
-              </p>
-            </motion.div>
-          </div>
         </motion.div>
 
         {/* Comparison Table */}
