@@ -82,10 +82,33 @@ const HealthScore = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const scrollToForm = () => {
-    document.getElementById('health-check-form')?.scrollIntoView({ 
-      behavior: 'smooth',
-      block: 'start'
-    });
+    const element = document.getElementById('health-check-form');
+    if (!element) return;
+    
+    const targetPosition = element.getBoundingClientRect().top + window.pageYOffset - 80;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    const duration = 1000;
+    let start: number | null = null;
+
+    const easeInOutCubic = (t: number): number => {
+      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    };
+
+    const animation = (currentTime: number) => {
+      if (start === null) start = currentTime;
+      const timeElapsed = currentTime - start;
+      const progress = Math.min(timeElapsed / duration, 1);
+      const ease = easeInOutCubic(progress);
+      
+      window.scrollTo(0, startPosition + distance * ease);
+      
+      if (timeElapsed < duration) {
+        requestAnimationFrame(animation);
+      }
+    };
+
+    requestAnimationFrame(animation);
   };
 
   useEffect(() => {
