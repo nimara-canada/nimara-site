@@ -188,7 +188,7 @@ export const PathComparison = () => {
               </div>
               <span className="relative text-xs text-primary-foreground/70">Fast Help</span>
             </div>
-            <div className="relative p-4 sm:p-6 text-center border-l border-primary-foreground/20">
+            <div className="relative p-4 sm:p-6 text-center border-l border-primary-foreground/20 bg-primary/10">
               {/* Most Popular Badge */}
               <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary text-primary-foreground text-[10px] font-bold uppercase tracking-wide rounded-full whitespace-nowrap shadow-md z-10">
                 Most Popular
@@ -277,7 +277,7 @@ export const PathComparison = () => {
                     )}
                   </span>
                 </div>
-                <div className="relative p-4 sm:p-5 flex items-center justify-center border-l border-border">
+                <div className="relative p-4 sm:p-5 flex items-center justify-center border-l border-border bg-primary/5">
                   <AnimatePresence>
                     {highlightedPath === "b" && (
                       <motion.div
@@ -327,7 +327,7 @@ export const PathComparison = () => {
                 Start Path A
               </Link>
             </div>
-            <div className="relative p-4 sm:p-6 flex justify-center border-l border-border">
+            <div className="relative p-4 sm:p-6 flex justify-center border-l border-border bg-primary/5">
               <AnimatePresence>
                 {highlightedPath === "b" && (
                   <motion.div
