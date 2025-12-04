@@ -568,7 +568,7 @@ const HealthScore = () => {
         <section className="py-20 md:py-28 bg-nimara-navy relative overflow-hidden">
           {/* Background decoration */}
           <div className="absolute inset-0">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-br from-accent/10 to-primary/5 rounded-full blur-3xl" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-br from-nimara-mint/15 to-nimara-purple/10 rounded-full blur-3xl" />
           </div>
           
           <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
@@ -589,14 +589,14 @@ const HealthScore = () => {
               scale: 1
             }} viewport={{
               once: true
-            }} className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 text-white text-xs font-semibold uppercase tracking-wider rounded-full mb-4">
-                <Zap className="w-3.5 h-3.5 text-accent" />
+            }} className="inline-flex items-center gap-2 px-4 py-2 bg-nimara-mint/15 text-nimara-mint text-xs font-semibold uppercase tracking-wider rounded-full mb-4">
+                <Zap className="w-3.5 h-3.5" />
                 Process
               </motion.span>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
                 How it works
               </h2>
-              <p className="text-lg text-white/60 max-w-2xl mx-auto">
+              <p className="text-lg text-white/70 max-w-2xl mx-auto">
                 Four simple steps to clarity
               </p>
             </motion.div>
@@ -604,7 +604,7 @@ const HealthScore = () => {
             <div className="relative">
               {/* Connection line for desktop */}
               <div className="hidden lg:block absolute top-24 left-[12%] right-[12%] h-0.5">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-nimara-mint/40 to-transparent" />
               </div>
               
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
@@ -619,13 +619,13 @@ const HealthScore = () => {
               }} transition={{
                 delay: index * 0.15
               }} className="relative group">
-                    <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:border-accent/30 hover:bg-white/10 transition-all duration-300 h-full">
+                    <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:border-nimara-mint/40 hover:bg-white/10 transition-all duration-300 h-full">
                       {/* Step number badge */}
                       
                       
                       <h3 className="font-bold text-white mb-1 text-lg">{step.title}</h3>
-                      <p className="text-accent text-sm font-medium mb-3">{step.subtitle}</p>
-                      <p className="text-white/60 text-sm leading-relaxed">{step.description}</p>
+                      <p className="text-nimara-mint text-sm font-medium mb-3">{step.subtitle}</p>
+                      <p className="text-white/70 text-sm leading-relaxed">{step.description}</p>
                     </div>
                   </motion.div>)}
               </div>
