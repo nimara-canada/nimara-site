@@ -215,15 +215,16 @@ const HeroSectionLuxe = () => {
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="relative overflow-hidden">
-                        <span className="text-5xl font-extralight text-gray-800 inline-block tracking-tight" style={{
+                      <div className="relative overflow-hidden" style={{
                         transform: chartValues[0] > 0 ? "translateY(0)" : "translateY(20px)",
                         opacity: chartValues[0] > 0 ? 1 : 0,
                         transition: "all 0.8s ease-out",
                         transitionDelay: "1800ms"
                       }}>
-                          92
-                        </span>
+                        <div className="bg-nimara-purple rounded-xl px-4 py-3 shadow-lg">
+                          <span className="text-3xl font-semibold text-white block">92</span>
+                          <span className="text-xs text-white/80 font-medium">Health Score</span>
+                        </div>
                       </div>
                     </div>
                   </div>
