@@ -187,7 +187,7 @@ export const PathComparison = () => {
               </div>
               <span className="relative text-xs text-primary-foreground/70">Fast Help</span>
             </div>
-            <div className="relative p-4 sm:p-6 text-center border-l border-primary-foreground/20 bg-primary/10">
+            <div className="relative p-5 sm:p-7 text-center border-l border-primary-foreground/20 bg-primary/15">
               {/* Most Popular Badge */}
               <motion.span 
                 className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary text-primary-foreground text-[10px] font-bold uppercase tracking-wide rounded-full whitespace-nowrap shadow-md z-10"
@@ -248,10 +248,10 @@ export const PathComparison = () => {
                   </>}
               </AnimatePresence>
               <div className="relative flex items-center justify-center gap-2 mt-2">
-                <Layers className="w-4 h-4 text-accent" />
-                <span className="font-bold text-sm sm:text-base">Path B</span>
+                <Layers className="w-5 h-5 text-accent" />
+                <span className="font-bold text-base sm:text-lg">Path B</span>
               </div>
-              <span className="relative text-xs text-primary-foreground/70">System Build</span>
+              <span className="relative text-xs sm:text-sm text-primary-foreground/80 font-medium">System Build</span>
             </div>
           </div>
 
