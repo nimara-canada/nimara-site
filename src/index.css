@@ -269,3 +269,73 @@ All colors MUST be HSL.
 .animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
 }
+
+/* Print styles for comparison table */
+@media print {
+  /* Hide non-essential elements */
+  header,
+  footer,
+  .compare-paths-button,
+  [data-hide-print],
+  button:not([data-print-show]) {
+    display: none !important;
+  }
+
+  /* Reset backgrounds for printing */
+  body {
+    background: white !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Comparison table print styles */
+  #path-comparison {
+    padding: 1rem !important;
+    background: white !important;
+    break-inside: avoid;
+  }
+
+  #path-comparison .bg-secondary-background {
+    background: hsl(229 48% 25%) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #path-comparison [class*="bg-accent"] {
+    background: hsl(162 91% 83%) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #path-comparison [class*="bg-primary"] {
+    background: hsl(252 58% 56%) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Ensure text is readable */
+  #path-comparison * {
+    color-adjust: exact;
+  }
+
+  /* Hide info icons in print */
+  #path-comparison .lucide-info {
+    display: none !important;
+  }
+
+  /* Hide animated elements */
+  #path-comparison [class*="animate-"],
+  #path-comparison .you-are-here-badge {
+    display: none !important;
+  }
+
+  /* Ensure borders show */
+  #path-comparison [class*="border"] {
+    border-color: #ddd !important;
+  }
+
+  /* Page break settings */
+  @page {
+    margin: 1cm;
+  }
+}

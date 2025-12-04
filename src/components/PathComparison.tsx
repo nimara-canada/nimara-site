@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, X, Zap, Layers, Info } from "lucide-react";
+import { Check, X, Zap, Layers, Info, Printer } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
@@ -127,9 +127,17 @@ export const PathComparison = () => {
           <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-foreground">
             Path A vs Path B
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
             Not sure which path fits? Here's a side-by-side breakdown.
           </p>
+          <button
+            onClick={() => window.print()}
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors print:hidden"
+            data-hide-print
+          >
+            <Printer className="w-4 h-4" />
+            Print comparison
+          </button>
         </motion.div>
 
         {/* Comparison Table */}
