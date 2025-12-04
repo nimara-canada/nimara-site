@@ -621,7 +621,9 @@ const HealthScore = () => {
               }} className="relative group">
                     <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:border-nimara-mint/40 hover:bg-white/10 transition-all duration-300 h-full">
                       {/* Step number badge */}
-                      
+                      <div className="w-10 h-10 rounded-full bg-nimara-mint/20 border border-nimara-mint/40 flex items-center justify-center mb-4 group-hover:bg-nimara-mint/30 transition-colors">
+                        <span className="text-nimara-mint font-bold text-lg">{step.number}</span>
+                      </div>
                       
                       <h3 className="font-bold text-white mb-1 text-lg">{step.title}</h3>
                       <p className="text-nimara-mint text-sm font-medium mb-3">{step.subtitle}</p>
