@@ -189,6 +189,10 @@ export const PathComparison = () => {
               <span className="relative text-xs text-primary-foreground/70">Fast Help</span>
             </div>
             <div className="relative p-4 sm:p-6 text-center border-l border-primary-foreground/20">
+              {/* Most Popular Badge */}
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary text-primary-foreground text-[10px] font-bold uppercase tracking-wide rounded-full whitespace-nowrap shadow-md z-10">
+                Most Popular
+              </span>
               <AnimatePresence>
                 {highlightedPath === "b" && (
                   <>
@@ -206,7 +210,7 @@ export const PathComparison = () => {
                       />
                     </motion.div>
                     <motion.span
-                      className="absolute -top-2 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-primary text-primary-foreground text-[10px] font-semibold rounded-full whitespace-nowrap shadow-md"
+                      className="absolute top-5 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-accent text-accent-foreground text-[10px] font-semibold rounded-full whitespace-nowrap shadow-md z-20"
                       initial={{ opacity: 0, y: 10, scale: 0.8 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: -5 }}
@@ -217,7 +221,7 @@ export const PathComparison = () => {
                   </>
                 )}
               </AnimatePresence>
-              <div className="relative flex items-center justify-center gap-2">
+              <div className="relative flex items-center justify-center gap-2 mt-2">
                 <Layers className="w-4 h-4 text-accent" />
                 <span className="font-bold text-sm sm:text-base">Path B</span>
               </div>
