@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, X, Zap, Layers, Info, Printer } from "lucide-react";
+import { Check, X, Zap, Layers, Info, Printer, ArrowRight } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
@@ -359,10 +359,17 @@ export const PathComparison = () => {
         >
           <Link
             to="/health-score"
-            className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm"
+            className="group inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm"
           >
             <span>Not sure which path?</span>
             <span className="font-medium text-primary underline underline-offset-2">Take our health score assessment</span>
+            <motion.span
+              className="inline-flex"
+              animate={{ x: [0, 4, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <ArrowRight className="w-4 h-4 text-primary" />
+            </motion.span>
           </Link>
         </motion.div>
       </div>
