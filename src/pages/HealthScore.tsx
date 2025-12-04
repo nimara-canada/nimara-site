@@ -317,6 +317,9 @@ const HealthScore = () => {
           </div>
         </section>
 
+        {/* Divider: Hero to Benefits */}
+        <div className="h-px bg-gradient-to-r from-transparent via-nimara-mint/30 to-transparent" />
+
         {/* Why get a health score */}
         <section className="py-20 md:py-28 bg-background relative">
           <div className="absolute inset-0 bg-gradient-to-b from-secondary-background/5 to-transparent" />
@@ -380,6 +383,9 @@ const HealthScore = () => {
             </div>
           </div>
         </section>
+
+        {/* Divider: Benefits to What you get */}
+        <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
         {/* What you get in return */}
         <section className="py-20 md:py-28 bg-gradient-to-br from-muted/30 via-background to-muted/50 relative overflow-hidden">
@@ -564,6 +570,9 @@ const HealthScore = () => {
           </div>
         </section>
 
+        {/* Divider: What you get to How it works */}
+        <div className="h-px bg-gradient-to-r from-transparent via-nimara-purple/40 to-transparent" />
+
         {/* How it works */}
         <section className="py-20 md:py-28 bg-nimara-navy relative overflow-hidden">
           {/* Background decoration */}
@@ -635,6 +644,9 @@ const HealthScore = () => {
           </div>
         </section>
 
+        {/* Divider: How it works to Form */}
+        <div className="h-px bg-gradient-to-r from-transparent via-nimara-mint/30 to-transparent" />
+
         {/* Embedded form */}
         <section id="health-check-form" className="py-20 md:py-28 bg-gradient-to-b from-background to-muted/30 scroll-mt-20 relative">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--accent)/0.05),transparent_50%)]" />
@@ -692,6 +704,9 @@ const HealthScore = () => {
             </p>
           </div>
         </section>
+
+        {/* Divider: Form to FAQ */}
+        <div className="h-px bg-gradient-to-r from-transparent via-nimara-purple/40 to-transparent" />
 
         {/* FAQ */}
         <section className="py-20 md:py-28 bg-nimara-navy relative overflow-hidden">
@@ -756,6 +771,9 @@ const HealthScore = () => {
             </div>
           </div>
         </section>
+
+        {/* Divider: FAQ to Final CTA */}
+        <div className="h-px bg-gradient-to-r from-transparent via-nimara-mint/20 to-transparent" />
 
         {/* Final CTA */}
         <section className="py-20 md:py-28 bg-gradient-to-br from-secondary-background via-secondary-background to-[hsl(var(--nimara-navy))] relative overflow-hidden">
