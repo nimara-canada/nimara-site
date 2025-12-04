@@ -27,6 +27,7 @@ import HowNimaraWorks from "./pages/HowNimaraWorks";
 import OrganizationalHealthCheck from "./pages/OrganizationalHealthCheck";
 import HealthScore from "./pages/HealthScore";
 import PathA from "./pages/PathA";
+import PathB from "./pages/PathB";
 
 const queryClient = new QueryClient();
 
@@ -58,6 +59,7 @@ const App = () => (
             <Route path="/organizational-health-check" element={<OrganizationalHealthCheck />} />
             <Route path="/health-score" element={<HealthScore />} />
             <Route path="/path-a" element={<PathA />} />
+            <Route path="/path-b" element={<PathB />} />
             
             {/* Redirects for old routes */}
             <Route path="/for-nonprofits" element={<Navigate to="/" replace />} />
