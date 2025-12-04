@@ -348,6 +348,23 @@ export const PathComparison = () => {
             </div>
           </div>
         </motion.div>
+
+        {/* Not sure link */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.3 }}
+          className="text-center mt-8"
+        >
+          <Link
+            to="/health-score"
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm"
+          >
+            <span>Not sure which path?</span>
+            <span className="font-medium text-primary underline underline-offset-2">Take our health score assessment</span>
+          </Link>
+        </motion.div>
       </div>
     </section>
   );
