@@ -78,8 +78,8 @@ const comparisonData: ComparisonRow[] = [
   { 
     feature: "Optional 12-month follow-up", 
     tooltip: "Extended support and check-ins to ensure long-term success",
-    pathA: false, 
-    pathB: true 
+    pathA: "Add on", 
+    pathB: "Add on" 
   },
   { 
     feature: "Money-back guarantee", 
@@ -264,9 +264,9 @@ export const PathComparison = () => {
                   <span className="relative">
                     {typeof row.pathA === "boolean" ? (
                       row.pathA ? (
-                        <Check className="w-5 h-5 text-accent" aria-label="Included" />
+                        <Check className="w-5 h-5 text-emerald-500" aria-label="Included" />
                       ) : (
-                        <X className="w-5 h-5 text-muted-foreground/40" aria-label="Not included" />
+                        <X className="w-5 h-5 text-red-500" aria-label="Not included" />
                       )
                     ) : (
                       <span className="text-sm text-muted-foreground text-center">{row.pathA}</span>
@@ -288,9 +288,9 @@ export const PathComparison = () => {
                   <span className="relative">
                     {typeof row.pathB === "boolean" ? (
                       row.pathB ? (
-                        <Check className="w-5 h-5 text-primary" aria-label="Included" />
+                        <Check className="w-5 h-5 text-emerald-500" aria-label="Included" />
                       ) : (
-                        <X className="w-5 h-5 text-muted-foreground/40" aria-label="Not included" />
+                        <X className="w-5 h-5 text-red-500" aria-label="Not included" />
                       )
                     ) : (
                       <span className="text-sm text-muted-foreground text-center">{row.pathB}</span>
