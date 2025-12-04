@@ -185,6 +185,7 @@ export const PathComparison = () => {
                 <span className="font-bold text-sm sm:text-base">Path A</span>
               </div>
               <span className="relative text-xs text-primary-foreground/70">Fast Help</span>
+              <p className="relative text-[10px] sm:text-xs text-primary-foreground/50 mt-1">Urgent fix for 1 priority area</p>
             </div>
             <div className="relative p-5 sm:p-7 text-center border-l-2 border-r-2 border-t-2 border-primary/40 bg-primary/15 rounded-tr-2xl shadow-[0_0_20px_-5px_rgba(105,69,216,0.3)]">
               {/* Most Popular Badge */}
@@ -243,6 +244,7 @@ export const PathComparison = () => {
                 <span className="font-bold text-base sm:text-lg">Path B</span>
               </div>
               <span className="relative text-xs sm:text-sm text-primary-foreground/80 font-medium">System Build</span>
+              <p className="relative text-[10px] sm:text-xs text-primary-foreground/60 mt-1">Full organization overhaul</p>
             </div>
           </div>
 
