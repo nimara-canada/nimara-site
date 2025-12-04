@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Check, X, Zap, Layers } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 interface ComparisonRow {
   feature: string;
@@ -22,6 +23,20 @@ const comparisonData: ComparisonRow[] = [
 ];
 
 export const PathComparison = () => {
+  const location = useLocation();
+  const [highlightedPath, setHighlightedPath] = useState<"a" | "b" | null>(null);
+
+  useEffect(() => {
+    const hash = location.hash;
+    if (hash.includes("highlight=a")) {
+      setHighlightedPath("a");
+    } else if (hash.includes("highlight=b")) {
+      setHighlightedPath("b");
+    } else {
+      setHighlightedPath(null);
+    }
+  }, [location]);
+
   return (
     <section id="path-comparison" className="py-16 md:py-24 lg:py-32 bg-muted/30">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,14 +72,14 @@ export const PathComparison = () => {
             <div className="p-4 sm:p-6 font-semibold text-sm sm:text-base">
               Feature
             </div>
-            <div className="p-4 sm:p-6 text-center border-l border-primary-foreground/20">
+            <div className={`p-4 sm:p-6 text-center border-l border-primary-foreground/20 transition-colors ${highlightedPath === "a" ? "bg-accent/20 ring-2 ring-accent ring-inset" : ""}`}>
               <div className="flex items-center justify-center gap-2">
                 <Zap className="w-4 h-4 text-accent" />
                 <span className="font-bold text-sm sm:text-base">Path A</span>
               </div>
               <span className="text-xs text-primary-foreground/70">Fast Help</span>
             </div>
-            <div className="p-4 sm:p-6 text-center border-l border-primary-foreground/20">
+            <div className={`p-4 sm:p-6 text-center border-l border-primary-foreground/20 transition-colors ${highlightedPath === "b" ? "bg-primary/20 ring-2 ring-primary ring-inset" : ""}`}>
               <div className="flex items-center justify-center gap-2">
                 <Layers className="w-4 h-4 text-accent" />
                 <span className="font-bold text-sm sm:text-base">Path B</span>
@@ -87,7 +102,7 @@ export const PathComparison = () => {
                 <div className="p-4 sm:p-5 text-sm sm:text-base text-foreground font-medium">
                   {row.feature}
                 </div>
-                <div className="p-4 sm:p-5 flex items-center justify-center border-l border-border">
+                <div className={`p-4 sm:p-5 flex items-center justify-center border-l border-border transition-colors ${highlightedPath === "a" ? "bg-accent/10" : ""}`}>
                   {typeof row.pathA === "boolean" ? (
                     row.pathA ? (
                       <Check className="w-5 h-5 text-accent" aria-label="Included" />
@@ -98,7 +113,7 @@ export const PathComparison = () => {
                     <span className="text-sm text-muted-foreground text-center">{row.pathA}</span>
                   )}
                 </div>
-                <div className="p-4 sm:p-5 flex items-center justify-center border-l border-border">
+                <div className={`p-4 sm:p-5 flex items-center justify-center border-l border-border transition-colors ${highlightedPath === "b" ? "bg-primary/10" : ""}`}>
                   {typeof row.pathB === "boolean" ? (
                     row.pathB ? (
                       <Check className="w-5 h-5 text-primary" aria-label="Included" />
@@ -116,7 +131,7 @@ export const PathComparison = () => {
           {/* CTA Row */}
           <div className="grid grid-cols-3 border-t border-border bg-muted/30">
             <div className="p-4 sm:p-6" />
-            <div className="p-4 sm:p-6 flex justify-center border-l border-border">
+            <div className={`p-4 sm:p-6 flex justify-center border-l border-border transition-colors ${highlightedPath === "a" ? "bg-accent/10" : ""}`}>
               <Link
                 to="/path-a"
                 className="px-6 py-2.5 bg-accent text-accent-foreground font-semibold rounded-xl hover:opacity-90 transition-all text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 min-h-[44px] flex items-center"
@@ -124,7 +139,7 @@ export const PathComparison = () => {
                 Start Path A
               </Link>
             </div>
-            <div className="p-4 sm:p-6 flex justify-center border-l border-border">
+            <div className={`p-4 sm:p-6 flex justify-center border-l border-border transition-colors ${highlightedPath === "b" ? "bg-primary/10" : ""}`}>
               <Link
                 to="/path-b"
                 className="px-6 py-2.5 bg-primary text-primary-foreground font-semibold rounded-xl hover:bg-[#5835B8] transition-all text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 min-h-[44px] flex items-center"
