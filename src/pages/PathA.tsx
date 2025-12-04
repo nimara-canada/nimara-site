@@ -204,8 +204,8 @@ const PathA = () => {
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: index * 0.1 }}
                     >
-                      <span className="flex-shrink-0 w-7 h-7 rounded-full bg-accent/20 flex items-center justify-center mt-0.5">
-                        <CheckCircle className="w-4 h-4 text-accent-foreground" aria-hidden="true" />
+                      <span className="flex-shrink-0 w-7 h-7 rounded-full bg-nimara-mint/20 flex items-center justify-center mt-0.5">
+                        <CheckCircle className="w-4 h-4 text-nimara-purple" aria-hidden="true" />
                       </span>
                       <span className="text-foreground text-lg leading-relaxed">"{item}"</span>
                     </motion.li>
@@ -235,11 +235,11 @@ const PathA = () => {
                 </ul>
                 <p className="text-muted-foreground ml-10">
                   In those cases,{" "}
-                  <Link to="/how-nimara-works" className="text-primary hover:underline font-medium">
+                  <Link to="/how-nimara-works" className="text-nimara-purple hover:underline font-medium">
                     Path B (system build)
                   </Link>{" "}
                   or a{" "}
-                  <Link to="/organizational-health-check" className="text-primary hover:underline font-medium">
+                  <Link to="/organizational-health-check" className="text-nimara-purple hover:underline font-medium">
                     quick Health Check
                   </Link>{" "}
                   is better.
@@ -272,7 +272,7 @@ const PathA = () => {
               
               <div className="relative">
                 {/* Connecting line */}
-                <div className="absolute left-5 top-8 bottom-8 w-0.5 bg-gradient-to-b from-accent via-accent/50 to-accent/20 hidden md:block" aria-hidden="true" />
+                <div className="absolute left-5 top-8 bottom-8 w-0.5 bg-gradient-to-b from-nimara-mint via-nimara-mint/50 to-nimara-mint/20 hidden md:block" aria-hidden="true" />
                 
                 <div className="space-y-8 md:space-y-0">
                   {[
@@ -306,7 +306,7 @@ const PathA = () => {
                       className="flex gap-6 md:gap-8 md:pb-12 last:pb-0"
                     >
                       <div className="flex-shrink-0 relative z-10">
-                        <div className="w-10 h-10 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold text-lg shadow-soft">
+                        <div className="w-10 h-10 rounded-full bg-nimara-mint text-nimara-navy flex items-center justify-center font-bold text-lg shadow-soft">
                           {item.step}
                         </div>
                       </div>
@@ -339,7 +339,7 @@ const PathA = () => {
               transition={{ duration: 0.5 }}
             >
               <div className="text-center mb-16">
-                <span className="inline-flex items-center gap-2 px-4 py-2 mb-6 text-sm font-semibold rounded-full bg-primary/10 text-primary">
+                <span className="inline-flex items-center gap-2 px-4 py-2 mb-6 text-sm font-semibold rounded-full bg-nimara-purple/10 text-nimara-purple">
                   <Sparkles className="w-4 h-4" aria-hidden="true" />
                   What You Get
                 </span>
@@ -381,15 +381,15 @@ const PathA = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="group p-8 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 shadow-soft hover:shadow-lg relative"
+                    className="group p-8 rounded-2xl bg-card border border-border hover:border-nimara-purple/30 transition-all duration-300 shadow-soft hover:shadow-lg relative"
                   >
                     {item.optional && (
                       <span className="absolute top-4 right-4 text-xs font-medium px-2 py-1 rounded-full bg-muted text-muted-foreground">
                         Optional
                       </span>
                     )}
-                    <div className="w-14 h-14 rounded-2xl bg-accent/15 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-300">
-                      <item.icon className="w-7 h-7 text-accent-foreground" aria-hidden="true" />
+                    <div className="w-14 h-14 rounded-2xl bg-nimara-mint/15 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-300">
+                      <item.icon className="w-7 h-7 text-nimara-purple" aria-hidden="true" />
                     </div>
                     <h3 className="text-xl font-semibold text-foreground mb-3">
                       {item.title}
@@ -434,8 +434,8 @@ const PathA = () => {
                   className="p-8 rounded-2xl bg-card border border-border shadow-soft"
                 >
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                      <Calendar className="w-6 h-6 text-primary" aria-hidden="true" />
+                    <div className="w-12 h-12 rounded-xl bg-nimara-purple/10 flex items-center justify-center">
+                      <Calendar className="w-6 h-6 text-nimara-purple" aria-hidden="true" />
                     </div>
                     <h3 className="text-xl font-semibold text-foreground">Our side</h3>
                   </div>
@@ -446,7 +446,7 @@ const PathA = () => {
                       "We aim to complete the work in 1–4 weeks, depending on the problem."
                     ].map((item, index) => (
                       <li key={index} className="flex items-start gap-3 text-muted-foreground">
-                        <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5 text-primary" aria-hidden="true" />
+                        <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5 text-nimara-purple" aria-hidden="true" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -461,8 +461,8 @@ const PathA = () => {
                   className="p-8 rounded-2xl bg-card border border-border shadow-soft"
                 >
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center">
-                      <Users className="w-6 h-6 text-accent-foreground" aria-hidden="true" />
+                    <div className="w-12 h-12 rounded-xl bg-nimara-mint/20 flex items-center justify-center">
+                      <Users className="w-6 h-6 text-nimara-purple" aria-hidden="true" />
                     </div>
                     <h3 className="text-xl font-semibold text-foreground">Your side</h3>
                   </div>
@@ -473,7 +473,7 @@ const PathA = () => {
                       "Share any documents we need (policies, letters, past reports)."
                     ].map((item, index) => (
                       <li key={index} className="flex items-start gap-3 text-muted-foreground">
-                        <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5 text-accent-foreground" aria-hidden="true" />
+                        <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5 text-nimara-mint" aria-hidden="true" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -525,7 +525,7 @@ const PathA = () => {
                     "Have you tried anything already?"
                   ].map((item, index) => (
                     <li key={index} className="flex items-start gap-4 text-foreground">
-                      <span className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-primary to-primary/70 text-primary-foreground flex items-center justify-center text-sm font-bold shadow-sm">
+                      <span className="flex-shrink-0 w-8 h-8 rounded-full bg-nimara-purple text-white flex items-center justify-center text-sm font-bold shadow-sm">
                         {index + 1}
                       </span>
                       <span className="text-lg pt-0.5">{item}</span>
@@ -550,8 +550,8 @@ const PathA = () => {
           aria-labelledby="cta-heading"
         >
           {/* Background gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-accent/15 via-accent/8 to-primary/5" aria-hidden="true" />
-          <div className="absolute top-0 right-0 w-96 h-96 bg-accent/20 rounded-full blur-3xl" aria-hidden="true" />
+          <div className="absolute inset-0 bg-gradient-to-br from-nimara-mint/15 via-nimara-mint/8 to-nimara-purple/5" aria-hidden="true" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-nimara-mint/20 rounded-full blur-3xl" aria-hidden="true" />
           
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
             <motion.div
@@ -571,7 +571,7 @@ const PathA = () => {
               <Button 
                 size="lg" 
                 onClick={openTypeform} 
-                className="text-lg px-10 py-6 h-auto shadow-lg hover:shadow-xl transition-all duration-300"
+                className="text-lg px-10 py-6 h-auto bg-nimara-mint text-nimara-navy hover:bg-nimara-mint/90 shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 Start Path A – 7-minute intake
                 <ArrowRight className="w-5 h-5 ml-2" aria-hidden="true" />
@@ -583,7 +583,7 @@ const PathA = () => {
                   href={CALENDLY_URL} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-primary hover:underline font-medium"
+                  className="text-nimara-purple hover:underline font-medium"
                 >
                   Book a short call instead
                 </a>
