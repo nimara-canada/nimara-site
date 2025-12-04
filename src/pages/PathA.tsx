@@ -367,7 +367,7 @@ const PathA = () => {
       </section>
 
       <Footer />
-      <ComparePathsButton />
+      <ComparePathsButton highlightPath="a" />
     </div>
   );
 };

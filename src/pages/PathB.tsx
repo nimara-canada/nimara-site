@@ -441,7 +441,7 @@ const PathB = () => {
       </section>
 
       <Footer />
-      <ComparePathsButton />
+      <ComparePathsButton highlightPath="b" />
     </div>
   );
 };

@@ -3,7 +3,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { GitCompare } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-export const ComparePathsButton = () => {
+interface ComparePathsButtonProps {
+  highlightPath?: "a" | "b";
+}
+
+export const ComparePathsButton = ({ highlightPath }: ComparePathsButtonProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isAtComparison, setIsAtComparison] = useState(false);
   const location = useLocation();
@@ -39,7 +43,8 @@ export const ComparePathsButton = () => {
         comparisonSection.scrollIntoView({ behavior: "smooth" });
       }
     } else {
-      navigate("/#path-comparison");
+      const hash = highlightPath ? `#path-comparison?highlight=${highlightPath}` : "#path-comparison";
+      navigate("/" + hash);
     }
   };
 
