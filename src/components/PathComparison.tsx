@@ -189,9 +189,23 @@ export const PathComparison = () => {
             </div>
             <div className="relative p-4 sm:p-6 text-center border-l border-primary-foreground/20 bg-primary/10">
               {/* Most Popular Badge */}
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary text-primary-foreground text-[10px] font-bold uppercase tracking-wide rounded-full whitespace-nowrap shadow-md z-10">
+              <motion.span 
+                className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary text-primary-foreground text-[10px] font-bold uppercase tracking-wide rounded-full whitespace-nowrap shadow-md z-10"
+                animate={{
+                  boxShadow: [
+                    "0 4px 6px -1px rgba(105, 69, 216, 0.3), 0 0 0 0 rgba(105, 69, 216, 0)",
+                    "0 4px 6px -1px rgba(105, 69, 216, 0.3), 0 0 12px 4px rgba(105, 69, 216, 0.4)",
+                    "0 4px 6px -1px rgba(105, 69, 216, 0.3), 0 0 0 0 rgba(105, 69, 216, 0)"
+                  ]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
                 Most Popular
-              </span>
+              </motion.span>
               <AnimatePresence>
                 {highlightedPath === "b" && <>
                     <motion.div className="absolute inset-0 bg-primary/20 ring-2 ring-inset ring-primary" initial={{
