@@ -116,7 +116,7 @@ export const PathComparison = () => {
             Path A vs Path B
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Not sure which path fits? Here's a side-by-side breakdown.
+             Choose the speed and depth that fits your reality today. Here's a side-by-side breakdown.
           </p>
         </motion.div>
 
@@ -188,21 +188,13 @@ export const PathComparison = () => {
             </div>
             <div className="relative p-5 sm:p-7 text-center border-l-2 border-r-2 border-t-2 border-primary/40 bg-primary/15 rounded-tr-2xl shadow-[0_0_20px_-5px_rgba(105,69,216,0.3)]">
               {/* Most Popular Badge */}
-              <motion.span 
-                className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary text-primary-foreground text-[10px] font-bold uppercase tracking-wide rounded-full whitespace-nowrap shadow-md z-10"
-                animate={{
-                  boxShadow: [
-                    "0 4px 6px -1px rgba(105, 69, 216, 0.3), 0 0 0 0 rgba(105, 69, 216, 0)",
-                    "0 4px 6px -1px rgba(105, 69, 216, 0.3), 0 0 12px 4px rgba(105, 69, 216, 0.4)",
-                    "0 4px 6px -1px rgba(105, 69, 216, 0.3), 0 0 0 0 rgba(105, 69, 216, 0)"
-                  ]
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
+              <motion.span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary text-primary-foreground text-[10px] font-bold uppercase tracking-wide rounded-full whitespace-nowrap shadow-md z-10" animate={{
+              boxShadow: ["0 4px 6px -1px rgba(105, 69, 216, 0.3), 0 0 0 0 rgba(105, 69, 216, 0)", "0 4px 6px -1px rgba(105, 69, 216, 0.3), 0 0 12px 4px rgba(105, 69, 216, 0.4)", "0 4px 6px -1px rgba(105, 69, 216, 0.3), 0 0 0 0 rgba(105, 69, 216, 0)"]
+            }} transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}>
                 Most Popular
               </motion.span>
               <AnimatePresence>
@@ -387,13 +379,18 @@ export const PathComparison = () => {
         </motion.div>
 
         {/* Nimara Promise Banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-12"
-        >
+        <motion.div initial={{
+        opacity: 0,
+        y: 20
+      }} whileInView={{
+        opacity: 1,
+        y: 0
+      }} viewport={{
+        once: true
+      }} transition={{
+        duration: 0.5,
+        delay: 0.4
+      }} className="mt-12">
           <div className="rounded-2xl p-6 sm:p-8 text-center border border-border bg-card shadow-soft">
             <div className="flex items-center justify-center gap-2 mb-3">
               <Shield className="w-6 h-6 text-accent" />
