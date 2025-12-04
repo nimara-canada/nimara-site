@@ -1,7 +1,12 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, X, Zap, Layers } from "lucide-react";
+import { Check, X, Zap, Layers, Info } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const highlightVariants = {
   initial: { opacity: 0, scale: 0.95 },
@@ -22,21 +27,72 @@ const highlightVariants = {
 
 interface ComparisonRow {
   feature: string;
+  tooltip: string;
   pathA: boolean | string;
   pathB: boolean | string;
 }
 
 const comparisonData: ComparisonRow[] = [
-  { feature: "Timeline", pathA: "1–4 weeks", pathB: "8–12 weeks" },
-  { feature: "Health Check scope", pathA: "Single area", pathB: "Full organization" },
-  { feature: "Deliverables", pathA: "1–3 focused", pathB: "Full system package" },
-  { feature: "Mini Acceptance Bundle", pathA: true, pathB: true },
-  { feature: "Full Acceptance Bundle", pathA: false, pathB: true },
-  { feature: "NOHC Score included", pathA: false, pathB: true },
-  { feature: "3-month support included", pathA: true, pathB: true },
-  { feature: "Optional 12-month follow-up", pathA: false, pathB: true },
-  { feature: "Money-back guarantee", pathA: true, pathB: true },
-  { feature: "Dedicated Practice Partner", pathA: true, pathB: true },
+  { 
+    feature: "Timeline", 
+    tooltip: "How long the engagement typically takes from start to finish",
+    pathA: "1–4 weeks", 
+    pathB: "8–12 weeks" 
+  },
+  { 
+    feature: "Health Check scope", 
+    tooltip: "The breadth of organizational assessment included",
+    pathA: "Single area", 
+    pathB: "Full organization" 
+  },
+  { 
+    feature: "Deliverables", 
+    tooltip: "Tangible outputs you receive at the end of the engagement",
+    pathA: "1–3 focused", 
+    pathB: "Full system package" 
+  },
+  { 
+    feature: "Mini Acceptance Bundle", 
+    tooltip: "A lite handover package with key documentation and training",
+    pathA: true, 
+    pathB: true 
+  },
+  { 
+    feature: "Full Acceptance Bundle", 
+    tooltip: "Comprehensive handover including policies, SOPs, templates, and staff training",
+    pathA: false, 
+    pathB: true 
+  },
+  { 
+    feature: "NOHC Score included", 
+    tooltip: "Nimara Organizational Health Check score—a benchmark of your nonprofit's operational maturity",
+    pathA: false, 
+    pathB: true 
+  },
+  { 
+    feature: "3-month support included", 
+    tooltip: "Post-delivery support to help your team adopt and troubleshoot new systems",
+    pathA: true, 
+    pathB: true 
+  },
+  { 
+    feature: "Optional 12-month follow-up", 
+    tooltip: "Extended support and check-ins to ensure long-term success",
+    pathA: false, 
+    pathB: true 
+  },
+  { 
+    feature: "Money-back guarantee", 
+    tooltip: "If deliverables don't meet agreed standards, we fix them or refund that portion",
+    pathA: true, 
+    pathB: true 
+  },
+  { 
+    feature: "Dedicated Practice Partner", 
+    tooltip: "A single point of contact who manages your engagement end-to-end",
+    pathA: true, 
+    pathB: true 
+  },
 ];
 
 export const PathComparison = () => {
@@ -173,7 +229,17 @@ export const PathComparison = () => {
                 className="grid grid-cols-3 hover:bg-muted/50 transition-colors"
               >
                 <div className="p-4 sm:p-5 text-sm sm:text-base text-foreground font-medium">
-                  {row.feature}
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <span className="inline-flex items-center gap-1.5 cursor-help">
+                        {row.feature}
+                        <Info className="w-3.5 h-3.5 text-muted-foreground/60 hover:text-primary transition-colors" />
+                      </span>
+                    </TooltipTrigger>
+                    <TooltipContent side="right" className="max-w-[200px] text-xs">
+                      {row.tooltip}
+                    </TooltipContent>
+                  </Tooltip>
                 </div>
                 <div className="relative p-4 sm:p-5 flex items-center justify-center border-l border-border">
                   <AnimatePresence>
