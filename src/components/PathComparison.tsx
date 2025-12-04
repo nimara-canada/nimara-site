@@ -133,7 +133,7 @@ export const PathComparison = () => {
       }} transition={{
         duration: 0.6,
         delay: 0.2
-      }} className="bg-card rounded-2xl border border-border shadow-soft overflow-hidden">
+      }} className="bg-card rounded-2xl border border-border shadow-soft overflow-visible pt-4">
           {/* Table Header */}
           <div className="grid grid-cols-3 bg-secondary-background text-primary-foreground">
             <div className="p-4 sm:p-6 font-semibold text-sm sm:text-base">
