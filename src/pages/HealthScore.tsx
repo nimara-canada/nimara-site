@@ -565,7 +565,7 @@ const HealthScore = () => {
         </section>
 
         {/* How it works */}
-        <section className="py-20 md:py-28 bg-secondary-background relative overflow-hidden">
+        <section className="py-20 md:py-28 bg-nimara-navy relative overflow-hidden">
           {/* Background decoration */}
           <div className="absolute inset-0">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-br from-accent/10 to-primary/5 rounded-full blur-3xl" />
