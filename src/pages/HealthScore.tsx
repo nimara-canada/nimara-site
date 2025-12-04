@@ -63,11 +63,17 @@ const steps = [{
 const HealthScore = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
-  // Track scroll position for back-to-top button
+  // Track scroll position for back-to-top button and progress indicator
   useEffect(() => {
     const handleScroll = () => {
       setShowBackToTop(window.scrollY > 500);
+      
+      // Calculate scroll progress
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollHeight > 0 ? (window.scrollY / scrollHeight) * 100 : 0;
+      setScrollProgress(Math.min(progress, 100));
     };
     window.addEventListener('scroll', handleScroll, {
       passive: true
@@ -132,6 +138,20 @@ const HealthScore = () => {
       </Helmet>
 
       <Header />
+
+      {/* Scroll Progress Indicator */}
+      <motion.div 
+        className="fixed top-0 left-0 right-0 h-1 bg-nimara-mint/20 z-50"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: scrollProgress > 0 ? 1 : 0 }}
+        transition={{ duration: 0.2 }}
+      >
+        <motion.div 
+          className="h-full bg-gradient-to-r from-nimara-mint via-nimara-mint to-nimara-purple"
+          style={{ width: `${scrollProgress}%` }}
+          transition={{ duration: 0.1 }}
+        />
+      </motion.div>
 
       <main className="pt-16 overflow-hidden">
         {/* Hero Section */}
