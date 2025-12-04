@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
-import { motion } from "framer-motion";
-import { Clock, Users, Shield, FileText, BarChart3, Star, ChevronDown, ArrowRight, Check, Sparkles, Activity, TrendingUp, Target, Zap } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Clock, Users, Shield, FileText, BarChart3, Star, ChevronDown, ArrowRight, Check, Sparkles, Activity, TrendingUp, Target, Zap, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Header } from "@/components/Header";
@@ -80,7 +80,17 @@ const steps = [
 
 const HealthScore = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
+  // Track scroll position for back-to-top button
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 500);
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   const scrollToForm = () => {
     const element = document.getElementById('health-check-form');
     if (!element) return;
@@ -102,6 +112,31 @@ const HealthScore = () => {
       const ease = easeInOutCubic(progress);
       
       window.scrollTo(0, startPosition + distance * ease);
+      
+      if (timeElapsed < duration) {
+        requestAnimationFrame(animation);
+      }
+    };
+
+    requestAnimationFrame(animation);
+  };
+
+  const scrollToTop = () => {
+    const startPosition = window.pageYOffset;
+    const duration = 800;
+    let start: number | null = null;
+
+    const easeOutCubic = (t: number): number => {
+      return 1 - Math.pow(1 - t, 3);
+    };
+
+    const animation = (currentTime: number) => {
+      if (start === null) start = currentTime;
+      const timeElapsed = currentTime - start;
+      const progress = Math.min(timeElapsed / duration, 1);
+      const ease = easeOutCubic(progress);
+      
+      window.scrollTo(0, startPosition * (1 - ease));
       
       if (timeElapsed < duration) {
         requestAnimationFrame(animation);
@@ -704,6 +739,24 @@ const HealthScore = () => {
             </motion.div>
           </div>
         </section>
+
+        {/* Floating Back to Top Button */}
+        <AnimatePresence>
+          {showBackToTop && (
+            <motion.button
+              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, y: 20 }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={scrollToTop}
+              className="fixed bottom-6 right-6 z-50 w-12 h-12 bg-primary text-primary-foreground rounded-full shadow-lg shadow-primary/30 flex items-center justify-center hover:bg-primary/90 transition-colors"
+              aria-label="Back to top"
+            >
+              <ArrowUp className="w-5 h-5" />
+            </motion.button>
+          )}
+        </AnimatePresence>
       </main>
 
       <Footer />
