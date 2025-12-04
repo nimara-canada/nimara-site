@@ -187,7 +187,7 @@ export const PathComparison = () => {
               </div>
               <span className="relative text-xs text-primary-foreground/70">Fast Help</span>
             </div>
-            <div className="relative p-5 sm:p-7 text-center border-l border-primary-foreground/20 bg-primary/15">
+            <div className="relative p-5 sm:p-7 text-center border-l-2 border-r-2 border-t-2 border-primary/40 bg-primary/15 rounded-tr-2xl">
               {/* Most Popular Badge */}
               <motion.span 
                 className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary text-primary-foreground text-[10px] font-bold uppercase tracking-wide rounded-full whitespace-nowrap shadow-md z-10"
@@ -299,7 +299,7 @@ export const PathComparison = () => {
                     {typeof row.pathA === "boolean" ? row.pathA ? <Check className="w-5 h-5 text-emerald-500" aria-label="Included" /> : <X className="w-5 h-5 text-red-500" aria-label="Not included" /> : <span className="text-sm text-muted-foreground text-center">{row.pathA}</span>}
                   </span>
                 </div>
-                <div className="relative p-4 sm:p-5 flex items-center justify-center border-l border-border bg-primary/5">
+                <div className="relative p-4 sm:p-5 flex items-center justify-center border-l-2 border-r-2 border-primary/40 bg-primary/5">
                   <AnimatePresence>
                     {highlightedPath === "b" && <motion.div className="absolute inset-0 bg-primary/10" initial={{
                   opacity: 0
@@ -339,7 +339,7 @@ export const PathComparison = () => {
                 Start Path A
               </Link>
             </div>
-            <div className="relative p-4 sm:p-6 flex justify-center border-l border-border bg-primary/5">
+            <div className="relative p-4 sm:p-6 flex justify-center border-l-2 border-r-2 border-b-2 border-primary/40 bg-primary/5 rounded-br-2xl">
               <AnimatePresence>
                 {highlightedPath === "b" && <motion.div className="absolute inset-0 bg-primary/10" initial={{
                 opacity: 0
