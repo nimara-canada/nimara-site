@@ -221,7 +221,7 @@ const HeroSectionLuxe = () => {
                         transition: "all 0.8s ease-out",
                         transitionDelay: "1800ms"
                       }}>
-                        <div className="bg-nimara-purple rounded-xl px-4 py-3 shadow-lg">
+                        <div className="bg-nimara-purple rounded-xl px-4 py-3 shadow-[0_0_20px_rgba(105,69,216,0.5),0_0_40px_rgba(105,69,216,0.3)]">
                           <span className="text-3xl font-semibold text-white block">92</span>
                           <span className="text-xs text-white/80 font-medium">Health Score</span>
                         </div>
