@@ -64,7 +64,7 @@ const PathA = () => {
       
       <Header />
       
-      <main id="main-content" className="min-h-screen bg-background">
+      <main id="main-content" className="min-h-screen bg-white">
         {/* Hero Section */}
         <section 
           className="pt-28 pb-16 md:pt-36 md:pb-24 relative overflow-hidden bg-nimara-purple"
@@ -164,27 +164,27 @@ const PathA = () => {
         {/* Is Path A Right for You? */}
         <section 
           id="fit-check"
-          className="py-20 md:py-28 bg-background"
+          className="py-20 md:py-28 bg-white"
           aria-labelledby="fit-heading"
         >
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5 }}
             >
               <div className="text-center mb-12">
-                <h2 id="fit-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+                <h2 id="fit-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-nimara-navy mb-4">
                   Is Path A a good fit?
                 </h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-nimara-navy/60">
                   Use this when you need relief, not a big project.
                 </p>
               </div>
               
-              <div className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-soft mb-8">
-                <p className="text-muted-foreground mb-8 text-lg">
+              <div className="bg-white rounded-2xl border border-slate-200 p-8 md:p-10 shadow-soft mb-8">
+                <p className="text-nimara-navy/70 mb-8 text-lg">
                   Path A is a match if at least one of these sounds like you:
                 </p>
                 
@@ -199,7 +199,7 @@ const PathA = () => {
                     <motion.li 
                       key={index} 
                       className="flex items-start gap-4"
-                      initial={{ opacity: 0, x: -16 }}
+                      initial={{ opacity: 1, x: 0 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: index * 0.1 }}
@@ -207,17 +207,17 @@ const PathA = () => {
                       <span className="flex-shrink-0 w-7 h-7 rounded-full bg-nimara-mint/20 flex items-center justify-center mt-0.5">
                         <CheckCircle className="w-4 h-4 text-nimara-purple" aria-hidden="true" />
                       </span>
-                      <span className="text-foreground text-lg leading-relaxed">"{item}"</span>
+                      <span className="text-nimara-navy text-lg leading-relaxed">"{item}"</span>
                     </motion.li>
                   ))}
                 </ul>
               </div>
               
               {/* Not for you block */}
-              <div className="p-8 rounded-2xl bg-muted/50 border border-border">
-                <h3 className="font-semibold text-foreground mb-5 flex items-center gap-3 text-lg">
-                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-destructive/10 flex items-center justify-center">
-                    <XCircle className="w-4 h-4 text-destructive" aria-hidden="true" />
+              <div className="p-8 rounded-2xl bg-slate-50 border border-slate-200">
+                <h3 className="font-semibold text-nimara-navy mb-5 flex items-center gap-3 text-lg">
+                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-red-100 flex items-center justify-center">
+                    <XCircle className="w-4 h-4 text-red-500" aria-hidden="true" />
                   </span>
                   Path A is not a match if:
                 </h3>
@@ -227,13 +227,13 @@ const PathA = () => {
                     "You don't know what the problem is yet.",
                     "No one on your team can give 1–2 hours over the next few weeks."
                   ].map((item, index) => (
-                    <li key={index} className="text-muted-foreground flex items-start gap-2">
-                      <span className="text-destructive mt-1.5" aria-hidden="true">•</span>
+                    <li key={index} className="text-nimara-navy/70 flex items-start gap-2">
+                      <span className="text-red-500 mt-1.5" aria-hidden="true">•</span>
                       <span>{item}</span>
                     </li>
                   ))}
                 </ul>
-                <p className="text-muted-foreground ml-10">
+                <p className="text-nimara-navy/70 ml-10">
                   In those cases,{" "}
                   <Link to="/how-nimara-works" className="text-nimara-purple hover:underline font-medium">
                     Path B (system build)
@@ -251,7 +251,7 @@ const PathA = () => {
 
         {/* How Path A Works */}
         <section 
-          className="py-20 md:py-28 bg-secondary"
+          className="py-20 md:py-28 bg-slate-50"
           aria-labelledby="how-it-works-heading"
         >
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -262,10 +262,10 @@ const PathA = () => {
               transition={{ duration: 0.5 }}
             >
               <div className="text-center mb-16">
-                <h2 id="how-it-works-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+                <h2 id="how-it-works-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-nimara-navy mb-4">
                   How Path A works
                 </h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-nimara-navy/60">
                   Simple, clear, and light on your time.
                 </p>
               </div>
@@ -310,11 +310,11 @@ const PathA = () => {
                           {item.step}
                         </div>
                       </div>
-                      <div className="bg-card rounded-2xl border border-border p-6 flex-1 shadow-soft hover:shadow-lg transition-shadow duration-300">
-                        <h3 className="text-xl font-semibold text-foreground mb-3">
+                      <div className="bg-white rounded-2xl border border-slate-200 p-6 flex-1 shadow-soft hover:shadow-lg transition-shadow duration-300">
+                        <h3 className="text-xl font-semibold text-nimara-navy mb-3">
                           {item.title}
                         </h3>
-                        <p className="text-muted-foreground leading-relaxed">
+                        <p className="text-nimara-navy/70 leading-relaxed">
                           {item.description}
                         </p>
                       </div>
@@ -328,7 +328,7 @@ const PathA = () => {
 
         {/* Mini Acceptance Bundle */}
         <section 
-          className="py-20 md:py-28 bg-background"
+          className="py-20 md:py-28 bg-white"
           aria-labelledby="bundle-heading"
         >
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -343,10 +343,10 @@ const PathA = () => {
                   <Sparkles className="w-4 h-4" aria-hidden="true" />
                   What You Get
                 </span>
-                <h2 id="bundle-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+                <h2 id="bundle-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-nimara-navy mb-4">
                   The Mini Acceptance Bundle
                 </h2>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                <p className="text-lg text-nimara-navy/60 max-w-2xl mx-auto">
                   A small, useful set of tools you can use the next day.
                 </p>
               </div>
@@ -381,20 +381,20 @@ const PathA = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="group p-8 rounded-2xl bg-card border border-border hover:border-nimara-purple/30 transition-all duration-300 shadow-soft hover:shadow-lg relative"
+                    className="group p-8 rounded-2xl bg-white border border-slate-200 hover:border-nimara-purple/30 transition-all duration-300 shadow-soft hover:shadow-lg relative"
                   >
                     {item.optional && (
-                      <span className="absolute top-4 right-4 text-xs font-medium px-2 py-1 rounded-full bg-muted text-muted-foreground">
+                      <span className="absolute top-4 right-4 text-xs font-medium px-2 py-1 rounded-full bg-slate-100 text-nimara-navy/60">
                         Optional
                       </span>
                     )}
                     <div className="w-14 h-14 rounded-2xl bg-nimara-mint/15 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-300">
                       <item.icon className="w-7 h-7 text-nimara-purple" aria-hidden="true" />
                     </div>
-                    <h3 className="text-xl font-semibold text-foreground mb-3">
+                    <h3 className="text-xl font-semibold text-nimara-navy mb-3">
                       {item.title}
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-nimara-navy/70 leading-relaxed">
                       {item.description}
                     </p>
                   </motion.div>
@@ -406,7 +406,7 @@ const PathA = () => {
 
         {/* Timeline & Commitment */}
         <section 
-          className="py-20 md:py-28 bg-secondary"
+          className="py-20 md:py-28 bg-slate-50"
           aria-labelledby="timeline-heading"
         >
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -417,10 +417,10 @@ const PathA = () => {
               transition={{ duration: 0.5 }}
             >
               <div className="text-center mb-16">
-                <h2 id="timeline-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+                <h2 id="timeline-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-nimara-navy mb-4">
                   Timeline & Commitment
                 </h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-nimara-navy/60">
                   What we'll each bring to the table
                 </p>
               </div>
@@ -431,13 +431,13 @@ const PathA = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
-                  className="p-8 rounded-2xl bg-card border border-border shadow-soft"
+                  className="p-8 rounded-2xl bg-white border border-slate-200 shadow-soft"
                 >
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-12 h-12 rounded-xl bg-nimara-purple/10 flex items-center justify-center">
                       <Calendar className="w-6 h-6 text-nimara-purple" aria-hidden="true" />
                     </div>
-                    <h3 className="text-xl font-semibold text-foreground">Our side</h3>
+                    <h3 className="text-xl font-semibold text-nimara-navy">Our side</h3>
                   </div>
                   <ul className="space-y-4" role="list">
                     {[
@@ -445,7 +445,7 @@ const PathA = () => {
                       "We propose a plan within 72 hours.",
                       "We aim to complete the work in 1–4 weeks, depending on the problem."
                     ].map((item, index) => (
-                      <li key={index} className="flex items-start gap-3 text-muted-foreground">
+                      <li key={index} className="flex items-start gap-3 text-nimara-navy/70">
                         <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5 text-nimara-purple" aria-hidden="true" />
                         <span>{item}</span>
                       </li>
@@ -458,13 +458,13 @@ const PathA = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
-                  className="p-8 rounded-2xl bg-card border border-border shadow-soft"
+                  className="p-8 rounded-2xl bg-white border border-slate-200 shadow-soft"
                 >
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-12 h-12 rounded-xl bg-nimara-mint/20 flex items-center justify-center">
                       <Users className="w-6 h-6 text-nimara-purple" aria-hidden="true" />
                     </div>
-                    <h3 className="text-xl font-semibold text-foreground">Your side</h3>
+                    <h3 className="text-xl font-semibold text-nimara-navy">Your side</h3>
                   </div>
                   <ul className="space-y-4" role="list">
                     {[
@@ -472,7 +472,7 @@ const PathA = () => {
                       "Join 1 short scoping call and 1–2 check-ins.",
                       "Share any documents we need (policies, letters, past reports)."
                     ].map((item, index) => (
-                      <li key={index} className="flex items-start gap-3 text-muted-foreground">
+                      <li key={index} className="flex items-start gap-3 text-nimara-navy/70">
                         <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5 text-nimara-mint" aria-hidden="true" />
                         <span>{item}</span>
                       </li>
@@ -486,7 +486,7 @@ const PathA = () => {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="text-center text-muted-foreground mt-10 italic max-w-2xl mx-auto"
+                className="text-center text-nimara-navy/60 mt-10 italic max-w-2xl mx-auto"
               >
                 We keep your time low on purpose. You don't need to run a big project. You just need to show up for a few focused decisions.
               </motion.p>
@@ -496,7 +496,7 @@ const PathA = () => {
 
         {/* What We Need to Know */}
         <section 
-          className="py-20 md:py-28 bg-background"
+          className="py-20 md:py-28 bg-white"
           aria-labelledby="intake-heading"
         >
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -507,15 +507,15 @@ const PathA = () => {
               transition={{ duration: 0.5 }}
             >
               <div className="text-center mb-12">
-                <h2 id="intake-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+                <h2 id="intake-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-nimara-navy mb-4">
                   What we'll ask
                 </h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-nimara-navy/60">
                   No long forms. Just the basics we need to help.
                 </p>
               </div>
               
-              <div className="p-8 md:p-10 rounded-2xl bg-card border border-border shadow-soft">
+              <div className="p-8 md:p-10 rounded-2xl bg-white border border-slate-200 shadow-soft">
                 <ol className="space-y-5" role="list">
                   {[
                     "What is the one urgent problem?",
@@ -524,7 +524,7 @@ const PathA = () => {
                     "Roughly how many staff do you have?",
                     "Have you tried anything already?"
                   ].map((item, index) => (
-                    <li key={index} className="flex items-start gap-4 text-foreground">
+                    <li key={index} className="flex items-start gap-4 text-nimara-navy">
                       <span className="flex-shrink-0 w-8 h-8 rounded-full bg-nimara-purple text-white flex items-center justify-center text-sm font-bold shadow-sm">
                         {index + 1}
                       </span>
@@ -533,8 +533,8 @@ const PathA = () => {
                   ))}
                 </ol>
                 
-                <div className="mt-8 pt-6 border-t border-border">
-                  <p className="text-sm text-muted-foreground flex items-start gap-2">
+                <div className="mt-8 pt-6 border-t border-slate-200">
+                  <p className="text-sm text-nimara-navy/60 flex items-start gap-2">
                     <Shield className="w-4 h-4 flex-shrink-0 mt-0.5" aria-hidden="true" />
                     We won't ask for detailed financials or private data in this first step.
                   </p>
@@ -546,7 +546,7 @@ const PathA = () => {
 
         {/* Start Path A CTA */}
         <section 
-          className="py-20 md:py-28 relative overflow-hidden"
+          className="py-20 md:py-28 relative overflow-hidden bg-slate-50"
           aria-labelledby="cta-heading"
         >
           {/* Background gradient */}
@@ -560,12 +560,12 @@ const PathA = () => {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5 }}
             >
-              <h2 id="cta-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+              <h2 id="cta-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-nimara-navy mb-6">
                 Ready to start Path A?
               </h2>
-              <p className="text-lg text-muted-foreground mb-10 max-w-xl mx-auto">
+              <p className="text-lg text-nimara-navy/60 mb-10 max-w-xl mx-auto">
                 If you're facing one clear problem and need real help, start here.
-                A Nimara team member will review your intake and reply within <strong className="text-foreground">1 business day</strong>.
+                A Nimara team member will review your intake and reply within <strong className="text-nimara-navy">1 business day</strong>.
               </p>
               
               <Button 
@@ -577,7 +577,7 @@ const PathA = () => {
                 <ArrowRight className="w-5 h-5 ml-2" aria-hidden="true" />
               </Button>
               
-              <p className="mt-8 text-muted-foreground">
+              <p className="mt-8 text-nimara-navy/60">
                 Prefer to talk first?{" "}
                 <a 
                   href={CALENDLY_URL} 
@@ -594,7 +594,7 @@ const PathA = () => {
 
         {/* FAQ */}
         <section 
-          className="py-20 md:py-28 bg-background"
+          className="py-20 md:py-28 bg-white"
           aria-labelledby="faq-heading"
         >
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -604,7 +604,7 @@ const PathA = () => {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5 }}
             >
-              <h2 id="faq-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-12 text-center">
+              <h2 id="faq-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-nimara-navy mb-12 text-center">
                 Quick questions
               </h2>
               
@@ -634,12 +634,12 @@ const PathA = () => {
                   <AccordionItem 
                     key={index} 
                     value={`item-${index}`}
-                    className="bg-card border border-border rounded-2xl px-6 data-[state=open]:shadow-soft transition-shadow"
+                    className="bg-white border border-slate-200 rounded-2xl px-6 data-[state=open]:shadow-soft transition-shadow"
                   >
-                    <AccordionTrigger className="text-left text-foreground hover:no-underline text-lg py-5 font-medium">
+                    <AccordionTrigger className="text-left text-nimara-navy hover:no-underline text-lg py-5 font-medium">
                       {item.question}
                     </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
+                    <AccordionContent className="text-nimara-navy/70 pb-5 leading-relaxed">
                       {item.answer}
                     </AccordionContent>
                   </AccordionItem>
