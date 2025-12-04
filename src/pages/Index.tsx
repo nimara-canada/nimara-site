@@ -7,7 +7,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { FitCheck } from "@/components/FitCheck";
 import { HowWeHelp } from "@/components/HowWeHelp";
 import { SystemLadder } from "@/components/SystemLadder";
-import { TwoDoorsSection } from "@/components/TwoDoorsSection";
+
 import { PathComparison } from "@/components/PathComparison";
 import { Expertise } from "@/components/Expertise";
 import { IntegrationsSection } from "@/components/IntegrationsSection";
@@ -124,7 +124,7 @@ const Index = () => {
         <FitCheck />
         <HowWeHelp />
         <SystemLadder />
-        <TwoDoorsSection />
+        
         <PathComparison />
         <Expertise />
         <IntegrationsSection />
