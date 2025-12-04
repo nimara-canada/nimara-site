@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { Helmet } from "react-helmet";
+import { useLocation } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { HeroSection } from "@/components/HeroSection";
@@ -13,7 +15,21 @@ import { FAQ } from "@/components/FAQ";
 import { FinalCTA } from "@/components/FinalCTA";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { ComparePathsButton } from "@/components/ComparePathsButton";
+
 const Index = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash === "#path-comparison") {
+      setTimeout(() => {
+        const element = document.getElementById("path-comparison");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
+  }, [location]);
+
   return <div className="min-h-screen">
       <Helmet>
         <title>Get Up to 3 Free Nonprofit Consulting Quotes in 72 Hours | Nimara</title>
