@@ -12,6 +12,7 @@ import { IntegrationsSection } from "@/components/IntegrationsSection";
 import { FAQ } from "@/components/FAQ";
 import { FinalCTA } from "@/components/FinalCTA";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
+import { ComparePathsButton } from "@/components/ComparePathsButton";
 const Index = () => {
   return <div className="min-h-screen">
       <Helmet>
@@ -115,6 +116,7 @@ const Index = () => {
         <FinalCTA />
       </main>
       <Footer />
+      <ComparePathsButton />
     </div>;
 };
 export default Index;
