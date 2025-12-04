@@ -92,19 +92,30 @@ export const PathComparison = () => {
             <div className="relative p-4 sm:p-6 text-center border-l border-primary-foreground/20">
               <AnimatePresence>
                 {highlightedPath === "a" && (
-                  <motion.div
-                    className="absolute inset-0 bg-accent/20 ring-2 ring-inset ring-accent"
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
-                  >
+                  <>
                     <motion.div
-                      className="absolute inset-0 bg-accent/10"
-                      animate={{ opacity: [0, 0.5, 0] }}
-                      transition={{ duration: 1.2, repeat: 1, ease: "easeInOut" }}
-                    />
-                  </motion.div>
+                      className="absolute inset-0 bg-accent/20 ring-2 ring-inset ring-accent"
+                      initial={{ opacity: 0, scale: 0.98 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.4, ease: "easeOut" }}
+                    >
+                      <motion.div
+                        className="absolute inset-0 bg-accent/10"
+                        animate={{ opacity: [0, 0.5, 0] }}
+                        transition={{ duration: 1.2, repeat: 1, ease: "easeInOut" }}
+                      />
+                    </motion.div>
+                    <motion.span
+                      className="absolute -top-2 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-accent text-accent-foreground text-[10px] font-semibold rounded-full whitespace-nowrap shadow-md"
+                      initial={{ opacity: 0, y: 10, scale: 0.8 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -5 }}
+                      transition={{ duration: 0.3, delay: 0.2 }}
+                    >
+                      You are here
+                    </motion.span>
+                  </>
                 )}
               </AnimatePresence>
               <div className="relative flex items-center justify-center gap-2">
@@ -116,19 +127,30 @@ export const PathComparison = () => {
             <div className="relative p-4 sm:p-6 text-center border-l border-primary-foreground/20">
               <AnimatePresence>
                 {highlightedPath === "b" && (
-                  <motion.div
-                    className="absolute inset-0 bg-primary/20 ring-2 ring-inset ring-primary"
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
-                  >
+                  <>
                     <motion.div
-                      className="absolute inset-0 bg-primary/10"
-                      animate={{ opacity: [0, 0.5, 0] }}
-                      transition={{ duration: 1.2, repeat: 1, ease: "easeInOut" }}
-                    />
-                  </motion.div>
+                      className="absolute inset-0 bg-primary/20 ring-2 ring-inset ring-primary"
+                      initial={{ opacity: 0, scale: 0.98 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.4, ease: "easeOut" }}
+                    >
+                      <motion.div
+                        className="absolute inset-0 bg-primary/10"
+                        animate={{ opacity: [0, 0.5, 0] }}
+                        transition={{ duration: 1.2, repeat: 1, ease: "easeInOut" }}
+                      />
+                    </motion.div>
+                    <motion.span
+                      className="absolute -top-2 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-primary text-primary-foreground text-[10px] font-semibold rounded-full whitespace-nowrap shadow-md"
+                      initial={{ opacity: 0, y: 10, scale: 0.8 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -5 }}
+                      transition={{ duration: 0.3, delay: 0.2 }}
+                    >
+                      You are here
+                    </motion.span>
+                  </>
                 )}
               </AnimatePresence>
               <div className="relative flex items-center justify-center gap-2">
