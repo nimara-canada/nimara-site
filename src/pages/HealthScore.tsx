@@ -694,8 +694,13 @@ const HealthScore = () => {
         </section>
 
         {/* FAQ */}
-        <section className="py-20 md:py-28 bg-background">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+        <section className="py-20 md:py-28 bg-nimara-navy relative overflow-hidden">
+          {/* Background decoration */}
+          <div className="absolute inset-0">
+            <div className="absolute top-1/2 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-nimara-mint/10 to-nimara-purple/5 rounded-full blur-3xl" />
+          </div>
+          
+          <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
             <motion.div initial={{
             opacity: 0,
             y: 20
@@ -705,7 +710,19 @@ const HealthScore = () => {
           }} viewport={{
             once: true
           }} className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              <motion.span initial={{
+              opacity: 0,
+              scale: 0.9
+            }} whileInView={{
+              opacity: 1,
+              scale: 1
+            }} viewport={{
+              once: true
+            }} className="inline-flex items-center gap-2 px-4 py-2 bg-nimara-mint/15 text-nimara-mint text-xs font-semibold uppercase tracking-wider rounded-full mb-4">
+                <Sparkles className="w-3.5 h-3.5" />
+                FAQ
+              </motion.span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
                 Questions? We've got answers
               </h2>
             </motion.div>
@@ -722,16 +739,16 @@ const HealthScore = () => {
             }} transition={{
               delay: index * 0.1
             }} className="group">
-                  <div className={`bg-card rounded-2xl border transition-all duration-300 ${openFaq === index ? 'border-primary/30 shadow-lg shadow-primary/5' : 'border-border hover:border-primary/20'}`}>
+                  <div className={`bg-white/5 backdrop-blur-sm rounded-2xl border transition-all duration-300 ${openFaq === index ? 'border-nimara-mint/40 shadow-lg shadow-nimara-mint/5' : 'border-white/10 hover:border-nimara-mint/30'}`}>
                     <button onClick={() => setOpenFaq(openFaq === index ? null : index)} className="w-full px-6 py-5 flex items-center justify-between text-left">
-                      <span className="font-semibold text-foreground pr-4">{faq.question}</span>
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${openFaq === index ? 'bg-primary text-white rotate-180' : 'bg-muted text-muted-foreground'}`}>
+                      <span className="font-semibold text-white pr-4">{faq.question}</span>
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${openFaq === index ? 'bg-nimara-mint text-nimara-navy rotate-180' : 'bg-white/10 text-white/70'}`}>
                         <ChevronDown className="w-4 h-4" />
                       </div>
                     </button>
                     <div className={`overflow-hidden transition-all duration-300 ${openFaq === index ? 'max-h-40' : 'max-h-0'}`}>
                       <div className="px-6 pb-5">
-                        <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
+                        <p className="text-white/70 leading-relaxed">{faq.answer}</p>
                       </div>
                     </div>
                   </div>
