@@ -141,16 +141,29 @@ const HealthScore = () => {
 
       {/* Scroll Progress Indicator */}
       <motion.div 
-        className="fixed top-0 left-0 right-0 h-1 bg-nimara-mint/20 z-50"
+        className="fixed top-0 left-0 right-0 z-50"
         initial={{ opacity: 0 }}
         animate={{ opacity: scrollProgress > 0 ? 1 : 0 }}
         transition={{ duration: 0.2 }}
       >
+        <div className="h-1 bg-nimara-mint/20">
+          <motion.div 
+            className="h-full bg-gradient-to-r from-nimara-mint via-nimara-mint to-nimara-purple"
+            style={{ width: `${scrollProgress}%` }}
+            transition={{ duration: 0.1 }}
+          />
+        </div>
+        {/* Percentage badge */}
         <motion.div 
-          className="h-full bg-gradient-to-r from-nimara-mint via-nimara-mint to-nimara-purple"
-          style={{ width: `${scrollProgress}%` }}
-          transition={{ duration: 0.1 }}
-        />
+          className="absolute top-2 right-4 px-2.5 py-1 bg-nimara-navy/90 backdrop-blur-sm rounded-full border border-nimara-mint/30 shadow-lg"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: scrollProgress > 2 ? 1 : 0, y: scrollProgress > 2 ? 0 : -10 }}
+          transition={{ duration: 0.2 }}
+        >
+          <span className="text-xs font-semibold text-nimara-mint tabular-nums">
+            {Math.round(scrollProgress)}%
+          </span>
+        </motion.div>
       </motion.div>
 
       <main className="pt-16 overflow-hidden">
