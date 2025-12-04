@@ -153,9 +153,9 @@ const HealthScore = () => {
             transition={{ duration: 0.1 }}
           />
         </div>
-        {/* Percentage badge */}
+        {/* Percentage badge - hidden on mobile */}
         <motion.div 
-          className="absolute top-2 right-4 px-2.5 py-1 bg-nimara-navy/90 backdrop-blur-sm rounded-full border border-nimara-mint/30 shadow-lg"
+          className="hidden md:block absolute top-2 right-4 px-2.5 py-1 bg-nimara-navy/90 backdrop-blur-sm rounded-full border border-nimara-mint/30 shadow-lg"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: scrollProgress > 2 ? 1 : 0, y: scrollProgress > 2 ? 0 : -10 }}
           transition={{ duration: 0.2 }}
