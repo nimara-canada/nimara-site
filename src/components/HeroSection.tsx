@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Leaf } from "lucide-react";
 const HeroSectionLuxe = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [displayText, setDisplayText] = useState("");
@@ -66,10 +65,14 @@ const HeroSectionLuxe = () => {
           <div className="max-w-xl">
             {/* Animated badge */}
             <div className={`inline-block mb-8 transition-all duration-1200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-              <div className="flex items-center gap-2 px-5 py-2.5 bg-white/10 rounded-full backdrop-blur-sm border border-white/20">
-                <Leaf className="w-3.5 h-3.5 text-accent" />
-                <span className="text-xs font-medium text-white/70 tracking-wide">
-                  BUILT FOR CANADIAN NONPROFITS AND CHARITIES
+              <div className="inline-flex items-center gap-3 px-4 py-2 bg-accent/10 rounded-full border border-accent/30">
+                <div className="flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent/60" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent/30" />
+                </div>
+                <span className="text-xs font-semibold text-accent tracking-widest uppercase">
+                  Built for Canadian Nonprofits
                 </span>
               </div>
             </div>
