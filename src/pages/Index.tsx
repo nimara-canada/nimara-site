@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { HeroSection } from "@/components/HeroSection";
+import { TwoWaysSection } from "@/components/TwoWaysSection";
 import { FitCheck } from "@/components/FitCheck";
 import { HowWeHelp } from "@/components/HowWeHelp";
 import { SystemLadder } from "@/components/SystemLadder";
@@ -121,6 +122,7 @@ const Index = () => {
       <Header />
       <main id="main" className="space-y-0" style={{ paddingTop: 'calc(var(--announcement-height, 0px) + 4rem)' }}>
         <HeroSection />
+        <TwoWaysSection />
         <FitCheck />
         <HowWeHelp />
         <SystemLadder />
