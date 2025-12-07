@@ -161,35 +161,47 @@ export const FitCheck = () => {
               <div className="mt-6 pt-6 border-t border-border">
                 <AnimatePresence mode="wait">
                   {isGoodFit ? <motion.div key="good-fit" initial={{
-                  opacity: 0,
-                  y: 10
-                }} animate={{
-                  opacity: 1,
-                  y: 0
-                }} exit={{
-                  opacity: 0,
-                  y: -10
-                }} className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-accent/30 flex items-center justify-center">
-                        <Check size={20} className="text-accent-foreground" strokeWidth={3} />
+                   opacity: 0,
+                   y: 10
+                 }} animate={{
+                   opacity: 1,
+                   y: 0
+                 }} exit={{
+                   opacity: 0,
+                   y: -10
+                 }} className="space-y-3">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-accent/30 flex items-center justify-center">
+                          <Check size={20} className="text-accent-foreground" strokeWidth={3} />
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-accent-foreground">
+                            Great match!
+                          </p>
+                          <p className="text-xs text-muted-foreground">
+                            Nimara can help – pick your path above.
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="text-sm font-semibold text-accent-foreground">
-                          Great match!
-                        </p>
-                        <p className="text-xs text-muted-foreground">
-                          Nimara is likely a good fit for your organization.
-                        </p>
+                      <div className="flex flex-wrap gap-2 text-xs">
+                        <a href="/path-a" className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-accent/20 text-accent-foreground hover:bg-accent/30 transition-colors">
+                          Fast Help for urgent fixes
+                          <ArrowRight size={12} />
+                        </a>
+                        <a href="/health-score" className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+                          Health Check for system installs
+                          <ArrowRight size={12} />
+                        </a>
                       </div>
                     </motion.div> : <motion.p key="no-fit" initial={{
-                  opacity: 0
-                }} animate={{
-                  opacity: 1
-                }} exit={{
-                  opacity: 0
-                }} className="text-sm text-muted-foreground">
-                      Select two or more to see if we're a good fit.
-                    </motion.p>}
+                   opacity: 0
+                 }} animate={{
+                   opacity: 1
+                 }} exit={{
+                   opacity: 0
+                 }} className="text-sm text-muted-foreground">
+                       Select two or more to see if we're a good fit.
+                     </motion.p>}
                 </AnimatePresence>
               </div>
             </div>
@@ -200,8 +212,8 @@ export const FitCheck = () => {
                 <Play size={18} fill="currentColor" />
                 Watch 1-minute intro
               </button>
-              <a href="/health-score" className="inline-flex items-center justify-center gap-2 text-foreground hover:text-primary px-4 py-3.5 text-sm font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-xl min-h-[44px]">
-                Skip to free Health Check
+              <a href="/path-a" className="inline-flex items-center justify-center gap-2 text-foreground hover:text-accent px-4 py-3.5 text-sm font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-xl min-h-[44px]">
+                Need urgent help?
                 <ArrowRight size={16} />
               </a>
             </div>
