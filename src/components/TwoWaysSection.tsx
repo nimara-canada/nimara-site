@@ -73,6 +73,73 @@ export const TwoWaysSection = () => {
         >
           <rect x="40" y="40" width="120" height="120" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 4" transform="rotate(15 100 100)" />
         </motion.svg>
+
+        {/* Floating sparkle particles */}
+        {[...Array(12)].map((_, i) => {
+          const size = Math.random() * 4 + 2;
+          const left = `${Math.random() * 100}%`;
+          const top = `${Math.random() * 100}%`;
+          const delay = Math.random() * 5;
+          const duration = 4 + Math.random() * 4;
+          const isAccent = i % 3 === 0;
+          
+          return (
+            <motion.div
+              key={i}
+              className={`absolute rounded-full ${isAccent ? 'bg-accent' : 'bg-primary'}`}
+              style={{
+                width: size,
+                height: size,
+                left,
+                top,
+              }}
+              animate={{
+                y: [-20, 20, -20],
+                x: [-10, 10, -10],
+                opacity: [0.2, 0.6, 0.2],
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                duration,
+                delay,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+          );
+        })}
+
+        {/* Additional shimmer sparkles */}
+        {[...Array(8)].map((_, i) => {
+          const left = `${10 + Math.random() * 80}%`;
+          const top = `${10 + Math.random() * 80}%`;
+          const delay = Math.random() * 3;
+          
+          return (
+            <motion.div
+              key={`shimmer-${i}`}
+              className="absolute"
+              style={{ left, top }}
+              animate={{
+                opacity: [0, 1, 0],
+                scale: [0.5, 1, 0.5],
+              }}
+              transition={{
+                duration: 2 + Math.random() * 2,
+                delay,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              <svg width="12" height="12" viewBox="0 0 12 12" className="text-primary/40">
+                <path
+                  d="M6 0L7.5 4.5L12 6L7.5 7.5L6 12L4.5 7.5L0 6L4.5 4.5L6 0Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </motion.div>
+          );
+        })}
       </div>
 
       <div className="relative max-w-6xl mx-auto">
