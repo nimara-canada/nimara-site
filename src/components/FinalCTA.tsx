@@ -98,13 +98,8 @@ export const FinalCTA = () => {
                 <SelectValue placeholder="What support are you looking for?" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="Governance">Governance</SelectItem>
-                <SelectItem value="Finance & Audit">Finance & Audit</SelectItem>
-                <SelectItem value="Program Design">Program Design</SelectItem>
-                <SelectItem value="Digital & Data">Digital & Data</SelectItem>
-                <SelectItem value="Fundraising">Fundraising</SelectItem>
-                <SelectItem value="Research">Research</SelectItem>
-                <SelectItem value="Legal & Compliance">Legal & Compliance</SelectItem>
+                <SelectItem value="Urgent Need">I have an urgent need</SelectItem>
+                <SelectItem value="Health Check">I need help with Health Check</SelectItem>
                 <SelectItem value="Other">Other</SelectItem>
               </SelectContent>
             </Select>
