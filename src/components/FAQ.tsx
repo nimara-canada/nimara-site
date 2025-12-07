@@ -15,44 +15,34 @@ type FaqItem = {
 
 const faqs: FaqItem[] = [
   {
-    question: "What kind of nonprofits is Nimara for?",
-    answer: "Nimara is for nonprofits and charities with 2–100 staff, or very new groups where the ED is hands-on and there are at least 3 active board members. If you are still just an idea or a one-person project with no active board, we are too early for you.",
+    question: "Do we have to start with a health check?",
+    answer: "Short answer: No. If you have one urgent problem (a scary email, audit, funder deadline, policy gap), we use Fast Help – a short project that does not require a full health check. If you want to upgrade your systems (finance, governance, HR, programs), we start with the Nimara Organizational Health Check (NOHC). The health check shows where each system sits, then we design a system install around that.",
     category: 'getting-started'
   },
   {
-    question: "How is Nimara different from a regular consultant?",
-    answer: "Most consultants give advice and slides; Nimara runs one clear system: Health Check → workplan → build tools → 3 months of support and light evaluation. You pay for finished work, not open-ended hours.",
+    question: "What's the difference between Fast Help and a Health Check & Systems project?",
+    answer: "Fast Help (Path A): One clear problem, 1–4 weeks. You get a small 'bundle' of tools, files, and steps that solve that problem. Health Check & Systems (NOHC + Path B): Bigger questions about how your org runs. Start with NOHC to see your 'Tiers' in each area. 8–12 week system installs that make you audit- and funder-ready.",
+    category: 'process'
+  },
+  {
+    question: "Who is Nimara for? Are we the right size?",
+    answer: "We work with small and mid-size nonprofits in Canada: Usually 2–100 staff (mix of paid staff and active volunteers). Doing real community or program work. Big enough that audits, funders, and HR issues are on the table. If you're very early (no stable staff, still just an idea), we'll usually share light tools and point you to other supports instead of selling a full install.",
     category: 'getting-started'
   },
   {
-    question: "How long does a Nimara project take?",
-    answer: "Path A – Quick project takes about 2–4 weeks to fix one key area. Path B – Full system upgrade takes about 8–12 weeks to rebuild several areas, and both paths include 3 extra months of support and light evaluation.",
+    question: "What kinds of problems can you help with?",
+    answer: "Most of our work sits in these areas: Board & governance (rules, roles, minutes, policies), Money & compliance (basic finance systems, grants, audits, CRA), HR & people (staff files, hiring, safety, conflict), Programs & reporting (intake, trackers, funder reports). Fast Help is for one of these problems. Health Check & Systems is for when you know several of these are weak.",
     category: 'process'
   },
   {
-    question: "How much work will this be for our team?",
-    answer: "We do the heavy lifting; you give us a small core group (usually the ED and 1–2 leads), join a few short meetings, and try the new tools. We plan the work around your busy times and grant deadlines.",
+    question: "How long does it take, and what do we actually get at the end?",
+    answer: "Fast Help: 1–4 weeks. You get a small Acceptance Bundle – the policies, templates, trackers, and steps needed to fix that one problem. Health Check & Systems: 2–3 weeks for NOHC, then 8–12 weeks per system install. You get a Tier score, a clear plan, and a bigger Acceptance Bundle that your team can run without us. No 'advice only.' Every project ends in files and routines that live in your systems.",
     category: 'process'
   },
   {
-    question: "How much does it cost, and can funders pay for it?",
-    answer: "Pricing is fixed by project or package, not hourly, and depends on your size and whether you choose Path A or Path B. Most groups use capacity-building or operations funding, and we give you simple language to use with funders.",
+    question: "How does pricing work? Can a funder pay for this?",
+    answer: "We use flat project fees, not open-ended hourly billing. Fast Help = smaller fixed fee for one problem. Health Check & Systems = fixed fee for the NOHC, plus fixed fees for each system install bundle. Yes, funders can pay. Many orgs use capacity-building grants, admin lines, or special project funds. We can give you a simple one-page description to include in proposals or to share with your funder.",
     category: 'pricing'
-  },
-  {
-    question: "What happens after the main project ends?",
-    answer: "Every project includes 3 months of support to help you use the new tools plus a before/after check so you can see what changed. You can add an optional 12-month follow-up plan if you want longer support.",
-    category: 'support'
-  },
-  {
-    question: "What if it doesn't work for us?",
-    answer: "We agree on clear deliverables before we start, and if we do not finish that work, you get your money back. We would rather refund you than leave you with half-built systems.",
-    category: 'support'
-  },
-  {
-    question: "What's the first step?",
-    answer: "You can take the Health Check to get a free, simple workplan, or book a call to talk through your situation and choose between Path A and Path B. There is no pressure to sign anything on the first call.",
-    category: 'getting-started'
   }
 ];
 
