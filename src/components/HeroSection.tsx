@@ -102,9 +102,9 @@ const HeroSectionLuxe = () => {
                 Two ways to start: fix one urgent problem, or get a full health check.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <a href="/path-a" className="group relative px-6 sm:px-8 py-3.5 sm:py-4 overflow-hidden rounded-xl bg-accent text-accent-foreground font-semibold shadow-soft transition-all duration-500 hover:shadow-lg hover:scale-[1.02] text-sm sm:text-base" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+                <a href="/path-a" className="group relative px-6 sm:px-8 py-3.5 sm:py-4 overflow-hidden rounded-xl bg-accent text-accent-foreground font-semibold shadow-soft transition-all duration-500 hover:shadow-lg hover:scale-[1.02] text-sm sm:text-base whitespace-nowrap" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
                   <span className="relative z-10 flex items-center justify-center gap-2">
-                    I have an urgent problem
+                    Fix an urgent problem
                     <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
@@ -112,9 +112,9 @@ const HeroSectionLuxe = () => {
                   <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </a>
 
-                <a href="/health-score" className="group px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl border border-white/20 bg-white/5 backdrop-blur text-primary-foreground font-semibold transition-all duration-300 hover:border-white/40 hover:bg-white/10 hover:shadow-lg text-sm sm:text-base">
+                <a href="/health-score" className="group px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl border border-white/20 bg-white/5 backdrop-blur text-primary-foreground font-semibold transition-all duration-300 hover:border-white/40 hover:bg-white/10 hover:shadow-lg text-sm sm:text-base whitespace-nowrap">
                   <span className="flex items-center justify-center gap-2">
-                    Start Your Health Check
+                    Start a health check
                     <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
