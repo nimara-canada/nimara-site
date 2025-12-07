@@ -238,7 +238,7 @@ const HeroSectionLuxe = () => {
                     }}>
                         <div className="bg-nimara-purple rounded-xl px-4 py-3 animate-pulse-glow">
                           <span className="text-3xl font-semibold text-white block">92</span>
-                          <span className="text-xs text-white/80 font-medium">Health Score</span>
+                          <span className="text-xs text-white/80 font-medium">Health Check</span>
                         </div>
                       </div>
                     </div>

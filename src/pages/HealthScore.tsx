@@ -49,7 +49,7 @@ const steps = [{
   icon: Users
 }, {
   number: 3,
-  title: "Get your health score",
+  title: "Get your health check results",
   subtitle: "Delivered by email",
   description: "Your score, a one-page view of strengths and risks, and 1–2 suggested next moves.",
   icon: BarChart3
@@ -133,7 +133,7 @@ const HealthScore = () => {
   }, []);
   return <>
       <Helmet>
-        <title>Get Your Health Score | Nimara</title>
+        <title>Organizational Health Check | Nimara</title>
         <meta name="description" content="See where your nonprofit organization is strong, where it's fragile, and what kind of support actually makes sense. Quick 7-9 minute assessment with human review." />
       </Helmet>
 
@@ -240,10 +240,10 @@ const HealthScore = () => {
               delay: 0.1,
               duration: 0.6
             }} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.1]">
-                Get your{" "}
+                Start your{" "}
                 <span className="relative inline-block">
                   <span className="relative z-10 bg-gradient-to-r from-accent via-[#9DFFD6] to-accent bg-clip-text text-transparent">
-                    Health Score
+                    Health Check
                   </span>
                   <motion.span className="absolute -inset-1 bg-accent/20 rounded-lg blur-lg" animate={{
                   opacity: [0.5, 0.8, 0.5]
@@ -359,7 +359,7 @@ const HealthScore = () => {
           className="h-px bg-gradient-to-r from-transparent via-nimara-mint/30 to-transparent origin-center" 
         />
 
-        {/* Why get a health score */}
+        {/* Why get a health check */}
         <section className="py-20 md:py-28 bg-background relative">
           <div className="absolute inset-0 bg-gradient-to-b from-secondary-background/5 to-transparent" />
           
@@ -386,7 +386,7 @@ const HealthScore = () => {
                 Benefits
               </motion.span>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
-                Why get a health score?
+                Why get a health check?
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 You already know things are busy. This puts the full picture in one place.
@@ -471,7 +471,7 @@ const HealthScore = () => {
 
                 <div className="space-y-6">
                   {[{
-                  title: "Your Nimara Health Score",
+                  title: "Your Nimara Health Check Results",
                   desc: "A plain-language rating of your overall health, plus which areas are solid and which are fragile.",
                   icon: Activity
                 }, {
@@ -607,7 +607,7 @@ const HealthScore = () => {
                   delay: 0.5
                 }} className="absolute -bottom-6 -right-6 w-24 h-24 bg-gradient-to-br from-primary via-primary to-[#5a38c7] rounded-2xl flex flex-col items-center justify-center text-white shadow-xl shadow-primary/30 rotate-3">
                     <span className="text-3xl font-bold">92</span>
-                    <span className="text-xs opacity-80">Health Score</span>
+                    <span className="text-xs opacity-80">Health Check</span>
                   </motion.div>
                 </div>
               </motion.div>
@@ -731,7 +731,7 @@ const HealthScore = () => {
                 Start Now
               </motion.span>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
-                Ready to see your health score?
+                Ready to start your health check?
               </h2>
               <p className="text-lg text-muted-foreground max-w-xl mx-auto">
                 Take 7–9 minutes to complete the check. We'll send your summary within 1 business day.
@@ -879,7 +879,7 @@ const HealthScore = () => {
             }} whileTap={{
               scale: 0.98
             }} onClick={scrollToForm} className="group inline-flex items-center gap-2 px-10 py-5 bg-accent text-secondary-background font-semibold rounded-xl shadow-lg shadow-accent/20 text-lg">
-                Get your health score now
+                Start your health check now
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </motion.button>
             </motion.div>
