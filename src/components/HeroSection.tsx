@@ -154,37 +154,37 @@ const HeroSectionLuxe = () => {
             </div>
           </div>
 
-          {/* Right: Ultra-premium dashboard */}
+          {/* Right: NOHC Result Dashboard */}
           <div ref={cardRef} className={`relative transition-all duration-1500 delay-600 ${isVisible ? "opacity-100 translate-y-0 animate-float-subtle" : "opacity-0 translate-y-8"}`}>
-            {/* Main card */}
-            <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-white/20 transition-all duration-500 hover:-translate-y-2 cursor-pointer group/card">
+            {/* Main card - slightly smaller */}
+            <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden border border-white/20 transition-all duration-500 hover:-translate-y-2 cursor-pointer group/card max-w-sm lg:max-w-md">
               <div className="absolute inset-0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none shadow-2xl" />
               {/* Card header */}
-              <div className="px-5 sm:px-10 pt-6 sm:pt-10 pb-5 sm:pb-7 border-b border-gray-100/60 bg-gradient-to-b from-gray-50/30 to-transparent">
+              <div className="px-4 sm:px-6 pt-4 sm:pt-6 pb-3 sm:pb-4 border-b border-gray-100/60 bg-gradient-to-b from-gray-50/30 to-transparent">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-5">
+                  <div className="flex items-center gap-3">
                     <div className="relative">
-                      <div className="w-12 h-12 bg-secondary-background rounded-xl flex items-center justify-center">
-                        <span className="text-white font-medium text-lg">N</span>
+                      <div className="w-9 h-9 bg-secondary-background rounded-lg flex items-center justify-center">
+                        <span className="text-white font-medium text-sm">N</span>
                       </div>
-                      <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-accent rounded-full border-2 border-white" />
+                      <div className="absolute -bottom-0.5 -right-0.5 w-2 h-2 bg-accent rounded-full border-2 border-white" />
                     </div>
                     <div>
-                      <h3 className="text-base font-medium text-gray-800 tracking-tight">Health Dashboard</h3>
-                      <p className="text-[11px] text-gray-400 font-normal mt-1 tracking-wide uppercase">Live monitoring</p>
+                      <h3 className="text-sm font-medium text-gray-800 tracking-tight">NOHC Results</h3>
+                      <p className="text-[10px] text-gray-400 font-normal mt-0.5 tracking-wide uppercase">Health Check Outcome</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-[10px] text-gray-400 tracking-wider">LIVE</span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-[9px] text-gray-400 tracking-wider">SAMPLE</span>
                     <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
                   </div>
                 </div>
               </div>
 
               {/* Card body */}
-              <div className="px-5 sm:px-10 py-6 sm:py-9">
+              <div className="px-4 sm:px-6 py-4 sm:py-6">
                 {/* Metrics */}
-                <div className="space-y-7">
+                <div className="space-y-5">
                 {[{
                   label: "Governance & Board",
                   value: chartValues[0],
@@ -198,9 +198,9 @@ const HeroSectionLuxe = () => {
                   value: chartValues[2],
                   color: "from-violet-400/80 to-violet-500/80"
                 }].map((item, i) => <div key={i} className="relative">
-                      <div className="flex items-center justify-between mb-2.5">
-                        <span className="text-[13px] font-normal text-gray-600 tracking-tight">{item.label}</span>
-                        <span className="text-[13px] font-medium text-gray-700 tabular-nums" style={{
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-xs font-normal text-gray-600 tracking-tight">{item.label}</span>
+                        <span className="text-xs font-medium text-gray-700 tabular-nums" style={{
                       opacity: chartValues[i] > 0 ? 1 : 0,
                       transition: "opacity 0.5s ease-out",
                       transitionDelay: `${1200 + i * 200}ms`
@@ -218,15 +218,15 @@ const HeroSectionLuxe = () => {
                 </div>
 
                 {/* Overall score */}
-                <div className="mt-10 pt-8 border-t border-gray-100/60">
+                <div className="mt-6 pt-5 border-t border-gray-100/60">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-[10px] font-normal text-gray-400 uppercase tracking-widest mb-2.5">Overall Score</p>
-                      <div className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+                      <p className="text-[9px] font-normal text-gray-400 uppercase tracking-widest mb-2">NOHC Score</p>
+                      <div className="flex items-center gap-1.5">
+                        <svg className="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                         </svg>
-                        <span className="text-[13px] font-normal text-gray-600">Funding Ready</span>
+                        <span className="text-xs font-normal text-gray-600">Funding Ready</span>
                       </div>
                     </div>
                     <div className="text-right">
@@ -236,9 +236,9 @@ const HeroSectionLuxe = () => {
                       transition: "all 0.8s ease-out",
                       transitionDelay: "1800ms"
                     }}>
-                        <div className="bg-nimara-purple rounded-xl px-4 py-3 animate-pulse-glow">
-                          <span className="text-3xl font-semibold text-white block">92</span>
-                          <span className="text-xs text-white/80 font-medium">Health Check</span>
+                        <div className="bg-nimara-purple rounded-lg px-3 py-2 animate-pulse-glow">
+                          <span className="text-2xl font-semibold text-white block">92</span>
+                          <span className="text-[10px] text-white/80 font-medium">NOHC</span>
                         </div>
                       </div>
                     </div>
