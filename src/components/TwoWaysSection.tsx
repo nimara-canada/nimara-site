@@ -18,36 +18,36 @@ export const TwoWaysSection = () => {
   };
 
   return (
-    <section className="relative py-32 px-6 bg-gradient-to-b from-slate-50 via-white to-slate-50 overflow-hidden">
+    <section className="relative py-24 md:py-32 px-6 bg-gradient-to-b from-secondary to-background overflow-hidden">
       {/* Sophisticated background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Large soft gradient orbs */}
-        <div className="absolute -top-40 -right-40 w-[700px] h-[700px] bg-gradient-to-br from-violet-100/60 via-indigo-50/40 to-transparent rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-gradient-to-tr from-amber-50/60 via-orange-50/30 to-transparent rounded-full blur-3xl" />
+        {/* Large soft gradient orbs - using Nimara brand colors */}
+        <div className="absolute -top-40 -right-40 w-[700px] h-[700px] bg-gradient-to-br from-primary/20 via-primary/10 to-transparent rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-gradient-to-tr from-accent/30 via-accent/15 to-transparent rounded-full blur-3xl" />
         
         {/* Subtle dot pattern */}
         <div 
-          className="absolute inset-0 opacity-[0.4]"
+          className="absolute inset-0 opacity-30"
           style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, rgb(203 213 225 / 0.4) 1px, transparent 0)`,
+            backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--border)) 1px, transparent 0)`,
             backgroundSize: '32px 32px'
           }}
         />
         
         {/* Decorative line elements */}
-        <svg className="absolute top-20 left-10 w-64 h-64 text-slate-200 opacity-60" viewBox="0 0 200 200" fill="none">
+        <svg className="absolute top-20 left-10 w-64 h-64 text-border opacity-60" viewBox="0 0 200 200" fill="none">
           <circle cx="100" cy="100" r="80" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 4" />
           <circle cx="100" cy="100" r="60" stroke="currentColor" strokeWidth="0.5" />
         </svg>
         
-        <svg className="absolute bottom-20 right-10 w-48 h-48 text-slate-200 opacity-60" viewBox="0 0 200 200" fill="none">
+        <svg className="absolute bottom-20 right-10 w-48 h-48 text-border opacity-60" viewBox="0 0 200 200" fill="none">
           <rect x="40" y="40" width="120" height="120" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 4" transform="rotate(15 100 100)" />
         </svg>
       </div>
 
       <div className="relative max-w-6xl mx-auto">
         <motion.div 
-          className="text-center mb-20"
+          className="text-center mb-16 md:mb-20"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -55,36 +55,36 @@ export const TwoWaysSection = () => {
         >
           {/* Refined pill badge */}
           <motion.div 
-            className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white border border-slate-200/80 shadow-sm shadow-slate-200/50 mb-10"
+            className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-card border border-border shadow-sm mb-10"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <span className="flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
             </span>
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-slate-500">
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-muted-foreground">
               Choose Your Path
             </span>
           </motion.div>
           
-          <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-light text-slate-900 mb-8 tracking-tight leading-[1.1]">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight leading-[1.1]">
             Two ways to work
             <br />
             <span className="relative">
               with{' '}
               <span className="relative inline-block">
                 Nimara
-                <svg className="absolute -bottom-2 left-0 w-full h-3 text-violet-400/30" viewBox="0 0 200 12" preserveAspectRatio="none">
+                <svg className="absolute -bottom-2 left-0 w-full h-3 text-primary/40" viewBox="0 0 200 12" preserveAspectRatio="none">
                   <path d="M0 9 Q50 0 100 6 T200 3" stroke="currentColor" strokeWidth="4" fill="none" strokeLinecap="round"/>
                 </svg>
               </span>
             </span>
           </h2>
           
-          <p className="text-xl text-slate-500 max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Whether you need rapid response or systematic transformation, 
             we meet you where you are.
           </p>
@@ -93,7 +93,7 @@ export const TwoWaysSection = () => {
         {/* Cards container */}
         <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
           
-          {/* Card 1: Fast Help */}
+          {/* Card 1: Fast Help - Mint accent */}
           <motion.div
             className="group relative"
             onMouseEnter={() => setHoveredCard(1)}
@@ -103,19 +103,19 @@ export const TwoWaysSection = () => {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
           >
-            {/* Hover glow */}
-            <div className={`absolute -inset-4 bg-gradient-to-br from-amber-200/40 via-orange-100/30 to-transparent rounded-[2rem] blur-2xl transition-all duration-700 ${hoveredCard === 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`} />
+            {/* Hover glow - Mint */}
+            <div className={`absolute -inset-4 bg-gradient-to-br from-accent/40 via-accent/20 to-transparent rounded-[2rem] blur-2xl transition-all duration-700 ${hoveredCard === 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`} />
             
-            <div className="relative h-full bg-white rounded-3xl border border-slate-200/80 shadow-xl shadow-slate-200/50 p-10 lg:p-12 transition-all duration-500 hover:shadow-2xl hover:shadow-slate-300/50 hover:border-slate-300/80 hover:-translate-y-1">
+            <div className="relative h-full bg-card rounded-2xl border border-border shadow-lg p-8 lg:p-10 transition-all duration-500 hover:shadow-xl hover:border-accent/50 hover:-translate-y-1">
               
-              {/* Top accent line */}
-              <div className="absolute top-0 left-12 right-12 h-px bg-gradient-to-r from-transparent via-amber-300/60 to-transparent" />
+              {/* Top accent line - Mint */}
+              <div className="absolute top-0 left-12 right-12 h-px bg-gradient-to-r from-transparent via-accent to-transparent" />
               
-              {/* Icon */}
-              <div className="relative mb-10 inline-block">
-                <div className="w-18 h-18 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200/50 flex items-center justify-center p-4 shadow-inner">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-lg shadow-amber-300/50">
-                    <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              {/* Icon - Mint themed */}
+              <div className="relative mb-8 inline-block">
+                <div className="w-16 h-16 rounded-2xl bg-accent/20 border border-accent/30 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center shadow-lg">
+                    <svg className="w-6 h-6 text-accent-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
                     </svg>
                   </div>
@@ -123,47 +123,46 @@ export const TwoWaysSection = () => {
               </div>
 
               {/* Title block */}
-              <div className="mb-8">
-                <h3 className="font-serif text-3xl lg:text-4xl font-light text-slate-900 mb-2 tracking-tight">
+              <div className="mb-6">
+                <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-2 tracking-tight">
                   Fast Help
                 </h3>
-                <p className="text-amber-600 text-sm uppercase tracking-[0.2em] font-semibold">
+                <p className="text-accent-foreground text-sm uppercase tracking-[0.15em] font-semibold">
                   Fix One Urgent Problem
                 </p>
               </div>
 
               {/* Content */}
-              <div className="space-y-6 mb-10">
-                <p className="text-slate-600 text-lg leading-relaxed">
+              <div className="space-y-5 mb-8">
+                <p className="text-muted-foreground text-base leading-relaxed">
                   For when one thing is on fire — a scary email, an audit, 
                   a funder deadline, a policy gap.
                 </p>
                 
-                <div className="pl-6 border-l-2 border-amber-200 space-y-4">
-                  <p className="text-slate-500 leading-relaxed">
+                <div className="pl-5 border-l-2 border-accent/50 space-y-3">
+                  <p className="text-muted-foreground leading-relaxed text-sm">
                     We keep it small and clear: one problem, one mini-bundle, 
                     fast turnaround.
                   </p>
-                  <p className="text-slate-500 leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed text-sm">
                     No big diagnostic. No health check required.
                   </p>
                 </div>
               </div>
 
               {/* Info badge */}
-              <div className="mb-10 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-50 border border-slate-200">
-                <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <div className="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted border border-border">
+                <svg className="w-4 h-4 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span className="text-sm text-slate-500">No NOHC needed — we go straight to fixing</span>
+                <span className="text-sm text-muted-foreground">No NOHC needed — we go straight to fixing</span>
               </div>
 
-              {/* CTA Button */}
+              {/* CTA Button - Mint */}
               <button 
                 onClick={() => handleNavigate('/path-a', 1)}
-                className={`group/btn relative w-full py-5 px-8 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold text-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-amber-300/40 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center ${clickedButton === 1 ? 'scale-95 opacity-80' : ''}`}
+                className={`group/btn relative w-full py-4 px-8 rounded-full bg-accent text-accent-foreground font-semibold text-base overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-accent/30 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center ${clickedButton === 1 ? 'scale-95 opacity-80' : ''}`}
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-amber-400 to-orange-400 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
                 <span className="relative flex items-center justify-center gap-3">
                   Get fast help
                   <svg className={`w-5 h-5 transition-transform duration-300 group-hover/btn:translate-x-1 ${clickedButton === 1 ? 'translate-x-2' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -174,7 +173,7 @@ export const TwoWaysSection = () => {
             </div>
           </motion.div>
 
-          {/* Card 2: Health Check & System Installs */}
+          {/* Card 2: Health Check & System Installs - Purple accent */}
           <motion.div
             className="group relative"
             onMouseEnter={() => setHoveredCard(2)}
@@ -184,29 +183,29 @@ export const TwoWaysSection = () => {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.25, ease: "easeOut" }}
           >
-            {/* Hover glow */}
-            <div className={`absolute -inset-4 bg-gradient-to-br from-violet-200/40 via-indigo-100/30 to-transparent rounded-[2rem] blur-2xl transition-all duration-700 ${hoveredCard === 2 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`} />
+            {/* Hover glow - Purple */}
+            <div className={`absolute -inset-4 bg-gradient-to-br from-primary/30 via-primary/15 to-transparent rounded-[2rem] blur-2xl transition-all duration-700 ${hoveredCard === 2 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`} />
             
-            <div className="relative h-full bg-white rounded-3xl border border-slate-200/80 shadow-xl shadow-slate-200/50 p-10 lg:p-12 transition-all duration-500 hover:shadow-2xl hover:shadow-slate-300/50 hover:border-slate-300/80 hover:-translate-y-1">
+            <div className="relative h-full bg-card rounded-2xl border border-primary/30 shadow-lg p-8 lg:p-10 transition-all duration-500 hover:shadow-xl hover:border-primary/50 hover:-translate-y-1">
               
-              {/* Top accent line */}
-              <div className="absolute top-0 left-12 right-12 h-px bg-gradient-to-r from-transparent via-violet-300/60 to-transparent" />
+              {/* Top accent line - Purple */}
+              <div className="absolute top-0 left-12 right-12 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
               
-              {/* Most Popular Badge - Premium styled */}
+              {/* Most Popular Badge - Purple themed */}
               <div className="absolute -top-4 right-8">
                 <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-full blur-md opacity-40" />
-                  <div className="relative px-5 py-2 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 text-white text-xs font-bold tracking-wider uppercase shadow-lg">
+                  <div className="absolute inset-0 bg-primary rounded-full blur-md opacity-40" />
+                  <div className="relative px-5 py-2 rounded-full bg-primary text-primary-foreground text-xs font-bold tracking-wider uppercase shadow-lg">
                     Most Popular
                   </div>
                 </div>
               </div>
 
-              {/* Icon */}
-              <div className="relative mb-10 inline-block">
-                <div className="w-18 h-18 rounded-2xl bg-gradient-to-br from-violet-50 to-indigo-50 border border-violet-200/50 flex items-center justify-center p-4 shadow-inner">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-violet-300/50">
-                    <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              {/* Icon - Purple themed */}
+              <div className="relative mb-8 inline-block">
+                <div className="w-16 h-16 rounded-2xl bg-primary/20 border border-primary/30 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center shadow-lg">
+                    <svg className="w-6 h-6 text-primary-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
                     </svg>
                   </div>
@@ -214,47 +213,46 @@ export const TwoWaysSection = () => {
               </div>
 
               {/* Title block */}
-              <div className="mb-8">
-                <h3 className="font-serif text-3xl lg:text-4xl font-light text-slate-900 mb-2 tracking-tight">
+              <div className="mb-6">
+                <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-2 tracking-tight">
                   Health Check & System Installs
                 </h3>
-                <p className="text-violet-600 text-sm uppercase tracking-[0.2em] font-semibold">
+                <p className="text-primary text-sm uppercase tracking-[0.15em] font-semibold">
                   Comprehensive Transformation
                 </p>
               </div>
 
               {/* Content */}
-              <div className="space-y-6 mb-10">
-                <p className="text-slate-600 text-lg leading-relaxed">
+              <div className="space-y-5 mb-8">
+                <p className="text-muted-foreground text-base leading-relaxed">
                   For when the whole system feels messy — finance, 
                   governance, HR, or delivery.
                 </p>
                 
-                <div className="pl-6 border-l-2 border-violet-200 space-y-4">
-                  <p className="text-slate-500 leading-relaxed">
+                <div className="pl-5 border-l-2 border-primary/40 space-y-3">
+                  <p className="text-muted-foreground leading-relaxed text-sm">
                     We start with the Nimara Organizational Health Check (NOHC) 
                     to see where each system is.
                   </p>
-                  <p className="text-slate-500 leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed text-sm">
                     Then we pick 1–2 Bundles to move those systems up a Tier.
                   </p>
                 </div>
               </div>
 
               {/* Info badge */}
-              <div className="mb-10 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-50 border border-violet-200">
-                <svg className="w-4 h-4 text-violet-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <div className="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
+                <svg className="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span className="text-sm text-violet-700">NOHC required — we build on diagnosis</span>
+                <span className="text-sm text-primary">NOHC required — we build on diagnosis</span>
               </div>
 
-              {/* CTA Button */}
+              {/* CTA Button - Purple */}
               <button 
                 onClick={() => handleNavigate('/health-score', 2)}
-                className={`group/btn relative w-full py-5 px-8 rounded-2xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold text-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-violet-300/40 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center ${clickedButton === 2 ? 'scale-95 opacity-80' : ''}`}
+                className={`group/btn relative w-full py-4 px-8 rounded-full bg-primary text-primary-foreground font-semibold text-base overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center ${clickedButton === 2 ? 'scale-95 opacity-80' : ''}`}
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-violet-500 to-indigo-500 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
                 <span className="relative flex items-center justify-center gap-3">
                   Start with a health check
                   <svg className={`w-5 h-5 transition-transform duration-300 group-hover/btn:translate-x-1 ${clickedButton === 2 ? 'translate-x-2' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -268,7 +266,7 @@ export const TwoWaysSection = () => {
 
         {/* Bottom section - social proof */}
         <motion.div 
-          className="mt-24 text-center"
+          className="mt-20 md:mt-24 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -279,7 +277,7 @@ export const TwoWaysSection = () => {
               {[1, 2, 3, 4, 5].map((i) => (
                 <motion.div 
                   key={i} 
-                  className="w-10 h-10 rounded-full bg-gradient-to-br from-slate-200 to-slate-300 border-2 border-white shadow-sm"
+                  className="w-10 h-10 rounded-full bg-gradient-to-br from-muted to-border border-2 border-card shadow-sm"
                   initial={{ opacity: 0, scale: 0 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
@@ -288,16 +286,16 @@ export const TwoWaysSection = () => {
               ))}
             </div>
             <div className="text-left">
-              <p className="text-sm font-semibold text-slate-900">50+ organizations</p>
-              <p className="text-xs text-slate-500">became funder-ready with Nimara</p>
+              <p className="text-sm font-semibold text-foreground">50+ organizations</p>
+              <p className="text-xs text-muted-foreground">became funder-ready with Nimara</p>
             </div>
           </div>
           
-          <div className="flex items-center justify-center gap-3 text-slate-400">
+          <div className="flex items-center justify-center gap-2">
             {[...Array(5)].map((_, i) => (
               <motion.svg 
                 key={i} 
-                className="w-5 h-5 text-amber-400" 
+                className="w-5 h-5 text-accent" 
                 fill="currentColor" 
                 viewBox="0 0 20 20"
                 initial={{ opacity: 0, scale: 0 }}
