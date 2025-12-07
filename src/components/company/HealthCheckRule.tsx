@@ -75,7 +75,7 @@ const HealthCheckRule = () => {
               {situations.map((row, index) => (
                 <div
                   key={index}
-                  className={`grid grid-cols-3 ${
+                  className={`grid grid-cols-3 transition-colors duration-200 hover:bg-secondary/30 cursor-default ${
                     index !== situations.length - 1 ? "border-b border-border" : ""
                   }`}
                 >
