@@ -9,7 +9,7 @@ import { FitCheck } from "@/components/FitCheck";
 import { HowWeHelp } from "@/components/HowWeHelp";
 import { SystemLadder } from "@/components/SystemLadder";
 
-import { PathComparison } from "@/components/PathComparison";
+
 import { Expertise } from "@/components/Expertise";
 import { IntegrationsSection } from "@/components/IntegrationsSection";
 import { FAQ } from "@/components/FAQ";
@@ -127,7 +127,7 @@ const Index = () => {
         <HowWeHelp />
         <SystemLadder />
         
-        <PathComparison />
+        
         <Expertise />
         <IntegrationsSection />
         <FAQ />
