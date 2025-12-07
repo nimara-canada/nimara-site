@@ -223,6 +223,13 @@ export const TwoWaysSection = () => {
             
             <div className="relative h-full bg-card rounded-2xl border border-border shadow-lg p-8 lg:p-10 transition-all duration-500 hover:shadow-xl hover:border-accent/50 hover:-translate-y-1">
               
+              {/* Timeline badge */}
+              <div className="absolute -top-3 left-8">
+                <div className="px-4 py-1.5 rounded-full bg-accent/20 border border-accent/40 text-accent-foreground text-xs font-bold tracking-wide shadow-sm">
+                  1–4 weeks
+                </div>
+              </div>
+              
               {/* Top accent line - Mint */}
               <div className="absolute top-0 left-12 right-12 h-px bg-gradient-to-r from-transparent via-accent to-transparent" />
               
@@ -306,11 +313,18 @@ export const TwoWaysSection = () => {
               {/* Top accent line - Purple */}
               <div className="absolute top-0 left-12 right-12 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
               
-              {/* Most Popular Badge - Purple themed */}
-              <div className="absolute -top-4 right-8">
+              {/* Timeline badge - left side */}
+              <div className="absolute -top-3 left-8">
+                <div className="px-4 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-primary text-xs font-bold tracking-wide shadow-sm">
+                  8–12 weeks
+                </div>
+              </div>
+              
+              {/* Most Popular Badge - Purple themed - right side */}
+              <div className="absolute -top-3 right-8">
                 <div className="relative">
                   <div className="absolute inset-0 bg-primary rounded-full blur-md opacity-40" />
-                  <div className="relative px-5 py-2 rounded-full bg-primary text-primary-foreground text-xs font-bold tracking-wider uppercase shadow-lg">
+                  <div className="relative px-4 py-1.5 rounded-full bg-primary text-primary-foreground text-xs font-bold tracking-wide shadow-lg">
                     Most Popular
                   </div>
                 </div>
