@@ -151,87 +151,95 @@ const HeroSectionLuxe = () => {
             </div>
           </div>
 
-          {/* Right: Path comparison preview */}
+          {/* Right: Ultra-premium dashboard */}
           <div ref={cardRef} className={`relative transition-all duration-1500 delay-600 ${isVisible ? "opacity-100 translate-y-0 animate-float-subtle" : "opacity-0 translate-y-8"}`}>
             {/* Main card */}
             <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-white/20 transition-all duration-500 hover:-translate-y-2 cursor-pointer group/card">
               <div className="absolute inset-0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none shadow-2xl" />
               {/* Card header */}
-              <div className="px-5 sm:px-8 pt-6 sm:pt-8 pb-4 sm:pb-6 border-b border-gray-100/60 bg-gradient-to-b from-gray-50/30 to-transparent">
+              <div className="px-5 sm:px-10 pt-6 sm:pt-10 pb-5 sm:pb-7 border-b border-gray-100/60 bg-gradient-to-b from-gray-50/30 to-transparent">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-5">
                     <div className="relative">
-                      <div className="w-10 h-10 bg-secondary-background rounded-xl flex items-center justify-center">
-                        <span className="text-white font-medium text-base">N</span>
+                      <div className="w-12 h-12 bg-secondary-background rounded-xl flex items-center justify-center">
+                        <span className="text-white font-medium text-lg">N</span>
                       </div>
+                      <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-accent rounded-full border-2 border-white" />
                     </div>
                     <div>
-                      <h3 className="text-sm font-medium text-gray-800 tracking-tight">Two paths to choose from</h3>
-                      <p className="text-[10px] text-gray-400 font-normal mt-0.5 tracking-wide uppercase">Pick what fits your need</p>
+                      <h3 className="text-base font-medium text-gray-800 tracking-tight">Health Dashboard</h3>
+                      <p className="text-[11px] text-gray-400 font-normal mt-1 tracking-wide uppercase">Live monitoring</p>
                     </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] text-gray-400 tracking-wider">LIVE</span>
+                    <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
                   </div>
                 </div>
               </div>
 
-              {/* Card body - Two paths */}
-              <div className="px-5 sm:px-8 py-6 sm:py-8">
-                <div className="grid grid-cols-2 gap-4 sm:gap-6">
-                  {/* Path A */}
-                  <div className="relative p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-accent/10 to-accent/5 border border-accent/20">
-                    <div className="flex items-center gap-2 mb-3">
-                      <div className="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center">
-                        <svg className="w-3.5 h-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
+              {/* Card body */}
+              <div className="px-5 sm:px-10 py-6 sm:py-9">
+                {/* Metrics */}
+                <div className="space-y-7">
+                {[{
+                  label: "Governance & Board",
+                  value: chartValues[0],
+                  color: "from-teal-400/80 to-teal-500/80"
+                }, {
+                  label: "Financial Systems",
+                  value: chartValues[1],
+                  color: "from-slate-400/80 to-slate-500/80"
+                }, {
+                  label: "HR & Compliance",
+                  value: chartValues[2],
+                  color: "from-violet-400/80 to-violet-500/80"
+                }].map((item, i) => <div key={i} className="relative">
+                      <div className="flex items-center justify-between mb-2.5">
+                        <span className="text-[13px] font-normal text-gray-600 tracking-tight">{item.label}</span>
+                        <span className="text-[13px] font-medium text-gray-700 tabular-nums" style={{
+                      opacity: chartValues[i] > 0 ? 1 : 0,
+                      transition: "opacity 0.5s ease-out",
+                      transitionDelay: `${1200 + i * 200}ms`
+                    }}>
+                          {item.value}%
+                        </span>
                       </div>
-                      <span className="text-[10px] font-semibold text-accent uppercase tracking-wider">Fast Help</span>
-                    </div>
-                    <p className="text-xs text-gray-500 mb-3">1–4 weeks</p>
-                    <ul className="space-y-2">
-                      {["Policy quick-fix", "Audit prep file", "Board template"].map((item, i) => (
-                        <li key={i} className="flex items-center gap-2 text-[11px] text-gray-600">
-                          <svg className="w-3 h-3 text-accent flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                          </svg>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Path B */}
-                  <div className="relative p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20">
-                    <div className="absolute -top-2 -right-2 px-2 py-0.5 bg-primary text-white text-[8px] font-semibold rounded-full uppercase tracking-wider">
-                      Popular
-                    </div>
-                    <div className="flex items-center gap-2 mb-3">
-                      <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center">
-                        <svg className="w-3.5 h-3.5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                        </svg>
+                      <div className="relative h-2 bg-gray-100/80 rounded-full overflow-hidden">
+                        <div className={`absolute inset-y-0 left-0 bg-gradient-to-r ${item.color} rounded-full transition-all duration-2000 ease-out`} style={{
+                      width: `${item.value}%`,
+                      transitionDelay: `${1200 + i * 200}ms`
+                    }} />
                       </div>
-                      <span className="text-[10px] font-semibold text-primary uppercase tracking-wider">Full System</span>
-                    </div>
-                    <p className="text-xs text-gray-500 mb-3">8–12 weeks</p>
-                    <ul className="space-y-2">
-                      {["Full governance kit", "Finance & HR setup", "3-month support"].map((item, i) => (
-                        <li key={i} className="flex items-center gap-2 text-[11px] text-gray-600">
-                          <svg className="w-3 h-3 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                          </svg>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                    </div>)}
                 </div>
 
-                {/* Bottom CTA hint */}
-                <div className="mt-6 pt-5 border-t border-gray-100/60 flex items-center justify-center gap-2">
-                  <svg className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span className="text-[11px] text-gray-400">Not sure? Start with a Health Score</span>
+                {/* Overall score */}
+                <div className="mt-10 pt-8 border-t border-gray-100/60">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-[10px] font-normal text-gray-400 uppercase tracking-widest mb-2.5">Overall Score</p>
+                      <div className="flex items-center gap-2">
+                        <svg className="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        <span className="text-[13px] font-normal text-gray-600">Funding Ready</span>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="relative overflow-hidden" style={{
+                      transform: chartValues[0] > 0 ? "translateY(0)" : "translateY(20px)",
+                      opacity: chartValues[0] > 0 ? 1 : 0,
+                      transition: "all 0.8s ease-out",
+                      transitionDelay: "1800ms"
+                    }}>
+                        <div className="bg-nimara-purple rounded-xl px-4 py-3 animate-pulse-glow">
+                          <span className="text-3xl font-semibold text-white block">92</span>
+                          <span className="text-xs text-white/80 font-medium">Health Score</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
