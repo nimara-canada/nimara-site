@@ -125,14 +125,28 @@ const HeroSectionLuxe = () => {
 
             {/* Elegant stats */}
             <div className={`flex items-center gap-4 sm:gap-8 transition-all duration-1200 delay-400 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-              <div className="flex items-baseline gap-1.5 sm:gap-2">
-                <span className="text-3xl sm:text-4xl font-extralight text-primary-foreground">6</span>
-                <span className="text-xs sm:text-sm font-medium text-white/50 uppercase tracking-wider">weeks</span>
+              <div className="flex flex-col">
+                <div className="flex items-baseline gap-1.5 sm:gap-2">
+                  <span className="text-2xl sm:text-3xl font-extralight text-primary-foreground">1–4</span>
+                  <span className="text-xs sm:text-sm font-medium text-white/50 uppercase tracking-wider">weeks</span>
+                </div>
+                <span className="text-[10px] sm:text-xs text-white/40">Fast fixes</span>
               </div>
-              <div className="w-px h-6 sm:h-8 bg-white/20" />
-              <div className="flex items-baseline gap-1.5 sm:gap-2">
-                <span className="text-3xl sm:text-4xl font-extralight text-primary-foreground">100%</span>
-                <span className="text-xs sm:text-sm font-medium text-white/50 uppercase tracking-wider">guarantee</span>
+              <div className="w-px h-10 sm:h-12 bg-white/20" />
+              <div className="flex flex-col">
+                <div className="flex items-baseline gap-1.5 sm:gap-2">
+                  <span className="text-2xl sm:text-3xl font-extralight text-primary-foreground">8–12</span>
+                  <span className="text-xs sm:text-sm font-medium text-white/50 uppercase tracking-wider">weeks</span>
+                </div>
+                <span className="text-[10px] sm:text-xs text-white/40">Full systems</span>
+              </div>
+              <div className="w-px h-10 sm:h-12 bg-white/20" />
+              <div className="flex flex-col">
+                <div className="flex items-baseline gap-1.5 sm:gap-2">
+                  <span className="text-2xl sm:text-3xl font-extralight text-primary-foreground">100%</span>
+                  <span className="text-xs sm:text-sm font-medium text-white/50 uppercase tracking-wider">guarantee</span>
+                </div>
+                <span className="text-[10px] sm:text-xs text-white/40">Money-back</span>
               </div>
             </div>
           </div>
