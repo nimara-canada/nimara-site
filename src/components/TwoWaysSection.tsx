@@ -243,7 +243,7 @@ export const TwoWaysSection = () => {
                   Fast Help
                 </h3>
                 <p className="text-accent-foreground text-sm uppercase tracking-[0.15em] font-semibold">
-                  Fix One Urgent Problem
+                  1–4 weeks • Single problem • No NOHC
                 </p>
               </div>
 
@@ -330,10 +330,10 @@ export const TwoWaysSection = () => {
               {/* Title block */}
               <div className="mb-6">
                 <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-2 tracking-tight">
-                  Health Check & System Installs
+                  Health Check & Systems
                 </h3>
                 <p className="text-primary text-sm uppercase tracking-[0.15em] font-semibold">
-                  Comprehensive Transformation
+                  8–12 weeks • NOHC + Bundles
                 </p>
               </div>
 
