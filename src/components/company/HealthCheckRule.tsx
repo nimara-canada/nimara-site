@@ -1,16 +1,20 @@
 import { motion } from "framer-motion";
-import { CheckCircle2, XCircle } from "lucide-react";
+import { CheckCircle2, XCircle, Zap, Layers } from "lucide-react";
 
 const situations = [
   {
     situation: "One scary email / funder / audit issue",
     path: "Path A – Fast Help",
     nohc: false,
+    icon: Zap,
+    iconColor: "text-accent",
   },
   {
     situation: "We want better systems across domains",
     path: "Path B – System Installs",
     nohc: true,
+    icon: Layers,
+    iconColor: "text-primary",
   },
 ];
 
@@ -78,7 +82,8 @@ const HealthCheckRule = () => {
                   <div className="px-4 py-4 text-sm text-foreground/80">
                     {row.situation}
                   </div>
-                  <div className="px-4 py-4 text-sm text-foreground font-medium text-center">
+                  <div className="px-4 py-4 text-sm text-foreground font-medium text-center flex items-center justify-center gap-2">
+                    <row.icon className={`w-4 h-4 ${row.iconColor}`} />
                     {row.path}
                   </div>
                   <div className="px-4 py-4 flex justify-center">
