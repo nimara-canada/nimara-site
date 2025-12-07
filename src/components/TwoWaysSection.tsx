@@ -1,11 +1,25 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 export const TwoWaysSection = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [clickedButton, setClickedButton] = useState<number | null>(null);
   const navigate = useNavigate();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Parallax scroll effects
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const orbY1 = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const orbY2 = useTransform(scrollYProgress, [0, 1], [-50, 150]);
+  const svgY1 = useTransform(scrollYProgress, [0, 1], [50, -80]);
+  const svgY2 = useTransform(scrollYProgress, [0, 1], [-30, 100]);
+  const svgRotate1 = useTransform(scrollYProgress, [0, 1], [0, 15]);
+  const svgRotate2 = useTransform(scrollYProgress, [0, 1], [15, -10]);
 
   const handleNavigate = (path: string, buttonId: number) => {
     setClickedButton(buttonId);
@@ -18,12 +32,18 @@ export const TwoWaysSection = () => {
   };
 
   return (
-    <section className="relative py-24 md:py-32 px-6 bg-gradient-to-b from-secondary to-background overflow-hidden">
-      {/* Sophisticated background elements */}
+    <section ref={sectionRef} className="relative py-24 md:py-32 px-6 bg-gradient-to-b from-secondary to-background overflow-hidden">
+      {/* Sophisticated background elements with parallax */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Large soft gradient orbs - using Nimara brand colors */}
-        <div className="absolute -top-40 -right-40 w-[700px] h-[700px] bg-gradient-to-br from-primary/20 via-primary/10 to-transparent rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-gradient-to-tr from-accent/30 via-accent/15 to-transparent rounded-full blur-3xl" />
+        {/* Large soft gradient orbs - using Nimara brand colors with parallax */}
+        <motion.div 
+          className="absolute -top-40 -right-40 w-[700px] h-[700px] bg-gradient-to-br from-primary/20 via-primary/10 to-transparent rounded-full blur-3xl"
+          style={{ y: orbY1 }}
+        />
+        <motion.div 
+          className="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-gradient-to-tr from-accent/30 via-accent/15 to-transparent rounded-full blur-3xl"
+          style={{ y: orbY2 }}
+        />
         
         {/* Subtle dot pattern */}
         <div 
@@ -34,15 +54,25 @@ export const TwoWaysSection = () => {
           }}
         />
         
-        {/* Decorative line elements */}
-        <svg className="absolute top-20 left-10 w-64 h-64 text-border opacity-60" viewBox="0 0 200 200" fill="none">
+        {/* Decorative line elements with parallax */}
+        <motion.svg 
+          className="absolute top-20 left-10 w-64 h-64 text-border opacity-60" 
+          viewBox="0 0 200 200" 
+          fill="none"
+          style={{ y: svgY1, rotate: svgRotate1 }}
+        >
           <circle cx="100" cy="100" r="80" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 4" />
           <circle cx="100" cy="100" r="60" stroke="currentColor" strokeWidth="0.5" />
-        </svg>
+        </motion.svg>
         
-        <svg className="absolute bottom-20 right-10 w-48 h-48 text-border opacity-60" viewBox="0 0 200 200" fill="none">
+        <motion.svg 
+          className="absolute bottom-20 right-10 w-48 h-48 text-border opacity-60" 
+          viewBox="0 0 200 200" 
+          fill="none"
+          style={{ y: svgY2, rotate: svgRotate2 }}
+        >
           <rect x="40" y="40" width="120" height="120" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 4" transform="rotate(15 100 100)" />
-        </svg>
+        </motion.svg>
       </div>
 
       <div className="relative max-w-6xl mx-auto">
