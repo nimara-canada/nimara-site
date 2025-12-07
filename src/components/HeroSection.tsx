@@ -90,7 +90,7 @@ const HeroSectionLuxe = () => {
 
             {/* Refined description */}
             <p className={`text-base sm:text-xl text-white/60 mb-8 sm:mb-12 leading-relaxed font-light transition-all duration-1200 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-              We install the files that pass audits and satisfy funders—
+              We help small and mid-size nonprofits in Canada fix urgent problems fast, then install the files that keep funders and auditors happy—
               <span className="text-white/90 font-normal">board rules</span>,{" "}
               <span className="text-white/90 font-normal">money tracking</span>,{" "}
               <span className="text-white/90 font-normal">staff folders</span>.
