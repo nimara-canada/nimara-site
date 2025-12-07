@@ -78,14 +78,11 @@ const HeroSectionLuxe = () => {
             </div>
 
             {/* Premium headline with word rotation */}
-            <h1 className={`text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-[1.1] tracking-tight mb-6 sm:mb-8 transition-all duration-1200 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-              On a Mission to Keep Nonprofits
-              <br />
+            <h1 className={`text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-[1.1] tracking-tight mb-6 sm:mb-8 transition-all duration-1200 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>Keep Your Nonprofit
+
+Sustainable<br />
               <span className="relative inline-flex items-baseline">
-                <span 
-                  key={wordIndex}
-                  className="font-normal text-accent transition-all duration-300 animate-fade-in"
-                >
+                <span key={wordIndex} className="font-normal text-accent transition-all duration-300 animate-fade-in">
                   {displayText}
                   <span className="animate-pulse ml-0.5 inline-block w-[3px] h-[1em] bg-accent align-middle" />
                 </span>
@@ -219,11 +216,11 @@ const HeroSectionLuxe = () => {
                     </div>
                     <div className="text-right">
                       <div className="relative overflow-hidden" style={{
-                        transform: chartValues[0] > 0 ? "translateY(0)" : "translateY(20px)",
-                        opacity: chartValues[0] > 0 ? 1 : 0,
-                        transition: "all 0.8s ease-out",
-                        transitionDelay: "1800ms"
-                      }}>
+                      transform: chartValues[0] > 0 ? "translateY(0)" : "translateY(20px)",
+                      opacity: chartValues[0] > 0 ? 1 : 0,
+                      transition: "all 0.8s ease-out",
+                      transitionDelay: "1800ms"
+                    }}>
                         <div className="bg-nimara-purple rounded-xl px-4 py-3 animate-pulse-glow">
                           <span className="text-3xl font-semibold text-white block">92</span>
                           <span className="text-xs text-white/80 font-medium">Health Score</span>
