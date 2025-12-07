@@ -1,8 +1,20 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export const TwoWaysSection = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [clickedButton, setClickedButton] = useState<number | null>(null);
+  const navigate = useNavigate();
+
+  const handleNavigate = (path: string, buttonId: number) => {
+    setClickedButton(buttonId);
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => {
+        navigate(path);
+      }, 150);
+    }, 200);
+  };
 
   return (
     <section className="relative py-32 px-6 bg-gradient-to-b from-slate-50 via-white to-slate-50 overflow-hidden">
@@ -131,18 +143,18 @@ export const TwoWaysSection = () => {
               </div>
 
               {/* CTA Button */}
-              <Link 
-                to="/path-a"
-                className="group/btn relative w-full py-5 px-8 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold text-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-amber-300/40 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center"
+              <button 
+                onClick={() => handleNavigate('/path-a', 1)}
+                className={`group/btn relative w-full py-5 px-8 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold text-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-amber-300/40 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center ${clickedButton === 1 ? 'scale-95 opacity-80' : ''}`}
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-amber-400 to-orange-400 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
                 <span className="relative flex items-center justify-center gap-3">
                   Get fast help
-                  <svg className="w-5 h-5 transition-transform duration-300 group-hover/btn:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <svg className={`w-5 h-5 transition-transform duration-300 group-hover/btn:translate-x-1 ${clickedButton === 1 ? 'translate-x-2' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                   </svg>
                 </span>
-              </Link>
+              </button>
             </div>
           </div>
 
@@ -218,18 +230,18 @@ export const TwoWaysSection = () => {
               </div>
 
               {/* CTA Button */}
-              <Link 
-                to="/health-score"
-                className="group/btn relative w-full py-5 px-8 rounded-2xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold text-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-violet-300/40 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center"
+              <button 
+                onClick={() => handleNavigate('/health-score', 2)}
+                className={`group/btn relative w-full py-5 px-8 rounded-2xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold text-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-violet-300/40 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center ${clickedButton === 2 ? 'scale-95 opacity-80' : ''}`}
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-violet-500 to-indigo-500 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
                 <span className="relative flex items-center justify-center gap-3">
                   Start with a health check
-                  <svg className="w-5 h-5 transition-transform duration-300 group-hover/btn:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <svg className={`w-5 h-5 transition-transform duration-300 group-hover/btn:translate-x-1 ${clickedButton === 2 ? 'translate-x-2' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                   </svg>
                 </span>
-              </Link>
+              </button>
             </div>
           </div>
         </div>
