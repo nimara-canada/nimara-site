@@ -1,13 +1,14 @@
 import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 export const TwoWaysSection = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [clickedButton, setClickedButton] = useState<number | null>(null);
   const navigate = useNavigate();
   const sectionRef = useRef<HTMLElement>(null);
-
+  const isMobile = useIsMobile();
   // Parallax scroll effects
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -74,13 +75,24 @@ export const TwoWaysSection = () => {
           <rect x="40" y="40" width="120" height="120" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 4" transform="rotate(15 100 100)" />
         </motion.svg>
 
-        {/* Floating sparkle particles */}
-        {[...Array(12)].map((_, i) => {
-          const size = Math.random() * 4 + 2;
-          const left = `${Math.random() * 100}%`;
-          const top = `${Math.random() * 100}%`;
-          const delay = Math.random() * 5;
-          const duration = 4 + Math.random() * 4;
+        {/* Floating sparkle particles - reduced on mobile */}
+        {[...Array(isMobile ? 4 : 10)].map((_, i) => {
+          const size = 3 + (i % 3);
+          const positions = [
+            { left: '15%', top: '20%' },
+            { left: '80%', top: '15%' },
+            { left: '25%', top: '70%' },
+            { left: '75%', top: '80%' },
+            { left: '10%', top: '45%' },
+            { left: '90%', top: '50%' },
+            { left: '50%', top: '10%' },
+            { left: '45%', top: '85%' },
+            { left: '60%', top: '35%' },
+            { left: '35%', top: '55%' },
+          ];
+          const pos = positions[i] || positions[0];
+          const delay = i * 0.5;
+          const duration = 5 + (i % 3) * 2;
           const isAccent = i % 3 === 0;
           
           return (
@@ -90,14 +102,14 @@ export const TwoWaysSection = () => {
               style={{
                 width: size,
                 height: size,
-                left,
-                top,
+                left: pos.left,
+                top: pos.top,
               }}
               animate={{
-                y: [-20, 20, -20],
-                x: [-10, 10, -10],
-                opacity: [0.2, 0.6, 0.2],
-                scale: [1, 1.2, 1],
+                y: [-15, 15, -15],
+                x: [-8, 8, -8],
+                opacity: [0.3, 0.6, 0.3],
+                scale: [1, 1.15, 1],
               }}
               transition={{
                 duration,
@@ -109,29 +121,35 @@ export const TwoWaysSection = () => {
           );
         })}
 
-        {/* Additional shimmer sparkles */}
-        {[...Array(8)].map((_, i) => {
-          const left = `${10 + Math.random() * 80}%`;
-          const top = `${10 + Math.random() * 80}%`;
-          const delay = Math.random() * 3;
+        {/* Shimmer sparkles - hidden on mobile for performance */}
+        {!isMobile && [...Array(5)].map((_, i) => {
+          const positions = [
+            { left: '20%', top: '25%' },
+            { left: '70%', top: '20%' },
+            { left: '85%', top: '60%' },
+            { left: '30%', top: '75%' },
+            { left: '55%', top: '45%' },
+          ];
+          const pos = positions[i];
+          const delay = i * 0.8;
           
           return (
             <motion.div
               key={`shimmer-${i}`}
               className="absolute"
-              style={{ left, top }}
+              style={{ left: pos.left, top: pos.top }}
               animate={{
-                opacity: [0, 1, 0],
+                opacity: [0, 0.8, 0],
                 scale: [0.5, 1, 0.5],
               }}
               transition={{
-                duration: 2 + Math.random() * 2,
+                duration: 3 + i * 0.5,
                 delay,
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
             >
-              <svg width="12" height="12" viewBox="0 0 12 12" className="text-primary/40">
+              <svg width="10" height="10" viewBox="0 0 12 12" className="text-primary/30">
                 <path
                   d="M6 0L7.5 4.5L12 6L7.5 7.5L6 12L4.5 7.5L0 6L4.5 4.5L6 0Z"
                   fill="currentColor"
