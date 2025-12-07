@@ -33,22 +33,22 @@ export const TwoWaysSection = () => {
   };
 
   return (
-    <section ref={sectionRef} className="relative py-24 md:py-32 px-6 bg-gradient-to-b from-secondary to-background overflow-hidden">
+    <section ref={sectionRef} className="relative py-24 md:py-32 px-6 bg-background overflow-hidden">
       {/* Sophisticated background elements with parallax */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Large soft gradient orbs - using Nimara brand colors with parallax */}
+        {/* Subtle gradient orbs - very light for premium feel */}
         <motion.div 
-          className="absolute -top-40 -right-40 w-[700px] h-[700px] bg-gradient-to-br from-primary/20 via-primary/10 to-transparent rounded-full blur-3xl"
+          className="absolute -top-40 -right-40 w-[700px] h-[700px] bg-gradient-to-br from-primary/5 via-primary/[0.02] to-transparent rounded-full blur-3xl"
           style={{ y: orbY1 }}
         />
         <motion.div 
-          className="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-gradient-to-tr from-accent/30 via-accent/15 to-transparent rounded-full blur-3xl"
+          className="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-gradient-to-tr from-accent/10 via-accent/5 to-transparent rounded-full blur-3xl"
           style={{ y: orbY2 }}
         />
         
-        {/* Subtle dot pattern */}
+        {/* Very subtle dot pattern */}
         <div 
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0 opacity-15"
           style={{
             backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--border)) 1px, transparent 0)`,
             backgroundSize: '32px 32px'
