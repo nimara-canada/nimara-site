@@ -367,7 +367,7 @@ export const PathComparison = () => {
       }} className="text-center mt-8">
           <Link to="/health-score" className="group inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm">
             <span>Not sure which path?</span>
-            <span className="font-medium text-primary underline underline-offset-2">Take our health score assessment</span>
+            <span className="font-medium text-primary underline underline-offset-2">Take our health check assessment</span>
             <motion.span className="inline-flex" animate={{
             x: [0, 4, 0]
           }} transition={{

@@ -64,7 +64,7 @@ const PathB = () => {
               size="lg" 
               className="bg-nimara-mint text-nimara-navy hover:bg-nimara-mint/90 font-semibold text-lg px-8 py-6"
             >
-              Start Path B – Get Your Health Score
+              Start Path B – Begin Your Health Check
             </Button>
             <p className="mt-4 text-white/70 text-sm">
               <a href="/how-nimara-works" className="underline hover:text-white">
@@ -159,7 +159,7 @@ const PathB = () => {
               {[
                 {
                   step: 1,
-                  title: "Health Score Assessment (Week 1)",
+                  title: "Health Check Assessment (Week 1)",
                   description: "Start with our Organizational Health Check. In about 7–9 minutes, you'll answer questions across six operational areas. You'll get:",
                   bullets: [
                     "Your NOHC (Nimara Organizational Health Check) score",
@@ -170,7 +170,7 @@ const PathB = () => {
                 {
                   step: 2,
                   title: "Consultation & Matching (Week 1–2)",
-                  description: "We review your Health Score and schedule a consultation call. Together, we'll:",
+                  description: "We review your Health Check results and schedule a consultation call. Together, we'll:",
                   bullets: [
                     "Confirm your tier and priority areas",
                     "Match you with the right Nimara Practice Partner",
@@ -373,7 +373,7 @@ const PathB = () => {
               Ready to build real systems?
             </h2>
             <p className="text-lg text-white/80 mb-12 text-center max-w-2xl mx-auto">
-              Start with your free Health Score to see where you stand. We'll use it to scope your Path B engagement and match you with the right Practice Partner.
+              Start with your free Health Check to see where you stand. We'll use it to scope your Path B engagement and match you with the right Practice Partner.
             </p>
             
             <div className="grid md:grid-cols-2 gap-8">
@@ -389,7 +389,7 @@ const PathB = () => {
                   <li>• 3 months of follow-up support included</li>
                 </ul>
                 <p className="text-white/60 text-xs">
-                  Every Path B engagement begins with the Health Score assessment.
+                  Every Path B engagement begins with the Health Check assessment.
                 </p>
               </div>
               
@@ -399,7 +399,7 @@ const PathB = () => {
                   className="w-full bg-nimara-mint text-nimara-navy hover:bg-nimara-mint/90 font-semibold text-lg py-6 mb-4"
                   asChild
                 >
-                  <a href="/health-score">Start Your Health Score</a>
+                  <a href="/health-score">Start Your Health Check</a>
                 </Button>
                 <p className="text-white/70 text-sm text-center mb-6">
                   Prefer to talk first? <a href="https://calendly.com/hello-nimara/30min" target="_blank" rel="noopener noreferrer" className="text-nimara-mint underline">Book a consultation call.</a>
@@ -417,7 +417,7 @@ const PathB = () => {
                     },
                     {
                       q: "Can we choose which areas to focus on?",
-                      a: "Yes. Your Health Score helps prioritize, but you decide which areas matter most for your organization right now."
+                      a: "Yes. Your Health Check helps prioritize, but you decide which areas matter most for your organization right now."
                     },
                     {
                       q: "What's the money-back guarantee?",
