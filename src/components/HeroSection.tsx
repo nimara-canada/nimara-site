@@ -114,7 +114,7 @@ const HeroSectionLuxe = () => {
 
                 <a href="/health-score" className="group px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl border border-white/20 bg-white/5 backdrop-blur text-primary-foreground font-semibold transition-all duration-300 hover:border-white/40 hover:bg-white/10 hover:shadow-lg text-sm sm:text-base">
                   <span className="flex items-center justify-center gap-2">
-                    Get Your Health Score
+                    Start Your Health Check
                     <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
