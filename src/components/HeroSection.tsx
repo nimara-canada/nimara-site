@@ -98,6 +98,9 @@ const HeroSectionLuxe = () => {
 
             {/* Premium CTA buttons */}
             <div className={`space-y-4 mb-10 sm:mb-16 transition-all duration-1200 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+              <p className="text-sm sm:text-base text-white/70 font-medium mb-2">
+                Two ways to start: fix one urgent problem, or get a full health check.
+              </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <a href="/path-a" className="group relative px-6 sm:px-8 py-3.5 sm:py-4 overflow-hidden rounded-xl bg-accent text-accent-foreground font-semibold shadow-soft transition-all duration-500 hover:shadow-lg hover:scale-[1.02] text-sm sm:text-base" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
                   <span className="relative z-10 flex items-center justify-center gap-2">
