@@ -3,6 +3,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { TheNimaraModel } from "@/components/company/TheNimaraModel";
 import HowItWorksHero from "@/components/company/HowItWorksHero";
+import HealthCheckRule from "@/components/company/HealthCheckRule";
 import YourJourney from "@/components/company/YourJourney";
 import QualityAndRefundsAlt from "@/components/company/QualityAndRefundsAlt";
 import { ChevronDown } from "lucide-react";
@@ -47,6 +48,9 @@ const HowNimaraWorks = () => {
       
       <main id="main" style={{ paddingTop: 'calc(var(--announcement-height, 0px) + 4rem)' }}>
         <HowItWorksHero />
+        
+        {/* Health Check Rule Section */}
+        <HealthCheckRule />
         
         {/* Subtle visual connector with arrows */}
         <div className="relative bg-white">
