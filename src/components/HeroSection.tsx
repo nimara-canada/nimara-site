@@ -6,7 +6,7 @@ const HeroSectionLuxe = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
-  const words = ["Fundable", "Audit-Ready", "Compliant", "Sustainable", "Efficient"];
+  const words = ["Fundable", "Audit-Ready", "Sustainable", "Efficient", "Compliant"];
 
   // Chart animation states
   const [chartValues, setChartValues] = useState([0, 0, 0]);
