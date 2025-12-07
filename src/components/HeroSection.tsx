@@ -78,11 +78,10 @@ const HeroSectionLuxe = () => {
             </div>
 
             {/* Premium headline with word rotation */}
-            <h1 className={`text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-[1.1] tracking-tight mb-6 sm:mb-8 transition-all duration-1200 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>Keep Your Nonprofit
-
-Sustainable<br />
+            <h1 className={`text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-[1.1] tracking-tight mb-6 sm:mb-8 transition-all duration-1200 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+              Keep Your Nonprofit<br />
               <span className="relative inline-flex items-baseline">
-                <span key={wordIndex} className="font-normal text-accent transition-all duration-300 animate-fade-in">
+                <span key={wordIndex} className="text-accent transition-all duration-300 animate-fade-in">
                   {displayText}
                   <span className="animate-pulse ml-0.5 inline-block w-[3px] h-[1em] bg-accent align-middle" />
                 </span>
