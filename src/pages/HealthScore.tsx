@@ -22,7 +22,7 @@ const faqs = [{
 const benefits = [{
   icon: FileText,
   title: "Clarity in one page",
-  description: "A simple snapshot of your governance, finance, people, operations, and programs – not a 20-page report.",
+  description: "A simple snapshot of your governance, finance, HR, programs, fundraising, volunteers, and systems – not a 20-page report.",
   gradient: "from-violet-500/20 to-purple-500/20"
 }, {
   icon: Target,
