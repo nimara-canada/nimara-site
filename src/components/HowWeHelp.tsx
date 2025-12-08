@@ -6,12 +6,12 @@ const steps = [
   {
     number: 1,
     title: "Check what's really going on",
-    text: "For Fast Help, we start with a short intake around one urgent problem. For system installs, we run the Nimara Organizational Health Check (NOHC) across your core systems so we know where each one stands."
+    text: "For Path A (Rapid Response), we start with a short intake around one urgent problem. For Path B (System Installs), we run an NOHC Snapshot across your core systems so we know where each one stands."
   },
   {
     number: 2,
     title: "Clear, small workplan",
-    text: "We turn what we learn into a short workplan. For Fast Help, that's one mini-bundle. For system installs, it's 1–2 system bundles with clear jobs, owners, and dates."
+    text: "We turn what we learn into a short workplan. For Path A, that's one mini-bundle. For Path B, it's 1–2 system bundles with clear jobs, owners, and dates."
   },
   {
     number: 3,
@@ -21,14 +21,14 @@ const steps = [
   {
     number: 4,
     title: "Support and a safety net",
-    text: "When the main build is done, we stay long enough to help you use the new tools in real life. Fast Help projects include light follow-up. Bigger system installs usually come with up to 3 months of support and a clear money-back guarantee if we don't finish the work we agreed."
+    text: "When the main build is done, we stay long enough to help you use the new tools in real life. Path A projects include light follow-up. Path B system bundles come with up to 3 months of support and a clear money-back guarantee if we don't finish the work we agreed."
   }
 ];
 
 const promises = [
-  { text: "Money-back guarantee on eligible system installs", highlight: true },
+  { text: "Money-back guarantee on Path B system bundles", highlight: true },
   { text: "Support while you start using the new tools", highlight: false },
-  { text: "Optional 12-month follow-up on bigger projects", highlight: false }
+  { text: "Optional 12-month follow-up on Path B projects", highlight: false }
 ];
 
 const containerVariants: Variants = {
