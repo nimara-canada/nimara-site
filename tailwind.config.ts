@@ -63,9 +63,14 @@ export default {
           purple: "hsl(var(--nim-purple))",
           mint: "hsl(var(--nim-mint))",
           slate: "hsl(var(--nim-slate))",
+          "slate-dark": "hsl(var(--nim-slate-dark))",
           white: "hsl(var(--nim-white))",
           mist: "hsl(var(--nim-mist))",
           cloud: "hsl(var(--nim-cloud))",
+        },
+        body: {
+          DEFAULT: "hsl(var(--body))",
+          muted: "hsl(var(--body-muted))",
         },
         nimara: {
           navy: "hsl(var(--nimara-navy))",

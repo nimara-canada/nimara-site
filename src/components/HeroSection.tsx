@@ -89,16 +89,16 @@ const HeroSectionLuxe = () => {
             </h1>
 
             {/* Refined description */}
-            <p className={`text-base sm:text-xl text-white/60 mb-8 sm:mb-12 leading-relaxed font-light transition-all duration-1200 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+            <p className={`text-base sm:text-xl text-white/80 mb-8 sm:mb-12 leading-relaxed font-light transition-all duration-1200 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
               We help small and mid-size nonprofits in Canada fix urgent problems fast, then install the files that keep funders and auditors happy—
-              <span className="text-white/90 font-normal">board rules</span>,{" "}
-              <span className="text-white/90 font-normal">money tracking</span>,{" "}
-              <span className="text-white/90 font-normal">staff folders</span>.
+              <span className="text-white font-normal">board rules</span>,{" "}
+              <span className="text-white font-normal">staff folders</span>,{" "}
+              <span className="text-white font-normal">money tracking</span>.
             </p>
 
             {/* Premium CTA buttons */}
             <div className={`space-y-4 mb-10 sm:mb-16 transition-all duration-1200 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-              <p className="text-sm sm:text-base text-white/70 font-medium mb-2">
+              <p className="text-sm sm:text-base text-white/80 font-medium mb-2">
                 Two ways to start: fix one urgent problem, or get a full health check.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
@@ -121,7 +121,7 @@ const HeroSectionLuxe = () => {
                   </span>
                 </a>
               </div>
-              <p className="text-xs sm:text-sm text-white/50 text-center sm:text-left">
+              <p className="text-xs sm:text-sm text-white/70 text-center sm:text-left">
                 Not sure where to start? We'll help you choose on the first call.
               </p>
             </div>
@@ -131,25 +131,25 @@ const HeroSectionLuxe = () => {
               <div className="flex flex-col">
                 <div className="flex items-baseline gap-1.5 sm:gap-2">
                   <span className="text-2xl sm:text-3xl font-extralight text-primary-foreground">1–4</span>
-                  <span className="text-xs sm:text-sm font-medium text-white/50 uppercase tracking-wider">weeks</span>
+                  <span className="text-xs sm:text-sm font-medium text-white/70 uppercase tracking-wider">weeks</span>
                 </div>
-                <span className="text-[10px] sm:text-xs text-white/40">Fast fixes</span>
+                <span className="text-[10px] sm:text-xs text-white/60">Fast fixes</span>
               </div>
               <div className="w-px h-10 sm:h-12 bg-white/20" />
               <div className="flex flex-col">
                 <div className="flex items-baseline gap-1.5 sm:gap-2">
                   <span className="text-2xl sm:text-3xl font-extralight text-primary-foreground">8–12</span>
-                  <span className="text-xs sm:text-sm font-medium text-white/50 uppercase tracking-wider">weeks</span>
+                  <span className="text-xs sm:text-sm font-medium text-white/70 uppercase tracking-wider">weeks</span>
                 </div>
-                <span className="text-[10px] sm:text-xs text-white/40">Full systems</span>
+                <span className="text-[10px] sm:text-xs text-white/60">Full systems</span>
               </div>
               <div className="w-px h-10 sm:h-12 bg-white/20" />
               <div className="flex flex-col">
                 <div className="flex items-baseline gap-1.5 sm:gap-2">
                   <span className="text-2xl sm:text-3xl font-extralight text-primary-foreground">100%</span>
-                  <span className="text-xs sm:text-sm font-medium text-white/50 uppercase tracking-wider">guarantee</span>
+                  <span className="text-xs sm:text-sm font-medium text-white/70 uppercase tracking-wider">guarantee</span>
                 </div>
-                <span className="text-[10px] sm:text-xs text-white/40">Money-back</span>
+                <span className="text-[10px] sm:text-xs text-white/60">Money-back</span>
               </div>
             </div>
           </div>
@@ -171,11 +171,11 @@ const HeroSectionLuxe = () => {
                     </div>
                     <div>
                       <h3 className="text-sm font-medium text-gray-800 tracking-tight">NOHC Results</h3>
-                      <p className="text-[10px] text-gray-400 font-normal mt-0.5 tracking-wide uppercase">Health Check Outcome</p>
+                      <p className="text-[10px] text-gray-500 font-normal mt-0.5 tracking-wide uppercase">Health Check Outcome</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <span className="text-[9px] text-gray-400 tracking-wider">SAMPLE</span>
+                    <span className="text-[9px] text-gray-500 tracking-wider">SAMPLE</span>
                     <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
                   </div>
                 </div>

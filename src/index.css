@@ -21,7 +21,8 @@ All colors MUST be HSL.
     --nim-navy: 229 48% 25%; /* #202654 */
     --nim-purple: 252 58% 56%; /* #6945D8 */
     --nim-mint: 162 91% 83%; /* #ACFCE3 */
-    --nim-slate: 221 24% 64%; /* #96A0B5 */
+    --nim-slate: 215 16% 47%; /* #6B7280 - darkened for accessibility */
+    --nim-slate-dark: 215 19% 35%; /* #475569 - body text color */
     --nim-white: 0 0% 100%; /* #FFFFFF */
     --nim-mist: 226 33% 93%; /* #E9ECF4 */
     --nim-cloud: 220 50% 97%; /* #F7F9FC */
@@ -43,7 +44,11 @@ All colors MUST be HSL.
     --secondary-foreground: var(--nim-navy);
 
     --muted: var(--nim-cloud);
-    --muted-foreground: var(--nim-slate);
+    --muted-foreground: var(--nim-slate-dark);
+    
+    /* Body text semantic tokens */
+    --body: var(--nim-slate-dark);
+    --body-muted: var(--nim-slate);
 
     --accent: var(--nim-mint);
     --accent-foreground: var(--nim-navy);
@@ -93,7 +98,11 @@ All colors MUST be HSL.
     --secondary-foreground: var(--nim-white);
 
     --muted: 229 40% 22%;
-    --muted-foreground: var(--nim-slate);
+    --muted-foreground: 215 20% 65%;
+    
+    /* Body text semantic tokens - lighter for dark mode */
+    --body: 215 20% 65%;
+    --body-muted: 215 16% 55%;
 
     --accent: var(--nim-mint);
     --accent-foreground: 229 48% 15%;
