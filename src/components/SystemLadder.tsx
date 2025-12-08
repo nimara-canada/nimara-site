@@ -111,7 +111,7 @@ export const SystemLadder = () => {
           </h2>
           
           <p className="text-subtitle text-white/90">
-            We place every nonprofit on a simple 5-tier ladder so we know exactly where to start and what to build first.
+            The NOHC Snapshot places every nonprofit on a simple 5-tier ladder so we know exactly where to start and whether Path A or Path B fits best.
           </p>
         </motion.div>
 
@@ -426,13 +426,13 @@ export const SystemLadder = () => {
           <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-6 p-4 sm:p-6 rounded-2xl bg-slate-800/80 border border-white/10">
             <p className="text-foreground/80 text-xs sm:text-sm text-center sm:text-left">
               Not sure where you fall?{' '}
-              <span className="text-primary-foreground font-medium">Our free Health Check will place you.</span>
+              <span className="text-primary-foreground font-medium">The NOHC Snapshot will place you on the ladder.</span>
             </p>
             <a
               href="/health-score"
               className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-200 shadow-soft focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary-background"
             >
-              Find your level
+              Get your NOHC Snapshot
               <ArrowRight size={16} />
             </a>
           </div>
@@ -446,7 +446,7 @@ export const SystemLadder = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
         >
-          We use this ladder to choose the right level of help for you—never too much, never too little.
+          We use this ladder to match you with Path A (rapid response) or Path B (system bundles)—never too much, never too little.
         </motion.p>
       </div>
     </section>
