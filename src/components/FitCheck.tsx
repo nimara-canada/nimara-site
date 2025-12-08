@@ -81,9 +81,11 @@ export const FitCheck = () => {
           margin: "-50px"
         }} variants={fadeInUp}>
             {/* Label */}
-            <span className="text-xs font-semibold tracking-widest text-[hsl(var(--nimara-purple))] uppercase mb-4 block">
-              Who Nimara Is For
-            </span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary-background shadow-md mb-4">
+              <span className="text-xs font-semibold tracking-widest text-primary-foreground uppercase">
+                Who Nimara Is For
+              </span>
+            </div>
 
             <h2 id="fit-check-heading" className="heading-2 text-foreground mb-4 sm:mb-6">
               Is Nimara right for{' '}

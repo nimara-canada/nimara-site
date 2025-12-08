@@ -291,9 +291,11 @@ export const Expertise = () => {
           viewport={{ once: true, margin: "-50px" }}
           variants={fadeInUp}
         >
-          <span className="text-xs font-semibold tracking-widest text-primary uppercase mb-4 block">
-            Our Domains
-          </span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary-background shadow-md mb-4">
+            <span className="text-xs font-semibold tracking-widest text-primary-foreground uppercase">
+              Our Domains
+            </span>
+          </div>
           
           <h2
             id="expertise-heading"

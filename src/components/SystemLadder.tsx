@@ -97,9 +97,11 @@ export const SystemLadder = () => {
           viewport={{ once: true, margin: "-50px" }}
           variants={fadeInUp}
         >
-          <span className="text-xs font-semibold tracking-widest text-primary uppercase mb-4 block">
-            The Nimara System
-          </span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent shadow-md mb-4">
+            <span className="text-xs font-semibold tracking-widest text-accent-foreground uppercase">
+              The Nimara System
+            </span>
+          </div>
           
           <h2
             id="system-heading"

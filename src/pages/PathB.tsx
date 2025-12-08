@@ -31,7 +31,7 @@ const PathB = () => {
             transition={{ duration: 0.5 }}
             className="text-center"
           >
-            <Badge variant="secondary" className="mb-6 bg-nimara-purple text-white">
+            <Badge variant="navy" className="mb-6">
               Most Popular
             </Badge>
             <h1 className="heading-display text-white mb-4">
