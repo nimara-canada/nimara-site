@@ -223,44 +223,25 @@ export const TwoWaysSection = () => {
         >
           {/* Refined pill badge */}
           <motion.div
-            className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-secondary-background border border-secondary-background shadow-md mb-8"
+            className="inline-flex items-center px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-60" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
-            </span>
-            <span className="text-xs font-medium tracking-[0.15em] uppercase text-primary-foreground">
-              Choose Your Path
+            <span className="text-sm font-medium text-accent">
+              Two paths forward
             </span>
           </motion.div>
 
           <motion.h2
-            className="heading-2 text-foreground mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-foreground mb-6"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.15 }}
           >
-            Two ways to work
-            <br />
-            <span className="relative inline-block mt-1">
-              with{" "}
-              <span className="relative">
-                <span className="relative z-10">Nimara</span>
-                <motion.span
-                  className="absolute -bottom-1 left-0 right-0 h-3 bg-gradient-to-r from-accent/40 via-primary/30 to-accent/40 rounded-full -z-0"
-                  initial={{ scaleX: 0, opacity: 0 }}
-                  whileInView={{ scaleX: 1, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
-                  style={{ originX: 0 }}
-                />
-              </span>
-            </span>
+            Two Ways We Work
           </motion.h2>
 
           <motion.p
@@ -270,7 +251,7 @@ export const TwoWaysSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.25 }}
           >
-            Whether you need rapid response or systematic transformation, we meet you where you are.
+            Choose what fits your situation: quick fixes or full system installation.
           </motion.p>
         </motion.div>
 
