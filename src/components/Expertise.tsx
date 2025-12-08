@@ -9,7 +9,8 @@ import {
   Heart, 
   HandHelping,
   Database,
-  ChevronRight
+  ChevronRight,
+  ClipboardList
 } from 'lucide-react';
 
 const expertiseItems = [
@@ -56,17 +57,31 @@ const expertiseItems = [
     ]
   },
   {
+    id: 'programs',
+    icon: ClipboardList,
+    title: "Programs & Services",
+    description: "Clear, safe ways to plan, deliver, and review your programs.",
+    color: 'indigo',
+    bullets: [
+      "Simple list of programs and who they're for",
+      "Clear intake and eligibility steps",
+      "Basic program delivery checklists and scripts",
+      "Incident and safety logging basics",
+      "A simple way to review what's working each year"
+    ]
+  },
+  {
     id: 'fundraising',
     icon: Heart,
     title: "Fundraising & Donor Standards",
-    description: "Safe, simple ways to accept, track, and thank gifts.",
+    description: "Safe, simple ways to accept, record, receipt, and thank gifts.",
     color: 'rose',
     bullets: [
-      "Gift acceptance rules",
-      "Receipting and CRA-compliant records",
-      "Donor data and privacy",
-      "Thank-you and stewardship process",
-      "Events and online fundraising basics"
+      "Gift acceptance rules you can explain to staff and board",
+      "Simple donor and funder record fields",
+      "Receipting and acknowledgment checklists",
+      "A basic log of gifts and grants",
+      "Simple reporting views for board and funders"
     ]
   },
   {
@@ -87,14 +102,14 @@ const expertiseItems = [
     id: 'systems',
     icon: Database,
     title: "Systems, Data & Records",
-    description: "Simple tools so you can find what you need and show what changed.",
+    description: "Simple tools so you can find what you need, protect records, and show what changed.",
     color: 'teal',
     bullets: [
-      "File storage and access rules",
-      "Contact list or CRM setup",
-      "Basic data protection and backups",
-      "Simple dashboards and reports",
-      "Retention and destruction of records"
+      "Shared drive and folder structure that everyone can follow",
+      "File and folder naming rules",
+      "Where key program and client records live",
+      "Simple data tables and dashboards for funders and board",
+      "A basic log of changes and decisions"
     ]
   }
 ];
@@ -103,6 +118,7 @@ const colorClasses: Record<string, { bg: string; text: string; light: string; bo
   violet: { bg: 'bg-violet-500', text: 'text-violet-600', light: 'bg-violet-50', border: 'border-violet-200' },
   emerald: { bg: 'bg-emerald-500', text: 'text-emerald-600', light: 'bg-emerald-50', border: 'border-emerald-200' },
   sky: { bg: 'bg-sky-500', text: 'text-sky-600', light: 'bg-sky-50', border: 'border-sky-200' },
+  indigo: { bg: 'bg-indigo-500', text: 'text-indigo-600', light: 'bg-indigo-50', border: 'border-indigo-200' },
   rose: { bg: 'bg-rose-500', text: 'text-rose-600', light: 'bg-rose-50', border: 'border-rose-200' },
   amber: { bg: 'bg-amber-500', text: 'text-amber-600', light: 'bg-amber-50', border: 'border-amber-200' },
   teal: { bg: 'bg-teal-500', text: 'text-teal-600', light: 'bg-teal-50', border: 'border-teal-200' }
@@ -305,7 +321,7 @@ export const Expertise = () => {
           </h2>
           
           <p className="text-subtitle">
-            We focus on the boring but critical systems that keep your nonprofit safe, fundable, and ready for growth.
+            We focus on the boring but critical systems that keep your nonprofit safe, fundable, and easier to run.
           </p>
         </motion.div>
 
@@ -401,7 +417,7 @@ export const Expertise = () => {
               })}
             </div>
             <p className="text-sm text-body-muted">
-              <span className="font-medium text-foreground">All 6 domains</span> covered in our Health Check
+              <span className="font-medium text-foreground">All 7 domains</span> covered in our Health Check
             </p>
             <a
               href="/health-score"
