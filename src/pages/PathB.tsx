@@ -34,13 +34,13 @@ const PathB = () => {
             <Badge variant="secondary" className="mb-6 bg-nimara-purple text-white">
               Most Popular
             </Badge>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+            <h1 className="heading-display text-white mb-4">
               Path B: System Build
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-6">
               Build systems that funders trust and your team can run.
             </p>
-            <p className="text-base md:text-lg text-white/80 max-w-2xl mx-auto mb-8">
+            <p className="text-body-lg text-white/85 max-w-2xl mx-auto mb-8">
               Path B is for when you're ready to get your organization fully set up. We assess where you are, match you with the right consultant, and help you build across multiple operational areas—so you're not just patching problems, you're building for scale.
             </p>
             
@@ -84,10 +84,10 @@ const PathB = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-nimara-navy mb-4 text-center">
+            <h2 className="heading-2 text-nimara-navy mb-4 text-center">
               Is Path B a good fit?
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 text-center">
+            <p className="text-subtitle mb-8 text-center">
               This is for organizations ready to build, not just fix.
             </p>
             
@@ -148,10 +148,10 @@ const PathB = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-nimara-navy mb-4 text-center">
+            <h2 className="heading-2 text-nimara-navy mb-4 text-center">
               How Path B works
             </h2>
-            <p className="text-lg text-muted-foreground mb-12 text-center">
+            <p className="text-subtitle mb-12 text-center">
               A structured process from assessment to implementation.
             </p>
             
@@ -217,9 +217,9 @@ const PathB = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="font-semibold text-nimara-navy text-lg mb-2">{item.title}</h3>
-                    <p className="text-muted-foreground">{item.description}</p>
+                    <p className="text-body">{item.description}</p>
                     {item.bullets && (
-                      <ul className="mt-2 space-y-1 text-muted-foreground">
+                      <ul className="mt-2 space-y-1 text-body-muted">
                         {item.bullets.map((bullet, i) => (
                           <li key={i}>• {bullet}</li>
                         ))}
@@ -254,10 +254,10 @@ const PathB = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-nimara-navy mb-4 text-center">
+            <h2 className="heading-2 text-nimara-navy mb-4 text-center">
               What's inside the Full Acceptance Bundle?
             </h2>
-            <p className="text-lg text-muted-foreground mb-12 text-center">
+            <p className="text-subtitle mb-12 text-center">
               Everything you need to run a fundable, compliant, and sustainable organization.
             </p>
             
@@ -305,7 +305,7 @@ const PathB = () => {
                     <CardContent className="pt-6">
                       <item.icon className="w-8 h-8 text-nimara-purple mb-4" />
                       <h3 className="font-semibold text-nimara-navy mb-2">{item.title}</h3>
-                      <p className="text-muted-foreground text-sm">{item.description}</p>
+                      <p className="text-body-muted text-sm">{item.description}</p>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -324,10 +324,10 @@ const PathB = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-nimara-navy mb-4 text-center">
+            <h2 className="heading-2 text-nimara-navy mb-4 text-center">
               Optional add-ons
             </h2>
-            <p className="text-lg text-muted-foreground mb-12 text-center">
+            <p className="text-subtitle mb-12 text-center">
               Extend your support beyond the initial implementation.
             </p>
             
@@ -369,10 +369,10 @@ const PathB = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 text-center">
+            <h2 className="heading-2 text-white mb-4 text-center">
               Ready to build real systems?
             </h2>
-            <p className="text-lg text-white/80 mb-12 text-center max-w-2xl mx-auto">
+            <p className="text-lg text-white/85 mb-12 text-center max-w-2xl mx-auto">
               Start with your free Health Check to see where you stand. We'll use it to scope your Path B engagement and match you with the right Practice Partner.
             </p>
             

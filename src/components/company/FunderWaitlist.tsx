@@ -16,11 +16,11 @@ export const FunderWaitlist = () => {
           transition={{ duration: 0.6 }}
           className="space-y-8"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
+          <h2 className="heading-2 text-foreground">
             For funders: we're building with you
           </h2>
           
-          <div className="space-y-6 text-lg text-muted-foreground">
+          <div className="space-y-6 text-body">
             <p>
               Nimara is being built so funders can run capacity-building programs through one shared operator instead of many separate, one-off projects.
             </p>
@@ -45,7 +45,7 @@ export const FunderWaitlist = () => {
                 className="flex items-start gap-3"
               >
                 <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                <span className="text-lg text-muted-foreground">{item}</span>
+                <span className="text-body">{item}</span>
               </motion.li>
             ))}
           </ul>
