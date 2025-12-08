@@ -1,8 +1,7 @@
-import { useState, useRef } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 // Premium animated background orb
 const GlowOrb = ({
@@ -33,225 +32,105 @@ const GlowOrb = ({
   />
 );
 
-// Premium card component with magnetic hover effect
+// Clean card with accent stripe
 const PathCard = ({
   children,
-  isHovered,
-  onHover,
-  onLeave,
   variant = "default",
   delay = 0,
 }: {
   children: React.ReactNode;
-  isHovered: boolean;
-  onHover: () => void;
-  onLeave: () => void;
   variant?: "default" | "featured";
   delay?: number;
 }) => {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [2, -2]), { stiffness: 300, damping: 30 });
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-2, 2]), { stiffness: 300, damping: 30 });
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    mouseX.set(x);
-    mouseY.set(y);
-  };
-
-  const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-    onLeave();
-  };
-
   const isPrimary = variant === "featured";
-  const borderColor = isPrimary ? "border-primary/20" : "border-border/60";
-  const hoverBorderColor = isPrimary ? "hover:border-primary/40" : "hover:border-accent/40";
-  const glowColor = isPrimary
-    ? "from-primary/20 via-primary/10 to-transparent"
-    : "from-accent/25 via-accent/10 to-transparent";
+  const accentColor = isPrimary ? "bg-primary/15" : "bg-accent/15";
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
       className="relative group"
     >
-      {/* Ambient glow on hover */}
-      <motion.div
-        className={`absolute -inset-px rounded-[28px] bg-gradient-to-br ${glowColor} blur-xl`}
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{
-          opacity: isHovered ? 1 : 0,
-          scale: isHovered ? 1 : 0.95,
-        }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-      />
-
-      <motion.div
-        ref={cardRef}
-        onMouseMove={handleMouseMove}
-        onMouseEnter={onHover}
-        onMouseLeave={handleMouseLeave}
-        style={{
-          rotateX,
-          rotateY,
-          transformPerspective: 1200,
-        }}
-        className={`
-          relative h-full rounded-[24px] border ${borderColor} ${hoverBorderColor}
-          bg-gradient-to-b from-card/95 to-card/80
-          backdrop-blur-xl
-          shadow-[0_8px_32px_-8px_rgba(0,0,0,0.08),0_4px_16px_-4px_rgba(0,0,0,0.04)]
-          hover:shadow-[0_24px_64px_-16px_rgba(0,0,0,0.12),0_8px_24px_-8px_rgba(0,0,0,0.06)]
-          transition-all duration-500 ease-out
-          overflow-visible
-        `}
-      >
-        {/* Subtle inner glow */}
-        <div className="absolute inset-0 rounded-[24px] opacity-50 bg-gradient-to-br from-white/[0.08] via-transparent to-transparent pointer-events-none" />
-
+      <div className="relative h-full rounded-2xl border border-border/60 bg-card overflow-hidden transition-shadow duration-300 hover:shadow-lg">
+        {/* Accent stripe on right side */}
+        <div className={`absolute top-0 right-0 w-16 h-32 ${accentColor} rounded-bl-[4rem]`} />
+        
         {/* Content */}
         <div className="relative p-8 lg:p-10">{children}</div>
-      </motion.div>
+      </div>
     </motion.div>
   );
 };
 
-// Refined badge component
-const Badge = ({ children, variant = "default" }: { children: React.ReactNode; variant?: "default" | "popular" }) => {
-  if (variant === "popular") {
-    return (
-      <motion.div
-        className="absolute -top-4 left-1/2 -translate-x-1/2 z-20"
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.5, duration: 0.5 }}
-      >
-        <div className="relative">
-          <div className="absolute inset-0 bg-primary/40 rounded-full blur-lg" />
-          <div className="relative px-4 py-1.5 rounded-full bg-primary text-primary-foreground text-[11px] font-semibold tracking-[0.08em] uppercase shadow-lg">
-            Most Popular
-          </div>
-        </div>
-      </motion.div>
-    );
-  }
+// Simple pill badge at top of card
+const PathBadge = ({ 
+  icon, 
+  children, 
+  variant = "accent" 
+}: { 
+  icon: React.ReactNode;
+  children: React.ReactNode; 
+  variant?: "accent" | "primary";
+}) => {
+  const bgColor = variant === "primary" ? "bg-primary/10" : "bg-accent/10";
+  const textColor = variant === "primary" ? "text-primary" : "text-accent";
+  const borderColor = variant === "primary" ? "border-primary/20" : "border-accent/20";
+  
   return (
-    <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-muted/60 border border-border/50 text-xs text-muted-foreground">
+    <span className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full ${bgColor} border ${borderColor} text-sm font-medium ${textColor}`}>
+      {icon}
       {children}
     </span>
   );
 };
 
-// Premium button component
-const PathButton = ({
-  onClick,
-  variant = "accent",
-  isClicked,
-  children,
-}: {
-  onClick: () => void;
-  variant?: "accent" | "primary";
-  isClicked: boolean;
-  children: React.ReactNode;
-}) => {
-  const baseClasses =
-    variant === "primary"
-      ? "bg-primary text-primary-foreground hover:shadow-primary/25"
-      : "bg-accent text-accent-foreground hover:shadow-accent/25";
-
+// Checkmark list item
+const CheckItem = ({ children, variant = "accent" }: { children: React.ReactNode; variant?: "accent" | "primary" }) => {
+  const iconColor = variant === "primary" ? "text-primary" : "text-accent";
   return (
-    <motion.button
-      onClick={onClick}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-      className={`
-        group/btn relative w-full py-4 px-8 rounded-xl font-medium text-[15px]
-        ${baseClasses}
-        shadow-lg hover:shadow-2xl
-        transition-all duration-300 ease-out
-        overflow-hidden
-        ${isClicked ? "scale-95 opacity-90" : ""}
-      `}
-    >
-      {/* Shimmer effect on hover */}
-      <div className="absolute inset-0 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-
-      <span className="relative z-10 inline-flex items-center justify-center gap-2">
-        <span>{children}</span>
-        <svg
-          className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-        </svg>
-      </span>
-    </motion.button>
+    <div className="flex items-center gap-3">
+      <svg className={`w-5 h-5 ${iconColor} shrink-0`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+      </svg>
+      <span className="text-body">{children}</span>
+    </div>
   );
 };
 
-// Elegant tooltip term
-const TermTooltip = ({
-  term,
-  definition,
-  linkTo,
-  variant = "accent",
-}: {
-  term: string;
-  definition: string;
-  linkTo: string;
-  variant?: "accent" | "primary";
+// Link-style CTA button
+const LinkCTA = ({ 
+  onClick, 
+  variant = "accent", 
+  children 
+}: { 
+  onClick: () => void; 
+  variant?: "accent" | "primary"; 
+  children: React.ReactNode;
 }) => {
-  const underlineColor = variant === "primary" ? "decoration-primary/40" : "decoration-accent/40";
-  const linkColor = variant === "primary" ? "text-primary" : "text-accent";
-
+  const textColor = variant === "primary" ? "text-primary" : "text-accent";
+  
   return (
-    <TooltipProvider delayDuration={200}>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <span
-            className={`underline decoration-dotted ${underlineColor} underline-offset-4 cursor-help transition-colors hover:decoration-solid`}
-          >
-            {term}
-          </span>
-        </TooltipTrigger>
-        <TooltipContent
-          className="max-w-[280px] p-4 rounded-xl bg-popover/95 backdrop-blur-xl border-border/50 shadow-xl"
-          sideOffset={8}
-        >
-          <p className="text-sm text-popover-foreground leading-relaxed mb-2">{definition}</p>
-          <Link
-            to={linkTo}
-            className={`inline-flex items-center gap-1 text-xs ${linkColor} font-medium hover:underline`}
-          >
-            Learn more
-            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-            </svg>
-          </Link>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+    <button
+      onClick={onClick}
+      className={`group/link inline-flex items-center gap-2 font-medium ${textColor} hover:opacity-80 transition-opacity`}
+    >
+      <span>{children}</span>
+      <svg
+        className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={2}
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+      </svg>
+    </button>
   );
 };
 
 export const TwoWaysSection = () => {
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-  const [clickedButton, setClickedButton] = useState<number | null>(null);
   const navigate = useNavigate();
   const sectionRef = useRef<HTMLElement>(null);
   const isMobile = useIsMobile();
@@ -264,12 +143,9 @@ export const TwoWaysSection = () => {
   const orbY1 = useTransform(scrollYProgress, [0, 1], [80, -80]);
   const orbY2 = useTransform(scrollYProgress, [0, 1], [-60, 120]);
 
-  const handleNavigate = (path: string, buttonId: number) => {
-    setClickedButton(buttonId);
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      setTimeout(() => navigate(path), 150);
-    }, 200);
+  const handleNavigate = (path: string) => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setTimeout(() => navigate(path), 150);
   };
 
   return (
@@ -399,199 +275,83 @@ export const TwoWaysSection = () => {
         </motion.div>
 
         {/* Cards grid */}
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8 pt-4">
+        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
           {/* Card 1: Fast Help */}
-          <PathCard
-            isHovered={hoveredCard === 1}
-            onHover={() => setHoveredCard(1)}
-            onLeave={() => setHoveredCard(null)}
-            variant="default"
-            delay={0.1}
-          >
-            {/* Icon */}
-            <div className="mb-8">
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-accent/15 border border-accent/20">
-                <svg
-                  className="w-6 h-6 text-accent"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={1.75}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"
-                  />
-                </svg>
-              </div>
+          <PathCard variant="default" delay={0.1}>
+            {/* Badge */}
+            <div className="mb-6">
+              <PathBadge 
+                variant="accent"
+                icon={
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                  </svg>
+                }
+              >
+                Fast Help
+              </PathBadge>
             </div>
 
-            {/* Title & meta */}
-            <div className="mb-6">
-              <h3 className="heading-card text-foreground mb-3">
-                Fast Help
-              </h3>
-              <div className="flex flex-wrap items-center gap-2 mb-3">
-                <span className="text-sm text-body-muted">Path A</span>
-                <span className="w-1 h-1 rounded-full bg-border" />
-                <span className="text-sm text-body-muted">One urgent problem</span>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                <Badge>1–4 weeks</Badge>
-                <Badge>Single issue</Badge>
-                <Badge>No NOHC</Badge>
-              </div>
-            </div>
+            {/* Title */}
+            <h3 className="text-2xl md:text-3xl font-serif font-medium text-foreground mb-4">
+              Path A: Rapid Response
+            </h3>
 
             {/* Description */}
-            <div className="space-y-4 mb-8">
-              <p className="text-body leading-relaxed">
-                For when one thing is on fire — a scary email, an audit, a funder deadline, or a policy gap.
-              </p>
+            <p className="text-body leading-relaxed mb-6">
+              Fix one urgent issue fast. Board crisis? HR mess? Grant deadline? We jump in, solve the problem, and get out. No lengthy assessments required.
+            </p>
 
-              <div className="pl-4 border-l-2 border-accent/30 space-y-2">
-                <p className="text-body-muted leading-relaxed">
-                  One problem, one{" "}
-                  <TermTooltip
-                    term="mini-bundle"
-                    definition="A bundle is a set of policies, templates, trackers, and steps packaged together to solve a specific problem."
-                    linkTo="/how-nimara-works#glossary"
-                    variant="accent"
-                  />
-                  , fast turnaround.
-                </p>
-                <p className="text-body-muted leading-relaxed">
-                  No big diagnostic. No health check required.
-                </p>
-              </div>
-            </div>
-
-            {/* Info note */}
-            <div className="mb-8 flex items-start gap-2.5 text-sm text-body-muted">
-              <svg
-                className="w-4 h-4 mt-0.5 text-accent shrink-0"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <span>No NOHC needed — we go straight to fixing</span>
+            {/* Checklist */}
+            <div className="space-y-3 mb-8">
+              <CheckItem variant="accent">1–4 weeks typical timeline</CheckItem>
+              <CheckItem variant="accent">One problem, one solution</CheckItem>
+              <CheckItem variant="accent">No Health Check required</CheckItem>
             </div>
 
             {/* CTA */}
-            <PathButton onClick={() => handleNavigate("/path-a", 1)} variant="accent" isClicked={clickedButton === 1}>
-              Get fast help
-            </PathButton>
+            <LinkCTA onClick={() => handleNavigate("/path-a")} variant="accent">
+              Get urgent help
+            </LinkCTA>
           </PathCard>
 
           {/* Card 2: Health Check & Systems */}
-          <PathCard
-            isHovered={hoveredCard === 2}
-            onHover={() => setHoveredCard(2)}
-            onLeave={() => setHoveredCard(null)}
-            variant="featured"
-            delay={0.2}
-          >
-            <Badge variant="popular">Most Popular</Badge>
-
-            {/* Icon */}
-            <div className="mb-8 pt-4">
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/15 border border-primary/20">
-                <svg
-                  className="w-6 h-6 text-primary"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={1.75}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"
-                  />
-                </svg>
-              </div>
-            </div>
-
-            {/* Title & meta */}
+          <PathCard variant="featured" delay={0.2}>
+            {/* Badge */}
             <div className="mb-6">
-              <h3 className="heading-card text-foreground mb-3">
-                Health Check & Systems
-              </h3>
-              <div className="flex flex-wrap items-center gap-2 mb-3">
-                <span className="text-sm text-body-muted">Path B</span>
-                <span className="w-1 h-1 rounded-full bg-border" />
-                <span className="text-sm text-body-muted">System installs</span>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                <Badge>8–12 weeks</Badge>
-                <Badge>NOHC + Bundles</Badge>
-              </div>
+              <PathBadge 
+                variant="primary"
+                icon={
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 00-1.883 2.542l.857 6a2.25 2.25 0 002.227 1.932H19.05a2.25 2.25 0 002.227-1.932l.857-6a2.25 2.25 0 00-1.883-2.542m-16.5 0V6A2.25 2.25 0 016 3.75h3.879a1.5 1.5 0 011.06.44l2.122 2.12a1.5 1.5 0 001.06.44H18A2.25 2.25 0 0120.25 9v.776" />
+                  </svg>
+                }
+              >
+                Full Systems
+              </PathBadge>
             </div>
+
+            {/* Title */}
+            <h3 className="text-2xl md:text-3xl font-serif font-medium text-foreground mb-4">
+              Path B: Health Check & Systems
+            </h3>
 
             {/* Description */}
-            <div className="space-y-4 mb-8">
-              <p className="text-body leading-relaxed">
-                For when one or more core systems feel messy — finance, governance, HR, or delivery.
-              </p>
+            <p className="text-body leading-relaxed mb-6">
+              Build lasting organizational strength. We assess your systems, identify gaps, then install 1–2 complete bundles. This is how you become truly funder-ready.
+            </p>
 
-              <div className="pl-4 border-l-2 border-primary/30 space-y-2">
-                <p className="text-body-muted leading-relaxed">
-                  We start with the Nimara Organizational Health Check (NOHC) to see where each system is today.
-                </p>
-                <p className="text-body-muted leading-relaxed">
-                  Then we pick 1–2{" "}
-                  <TermTooltip
-                    term="system bundles"
-                    definition="A bundle is a set of policies, templates, trackers, and steps packaged together to install or upgrade a specific system area."
-                    linkTo="/how-nimara-works#glossary"
-                    variant="primary"
-                  />{" "}
-                  to move those systems up a{" "}
-                  <TermTooltip
-                    term="Tier"
-                    definition="Tiers (0–4) describe how mature each system is. Tier 0 means 'not yet built' and Tier 4 means 'running smoothly at scale.' We help you move up one Tier at a time."
-                    linkTo="/how-nimara-works#glossary"
-                    variant="primary"
-                  />
-                  .
-                </p>
-              </div>
-            </div>
-
-            {/* Info note */}
-            <div className="mb-8 flex items-start gap-2.5 text-sm text-body-muted">
-              <svg
-                className="w-4 h-4 mt-0.5 text-primary shrink-0"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <span>NOHC required — we build on diagnosis</span>
+            {/* Checklist */}
+            <div className="space-y-3 mb-8">
+              <CheckItem variant="primary">8–12 weeks comprehensive process</CheckItem>
+              <CheckItem variant="primary">NOHC assessment included</CheckItem>
+              <CheckItem variant="primary">1–2 system bundles installed</CheckItem>
             </div>
 
             {/* CTA */}
-            <PathButton
-              onClick={() => handleNavigate("/health-score", 2)}
-              variant="primary"
-              isClicked={clickedButton === 2}
-            >
-              Start with a health check
-            </PathButton>
+            <LinkCTA onClick={() => handleNavigate("/health-score")} variant="primary">
+              Start your assessment
+            </LinkCTA>
           </PathCard>
         </div>
 
@@ -611,7 +371,7 @@ export const TwoWaysSection = () => {
               </p>
             </div>
             <motion.button
-              onClick={() => handleNavigate("/book-a-call", 3)}
+              onClick={() => handleNavigate("/book-a-call")}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-secondary-background text-primary-foreground font-medium text-sm transition-all duration-300 hover:opacity-90 shadow-md"
