@@ -106,7 +106,7 @@ const HeroSectionLuxe = () => {
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <a href="/path-a" className="group relative px-6 sm:px-8 py-3.5 sm:py-4 overflow-hidden rounded-xl bg-accent text-accent-foreground font-semibold shadow-soft transition-all duration-500 hover:shadow-lg hover:scale-[1.02] text-sm sm:text-base whitespace-nowrap" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
                   <span className="relative z-10 flex items-center justify-center gap-2">
-                    Fix an urgent problem
+                    ​I have an urgent problem
                     <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
