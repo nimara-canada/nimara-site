@@ -127,12 +127,12 @@ export const FAQ = () => {
           
           <h2
             id="faq-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight tracking-tight mb-6"
+            className="heading-2 text-foreground mb-6"
           >
             Questions you may have
           </h2>
           
-          <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+          <p className="text-subtitle max-w-2xl mx-auto">
             Everything you need to know about working with Nimara. Can't find what you're looking for? 
             <a href="#contact" className="text-primary hover:text-primary/80 font-medium ml-1 transition-colors">
               Reach out to us
@@ -268,9 +268,9 @@ export const FAQ = () => {
                           transition={{ duration: 0.3, ease: 'easeInOut' }}
                           className="overflow-hidden"
                         >
-                          <div className="px-5 md:px-6 pb-5 md:pb-6">
+                            <div className="px-5 md:px-6 pb-5 md:pb-6">
                             <div className="pl-12 border-l-2 border-primary/20">
-                              <p className="text-muted-foreground leading-relaxed">
+                              <p className="text-body leading-relaxed">
                                 {faq.answer}
                               </p>
                             </div>

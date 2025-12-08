@@ -77,10 +77,10 @@ export const Glossary = () => {
               Key Terms
             </span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className="heading-2 text-foreground mb-4">
             Glossary
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-subtitle max-w-2xl mx-auto">
             Quick definitions for the terms we use across Nimara.
           </p>
         </motion.div>
@@ -113,7 +113,7 @@ export const Glossary = () => {
                     <h3 className="font-semibold text-foreground text-base md:text-lg">
                       {item.fullName}
                     </h3>
-                    <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+                    <p className="text-body text-sm md:text-base leading-relaxed">
                       {item.definition}
                     </p>
                   </div>

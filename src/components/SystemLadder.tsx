@@ -103,12 +103,12 @@ export const SystemLadder = () => {
           
           <h2
             id="system-heading"
-            className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-primary-foreground leading-tight tracking-tight mb-4 sm:mb-6"
+            className="heading-2 text-primary-foreground mb-4 sm:mb-6"
           >
             Where are you on the ladder?
           </h2>
           
-          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+          <p className="text-subtitle text-white/90">
             We place every nonprofit on a simple 5-tier ladder so we know exactly where to start and what to build first.
           </p>
         </motion.div>
@@ -377,7 +377,7 @@ export const SystemLadder = () => {
 
         {/* Footer note */}
         <motion.p 
-          className="mt-10 text-center text-sm text-muted-foreground"
+          className="mt-10 text-center text-sm text-white/70"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

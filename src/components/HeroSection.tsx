@@ -89,16 +89,16 @@ const HeroSectionLuxe = () => {
             </h1>
 
             {/* Refined description */}
-            <p className={`text-base sm:text-xl text-white/80 mb-8 sm:mb-12 leading-relaxed font-light transition-all duration-1200 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+            <p className={`text-base sm:text-lg md:text-xl text-white/90 mb-8 sm:mb-12 leading-relaxed transition-all duration-1200 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
               We help small and mid-size nonprofits in Canada fix urgent problems fast, then install the files that keep funders and auditors happy—
-              <span className="text-white font-normal">board rules</span>,{" "}
-              <span className="text-white font-normal">staff folders</span>,{" "}
-              <span className="text-white font-normal">money tracking</span>.
+              <span className="text-white font-medium">board rules</span>,{" "}
+              <span className="text-white font-medium">staff folders</span>,{" "}
+              <span className="text-white font-medium">money tracking</span>.
             </p>
 
             {/* Premium CTA buttons */}
             <div className={`space-y-4 mb-10 sm:mb-16 transition-all duration-1200 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-              <p className="text-sm sm:text-base text-white/80 font-medium mb-2">
+              <p className="text-sm sm:text-base text-white/90 font-medium mb-2">
                 Two ways to start: fix one urgent problem, or get a full health check.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
@@ -121,7 +121,7 @@ const HeroSectionLuxe = () => {
                   </span>
                 </a>
               </div>
-              <p className="text-xs sm:text-sm text-white/70 text-center sm:text-left">
+              <p className="text-xs sm:text-sm text-white/80 text-center sm:text-left">
                 Not sure where to start? We'll help you choose on the first call.
               </p>
             </div>

@@ -85,7 +85,7 @@ export const FitCheck = () => {
               Who Nimara Is For
             </span>
 
-            <h2 id="fit-check-heading" className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground mb-4 sm:mb-6 leading-tight tracking-tight">
+            <h2 id="fit-check-heading" className="heading-2 text-foreground mb-4 sm:mb-6">
               Is Nimara right for{' '}
               <span className="relative inline-block">
                 <span className="relative z-10">your nonprofit?</span>
@@ -93,7 +93,7 @@ export const FitCheck = () => {
               </span>
             </h2>
 
-            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-6 sm:mb-8 max-w-xl">We help nonprofits and charities that do strong work in the community, but feel messy on the inside. If the "back-end" keeps you up at night, this is for you.</p>
+            <p className="text-subtitle max-w-xl mb-6 sm:mb-8">We help nonprofits and charities that do strong work in the community, but feel messy on the inside. If the "back-end" keeps you up at night, this is for you.</p>
 
             {/* Interactive Checklist */}
             <div className="bg-muted/50 rounded-2xl border border-border p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8">
@@ -149,7 +149,7 @@ export const FitCheck = () => {
                         </div>
                         
                         {/* Text */}
-                        <span className={`text-sm leading-relaxed transition-colors duration-200 ${isChecked ? 'text-foreground' : 'text-muted-foreground'}`}>
+                        <span className={`text-sm leading-relaxed transition-colors duration-200 ${isChecked ? 'text-foreground' : 'text-body-muted'}`}>
                           {item.text}
                         </span>
                       </button>

@@ -363,7 +363,7 @@ export const TwoWaysSection = () => {
           </motion.div>
 
           <motion.h2
-            className="text-4xl md:text-5xl lg:text-[3.5rem] font-semibold text-foreground mb-6 tracking-[-0.02em] leading-[1.15]"
+            className="heading-2 text-foreground mb-6"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -388,7 +388,7 @@ export const TwoWaysSection = () => {
           </motion.h2>
 
           <motion.p
-            className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto leading-relaxed font-light"
+            className="text-subtitle max-w-xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -429,13 +429,13 @@ export const TwoWaysSection = () => {
 
             {/* Title & meta */}
             <div className="mb-6">
-              <h3 className="text-2xl lg:text-[1.75rem] font-semibold text-foreground mb-3 tracking-[-0.01em]">
+              <h3 className="heading-card text-foreground mb-3">
                 Fast Help
               </h3>
               <div className="flex flex-wrap items-center gap-2 mb-3">
-                <span className="text-sm text-muted-foreground">Path A</span>
+                <span className="text-sm text-body-muted">Path A</span>
                 <span className="w-1 h-1 rounded-full bg-border" />
-                <span className="text-sm text-muted-foreground">One urgent problem</span>
+                <span className="text-sm text-body-muted">One urgent problem</span>
               </div>
               <div className="flex flex-wrap gap-2">
                 <Badge>1–4 weeks</Badge>
@@ -446,12 +446,12 @@ export const TwoWaysSection = () => {
 
             {/* Description */}
             <div className="space-y-4 mb-8">
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-body leading-relaxed">
                 For when one thing is on fire — a scary email, an audit, a funder deadline, or a policy gap.
               </p>
 
               <div className="pl-4 border-l-2 border-accent/30 space-y-2">
-                <p className="text-muted-foreground text-[15px] leading-relaxed">
+                <p className="text-body-muted leading-relaxed">
                   One problem, one{" "}
                   <TermTooltip
                     term="mini-bundle"
@@ -461,14 +461,14 @@ export const TwoWaysSection = () => {
                   />
                   , fast turnaround.
                 </p>
-                <p className="text-muted-foreground text-[15px] leading-relaxed">
+                <p className="text-body-muted leading-relaxed">
                   No big diagnostic. No health check required.
                 </p>
               </div>
             </div>
 
             {/* Info note */}
-            <div className="mb-8 flex items-start gap-2.5 text-sm text-muted-foreground">
+            <div className="mb-8 flex items-start gap-2.5 text-sm text-body-muted">
               <svg
                 className="w-4 h-4 mt-0.5 text-accent shrink-0"
                 fill="none"
@@ -522,13 +522,13 @@ export const TwoWaysSection = () => {
 
             {/* Title & meta */}
             <div className="mb-6">
-              <h3 className="text-2xl lg:text-[1.75rem] font-semibold text-foreground mb-3 tracking-[-0.01em]">
+              <h3 className="heading-card text-foreground mb-3">
                 Health Check & Systems
               </h3>
               <div className="flex flex-wrap items-center gap-2 mb-3">
-                <span className="text-sm text-muted-foreground">Path B</span>
+                <span className="text-sm text-body-muted">Path B</span>
                 <span className="w-1 h-1 rounded-full bg-border" />
-                <span className="text-sm text-muted-foreground">System installs</span>
+                <span className="text-sm text-body-muted">System installs</span>
               </div>
               <div className="flex flex-wrap gap-2">
                 <Badge>8–12 weeks</Badge>
@@ -538,15 +538,15 @@ export const TwoWaysSection = () => {
 
             {/* Description */}
             <div className="space-y-4 mb-8">
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-body leading-relaxed">
                 For when one or more core systems feel messy — finance, governance, HR, or delivery.
               </p>
 
               <div className="pl-4 border-l-2 border-primary/30 space-y-2">
-                <p className="text-muted-foreground text-[15px] leading-relaxed">
+                <p className="text-body-muted leading-relaxed">
                   We start with the Nimara Organizational Health Check (NOHC) to see where each system is today.
                 </p>
-                <p className="text-muted-foreground text-[15px] leading-relaxed">
+                <p className="text-body-muted leading-relaxed">
                   Then we pick 1–2{" "}
                   <TermTooltip
                     term="system bundles"
@@ -567,7 +567,7 @@ export const TwoWaysSection = () => {
             </div>
 
             {/* Info note */}
-            <div className="mb-8 flex items-start gap-2.5 text-sm text-muted-foreground">
+            <div className="mb-8 flex items-start gap-2.5 text-sm text-body-muted">
               <svg
                 className="w-4 h-4 mt-0.5 text-primary shrink-0"
                 fill="none"
@@ -606,7 +606,7 @@ export const TwoWaysSection = () => {
           <div className="inline-flex flex-col items-center gap-4 px-8 py-6 rounded-2xl bg-muted/30 border border-border/50 backdrop-blur-sm">
             <div className="text-center">
               <p className="text-base font-medium text-foreground mb-1">Not sure which path fits?</p>
-              <p className="text-sm text-muted-foreground max-w-md">
+              <p className="text-sm text-body-muted max-w-md">
                 Tell us what's going on and we'll help you choose the right approach.
               </p>
             </div>

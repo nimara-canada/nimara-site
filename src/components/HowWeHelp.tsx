@@ -85,11 +85,11 @@ export const HowWeHelp = () => {
               How Nimara Helps
             </span>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground mb-4 sm:mb-6 leading-tight tracking-tight">
+            <h2 className="heading-2 text-foreground mb-4 sm:mb-6">
               One simple loop we run with every nonprofit
             </h2>
 
-            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-6 sm:mb-8 max-w-md">
+            <p className="text-subtitle max-w-md mb-6 sm:mb-8">
               We don't guess—we run the same clear loop each time: check, plan, build, support. 
               The only thing that changes is how much we fix at once.
             </p>
@@ -167,7 +167,7 @@ export const HowWeHelp = () => {
                         }`}>
                           {step.title}
                         </h3>
-                        <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                        <p className="text-sm sm:text-base text-body leading-relaxed">
                           {step.text}
                         </p>
                         
@@ -196,13 +196,13 @@ export const HowWeHelp = () => {
               variants={fadeUpVariants}
             >
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-                <p className="text-sm text-muted-foreground">
-                  <span className="font-medium text-foreground">
-                    Check → Plan → Build → Support
-                  </span>
-                  <br />
-                  The complete Nimara loop
-                </p>
+              <p className="text-sm text-body-muted">
+                <span className="font-medium text-foreground">
+                  Check → Plan → Build → Support
+                </span>
+                <br />
+                The complete Nimara loop
+              </p>
                 <motion.a 
                   href="https://www.notion.so/Nimara-Refund-Policy-2bc227f1ee3a80f299fbc42501d338ac?source=copy_link"
                   target="_blank"
