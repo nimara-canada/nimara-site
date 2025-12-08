@@ -6,7 +6,7 @@ const glossaryTerms = [
     term: "NOHC",
     fullName: "Nimara Organizational Health Check",
     definition:
-      "A structured assessment that scores your nonprofit across key system areas (finance, governance, HR, programs). It takes 2–3 weeks and shows where each system sits on the Tier ladder.",
+      "A structured assessment that scores your nonprofit across 7 domains: governance, finance, HR, programs, fundraising, volunteers, and systems & data. It takes 2–3 weeks and shows where each system sits on the Tier ladder.",
   },
   {
     term: "Tier",

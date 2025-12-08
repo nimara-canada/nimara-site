@@ -45,7 +45,7 @@ const HealthCheckRule = () => {
               If you have one urgent problem, we use <strong>Fast Help (Path A)</strong> – a small, focused project that does not require a full health check.
             </p>
             <p>
-              If you want to upgrade your systems (finance, governance, HR, programs), we start with the <strong>Nimara Organizational Health Check (NOHC)</strong>. NOHC shows us your Tiers by domain, and then we design Path B Bundles to move those systems up a Tier.
+              If you want to upgrade your systems across any of our 7 domains (governance, finance, HR, programs, fundraising, volunteers, systems & data), we start with the <strong>Nimara Organizational Health Check (NOHC)</strong>. NOHC shows us your Tiers by domain, and then we design Path B Bundles to move those systems up a Tier.
             </p>
           </div>
 
