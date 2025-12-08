@@ -118,9 +118,9 @@ export const FAQ = () => {
           viewport={{ once: true, margin: "-50px" }}
           variants={fadeInUp}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 mb-6">
-            <MessageCircleQuestion size={16} className="text-primary" />
-            <span className="text-xs font-semibold text-primary uppercase tracking-wide">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary-background shadow-md mb-6">
+            <MessageCircleQuestion size={16} className="text-primary-foreground" />
+            <span className="text-xs font-semibold text-primary-foreground uppercase tracking-wide">
               FAQ
             </span>
           </div>

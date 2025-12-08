@@ -81,9 +81,11 @@ export const HowWeHelp = () => {
             variants={fadeUpVariants}
           >
             {/* Label */}
-            <span className="text-xs font-medium tracking-widest text-primary uppercase mb-4 block">
-              How Nimara Helps
-            </span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary-background shadow-md mb-4">
+              <span className="text-xs font-semibold tracking-widest text-primary-foreground uppercase">
+                How Nimara Helps
+              </span>
+            </div>
 
             <h2 className="heading-2 text-foreground mb-4 sm:mb-6">
               One simple loop we run with every nonprofit
