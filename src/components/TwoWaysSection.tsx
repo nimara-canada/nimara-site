@@ -1,37 +1,5 @@
-import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useIsMobile } from "@/hooks/use-mobile";
-
-// Premium animated background orb
-const GlowOrb = ({
-  className,
-  color = "primary",
-  size = 600,
-  blur = 120,
-  style,
-}: {
-  className?: string;
-  color?: "primary" | "accent";
-  size?: number;
-  blur?: number;
-  style?: React.CSSProperties;
-}) => (
-  <motion.div
-    className={`absolute rounded-full pointer-events-none ${className}`}
-    style={{
-      width: size,
-      height: size,
-      background:
-        color === "primary"
-          ? "radial-gradient(circle, hsl(var(--primary) / 0.15) 0%, hsl(var(--primary) / 0.05) 40%, transparent 70%)"
-          : "radial-gradient(circle, hsl(var(--accent) / 0.2) 0%, hsl(var(--accent) / 0.08) 40%, transparent 70%)",
-      filter: `blur(${blur}px)`,
-      ...style,
-    }}
-  />
-);
-
+import { motion } from "framer-motion";
 // Clean card with accent stripe
 const PathCard = ({
   children,
@@ -132,16 +100,6 @@ const LinkCTA = ({
 
 export const TwoWaysSection = () => {
   const navigate = useNavigate();
-  const sectionRef = useRef<HTMLElement>(null);
-  const isMobile = useIsMobile();
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const orbY1 = useTransform(scrollYProgress, [0, 1], [80, -80]);
-  const orbY2 = useTransform(scrollYProgress, [0, 1], [-60, 120]);
 
   const handleNavigate = (path: string) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -149,70 +107,8 @@ export const TwoWaysSection = () => {
   };
 
   return (
-    <section ref={sectionRef} className="relative py-28 md:py-40 px-6 bg-background overflow-hidden">
-      {/* Premium ambient background */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Gradient orbs with parallax */}
-        <motion.div style={{ y: orbY1 }}>
-          <GlowOrb className="-top-[200px] -right-[200px]" color="primary" size={800} blur={150} />
-        </motion.div>
-        <motion.div style={{ y: orbY2 }}>
-          <GlowOrb className="-bottom-[150px] -left-[200px]" color="accent" size={700} blur={130} />
-        </motion.div>
-
-        {/* Subtle grid pattern */}
-        <div
-          className="absolute inset-0 opacity-[0.025]"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, hsl(var(--foreground)) 1px, transparent 1px),
-              linear-gradient(to bottom, hsl(var(--foreground)) 1px, transparent 1px)
-            `,
-            backgroundSize: "80px 80px",
-          }}
-        />
-
-        {/* Floating particles - minimal and elegant */}
-        {!isMobile &&
-          [...Array(6)].map((_, i) => {
-            const positions = [
-              { left: "12%", top: "20%" },
-              { left: "88%", top: "15%" },
-              { left: "8%", top: "75%" },
-              { left: "92%", top: "70%" },
-              { left: "50%", top: "8%" },
-              { left: "45%", top: "92%" },
-            ];
-            const pos = positions[i];
-            const delay = i * 0.8;
-            const size = 4 + (i % 2) * 2;
-
-            return (
-              <motion.div
-                key={i}
-                className="absolute rounded-full bg-foreground/10"
-                style={{
-                  width: size,
-                  height: size,
-                  left: pos.left,
-                  top: pos.top,
-                }}
-                animate={{
-                  y: [-20, 20, -20],
-                  opacity: [0.2, 0.5, 0.2],
-                }}
-                transition={{
-                  duration: 8 + i,
-                  delay,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-            );
-          })}
-      </div>
-
-      <div className="relative max-w-6xl mx-auto">
+    <section className="py-20 md:py-32 px-6 bg-background">
+      <div className="max-w-6xl mx-auto">
         {/* Header section */}
         <motion.div
           className="text-center mb-20 md:mb-28"
