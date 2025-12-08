@@ -8,10 +8,10 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 const faqs = [{
   question: "Will I see the score on this page?",
-  answer: "No. We read your answers and send a simple summary by email within 1 business day."
+  answer: "No. We read your answers and send a simple NOHC Snapshot summary by email within 1 business day."
 }, {
   question: "Does filling this out commit us to working with Nimara?",
-  answer: "No. The health check and summary are for you. You can decide later if you want support."
+  answer: "No. The NOHC Snapshot and summary are for you. You can decide later if you want support."
 }, {
   question: "How is our information used?",
   answer: "We use your answers only to understand your situation and suggest next steps. We don't share them with funders or anyone outside Nimara."
@@ -22,17 +22,17 @@ const faqs = [{
 const benefits = [{
   icon: FileText,
   title: "Clarity in one page",
-  description: "A simple snapshot of your governance, finance, HR, programs, fundraising, volunteers, and systems – not a 20-page report.",
+  description: "Your NOHC Snapshot covers governance, finance, HR, programs, fundraising, volunteers, and systems – not a 20-page report.",
   gradient: "from-violet-500/20 to-purple-500/20"
 }, {
   icon: Target,
   title: "Right-size your next move",
-  description: "See if you need a quick fix, a deeper system build, or just a few small tweaks.",
+  description: "See if you need Path A (rapid response for one problem) or Path B (system bundles across multiple domains).",
   gradient: "from-emerald-500/20 to-teal-500/20"
 }, {
   icon: Star,
   title: "Something you can share",
-  description: "A short summary you can send to your board, funder, or team to explain what's going on.",
+  description: "A short NOHC Snapshot summary you can send to your board, funder, or team to explain what's going on.",
   gradient: "from-amber-500/20 to-orange-500/20"
 }];
 const steps = [{
@@ -49,15 +49,15 @@ const steps = [{
   icon: Users
 }, {
   number: 3,
-  title: "Get your health check results",
+  title: "Get your NOHC Snapshot",
   subtitle: "Delivered by email",
-  description: "Your score, a one-page view of strengths and risks, and 1–2 suggested next moves.",
+  description: "Your Tier scores, a one-page view of strengths and risks, and 1–2 suggested next moves.",
   icon: BarChart3
 }, {
   number: 4,
   title: "Decide what's next",
   subtitle: "Your choice",
-  description: "Take the summary and run with it, or talk with us about support options.",
+  description: "Take the snapshot and run with it, or talk with us about Path A or Path B support options.",
   icon: Zap
 }];
 const HealthScore = () => {
@@ -133,8 +133,8 @@ const HealthScore = () => {
   }, []);
   return <>
       <Helmet>
-        <title>Organizational Health Check | Nimara</title>
-        <meta name="description" content="See where your nonprofit organization is strong, where it's fragile, and what kind of support actually makes sense. Quick 7-9 minute assessment with human review." />
+        <title>NOHC Snapshot – Organizational Health Check | Nimara</title>
+        <meta name="description" content="Get your NOHC Snapshot – see where your nonprofit is strong, where it's fragile, and whether you need Path A rapid response or Path B system bundles. Quick 7-9 minute assessment with human review." />
       </Helmet>
 
       <Header />
@@ -225,7 +225,7 @@ const HealthScore = () => {
             }} className="flex justify-center mb-8">
                 <span className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold uppercase tracking-wider rounded-full border border-white/20">
                   <Activity className="w-4 h-4 text-accent" />
-                  Organizational Health Check
+                  NOHC Snapshot
                 </span>
               </motion.div>
 
@@ -240,10 +240,10 @@ const HealthScore = () => {
               delay: 0.1,
               duration: 0.6
             }} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.1]">
-                Start your{" "}
+                Get your{" "}
                 <span className="relative inline-block">
                   <span className="relative z-10 bg-gradient-to-r from-accent via-[#9DFFD6] to-accent bg-clip-text text-transparent">
-                    Health Check
+                    NOHC Snapshot
                   </span>
                   <motion.span className="absolute -inset-1 bg-accent/20 rounded-lg blur-lg" animate={{
                   opacity: [0.5, 0.8, 0.5]
@@ -312,7 +312,7 @@ const HealthScore = () => {
                 scale: 0.98
               }} onClick={scrollToForm} className="group relative px-8 py-4 bg-accent text-secondary-background font-semibold rounded-xl overflow-hidden shadow-lg shadow-accent/20 text-base sm:text-lg">
                   <span className="relative z-10 flex items-center gap-2">
-                    Start the health check
+                    Start the NOHC Snapshot
                     <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                   </span>
                   <motion.div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/30 to-white/0" initial={{
@@ -386,7 +386,7 @@ const HealthScore = () => {
                 Benefits
               </motion.span>
               <h2 className="heading-2 text-foreground mb-4">
-                Why get a health check?
+                Why get an NOHC Snapshot?
               </h2>
               <p className="text-subtitle max-w-2xl mx-auto">
                 You already know things are busy. This puts the full picture in one place.
@@ -471,16 +471,16 @@ const HealthScore = () => {
 
                 <div className="space-y-6">
                   {[{
-                  title: "Your Nimara Health Check Results",
-                  desc: "A plain-language rating of your overall health, plus which areas are solid and which are fragile.",
+                  title: "Your NOHC Snapshot Results",
+                  desc: "A plain-language Tier rating across all 7 domains, plus which areas are solid and which are fragile.",
                   icon: Activity
                 }, {
                   title: "Top 3 risks and bright spots",
                   desc: "Where you're most exposed (for audit, funding, or burnout) and what's already working.",
                   icon: Target
                 }, {
-                  title: "1–2 realistic next steps",
-                  desc: "A suggestion that fits your size and capacity – from DIY tools to fast fixes to deeper system work.",
+                  title: "Path recommendation",
+                  desc: "Whether Path A (rapid response for one problem) or Path B (system bundles) fits your situation best.",
                   icon: Zap
                 }].map((item, index) => <motion.div key={index} initial={{
                   opacity: 0,
@@ -605,9 +605,9 @@ const HealthScore = () => {
                 }} transition={{
                   type: "spring",
                   delay: 0.5
-                }} className="absolute -bottom-6 -right-6 w-24 h-24 bg-gradient-to-br from-primary via-primary to-[#5a38c7] rounded-2xl flex flex-col items-center justify-center text-white shadow-xl shadow-primary/30 rotate-3">
-                    <span className="text-3xl font-bold">92</span>
-                    <span className="text-xs opacity-80">Health Check</span>
+                 }} className="absolute -bottom-6 -right-6 w-24 h-24 bg-gradient-to-br from-primary via-primary to-[#5a38c7] rounded-2xl flex flex-col items-center justify-center text-white shadow-xl shadow-primary/30 rotate-3">
+                    <span className="text-3xl font-bold">T2</span>
+                    <span className="text-xs opacity-80">NOHC Tier</span>
                   </motion.div>
                 </div>
               </motion.div>
@@ -731,10 +731,10 @@ const HealthScore = () => {
                 Start Now
               </motion.span>
               <h2 className="heading-2 text-foreground mb-4">
-                Ready to start your health check?
+                Ready to get your NOHC Snapshot?
               </h2>
               <p className="text-subtitle max-w-xl mx-auto">
-                Take 7–9 minutes to complete the check. We'll send your summary within 1 business day.
+                Take 7–9 minutes to complete the assessment. We'll send your NOHC Snapshot within 1 business day.
               </p>
             </motion.div>
 
