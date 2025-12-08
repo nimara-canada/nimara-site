@@ -52,7 +52,7 @@ export const TheGap = () => {
       <div ref={sectionRef} className="relative max-w-2xl mx-auto">
         {/* Title with animation */}
         <h2 
-          className={`text-3xl sm:text-4xl font-bold text-gray-900 mb-8 tracking-tight transition-all duration-1000 ${
+          className={`heading-2 text-gray-900 mb-8 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}
         >
@@ -62,7 +62,7 @@ export const TheGap = () => {
         
         {/* Lead paragraph with fade-in */}
         <p 
-          className={`text-lg sm:text-xl text-gray-700 mb-10 leading-relaxed transition-all duration-1000 delay-200 ${
+          className={`text-subtitle text-gray-700 mb-10 transition-all duration-1000 delay-200 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}
         >
@@ -88,7 +88,7 @@ export const TheGap = () => {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-gray-500"></span>
                 </span>
               </span>
-              <p className="text-gray-700 leading-relaxed group-hover:text-gray-900 transition-colors">
+              <p className="text-body group-hover:text-gray-900 transition-colors">
                 {bullet}
               </p>
             </div>

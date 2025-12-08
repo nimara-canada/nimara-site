@@ -9,11 +9,11 @@ export const CompanyHero = () => {
           
           {/* Left: Text Content */}
           <div className="flex flex-col gap-8">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight">
+            <h1 className="heading-display text-white">
               Nimara is a national operator for nonprofit capacity-building.
             </h1>
             
-            <p className="text-lg md:text-xl text-gray-200 leading-relaxed">
+            <p className="text-lg md:text-xl text-white/90 leading-relaxed">
               We help small and mid-size nonprofits install strong systems so they can pass audits, keep staff, and keep the lights on.
             </p>
 

@@ -29,10 +29,10 @@ export const OurStory = () => {
         
         {/* Header */}
         <div className="max-w-3xl mb-12 lg:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+          <h2 className="heading-2 text-foreground mb-6">
             Our founding story: why we built Nimara
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+          <p className="text-subtitle">
             Nimara did not start as a brand idea. It started as a problem we kept seeing inside real nonprofits.
           </p>
         </div>
@@ -56,10 +56,10 @@ export const OurStory = () => {
                     {step.number}
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3">
+                    <h3 className="heading-3 text-foreground mb-3">
                       {step.heading}
                     </h3>
-                    <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                    <p className="text-body">
                       {step.text}
                     </p>
                   </div>

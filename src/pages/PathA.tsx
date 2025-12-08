@@ -34,13 +34,13 @@ const PathA = () => {
             <Badge variant="secondary" className="mb-6 bg-nimara-mint text-nimara-navy">
               Path A
             </Badge>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+            <h1 className="heading-display text-white mb-4">
               Path A: Fast Help
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-6">
               Fix one urgent problem so you can breathe again.
             </p>
-            <p className="text-base md:text-lg text-white/80 max-w-2xl mx-auto mb-8">
+            <p className="text-body-lg text-white/85 max-w-2xl mx-auto mb-8">
               Path A is for moments when something can't wait. An audit, a grant, a policy gap, a scary email from a funder. We come in, fix one clear problem, and leave you with a small set of tools you can actually use.
             </p>
             
@@ -84,10 +84,10 @@ const PathA = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-nimara-navy mb-4 text-center">
+            <h2 className="heading-2 text-nimara-navy mb-4 text-center">
               Is Path A a good fit?
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 text-center">
+            <p className="text-subtitle mb-8 text-center">
               Use this when you need relief, not a big project.
             </p>
             
@@ -146,10 +146,10 @@ const PathA = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-nimara-navy mb-4 text-center">
+            <h2 className="heading-2 text-nimara-navy mb-4 text-center">
               How Path A works
             </h2>
-            <p className="text-lg text-muted-foreground mb-12 text-center">
+            <p className="text-subtitle mb-12 text-center">
               Simple, clear, and light on your time.
             </p>
             
@@ -199,9 +199,9 @@ const PathA = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="font-semibold text-nimara-navy text-lg mb-2">{item.title}</h3>
-                    <p className="text-muted-foreground">{item.description}</p>
+                    <p className="text-body">{item.description}</p>
                     {item.bullets && (
-                      <ul className="mt-2 space-y-1 text-muted-foreground">
+                      <ul className="mt-2 space-y-1 text-body-muted">
                         {item.bullets.map((bullet, i) => (
                           <li key={i}>• {bullet}</li>
                         ))}
@@ -236,10 +236,10 @@ const PathA = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-nimara-navy mb-4 text-center">
+            <h2 className="heading-2 text-nimara-navy mb-4 text-center">
               What's inside the Mini Acceptance Bundle?
             </h2>
-            <p className="text-lg text-muted-foreground mb-12 text-center">
+            <p className="text-subtitle mb-12 text-center">
               A small, useful set of tools you can use the next day.
             </p>
             
@@ -277,7 +277,7 @@ const PathA = () => {
                     <CardContent className="pt-6">
                       <item.icon className="w-8 h-8 text-nimara-purple mb-4" />
                       <h3 className="font-semibold text-nimara-navy mb-2">{item.title}</h3>
-                      <p className="text-muted-foreground text-sm">{item.description}</p>
+                      <p className="text-body-muted text-sm">{item.description}</p>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -296,10 +296,10 @@ const PathA = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 text-center">
+            <h2 className="heading-2 text-white mb-4 text-center">
               Ready to start Path A?
             </h2>
-            <p className="text-lg text-white/80 mb-12 text-center max-w-2xl mx-auto">
+            <p className="text-lg text-white/85 mb-12 text-center max-w-2xl mx-auto">
               If you're facing one clear problem and need real help, start here. A Nimara team member will review your intake and reply within 1 business day.
             </p>
             

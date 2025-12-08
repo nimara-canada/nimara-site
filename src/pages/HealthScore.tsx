@@ -263,7 +263,7 @@ const HealthScore = () => {
               y: 0
             }} transition={{
               delay: 0.2
-            }} className="text-lg sm:text-xl md:text-2xl text-white/70 mb-12 max-w-3xl mx-auto leading-relaxed">
+            }} className="text-lg sm:text-xl md:text-2xl text-white/85 mb-12 max-w-3xl mx-auto leading-relaxed">
                 See where your organization is strong, where it's fragile, and what kind of support actually makes sense.
               </motion.p>
 
@@ -385,10 +385,10 @@ const HealthScore = () => {
                 <Sparkles className="w-3.5 h-3.5" />
                 Benefits
               </motion.span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
+              <h2 className="heading-2 text-foreground mb-4">
                 Why get a health check?
               </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-subtitle max-w-2xl mx-auto">
                 You already know things are busy. This puts the full picture in one place.
               </p>
             </motion.div>
@@ -416,7 +416,7 @@ const HealthScore = () => {
                       <benefit.icon className="w-7 h-7 text-foreground" />
                     </div>
                     <h3 className="text-xl font-bold text-foreground mb-3">{benefit.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">{benefit.description}</p>
+                    <p className="text-body">{benefit.description}</p>
                   </div>
                 </motion.div>)}
             </div>
@@ -461,11 +461,11 @@ const HealthScore = () => {
                   What You Get
                 </motion.span>
                 
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
+                <h2 className="heading-2 text-foreground mb-6">
                   A clear picture,{" "}
                   <span className="text-primary">not a pile of data</span>
                 </h2>
-                <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
+                <p className="text-subtitle mb-10">
                   You won't see a live dashboard at the end. Instead, a Nimara team member reads your responses and sends a simple summary within 1 business day.
                 </p>
 
@@ -498,7 +498,7 @@ const HealthScore = () => {
                       </div>
                       <div>
                         <h3 className="font-semibold text-foreground mb-1 text-lg">{item.title}</h3>
-                        <p className="text-muted-foreground">{item.desc}</p>
+                        <p className="text-body-muted">{item.desc}</p>
                       </div>
                     </motion.div>)}
                 </div>
@@ -653,10 +653,10 @@ const HealthScore = () => {
                 <Zap className="w-3.5 h-3.5" />
                 Process
               </motion.span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+              <h2 className="heading-2 text-white mb-4">
                 How it works
               </h2>
-              <p className="text-lg text-white/70 max-w-2xl mx-auto">
+              <p className="text-lg text-white/85 max-w-2xl mx-auto">
                 Four simple steps to clarity
               </p>
             </motion.div>
@@ -687,7 +687,7 @@ const HealthScore = () => {
                       
                       <h3 className="font-bold text-white mb-1 text-lg">{step.title}</h3>
                       <p className="text-nimara-mint text-sm font-medium mb-3">{step.subtitle}</p>
-                      <p className="text-white/70 text-sm leading-relaxed">{step.description}</p>
+                      <p className="text-white/80 text-sm leading-relaxed">{step.description}</p>
                     </div>
                   </motion.div>)}
               </div>
@@ -730,10 +730,10 @@ const HealthScore = () => {
                 <Sparkles className="w-3.5 h-3.5" />
                 Start Now
               </motion.span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
+              <h2 className="heading-2 text-foreground mb-4">
                 Ready to start your health check?
               </h2>
-              <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+              <p className="text-subtitle max-w-xl mx-auto">
                 Take 7–9 minutes to complete the check. We'll send your summary within 1 business day.
               </p>
             </motion.div>
