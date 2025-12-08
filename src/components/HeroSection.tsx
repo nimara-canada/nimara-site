@@ -91,7 +91,7 @@ const HeroSectionLuxe = () => {
 
             {/* Refined description */}
             <p className={`text-base sm:text-lg md:text-xl text-white/90 mb-8 sm:mb-12 leading-relaxed transition-all duration-1200 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-              Nimara helps small–mid nonprofits build the core systems funders expect. We install right-sized{" "}
+              Nimara helps Canadian nonprofits build the core systems funders expect. We install right-sized{" "}
               <span className="text-white font-medium">governance</span>,{" "}
               <span className="text-white font-medium">finance</span>,{" "}
               <span className="text-white font-medium">HR</span>, and{" "}
