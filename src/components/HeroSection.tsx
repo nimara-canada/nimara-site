@@ -72,7 +72,8 @@ const HeroSectionLuxe = () => {
                   <span className="w-1.5 h-1.5 rounded-full bg-accent/30" />
                 </div>
                 <span className="text-xs font-semibold text-accent tracking-widest uppercase">
-                  Built for Canadian Nonprofits
+                  ​Capacity building for nonprofits
+
                 </span>
               </div>
             </div>
