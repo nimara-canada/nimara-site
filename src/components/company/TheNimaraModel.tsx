@@ -47,7 +47,7 @@ export const TheNimaraModel: React.FC = () => {
   }, {
     level: "2",
     title: "Audit-ready",
-    description: "Core systems like finance, HR, and governance can stand up to checks.",
+    description: "Core systems across all 7 domains can stand up to audits and funder checks.",
     color: "bg-blue-50 border-blue-300",
     badgeColor: "bg-blue-600 text-white"
   }, {
@@ -72,7 +72,7 @@ export const TheNimaraModel: React.FC = () => {
   }, {
     letter: "B",
     title: "Tiered packages",
-    description: "Deeper, pre-built bundles for organizations that need a full install across more than one area, such as finance + HR + governance for a Tier 2 or Tier 3 team.",
+    description: "Deeper, pre-built bundles for organizations that need a full install across multiple domains, such as finance + HR + governance + programs for a Tier 2 or Tier 3 team.",
     icon: "",
     color: "from-[#6945D8]/10 to-[#6945D8]/5 border-[#6945D8]"
   }];
