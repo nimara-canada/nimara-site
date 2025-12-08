@@ -1,125 +1,42 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { toast } from "sonner";
+import { ArrowRight } from "lucide-react";
+
 export const FinalCTA = () => {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    support: ""
-  });
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.firstName || !formData.lastName || !formData.email) {
-      toast.error("Please fill in all required fields");
-      return;
-    }
-    const payload = {
-      flow: "get_in_touch",
-      firstName: formData.firstName,
-      lastName: formData.lastName,
-      email: formData.email,
-      phone: formData.phone,
-      support: formData.support,
-      utm_source: new URLSearchParams(window.location.search).get("utm_source"),
-      utm_medium: new URLSearchParams(window.location.search).get("utm_medium"),
-      utm_campaign: new URLSearchParams(window.location.search).get("utm_campaign"),
-      referrer: document.referrer,
-      timestamp: new Date().toISOString()
-    };
-    console.log("Get in touch submission:", payload);
-    toast.success("Thanks! We'll be in touch shortly.");
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      support: ""
-    });
-  };
-  return <section className="py-16 md:py-24 lg:py-32 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-        <div className="text-center space-y-6 mb-12">
-          <span className="text-xs font-semibold tracking-widest text-primary uppercase mb-4 block">
-            Get In Touch
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">Talk to the Nimara team</h2>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto"><strong>Nonprofit—tell us what you need.</strong> We'll help you choose the simplest next step. Share a few details. <strong>We'll reply within 5 business days.</strong></p>
-        </div>
+  return (
+    <section className="py-20 md:py-28 lg:py-36 bg-secondary">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-secondary-foreground mb-6">
+          Ready to get <span className="italic">system-strong</span>?
+        </h2>
+        
+        <p className="text-lg sm:text-xl text-secondary-foreground/80 max-w-2xl mx-auto mb-10">
+          Book a free 15-minute discovery call. We'll figure out if Nimara is the right fit—no pressure, no pitch.
+        </p>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="space-y-2">
-              <Label htmlFor="firstName" className="sr-only">First Name</Label>
-              <Input type="text" id="firstName" placeholder="First Name" required value={formData.firstName} onChange={e => setFormData({
-              ...formData,
-              firstName: e.target.value
-            })} className="h-14 text-base" />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="lastName" className="sr-only">Last Name</Label>
-              <Input type="text" id="lastName" placeholder="Last Name" required value={formData.lastName} onChange={e => setFormData({
-              ...formData,
-              lastName: e.target.value
-            })} className="h-14 text-base" />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="space-y-2">
-              <Label htmlFor="email" className="sr-only">Email</Label>
-              <Input type="email" id="email" placeholder="Email" required value={formData.email} onChange={e => setFormData({
-              ...formData,
-              email: e.target.value
-            })} className="h-14 text-base" />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="phone" className="sr-only">Phone Number</Label>
-              <Input type="tel" id="phone" placeholder="Phone Number*" value={formData.phone} onChange={e => setFormData({
-              ...formData,
-              phone: e.target.value
-            })} className="h-14 text-base" />
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="support" className="sr-only">What support are you looking for?</Label>
-            <Select value={formData.support} onValueChange={value => setFormData({
-            ...formData,
-            support: value
-          })}>
-              <SelectTrigger className="h-14 text-base">
-                <SelectValue placeholder="What support are you looking for?" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="Urgent Need">I have an urgent need</SelectItem>
-                <SelectItem value="Health Check">I need help with Health Check</SelectItem>
-                <SelectItem value="Other">Other</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-
-          <Button type="submit" size="lg" className="w-full h-14 text-base uppercase tracking-wide font-semibold">
-            SCHEDULE A CALL
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <Button 
+            size="lg" 
+            asChild
+            className="w-full sm:w-auto px-8 h-14 text-base font-semibold"
+          >
+            <a href="/book-a-call">
+              Book a Discovery Call
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </a>
           </Button>
-
-          <p className="text-sm text-muted-foreground text-center">
-            By sharing your email, you agree to our{" "}
-            <a href="/privacy" className="text-foreground underline hover:no-underline">
-              Privacy Policy
+          
+          <Button 
+            variant="outline" 
+            size="lg" 
+            asChild
+            className="w-full sm:w-auto px-8 h-14 text-base font-semibold bg-secondary-foreground/10 border-secondary-foreground/30 text-secondary-foreground hover:bg-secondary-foreground/20 hover:text-secondary-foreground"
+          >
+            <a href="mailto:hello@nimara.ca">
+              Email Us Instead
             </a>
-            {" "}and{" "}
-            <a href="/terms" className="text-foreground underline hover:no-underline">
-              Terms of Service
-            </a>
-          </p>
-        </form>
+          </Button>
+        </div>
       </div>
-    </section>;
+    </section>
+  );
 };
