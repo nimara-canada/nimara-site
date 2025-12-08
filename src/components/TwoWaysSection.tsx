@@ -177,7 +177,7 @@ const PathButton = ({
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       className={`
-        group/btn relative w-full py-4 px-8 rounded-2xl font-medium text-[15px]
+        group/btn relative w-full py-4 px-8 rounded-xl font-medium text-[15px]
         ${baseClasses}
         shadow-lg hover:shadow-2xl
         transition-all duration-300 ease-out
@@ -188,20 +188,17 @@ const PathButton = ({
       {/* Shimmer effect on hover */}
       <div className="absolute inset-0 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-      <span className="relative flex items-center justify-center gap-2.5">
-        {children}
-        <motion.svg
-          className="w-4.5 h-4.5"
+      <span className="relative z-10 inline-flex items-center justify-center gap-2">
+        <span>{children}</span>
+        <svg
+          className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
           strokeWidth={2}
-          initial={{ x: 0 }}
-          whileHover={{ x: 4 }}
-          transition={{ duration: 0.2 }}
         >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-        </motion.svg>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+        </svg>
       </span>
     </motion.button>
   );
