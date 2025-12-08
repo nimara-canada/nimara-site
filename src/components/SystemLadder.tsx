@@ -12,41 +12,41 @@ import {
 const ladderSteps = [
   { 
     level: 0, 
-    title: "Idea Stage", 
-    desc: "You're just starting out. Big dreams, few systems in place yet.",
-    detail: "Perfect time to build right from the start.",
+    title: "Tier 0 – Getting by", 
+    desc: "Work gets done, but it lives in people's heads and improvised tools. Nothing is written down or done the same way twice.",
+    detail: "Time to get the basics out of people's heads and into simple, shared tools.",
     icon: Sprout,
     color: 'slate'
   },
   { 
     level: 1, 
-    title: "Getting Started", 
-    desc: "You have some basics, but there are many gaps to fill.",
-    detail: "We help you identify and close critical gaps first.",
+    title: "Tier 1 – Pieces in place", 
+    desc: "Some policies, templates, or trackers exist, but they're inconsistent and still very person-dependent.",
+    detail: "Time to firm up the basics so they work the same way every time, not just when one person is free.",
     icon: Leaf,
     color: 'emerald'
   },
   { 
     level: 2, 
-    title: "Growing", 
-    desc: "More pieces are in place, but things still feel messy.",
-    detail: "Time to organize and connect your systems.",
+    title: "Tier 2 – Working basics", 
+    desc: "The core pieces are in place and mostly working. Systems are simple, written, and repeatable for a small–mid nonprofit, but still rely on a few key people.",
+    detail: "Time to keep things tidy and connect key systems so they're easy to teach and hand over.",
     icon: TreeDeciduous,
     color: 'teal'
   },
   { 
     level: 3, 
-    title: "Strong", 
-    desc: "Most systems are working. Ready for optimization.",
-    detail: "We fine-tune and strengthen what you have.",
+    title: "Tier 3 – Advanced systems", 
+    desc: "Systems are integrated across teams with strong reporting and some automation. This is more typical of larger organizations.",
+    detail: "Nimara mainly helps map and protect these systems; deep redesign is usually led by in-house or specialist teams.",
     icon: Trees,
     color: 'violet'
   },
   { 
     level: 4, 
-    title: "Very Strong", 
-    desc: "You run like a well-oiled machine. Fully fundable.",
-    detail: "Maintenance mode—we help you stay there.",
+    title: "Tier 4 – Reference point", 
+    desc: "Your systems are strong enough to teach others. You set the standard for how this area should run in your field.",
+    detail: "For most clients, Tier 4 is a north star. Nimara focuses on helping you build steady Tier 2 systems first.",
     icon: Mountain,
     color: 'amber'
   },
