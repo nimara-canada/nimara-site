@@ -91,10 +91,11 @@ const HeroSectionLuxe = () => {
 
             {/* Refined description */}
             <p className={`text-base sm:text-lg md:text-xl text-white/90 mb-8 sm:mb-12 leading-relaxed transition-all duration-1200 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-              We help small and mid-size nonprofits in Canada fix urgent problems fast, then install the files that keep funders and auditors happy—
-              <span className="text-white font-medium">board rules</span>,{" "}
-              <span className="text-white font-medium">staff folders</span>,{" "}
-              <span className="text-white font-medium">money tracking</span>.
+              Nimara helps small–mid nonprofits build the core systems funders expect. We install right-sized{" "}
+              <span className="text-white font-medium">governance</span>,{" "}
+              <span className="text-white font-medium">finance</span>,{" "}
+              <span className="text-white font-medium">HR</span>, and{" "}
+              <span className="text-white font-medium">program systems</span>—so you can focus on your mission, not your filing cabinets.
             </p>
 
             {/* Premium CTA buttons */}
