@@ -5,30 +5,30 @@ import { motion, Variants } from 'framer-motion';
 const steps = [
   {
     number: 1,
-    title: 'Short Health Check',
-    text: 'We start with a simple Health Check that looks at your board, money, people, fundraising, volunteers, and tools. No hunting for long documents.'
+    title: "Check what's really going on",
+    text: "For Fast Help, we start with a short intake around one urgent problem. For system installs, we run the Nimara Organizational Health Check (NOHC) across your core systems so we know where each one stands."
   },
   {
     number: 2,
-    title: 'Clear, small workplan',
-    text: 'We turn what we learn into a short workplan. It shows the first jobs to do, who is involved, and when things will be done.'
+    title: "Clear, small workplan",
+    text: "We turn what we learn into a short workplan. For Fast Help, that's one mini-bundle. For system installs, it's 1–2 system bundles with clear jobs, owners, and dates."
   },
   {
     number: 3,
-    title: 'Real tools you can use',
-    text: 'We build real things with you: plain-language policies, checklists, templates, and simple systems your team can use every week.'
+    title: "Real tools you can use",
+    text: "We build real things with you: plain-language policies, checklists, templates, and simple systems your team can use every week."
   },
   {
     number: 4,
-    title: 'Support and a safety net',
-    text: 'When the main build is done, we stay for 3 months to help you use the new tools. If we do not finish the work we agreed, you get your money back.'
+    title: "Support and a safety net",
+    text: "When the main build is done, we stay long enough to help you use the new tools in real life. Fast Help projects include light follow-up. Bigger system installs usually come with up to 3 months of support and a clear money-back guarantee if we don't finish the work we agreed."
   }
 ];
 
 const promises = [
-  { text: "Refund if we don't finish the work", highlight: true },
-  { text: '3 months of support included', highlight: false },
-  { text: 'Optional 12-month follow-up', highlight: false }
+  { text: "Money-back guarantee on eligible system installs", highlight: true },
+  { text: "Support while you start using the new tools", highlight: false },
+  { text: "Optional 12-month follow-up on bigger projects", highlight: false }
 ];
 
 const containerVariants: Variants = {
@@ -88,12 +88,12 @@ export const HowWeHelp = () => {
             </div>
 
             <h2 className="heading-2 text-foreground mb-4 sm:mb-6">
-              One simple loop we run with every nonprofit
+              One simple loop behind every Nimara project
             </h2>
 
             <p className="text-subtitle max-w-md mb-6 sm:mb-8">
-              We don't guess—we run the same clear loop each time: check, plan, build, support. 
-              The only thing that changes is how much we fix at once.
+              We don't guess. Behind every project we run the same clear loop: check what's going on, plan, build, support. 
+              The only thing that changes is which path you're on and how deep we go.
             </p>
 
             {/* Promise list */}
@@ -203,7 +203,7 @@ export const HowWeHelp = () => {
                   Check → Plan → Build → Support
                 </span>
                 <br />
-                The complete Nimara loop
+                The simple Nimara loop behind Path A and Path B
               </p>
                 <motion.a 
                   href="https://www.notion.so/Nimara-Refund-Policy-2bc227f1ee3a80f299fbc42501d338ac?source=copy_link"
