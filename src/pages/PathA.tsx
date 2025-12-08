@@ -23,7 +23,7 @@ const PathA = () => {
       <Header />
       
       {/* HERO SECTION */}
-      <section className="bg-nimara-purple pt-32 pb-20 md:pb-28">
+      <section className="bg-secondary pt-32 pb-20 md:pb-28">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -31,44 +31,47 @@ const PathA = () => {
             transition={{ duration: 0.5 }}
             className="text-center"
           >
-            <Badge variant="navy" className="mb-6">
-              Path A
+            <Badge variant="outline" className="mb-6 bg-accent/20 text-accent border-accent/30">
+              Path A – rapid response
             </Badge>
-            <h1 className="heading-display text-white mb-4">
-              Path A: Fast Help
+            <h1 className="heading-display text-secondary-foreground mb-4">
+              Fast Help
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-6">
-              Fix one urgent problem so you can breathe again.
+            <p className="text-xl md:text-2xl text-secondary-foreground/90 mb-2">
+              Fix one urgent issue fast.
             </p>
-            <p className="text-body-lg text-white/85 max-w-2xl mx-auto mb-8">
-              Path A is for moments when something can't wait. An audit, a grant, a policy gap, a scary email from a funder. We come in, fix one clear problem, and leave you with a small set of tools you can actually use.
+            <p className="text-lg text-accent font-medium mb-6">
+              1–4 weeks • One problem, one solution
+            </p>
+            <p className="text-body-lg text-secondary-foreground/85 max-w-2xl mx-auto mb-8">
+              Board crisis? HR mess? Grant deadline? We jump in, solve the problem, and get out. No lengthy assessments required. We scope your problem, match you with the right expertise, and deliver a focused fix you can run with.
             </p>
             
             <div className="flex flex-wrap justify-center gap-3 mb-10">
-              <Badge variant="outline" className="bg-white/10 text-white border-white/20 px-4 py-2">
+              <Badge variant="outline" className="bg-secondary-foreground/10 text-secondary-foreground border-secondary-foreground/20 px-4 py-2">
                 <Clock className="w-4 h-4 mr-2" />
-                Timeline: 1–4 weeks
+                1–4 weeks
               </Badge>
-              <Badge variant="outline" className="bg-white/10 text-white border-white/20 px-4 py-2">
+              <Badge variant="outline" className="bg-secondary-foreground/10 text-secondary-foreground border-secondary-foreground/20 px-4 py-2">
                 <Target className="w-4 h-4 mr-2" />
-                Focus: One urgent problem
+                One urgent problem
               </Badge>
-              <Badge variant="outline" className="bg-white/10 text-white border-white/20 px-4 py-2">
+              <Badge variant="outline" className="bg-secondary-foreground/10 text-secondary-foreground border-secondary-foreground/20 px-4 py-2">
                 <Package className="w-4 h-4 mr-2" />
-                Deliverable: Mini Acceptance Bundle
+                Mini Acceptance Bundle
               </Badge>
             </div>
             
             <Button 
               onClick={scrollToIntake}
               size="lg" 
-              className="bg-nimara-mint text-nimara-navy hover:bg-nimara-mint/90 font-semibold text-lg px-8 py-6"
+              className="font-semibold text-lg px-8 py-6"
             >
               Start Path A – 7-minute intake
             </Button>
-            <p className="mt-4 text-white/70 text-sm">
-              <a href="/how-nimara-works" className="underline hover:text-white">
-                Not sure if this is right? See other options.
+            <p className="mt-4 text-secondary-foreground/70 text-sm">
+              <a href="/book-a-call" className="underline hover:text-secondary-foreground">
+                Not sure if this is right? Talk through options.
               </a>
             </p>
           </motion.div>
@@ -84,14 +87,14 @@ const PathA = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="heading-2 text-nimara-navy mb-4 text-center">
+            <h2 className="heading-2 text-foreground mb-4 text-center">
               Is Path A a good fit?
             </h2>
             <p className="text-subtitle mb-8 text-center">
               Use this when you need relief, not a big project.
             </p>
             
-            <p className="text-nimara-navy font-medium mb-6">
+            <p className="text-foreground font-medium mb-6">
               Path A is a match if at least one of these sounds like you:
             </p>
             
@@ -111,7 +114,7 @@ const PathA = () => {
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                   className="flex items-start gap-3"
                 >
-                  <Check className="w-5 h-5 text-nimara-mint mt-0.5 flex-shrink-0" />
+                  <Check className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
                   <span className="text-foreground">{item}</span>
                 </motion.li>
               ))}
@@ -119,7 +122,7 @@ const PathA = () => {
             
             <Card className="bg-muted/50 border-muted">
               <CardContent className="pt-6">
-                <h3 className="font-semibold text-nimara-navy mb-4 flex items-center gap-2">
+                <h3 className="font-semibold text-foreground mb-4 flex items-center gap-2">
                   <X className="w-5 h-5 text-destructive" />
                   Path A is not a match if:
                 </h3>
@@ -129,7 +132,7 @@ const PathA = () => {
                   <li>• No one on your team can give 1–2 hours over the next few weeks.</li>
                 </ul>
                 <p className="text-sm text-muted-foreground">
-                  In those cases, <a href="/how-nimara-works" className="text-nimara-purple underline">Path B (system build)</a> or a <a href="/health-score" className="text-nimara-purple underline">quick Health Check</a> is better.
+                  In those cases, <a href="/path-b" className="text-primary underline">Path B (NOHC Snapshot + System Phase)</a> or a <a href="/book-a-call" className="text-primary underline">quick call to talk through options</a> is better.
                 </p>
               </CardContent>
             </Card>
@@ -146,7 +149,7 @@ const PathA = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="heading-2 text-nimara-navy mb-4 text-center">
+            <h2 className="heading-2 text-foreground mb-4 text-center">
               How Path A works
             </h2>
             <p className="text-subtitle mb-12 text-center">
@@ -194,11 +197,11 @@ const PathA = () => {
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                   className="flex gap-4"
                 >
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-nimara-purple text-white flex items-center justify-center font-bold">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
                     {item.step}
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-semibold text-nimara-navy text-lg mb-2">{item.title}</h3>
+                    <h3 className="font-semibold text-foreground text-lg mb-2">{item.title}</h3>
                     <p className="text-body">{item.description}</p>
                     {item.bullets && (
                       <ul className="mt-2 space-y-1 text-body-muted">
@@ -212,10 +215,10 @@ const PathA = () => {
               ))}
             </div>
             
-            <Card className="mt-12 bg-nimara-mint/10 border-nimara-mint/30">
+            <Card className="mt-12 bg-accent/10 border-accent/30">
               <CardContent className="pt-6">
-                <h3 className="font-semibold text-nimara-navy mb-2 flex items-center gap-2">
-                  <Clock className="w-5 h-5 text-nimara-purple" />
+                <h3 className="font-semibold text-foreground mb-2 flex items-center gap-2">
+                  <Clock className="w-5 h-5 text-primary" />
                   Timeline & your commitment
                 </h3>
                 <p className="text-muted-foreground text-sm">
@@ -236,7 +239,7 @@ const PathA = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="heading-2 text-nimara-navy mb-4 text-center">
+            <h2 className="heading-2 text-foreground mb-4 text-center">
               What's inside the Mini Acceptance Bundle?
             </h2>
             <p className="text-subtitle mb-12 text-center">
@@ -275,8 +278,8 @@ const PathA = () => {
                 >
                   <Card className="h-full hover:shadow-md transition-shadow">
                     <CardContent className="pt-6">
-                      <item.icon className="w-8 h-8 text-nimara-purple mb-4" />
-                      <h3 className="font-semibold text-nimara-navy mb-2">{item.title}</h3>
+                      <item.icon className="w-8 h-8 text-primary mb-4" />
+                      <h3 className="font-semibold text-foreground mb-2">{item.title}</h3>
                       <p className="text-body-muted text-sm">{item.description}</p>
                     </CardContent>
                   </Card>
@@ -288,7 +291,7 @@ const PathA = () => {
       </section>
 
       {/* START PATH A */}
-      <section id="start-path-a" className="py-20 md:py-28 bg-nimara-navy">
+      <section id="start-path-a" className="py-20 md:py-28 bg-secondary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -296,39 +299,39 @@ const PathA = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="heading-2 text-white mb-4 text-center">
+            <h2 className="heading-2 text-secondary-foreground mb-4 text-center">
               Ready to start Path A?
             </h2>
-            <p className="text-lg text-white/85 mb-12 text-center max-w-2xl mx-auto">
+            <p className="text-lg text-secondary-foreground/85 mb-12 text-center max-w-2xl mx-auto">
               If you're facing one clear problem and need real help, start here. A Nimara team member will review your intake and reply within 1 business day.
             </p>
             
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-white/10 rounded-2xl p-6">
-                <h3 className="font-semibold text-white mb-4">What we'll ask in the intake</h3>
-                <p className="text-white/70 text-sm mb-4">No long forms. Just the basics we need to help.</p>
-                <ul className="space-y-2 text-white/80 text-sm mb-6">
+              <div className="bg-secondary-foreground/10 rounded-2xl p-6">
+                <h3 className="font-semibold text-secondary-foreground mb-4">What we'll ask in the intake</h3>
+                <p className="text-secondary-foreground/70 text-sm mb-4">No long forms. Just the basics we need to help.</p>
+                <ul className="space-y-2 text-secondary-foreground/80 text-sm mb-6">
                   <li>• What is the one urgent problem?</li>
                   <li>• Who is asking for it? (A funder, an auditor, a regulator, your board.)</li>
                   <li>• What is the deadline or time pressure?</li>
                   <li>• Roughly how many staff do you have?</li>
                   <li>• Have you tried anything already?</li>
                 </ul>
-                <p className="text-white/60 text-xs">
+                <p className="text-secondary-foreground/60 text-xs">
                   We won't ask for detailed financials or private data in this first step.
                 </p>
               </div>
               
-              <div className="bg-white/10 rounded-2xl p-6">
+              <div className="bg-secondary-foreground/10 rounded-2xl p-6">
                 <Button 
                   size="lg" 
-                  className="w-full bg-nimara-mint text-nimara-navy hover:bg-nimara-mint/90 font-semibold text-lg py-6 mb-4"
+                  className="w-full font-semibold text-lg py-6 mb-4"
                   asChild
                 >
                   <a href="#">Start Path A – 7-minute intake</a>
                 </Button>
-                <p className="text-white/70 text-sm text-center mb-6">
-                  Prefer to talk first? <a href="https://calendly.com/hello-nimara/30min" target="_blank" rel="noopener noreferrer" className="text-nimara-mint underline">Book a short call instead.</a>
+                <p className="text-secondary-foreground/70 text-sm text-center mb-6">
+                  Prefer to talk first? <a href="/book-a-call" className="text-accent underline">Book a short call instead.</a>
                 </p>
                 
                 <Accordion type="single" collapsible className="w-full">
@@ -350,11 +353,11 @@ const PathA = () => {
                       a: "We'll be clear about costs and any funding options before you decide."
                     }
                   ].map((item, index) => (
-                    <AccordionItem key={index} value={`item-${index}`} className="border-white/20">
-                      <AccordionTrigger className="text-white text-sm hover:no-underline">
+                    <AccordionItem key={index} value={`item-${index}`} className="border-secondary-foreground/20">
+                      <AccordionTrigger className="text-secondary-foreground text-sm hover:no-underline">
                         {item.q}
                       </AccordionTrigger>
-                      <AccordionContent className="text-white/70 text-sm">
+                      <AccordionContent className="text-secondary-foreground/70 text-sm">
                         {item.a}
                       </AccordionContent>
                     </AccordionItem>
