@@ -21,8 +21,8 @@ All colors MUST be HSL.
     --nim-navy: 229 48% 23%; /* #1e2347 - slightly darker for better contrast */
     --nim-purple: 252 58% 56%; /* #6945D8 */
     --nim-mint: 162 91% 83%; /* #ACFCE3 */
-    --nim-slate: 220 13% 46%; /* #6b7280 - muted text, AA compliant */
-    --nim-slate-dark: 220 13% 32%; /* #475569 - body text, high contrast */
+    --nim-slate: 220 13% 38%; /* #555d6e - muted text, improved AA contrast ~5.8:1 */
+    --nim-slate-dark: 220 13% 28%; /* #3d4451 - body text, high contrast ~8.5:1 */
     --nim-white: 0 0% 100%; /* #FFFFFF */
     --nim-mist: 226 33% 93%; /* #E9ECF4 */
     --nim-cloud: 220 50% 97%; /* #F7F9FC */
