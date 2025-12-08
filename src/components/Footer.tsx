@@ -26,7 +26,7 @@ export const Footer = () => {
               href={item.href}
               target={item.external ? "_blank" : undefined}
               rel={item.external ? "noopener noreferrer" : undefined}
-              className="text-sm sm:text-base text-primary-foreground/70 hover:text-primary-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary-foreground focus:ring-offset-2 focus:ring-offset-secondary-background rounded px-2 py-1"
+              className="text-sm sm:text-base text-primary-foreground/80 hover:text-primary-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary-foreground focus:ring-offset-2 focus:ring-offset-secondary-background rounded px-2 py-1"
             >
               {item.name}
             </a>
@@ -44,7 +44,7 @@ export const Footer = () => {
         <div className="border-t border-primary-foreground/10 pt-8">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             {/* Copyright */}
-            <p className="text-sm text-primary-foreground/50">
+            <p className="text-sm text-primary-foreground/60">
               © {new Date().getFullYear()} Nimara. All rights reserved.
             </p>
 
@@ -54,7 +54,7 @@ export const Footer = () => {
                 <span key={item.name} className="flex items-center gap-4 sm:gap-6">
                   <a
                     href={item.href}
-                    className="text-sm text-primary-foreground/50 hover:text-primary-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary-foreground focus:ring-offset-2 focus:ring-offset-secondary-background rounded px-2 py-1"
+                    className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary-foreground focus:ring-offset-2 focus:ring-offset-secondary-background rounded px-2 py-1"
                   >
                     {item.name}
                   </a>

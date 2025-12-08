@@ -187,7 +187,7 @@ const AccordionItem = ({ item, isOpen, onToggle, index }: AccordionItemProps) =>
           }`}>
             {item.title}
           </h3>
-          <p className="text-sm text-muted-foreground mt-0.5 leading-relaxed">
+          <p className="text-sm text-body-muted">
             {item.description}
           </p>
         </div>
@@ -297,12 +297,12 @@ export const Expertise = () => {
           
           <h2
             id="expertise-heading"
-            className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground leading-tight tracking-tight mb-4 sm:mb-6"
+            className="heading-2 text-foreground mb-4 sm:mb-6"
           >
             What we help you fix
           </h2>
           
-          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+          <p className="text-subtitle">
             We focus on the boring but critical systems that keep your nonprofit safe, fundable, and ready for growth.
           </p>
         </motion.div>
@@ -398,7 +398,7 @@ export const Expertise = () => {
                 );
               })}
             </div>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-body-muted">
               <span className="font-medium text-foreground">All 6 domains</span> covered in our Health Check
             </p>
             <a
