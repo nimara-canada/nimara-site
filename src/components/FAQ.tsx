@@ -15,13 +15,13 @@ type FaqItem = {
 
 const faqs: FaqItem[] = [
   {
-    question: "Do we have to start with a health check?",
-    answer: "Short answer: No. If you have one urgent problem (a scary email, audit, funder deadline, policy gap), we use Fast Help – a short project that does not require a full health check. If you want to upgrade your systems across any of our 7 domains (governance, finance, HR, programs, fundraising, volunteers, systems & data), we start with the Nimara Organizational Health Check (NOHC). The health check shows where each system sits, then we design a system install around that.",
+    question: "Do we have to start with an NOHC Snapshot?",
+    answer: "No. If you have one urgent problem (a scary email, audit, funder deadline, policy gap), Path A – Rapid Response handles it in 1–4 weeks without a health check. If you want to upgrade systems across multiple domains (governance, finance, HR, programs, fundraising, volunteers, data), Path B starts with an NOHC Snapshot—a short, paid assessment that shows where each system sits. From there, we design 1–2 system bundles around your priorities.",
     category: 'getting-started'
   },
   {
-    question: "What's the difference between Fast Help and a Health Check & Systems project?",
-    answer: "Fast Help (Path A): One clear problem, 1–4 weeks. You get a small 'bundle' of tools, files, and steps that solve that problem. Health Check & Systems (NOHC + Path B): Bigger questions about how your org runs. Start with NOHC to see your 'Tiers' across all 7 domains. 8–12 week system installs that make you audit- and funder-ready.",
+    question: "What's the difference between Path A and Path B?",
+    answer: "Path A – Rapid Response: One clear problem, 1–4 weeks. You get a small Acceptance Bundle of tools, files, and steps that solve that problem. Path B – System Installs: Bigger questions about how your org runs. Start with an NOHC Snapshot to see your Tier scores across all 7 domains. Then 8–12 weeks per system bundle to make you audit- and funder-ready.",
     category: 'process'
   },
   {
@@ -31,17 +31,17 @@ const faqs: FaqItem[] = [
   },
   {
     question: "What kinds of problems can you help with?",
-    answer: "We work across 7 domains: Board & Governance (rules, roles, minutes, policies), Money & Compliance (finance systems, grants, audits, CRA), People & HR (staff files, hiring, safety, conflict), Programs & Services (intake, delivery, safety logs, reviews), Fundraising & Donor Standards (gift acceptance, receipting, donor records), Volunteers (agreements, screening, training), and Systems, Data & Records (files, dashboards, data protection). Fast Help is for one problem. Health Check & Systems is for when several areas are weak.",
+    answer: "We work across 7 domains: Board & Governance (rules, roles, minutes, policies), Money & Compliance (finance systems, grants, audits, CRA), People & HR (staff files, hiring, safety, conflict), Programs & Services (intake, delivery, safety logs, reviews), Fundraising & Donor Standards (gift acceptance, receipting, donor records), Volunteers (agreements, screening, training), and Systems, Data & Records (files, dashboards, data protection). Path A is for one problem. Path B is for when several areas need work.",
     category: 'process'
   },
   {
-    question: "How long does it take, and what do we actually get at the end?",
-    answer: "Fast Help: 1–4 weeks. You get a small Acceptance Bundle – the policies, templates, trackers, and steps needed to fix that one problem. Health Check & Systems: 2–3 weeks for NOHC, then 8–12 weeks per system install. You get a Tier score, a clear plan, and a bigger Acceptance Bundle that your team can run without us. No 'advice only.' Every project ends in files and routines that live in your systems.",
+    question: "How long does it take, and what do we actually get?",
+    answer: "Path A – Rapid Response: 1–4 weeks. You get a small Acceptance Bundle—the policies, templates, trackers, and steps needed to fix that one problem. Path B – System Installs: 2–3 weeks for the NOHC Snapshot, then 8–12 weeks per system bundle. You get a Tier score, a clear plan, and a larger Acceptance Bundle that your team can run without us. No 'advice only.' Every project ends in files and routines that live in your systems.",
     category: 'process'
   },
   {
     question: "How does pricing work? Can a funder pay for this?",
-    answer: "We use flat project fees, not open-ended hourly billing. Fast Help = smaller fixed fee for one problem. Health Check & Systems = fixed fee for the NOHC, plus fixed fees for each system install bundle. Yes, funders can pay. Many orgs use capacity-building grants, admin lines, or special project funds. We can give you a simple one-page description to include in proposals or to share with your funder.",
+    answer: "We use flat project fees, not open-ended hourly billing. Path A = smaller fixed fee for one problem. Path B = fixed fee for the NOHC Snapshot, plus fixed fees for each system bundle. Yes, funders can pay. Many orgs use capacity-building grants, admin lines, or special project funds. We can give you a simple one-page description to include in proposals or to share with your funder.",
     category: 'pricing'
   }
 ];
