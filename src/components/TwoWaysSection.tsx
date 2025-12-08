@@ -175,21 +175,23 @@ export const TwoWaysSection = () => {
               </PathBadge>
             </div>
 
-            {/* Title */}
-            <h3 className="text-2xl md:text-3xl font-serif font-medium text-foreground mb-4">
-              Path A: Rapid Response
+            {/* Title & Sub-label */}
+            <h3 className="text-2xl md:text-3xl font-serif font-medium text-foreground mb-1">
+              Fast Help
             </h3>
+            <p className="text-sm text-muted-foreground mb-2">Path A – rapid response</p>
+            <p className="text-sm text-teal-700 font-medium mb-5">1–4 weeks • One problem, one solution</p>
 
             {/* Description */}
-            <p className="text-body leading-relaxed mb-6">
-              Fix one urgent issue fast. Board crisis? HR mess? Grant deadline? We jump in, solve the problem, and get out. No lengthy assessments required.
+            <p className="text-body leading-relaxed mb-5">
+              Fix one urgent issue fast. Board crisis? HR mess? Grant deadline? We jump in, solve the problem, and get out.
             </p>
 
-            {/* Checklist */}
-            <div className="space-y-3 mb-8">
-              <CheckItem variant="accent">1–4 weeks typical timeline</CheckItem>
-              <CheckItem variant="accent">One problem, one solution</CheckItem>
-              <CheckItem variant="accent">No Health Check required</CheckItem>
+            {/* Explanatory block */}
+            <div className="bg-teal-50 border-l-2 border-teal-300 pl-4 py-3 mb-8 rounded-r-lg">
+              <p className="text-body-muted text-sm leading-relaxed">
+                No lengthy assessments required. We scope your problem, match you with the right expertise, and deliver a focused fix you can run with.
+              </p>
             </div>
 
             {/* CTA */}
