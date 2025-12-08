@@ -6,6 +6,7 @@ import HowItWorksHero from "@/components/company/HowItWorksHero";
 import HealthCheckRule from "@/components/company/HealthCheckRule";
 import YourJourney from "@/components/company/YourJourney";
 import QualityAndRefundsAlt from "@/components/company/QualityAndRefundsAlt";
+import Glossary from "@/components/company/Glossary";
 import { ChevronDown } from "lucide-react";
 import {
   Tooltip,
@@ -119,6 +120,12 @@ const HowNimaraWorks = () => {
         <div className="relative">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
           <QualityAndRefundsAlt />
+        </div>
+        
+        {/* Glossary section */}
+        <div className="relative">
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+          <Glossary />
         </div>
       </main>
       
