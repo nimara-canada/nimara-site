@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+
 // Clean card with accent stripe
 const PathCard = ({
   children,
@@ -11,7 +12,7 @@ const PathCard = ({
   delay?: number;
 }) => {
   const isPrimary = variant === "featured";
-  const accentColor = isPrimary ? "bg-primary/15" : "bg-accent/15";
+  const accentColor = isPrimary ? "bg-primary/10" : "bg-accent/10";
 
   return (
     <motion.div
@@ -21,9 +22,14 @@ const PathCard = ({
       transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
       className="relative group"
     >
-      <div className="relative h-full rounded-2xl border border-border/60 bg-card overflow-hidden transition-shadow duration-300 hover:shadow-lg">
-        {/* Accent stripe on right side */}
-        <div className={`absolute top-0 right-0 w-16 h-32 ${accentColor} rounded-bl-[4rem]`} />
+      <div className="relative h-full rounded-2xl border border-border/40 bg-card overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-border/60">
+        {/* Accent stripe on right side - softer, more rounded */}
+        <div 
+          className={`absolute -top-4 -right-4 w-28 h-40 ${accentColor}`}
+          style={{ 
+            borderRadius: '0 0 0 100%',
+          }} 
+        />
         
         {/* Content */}
         <div className="relative p-8 lg:p-10">{children}</div>
