@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useIsMobile } from '@/hooks/use-mobile';
 import {
@@ -272,7 +272,8 @@ export const TwoWaysSection = () => {
                           <span className="underline decoration-dotted decoration-accent/60 underline-offset-2 cursor-help">mini-bundle</span>
                         </TooltipTrigger>
                         <TooltipContent className="max-w-xs">
-                          <p>A bundle is a set of policies, templates, trackers, and steps packaged together to solve a specific problem.</p>
+                          <p className="mb-1">A bundle is a set of policies, templates, trackers, and steps packaged together to solve a specific problem.</p>
+                          <Link to="/how-nimara-works#glossary" className="text-xs text-accent underline hover:no-underline">Learn more →</Link>
                         </TooltipContent>
                       </Tooltip>
                     </TooltipProvider>
@@ -379,7 +380,8 @@ export const TwoWaysSection = () => {
                           <span className="underline decoration-dotted decoration-primary/60 underline-offset-2 cursor-help">system bundles</span>
                         </TooltipTrigger>
                         <TooltipContent className="max-w-xs">
-                          <p>A bundle is a set of policies, templates, trackers, and steps packaged together to install or upgrade a specific system area.</p>
+                          <p className="mb-1">A bundle is a set of policies, templates, trackers, and steps packaged together to install or upgrade a specific system area.</p>
+                          <Link to="/how-nimara-works#glossary" className="text-xs text-primary underline hover:no-underline">Learn more →</Link>
                         </TooltipContent>
                       </Tooltip>
                     </TooltipProvider>
@@ -390,7 +392,8 @@ export const TwoWaysSection = () => {
                           <span className="underline decoration-dotted decoration-primary/60 underline-offset-2 cursor-help">Tier</span>
                         </TooltipTrigger>
                         <TooltipContent className="max-w-xs">
-                          <p>Tiers (0–4) describe how mature each system is. Tier 0 means "not yet built" and Tier 4 means "running smoothly at scale." We help you move up one Tier at a time.</p>
+                          <p className="mb-1">Tiers (0–4) describe how mature each system is. Tier 0 means "not yet built" and Tier 4 means "running smoothly at scale." We help you move up one Tier at a time.</p>
+                          <Link to="/how-nimara-works#glossary" className="text-xs text-primary underline hover:no-underline">Learn more →</Link>
                         </TooltipContent>
                       </Tooltip>
                     </TooltipProvider>
