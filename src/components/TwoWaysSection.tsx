@@ -210,30 +210,32 @@ export const TwoWaysSection = () => {
                   </svg>
                 }
               >
-                Full Systems
+                Health Check & Systems
               </PathBadge>
             </div>
 
-            {/* Title */}
-            <h3 className="text-2xl md:text-3xl font-serif font-medium text-foreground mb-4">
-              Path B: Health Check & Systems
+            {/* Title & Sub-label */}
+            <h3 className="text-2xl md:text-3xl font-serif font-medium text-foreground mb-1">
+              Health Check & Systems
             </h3>
+            <p className="text-sm text-muted-foreground mb-2">Path B – system installs</p>
+            <p className="text-sm text-primary font-medium mb-5">8–12 weeks per phase • NOHC Snapshot + 1–2 system bundles</p>
 
             {/* Description */}
-            <p className="text-body leading-relaxed mb-6">
-              Build lasting organizational strength. We assess your systems, identify gaps, then install 1–2 complete bundles. This is how you become truly funder-ready.
+            <p className="text-body leading-relaxed mb-5">
+              For when one or more core systems feel messy – finance, governance, HR, programs, or delivery.
             </p>
 
-            {/* Checklist */}
-            <div className="space-y-3 mb-8">
-              <CheckItem variant="primary">8–12 weeks comprehensive process</CheckItem>
-              <CheckItem variant="primary">NOHC assessment included</CheckItem>
-              <CheckItem variant="primary">1–2 system bundles installed</CheckItem>
+            {/* Explanatory block */}
+            <div className="bg-primary/5 border-l-2 border-primary/30 pl-4 py-3 mb-8 rounded-r-lg">
+              <p className="text-body-muted text-sm leading-relaxed">
+                We start with a <strong className="text-foreground">Nimara NOHC Snapshot</strong> – a short, paid health check that shows where each system sits on our Tier ladder. Then we design a System Phase using 1–2 bundles to move those systems up a Tier and install right-sized tools your team can actually run.
+              </p>
             </div>
 
             {/* CTA */}
             <LinkCTA onClick={() => handleNavigate("/health-score")} variant="primary">
-              Start your assessment
+              Learn about NOHC Snapshot
             </LinkCTA>
           </PathCard>
         </div>
@@ -246,12 +248,15 @@ export const TwoWaysSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <p className="text-body-muted mb-2">Not sure which path fits?</p>
+          <p className="text-foreground font-medium mb-1">Not sure where you fit?</p>
+          <p className="text-body-muted text-sm max-w-lg mx-auto mb-4">
+            Tell us what's going on and we'll help you decide between Fast Help (Path A) and a NOHC Snapshot + System Phase (Path B) on a short call.
+          </p>
           <button
             onClick={() => handleNavigate("/book-a-call")}
             className="inline-flex items-center gap-2 text-primary font-medium hover:opacity-80 transition-opacity"
           >
-            Talk to the team
+            Talk through options
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>
