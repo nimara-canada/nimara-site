@@ -11,9 +11,6 @@ const PathCard = ({
   variant?: "default" | "featured";
   delay?: number;
 }) => {
-  const isPrimary = variant === "featured";
-  const accentColor = isPrimary ? "bg-primary/10" : "bg-accent/10";
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -23,9 +20,9 @@ const PathCard = ({
       className="relative group"
     >
       <div className="relative h-full rounded-2xl border border-border/40 bg-card overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-border/60">
-        {/* Accent stripe on right side - softer, more rounded */}
+        {/* Accent stripe on right side - navy for consistency */}
         <div 
-          className={`absolute -top-4 -right-4 w-28 h-40 ${accentColor}`}
+          className="absolute -top-4 -right-4 w-28 h-40 bg-secondary-background/10"
           style={{ 
             borderRadius: '0 0 0 100%',
           }} 
