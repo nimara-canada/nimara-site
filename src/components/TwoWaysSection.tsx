@@ -614,7 +614,7 @@ export const TwoWaysSection = () => {
               onClick={() => handleNavigate("/book-a-call", 3)}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-border bg-background text-foreground font-medium text-sm transition-all duration-300 hover:border-accent/50 hover:bg-accent/5"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-secondary-background text-primary-foreground font-medium text-sm transition-all duration-300 hover:opacity-90 shadow-md"
             >
               Talk through options
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
