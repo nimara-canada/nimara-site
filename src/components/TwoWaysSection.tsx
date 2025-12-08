@@ -114,7 +114,7 @@ const PathCard = ({
           shadow-[0_8px_32px_-8px_rgba(0,0,0,0.08),0_4px_16px_-4px_rgba(0,0,0,0.04)]
           hover:shadow-[0_24px_64px_-16px_rgba(0,0,0,0.12),0_8px_24px_-8px_rgba(0,0,0,0.06)]
           transition-all duration-500 ease-out
-          overflow-hidden
+          overflow-visible
         `}
       >
         {/* Subtle inner glow */}
@@ -132,7 +132,7 @@ const Badge = ({ children, variant = "default" }: { children: React.ReactNode; v
   if (variant === "popular") {
     return (
       <motion.div
-        className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-10"
+        className="absolute -top-4 left-1/2 -translate-x-1/2 z-20"
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -399,7 +399,7 @@ export const TwoWaysSection = () => {
         </motion.div>
 
         {/* Cards grid */}
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid md:grid-cols-2 gap-6 lg:gap-8 pt-4">
           {/* Card 1: Fast Help */}
           <PathCard
             isHovered={hoveredCard === 1}
