@@ -347,7 +347,7 @@ export const TwoWaysSection = () => {
         >
           {/* Refined pill badge */}
           <motion.div
-            className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-muted/50 border border-border/50 backdrop-blur-sm mb-8"
+            className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-secondary-background border border-secondary-background shadow-md mb-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -357,7 +357,7 @@ export const TwoWaysSection = () => {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-60" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
             </span>
-            <span className="text-xs font-medium tracking-[0.15em] uppercase text-muted-foreground">
+            <span className="text-xs font-medium tracking-[0.15em] uppercase text-primary-foreground">
               Choose Your Path
             </span>
           </motion.div>
