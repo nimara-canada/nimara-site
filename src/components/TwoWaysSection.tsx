@@ -2,6 +2,12 @@ import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useIsMobile } from '@/hooks/use-mobile';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 export const TwoWaysSection = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -259,8 +265,18 @@ export const TwoWaysSection = () => {
                 
                 <div className="pl-5 border-l-2 border-accent/50 space-y-3">
                   <p className="text-muted-foreground leading-relaxed text-sm">
-                    We keep it small and clear: one problem, one mini-bundle, 
-                    fast turnaround.
+                    We keep it small and clear: one problem, one{' '}
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <span className="underline decoration-dotted decoration-accent/60 underline-offset-2 cursor-help">mini-bundle</span>
+                        </TooltipTrigger>
+                        <TooltipContent className="max-w-xs">
+                          <p>A bundle is a set of policies, templates, trackers, and steps packaged together to solve a specific problem.</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                    , fast turnaround.
                   </p>
                   <p className="text-muted-foreground leading-relaxed text-sm">
                     No big diagnostic. No health check required.
@@ -356,8 +372,29 @@ export const TwoWaysSection = () => {
                     to see where each system is today.
                   </p>
                   <p className="text-muted-foreground leading-relaxed text-sm">
-                    Then we pick 1–2 system bundles to move those systems up a Tier. 
-                    Each bundle is a short project to install a right-sized system for your org.
+                    Then we pick 1–2{' '}
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <span className="underline decoration-dotted decoration-primary/60 underline-offset-2 cursor-help">system bundles</span>
+                        </TooltipTrigger>
+                        <TooltipContent className="max-w-xs">
+                          <p>A bundle is a set of policies, templates, trackers, and steps packaged together to install or upgrade a specific system area.</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                    {' '}to move those systems up a{' '}
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <span className="underline decoration-dotted decoration-primary/60 underline-offset-2 cursor-help">Tier</span>
+                        </TooltipTrigger>
+                        <TooltipContent className="max-w-xs">
+                          <p>Tiers (0–4) describe how mature each system is. Tier 0 means "not yet built" and Tier 4 means "running smoothly at scale." We help you move up one Tier at a time.</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                    . Each bundle is a short project to install a right-sized system for your org.
                   </p>
                 </div>
               </div>
