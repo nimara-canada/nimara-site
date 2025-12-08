@@ -242,16 +242,19 @@ export const TwoWaysSection = () => {
                 <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-2 tracking-tight">
                   Fast Help
                 </h3>
+                <p className="text-xs md:text-sm text-muted-foreground mb-2">
+                  Path A – one urgent problem
+                </p>
                 <p className="text-accent-foreground text-sm uppercase tracking-[0.15em] font-semibold">
-                  1–4 weeks • Single problem • No NOHC
+                  1–4 weeks • single problem • no NOHC
                 </p>
               </div>
 
               {/* Content */}
               <div className="space-y-5 mb-8">
                 <p className="text-muted-foreground text-base leading-relaxed">
-                  For when one thing is on fire — a scary email, an audit, 
-                  a funder deadline, a policy gap.
+                  For when one thing is on fire – a scary email, an audit, 
+                  a funder deadline, or a policy gap.
                 </p>
                 
                 <div className="pl-5 border-l-2 border-accent/50 space-y-3">
@@ -332,25 +335,29 @@ export const TwoWaysSection = () => {
                 <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-2 tracking-tight">
                   Health Check & Systems
                 </h3>
+                <p className="text-xs md:text-sm text-muted-foreground mb-2">
+                  Path B – system installs
+                </p>
                 <p className="text-primary text-sm uppercase tracking-[0.15em] font-semibold">
-                  8–12 weeks • NOHC + Bundles
+                  8–12 weeks per phase • NOHC + 1–2 system bundles
                 </p>
               </div>
 
               {/* Content */}
               <div className="space-y-5 mb-8">
                 <p className="text-muted-foreground text-base leading-relaxed">
-                  For when the whole system feels messy — finance, 
+                  For when one or more core systems feel messy – finance, 
                   governance, HR, or delivery.
                 </p>
                 
                 <div className="pl-5 border-l-2 border-primary/40 space-y-3">
                   <p className="text-muted-foreground leading-relaxed text-sm">
                     We start with the Nimara Organizational Health Check (NOHC) 
-                    to see where each system is.
+                    to see where each system is today.
                   </p>
                   <p className="text-muted-foreground leading-relaxed text-sm">
-                    Then we pick 1–2 Bundles to move those systems up a Tier.
+                    Then we pick 1–2 system bundles to move those systems up a Tier. 
+                    Each bundle is a short project to install a right-sized system for your org.
                   </p>
                 </div>
               </div>
@@ -379,23 +386,26 @@ export const TwoWaysSection = () => {
           </motion.div>
         </div>
 
-        {/* Bottom section - help CTA */}
+        {/* Bottom section - Not sure helper strip */}
         <motion.div 
-          className="mt-20 md:mt-24 text-center"
+          className="mt-12 md:mt-16 flex flex-col items-center gap-3 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <p className="text-lg md:text-xl text-muted-foreground mb-6">
-            Not sure where to start? We'll help you choose on the first call.
+          <p className="text-base md:text-lg font-medium text-foreground">
+            Not sure which path fits?
+          </p>
+          <p className="text-sm md:text-base text-muted-foreground max-w-xl">
+            Tell us what's going on and we'll help you choose between Fast Help (Path A) and Health Check & Systems (Path B).
           </p>
           <button 
             onClick={() => handleNavigate('/book-a-call', 3)}
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-foreground text-background font-semibold text-base transition-all duration-300 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
+            className="mt-3 inline-flex items-center gap-2 px-6 py-3 rounded-full border border-accent/60 bg-transparent text-foreground font-medium text-sm transition-all duration-300 hover:bg-accent/10 hover:border-accent hover:scale-[1.02] active:scale-[0.98]"
           >
-            Talk to the team
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            Talk through options
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>
           </button>
