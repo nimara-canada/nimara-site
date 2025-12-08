@@ -48,9 +48,10 @@ const PathBadge = ({
   children: React.ReactNode; 
   variant?: "accent" | "primary";
 }) => {
-  const bgColor = variant === "primary" ? "bg-primary/10" : "bg-accent/10";
-  const textColor = variant === "primary" ? "text-primary" : "text-accent";
-  const borderColor = variant === "primary" ? "border-primary/20" : "border-accent/20";
+  // Use darker teal for accent text to meet WCAG AA contrast on white bg
+  const bgColor = variant === "primary" ? "bg-primary/10" : "bg-teal-50";
+  const textColor = variant === "primary" ? "text-primary" : "text-teal-700";
+  const borderColor = variant === "primary" ? "border-primary/20" : "border-teal-200";
   
   return (
     <span className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full ${bgColor} border ${borderColor} text-sm font-medium ${textColor}`}>
@@ -62,7 +63,8 @@ const PathBadge = ({
 
 // Checkmark list item
 const CheckItem = ({ children, variant = "accent" }: { children: React.ReactNode; variant?: "accent" | "primary" }) => {
-  const iconColor = variant === "primary" ? "text-primary" : "text-accent";
+  // Use darker teal for accent checkmarks to meet accessibility
+  const iconColor = variant === "primary" ? "text-primary" : "text-teal-600";
   return (
     <div className="flex items-center gap-3">
       <svg className={`w-5 h-5 ${iconColor} shrink-0`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -83,7 +85,8 @@ const LinkCTA = ({
   variant?: "accent" | "primary"; 
   children: React.ReactNode;
 }) => {
-  const textColor = variant === "primary" ? "text-primary" : "text-accent";
+  // Use darker teal for accent links to meet accessibility
+  const textColor = variant === "primary" ? "text-primary" : "text-teal-700";
   
   return (
     <button
