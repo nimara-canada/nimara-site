@@ -128,13 +128,13 @@ export const TwoWaysSection = () => {
         >
           {/* Refined pill badge */}
           <motion.div
-            className="inline-flex items-center px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-8"
+            className="inline-flex items-center px-4 py-2 rounded-full bg-secondary-background mb-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <span className="text-sm font-medium text-accent">
+            <span className="text-sm font-medium text-white">
               Two paths forward
             </span>
           </motion.div>
