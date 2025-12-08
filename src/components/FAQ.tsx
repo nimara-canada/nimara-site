@@ -16,12 +16,12 @@ type FaqItem = {
 const faqs: FaqItem[] = [
   {
     question: "Do we have to start with a health check?",
-    answer: "Short answer: No. If you have one urgent problem (a scary email, audit, funder deadline, policy gap), we use Fast Help – a short project that does not require a full health check. If you want to upgrade your systems (finance, governance, HR, programs), we start with the Nimara Organizational Health Check (NOHC). The health check shows where each system sits, then we design a system install around that.",
+    answer: "Short answer: No. If you have one urgent problem (a scary email, audit, funder deadline, policy gap), we use Fast Help – a short project that does not require a full health check. If you want to upgrade your systems across any of our 7 domains (governance, finance, HR, programs, fundraising, volunteers, systems & data), we start with the Nimara Organizational Health Check (NOHC). The health check shows where each system sits, then we design a system install around that.",
     category: 'getting-started'
   },
   {
     question: "What's the difference between Fast Help and a Health Check & Systems project?",
-    answer: "Fast Help (Path A): One clear problem, 1–4 weeks. You get a small 'bundle' of tools, files, and steps that solve that problem. Health Check & Systems (NOHC + Path B): Bigger questions about how your org runs. Start with NOHC to see your 'Tiers' in each area. 8–12 week system installs that make you audit- and funder-ready.",
+    answer: "Fast Help (Path A): One clear problem, 1–4 weeks. You get a small 'bundle' of tools, files, and steps that solve that problem. Health Check & Systems (NOHC + Path B): Bigger questions about how your org runs. Start with NOHC to see your 'Tiers' across all 7 domains. 8–12 week system installs that make you audit- and funder-ready.",
     category: 'process'
   },
   {
@@ -31,7 +31,7 @@ const faqs: FaqItem[] = [
   },
   {
     question: "What kinds of problems can you help with?",
-    answer: "Most of our work sits in these areas: Board & governance (rules, roles, minutes, policies), Money & compliance (basic finance systems, grants, audits, CRA), HR & people (staff files, hiring, safety, conflict), Programs & reporting (intake, trackers, funder reports). Fast Help is for one of these problems. Health Check & Systems is for when you know several of these are weak.",
+    answer: "We work across 7 domains: Board & Governance (rules, roles, minutes, policies), Money & Compliance (finance systems, grants, audits, CRA), People & HR (staff files, hiring, safety, conflict), Programs & Services (intake, delivery, safety logs, reviews), Fundraising & Donor Standards (gift acceptance, receipting, donor records), Volunteers (agreements, screening, training), and Systems, Data & Records (files, dashboards, data protection). Fast Help is for one problem. Health Check & Systems is for when several areas are weak.",
     category: 'process'
   },
   {
