@@ -101,7 +101,7 @@ const HeroSectionLuxe = () => {
             {/* Premium CTA buttons */}
             <div className={`space-y-4 mb-10 sm:mb-16 transition-all duration-1200 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
               <p className="text-sm sm:text-base text-white/90 font-medium mb-2">
-                Two ways to start: fix one urgent problem, or get a full health check.
+                Two ways to start: fix one urgent problem, or get an NOHC Snapshot.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <a href="/path-a" className="group relative px-6 sm:px-8 py-3.5 sm:py-4 overflow-hidden rounded-xl bg-accent text-accent-foreground font-semibold shadow-soft transition-all duration-500 hover:shadow-lg hover:scale-[1.02] text-sm sm:text-base whitespace-nowrap" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
@@ -173,7 +173,7 @@ const HeroSectionLuxe = () => {
                     </div>
                     <div>
                       <h3 className="text-sm font-medium text-gray-800 tracking-tight">NOHC Results</h3>
-                      <p className="text-[10px] text-gray-500 font-normal mt-0.5 tracking-wide uppercase">Health Check Outcome</p>
+                      <p className="text-[10px] text-gray-500 font-normal mt-0.5 tracking-wide uppercase">NOHC Snapshot Outcome</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-1.5">

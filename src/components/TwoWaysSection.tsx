@@ -212,16 +212,16 @@ export const TwoWaysSection = () => {
                   </svg>
                 }
               >
-                Health Check & Systems
+                NOHC Snapshot & Systems
               </PathBadge>
             </div>
 
             {/* Title & Sub-label */}
             <h3 className="text-2xl md:text-3xl font-serif font-medium text-foreground mb-1">
-              Health Check & Systems
+              NOHC Snapshot & Systems
             </h3>
             <p className="text-sm text-muted-foreground mb-2">Path B – system installs</p>
-            <p className="text-sm text-primary font-medium mb-5">8–12 weeks per phase • NOHC Snapshot + 1–2 system bundles</p>
+            <p className="text-sm text-primary font-medium mb-5">NOHC Snapshot ($2,500) + 8–12 weeks per system bundle</p>
 
             {/* Description */}
             <p className="text-body leading-relaxed mb-5">
@@ -231,7 +231,7 @@ export const TwoWaysSection = () => {
             {/* Explanatory block */}
             <div className="bg-primary/5 border-l-2 border-primary/30 pl-4 py-3 mb-8 rounded-r-lg">
               <p className="text-body-muted text-sm leading-relaxed">
-                We start with a <strong className="text-foreground">Nimara NOHC Snapshot</strong> – a short, paid health check that shows where each system sits on our Tier ladder. Then we design a System Phase using 1–2 bundles to move those systems up a Tier and install right-sized tools your team can actually run.
+                We start with a <strong className="text-foreground">NOHC Snapshot ($2,500 fixed fee)</strong> – a ~2-week health check that shows where each system sits on our Tier ladder. Then we design a System Phase using 1–2 bundles to move those systems up a Tier.
               </p>
             </div>
 
@@ -252,7 +252,7 @@ export const TwoWaysSection = () => {
         >
           <p className="text-foreground font-medium mb-1">Not sure where you fit?</p>
           <p className="text-body-muted text-sm max-w-lg mx-auto mb-4">
-            Tell us what's going on and we'll help you decide between Fast Help (Path A) and a NOHC Snapshot + System Phase (Path B) on a short call.
+            Tell us what's going on and we'll help you decide between Fast Help (Path A) and an NOHC Snapshot + System Phase (Path B) on a short call.
           </p>
           <button
             onClick={() => handleNavigate("/book-a-call")}

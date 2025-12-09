@@ -24,7 +24,7 @@ export const CompanyHero = () => {
                 className="shadow-xl shadow-indigo-900/30 text-base px-8"
                 asChild
               >
-                <a href="#nohc">Start the Organizational Health Check</a>
+                <a href="/health-score">Learn about the NOHC Snapshot</a>
               </Button>
               
               <Button

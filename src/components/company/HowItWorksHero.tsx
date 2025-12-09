@@ -69,7 +69,7 @@ const HowItWorksHero: React.FC = () => {
               {/* Buttons */}
               <motion.div variants={itemVariants} className="flex flex-col gap-4 mb-6">
                 <Link to="/health-score" className="group inline-flex items-center justify-center gap-2 bg-[#6945D8] text-white px-6 py-3.5 rounded-lg font-medium transition-all hover:bg-[#5a38c7] hover:scale-[1.02] hover:shadow-lg">
-                  Start the Health Check
+                  Learn about NOHC Snapshot
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
                 </Link>
                 

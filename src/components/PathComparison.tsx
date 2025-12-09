@@ -37,7 +37,7 @@ const comparisonData: ComparisonRow[] = [{
   pathA: "1–4 weeks",
   pathB: "8–12 weeks"
 }, {
-  feature: "Health Check scope",
+  feature: "Assessment scope",
   tooltip: "The breadth of organizational assessment included",
   pathA: "Single area",
   pathB: "Full organization"
@@ -57,8 +57,8 @@ const comparisonData: ComparisonRow[] = [{
   pathA: false,
   pathB: true
 }, {
-  feature: "NOHC Score included",
-  tooltip: "Nimara Organizational Health Check score—a benchmark of your nonprofit's operational maturity",
+  feature: "NOHC Snapshot included",
+  tooltip: "Nimara Organizational Health Check Snapshot ($2,500 fixed fee)—a ~2-week diagnostic showing your Tier scores across all domains",
   pathA: false,
   pathB: true
 }, {
@@ -367,7 +367,7 @@ export const PathComparison = () => {
       }} className="text-center mt-8">
           <Link to="/health-score" className="group inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm">
             <span>Not sure which path?</span>
-            <span className="font-medium text-primary underline underline-offset-2">Take our health check assessment</span>
+            <span className="font-medium text-primary underline underline-offset-2">Learn about the NOHC Snapshot</span>
             <motion.span className="inline-flex" animate={{
             x: [0, 4, 0]
           }} transition={{

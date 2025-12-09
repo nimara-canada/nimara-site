@@ -35,16 +35,16 @@ const PathB = () => {
               Path B – system installs
             </Badge>
             <h1 className="heading-display text-secondary-foreground mb-4">
-              Health Check & Systems
+              NOHC Snapshot & System Installs
             </h1>
             <p className="text-xl md:text-2xl text-secondary-foreground/90 mb-2">
               For when one or more core systems feel messy.
             </p>
             <p className="text-lg text-primary font-medium mb-6">
-              8–12 weeks per phase • NOHC Snapshot + 1–2 system bundles
+              NOHC Snapshot ($2,500) + 8–12 weeks per system bundle
             </p>
             <p className="text-body-lg text-secondary-foreground/85 max-w-2xl mx-auto mb-8">
-              Finance, governance, HR, programs, or delivery feeling disorganized? We start with a Nimara NOHC Snapshot – a short, paid health check that shows where each system sits on our Tier ladder. Then we design a System Phase using 1–2 bundles to move those systems up a Tier and install right-sized tools your team can actually run.
+              Finance, governance, HR, programs, or delivery feeling disorganized? We start with the <strong>NOHC Snapshot</strong> – a $2,500 fixed-fee health check completed in ~2 weeks that shows where each system sits on our Tier ladder. Then we design a System Phase using 1–2 bundles to move those systems up a Tier.
             </p>
             
             <div className="flex flex-wrap justify-center gap-3 mb-10">
@@ -54,7 +54,7 @@ const PathB = () => {
               </Badge>
               <Badge variant="outline" className="bg-secondary-foreground/10 text-secondary-foreground border-secondary-foreground/20 px-4 py-2">
                 <Target className="w-4 h-4 mr-2" />
-                NOHC Snapshot first
+                NOHC Snapshot ($2,500)
               </Badge>
               <Badge variant="outline" className="bg-secondary-foreground/10 text-secondary-foreground border-secondary-foreground/20 px-4 py-2">
                 <Package className="w-4 h-4 mr-2" />
