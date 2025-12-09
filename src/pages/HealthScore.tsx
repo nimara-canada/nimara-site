@@ -123,30 +123,6 @@ const HealthScore = () => {
       <main className="pt-16 overflow-hidden">
         {/* Hero Section */}
         <section className="relative min-h-[85vh] flex items-center py-20 md:py-28 bg-secondary-background bg-secondary-foreground shadow-none rounded-none opacity-100">
-          {/* Animated background elements */}
-          <div className="absolute inset-0 overflow-hidden">
-            <motion.div animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3]
-          }} transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }} className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-accent/40 to-primary/20 rounded-full blur-3xl" />
-            <motion.div animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.2, 0.4, 0.2]
-          }} transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1
-          }} className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-gradient-to-tr from-primary/30 to-accent/20 rounded-full blur-3xl" />
-            <div className="absolute inset-0 opacity-5" style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
-            backgroundSize: '40px 40px'
-          }} />
-          </div>
           
           <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
             <div className="text-center">
