@@ -154,12 +154,7 @@ const HealthScore = () => {
               duration: 0.6
             }} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.1]">
                 Get a clear picture of your systems{" "}
-                <span className="relative inline-block">
-                  <span className="relative z-10 text-accent">
-                    in about 2 weeks.
-                  </span>
-                  <span className="absolute bottom-2 left-0 right-0 h-3 bg-accent/30 -skew-x-3 rounded-sm" />
-                </span>
+                <span className="text-accent">in about 2 weeks.</span>
               </motion.h1>
 
               {/* Subheading */}
