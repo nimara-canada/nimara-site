@@ -115,16 +115,6 @@ const HealthScore = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Load Typeform embed script
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = "//embed.typeform.com/next/embed.js";
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -263,13 +253,6 @@ const HealthScore = () => {
                     </span>
                   </motion.button>
                 </Link>
-                
-                <p className="text-white/60 text-sm">
-                  Prefer to start with a quick fit check instead?{" "}
-                  <a href="#fit-check-form" className="text-accent hover:text-accent/80 underline underline-offset-2">
-                    Take it here
-                  </a>
-                </p>
               </motion.div>
             </div>
           </div>
@@ -473,36 +456,6 @@ const HealthScore = () => {
           </div>
         </section>
 
-        {/* Fit Check Form Section */}
-        <section id="fit-check-form" className="py-20 md:py-28 bg-background scroll-mt-20 relative">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }}
-              className="text-center mb-10"
-            >
-              <h2 className="heading-2 text-foreground mb-4">
-                Start with the quick fit check
-              </h2>
-              <p className="text-subtitle max-w-xl mx-auto">
-                Take 7–9 minutes to tell us about your situation. We'll follow up with options.
-              </p>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 via-accent/10 to-primary/5 rounded-[2rem] blur-2xl" />
-              <div className="relative bg-card rounded-3xl shadow-2xl overflow-hidden border border-border/50">
-                <div data-tf-live="01JMFHG9N10TSBPJYKJHKP4BHZ" style={{ width: '100%', height: '600px' }} />
-              </div>
-            </motion.div>
-          </div>
-        </section>
 
         {/* Final CTA */}
         <section className="py-20 md:py-28 bg-gradient-to-br from-secondary-background via-secondary-background to-[hsl(var(--nimara-navy))] relative overflow-hidden">
@@ -537,13 +490,6 @@ const HealthScore = () => {
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </motion.button>
               </Link>
-              <p className="text-white/50 text-sm">
-                Not sure yet? Start with the{" "}
-                <a href="#fit-check-form" className="text-accent hover:text-accent/80 underline underline-offset-2">
-                  quick 7–9 minute fit check
-                </a>{" "}
-                and we'll follow up with options.
-              </p>
             </motion.div>
           </div>
         </section>
