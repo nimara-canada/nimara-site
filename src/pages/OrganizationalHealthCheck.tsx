@@ -24,6 +24,10 @@ const domains = [
     description: "Job descriptions, hiring processes, HR policies, performance management"
   },
   {
+    name: "Programs & Services",
+    description: "Program planning, delivery, incident logging, annual reviews"
+  },
+  {
     name: "Fundraising & Donor Standards",
     description: "Gift acceptance, receipting, donor data, stewardship practices"
   },
@@ -112,35 +116,35 @@ const tierDescriptions = [
     name: "Emergent",
     color: "#EF4444",
     description: "Organization is in start-up mode or crisis. Basic structures are missing or non-functional.",
-    recommendation: "Path A (Fast Help) recommended for immediate stabilization"
+    recommendation: "Path A (Fast Help) may address immediate fires. For a comprehensive view, consider the NOHC Snapshot ($2,500)."
   },
   {
     tier: 2,
     name: "Reactive",
     color: "#F59E0B",
     description: "Organization is operational but responds to issues as they arise. Inconsistent processes.",
-    recommendation: "Path A (Fast Help) for urgent fixes, or Path B (System Build) for comprehensive improvement"
+    recommendation: "Path A for one urgent fix, or the NOHC Snapshot ($2,500) to identify which systems to strengthen first."
   },
   {
     tier: 3,
     name: "Stable",
     color: "#10B981",
     description: "Organization has working systems but they need refinement and documentation.",
-    recommendation: "Path B (System Build) recommended for systematic improvement"
+    recommendation: "The NOHC Snapshot ($2,500) can pinpoint exactly which domains to prioritize for Path B system bundles."
   },
   {
     tier: 4,
     name: "Strategic",
     color: "#6945D8",
     description: "Organization has documented systems and uses data to inform decisions.",
-    recommendation: "Path B (System Build) for optimization and scaling support"
+    recommendation: "You may be ready for targeted optimization. Book a call to discuss whether a full NOHC Snapshot makes sense."
   },
   {
     tier: 5,
     name: "Optimized",
     color: "#8B5CF6",
     description: "Organization operates with mature, integrated systems and continuous improvement practices.",
-    recommendation: "Occasional strategic support or mentor partnership may be appropriate"
+    recommendation: "Occasional strategic support or mentor partnership may be appropriate. You likely don't need a full NOHC Snapshot."
   }
 ];
 
@@ -183,8 +187,8 @@ const OrganizationalHealthCheck = () => {
     return (
       <div className="min-h-screen bg-background">
         <Helmet>
-          <title>Your Results | Organizational Health Check | Nimara</title>
-          <meta name="description" content="View your organizational health assessment results and recommended next steps with Nimara." />
+          <title>Your Results | Quick Self-Assessment | Nimara</title>
+          <meta name="description" content="View your quick self-assessment results and recommended next steps with Nimara." />
         </Helmet>
         
         <Header />
@@ -196,12 +200,19 @@ const OrganizationalHealthCheck = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
+              {/* Disclaimer banner */}
+              <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-8 text-center">
+                <p className="text-sm text-amber-800">
+                  <strong>Note:</strong> This is a quick self-assessment for general guidance. For a comprehensive, expert-reviewed health check with actionable recommendations, consider the <Link to="/health-score" className="underline font-semibold">NOHC Snapshot ($2,500)</Link>.
+                </p>
+              </div>
+
               <div className="text-center mb-12">
                 <div className="inline-flex items-center justify-center w-20 h-20 rounded-full mb-6" style={{ backgroundColor: `${tierInfo.color}20` }}>
                   <TrendingUp className="w-10 h-10" style={{ color: tierInfo.color }} />
                 </div>
                 <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-                  Your Organization is at Tier {avgTier}
+                  Self-Assessment: Tier {avgTier}
                 </h1>
                 <p className="text-2xl font-semibold mb-2" style={{ color: tierInfo.color }}>
                   {tierInfo.name}
@@ -240,22 +251,43 @@ const OrganizationalHealthCheck = () => {
                   {tierInfo.recommendation}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link to="/how-nimara-works" className="flex-1">
+                  <Link to="/health-score" className="flex-1">
                     <Button variant="secondary" className="w-full">
-                      Learn About Our Paths
+                      Learn About NOHC Snapshot
                     </Button>
                   </Link>
-                  <a 
-                    href="https://calendly.com/hello-nimara/30min" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex-1"
-                  >
+                  <Link to="/book-a-call" className="flex-1">
                     <Button className="w-full">
                       Schedule A Call
                       <ChevronRight className="w-4 h-4 ml-2" />
                     </Button>
-                  </a>
+                  </Link>
+                </div>
+              </div>
+
+              {/* What's the difference section */}
+              <div className="bg-muted/50 border border-border rounded-2xl p-8 mb-8">
+                <h2 className="text-lg font-semibold mb-4">What's the difference?</h2>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h3 className="font-medium text-foreground mb-2">This Quick Self-Assessment</h3>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>• Free, 6 questions, ~3 minutes</li>
+                      <li>• Self-reported answers</li>
+                      <li>• General tier estimate</li>
+                      <li>• Basic guidance on next steps</li>
+                    </ul>
+                  </div>
+                  <div className="bg-primary/5 rounded-xl p-4 border border-primary/10">
+                    <h3 className="font-medium text-foreground mb-2">NOHC Snapshot ($2,500)</h3>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>• ~2 weeks, expert-led conversations</li>
+                      <li>• Reviews real documents and practices</li>
+                      <li>• Detailed Tier table by domain</li>
+                      <li>• 2–3 page summary you can share with funders</li>
+                      <li>• Specific recommendations for Path A or B</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
 
@@ -283,22 +315,22 @@ const OrganizationalHealthCheck = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Organizational Health Check | Nimara — Systems for small nonprofits</title>
-        <meta name="description" content="Take our free organizational health assessment to understand your nonprofit's current systems maturity and get personalized recommendations." />
-        <meta name="keywords" content="nonprofit assessment, organizational health check, nonprofit systems evaluation, capacity assessment, nonprofit maturity model" />
+        <title>Quick Self-Assessment | Nimara — Free Nonprofit Health Check</title>
+        <meta name="description" content="Take our free 6-question self-assessment to get a quick sense of your nonprofit's systems maturity. For a comprehensive review, see the NOHC Snapshot." />
+        <meta name="keywords" content="nonprofit assessment, organizational health check, nonprofit systems evaluation, capacity assessment, nonprofit maturity model, free assessment" />
         
         <link rel="canonical" href="https://nimara.ca/organizational-health-check" />
         
         <meta property="og:site_name" content="Nimara" />
-        <meta property="og:title" content="Organizational Health Check | Nimara" />
-        <meta property="og:description" content="Take our free organizational health assessment to understand your nonprofit's current systems maturity and get personalized recommendations." />
+        <meta property="og:title" content="Quick Self-Assessment | Nimara" />
+        <meta property="og:description" content="Take our free 6-question self-assessment to get a quick sense of your nonprofit's systems maturity." />
         <meta property="og:url" content="https://nimara.ca/organizational-health-check" />
         <meta property="og:image" content="https://nimara.ca/og-image.svg" />
         <meta property="og:type" content="website" />
         
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Organizational Health Check | Nimara" />
-        <meta name="twitter:description" content="Take our free organizational health assessment to understand your nonprofit's current systems maturity and get personalized recommendations." />
+        <meta name="twitter:title" content="Quick Self-Assessment | Nimara" />
+        <meta name="twitter:description" content="Take our free 6-question self-assessment to get a quick sense of your nonprofit's systems maturity." />
         <meta name="twitter:image" content="https://nimara.ca/og-image.svg" />
       </Helmet>
       
@@ -307,12 +339,18 @@ const OrganizationalHealthCheck = () => {
       <main id="main" className="py-16 md:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           {/* Header */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent/20 text-accent-foreground text-xs font-semibold uppercase tracking-wider rounded-full mb-4">
+              Free • 3 minutes
+            </div>
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Organizational Health Check
+              Quick Self-Assessment
             </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              A quick 6-question assessment to understand where your organization stands and what support might help.
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
+              Answer 6 questions to get a quick sense of where your organization stands.
+            </p>
+            <p className="text-sm text-muted-foreground max-w-xl mx-auto">
+              Want a comprehensive, expert-reviewed assessment? Learn about the <Link to="/health-score" className="text-primary underline font-medium">NOHC Snapshot ($2,500)</Link>.
             </p>
           </div>
 
