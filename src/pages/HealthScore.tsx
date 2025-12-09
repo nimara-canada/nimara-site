@@ -155,7 +155,7 @@ const HealthScore = () => {
             }} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.1]">
                 Get a clear picture of your systems{" "}
                 <span className="relative inline-block">
-                  <span className="relative z-10 bg-gradient-to-r from-accent via-[#9DFFD6] to-accent bg-clip-text text-transparent">
+                  <span className="relative z-10 text-accent">
                     in about 2 weeks.
                   </span>
                   <motion.span className="absolute -inset-1 bg-accent/20 rounded-lg blur-lg" animate={{
