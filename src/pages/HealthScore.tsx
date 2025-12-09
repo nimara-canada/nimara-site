@@ -158,12 +158,7 @@ const HealthScore = () => {
                   <span className="relative z-10 text-accent">
                     in about 2 weeks.
                   </span>
-                  <motion.span className="absolute -inset-1 bg-accent/20 rounded-lg blur-lg" animate={{
-                  opacity: [0.5, 0.8, 0.5]
-                }} transition={{
-                  duration: 2,
-                  repeat: Infinity
-                }} />
+                  <span className="absolute bottom-2 left-0 right-0 h-3 bg-accent/30 -skew-x-3 rounded-sm" />
                 </span>
               </motion.h1>
 
