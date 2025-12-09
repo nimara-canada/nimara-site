@@ -417,13 +417,13 @@ export const Expertise = () => {
               })}
             </div>
             <p className="text-sm text-body-muted">
-              <span className="font-medium text-foreground">All 7 domains</span> covered in our Health Check
+              <span className="font-medium text-foreground">All 7 domains</span> covered in the NOHC Snapshot
             </p>
             <a
               href="/health-score"
               className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-200 shadow-soft focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
             >
-              Get your Health Check
+              Learn about NOHC Snapshot
             </a>
           </div>
         </motion.div>

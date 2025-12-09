@@ -32,7 +32,7 @@ const HealthCheckRule = () => {
           {/* Header */}
           <div className="text-center">
             <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">
-              Do we always start with a health check?
+              Do we always start with an NOHC Snapshot?
             </h2>
           </div>
 
@@ -42,10 +42,10 @@ const HealthCheckRule = () => {
               <strong className="text-foreground">No.</strong>
             </p>
             <p>
-              If you have one urgent problem, we use <strong>Fast Help (Path A)</strong> – a small, focused project that does not require a full health check.
+              If you have one urgent problem, we use <strong>Fast Help (Path A)</strong> – a small, focused project that does not require an NOHC Snapshot.
             </p>
             <p>
-              If you want to upgrade your systems across any of our 7 domains (governance, finance, HR, programs, fundraising, volunteers, systems & data), we start with the <strong>Nimara Organizational Health Check (NOHC)</strong>. NOHC shows us your Tiers by domain, and then we design Path B Bundles to move those systems up a Tier.
+              If you want to upgrade your systems across any of our 7 domains (governance, finance, HR, programs, fundraising, volunteers, systems & data), we start with the <strong>NOHC Snapshot ($2,500)</strong> – a ~2-week health check that shows your Tiers by domain. Then we design Path B Bundles to move those systems up a Tier.
             </p>
           </div>
 
@@ -67,7 +67,7 @@ const HealthCheckRule = () => {
                   Path
                 </div>
                 <div className="px-4 py-3 text-sm font-semibold text-foreground text-center">
-                  NOHC?
+                  NOHC Snapshot?
                 </div>
               </div>
 
