@@ -458,7 +458,7 @@ const HealthScore = () => {
 
 
         {/* Final CTA */}
-        <section className="py-20 md:py-28 bg-gradient-to-br from-secondary-background via-secondary-background to-[hsl(var(--nimara-navy))] relative overflow-hidden">
+        <section className="py-20 md:py-28 bg-secondary-background relative overflow-hidden">
           <div className="absolute inset-0">
             <motion.div 
               animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }} 
