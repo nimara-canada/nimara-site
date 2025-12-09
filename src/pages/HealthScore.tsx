@@ -2,30 +2,13 @@ import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  Clock, Users, FileText, MessageSquare, ChevronDown, ArrowRight, 
-  Check, Activity, DollarSign, Calendar, ArrowUp, Shield, 
-  Target, Zap, AlertCircle, HelpCircle, Briefcase, CheckCircle2,
-  XCircle, ArrowRightLeft, Wallet
+  Clock, Users, FileText, MessageSquare, ArrowRight, 
+  Check, Activity, DollarSign, Calendar, ArrowUp, 
+  CheckCircle2
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-
-const faqs = [
-  {
-    question: "Can we use the Snapshot to fix things ourselves?",
-    answer: "You'll get a clear Tier table, priority areas, and suggested steps. Some orgs use it to drive internal improvements. Others ask us to help with Path A or Path B. Both are fine."
-  },
-  {
-    question: "How much time will this take from our team?",
-    answer: "Roughly 3–4 hours of calls plus pulling a small set of documents over about two weeks."
-  },
-  {
-    question: "Can a funder pay for this?",
-    answer: "Yes. Many funders now support capacity and systems. We can provide a brief version of the Snapshot Summary tuned for funder reporting if needed."
-  }
-];
 
 const deliverables = [
   {
@@ -72,7 +55,7 @@ const deliverables = [
       "1–3 priority areas to tackle first",
       "Suggested paths: Fast Help (Path A), System Phase (Path B), or \"Not now\" with basics you can do on your own"
     ],
-    extra: "It's written so you can share it with your board or a funder without translation."
+    extra: "It's written so you can share it with your board or funder without translation."
   },
   {
     number: 5,
@@ -118,7 +101,6 @@ const timelineSteps = [
 ];
 
 const HealthScore = () => {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -288,51 +270,8 @@ const HealthScore = () => {
                     Take it here
                   </a>
                 </p>
-                
-                <p className="text-white/50 text-xs max-w-md mt-2">
-                  We'll start with a short 7–9 minute fit check so we don't waste your time on the call.
-                </p>
               </motion.div>
             </div>
-          </div>
-        </section>
-
-        {/* Section: What the NOHC Snapshot is */}
-        <section className="py-20 md:py-28 bg-background relative">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }}
-              className="text-center mb-12"
-            >
-              <h2 className="heading-2 text-foreground mb-6">
-                What is the NOHC Snapshot?
-              </h2>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }}
-              className="prose prose-lg max-w-none"
-            >
-              <p className="text-body text-lg leading-relaxed mb-6">
-                The NOHC Snapshot is a light but real health check of how your nonprofit's core systems are working today.
-              </p>
-              
-              <p className="text-body-muted mb-4 font-medium">In plain language:</p>
-              
-              <p className="text-body leading-relaxed mb-6">
-                It's a ~2-week project where we talk with your team, look at a few real examples, score your systems on a simple Tier ladder, and give you a short, honest summary you can share with your board or funder.
-              </p>
-              
-              <div className="bg-muted/50 rounded-2xl p-6 border border-border">
-                <p className="text-body leading-relaxed">
-                  <strong className="text-foreground">It is not</strong> a giant 40-page report. It's the minimum you need to stop guessing and make good decisions about Path A (Fast Help) or Path B (System Installs).
-                </p>
-              </div>
-            </motion.div>
           </div>
         </section>
 
@@ -479,51 +418,6 @@ const HealthScore = () => {
           </div>
         </section>
 
-        {/* Section: What this is not */}
-        <section className="py-20 md:py-28 bg-muted/30 relative">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }}
-              className="text-center mb-12"
-            >
-              <h2 className="heading-2 text-foreground mb-4">
-                What the Snapshot is not
-              </h2>
-              <p className="text-subtitle">To protect both you and us:</p>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }}
-              className="grid sm:grid-cols-2 gap-4"
-            >
-              {[
-                "It is not a legal or audit opinion.",
-                "It is not a 40-page strategy or governance report.",
-                "It is not a promise to fix every system in one phase.",
-                "It is not a free pre-project \"nice to have\" – it is a real piece of work."
-              ].map((item, i) => (
-                <div key={i} className="flex items-start gap-3 p-4 bg-card rounded-xl border border-border">
-                  <XCircle className="w-5 h-5 text-destructive mt-0.5 flex-shrink-0" />
-                  <span className="text-body">{item}</span>
-                </div>
-              ))}
-            </motion.div>
-
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }}
-              className="text-center text-body mt-8 bg-primary/5 rounded-2xl p-6 border border-primary/10"
-            >
-              <strong className="text-foreground">It is</strong> a focused, honest check-up so you can decide whether to invest in Fast Help, a System Phase, or hold off.
-            </motion.p>
-          </div>
-        </section>
-
         {/* Section: How it works (timeline) */}
         <section className="py-20 md:py-28 bg-nimara-navy relative overflow-hidden">
           <div className="absolute inset-0">
@@ -575,283 +469,6 @@ const HealthScore = () => {
                   </motion.div>
                 ))}
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Section: How it connects to Path A and Path B */}
-        <section className="py-20 md:py-28 bg-background relative">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }}
-              className="text-center mb-12"
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider rounded-full mb-4">
-                <ArrowRightLeft className="w-3.5 h-3.5" />
-                Next Steps
-              </div>
-              <h2 className="heading-2 text-foreground mb-4">
-                How this connects to Path A and Path B
-              </h2>
-              <p className="text-subtitle">The NOHC Snapshot is not the end. It's the bridge into the right path.</p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              {/* Path A */}
-              <motion.div 
-                initial={{ opacity: 0, x: -20 }} 
-                whileInView={{ opacity: 1, x: 0 }} 
-                viewport={{ once: true }}
-                className="bg-card rounded-2xl p-6 border border-border hover:border-accent/30 transition-colors"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
-                    <Zap className="w-5 h-5 text-accent" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground">If your main issue is one fire</h3>
-                </div>
-                <p className="text-body mb-4">
-                  The Snapshot may show that most systems are "okay enough", but one area is burning (e.g., a funder report, audit, complaint risk, or board gap).
-                </p>
-                <p className="text-body-muted">
-                  In that case, we'll likely recommend a <strong className="text-foreground">Fast Help (Path A)</strong> project: one problem, one mini-bundle, 1–4 weeks.
-                </p>
-                <Link to="/path-a" className="inline-flex items-center gap-2 text-accent hover:text-accent/80 font-medium mt-4">
-                  Learn about Path A <ArrowRight className="w-4 h-4" />
-                </Link>
-              </motion.div>
-
-              {/* Path B */}
-              <motion.div 
-                initial={{ opacity: 0, x: 20 }} 
-                whileInView={{ opacity: 1, x: 0 }} 
-                viewport={{ once: true }}
-                className="bg-card rounded-2xl p-6 border border-border hover:border-primary/30 transition-colors"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-                    <Briefcase className="w-5 h-5 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground">If several systems are fragile</h3>
-                </div>
-                <p className="text-body mb-4">
-                  The Snapshot may show multiple domains sitting at Tier 0–1. Then we'll likely recommend a <strong className="text-foreground">System Phase (Path B)</strong>:
-                </p>
-                <ul className="space-y-2 text-body-muted">
-                  <li className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                    Start from the Snapshot baseline
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                    Choose 1–2 domains for the first phase
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                    Use Nimara bundles to move those domains from Tier 0/1 to Tier 2
-                  </li>
-                </ul>
-                <Link to="/path-b" className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium mt-4">
-                  Learn about Path B <ArrowRight className="w-4 h-4" />
-                </Link>
-              </motion.div>
-            </div>
-
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }}
-              className="text-center text-body-muted mt-8 italic"
-            >
-              The Snapshot becomes your "before" picture and helps you explain the work to funders and your board.
-            </motion.p>
-          </div>
-        </section>
-
-        {/* Section: Price and credit */}
-        <section className="py-20 md:py-28 bg-muted/30 relative">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }}
-              className="text-center mb-12"
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 text-accent text-xs font-semibold uppercase tracking-wider rounded-full mb-4">
-                <Wallet className="w-3.5 h-3.5" />
-                Pricing
-              </div>
-              <h2 className="heading-2 text-foreground mb-4">
-                Price and how credits work
-              </h2>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }} 
-                whileInView={{ opacity: 1, y: 0 }} 
-                viewport={{ once: true }}
-                className="bg-card rounded-2xl p-6 border border-border"
-              >
-                <h3 className="font-bold text-foreground text-lg mb-4">Price:</h3>
-                <div className="flex items-baseline gap-2 mb-4">
-                  <span className="text-4xl font-bold text-primary">$2,500</span>
-                  <span className="text-body-muted">CAD + tax per organization</span>
-                </div>
-                <p className="text-body">Fixed fee, clear scope.</p>
-              </motion.div>
-
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }} 
-                whileInView={{ opacity: 1, y: 0 }} 
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="bg-card rounded-2xl p-6 border border-border"
-              >
-                <h3 className="font-bold text-foreground text-lg mb-4">Credit toward deeper work:</h3>
-                <p className="text-body mb-4">
-                  If you move ahead into a Path B System Phase above a certain size, we apply part of your Snapshot fee toward that project.
-                </p>
-              </motion.div>
-            </div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }}
-              className="bg-primary/5 rounded-2xl p-6 border border-primary/10 mt-6"
-            >
-              <p className="text-body-muted font-medium mb-2">You can explain it internally like this:</p>
-              <p className="text-body italic">
-                "We'll pay $2,500 for a structured check-up. If we decide to invest in a bigger system phase with Nimara, part of that fee will be rolled into the project."
-              </p>
-              <p className="text-body-muted text-sm mt-4">
-                We'll walk through what that looks like for you on the intro call, based on your size and plans.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Section: Is this a good use of our limited budget? */}
-        <section className="py-20 md:py-28 bg-background relative">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }}
-              className="text-center mb-12"
-            >
-              <h2 className="heading-2 text-foreground mb-4">
-                Is this a good use of our limited budget?
-              </h2>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              {/* Should NOT book */}
-              <motion.div 
-                initial={{ opacity: 0, x: -20 }} 
-                whileInView={{ opacity: 1, x: 0 }} 
-                viewport={{ once: true }}
-                className="bg-card rounded-2xl p-6 border border-border"
-              >
-                <h3 className="font-bold text-foreground text-lg mb-4 flex items-center gap-2">
-                  <XCircle className="w-5 h-5 text-destructive" />
-                  You should not book a NOHC Snapshot if:
-                </h3>
-                <ul className="space-y-3">
-                  {[
-                    "You already know you won't invest in systems for the next 1–2 years.",
-                    "Leadership genuinely doesn't have time for 2–3 short calls.",
-                    "You want branding, fundraising campaigns, or strategy retreats (that's not Nimara's lane)."
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 text-body">
-                      <XCircle className="w-4 h-4 text-destructive/60 mt-0.5 flex-shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-
-              {/* Should consider */}
-              <motion.div 
-                initial={{ opacity: 0, x: 20 }} 
-                whileInView={{ opacity: 1, x: 0 }} 
-                viewport={{ once: true }}
-                className="bg-primary/5 rounded-2xl p-6 border border-primary/10"
-              >
-                <h3 className="font-bold text-foreground text-lg mb-4 flex items-center gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-primary" />
-                  You should seriously consider it if:
-                </h3>
-                <ul className="space-y-3">
-                  {[
-                    "You're about to ask for more funding or take on more risk.",
-                    "You're not sure if your systems can carry that growth.",
-                    "Your board or funders are asking \"Are we ready?\"",
-                    "You'd rather spend $2,500 now to get a clear map than gamble 15–25k on the wrong project."
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 text-body">
-                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* Section: Quick Q&A */}
-        <section className="py-20 md:py-28 bg-nimara-navy relative overflow-hidden">
-          <div className="absolute inset-0">
-            <div className="absolute top-1/2 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-nimara-mint/10 to-nimara-purple/5 rounded-full blur-3xl" />
-          </div>
-          
-          <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }}
-              className="text-center mb-12"
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-nimara-mint/15 text-nimara-mint text-xs font-semibold uppercase tracking-wider rounded-full mb-4">
-                <HelpCircle className="w-3.5 h-3.5" />
-                FAQ
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-                Quick Q&A
-              </h2>
-            </motion.div>
-
-            <div className="space-y-4">
-              {faqs.map((faq, index) => (
-                <motion.div 
-                  key={index} 
-                  initial={{ opacity: 0, y: 20 }} 
-                  whileInView={{ opacity: 1, y: 0 }} 
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <div className={`bg-white/5 backdrop-blur-sm rounded-2xl border transition-all duration-300 ${openFaq === index ? 'border-nimara-mint/40 shadow-lg shadow-nimara-mint/5' : 'border-white/10 hover:border-nimara-mint/30'}`}>
-                    <button 
-                      onClick={() => setOpenFaq(openFaq === index ? null : index)} 
-                      className="w-full px-6 py-5 flex items-center justify-between text-left"
-                    >
-                      <span className="font-semibold text-white pr-4">{faq.question}</span>
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${openFaq === index ? 'bg-nimara-mint text-nimara-navy rotate-180' : 'bg-white/10 text-white/70'}`}>
-                        <ChevronDown className="w-4 h-4" />
-                      </div>
-                    </button>
-                    <div className={`overflow-hidden transition-all duration-300 ${openFaq === index ? 'max-h-40' : 'max-h-0'}`}>
-                      <div className="px-6 pb-5">
-                        <p className="text-white/70 leading-relaxed">{faq.answer}</p>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
             </div>
           </div>
         </section>
