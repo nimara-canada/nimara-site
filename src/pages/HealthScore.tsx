@@ -147,7 +147,7 @@ const HealthScore = () => {
 
       <main className="pt-16 overflow-hidden">
         {/* Hero Section */}
-        <section className="relative min-h-[85vh] flex items-center py-20 md:py-28 bg-gradient-to-br from-secondary-background via-secondary-background to-[hsl(var(--nimara-navy))]">
+        <section className="relative min-h-[85vh] flex items-center py-20 md:py-28 bg-secondary-background">
           {/* Animated background elements */}
           <div className="absolute inset-0 overflow-hidden">
             <motion.div 
