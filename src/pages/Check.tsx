@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
-import { ArrowRight, Clock, MousePointerClick, CheckCircle, Loader2 } from "lucide-react";
+import { ArrowRight, Clock, MousePointerClick, CheckCircle, Loader2, Users, DollarSign, UserCheck, FolderOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Check = () => {
@@ -25,51 +25,80 @@ const Check = () => {
 
   const handleContinue = () => {
     setIsRedirecting(true);
-    // Small delay to show loading state before redirect
     setTimeout(() => {
       window.location.href = typeformUrl;
     }, 800);
   };
 
+  const checkItems = [
+    { icon: Users, label: "Board & policies", desc: "(who decides what)" },
+    { icon: DollarSign, label: "Money & tracking", desc: "(budgets, reports, receipts)" },
+    { icon: UserCheck, label: "People & roles", desc: "(staff, contractors, HR basics)" },
+    { icon: FolderOpen, label: "Programs & files", desc: "(proof of work, tidy records)" },
+  ];
+
   return (
-    <main className="min-h-screen bg-secondary-background flex items-center justify-center px-4 py-12">
-      <div className="w-full max-w-md">
+    <main className="min-h-screen bg-secondary-background flex items-center justify-center px-4 py-8">
+      <div className="w-full max-w-lg">
         {/* Card container */}
-        <div className="bg-white/5 border border-white/10 rounded-2xl p-8 sm:p-10 shadow-xl">
+        <div className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 shadow-xl">
           {/* Step indicator */}
-          <p className="text-sm text-white/50 uppercase tracking-wider mb-4">
+          <p className="text-sm text-white/50 uppercase tracking-wider mb-3">
             Step 1 of 2
           </p>
 
           {/* Heading */}
-          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-4 leading-tight">
+          <h1 className="text-2xl sm:text-3xl font-bold text-white mb-3 leading-tight">
             You're almost there.
           </h1>
 
-          {/* Body text */}
-          <p className="text-lg text-white/70 mb-8 leading-relaxed">
-            We'll ask a few quick questions so we can point you to the right next step.
+          {/* Intro paragraph */}
+          <p className="text-base text-white/70 mb-6 leading-relaxed">
+            This check is a quick way to see if your nonprofit's behind-the-scenes systems are strong enough for grants, growth, and audits.
           </p>
 
-          {/* Bullets */}
-          <ul className="space-y-3 mb-8">
-            <li className="flex items-center gap-3 text-white/80">
-              <Clock className="w-5 h-5 text-accent flex-shrink-0" aria-hidden="true" />
+          {/* We'll check section */}
+          <div className="mb-5">
+            <h2 className="text-sm font-semibold text-white/90 uppercase tracking-wider mb-3">
+              We'll check:
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {checkItems.map((item, index) => (
+                <div key={index} className="flex items-start gap-2 text-white/80">
+                  <item.icon className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" aria-hidden="true" />
+                  <span className="text-sm">
+                    <span className="font-medium">{item.label}</span>{" "}
+                    <span className="text-white/60">{item.desc}</span>
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Why this matters */}
+          <p className="text-sm text-white/60 mb-5 italic">
+            Why this matters: At the end, you'll get a clear next step—a fast fix or a full setup plan.
+          </p>
+
+          {/* Quick info bullets */}
+          <ul className="space-y-2 mb-6">
+            <li className="flex items-center gap-2 text-white/80 text-sm">
+              <Clock className="w-4 h-4 text-accent flex-shrink-0" aria-hidden="true" />
               <span>Takes about 4 minutes</span>
             </li>
-            <li className="flex items-center gap-3 text-white/80">
-              <MousePointerClick className="w-5 h-5 text-accent flex-shrink-0" aria-hidden="true" />
+            <li className="flex items-center gap-2 text-white/80 text-sm">
+              <MousePointerClick className="w-4 h-4 text-accent flex-shrink-0" aria-hidden="true" />
               <span>Mostly taps (no long typing)</span>
             </li>
-            <li className="flex items-center gap-3 text-white/80">
-              <CheckCircle className="w-5 h-5 text-accent flex-shrink-0" aria-hidden="true" />
+            <li className="flex items-center gap-2 text-white/80 text-sm">
+              <CheckCircle className="w-4 h-4 text-accent flex-shrink-0" aria-hidden="true" />
               <span>You'll get a clear next step at the end</span>
             </li>
           </ul>
 
           {/* Redirect status */}
           {isRedirecting && (
-            <div className="flex items-center gap-2 text-accent mb-6">
+            <div className="flex items-center gap-2 text-accent mb-4">
               <Loader2 className="w-4 h-4 animate-spin" aria-hidden="true" />
               <span className="text-sm">Sending you there now…</span>
             </div>
@@ -78,8 +107,9 @@ const Check = () => {
           {/* Primary button */}
           <Button
             onClick={handleContinue}
+            disabled={isRedirecting}
             size="lg"
-            className="w-full h-14 bg-accent text-secondary-background hover:bg-accent/90 font-semibold text-base mb-4"
+            className="w-full h-12 bg-accent text-secondary-background hover:bg-accent/90 font-semibold text-base mb-3"
           >
             Continue to the check
             <ArrowRight className="w-4 h-4 ml-2" aria-hidden="true" />
@@ -87,7 +117,7 @@ const Check = () => {
 
           {/* Secondary link */}
           {email && (
-            <div className="text-center mb-6">
+            <div className="text-center mb-4">
               <Link 
                 to="/" 
                 className="text-sm text-white/50 hover:text-white/70 underline underline-offset-2 transition-colors"
