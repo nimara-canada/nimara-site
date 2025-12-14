@@ -60,7 +60,7 @@ const HeroSection = () => {
   const handleStartCheck = (e: React.FormEvent) => {
     e.preventDefault();
     if (primaryEmail) {
-      window.location.href = `/organizational-health-check?email=${encodeURIComponent(primaryEmail)}`;
+      window.location.href = `/check?email=${encodeURIComponent(primaryEmail)}`;
     }
   };
   return <section className="relative bg-secondary-background overflow-hidden" aria-labelledby="hero-heading">

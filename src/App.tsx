@@ -28,6 +28,7 @@ import OrganizationalHealthCheck from "./pages/OrganizationalHealthCheck";
 import HealthScore from "./pages/HealthScore";
 import PathA from "./pages/PathA";
 import PathB from "./pages/PathB";
+import Check from "./pages/Check";
 
 const queryClient = new QueryClient();
 
@@ -60,6 +61,7 @@ const App = () => (
             <Route path="/health-score" element={<HealthScore />} />
             <Route path="/path-a" element={<PathA />} />
             <Route path="/path-b" element={<PathB />} />
+            <Route path="/check" element={<Check />} />
             
             {/* Redirects for old routes */}
             <Route path="/for-nonprofits" element={<Navigate to="/" replace />} />
