@@ -216,7 +216,8 @@ export default function Resources() {
             </span>
             <h2 
               id="templates-heading"
-              className="text-3xl md:text-4xl font-bold text-secondary mb-4"
+              className="text-3xl md:text-4xl font-bold mb-4"
+              style={{ color: 'hsl(var(--nimara-navy))' }}
             >
               Popular Templates
             </h2>
