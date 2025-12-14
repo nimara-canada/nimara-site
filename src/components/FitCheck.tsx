@@ -1,362 +1,314 @@
 import { useState } from 'react';
-import { motion, AnimatePresence, Variants } from 'framer-motion';
-import { Play, Check, ArrowRight, X } from 'lucide-react';
-const fitCriteria = [{
-  id: 'size',
-  text: 'You are a nonprofit or charity with 2–100 staff, or a very active ED with at least 3 active board members.'
-}, {
-  id: 'messy',
-  text: 'Your work in the community is strong, but your board, money, HR, or fundraising systems feel messy or unclear.'
-}, {
-  id: 'funder',
-  text: 'You worry about being funder-ready, audit-ready, or keeping up with new fund rules.'
-}, {
-  id: 'tools',
-  text: 'You want clear, plain-language policies and tools your team will actually use, not just another binder.'
-}, {
-  id: 'partner',
-  text: 'You would like a partner who will help install systems and stay for a while, not just run a workshop and leave.'
-}];
-const containerVariants: Variants = {
-  hidden: {
-    opacity: 0
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Play, X } from 'lucide-react';
+
+const fitCriteria = [
+  {
+    id: 'size',
+    text: 'You are a nonprofit or charity with 2–100 staff, or a very active ED with at least 3 active board members.'
   },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.08
-    }
-  }
-};
-const itemVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    x: -16
+  {
+    id: 'messy',
+    text: 'Your work in the community is strong, but your board, money, HR, or fundraising systems feel messy or unclear.'
   },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.4,
-      ease: 'easeOut'
-    }
-  }
-};
-const fadeInUp: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 24
+  {
+    id: 'funder',
+    text: 'You worry about being funder-ready, audit-ready, or keeping up with new fund rules.'
   },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: 'easeOut'
-    }
+  {
+    id: 'tools',
+    text: 'You want clear, plain-language policies and tools your team will actually use—not just another binder.'
+  },
+  {
+    id: 'partner',
+    text: 'You would like a partner who will help install systems and stay for a while, not just run a workshop and leave.'
   }
-};
+];
+
 export const FitCheck = () => {
   const [checkedItems, setCheckedItems] = useState<string[]>([]);
-  const [isVideoHovered, setIsVideoHovered] = useState(false);
   const [showVideoModal, setShowVideoModal] = useState(false);
+
   const toggleItem = (id: string) => {
-    setCheckedItems(prev => prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]);
+    setCheckedItems(prev =>
+      prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]
+    );
   };
+
   const matchCount = checkedItems.length;
   const isGoodFit = matchCount >= 2;
-  return <section className="relative py-16 md:py-24 lg:py-32 overflow-hidden bg-background" aria-labelledby="fit-check-heading" id="fit-check">
-      {/* Background accents */}
-      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div className="absolute -top-48 -right-48 w-96 h-96 rounded-full bg-[hsl(var(--nimara-purple))]/10 blur-3xl" />
-        <div className="absolute -bottom-48 -left-48 w-96 h-96 rounded-full bg-[hsl(var(--nimara-mint))]/20 blur-3xl" />
-      </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center">
+  return (
+    <section 
+      className="py-24 md:py-36 lg:py-44 bg-background relative overflow-hidden" 
+      aria-labelledby="fit-check-heading" 
+      id="fit-check"
+    >
+      {/* Subtle background gradient */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-slate-50 via-background to-background" />
+
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
           
-          {/* LEFT – WHO NIMARA IS FOR */}
-          <motion.div initial="hidden" whileInView="visible" viewport={{
-          once: true,
-          margin: "-50px"
-        }} variants={fadeInUp}>
-            {/* Label */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary-background shadow-md mb-4">
-              <span className="text-xs font-semibold tracking-widest text-primary-foreground uppercase">
-                Who Nimara Is For
-              </span>
-            </div>
+          {/* LEFT COLUMN - Content */}
+          <motion.div 
+            className="lg:col-span-6"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {/* Editorial header */}
+            <p className="text-sm tracking-widest text-muted-foreground uppercase mb-4">
+              Who we work with
+            </p>
 
-            <h2 id="fit-check-heading" className="heading-2 text-foreground mb-4 sm:mb-6">
-              Is Nimara right for{' '}
-              <span className="relative inline-block">
-                <span className="relative z-10">your nonprofit?</span>
-                <span className="absolute bottom-1 left-0 right-0 h-3 bg-[hsl(var(--nimara-purple))]/20 -rotate-1 rounded" aria-hidden="true" />
-              </span>
+            <h2 
+              id="fit-check-heading" 
+              className="text-4xl md:text-5xl font-serif font-medium text-foreground leading-[1.1] mb-6"
+            >
+              Is Nimara right for your nonprofit?
             </h2>
 
-            <p className="text-subtitle max-w-xl mb-6 sm:mb-8">We help nonprofits and charities that do strong work in the community, but feel messy on the inside. If the "back-end" keeps you up at night, this is for you.</p>
+            <p className="text-lg text-body leading-relaxed mb-12 max-w-lg">
+              We help nonprofits that do strong work in the community but feel messy on the inside. If the back-end keeps you up at night, this is for you.
+            </p>
 
-            {/* Interactive Checklist */}
-            <div className="bg-muted/50 rounded-2xl border border-border p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8">
-              {/* Header with counter */}
-              <div className="flex items-center justify-between mb-6">
-                <p className="text-sm font-semibold text-foreground">
-                  Check what applies to you:
-                </p>
-                <AnimatePresence mode="wait">
-                  {matchCount > 0 && <motion.div initial={{
-                  scale: 0,
-                  opacity: 0
-                }} animate={{
-                  scale: 1,
-                  opacity: 1
-                }} exit={{
-                  scale: 0,
-                  opacity: 0
-                }} className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold transition-colors duration-300 ${isGoodFit ? 'bg-accent/30 text-accent-foreground' : 'bg-muted text-muted-foreground'}`}>
-                      {isGoodFit && <Check size={12} strokeWidth={3} />}
-                      {matchCount}/{fitCriteria.length} selected
-                    </motion.div>}
-                </AnimatePresence>
+            {/* Interactive checklist - refined */}
+            <div className="mb-12">
+              <p className="text-xs tracking-widest text-muted-foreground uppercase mb-6">
+                Check what sounds like you
+              </p>
+
+              <div className="space-y-4">
+                {fitCriteria.map((item, index) => {
+                  const isChecked = checkedItems.includes(item.id);
+                  return (
+                    <motion.button
+                      key={item.id}
+                      type="button"
+                      onClick={() => toggleItem(item.id)}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.08 }}
+                      className={`
+                        w-full flex items-start gap-4 p-5 rounded-2xl border text-left transition-all duration-300
+                        focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2
+                        ${isChecked 
+                          ? 'bg-secondary-background border-secondary-background' 
+                          : 'bg-card border-border/50 hover:border-border hover:shadow-lg hover:shadow-black/[0.03]'
+                        }
+                      `}
+                      aria-pressed={isChecked}
+                    >
+                      {/* Custom checkbox */}
+                      <div className={`
+                        flex-shrink-0 w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-all duration-300
+                        ${isChecked 
+                          ? 'bg-accent border-accent' 
+                          : 'border-border bg-background'
+                        }
+                      `}>
+                        <motion.svg
+                          initial={false}
+                          animate={{ scale: isChecked ? 1 : 0, opacity: isChecked ? 1 : 0 }}
+                          transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                          className="w-3.5 h-3.5 text-secondary-background"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={3}
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </motion.svg>
+                      </div>
+
+                      <span className={`text-sm leading-relaxed transition-colors duration-300 ${
+                        isChecked ? 'text-white' : 'text-body'
+                      }`}>
+                        {item.text}
+                      </span>
+                    </motion.button>
+                  );
+                })}
               </div>
 
-              {/* Checklist items */}
-              <motion.div className="space-y-3" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{
-              once: true
-            }}>
-                {fitCriteria.map(item => {
-                const isChecked = checkedItems.includes(item.id);
-                return <motion.div key={item.id} variants={itemVariants}>
-                      <button type="button" onClick={() => toggleItem(item.id)} className={`
-                          w-full flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl border-2 transition-all duration-200 text-left
-                          focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2
-                          ${isChecked ? 'bg-[hsl(var(--nimara-purple))]/5 border-[hsl(var(--nimara-purple))]/30 shadow-sm' : 'bg-background border-border hover:border-[hsl(var(--nimara-purple))]/20 hover:shadow-sm'}
-                        `} aria-pressed={isChecked}>
-                        {/* Checkbox */}
-                        <div className={`
-                          flex-shrink-0 w-6 h-6 rounded-lg border-2 flex items-center justify-center 
-                          transition-all duration-200
-                          ${isChecked ? 'bg-[hsl(var(--nimara-purple))] border-[hsl(var(--nimara-purple))] shadow-sm shadow-[hsl(var(--nimara-purple))]/20' : 'border-border bg-background'}
-                        `}>
-                          <motion.div initial={false} animate={{
-                        scale: isChecked ? 1 : 0
-                      }} transition={{
-                        type: 'spring',
-                        stiffness: 500,
-                        damping: 30
-                      }}>
-                            <Check size={14} className="text-white" strokeWidth={3} />
-                          </motion.div>
-                        </div>
-                        
-                        {/* Text */}
-                        <span className={`text-sm leading-relaxed transition-colors duration-200 ${isChecked ? 'text-foreground' : 'text-body-muted'}`}>
-                          {item.text}
-                        </span>
-                      </button>
-                    </motion.div>;
-              })}
-              </motion.div>
-
-              {/* Result message */}
-              <div className="mt-6 pt-6 border-t border-border">
-                <AnimatePresence mode="wait">
-                  {isGoodFit ? <motion.div key="good-fit" initial={{
-                   opacity: 0,
-                   y: 10
-                 }} animate={{
-                   opacity: 1,
-                   y: 0
-                 }} exit={{
-                   opacity: 0,
-                   y: -10
-                 }} className="space-y-3">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-accent/30 flex items-center justify-center">
-                          <Check size={20} className="text-accent-foreground" strokeWidth={3} />
-                        </div>
-                        <div>
-                          <p className="text-sm font-semibold text-accent-foreground">
-                            Great match!
-                          </p>
-                          <p className="text-xs text-muted-foreground">
-                            Nimara can help – pick your path above.
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex flex-wrap gap-2 text-xs">
-                        <a href="/path-a" className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-accent/20 text-accent-foreground hover:bg-accent/30 transition-colors">
-                          Fast Help for urgent fixes
-                          <ArrowRight size={12} />
-                        </a>
-                        <a href="/health-score" className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
-                          NOHC Snapshot for system installs
-                          <ArrowRight size={12} />
-                        </a>
-                      </div>
-                    </motion.div> : <motion.p key="no-fit" initial={{
-                   opacity: 0
-                 }} animate={{
-                   opacity: 1
-                 }} exit={{
-                   opacity: 0
-                 }} className="text-sm text-muted-foreground">
-                       Select two or more to see if we're a good fit.
-                     </motion.p>}
-                </AnimatePresence>
-              </div>
+              {/* Result indicator */}
+              <AnimatePresence mode="wait">
+                {matchCount > 0 && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="mt-8 flex items-center gap-4"
+                  >
+                    <div className={`text-sm font-medium transition-colors duration-300 ${
+                      isGoodFit ? 'text-foreground' : 'text-muted-foreground'
+                    }`}>
+                      {matchCount} of {fitCriteria.length} selected
+                    </div>
+                    {isGoodFit && (
+                      <motion.span
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        className="text-sm text-accent font-medium"
+                      >
+                        — Looks like a good fit
+                      </motion.span>
+                    )}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button type="button" onClick={() => setShowVideoModal(true)} className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-[hsl(var(--nimara-purple))]/90 text-primary-foreground px-6 py-3.5 rounded-xl text-sm font-semibold transition-all duration-200 shadow-lg shadow-primary/20 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 min-h-[44px]">
-                <Play size={18} fill="currentColor" />
-                Watch 1-minute intro
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row items-start gap-6">
+              <button
+                type="button"
+                onClick={() => setShowVideoModal(true)}
+                className="group inline-flex items-center gap-3 text-foreground font-medium"
+              >
+                <span className="w-12 h-12 rounded-full bg-secondary-background flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                  <Play size={18} className="text-white ml-0.5" fill="currentColor" />
+                </span>
+                <span className="relative">
+                  Watch the 1-minute intro
+                  <span className="absolute left-0 -bottom-0.5 w-full h-px bg-foreground/30 group-hover:bg-foreground transition-colors duration-300" />
+                </span>
               </button>
-              <a href="/path-a" className="inline-flex items-center justify-center gap-2 text-foreground hover:text-accent px-4 py-3.5 text-sm font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-xl min-h-[44px]">
+
+              <a
+                href="/book-a-call"
+                className="group inline-flex items-center gap-2 text-muted-foreground font-medium hover:text-foreground transition-colors duration-300"
+              >
                 Need urgent help?
-                <ArrowRight size={16} />
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </a>
             </div>
           </motion.div>
 
-          {/* RIGHT – VIDEO TILE */}
-          <motion.div className="relative" initial="hidden" whileInView="visible" viewport={{
-          once: true,
-          margin: "-50px"
-        }} variants={fadeInUp}>
-            {/* Decorative layers */}
-            <div className="absolute -z-10 -bottom-4 -right-4 w-full h-full rounded-2xl bg-[hsl(var(--nimara-purple))]/10" aria-hidden="true" />
-            <div className="absolute -z-20 -bottom-8 -right-8 w-full h-full rounded-2xl bg-muted" aria-hidden="true" />
-            
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-foreground/10 bg-foreground" onMouseEnter={() => setIsVideoHovered(true)} onMouseLeave={() => setIsVideoHovered(false)}>
-              {/* Video Thumbnail */}
-              <button type="button" onClick={() => setShowVideoModal(true)} className="relative aspect-video w-full cursor-pointer group focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset" aria-label="Play Nimara intro video">
-                {/* Background Image */}
-                <motion.div className="absolute inset-0 bg-cover bg-center" style={{
-                backgroundImage: 'url("https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=1600&q=80")'
-              }} animate={{
-                scale: isVideoHovered ? 1.05 : 1
-              }} transition={{
-                duration: 0.6,
-                ease: 'easeOut'
-              }} />
-                
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/40 to-foreground/20" />
+          {/* RIGHT COLUMN - Video card */}
+          <motion.div 
+            className="lg:col-span-6"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="relative">
+              {/* Decorative offset */}
+              <div className="absolute -bottom-6 -right-6 w-full h-full rounded-3xl bg-accent/20" aria-hidden="true" />
+              
+              {/* Video card */}
+              <button
+                type="button"
+                onClick={() => setShowVideoModal(true)}
+                className="relative block w-full rounded-3xl overflow-hidden shadow-2xl shadow-black/10 group focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-4"
+                aria-label="Play Nimara intro video"
+              >
+                {/* Background image */}
+                <div className="aspect-[4/3] relative">
+                  <motion.div
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{
+                      backgroundImage: 'url("https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=1600&q=80")'
+                    }}
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.6, ease: 'easeOut' }}
+                  />
+                  
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-secondary-background via-secondary-background/60 to-secondary-background/20" />
 
-                {/* Duration Badge */}
-                <div className="absolute top-4 left-4">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black/40 backdrop-blur-md border border-white/10 text-white text-xs font-semibold">
-                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-                    1 min intro
-                  </span>
-                </div>
+                  {/* Duration badge */}
+                  <div className="absolute top-6 left-6">
+                    <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-white text-xs font-medium">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                      1 min
+                    </span>
+                  </div>
 
-                {/* Play Button */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <motion.div className="relative" animate={{
-                  scale: isVideoHovered ? 1.1 : 1
-                }} transition={{
-                  duration: 0.3
-                }}>
-                    {/* Outer ring */}
-                    <div className="absolute inset-0 w-20 h-20 rounded-full bg-white/10 backdrop-blur-sm" />
-                    
-                    {/* Pulse animation */}
-                    <motion.div className="absolute inset-0 w-20 h-20 rounded-full border-2 border-white/30" animate={{
-                    scale: [1, 1.4],
-                    opacity: [0.6, 0]
-                  }} transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    ease: 'easeOut'
-                  }} />
-                    
-                    {/* Inner button */}
-                    <div className="relative w-20 h-20 rounded-full flex items-center justify-center">
-                      <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-xl">
-                        <Play size={24} className="text-[hsl(var(--nimara-purple))] ml-1" fill="currentColor" />
-                      </div>
-                    </div>
-                  </motion.div>
-                </div>
+                  {/* Play button */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <motion.div
+                      className="w-20 h-20 rounded-full bg-white flex items-center justify-center shadow-2xl"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <Play size={28} className="text-secondary-background ml-1" fill="currentColor" />
+                    </motion.div>
+                  </div>
 
-                {/* Bottom content */}
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <p className="text-primary-foreground font-semibold mb-1">See how Nimara works</p>
-                  <p className="text-primary-foreground/70 text-sm">
-                    Who we help, what we install, and what working together feels like.
-                  </p>
+                  {/* Bottom content */}
+                  <div className="absolute bottom-0 left-0 right-0 p-8">
+                    <p className="text-white font-medium text-lg mb-1">See how Nimara works</p>
+                    <p className="text-white/60 text-sm">
+                      Who we help, what we install, and what working together feels like.
+                    </p>
+                  </div>
                 </div>
               </button>
-            </div>
 
-            {/* Floating testimonial */}
-            <motion.div initial={{
-            opacity: 0,
-            y: 20
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            delay: 0.3
-          }} className="absolute -bottom-6 -left-6 lg:-left-12 max-w-xs bg-background rounded-xl shadow-lg border border-border p-4 hidden lg:block">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-full bg-[hsl(var(--nimara-purple))]/10 flex items-center justify-center flex-shrink-0">
-                  <span className="text-[hsl(var(--nimara-purple))] font-bold text-sm">ED</span>
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground italic leading-relaxed">
-                    "Finally, someone who gets what we actually need."
-                  </p>
-                  <p className="text-xs text-muted-foreground/60 mt-1">— Executive Director, Community Nonprofit</p>
-                </div>
-              </div>
-            </motion.div>
+              {/* Floating quote */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+                className="absolute -bottom-12 -left-8 max-w-xs bg-card border border-border/50 rounded-2xl p-5 shadow-xl hidden lg:block"
+              >
+                <p className="text-sm text-body italic leading-relaxed mb-3">
+                  "Finally, someone who gets what we actually need."
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  — Executive Director, Community Nonprofit
+                </p>
+              </motion.div>
+            </div>
           </motion.div>
         </div>
       </div>
 
       {/* Video Modal */}
       <AnimatePresence>
-        {showVideoModal && <motion.div initial={{
-        opacity: 0
-      }} animate={{
-        opacity: 1
-      }} exit={{
-        opacity: 0
-      }} className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" onClick={() => setShowVideoModal(false)}>
-            <motion.div initial={{
-          scale: 0.9,
-          opacity: 0
-        }} animate={{
-          scale: 1,
-          opacity: 1
-        }} exit={{
-          scale: 0.9,
-          opacity: 0
-        }} className="relative w-full max-w-4xl bg-foreground rounded-2xl overflow-hidden shadow-2xl" onClick={e => e.stopPropagation()}>
-              {/* Close button */}
-              <button type="button" onClick={() => setShowVideoModal(false)} className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white min-h-[44px] min-w-[44px]" aria-label="Close video">
+        {showVideoModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+            onClick={() => setShowVideoModal(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative w-full max-w-4xl bg-secondary-background rounded-3xl overflow-hidden shadow-2xl"
+              onClick={e => e.stopPropagation()}
+            >
+              <button
+                type="button"
+                onClick={() => setShowVideoModal(false)}
+                className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white"
+                aria-label="Close video"
+              >
                 <X size={20} />
               </button>
-              
-              {/* Video placeholder */}
-              <div className="aspect-video bg-muted/20 flex items-center justify-center">
+
+              <div className="aspect-video bg-secondary-background/50 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center mx-auto mb-4">
-                    <Play size={32} className="text-primary-foreground ml-1" fill="currentColor" />
+                  <div className="w-20 h-20 rounded-full bg-accent flex items-center justify-center mx-auto mb-4">
+                    <Play size={36} className="text-secondary-background ml-1" fill="currentColor" />
                   </div>
-                  <p className="text-primary-foreground font-semibold mb-1">Video Player</p>
-                  <p className="text-muted-foreground text-sm">Replace with your video embed</p>
+                  <p className="text-white font-medium text-lg mb-1">Video Player</p>
+                  <p className="text-white/50 text-sm">Replace with your video embed</p>
                 </div>
               </div>
             </motion.div>
-          </motion.div>}
+          </motion.div>
+        )}
       </AnimatePresence>
-    </section>;
+    </section>
+  );
 };
