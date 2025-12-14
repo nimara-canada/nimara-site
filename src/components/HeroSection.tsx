@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ArrowRight, Zap, Clock, ShieldCheck } from "lucide-react";
 
 const HeroSection = () => {
@@ -10,8 +9,6 @@ const HeroSection = () => {
   const [wordIndex, setWordIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [primaryEmail, setPrimaryEmail] = useState("");
-  const [orgEmail, setOrgEmail] = useState("");
-  const [emailType, setEmailType] = useState("");
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   
   const words = ["Fundable", "Sustainable", "Audit Ready", "Efficient"];
@@ -71,12 +68,7 @@ const HeroSection = () => {
   const handleStartCheck = (e: React.FormEvent) => {
     e.preventDefault();
     if (primaryEmail) {
-      const params = new URLSearchParams({
-        primary_email: primaryEmail,
-        ...(orgEmail && { org_email: orgEmail }),
-        ...(emailType && { email_type: emailType }),
-      });
-      window.location.href = `/organizational-health-check?${params.toString()}`;
+      window.location.href = `/organizational-health-check?email=${encodeURIComponent(primaryEmail)}`;
     }
   };
 
@@ -159,7 +151,7 @@ const HeroSection = () => {
 
           {/* Email Capture Form */}
           <div 
-            className={`max-w-2xl mx-auto mb-6 transition-all duration-700 delay-300 ${
+            className={`max-w-xl mx-auto mb-6 transition-all duration-700 delay-300 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
@@ -167,7 +159,7 @@ const HeroSection = () => {
               {/* Primary Email - Required */}
               <div className="text-left">
                 <label htmlFor="primary-email" className="block text-sm text-white/80 mb-2">
-                  Email (where we can reach you) <span className="text-accent">*</span>
+                  Email (where we can reach you)
                 </label>
                 <Input
                   id="primary-email"
@@ -182,54 +174,6 @@ const HeroSection = () => {
                 <p id="primary-email-hint" className="text-xs text-white/50 mt-1.5">
                   No domain email yet? That's okay — use your best contact email.
                 </p>
-              </div>
-
-              {/* Two columns for optional fields */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {/* Organization Email - Optional */}
-                <div className="text-left">
-                  <label htmlFor="org-email" className="block text-sm text-white/80 mb-2">
-                    Organization email (optional)
-                  </label>
-                  <Input
-                    id="org-email"
-                    type="email"
-                    placeholder="info@yourorg.ca"
-                    value={orgEmail}
-                    onChange={(e) => setOrgEmail(e.target.value)}
-                    className="w-full h-12 bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-accent focus:ring-accent text-base"
-                    aria-describedby="org-email-hint"
-                  />
-                  <p id="org-email-hint" className="text-xs text-white/50 mt-1.5">
-                    If you don't have one yet, leave blank.
-                  </p>
-                </div>
-
-                {/* Email Type - Optional Dropdown */}
-                <div className="text-left">
-                  <label htmlFor="email-type" className="block text-sm text-white/80 mb-2">
-                    Email type (optional)
-                  </label>
-                  <Select value={emailType} onValueChange={setEmailType}>
-                    <SelectTrigger 
-                      id="email-type"
-                      className="w-full h-12 bg-white/5 border-white/20 text-white focus:border-accent focus:ring-accent text-base [&>span]:text-white/40 data-[state=open]:border-accent"
-                    >
-                      <SelectValue placeholder="Select type..." />
-                    </SelectTrigger>
-                    <SelectContent className="bg-secondary-background border-white/20 z-50">
-                      <SelectItem value="personal" className="text-white hover:bg-white/10 focus:bg-white/10 focus:text-white">
-                        Personal/free (Gmail, Yahoo, Outlook, etc.)
-                      </SelectItem>
-                      <SelectItem value="organization" className="text-white hover:bg-white/10 focus:bg-white/10 focus:text-white">
-                        Organization/domain-based (name@org.ca)
-                      </SelectItem>
-                      <SelectItem value="shared" className="text-white hover:bg-white/10 focus:bg-white/10 focus:text-white">
-                        Shared inbox (info@ / admin@)
-                      </SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
               </div>
 
               {/* CTA Buttons */}
