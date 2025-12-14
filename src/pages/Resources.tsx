@@ -13,6 +13,7 @@ import { toast } from "sonner";
 export default function Resources() {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formStatus, setFormStatus] = useState<string | null>(null);
   const emailInputId = useId();
   const formDescriptionId = useId();
   const shouldReduceMotion = useReducedMotion();
@@ -31,11 +32,20 @@ export default function Resources() {
     if (!email) return;
     
     setIsSubmitting(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    toast.success("Thanks for subscribing! Check your inbox for confirmation.");
-    setEmail("");
-    setIsSubmitting(false);
+    setFormStatus(null);
+    
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      toast.success("Thanks for subscribing! Check your inbox for confirmation.");
+      setFormStatus("Success! Thanks for subscribing. Check your inbox for confirmation.");
+      setEmail("");
+    } catch {
+      setFormStatus("Something went wrong. Please try again.");
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const scrollToSubscribe = () => {
@@ -187,6 +197,16 @@ export default function Resources() {
                 )}
               </Button>
             </motion.form>
+
+            {/* Live region for form status announcements */}
+            <div 
+              role="status" 
+              aria-live="polite" 
+              aria-atomic="true"
+              className="sr-only"
+            >
+              {formStatus}
+            </div>
 
             <p id={formDescriptionId} className="mt-4 text-sm text-white/80">
               Get new templates in your inbox. No spam, unsubscribe anytime.
