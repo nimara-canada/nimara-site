@@ -126,25 +126,6 @@ export default function Resources() {
               Skip the blank page. Our templates help your team focus on what matters—running programs and staying audit-ready.
             </p>
 
-            {/* Benefits list */}
-            <ul 
-              className="flex flex-wrap justify-center gap-6 mb-12 list-none"
-              aria-label="Template benefits"
-            >
-              {benefits.map((benefit, index) => (
-                <motion.li
-                  key={benefit.text}
-                  initial={shouldReduceMotion ? {} : { opacity: 0, y: 10 }}
-                  animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
-                  transition={shouldReduceMotion ? {} : { delay: 0.2 + index * 0.1 }}
-                  className="flex items-center gap-2 text-white/90"
-                >
-                  <benefit.icon className="w-5 h-5 text-accent" aria-hidden="true" />
-                  <span className="text-sm font-medium">{benefit.text}</span>
-                </motion.li>
-              ))}
-            </ul>
-
             {/* Subscribe Form */}
             <motion.form
               initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
