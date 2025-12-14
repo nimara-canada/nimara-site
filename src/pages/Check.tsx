@@ -47,10 +47,15 @@ const Check = () => {
           You're almost there.
         </h1>
 
-        {/* Intro paragraph */}
-        <p className="text-base sm:text-lg text-white/70 mb-8 leading-relaxed">
-          This check is a quick way to see if your nonprofit's behind-the-scenes systems are strong enough for grants, growth, and audits.
-        </p>
+        {/* What this check is */}
+        <div className="mb-6">
+          <h2 className="text-xs font-semibold text-white/50 uppercase tracking-widest mb-2">
+            What this check is:
+          </h2>
+          <p className="text-base sm:text-lg text-white/80 leading-relaxed">
+            This <span className="text-accent font-semibold">FREE</span> quick check shows if your nonprofit has the systems funders look for—so grants are easier and audits feel less stressful.
+          </p>
+        </div>
 
         {/* We'll check section */}
         <div className="mb-6">
@@ -72,11 +77,11 @@ const Check = () => {
           </div>
         </div>
 
-        {/* Why this matters - blockquote style */}
+        {/* Why it matters - blockquote style */}
         <div className="bg-white/5 rounded-xl p-4 mb-6 border-l-4 border-accent/50">
           <p className="text-white/80 text-sm sm:text-base leading-relaxed">
-            <span className="font-semibold text-white">Why this matters:</span>{" "}
-            <span className="italic">At the end, you'll get a clear next step—a fast fix or a full setup plan.</span>
+            <span className="font-semibold text-white">Why it matters:</span>{" "}
+            <span className="italic">You'll get a clear next step at the end: What to fix or a calendar invite to learn more about your systems for better next steps.</span>
           </p>
         </div>
 
