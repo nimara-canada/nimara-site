@@ -1,93 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-
-// Clean card component
-const PathCard = ({
-  children,
-  delay = 0,
-}: {
-  children: React.ReactNode;
-  delay?: number;
-}) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
-      className="relative group h-full"
-    >
-      <div className="relative h-full rounded-2xl border border-border/40 bg-card overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-border/60">
-        {/* Accent stripe on right side */}
-        <div 
-          className="absolute -top-4 -right-4 w-28 h-40 bg-secondary-background/10"
-          style={{ 
-            borderRadius: '0 0 0 100%',
-          }} 
-        />
-        
-        {/* Content */}
-        <div className="relative p-8 lg:p-10 h-full flex flex-col">{children}</div>
-      </div>
-    </motion.div>
-  );
-};
-
-// Simple pill badge
-const PillBadge = ({ 
-  children, 
-  variant = "accent" 
-}: { 
-  children: React.ReactNode; 
-  variant?: "accent" | "primary";
-}) => {
-  const bgColor = variant === "primary" ? "bg-primary/10" : "bg-teal-50";
-  const textColor = variant === "primary" ? "text-primary" : "text-teal-700";
-  const borderColor = variant === "primary" ? "border-primary/20" : "border-teal-200";
-  
-  return (
-    <span className={`inline-flex items-center px-3 py-1.5 rounded-full ${bgColor} border ${borderColor} text-sm font-medium ${textColor}`}>
-      {children}
-    </span>
-  );
-};
-
-// Checkmark list item
-const CheckItem = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <li className="flex items-start gap-3">
-      <svg className="w-5 h-5 text-teal-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-      </svg>
-      <span className="text-body text-sm">{children}</span>
-    </li>
-  );
-};
-
-// Step item for the ladder
-const StepItem = ({ 
-  step, 
-  title, 
-  description 
-}: { 
-  step: number; 
-  title: string; 
-  description: string;
-}) => {
-  return (
-    <div className="flex gap-4">
-      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
-        <span className="text-sm font-semibold text-primary">{step}</span>
-      </div>
-      <div className="flex-1 min-w-0">
-        <p className="font-medium text-foreground text-sm">{title}</p>
-        <p className="text-body-muted text-sm">{description}</p>
-      </div>
-    </div>
-  );
-};
 
 export const TwoWaysSection = () => {
   const navigate = useNavigate();
@@ -98,176 +11,202 @@ export const TwoWaysSection = () => {
   };
 
   return (
-    <section className="py-20 md:py-32 px-6 bg-background">
-      <div className="max-w-6xl mx-auto">
-        {/* Header section */}
+    <section className="py-24 md:py-36 lg:py-44 bg-background relative overflow-hidden">
+      {/* Subtle background texture */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-50 via-background to-background" />
+      
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative">
+        {/* Section header - editorial style */}
         <motion.div
-          className="text-center mb-16 md:mb-20"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          className="max-w-2xl mb-20 md:mb-28"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <motion.h2
-            className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-foreground mb-4"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-          >
+          <p className="text-sm tracking-widest text-muted-foreground uppercase mb-4">
+            Choose your starting point
+          </p>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-foreground leading-[1.1] mb-6">
             Two ways to start
-          </motion.h2>
-
-          <motion.p
-            className="text-subtitle max-w-xl mx-auto mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            Pick what you need: fix one urgent problem, or set up your core systems.
-          </motion.p>
-
-          <motion.a
-            href="/organizational-health-check"
-            className="inline-flex items-center gap-2 text-primary font-medium hover:opacity-80 transition-opacity text-sm"
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            Not sure? Start the free 4-minute check
-            <ArrowRight className="w-4 h-4" />
-          </motion.a>
+          </h2>
+          <p className="text-lg md:text-xl text-body leading-relaxed">
+            Fix one urgent problem, or set up your core systems. Both paths lead to a nonprofit that runs smoother.
+          </p>
         </motion.div>
 
-        {/* Cards grid */}
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
-          {/* Card 1: Urgent Fix */}
-          <PathCard delay={0.1}>
-            {/* Badge */}
-            <div className="mb-5">
-              <PillBadge variant="accent">Urgent Fix</PillBadge>
-            </div>
-
-            {/* Title & timeline */}
-            <h3 className="text-2xl md:text-3xl font-serif font-medium text-foreground mb-1">
-              Urgent Fix
-            </h3>
-            <p className="text-sm text-teal-700 font-medium mb-5">1–4 weeks • One problem, one clear fix</p>
-
-            {/* Description */}
-            <p className="text-body leading-relaxed mb-6">
-              Fix one urgent issue fast. Grant deadline? Board issue? HR mess? We jump in, solve the problem, and leave you with a simple way to keep it running.
-            </p>
-
-            {/* Best if */}
-            <div className="mb-6">
-              <p className="text-sm font-semibold text-foreground mb-3">Best if:</p>
-              <ul className="space-y-2">
-                <CheckItem>A deadline is coming up</CheckItem>
-                <CheckItem>Something is broken right now</CheckItem>
-                <CheckItem>You need a clear fix this month</CheckItem>
-                <CheckItem>You want help without a long process</CheckItem>
-              </ul>
-            </div>
-
-            {/* What you get */}
-            <div className="bg-teal-50 border border-teal-100 rounded-xl p-4 mb-8">
-              <p className="text-sm font-medium text-foreground mb-1">What you get:</p>
-              <p className="text-body-muted text-sm">
-                A working fix, the files/templates you need, and a simple way to run it.
+        {/* Cards - asymmetric premium layout */}
+        <div className="grid lg:grid-cols-12 gap-6 lg:gap-8">
+          
+          {/* Card 1: Urgent Fix - spans 5 columns */}
+          <motion.div
+            className="lg:col-span-5"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="group h-full bg-card border border-border/50 rounded-3xl p-8 md:p-10 lg:p-12 transition-all duration-500 hover:border-border hover:shadow-2xl hover:shadow-black/[0.03]">
+              
+              {/* Minimal label */}
+              <span className="text-xs tracking-widest text-muted-foreground uppercase">
+                Quick fix
+              </span>
+              
+              <h3 className="text-2xl md:text-3xl font-serif font-medium text-foreground mt-4 mb-2">
+                Urgent Fix
+              </h3>
+              
+              <p className="text-sm text-muted-foreground mb-8">
+                1–4 weeks · One problem, one clear fix
               </p>
-            </div>
 
-            {/* CTA - pushed to bottom */}
-            <div className="mt-auto">
-              <Button 
+              <p className="text-body leading-relaxed mb-8">
+                Fix one urgent issue fast. Grant deadline? Board issue? HR mess? We jump in, solve the problem, and leave you with a simple way to keep it running.
+              </p>
+
+              {/* Best if - clean list */}
+              <div className="mb-10">
+                <p className="text-xs tracking-widest text-muted-foreground uppercase mb-4">Best if</p>
+                <ul className="space-y-3">
+                  {[
+                    "A deadline is coming up",
+                    "Something is broken right now",
+                    "You need a clear fix this month",
+                    "You want help without a long process"
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center gap-3 text-body text-sm">
+                      <span className="w-1.5 h-1.5 rounded-full bg-foreground/40" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* What you get */}
+              <div className="border-t border-border/50 pt-8 mb-10">
+                <p className="text-xs tracking-widest text-muted-foreground uppercase mb-3">You get</p>
+                <p className="text-body text-sm leading-relaxed">
+                  A working fix, the files and templates you need, and a simple way to run it going forward.
+                </p>
+              </div>
+
+              {/* CTA */}
+              <button
                 onClick={() => handleNavigate("/book-a-call")}
-                className="w-full bg-accent text-secondary-background hover:bg-accent/90 font-semibold"
-                size="lg"
+                className="group/btn inline-flex items-center gap-3 text-foreground font-medium transition-all duration-300"
               >
-                Get urgent help
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
+                <span className="relative">
+                  Get urgent help
+                  <span className="absolute left-0 -bottom-0.5 w-full h-px bg-foreground/30 group-hover/btn:bg-foreground transition-colors duration-300" />
+                </span>
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+              </button>
             </div>
-          </PathCard>
+          </motion.div>
 
-          {/* Card 2: Build My Systems */}
-          <PathCard delay={0.2}>
-            {/* Badge */}
-            <div className="mb-5">
-              <PillBadge variant="primary">Build My Systems</PillBadge>
-            </div>
+          {/* Card 2: Build My Systems - spans 7 columns, featured */}
+          <motion.div
+            className="lg:col-span-7"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="group h-full bg-secondary-background text-white rounded-3xl p-8 md:p-10 lg:p-12 transition-all duration-500 hover:shadow-2xl hover:shadow-secondary-background/20">
+              
+              {/* Label with accent */}
+              <span className="inline-block text-xs tracking-widest text-accent uppercase">
+                Recommended
+              </span>
+              
+              <h3 className="text-2xl md:text-3xl font-serif font-medium text-white mt-4 mb-2">
+                Build My Systems
+              </h3>
+              
+              <p className="text-sm text-white/60 mb-8">
+                Start free · Upgrade only if you want us to go deeper
+              </p>
 
-            {/* Title & timeline */}
-            <h3 className="text-2xl md:text-3xl font-serif font-medium text-foreground mb-1">
-              Build My Systems
-            </h3>
-            <p className="text-sm text-primary font-medium mb-5">Start free • Upgrade only if you want us to go deeper</p>
+              <p className="text-white/80 leading-relaxed mb-10">
+                For when things feel messy in more than one area—board, money, people, or programs. Start with a free check and decide from there.
+              </p>
 
-            {/* Description */}
-            <p className="text-body leading-relaxed mb-6">
-              For when things feel messy in more than one area—board, money, people, or programs.
-            </p>
+              {/* The journey - clean numbered steps */}
+              <div className="mb-10">
+                <p className="text-xs tracking-widest text-white/50 uppercase mb-6">How it works</p>
+                <div className="space-y-6">
+                  {[
+                    { 
+                      num: "01", 
+                      title: "Free 4-minute check", 
+                      desc: "See what's working, what's missing, and your next step.",
+                      tag: "Free"
+                    },
+                    { 
+                      num: "02", 
+                      title: "Deep check", 
+                      desc: "We review your real documents and give you a clear plan.",
+                      tag: "From $2,500"
+                    },
+                    { 
+                      num: "03", 
+                      title: "Full setup", 
+                      desc: "We set up the systems with you, so it's easier to run day-to-day.",
+                      tag: "8–12 weeks"
+                    }
+                  ].map((step, i) => (
+                    <div key={i} className="flex gap-5">
+                      <span className="text-2xl font-light text-accent/60 tabular-nums">{step.num}</span>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-1">
+                          <span className="font-medium text-white">{step.title}</span>
+                          <span className="text-[10px] tracking-wider text-white/40 uppercase">{step.tag}</span>
+                        </div>
+                        <p className="text-sm text-white/60 leading-relaxed">{step.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
-            {/* How it works - 3-step ladder */}
-            <div className="mb-6">
-              <p className="text-sm font-semibold text-foreground mb-4">How it works:</p>
-              <div className="space-y-4">
-                <StepItem 
-                  step={1} 
-                  title="Free 4-minute check (free)" 
-                  description="See what's working, what's missing, and your next step."
-                />
-                <StepItem 
-                  step={2} 
-                  title="Deep check (paid, from $2,500)" 
-                  description="We review your real documents and give you a clear plan."
-                />
-                <StepItem 
-                  step={3} 
-                  title="Full setup (8–12 weeks)" 
-                  description="We set up the systems with you, so it's easier to run day-to-day."
-                />
+              {/* CTA */}
+              <div>
+                <button
+                  onClick={() => handleNavigate("/organizational-health-check")}
+                  className="inline-flex items-center justify-center gap-2 h-14 px-8 bg-accent text-secondary-background font-semibold rounded-full transition-all duration-300 hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/20"
+                >
+                  Start the free check
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+                <p className="text-xs text-white/40 mt-4 max-w-xs">
+                  No pressure. The free check stands on its own. Upgrade only if it helps.
+                </p>
               </div>
             </div>
-
-            {/* CTA - pushed to bottom */}
-            <div className="mt-auto">
-              <Button 
-                onClick={() => handleNavigate("/organizational-health-check")}
-                className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold mb-3"
-                size="lg"
-              >
-                Start the free 4-minute check
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-              <p className="text-xs text-muted-foreground text-center">
-                No pressure. The free check stands on its own. Upgrade only if it helps.
-              </p>
-            </div>
-          </PathCard>
+          </motion.div>
         </div>
 
-        {/* Bottom CTA section */}
+        {/* Bottom helper - minimal */}
         <motion.div
-          className="mt-16 md:mt-20 text-center"
+          className="mt-20 md:mt-28 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <p className="text-foreground font-medium mb-1">Still not sure?</p>
-          <p className="text-body-muted text-sm max-w-lg mx-auto mb-4">
-            We can help you figure out which path makes sense on a quick call.
+          <p className="text-muted-foreground">
+            Still not sure which path?
           </p>
           <button
             onClick={() => handleNavigate("/book-a-call")}
-            className="inline-flex items-center gap-2 text-primary font-medium hover:opacity-80 transition-opacity"
+            className="group inline-flex items-center gap-2 text-foreground font-medium"
           >
-            Book a free call
-            <ArrowRight className="w-4 h-4" />
+            <span className="relative">
+              Book a free call
+              <span className="absolute left-0 -bottom-0.5 w-full h-px bg-foreground/30 group-hover:bg-foreground transition-colors duration-300" />
+            </span>
+            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
         </motion.div>
       </div>
