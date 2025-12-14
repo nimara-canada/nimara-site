@@ -4,7 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { templates } from "@/data/templates";
 import { TemplateCard } from "@/components/TemplateCard";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { FileText, Sparkles, Download, Mail, ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,6 +15,16 @@ export default function Resources() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const emailInputId = useId();
   const formDescriptionId = useId();
+  const shouldReduceMotion = useReducedMotion();
+
+  // Animation variants that respect reduced motion preference
+  const fadeInUp = shouldReduceMotion 
+    ? { initial: {}, animate: {}, transition: {} }
+    : { initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6 } };
+
+  const fadeInScale = shouldReduceMotion
+    ? { initial: {}, animate: {}, transition: {} }
+    : { initial: { opacity: 0, scale: 0.9 }, animate: { opacity: 1, scale: 1 }, transition: { delay: 0.1 } };
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -77,16 +87,16 @@ export default function Resources() {
 
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={fadeInUp.initial}
+            animate={fadeInUp.animate}
+            transition={fadeInUp.transition}
             className="text-center max-w-3xl mx-auto"
           >
             {/* Badge */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.1 }}
+              initial={fadeInScale.initial}
+              animate={fadeInScale.animate}
+              transition={fadeInScale.transition}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 text-accent mb-8"
               role="status"
             >
@@ -114,9 +124,9 @@ export default function Resources() {
               {benefits.map((benefit, index) => (
                 <motion.li
                   key={benefit.text}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 + index * 0.1 }}
+                  initial={shouldReduceMotion ? {} : { opacity: 0, y: 10 }}
+                  animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+                  transition={shouldReduceMotion ? {} : { delay: 0.2 + index * 0.1 }}
                   className="flex items-center gap-2 text-white/90"
                 >
                   <benefit.icon className="w-5 h-5 text-accent" aria-hidden="true" />
@@ -127,9 +137,9 @@ export default function Resources() {
 
             {/* Subscribe Form */}
             <motion.form
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
+              initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+              animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+              transition={shouldReduceMotion ? {} : { delay: 0.4 }}
               onSubmit={handleSubscribe}
               className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
               aria-labelledby="subscribe-heading"
@@ -178,7 +188,7 @@ export default function Resources() {
               </Button>
             </motion.form>
 
-            <p id={formDescriptionId} className="mt-4 text-sm text-white/70">
+            <p id={formDescriptionId} className="mt-4 text-sm text-white/80">
               Get new templates in your inbox. No spam, unsubscribe anytime.
             </p>
           </motion.div>
@@ -186,14 +196,14 @@ export default function Resources() {
       </section>
 
       {/* Templates Section */}
-      <main id="main-content" className="py-20 md:py-28 bg-background" role="main">
+      <main id="main-content" className="py-20 md:py-28 bg-background">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Section Header */}
           <motion.header
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+            whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={shouldReduceMotion ? {} : { duration: 0.5 }}
             className="text-center mb-16"
           >
             <span 
@@ -223,10 +233,10 @@ export default function Resources() {
               {templates.map((template, index) => (
                 <motion.li
                   key={template.slug}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+                  whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  transition={shouldReduceMotion ? {} : { delay: index * 0.1, duration: 0.5 }}
                 >
                   <TemplateCard
                     slug={template.slug}
@@ -241,10 +251,10 @@ export default function Resources() {
 
           {/* Bottom CTA */}
           <motion.aside
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+            whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.5 }}
+            transition={shouldReduceMotion ? {} : { delay: 0.3, duration: 0.5 }}
             className="mt-20 text-center"
             aria-label="More templates notification"
           >
