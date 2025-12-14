@@ -9,7 +9,7 @@ const HeroSection = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [primaryEmail, setPrimaryEmail] = useState("");
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  const words = ["Fundable", "Sustainable", "Audit Ready", "Efficient"];
+  const words = ["Fundable", "Sustainable", "Efficient"];
 
   // Check for reduced motion preference
   useEffect(() => {
