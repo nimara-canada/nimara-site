@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ArrowRight, Zap, Clock, ShieldCheck } from "lucide-react";
 
 const HeroSection = () => {
@@ -8,7 +9,9 @@ const HeroSection = () => {
   const [displayText, setDisplayText] = useState("");
   const [wordIndex, setWordIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [email, setEmail] = useState("");
+  const [primaryEmail, setPrimaryEmail] = useState("");
+  const [orgEmail, setOrgEmail] = useState("");
+  const [emailType, setEmailType] = useState("");
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   
   const words = ["Fundable", "Sustainable", "Audit Ready", "Efficient"];
@@ -67,8 +70,13 @@ const HeroSection = () => {
 
   const handleStartCheck = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      window.location.href = `/organizational-health-check?email=${encodeURIComponent(email)}`;
+    if (primaryEmail) {
+      const params = new URLSearchParams({
+        primary_email: primaryEmail,
+        ...(orgEmail && { org_email: orgEmail }),
+        ...(emailType && { email_type: emailType }),
+      });
+      window.location.href = `/organizational-health-check?${params.toString()}`;
     }
   };
 
@@ -149,33 +157,89 @@ const HeroSection = () => {
             Nimara helps you set up simple systems for your board, money, staff, and programs—so your team spends less time fixing problems and more time doing the work.
           </p>
 
-          {/* Email Form Row */}
+          {/* Email Capture Form */}
           <div 
-            className={`max-w-3xl mx-auto mb-4 transition-all duration-700 delay-300 ${
+            className={`max-w-2xl mx-auto mb-6 transition-all duration-700 delay-300 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            <form onSubmit={handleStartCheck}>
-              <label htmlFor="hero-email" className="block text-left text-sm text-white/70 mb-2 ml-1">
-                Work email
-              </label>
-              <div className="flex flex-col sm:flex-row gap-3">
+            <form onSubmit={handleStartCheck} className="space-y-4">
+              {/* Primary Email - Required */}
+              <div className="text-left">
+                <label htmlFor="primary-email" className="block text-sm text-white/80 mb-2">
+                  Email (where we can reach you) <span className="text-accent">*</span>
+                </label>
                 <Input
-                  id="hero-email"
+                  id="primary-email"
                   type="email"
-                  placeholder="name@nonprofit.ca"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="name@gmail.com or name@yourorg.ca"
+                  value={primaryEmail}
+                  onChange={(e) => setPrimaryEmail(e.target.value)}
                   required
-                  className="flex-1 h-14 bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-accent focus:ring-accent text-base"
-                  aria-describedby="email-hint"
+                  className="w-full h-12 bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-accent focus:ring-accent text-base"
+                  aria-describedby="primary-email-hint"
                 />
+                <p id="primary-email-hint" className="text-xs text-white/50 mt-1.5">
+                  No domain email yet? That's okay — use your best contact email.
+                </p>
+              </div>
+
+              {/* Two columns for optional fields */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Organization Email - Optional */}
+                <div className="text-left">
+                  <label htmlFor="org-email" className="block text-sm text-white/80 mb-2">
+                    Organization email (optional)
+                  </label>
+                  <Input
+                    id="org-email"
+                    type="email"
+                    placeholder="info@yourorg.ca"
+                    value={orgEmail}
+                    onChange={(e) => setOrgEmail(e.target.value)}
+                    className="w-full h-12 bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-accent focus:ring-accent text-base"
+                    aria-describedby="org-email-hint"
+                  />
+                  <p id="org-email-hint" className="text-xs text-white/50 mt-1.5">
+                    If you don't have one yet, leave blank.
+                  </p>
+                </div>
+
+                {/* Email Type - Optional Dropdown */}
+                <div className="text-left">
+                  <label htmlFor="email-type" className="block text-sm text-white/80 mb-2">
+                    Email type (optional)
+                  </label>
+                  <Select value={emailType} onValueChange={setEmailType}>
+                    <SelectTrigger 
+                      id="email-type"
+                      className="w-full h-12 bg-white/5 border-white/20 text-white focus:border-accent focus:ring-accent text-base [&>span]:text-white/40 data-[state=open]:border-accent"
+                    >
+                      <SelectValue placeholder="Select type..." />
+                    </SelectTrigger>
+                    <SelectContent className="bg-secondary-background border-white/20 z-50">
+                      <SelectItem value="personal" className="text-white hover:bg-white/10 focus:bg-white/10 focus:text-white">
+                        Personal/free (Gmail, Yahoo, Outlook, etc.)
+                      </SelectItem>
+                      <SelectItem value="organization" className="text-white hover:bg-white/10 focus:bg-white/10 focus:text-white">
+                        Organization/domain-based (name@org.ca)
+                      </SelectItem>
+                      <SelectItem value="shared" className="text-white hover:bg-white/10 focus:bg-white/10 focus:text-white">
+                        Shared inbox (info@ / admin@)
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <Button 
                   type="submit"
                   size="lg"
-                  className="h-14 px-8 bg-accent text-secondary-background hover:bg-accent/90 font-semibold whitespace-nowrap min-h-[56px] text-base"
+                  className="flex-1 h-14 px-8 bg-accent text-secondary-background hover:bg-accent/90 font-semibold min-h-[56px] text-base"
                 >
-                  Start the 4-minute check
+                  Get the free NOHC baseline
                 </Button>
                 <a 
                   href="/path-a" 
@@ -185,18 +249,13 @@ const HeroSection = () => {
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </a>
               </div>
+
+              {/* Subtext under CTA */}
+              <p className="text-sm text-white/50 text-center">
+                10 spots. We'll reach out by email within 2–3 business days.
+              </p>
             </form>
           </div>
-
-          {/* Microcopy */}
-          <p 
-            id="email-hint" 
-            className={`text-sm text-white/50 mb-0 transition-all duration-700 delay-350 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
-            You'll get a short checklist and your next step. No spam.
-          </p>
         </div>
       </div>
 
