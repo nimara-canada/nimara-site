@@ -13,12 +13,12 @@ All colors MUST be HSL.
 @layer base {
   :root {
     /* Nimara brand tokens */
-    --nimara-navy: 210 56% 23%;
+    --nimara-navy: 220 53% 8%; /* #0B1120 */
     --nimara-purple: 256 69% 57%;
     --nimara-mint: 165 94% 83%;
     --nimara-bg: 220 50% 97%;
     /* Nimara brand tokens */
-    --nim-navy: 229 48% 23%; /* #1e2347 - slightly darker for better contrast */
+    --nim-navy: 220 53% 8%; /* #0B1120 */
     --nim-purple: 252 58% 56%; /* #6945D8 */
     --nim-mint: 162 91% 83%; /* #ACFCE3 */
     --nim-slate: 220 13% 38%; /* #555d6e - muted text, improved AA contrast ~5.8:1 */
