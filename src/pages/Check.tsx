@@ -37,15 +37,6 @@ const Check = () => {
   return (
     <main className="min-h-screen bg-secondary-background flex items-center justify-center px-4 py-8 sm:py-12">
       <div className="w-full max-w-xl">
-        {/* Back link */}
-        <Link 
-          to="/" 
-          className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-white/80 transition-colors mb-6"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Back to home
-        </Link>
-
         {/* Step indicator badge */}
         <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 mb-6">
           <span className="text-xs font-medium text-accent uppercase tracking-wider">Step 1 of 2</span>
@@ -124,17 +115,24 @@ const Check = () => {
           <ArrowRight className="w-5 h-5 ml-2" aria-hidden="true" />
         </Button>
 
-        {/* Secondary link */}
-        {email && (
-          <div className="text-center mb-6">
+        {/* Secondary links */}
+        <div className="flex items-center justify-center gap-4 mb-6">
+          {email && (
             <Link 
               to="/" 
               className="text-sm text-white/40 hover:text-white/60 underline underline-offset-4 transition-colors"
             >
               Change email
             </Link>
-          </div>
-        )}
+          )}
+          <Link 
+            to="/" 
+            className="inline-flex items-center gap-1.5 text-sm text-white/40 hover:text-white/60 transition-colors"
+          >
+            <ArrowLeft className="w-3.5 h-3.5" />
+            Back to home
+          </Link>
+        </div>
 
         {/* Trust line */}
         <p className="text-xs text-white/30 text-center leading-relaxed">
