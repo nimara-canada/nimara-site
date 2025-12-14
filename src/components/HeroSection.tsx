@@ -123,7 +123,7 @@ const HeroSection = () => {
                 <Button type="submit" size="lg" className="flex-1 h-14 px-8 bg-accent text-secondary-background hover:bg-accent/90 font-semibold min-h-[56px] text-base">
                   ​Start the 4-minute check
                 </Button>
-                <a href="/path-a" className="inline-flex items-center justify-center gap-2 h-14 px-6 bg-white/5 border border-white/20 text-white hover:bg-white/10 font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-secondary-background whitespace-nowrap min-h-[56px]">
+                <a href="https://nimara.ca/book-a-call" className="inline-flex items-center justify-center gap-2 h-14 px-6 bg-white/5 border border-white/20 text-white hover:bg-white/10 font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-secondary-background whitespace-nowrap min-h-[56px]">
                   I have an urgent problem
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </a>
