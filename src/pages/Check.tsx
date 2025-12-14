@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
-import { ArrowRight, Clock, Sparkles, CheckCircle, Loader2, Shield, Wallet, Users, FolderOpen } from "lucide-react";
+import { ArrowRight, ArrowLeft, Clock, Sparkles, CheckCircle, Loader2, Shield, Wallet, Users, FolderOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Check = () => {
@@ -37,6 +37,15 @@ const Check = () => {
   return (
     <main className="min-h-screen bg-secondary-background flex items-center justify-center px-4 py-8 sm:py-12">
       <div className="w-full max-w-xl">
+        {/* Back link */}
+        <Link 
+          to="/" 
+          className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-white/80 transition-colors mb-6"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back to home
+        </Link>
+
         {/* Step indicator badge */}
         <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 mb-6">
           <span className="text-xs font-medium text-accent uppercase tracking-wider">Step 1 of 2</span>
