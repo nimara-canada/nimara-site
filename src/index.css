@@ -60,7 +60,7 @@ All colors MUST be HSL.
     --input: var(--nim-mist);
     --ring: var(--nim-purple);
 
-    --secondary-background: var(--nim-navy);
+    --secondary-background: 220 53% 8%; /* #0B1120 */
 
     --radius: 1rem;
     --radius-xl: 1rem;
