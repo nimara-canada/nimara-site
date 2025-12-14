@@ -131,7 +131,7 @@ const HeroSection = () => {
 
               {/* Subtext under CTA */}
               <p className="text-sm text-white/50 text-center">
-                10 spots. We'll reach out by email within 2–3 business days.
+                10 spots. We'll reach out by email within 2 business days.
               </p>
             </form>
           </div>
