@@ -2,9 +2,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Check, X, Clock, Target, Package, FileText, BookOpen, Users, HelpCircle } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Helmet } from "react-helmet";
 
 import {
   Accordion,
@@ -14,63 +15,131 @@ import {
 } from "@/components/ui/accordion";
 
 const PathA = () => {
+  const shouldReduceMotion = useReducedMotion();
+  
   const scrollToIntake = () => {
-    document.getElementById("start-path-a")?.scrollIntoView({ behavior: "smooth" });
+    const target = document.getElementById("start-path-a");
+    target?.scrollIntoView({ behavior: shouldReduceMotion ? "auto" : "smooth" });
+    target?.focus();
   };
+
+  // Animation variants respecting reduced motion
+  const fadeInUp = shouldReduceMotion 
+    ? {} 
+    : { initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.5 } };
+
+  const highlights = [
+    { icon: Clock, text: "1–4 weeks", label: "Timeline: 1 to 4 weeks" },
+    { icon: Target, text: "One urgent problem", label: "Focus: One urgent problem" },
+    { icon: Package, text: "Mini Acceptance Bundle", label: "Deliverable: Mini Acceptance Bundle" },
+  ];
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Fast Help - Path A | Nimara - Fix One Urgent Issue Fast</title>
+        <meta 
+          name="description" 
+          content="Need urgent help with a nonprofit crisis? Path A delivers focused solutions in 1-4 weeks. Board crisis, HR mess, or grant deadline - we fix one problem fast." 
+        />
+        <html lang="en" />
+      </Helmet>
+      
       <Header />
       
+      {/* Skip to main content */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-3 focus:rounded-lg focus:bg-primary focus:text-primary-foreground focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:outline-none font-medium"
+      >
+        Skip to main content
+      </a>
+      
       {/* HERO SECTION */}
-      <section className="bg-secondary pt-32 pb-20 md:pb-28">
+      <section 
+        aria-labelledby="hero-heading"
+        className="bg-secondary pt-32 pb-20 md:pb-28"
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+            animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+            transition={shouldReduceMotion ? {} : { duration: 0.5 }}
             className="text-center"
           >
-            <Badge variant="outline" className="mb-6 bg-accent/20 text-accent border-accent/30">
+            {/* Badge */}
+            <Badge 
+              variant="outline" 
+              className="mb-6 bg-accent/20 text-accent border-accent/30"
+              role="status"
+            >
               Path A – rapid response
             </Badge>
-            <h1 className="heading-display text-secondary-foreground mb-4">
+            
+            {/* Main heading */}
+            <h1 
+              id="hero-heading"
+              className="heading-display text-secondary-foreground mb-4"
+            >
               Fast Help
             </h1>
+            
+            {/* Subheading */}
             <p className="text-xl md:text-2xl text-secondary-foreground/90 mb-2">
               Fix one urgent issue fast.
             </p>
-            <p className="text-lg text-accent font-medium mb-6">
+            
+            {/* Timeline highlight */}
+            <p 
+              className="text-lg text-accent font-medium mb-6"
+              aria-label="Timeline: 1 to 4 weeks. One problem, one solution."
+            >
               1–4 weeks • One problem, one solution
             </p>
+            
+            {/* Description */}
             <p className="text-body-lg text-secondary-foreground/85 max-w-2xl mx-auto mb-8">
               Board crisis? HR mess? Grant deadline? We jump in, solve the problem, and get out. No lengthy assessments required. We scope your problem, match you with the right expertise, and deliver a focused fix you can run with.
             </p>
             
-            <div className="flex flex-wrap justify-center gap-3 mb-10">
-              <Badge variant="outline" className="bg-secondary-foreground/10 text-secondary-foreground border-secondary-foreground/20 px-4 py-2">
-                <Clock className="w-4 h-4 mr-2" />
-                1–4 weeks
-              </Badge>
-              <Badge variant="outline" className="bg-secondary-foreground/10 text-secondary-foreground border-secondary-foreground/20 px-4 py-2">
-                <Target className="w-4 h-4 mr-2" />
-                One urgent problem
-              </Badge>
-              <Badge variant="outline" className="bg-secondary-foreground/10 text-secondary-foreground border-secondary-foreground/20 px-4 py-2">
-                <Package className="w-4 h-4 mr-2" />
-                Mini Acceptance Bundle
-              </Badge>
-            </div>
+            {/* Highlights list */}
+            <ul 
+              className="flex flex-wrap justify-center gap-3 mb-10 list-none"
+              aria-label="Path A highlights"
+            >
+              {highlights.map((item, index) => (
+                <li key={index}>
+                  <Badge 
+                    variant="outline" 
+                    className="bg-secondary-foreground/10 text-secondary-foreground border-secondary-foreground/20 px-4 py-2"
+                    aria-label={item.label}
+                  >
+                    <item.icon className="w-4 h-4 mr-2" aria-hidden="true" />
+                    {item.text}
+                  </Badge>
+                </li>
+              ))}
+            </ul>
             
+            {/* Primary CTA */}
             <Button 
               onClick={scrollToIntake}
               size="lg" 
-              className="font-semibold text-lg px-8 py-6"
+              className="font-semibold text-lg px-8 py-6 focus:ring-2 focus:ring-offset-2 focus:ring-primary focus:outline-none min-h-[56px]"
+              aria-describedby="cta-description"
             >
               Start Path A – 7-minute intake
             </Button>
-            <p className="mt-4 text-secondary-foreground/70 text-sm">
-              <a href="/book-a-call" className="underline hover:text-secondary-foreground">
+            
+            {/* Secondary link */}
+            <p 
+              id="cta-description"
+              className="mt-4 text-secondary-foreground/80 text-sm"
+            >
+              <a 
+                href="/book-a-call" 
+                className="underline hover:text-secondary-foreground focus:text-secondary-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm"
+              >
                 Not sure if this is right? Talk through options.
               </a>
             </p>
@@ -291,15 +360,20 @@ const PathA = () => {
       </section>
 
       {/* START PATH A */}
-      <section id="start-path-a" className="py-20 md:py-28 bg-secondary">
+      <section 
+        id="start-path-a" 
+        className="py-20 md:py-28 bg-secondary"
+        aria-labelledby="start-heading"
+        tabIndex={-1}
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+            whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={shouldReduceMotion ? {} : { duration: 0.5 }}
           >
-            <h2 className="heading-2 text-secondary-foreground mb-4 text-center">
+            <h2 id="start-heading" className="heading-2 text-secondary-foreground mb-4 text-center">
               Ready to start Path A?
             </h2>
             <p className="text-lg text-secondary-foreground/85 mb-12 text-center max-w-2xl mx-auto">
