@@ -163,7 +163,8 @@ export default function Resources() {
                 size="lg"
                 disabled={isSubmitting}
                 aria-disabled={isSubmitting}
-                className="h-14 px-8 bg-accent hover:bg-accent/90 text-secondary font-semibold focus:ring-2 focus:ring-offset-2 focus:ring-accent focus:outline-none min-w-[140px]"
+                className="h-14 px-8 text-secondary font-semibold focus:ring-2 focus:ring-offset-2 focus:ring-accent focus:outline-none min-w-[140px]"
+                style={{ backgroundColor: 'hsl(var(--nimara-mint))', color: 'hsl(var(--nimara-navy))' }}
               >
                 {isSubmitting ? (
                   <>
