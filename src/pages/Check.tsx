@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import { ArrowRight, Clock, MousePointerClick, CheckCircle, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -23,18 +23,12 @@ const Check = () => {
 
   const typeformUrl = buildTypeformUrl();
 
-  // Auto-redirect after 1 second
-  useEffect(() => {
-    setIsRedirecting(true);
-    const timer = setTimeout(() => {
-      window.location.href = typeformUrl;
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, [typeformUrl]);
-
   const handleContinue = () => {
-    window.location.href = typeformUrl;
+    setIsRedirecting(true);
+    // Small delay to show loading state before redirect
+    setTimeout(() => {
+      window.location.href = typeformUrl;
+    }, 800);
   };
 
   return (
