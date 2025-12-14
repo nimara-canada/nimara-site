@@ -27,8 +27,8 @@ const HeroSection = () => {
       return;
     }
     const currentWord = words[wordIndex];
-    const typeSpeed = 100;
-    const deleteSpeed = 60;
+    const typeSpeed = 150;
+    const deleteSpeed = 90;
     const pauseTime = 2000;
     let timeout: NodeJS.Timeout;
     if (!isDeleting) {
