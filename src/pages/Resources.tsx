@@ -56,8 +56,8 @@ export default function Resources() {
 
       {/* Hero Section */}
       <section 
-        className="relative overflow-hidden bg-secondary-background pt-32 pb-20 md:pt-40 md:pb-28"
-        style={{ paddingTop: 'calc(var(--announcement-height, 0px) + 8rem)' }}
+        className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28"
+        style={{ backgroundColor: 'hsl(var(--nimara-navy))', paddingTop: 'calc(var(--announcement-height, 0px) + 8rem)' }}
       >
         {/* Decorative elements */}
         <div className="absolute inset-0 overflow-hidden">
