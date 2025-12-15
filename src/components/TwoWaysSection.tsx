@@ -11,7 +11,7 @@ export const TwoWaysSection = () => {
   };
 
   return (
-    <section className="py-24 md:py-36 lg:py-44 bg-background relative overflow-hidden">
+    <section className="py-20 md:py-28 lg:py-32 bg-background relative overflow-hidden">
       {/* Subtle background texture */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-50 via-background to-background" />
       
