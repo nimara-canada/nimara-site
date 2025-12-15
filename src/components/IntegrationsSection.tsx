@@ -43,7 +43,7 @@ export const IntegrationsSection = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className="text-xs tracking-[0.2em] text-accent uppercase mb-6 font-medium">
+            <p className="text-xs tracking-[0.2em] text-primary uppercase mb-6 font-medium">
               Integrations
             </p>
 
