@@ -74,19 +74,19 @@ const BookACall = () => {
   });
 
   const bullets = [
-    { icon: "01", text: "Listen to what's happening (the one urgent problem)" },
-    { icon: "02", text: "Ask a few quick questions so we don't guess" },
-    { icon: "03", text: "Tell you the best next step (and timing)" },
-    { icon: "04", text: "Leave you with a clear plan for the next 7 days" },
+    { icon: "01", text: "Listen To What's Happening (The One Urgent Problem)" },
+    { icon: "02", text: "Ask A Few Quick Questions So We Don't Guess" },
+    { icon: "03", text: "Tell You The Best Next Step (And Timing)" },
+    { icon: "04", text: "Leave You With A Clear Plan For The Next 7 Days" },
   ];
 
   const helpOptions = [
-    { value: "grant", label: "Grant deadline (proposal, budget, reporting)" },
-    { value: "board", label: "Board issue (meeting, decision, conflict)" },
-    { value: "money", label: "Money mess (tracking, receipts, reports)" },
-    { value: "people", label: "People issue (staff, contractor, role problems)" },
-    { value: "program", label: "Program paperwork (proof, files, records)" },
-    { value: "other", label: "Other (tell us below)" },
+    { value: "grant", label: "Grant Deadline (Proposal, Budget, Reporting)" },
+    { value: "board", label: "Board Issue (Meeting, Decision, Conflict)" },
+    { value: "money", label: "Money Mess (Tracking, Receipts, Reports)" },
+    { value: "people", label: "People Issue (Staff, Contractor, Role Problems)" },
+    { value: "program", label: "Program Paperwork (Proof, Files, Records)" },
+    { value: "other", label: "Other (Tell Us Below)" },
   ];
 
   const handleOptionClick = (option: "call" | "form") => {
@@ -139,18 +139,18 @@ const BookACall = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Start the Free Check | Nimara</title>
-        <meta name="description" content="Step 1 of 2: Book a call or send details. We'll help you figure out which path fits your nonprofit." />
+        <title>Start The Free Check | Nimara</title>
+        <meta name="description" content="Step 1 Of 2: Book A Call Or Send Details. We'll Help You Figure Out Which Path Fits Your Nonprofit." />
         <link rel="canonical" href="https://nimara.ca/book-a-call" />
         <meta property="og:site_name" content="Nimara" />
-        <meta property="og:title" content="Start the Free Check | Nimara" />
-        <meta property="og:description" content="Step 1 of 2: Book a call or send details. We'll help you figure out which path fits your nonprofit." />
+        <meta property="og:title" content="Start The Free Check | Nimara" />
+        <meta property="og:description" content="Step 1 Of 2: Book A Call Or Send Details. We'll Help You Figure Out Which Path Fits Your Nonprofit." />
         <meta property="og:url" content="https://nimara.ca/book-a-call" />
         <meta property="og:image" content="https://nimara.ca/og.jpg" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Start the Free Check | Nimara" />
-        <meta name="twitter:description" content="Step 1 of 2: Book a call or send details. We'll help you figure out which path fits your nonprofit." />
+        <meta name="twitter:title" content="Start The Free Check | Nimara" />
+        <meta name="twitter:description" content="Step 1 Of 2: Book A Call Or Send Details. We'll Help You Figure Out Which Path Fits Your Nonprofit." />
         <meta name="twitter:image" content="https://nimara.ca/og.jpg" />
       </Helmet>
       <Header activeRoute="/book-a-call" />
@@ -193,7 +193,7 @@ const BookACall = () => {
                   </div>
                   
                   <span className="relative text-xs font-medium tracking-widest text-accent uppercase">
-                    Step 1 of 2
+                    Step 1 Of 2
                   </span>
                 </motion.span>
               </motion.div>
@@ -202,14 +202,14 @@ const BookACall = () => {
                 variants={itemVariants}
                 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-medium text-white leading-[1.1] mb-6"
               >
-                Let's figure out what you need
+                {"Let's Figure Out What You Need"}
               </motion.h1>
 
               <motion.p 
                 variants={itemVariants}
                 className="text-lg md:text-xl text-white/70 leading-relaxed mb-12 max-w-2xl"
               >
-                Book a quick call or send us details—either way, we'll help you find the right path forward. No pressure, no pitch.
+                {"Book A Quick Call Or Send Us Details—Either Way, We'll Help You Find The Right Path Forward. No Pressure, No Pitch."}
               </motion.p>
 
               {/* Trust badges */}
@@ -218,9 +218,9 @@ const BookACall = () => {
                 className="flex flex-wrap gap-6"
               >
                 {[
-                  { icon: Clock, text: "15–30 min" },
-                  { icon: Shield, text: "No commitment" },
-                  { icon: Check, text: "Clear next step" },
+                  { icon: Clock, text: "15–30 Min" },
+                  { icon: Shield, text: "No Commitment" },
+                  { icon: Check, text: "Clear Next Step" },
                 ].map((badge, i) => (
                   <div key={i} className="flex items-center gap-2 text-white/60 text-sm">
                     <badge.icon className="w-4 h-4 text-accent" />
@@ -245,10 +245,10 @@ const BookACall = () => {
               className="max-w-2xl mb-16"
             >
               <p className="text-sm tracking-widest text-muted-foreground uppercase mb-4">
-                Choose your path
+                Choose Your Path
               </p>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-medium text-foreground leading-[1.1] mb-6">
-                How would you like to connect?
+                How Would You Like To Connect?
               </h2>
             </motion.div>
 
@@ -312,16 +312,16 @@ const BookACall = () => {
                           text-2xl md:text-3xl font-serif font-medium mb-2
                           ${activeOption === "call" ? "text-white" : "text-foreground"}
                         `}>
-                          Book a call
+                          Book A Call
                         </h3>
                         <p className={`text-sm ${activeOption === "call" ? "text-white/60" : "text-muted-foreground"}`}>
-                          15–30 minutes · Fastest way to get unstuck
+                          15–30 Minutes · Fastest Way To Get Unstuck
                         </p>
                       </div>
                     </div>
 
                     <p className={`leading-relaxed mb-8 ${activeOption === "call" ? "text-white/80" : "text-body"}`}>
-                      Jump on a quick call and we'll help you figure out what's going on, what to prioritize, and what comes next.
+                      {"Jump On A Quick Call And We'll Help You Figure Out What's Going On, What To Prioritize, And What Comes Next."}
                     </p>
 
                     <motion.div
@@ -341,7 +341,7 @@ const BookACall = () => {
                           }
                         `}
                       >
-                        Book a call
+                        Book A Call
                         <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
                       </Button>
                     </motion.div>
@@ -401,16 +401,16 @@ const BookACall = () => {
                           text-xl md:text-2xl font-serif font-medium mb-2
                           ${activeOption === "form" ? "text-white" : "text-foreground"}
                         `}>
-                          Send details instead
+                          Send Details Instead
                         </h3>
                         <p className={`text-sm ${activeOption === "form" ? "text-white/60" : "text-muted-foreground"}`}>
-                          2–3 minutes · We'll reply by email
+                          {"2–3 Minutes · We'll Reply By Email"}
                         </p>
                       </div>
                     </div>
 
                     <p className={`leading-relaxed mb-8 ${activeOption === "form" ? "text-white/80" : "text-body"}`}>
-                      Not ready to meet yet? Send us your details and we'll get back to you.
+                      {"Not Ready To Meet Yet? Send Us Your Details And We'll Get Back To You."}
                     </p>
 
                     <motion.div
@@ -431,7 +431,7 @@ const BookACall = () => {
                           }
                         `}
                       >
-                        Send details
+                        Send Details
                         <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
                       </Button>
                     </motion.div>
@@ -450,7 +450,7 @@ const BookACall = () => {
             >
               <div className="max-w-3xl mx-auto">
                 <p className="text-sm tracking-widest text-muted-foreground uppercase mb-8 text-center">
-                  What we'll do on the call
+                  {"What We'll Do On The Call"}
                 </p>
                 <div className="grid sm:grid-cols-2 gap-6">
                   {bullets.map((bullet, index) => (
@@ -484,7 +484,7 @@ const BookACall = () => {
                   <div className="flex items-center gap-4 mb-8">
                     <div className="flex-1 h-px bg-border/50" />
                     <span className="text-xs tracking-widest text-muted-foreground uppercase">
-                      Or reach us directly
+                      Or Reach Us Directly
                     </span>
                     <div className="flex-1 h-px bg-border/50" />
                   </div>
@@ -502,7 +502,7 @@ const BookACall = () => {
                         <Phone className="w-4 h-4 text-primary" />
                       </div>
                       <div className="text-left">
-                        <p className="text-xs text-muted-foreground">Call us</p>
+                        <p className="text-xs text-muted-foreground">Call Us</p>
                         <p className="text-sm font-medium text-foreground">587-493-1018</p>
                       </div>
                     </motion.a>
@@ -518,7 +518,7 @@ const BookACall = () => {
                         <Mail className="w-4 h-4 text-primary" />
                       </div>
                       <div className="text-left">
-                        <p className="text-xs text-muted-foreground">Email us</p>
+                        <p className="text-xs text-muted-foreground">Email Us</p>
                         <p className="text-sm font-medium text-foreground">hello@nimara.ca</p>
                       </div>
                     </motion.a>
@@ -551,14 +551,14 @@ const BookACall = () => {
                     <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 border border-accent/30 mb-6">
                       <span className="w-2 h-2 rounded-full bg-accent" />
                       <span className="text-xs font-medium tracking-widest text-accent uppercase">
-                        Pick a time
+                        Pick A Time
                       </span>
                     </span>
                     <h2 className="text-3xl md:text-4xl font-serif font-medium text-white mb-4">
-                      When works for you?
+                      When Works For You?
                     </h2>
                     <p className="text-white/60">
-                      Times show in your local timezone
+                      Times Show In Your Local Timezone
                     </p>
                   </motion.div>
 
@@ -608,10 +608,10 @@ const BookACall = () => {
                     className="text-center mb-12"
                   >
                     <p className="text-sm tracking-widest text-muted-foreground uppercase mb-4">
-                      Tell us what's happening
+                      {"Tell Us What's Happening"}
                     </p>
                     <h2 className="text-3xl md:text-4xl font-serif font-medium text-foreground">
-                      Send details
+                      Send Details
                     </h2>
                   </motion.div>
 
@@ -625,10 +625,10 @@ const BookACall = () => {
                         <Check className="w-8 h-8 text-accent" />
                       </div>
                       <h3 className="text-2xl font-serif font-medium text-foreground mb-3">
-                        Got it — we received your note.
+                        Got It — We Received Your Note.
                       </h3>
                       <p className="text-body mb-6">
-                        We'll reply by email as soon as we can.
+                        {"We'll Reply By Email As Soon As We Can."}
                       </p>
                       <button 
                         onClick={() => {
@@ -641,7 +641,7 @@ const BookACall = () => {
                         className="group inline-flex items-center gap-2 text-primary font-medium"
                       >
                         <span className="relative">
-                          Need help sooner? Book a call instead
+                          Need Help Sooner? Book A Call Instead
                           <span className="absolute left-0 -bottom-0.5 w-full h-px bg-primary/30 group-hover:bg-primary transition-colors duration-300" />
                         </span>
                         <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -657,7 +657,7 @@ const BookACall = () => {
                       {formError && Object.keys(errors).length > 0 && (
                         <div className="mb-6 p-4 rounded-xl bg-destructive/10 border border-destructive/20">
                           <p className="text-sm text-destructive font-medium">
-                            One more step: please fix the highlighted fields.
+                            One More Step: Please Fix The Highlighted Fields.
                           </p>
                         </div>
                       )}
@@ -676,7 +676,7 @@ const BookACall = () => {
                             className={`h-12 rounded-xl ${errors.name ? "border-destructive" : ""}`}
                           />
                           <p className="text-xs text-muted-foreground mt-2">
-                            So we know what to call you.
+                            So We Know What To Call You.
                           </p>
                           {errors.name && (
                             <p className="text-destructive text-sm mt-1">{errors.name.message}</p>
@@ -696,7 +696,7 @@ const BookACall = () => {
                             className={`h-12 rounded-xl ${errors.email ? "border-destructive" : ""}`}
                           />
                           <p className="text-xs text-muted-foreground mt-2">
-                            We'll reply here. No spam.
+                            {"We'll Reply Here. No Spam."}
                           </p>
                           {errors.email && (
                             <p className="text-destructive text-sm mt-1">{errors.email.message}</p>
@@ -716,18 +716,18 @@ const BookACall = () => {
                             className="h-12 rounded-xl"
                           />
                           <p className="text-xs text-muted-foreground mt-2">
-                            If you have one.
+                            If You Have One.
                           </p>
                         </div>
 
                         {/* Help Type Dropdown */}
                         <div>
                           <Label htmlFor="helpType" className="text-foreground mb-2 block font-medium">
-                            What do you need help with? <span className="text-destructive">*</span>
+                            What Do You Need Help With? <span className="text-destructive">*</span>
                           </Label>
                           <Select onValueChange={(value) => setValue("helpType", value)}>
                             <SelectTrigger className={`h-12 rounded-xl ${errors.helpType ? "border-destructive" : ""}`}>
-                              <SelectValue placeholder="Choose one…" />
+                              <SelectValue placeholder="Choose One…" />
                             </SelectTrigger>
                             <SelectContent className="bg-background z-50 rounded-xl">
                               {helpOptions.map((option) => (
@@ -754,7 +754,7 @@ const BookACall = () => {
                             className={`h-12 rounded-xl ${errors.deadline ? "border-destructive" : ""}`}
                           />
                           <p className="text-xs text-muted-foreground mt-2">
-                            If there's a date we should know about.
+                            {"If There's A Date We Should Know About."}
                           </p>
                           {errors.deadline && (
                             <p className="text-destructive text-sm mt-1">{errors.deadline.message}</p>
@@ -764,7 +764,7 @@ const BookACall = () => {
                         {/* Details Textarea */}
                         <div>
                           <Label htmlFor="details" className="text-foreground mb-2 block font-medium">
-                            Tell us what's going on <span className="text-destructive">*</span>
+                            {"Tell Us What's Going On"} <span className="text-destructive">*</span>
                           </Label>
                           <Textarea
                             id="details"
@@ -773,7 +773,7 @@ const BookACall = () => {
                             className={`rounded-xl ${errors.details ? "border-destructive" : ""}`}
                           />
                           <p className="text-xs text-muted-foreground mt-2">
-                            3–5 sentences is perfect. What happened, what's the deadline, and what do you need?
+                            {"3–5 Sentences Is Perfect. What Happened, What's The Deadline, And What Do You Need?"}
                           </p>
                           {errors.details && (
                             <p className="text-destructive text-sm mt-1">{errors.details.message}</p>
@@ -787,13 +787,13 @@ const BookACall = () => {
                           className="w-full h-14 rounded-full bg-primary hover:bg-primary/90 text-white font-medium"
                           disabled={isSubmitting}
                         >
-                          {isSubmitting ? "Sending…" : "Send my details"}
+                          {isSubmitting ? "Sending…" : "Send My Details"}
                           {!isSubmitting && <ArrowRight className="w-4 h-4 ml-2" />}
                         </Button>
 
                         {/* Safety Line */}
                         <p className="text-xs text-muted-foreground text-center pt-2">
-                          Please don't include private health info or anything very sensitive.
+                          {"Please Don't Include Private Health Info Or Anything Very Sensitive."}
                         </p>
                       </form>
                     </motion.div>
