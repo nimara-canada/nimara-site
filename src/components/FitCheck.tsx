@@ -224,13 +224,11 @@ export const FitCheck = () => {
 
               {/* Play button */}
               <div className="absolute inset-0 flex items-center justify-center">
-                  <motion.div
-                    className="w-20 h-20 rounded-full bg-white flex items-center justify-center shadow-lg"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <Play size={28} className="text-[#0B1120] ml-1" fill="currentColor" />
-                </motion.div>
+                <div
+                  className="w-20 h-20 rounded-full bg-white flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110"
+                >
+                  <Play size={28} className="text-[#0B1120] ml-1" fill="currentColor" />
+                </div>
               </div>
 
               {/* Duration */}
