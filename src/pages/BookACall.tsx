@@ -40,7 +40,7 @@ const BookACall = () => {
       <Header activeRoute="/book-a-call" />
 
       {/* Hero + Bullets + CTA */}
-      <section className="pt-32 md:pt-40 pb-16 md:pb-20 px-6">
+      <section className="pt-40 md:pt-48 pb-16 md:pb-20 px-6">
         <div className="max-w-2xl mx-auto text-center">
           {/* H1 */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-foreground mb-4 leading-tight">
