@@ -240,6 +240,12 @@ All colors MUST be HSL.
     text-decoration: underline;
   }
 
+  /* Ensure page content never competes with the fixed header layer */
+  main {
+    position: relative;
+    z-index: 0;
+  }
+
   /* Form error styles */
   .form-error {
     color: #D12D2D;
