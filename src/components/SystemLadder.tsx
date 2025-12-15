@@ -47,80 +47,17 @@ export const SystemLadder = () => {
       className="relative py-24 md:py-32 lg:py-40 bg-[#0B1120] text-white overflow-hidden"
       aria-labelledby="system-heading"
     >
-      {/* Premium gradient orbs */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-accent/10 via-transparent to-transparent rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-primary/10 via-transparent to-transparent rounded-full blur-3xl pointer-events-none" />
-      
-      {/* Subtle noise texture */}
-      <div className="absolute inset-0 opacity-[0.015]" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-      }} />
-
-      {/* Floating particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(12)].map((_, i) => (
-          <motion.div
-            key={i}
-            className={`absolute rounded-full ${i % 3 === 0 ? 'bg-accent/30' : i % 3 === 1 ? 'bg-primary/20' : 'bg-white/10'}`}
-            style={{
-              width: `${4 + (i % 4) * 2}px`,
-              height: `${4 + (i % 4) * 2}px`,
-              left: `${5 + (i * 8)}%`,
-              top: `${10 + (i * 7) % 80}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              x: [0, i % 2 === 0 ? 15 : -15, 0],
-              opacity: [0.3, 0.6, 0.3],
-              scale: [1, 1.2, 1],
-            }}
-            transition={{
-              duration: 4 + (i % 3) * 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 0.4,
-            }}
-          />
-        ))}
-        
-        {/* Larger accent orbs */}
-        <motion.div
-          className="absolute w-3 h-3 rounded-full bg-accent/20 blur-sm"
-          style={{ left: '15%', top: '25%' }}
-          animate={{
-            y: [0, -40, 0],
-            opacity: [0.2, 0.5, 0.2],
-          }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute w-4 h-4 rounded-full bg-accent/15 blur-sm"
-          style={{ right: '20%', top: '60%' }}
-          animate={{
-            y: [0, -50, 0],
-            x: [0, 20, 0],
-            opacity: [0.15, 0.4, 0.15],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        />
-        <motion.div
-          className="absolute w-2 h-2 rounded-full bg-primary/25 blur-sm"
-          style={{ left: '70%', top: '30%' }}
-          animate={{
-            y: [0, -25, 0],
-            opacity: [0.2, 0.5, 0.2],
-          }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        />
-      </div>
+      {/* Subtle gradient background */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-accent/5 via-transparent to-transparent rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-primary/5 via-transparent to-transparent rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Premium Header */}
+        {/* Header */}
         <div className="max-w-3xl mb-20 lg:mb-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             className="mb-8"
           >
             <span className="inline-flex items-center gap-3 text-xs font-medium tracking-[0.25em] uppercase text-accent">
@@ -130,15 +67,15 @@ export const SystemLadder = () => {
           </motion.div>
           
           <motion.h2
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
             id="system-heading"
             className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05] mb-8"
           >
             Where Does Your
             <br />
-            <span className="font-medium bg-gradient-to-r from-white via-white to-white/60 bg-clip-text text-transparent">
+            <span className="font-medium">
               Nonprofit Stand?
             </span>
           </motion.h2>
@@ -157,20 +94,17 @@ export const SystemLadder = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
           className="hidden lg:block relative mb-8"
         >
           {/* Main progress line */}
           <div className="relative h-1 bg-white/10 rounded-full overflow-hidden">
-            {/* Animated gradient fill */}
             <motion.div
               initial={{ width: '0%' }}
               animate={isInView ? { width: '60%' } : {}}
-              transition={{ duration: 1.5, delay: 0.5, ease: 'easeOut' }}
-              className="absolute inset-y-0 left-0 bg-gradient-to-r from-accent via-accent/80 to-accent/40 rounded-full"
+              transition={{ duration: 1, delay: 0.4, ease: 'easeOut' }}
+              className="absolute inset-y-0 left-0 bg-gradient-to-r from-accent to-accent/40 rounded-full"
             />
-            {/* Shimmer effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-[shimmer_2s_infinite]" style={{ backgroundSize: '200% 100%' }} />
           </div>
           
           {/* Progress dots */}
@@ -183,41 +117,20 @@ export const SystemLadder = () => {
               return (
                 <motion.div
                   key={step.level}
-                  initial={{ scale: 0 }}
-                  animate={isInView ? { scale: 1 } : {}}
-                  transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
+                  initial={{ opacity: 0 }}
+                  animate={isInView ? { opacity: 1 } : {}}
+                  transition={{ duration: 0.4, delay: 0.5 + index * 0.05 }}
                   className="relative flex flex-col items-center"
                 >
-                  {/* Dot with glow effects */}
-                  <div className="relative">
-                    {/* Outer glow pulse */}
-                    {isNimaraFocus && (
-                      <>
-                        <div className="absolute -inset-2 rounded-full bg-accent/20 animate-pulse" />
-                        <div 
-                          className="absolute -inset-3 rounded-full bg-accent/10 animate-ping" 
-                          style={{ animationDuration: '2s' }}
-                        />
-                      </>
-                    )}
-                    
-                    {/* Main dot */}
-                    <div className={`
-                      relative w-5 h-5 rounded-full border-2 transition-all duration-300
-                      ${isNimaraFocus 
-                        ? 'bg-accent border-accent shadow-[0_0_20px_rgba(172,252,227,0.5)]' 
-                        : 'bg-[#0B1120] border-white/30'
-                      }
-                      ${(isHovered || isSelected) ? 'scale-125 ring-4 ring-accent/20' : ''}
-                    `}>
-                      {/* Inner glow */}
-                      {isNimaraFocus && (
-                        <div className="absolute inset-0.5 rounded-full bg-white/30" />
-                      )}
-                    </div>
-                  </div>
+                  <div className={`
+                    w-5 h-5 rounded-full border-2 transition-all duration-300
+                    ${isNimaraFocus 
+                      ? 'bg-accent border-accent' 
+                      : 'bg-[#0B1120] border-white/30'
+                    }
+                    ${(isHovered || isSelected) ? 'scale-110' : ''}
+                  `} />
                   
-                  {/* Tier label */}
                   <span className={`
                     mt-2 text-xs font-medium transition-colors duration-300
                     ${isNimaraFocus ? 'text-accent' : 'text-white/40'}
@@ -228,11 +141,6 @@ export const SystemLadder = () => {
                 </motion.div>
               );
             })}
-          </div>
-          
-          {/* Focus zone indicator */}
-          <div className="absolute -top-1 left-0 w-[60%] flex justify-end">
-            <div className="w-px h-8 bg-gradient-to-b from-accent/50 to-transparent" />
           </div>
         </motion.div>
 
@@ -268,111 +176,87 @@ export const SystemLadder = () => {
             return (
               <motion.div
                 key={step.level}
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                transition={{ duration: 0.5, delay: 0.3 + index * 0.05 }}
                 onMouseEnter={() => setHoveredLevel(step.level)}
                 onMouseLeave={() => setHoveredLevel(null)}
                 onClick={() => setSelectedLevel(selectedLevel === step.level ? null : step.level)}
                 className="group cursor-pointer"
               >
-                {/* Gradient border wrapper */}
-                <motion.div
+                <div
                   className={`
-                    relative h-full p-[1px] rounded-2xl transition-all duration-500 overflow-hidden
+                    relative h-full p-[1px] rounded-2xl transition-all duration-300 overflow-hidden
                     ${isActive 
                       ? (isNimaraFocus 
-                          ? 'bg-gradient-to-br from-accent via-accent/50 to-primary/50' 
-                          : 'bg-gradient-to-br from-white/40 via-white/20 to-white/10')
+                          ? 'bg-gradient-to-br from-accent/60 to-primary/30' 
+                          : 'bg-white/20')
                       : 'bg-white/[0.06]'
                     }
+                    ${isActive ? 'transform -translate-y-1' : ''}
                   `}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
                 >
-                  {/* Animated gradient on hover */}
-                  <div className={`
-                    absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500
-                    ${isNimaraFocus 
-                      ? 'bg-[conic-gradient(from_0deg,hsl(var(--accent)),hsl(var(--primary)),hsl(var(--accent)))]' 
-                      : 'bg-[conic-gradient(from_0deg,rgba(255,255,255,0.3),rgba(255,255,255,0.1),rgba(255,255,255,0.3))]'
-                    }
-                  `} style={{ animation: isActive ? 'spin 3s linear infinite' : 'none' }} />
-                  
                   {/* Inner card content */}
                   <div className={`
-                    relative h-full p-6 lg:p-5 rounded-[15px] transition-all duration-500
-                    ${isActive 
-                      ? 'bg-[#0B1120] shadow-2xl shadow-white/5' 
-                      : 'bg-[#0B1120]'
-                    }
+                    relative h-full p-6 lg:p-5 rounded-[15px] transition-all duration-300
+                    bg-[#0B1120]
                   `}>
-                  {/* Glow effect for focused tiers */}
-                  {isNimaraFocus && (
-                    <div className={`
-                      absolute inset-0 rounded-2xl transition-opacity duration-500
-                      bg-gradient-to-b from-accent/10 to-transparent
-                      ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'}
-                    `} />
-                  )}
-
-                  {/* Tier number with gradient */}
-                  <div className="relative mb-4">
-                    <span className={`
-                      text-6xl lg:text-5xl font-extralight transition-all duration-500
-                      ${isNimaraFocus 
-                        ? 'bg-gradient-to-br from-accent via-accent/80 to-accent/40 bg-clip-text text-transparent'
-                        : 'text-white/15 group-hover:text-white/25'
-                      }
-                    `}>
-                      {step.level}
-                    </span>
-                    
-                    {/* Focus badge */}
-                    {isNimaraFocus && (
-                      <motion.span 
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="absolute top-0 right-0 px-2 py-0.5 text-[9px] tracking-widest uppercase bg-accent/20 text-accent rounded-full border border-accent/30"
-                      >
-                        Focus
-                      </motion.span>
+                    {/* Subtle glow for focused tiers */}
+                    {isNimaraFocus && isActive && (
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-accent/5 to-transparent" />
                     )}
-                  </div>
 
-                  {/* Title */}
-                  <h3 className={`
-                    text-lg font-medium mb-3 transition-colors duration-300
-                    ${isActive ? 'text-white' : 'text-white/80'}
-                  `}>
-                    {step.title}
-                  </h3>
+                    {/* Tier number */}
+                    <div className="relative mb-4">
+                      <span className={`
+                        text-6xl lg:text-5xl font-extralight transition-colors duration-300
+                        ${isNimaraFocus 
+                          ? 'text-accent/60'
+                          : 'text-white/15'
+                        }
+                      `}>
+                        {step.level}
+                      </span>
+                      
+                      {/* Focus badge */}
+                      {isNimaraFocus && (
+                        <span className="absolute top-0 right-0 px-2 py-0.5 text-[9px] tracking-widest uppercase bg-accent/20 text-accent rounded-full border border-accent/30">
+                          Focus
+                        </span>
+                      )}
+                    </div>
 
-                  {/* Description */}
-                  <p className="text-sm text-white/40 leading-relaxed line-clamp-3 group-hover:text-white/50 transition-colors">
-                    {step.desc}
-                  </p>
+                    {/* Title */}
+                    <h3 className={`
+                      text-lg font-medium mb-3 transition-colors duration-300
+                      ${isActive ? 'text-white' : 'text-white/80'}
+                    `}>
+                      {step.title}
+                    </h3>
 
-                  {/* Expand indicator */}
-                  <div className={`
-                    absolute bottom-4 right-4 w-6 h-6 rounded-full flex items-center justify-center
-                    transition-all duration-300
-                    ${isActive ? 'bg-accent/20 text-accent' : 'bg-white/5 text-white/30'}
-                  `}>
-                    <motion.svg
-                      animate={{ rotate: isSelected ? 45 : 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="w-3 h-3"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-                    </motion.svg>
+                    {/* Description */}
+                    <p className="text-sm text-white/40 leading-relaxed line-clamp-3 group-hover:text-white/50 transition-colors duration-300">
+                      {step.desc}
+                    </p>
+
+                    {/* Expand indicator */}
+                    <div className={`
+                      absolute bottom-4 right-4 w-6 h-6 rounded-full flex items-center justify-center
+                      transition-all duration-300
+                      ${isActive ? 'bg-accent/20 text-accent' : 'bg-white/5 text-white/30'}
+                    `}>
+                      <svg
+                        className={`w-3 h-3 transition-transform duration-300 ${isSelected ? 'rotate-45' : ''}`}
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                      </svg>
+                    </div>
                   </div>
-                  </div>
-                </motion.div>
+                </div>
               </motion.div>
             );
           })}
@@ -385,15 +269,15 @@ export const SystemLadder = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.4, ease: 'easeInOut' }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
               className="overflow-hidden mb-16"
             >
-              <div className="relative p-8 lg:p-10 rounded-2xl bg-gradient-to-br from-white/[0.06] to-white/[0.02] border border-white/10 backdrop-blur-sm">
+              <div className="relative p-8 lg:p-10 rounded-2xl bg-white/[0.04] border border-white/10">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent via-primary to-accent/50 rounded-t-2xl" />
                 
                 <div className="flex flex-col lg:flex-row lg:items-start gap-8">
                   <div className="flex-shrink-0">
-                    <span className="text-8xl font-extralight bg-gradient-to-br from-accent to-primary bg-clip-text text-transparent">
+                    <span className="text-8xl font-extralight text-accent/60">
                       {ladderSteps[selectedLevel].level}
                     </span>
                   </div>
@@ -422,12 +306,12 @@ export const SystemLadder = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
           className="flex items-center justify-center gap-6 mb-16"
         >
           <div className="h-px flex-1 max-w-32 bg-gradient-to-r from-transparent to-accent/30" />
           <div className="flex items-center gap-3 px-5 py-2.5 rounded-full bg-accent/10 border border-accent/20">
-            <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+            <div className="w-2 h-2 rounded-full bg-accent" />
             <span className="text-xs font-medium tracking-widest uppercase text-accent">
               Tier 0–2: Our primary focus
             </span>
@@ -435,17 +319,14 @@ export const SystemLadder = () => {
           <div className="h-px flex-1 max-w-32 bg-gradient-to-l from-transparent to-accent/30" />
         </motion.div>
 
-        {/* Premium CTA */}
+        {/* CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.9 }}
+          transition={{ duration: 0.5, delay: 0.7 }}
           className="relative"
         >
-          <div className="relative p-8 lg:p-12 rounded-3xl bg-gradient-to-br from-white/[0.04] to-transparent border border-white/[0.08] overflow-hidden">
-            {/* Background glow */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
-            
+          <div className="relative p-8 lg:p-12 rounded-3xl bg-white/[0.03] border border-white/[0.08] overflow-hidden">
             <div className="relative flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
               <div>
                 <h3 className="text-2xl lg:text-3xl font-light text-white mb-3">
@@ -458,21 +339,14 @@ export const SystemLadder = () => {
               
               <a
                 href="/check"
-                className="group relative inline-flex items-center gap-4 px-8 py-4 bg-accent text-[#0B1120] font-medium rounded-full overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-accent/25"
+                className="group inline-flex items-center gap-4 px-8 py-4 bg-accent text-[#0B1120] font-medium rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-accent/20"
               >
-                <span className="relative z-10">Start the free check</span>
-                <motion.span
-                  className="relative z-10 w-5 h-5 flex items-center justify-center"
-                  whileHover={{ x: 4 }}
-                  transition={{ duration: 0.2 }}
-                >
+                <span>Start the free check</span>
+                <span className="w-5 h-5 flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1">
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
-                </motion.span>
-                
-                {/* Hover shine effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                </span>
               </a>
             </div>
           </div>
