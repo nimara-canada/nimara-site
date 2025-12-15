@@ -141,7 +141,7 @@ export const SystemLadder = () => {
                 </motion.div>
               );
             })}
-          </div>
+        </div>
         </motion.div>
 
         {/* Mobile Progress Indicator */}
@@ -261,6 +261,11 @@ export const SystemLadder = () => {
             );
           })}
         </div>
+
+        {/* Hint text */}
+        <p className="text-center text-sm text-white/30 mb-6">
+          Click Any Tier To Learn More
+        </p>
 
         {/* Expanded Detail Panel */}
         <AnimatePresence>
