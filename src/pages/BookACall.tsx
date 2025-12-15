@@ -17,7 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ArrowRight, Check, Calendar, Mail, Clock, Shield } from "lucide-react";
+import { ArrowRight, Check, Calendar, Mail, Clock, Shield, Phone } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -466,6 +466,63 @@ const BookACall = () => {
                       </p>
                     </div>
                   ))}
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Alternative contact options */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="mt-16 md:mt-20"
+            >
+              <div className="max-w-2xl mx-auto">
+                <div className="relative">
+                  {/* Divider with text */}
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="flex-1 h-px bg-border/50" />
+                    <span className="text-xs tracking-widest text-muted-foreground uppercase">
+                      Or reach us directly
+                    </span>
+                    <div className="flex-1 h-px bg-border/50" />
+                  </div>
+
+                  {/* Contact options */}
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10">
+                    {/* Phone */}
+                    <motion.a
+                      href="tel:+15874931018"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="group flex items-center gap-3 px-6 py-3 rounded-full bg-card border border-border/50 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
+                    >
+                      <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/15 transition-colors">
+                        <Phone className="w-4 h-4 text-primary" />
+                      </div>
+                      <div className="text-left">
+                        <p className="text-xs text-muted-foreground">Call us</p>
+                        <p className="text-sm font-medium text-foreground">587-493-1018</p>
+                      </div>
+                    </motion.a>
+
+                    {/* Email */}
+                    <motion.a
+                      href="mailto:hello@nimara.ca"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="group flex items-center gap-3 px-6 py-3 rounded-full bg-card border border-border/50 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
+                    >
+                      <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/15 transition-colors">
+                        <Mail className="w-4 h-4 text-primary" />
+                      </div>
+                      <div className="text-left">
+                        <p className="text-xs text-muted-foreground">Email us</p>
+                        <p className="text-sm font-medium text-foreground">hello@nimara.ca</p>
+                      </div>
+                    </motion.a>
+                  </div>
                 </div>
               </div>
             </motion.div>
