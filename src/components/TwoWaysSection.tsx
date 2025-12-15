@@ -44,9 +44,9 @@ export const TwoWaysSection = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-[1.1] mb-6"
           >
-            Two ways
+            Two Ways
             <br />
-            <span className="font-normal italic text-muted-foreground">to start</span>
+            <span className="font-normal italic text-muted-foreground">To Start</span>
           </motion.h2>
           
           <motion.p
@@ -55,8 +55,8 @@ export const TwoWaysSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-muted-foreground max-w-xl"
           >
-            Fix one urgent problem, or set up your core systems. 
-            Both paths lead to a nonprofit that runs smoother.
+            Fix One Urgent Problem, Or Set Up Your Core Systems. 
+            Both Paths Lead To A Nonprofit That Runs Smoother.
           </motion.p>
         </div>
 

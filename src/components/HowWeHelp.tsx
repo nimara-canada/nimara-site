@@ -4,22 +4,22 @@ import { useRef } from 'react';
 const steps = [
   {
     number: "01",
-    title: "Check what's really going on",
+    title: "Check What's Really Going On",
     text: "For urgent fixes, we start with a short intake around one problem. For bigger projects, we run a health check across your core systems so we know where each one stands."
   },
   {
     number: "02",
-    title: "Clear, small workplan",
+    title: "Clear, Small Workplan",
     text: "We turn what we learn into a short workplan with clear jobs, owners, and dates. No 50-page reports—just what you need to move forward."
   },
   {
     number: "03",
-    title: "Real tools you can use",
+    title: "Real Tools You Can Use",
     text: "We build real things with you: plain-language policies, checklists, templates, and simple systems your team can use every week."
   },
   {
     number: "04",
-    title: "Support and a safety net",
+    title: "Support And A Safety Net",
     text: "When the main build is done, we stay long enough to help you use the new tools in real life. Bigger projects come with up to 3 months of support and a money-back guarantee."
   }
 ];
@@ -64,9 +64,9 @@ export const HowWeHelp = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-[1.1] mb-6"
           >
-            One simple loop
+            One Simple Loop
             <br />
-            <span className="font-normal italic text-muted-foreground">behind every project</span>
+            <span className="font-normal italic text-muted-foreground">Behind Every Project</span>
           </motion.h2>
           
           <motion.p
@@ -75,8 +75,8 @@ export const HowWeHelp = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-muted-foreground max-w-xl"
           >
-            We don't guess. Behind every project we run the same clear loop: 
-            check what's going on, plan, build, support. The only thing that changes is how deep we go.
+            We Don't Guess. Behind Every Project We Run The Same Clear Loop: 
+            Check What's Going On, Plan, Build, Support. The Only Thing That Changes Is How Deep We Go.
           </motion.p>
         </div>
 

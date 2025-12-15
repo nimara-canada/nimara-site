@@ -139,9 +139,9 @@ export const Expertise = () => {
             id="expertise-heading"
             className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-[1.1] mb-6"
           >
-            Seven domains
+            Seven Domains
             <br />
-            <span className="font-normal italic text-muted-foreground">that keep nonprofits running</span>
+            <span className="font-normal italic text-muted-foreground">That Keep Nonprofits Running</span>
           </motion.h2>
           
           <motion.p
@@ -150,8 +150,8 @@ export const Expertise = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-muted-foreground max-w-xl"
           >
-            We focus on the boring but critical systems that keep your nonprofit safe, 
-            fundable, and easier to run.
+            We Focus On The Boring But Critical Systems That Keep Your Nonprofit Safe, 
+            Fundable, And Easier To Run.
           </motion.p>
         </div>
 
