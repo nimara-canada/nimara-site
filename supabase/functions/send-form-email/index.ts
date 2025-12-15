@@ -23,6 +23,18 @@ const formatFieldValue = (value: any): string => {
   return String(value || "");
 };
 
+const getHelpTypeLabel = (value: string): string => {
+  const labels: Record<string, string> = {
+    grant: "Grant deadline (proposal, budget, reporting)",
+    board: "Board issue (meeting, decision, conflict)",
+    money: "Money mess (tracking, receipts, reports)",
+    people: "People issue (staff, contractor, role problems)",
+    program: "Program paperwork (proof, files, records)",
+    other: "Other",
+  };
+  return labels[value] || value;
+};
+
 const buildEmailSubject = (formCode: string, payload: Record<string, any>): string => {
   let orgOrName = "";
   let region = "";
@@ -53,6 +65,10 @@ const buildEmailSubject = (formCode: string, payload: Record<string, any>): stri
       return `[NIMARA:PORTAL_NOTIFY] ${orgOrName}`;
     case "NEWSLETTER":
       return `[NIMARA:NEWSLETTER] ${payload.email || ""}`;
+    case "URGENT_HELP":
+      orgOrName = payload.organization || payload.name || "";
+      const helpType = getHelpTypeLabel(payload.help_type || "");
+      return `🚨 [NIMARA:URGENT] ${orgOrName} — ${helpType}`;
     default:
       return `[NIMARA:${formCode}] ${payload.email || payload.name || ""}`;
   }
@@ -86,6 +102,33 @@ const buildEmailBody = (formCode: string, payload: Record<string, any>): string 
     body += `Anything else we should know?: ${payload.om_note || "(not provided)"}\n`;
     body += `When do you want to start?: ${payload.om_start || "(not provided)"}\n`;
     body += `Budget range (CAD): ${payload.om_budget || "(not provided)"}\n\n`;
+    body += `UTM Source: ${payload.utm_source || ""}\n`;
+    body += `UTM Medium: ${payload.utm_medium || ""}\n`;
+    body += `UTM Campaign: ${payload.utm_campaign || ""}\n`;
+    body += `Referrer: ${payload.referrer || ""}\n`;
+  } else if (formCode === "URGENT_HELP") {
+    body += `🚨 URGENT HELP REQUEST\n`;
+    body += `${"=".repeat(40)}\n\n`;
+    
+    body += `CONTACT INFO\n`;
+    body += `${"-".repeat(20)}\n`;
+    body += `Name: ${payload.name || ""}\n`;
+    body += `Email: ${payload.email || ""}\n`;
+    body += `Organization: ${payload.organization || "(not provided)"}\n\n`;
+    
+    body += `PROBLEM DETAILS\n`;
+    body += `${"-".repeat(20)}\n`;
+    body += `Type: ${getHelpTypeLabel(payload.help_type || "")}\n`;
+    body += `Deadline: ${payload.deadline || "(no deadline specified)"}\n\n`;
+    
+    body += `DESCRIPTION\n`;
+    body += `${"-".repeat(20)}\n`;
+    body += `${payload.details || ""}\n\n`;
+    
+    body += `${"=".repeat(40)}\n`;
+    body += `TRACKING\n`;
+    body += `${"-".repeat(20)}\n`;
+    body += `Timestamp: ${payload.timestamp || ""}\n`;
     body += `UTM Source: ${payload.utm_source || ""}\n`;
     body += `UTM Medium: ${payload.utm_medium || ""}\n`;
     body += `UTM Campaign: ${payload.utm_campaign || ""}\n`;
