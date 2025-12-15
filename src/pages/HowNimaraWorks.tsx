@@ -7,22 +7,8 @@ import HealthCheckRule from "@/components/company/HealthCheckRule";
 import YourJourney from "@/components/company/YourJourney";
 import QualityAndRefundsAlt from "@/components/company/QualityAndRefundsAlt";
 import Glossary from "@/components/company/Glossary";
-import { ChevronDown } from "lucide-react";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 
 const HowNimaraWorks = () => {
-  const handleScrollToTiers = () => {
-    const tiersSection = document.getElementById('tier-section');
-    if (tiersSection) {
-      tiersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
-
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
@@ -49,84 +35,13 @@ const HowNimaraWorks = () => {
       
       <main id="main" style={{ paddingTop: 'calc(var(--announcement-height, 0px) + 4rem)' }}>
         <HowItWorksHero />
-        
-        {/* Health Check Rule Section */}
         <HealthCheckRule />
-        
-        {/* Subtle visual connector with arrows */}
-        <div className="relative bg-white">
-          <div className="absolute inset-x-0 -top-20 h-20 bg-gradient-to-b from-white/0 to-white pointer-events-none" />
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-            <div className="flex items-center justify-center py-6 sm:py-8">
-              <TooltipProvider>
-                <Tooltip delayDuration={200}>
-                  <TooltipTrigger asChild>
-                    <button
-                      onClick={handleScrollToTiers}
-                      className="flex flex-col items-center gap-1 cursor-pointer hover:scale-110 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6945D8] focus-visible:ring-offset-2 rounded-lg p-2 relative"
-                      aria-label="Scroll to tier section"
-                    >
-                      {/* Pulsing glow effect */}
-                      <div className="absolute inset-0 rounded-lg bg-[#ACFCE3]/40 animate-pulse blur-lg scale-110" />
-                      <div className="relative z-10 flex flex-col items-center gap-1">
-                {/* Animated arrows pointing down */}
-                <div className="flex flex-col items-center animate-bounce">
-                  <ChevronDown className="w-5 h-5 text-slate-400" strokeWidth={2} />
-                  <ChevronDown className="w-5 h-5 text-slate-400 -mt-3" strokeWidth={2} />
-                </div>
-                
-                {/* Vertical line */}
-                <div className="w-px h-8 bg-gradient-to-b from-slate-300 to-slate-400" />
-                
-                {/* Pulsing dot */}
-                <div className="w-3 h-3 rounded-full bg-slate-400 animate-pulse shadow-sm" />
-                
-                {/* Vertical line */}
-                <div className="w-px h-8 bg-gradient-to-b from-slate-400 to-slate-300" />
-                
-                {/* Bottom arrows */}
-                <div className="flex flex-col items-center animate-bounce" style={{ animationDelay: '0.15s' }}>
-                  <ChevronDown className="w-5 h-5 text-slate-400 -mb-3" strokeWidth={2} />
-                  <ChevronDown className="w-5 h-5 text-slate-400" strokeWidth={2} />
-                </div>
-                      </div>
-                    </button>
-                  </TooltipTrigger>
-                  <TooltipContent 
-                    side="bottom" 
-                    className="bg-slate-900 text-white border-slate-700"
-                  >
-                    <p className="font-medium">See our tier model</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </div>
-          </div>
-        </div>
-        
-        <div id="tier-section" className="relative">
-          {/* Subtle top divider */}
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+        <div id="tier-section">
           <TheNimaraModel />
         </div>
-        
-        {/* Section divider before YourJourney */}
-        <div className="relative">
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
-          <YourJourney />
-        </div>
-        
-        {/* Quality and Refunds section */}
-        <div className="relative">
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
-          <QualityAndRefundsAlt />
-        </div>
-        
-        {/* Glossary section */}
-        <div className="relative">
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
-          <Glossary />
-        </div>
+        <YourJourney />
+        <QualityAndRefundsAlt />
+        <Glossary />
       </main>
       
       <Footer />

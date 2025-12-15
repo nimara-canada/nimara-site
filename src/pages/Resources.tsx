@@ -5,60 +5,31 @@ import { Footer } from "@/components/Footer";
 import { templates } from "@/data/templates";
 import { TemplateCard } from "@/components/TemplateCard";
 import { motion, useReducedMotion } from "framer-motion";
-import { FileText, Sparkles, Download, Mail, ArrowRight, CheckCircle2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Mail, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 
 export default function Resources() {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formStatus, setFormStatus] = useState<string | null>(null);
   const emailInputId = useId();
-  const formDescriptionId = useId();
   const shouldReduceMotion = useReducedMotion();
-
-  // Animation variants that respect reduced motion preference
-  const fadeInUp = shouldReduceMotion 
-    ? { initial: {}, animate: {}, transition: {} }
-    : { initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6 } };
-
-  const fadeInScale = shouldReduceMotion
-    ? { initial: {}, animate: {}, transition: {} }
-    : { initial: { opacity: 0, scale: 0.9 }, animate: { opacity: 1, scale: 1 }, transition: { delay: 0.1 } };
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
     
     setIsSubmitting(true);
-    setFormStatus(null);
     
     try {
-      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
       toast.success("Thanks for subscribing! Check your inbox for confirmation.");
-      setFormStatus("Success! Thanks for subscribing. Check your inbox for confirmation.");
       setEmail("");
     } catch {
-      setFormStatus("Something went wrong. Please try again.");
       toast.error("Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
   };
-
-  const scrollToSubscribe = () => {
-    const input = document.getElementById(emailInputId);
-    input?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    input?.focus();
-  };
-
-  const benefits = [
-    { icon: FileText, text: "Ready-to-use templates" },
-    { icon: Sparkles, text: "AI-powered prompts" },
-    { icon: Download, text: "Instant downloads" },
-  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -70,127 +41,80 @@ export default function Resources() {
         />
         <meta name="keywords" content="nonprofit templates, grant management, audit checklist, nonprofit resources" />
         <link rel="canonical" href="https://nimara.ca/resources" />
-        <html lang="en" />
       </Helmet>
       
       <Header />
       
-      {/* Skip to main content link - enhanced focus styles */}
+      {/* Skip link */}
       <a 
         href="#main-content" 
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-3 focus:rounded-lg focus:bg-primary focus:text-primary-foreground focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:outline-none font-medium"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-3 focus:rounded-lg focus:bg-primary focus:text-primary-foreground"
       >
         Skip to main content
       </a>
 
       {/* Hero Section */}
       <section 
-        aria-labelledby="hero-heading"
-        className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28"
-        style={{ backgroundColor: 'hsl(var(--nimara-navy))', paddingTop: 'calc(var(--announcement-height, 0px) + 8rem)' }}
+        className="relative overflow-hidden bg-secondary-background"
+        style={{ paddingTop: 'calc(var(--announcement-height, 0px) + 6rem)' }}
       >
-        {/* Decorative elements - hidden from screen readers */}
-        <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-          <div className="absolute -top-1/2 -right-1/4 w-[800px] h-[800px] rounded-full bg-primary/20 blur-3xl" />
-          <div className="absolute -bottom-1/2 -left-1/4 w-[600px] h-[600px] rounded-full bg-accent/20 blur-3xl" />
-        </div>
+        {/* Subtle gradient */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent" />
 
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-12 py-20 md:py-28">
           <motion.div
-            initial={fadeInUp.initial}
-            animate={fadeInUp.animate}
-            transition={fadeInUp.transition}
-            className="text-center max-w-3xl mx-auto"
+            initial={shouldReduceMotion ? {} : { opacity: 0, y: 40 }}
+            animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-3xl"
           >
-            {/* Badge */}
-            <motion.div
-              initial={fadeInScale.initial}
-              animate={fadeInScale.animate}
-              transition={fadeInScale.transition}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 text-accent mb-8"
-              role="status"
-            >
-              <Sparkles className="w-4 h-4" aria-hidden="true" />
-              <span className="text-sm font-medium">Free Resources</span>
-            </motion.div>
+            <p className="text-sm tracking-widest text-white/50 uppercase mb-6">
+              Free Resources
+            </p>
 
-            <h1 
-              id="hero-heading"
-              className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-[1.1] mb-6"
-            >
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-white leading-[1.1] mb-8">
               Templates that make{" "}
-              <span className="text-accent">nonprofits stronger</span>
+              <span className="text-accent italic">nonprofits stronger</span>
             </h1>
             
-            <p className="text-lg md:text-xl text-white/80 leading-relaxed mb-10 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-white/70 leading-relaxed mb-10 max-w-xl">
               Skip the blank page. Our templates help your team focus on what matters—running programs and staying audit-ready.
             </p>
 
             {/* Subscribe Form */}
-            <motion.form
-              initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
-              animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
-              transition={shouldReduceMotion ? {} : { delay: 0.4 }}
+            <form
               onSubmit={handleSubscribe}
-              className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
-              aria-labelledby="subscribe-heading"
-              aria-describedby={formDescriptionId}
+              className="flex flex-col sm:flex-row gap-3 max-w-md"
             >
-              <h2 id="subscribe-heading" className="sr-only">Subscribe to newsletter</h2>
-              
               <div className="relative flex-1">
                 <label htmlFor={emailInputId} className="sr-only">
                   Email address
                 </label>
                 <Mail 
-                  className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/50" 
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" 
                   aria-hidden="true" 
                 />
-                <Input
+                <input
                   id={emailInputId}
                   type="email"
                   placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="pl-12 h-14 bg-white/10 border-white/30 text-white placeholder:text-white/60 focus:border-accent focus:ring-accent focus:ring-2 focus:ring-offset-0"
+                  className="w-full pl-12 pr-4 h-14 bg-white/10 border border-white/20 rounded-full text-white placeholder:text-white/50 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20"
                   required
-                  autoComplete="email"
-                  aria-required="true"
                 />
               </div>
-              <Button 
+              <button 
                 type="submit" 
-                size="lg"
                 disabled={isSubmitting}
-                aria-disabled={isSubmitting}
-                className="h-14 px-8 text-secondary font-semibold focus:ring-2 focus:ring-offset-2 focus:ring-accent focus:outline-none min-w-[140px]"
-                style={{ backgroundColor: 'hsl(var(--nimara-mint))', color: 'hsl(var(--nimara-navy))' }}
+                className="inline-flex items-center justify-center gap-2 h-14 px-8 bg-accent text-secondary-background font-semibold rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 disabled:opacity-50"
               >
-                {isSubmitting ? (
-                  <>
-                    <span className="sr-only">Submitting</span>
-                    <span aria-hidden="true">Subscribing...</span>
-                  </>
-                ) : (
-                  <>
-                    Subscribe
-                    <ArrowRight className="w-4 h-4 ml-2" aria-hidden="true" />
-                  </>
-                )}
-              </Button>
-            </motion.form>
+                {isSubmitting ? "Subscribing..." : "Subscribe"}
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </form>
 
-            {/* Live region for form status announcements */}
-            <div 
-              role="status" 
-              aria-live="polite" 
-              aria-atomic="true"
-              className="sr-only"
-            >
-              {formStatus}
-            </div>
-
-            <p id={formDescriptionId} className="mt-4 text-sm text-white/80">
+            <p className="mt-4 text-sm text-white/50">
               Get new templates in your inbox. No spam, unsubscribe anytime.
             </p>
           </motion.div>
@@ -198,83 +122,66 @@ export default function Resources() {
       </section>
 
       {/* Templates Section */}
-      <main id="main-content" className="py-20 md:py-28 bg-background">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <main id="main-content" className="py-24 md:py-36 bg-background">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
           {/* Section Header */}
-          <motion.header
-            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+          <motion.div
+            initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
             whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={shouldReduceMotion ? {} : { duration: 0.5 }}
-            className="text-center mb-16"
+            transition={{ duration: 0.6 }}
+            className="max-w-2xl mb-16"
           >
-            <span 
-              className="inline-block text-xs font-semibold uppercase tracking-wider text-primary mb-3"
-              aria-hidden="true"
-            >
+            <p className="text-sm tracking-widest text-muted-foreground uppercase mb-4">
               Template Library
-            </span>
-            <h2 
-              id="templates-heading"
-              className="text-3xl md:text-4xl font-bold mb-4"
-              style={{ color: 'hsl(var(--nimara-navy))' }}
-            >
+            </p>
+            <h2 className="text-3xl md:text-4xl font-serif font-medium text-foreground mb-4">
               Popular Templates
             </h2>
-            <p className="text-body-muted max-w-2xl mx-auto">
+            <p className="text-body">
               Each template is designed by nonprofit practitioners and tested in real organizations.
             </p>
-          </motion.header>
+          </motion.div>
 
           {/* Templates Grid */}
-          <section aria-labelledby="templates-heading">
-            <ul 
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 list-none"
-              role="list"
-              aria-label="Available templates"
-            >
-              {templates.map((template, index) => (
-                <motion.li
-                  key={template.slug}
-                  initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
-                  whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={shouldReduceMotion ? {} : { delay: index * 0.1, duration: 0.5 }}
-                >
-                  <TemplateCard
-                    slug={template.slug}
-                    badge={template.badge}
-                    title={template.title}
-                    subtitle={template.subtitle}
-                  />
-                </motion.li>
-              ))}
-            </ul>
-          </section>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {templates.map((template, index) => (
+              <motion.div
+                key={template.slug}
+                initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+                whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+              >
+                <TemplateCard
+                  slug={template.slug}
+                  badge={template.badge}
+                  title={template.title}
+                  subtitle={template.subtitle}
+                />
+              </motion.div>
+            ))}
+          </div>
 
-          {/* Bottom CTA */}
-          <motion.aside
-            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
-            whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+          {/* Bottom notice */}
+          <motion.div
+            initial={shouldReduceMotion ? {} : { opacity: 0 }}
+            whileInView={shouldReduceMotion ? {} : { opacity: 1 }}
             viewport={{ once: true }}
-            transition={shouldReduceMotion ? {} : { delay: 0.3, duration: 0.5 }}
-            className="mt-20 text-center"
-            aria-label="More templates notification"
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="mt-16 text-center"
           >
-            <div className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-muted/50 border border-border">
-              <CheckCircle2 className="w-5 h-5 text-primary" aria-hidden="true" />
-              <p className="text-body">
-                More templates coming soon.{" "}
-                <button 
-                  onClick={scrollToSubscribe}
-                  className="text-primary font-medium hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm"
-                  type="button"
-                >
-                  Subscribe to get notified
-                </button>
-              </p>
-            </div>
-          </motion.aside>
+            <p className="text-muted-foreground">
+              More templates coming soon.{" "}
+              <button 
+                onClick={() => document.getElementById(emailInputId)?.focus()}
+                className="text-primary font-medium hover:underline"
+                type="button"
+              >
+                Subscribe to get notified
+              </button>
+            </p>
+          </motion.div>
         </div>
       </main>
       
