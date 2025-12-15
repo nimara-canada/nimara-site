@@ -1,63 +1,38 @@
 import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { ArrowRight, ArrowDown } from 'lucide-react';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6 },
-  },
-};
+import { ArrowRight, ChevronDown } from 'lucide-react';
 
 const tiers = [
   {
     level: "4",
     title: "Complex or multi-site",
     description: "Larger, more complex orgs with many programs, sites, or partners.",
-    badgeColor: "bg-emerald-500",
-    dotColor: "bg-emerald-400",
+    gradient: "from-emerald-500 to-emerald-600",
   },
   {
     level: "3",
     title: "Growth-ready",
     description: "The org can handle more funding, staff, and programs without breaking.",
-    badgeColor: "bg-teal-500",
-    dotColor: "bg-teal-400",
+    gradient: "from-teal-500 to-teal-600",
   },
   {
     level: "2",
     title: "Audit-ready",
     description: "Core systems across all 7 domains can stand up to audits and funder checks.",
-    badgeColor: "bg-blue-500",
-    dotColor: "bg-blue-400",
+    gradient: "from-blue-500 to-blue-600",
   },
   {
     level: "1",
     title: "Basic stability",
     description: "Some basics are in place, but systems are informal and fragile.",
-    badgeColor: "bg-amber-500",
-    dotColor: "bg-amber-400",
+    gradient: "from-amber-500 to-amber-600",
   },
   {
     level: "0",
     title: "Too early / DIY support",
     description: "Very early or fragile. We share tools and light support instead of deep installs.",
-    badgeColor: "bg-rose-500",
-    dotColor: "bg-rose-400",
+    gradient: "from-rose-500 to-rose-600",
   },
 ];
 
@@ -65,14 +40,16 @@ const paths = [
   {
     letter: "A",
     title: "Fast fixes",
-    description: "Short, clearly scoped modules to solve one main problem, like cash flow, board basics, or simple HR setup. When possible, we match organizations into these modules within about 72 hours.",
-    accentColor: "accent",
+    description: "Short, clearly scoped modules to solve one main problem, like cash flow, board basics, or simple HR setup.",
+    timeline: "1–4 weeks",
+    isAccent: true,
   },
   {
     letter: "B",
     title: "Tiered packages",
-    description: "Deeper, pre-built bundles for organizations that need a full install across multiple domains, such as finance + HR + governance + programs for a Tier 2 or Tier 3 team.",
-    accentColor: "primary",
+    description: "Deeper, pre-built bundles for organizations that need a full install across multiple domains.",
+    timeline: "8–12 weeks",
+    isAccent: false,
   },
 ];
 
@@ -81,188 +58,193 @@ export const TheNimaraModel: React.FC = () => {
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
-    <section ref={sectionRef} className="relative py-20 sm:py-24 lg:py-32 bg-secondary text-secondary-foreground overflow-hidden">
-      {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-secondary via-secondary to-secondary/95" />
-      <div className="absolute top-0 left-0 w-1/3 h-1/2 bg-gradient-to-br from-primary/5 to-transparent" />
-      <div className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-gradient-to-tl from-accent/5 to-transparent" />
+    <section ref={sectionRef} className="relative py-24 sm:py-32 lg:py-40 bg-secondary text-secondary-foreground overflow-hidden">
+      {/* Premium background effects */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-secondary via-secondary to-secondary/98" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-[100px]" />
+      </div>
 
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         <motion.div
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={containerVariants}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.8 }}
         >
           {/* Editorial Header */}
-          <motion.div variants={itemVariants} className="mb-20">
-            <span className="text-xs font-medium tracking-[0.2em] uppercase text-primary mb-4 block">
+          <div className="text-center mb-20 lg:mb-24">
+            <motion.span 
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-medium tracking-[0.15em] uppercase mb-6"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
               The Framework
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1] mb-6">
-              The Nimara Model:{" "}
-              <span className="italic text-primary">Tiers and Paths</span>
-            </h2>
-            <p className="text-lg text-secondary-foreground/70 max-w-3xl leading-relaxed">
-              Nimara uses a shared model so we can match each organization with the right kind of support. 
+            </motion.span>
+            
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-6"
+            >
+              The Nimara Model
+            </motion.h2>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-lg lg:text-xl text-secondary-foreground/60 max-w-2xl mx-auto"
+            >
+              A shared framework to match each organization with the right kind of support. 
               First we place you in a tier. Then we choose the right path.
-            </p>
-          </motion.div>
+            </motion.p>
+          </div>
 
           {/* Five Tiers Section */}
-          <motion.div variants={itemVariants} className="mb-24">
-            <div className="flex items-center gap-4 mb-8">
-              <h3 className="text-xl font-semibold">
-                Five Tiers of Organizational Health
-              </h3>
-              <div className="flex-1 h-px bg-secondary-foreground/20" />
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mb-24 lg:mb-32"
+          >
+            <div className="flex items-center gap-6 mb-10">
+              <span className="text-sm font-medium text-secondary-foreground/40 uppercase tracking-wider">01</span>
+              <h3 className="text-2xl font-semibold">Five Tiers</h3>
+              <div className="flex-1 h-px bg-gradient-to-r from-secondary-foreground/20 to-transparent" />
             </div>
-            <p className="text-secondary-foreground/70 mb-12 max-w-2xl">
-              We sort organizations into five tiers, from 'too early' to 'ready for complex work.' 
-              This keeps the work at the right size.
-            </p>
 
-            {/* Ladder Layout */}
-            <div className="max-w-3xl mx-auto">
-              <motion.div variants={containerVariants} className="relative">
-                {/* Vertical connecting line */}
-                <div className="absolute left-8 top-20 bottom-20 w-0.5 bg-gradient-to-b from-emerald-400/50 via-blue-400/50 to-rose-400/50 hidden sm:block" />
-                
-                {/* Top Label */}
-                <motion.div variants={itemVariants} className="flex items-center justify-center mb-8">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 border border-emerald-400/30">
-                    <div className="w-2 h-2 rounded-full bg-emerald-400" />
-                    <span className="text-xs font-medium tracking-[0.15em] uppercase text-emerald-300">
-                      Most Complex
-                    </span>
-                  </div>
-                </motion.div>
-                
-                {tiers.map((tier, index) => (
-                  <React.Fragment key={tier.level}>
-                    <motion.div
-                      variants={itemVariants}
-                      whileHover={{ x: 8 }}
-                      className="relative"
-                      style={{ marginLeft: index % 2 === 0 ? '0' : '2rem' }}
-                    >
-                      <div className="p-6 rounded-xl border border-secondary-foreground/10 bg-secondary-foreground/5 backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-secondary-foreground/10 relative">
-                        {/* Connector dot */}
-                        <div className="absolute -left-10 top-1/2 -translate-y-1/2 hidden sm:block">
-                          <div className={`w-4 h-4 rounded-full ${tier.dotColor} ring-4 ring-secondary shadow-lg`} />
-                        </div>
-                        
-                        <div className="flex items-start gap-4">
-                          <div className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-lg font-bold ${tier.badgeColor} text-white`}>
-                            {tier.level}
-                          </div>
-                          
-                          <div className="flex-1">
-                            <span className="text-xs font-medium tracking-[0.15em] uppercase text-secondary-foreground/50 mb-1 block">
-                              Tier {tier.level}
-                            </span>
-                            <h4 className="font-semibold text-secondary-foreground mb-2">
-                              {tier.title}
-                            </h4>
-                            <p className="text-sm text-secondary-foreground/60 leading-relaxed">
-                              {tier.description}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
+            {/* Tier Cards - Horizontal on desktop */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+              {tiers.map((tier, index) => (
+                <motion.div
+                  key={tier.level}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.4 + index * 0.08 }}
+                  whileHover={{ y: -8, transition: { duration: 0.2 } }}
+                  className="group relative"
+                >
+                  <div className="h-full p-6 rounded-2xl bg-secondary-foreground/[0.03] border border-secondary-foreground/10 backdrop-blur-sm transition-all duration-300 hover:bg-secondary-foreground/[0.06] hover:border-secondary-foreground/20">
+                    {/* Tier badge */}
+                    <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${tier.gradient} flex items-center justify-center text-white font-bold text-sm mb-4 shadow-lg`}>
+                      {tier.level}
+                    </div>
                     
-                    {/* Arrow between tiers */}
-                    {index < tiers.length - 1 && (
-                      <motion.div variants={itemVariants} className="flex items-center justify-center py-3">
-                        <motion.div
-                          className="flex flex-col items-center"
-                          animate={{ y: [0, 4, 0], opacity: [0.4, 1, 0.4] }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                            delay: index * 0.2,
-                          }}
-                        >
-                          <ArrowDown className="w-5 h-5 text-secondary-foreground/40" strokeWidth={2} />
-                          <ArrowDown className="w-5 h-5 text-secondary-foreground/40 -mt-3" strokeWidth={2} />
-                        </motion.div>
-                      </motion.div>
-                    )}
-                  </React.Fragment>
-                ))}
-                
-                {/* Bottom Label */}
-                <motion.div variants={itemVariants} className="flex items-center justify-center mt-8">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-500/20 border border-rose-400/30">
-                    <div className="w-2 h-2 rounded-full bg-rose-400" />
-                    <span className="text-xs font-medium tracking-[0.15em] uppercase text-rose-300">
-                      Early Stage
-                    </span>
+                    <h4 className="font-semibold text-secondary-foreground mb-2 text-sm lg:text-base">
+                      {tier.title}
+                    </h4>
+                    
+                    <p className="text-xs lg:text-sm text-secondary-foreground/50 leading-relaxed">
+                      {tier.description}
+                    </p>
                   </div>
+                  
+                  {/* Glow effect on hover */}
+                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${tier.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300 -z-10 blur-xl`} />
                 </motion.div>
-              </motion.div>
+              ))}
+            </div>
+
+            {/* Arrow indicator */}
+            <div className="flex justify-center mt-8">
+              <div className="flex items-center gap-4 text-secondary-foreground/30 text-xs uppercase tracking-wider">
+                <span>Complex</span>
+                <div className="w-32 h-px bg-gradient-to-r from-emerald-500/50 via-blue-500/50 to-rose-500/50" />
+                <span>Early</span>
+              </div>
             </div>
           </motion.div>
 
           {/* Two Paths Section */}
-          <motion.div variants={itemVariants}>
-            <div className="flex items-center gap-4 mb-8">
-              <h3 className="text-xl font-semibold">
-                Two paths through the system
-              </h3>
-              <div className="flex-1 h-px bg-secondary-foreground/20" />
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            <div className="flex items-center gap-6 mb-10">
+              <span className="text-sm font-medium text-secondary-foreground/40 uppercase tracking-wider">02</span>
+              <h3 className="text-2xl font-semibold">Two Paths</h3>
+              <div className="flex-1 h-px bg-gradient-to-r from-secondary-foreground/20 to-transparent" />
             </div>
-            <p className="text-secondary-foreground/70 mb-12 max-w-2xl">
-              Once we know your tier, we pick the right path based on how deep the work needs to go.
-            </p>
 
             {/* Paths Grid */}
-            <motion.div variants={containerVariants} className="grid md:grid-cols-2 gap-6">
-              {paths.map((path) => (
+            <div className="grid md:grid-cols-2 gap-6">
+              {paths.map((path, index) => (
                 <motion.div
                   key={path.letter}
-                  variants={itemVariants}
+                  initial={{ opacity: 0, x: index === 0 ? -20 : 20 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
                   whileHover={{ y: -4 }}
-                  className="group"
+                  className="group relative"
                 >
-                  <div className={`h-full p-8 rounded-2xl border transition-all ${
-                    path.accentColor === 'accent' 
-                      ? 'border-accent/30 bg-accent/5 hover:bg-accent/10 hover:border-accent/50' 
-                      : 'border-primary/30 bg-primary/5 hover:bg-primary/10 hover:border-primary/50'
+                  <div className={`h-full p-8 lg:p-10 rounded-2xl border transition-all duration-300 ${
+                    path.isAccent 
+                      ? 'border-accent/30 bg-gradient-to-br from-accent/5 to-accent/[0.02] hover:border-accent/50' 
+                      : 'border-primary/30 bg-gradient-to-br from-primary/5 to-primary/[0.02] hover:border-primary/50'
                   }`}>
-                    <div className="mb-6">
-                      <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${
-                        path.accentColor === 'accent'
-                          ? 'bg-accent/20 text-accent'
+                    {/* Header */}
+                    <div className="flex items-start justify-between mb-6">
+                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-2xl font-bold ${
+                        path.isAccent 
+                          ? 'bg-accent/20 text-accent' 
                           : 'bg-primary/20 text-primary'
                       }`}>
-                        Path {path.letter}
+                        {path.letter}
+                      </div>
+                      <span className={`text-xs font-medium px-3 py-1.5 rounded-full ${
+                        path.isAccent
+                          ? 'bg-accent/10 text-accent'
+                          : 'bg-primary/10 text-primary'
+                      }`}>
+                        {path.timeline}
                       </span>
                     </div>
-                    <h4 className="text-xl font-semibold text-secondary-foreground mb-4">
+                    
+                    <h4 className="text-xl lg:text-2xl font-semibold text-secondary-foreground mb-3">
                       {path.title}
                     </h4>
+                    
                     <p className="text-secondary-foreground/60 leading-relaxed">
                       {path.description}
                     </p>
+
+                    {/* Learn more link */}
+                    <div className="mt-6 pt-6 border-t border-secondary-foreground/10">
+                      <a 
+                        href={path.isAccent ? "/path-a" : "/path-b"}
+                        className={`inline-flex items-center gap-2 text-sm font-medium transition-colors ${
+                          path.isAccent ? 'text-accent hover:text-accent/80' : 'text-primary hover:text-primary/80'
+                        }`}
+                      >
+                        Learn about Path {path.letter}
+                        <ArrowRight className="w-4 h-4" />
+                      </a>
+                    </div>
                   </div>
                 </motion.div>
               ))}
-            </motion.div>
+            </div>
           </motion.div>
 
-          {/* Link */}
-          <motion.div variants={itemVariants} className="mt-16 text-center">
+          {/* Bottom CTA */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="mt-20 text-center"
+          >
+            <p className="text-secondary-foreground/50 mb-4">Not sure which path fits?</p>
             <a
-              href="#nimara-offers"
-              className="inline-flex items-center gap-2 text-primary font-medium group"
+              href="/health-score"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-colors"
             >
-              <span className="relative">
-                See example modules and packages
-                <span className="absolute left-0 -bottom-0.5 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
-              </span>
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              Take the health check
+              <ChevronDown className="w-4 h-4" />
             </a>
           </motion.div>
         </motion.div>
