@@ -123,6 +123,10 @@ const Index = () => {
       <main id="main" className="space-y-0" style={{ paddingTop: 'calc(var(--announcement-height, 0px) + 4rem)' }}>
         <HeroSection />
         <TwoWaysSection />
+        
+        {/* Subtle divider between sections */}
+        <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+        
         <FitCheck />
         <HowWeHelp />
         <SystemLadder />
