@@ -130,18 +130,33 @@ export const SystemLadder = () => {
                   transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
                   className="relative flex flex-col items-center"
                 >
-                  {/* Dot */}
-                  <div className={`
-                    w-5 h-5 rounded-full border-2 transition-all duration-300
-                    ${isNimaraFocus 
-                      ? 'bg-accent border-accent shadow-lg shadow-accent/30' 
-                      : 'bg-[#0B1120] border-white/30'
-                    }
-                    ${(isHovered || isSelected) ? 'scale-125 ring-4 ring-accent/20' : ''}
-                  `}>
+                  {/* Dot with glow effects */}
+                  <div className="relative">
+                    {/* Outer glow pulse */}
                     {isNimaraFocus && (
-                      <div className="absolute inset-0 rounded-full bg-accent animate-ping opacity-30" />
+                      <>
+                        <div className="absolute -inset-2 rounded-full bg-accent/20 animate-pulse" />
+                        <div 
+                          className="absolute -inset-3 rounded-full bg-accent/10 animate-ping" 
+                          style={{ animationDuration: '2s' }}
+                        />
+                      </>
                     )}
+                    
+                    {/* Main dot */}
+                    <div className={`
+                      relative w-5 h-5 rounded-full border-2 transition-all duration-300
+                      ${isNimaraFocus 
+                        ? 'bg-accent border-accent shadow-[0_0_20px_rgba(172,252,227,0.5)]' 
+                        : 'bg-[#0B1120] border-white/30'
+                      }
+                      ${(isHovered || isSelected) ? 'scale-125 ring-4 ring-accent/20' : ''}
+                    `}>
+                      {/* Inner glow */}
+                      {isNimaraFocus && (
+                        <div className="absolute inset-0.5 rounded-full bg-white/30" />
+                      )}
+                    </div>
                   </div>
                   
                   {/* Tier label */}
