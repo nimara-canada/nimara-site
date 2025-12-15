@@ -39,9 +39,9 @@ export const FinalCTA = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-[1.1] mb-6"
           >
-            Ready to get
+            Ready To Get
             <br />
-            <span className="font-normal italic text-white/70">system-strong?</span>
+            <span className="font-normal italic text-white/70">System-Strong?</span>
           </motion.h2>
 
           <motion.p 
@@ -50,7 +50,7 @@ export const FinalCTA = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-white/60 leading-relaxed mb-12 max-w-xl"
           >
-            Book a free 15-minute discovery call. We'll figure out if Nimara is the right fit—no pressure, no pitch.
+            Book A Free 15-Minute Discovery Call. We'll Figure Out If Nimara Is The Right Fit—No Pressure, No Pitch.
           </motion.p>
 
           <motion.div 

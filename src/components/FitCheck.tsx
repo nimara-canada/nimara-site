@@ -78,9 +78,9 @@ export const FitCheck = () => {
             id="fit-check-heading"
             className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-[1.1] mb-5 text-[#0B1120]"
           >
-            Is Nimara right
+            Is Nimara Right
             <br />
-            <span className="font-normal italic text-[#0B1120]/70">for your nonprofit?</span>
+            <span className="font-normal italic text-[#0B1120]/70">For Your Nonprofit?</span>
           </motion.h2>
           
           <motion.p
@@ -89,8 +89,8 @@ export const FitCheck = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-[#0B1120]/70 max-w-xl"
           >
-            We help nonprofits that do strong work in the community but feel messy on the inside. 
-            If the back-end keeps you up at night, this is for you.
+            We Help Nonprofits That Do Strong Work In The Community But Feel Messy On The Inside. 
+            If The Back-End Keeps You Up At Night, This Is For You.
           </motion.p>
         </div>
 

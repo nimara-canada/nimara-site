@@ -136,10 +136,10 @@ export const SystemLadder = () => {
             id="system-heading"
             className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05] mb-8"
           >
-            Where does your
+            Where Does Your
             <br />
             <span className="font-medium bg-gradient-to-r from-white via-white to-white/60 bg-clip-text text-transparent">
-              nonprofit stand?
+              Nonprofit Stand?
             </span>
           </motion.h2>
           
@@ -149,7 +149,7 @@ export const SystemLadder = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg lg:text-xl text-white/50 leading-relaxed max-w-2xl"
           >
-            A simple 5-tier framework to understand where you are today—and exactly where we can help you go.
+            A Simple 5-Tier Framework To Understand Where You Are Today—And Exactly Where We Can Help You Go.
           </motion.p>
         </div>
 
