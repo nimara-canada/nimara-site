@@ -36,7 +36,7 @@ const ladderSteps = [
 
 export const SystemLadder = () => {
   const [hoveredLevel, setHoveredLevel] = useState<number | null>(null);
-  const [selectedLevel, setSelectedLevel] = useState<number | null>(null);
+  const [selectedLevel, setSelectedLevel] = useState<number | null>(0);
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
