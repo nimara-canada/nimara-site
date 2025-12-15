@@ -11,9 +11,9 @@ export const TwoWaysSection = () => {
   };
 
   return (
-    <section className="py-24 md:py-36 lg:py-44 bg-[#0A101F] relative overflow-hidden">
-      {/* Dark gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A101F] via-[#121A33] to-[#0A101F] pointer-events-none" />
+    <section className="py-24 md:py-36 lg:py-44 bg-background relative overflow-hidden">
+      {/* Subtle background texture */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-50 via-background to-background" />
       
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative">
         {/* Section header - editorial style */}
@@ -24,13 +24,13 @@ export const TwoWaysSection = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="text-sm tracking-widest text-[hsl(225_30%_97%/0.55)] uppercase mb-4">
+          <p className="text-sm tracking-widest text-muted-foreground uppercase mb-4">
             Choose your starting point
           </p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-[hsl(225_30%_97%)] leading-[1.1] mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-foreground leading-[1.1] mb-6">
             Two ways to start
           </h2>
-          <p className="text-lg md:text-xl text-[hsl(225_30%_97%/0.75)] leading-relaxed">
+          <p className="text-lg md:text-xl text-body leading-relaxed">
             Fix one urgent problem, or set up your core systems. Both paths lead to a nonprofit that runs smoother.
           </p>
         </motion.div>
@@ -46,28 +46,28 @@ export const TwoWaysSection = () => {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="group h-full card-glass p-8 md:p-10 lg:p-12 rounded-3xl transition-all duration-500 hover:border-white/10">
+            <div className="group h-full bg-card border border-border/50 rounded-3xl p-8 md:p-10 lg:p-12 transition-all duration-500 hover:border-border hover:shadow-2xl hover:shadow-black/[0.03]">
               
               {/* Minimal label */}
-              <span className="text-xs tracking-widest text-[hsl(225_30%_97%/0.55)] uppercase">
+              <span className="text-xs tracking-widest text-muted-foreground uppercase">
                 Quick fix
               </span>
               
-              <h3 className="text-2xl md:text-3xl font-serif font-medium text-[hsl(225_30%_97%)] mt-4 mb-2">
+              <h3 className="text-2xl md:text-3xl font-serif font-medium text-foreground mt-4 mb-2">
                 Urgent Fix
               </h3>
               
-              <p className="text-sm text-[hsl(225_30%_97%/0.55)] mb-8">
+              <p className="text-sm text-muted-foreground mb-8">
                 1–4 weeks · One problem, one clear fix
               </p>
 
-              <p className="text-[hsl(225_30%_97%/0.75)] leading-relaxed mb-8">
+              <p className="text-body leading-relaxed mb-8">
                 Fix one urgent issue fast. Grant deadline? Board issue? HR mess? We jump in, solve the problem, and leave you with a simple way to keep it running.
               </p>
 
               {/* Best if - clean list */}
               <div className="mb-10">
-                <p className="text-xs tracking-widest text-[hsl(225_30%_97%/0.55)] uppercase mb-4">Best if</p>
+                <p className="text-xs tracking-widest text-muted-foreground uppercase mb-4">Best if</p>
                 <ul className="space-y-3">
                   {[
                     "A deadline is coming up",
@@ -75,8 +75,8 @@ export const TwoWaysSection = () => {
                     "You need a clear fix this month",
                     "You want help without a long process"
                   ].map((item, i) => (
-                    <li key={i} className="flex items-center gap-3 text-[hsl(225_30%_97%/0.75)] text-sm">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[hsl(225_30%_97%/0.40)]" />
+                    <li key={i} className="flex items-center gap-3 text-body text-sm">
+                      <span className="w-1.5 h-1.5 rounded-full bg-foreground/40" />
                       {item}
                     </li>
                   ))}
@@ -84,9 +84,9 @@ export const TwoWaysSection = () => {
               </div>
 
               {/* What you get */}
-              <div className="border-t border-white/10 pt-8 mb-10">
-                <p className="text-xs tracking-widest text-[hsl(225_30%_97%/0.55)] uppercase mb-3">You get</p>
-                <p className="text-[hsl(225_30%_97%/0.75)] text-sm leading-relaxed">
+              <div className="border-t border-border/50 pt-8 mb-10">
+                <p className="text-xs tracking-widest text-muted-foreground uppercase mb-3">You get</p>
+                <p className="text-body text-sm leading-relaxed">
                   A working fix, the files and templates you need, and a simple way to run it going forward.
                 </p>
               </div>
@@ -94,11 +94,11 @@ export const TwoWaysSection = () => {
               {/* CTA */}
               <button
                 onClick={() => handleNavigate("/book-a-call")}
-                className="group/btn inline-flex items-center gap-3 text-[hsl(225_30%_97%)] font-medium transition-all duration-300"
+                className="group/btn inline-flex items-center gap-3 text-foreground font-medium transition-all duration-300"
               >
                 <span className="relative">
                   Get urgent help
-                  <span className="absolute left-0 -bottom-0.5 w-full h-px bg-[hsl(225_30%_97%/0.30)] group-hover/btn:bg-[hsl(225_30%_97%)] transition-colors duration-300" />
+                  <span className="absolute left-0 -bottom-0.5 w-full h-px bg-foreground/30 group-hover/btn:bg-foreground transition-colors duration-300" />
                 </span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
               </button>
@@ -113,28 +113,28 @@ export const TwoWaysSection = () => {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="group h-full bg-[hsl(229_48%_10%)] border border-white/10 text-white rounded-3xl p-8 md:p-10 lg:p-12 transition-all duration-500 hover:shadow-2xl hover:shadow-black/20">
+            <div className="group h-full bg-secondary-background text-white rounded-3xl p-8 md:p-10 lg:p-12 transition-all duration-500 hover:shadow-2xl hover:shadow-secondary-background/20">
               
               {/* Label with accent */}
               <span className="inline-block text-xs tracking-widest text-accent uppercase">
                 Recommended
               </span>
               
-              <h3 className="text-2xl md:text-3xl font-serif font-medium text-[hsl(225_30%_97%)] mt-4 mb-2">
+              <h3 className="text-2xl md:text-3xl font-serif font-medium text-white mt-4 mb-2">
                 Build My Systems
               </h3>
               
-              <p className="text-sm text-[hsl(225_30%_97%/0.55)] mb-8">
-                Start free → Upgrade only if you want us to go deeper
+              <p className="text-sm text-white/60 mb-8">
+                Start free · Upgrade only if you want us to go deeper
               </p>
 
-              <p className="text-[hsl(225_30%_97%/0.75)] leading-relaxed mb-10">
+              <p className="text-white/80 leading-relaxed mb-10">
                 For when things feel messy in more than one area—board, money, people, or programs. Start with a free check and decide from there.
               </p>
 
               {/* The journey - clean numbered steps */}
               <div className="mb-10">
-                <p className="text-xs tracking-widest text-[hsl(225_30%_97%/0.50)] uppercase mb-6">How it works</p>
+                <p className="text-xs tracking-widest text-white/50 uppercase mb-6">How it works</p>
                 <div className="space-y-6">
                   {[
                     { 
@@ -160,26 +160,26 @@ export const TwoWaysSection = () => {
                       <span className="text-2xl font-light text-accent/60 tabular-nums">{step.num}</span>
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-1">
-                          <span className="font-medium text-[hsl(225_30%_97%)]">{step.title}</span>
-                          <span className="text-[10px] tracking-wider text-[hsl(225_30%_97%/0.40)] uppercase">{step.tag}</span>
+                          <span className="font-medium text-white">{step.title}</span>
+                          <span className="text-[10px] tracking-wider text-white/40 uppercase">{step.tag}</span>
                         </div>
-                        <p className="text-sm text-[hsl(225_30%_97%/0.55)] leading-relaxed">{step.desc}</p>
+                        <p className="text-sm text-white/60 leading-relaxed">{step.desc}</p>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* CTA - Mint primary button */}
+              {/* CTA */}
               <div>
                 <button
                   onClick={() => handleNavigate("/organizational-health-check")}
-                  className="btn-primary"
+                  className="inline-flex items-center justify-center gap-2 h-14 px-8 bg-accent text-secondary-background font-semibold rounded-full transition-all duration-300 hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/20"
                 >
                   Start the free check
                   <ArrowRight className="w-4 h-4" />
                 </button>
-                <p className="text-xs text-[hsl(225_30%_97%/0.40)] mt-4 max-w-xs">
+                <p className="text-xs text-white/40 mt-4 max-w-xs">
                   No pressure. The free check stands on its own. Upgrade only if it helps.
                 </p>
               </div>
@@ -195,16 +195,16 @@ export const TwoWaysSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <p className="text-[hsl(225_30%_97%/0.55)]">
+          <p className="text-muted-foreground">
             Still not sure which path?
           </p>
           <button
             onClick={() => handleNavigate("/book-a-call")}
-            className="group inline-flex items-center gap-2 text-[hsl(225_30%_97%)] font-medium"
+            className="group inline-flex items-center gap-2 text-foreground font-medium"
           >
             <span className="relative">
               Book a free call
-              <span className="absolute left-0 -bottom-0.5 w-full h-px bg-[hsl(225_30%_97%/0.30)] group-hover:bg-[hsl(225_30%_97%)] transition-colors duration-300" />
+              <span className="absolute left-0 -bottom-0.5 w-full h-px bg-foreground/30 group-hover:bg-foreground transition-colors duration-300" />
             </span>
             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
           </button>

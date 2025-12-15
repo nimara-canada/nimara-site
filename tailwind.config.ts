@@ -59,16 +59,24 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
         nim: {
-          "base-bg": "hsl(var(--nim-base-bg))",
-          "alt-bg": "hsl(var(--nim-alt-bg))",
-          "card-bg": "hsl(var(--nim-card-bg))",
-          mint: "hsl(var(--nim-mint))",
+          navy: "hsl(var(--nim-navy))",
           purple: "hsl(var(--nim-purple))",
+          mint: "hsl(var(--nim-mint))",
           slate: "hsl(var(--nim-slate))",
+          "slate-dark": "hsl(var(--nim-slate-dark))",
+          white: "hsl(var(--nim-white))",
+          mist: "hsl(var(--nim-mist))",
+          cloud: "hsl(var(--nim-cloud))",
         },
         body: {
           DEFAULT: "hsl(var(--body))",
           muted: "hsl(var(--body-muted))",
+        },
+        nimara: {
+          navy: "hsl(var(--nimara-navy))",
+          purple: "hsl(var(--nimara-purple))",
+          mint: "hsl(var(--nimara-mint))",
+          bg: "hsl(var(--nimara-bg))",
         },
       },
       borderRadius: {
@@ -79,12 +87,9 @@ export default {
       },
       boxShadow: {
         soft: "var(--shadow-soft)",
-        md: "var(--shadow-md)",
-        lg: "var(--shadow-lg)",
       },
       fontFamily: {
         sans: ['Inter Variable', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
-        serif: ['Georgia', 'Times New Roman', 'serif'],
         mono: ['IBM Plex Mono', 'monospace'],
       },
       spacing: {

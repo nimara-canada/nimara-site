@@ -40,12 +40,12 @@ export const FitCheck = () => {
 
   return (
     <section 
-      className="py-24 md:py-32 lg:py-40 bg-white relative overflow-hidden" 
+      className="py-24 md:py-36 lg:py-44 bg-background relative overflow-hidden" 
       aria-labelledby="fit-check-heading" 
       id="fit-check"
     >
-      {/* Subtle background texture */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-slate-50 via-white to-white" />
+      {/* Subtle background gradient */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-slate-50 via-background to-background" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
@@ -59,24 +59,24 @@ export const FitCheck = () => {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             {/* Editorial header */}
-            <p className="text-sm tracking-widest text-slate-500 uppercase mb-4">
+            <p className="text-sm tracking-widest text-muted-foreground uppercase mb-4">
               Who we work with
             </p>
 
             <h2 
               id="fit-check-heading" 
-              className="text-4xl md:text-5xl font-serif font-medium text-slate-900 leading-[1.1] mb-6"
+              className="text-4xl md:text-5xl font-serif font-medium text-foreground leading-[1.1] mb-6"
             >
               Is Nimara right for your nonprofit?
             </h2>
 
-            <p className="text-lg text-slate-600 leading-relaxed mb-12 max-w-lg">
+            <p className="text-lg text-body leading-relaxed mb-12 max-w-lg">
               We help nonprofits that do strong work in the community but feel messy on the inside. If the back-end keeps you up at night, this is for you.
             </p>
 
-            {/* Interactive checklist */}
+            {/* Interactive checklist - refined */}
             <div className="mb-12">
-              <p className="text-xs tracking-widest text-slate-500 uppercase mb-6">
+              <p className="text-xs tracking-widest text-muted-foreground uppercase mb-6">
                 Check what sounds like you
               </p>
 
@@ -94,10 +94,10 @@ export const FitCheck = () => {
                       transition={{ duration: 0.5, delay: index * 0.08 }}
                       className={`
                         w-full flex items-start gap-4 p-5 rounded-2xl border text-left transition-all duration-300
-                        focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2
+                        focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2
                         ${isChecked 
-                          ? 'bg-slate-900 border-slate-900' 
-                          : 'bg-white border-slate-200 hover:border-slate-300 hover:shadow-lg hover:shadow-slate-100'
+                          ? 'bg-secondary-background border-secondary-background' 
+                          : 'bg-card border-border/50 hover:border-border hover:shadow-lg hover:shadow-black/[0.03]'
                         }
                       `}
                       aria-pressed={isChecked}
@@ -106,15 +106,15 @@ export const FitCheck = () => {
                       <div className={`
                         flex-shrink-0 w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-all duration-300
                         ${isChecked 
-                          ? 'bg-[#ACFCE3] border-[#ACFCE3]' 
-                          : 'border-slate-300 bg-white'
+                          ? 'bg-accent border-accent' 
+                          : 'border-border bg-background'
                         }
                       `}>
                         <motion.svg
                           initial={false}
                           animate={{ scale: isChecked ? 1 : 0, opacity: isChecked ? 1 : 0 }}
                           transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                          className="w-3.5 h-3.5 text-slate-900"
+                          className="w-3.5 h-3.5 text-secondary-background"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -125,7 +125,7 @@ export const FitCheck = () => {
                       </div>
 
                       <span className={`text-sm leading-relaxed transition-colors duration-300 ${
-                        isChecked ? 'text-white' : 'text-slate-600'
+                        isChecked ? 'text-white' : 'text-body'
                       }`}>
                         {item.text}
                       </span>
@@ -144,7 +144,7 @@ export const FitCheck = () => {
                     className="mt-8 flex items-center gap-4"
                   >
                     <div className={`text-sm font-medium transition-colors duration-300 ${
-                      isGoodFit ? 'text-slate-900' : 'text-slate-500'
+                      isGoodFit ? 'text-foreground' : 'text-muted-foreground'
                     }`}>
                       {matchCount} of {fitCriteria.length} selected
                     </div>
@@ -152,7 +152,7 @@ export const FitCheck = () => {
                       <motion.span
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
-                        className="text-sm text-emerald-600 font-medium"
+                        className="text-sm text-accent font-medium"
                       >
                         — Looks like a good fit
                       </motion.span>
@@ -167,20 +167,20 @@ export const FitCheck = () => {
               <button
                 type="button"
                 onClick={() => setShowVideoModal(true)}
-                className="group inline-flex items-center gap-3 text-slate-900 font-medium"
+                className="group inline-flex items-center gap-3 text-foreground font-medium"
               >
-                <span className="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                <span className="w-12 h-12 rounded-full bg-secondary-background flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
                   <Play size={18} className="text-white ml-0.5" fill="currentColor" />
                 </span>
                 <span className="relative">
                   Watch the 1-minute intro
-                  <span className="absolute left-0 -bottom-0.5 w-full h-px bg-slate-300 group-hover:bg-slate-900 transition-colors duration-300" />
+                  <span className="absolute left-0 -bottom-0.5 w-full h-px bg-foreground/30 group-hover:bg-foreground transition-colors duration-300" />
                 </span>
               </button>
 
               <a
                 href="/book-a-call"
-                className="group inline-flex items-center gap-2 text-slate-500 font-medium hover:text-slate-900 transition-colors duration-300"
+                className="group inline-flex items-center gap-2 text-muted-foreground font-medium hover:text-foreground transition-colors duration-300"
               >
                 Need urgent help?
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -198,13 +198,13 @@ export const FitCheck = () => {
           >
             <div className="relative">
               {/* Decorative offset */}
-              <div className="absolute -bottom-6 -right-6 w-full h-full rounded-3xl bg-[#ACFCE3]/30" aria-hidden="true" />
+              <div className="absolute -bottom-6 -right-6 w-full h-full rounded-3xl bg-accent/20" aria-hidden="true" />
               
               {/* Video card */}
               <button
                 type="button"
                 onClick={() => setShowVideoModal(true)}
-                className="relative block w-full rounded-3xl overflow-hidden shadow-2xl shadow-slate-200 group focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-4"
+                className="relative block w-full rounded-3xl overflow-hidden shadow-2xl shadow-black/10 group focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-4"
                 aria-label="Play Nimara intro video"
               >
                 {/* Background image */}
@@ -219,12 +219,12 @@ export const FitCheck = () => {
                   />
                   
                   {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-slate-900/20" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-secondary-background via-secondary-background/60 to-secondary-background/20" />
 
                   {/* Duration badge */}
                   <div className="absolute top-6 left-6">
                     <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-white text-xs font-medium">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#ACFCE3]" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent" />
                       1 min
                     </span>
                   </div>
@@ -236,7 +236,7 @@ export const FitCheck = () => {
                       whileHover={{ scale: 1.1 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <Play size={28} className="text-slate-900 ml-1" fill="currentColor" />
+                      <Play size={28} className="text-secondary-background ml-1" fill="currentColor" />
                     </motion.div>
                   </div>
 
@@ -256,12 +256,12 @@ export const FitCheck = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4, duration: 0.6 }}
-                className="absolute -bottom-12 -left-8 max-w-xs bg-white border border-slate-200 rounded-2xl p-5 shadow-xl hidden lg:block"
+                className="absolute -bottom-12 -left-8 max-w-xs bg-card border border-border/50 rounded-2xl p-5 shadow-xl hidden lg:block"
               >
-                <p className="text-sm text-slate-600 italic leading-relaxed mb-3">
+                <p className="text-sm text-body italic leading-relaxed mb-3">
                   "Finally, someone who gets what we actually need."
                 </p>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-muted-foreground">
                   — Executive Director, Community Nonprofit
                 </p>
               </motion.div>
@@ -284,7 +284,7 @@ export const FitCheck = () => {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="relative w-full max-w-4xl bg-slate-900 rounded-3xl overflow-hidden shadow-2xl"
+              className="relative w-full max-w-4xl bg-secondary-background rounded-3xl overflow-hidden shadow-2xl"
               onClick={e => e.stopPropagation()}
             >
               <button
@@ -296,10 +296,10 @@ export const FitCheck = () => {
                 <X size={20} />
               </button>
 
-              <div className="aspect-video bg-slate-800 flex items-center justify-center">
+              <div className="aspect-video bg-secondary-background/50 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="w-20 h-20 rounded-full bg-[#ACFCE3] flex items-center justify-center mx-auto mb-4">
-                    <Play size={36} className="text-slate-900 ml-1" fill="currentColor" />
+                  <div className="w-20 h-20 rounded-full bg-accent flex items-center justify-center mx-auto mb-4">
+                    <Play size={36} className="text-secondary-background ml-1" fill="currentColor" />
                   </div>
                   <p className="text-white font-medium text-lg mb-1">Video Player</p>
                   <p className="text-white/50 text-sm">Replace with your video embed</p>

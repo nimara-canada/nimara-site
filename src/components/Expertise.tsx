@@ -102,12 +102,12 @@ export const Expertise = () => {
 
   return (
     <section 
-      className="py-24 md:py-32 lg:py-40 bg-slate-50 relative overflow-hidden"
+      className="py-24 md:py-36 lg:py-44 bg-muted/30 relative overflow-hidden"
       aria-labelledby="expertise-heading"
       id="expertise"
     >
       {/* Subtle texture */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-white via-slate-50 to-slate-50" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-background via-muted/30 to-muted/30" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
         {/* Header - editorial style, left-aligned */}
@@ -118,18 +118,18 @@ export const Expertise = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="text-sm tracking-widest text-slate-500 uppercase mb-4">
+          <p className="text-sm tracking-widest text-muted-foreground uppercase mb-4">
             What we cover
           </p>
 
           <h2
             id="expertise-heading"
-            className="text-4xl md:text-5xl font-serif font-medium text-slate-900 leading-[1.1] mb-6"
+            className="text-4xl md:text-5xl font-serif font-medium text-foreground leading-[1.1] mb-6"
           >
             Seven domains that keep nonprofits running
           </h2>
 
-          <p className="text-lg text-slate-600 leading-relaxed">
+          <p className="text-lg text-body leading-relaxed">
             We focus on the boring but critical systems that keep your nonprofit safe, fundable, and easier to run. Here's what we help you fix.
           </p>
         </motion.div>
@@ -146,7 +146,7 @@ export const Expertise = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="border-b border-slate-200"
+                className="border-b border-border/50"
               >
                 <button
                   onClick={() => toggleItem(item.id)}
@@ -156,7 +156,7 @@ export const Expertise = () => {
                   {/* Number */}
                   <span className={`
                     text-2xl font-light tabular-nums transition-colors duration-300
-                    ${isOpen ? 'text-purple-600' : 'text-slate-300 group-hover:text-slate-400'}
+                    ${isOpen ? 'text-primary' : 'text-muted-foreground/50 group-hover:text-muted-foreground'}
                   `}>
                     0{index + 1}
                   </span>
@@ -165,11 +165,11 @@ export const Expertise = () => {
                   <div className="flex-1 min-w-0">
                     <h3 className={`
                       text-xl md:text-2xl font-serif font-medium mb-1 transition-colors duration-300
-                      ${isOpen ? 'text-purple-600' : 'text-slate-900 group-hover:text-purple-600'}
+                      ${isOpen ? 'text-primary' : 'text-foreground group-hover:text-primary'}
                     `}>
                       {item.title}
                     </h3>
-                    <p className="text-slate-500 text-sm md:text-base">
+                    <p className="text-body text-sm md:text-base">
                       {item.description}
                     </p>
                   </div>
@@ -177,7 +177,7 @@ export const Expertise = () => {
                   {/* Toggle */}
                   <div className={`
                     flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300
-                    ${isOpen ? 'bg-purple-600 text-white' : 'bg-slate-100 text-slate-400 group-hover:bg-purple-50'}
+                    ${isOpen ? 'bg-primary text-white' : 'bg-muted text-muted-foreground group-hover:bg-primary/10'}
                   `}>
                     {isOpen ? (
                       <Minus className="w-4 h-4" strokeWidth={2} />
@@ -205,9 +205,9 @@ export const Expertise = () => {
                               initial={{ opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ delay: idx * 0.05 }}
-                              className="flex items-center gap-3 text-slate-600 text-sm"
+                              className="flex items-center gap-3 text-body text-sm"
                             >
-                              <span className="w-1.5 h-1.5 rounded-full bg-purple-300" />
+                              <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
                               {bullet}
                             </motion.li>
                           ))}
@@ -229,18 +229,18 @@ export const Expertise = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-16 md:mt-20 max-w-4xl"
         >
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 p-8 rounded-3xl bg-white border border-slate-200 shadow-sm">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 p-8 rounded-3xl bg-card border border-border/50">
             <div>
-              <p className="text-lg font-medium text-slate-900 mb-1">
+              <p className="text-lg font-medium text-foreground mb-1">
                 All 7 domains covered in one check
               </p>
-              <p className="text-sm text-slate-500">
+              <p className="text-sm text-muted-foreground">
                 The free 4-minute check shows where you stand in each area
               </p>
             </div>
             <a
               href="/organizational-health-check"
-              className="inline-flex items-center justify-center gap-2 h-12 px-6 bg-slate-900 text-white font-medium rounded-full transition-all duration-300 hover:bg-slate-800 hover:shadow-lg whitespace-nowrap"
+              className="inline-flex items-center justify-center gap-2 h-12 px-6 bg-secondary-background text-white font-medium rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-secondary-background/20 whitespace-nowrap"
             >
               Start the free check
               <ArrowRight className="w-4 h-4" />

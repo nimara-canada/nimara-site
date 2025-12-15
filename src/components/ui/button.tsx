@@ -9,17 +9,10 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        // Primary - Mint background (default CTAs)
-        default: "bg-accent text-accent-foreground hover:shadow-lg hover:shadow-accent/30 rounded-full",
-        // High-intent - Purple background (Book a call, Pay, Upgrade)
-        "high-intent": "bg-primary text-primary-foreground hover:shadow-lg hover:shadow-primary/40 rounded-full",
-        // Secondary - Transparent with border
-        secondary: "bg-transparent text-foreground/80 border border-white/10 hover:border-white/20 hover:text-foreground rounded-full",
-        // Outline - Subtle outline style
-        outline: "border border-white/10 bg-transparent text-foreground hover:bg-white/5 rounded-xl",
-        // Ghost - No background
-        ghost: "text-foreground/70 hover:text-foreground hover:bg-white/5 rounded-lg",
-        // Link - Text only
+        default: "bg-primary text-primary-foreground hover:bg-[#7A5DE0] rounded-xl shadow-soft",
+        secondary: "bg-background text-foreground border border-border hover:bg-muted rounded-xl shadow-soft",
+        outline: "border border-border bg-background text-foreground hover:bg-muted rounded-xl",
+        ghost: "text-foreground hover:bg-muted rounded-lg",
         link: "text-foreground underline-offset-4 hover:underline focus-visible:underline p-0 h-auto min-h-0",
       },
       size: {

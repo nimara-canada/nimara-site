@@ -86,12 +86,12 @@ const HeroSection = () => {
     {
       icon: Zap,
       value: "1–4 weeks",
-      label: "Fast fixes",
+      label: "Fast Fixes",
     },
     {
       icon: Clock,
       value: "8–12 weeks",
-      label: "Full setup",
+      label: "Full Setup",
     },
     {
       icon: ShieldCheck,
@@ -101,9 +101,9 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-[#0A101F]" aria-labelledby="hero-heading">
-      {/* Dark gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A101F] via-[#121A33] to-[#0A101F] pointer-events-none" />
+    <section className="relative bg-secondary-background overflow-hidden" aria-labelledby="hero-heading">
+      {/* Subtle gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20 pointer-events-none" />
       
       {/* Main Hero Content */}
       <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 lg:pt-32 pb-16 md:pb-20">
@@ -127,7 +127,7 @@ const HeroSection = () => {
               <motion.h1 
                 variants={itemVariants}
                 id="hero-heading" 
-                className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-medium text-[hsl(225_30%_97%)] leading-[1.05] tracking-tight mb-6"
+                className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-medium text-white leading-[1.05] tracking-tight mb-6"
               >
                 Keep Your Nonprofit
                 <br />
@@ -149,7 +149,7 @@ const HeroSection = () => {
                 {["Board", "Money", "People", "Programs"].map((domain, index) => (
                   <span 
                     key={index}
-                    className="domain-pill"
+                    className="inline-flex items-center px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 text-xs font-medium tracking-wide"
                   >
                     {domain}
                   </span>
@@ -159,7 +159,7 @@ const HeroSection = () => {
               {/* Subhead */}
               <motion.p 
                 variants={itemVariants}
-                className="text-lg md:text-xl text-[hsl(225_30%_97%/0.75)] mb-8 leading-relaxed max-w-xl"
+                className="text-lg md:text-xl text-white/70 mb-8 leading-relaxed max-w-xl"
               >
                 Nimara helps you set up simple systems for your board, money, staff, and 
                 programs—so your team spends less time fixing problems and more time doing the work.
@@ -170,7 +170,7 @@ const HeroSection = () => {
                 {["Ready for grants", "Ready to grow", "Ready for audits"].map((item, index) => (
                   <span 
                     key={index} 
-                    className="inline-flex items-center gap-2 text-sm text-[hsl(225_30%_97%/0.80)]"
+                    className="inline-flex items-center gap-2 text-sm text-white/80"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-accent" aria-hidden="true" />
                     {item}
@@ -181,17 +181,17 @@ const HeroSection = () => {
 
             {/* Right Column - Form */}
             <motion.div variants={itemVariants} className="lg:col-span-5">
-              <div className="card-glass p-6 sm:p-8 rounded-2xl">
-                <h2 className="text-lg font-semibold text-[hsl(225_30%_97%)] mb-2">
+              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8">
+                <h2 className="text-lg font-semibold text-white mb-2">
                   Start the free 4-minute check
                 </h2>
-                <p className="text-sm text-[hsl(225_30%_97%/0.55)] mb-6">
+                <p className="text-sm text-white/60 mb-6">
                   See where your systems stand—no commitment required.
                 </p>
 
                 <form onSubmit={handleStartCheck} className="space-y-4">
                   <div>
-                    <label htmlFor="primary-email" className="block text-sm text-[hsl(225_30%_97%/0.80)] mb-2">
+                    <label htmlFor="primary-email" className="block text-sm text-white/80 mb-2">
                       Email (where we can reach you)
                     </label>
                     <Input 
@@ -201,10 +201,10 @@ const HeroSection = () => {
                       value={primaryEmail} 
                       onChange={e => setPrimaryEmail(e.target.value)} 
                       required 
-                      className="w-full h-12 bg-white/5 border-white/20 text-[hsl(225_30%_97%)] placeholder:text-[hsl(225_30%_97%/0.40)] focus:border-accent focus:ring-accent text-base rounded-xl" 
+                      className="w-full h-12 bg-white/5 border-white/20 text-white placeholder:text-white/40 focus:border-accent focus:ring-accent text-base rounded-xl" 
                       aria-describedby="primary-email-hint" 
                     />
-                    <p id="primary-email-hint" className="text-xs text-[hsl(225_30%_97%/0.50)] mt-2">
+                    <p id="primary-email-hint" className="text-xs text-white/50 mt-2">
                       No domain email yet? That's okay — use your best contact email.
                     </p>
                   </div>
@@ -212,13 +212,13 @@ const HeroSection = () => {
                   <Button 
                     type="submit" 
                     size="lg" 
-                    className="w-full h-14 bg-accent text-accent-foreground hover:bg-accent/90 font-semibold text-base rounded-xl"
+                    className="w-full h-14 bg-accent text-secondary-background hover:bg-accent/90 font-semibold text-base rounded-xl"
                   >
                     Start the check
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
 
-                  <p className="text-xs text-[hsl(225_30%_97%/0.50)] text-center">
+                  <p className="text-xs text-white/50 text-center">
                     We'll reach out by email within 2 business days.
                   </p>
                 </form>
@@ -226,12 +226,12 @@ const HeroSection = () => {
                 <div className="h-px bg-white/10 my-6" />
 
                 <a 
-                  href="/book-a-call" 
-                  className="inline-flex items-center gap-2 text-sm text-[hsl(225_30%_97%/0.70)] hover:text-[hsl(225_30%_97%)] transition-colors group"
+                  href="https://nimara.ca/book-a-call" 
+                  className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors group"
                 >
                   <span className="relative">
                     Have an urgent problem? Book a call instead
-                    <span className="absolute left-0 -bottom-0.5 w-0 h-px bg-[hsl(225_30%_97%)] transition-all duration-300 group-hover:w-full" />
+                    <span className="absolute left-0 -bottom-0.5 w-0 h-px bg-white transition-all duration-300 group-hover:w-full" />
                   </span>
                   <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                 </a>
@@ -264,10 +264,10 @@ const HeroSection = () => {
                     <Icon className="w-6 h-6 text-accent" aria-hidden="true" />
                   </div>
                   <div>
-                    <p className="text-2xl sm:text-3xl font-serif font-medium text-[hsl(225_30%_97%)]">
+                    <p className="text-2xl sm:text-3xl font-serif font-medium text-white">
                       {stat.value}
                     </p>
-                    <p className="text-xs sm:text-sm text-[hsl(225_30%_97%/0.50)] uppercase tracking-wide">
+                    <p className="text-xs sm:text-sm text-white/50 uppercase tracking-wide">
                       {stat.label}
                     </p>
                   </div>
