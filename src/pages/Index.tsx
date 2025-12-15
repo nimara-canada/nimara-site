@@ -124,17 +124,8 @@ const Index = () => {
         <HeroSection />
         <TwoWaysSection />
         
-        {/* Decorative wave divider */}
-        <div className="relative h-16 md:h-24 overflow-hidden bg-background">
-          <svg 
-            className="absolute bottom-0 w-full h-full text-slate-100" 
-            viewBox="0 0 1440 120" 
-            preserveAspectRatio="none"
-            fill="currentColor"
-          >
-            <path d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,90 1440,60 L1440,120 L0,120 Z" />
-          </svg>
-        </div>
+        {/* Subtle divider between sections */}
+        <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
         
         <FitCheck />
         <HowWeHelp />
