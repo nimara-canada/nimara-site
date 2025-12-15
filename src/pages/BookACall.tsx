@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Helmet } from "react-helmet";
+import { motion, AnimatePresence } from "framer-motion";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -16,7 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Check, Phone, Send } from "lucide-react";
+import { ArrowRight, Check, Calendar, Mail, Clock, Shield } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -34,6 +35,26 @@ const formSchema = z.object({
 });
 
 type FormData = z.infer<typeof formSchema>;
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] as const },
+  },
+};
 
 const BookACall = () => {
   const [activeOption, setActiveOption] = useState<"call" | "form" | null>(null);
@@ -53,10 +74,10 @@ const BookACall = () => {
   });
 
   const bullets = [
-    "Listen to what's happening (the one urgent problem)",
-    "Ask a few quick questions so we don't guess",
-    "Tell you the best next step (and timing)",
-    "Leave you with a clear plan for the next 7 days",
+    { icon: "01", text: "Listen to what's happening (the one urgent problem)" },
+    { icon: "02", text: "Ask a few quick questions so we don't guess" },
+    { icon: "03", text: "Tell you the best next step (and timing)" },
+    { icon: "04", text: "Leave you with a clear plan for the next 7 days" },
   ];
 
   const helpOptions = [
@@ -118,334 +139,545 @@ const BookACall = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Urgent Help | Nimara</title>
-        <meta name="description" content="Choose one: book a call now, or send details and we'll reply by email." />
+        <title>Start the Free Check | Nimara</title>
+        <meta name="description" content="Step 1 of 2: Book a call or send details. We'll help you figure out which path fits your nonprofit." />
         <link rel="canonical" href="https://nimara.ca/book-a-call" />
         <meta property="og:site_name" content="Nimara" />
-        <meta property="og:title" content="Urgent Help | Nimara" />
-        <meta property="og:description" content="Choose one: book a call now, or send details and we'll reply by email." />
+        <meta property="og:title" content="Start the Free Check | Nimara" />
+        <meta property="og:description" content="Step 1 of 2: Book a call or send details. We'll help you figure out which path fits your nonprofit." />
         <meta property="og:url" content="https://nimara.ca/book-a-call" />
         <meta property="og:image" content="https://nimara.ca/og.jpg" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Urgent Help | Nimara" />
-        <meta name="twitter:description" content="Choose one: book a call now, or send details and we'll reply by email." />
+        <meta name="twitter:title" content="Start the Free Check | Nimara" />
+        <meta name="twitter:description" content="Step 1 of 2: Book a call or send details. We'll help you figure out which path fits your nonprofit." />
         <meta name="twitter:image" content="https://nimara.ca/og.jpg" />
       </Helmet>
       <Header activeRoute="/book-a-call" />
       
       <main id="main" style={{ paddingTop: 'calc(var(--announcement-height, 0px) + 5rem)' }}>
-        {/* Hero */}
-        <section className="pt-8 md:pt-12 pb-12 md:pb-16 px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-foreground mb-4 leading-tight">
-            Urgent help
-          </h1>
-          <p className="text-lg md:text-xl text-body leading-relaxed mb-10">
-            Choose one: book a call now, or send details and we'll reply by email.
-          </p>
-
-          {/* What we'll do */}
-          <div className="text-left mb-12">
-            <h2 className="text-sm tracking-widest text-muted-foreground uppercase mb-5 text-center">
-              What we'll do
-            </h2>
-            <ul className="space-y-3 max-w-md mx-auto">
-              {bullets.map((bullet, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center mt-0.5">
-                    <Check className="w-3 h-3 text-accent" />
+        {/* Hero Section - Navy Background */}
+        <section className="relative bg-secondary-background overflow-hidden">
+          {/* Subtle gradient overlay */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent" />
+          
+          <div className="relative max-w-6xl mx-auto px-6 lg:px-12 py-20 md:py-28 lg:py-32">
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={containerVariants}
+              className="max-w-3xl"
+            >
+              {/* Step indicator */}
+              <motion.div variants={itemVariants} className="mb-6">
+                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 border border-accent/30">
+                  <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                  <span className="text-xs font-medium tracking-widest text-accent uppercase">
+                    Step 1 of 2
                   </span>
-                  <span className="text-body text-sm leading-relaxed">{bullet}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+                </span>
+              </motion.div>
 
-          {/* Two Options */}
-          <div className="grid md:grid-cols-2 gap-4 max-w-2xl mx-auto">
-            {/* Option A: Book a call */}
-            <div 
-              className={`p-6 rounded-2xl border-2 transition-all cursor-pointer ${
-                activeOption === "call" 
-                  ? "border-primary bg-primary/5 shadow-md" 
-                  : "border-border hover:border-primary/50 hover:shadow-sm"
-              }`}
-              onClick={() => handleOptionClick("call")}
-            >
-              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mx-auto mb-4">
-                <Phone className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-lg font-semibold text-foreground mb-2">Book a call</h3>
-              <p className="text-sm text-muted-foreground mb-5">
-                15–30 minutes • Fastest way to get unstuck
-              </p>
-              <Button 
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleOptionClick("call");
-                }}
+              <motion.h1 
+                variants={itemVariants}
+                className="text-4xl sm:text-5xl lg:text-6xl font-serif font-medium text-white leading-[1.1] mb-6"
               >
-                Book a call →
-              </Button>
-            </div>
+                Let's figure out what you need
+              </motion.h1>
 
-            {/* Option B: Send details */}
-            <div 
-              className={`p-6 rounded-2xl border-2 transition-all cursor-pointer ${
-                activeOption === "form" 
-                  ? "border-primary bg-primary/5 shadow-md" 
-                  : "border-border hover:border-muted-foreground/50 hover:shadow-sm"
-              }`}
-              onClick={() => handleOptionClick("form")}
-            >
-              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-muted mx-auto mb-4">
-                <Send className="w-6 h-6 text-muted-foreground" />
-              </div>
-              <h3 className="text-lg font-semibold text-foreground mb-2">Send details instead</h3>
-              <p className="text-sm text-muted-foreground mb-5">
-                2–3 minutes • Best if you're not ready to meet yet
-              </p>
-              <Button 
-                variant="outline"
-                className="w-full font-medium"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleOptionClick("form");
-                }}
+              <motion.p 
+                variants={itemVariants}
+                className="text-lg md:text-xl text-white/70 leading-relaxed mb-12 max-w-2xl"
               >
-                Send details →
-              </Button>
-            </div>
+                Book a quick call or send us details—either way, we'll help you find the right path forward. No pressure, no pitch.
+              </motion.p>
+
+              {/* Trust badges */}
+              <motion.div 
+                variants={itemVariants}
+                className="flex flex-wrap gap-6"
+              >
+                {[
+                  { icon: Clock, text: "15–30 min" },
+                  { icon: Shield, text: "No commitment" },
+                  { icon: Check, text: "Clear next step" },
+                ].map((badge, i) => (
+                  <div key={i} className="flex items-center gap-2 text-white/60 text-sm">
+                    <badge.icon className="w-4 h-4 text-accent" />
+                    <span>{badge.text}</span>
+                  </div>
+                ))}
+              </motion.div>
+            </motion.div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Calendar Section */}
-      {activeOption === "call" && (
-        <section id="scheduler" className="py-12 md:py-16 px-6 bg-background">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-semibold text-center text-foreground mb-8">
-              Pick a time
-            </h2>
+        {/* Options Section */}
+        <section className="py-20 md:py-28 lg:py-32 bg-background relative">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-slate-50 via-background to-background" />
+          
+          <div className="relative max-w-6xl mx-auto px-6 lg:px-12">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="max-w-2xl mb-16"
+            >
+              <p className="text-sm tracking-widest text-muted-foreground uppercase mb-4">
+                Choose your path
+              </p>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-medium text-foreground leading-[1.1] mb-6">
+                How would you like to connect?
+              </h2>
+            </motion.div>
 
-            <div className="bg-background rounded-2xl border border-border overflow-hidden shadow-sm relative">
-              <div className="w-full" style={{ minHeight: "680px" }}>
-                {/* Loading skeleton */}
-                {isCalendlyLoading && (
-                  <div className="absolute inset-0 bg-muted/30 animate-pulse flex flex-col items-center justify-center gap-4 z-10">
-                    <div className="w-16 h-16 rounded-full bg-muted animate-pulse" />
-                    <div className="h-4 w-48 bg-muted rounded animate-pulse" />
-                    <div className="h-3 w-32 bg-muted rounded animate-pulse" />
-                    <div className="mt-6 grid grid-cols-7 gap-2">
-                      {Array.from({ length: 35 }).map((_, i) => (
-                        <div key={i} className="w-8 h-8 bg-muted rounded animate-pulse" />
-                      ))}
+            {/* Two Options - Asymmetric Grid */}
+            <div className="grid lg:grid-cols-12 gap-6 lg:gap-8">
+              {/* Option A: Book a call */}
+              <motion.div
+                className="lg:col-span-7"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.1 }}
+              >
+                <div 
+                  onClick={() => handleOptionClick("call")}
+                  className={`
+                    group h-full rounded-3xl p-8 md:p-10 lg:p-12 cursor-pointer transition-all duration-500
+                    ${activeOption === "call" 
+                      ? "bg-secondary-background text-white shadow-2xl shadow-secondary-background/20" 
+                      : "bg-card border border-border/50 hover:border-border hover:shadow-2xl hover:shadow-black/[0.03]"
+                    }
+                  `}
+                >
+                  <span className={`
+                    inline-block text-xs tracking-widest uppercase mb-4
+                    ${activeOption === "call" ? "text-accent" : "text-muted-foreground"}
+                  `}>
+                    Recommended
+                  </span>
+
+                  <div className="flex items-start gap-5 mb-6">
+                    <div className={`
+                      flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center
+                      ${activeOption === "call" ? "bg-accent/20" : "bg-primary/10"}
+                    `}>
+                      <Calendar className={`w-6 h-6 ${activeOption === "call" ? "text-accent" : "text-primary"}`} />
+                    </div>
+                    <div>
+                      <h3 className={`
+                        text-2xl md:text-3xl font-serif font-medium mb-2
+                        ${activeOption === "call" ? "text-white" : "text-foreground"}
+                      `}>
+                        Book a call
+                      </h3>
+                      <p className={`text-sm ${activeOption === "call" ? "text-white/60" : "text-muted-foreground"}`}>
+                        15–30 minutes · Fastest way to get unstuck
+                      </p>
                     </div>
                   </div>
-                )}
-                <iframe
-                  src="https://calendly.com/hello-nimara/30min"
-                  width="100%"
-                  height="680"
-                  frameBorder="0"
-                  title="Book an urgent help call"
-                  className={`w-full transition-opacity duration-300 ${isCalendlyLoading ? 'opacity-0' : 'opacity-100'}`}
-                  onLoad={() => setIsCalendlyLoading(false)}
-                />
-              </div>
+
+                  <p className={`leading-relaxed mb-8 ${activeOption === "call" ? "text-white/80" : "text-body"}`}>
+                    Jump on a quick call and we'll help you figure out what's going on, what to prioritize, and what comes next.
+                  </p>
+
+                  <Button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleOptionClick("call");
+                    }}
+                    className={`
+                      h-12 px-6 rounded-full font-medium transition-all duration-300
+                      ${activeOption === "call" 
+                        ? "bg-accent text-secondary-background hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/20" 
+                        : "bg-primary text-white hover:bg-primary/90"
+                      }
+                    `}
+                  >
+                    Book a call
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </div>
+              </motion.div>
+
+              {/* Option B: Send details */}
+              <motion.div
+                className="lg:col-span-5"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+              >
+                <div 
+                  onClick={() => handleOptionClick("form")}
+                  className={`
+                    group h-full rounded-3xl p-8 md:p-10 cursor-pointer transition-all duration-500
+                    ${activeOption === "form" 
+                      ? "bg-secondary-background text-white shadow-2xl shadow-secondary-background/20" 
+                      : "bg-card border border-border/50 hover:border-border hover:shadow-2xl hover:shadow-black/[0.03]"
+                    }
+                  `}
+                >
+                  <span className={`
+                    inline-block text-xs tracking-widest uppercase mb-4
+                    ${activeOption === "form" ? "text-white/50" : "text-muted-foreground"}
+                  `}>
+                    Alternative
+                  </span>
+
+                  <div className="flex items-start gap-5 mb-6">
+                    <div className={`
+                      flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center
+                      ${activeOption === "form" ? "bg-white/10" : "bg-muted"}
+                    `}>
+                      <Mail className={`w-6 h-6 ${activeOption === "form" ? "text-white" : "text-muted-foreground"}`} />
+                    </div>
+                    <div>
+                      <h3 className={`
+                        text-xl md:text-2xl font-serif font-medium mb-2
+                        ${activeOption === "form" ? "text-white" : "text-foreground"}
+                      `}>
+                        Send details instead
+                      </h3>
+                      <p className={`text-sm ${activeOption === "form" ? "text-white/60" : "text-muted-foreground"}`}>
+                        2–3 minutes · We'll reply by email
+                      </p>
+                    </div>
+                  </div>
+
+                  <p className={`leading-relaxed mb-8 ${activeOption === "form" ? "text-white/80" : "text-body"}`}>
+                    Not ready to meet yet? Send us your details and we'll get back to you.
+                  </p>
+
+                  <Button 
+                    variant="outline"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleOptionClick("form");
+                    }}
+                    className={`
+                      h-12 px-6 rounded-full font-medium transition-all duration-300
+                      ${activeOption === "form" 
+                        ? "border-white/30 text-white hover:bg-white/10" 
+                        : "border-border hover:border-foreground/30"
+                      }
+                    `}
+                  >
+                    Send details
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </div>
+              </motion.div>
             </div>
 
-            <p className="text-center text-sm text-muted-foreground mt-6">
-              Times show in your local timezone
-            </p>
-          </div>
-        </section>
-      )}
-
-      {/* Form Section */}
-      {activeOption === "form" && (
-        <section id="details-form" className="py-12 md:py-16 px-6 bg-background">
-          <div className="max-w-xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-semibold text-center text-foreground mb-8">
-              Send details
-            </h2>
-
-            {isSubmitted ? (
-              <div className="text-center p-8 rounded-2xl border border-border bg-muted/30 shadow-sm">
-                <div className="flex items-center justify-center w-14 h-14 rounded-full bg-accent/20 mx-auto mb-5">
-                  <Check className="w-7 h-7 text-accent" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">
-                  Got it — we received your note.
-                </h3>
-                <p className="text-body mb-5">
-                  We'll reply by email as soon as we can.
+            {/* What we'll do section */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="mt-20 md:mt-28"
+            >
+              <div className="max-w-3xl mx-auto">
+                <p className="text-sm tracking-widest text-muted-foreground uppercase mb-8 text-center">
+                  What we'll do on the call
                 </p>
-                <button 
-                  onClick={() => {
-                    setActiveOption("call");
-                    setIsSubmitted(false);
-                    setTimeout(() => {
-                      document.getElementById("scheduler")?.scrollIntoView({ behavior: "smooth" });
-                    }, 100);
-                  }}
-                  className="text-primary hover:underline font-medium"
-                >
-                  Need help sooner? Book a call above →
-                </button>
+                <div className="grid sm:grid-cols-2 gap-6">
+                  {bullets.map((bullet, index) => (
+                    <div 
+                      key={index}
+                      className="flex gap-4 p-5 rounded-2xl bg-card border border-border/50"
+                    >
+                      <span className="text-2xl font-light text-primary/50 tabular-nums">
+                        {bullet.icon}
+                      </span>
+                      <p className="text-body text-sm leading-relaxed">
+                        {bullet.text}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
-            ) : (
-              <div className="rounded-2xl border border-border p-6 md:p-8 bg-background shadow-sm">
-                {formError && Object.keys(errors).length > 0 && (
-                  <div className="mb-6 p-4 rounded-lg bg-destructive/10 border border-destructive/20">
-                    <p className="text-sm text-destructive font-medium">
-                      One more step: please fix the highlighted fields.
-                    </p>
-                  </div>
-                )}
-
-                <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-5">
-                  {/* Name */}
-                  <div>
-                    <Label htmlFor="name" className="text-foreground mb-1.5 block font-medium">
-                      Name <span className="text-destructive">*</span>
-                    </Label>
-                    <Input
-                      id="name"
-                      type="text"
-                      autoComplete="name"
-                      {...register("name")}
-                      className={errors.name ? "border-destructive" : ""}
-                    />
-                    <p className="text-xs text-muted-foreground mt-1.5">
-                      So we know what to call you.
-                    </p>
-                    {errors.name && (
-                      <p className="text-destructive text-sm mt-1">{errors.name.message}</p>
-                    )}
-                  </div>
-
-                  {/* Email */}
-                  <div>
-                    <Label htmlFor="email" className="text-foreground mb-1.5 block font-medium">
-                      Email <span className="text-destructive">*</span>
-                    </Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      autoComplete="email"
-                      {...register("email")}
-                      className={errors.email ? "border-destructive" : ""}
-                    />
-                    <p className="text-xs text-muted-foreground mt-1.5">
-                      We'll reply here. No spam.
-                    </p>
-                    {errors.email && (
-                      <p className="text-destructive text-sm mt-1">{errors.email.message}</p>
-                    )}
-                  </div>
-
-                  {/* Organization */}
-                  <div>
-                    <Label htmlFor="organization" className="text-foreground mb-1.5 block font-medium">
-                      Organization name <span className="text-muted-foreground font-normal">(optional)</span>
-                    </Label>
-                    <Input
-                      id="organization"
-                      type="text"
-                      autoComplete="organization"
-                      {...register("organization")}
-                    />
-                    <p className="text-xs text-muted-foreground mt-1.5">
-                      If you have one.
-                    </p>
-                  </div>
-
-                  {/* Help Type Dropdown */}
-                  <div>
-                    <Label htmlFor="helpType" className="text-foreground mb-1.5 block font-medium">
-                      What do you need help with? <span className="text-destructive">*</span>
-                    </Label>
-                    <Select onValueChange={(value) => setValue("helpType", value)}>
-                      <SelectTrigger className={errors.helpType ? "border-destructive" : ""}>
-                        <SelectValue placeholder="Choose one…" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-background z-50">
-                        {helpOptions.map((option) => (
-                          <SelectItem key={option.value} value={option.value}>
-                            {option.label}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    {errors.helpType && (
-                      <p className="text-destructive text-sm mt-1">{errors.helpType.message}</p>
-                    )}
-                  </div>
-
-                  {/* Deadline */}
-                  <div>
-                    <Label htmlFor="deadline" className="text-foreground mb-1.5 block font-medium">
-                      Deadline <span className="text-muted-foreground font-normal">(optional)</span>
-                    </Label>
-                    <Input
-                      id="deadline"
-                      type="date"
-                      {...register("deadline")}
-                      className={errors.deadline ? "border-destructive" : ""}
-                    />
-                    <p className="text-xs text-muted-foreground mt-1.5">
-                      If there's a date we should know about.
-                    </p>
-                    {errors.deadline && (
-                      <p className="text-destructive text-sm mt-1">{errors.deadline.message}</p>
-                    )}
-                  </div>
-
-                  {/* Details Textarea */}
-                  <div>
-                    <Label htmlFor="details" className="text-foreground mb-1.5 block font-medium">
-                      Tell us what's going on <span className="text-destructive">*</span>
-                    </Label>
-                    <Textarea
-                      id="details"
-                      rows={4}
-                      {...register("details")}
-                      className={errors.details ? "border-destructive" : ""}
-                    />
-                    <p className="text-xs text-muted-foreground mt-1.5">
-                      3–5 sentences is perfect. What happened, what's the deadline, and what do you need?
-                    </p>
-                    <p className="text-xs text-muted-foreground/70 mt-2 italic">
-                      Example: "We have a grant due Friday. Our budget doesn't match our spending. We need help fixing it and making it easy to track."
-                    </p>
-                    {errors.details && (
-                      <p className="text-destructive text-sm mt-1">{errors.details.message}</p>
-                    )}
-                  </div>
-
-                  {/* Submit Button */}
-                  <Button 
-                    type="submit" 
-                    size="lg" 
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? "Sending…" : "Send my details →"}
-                  </Button>
-
-                  {/* Safety Line */}
-                  <p className="text-xs text-muted-foreground text-center pt-2">
-                    Please don't include private health info or anything very sensitive.
-                  </p>
-                </form>
-              </div>
-            )}
+            </motion.div>
           </div>
         </section>
-      )}
+
+        {/* Calendar Section */}
+        <AnimatePresence>
+          {activeOption === "call" && (
+            <motion.section 
+              id="scheduler" 
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.5 }}
+              className="bg-secondary-background overflow-hidden"
+            >
+              <div className="py-20 md:py-28 px-6">
+                <div className="max-w-4xl mx-auto">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="text-center mb-12"
+                  >
+                    <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 border border-accent/30 mb-6">
+                      <span className="w-2 h-2 rounded-full bg-accent" />
+                      <span className="text-xs font-medium tracking-widest text-accent uppercase">
+                        Pick a time
+                      </span>
+                    </span>
+                    <h2 className="text-3xl md:text-4xl font-serif font-medium text-white mb-4">
+                      When works for you?
+                    </h2>
+                    <p className="text-white/60">
+                      Times show in your local timezone
+                    </p>
+                  </motion.div>
+
+                  <div className="bg-white rounded-3xl overflow-hidden shadow-2xl shadow-black/20 relative">
+                    <div className="w-full" style={{ minHeight: "680px" }}>
+                      {isCalendlyLoading && (
+                        <div className="absolute inset-0 bg-muted/30 animate-pulse flex flex-col items-center justify-center gap-4 z-10">
+                          <div className="w-16 h-16 rounded-full bg-muted animate-pulse" />
+                          <div className="h-4 w-48 bg-muted rounded animate-pulse" />
+                          <div className="h-3 w-32 bg-muted rounded animate-pulse" />
+                        </div>
+                      )}
+                      <iframe
+                        src="https://calendly.com/hello-nimara/30min"
+                        width="100%"
+                        height="680"
+                        frameBorder="0"
+                        title="Book an urgent help call"
+                        className={`w-full transition-opacity duration-300 ${isCalendlyLoading ? 'opacity-0' : 'opacity-100'}`}
+                        onLoad={() => setIsCalendlyLoading(false)}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.section>
+          )}
+        </AnimatePresence>
+
+        {/* Form Section */}
+        <AnimatePresence>
+          {activeOption === "form" && (
+            <motion.section 
+              id="details-form"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.5 }}
+              className="bg-muted/30 overflow-hidden"
+            >
+              <div className="py-20 md:py-28 px-6">
+                <div className="max-w-xl mx-auto">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="text-center mb-12"
+                  >
+                    <p className="text-sm tracking-widest text-muted-foreground uppercase mb-4">
+                      Tell us what's happening
+                    </p>
+                    <h2 className="text-3xl md:text-4xl font-serif font-medium text-foreground">
+                      Send details
+                    </h2>
+                  </motion.div>
+
+                  {isSubmitted ? (
+                    <motion.div 
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="text-center p-10 rounded-3xl border border-border bg-card shadow-lg"
+                    >
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-accent/20 mx-auto mb-6">
+                        <Check className="w-8 h-8 text-accent" />
+                      </div>
+                      <h3 className="text-2xl font-serif font-medium text-foreground mb-3">
+                        Got it — we received your note.
+                      </h3>
+                      <p className="text-body mb-6">
+                        We'll reply by email as soon as we can.
+                      </p>
+                      <button 
+                        onClick={() => {
+                          setActiveOption("call");
+                          setIsSubmitted(false);
+                          setTimeout(() => {
+                            document.getElementById("scheduler")?.scrollIntoView({ behavior: "smooth" });
+                          }, 100);
+                        }}
+                        className="group inline-flex items-center gap-2 text-primary font-medium"
+                      >
+                        <span className="relative">
+                          Need help sooner? Book a call instead
+                          <span className="absolute left-0 -bottom-0.5 w-full h-px bg-primary/30 group-hover:bg-primary transition-colors duration-300" />
+                        </span>
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                      </button>
+                    </motion.div>
+                  ) : (
+                    <motion.div 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 }}
+                      className="rounded-3xl border border-border p-8 md:p-10 bg-card shadow-lg"
+                    >
+                      {formError && Object.keys(errors).length > 0 && (
+                        <div className="mb-6 p-4 rounded-xl bg-destructive/10 border border-destructive/20">
+                          <p className="text-sm text-destructive font-medium">
+                            One more step: please fix the highlighted fields.
+                          </p>
+                        </div>
+                      )}
+
+                      <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-6">
+                        {/* Name */}
+                        <div>
+                          <Label htmlFor="name" className="text-foreground mb-2 block font-medium">
+                            Name <span className="text-destructive">*</span>
+                          </Label>
+                          <Input
+                            id="name"
+                            type="text"
+                            autoComplete="name"
+                            {...register("name")}
+                            className={`h-12 rounded-xl ${errors.name ? "border-destructive" : ""}`}
+                          />
+                          <p className="text-xs text-muted-foreground mt-2">
+                            So we know what to call you.
+                          </p>
+                          {errors.name && (
+                            <p className="text-destructive text-sm mt-1">{errors.name.message}</p>
+                          )}
+                        </div>
+
+                        {/* Email */}
+                        <div>
+                          <Label htmlFor="email" className="text-foreground mb-2 block font-medium">
+                            Email <span className="text-destructive">*</span>
+                          </Label>
+                          <Input
+                            id="email"
+                            type="email"
+                            autoComplete="email"
+                            {...register("email")}
+                            className={`h-12 rounded-xl ${errors.email ? "border-destructive" : ""}`}
+                          />
+                          <p className="text-xs text-muted-foreground mt-2">
+                            We'll reply here. No spam.
+                          </p>
+                          {errors.email && (
+                            <p className="text-destructive text-sm mt-1">{errors.email.message}</p>
+                          )}
+                        </div>
+
+                        {/* Organization */}
+                        <div>
+                          <Label htmlFor="organization" className="text-foreground mb-2 block font-medium">
+                            Organization name <span className="text-muted-foreground font-normal">(optional)</span>
+                          </Label>
+                          <Input
+                            id="organization"
+                            type="text"
+                            autoComplete="organization"
+                            {...register("organization")}
+                            className="h-12 rounded-xl"
+                          />
+                          <p className="text-xs text-muted-foreground mt-2">
+                            If you have one.
+                          </p>
+                        </div>
+
+                        {/* Help Type Dropdown */}
+                        <div>
+                          <Label htmlFor="helpType" className="text-foreground mb-2 block font-medium">
+                            What do you need help with? <span className="text-destructive">*</span>
+                          </Label>
+                          <Select onValueChange={(value) => setValue("helpType", value)}>
+                            <SelectTrigger className={`h-12 rounded-xl ${errors.helpType ? "border-destructive" : ""}`}>
+                              <SelectValue placeholder="Choose one…" />
+                            </SelectTrigger>
+                            <SelectContent className="bg-background z-50 rounded-xl">
+                              {helpOptions.map((option) => (
+                                <SelectItem key={option.value} value={option.value}>
+                                  {option.label}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                          {errors.helpType && (
+                            <p className="text-destructive text-sm mt-1">{errors.helpType.message}</p>
+                          )}
+                        </div>
+
+                        {/* Deadline */}
+                        <div>
+                          <Label htmlFor="deadline" className="text-foreground mb-2 block font-medium">
+                            Deadline <span className="text-muted-foreground font-normal">(optional)</span>
+                          </Label>
+                          <Input
+                            id="deadline"
+                            type="date"
+                            {...register("deadline")}
+                            className={`h-12 rounded-xl ${errors.deadline ? "border-destructive" : ""}`}
+                          />
+                          <p className="text-xs text-muted-foreground mt-2">
+                            If there's a date we should know about.
+                          </p>
+                          {errors.deadline && (
+                            <p className="text-destructive text-sm mt-1">{errors.deadline.message}</p>
+                          )}
+                        </div>
+
+                        {/* Details Textarea */}
+                        <div>
+                          <Label htmlFor="details" className="text-foreground mb-2 block font-medium">
+                            Tell us what's going on <span className="text-destructive">*</span>
+                          </Label>
+                          <Textarea
+                            id="details"
+                            rows={4}
+                            {...register("details")}
+                            className={`rounded-xl ${errors.details ? "border-destructive" : ""}`}
+                          />
+                          <p className="text-xs text-muted-foreground mt-2">
+                            3–5 sentences is perfect. What happened, what's the deadline, and what do you need?
+                          </p>
+                          {errors.details && (
+                            <p className="text-destructive text-sm mt-1">{errors.details.message}</p>
+                          )}
+                        </div>
+
+                        {/* Submit Button */}
+                        <Button 
+                          type="submit" 
+                          size="lg" 
+                          className="w-full h-14 rounded-full bg-primary hover:bg-primary/90 text-white font-medium"
+                          disabled={isSubmitting}
+                        >
+                          {isSubmitting ? "Sending…" : "Send my details"}
+                          {!isSubmitting && <ArrowRight className="w-4 h-4 ml-2" />}
+                        </Button>
+
+                        {/* Safety Line */}
+                        <p className="text-xs text-muted-foreground text-center pt-2">
+                          Please don't include private health info or anything very sensitive.
+                        </p>
+                      </form>
+                    </motion.div>
+                  )}
+                </div>
+              </div>
+            </motion.section>
+          )}
+        </AnimatePresence>
       </main>
 
       <Footer />
