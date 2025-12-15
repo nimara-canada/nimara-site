@@ -40,10 +40,8 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
       </a>
 
       <header
-        className={`fixed left-0 right-0 z-[70] w-full transition-all duration-500 ${
-          isScrolled
-            ? "bg-background/98 backdrop-blur-md shadow-sm border-b border-border/50"
-            : "bg-transparent"
+        className={`fixed left-0 right-0 z-[70] w-full bg-background transition-all duration-300 ${
+          isScrolled ? "shadow-sm border-b border-border/50" : ""
         }`}
         style={{ top: "var(--announcement-height, 0px)" }}
       >
