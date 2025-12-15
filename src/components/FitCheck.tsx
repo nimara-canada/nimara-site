@@ -301,8 +301,8 @@ export const FitCheck = () => {
                   <div className="w-20 h-20 rounded-full bg-accent flex items-center justify-center mx-auto mb-4">
                     <Play size={36} className="text-secondary-background ml-1" fill="currentColor" />
                   </div>
-                  <p className="text-white font-medium text-lg mb-1">Video Player</p>
-                  <p className="text-white/50 text-sm">Replace with your video embed</p>
+                  <p className="text-white font-medium text-lg mb-1">Coming Soon</p>
+                  <p className="text-white/50 text-sm text-center max-w-xs">A short video is coming soon. Check back in the next couple of weeks.</p>
                 </div>
               </div>
             </motion.div>
