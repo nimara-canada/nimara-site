@@ -7,27 +7,27 @@ import {
 
 const faqs = [
   {
-    question: "How do I get matched?",
+    question: "How Do I Get Matched?",
     answer: "We route briefs by focus area, fit, and availability."
   },
   {
-    question: "What's in the proposal format?",
+    question: "What's In The Proposal Format?",
     answer: "Price, timeline, outcomes, \"done\" checklist, assumptions."
   },
   {
-    question: "Who owns client comms?",
+    question: "Who Owns Client Comms?",
     answer: "A Nimara PM coordinates; you focus on delivery."
   },
   {
-    question: "How is payment handled?",
+    question: "How Is Payment Handled?",
     answer: "On-time, net-15 after acceptance and handoff."
   },
   {
-    question: "Do you require exclusivity?",
+    question: "Do You Require Exclusivity?",
     answer: "No—just honest availability and conflict checks."
   },
   {
-    question: "Where is data stored?",
+    question: "Where Is Data Stored?",
     answer: "In Canada, with records retained 7 years."
   }
 ];

@@ -11,19 +11,19 @@ const faqs = [
     answer: "No—independent contractor."
   },
   {
-    question: "Do you take a cut of my rate?",
+    question: "Do You Take A Cut Of My Rate?",
     answer: "No. Your rate is yours. Nimara's PM/platform fee is a separate client line."
   },
   {
-    question: "When will I see a brief?",
+    question: "When Will I See A Brief?",
     answer: "As soon as your category has momentum and the fit is right."
   },
   {
-    question: "How do we work?",
+    question: "How Do We Work?",
     answer: "In the Nimara app with a PM and clear acceptance."
   },
   {
-    question: "Payment terms?",
+    question: "Payment Terms?",
     answer: "Net-15 after acceptance."
   }
 ];

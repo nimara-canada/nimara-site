@@ -3,27 +3,27 @@ import { motion, AnimatePresence, useInView } from 'framer-motion';
 
 const faqs = [
   {
-    question: "Do we have to start with a health check?",
+    question: "Do We Have To Start With A Health Check?",
     answer: "No. If you have one urgent problem (a scary email, audit, funder deadline, policy gap), the Urgent Fix path handles it in 1–4 weeks without a full health check. If you want to upgrade systems across multiple areas (governance, finance, HR, programs), you'd start with a health check to see where each system stands. From there, we design the right setup for you."
   },
   {
-    question: "What's the difference between Urgent Fix and Build My Systems?",
+    question: "What's The Difference Between Urgent Fix And Build My Systems?",
     answer: "Urgent Fix: One clear problem, 1–4 weeks. You get a small bundle of tools, files, and steps that solve that problem. Build My Systems: Bigger questions about how your org runs. Start with a free 4-minute check, then a paid deep check ($2,500) to see where you stand. Then 8–12 weeks to set up systems that make you audit- and funder-ready."
   },
   {
-    question: "Who is Nimara for? Are we the right size?",
+    question: "Who Is Nimara For? Are We The Right Size?",
     answer: "We work with small and mid-size nonprofits in Canada: Usually 2–100 staff (mix of paid staff and active volunteers). Doing real community or program work. Big enough that audits, funders, and HR issues are on the table. If you're very early (no stable staff, still just an idea), we'll usually share light tools and point you to other supports instead of selling a full install."
   },
   {
-    question: "What kinds of problems can you help with?",
+    question: "What Kinds Of Problems Can You Help With?",
     answer: "We work across 7 areas: Board & Governance (rules, roles, minutes, policies), Money & Compliance (finance systems, grants, audits), People & HR (staff files, hiring, safety), Programs & Services (intake, delivery, safety logs), Fundraising & Donors (gift acceptance, receipting, records), Volunteers (agreements, screening, training), and Systems & Records (files, dashboards, data protection)."
   },
   {
-    question: "How long does it take, and what do we actually get?",
+    question: "How Long Does It Take, And What Do We Actually Get?",
     answer: "Urgent Fix: 1–4 weeks. You get the policies, templates, trackers, and steps needed to fix that one problem. Build My Systems: ~2 weeks for the deep check, then 8–12 weeks per system. You get a clear plan and tools your team can run without us. No 'advice only.' Every project ends in files and routines that live in your systems."
   },
   {
-    question: "How does pricing work? Can a funder pay for this?",
+    question: "How Does Pricing Work? Can A Funder Pay For This?",
     answer: "We use flat project fees, not open-ended hourly billing. Urgent Fix = smaller fixed fee for one problem. Build My Systems = deep check ($2,500) plus fixed fees for each system setup. Yes, funders can pay. Many orgs use capacity-building grants, admin lines, or project funds. We can give you a simple one-page description for proposals."
   }
 ];
