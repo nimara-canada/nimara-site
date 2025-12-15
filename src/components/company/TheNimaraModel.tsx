@@ -19,7 +19,7 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] as const },
+    transition: { duration: 0.6 },
   },
 };
 
@@ -28,40 +28,35 @@ const tiers = [
     level: "4",
     title: "Complex or multi-site",
     description: "Larger, more complex orgs with many programs, sites, or partners.",
-    color: "bg-emerald-50 border-emerald-200",
-    badgeColor: "bg-emerald-600 text-white",
-    dotColor: "bg-emerald-500",
+    badgeColor: "bg-emerald-500",
+    dotColor: "bg-emerald-400",
   },
   {
     level: "3",
     title: "Growth-ready",
     description: "The org can handle more funding, staff, and programs without breaking.",
-    color: "bg-teal-50 border-teal-200",
-    badgeColor: "bg-teal-600 text-white",
-    dotColor: "bg-teal-500",
+    badgeColor: "bg-teal-500",
+    dotColor: "bg-teal-400",
   },
   {
     level: "2",
     title: "Audit-ready",
     description: "Core systems across all 7 domains can stand up to audits and funder checks.",
-    color: "bg-blue-50 border-blue-200",
-    badgeColor: "bg-blue-600 text-white",
-    dotColor: "bg-blue-500",
+    badgeColor: "bg-blue-500",
+    dotColor: "bg-blue-400",
   },
   {
     level: "1",
     title: "Basic stability",
     description: "Some basics are in place, but systems are informal and fragile.",
-    color: "bg-amber-50 border-amber-200",
-    badgeColor: "bg-amber-600 text-white",
-    dotColor: "bg-amber-500",
+    badgeColor: "bg-amber-500",
+    dotColor: "bg-amber-400",
   },
   {
     level: "0",
     title: "Too early / DIY support",
     description: "Very early or fragile. We share tools and light support instead of deep installs.",
-    color: "bg-rose-50 border-rose-200",
-    badgeColor: "bg-rose-500 text-white",
+    badgeColor: "bg-rose-500",
     dotColor: "bg-rose-400",
   },
 ];
@@ -71,15 +66,13 @@ const paths = [
     letter: "A",
     title: "Fast fixes",
     description: "Short, clearly scoped modules to solve one main problem, like cash flow, board basics, or simple HR setup. When possible, we match organizations into these modules within about 72 hours.",
-    color: "border-accent bg-accent/5 hover:bg-accent/10",
-    badge: "bg-accent/20 text-accent",
+    accentColor: "accent",
   },
   {
     letter: "B",
     title: "Tiered packages",
     description: "Deeper, pre-built bundles for organizations that need a full install across multiple domains, such as finance + HR + governance + programs for a Tier 2 or Tier 3 team.",
-    color: "border-primary bg-primary/5 hover:bg-primary/10",
-    badge: "bg-primary/20 text-primary",
+    accentColor: "primary",
   },
 ];
 
@@ -88,8 +81,13 @@ export const TheNimaraModel: React.FC = () => {
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
-    <section ref={sectionRef} className="py-20 sm:py-24 lg:py-32 bg-muted/30">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+    <section ref={sectionRef} className="relative py-20 sm:py-24 lg:py-32 bg-secondary text-secondary-foreground overflow-hidden">
+      {/* Gradient overlays */}
+      <div className="absolute inset-0 bg-gradient-to-b from-secondary via-secondary to-secondary/95" />
+      <div className="absolute top-0 left-0 w-1/3 h-1/2 bg-gradient-to-br from-primary/5 to-transparent" />
+      <div className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-gradient-to-tl from-accent/5 to-transparent" />
+
+      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         <motion.div
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
@@ -100,11 +98,11 @@ export const TheNimaraModel: React.FC = () => {
             <span className="text-xs font-medium tracking-[0.2em] uppercase text-primary mb-4 block">
               The Framework
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-foreground leading-[1.1] mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1] mb-6">
               The Nimara Model:{" "}
-              <span className="italic">Tiers and Paths</span>
+              <span className="italic text-primary">Tiers and Paths</span>
             </h2>
-            <p className="text-lg text-body-muted max-w-3xl leading-relaxed">
+            <p className="text-lg text-secondary-foreground/70 max-w-3xl leading-relaxed">
               Nimara uses a shared model so we can match each organization with the right kind of support. 
               First we place you in a tier. Then we choose the right path.
             </p>
@@ -113,12 +111,12 @@ export const TheNimaraModel: React.FC = () => {
           {/* Five Tiers Section */}
           <motion.div variants={itemVariants} className="mb-24">
             <div className="flex items-center gap-4 mb-8">
-              <h3 className="text-xl font-semibold text-foreground">
+              <h3 className="text-xl font-semibold">
                 Five Tiers of Organizational Health
               </h3>
-              <div className="flex-1 h-px bg-border" />
+              <div className="flex-1 h-px bg-secondary-foreground/20" />
             </div>
-            <p className="text-body-muted mb-12 max-w-2xl">
+            <p className="text-secondary-foreground/70 mb-12 max-w-2xl">
               We sort organizations into five tiers, from 'too early' to 'ready for complex work.' 
               This keeps the work at the right size.
             </p>
@@ -127,13 +125,13 @@ export const TheNimaraModel: React.FC = () => {
             <div className="max-w-3xl mx-auto">
               <motion.div variants={containerVariants} className="relative">
                 {/* Vertical connecting line */}
-                <div className="absolute left-8 top-20 bottom-20 w-0.5 bg-gradient-to-b from-emerald-300 via-blue-300 to-rose-300 hidden sm:block" />
+                <div className="absolute left-8 top-20 bottom-20 w-0.5 bg-gradient-to-b from-emerald-400/50 via-blue-400/50 to-rose-400/50 hidden sm:block" />
                 
                 {/* Top Label */}
                 <motion.div variants={itemVariants} className="flex items-center justify-center mb-8">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 border border-emerald-200">
-                    <div className="w-2 h-2 rounded-full bg-emerald-600" />
-                    <span className="text-xs font-medium tracking-[0.15em] uppercase text-emerald-800">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 border border-emerald-400/30">
+                    <div className="w-2 h-2 rounded-full bg-emerald-400" />
+                    <span className="text-xs font-medium tracking-[0.15em] uppercase text-emerald-300">
                       Most Complex
                     </span>
                   </div>
@@ -143,29 +141,29 @@ export const TheNimaraModel: React.FC = () => {
                   <React.Fragment key={tier.level}>
                     <motion.div
                       variants={itemVariants}
-                      whileHover={{ x: 8, transition: { duration: 0.2 } }}
+                      whileHover={{ x: 8 }}
                       className="relative"
                       style={{ marginLeft: index % 2 === 0 ? '0' : '2rem' }}
                     >
-                      <div className={`p-6 rounded-xl border-2 transition-all hover:shadow-lg ${tier.color} relative`}>
+                      <div className="p-6 rounded-xl border border-secondary-foreground/10 bg-secondary-foreground/5 backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-secondary-foreground/10 relative">
                         {/* Connector dot */}
                         <div className="absolute -left-10 top-1/2 -translate-y-1/2 hidden sm:block">
-                          <div className={`w-4 h-4 rounded-full ${tier.dotColor} ring-4 ring-white shadow-sm`} />
+                          <div className={`w-4 h-4 rounded-full ${tier.dotColor} ring-4 ring-secondary shadow-lg`} />
                         </div>
                         
                         <div className="flex items-start gap-4">
-                          <div className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-lg font-bold ${tier.badgeColor}`}>
+                          <div className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-lg font-bold ${tier.badgeColor} text-white`}>
                             {tier.level}
                           </div>
                           
                           <div className="flex-1">
-                            <span className="text-xs font-medium tracking-[0.15em] uppercase text-muted-foreground mb-1 block">
+                            <span className="text-xs font-medium tracking-[0.15em] uppercase text-secondary-foreground/50 mb-1 block">
                               Tier {tier.level}
                             </span>
-                            <h4 className="font-semibold text-foreground mb-2">
+                            <h4 className="font-semibold text-secondary-foreground mb-2">
                               {tier.title}
                             </h4>
-                            <p className="text-sm text-body-muted leading-relaxed">
+                            <p className="text-sm text-secondary-foreground/60 leading-relaxed">
                               {tier.description}
                             </p>
                           </div>
@@ -186,8 +184,8 @@ export const TheNimaraModel: React.FC = () => {
                             delay: index * 0.2,
                           }}
                         >
-                          <ArrowDown className="w-5 h-5 text-muted-foreground" strokeWidth={2} />
-                          <ArrowDown className="w-5 h-5 text-muted-foreground -mt-3" strokeWidth={2} />
+                          <ArrowDown className="w-5 h-5 text-secondary-foreground/40" strokeWidth={2} />
+                          <ArrowDown className="w-5 h-5 text-secondary-foreground/40 -mt-3" strokeWidth={2} />
                         </motion.div>
                       </motion.div>
                     )}
@@ -196,9 +194,9 @@ export const TheNimaraModel: React.FC = () => {
                 
                 {/* Bottom Label */}
                 <motion.div variants={itemVariants} className="flex items-center justify-center mt-8">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-100 border border-rose-200">
-                    <div className="w-2 h-2 rounded-full bg-rose-500" />
-                    <span className="text-xs font-medium tracking-[0.15em] uppercase text-rose-800">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-500/20 border border-rose-400/30">
+                    <div className="w-2 h-2 rounded-full bg-rose-400" />
+                    <span className="text-xs font-medium tracking-[0.15em] uppercase text-rose-300">
                       Early Stage
                     </span>
                   </div>
@@ -210,12 +208,12 @@ export const TheNimaraModel: React.FC = () => {
           {/* Two Paths Section */}
           <motion.div variants={itemVariants}>
             <div className="flex items-center gap-4 mb-8">
-              <h3 className="text-xl font-semibold text-foreground">
+              <h3 className="text-xl font-semibold">
                 Two paths through the system
               </h3>
-              <div className="flex-1 h-px bg-border" />
+              <div className="flex-1 h-px bg-secondary-foreground/20" />
             </div>
-            <p className="text-body-muted mb-12 max-w-2xl">
+            <p className="text-secondary-foreground/70 mb-12 max-w-2xl">
               Once we know your tier, we pick the right path based on how deep the work needs to go.
             </p>
 
@@ -225,19 +223,27 @@ export const TheNimaraModel: React.FC = () => {
                 <motion.div
                   key={path.letter}
                   variants={itemVariants}
-                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                  whileHover={{ y: -4 }}
                   className="group"
                 >
-                  <div className={`h-full p-8 rounded-2xl border-2 transition-all ${path.color}`}>
+                  <div className={`h-full p-8 rounded-2xl border transition-all ${
+                    path.accentColor === 'accent' 
+                      ? 'border-accent/30 bg-accent/5 hover:bg-accent/10 hover:border-accent/50' 
+                      : 'border-primary/30 bg-primary/5 hover:bg-primary/10 hover:border-primary/50'
+                  }`}>
                     <div className="mb-6">
-                      <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${path.badge}`}>
+                      <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${
+                        path.accentColor === 'accent'
+                          ? 'bg-accent/20 text-accent'
+                          : 'bg-primary/20 text-primary'
+                      }`}>
                         Path {path.letter}
                       </span>
                     </div>
-                    <h4 className="text-xl font-serif font-medium text-foreground mb-4">
+                    <h4 className="text-xl font-semibold text-secondary-foreground mb-4">
                       {path.title}
                     </h4>
-                    <p className="text-body-muted leading-relaxed">
+                    <p className="text-secondary-foreground/60 leading-relaxed">
                       {path.description}
                     </p>
                   </div>
