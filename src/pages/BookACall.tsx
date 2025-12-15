@@ -40,6 +40,7 @@ const BookACall = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formError, setFormError] = useState(false);
+  const [isCalendlyLoading, setIsCalendlyLoading] = useState(true);
 
   const {
     register,
@@ -229,15 +230,29 @@ const BookACall = () => {
               Pick a time
             </h2>
 
-            <div className="bg-background rounded-2xl border border-border overflow-hidden shadow-sm">
+            <div className="bg-background rounded-2xl border border-border overflow-hidden shadow-sm relative">
               <div className="w-full" style={{ minHeight: "680px" }}>
+                {/* Loading skeleton */}
+                {isCalendlyLoading && (
+                  <div className="absolute inset-0 bg-muted/30 animate-pulse flex flex-col items-center justify-center gap-4 z-10">
+                    <div className="w-16 h-16 rounded-full bg-muted animate-pulse" />
+                    <div className="h-4 w-48 bg-muted rounded animate-pulse" />
+                    <div className="h-3 w-32 bg-muted rounded animate-pulse" />
+                    <div className="mt-6 grid grid-cols-7 gap-2">
+                      {Array.from({ length: 35 }).map((_, i) => (
+                        <div key={i} className="w-8 h-8 bg-muted rounded animate-pulse" />
+                      ))}
+                    </div>
+                  </div>
+                )}
                 <iframe
                   src="https://calendly.com/hello-nimara/30min"
                   width="100%"
                   height="680"
                   frameBorder="0"
                   title="Book an urgent help call"
-                  className="w-full"
+                  className={`w-full transition-opacity duration-300 ${isCalendlyLoading ? 'opacity-0' : 'opacity-100'}`}
+                  onLoad={() => setIsCalendlyLoading(false)}
                 />
               </div>
             </div>
