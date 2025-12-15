@@ -29,14 +29,14 @@ export const Footer = () => {
               Nimara
             </h2>
             <p className="text-white/50 leading-relaxed max-w-sm mb-8">
-              Helping Canadian nonprofits build the core systems funders expect—so you can focus on your mission.
+              Helping Canadian Nonprofits Build The Core Systems Funders Expect—So You Can Focus On Your Mission.
             </p>
             <a
               href="/book-a-call"
               className="group inline-flex items-center gap-2 text-white font-medium"
             >
               <span className="relative">
-                Book a discovery call
+                Book A Discovery Call
                 <span className="absolute left-0 -bottom-0.5 w-full h-px bg-white/30 group-hover:bg-white transition-colors duration-300" />
               </span>
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -128,10 +128,10 @@ export const Footer = () => {
         <div className="pt-8 border-t border-white/10">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-sm text-white/40">
-              © {new Date().getFullYear()} Nimara. All rights reserved.
+              © {new Date().getFullYear()} Nimara. All Rights Reserved.
             </p>
             <p className="text-sm text-white/40">
-              Made in Canada 🍁
+              Made In Canada 🍁
             </p>
           </div>
         </div>
