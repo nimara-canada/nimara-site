@@ -23,12 +23,12 @@ export const TheGap = () => {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="mb-12"
           >
-            <p className="text-sm tracking-widest text-muted-foreground uppercase mb-4">
-              The problem
+          <p className="text-sm tracking-widest text-muted-foreground uppercase mb-4">
+              The Problem
             </p>
 
             <h2 className="text-4xl md:text-5xl font-serif font-medium text-foreground leading-[1.1] mb-6">
-              The gap no one is paid to fix
+              The Gap No One Is Paid To Fix
             </h2>
 
             <p className="text-lg text-body leading-relaxed">

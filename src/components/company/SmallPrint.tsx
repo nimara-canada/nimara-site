@@ -50,8 +50,8 @@ export const SmallPrint = () => {
                 Legal
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-white leading-[1.1]">
-                Small print{" "}
-                <span className="italic text-white/80">— Because it still matters</span>
+                Small Print{" "}
+                <span className="italic text-white/80">— Because It Still Matters</span>
               </h2>
             </motion.div>
 
@@ -87,7 +87,7 @@ export const SmallPrint = () => {
             >
               <FileText className="w-4 h-4" />
               <span className="relative">
-                View engagement terms
+                View Engagement Terms
                 <span className="absolute left-0 -bottom-0.5 w-0 h-px bg-white transition-all duration-300 group-hover:w-full" />
               </span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

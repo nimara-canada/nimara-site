@@ -52,8 +52,8 @@ export const FunderWaitlist = () => {
                 For Funders
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-foreground leading-[1.1]">
-                We're building{" "}
-                <span className="italic">with you</span>
+                We're Building{" "}
+                <span className="italic">With You</span>
               </h2>
             </motion.div>
 
@@ -108,7 +108,7 @@ export const FunderWaitlist = () => {
               className="group"
             >
               <a href="/funder-waitlist" className="gap-2">
-                Join the funder waitlist
+                Join The Funder Waitlist
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </a>
             </Button>

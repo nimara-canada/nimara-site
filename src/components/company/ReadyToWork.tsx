@@ -4,23 +4,23 @@ import { ArrowRight } from "lucide-react";
 const nextSteps = [
   {
     num: "01",
-    heading: "I run or support a nonprofit",
+    heading: "I Run Or Support A Nonprofit",
     description: "I want to see if Nimara is a good fit for our team.",
-    buttonText: "Start the free check",
+    buttonText: "Start The Free Check",
     link: "/organizational-health-check"
   },
   {
     num: "02",
-    heading: "I'm a consultant or operator",
+    heading: "I'm A Consultant Or Operator",
     description: "I want to learn more about Nimara Practice Partner roles.",
-    buttonText: "See consultant roles",
+    buttonText: "See Consultant Roles",
     link: "https://www.notion.so/Consultant-Hire-2bb227f1ee3a8018b693d47e9610c583"
   },
   {
     num: "03",
-    heading: "I'm a funder or ecosystem partner",
+    heading: "I'm A Funder Or Ecosystem Partner",
     description: "I want to stay in the loop as you build for funders.",
-    buttonText: "Join the waitlist",
+    buttonText: "Join The Waitlist",
     link: "#funder-waitlist"
   }
 ];
@@ -41,11 +41,11 @@ export const ReadyToWork = () => {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <p className="text-sm tracking-widest text-muted-foreground uppercase mb-4">
-            Next steps
+            Next Steps
           </p>
 
           <h2 className="text-4xl md:text-5xl font-serif font-medium text-foreground leading-[1.1]">
-            Choose your path
+            Choose Your Path
           </h2>
         </motion.div>
 

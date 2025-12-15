@@ -22,7 +22,7 @@ export const CompanyHero = () => {
             </p>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-white leading-[1.1] mb-8">
-              A national operator for nonprofit capacity-building
+              A National Operator For Nonprofit Capacity-Building
             </h1>
             
             <p className="text-lg md:text-xl text-white/70 leading-relaxed mb-10 max-w-xl">
@@ -35,7 +35,7 @@ export const CompanyHero = () => {
                 href="/health-score"
                 className="inline-flex items-center justify-center gap-2 h-14 px-8 bg-accent text-secondary-background font-semibold rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-accent/20"
               >
-                Learn about the Health Check
+                Learn About The Health Check
                 <ArrowRight className="w-5 h-5" />
               </a>
               
@@ -44,7 +44,7 @@ export const CompanyHero = () => {
                 className="group inline-flex items-center gap-2 h-14 px-6 text-white/80 font-medium transition-colors duration-300 hover:text-white"
               >
                 <span className="relative">
-                  How Nimara works
+                  How Nimara Works
                   <span className="absolute left-0 -bottom-0.5 w-full h-px bg-white/30 group-hover:bg-white transition-colors duration-300" />
                 </span>
                 <ArrowRight className="w-4 h-4" />
@@ -56,7 +56,7 @@ export const CompanyHero = () => {
               href="#founding-story"
               className="inline-flex items-center gap-2 text-accent/80 hover:text-accent transition-colors text-sm"
             >
-              Read our founding story
+              Read Our Founding Story
               <ArrowRight className="w-3 h-3" />
             </a>
           </motion.div>

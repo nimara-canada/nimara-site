@@ -48,8 +48,8 @@ export const WhereWeAre = () => {
                 Roadmap
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-foreground leading-[1.1]">
-                Where Nimara is{" "}
-                <span className="italic">going next</span>
+                Where Nimara Is{" "}
+                <span className="italic">Going Next</span>
               </h2>
             </motion.div>
 
@@ -94,7 +94,7 @@ export const WhereWeAre = () => {
               className="group"
             >
               <a href="/roadmap" className="gap-2">
-                View the Nimara Roadmap
+                View The Nimara Roadmap
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </a>
             </Button>
