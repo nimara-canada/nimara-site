@@ -70,7 +70,7 @@ const HeroSection = () => {
         }} />
       </div>
       
-      <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 lg:py-40">
+      <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 lg:py-36">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
           {/* Left Column - Content */}
           <div className="lg:col-span-7">
@@ -93,7 +93,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               id="hero-heading" 
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight leading-[1.05] mb-8"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.1] mb-6"
             >
               Keep Your Nonprofit
               <br />

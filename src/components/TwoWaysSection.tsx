@@ -13,7 +13,7 @@ export const TwoWaysSection = () => {
   };
 
   return (
-    <section ref={sectionRef} className="relative py-32 sm:py-40 lg:py-48 bg-background overflow-hidden">
+    <section ref={sectionRef} className="relative py-20 md:py-28 lg:py-36 bg-background overflow-hidden">
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 opacity-[0.02]">
         <div className="absolute inset-0" style={{
@@ -25,7 +25,7 @@ export const TwoWaysSection = () => {
       
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Editorial Header */}
-        <div className="mb-20 lg:mb-24">
+        <div className="mb-14 lg:mb-18">
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
@@ -42,7 +42,7 @@ export const TwoWaysSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-[1.1] mb-8"
+            className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-[1.1] mb-6"
           >
             Two ways
             <br />
