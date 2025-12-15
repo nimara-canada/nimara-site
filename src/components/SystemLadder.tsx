@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { useState, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
 const ladderSteps = [
   { 
@@ -37,188 +36,182 @@ const ladderSteps = [
 
 export const SystemLadder = () => {
   const [hoveredLevel, setHoveredLevel] = useState<number | null>(null);
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
     <section 
+      ref={sectionRef}
       id="system" 
-      className="py-24 md:py-36 lg:py-44 bg-secondary-background relative overflow-hidden"
+      className="relative py-32 sm:py-40 lg:py-48 bg-secondary text-secondary-foreground overflow-hidden"
       aria-labelledby="system-heading"
     >
-      {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent" />
+      {/* Subtle grid pattern */}
+      <div className="absolute inset-0 opacity-[0.03]">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `linear-gradient(hsl(var(--secondary-foreground)) 1px, transparent 1px),
+                           linear-gradient(90deg, hsl(var(--secondary-foreground)) 1px, transparent 1px)`,
+          backgroundSize: '80px 80px'
+        }} />
+      </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-12 gap-16 lg:gap-24">
-          
-          {/* LEFT COLUMN - Editorial intro */}
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Editorial Header */}
+        <div className="mb-20 lg:mb-24">
           <motion.div
-            className="lg:col-span-5"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8 }}
+            className="flex items-center gap-4 mb-8"
           >
-            <p className="text-sm tracking-widest text-white/50 uppercase mb-4">
-              The Nimara system
-            </p>
+            <span className="text-xs font-medium tracking-[0.2em] uppercase text-secondary-foreground/50">
+              The Nimara System
+            </span>
+            <div className="h-px flex-1 bg-secondary-foreground/20" />
+          </motion.div>
+          
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            id="system-heading"
+            className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-[1.1] mb-8"
+          >
+            Where are you
+            <br />
+            <span className="font-normal italic text-secondary-foreground/70">on the ladder?</span>
+          </motion.h2>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg text-secondary-foreground/60 max-w-xl"
+          >
+            We use a simple 5-tier ladder to understand where your nonprofit stands today. 
+            This helps us know exactly where to start and which path fits best.
+          </motion.p>
+        </div>
 
-            <h2
-              id="system-heading"
-              className="text-4xl md:text-5xl font-serif font-medium text-white leading-[1.1] mb-6"
-            >
-              Where are you on the ladder?
-            </h2>
+        {/* Ladder Steps */}
+        <div className="space-y-0">
+          {[...ladderSteps].reverse().map((step, index) => {
+            const isHovered = hoveredLevel === step.level;
+            const isNimaraFocus = step.level <= 2;
+            const showDivider = step.level === 3;
 
-            <p className="text-lg text-white/70 leading-relaxed mb-12">
-              We use a simple 5-tier ladder to understand where your nonprofit stands today. This helps us know exactly where to start and which path fits best.
-            </p>
+            return (
+              <div key={step.level}>
+                {showDivider && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={isInView ? { opacity: 1 } : {}}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    className="relative my-8 flex items-center gap-4"
+                  >
+                    <div className="flex-1 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
+                    <span className="text-xs tracking-widest text-accent uppercase">
+                      Nimara's focus
+                    </span>
+                    <div className="flex-1 h-px bg-gradient-to-r from-accent/40 via-transparent to-transparent" />
+                  </motion.div>
+                )}
 
-            {/* Nimara focus callout */}
-            <div className="mb-12 p-6 rounded-2xl bg-white/5 border border-white/10">
-              <p className="text-xs tracking-widest text-accent uppercase mb-3">
-                Our focus
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={isInView ? { opacity: 1 } : {}}
+                  transition={{ duration: 0.5, delay: 0.3 + index * 0.08 }}
+                  onMouseEnter={() => setHoveredLevel(step.level)}
+                  onMouseLeave={() => setHoveredLevel(null)}
+                  className="group"
+                >
+                  <div className={`
+                    grid grid-cols-12 gap-4 lg:gap-8 py-8 lg:py-10 border-t border-secondary-foreground/10 transition-colors duration-300
+                    ${isHovered ? 'bg-secondary-foreground/5' : ''}
+                  `}>
+                    {/* Tier number */}
+                    <div className="col-span-2 lg:col-span-1">
+                      <span className={`
+                        text-5xl lg:text-6xl font-extralight transition-colors duration-500
+                        ${isNimaraFocus 
+                          ? (isHovered ? 'text-accent' : 'text-accent/50')
+                          : (isHovered ? 'text-secondary-foreground/60' : 'text-secondary-foreground/20')
+                        }
+                      `}>
+                        {step.level}
+                      </span>
+                    </div>
+                    
+                    {/* Title */}
+                    <div className="col-span-10 lg:col-span-3">
+                      <div className="flex items-center gap-3 mb-1">
+                        <h3 className={`
+                          text-lg lg:text-xl font-medium transition-colors duration-300
+                          ${isHovered ? 'text-secondary-foreground' : 'text-secondary-foreground/90'}
+                        `}>
+                          {step.title}
+                        </h3>
+                        {isNimaraFocus && (
+                          <span className="text-[10px] tracking-widest text-accent uppercase">
+                            Our lane
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    
+                    {/* Description */}
+                    <div className="col-span-12 lg:col-span-8 mt-2 lg:mt-0">
+                      <p className="text-secondary-foreground/60 leading-relaxed">
+                        {step.desc}
+                      </p>
+                      
+                      {/* Detail on hover */}
+                      <motion.p
+                        initial={false}
+                        animate={{ 
+                          height: isHovered ? 'auto' : 0,
+                          opacity: isHovered ? 1 : 0,
+                          marginTop: isHovered ? 12 : 0
+                        }}
+                        transition={{ duration: 0.3 }}
+                        className="text-sm text-accent/90 overflow-hidden"
+                      >
+                        → {step.detail}
+                      </motion.p>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            );
+          })}
+          <div className="border-t border-secondary-foreground/10" />
+        </div>
+
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.7 }}
+          className="mt-16 pt-8 border-t border-secondary-foreground/10"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+            <div>
+              <p className="text-lg font-medium text-secondary-foreground mb-1">
+                Not sure where you stand?
               </p>
-              <p className="text-white/80 leading-relaxed">
-                Nimara specializes in moving organizations from Tier 0–1 into solid Tier 2 basics. Tiers 3–4 are aspirational north stars for most clients.
+              <p className="text-sm text-secondary-foreground/50">
+                The free 4-minute check will show you
               </p>
             </div>
-
-            {/* CTA */}
             <a
               href="/book-a-call"
-              className="group inline-flex items-center gap-3 text-white font-medium"
+              className="group inline-flex items-center gap-3 text-secondary-foreground font-medium"
             >
-              <span className="relative">
-                Find your tier with the free check
-                <span className="absolute left-0 -bottom-0.5 w-full h-px bg-white/30 group-hover:bg-white transition-colors duration-300" />
-              </span>
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+              <span className="group-hover:text-accent transition-colors">Start the free check</span>
+              <span className="w-8 h-px bg-secondary-foreground group-hover:w-12 group-hover:bg-accent transition-all duration-300" />
             </a>
-          </motion.div>
-
-          {/* RIGHT COLUMN - Ladder visualization */}
-          <div className="lg:col-span-7">
-            <div className="space-y-0">
-              {[...ladderSteps].reverse().map((step, index) => {
-                const isHovered = hoveredLevel === step.level;
-                const isNimaraFocus = step.level <= 2;
-                const showDivider = step.level === 3;
-
-                return (
-                  <div key={step.level}>
-                    {/* Divider between Tier 3 and Tier 2 */}
-                    {showDivider && (
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.3 }}
-                        className="relative my-8 flex items-center gap-4"
-                      >
-                        <div className="flex-1 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
-                        <span className="text-xs tracking-widest text-accent uppercase">
-                          Nimara's focus
-                        </span>
-                        <div className="flex-1 h-px bg-gradient-to-r from-accent/40 via-transparent to-transparent" />
-                      </motion.div>
-                    )}
-
-                    <motion.div
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-50px" }}
-                      transition={{ duration: 0.6, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                      onMouseEnter={() => setHoveredLevel(step.level)}
-                      onMouseLeave={() => setHoveredLevel(null)}
-                      className="group"
-                    >
-                      <div className={`
-                        flex gap-6 py-6 border-b border-white/10 transition-all duration-300
-                        ${isHovered ? 'bg-white/5 -mx-6 px-6 rounded-2xl border-transparent' : ''}
-                      `}>
-                        {/* Tier number */}
-                        <div className="flex-shrink-0">
-                          <span className={`
-                            text-5xl md:text-6xl font-light tabular-nums transition-colors duration-500
-                            ${isNimaraFocus 
-                              ? (isHovered ? 'text-accent' : 'text-accent/60')
-                              : (isHovered ? 'text-white/60' : 'text-white/20')
-                            }
-                          `}>
-                            {step.level}
-                          </span>
-                        </div>
-
-                        {/* Content */}
-                        <div className="flex-1 pt-2">
-                          <div className="flex items-center gap-3 mb-2">
-                            <h3 className={`
-                              text-xl md:text-2xl font-serif font-medium transition-colors duration-300
-                              ${isHovered ? 'text-white' : 'text-white/90'}
-                            `}>
-                              {step.title}
-                            </h3>
-                            {isNimaraFocus && (
-                              <span className="text-[10px] tracking-widest text-accent uppercase">
-                                Our lane
-                              </span>
-                            )}
-                          </div>
-                          
-                          <p className="text-white/60 leading-relaxed mb-3">
-                            {step.desc}
-                          </p>
-
-                          {/* Expanded detail on hover */}
-                          <motion.div
-                            initial={false}
-                            animate={{ 
-                              height: isHovered ? 'auto' : 0,
-                              opacity: isHovered ? 1 : 0
-                            }}
-                            transition={{ duration: 0.3 }}
-                            className="overflow-hidden"
-                          >
-                            <p className="text-sm text-accent/90 pt-2">
-                              → {step.detail}
-                            </p>
-                          </motion.div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Bottom summary */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="mt-12 pt-8 border-t border-white/10"
-            >
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-                <div>
-                  <p className="text-lg font-medium text-white mb-1">
-                    Not sure where you stand?
-                  </p>
-                  <p className="text-sm text-white/50">
-                    The free 4-minute check will show you
-                  </p>
-                </div>
-                <a
-                  href="/book-a-call"
-                  className="inline-flex items-center justify-center gap-2 h-12 px-6 bg-accent text-secondary-background font-medium rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-accent/20"
-                >
-                  Start the free check
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-              </div>
-            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

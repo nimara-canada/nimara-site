@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Plus, Minus } from 'lucide-react';
+import { useState, useRef } from 'react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 
 const expertiseItems = [
   {
@@ -91,6 +90,8 @@ const expertiseItems = [
 
 export const Expertise = () => {
   const [openItems, setOpenItems] = useState<string[]>([expertiseItems[0].id]);
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   const toggleItem = (id: string) => {
     setOpenItems(prev => 
@@ -102,61 +103,80 @@ export const Expertise = () => {
 
   return (
     <section 
-      className="py-24 md:py-36 lg:py-44 bg-muted/30 relative overflow-hidden"
+      ref={sectionRef}
+      className="relative py-32 sm:py-40 lg:py-48 bg-muted/30 overflow-hidden"
       aria-labelledby="expertise-heading"
       id="expertise"
     >
-      {/* Subtle texture */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-background via-muted/30 to-muted/30" />
+      {/* Subtle grid pattern */}
+      <div className="absolute inset-0 opacity-[0.015]">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
+                           linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
+          backgroundSize: '60px 60px'
+        }} />
+      </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
-        {/* Header - editorial style, left-aligned */}
-        <motion.div
-          className="max-w-2xl mb-16 md:mb-20"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <p className="text-sm tracking-widest text-muted-foreground uppercase mb-4">
-            What we cover
-          </p>
-
-          <h2
-            id="expertise-heading"
-            className="text-4xl md:text-5xl font-serif font-medium text-foreground leading-[1.1] mb-6"
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Editorial Header */}
+        <div className="mb-20 lg:mb-24">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8 }}
+            className="flex items-center gap-4 mb-8"
           >
-            Seven domains that keep nonprofits running
-          </h2>
+            <span className="text-xs font-medium tracking-[0.2em] uppercase text-muted-foreground">
+              What We Cover
+            </span>
+            <div className="h-px flex-1 bg-border" />
+          </motion.div>
+          
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            id="expertise-heading"
+            className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-[1.1] mb-8"
+          >
+            Seven domains
+            <br />
+            <span className="font-normal italic text-muted-foreground">that keep nonprofits running</span>
+          </motion.h2>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg text-muted-foreground max-w-xl"
+          >
+            We focus on the boring but critical systems that keep your nonprofit safe, 
+            fundable, and easier to run.
+          </motion.p>
+        </div>
 
-          <p className="text-lg text-body leading-relaxed">
-            We focus on the boring but critical systems that keep your nonprofit safe, fundable, and easier to run. Here's what we help you fix.
-          </p>
-        </motion.div>
-
-        {/* Accordion list - clean, minimal */}
-        <div className="max-w-4xl">
+        {/* Accordion */}
+        <div className="space-y-0">
           {expertiseItems.map((item, index) => {
             const isOpen = openItems.includes(item.id);
 
             return (
               <motion.div
                 key={item.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="border-b border-border/50"
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.5, delay: 0.3 + index * 0.05 }}
+                className="border-t border-border"
               >
                 <button
                   onClick={() => toggleItem(item.id)}
-                  className="w-full py-6 flex items-start gap-6 text-left focus:outline-none group"
+                  className="w-full py-6 lg:py-8 flex items-start gap-6 text-left focus:outline-none group"
                   aria-expanded={isOpen}
                 >
                   {/* Number */}
                   <span className={`
-                    text-2xl font-light tabular-nums transition-colors duration-300
-                    ${isOpen ? 'text-primary' : 'text-muted-foreground/50 group-hover:text-muted-foreground'}
+                    text-2xl lg:text-3xl font-extralight tabular-nums transition-colors duration-300
+                    ${isOpen ? 'text-primary' : 'text-muted-foreground/40 group-hover:text-muted-foreground/60'}
                   `}>
                     0{index + 1}
                   </span>
@@ -164,27 +184,23 @@ export const Expertise = () => {
                   {/* Content */}
                   <div className="flex-1 min-w-0">
                     <h3 className={`
-                      text-xl md:text-2xl font-serif font-medium mb-1 transition-colors duration-300
+                      text-xl lg:text-2xl font-medium mb-2 transition-colors duration-300
                       ${isOpen ? 'text-primary' : 'text-foreground group-hover:text-primary'}
                     `}>
                       {item.title}
                     </h3>
-                    <p className="text-body text-sm md:text-base">
+                    <p className="text-muted-foreground text-sm lg:text-base">
                       {item.description}
                     </p>
                   </div>
 
-                  {/* Toggle */}
-                  <div className={`
-                    flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300
-                    ${isOpen ? 'bg-primary text-white' : 'bg-muted text-muted-foreground group-hover:bg-primary/10'}
+                  {/* Toggle indicator */}
+                  <span className={`
+                    text-2xl font-extralight transition-colors duration-300 mt-1
+                    ${isOpen ? 'text-primary' : 'text-muted-foreground/40 group-hover:text-muted-foreground'}
                   `}>
-                    {isOpen ? (
-                      <Minus className="w-4 h-4" strokeWidth={2} />
-                    ) : (
-                      <Plus className="w-4 h-4" strokeWidth={2} />
-                    )}
-                  </div>
+                    {isOpen ? '−' : '+'}
+                  </span>
                 </button>
 
                 {/* Expanded content */}
@@ -197,17 +213,17 @@ export const Expertise = () => {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="pb-8 pl-16 md:pl-20">
-                        <ul className="space-y-3">
+                      <div className="pb-8 pl-14 lg:pl-20">
+                        <ul className="space-y-2">
                           {item.bullets.map((bullet, idx) => (
                             <motion.li
                               key={idx}
                               initial={{ opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ delay: idx * 0.05 }}
-                              className="flex items-center gap-3 text-body text-sm"
+                              className="flex items-center gap-3 text-muted-foreground text-sm"
                             >
-                              <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
+                              <span className="w-1 h-1 rounded-full bg-primary/50" />
                               {bullet}
                             </motion.li>
                           ))}
@@ -219,17 +235,17 @@ export const Expertise = () => {
               </motion.div>
             );
           })}
+          <div className="border-t border-border" />
         </div>
 
         {/* Bottom CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-16 md:mt-20 max-w-4xl"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mt-16 pt-8 border-t border-border"
         >
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 p-8 rounded-3xl bg-card border border-border/50">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
             <div>
               <p className="text-lg font-medium text-foreground mb-1">
                 All 7 domains covered in one check
@@ -240,10 +256,10 @@ export const Expertise = () => {
             </div>
             <a
               href="/book-a-call"
-              className="inline-flex items-center justify-center gap-2 h-12 px-6 bg-secondary-background text-white font-medium rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-secondary-background/20 whitespace-nowrap"
+              className="group inline-flex items-center gap-3 text-foreground font-medium"
             >
-              Start the free check
-              <ArrowRight className="w-4 h-4" />
+              <span className="group-hover:text-primary transition-colors">Start the free check</span>
+              <span className="w-8 h-px bg-foreground group-hover:w-12 group-hover:bg-primary transition-all duration-300" />
             </a>
           </div>
         </motion.div>
