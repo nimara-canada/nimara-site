@@ -70,8 +70,8 @@ export const IntegrationsSection = () => {
             <div className="space-y-4">
               {benefits.map((benefit, index) => (
                 <div key={index} className="flex items-center gap-4 group">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center transition-all duration-300 group-hover:bg-accent/30 group-hover:scale-105">
-                    <Check className="w-4 h-4 text-accent" />
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/15 flex items-center justify-center transition-all duration-300 group-hover:bg-primary/25 group-hover:scale-105">
+                    <Check className="w-4 h-4 text-primary" />
                   </span>
                   <span className="text-foreground text-lg font-medium">{benefit.text}</span>
                 </div>
@@ -103,11 +103,11 @@ export const IntegrationsSection = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.04 }}
                   whileHover={{ y: -4, scale: 1.02 }}
-                  className="group relative bg-muted/50 backdrop-blur-sm border border-border/50 rounded-2xl p-5 md:p-6 transition-all duration-300 hover:bg-muted hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5 cursor-default"
+                  className="group relative bg-card border border-border rounded-2xl p-5 md:p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 cursor-default"
                 >
                   <div className="flex flex-col gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-accent/15 flex items-center justify-center transition-all duration-300 group-hover:bg-accent/25">
-                      <IconComponent className="w-5 h-5 text-accent transition-transform duration-300 group-hover:scale-110" />
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center transition-all duration-300 group-hover:bg-primary/20">
+                      <IconComponent className="w-5 h-5 text-primary transition-transform duration-300 group-hover:scale-110" />
                     </div>
                     <span className="text-foreground font-medium text-sm md:text-base">{category.label}</span>
                   </div>
