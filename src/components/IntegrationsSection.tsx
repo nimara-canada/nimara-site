@@ -4,18 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const benefits = [
-  {
-    icon: Check,
-    text: "Keep what's working (we don't force new software)"
-  },
-  {
-    icon: Check,
-    text: "Make things easier (clear steps, clean files, fewer mistakes)"
-  },
-  {
-    icon: Check,
-    text: "One simple system (so your team knows where things live)"
-  }
+  { text: "Keep what's working" },
+  { text: "Make things easier" },
+  { text: "One simple system" }
 ];
 
 const toolCategories = [
@@ -32,78 +23,92 @@ const toolCategories = [
 export const IntegrationsSection = () => {
   return (
     <section 
-      className="py-20 md:py-28 lg:py-32 bg-background" 
+      className="py-24 md:py-32 lg:py-40 bg-secondary relative overflow-hidden" 
       aria-labelledby="integrations-heading"
     >
-      <div className="max-w-4xl mx-auto px-6 lg:px-12">
-        {/* Header */}
+      {/* Subtle gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-secondary via-secondary to-secondary-background/50" />
+      
+      {/* Decorative elements */}
+      <div className="absolute top-20 right-10 w-72 h-72 bg-accent/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+
+      <div className="relative max-w-6xl mx-auto px-6 lg:px-12">
+        {/* Header - asymmetric editorial layout */}
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 mb-16 lg:mb-20">
+          <motion.div
+            className="lg:col-span-7"
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <p className="text-xs tracking-[0.2em] text-accent uppercase mb-6 font-medium">
+              Integrations
+            </p>
+
+            <h2
+              id="integrations-heading"
+              className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-secondary-foreground leading-[1.1] mb-6"
+            >
+              Works with the tools{" "}
+              <span className="italic text-accent">you already use</span>
+            </h2>
+
+            <p className="text-lg md:text-xl text-secondary-foreground/70 leading-relaxed max-w-xl">
+              We connect to your current tools. No big switch. No "rip and replace." We help you make what you have work better.
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="lg:col-span-5 lg:pt-20"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
+            <div className="space-y-4">
+              {benefits.map((benefit, index) => (
+                <div key={index} className="flex items-center gap-4 group">
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center transition-all duration-300 group-hover:bg-accent/20 group-hover:scale-105">
+                    <Check className="w-4 h-4 text-accent" />
+                  </span>
+                  <span className="text-secondary-foreground text-lg font-medium">{benefit.text}</span>
+                </div>
+              ))}
+            </div>
+            
+            <p className="text-sm text-secondary-foreground/50 mt-8 pl-12 italic">
+              Not sure what you have? We'll help you map it.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Tool Categories - Premium card grid */}
         <motion.div
-          className="text-center mb-12"
+          className="mb-16"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <p className="text-xs tracking-widest text-muted-foreground uppercase mb-4">
-            Integrations
-          </p>
-
-          <h2
-            id="integrations-heading"
-            className="text-3xl md:text-4xl lg:text-5xl font-serif font-medium text-foreground leading-[1.15] mb-5"
-          >
-            Works with the tools you already use
-          </h2>
-
-          <p className="text-lg text-body leading-relaxed max-w-2xl mx-auto">
-            We connect to your current tools. No big switch. No "rip and replace." We help you make what you have work better.
-          </p>
-        </motion.div>
-
-        {/* Benefits */}
-        <motion.div
-          className="mb-10"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <ul className="space-y-3 max-w-md mx-auto">
-            {benefits.map((benefit, index) => (
-              <li key={index} className="flex items-start gap-3">
-                <span className="flex-shrink-0 w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center mt-0.5">
-                  <benefit.icon className="w-3 h-3 text-accent" />
-                </span>
-                <span className="text-body text-base leading-relaxed">{benefit.text}</span>
-              </li>
-            ))}
-          </ul>
-          
-          <p className="text-sm text-muted-foreground text-center mt-6 italic">
-            If you're not sure what you have, that's okay—we'll help you map it.
-          </p>
-        </motion.div>
-
-        {/* Tool Categories Grid */}
-        <motion.div
-          className="mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             {toolCategories.map((category, index) => (
               <motion.div
                 key={category.label}
-                initial={{ opacity: 0, y: 12 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.03 }}
-                className="flex items-center gap-2.5 px-4 py-3 bg-card border border-border/50 rounded-xl text-sm text-foreground hover:border-border hover:shadow-sm transition-all duration-200"
+                transition={{ duration: 0.5, delay: index * 0.04 }}
+                whileHover={{ y: -4, scale: 1.02 }}
+                className="group relative bg-secondary-foreground/5 backdrop-blur-sm border border-secondary-foreground/10 rounded-2xl p-5 md:p-6 transition-all duration-300 hover:bg-secondary-foreground/10 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5 cursor-default"
               >
-                <category.icon className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-                <span>{category.label}</span>
+                <div className="flex flex-col gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center transition-all duration-300 group-hover:bg-accent/20">
+                    <category.icon className="w-5 h-5 text-accent transition-transform duration-300 group-hover:scale-110" />
+                  </div>
+                  <span className="text-secondary-foreground font-medium text-sm md:text-base">{category.label}</span>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -111,13 +116,13 @@ export const IntegrationsSection = () => {
 
         {/* CTAs */}
         <motion.div
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          initial={{ opacity: 0, y: 16 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-5"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.35 }}
         >
-          <Button asChild size="lg" className="rounded-full px-6">
+          <Button asChild size="lg" className="rounded-full px-8 py-6 text-base shadow-lg shadow-accent/20 hover:shadow-xl hover:shadow-accent/30 transition-all duration-300">
             <Link to="/book-a-call">
               Tell us what tools you use
               <ArrowRight className="w-4 h-4 ml-2" />
@@ -126,13 +131,13 @@ export const IntegrationsSection = () => {
           
           <Link
             to="/check"
-            className="group inline-flex items-center gap-1.5 text-foreground font-medium text-sm"
+            className="group inline-flex items-center gap-2 text-secondary-foreground/80 hover:text-secondary-foreground font-medium text-sm transition-colors duration-300"
           >
             <span className="relative">
               Start the 4-minute check
-              <span className="absolute left-0 -bottom-0.5 w-full h-px bg-foreground/30 group-hover:bg-foreground transition-colors duration-300" />
+              <span className="absolute left-0 -bottom-0.5 w-full h-px bg-secondary-foreground/30 group-hover:bg-accent transition-colors duration-300" />
             </span>
-            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </motion.div>
       </div>
