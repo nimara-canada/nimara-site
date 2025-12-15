@@ -8,7 +8,7 @@ export const FinalCTA = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-32 sm:py-40 lg:py-48 bg-secondary text-secondary-foreground overflow-hidden"
+      className="relative py-20 md:py-28 lg:py-36 bg-secondary text-secondary-foreground overflow-hidden"
     >
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 opacity-[0.03]">
@@ -25,7 +25,7 @@ export const FinalCTA = () => {
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.8 }}
-            className="flex items-center gap-4 mb-8"
+            className="flex items-center gap-4 mb-6"
           >
             <span className="text-xs font-medium tracking-[0.2em] uppercase text-secondary-foreground/50">
               Ready to Start?
@@ -37,7 +37,7 @@ export const FinalCTA = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-[1.1] mb-8"
+            className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-[1.1] mb-6"
           >
             Ready to get
             <br />

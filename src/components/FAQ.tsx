@@ -41,7 +41,7 @@ export const FAQ = () => {
     <section
       ref={sectionRef}
       id="faq"
-      className="relative py-32 sm:py-40 lg:py-48 bg-muted/30 overflow-hidden"
+      className="relative py-20 md:py-28 lg:py-36 bg-muted/30 overflow-hidden"
       aria-labelledby="faq-heading"
     >
       {/* Subtle grid pattern */}
@@ -55,13 +55,13 @@ export const FAQ = () => {
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Editorial Header */}
-        <div className="grid lg:grid-cols-12 gap-16 lg:gap-24">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
           <div className="lg:col-span-4">
             <motion.div
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.8 }}
-              className="flex items-center gap-4 mb-8"
+              className="flex items-center gap-4 mb-6"
             >
               <span className="text-xs font-medium tracking-[0.2em] uppercase text-muted-foreground">
                 Common Questions
@@ -73,7 +73,7 @@ export const FAQ = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 }}
               id="faq-heading"
-              className="text-4xl sm:text-5xl font-light tracking-tight leading-[1.1] mb-8"
+              className="text-3xl sm:text-4xl font-light tracking-tight leading-[1.1] mb-5"
             >
               Questions
               <br />

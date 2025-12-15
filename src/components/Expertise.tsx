@@ -104,7 +104,7 @@ export const Expertise = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-32 sm:py-40 lg:py-48 bg-muted/30 overflow-hidden"
+      className="relative py-20 md:py-28 lg:py-36 bg-muted/30 overflow-hidden"
       aria-labelledby="expertise-heading"
       id="expertise"
     >
@@ -119,7 +119,7 @@ export const Expertise = () => {
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Editorial Header */}
-        <div className="mb-20 lg:mb-24">
+        <div className="mb-14 lg:mb-18">
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
@@ -137,7 +137,7 @@ export const Expertise = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
             id="expertise-heading"
-            className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-[1.1] mb-8"
+            className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-[1.1] mb-6"
           >
             Seven domains
             <br />
