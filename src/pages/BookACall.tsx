@@ -168,14 +168,34 @@ const BookACall = () => {
               variants={containerVariants}
               className="max-w-3xl"
             >
-              {/* Step indicator */}
+              {/* Step indicator with enhanced animation */}
               <motion.div variants={itemVariants} className="mb-6">
-                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 border border-accent/30">
-                  <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                  <span className="text-xs font-medium tracking-widest text-accent uppercase">
+                <motion.span 
+                  className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-accent/15 border border-accent/30 backdrop-blur-sm relative overflow-hidden"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                >
+                  {/* Animated shimmer effect */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/20 to-transparent"
+                    animate={{ x: ["-100%", "100%"] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                  />
+                  
+                  {/* Step dots */}
+                  <div className="relative flex items-center gap-1.5">
+                    <motion.span 
+                      className="w-2.5 h-2.5 rounded-full bg-accent"
+                      animate={{ scale: [1, 1.2, 1] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    />
+                    <span className="w-2 h-2 rounded-full bg-accent/30" />
+                  </div>
+                  
+                  <span className="relative text-xs font-medium tracking-widest text-accent uppercase">
                     Step 1 of 2
                   </span>
-                </span>
+                </motion.span>
               </motion.div>
 
               <motion.h1 
@@ -242,64 +262,91 @@ const BookACall = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: 0.1 }}
               >
-                <div 
+                <motion.div 
                   onClick={() => handleOptionClick("call")}
+                  whileHover={{ y: -4, transition: { duration: 0.3 } }}
                   className={`
-                    group h-full rounded-3xl p-8 md:p-10 lg:p-12 cursor-pointer transition-all duration-500
+                    group h-full rounded-3xl p-8 md:p-10 lg:p-12 cursor-pointer transition-all duration-500 relative overflow-hidden
                     ${activeOption === "call" 
-                      ? "bg-secondary-background text-white shadow-2xl shadow-secondary-background/20" 
-                      : "bg-card border border-border/50 hover:border-border hover:shadow-2xl hover:shadow-black/[0.03]"
+                      ? "bg-secondary-background text-white shadow-2xl shadow-secondary-background/30" 
+                      : "bg-card border border-border/50 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10"
                     }
                   `}
                 >
-                  <span className={`
-                    inline-block text-xs tracking-widest uppercase mb-4
-                    ${activeOption === "call" ? "text-accent" : "text-muted-foreground"}
-                  `}>
-                    Recommended
-                  </span>
+                  {/* Glow effect on hover */}
+                  <div className={`
+                    absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none
+                    ${activeOption === "call" 
+                      ? "bg-gradient-to-br from-accent/10 via-transparent to-transparent" 
+                      : "bg-gradient-to-br from-primary/5 via-transparent to-transparent"
+                    }
+                  `} />
+                  
+                  {/* Animated border glow */}
+                  <div className={`
+                    absolute -inset-px rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none
+                    ${activeOption === "call" ? "" : "bg-gradient-to-r from-primary/20 via-primary/10 to-transparent"}
+                  `} />
 
-                  <div className="flex items-start gap-5 mb-6">
-                    <div className={`
-                      flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center
-                      ${activeOption === "call" ? "bg-accent/20" : "bg-primary/10"}
+                  <div className="relative">
+                    <span className={`
+                      inline-block text-xs tracking-widest uppercase mb-4
+                      ${activeOption === "call" ? "text-accent" : "text-muted-foreground"}
                     `}>
-                      <Calendar className={`w-6 h-6 ${activeOption === "call" ? "text-accent" : "text-primary"}`} />
+                      Recommended
+                    </span>
+
+                    <div className="flex items-start gap-5 mb-6">
+                      <motion.div 
+                        className={`
+                          flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300
+                          ${activeOption === "call" ? "bg-accent/20" : "bg-primary/10 group-hover:bg-primary/15 group-hover:shadow-lg group-hover:shadow-primary/20"}
+                        `}
+                        whileHover={{ scale: 1.05, rotate: 2 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                      >
+                        <Calendar className={`w-6 h-6 ${activeOption === "call" ? "text-accent" : "text-primary"}`} />
+                      </motion.div>
+                      <div>
+                        <h3 className={`
+                          text-2xl md:text-3xl font-serif font-medium mb-2
+                          ${activeOption === "call" ? "text-white" : "text-foreground"}
+                        `}>
+                          Book a call
+                        </h3>
+                        <p className={`text-sm ${activeOption === "call" ? "text-white/60" : "text-muted-foreground"}`}>
+                          15–30 minutes · Fastest way to get unstuck
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className={`
-                        text-2xl md:text-3xl font-serif font-medium mb-2
-                        ${activeOption === "call" ? "text-white" : "text-foreground"}
-                      `}>
+
+                    <p className={`leading-relaxed mb-8 ${activeOption === "call" ? "text-white/80" : "text-body"}`}>
+                      Jump on a quick call and we'll help you figure out what's going on, what to prioritize, and what comes next.
+                    </p>
+
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <Button 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleOptionClick("call");
+                        }}
+                        className={`
+                          h-12 px-6 rounded-full font-medium transition-all duration-300
+                          ${activeOption === "call" 
+                            ? "bg-accent text-secondary-background hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/30" 
+                            : "bg-primary text-white hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/30"
+                          }
+                        `}
+                      >
                         Book a call
-                      </h3>
-                      <p className={`text-sm ${activeOption === "call" ? "text-white/60" : "text-muted-foreground"}`}>
-                        15–30 minutes · Fastest way to get unstuck
-                      </p>
-                    </div>
+                        <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+                      </Button>
+                    </motion.div>
                   </div>
-
-                  <p className={`leading-relaxed mb-8 ${activeOption === "call" ? "text-white/80" : "text-body"}`}>
-                    Jump on a quick call and we'll help you figure out what's going on, what to prioritize, and what comes next.
-                  </p>
-
-                  <Button 
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleOptionClick("call");
-                    }}
-                    className={`
-                      h-12 px-6 rounded-full font-medium transition-all duration-300
-                      ${activeOption === "call" 
-                        ? "bg-accent text-secondary-background hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/20" 
-                        : "bg-primary text-white hover:bg-primary/90"
-                      }
-                    `}
-                  >
-                    Book a call
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </div>
+                </motion.div>
               </motion.div>
 
               {/* Option B: Send details */}
@@ -310,65 +357,86 @@ const BookACall = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: 0.2 }}
               >
-                <div 
+                <motion.div 
                   onClick={() => handleOptionClick("form")}
+                  whileHover={{ y: -4, transition: { duration: 0.3 } }}
                   className={`
-                    group h-full rounded-3xl p-8 md:p-10 cursor-pointer transition-all duration-500
+                    group h-full rounded-3xl p-8 md:p-10 cursor-pointer transition-all duration-500 relative overflow-hidden
                     ${activeOption === "form" 
-                      ? "bg-secondary-background text-white shadow-2xl shadow-secondary-background/20" 
-                      : "bg-card border border-border/50 hover:border-border hover:shadow-2xl hover:shadow-black/[0.03]"
+                      ? "bg-secondary-background text-white shadow-2xl shadow-secondary-background/30" 
+                      : "bg-card border border-border/50 hover:border-muted-foreground/30 hover:shadow-xl hover:shadow-black/5"
                     }
                   `}
                 >
-                  <span className={`
-                    inline-block text-xs tracking-widest uppercase mb-4
-                    ${activeOption === "form" ? "text-white/50" : "text-muted-foreground"}
-                  `}>
-                    Alternative
-                  </span>
+                  {/* Subtle glow effect */}
+                  <div className={`
+                    absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none
+                    ${activeOption === "form" 
+                      ? "bg-gradient-to-br from-white/5 via-transparent to-transparent" 
+                      : "bg-gradient-to-br from-muted-foreground/5 via-transparent to-transparent"
+                    }
+                  `} />
 
-                  <div className="flex items-start gap-5 mb-6">
-                    <div className={`
-                      flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center
-                      ${activeOption === "form" ? "bg-white/10" : "bg-muted"}
+                  <div className="relative">
+                    <span className={`
+                      inline-block text-xs tracking-widest uppercase mb-4
+                      ${activeOption === "form" ? "text-white/50" : "text-muted-foreground"}
                     `}>
-                      <Mail className={`w-6 h-6 ${activeOption === "form" ? "text-white" : "text-muted-foreground"}`} />
+                      Alternative
+                    </span>
+
+                    <div className="flex items-start gap-5 mb-6">
+                      <motion.div 
+                        className={`
+                          flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300
+                          ${activeOption === "form" ? "bg-white/10" : "bg-muted group-hover:bg-muted/80"}
+                        `}
+                        whileHover={{ scale: 1.05, rotate: -2 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                      >
+                        <Mail className={`w-6 h-6 ${activeOption === "form" ? "text-white" : "text-muted-foreground"}`} />
+                      </motion.div>
+                      <div>
+                        <h3 className={`
+                          text-xl md:text-2xl font-serif font-medium mb-2
+                          ${activeOption === "form" ? "text-white" : "text-foreground"}
+                        `}>
+                          Send details instead
+                        </h3>
+                        <p className={`text-sm ${activeOption === "form" ? "text-white/60" : "text-muted-foreground"}`}>
+                          2–3 minutes · We'll reply by email
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className={`
-                        text-xl md:text-2xl font-serif font-medium mb-2
-                        ${activeOption === "form" ? "text-white" : "text-foreground"}
-                      `}>
-                        Send details instead
-                      </h3>
-                      <p className={`text-sm ${activeOption === "form" ? "text-white/60" : "text-muted-foreground"}`}>
-                        2–3 minutes · We'll reply by email
-                      </p>
-                    </div>
+
+                    <p className={`leading-relaxed mb-8 ${activeOption === "form" ? "text-white/80" : "text-body"}`}>
+                      Not ready to meet yet? Send us your details and we'll get back to you.
+                    </p>
+
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <Button 
+                        variant="outline"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleOptionClick("form");
+                        }}
+                        className={`
+                          h-12 px-6 rounded-full font-medium transition-all duration-300
+                          ${activeOption === "form" 
+                            ? "border-white/30 text-white hover:bg-white/10" 
+                            : "border-border hover:border-foreground/30 hover:shadow-md"
+                          }
+                        `}
+                      >
+                        Send details
+                        <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+                      </Button>
+                    </motion.div>
                   </div>
-
-                  <p className={`leading-relaxed mb-8 ${activeOption === "form" ? "text-white/80" : "text-body"}`}>
-                    Not ready to meet yet? Send us your details and we'll get back to you.
-                  </p>
-
-                  <Button 
-                    variant="outline"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleOptionClick("form");
-                    }}
-                    className={`
-                      h-12 px-6 rounded-full font-medium transition-all duration-300
-                      ${activeOption === "form" 
-                        ? "border-white/30 text-white hover:bg-white/10" 
-                        : "border-border hover:border-foreground/30"
-                      }
-                    `}
-                  >
-                    Send details
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </div>
+                </motion.div>
               </motion.div>
             </div>
 
