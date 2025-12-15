@@ -1,35 +1,7 @@
 import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { ArrowRight } from 'lucide-react';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] as const },
-  },
-};
-
-const lineVariants = {
-  hidden: { scaleX: 0 },
-  visible: {
-    scaleX: 1,
-    transition: { duration: 1.2, ease: [0.42, 0, 0.58, 1] as const, delay: 0.3 },
-  },
-};
+import { ArrowRight, Check } from 'lucide-react';
 
 const steps = [
   {
@@ -55,22 +27,20 @@ const steps = [
   {
     number: 5,
     title: "Handover, support, and learning",
-    description: "We close out the project with a handover and next steps. For about three months, we are available for light support and questions. We also ask for feedback so we can improve the Nimara model.",
+    description: "We close out the project with a handover and next steps. For about three months, we are available for light support and questions.",
   },
 ];
 
 const addOns = [
   {
     title: "12-month Evaluation & Support",
-    description: "For a small add-on fee, our team stays close for up to 12 months. We check in at agreed points, help you see what is working, and adjust tools or processes where needed.",
-    color: "border-accent bg-accent/5 hover:bg-accent/10",
-    badge: "bg-accent/20 text-accent",
+    description: "Our team stays close for up to 12 months. We check in at agreed points, help you see what is working, and adjust tools or processes where needed.",
+    isAccent: true,
   },
   {
     title: "Fractional Partner (Ongoing)",
-    description: "For organizations that need more hands-on help, you can hire a Nimara Fractional Partner on an ongoing basis. This person helps manage and update the systems we installed.",
-    color: "border-primary bg-primary/5 hover:bg-primary/10",
-    badge: "bg-primary/20 text-primary",
+    description: "For organizations that need more hands-on help, hire a Nimara Fractional Partner on an ongoing basis to manage and update the systems we installed.",
+    isAccent: false,
   },
 ];
 
@@ -81,168 +51,197 @@ const YourJourney: React.FC = () => {
   const addOnsInView = useInView(addOnsRef, { once: true, margin: "-50px" });
 
   return (
-    <section className="py-20 sm:py-24 lg:py-32 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+    <section className="relative py-24 sm:py-32 lg:py-40 bg-secondary text-secondary-foreground overflow-hidden">
+      {/* Premium background effects */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-secondary via-secondary to-secondary/98" />
+        <div className="absolute top-1/3 right-0 w-80 h-80 bg-accent/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-primary/8 rounded-full blur-[100px]" />
+      </div>
+
+      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Editorial Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
-          className="mb-20"
-        >
-          <span className="text-xs font-medium tracking-[0.2em] uppercase text-primary mb-4 block">
+        <div className="text-center mb-20 lg:mb-24">
+          <motion.span 
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-medium tracking-[0.15em] uppercase mb-6"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
             The Process
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-foreground leading-[1.1] mb-6">
-            Your Journey{" "}
-            <span className="italic">with Nimara</span>
-          </h2>
-          <p className="text-lg text-body-muted max-w-3xl leading-relaxed">
-            Most projects follow the same basic path. The details change by organization, 
-            but these are the main steps from 'we need help' to 'this is working in real life.'
-          </p>
-        </motion.div>
+          </motion.span>
+          
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-6"
+          >
+            Your Journey with <span className="text-accent italic">Nimara</span>
+          </motion.h2>
+          
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg lg:text-xl text-secondary-foreground/60 max-w-2xl mx-auto"
+          >
+            Most projects follow the same basic path. These are the main steps from 
+            'we need help' to 'this is working in real life.'
+          </motion.p>
+        </div>
 
         {/* Timeline */}
-        <div ref={sectionRef} className="mb-24">
-          {/* Desktop Timeline */}
-          <div className="hidden lg:block relative">
-            <motion.div
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
-              variants={lineVariants}
-              className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-primary/10 via-primary/30 to-primary/10 -translate-y-1/2 origin-left"
+        <div ref={sectionRef} className="mb-24 lg:mb-32">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex items-center gap-6 mb-12"
+          >
+            <span className="text-sm font-medium text-secondary-foreground/40 uppercase tracking-wider">01</span>
+            <h3 className="text-2xl font-semibold">Five Steps</h3>
+            <div className="flex-1 h-px bg-gradient-to-r from-secondary-foreground/20 to-transparent" />
+          </motion.div>
+
+          {/* Timeline Cards */}
+          <div className="relative">
+            {/* Connecting line - Desktop */}
+            <motion.div 
+              initial={{ scaleY: 0 }}
+              animate={isInView ? { scaleY: 1 } : {}}
+              transition={{ duration: 1.2, delay: 0.4 }}
+              className="hidden lg:block absolute left-[39px] top-8 bottom-8 w-px bg-gradient-to-b from-primary/50 via-accent/50 to-primary/50 origin-top"
             />
 
-            <motion.div
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
-              variants={containerVariants}
-              className="relative z-10"
-            >
+            {/* Mobile connecting line */}
+            <motion.div 
+              initial={{ scaleY: 0 }}
+              animate={isInView ? { scaleY: 1 } : {}}
+              transition={{ duration: 1.2, delay: 0.4 }}
+              className="lg:hidden absolute left-[31px] top-8 bottom-8 w-px bg-gradient-to-b from-primary/50 via-accent/50 to-primary/50 origin-top"
+            />
+
+            <div className="space-y-6">
               {steps.map((step, index) => (
                 <motion.div
                   key={step.number}
-                  variants={itemVariants}
-                  className={`flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'} mb-20 last:mb-0`}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                  whileHover={{ x: 8 }}
+                  className="group relative flex gap-6 lg:gap-8"
                 >
-                  <div className={`flex items-start gap-6 max-w-xl ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ type: "spring", stiffness: 400 }}
-                      className="flex-shrink-0"
-                    >
-                      <div className="w-16 h-16 rounded-2xl bg-primary text-primary-foreground flex items-center justify-center text-2xl font-serif font-medium shadow-lg">
-                        {step.number}
-                      </div>
-                    </motion.div>
-
-                    <motion.div
-                      whileHover={{ x: index % 2 === 0 ? 4 : -4 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                      className={`bg-card p-6 rounded-2xl border border-border shadow-sm hover:shadow-md transition-shadow ${index % 2 === 0 ? 'text-left' : 'text-right'}`}
-                    >
-                      <h3 className="text-lg font-semibold text-foreground mb-3">
-                        {step.title}
-                      </h3>
-                      <p className="text-body-muted leading-relaxed text-sm">
-                        {step.description}
-                      </p>
-                    </motion.div>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-
-          {/* Mobile Timeline */}
-          <motion.div
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            variants={containerVariants}
-            className="lg:hidden relative"
-          >
-            <motion.div
-              initial={{ scaleY: 0 }}
-              animate={isInView ? { scaleY: 1 } : { scaleY: 0 }}
-              transition={{ duration: 1.2, ease: "easeInOut", delay: 0.3 }}
-              className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-primary/10 via-primary/30 to-primary/10 origin-top"
-            />
-
-            <div className="relative z-10">
-              {steps.map((step) => (
-                <motion.div
-                  key={step.number}
-                  variants={itemVariants}
-                  className="flex gap-6 mb-10 last:mb-0"
-                >
-                  <div className="flex-shrink-0">
-                    <div className="w-16 h-16 rounded-2xl bg-primary text-primary-foreground flex items-center justify-center text-xl font-serif font-medium shadow-lg">
+                  {/* Number badge */}
+                  <div className="relative z-10 flex-shrink-0">
+                    <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-2xl bg-gradient-to-br from-primary to-primary/80 text-primary-foreground flex items-center justify-center text-2xl lg:text-3xl font-bold shadow-lg shadow-primary/20 group-hover:shadow-primary/40 transition-shadow">
                       {step.number}
                     </div>
                   </div>
 
-                  <div className="flex-1 pt-2">
-                    <h3 className="text-lg font-semibold text-foreground mb-2">
+                  {/* Content card */}
+                  <div className="flex-1 p-6 lg:p-8 rounded-2xl bg-secondary-foreground/[0.03] border border-secondary-foreground/10 backdrop-blur-sm transition-all duration-300 group-hover:bg-secondary-foreground/[0.06] group-hover:border-secondary-foreground/20">
+                    <h4 className="text-lg lg:text-xl font-semibold text-secondary-foreground mb-3">
                       {step.title}
-                    </h3>
-                    <p className="text-body-muted text-sm leading-relaxed">
+                    </h4>
+                    <p className="text-sm lg:text-base text-secondary-foreground/60 leading-relaxed">
                       {step.description}
                     </p>
                   </div>
                 </motion.div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Add-ons Section */}
         <div ref={addOnsRef}>
-          <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent mb-16" />
-          
-          <motion.div
-            initial="hidden"
-            animate={addOnsInView ? "visible" : "hidden"}
-            variants={containerVariants}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={addOnsInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="flex items-center gap-6 mb-12"
           >
-            <motion.div variants={itemVariants} className="mb-12">
-              <span className="text-xs font-medium tracking-[0.2em] uppercase text-muted-foreground mb-2 block">
-                Optional Add-ons
-              </span>
-              <p className="text-body-muted max-w-2xl">
-                Some organizations want deeper follow-up. These add-ons are optional and come with a separate simple fee.
-              </p>
-            </motion.div>
-
-            <motion.div variants={containerVariants} className="grid md:grid-cols-2 gap-6">
-              {addOns.map((addon) => (
-                <motion.div
-                  key={addon.title}
-                  variants={itemVariants}
-                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  className="group"
-                >
-                  <div className={`h-full p-8 rounded-2xl border-2 transition-all ${addon.color}`}>
-                    <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 ${addon.badge}`}>
-                      Add-on
-                    </span>
-                    <h3 className="text-xl font-serif font-medium text-foreground mb-3">
-                      {addon.title}
-                    </h3>
-                    <p className="text-body-muted leading-relaxed text-sm">
-                      {addon.description}
-                    </p>
-                    
-                    <div className="mt-6 flex items-center gap-2 text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                      <span>Learn more</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
+            <span className="text-sm font-medium text-secondary-foreground/40 uppercase tracking-wider">02</span>
+            <h3 className="text-2xl font-semibold">Optional Add-ons</h3>
+            <div className="flex-1 h-px bg-gradient-to-r from-secondary-foreground/20 to-transparent" />
           </motion.div>
+
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={addOnsInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-secondary-foreground/60 max-w-2xl mb-10"
+          >
+            Some organizations want deeper follow-up. These add-ons are optional and come with a separate simple fee.
+          </motion.p>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {addOns.map((addon, index) => (
+              <motion.div
+                key={addon.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={addOnsInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                whileHover={{ y: -4 }}
+                className="group relative"
+              >
+                <div className={`h-full p-8 rounded-2xl border transition-all duration-300 ${
+                  addon.isAccent 
+                    ? 'border-accent/30 bg-gradient-to-br from-accent/5 to-accent/[0.02] hover:border-accent/50' 
+                    : 'border-primary/30 bg-gradient-to-br from-primary/5 to-primary/[0.02] hover:border-primary/50'
+                }`}>
+                  <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium mb-4 ${
+                    addon.isAccent
+                      ? 'bg-accent/10 text-accent'
+                      : 'bg-primary/10 text-primary'
+                  }`}>
+                    <Check className="w-3 h-3" />
+                    Add-on
+                  </span>
+                  
+                  <h4 className="text-xl font-semibold text-secondary-foreground mb-3">
+                    {addon.title}
+                  </h4>
+                  
+                  <p className="text-secondary-foreground/60 leading-relaxed text-sm">
+                    {addon.description}
+                  </p>
+
+                  <div className={`mt-6 inline-flex items-center gap-2 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity ${
+                    addon.isAccent ? 'text-accent' : 'text-primary'
+                  }`}>
+                    <span>Learn more</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                </div>
+
+                {/* Glow effect */}
+                <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl ${
+                  addon.isAccent ? 'bg-accent/10' : 'bg-primary/10'
+                }`} />
+              </motion.div>
+            ))}
+          </div>
         </div>
+
+        {/* Bottom CTA */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={addOnsInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-20 text-center"
+        >
+          <p className="text-secondary-foreground/50 mb-4">Ready to start your journey?</p>
+          <a
+            href="/book-a-call"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-secondary font-medium rounded-full hover:bg-accent/90 transition-colors"
+          >
+            Book a discovery call
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        </motion.div>
       </div>
     </section>
   );
