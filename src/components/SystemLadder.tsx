@@ -56,6 +56,64 @@ export const SystemLadder = () => {
         backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
       }} />
 
+      {/* Floating particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(12)].map((_, i) => (
+          <motion.div
+            key={i}
+            className={`absolute rounded-full ${i % 3 === 0 ? 'bg-accent/30' : i % 3 === 1 ? 'bg-primary/20' : 'bg-white/10'}`}
+            style={{
+              width: `${4 + (i % 4) * 2}px`,
+              height: `${4 + (i % 4) * 2}px`,
+              left: `${5 + (i * 8)}%`,
+              top: `${10 + (i * 7) % 80}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              x: [0, i % 2 === 0 ? 15 : -15, 0],
+              opacity: [0.3, 0.6, 0.3],
+              scale: [1, 1.2, 1],
+            }}
+            transition={{
+              duration: 4 + (i % 3) * 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.4,
+            }}
+          />
+        ))}
+        
+        {/* Larger accent orbs */}
+        <motion.div
+          className="absolute w-3 h-3 rounded-full bg-accent/20 blur-sm"
+          style={{ left: '15%', top: '25%' }}
+          animate={{
+            y: [0, -40, 0],
+            opacity: [0.2, 0.5, 0.2],
+          }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute w-4 h-4 rounded-full bg-accent/15 blur-sm"
+          style={{ right: '20%', top: '60%' }}
+          animate={{
+            y: [0, -50, 0],
+            x: [0, 20, 0],
+            opacity: [0.15, 0.4, 0.15],
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        />
+        <motion.div
+          className="absolute w-2 h-2 rounded-full bg-primary/25 blur-sm"
+          style={{ left: '70%', top: '30%' }}
+          animate={{
+            y: [0, -25, 0],
+            opacity: [0.2, 0.5, 0.2],
+          }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        />
+      </div>
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Premium Header */}
         <div className="max-w-3xl mb-20 lg:mb-24">
