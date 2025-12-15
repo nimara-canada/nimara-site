@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { ArrowRight } from "lucide-react";
+
+const WORDS = ["Fundable", "Sustainable", "Efficient"] as const;
 
 const HeroSection = () => {
   const [displayText, setDisplayText] = useState("");
@@ -9,7 +11,6 @@ const HeroSection = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [primaryEmail, setPrimaryEmail] = useState("");
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  const words = ["Fundable", "Sustainable", "Efficient"];
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -21,34 +22,32 @@ const HeroSection = () => {
 
   useEffect(() => {
     if (prefersReducedMotion) {
-      setDisplayText(words[0]);
+      setDisplayText(WORDS[0]);
       return;
     }
-    const currentWord = words[wordIndex];
+    
+    const currentWord = WORDS[wordIndex];
     const typeSpeed = 150;
     const deleteSpeed = 90;
     const pauseTime = 2000;
-    let timeout: NodeJS.Timeout;
-    if (!isDeleting) {
-      if (displayText.length < currentWord.length) {
-        timeout = setTimeout(() => {
+    
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        if (displayText.length < currentWord.length) {
           setDisplayText(currentWord.slice(0, displayText.length + 1));
-        }, typeSpeed);
-      } else {
-        timeout = setTimeout(() => {
+        } else {
           setIsDeleting(true);
-        }, pauseTime);
-      }
-    } else {
-      if (displayText.length > 0) {
-        timeout = setTimeout(() => {
-          setDisplayText(displayText.slice(0, -1));
-        }, deleteSpeed);
+        }
       } else {
-        setIsDeleting(false);
-        setWordIndex(prev => (prev + 1) % words.length);
+        if (displayText.length > 0) {
+          setDisplayText(displayText.slice(0, -1));
+        } else {
+          setIsDeleting(false);
+          setWordIndex((prev) => (prev + 1) % WORDS.length);
+        }
       }
-    }
+    }, isDeleting ? deleteSpeed : (displayText.length === currentWord.length ? pauseTime : typeSpeed));
+    
     return () => clearTimeout(timeout);
   }, [displayText, isDeleting, wordIndex, prefersReducedMotion]);
 
@@ -99,7 +98,7 @@ const HeroSection = () => {
               <br />
               <span className="relative inline-flex items-baseline">
                 <span className="font-normal italic text-accent" aria-live="polite" aria-atomic="true">
-                  {displayText || words[0]}
+                  {displayText || WORDS[0]}
                   {!prefersReducedMotion && (
                     <span 
                       className="animate-pulse ml-0.5 inline-block w-[3px] h-[0.85em] bg-accent align-middle" 
