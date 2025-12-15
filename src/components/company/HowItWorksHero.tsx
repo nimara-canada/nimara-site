@@ -41,12 +41,12 @@ const HowItWorksHero: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-8"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-8 text-white"
             >
               A simple way to go from{' '}
-              <span className="italic" style={{ color: '#A78BFA' }}>"we need help"</span>{' '}
+              <span className="italic text-white">"we need help"</span>{' '}
               to{' '}
-              <span className="text-accent italic">"this works."</span>
+              <span className="italic text-white">"this works."</span>
             </motion.h1>
 
             <motion.p 
