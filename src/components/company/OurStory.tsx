@@ -4,17 +4,17 @@ import { ArrowRight } from 'lucide-react';
 const steps = [
   {
     number: "01",
-    heading: "The pattern we kept seeing",
+    heading: "The Pattern We Kept Seeing",
     text: "We worked with small and mid-size nonprofits where one tired person was holding everything together. The board, the books, HR, fundraising, and tech all lived in a few people's heads and messy spreadsheets. Every 2–3 years, the same problems came back."
   },
   {
     number: "02",
-    heading: "The breaking point",
+    heading: "The Breaking Point",
     text: "At some point, it became clear that one-off consulting and short grants were not enough. Funders kept running new pilots. Consultants kept building new tools. But there was no shared operator whose job was to install and maintain the basic systems every org needs."
   },
   {
     number: "03",
-    heading: "The decision to build Nimara",
+    heading: "The Decision To Build Nimara",
     text: "We decided to stop treating this as a side problem and build a national operator. Nimara uses clear tiers, standard bundles, and a shared bench of operators so we can install working systems—not just deliver reports."
   }
 ];
@@ -38,11 +38,11 @@ export const OurStory = () => {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <p className="text-sm tracking-widest text-muted-foreground uppercase mb-4">
-            Our story
+            Our Story
           </p>
 
           <h2 className="text-4xl md:text-5xl font-serif font-medium text-foreground leading-[1.1] mb-6">
-            Why we built Nimara
+            Why We Built Nimara
           </h2>
 
           <p className="text-lg text-body leading-relaxed">
@@ -100,7 +100,7 @@ export const OurStory = () => {
             className="group inline-flex items-center gap-2 text-foreground font-medium"
           >
             <span className="relative">
-              See how the Nimara model works
+              See How The Nimara Model Works
               <span className="absolute left-0 -bottom-0.5 w-full h-px bg-foreground/30 group-hover:bg-foreground transition-colors duration-300" />
             </span>
             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />

@@ -76,8 +76,8 @@ export const OperatorsSection = () => {
               The Team
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-foreground leading-[1.1] mb-6">
-              The operators{" "}
-              <span className="italic">behind Nimara</span>
+              The Operators{" "}
+              <span className="italic">Behind Nimara</span>
             </h2>
             <p className="text-lg text-body-muted max-w-3xl leading-relaxed">
               Nimara is built by operators who have served as fund managers, board members, 
@@ -135,7 +135,7 @@ export const OperatorsSection = () => {
               className="inline-flex items-center gap-2 text-primary font-medium group"
             >
               <span className="relative">
-                Learn about Nimara Practice Partners
+                Learn About Nimara Practice Partners
                 <span className="absolute left-0 -bottom-0.5 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
               </span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
