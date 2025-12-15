@@ -40,14 +40,16 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
       </a>
 
       <header
-        className={`fixed left-0 right-0 z-[9999] isolate w-full border-b border-border/50 transition-all duration-300 ${
+        className={`fixed left-0 right-0 w-full border-b border-border/50 transition-all duration-300 ${
           isScrolled ? "shadow-sm" : ""
         }`}
         style={{
           top: "var(--announcement-height, 0px)",
-          backgroundColor: "hsl(var(--background) / 0.96)",
-          backdropFilter: "blur(10px)",
-          WebkitBackdropFilter: "blur(10px)",
+          backgroundColor: "hsl(var(--background))",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          zIndex: 9999,
+          isolation: "isolate",
         }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
