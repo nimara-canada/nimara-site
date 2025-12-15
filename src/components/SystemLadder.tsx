@@ -43,14 +43,14 @@ export const SystemLadder = () => {
     <section 
       ref={sectionRef}
       id="system" 
-      className="relative py-20 md:py-28 lg:py-36 bg-secondary text-secondary-foreground overflow-hidden"
+      className="relative py-20 md:py-28 lg:py-36 bg-[#0B1120] text-white overflow-hidden"
       aria-labelledby="system-heading"
     >
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 opacity-[0.03]">
         <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(hsl(var(--secondary-foreground)) 1px, transparent 1px),
-                           linear-gradient(90deg, hsl(var(--secondary-foreground)) 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(rgba(255,255,255,1) 1px, transparent 1px),
+                           linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)`,
           backgroundSize: '80px 80px'
         }} />
       </div>
@@ -64,10 +64,10 @@ export const SystemLadder = () => {
             transition={{ duration: 0.8 }}
             className="flex items-center gap-4 mb-8"
           >
-            <span className="text-xs font-medium tracking-[0.2em] uppercase text-secondary-foreground/50">
+            <span className="text-xs font-medium tracking-[0.2em] uppercase text-white/50">
               The Nimara System
             </span>
-            <div className="h-px flex-1 bg-secondary-foreground/20" />
+            <div className="h-px flex-1 bg-white/20" />
           </motion.div>
           
           <motion.h2
@@ -79,14 +79,14 @@ export const SystemLadder = () => {
           >
             Where are you
             <br />
-            <span className="font-normal italic text-secondary-foreground/70">on the ladder?</span>
+            <span className="font-normal italic text-white/70">on the ladder?</span>
           </motion.h2>
           
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg text-secondary-foreground/60 max-w-xl"
+            className="text-lg text-white/60 max-w-xl"
           >
             We use a simple 5-tier ladder to understand where your nonprofit stands today. 
             This helps us know exactly where to start and which path fits best.
@@ -126,8 +126,8 @@ export const SystemLadder = () => {
                   className="group"
                 >
                   <div className={`
-                    grid grid-cols-12 gap-4 lg:gap-8 py-8 lg:py-10 border-t border-secondary-foreground/10 transition-colors duration-300
-                    ${isHovered ? 'bg-secondary-foreground/5' : ''}
+                    grid grid-cols-12 gap-4 lg:gap-8 py-8 lg:py-10 border-t border-white/10 transition-colors duration-300
+                    ${isHovered ? 'bg-white/5' : ''}
                   `}>
                     {/* Tier number */}
                     <div className="col-span-2 lg:col-span-1">
@@ -135,7 +135,7 @@ export const SystemLadder = () => {
                         text-5xl lg:text-6xl font-extralight transition-colors duration-500
                         ${isNimaraFocus 
                           ? (isHovered ? 'text-accent' : 'text-accent/50')
-                          : (isHovered ? 'text-secondary-foreground/60' : 'text-secondary-foreground/20')
+                          : (isHovered ? 'text-white/60' : 'text-white/20')
                         }
                       `}>
                         {step.level}
@@ -147,7 +147,7 @@ export const SystemLadder = () => {
                       <div className="flex items-center gap-3 mb-1">
                         <h3 className={`
                           text-lg lg:text-xl font-medium transition-colors duration-300
-                          ${isHovered ? 'text-secondary-foreground' : 'text-secondary-foreground/90'}
+                          ${isHovered ? 'text-white' : 'text-white/90'}
                         `}>
                           {step.title}
                         </h3>
@@ -161,7 +161,7 @@ export const SystemLadder = () => {
                     
                     {/* Description */}
                     <div className="col-span-12 lg:col-span-8 mt-2 lg:mt-0">
-                      <p className="text-secondary-foreground/60 leading-relaxed">
+                      <p className="text-white/60 leading-relaxed">
                         {step.desc}
                       </p>
                       
@@ -184,7 +184,7 @@ export const SystemLadder = () => {
               </div>
             );
           })}
-          <div className="border-t border-secondary-foreground/10" />
+          <div className="border-t border-white/10" />
         </div>
 
         {/* Bottom CTA */}
@@ -192,23 +192,23 @@ export const SystemLadder = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.7 }}
-          className="mt-16 pt-8 border-t border-secondary-foreground/10"
+          className="mt-16 pt-8 border-t border-white/10"
         >
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
             <div>
-              <p className="text-lg font-medium text-secondary-foreground mb-1">
+              <p className="text-lg font-medium text-white mb-1">
                 Not sure where you stand?
               </p>
-              <p className="text-sm text-secondary-foreground/50">
+              <p className="text-sm text-white/50">
                 The free 4-minute check will show you
               </p>
             </div>
             <a
               href="/book-a-call"
-              className="group inline-flex items-center gap-3 text-secondary-foreground font-medium"
+              className="group inline-flex items-center gap-3 text-white font-medium"
             >
               <span className="group-hover:text-accent transition-colors">Start the free check</span>
-              <span className="w-8 h-px bg-secondary-foreground group-hover:w-12 group-hover:bg-accent transition-all duration-300" />
+              <span className="w-8 h-px bg-white group-hover:w-12 group-hover:bg-accent transition-all duration-300" />
             </a>
           </div>
         </motion.div>
