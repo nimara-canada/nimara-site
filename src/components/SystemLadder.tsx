@@ -95,6 +95,95 @@ export const SystemLadder = () => {
           </motion.p>
         </div>
 
+        {/* Progress Bar - Desktop */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="hidden lg:block relative mb-8"
+        >
+          {/* Main progress line */}
+          <div className="relative h-1 bg-white/10 rounded-full overflow-hidden">
+            {/* Animated gradient fill */}
+            <motion.div
+              initial={{ width: '0%' }}
+              animate={isInView ? { width: '60%' } : {}}
+              transition={{ duration: 1.5, delay: 0.5, ease: 'easeOut' }}
+              className="absolute inset-y-0 left-0 bg-gradient-to-r from-accent via-accent/80 to-accent/40 rounded-full"
+            />
+            {/* Shimmer effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-[shimmer_2s_infinite]" style={{ backgroundSize: '200% 100%' }} />
+          </div>
+          
+          {/* Progress dots */}
+          <div className="absolute -top-2 left-0 right-0 flex justify-between px-[8%]">
+            {ladderSteps.map((step, index) => {
+              const isNimaraFocus = step.level <= 2;
+              const isHovered = hoveredLevel === step.level;
+              const isSelected = selectedLevel === step.level;
+              
+              return (
+                <motion.div
+                  key={step.level}
+                  initial={{ scale: 0 }}
+                  animate={isInView ? { scale: 1 } : {}}
+                  transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
+                  className="relative flex flex-col items-center"
+                >
+                  {/* Dot */}
+                  <div className={`
+                    w-5 h-5 rounded-full border-2 transition-all duration-300
+                    ${isNimaraFocus 
+                      ? 'bg-accent border-accent shadow-lg shadow-accent/30' 
+                      : 'bg-[#0B1120] border-white/30'
+                    }
+                    ${(isHovered || isSelected) ? 'scale-125 ring-4 ring-accent/20' : ''}
+                  `}>
+                    {isNimaraFocus && (
+                      <div className="absolute inset-0 rounded-full bg-accent animate-ping opacity-30" />
+                    )}
+                  </div>
+                  
+                  {/* Tier label */}
+                  <span className={`
+                    mt-2 text-xs font-medium transition-colors duration-300
+                    ${isNimaraFocus ? 'text-accent' : 'text-white/40'}
+                    ${(isHovered || isSelected) ? 'text-white' : ''}
+                  `}>
+                    Tier {step.level}
+                  </span>
+                </motion.div>
+              );
+            })}
+          </div>
+          
+          {/* Focus zone indicator */}
+          <div className="absolute -top-1 left-0 w-[60%] flex justify-end">
+            <div className="w-px h-8 bg-gradient-to-b from-accent/50 to-transparent" />
+          </div>
+        </motion.div>
+
+        {/* Mobile Progress Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="lg:hidden flex items-center justify-center gap-2 mb-8"
+        >
+          {ladderSteps.map((step) => {
+            const isNimaraFocus = step.level <= 2;
+            return (
+              <div
+                key={step.level}
+                className={`
+                  w-8 h-1.5 rounded-full transition-colors duration-300
+                  ${isNimaraFocus ? 'bg-accent' : 'bg-white/20'}
+                `}
+              />
+            );
+          })}
+        </motion.div>
+
         {/* Tier Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-3 mb-16">
           {ladderSteps.map((step, index) => {
