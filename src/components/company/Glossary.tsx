@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import { BookOpen } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const glossaryTerms = [
   {
@@ -45,7 +45,8 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.08,
+      staggerChildren: 0.06,
+      delayChildren: 0.1,
     },
   },
 };
@@ -55,72 +56,73 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4, ease: "easeOut" as const },
+    transition: { duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] as const },
   },
 };
 
 export const Glossary = () => {
-  return (
-    <section className="py-16 md:py-24 lg:py-32 bg-muted/30">
-      <div id="glossary" className="container max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12 md:mb-16"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-            <BookOpen className="w-4 h-4 text-primary" />
-            <span className="text-xs font-semibold tracking-wider uppercase text-primary">
-              Key Terms
-            </span>
-          </div>
-          <h2 className="heading-2 text-foreground mb-4">
-            Glossary
-          </h2>
-          <p className="text-subtitle max-w-2xl mx-auto">
-            Quick definitions for the terms we use across Nimara.
-          </p>
-        </motion.div>
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
-        {/* Terms list */}
+  return (
+    <section ref={sectionRef} className="py-20 sm:py-24 lg:py-32 bg-background">
+      <div id="glossary" className="container max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
         <motion.div
-          variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="space-y-4"
+          animate={isInView ? "visible" : "hidden"}
+          variants={containerVariants}
         >
-          {glossaryTerms.map((item, index) => (
-            <motion.div
-              key={item.term}
-              variants={itemVariants}
-              className="group"
-            >
-              <div className="bg-card border border-border rounded-xl p-5 md:p-6 transition-all duration-300 hover:shadow-md hover:border-primary/30">
-                <div className="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
-                  {/* Term badge */}
-                  <div className="shrink-0">
-                    <span className="inline-block px-3 py-1.5 rounded-lg bg-primary/10 text-primary font-semibold text-sm">
+          {/* Editorial Header */}
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 mb-16">
+            <motion.div variants={itemVariants} className="lg:col-span-5">
+              <span className="text-xs font-medium tracking-[0.2em] uppercase text-primary mb-4 block">
+                Reference
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-foreground leading-[1.1]">
+                Key{" "}
+                <span className="italic">Terms</span>
+              </h2>
+            </motion.div>
+
+            <motion.div variants={itemVariants} className="lg:col-span-7 lg:pt-8">
+              <p className="text-lg text-body-muted leading-relaxed">
+                Quick definitions for the terms we use across Nimara. 
+                Bookmark this section for easy reference.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Terms Grid */}
+          <motion.div
+            variants={containerVariants}
+            className="grid md:grid-cols-2 gap-4"
+          >
+            {glossaryTerms.map((item) => (
+              <motion.div
+                key={item.term}
+                variants={itemVariants}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                className="group"
+              >
+                <div className="h-full bg-card border border-border rounded-2xl p-6 transition-all duration-300 hover:shadow-md hover:border-primary/30">
+                  <div className="flex items-start gap-4 mb-4">
+                    {/* Term badge */}
+                    <span className="inline-block px-3 py-1.5 rounded-lg bg-primary text-primary-foreground font-semibold text-sm">
                       {item.term}
                     </span>
                   </div>
                   
                   {/* Content */}
-                  <div className="flex-1 space-y-1.5">
-                    <h3 className="font-semibold text-foreground text-base md:text-lg">
-                      {item.fullName}
-                    </h3>
-                    <p className="text-body text-sm md:text-base leading-relaxed">
-                      {item.definition}
-                    </p>
-                  </div>
+                  <h3 className="font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                    {item.fullName}
+                  </h3>
+                  <p className="text-body-muted text-sm leading-relaxed">
+                    {item.definition}
+                  </p>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </motion.div>
         </motion.div>
       </div>
     </section>
