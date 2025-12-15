@@ -1,141 +1,147 @@
-import { motion } from "framer-motion";
-import { CheckCircle2, XCircle, Zap, Layers } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const situations = [
   {
     situation: "One scary email / funder / audit issue",
     path: "Path A – Fast Help",
-    nohc: false,
-    icon: Zap,
-    iconColor: "text-accent",
+    nohc: "No",
   },
   {
     situation: "We want better systems across domains",
     path: "Path B – System Installs",
-    nohc: true,
-    icon: Layers,
-    iconColor: "text-primary",
+    nohc: "Yes",
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] as const },
-  },
-};
-
 const HealthCheckRule = () => {
-  return (
-    <section className="py-20 sm:py-24 lg:py-32 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-        >
-          {/* Editorial Header */}
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 mb-16">
-            <motion.div variants={itemVariants} className="lg:col-span-5">
-              <span className="text-xs font-medium tracking-[0.2em] uppercase text-primary mb-4 block">
-                Starting Point
-              </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-foreground leading-[1.1]">
-                Do we always start with an{" "}
-                <span className="italic text-primary">NOHC Snapshot?</span>
-              </h2>
-            </motion.div>
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
-            <motion.div variants={itemVariants} className="lg:col-span-7 lg:pt-8">
-              <div className="space-y-5 text-body-muted text-lg leading-relaxed">
-                <p>
-                  <strong className="text-foreground font-semibold">No.</strong>
-                </p>
-                <p>
-                  If you have one urgent problem, we use{" "}
-                  <strong className="text-foreground">Fast Help (Path A)</strong> – a small, 
-                  focused project that does not require an NOHC Snapshot.
-                </p>
-                <p>
-                  If you want to upgrade your systems across any of our 7 domains, we start with the{" "}
-                  <strong className="text-foreground">NOHC Snapshot ($2,500)</strong> – a ~2-week 
-                  health check that shows your Tiers by domain. Then we design Path B Bundles to 
-                  move those systems up a Tier.
-                </p>
-              </div>
-            </motion.div>
+  return (
+    <section 
+      ref={sectionRef}
+      className="relative py-32 sm:py-40 lg:py-48 bg-muted/30 overflow-hidden"
+    >
+      {/* Subtle grid pattern */}
+      <div className="absolute inset-0 opacity-[0.015]">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
+                           linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
+          backgroundSize: '60px 60px'
+        }} />
+      </div>
+
+      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        {/* Editorial Header */}
+        <div className="mb-20 lg:mb-24">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8 }}
+            className="flex items-center gap-4 mb-8"
+          >
+            <span className="text-xs font-medium tracking-[0.2em] uppercase text-muted-foreground">
+              Starting Point
+            </span>
+            <div className="h-px flex-1 bg-border" />
+          </motion.div>
+          
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-[1.1] mb-8"
+          >
+            Do we always start with
+            <br />
+            <span className="font-normal italic text-muted-foreground">an NOHC Snapshot?</span>
+          </motion.h2>
+        </div>
+
+        {/* Answer section */}
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 mb-20 lg:mb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <span className="inline-block text-6xl lg:text-7xl font-extralight text-muted-foreground/30 mb-6">
+              No.
+            </span>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              If you have one urgent problem, we use{" "}
+              <span className="text-foreground font-medium">Fast Help (Path A)</span> – a small, 
+              focused project that does not require an NOHC Snapshot.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="lg:pt-16"
+          >
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              If you want to upgrade your systems across any of our 7 domains, we start with the{" "}
+              <span className="text-foreground font-medium">NOHC Snapshot ($2,500)</span> – a ~2-week 
+              health check that shows your Tiers by domain. Then we design Path B Bundles to 
+              move those systems up a Tier.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Comparison Table */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          {/* Table Header */}
+          <div className="grid grid-cols-12 gap-4 lg:gap-8 py-4 border-b border-border">
+            <div className="col-span-6 lg:col-span-5">
+              <span className="text-xs font-medium tracking-[0.15em] uppercase text-muted-foreground">
+                Situation
+              </span>
+            </div>
+            <div className="col-span-4 lg:col-span-5">
+              <span className="text-xs font-medium tracking-[0.15em] uppercase text-muted-foreground">
+                Path
+              </span>
+            </div>
+            <div className="col-span-2 text-right">
+              <span className="text-xs font-medium tracking-[0.15em] uppercase text-muted-foreground">
+                NOHC?
+              </span>
+            </div>
           </div>
 
-          {/* Comparison Table */}
-          <motion.div variants={itemVariants}>
-            <div className="overflow-hidden rounded-2xl border border-border bg-card">
-              {/* Table Header */}
-              <div className="grid grid-cols-3 bg-muted border-b border-border">
-                <div className="px-6 py-4">
-                  <span className="text-xs font-medium tracking-[0.15em] uppercase text-muted-foreground">
-                    Situation
-                  </span>
-                </div>
-                <div className="px-6 py-4 text-center">
-                  <span className="text-xs font-medium tracking-[0.15em] uppercase text-muted-foreground">
-                    Path
-                  </span>
-                </div>
-                <div className="px-6 py-4 text-center">
-                  <span className="text-xs font-medium tracking-[0.15em] uppercase text-muted-foreground">
-                    NOHC Snapshot?
-                  </span>
-                </div>
+          {/* Table Rows */}
+          {situations.map((row, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+              className="group grid grid-cols-12 gap-4 lg:gap-8 py-6 lg:py-8 border-b border-border hover:bg-background/50 transition-colors duration-300"
+            >
+              <div className="col-span-6 lg:col-span-5">
+                <p className="text-foreground font-medium group-hover:text-primary transition-colors">
+                  {row.situation}
+                </p>
               </div>
-
-              {/* Table Rows */}
-              {situations.map((row, index) => (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  whileHover={{ backgroundColor: "hsl(var(--muted) / 0.5)" }}
-                  className={`grid grid-cols-3 transition-colors duration-200 ${
-                    index !== situations.length - 1 ? "border-b border-border" : ""
-                  }`}
-                >
-                  <div className="px-6 py-5 flex items-center">
-                    <p className="text-foreground font-medium">{row.situation}</p>
-                  </div>
-                  <div className="px-6 py-5 flex items-center justify-center gap-3">
-                    <row.icon className={`w-4 h-4 ${row.iconColor}`} />
-                    <span className="text-foreground font-semibold">{row.path}</span>
-                  </div>
-                  <div className="px-6 py-5 flex justify-center items-center">
-                    {row.nohc ? (
-                      <div className="flex items-center gap-2">
-                        <CheckCircle2 className="w-5 h-5 text-emerald-500" />
-                        <span className="text-sm text-emerald-600 font-medium">Yes</span>
-                      </div>
-                    ) : (
-                      <div className="flex items-center gap-2">
-                        <XCircle className="w-5 h-5 text-muted-foreground" />
-                        <span className="text-sm text-muted-foreground font-medium">No</span>
-                      </div>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+              <div className="col-span-4 lg:col-span-5">
+                <span className="text-muted-foreground">{row.path}</span>
+              </div>
+              <div className="col-span-2 text-right">
+                <span className={`text-sm font-medium ${
+                  row.nohc === "Yes" ? "text-foreground" : "text-muted-foreground/60"
+                }`}>
+                  {row.nohc}
+                </span>
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>
