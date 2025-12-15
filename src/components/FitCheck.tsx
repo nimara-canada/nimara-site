@@ -127,15 +127,15 @@ export const FitCheck = () => {
                     <div className={`
                       flex-shrink-0 w-5 h-5 rounded border-2 flex items-center justify-center transition-all duration-300 mt-0.5
                       ${isChecked 
-                        ? 'bg-[#0B1120] border-[#0B1120]' 
-                        : 'border-[#0B1120]/30 group-hover:border-[#0B1120]/50'
+                        ? 'bg-white border-white' 
+                        : 'border-white/50 group-hover:border-white bg-transparent'
                       }
                     `}>
                       <motion.svg
                         initial={false}
                         animate={{ scale: isChecked ? 1 : 0, opacity: isChecked ? 1 : 0 }}
                         transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                        className="w-3 h-3 text-background"
+                        className="w-3 h-3 text-[#0B1120]"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
