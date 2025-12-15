@@ -43,12 +43,10 @@ const HowItWorksHero: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-8"
             >
-              A clear system for getting from{' '}
-              {/* Using lighter purple for WCAG AA on large text (3:1 minimum) */}
-              <span className="italic" style={{ color: '#A78BFA' }}>'we need help'</span>{' '}
+              A simple way to go from{' '}
+              <span className="italic" style={{ color: '#A78BFA' }}>"we need help"</span>{' '}
               to{' '}
-              {/* Mint/accent color has good contrast on dark */}
-              <span className="text-accent italic">'this works now'</span>
+              <span className="text-accent italic">"this works."</span>
             </motion.h1>
 
             <motion.p 
