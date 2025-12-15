@@ -218,17 +218,37 @@ export const SystemLadder = () => {
                 onClick={() => setSelectedLevel(selectedLevel === step.level ? null : step.level)}
                 className="group cursor-pointer"
               >
+                {/* Gradient border wrapper */}
                 <motion.div
                   className={`
-                    relative h-full p-6 lg:p-5 rounded-2xl border transition-all duration-500
+                    relative h-full p-[1px] rounded-2xl transition-all duration-500 overflow-hidden
                     ${isActive 
-                      ? 'bg-white/[0.08] border-white/20 shadow-2xl shadow-white/5' 
-                      : 'bg-white/[0.02] border-white/[0.06] hover:border-white/10'
+                      ? (isNimaraFocus 
+                          ? 'bg-gradient-to-br from-accent via-accent/50 to-primary/50' 
+                          : 'bg-gradient-to-br from-white/40 via-white/20 to-white/10')
+                      : 'bg-white/[0.06]'
                     }
                   `}
                   whileHover={{ y: -8, scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 >
+                  {/* Animated gradient on hover */}
+                  <div className={`
+                    absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500
+                    ${isNimaraFocus 
+                      ? 'bg-[conic-gradient(from_0deg,hsl(var(--accent)),hsl(var(--primary)),hsl(var(--accent)))]' 
+                      : 'bg-[conic-gradient(from_0deg,rgba(255,255,255,0.3),rgba(255,255,255,0.1),rgba(255,255,255,0.3))]'
+                    }
+                  `} style={{ animation: isActive ? 'spin 3s linear infinite' : 'none' }} />
+                  
+                  {/* Inner card content */}
+                  <div className={`
+                    relative h-full p-6 lg:p-5 rounded-[15px] transition-all duration-500
+                    ${isActive 
+                      ? 'bg-[#0B1120] shadow-2xl shadow-white/5' 
+                      : 'bg-[#0B1120]'
+                    }
+                  `}>
                   {/* Glow effect for focused tiers */}
                   {isNimaraFocus && (
                     <div className={`
@@ -292,6 +312,7 @@ export const SystemLadder = () => {
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
                     </motion.svg>
+                  </div>
                   </div>
                 </motion.div>
               </motion.div>
