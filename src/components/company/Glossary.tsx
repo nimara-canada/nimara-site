@@ -6,37 +6,37 @@ const glossaryTerms = [
     term: "NOHC",
     fullName: "Nimara Organizational Health Check",
     definition:
-      "A structured assessment that scores your nonprofit across 7 domains: governance, finance, HR, programs, fundraising, volunteers, and systems & data. It takes 2–3 weeks and shows where each system sits on the Tier ladder.",
+      "A Structured Assessment That Scores Your Nonprofit Across 7 Domains: Governance, Finance, HR, Programs, Fundraising, Volunteers, And Systems & Data. It Takes 2–3 Weeks And Shows Where Each System Sits On The Tier Ladder.",
   },
   {
     term: "Tier",
     fullName: "Organizational Health Tier (0–4)",
     definition:
-      "A score from 0 to 4 that describes how mature a system is. Tier 0 means 'not yet built,' Tier 2 means 'functional but fragile,' and Tier 4 means 'running smoothly at scale.' We help you move up one Tier at a time.",
+      "A Score From 0 To 4 That Describes How Mature A System Is. Tier 0 Means 'Not Yet Built,' Tier 2 Means 'Functional But Fragile,' And Tier 4 Means 'Running Smoothly At Scale.' We Help You Move Up One Tier At A Time.",
   },
   {
     term: "Bundle",
     fullName: "System Bundle",
     definition:
-      "A package of policies, templates, trackers, and step-by-step guides designed to install or upgrade one system area. Each bundle is a short, focused project with clear deliverables.",
+      "A Package Of Policies, Templates, Trackers, And Step-By-Step Guides Designed To Install Or Upgrade One System Area. Each Bundle Is A Short, Focused Project With Clear Deliverables.",
   },
   {
     term: "Acceptance Bundle",
     fullName: "Acceptance Bundle",
     definition:
-      "The final set of files, tools, and routines you receive at the end of a project. Everything is ready to use — no 'advice only.' Your team can run these systems without us.",
+      "The Final Set Of Files, Tools, And Routines You Receive At The End Of A Project. Everything Is Ready To Use — No 'Advice Only.' Your Team Can Run These Systems Without Us.",
   },
   {
     term: "Path A",
     fullName: "Fast Help",
     definition:
-      "A 1–4 week engagement for one urgent problem (a scary email, audit, funder deadline, or policy gap). No health check required. You get a mini-bundle to fix that specific issue.",
+      "A 1–4 Week Engagement For One Urgent Problem (A Scary Email, Audit, Funder Deadline, Or Policy Gap). No Health Check Required. You Get A Mini-Bundle To Fix That Specific Issue.",
   },
   {
     term: "Path B",
     fullName: "Health Check & Systems",
     definition:
-      "An 8–12 week per phase engagement that starts with the NOHC, then installs 1–2 system bundles. Best for orgs that want to upgrade multiple areas and become audit- and funder-ready.",
+      "An 8–12 Week Per Phase Engagement That Starts With The NOHC, Then Installs 1–2 System Bundles. Best For Orgs That Want To Upgrade Multiple Areas And Become Audit- And Funder-Ready.",
   },
 ];
 
@@ -85,8 +85,8 @@ export const Glossary = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-muted-foreground max-w-xl"
           >
-            Quick definitions for the terms we use across Nimara. 
-            Bookmark this section for easy reference.
+            Quick Definitions For The Terms We Use Across Nimara. 
+            Bookmark This Section For Easy Reference.
           </motion.p>
         </div>
 
@@ -137,13 +137,13 @@ export const Glossary = () => {
         >
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <p className="text-muted-foreground">
-              Have questions about a term?
+              Have Questions About A Term?
             </p>
             <a 
               href="/book-a-call" 
               className="inline-flex items-center gap-3 text-foreground font-medium group"
             >
-              <span className="group-hover:text-primary transition-colors">Get in touch</span>
+              <span className="group-hover:text-primary transition-colors">Get In Touch</span>
               <span className="w-8 h-px bg-foreground group-hover:w-12 group-hover:bg-primary transition-all duration-300" />
             </a>
           </div>

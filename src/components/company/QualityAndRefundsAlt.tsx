@@ -5,23 +5,23 @@ import { useRef } from 'react';
 const guardrails = [
   {
     number: "01",
-    label: "Standard scopes",
-    description: "Every project uses a written Statement of Work (SOW) with clear deliverables, timelines, and fees.",
+    label: "Standard Scopes",
+    description: "Every Project Uses A Written Statement Of Work (SOW) With Clear Deliverables, Timelines, And Fees.",
   },
   {
     number: "02",
-    label: "Fix-first approach",
-    description: "If a deliverable is off, we try to fix it first. If we cannot fix it, we may refund the fee for that part of the work.",
+    label: "Fix-First Approach",
+    description: "If A Deliverable Is Off, We Try To Fix It First. If We Cannot Fix It, We May Refund The Fee For That Part Of The Work.",
   },
   {
     number: "03",
-    label: "14-day review + 3-month support",
-    description: "You have 14 days after project completion to flag issues, plus about three months of light support so systems do not die on day one.",
+    label: "14-Day Review + 3-Month Support",
+    description: "You Have 14 Days After Project Completion To Flag Issues, Plus About Three Months Of Light Support So Systems Do Not Die On Day One.",
   },
   {
     number: "04",
-    label: "Plain-language Refund Policy",
-    description: "We publish a public refund and fix policy so nonprofits, funders, and partners know what to expect.",
+    label: "Plain-Language Refund Policy",
+    description: "We Publish A Public Refund And Fix Policy So Nonprofits, Funders, And Partners Know What To Expect.",
   },
 ];
 
@@ -65,9 +65,9 @@ const QualityAndRefundsAlt: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-[1.1] mb-8"
           >
-            How we manage
+            How We Manage
             <br />
-            <span className="font-normal italic text-muted-foreground">quality & risk</span>
+            <span className="font-normal italic text-muted-foreground">Quality & Risk</span>
           </motion.h2>
           
           <motion.p
@@ -76,8 +76,8 @@ const QualityAndRefundsAlt: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-muted-foreground max-w-xl"
           >
-            We design Nimara so that support is clear, fair, and safe for organizations, 
-            funders, and our Practice Partners.
+            We Design Nimara So That Support Is Clear, Fair, And Safe For Organizations, 
+            Funders, And Our Practice Partners.
           </motion.p>
         </div>
 
@@ -130,7 +130,7 @@ const QualityAndRefundsAlt: React.FC = () => {
         >
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
             <p className="text-muted-foreground">
-              Want the full details?
+              Want The Full Details?
             </p>
             <a
               href="https://www.notion.so/Nimara-Refund-Policy-2bc227f1ee3a80f299fbc42501d338ac"
@@ -138,7 +138,7 @@ const QualityAndRefundsAlt: React.FC = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 text-foreground font-medium group"
             >
-              <span className="group-hover:text-primary transition-colors">Read the full refund policy</span>
+              <span className="group-hover:text-primary transition-colors">Read The Full Refund Policy</span>
               <span className="w-8 h-px bg-foreground group-hover:w-12 group-hover:bg-primary transition-all duration-300" />
             </a>
           </div>

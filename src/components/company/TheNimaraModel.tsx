@@ -4,27 +4,27 @@ import { useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 
 const tiers = [
-  { level: "4", title: "Complex", subtitle: "Multi-site operations" },
-  { level: "3", title: "Growth-ready", subtitle: "Scalable foundation" },
-  { level: "2", title: "Audit-ready", subtitle: "Compliant systems" },
-  { level: "1", title: "Basic", subtitle: "Informal processes" },
-  { level: "0", title: "Early", subtitle: "DIY support" },
+  { level: "4", title: "Complex", subtitle: "Multi-Site Operations" },
+  { level: "3", title: "Growth-Ready", subtitle: "Scalable Foundation" },
+  { level: "2", title: "Audit-Ready", subtitle: "Compliant Systems" },
+  { level: "1", title: "Basic", subtitle: "Informal Processes" },
+  { level: "0", title: "Early", subtitle: "DIY Support" },
 ];
 
 const paths = [
   {
     letter: "A",
-    title: "Fast fixes",
-    description: "Short, clearly scoped modules to solve one main problem—cash flow, board basics, or simple HR setup.",
-    timeline: "1–4 weeks",
-    features: ["Single problem focus", "Quick turnaround", "Mini acceptance bundle"],
+    title: "Fast Fixes",
+    description: "Short, Clearly Scoped Modules To Solve One Main Problem—Cash Flow, Board Basics, Or Simple HR Setup.",
+    timeline: "1–4 Weeks",
+    features: ["Single Problem Focus", "Quick Turnaround", "Mini Acceptance Bundle"],
   },
   {
     letter: "B",
-    title: "System installs",
-    description: "Deeper, pre-built bundles for organizations that need a full install across multiple domains.",
-    timeline: "8–12 weeks",
-    features: ["Full health check", "Multiple domains", "Complete acceptance bundle"],
+    title: "System Installs",
+    description: "Deeper, Pre-Built Bundles For Organizations That Need A Full Install Across Multiple Domains.",
+    timeline: "8–12 Weeks",
+    features: ["Full Health Check", "Multiple Domains", "Complete Acceptance Bundle"],
   },
 ];
 
@@ -64,8 +64,8 @@ export const TheNimaraModel: React.FC = () => {
             className="lg:col-span-5 lg:col-start-8 lg:pt-16"
           >
             <p className="text-white/70 text-lg lg:text-xl leading-relaxed">
-              A shared framework to match each organization with the right support. 
-              First we place you in a tier. Then we choose the right path.
+              A Shared Framework To Match Each Organization With The Right Support. 
+              First We Place You In A Tier. Then We Choose The Right Path.
             </p>
           </motion.div>
         </div>
@@ -121,8 +121,8 @@ export const TheNimaraModel: React.FC = () => {
 
             {/* Scale labels */}
             <div className="hidden lg:flex justify-between mt-6 text-xs text-white/30 uppercase tracking-wider px-8">
-              <span>Most complex →</span>
-              <span>← Early stage</span>
+              <span>Most Complex →</span>
+              <span>← Early Stage</span>
             </div>
           </div>
         </motion.div>
@@ -184,7 +184,7 @@ export const TheNimaraModel: React.FC = () => {
                     className="inline-flex items-center gap-3 text-white font-medium group/link"
                   >
                     <span className="relative">
-                      Learn more
+                      Learn More
                       <span className="absolute left-0 -bottom-1 w-0 h-px bg-white group-hover/link:w-full transition-all duration-300" />
                     </span>
                     <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
@@ -202,12 +202,12 @@ export const TheNimaraModel: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.7 }}
           className="mt-24 lg:mt-32 text-center"
         >
-          <p className="text-white/40 text-sm uppercase tracking-wider mb-6">Not sure which path fits?</p>
+          <p className="text-white/40 text-sm uppercase tracking-wider mb-6">Not Sure Which Path Fits?</p>
           <a
             href="/health-score"
             className="inline-flex items-center gap-3 px-8 py-4 border border-white/20 text-white font-medium hover:bg-white hover:text-[#0B1120] transition-all duration-300"
           >
-            Take the health check
+            Take The Health Check
             <ArrowRight className="w-4 h-4" />
           </a>
         </motion.div>

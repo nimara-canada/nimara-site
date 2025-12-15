@@ -3,12 +3,12 @@ import { useRef } from "react";
 
 const situations = [
   {
-    situation: "One scary email / funder / audit issue",
+    situation: "One Scary Email / Funder / Audit Issue",
     path: "Path A – Fast Help",
     nohc: "No",
   },
   {
-    situation: "We want better systems across domains",
+    situation: "We Want Better Systems Across Domains",
     path: "Path B – System Installs",
     nohc: "Yes",
   },
@@ -53,9 +53,9 @@ const HealthCheckRule = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-[1.1] mb-8"
           >
-            Do we always start with
+            Do We Always Start With
             <br />
-            <span className="font-normal italic text-muted-foreground">an NOHC Snapshot?</span>
+            <span className="font-normal italic text-muted-foreground">An NOHC Snapshot?</span>
           </motion.h2>
         </div>
 
@@ -70,9 +70,9 @@ const HealthCheckRule = () => {
               No.
             </span>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              If you have one urgent problem, we use{" "}
-              <span className="text-foreground font-medium">Fast Help (Path A)</span> – a small, 
-              focused project that does not require an NOHC Snapshot.
+              If You Have One Urgent Problem, We Use{" "}
+              <span className="text-foreground font-medium">Fast Help (Path A)</span> – A Small, 
+              Focused Project That Does Not Require An NOHC Snapshot.
             </p>
           </motion.div>
 
@@ -83,10 +83,10 @@ const HealthCheckRule = () => {
             className="lg:pt-16"
           >
             <p className="text-lg text-muted-foreground leading-relaxed">
-              If you want to upgrade your systems across any of our 7 domains, we start with the{" "}
-              <span className="text-foreground font-medium">NOHC Snapshot ($2,500)</span> – a ~2-week 
-              health check that shows your Tiers by domain. Then we design Path B Bundles to 
-              move those systems up a Tier.
+              If You Want To Upgrade Your Systems Across Any Of Our 7 Domains, We Start With The{" "}
+              <span className="text-foreground font-medium">NOHC Snapshot ($2,500)</span> – A ~2-Week 
+              Health Check That Shows Your Tiers By Domain. Then We Design Path B Bundles To 
+              Move Those Systems Up A Tier.
             </p>
           </motion.div>
         </div>
