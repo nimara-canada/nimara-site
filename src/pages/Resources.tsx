@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 export default function Resources() {
   const [email, setEmail] = useState("");
@@ -35,12 +36,27 @@ export default function Resources() {
     setIsSubmitting(true);
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const { data, error: fnError } = await supabase.functions.invoke(
+        "resource-waitlist",
+        {
+          body: { email: email.trim(), source: "resources_page" },
+        }
+      );
+
+      if (fnError) {
+        console.error("Function error:", fnError);
+        throw new Error(fnError.message || "Something went wrong");
+      }
+
+      if (data?.error) {
+        throw new Error(data.error);
+      }
+
       setIsSuccess(true);
       setEmail("");
-    } catch {
-      setError("Something went wrong. Please try again.");
+    } catch (err: any) {
+      console.error("Subscription error:", err);
+      setError(err.message || "Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
