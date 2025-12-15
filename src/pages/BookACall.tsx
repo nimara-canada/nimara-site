@@ -155,13 +155,13 @@ const BookACall = () => {
       </Helmet>
       <Header activeRoute="/book-a-call" />
       
-      <main id="main" style={{ paddingTop: 'calc(var(--announcement-height, 0px) + 5rem)' }}>
+      <main id="main" className="relative z-0" style={{ paddingTop: 'calc(var(--announcement-height, 0px) + 5rem)' }}>
         {/* Hero Section - Navy Background */}
-        <section className="relative bg-secondary-background overflow-hidden">
+        <section className="relative z-0 bg-secondary-background overflow-hidden">
           {/* Subtle gradient overlay */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent pointer-events-none" />
           
-          <div className="relative max-w-6xl mx-auto px-6 lg:px-12 py-20 md:py-28 lg:py-32">
+          <div className="relative z-0 max-w-6xl mx-auto px-6 lg:px-12 py-20 md:py-28 lg:py-32">
             <motion.div
               initial="hidden"
               animate="visible"
