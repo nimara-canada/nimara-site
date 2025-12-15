@@ -1,141 +1,139 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import quickbooksLogo from "@/assets/integrations/quickbooks.svg";
-import slackLogo from "@/assets/integrations/slack.png";
-import googleLogo from "@/assets/integrations/google.jpg";
-import softrLogo from "@/assets/integrations/softr.png";
-import microsoftLogo from "@/assets/integrations/microsoft-icon.png";
-import mondayLogo from "@/assets/integrations/monday.png";
-import bamboohrLogo from "@/assets/integrations/bamboohr.webp";
-import salesforceLogo from "@/assets/integrations/salesforce.svg";
+import { ArrowRight, Check, Mail, FolderOpen, Calculator, Users, CreditCard, Kanban, FileText, Heart } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
-const integrations = [
+const benefits = [
   {
-    name: "QuickBooks",
-    subtitle: "Sync financial data automatically.",
-    logo: quickbooksLogo
+    icon: Check,
+    text: "Keep what's working (we don't force new software)"
   },
   {
-    name: "Salesforce",
-    subtitle: "Connect donor and CRM data.",
-    logo: salesforceLogo
+    icon: Check,
+    text: "Make things easier (clear steps, clean files, fewer mistakes)"
   },
   {
-    name: "Slack",
-    subtitle: "Get updates where your team chats.",
-    logo: slackLogo
-  },
-  {
-    name: "Google Workspace",
-    subtitle: "Store and share files in one place.",
-    logo: googleLogo
-  },
-  {
-    name: "Softr",
-    subtitle: "Build client portals without code.",
-    logo: softrLogo
-  },
-  {
-    name: "Microsoft 365",
-    subtitle: "Connect calendar, email, and productivity.",
-    logo: microsoftLogo
-  },
-  {
-    name: "Monday.com",
-    subtitle: "Track tasks and project steps.",
-    logo: mondayLogo
-  },
-  {
-    name: "BambooHR",
-    subtitle: "Manage employee records and HR.",
-    logo: bamboohrLogo
+    icon: Check,
+    text: "One simple system (so your team knows where things live)"
   }
+];
+
+const toolCategories = [
+  { label: "Email & calendar", icon: Mail },
+  { label: "Files & folders", icon: FolderOpen },
+  { label: "Accounting", icon: Calculator },
+  { label: "Payroll", icon: Users },
+  { label: "Donors & fundraising", icon: Heart },
+  { label: "Payments", icon: CreditCard },
+  { label: "Project tracking", icon: Kanban },
+  { label: "Forms & surveys", icon: FileText }
 ];
 
 export const IntegrationsSection = () => {
   return (
     <section 
-      className="py-24 md:py-36 lg:py-44 bg-background relative overflow-hidden" 
+      className="py-20 md:py-28 lg:py-32 bg-background" 
       aria-labelledby="integrations-heading"
     >
-      {/* Subtle background */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-muted/50 via-background to-background" />
-
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
-        {/* Header - editorial style */}
+      <div className="max-w-4xl mx-auto px-6 lg:px-12">
+        {/* Header */}
         <motion.div
-          className="max-w-2xl mb-16 md:mb-20"
-          initial={{ opacity: 0, y: 40 }}
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="text-sm tracking-widest text-muted-foreground uppercase mb-4">
+          <p className="text-xs tracking-widest text-muted-foreground uppercase mb-4">
             Integrations
           </p>
 
           <h2
             id="integrations-heading"
-            className="text-4xl md:text-5xl font-serif font-medium text-foreground leading-[1.1] mb-6"
+            className="text-3xl md:text-4xl lg:text-5xl font-serif font-medium text-foreground leading-[1.15] mb-5"
           >
-            Works with tools you already use
+            Works with the tools you already use
           </h2>
 
-          <p className="text-lg text-body leading-relaxed">
-            Nimara connects to your existing software so your team doesn't need to change how it works.
+          <p className="text-lg text-body leading-relaxed max-w-2xl mx-auto">
+            We connect to your current tools. No big switch. No "rip and replace." We help you make what you have work better.
           </p>
         </motion.div>
 
-        {/* Integration Grid - clean, minimal cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 mb-12">
-          {integrations.map((integration, index) => (
-            <motion.article
-              key={integration.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="group relative bg-card border border-border/50 rounded-2xl p-6 transition-all duration-300 hover:border-border hover:shadow-xl hover:shadow-black/[0.03]"
-            >
-              {/* Logo */}
-              <div className="w-12 h-12 mb-5 flex items-center justify-center rounded-xl bg-muted/50 p-2 transition-transform duration-300 group-hover:scale-105">
-                <img
-                  src={integration.logo}
-                  alt={`${integration.name} logo`}
-                  className="w-8 h-8 object-contain"
-                />
-              </div>
-
-              {/* Name */}
-              <h3 className="font-medium text-foreground mb-1 text-base">
-                {integration.name}
-              </h3>
-
-              {/* Subtitle */}
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {integration.subtitle}
-              </p>
-            </motion.article>
-          ))}
-        </div>
-
-        {/* View All CTA - minimal link style */}
+        {/* Benefits */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          className="mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          <ul className="space-y-3 max-w-md mx-auto">
+            {benefits.map((benefit, index) => (
+              <li key={index} className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center mt-0.5">
+                  <benefit.icon className="w-3 h-3 text-accent" />
+                </span>
+                <span className="text-body text-base leading-relaxed">{benefit.text}</span>
+              </li>
+            ))}
+          </ul>
+          
+          <p className="text-sm text-muted-foreground text-center mt-6 italic">
+            If you're not sure what you have, that's okay—we'll help you map it.
+          </p>
+        </motion.div>
+
+        {/* Tool Categories Grid */}
+        <motion.div
+          className="mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {toolCategories.map((category, index) => (
+              <motion.div
+                key={category.label}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.03 }}
+                className="flex items-center gap-2.5 px-4 py-3 bg-card border border-border/50 rounded-xl text-sm text-foreground hover:border-border hover:shadow-sm transition-all duration-200"
+              >
+                <category.icon className="w-4 h-4 text-muted-foreground flex-shrink-0" />
+                <span>{category.label}</span>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* CTAs */}
+        <motion.div
+          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <a
-            href="/integrations"
-            className="group inline-flex items-center gap-2 text-foreground font-medium"
+          <Button asChild size="lg" className="rounded-full px-6">
+            <Link to="/book-a-call">
+              Tell us what tools you use
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Link>
+          </Button>
+          
+          <Link
+            to="/check"
+            className="group inline-flex items-center gap-1.5 text-foreground font-medium text-sm"
           >
             <span className="relative">
-              View all integrations
+              Start the 4-minute check
               <span className="absolute left-0 -bottom-0.5 w-full h-px bg-foreground/30 group-hover:bg-foreground transition-colors duration-300" />
             </span>
-            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-          </a>
+            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+          </Link>
         </motion.div>
       </div>
     </section>
