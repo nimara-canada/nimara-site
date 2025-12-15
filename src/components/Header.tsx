@@ -36,7 +36,7 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
       >
-        Skip to content
+        Skip To Content
       </a>
 
       <header
@@ -108,7 +108,7 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                 className="group text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 <span className="relative">
-                  For consultants
+                  For Consultants
                   <span className="absolute left-0 -bottom-0.5 w-0 h-px bg-foreground transition-all duration-300 group-hover:w-full" />
                 </span>
               </a>
@@ -177,7 +177,7 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                         className="inline-flex items-center gap-2 text-foreground hover:text-primary transition-colors group"
                         onClick={() => setIsOpen(false)}
                       >
-                        <span>For consultants</span>
+                        <span>For Consultants</span>
                         <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                       </a>
                     </div>
