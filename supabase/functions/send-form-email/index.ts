@@ -143,6 +143,64 @@ const buildEmailBody = (formCode: string, payload: Record<string, any>): string 
   return body;
 };
 
+const buildUserConfirmationEmail = (formCode: string, payload: Record<string, any>): { subject: string; html: string } | null => {
+  if (formCode === "URGENT_HELP") {
+    const firstName = (payload.name || "").split(" ")[0] || "there";
+    const helpType = getHelpTypeLabel(payload.help_type || "");
+    
+    return {
+      subject: "We got your message — Nimara",
+      html: `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #1a1a2e; max-width: 600px; margin: 0 auto; padding: 20px;">
+  <div style="background-color: #f8f9fc; border-radius: 12px; padding: 32px; margin-bottom: 24px;">
+    <h1 style="margin: 0 0 16px 0; font-size: 24px; font-weight: 600; color: #1a1a2e;">
+      Hi ${firstName},
+    </h1>
+    <p style="margin: 0 0 16px 0; font-size: 16px; color: #4a5568;">
+      We received your message about: <strong>${helpType}</strong>
+    </p>
+    <p style="margin: 0; font-size: 16px; color: #4a5568;">
+      We'll reply by email as soon as we can.
+    </p>
+  </div>
+  
+  <div style="background-color: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+    <h2 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #718096; text-transform: uppercase; letter-spacing: 0.5px;">
+      What you told us
+    </h2>
+    <p style="margin: 0; font-size: 15px; color: #4a5568; white-space: pre-wrap;">${payload.details || ""}</p>
+    ${payload.deadline ? `<p style="margin: 16px 0 0 0; font-size: 14px; color: #718096;">Deadline: ${payload.deadline}</p>` : ""}
+  </div>
+  
+  <div style="text-align: center; padding: 16px 0;">
+    <p style="margin: 0 0 16px 0; font-size: 15px; color: #4a5568;">
+      Need help sooner?
+    </p>
+    <a href="https://nimara.ca/book-a-call" style="display: inline-block; background-color: #6945D8; color: #ffffff; text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: 500; font-size: 15px;">
+      Book a call →
+    </a>
+  </div>
+  
+  <div style="border-top: 1px solid #e2e8f0; padding-top: 24px; margin-top: 24px; text-align: center;">
+    <p style="margin: 0; font-size: 13px; color: #a0aec0;">
+      Nimara · Capacity building for Canadian nonprofits
+    </p>
+  </div>
+</body>
+</html>
+      `.trim(),
+    };
+  }
+  
+  return null;
+};
+
 const handler = async (req: Request): Promise<Response> => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -159,6 +217,7 @@ const handler = async (req: Request): Promise<Response> => {
     // Determine reply-to from payload
     const replyTo = payload.email || payload.q_email || payload.cb_email || "";
     
+    // Send internal notification email
     const emailResponse = await resend.emails.send({
       from: "no-reply@nimara.ca",
       to: ["hello@nimara.ca"],
@@ -167,7 +226,24 @@ const handler = async (req: Request): Promise<Response> => {
       text: body,
     });
 
-    console.log("Email sent successfully:", emailResponse);
+    console.log("Internal email sent successfully:", emailResponse);
+
+    // Send user confirmation email if applicable
+    const userConfirmation = buildUserConfirmationEmail(formCode, payload);
+    if (userConfirmation && replyTo) {
+      try {
+        const confirmationResponse = await resend.emails.send({
+          from: "Nimara <no-reply@nimara.ca>",
+          to: [replyTo],
+          subject: userConfirmation.subject,
+          html: userConfirmation.html,
+        });
+        console.log("User confirmation email sent successfully:", confirmationResponse);
+      } catch (confirmError: any) {
+        console.error("Error sending user confirmation email:", confirmError);
+        // Don't fail the request if confirmation email fails
+      }
+    }
 
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
