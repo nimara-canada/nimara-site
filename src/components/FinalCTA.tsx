@@ -8,13 +8,13 @@ export const FinalCTA = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-20 md:py-28 lg:py-36 bg-secondary text-secondary-foreground overflow-hidden"
+      className="relative py-20 md:py-28 lg:py-36 bg-[#0B1120] text-white overflow-hidden"
     >
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 opacity-[0.03]">
         <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(hsl(var(--secondary-foreground)) 1px, transparent 1px),
-                           linear-gradient(90deg, hsl(var(--secondary-foreground)) 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(rgba(255,255,255,1) 1px, transparent 1px),
+                           linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)`,
           backgroundSize: '80px 80px'
         }} />
       </div>
@@ -27,10 +27,10 @@ export const FinalCTA = () => {
             transition={{ duration: 0.8 }}
             className="flex items-center gap-4 mb-6"
           >
-            <span className="text-xs font-medium tracking-[0.2em] uppercase text-secondary-foreground/50">
+            <span className="text-xs font-medium tracking-[0.2em] uppercase text-white/50">
               Ready to Start?
             </span>
-            <div className="h-px w-16 bg-secondary-foreground/20" />
+            <div className="h-px w-16 bg-white/20" />
           </motion.div>
 
           <motion.h2 
@@ -41,14 +41,14 @@ export const FinalCTA = () => {
           >
             Ready to get
             <br />
-            <span className="font-normal italic text-secondary-foreground/70">system-strong?</span>
+            <span className="font-normal italic text-white/70">system-strong?</span>
           </motion.h2>
 
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg text-secondary-foreground/60 leading-relaxed mb-12 max-w-xl"
+            className="text-lg text-white/60 leading-relaxed mb-12 max-w-xl"
           >
             Book a free 15-minute discovery call. We'll figure out if Nimara is the right fit—no pressure, no pitch.
           </motion.p>
@@ -61,18 +61,18 @@ export const FinalCTA = () => {
           >
             <a
               href="/book-a-call"
-              className="group inline-flex items-center gap-3 text-secondary-foreground font-medium"
+              className="group inline-flex items-center gap-3 text-white font-medium"
             >
               <span className="group-hover:text-accent transition-colors">Book a Discovery Call</span>
-              <span className="w-8 h-px bg-secondary-foreground group-hover:w-12 group-hover:bg-accent transition-all duration-300" />
+              <span className="w-8 h-px bg-white group-hover:w-12 group-hover:bg-accent transition-all duration-300" />
             </a>
 
             <a
               href="mailto:hello@nimara.ca"
-              className="group inline-flex items-center gap-3 text-secondary-foreground/60 font-medium"
+              className="group inline-flex items-center gap-3 text-white/60 font-medium"
             >
               <span className="group-hover:text-accent transition-colors">Email us instead</span>
-              <span className="w-8 h-px bg-secondary-foreground/40 group-hover:w-12 group-hover:bg-accent transition-all duration-300" />
+              <span className="w-8 h-px bg-white/40 group-hover:w-12 group-hover:bg-accent transition-all duration-300" />
             </a>
           </motion.div>
 
@@ -81,7 +81,7 @@ export const FinalCTA = () => {
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-20 pt-8 border-t border-secondary-foreground/10 text-sm text-secondary-foreground/40"
+            className="mt-20 pt-8 border-t border-white/10 text-sm text-white/40"
           >
             Trusted by nonprofits across Canada · Money-back guarantee on system builds
           </motion.p>
