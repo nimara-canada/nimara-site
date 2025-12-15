@@ -132,9 +132,12 @@ const BookACall = () => {
         <meta name="twitter:image" content="https://nimara.ca/og.jpg" />
       </Helmet>
       <Header activeRoute="/book-a-call" />
+      
+      {/* Spacer for fixed header */}
+      <div className="h-20" aria-hidden="true" />
 
       {/* Hero */}
-      <section className="pt-40 md:pt-48 pb-12 md:pb-16 px-6">
+      <section className="pt-20 md:pt-28 pb-12 md:pb-16 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-foreground mb-4 leading-tight">
             Urgent help
