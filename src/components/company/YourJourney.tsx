@@ -5,39 +5,39 @@ import { useRef } from 'react';
 const steps = [
   {
     number: 1,
-    title: "Start the Health Check",
-    description: "You complete a short online check about your team, money, systems, and risks. This gives us a clear picture of what is strong and what is fragile.",
+    title: "Start The Health Check",
+    description: "You Complete A Short Online Check About Your Team, Money, Systems, And Risks. This Gives Us A Clear Picture Of What Is Strong And What Is Fragile.",
   },
   {
     number: 2,
-    title: "Confirm your tier and path",
-    description: "Together we confirm your tier (0–4) and decide whether you need a fast fix (Path A) or a deeper package (Path B). This keeps the work at the right size and price.",
+    title: "Confirm Your Tier And Path",
+    description: "Together We Confirm Your Tier (0–4) And Decide Whether You Need A Fast Fix (Path A) Or A Deeper Package (Path B). This Keeps The Work At The Right Size And Price.",
   },
   {
     number: 3,
-    title: "Match with a Practice Partner",
-    description: "We match you with a Nimara Practice Partner who has the right skills and context. We agree on scope, timelines, and deliverables in a simple Statement of Work (SOW).",
+    title: "Match With A Practice Partner",
+    description: "We Match You With A Nimara Practice Partner Who Has The Right Skills And Context. We Agree On Scope, Timelines, And Deliverables In A Simple Statement Of Work (SOW).",
   },
   {
     number: 4,
-    title: "Delivery with check-ins",
-    description: "The Practice Partner runs the work using Nimara tools and templates. Your team stays involved. We check progress against the SOW, not vague goals.",
+    title: "Delivery With Check-Ins",
+    description: "The Practice Partner Runs The Work Using Nimara Tools And Templates. Your Team Stays Involved. We Check Progress Against The SOW, Not Vague Goals.",
   },
   {
     number: 5,
-    title: "Handover, support, and learning",
-    description: "We close out the project with a handover and next steps. For about three months, we are available for light support and questions.",
+    title: "Handover, Support, And Learning",
+    description: "We Close Out The Project With A Handover And Next Steps. For About Three Months, We Are Available For Light Support And Questions.",
   },
 ];
 
 const addOns = [
   {
-    title: "12-month Evaluation & Support",
-    description: "Our team stays close for up to 12 months. We check in at agreed points, help you see what is working, and adjust tools or processes where needed.",
+    title: "12-Month Evaluation & Support",
+    description: "Our Team Stays Close For Up To 12 Months. We Check In At Agreed Points, Help You See What Is Working, And Adjust Tools Or Processes Where Needed.",
   },
   {
     title: "Fractional Partner (Ongoing)",
-    description: "For organizations that need more hands-on help, hire a Nimara Fractional Partner on an ongoing basis to manage and update the systems we installed.",
+    description: "For Organizations That Need More Hands-On Help, Hire A Nimara Fractional Partner On An Ongoing Basis To Manage And Update The Systems We Installed.",
   },
 ];
 
@@ -91,8 +91,8 @@ const YourJourney: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-muted-foreground max-w-xl"
           >
-            Most projects follow the same basic path. These are the main steps 
-            from 'we need help' to 'this is working in real life.'
+            Most Projects Follow The Same Basic Path. These Are The Main Steps 
+            From 'We Need Help' To 'This Is Working In Real Life.'
           </motion.p>
         </div>
 
@@ -165,8 +165,8 @@ const YourJourney: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-muted-foreground max-w-xl mb-12"
           >
-            Some organizations want deeper follow-up. These add-ons are optional 
-            and come with a separate simple fee.
+            Some Organizations Want Deeper Follow-Up. These Add-Ons Are Optional 
+            And Come With A Separate Simple Fee.
           </motion.p>
 
           <div className="grid md:grid-cols-2 gap-px bg-border">
@@ -203,13 +203,13 @@ const YourJourney: React.FC = () => {
         >
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
             <p className="text-muted-foreground">
-              Ready to start your journey?
+              Ready To Start Your Journey?
             </p>
             <a
               href="/book-a-call"
               className="inline-flex items-center gap-3 text-foreground font-medium group"
             >
-              <span className="group-hover:text-primary transition-colors">Book a discovery call</span>
+              <span className="group-hover:text-primary transition-colors">Book A Discovery Call</span>
               <span className="w-8 h-px bg-foreground group-hover:w-12 group-hover:bg-primary transition-all duration-300" />
             </a>
           </div>

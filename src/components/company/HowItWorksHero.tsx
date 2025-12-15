@@ -41,11 +41,11 @@ const HowItWorksHero: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight leading-[1.05] mb-8"
           >
-            A simple way to go from
+            A Simple Way To Go From
             <br />
-            <span className="font-normal italic text-secondary-foreground/70">"we need help"</span>
+            <span className="font-normal italic text-secondary-foreground/70">"We Need Help"</span>
             <br />
-            to <span className="font-normal italic text-secondary-foreground/70">"this works."</span>
+            To <span className="font-normal italic text-secondary-foreground/70">"This Works."</span>
           </motion.h1>
 
           {/* Subhead */}
@@ -55,8 +55,8 @@ const HowItWorksHero: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg md:text-xl text-secondary-foreground/60 leading-relaxed mb-16 max-w-2xl"
           >
-            This page walks through the Nimara model, the steps in a typical project, 
-            and how we manage quality, risk, and refunds.
+            This Page Walks Through The Nimara Model, The Steps In A Typical Project, 
+            And How We Manage Quality, Risk, And Refunds.
           </motion.p>
 
           {/* CTAs */}
@@ -70,7 +70,7 @@ const HowItWorksHero: React.FC = () => {
               to="/health-score"
               className="group inline-flex items-center gap-3 text-secondary-foreground font-medium"
             >
-              <span className="group-hover:text-accent transition-colors">Learn about Health Check</span>
+              <span className="group-hover:text-accent transition-colors">Learn About Health Check</span>
               <span className="w-8 h-px bg-secondary-foreground group-hover:w-12 group-hover:bg-accent transition-all duration-300" />
             </Link>
 
@@ -80,7 +80,7 @@ const HowItWorksHero: React.FC = () => {
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-3 text-secondary-foreground/60 font-medium"
             >
-              <span className="group-hover:text-accent transition-colors">See refund policy</span>
+              <span className="group-hover:text-accent transition-colors">See Refund Policy</span>
               <span className="w-8 h-px bg-secondary-foreground/40 group-hover:w-12 group-hover:bg-accent transition-all duration-300" />
             </a>
           </motion.div>
@@ -92,12 +92,12 @@ const HowItWorksHero: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="mt-16 pt-8 border-t border-secondary-foreground/10 text-sm text-secondary-foreground/40"
           >
-            New to Nimara?{' '}
+            New To Nimara?{' '}
             <Link 
               to="/company" 
               className="text-secondary-foreground/60 hover:text-accent transition-colors underline underline-offset-4"
             >
-              Learn who we are
+              Learn Who We Are
             </Link>
           </motion.p>
         </div>
