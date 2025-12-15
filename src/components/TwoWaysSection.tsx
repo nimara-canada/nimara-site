@@ -11,9 +11,9 @@ export const TwoWaysSection = () => {
   };
 
   return (
-    <section className="py-24 md:py-36 lg:py-44 section-alt relative overflow-hidden">
-      {/* Subtle background texture */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/[0.02] to-transparent" />
+    <section className="py-24 md:py-36 lg:py-44 bg-[#0A101F] relative overflow-hidden">
+      {/* Dark gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A101F] via-[#121A33] to-[#0A101F] pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative">
         {/* Section header - editorial style */}

@@ -101,9 +101,9 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative overflow-hidden" aria-labelledby="hero-heading">
-      {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20 pointer-events-none" />
+    <section className="relative overflow-hidden bg-[#0A101F]" aria-labelledby="hero-heading">
+      {/* Dark gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A101F] via-[#121A33] to-[#0A101F] pointer-events-none" />
       
       {/* Main Hero Content */}
       <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 lg:pt-32 pb-16 md:pb-20">
