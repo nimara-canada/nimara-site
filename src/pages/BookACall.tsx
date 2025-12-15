@@ -16,17 +16,21 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Calendar, Send, Check, Phone } from "lucide-react";
+import { Check, Phone, Send } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 
 const formSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100),
-  email: z.string().trim().email("Invalid email address").max(255),
+  name: z.string().trim().min(1, "Please add your name.").max(100),
+  email: z.string().trim().email("Please add a valid email.").max(255),
   organization: z.string().trim().max(200).optional(),
-  helpType: z.string().min(1, "Please select what you need help with"),
-  deadline: z.string().optional(),
-  details: z.string().trim().min(1, "Please tell us what's going on").max(2000),
+  helpType: z.string().min(1, "Please choose one option."),
+  deadline: z.string().optional().refine((val) => {
+    if (!val) return true;
+    const date = new Date(val);
+    return !isNaN(date.getTime());
+  }, "Please pick a real date (or leave it blank)."),
+  details: z.string().trim().min(1, "Please add a few sentences so we can help.").max(2000),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -35,6 +39,7 @@ const BookACall = () => {
   const [activeOption, setActiveOption] = useState<"call" | "form" | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formError, setFormError] = useState(false);
 
   const {
     register,
@@ -54,11 +59,12 @@ const BookACall = () => {
   ];
 
   const helpOptions = [
-    { value: "grant", label: "Grant deadline" },
-    { value: "board", label: "Board issue" },
-    { value: "finance", label: "Finance clean-up" },
-    { value: "hr", label: "HR/staff issue" },
-    { value: "other", label: "Other" },
+    { value: "grant", label: "Grant deadline (proposal, budget, reporting)" },
+    { value: "board", label: "Board issue (meeting, decision, conflict)" },
+    { value: "money", label: "Money mess (tracking, receipts, reports)" },
+    { value: "people", label: "People issue (staff, contractor, role problems)" },
+    { value: "program", label: "Program paperwork (proof, files, records)" },
+    { value: "other", label: "Other (tell us below)" },
   ];
 
   const handleOptionClick = (option: "call" | "form") => {
@@ -71,6 +77,7 @@ const BookACall = () => {
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
+    setFormError(false);
 
     const payload = {
       flow: "urgent_help_form",
@@ -88,14 +95,13 @@ const BookACall = () => {
     };
 
     try {
-      // Send email notification
       await supabase.functions.invoke("send-form-email", {
         body: { formCode: "URGENT_HELP", payload },
       });
 
       setIsSubmitted(true);
       reset();
-      toast.success("Thanks — we'll reply by email within 1 business day.");
+      toast.success("Got it — we received your note.");
     } catch (error) {
       console.error("Form submission error:", error);
       toast.error("Something went wrong. Please try again.");
@@ -104,21 +110,22 @@ const BookACall = () => {
     }
   };
 
+  const onError = () => {
+    setFormError(true);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
         <title>Urgent Help | Nimara</title>
         <meta name="description" content="Choose one: book a call now, or send details and we'll reply by email." />
-        
         <link rel="canonical" href="https://nimara.ca/book-a-call" />
-        
         <meta property="og:site_name" content="Nimara" />
         <meta property="og:title" content="Urgent Help | Nimara" />
         <meta property="og:description" content="Choose one: book a call now, or send details and we'll reply by email." />
         <meta property="og:url" content="https://nimara.ca/book-a-call" />
         <meta property="og:image" content="https://nimara.ca/og.jpg" />
         <meta property="og:type" content="website" />
-        
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Urgent Help | Nimara" />
         <meta name="twitter:description" content="Choose one: book a call now, or send details and we'll reply by email." />
@@ -136,7 +143,7 @@ const BookACall = () => {
             Choose one: book a call now, or send details and we'll reply by email.
           </p>
 
-          {/* What we'll do bullets */}
+          {/* What we'll do */}
           <div className="text-left mb-12">
             <h2 className="text-sm tracking-widest text-muted-foreground uppercase mb-5 text-center">
               What we'll do
@@ -159,20 +166,20 @@ const BookACall = () => {
             <div 
               className={`p-6 rounded-2xl border-2 transition-all cursor-pointer ${
                 activeOption === "call" 
-                  ? "border-primary bg-primary/5" 
-                  : "border-border hover:border-primary/50"
+                  ? "border-primary bg-primary/5 shadow-md" 
+                  : "border-border hover:border-primary/50 hover:shadow-sm"
               }`}
               onClick={() => handleOptionClick("call")}
             >
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 mx-auto mb-4">
-                <Phone className="w-5 h-5 text-primary" />
+              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mx-auto mb-4">
+                <Phone className="w-6 h-6 text-primary" />
               </div>
               <h3 className="text-lg font-semibold text-foreground mb-2">Book a call</h3>
-              <p className="text-sm text-muted-foreground mb-4">
+              <p className="text-sm text-muted-foreground mb-5">
                 15–30 minutes • Fastest way to get unstuck
               </p>
               <Button 
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium"
                 onClick={(e) => {
                   e.stopPropagation();
                   handleOptionClick("call");
@@ -186,21 +193,21 @@ const BookACall = () => {
             <div 
               className={`p-6 rounded-2xl border-2 transition-all cursor-pointer ${
                 activeOption === "form" 
-                  ? "border-primary bg-primary/5" 
-                  : "border-border hover:border-primary/50"
+                  ? "border-primary bg-primary/5 shadow-md" 
+                  : "border-border hover:border-muted-foreground/50 hover:shadow-sm"
               }`}
               onClick={() => handleOptionClick("form")}
             >
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-muted mx-auto mb-4">
-                <Send className="w-5 h-5 text-muted-foreground" />
+              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-muted mx-auto mb-4">
+                <Send className="w-6 h-6 text-muted-foreground" />
               </div>
               <h3 className="text-lg font-semibold text-foreground mb-2">Send details instead</h3>
-              <p className="text-sm text-muted-foreground mb-4">
+              <p className="text-sm text-muted-foreground mb-5">
                 2–3 minutes • Best if you're not ready to meet yet
               </p>
               <Button 
                 variant="outline"
-                className="w-full"
+                className="w-full font-medium"
                 onClick={(e) => {
                   e.stopPropagation();
                   handleOptionClick("form");
@@ -221,7 +228,7 @@ const BookACall = () => {
               Pick a time
             </h2>
 
-            <div className="bg-background rounded-2xl border border-border overflow-hidden">
+            <div className="bg-background rounded-2xl border border-border overflow-hidden shadow-sm">
               <div className="w-full" style={{ minHeight: "680px" }}>
                 <iframe
                   src="https://calendly.com/hello-nimara/30min"
@@ -250,33 +257,43 @@ const BookACall = () => {
             </h2>
 
             {isSubmitted ? (
-              <div className="text-center p-8 rounded-2xl border border-border bg-muted/30">
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-accent/20 mx-auto mb-4">
-                  <Check className="w-6 h-6 text-accent" />
+              <div className="text-center p-8 rounded-2xl border border-border bg-muted/30 shadow-sm">
+                <div className="flex items-center justify-center w-14 h-14 rounded-full bg-accent/20 mx-auto mb-5">
+                  <Check className="w-7 h-7 text-accent" />
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-2">Thanks!</h3>
-                <p className="text-body mb-4">
-                  We'll reply by email within 1 business day.
+                <h3 className="text-xl font-semibold text-foreground mb-3">
+                  Got it — we received your note.
+                </h3>
+                <p className="text-body mb-5">
+                  We'll reply by email as soon as we can.
                 </p>
-                <p className="text-sm text-muted-foreground">
-                  If this is urgent,{" "}
-                  <button 
-                    onClick={() => {
-                      setActiveOption("call");
-                      setIsSubmitted(false);
-                    }}
-                    className="text-primary hover:underline"
-                  >
-                    book a call above
-                  </button>
-                  .
-                </p>
+                <button 
+                  onClick={() => {
+                    setActiveOption("call");
+                    setIsSubmitted(false);
+                    setTimeout(() => {
+                      document.getElementById("scheduler")?.scrollIntoView({ behavior: "smooth" });
+                    }, 100);
+                  }}
+                  className="text-primary hover:underline font-medium"
+                >
+                  Need help sooner? Book a call above →
+                </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-                <div className="grid md:grid-cols-2 gap-4">
+              <div className="rounded-2xl border border-border p-6 md:p-8 bg-background shadow-sm">
+                {formError && Object.keys(errors).length > 0 && (
+                  <div className="mb-6 p-4 rounded-lg bg-destructive/10 border border-destructive/20">
+                    <p className="text-sm text-destructive font-medium">
+                      One more step: please fix the highlighted fields.
+                    </p>
+                  </div>
+                )}
+
+                <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-5">
+                  {/* Name */}
                   <div>
-                    <Label htmlFor="name" className="text-foreground mb-2 block">
+                    <Label htmlFor="name" className="text-foreground mb-1.5 block font-medium">
                       Name <span className="text-destructive">*</span>
                     </Label>
                     <Input
@@ -286,11 +303,17 @@ const BookACall = () => {
                       {...register("name")}
                       className={errors.name ? "border-destructive" : ""}
                     />
-                    {errors.name && <p className="text-destructive text-sm mt-1">{errors.name.message}</p>}
+                    <p className="text-xs text-muted-foreground mt-1.5">
+                      So we know what to call you.
+                    </p>
+                    {errors.name && (
+                      <p className="text-destructive text-sm mt-1">{errors.name.message}</p>
+                    )}
                   </div>
 
+                  {/* Email */}
                   <div>
-                    <Label htmlFor="email" className="text-foreground mb-2 block">
+                    <Label htmlFor="email" className="text-foreground mb-1.5 block font-medium">
                       Email <span className="text-destructive">*</span>
                     </Label>
                     <Input
@@ -300,75 +323,109 @@ const BookACall = () => {
                       {...register("email")}
                       className={errors.email ? "border-destructive" : ""}
                     />
-                    {errors.email && <p className="text-destructive text-sm mt-1">{errors.email.message}</p>}
+                    <p className="text-xs text-muted-foreground mt-1.5">
+                      We'll reply here. No spam.
+                    </p>
+                    {errors.email && (
+                      <p className="text-destructive text-sm mt-1">{errors.email.message}</p>
+                    )}
                   </div>
-                </div>
 
-                <div>
-                  <Label htmlFor="organization" className="text-foreground mb-2 block">
-                    Organization name <span className="text-muted-foreground">(optional)</span>
-                  </Label>
-                  <Input
-                    id="organization"
-                    type="text"
-                    autoComplete="organization"
-                    {...register("organization")}
-                  />
-                </div>
+                  {/* Organization */}
+                  <div>
+                    <Label htmlFor="organization" className="text-foreground mb-1.5 block font-medium">
+                      Organization name <span className="text-muted-foreground font-normal">(optional)</span>
+                    </Label>
+                    <Input
+                      id="organization"
+                      type="text"
+                      autoComplete="organization"
+                      {...register("organization")}
+                    />
+                    <p className="text-xs text-muted-foreground mt-1.5">
+                      If you have one.
+                    </p>
+                  </div>
 
-                <div>
-                  <Label htmlFor="helpType" className="text-foreground mb-2 block">
-                    What do you need help with? <span className="text-destructive">*</span>
-                  </Label>
-                  <Select onValueChange={(value) => setValue("helpType", value)}>
-                    <SelectTrigger className={errors.helpType ? "border-destructive" : ""}>
-                      <SelectValue placeholder="Select an option" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {helpOptions.map((option) => (
-                        <SelectItem key={option.value} value={option.value}>
-                          {option.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  {errors.helpType && <p className="text-destructive text-sm mt-1">{errors.helpType.message}</p>}
-                </div>
+                  {/* Help Type Dropdown */}
+                  <div>
+                    <Label htmlFor="helpType" className="text-foreground mb-1.5 block font-medium">
+                      What do you need help with? <span className="text-destructive">*</span>
+                    </Label>
+                    <Select onValueChange={(value) => setValue("helpType", value)}>
+                      <SelectTrigger className={errors.helpType ? "border-destructive" : ""}>
+                        <SelectValue placeholder="Choose one…" />
+                      </SelectTrigger>
+                      <SelectContent className="bg-background z-50">
+                        {helpOptions.map((option) => (
+                          <SelectItem key={option.value} value={option.value}>
+                            {option.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    {errors.helpType && (
+                      <p className="text-destructive text-sm mt-1">{errors.helpType.message}</p>
+                    )}
+                  </div>
 
-                <div>
-                  <Label htmlFor="deadline" className="text-foreground mb-2 block">
-                    Deadline <span className="text-muted-foreground">(optional)</span>
-                  </Label>
-                  <Input
-                    id="deadline"
-                    type="date"
-                    {...register("deadline")}
-                  />
-                </div>
+                  {/* Deadline */}
+                  <div>
+                    <Label htmlFor="deadline" className="text-foreground mb-1.5 block font-medium">
+                      Deadline <span className="text-muted-foreground font-normal">(optional)</span>
+                    </Label>
+                    <Input
+                      id="deadline"
+                      type="date"
+                      {...register("deadline")}
+                      className={errors.deadline ? "border-destructive" : ""}
+                    />
+                    <p className="text-xs text-muted-foreground mt-1.5">
+                      If there's a date we should know about.
+                    </p>
+                    {errors.deadline && (
+                      <p className="text-destructive text-sm mt-1">{errors.deadline.message}</p>
+                    )}
+                  </div>
 
-                <div>
-                  <Label htmlFor="details" className="text-foreground mb-2 block">
-                    Tell us what's going on <span className="text-destructive">*</span>
-                  </Label>
-                  <Textarea
-                    id="details"
-                    rows={4}
-                    placeholder="3–5 sentences about your urgent problem..."
-                    {...register("details")}
-                    className={errors.details ? "border-destructive" : ""}
-                  />
-                  {errors.details && <p className="text-destructive text-sm mt-1">{errors.details.message}</p>}
-                </div>
+                  {/* Details Textarea */}
+                  <div>
+                    <Label htmlFor="details" className="text-foreground mb-1.5 block font-medium">
+                      Tell us what's going on <span className="text-destructive">*</span>
+                    </Label>
+                    <Textarea
+                      id="details"
+                      rows={4}
+                      {...register("details")}
+                      className={errors.details ? "border-destructive" : ""}
+                    />
+                    <p className="text-xs text-muted-foreground mt-1.5">
+                      3–5 sentences is perfect. What happened, what's the deadline, and what do you need?
+                    </p>
+                    <p className="text-xs text-muted-foreground/70 mt-2 italic">
+                      Example: "We have a grant due Friday. Our budget doesn't match our spending. We need help fixing it and making it easy to track."
+                    </p>
+                    {errors.details && (
+                      <p className="text-destructive text-sm mt-1">{errors.details.message}</p>
+                    )}
+                  </div>
 
-                <Button 
-                  type="submit" 
-                  size="lg" 
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? "Sending..." : "Send my details →"}
-                </Button>
-              </form>
+                  {/* Submit Button */}
+                  <Button 
+                    type="submit" 
+                    size="lg" 
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Sending…" : "Send my details →"}
+                  </Button>
+
+                  {/* Safety Line */}
+                  <p className="text-xs text-muted-foreground text-center pt-2">
+                    Please don't include private health info or anything very sensitive.
+                  </p>
+                </form>
+              </div>
             )}
           </div>
         </section>
