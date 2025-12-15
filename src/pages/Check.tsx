@@ -49,16 +49,16 @@ const Check = () => {
   };
 
   const checkItems = [
-    { icon: Shield, label: "Board & policies", desc: "who decides what", color: "bg-primary/10 text-primary" },
-    { icon: Wallet, label: "Money & tracking", desc: "budgets, reports, receipts", color: "bg-accent/20 text-secondary-background" },
-    { icon: Users, label: "People & roles", desc: "staff, contractors, HR basics", color: "bg-primary/10 text-primary" },
-    { icon: FolderOpen, label: "Programs & files", desc: "proof of work, tidy records", color: "bg-amber-100 text-amber-600" },
+    { icon: Shield, label: "Board & Policies", desc: "Who Decides What", color: "bg-primary/10 text-primary" },
+    { icon: Wallet, label: "Money & Tracking", desc: "Budgets, Reports, Receipts", color: "bg-accent/20 text-secondary-background" },
+    { icon: Users, label: "People & Roles", desc: "Staff, Contractors, HR Basics", color: "bg-primary/10 text-primary" },
+    { icon: FolderOpen, label: "Programs & Files", desc: "Proof Of Work, Tidy Records", color: "bg-amber-100 text-amber-600" },
   ];
 
   const quickInfo = [
-    { icon: Clock, text: "Takes about 4 minutes", iconClass: "text-muted-foreground" },
-    { icon: Sparkles, text: "Mostly taps (no long typing)", iconClass: "text-amber-500" },
-    { icon: CheckCircle, text: "You'll get a clear next step at the end", iconClass: "text-primary" },
+    { icon: Clock, text: "Takes About 4 Minutes", iconClass: "text-muted-foreground" },
+    { icon: Sparkles, text: "Mostly Taps (No Long Typing)", iconClass: "text-amber-500" },
+    { icon: CheckCircle, text: "You'll Get A Clear Next Step At The End", iconClass: "text-primary" },
   ];
 
   return (
@@ -72,7 +72,7 @@ const Check = () => {
         {/* Step indicator */}
         <motion.div variants={itemVariants} className="mb-8">
           <span className="text-xs font-medium tracking-[0.2em] uppercase text-accent">
-            Step 1 of 2
+            Step 1 Of 2
           </span>
         </motion.div>
 
@@ -81,8 +81,8 @@ const Check = () => {
           variants={itemVariants}
           className="text-4xl sm:text-5xl lg:text-6xl font-serif font-medium text-white leading-[1.1] mb-6"
         >
-          You're{" "}
-          <span className="italic text-accent">almost there.</span>
+          {"You're"}{" "}
+          <span className="italic text-accent">Almost There.</span>
         </motion.h1>
 
         {/* Card container */}
@@ -93,18 +93,18 @@ const Check = () => {
           {/* What this check is */}
           <div className="mb-8">
             <span className="text-xs font-medium tracking-[0.15em] uppercase text-white/50 mb-3 block">
-              What this check is
+              What This Check Is
             </span>
             <p className="text-lg text-white/80 leading-relaxed">
-              This <span className="text-accent font-semibold">FREE</span> quick check shows if your 
-              nonprofit has the systems funders look for—so grants are easier and audits feel less stressful.
+              This <span className="text-accent font-semibold">FREE</span> Quick Check Shows If Your 
+              Nonprofit Has The Systems Funders Look For—So Grants Are Easier And Audits Feel Less Stressful.
             </p>
           </div>
 
           {/* We'll check section */}
           <div className="mb-8">
             <span className="text-xs font-medium tracking-[0.15em] uppercase text-white/50 mb-4 block">
-              We'll check
+              {"We'll Check"}
             </span>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {checkItems.map((item, index) => (
@@ -129,9 +129,8 @@ const Check = () => {
           {/* Why it matters */}
           <div className="p-4 rounded-xl bg-accent/10 border-l-4 border-accent">
             <p className="text-white/80 text-sm sm:text-base leading-relaxed">
-              <span className="font-semibold text-white">Why it matters:</span>{" "}
-              <span className="italic">You'll get a clear next step at the end: What to fix or a calendar 
-              invite to learn more about your systems for better next steps.</span>
+              <span className="font-semibold text-white">Why It Matters:</span>{" "}
+              <span className="italic">{"You'll Get A Clear Next Step At The End: What To Fix Or A Calendar Invite To Learn More About Your Systems For Better Next Steps."}</span>
             </p>
           </div>
         </motion.div>
@@ -154,7 +153,7 @@ const Check = () => {
             className="flex items-center justify-center gap-2 text-accent mb-4"
           >
             <Loader2 className="w-5 h-5 animate-spin" aria-hidden="true" />
-            <span className="text-sm">Sending you there now…</span>
+            <span className="text-sm">Sending You There Now…</span>
           </motion.div>
         )}
 
@@ -166,7 +165,7 @@ const Check = () => {
             size="lg"
             className="w-full h-14 bg-accent text-secondary-background hover:bg-accent/90 font-semibold text-base rounded-xl group"
           >
-            Continue to the check
+            Continue To The Check
             <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
           </Button>
         </motion.div>
@@ -179,7 +178,7 @@ const Check = () => {
               className="text-sm text-white/40 hover:text-white/60 transition-colors group"
             >
               <span className="relative">
-                Change email
+                Change Email
                 <span className="absolute left-0 -bottom-0.5 w-0 h-px bg-white/60 transition-all duration-300 group-hover:w-full" />
               </span>
             </Link>
@@ -190,7 +189,7 @@ const Check = () => {
           >
             <ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-0.5" />
             <span className="relative">
-              Back to home
+              Back To Home
               <span className="absolute left-0 -bottom-0.5 w-0 h-px bg-white/60 transition-all duration-300 group-hover:w-full" />
             </span>
           </Link>
@@ -198,7 +197,7 @@ const Check = () => {
 
         {/* Trust line */}
         <motion.p variants={itemVariants} className="text-xs text-white/30 text-center">
-          We only use your email to send your results. No spam.
+          We Only Use Your Email To Send Your Results. No Spam.
         </motion.p>
       </motion.div>
     </main>
