@@ -39,11 +39,11 @@ export const FAQ = () => {
   return (
     <section
       id="faq"
-      className="py-24 md:py-36 lg:py-44 bg-muted/30 relative overflow-hidden"
+      className="py-24 md:py-32 lg:py-40 bg-slate-50 relative overflow-hidden"
       aria-labelledby="faq-heading"
     >
       {/* Subtle texture */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-background via-muted/30 to-muted/30" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-white via-slate-50 to-slate-50" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-12 gap-16 lg:gap-24">
@@ -56,28 +56,28 @@ export const FAQ = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className="text-sm tracking-widest text-muted-foreground uppercase mb-4">
+            <p className="text-sm tracking-widest text-slate-500 uppercase mb-4">
               Common questions
             </p>
 
             <h2
               id="faq-heading"
-              className="text-4xl md:text-5xl font-serif font-medium text-foreground leading-[1.1] mb-6"
+              className="text-4xl md:text-5xl font-serif font-medium text-slate-900 leading-[1.1] mb-6"
             >
               Questions you might have
             </h2>
 
-            <p className="text-lg text-body leading-relaxed mb-8">
+            <p className="text-lg text-slate-600 leading-relaxed mb-8">
               Everything you need to know about working with Nimara. Can't find what you're looking for?
             </p>
 
             <a
               href="/book-a-call"
-              className="group inline-flex items-center gap-2 text-foreground font-medium"
+              className="group inline-flex items-center gap-2 text-slate-900 font-medium"
             >
               <span className="relative">
                 Book a call to ask us directly
-                <span className="absolute left-0 -bottom-0.5 w-full h-px bg-foreground/30 group-hover:bg-foreground transition-colors duration-300" />
+                <span className="absolute left-0 -bottom-0.5 w-full h-px bg-slate-300 group-hover:bg-slate-900 transition-colors duration-300" />
               </span>
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
@@ -96,7 +96,7 @@ export const FAQ = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.5, delay: index * 0.05 }}
-                    className="border-b border-border/50"
+                    className="border-b border-slate-200"
                   >
                     <button
                       onClick={() => toggleFAQ(index)}
@@ -106,7 +106,7 @@ export const FAQ = () => {
                       {/* Number */}
                       <span className={`
                         text-lg font-light tabular-nums transition-colors duration-300 mt-0.5
-                        ${isOpen ? 'text-primary' : 'text-muted-foreground/50 group-hover:text-muted-foreground'}
+                        ${isOpen ? 'text-purple-600' : 'text-slate-300 group-hover:text-slate-400'}
                       `}>
                         0{index + 1}
                       </span>
@@ -114,7 +114,7 @@ export const FAQ = () => {
                       {/* Question */}
                       <span className={`
                         flex-1 text-lg font-medium transition-colors duration-300
-                        ${isOpen ? 'text-primary' : 'text-foreground group-hover:text-primary'}
+                        ${isOpen ? 'text-purple-600' : 'text-slate-900 group-hover:text-purple-600'}
                       `}>
                         {faq.question}
                       </span>
@@ -122,7 +122,7 @@ export const FAQ = () => {
                       {/* Toggle */}
                       <div className={`
                         flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300
-                        ${isOpen ? 'bg-primary text-white' : 'bg-muted text-muted-foreground group-hover:bg-primary/10'}
+                        ${isOpen ? 'bg-purple-600 text-white' : 'bg-slate-100 text-slate-400 group-hover:bg-purple-50'}
                       `}>
                         {isOpen ? (
                           <Minus className="w-4 h-4" strokeWidth={2} />
@@ -143,7 +143,7 @@ export const FAQ = () => {
                           className="overflow-hidden"
                         >
                           <div className="pb-8 pl-10">
-                            <p className="text-body leading-relaxed max-w-2xl">
+                            <p className="text-slate-600 leading-relaxed max-w-2xl">
                               {faq.answer}
                             </p>
                           </div>

@@ -33,11 +33,11 @@ const promises = [
 export const HowWeHelp = () => {
   return (
     <section
-      className="py-24 md:py-36 lg:py-44 bg-muted/30 relative overflow-hidden"
+      className="py-24 md:py-32 lg:py-40 bg-slate-50 relative overflow-hidden"
       id="how-we-help"
     >
       {/* Subtle texture */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-background via-muted/30 to-muted/30" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white via-slate-50 to-slate-50" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-12 gap-16 lg:gap-24">
@@ -50,28 +50,28 @@ export const HowWeHelp = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className="text-sm tracking-widest text-muted-foreground uppercase mb-4">
+            <p className="text-sm tracking-widest text-slate-500 uppercase mb-4">
               Our process
             </p>
 
-            <h2 className="text-4xl md:text-5xl font-serif font-medium text-foreground leading-[1.1] mb-6">
+            <h2 className="text-4xl md:text-5xl font-serif font-medium text-slate-900 leading-[1.1] mb-6">
               One simple loop behind every project
             </h2>
 
-            <p className="text-lg text-body leading-relaxed mb-12">
+            <p className="text-lg text-slate-600 leading-relaxed mb-12">
               We don't guess. Behind every project we run the same clear loop: check what's going on, plan, build, support. The only thing that changes is how deep we go.
             </p>
 
             {/* Promises */}
             <div className="mb-12">
-              <p className="text-xs tracking-widest text-muted-foreground uppercase mb-5">
+              <p className="text-xs tracking-widest text-slate-500 uppercase mb-5">
                 What you can count on
               </p>
               <ul className="space-y-4">
                 {promises.map((promise, index) => (
                   <li key={index} className="flex items-center gap-3">
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                    <span className="text-body text-sm">{promise}</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#ACFCE3]" />
+                    <span className="text-slate-600 text-sm">{promise}</span>
                   </li>
                 ))}
               </ul>
@@ -82,11 +82,11 @@ export const HowWeHelp = () => {
               href="https://www.notion.so/Nimara-Refund-Policy-2bc227f1ee3a80f299fbc42501d338ac?source=copy_link"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 text-foreground font-medium"
+              className="group inline-flex items-center gap-2 text-slate-900 font-medium"
             >
               <span className="relative">
                 Read our refund policy
-                <span className="absolute left-0 -bottom-0.5 w-full h-px bg-foreground/30 group-hover:bg-foreground transition-colors duration-300" />
+                <span className="absolute left-0 -bottom-0.5 w-full h-px bg-slate-300 group-hover:bg-slate-900 transition-colors duration-300" />
               </span>
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
@@ -105,27 +105,27 @@ export const HowWeHelp = () => {
                   className="group"
                 >
                   <div className={`flex gap-6 py-8 ${
-                    index !== steps.length - 1 ? 'border-b border-border/50' : ''
+                    index !== steps.length - 1 ? 'border-b border-slate-200' : ''
                   }`}>
                     {/* Number */}
-                    <span className="text-4xl md:text-5xl font-light text-border group-hover:text-accent transition-colors duration-500 tabular-nums">
+                    <span className="text-4xl md:text-5xl font-light text-slate-200 group-hover:text-[#ACFCE3] transition-colors duration-500 tabular-nums">
                       {step.number}
                     </span>
 
                     {/* Content */}
                     <div className="flex-1 pt-2">
-                      <h3 className="text-xl md:text-2xl font-serif font-medium text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
+                      <h3 className="text-xl md:text-2xl font-serif font-medium text-slate-900 mb-3 group-hover:text-purple-600 transition-colors duration-300">
                         {step.title}
                       </h3>
-                      <p className="text-body leading-relaxed max-w-lg">
+                      <p className="text-slate-600 leading-relaxed max-w-lg">
                         {step.text}
                       </p>
 
                       {/* Guarantee badge on last step */}
                       {index === steps.length - 1 && (
-                        <div className="mt-5 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20">
-                          <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                          <span className="text-xs font-medium text-foreground">
+                        <div className="mt-5 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#ACFCE3]/20 border border-[#ACFCE3]/30">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#ACFCE3]" />
+                          <span className="text-xs font-medium text-slate-900">
                             Money-back guarantee included
                           </span>
                         </div>
@@ -142,20 +142,20 @@ export const HowWeHelp = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="mt-12 pt-8 border-t border-border/50"
+              className="mt-12 pt-8 border-t border-slate-200"
             >
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
                 <div>
-                  <p className="text-lg font-medium text-foreground mb-1">
+                  <p className="text-lg font-medium text-slate-900 mb-1">
                     Check → Plan → Build → Support
                   </p>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-slate-500">
                     The simple Nimara loop behind every project
                   </p>
                 </div>
                 <a
                   href="/organizational-health-check"
-                  className="inline-flex items-center justify-center gap-2 h-12 px-6 bg-secondary-background text-white font-medium rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-secondary-background/20"
+                  className="inline-flex items-center justify-center gap-2 h-12 px-6 bg-slate-900 text-white font-medium rounded-full transition-all duration-300 hover:bg-slate-800 hover:shadow-lg"
                 >
                   Start the free check
                   <ArrowRight className="w-4 h-4" />

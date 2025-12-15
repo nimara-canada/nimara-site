@@ -34,14 +34,16 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
       {/* Skip to content link */}
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-purple-600 focus:text-white focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
       >
         Skip to content
       </a>
 
       <header
-        className={`fixed left-0 right-0 z-[70] w-full bg-background transition-all duration-300 ${
-          isScrolled ? "shadow-sm border-b border-border/50" : ""
+        className={`fixed left-0 right-0 z-[70] w-full transition-all duration-300 ${
+          isScrolled 
+            ? "bg-white shadow-sm border-b border-slate-200" 
+            : "bg-white/95 backdrop-blur-md"
         }`}
         style={{ top: "var(--announcement-height, 0px)" }}
       >
@@ -76,14 +78,14 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                   aria-current={item.href === activeRoute ? "page" : undefined}
                   className={`group relative px-4 py-2 text-sm font-medium transition-colors min-h-[44px] inline-flex items-center ${
                     item.href === activeRoute
-                      ? "text-primary"
-                      : "text-foreground/70 hover:text-foreground"
+                      ? "text-purple-600"
+                      : "text-slate-600 hover:text-slate-900"
                   }`}
                 >
                   <span className="relative">
                     {item.name}
                     <span 
-                      className={`absolute left-0 -bottom-0.5 h-px bg-primary transition-all duration-300 ${
+                      className={`absolute left-0 -bottom-0.5 h-px bg-purple-600 transition-all duration-300 ${
                         item.href === activeRoute ? "w-full" : "w-0 group-hover:w-full"
                       }`} 
                     />
@@ -98,18 +100,18 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                 href="https://www.notion.so/Consultant-Hire-2bb227f1ee3a8018b693d47e9610c583?source=copy_link"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="group text-sm text-slate-500 hover:text-slate-900 transition-colors"
               >
                 <span className="relative">
                   For consultants
-                  <span className="absolute left-0 -bottom-0.5 w-0 h-px bg-foreground transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute left-0 -bottom-0.5 w-0 h-px bg-slate-900 transition-all duration-300 group-hover:w-full" />
                 </span>
               </a>
               <motion.a
                 href="/book-a-call"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-2 h-11 px-6 bg-primary text-primary-foreground text-sm font-medium rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 group"
+                className="inline-flex items-center gap-2 h-11 px-6 bg-purple-600 text-white text-sm font-medium rounded-full transition-all duration-300 hover:bg-purple-700 hover:shadow-lg hover:shadow-purple-200 group"
               >
                 <span>Schedule a Call</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
@@ -122,17 +124,17 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="min-w-[48px] min-h-[48px]"
+                  className="min-w-[48px] min-h-[48px] text-slate-900"
                   aria-label={isOpen ? "Close menu" : "Open menu"}
                   aria-expanded={isOpen}
                 >
                   {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-full sm:w-96 p-0 border-l border-border/50">
-                <div className="flex flex-col h-full bg-background">
+              <SheetContent side="right" className="w-full sm:w-96 p-0 border-l border-slate-200">
+                <div className="flex flex-col h-full bg-white">
                   {/* Mobile nav header */}
-                  <div className="p-6 border-b border-border/50">
+                  <div className="p-6 border-b border-slate-200">
                     <img src={nimaraLogo} alt="Nimara" className="h-10" />
                   </div>
 
@@ -149,8 +151,8 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                           aria-current={item.href === activeRoute ? "page" : undefined}
                           className={`block py-4 text-lg font-medium transition-colors ${
                             item.href === activeRoute
-                              ? "text-primary"
-                              : "text-foreground hover:text-primary"
+                              ? "text-purple-600"
+                              : "text-slate-900 hover:text-purple-600"
                           }`}
                           onClick={() => setIsOpen(false)}
                         >
@@ -159,15 +161,15 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                       ))}
                     </div>
 
-                    <div className="mt-8 pt-8 border-t border-border/50">
-                      <span className="text-xs font-medium tracking-[0.15em] uppercase text-muted-foreground mb-4 block">
+                    <div className="mt-8 pt-8 border-t border-slate-200">
+                      <span className="text-xs font-medium tracking-[0.15em] uppercase text-slate-500 mb-4 block">
                         Join Our Team
                       </span>
                       <a
                         href="https://www.notion.so/Consultant-Hire-2bb227f1ee3a8018b693d47e9610c583?source=copy_link"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-foreground hover:text-primary transition-colors group"
+                        className="inline-flex items-center gap-2 text-slate-900 hover:text-purple-600 transition-colors group"
                         onClick={() => setIsOpen(false)}
                       >
                         <span>For consultants</span>
@@ -177,10 +179,10 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                   </nav>
 
                   {/* Mobile nav footer */}
-                  <div className="p-6 border-t border-border/50 bg-muted/30">
+                  <div className="p-6 border-t border-slate-200 bg-slate-50">
                     <a
                       href="/book-a-call"
-                      className="flex items-center justify-center gap-2 w-full h-14 bg-primary text-primary-foreground font-medium rounded-full transition-all hover:shadow-lg hover:shadow-primary/20"
+                      className="flex items-center justify-center gap-2 w-full h-14 bg-purple-600 text-white font-medium rounded-full transition-all hover:bg-purple-700 hover:shadow-lg"
                       onClick={() => setIsOpen(false)}
                     >
                       Schedule a Call
@@ -195,10 +197,10 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
       </header>
 
       {/* Mobile Sticky Bottom CTA */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden p-4 bg-background/98 backdrop-blur-md border-t border-border/50">
+      <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden p-4 bg-white/98 backdrop-blur-md border-t border-slate-200">
         <a
           href="/book-a-call"
-          className="flex items-center justify-center gap-2 w-full h-12 bg-primary text-primary-foreground font-medium rounded-full transition-all hover:shadow-lg hover:shadow-primary/20"
+          className="flex items-center justify-center gap-2 w-full h-12 bg-purple-600 text-white font-medium rounded-full transition-all hover:bg-purple-700 hover:shadow-lg"
         >
           Schedule a Call
           <ArrowRight className="w-4 h-4" />
