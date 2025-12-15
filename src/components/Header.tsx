@@ -40,10 +40,15 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
       </a>
 
       <header
-        className={`fixed left-0 right-0 z-[70] w-full bg-background transition-all duration-300 ${
+        className={`fixed left-0 right-0 z-[1000] w-full transition-all duration-300 ${
           isScrolled ? "shadow-sm border-b border-border/50" : ""
         }`}
-        style={{ top: "var(--announcement-height, 0px)" }}
+        style={{ 
+          top: "var(--announcement-height, 0px)",
+          backgroundColor: "hsl(var(--background))",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+        }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className={`flex items-center justify-between transition-all duration-300 ${
