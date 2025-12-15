@@ -13,95 +13,91 @@
 
 @layer base {
   :root {
-    /* ===== NIMARA BRAND TOKENS ===== */
-    /* Base backgrounds */
-    --nim-base-bg: 220 53% 8%;        /* #0A101F - Global base background */
-    --nim-alt-bg: 229 48% 15%;        /* #1F2957 - Alternate section (use sparingly) */
+    /* ===== NIMARA BRAND TOKENS v2.0 - LIGHT-FIRST ===== */
     
-    /* Surface colors (cards/panels) */
-    --nim-card-bg: 229 48% 10%;       /* #10192F - Card background */
-    --nim-card-bg-hover: 229 45% 14%; /* #141F3A - Card hover state */
+    /* Light backgrounds (DEFAULT for most sections) */
+    --nim-light-bg: 0 0% 100%;        /* #FFFFFF - Base background */
+    --nim-light-alt: 230 33% 98%;     /* #F7F8FC - Soft alternate section */
+    --nim-light-border: 220 53% 8% / 0.08;  /* Light border */
     
-    /* Text colors */
-    --nim-text-heading: 225 30% 97%;           /* #F5F7FF */
-    --nim-text-body: 225 30% 97%;              /* with 75% opacity for body */
-    --nim-text-muted: 225 30% 97%;             /* with 55% opacity for muted */
+    /* Dark backgrounds (ONLY for Hero, Two Ways, Footer) */
+    --nim-dark-bg: 220 53% 8%;        /* #0A101F - Dark section base */
+    --nim-dark-depth: 225 45% 10%;    /* #121A33 - Dark depth */
+    --nim-dark-card: 229 48% 10%;     /* #10192F - Card on dark */
+    
+    /* Text colors - On Light */
+    --nim-text-dark: 220 53% 8%;      /* #0A101F - Headings on light */
+    --nim-text-body: 220 53% 8% / 0.78;    /* Body text on light */
+    --nim-text-muted: 220 53% 8% / 0.55;   /* Muted text on light */
+    
+    /* Text colors - On Dark */
+    --nim-text-light: 225 30% 97%;    /* #F5F7FF - Headings on dark */
+    --nim-text-light-body: 225 30% 97% / 0.75;  /* Body on dark */
+    --nim-text-light-muted: 225 30% 97% / 0.55; /* Muted on dark */
     
     /* Accent colors (strict roles) */
     --nim-mint: 162 91% 83%;          /* #ACFCE3 - Primary CTAs, friendly accents */
-    --nim-purple: 252 58% 56%;        /* #6945D8 - High-intent only (Book a call, Pay) */
-    --nim-slate: 220 13% 65%;         /* #96A0B5 - Secondary text, labels, borders */
+    --nim-purple: 252 58% 56%;        /* #6945D8 - High-intent only (Book/Pay) */
+    --nim-slate: 220 13% 65%;         /* #96A0B5 - Secondary labels only */
     
-    /* Legacy tokens (mapped to new system) */
-    --nim-navy: var(--nim-base-bg);
+    /* Legacy support */
     --nim-white: 0 0% 100%;
-    --nim-mist: 226 33% 93%;
-    --nim-cloud: 220 50% 97%;
+    --nim-navy: var(--nim-dark-bg);
 
-    /* ===== SEMANTIC TOKENS ===== */
-    --background: var(--nim-base-bg);
-    --foreground: var(--nim-text-heading);
+    /* ===== SEMANTIC TOKENS (Light-First Default) ===== */
+    --background: var(--nim-light-bg);
+    --foreground: var(--nim-text-dark);
 
-    --card: var(--nim-card-bg);
-    --card-foreground: var(--nim-text-heading);
+    --card: var(--nim-light-bg);
+    --card-foreground: var(--nim-text-dark);
 
-    --popover: var(--nim-card-bg);
-    --popover-foreground: var(--nim-text-heading);
+    --popover: var(--nim-light-bg);
+    --popover-foreground: var(--nim-text-dark);
 
     --primary: var(--nim-purple);
     --primary-foreground: var(--nim-white);
 
-    --secondary: var(--nim-alt-bg);
-    --secondary-foreground: var(--nim-text-heading);
+    --secondary: var(--nim-light-alt);
+    --secondary-foreground: var(--nim-text-dark);
 
-    --muted: var(--nim-card-bg);
+    --muted: var(--nim-light-alt);
     --muted-foreground: var(--nim-slate);
     
-    /* Body text semantic tokens */
-    --body: var(--nim-slate);
-    --body-muted: 220 13% 55%;
+    /* Body text semantic tokens (for light backgrounds) */
+    --body: 220 30% 35%;
+    --body-muted: 220 20% 50%;
 
     --accent: var(--nim-mint);
-    --accent-foreground: var(--nim-base-bg);
+    --accent-foreground: var(--nim-dark-bg);
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: var(--nim-white);
 
-    --border: 0 0% 100% / 0.06;
-    --border-hover: 0 0% 100% / 0.10;
-    --input: 0 0% 100% / 0.06;
+    --border: var(--nim-light-border);
+    --border-hover: 220 53% 8% / 0.12;
+    --input: var(--nim-light-border);
     --ring: var(--nim-purple);
 
-    --secondary-background: var(--nim-base-bg);
+    /* Dark section background token */
+    --secondary-background: var(--nim-dark-bg);
 
     --radius: 1rem;
     --radius-xl: 1rem;
 
-    /* Elevation - soft shadows */
-    --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.15);
-    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.2);
-    --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.25);
+    /* Elevation - soft shadows for light mode */
+    --shadow-soft: 0 4px 16px rgba(10, 16, 31, 0.06);
+    --shadow-md: 0 8px 24px rgba(10, 16, 31, 0.08);
+    --shadow-lg: 0 16px 48px rgba(10, 16, 31, 0.12);
 
     /* Sidebar tokens */
-    --sidebar-background: var(--nim-card-bg);
-    --sidebar-foreground: var(--nim-text-heading);
+    --sidebar-background: var(--nim-light-bg);
+    --sidebar-foreground: var(--nim-text-dark);
     --sidebar-primary: var(--nim-purple);
     --sidebar-primary-foreground: var(--nim-white);
-    --sidebar-accent: var(--nim-card-bg-hover);
-    --sidebar-accent-foreground: var(--nim-text-heading);
+    --sidebar-accent: var(--nim-light-alt);
+    --sidebar-accent-foreground: var(--nim-text-dark);
     --sidebar-border: var(--border);
     --sidebar-ring: var(--nim-purple);
-  }
-
-  /* Light mode override for specific pages if needed */
-  .light-mode {
-    --background: var(--nim-cloud);
-    --foreground: var(--nim-base-bg);
-    --card: var(--nim-white);
-    --card-foreground: var(--nim-base-bg);
-    --body: 220 13% 35%;
-    --body-muted: 220 13% 45%;
-    --border: 220 13% 90%;
   }
 }
 
@@ -122,17 +118,12 @@
 
   body {
     @apply antialiased;
-    background: linear-gradient(180deg, 
-      hsl(var(--nim-base-bg)) 0%, 
-      hsl(225 45% 10%) 50%, 
-      hsl(var(--nim-base-bg)) 100%
-    );
-    background-attachment: fixed;
+    background: hsl(var(--nim-light-bg));
     font-family: 'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-feature-settings: "kern" 1, "liga" 1;
     font-size: 17px;
     line-height: 1.6;
-    color: hsl(var(--nim-text-heading) / 0.75);
+    color: hsl(var(--nim-text-dark) / 0.78);
   }
 
   /* Typography Scale - Editorial feel with serif for headings */
