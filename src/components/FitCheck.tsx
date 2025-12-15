@@ -204,11 +204,13 @@ export const FitCheck = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <button
+            <motion.button
               type="button"
               onClick={() => setShowVideoModal(true)}
               className="relative block w-full aspect-[4/3] bg-white group focus:outline-none focus:ring-2 focus:ring-[#0B1120] focus:ring-offset-4 focus:ring-offset-accent rounded-lg overflow-hidden shadow-lg"
               aria-label="Play Nimara intro video"
+              whileHover={{ y: -8, boxShadow: '0 25px 50px -12px rgba(11, 17, 32, 0.25)' }}
+              transition={{ duration: 0.3 }}
             >
               <motion.div
                 className="absolute inset-0 bg-cover bg-center"
@@ -245,14 +247,15 @@ export const FitCheck = () => {
                   Who we help, what we install, and what working together feels like.
                 </p>
               </div>
-            </button>
+            </motion.button>
 
             {/* Quote */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
-              transition={{ delay: 0.6, duration: 0.6 }}
-              className="mt-8 p-6 bg-white rounded-lg shadow-lg"
+              whileHover={{ y: -6, boxShadow: '0 20px 40px -12px rgba(11, 17, 32, 0.2)' }}
+              transition={{ delay: 0.6, duration: 0.3 }}
+              className="mt-8 p-6 bg-white rounded-lg shadow-lg cursor-default"
             >
               <p className="text-[#0B1120]/80 italic leading-relaxed mb-3">
                 "Finally, someone who gets what we actually need."
