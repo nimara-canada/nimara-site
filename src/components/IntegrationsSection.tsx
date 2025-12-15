@@ -54,9 +54,9 @@ export const IntegrationsSection = () => {
             id="integrations-heading"
             className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-[1.1] mb-6"
           >
-            Works with the tools
+            Works With The Tools
             <br />
-            <span className="font-normal italic text-muted-foreground">you already use</span>
+            <span className="font-normal italic text-muted-foreground">You Already Use</span>
           </motion.h2>
           
           <motion.p
@@ -65,8 +65,8 @@ export const IntegrationsSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-muted-foreground max-w-xl"
           >
-            We connect to your current tools. No big switch. No "rip and replace." 
-            We help you make what you have work better.
+            We Connect To Your Current Tools. No Big Switch. No "Rip And Replace." 
+            We Help You Make What You Have Work Better.
           </motion.p>
         </div>
 
@@ -78,7 +78,7 @@ export const IntegrationsSection = () => {
           className="mb-16"
         >
           <div className="flex flex-wrap gap-6">
-            {["Keep what's working", "Make things easier", "One simple system"].map((benefit, index) => (
+            {["Keep What's Working", "Make Things Easier", "One Simple System"].map((benefit, index) => (
               <span 
                 key={index}
                 className="inline-flex items-center gap-2 text-foreground"
@@ -120,7 +120,7 @@ export const IntegrationsSection = () => {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="text-muted-foreground mb-12"
         >
-          Not sure what you have? We'll help you map it.
+          Not Sure What You Have? We'll Help You Map It.
         </motion.p>
 
         {/* CTAs */}
@@ -135,7 +135,7 @@ export const IntegrationsSection = () => {
               to="/book-a-call"
               className="group inline-flex items-center gap-3 text-foreground font-medium"
             >
-              <span className="group-hover:text-primary transition-colors">Tell us what tools you use</span>
+              <span className="group-hover:text-primary transition-colors">Tell Us What Tools You Use</span>
               <span className="w-8 h-px bg-foreground group-hover:w-12 group-hover:bg-primary transition-all duration-300" />
             </Link>
             
@@ -143,7 +143,7 @@ export const IntegrationsSection = () => {
               to="/check"
               className="group inline-flex items-center gap-3 text-muted-foreground font-medium"
             >
-              <span className="group-hover:text-primary transition-colors">Start the 4-minute check</span>
+              <span className="group-hover:text-primary transition-colors">Start The 4-Minute Check</span>
               <span className="w-8 h-px bg-muted-foreground group-hover:w-12 group-hover:bg-primary transition-all duration-300" />
             </Link>
           </div>
