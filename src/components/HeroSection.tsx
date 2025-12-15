@@ -116,8 +116,8 @@ const HeroSection = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg md:text-xl text-white/60 mb-10 leading-relaxed max-w-xl"
             >
-              Nimara helps you set up simple systems for your board, money, staff, and 
-              programs—so your team spends less time fixing problems and more time doing the work.
+              Nimara Helps You Set Up Simple Systems For Your Board, Money, Staff, And 
+              Programs—So Your Team Spends Less Time Fixing Problems And More Time Doing The Work.
             </motion.p>
 
             {/* Ready for... */}
@@ -127,7 +127,7 @@ const HeroSection = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="flex flex-wrap items-center gap-6 mb-12"
             >
-              {["Ready for grants", "Ready to grow", "Ready for audits"].map((item, index) => (
+              {["Ready For Grants", "Ready To Grow", "Ready For Audits"].map((item, index) => (
                 <span 
                   key={index} 
                   className="inline-flex items-center gap-2 text-sm text-white/70"
@@ -149,7 +149,7 @@ const HeroSection = () => {
                 href="/book-a-call"
                 className="group inline-flex items-center gap-3 text-white font-medium"
               >
-                <span className="group-hover:text-accent transition-colors">Start the free check</span>
+                <span className="group-hover:text-accent transition-colors">Start The Free Check</span>
                 <span className="w-8 h-px bg-white group-hover:w-12 group-hover:bg-accent transition-all duration-300" />
               </a>
 
@@ -157,7 +157,7 @@ const HeroSection = () => {
                 href="/book-a-call"
                 className="group inline-flex items-center gap-3 text-white/60 font-medium"
               >
-                <span className="group-hover:text-accent transition-colors">Have an urgent problem?</span>
+                <span className="group-hover:text-accent transition-colors">Have An Urgent Problem?</span>
                 <span className="w-8 h-px bg-white/40 group-hover:w-12 group-hover:bg-accent transition-all duration-300" />
               </a>
             </motion.div>
@@ -172,10 +172,10 @@ const HeroSection = () => {
           >
             <div className="p-8 lg:p-10 border border-white/10 bg-white/[0.03]">
               <h2 className="text-xl font-medium text-white mb-2">
-                Start the free 4-minute check
+                Start The Free 4-Minute Check
               </h2>
               <p className="text-sm text-white/50 mb-8">
-                See where your systems stand—no commitment required.
+                See Where Your Systems Stand—No Commitment Required.
               </p>
 
               <form onSubmit={handleStartCheck} className="space-y-6">
@@ -202,12 +202,12 @@ const HeroSection = () => {
                   type="submit" 
                   className="w-full h-14 bg-accent text-hero-background font-medium hover:bg-accent/90 transition-colors"
                 >
-                  Start the check
+                  Start The Check
                   <ArrowRight className="w-4 h-4 ml-2 inline" />
                 </button>
 
                 <p className="text-xs text-white/40 text-center">
-                  We'll reach out by email within 2 business days.
+                  We'll Reach Out By Email Within 2 Business Days.
                 </p>
               </form>
             </div>
