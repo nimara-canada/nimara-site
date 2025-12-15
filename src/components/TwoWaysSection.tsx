@@ -173,7 +173,7 @@ export const TwoWaysSection = () => {
               {/* CTA */}
               <div>
                 <button
-                  onClick={() => handleNavigate("/check")}
+                  onClick={() => handleNavigate("/book-a-call")}
                   className="inline-flex items-center justify-center gap-2 h-14 px-8 bg-accent text-secondary-background font-semibold rounded-full transition-all duration-300 hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/20"
                 >
                   Start the free check

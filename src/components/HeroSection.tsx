@@ -78,7 +78,7 @@ const HeroSection = () => {
   const handleStartCheck = (e: React.FormEvent) => {
     e.preventDefault();
     if (primaryEmail) {
-      window.location.href = `/check?email=${encodeURIComponent(primaryEmail)}`;
+      window.location.href = `/book-a-call?email=${encodeURIComponent(primaryEmail)}`;
     }
   };
 

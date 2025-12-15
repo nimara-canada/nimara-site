@@ -85,7 +85,7 @@ export const SystemLadder = () => {
 
             {/* CTA */}
             <a
-              href="/organizational-health-check"
+              href="/book-a-call"
               className="group inline-flex items-center gap-3 text-white font-medium"
             >
               <span className="relative">
@@ -209,7 +209,7 @@ export const SystemLadder = () => {
                   </p>
                 </div>
                 <a
-                  href="/organizational-health-check"
+                  href="/book-a-call"
                   className="inline-flex items-center justify-center gap-2 h-12 px-6 bg-accent text-secondary-background font-medium rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-accent/20"
                 >
                   Start the free check

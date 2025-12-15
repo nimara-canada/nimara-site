@@ -239,7 +239,7 @@ export const Expertise = () => {
               </p>
             </div>
             <a
-              href="/organizational-health-check"
+              href="/book-a-call"
               className="inline-flex items-center justify-center gap-2 h-12 px-6 bg-secondary-background text-white font-medium rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-secondary-background/20 whitespace-nowrap"
             >
               Start the free check
