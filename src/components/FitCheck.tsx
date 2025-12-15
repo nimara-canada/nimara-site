@@ -207,7 +207,7 @@ export const FitCheck = () => {
             <button
               type="button"
               onClick={() => setShowVideoModal(true)}
-              className="relative block w-full aspect-[4/3] bg-[#0B1120] group focus:outline-none focus:ring-2 focus:ring-[#0B1120] focus:ring-offset-4 focus:ring-offset-accent"
+              className="relative block w-full aspect-[4/3] bg-white group focus:outline-none focus:ring-2 focus:ring-[#0B1120] focus:ring-offset-4 focus:ring-offset-accent rounded-lg overflow-hidden shadow-lg"
               aria-label="Play Nimara intro video"
             >
               <motion.div
@@ -218,12 +218,12 @@ export const FitCheck = () => {
               />
               
               {/* Overlay */}
-              <div className="absolute inset-0 bg-[#0B1120]/70" />
+              <div className="absolute inset-0 bg-[#0B1120]/50" />
 
               {/* Play button */}
               <div className="absolute inset-0 flex items-center justify-center">
                   <motion.div
-                    className="w-20 h-20 rounded-full bg-accent flex items-center justify-center"
+                    className="w-20 h-20 rounded-full bg-white flex items-center justify-center shadow-lg"
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.3 }}
                   >
@@ -233,7 +233,7 @@ export const FitCheck = () => {
 
               {/* Duration */}
               <div className="absolute top-6 left-6">
-                <span className="inline-block px-3 py-1.5 bg-accent text-[#0B1120] text-xs font-medium">
+                <span className="inline-block px-3 py-1.5 bg-white text-[#0B1120] text-xs font-medium rounded">
                   1 min
                 </span>
               </div>
@@ -252,7 +252,7 @@ export const FitCheck = () => {
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.6, duration: 0.6 }}
-              className="mt-8 p-6 border border-[#0B1120]/20 bg-[#0B1120]/5"
+              className="mt-8 p-6 bg-white rounded-lg shadow-lg"
             >
               <p className="text-[#0B1120]/80 italic leading-relaxed mb-3">
                 "Finally, someone who gets what we actually need."
