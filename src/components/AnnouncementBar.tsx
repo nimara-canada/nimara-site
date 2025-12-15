@@ -1,21 +1,21 @@
 import { useState, useEffect } from "react";
-import { X } from "lucide-react";
+import { X, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
+
 const STORAGE_KEY = "nim_announce_hiring_2025_v2";
 const END_DATE = new Date("2026-03-31T00:00:00");
+
 export const AnnouncementBar = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const {
-    i18n
-  } = useTranslation();
+  const { i18n } = useTranslation();
   const language = i18n.language as 'en' | 'fr';
+
   useEffect(() => {
-    // Check if announcement should be visible
     const isDismissed = localStorage.getItem(STORAGE_KEY) === "dismissed";
     const isExpired = new Date() >= END_DATE;
     setIsVisible(!isDismissed && !isExpired);
 
-    // Set CSS variable for announcement height
     if (!isDismissed && !isExpired) {
       const updateHeight = () => {
         const bar = document.getElementById("announcement_hiring_2025");
@@ -23,7 +23,6 @@ export const AnnouncementBar = () => {
           document.documentElement.style.setProperty("--announcement-height", `${bar.offsetHeight}px`);
         }
       };
-      // Use requestAnimationFrame to ensure element is rendered before measuring
       requestAnimationFrame(() => {
         requestAnimationFrame(updateHeight);
       });
@@ -33,40 +32,83 @@ export const AnnouncementBar = () => {
       document.documentElement.style.setProperty("--announcement-height", "0px");
     }
   }, []);
+
   const handleDismiss = () => {
     localStorage.setItem(STORAGE_KEY, "dismissed");
     setIsVisible(false);
     document.documentElement.style.setProperty("--announcement-height", "0px");
 
-    // Fire analytics event (if you have analytics setup)
     if (typeof window !== "undefined" && (window as any).gtag) {
       (window as any).gtag("event", "announcement_dismiss", {
         slug: "hiring-2025"
       });
     }
   };
+
   const handleLinkClick = () => {
-    // Fire analytics event (if you have analytics setup)
     if (typeof window !== "undefined" && (window as any).gtag) {
       (window as any).gtag("event", "announcement_click", {
         slug: "hiring-2025"
       });
     }
   };
-  if (!isVisible) return null;
-  return <aside role="region" aria-label="Site announcement" id="announcement_hiring_2025" className="fixed top-0 left-0 right-0 z-[60] bg-accent text-white">
-      <div className="container mx-auto px-4 py-3 sm:py-3.5">
-        <div className="flex items-center justify-between gap-4">
-          <p className="text-base leading-tight flex-1 text-center px-[2px] py-[2px] sm:text-center font-medium text-secondary-foreground">
-            {language === 'fr' ? "Nimara recrute les meilleurs experts canadiens sans but lucratif pour notre première équipe de livraison. " : "Nimara is hiring top Canadian nonprofit experts for our first delivery team. "}
-            <a href="https://www.notion.so/Consultant-Hire-2bb227f1ee3a8018b693d47e9610c583?source=copy_link" target="_blank" rel="noopener noreferrer" onClick={handleLinkClick} className="underline hover:underline focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-accent rounded-sm font-semibold">
-              {language === 'fr' ? "Postulez maintenant →" : "Apply now →"}
-            </a>
-          </p>
-          <button type="button" aria-label="Dismiss announcement" id="announcement_close" onClick={handleDismiss} className="flex-shrink-0 w-11 h-11 flex items-center justify-center rounded-lg hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white transition-colors">
-            <X aria-hidden="true" className="w-6 h-6 text-[hsl(var(--nimara-navy))]" />
-          </button>
-        </div>
-      </div>
-    </aside>;
+
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.aside
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.3, ease: [0.21, 0.47, 0.32, 0.98] }}
+          role="region"
+          aria-label="Site announcement"
+          id="announcement_hiring_2025"
+          className="fixed top-0 left-0 right-0 z-[60] bg-primary"
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-3">
+            <div className="flex items-center justify-between gap-4">
+              {/* Content */}
+              <div className="flex-1 flex items-center justify-center gap-2 sm:gap-4">
+                <span className="hidden sm:inline-flex items-center px-2.5 py-1 rounded-full bg-white/20 text-white text-xs font-medium tracking-wide uppercase">
+                  Now Hiring
+                </span>
+                <p className="text-sm sm:text-base text-primary-foreground text-center">
+                  {language === 'fr' 
+                    ? "Nimara recrute les meilleurs experts canadiens sans but lucratif." 
+                    : "Nimara is hiring top Canadian nonprofit experts."
+                  }
+                </p>
+                <a
+                  href="https://www.notion.so/Consultant-Hire-2bb227f1ee3a8018b693d47e9610c583?source=copy_link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={handleLinkClick}
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-foreground hover:text-white transition-colors group whitespace-nowrap"
+                >
+                  <span className="relative">
+                    {language === 'fr' ? "Postulez" : "Apply now"}
+                    <span className="absolute left-0 -bottom-0.5 w-0 h-px bg-white transition-all duration-300 group-hover:w-full" />
+                  </span>
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+                </a>
+              </div>
+
+              {/* Dismiss button */}
+              <motion.button
+                type="button"
+                aria-label="Dismiss announcement"
+                onClick={handleDismiss}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors"
+              >
+                <X aria-hidden="true" className="w-5 h-5 text-primary-foreground" />
+              </motion.button>
+            </div>
+          </div>
+        </motion.aside>
+      )}
+    </AnimatePresence>
+  );
 };
