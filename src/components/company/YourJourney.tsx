@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { ArrowRight, Check } from 'lucide-react';
 
 const steps = [
   {
@@ -35,12 +34,10 @@ const addOns = [
   {
     title: "12-month Evaluation & Support",
     description: "Our team stays close for up to 12 months. We check in at agreed points, help you see what is working, and adjust tools or processes where needed.",
-    isAccent: true,
   },
   {
     title: "Fractional Partner (Ongoing)",
     description: "For organizations that need more hands-on help, hire a Nimara Fractional Partner on an ongoing basis to manage and update the systems we installed.",
-    isAccent: false,
   },
 ];
 
@@ -51,196 +48,171 @@ const YourJourney: React.FC = () => {
   const addOnsInView = useInView(addOnsRef, { once: true, margin: "-50px" });
 
   return (
-    <section className="relative py-24 sm:py-32 lg:py-40 bg-secondary text-secondary-foreground overflow-hidden">
-      {/* Premium background effects */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-secondary via-secondary to-secondary/98" />
-        <div className="absolute top-1/3 right-0 w-80 h-80 bg-accent/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-primary/8 rounded-full blur-[100px]" />
+    <section className="relative py-32 sm:py-40 lg:py-48 bg-background overflow-hidden">
+      {/* Subtle grid pattern */}
+      <div className="absolute inset-0 opacity-[0.02]">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
+                           linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
+          backgroundSize: '60px 60px'
+        }} />
       </div>
 
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Editorial Header */}
-        <div className="text-center mb-20 lg:mb-24">
-          <motion.span 
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-medium tracking-[0.15em] uppercase mb-6"
+        <div className="mb-24 lg:mb-32">
+          <motion.div
+            ref={sectionRef}
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8 }}
+            className="flex items-center gap-4 mb-8"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-            The Process
-          </motion.span>
+            <span className="text-xs font-medium tracking-[0.2em] uppercase text-muted-foreground">
+              The Process
+            </span>
+            <div className="h-px flex-1 bg-border" />
+          </motion.div>
           
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-6"
+            className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-[1.1] mb-8"
           >
-            Your Journey with <span className="text-accent italic">Nimara</span>
+            Your Journey
+            <br />
+            <span className="font-normal italic text-muted-foreground">with Nimara</span>
           </motion.h2>
           
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg lg:text-xl text-secondary-foreground/60 max-w-2xl mx-auto"
+            className="text-lg text-muted-foreground max-w-xl"
           >
-            Most projects follow the same basic path. These are the main steps from 
-            'we need help' to 'this is working in real life.'
+            Most projects follow the same basic path. These are the main steps 
+            from 'we need help' to 'this is working in real life.'
           </motion.p>
         </div>
 
-        {/* Timeline */}
-        <div ref={sectionRef} className="mb-24 lg:mb-32">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex items-center gap-6 mb-12"
-          >
-            <span className="text-sm font-medium text-secondary-foreground/40 uppercase tracking-wider">01</span>
-            <h3 className="text-2xl font-semibold">Five Steps</h3>
-            <div className="flex-1 h-px bg-gradient-to-r from-secondary-foreground/20 to-transparent" />
-          </motion.div>
-
-          {/* Timeline Cards */}
-          <div className="relative">
-            {/* Connecting line - Desktop */}
-            <motion.div 
-              initial={{ scaleY: 0 }}
-              animate={isInView ? { scaleY: 1 } : {}}
-              transition={{ duration: 1.2, delay: 0.4 }}
-              className="hidden lg:block absolute left-[39px] top-8 bottom-8 w-px bg-gradient-to-b from-primary/50 via-accent/50 to-primary/50 origin-top"
-            />
-
-            {/* Mobile connecting line */}
-            <motion.div 
-              initial={{ scaleY: 0 }}
-              animate={isInView ? { scaleY: 1 } : {}}
-              transition={{ duration: 1.2, delay: 0.4 }}
-              className="lg:hidden absolute left-[31px] top-8 bottom-8 w-px bg-gradient-to-b from-primary/50 via-accent/50 to-primary/50 origin-top"
-            />
-
-            <div className="space-y-6">
-              {steps.map((step, index) => (
-                <motion.div
-                  key={step.number}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                  whileHover={{ x: 8 }}
-                  className="group relative flex gap-6 lg:gap-8"
-                >
-                  {/* Number badge */}
-                  <div className="relative z-10 flex-shrink-0">
-                    <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-2xl bg-gradient-to-br from-primary to-primary/80 text-primary-foreground flex items-center justify-center text-2xl lg:text-3xl font-bold shadow-lg shadow-primary/20 group-hover:shadow-primary/40 transition-shadow">
-                      {step.number}
-                    </div>
+        {/* Timeline Steps */}
+        <div className="mb-32 lg:mb-40">
+          <div className="space-y-0">
+            {steps.map((step, index) => (
+              <motion.div
+                key={step.number}
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                className="group"
+              >
+                <div className="grid grid-cols-12 gap-4 lg:gap-8 py-8 lg:py-12 border-t border-border hover:bg-muted/30 transition-colors duration-300">
+                  {/* Number */}
+                  <div className="col-span-2 lg:col-span-1">
+                    <span className="text-4xl lg:text-5xl font-extralight text-muted-foreground/40 group-hover:text-foreground/60 transition-colors">
+                      {String(step.number).padStart(2, '0')}
+                    </span>
                   </div>
-
-                  {/* Content card */}
-                  <div className="flex-1 p-6 lg:p-8 rounded-2xl bg-secondary-foreground/[0.03] border border-secondary-foreground/10 backdrop-blur-sm transition-all duration-300 group-hover:bg-secondary-foreground/[0.06] group-hover:border-secondary-foreground/20">
-                    <h4 className="text-lg lg:text-xl font-semibold text-secondary-foreground mb-3">
+                  
+                  {/* Title */}
+                  <div className="col-span-10 lg:col-span-4">
+                    <h3 className="text-lg lg:text-xl font-medium text-foreground group-hover:text-primary transition-colors">
                       {step.title}
-                    </h4>
-                    <p className="text-sm lg:text-base text-secondary-foreground/60 leading-relaxed">
+                    </h3>
+                  </div>
+                  
+                  {/* Description */}
+                  <div className="col-span-12 lg:col-span-7 mt-4 lg:mt-0">
+                    <p className="text-muted-foreground leading-relaxed">
                       {step.description}
                     </p>
                   </div>
-                </motion.div>
-              ))}
-            </div>
+                </div>
+              </motion.div>
+            ))}
+            {/* Bottom border */}
+            <div className="border-t border-border" />
           </div>
         </div>
 
         {/* Add-ons Section */}
         <div ref={addOnsRef}>
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={addOnsInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="flex items-center gap-6 mb-12"
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={addOnsInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8 }}
+            className="flex items-center gap-4 mb-8"
           >
-            <span className="text-sm font-medium text-secondary-foreground/40 uppercase tracking-wider">02</span>
-            <h3 className="text-2xl font-semibold">Optional Add-ons</h3>
-            <div className="flex-1 h-px bg-gradient-to-r from-secondary-foreground/20 to-transparent" />
+            <span className="text-xs font-medium tracking-[0.2em] uppercase text-muted-foreground">
+              Optional
+            </span>
+            <div className="h-px flex-1 bg-border" />
           </motion.div>
 
-          <motion.p 
+          <motion.h3
             initial={{ opacity: 0, y: 20 }}
             animate={addOnsInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-secondary-foreground/60 max-w-2xl mb-10"
+            className="text-3xl sm:text-4xl font-light tracking-tight mb-6"
           >
-            Some organizations want deeper follow-up. These add-ons are optional and come with a separate simple fee.
+            Add-ons
+          </motion.h3>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={addOnsInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-muted-foreground max-w-xl mb-12"
+          >
+            Some organizations want deeper follow-up. These add-ons are optional 
+            and come with a separate simple fee.
           </motion.p>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-px bg-border">
             {addOns.map((addon, index) => (
               <motion.div
                 key={addon.title}
                 initial={{ opacity: 0, y: 20 }}
                 animate={addOnsInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                whileHover={{ y: -4 }}
-                className="group relative"
+                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                className="group bg-background p-8 lg:p-12 hover:bg-muted/30 transition-colors duration-300"
               >
-                <div className={`h-full p-8 rounded-2xl border transition-all duration-300 ${
-                  addon.isAccent 
-                    ? 'border-accent/30 bg-gradient-to-br from-accent/5 to-accent/[0.02] hover:border-accent/50' 
-                    : 'border-primary/30 bg-gradient-to-br from-primary/5 to-primary/[0.02] hover:border-primary/50'
-                }`}>
-                  <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium mb-4 ${
-                    addon.isAccent
-                      ? 'bg-accent/10 text-accent'
-                      : 'bg-primary/10 text-primary'
-                  }`}>
-                    <Check className="w-3 h-3" />
-                    Add-on
-                  </span>
-                  
-                  <h4 className="text-xl font-semibold text-secondary-foreground mb-3">
-                    {addon.title}
-                  </h4>
-                  
-                  <p className="text-secondary-foreground/60 leading-relaxed text-sm">
-                    {addon.description}
-                  </p>
-
-                  <div className={`mt-6 inline-flex items-center gap-2 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity ${
-                    addon.isAccent ? 'text-accent' : 'text-primary'
-                  }`}>
-                    <span>Learn more</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </div>
-                </div>
-
-                {/* Glow effect */}
-                <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl ${
-                  addon.isAccent ? 'bg-accent/10' : 'bg-primary/10'
-                }`} />
+                <span className="inline-block text-xs font-medium tracking-[0.15em] uppercase text-muted-foreground mb-6">
+                  {index === 0 ? 'Extended Support' : 'Ongoing Partnership'}
+                </span>
+                
+                <h4 className="text-xl lg:text-2xl font-medium text-foreground mb-4 group-hover:text-primary transition-colors">
+                  {addon.title}
+                </h4>
+                
+                <p className="text-muted-foreground leading-relaxed">
+                  {addon.description}
+                </p>
               </motion.div>
             ))}
           </div>
         </div>
 
         {/* Bottom CTA */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={addOnsInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-20 text-center"
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-24 lg:mt-32 pt-12 border-t border-border"
         >
-          <p className="text-secondary-foreground/50 mb-4">Ready to start your journey?</p>
-          <a
-            href="/book-a-call"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-secondary font-medium rounded-full hover:bg-accent/90 transition-colors"
-          >
-            Book a discovery call
-            <ArrowRight className="w-4 h-4" />
-          </a>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+            <p className="text-muted-foreground">
+              Ready to start your journey?
+            </p>
+            <a
+              href="/book-a-call"
+              className="inline-flex items-center gap-3 text-foreground font-medium group"
+            >
+              <span className="group-hover:text-primary transition-colors">Book a discovery call</span>
+              <span className="w-8 h-px bg-foreground group-hover:w-12 group-hover:bg-primary transition-all duration-300" />
+            </a>
+          </div>
         </motion.div>
       </div>
     </section>
