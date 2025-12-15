@@ -97,14 +97,16 @@ const BookACall = () => {
       <Header activeRoute="/book-a-call" />
 
       {/* Hero */}
-      <section className="pt-32 pb-16 px-4">
+      <section className="pt-40 md:pt-48 pb-20 px-6">
         <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Book a 30-minute call</h1>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-foreground mb-6 leading-[1.1]">
+            Book a 30-minute call
+          </h1>
+          <p className="text-lg md:text-xl text-body leading-relaxed mb-10 max-w-2xl mx-auto">
             We'll map your outcome, choose the fastest path (3 free quotes or packages waitlist), and answer
             compliance/data questions. We hold 30 minutes in case you need it—most calls wrap in ~15.
           </p>
-          <Button size="lg" onClick={scrollToScheduler} className="mb-4">
+          <Button size="lg" onClick={scrollToScheduler} className="mb-6">
             Schedule a 30-minute call
           </Button>
           <p className="text-sm text-muted-foreground">
@@ -117,16 +119,21 @@ const BookACall = () => {
       </section>
 
       {/* Scheduler */}
-      <section id="scheduler" className="py-16 px-4 bg-muted/30">
+      <section id="scheduler" className="py-20 md:py-28 px-6 bg-muted/30">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-foreground mb-12">Pick a time</h2>
+          <p className="text-sm tracking-widest text-muted-foreground uppercase text-center mb-4">
+            Select a time
+          </p>
+          <h2 className="text-3xl md:text-4xl font-serif font-medium text-center text-foreground mb-12">
+            Pick a time
+          </h2>
 
-          <div className="bg-background rounded-2xl shadow-lg overflow-hidden mb-4">
-            <div className="w-full" style={{ minHeight: "680px" }}>
+          <div className="bg-background rounded-3xl shadow-xl border border-border/50 overflow-hidden mb-6">
+            <div className="w-full" style={{ minHeight: "700px" }}>
               <iframe
                 src="https://calendly.com/hello-nimara/30min"
                 width="100%"
-                height="680"
+                height="700"
                 frameBorder="0"
                 title="Book a 30-minute call"
                 className="w-full"
@@ -139,10 +146,13 @@ const BookACall = () => {
               href="https://calendly.com/hello-nimara/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary hover:underline inline-flex items-center gap-2"
+              className="group inline-flex items-center gap-2 text-primary font-medium"
             >
-              Open in Calendly
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <span className="relative">
+                Open in Calendly
+                <span className="absolute left-0 -bottom-0.5 w-full h-px bg-primary/30 group-hover:bg-primary transition-colors duration-300" />
+              </span>
+              <svg className="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
