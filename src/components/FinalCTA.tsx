@@ -1,61 +1,87 @@
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 export const FinalCTA = () => {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
   return (
-    <section className="py-24 md:py-36 lg:py-44 bg-secondary-background relative overflow-hidden">
-      {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent" />
+    <section 
+      ref={sectionRef}
+      className="relative py-32 sm:py-40 lg:py-48 bg-secondary text-secondary-foreground overflow-hidden"
+    >
+      {/* Subtle grid pattern */}
+      <div className="absolute inset-0 opacity-[0.03]">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `linear-gradient(hsl(var(--secondary-foreground)) 1px, transparent 1px),
+                           linear-gradient(90deg, hsl(var(--secondary-foreground)) 1px, transparent 1px)`,
+          backgroundSize: '80px 80px'
+        }} />
+      </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="max-w-3xl mx-auto text-center">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8 }}
+            className="flex items-center gap-4 mb-8"
           >
-            <p className="text-sm tracking-widest text-white/50 uppercase mb-6">
-              Ready to start?
-            </p>
+            <span className="text-xs font-medium tracking-[0.2em] uppercase text-secondary-foreground/50">
+              Ready to Start?
+            </span>
+            <div className="h-px w-16 bg-secondary-foreground/20" />
+          </motion.div>
 
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-white leading-[1.1] mb-6">
-              Ready to get{" "}
-              <span className="italic text-accent">system-strong</span>?
-            </h2>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-[1.1] mb-8"
+          >
+            Ready to get
+            <br />
+            <span className="font-normal italic text-secondary-foreground/70">system-strong?</span>
+          </motion.h2>
 
-            <p className="text-lg md:text-xl text-white/70 leading-relaxed mb-12 max-w-xl mx-auto">
-              Book a free 15-minute discovery call. We'll figure out if Nimara is the right fit—no pressure, no pitch.
-            </p>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg text-secondary-foreground/60 leading-relaxed mb-12 max-w-xl"
+          >
+            Book a free 15-minute discovery call. We'll figure out if Nimara is the right fit—no pressure, no pitch.
+          </motion.p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a
-                href="/book-a-call"
-                className="inline-flex items-center justify-center gap-2 h-14 px-8 bg-accent text-secondary-background font-semibold rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 hover:scale-[1.02]"
-              >
-                Book a Discovery Call
-                <ArrowRight className="w-5 h-5" />
-              </a>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-start gap-8"
+          >
+            <a
+              href="/book-a-call"
+              className="group inline-flex items-center gap-3 text-secondary-foreground font-medium"
+            >
+              <span className="group-hover:text-accent transition-colors">Book a Discovery Call</span>
+              <span className="w-8 h-px bg-secondary-foreground group-hover:w-12 group-hover:bg-accent transition-all duration-300" />
+            </a>
 
-              <a
-                href="mailto:hello@nimara.ca"
-                className="group inline-flex items-center gap-2 h-14 px-6 text-white/80 font-medium transition-colors duration-300 hover:text-white"
-              >
-                <span className="relative">
-                  Email us instead
-                  <span className="absolute left-0 -bottom-0.5 w-full h-px bg-white/30 group-hover:bg-white transition-colors duration-300" />
-                </span>
-              </a>
-            </div>
+            <a
+              href="mailto:hello@nimara.ca"
+              className="group inline-flex items-center gap-3 text-secondary-foreground/60 font-medium"
+            >
+              <span className="group-hover:text-accent transition-colors">Email us instead</span>
+              <span className="w-8 h-px bg-secondary-foreground/40 group-hover:w-12 group-hover:bg-accent transition-all duration-300" />
+            </a>
           </motion.div>
 
           {/* Trust line */}
           <motion.p
             initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-16 text-sm text-white/40"
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="mt-20 pt-8 border-t border-secondary-foreground/10 text-sm text-secondary-foreground/40"
           >
             Trusted by nonprofits across Canada · Money-back guarantee on system builds
           </motion.p>

@@ -1,147 +1,152 @@
-import { motion } from "framer-motion";
-import { ArrowRight, Check, Mail, FolderOpen, Calculator, Users, CreditCard, Kanban, FileText, Heart } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 
-const benefits = [
-  { text: "Keep what's working" },
-  { text: "Make things easier" },
-  { text: "One simple system" }
-];
-
 const toolCategories = [
-  { label: "Email & calendar", icon: Mail },
-  { label: "Files & folders", icon: FolderOpen },
-  { label: "Accounting", icon: Calculator },
-  { label: "Payroll", icon: Users },
-  { label: "Donors & fundraising", icon: Heart },
-  { label: "Payments", icon: CreditCard },
-  { label: "Project tracking", icon: Kanban },
-  { label: "Forms & surveys", icon: FileText }
+  "Email & calendar",
+  "Files & folders",
+  "Accounting",
+  "Payroll",
+  "Donors & fundraising",
+  "Payments",
+  "Project tracking",
+  "Forms & surveys"
 ];
 
 export const IntegrationsSection = () => {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
   return (
     <section 
-      className="py-24 md:py-32 lg:py-40 bg-background relative overflow-hidden" 
+      ref={sectionRef}
+      className="relative py-32 sm:py-40 lg:py-48 bg-background overflow-hidden" 
       aria-labelledby="integrations-heading"
     >
-      {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-muted/30 via-background to-background" />
-      
-      {/* Decorative elements */}
-      <div className="absolute top-20 right-0 w-72 h-72 bg-accent/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      {/* Subtle grid pattern */}
+      <div className="absolute inset-0 opacity-[0.02]">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
+                           linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
+          backgroundSize: '60px 60px'
+        }} />
+      </div>
 
-      <div className="relative max-w-6xl mx-auto px-6 lg:px-12">
-        {/* Header - asymmetric editorial layout */}
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 mb-16 lg:mb-20">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Editorial Header */}
+        <div className="mb-20 lg:mb-24">
           <motion.div
-            className="lg:col-span-7"
-            initial={{ opacity: 0, y: 32 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8 }}
+            className="flex items-center gap-4 mb-8"
           >
-            <p className="text-xs tracking-[0.2em] text-primary uppercase mb-6 font-medium">
+            <span className="text-xs font-medium tracking-[0.2em] uppercase text-muted-foreground">
               Integrations
-            </p>
-
-            <h2
-              id="integrations-heading"
-              className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-foreground leading-[1.1] mb-6"
-            >
-              Works with the tools{" "}
-              <span className="italic text-accent">you already use</span>
-            </h2>
-
-            <p className="text-lg md:text-xl text-body leading-relaxed max-w-xl">
-              We connect to your current tools. No big switch. No "rip and replace." We help you make what you have work better.
-            </p>
+            </span>
+            <div className="h-px flex-1 bg-border" />
           </motion.div>
-
-          <motion.div
-            className="lg:col-span-5 lg:pt-20"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: 0.15 }}
+          
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            id="integrations-heading"
+            className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-[1.1] mb-8"
           >
-            <div className="space-y-4">
-              {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-center gap-4 group">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/15 flex items-center justify-center transition-all duration-300 group-hover:bg-primary/25 group-hover:scale-105">
-                    <Check className="w-4 h-4 text-primary" />
-                  </span>
-                  <span className="text-foreground text-lg font-medium">{benefit.text}</span>
-                </div>
-              ))}
-            </div>
-            
-            <p className="text-sm text-muted-foreground mt-8 pl-12 italic">
-              Not sure what you have? We'll help you map it.
-            </p>
-          </motion.div>
+            Works with the tools
+            <br />
+            <span className="font-normal italic text-muted-foreground">you already use</span>
+          </motion.h2>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg text-muted-foreground max-w-xl"
+          >
+            We connect to your current tools. No big switch. No "rip and replace." 
+            We help you make what you have work better.
+          </motion.p>
         </div>
 
-        {/* Tool Categories - Premium card grid */}
+        {/* Benefits */}
         <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.3 }}
           className="mb-16"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-            {toolCategories.map((category, index) => {
-              const IconComponent = category.icon;
-              return (
-                <motion.div
-                  key={category.label}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.04 }}
-                  whileHover={{ y: -4, scale: 1.02 }}
-                  className="group relative bg-card border border-border rounded-2xl p-5 md:p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 cursor-default"
-                >
-                  <div className="flex flex-col gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center transition-all duration-300 group-hover:bg-primary/20">
-                      <IconComponent className="w-5 h-5 text-primary transition-transform duration-300 group-hover:scale-110" />
-                    </div>
-                    <span className="text-foreground font-medium text-sm md:text-base">{category.label}</span>
-                  </div>
-                </motion.div>
-              );
-            })}
+          <div className="flex flex-wrap gap-6">
+            {["Keep what's working", "Make things easier", "One simple system"].map((benefit, index) => (
+              <span 
+                key={index}
+                className="inline-flex items-center gap-2 text-foreground"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                {benefit}
+              </span>
+            ))}
           </div>
         </motion.div>
 
+        {/* Tool Categories */}
+        <div className="space-y-0 mb-16">
+          {toolCategories.map((category, index) => (
+            <motion.div
+              key={category}
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.5, delay: 0.3 + index * 0.04 }}
+              className="group"
+            >
+              <div className="flex items-center justify-between py-5 border-t border-border hover:bg-muted/30 transition-colors duration-300 -mx-4 px-4">
+                <span className="text-lg text-foreground group-hover:text-primary transition-colors">
+                  {category}
+                </span>
+                <span className="text-2xl font-extralight text-muted-foreground/40 group-hover:text-muted-foreground/60 transition-colors">
+                  0{index + 1}
+                </span>
+              </div>
+            </motion.div>
+          ))}
+          <div className="border-t border-border" />
+        </div>
+
+        {/* Helper text */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="text-muted-foreground mb-12"
+        >
+          Not sure what you have? We'll help you map it.
+        </motion.p>
+
         {/* CTAs */}
         <motion.div
-          className="flex flex-col sm:flex-row items-center justify-center gap-5"
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.35 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.7 }}
+          className="pt-8 border-t border-border"
         >
-          <Button asChild size="lg" className="rounded-full px-8 py-6 text-base shadow-lg shadow-accent/20 hover:shadow-xl hover:shadow-accent/30 transition-all duration-300">
-            <Link to="/book-a-call">
-              Tell us what tools you use
-              <ArrowRight className="w-4 h-4 ml-2" />
+          <div className="flex flex-col sm:flex-row sm:items-center gap-8">
+            <Link
+              to="/book-a-call"
+              className="group inline-flex items-center gap-3 text-foreground font-medium"
+            >
+              <span className="group-hover:text-primary transition-colors">Tell us what tools you use</span>
+              <span className="w-8 h-px bg-foreground group-hover:w-12 group-hover:bg-primary transition-all duration-300" />
             </Link>
-          </Button>
-          
-          <Link
-            to="/check"
-            className="group inline-flex items-center gap-2 text-foreground/80 hover:text-foreground font-medium text-sm transition-colors duration-300"
-          >
-            <span className="relative">
-              Start the 4-minute check
-              <span className="absolute left-0 -bottom-0.5 w-full h-px bg-foreground/30 group-hover:bg-accent transition-colors duration-300" />
-            </span>
-            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-          </Link>
+            
+            <Link
+              to="/check"
+              className="group inline-flex items-center gap-3 text-muted-foreground font-medium"
+            >
+              <span className="group-hover:text-primary transition-colors">Start the 4-minute check</span>
+              <span className="w-8 h-px bg-muted-foreground group-hover:w-12 group-hover:bg-primary transition-all duration-300" />
+            </Link>
+          </div>
         </motion.div>
       </div>
     </section>

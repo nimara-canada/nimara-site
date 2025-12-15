@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Minus, ArrowRight } from 'lucide-react';
+import { useState, useRef } from 'react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 
 const faqs = [
   {
@@ -31,6 +30,8 @@ const faqs = [
 
 export const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -38,52 +39,69 @@ export const FAQ = () => {
 
   return (
     <section
+      ref={sectionRef}
       id="faq"
-      className="py-24 md:py-36 lg:py-44 bg-muted/30 relative overflow-hidden"
+      className="relative py-32 sm:py-40 lg:py-48 bg-muted/30 overflow-hidden"
       aria-labelledby="faq-heading"
     >
-      {/* Subtle texture */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-background via-muted/30 to-muted/30" />
+      {/* Subtle grid pattern */}
+      <div className="absolute inset-0 opacity-[0.015]">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
+                           linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
+          backgroundSize: '60px 60px'
+        }} />
+      </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Editorial Header */}
         <div className="grid lg:grid-cols-12 gap-16 lg:gap-24">
-          
-          {/* LEFT COLUMN - Editorial intro */}
-          <motion.div
-            className="lg:col-span-4"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <p className="text-sm tracking-widest text-muted-foreground uppercase mb-4">
-              Common questions
-            </p>
-
-            <h2
-              id="faq-heading"
-              className="text-4xl md:text-5xl font-serif font-medium text-foreground leading-[1.1] mb-6"
+          <div className="lg:col-span-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.8 }}
+              className="flex items-center gap-4 mb-8"
             >
-              Questions you might have
-            </h2>
-
-            <p className="text-lg text-body leading-relaxed mb-8">
-              Everything you need to know about working with Nimara. Can't find what you're looking for?
-            </p>
-
-            <a
-              href="/book-a-call"
-              className="group inline-flex items-center gap-2 text-foreground font-medium"
-            >
-              <span className="relative">
-                Book a call to ask us directly
-                <span className="absolute left-0 -bottom-0.5 w-full h-px bg-foreground/30 group-hover:bg-foreground transition-colors duration-300" />
+              <span className="text-xs font-medium tracking-[0.2em] uppercase text-muted-foreground">
+                Common Questions
               </span>
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </a>
-          </motion.div>
+            </motion.div>
+            
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              id="faq-heading"
+              className="text-4xl sm:text-5xl font-light tracking-tight leading-[1.1] mb-8"
+            >
+              Questions
+              <br />
+              <span className="font-normal italic text-muted-foreground">you might have</span>
+            </motion.h2>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-lg text-muted-foreground mb-8"
+            >
+              Everything you need to know about working with Nimara.
+            </motion.p>
 
-          {/* RIGHT COLUMN - FAQ accordion */}
+            <motion.a
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              href="/book-a-call"
+              className="group inline-flex items-center gap-3 text-foreground font-medium"
+            >
+              <span className="group-hover:text-primary transition-colors">Book a call to ask us directly</span>
+              <span className="w-8 h-px bg-foreground group-hover:w-12 group-hover:bg-primary transition-all duration-300" />
+            </motion.a>
+          </div>
+
+          {/* FAQ Accordion */}
           <div className="lg:col-span-8">
             <div className="space-y-0">
               {faqs.map((faq, index) => {
@@ -92,11 +110,10 @@ export const FAQ = () => {
                 return (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.5, delay: index * 0.05 }}
-                    className="border-b border-border/50"
+                    initial={{ opacity: 0 }}
+                    animate={isInView ? { opacity: 1 } : {}}
+                    transition={{ duration: 0.5, delay: 0.3 + index * 0.05 }}
+                    className="border-t border-border"
                   >
                     <button
                       onClick={() => toggleFAQ(index)}
@@ -105,8 +122,8 @@ export const FAQ = () => {
                     >
                       {/* Number */}
                       <span className={`
-                        text-lg font-light tabular-nums transition-colors duration-300 mt-0.5
-                        ${isOpen ? 'text-primary' : 'text-muted-foreground/50 group-hover:text-muted-foreground'}
+                        text-lg font-extralight tabular-nums transition-colors duration-300 mt-0.5
+                        ${isOpen ? 'text-primary' : 'text-muted-foreground/40 group-hover:text-muted-foreground/60'}
                       `}>
                         0{index + 1}
                       </span>
@@ -120,16 +137,12 @@ export const FAQ = () => {
                       </span>
 
                       {/* Toggle */}
-                      <div className={`
-                        flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300
-                        ${isOpen ? 'bg-primary text-white' : 'bg-muted text-muted-foreground group-hover:bg-primary/10'}
+                      <span className={`
+                        text-2xl font-extralight transition-colors duration-300
+                        ${isOpen ? 'text-primary' : 'text-muted-foreground/40 group-hover:text-muted-foreground'}
                       `}>
-                        {isOpen ? (
-                          <Minus className="w-4 h-4" strokeWidth={2} />
-                        ) : (
-                          <Plus className="w-4 h-4" strokeWidth={2} />
-                        )}
-                      </div>
+                        {isOpen ? '−' : '+'}
+                      </span>
                     </button>
 
                     {/* Answer */}
@@ -143,7 +156,7 @@ export const FAQ = () => {
                           className="overflow-hidden"
                         >
                           <div className="pb-8 pl-10">
-                            <p className="text-body leading-relaxed max-w-2xl">
+                            <p className="text-muted-foreground leading-relaxed">
                               {faq.answer}
                             </p>
                           </div>
@@ -153,6 +166,7 @@ export const FAQ = () => {
                   </motion.div>
                 );
               })}
+              <div className="border-t border-border" />
             </div>
           </div>
         </div>
