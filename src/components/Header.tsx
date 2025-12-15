@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-
-
+import { Button } from "@/components/ui/button";
 import nimaraLogo from "@/assets/nimara-logo.png";
 
 const navigation = [
   { name: "For Nonprofits", href: "/" },
-  { name: "How Nimara Works", href: "/how-nimara-works" },
-  { name: "About Us", href: "/company" },
+  { name: "How It Works", href: "/how-nimara-works" },
+  { name: "About", href: "/company" },
   { name: "Resources", href: "/resources" },
 ];
 
@@ -30,45 +28,40 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToGetInTouch = () => {
-    // First, try to find form by ID
-    const form = document.getElementById('form_3quotes');
-    if (form) {
-      form.scrollIntoView({ behavior: "smooth" });
-      // Focus the first input field after scrolling
-      setTimeout(() => {
-        const emailField = document.getElementById('q_email') as HTMLInputElement;
-        emailField?.focus();
-      }, 500);
-    } else {
-      // Fallback: look for section containing "Talk to the Nimara team"
-      const getInTouchSection = Array.from(document.querySelectorAll('section')).find(
-        section => section.textContent?.includes('Talk to the Nimara team') || section.textContent?.includes('Get in touch!')
-      );
-      getInTouchSection?.scrollIntoView({ behavior: "smooth" });
-    }
-    setIsOpen(false);
-  };
-
   return (
     <>
       {/* Skip to content link */}
-      <a 
-        href="#main" 
+      <a
+        href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
       >
         Skip to content
       </a>
 
-      <header className={`fixed left-0 right-0 z-[70] w-full bg-background transition-all duration-300 ${isScrolled ? 'shadow-md border-b border-border/50' : 'border-b border-transparent'}`} style={{ top: 'var(--announcement-height, 0px)' }}>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+      <header
+        className={`fixed left-0 right-0 z-[70] w-full transition-all duration-500 ${
+          isScrolled
+            ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border/50"
+            : "bg-transparent"
+        }`}
+        style={{ top: "var(--announcement-height, 0px)" }}
+      >
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className={`flex items-center justify-between transition-all duration-300 ${
+            isScrolled ? "h-16" : "h-20"
+          }`}>
             {/* Logo */}
-            <a href="/" className="flex items-center space-x-2 min-h-[44px]" aria-label="Nimara home">
-              <img 
-                src={nimaraLogo} 
-                alt="Nimara - Canadian Nonprofit Consulting Platform for Governance, Finance, and Compliance" 
-                className="w-auto h-12 md:h-14 transition-all duration-300"
+            <a
+              href="/"
+              className="flex items-center min-h-[44px]"
+              aria-label="Nimara home"
+            >
+              <img
+                src={nimaraLogo}
+                alt="Nimara"
+                className={`w-auto transition-all duration-300 ${
+                  isScrolled ? "h-10 md:h-12" : "h-12 md:h-14"
+                }`}
                 fetchPriority="high"
                 width="120"
                 height="48"
@@ -76,86 +69,110 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
             </a>
 
             {/* Desktop Navigation */}
-            <nav aria-label="Primary" className="hidden lg:flex items-center space-x-1">
+            <nav aria-label="Primary" className="hidden lg:flex items-center gap-1">
               {navigation.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
                   aria-current={item.href === activeRoute ? "page" : undefined}
-                  className={`px-4 py-2.5 rounded-lg text-base font-medium transition-colors min-h-[44px] inline-flex items-center justify-center ${
+                  className={`relative px-4 py-2 text-sm font-medium transition-colors min-h-[44px] inline-flex items-center ${
                     item.href === activeRoute
                       ? "text-primary"
-                      : "text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                      : "text-foreground/80 hover:text-foreground"
                   }`}
                 >
                   {item.name}
+                  {item.href === activeRoute && (
+                    <span className="absolute bottom-1 left-4 right-4 h-px bg-primary" />
+                  )}
                 </a>
               ))}
             </nav>
 
-            {/* Desktop Utilities */}
-            <div className="hidden lg:flex items-center space-x-3">
+            {/* Desktop CTA */}
+            <div className="hidden lg:flex items-center gap-6">
               <a
                 href="https://www.notion.so/Consultant-Hire-2bb227f1ee3a8018b693d47e9610c583?source=copy_link"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-2 text-sm font-normal text-muted-foreground hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 min-h-[44px] inline-flex items-center justify-center transition-colors"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 For consultants
               </a>
-              <Button asChild size="default" className="min-h-[44px]">
-                <a href="/book-a-call">
-                  Schedule A Call
-                </a>
-              </Button>
+              <a
+                href="/book-a-call"
+                className="inline-flex items-center gap-2 h-11 px-6 bg-secondary-background text-white text-sm font-medium rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-secondary-background/20"
+              >
+                Book a Call
+                <ArrowRight className="w-4 h-4" />
+              </a>
             </div>
 
             {/* Mobile Menu */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild className="lg:hidden">
-                <Button 
-                  variant="ghost" 
-                  size="icon" 
+                <Button
+                  variant="ghost"
+                  size="icon"
                   className="min-w-[48px] min-h-[48px]"
                   aria-label={isOpen ? "Close menu" : "Open menu"}
                   aria-expanded={isOpen}
                 >
                   {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-                  <span className="sr-only">{isOpen ? "Close menu" : "Open menu"}</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-full sm:w-96">
-                <nav aria-label="Mobile navigation" className="flex flex-col space-y-4 mt-8">
-                  {navigation.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      aria-current={item.href === activeRoute ? "page" : undefined}
-                      className={`text-base font-medium py-3 px-4 rounded-lg min-h-[44px] flex items-center transition-colors ${
-                        item.href === activeRoute ? "text-primary bg-muted" : "text-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                      }`}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.name}
-                    </a>
-                  ))}
-                  <div className="pt-4 space-y-3 border-t border-border">
-                    <a
-                      href="https://www.notion.so/Consultant-Hire-2bb227f1ee3a8018b693d47e9610c583?source=copy_link"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm font-normal py-2 px-4 rounded-lg min-h-[44px] flex items-center transition-colors text-muted-foreground hover:text-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      For consultants
-                    </a>
-                    <Button asChild className="w-full min-h-[44px]">
-                      <a href="/book-a-call">
-                        Schedule A Call
-                      </a>
-                    </Button>
+              <SheetContent side="right" className="w-full sm:w-96 p-0">
+                <div className="flex flex-col h-full">
+                  {/* Mobile nav header */}
+                  <div className="p-6 border-b border-border">
+                    <img src={nimaraLogo} alt="Nimara" className="h-10" />
                   </div>
-                </nav>
+
+                  {/* Mobile nav links */}
+                  <nav aria-label="Mobile navigation" className="flex-1 p-6">
+                    <div className="space-y-1">
+                      {navigation.map((item) => (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          aria-current={item.href === activeRoute ? "page" : undefined}
+                          className={`block py-4 text-lg font-medium transition-colors ${
+                            item.href === activeRoute
+                              ? "text-primary"
+                              : "text-foreground hover:text-primary"
+                          }`}
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {item.name}
+                        </a>
+                      ))}
+                    </div>
+
+                    <div className="mt-8 pt-8 border-t border-border space-y-4">
+                      <a
+                        href="https://www.notion.so/Consultant-Hire-2bb227f1ee3a8018b693d47e9610c583?source=copy_link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        For consultants →
+                      </a>
+                    </div>
+                  </nav>
+
+                  {/* Mobile nav footer */}
+                  <div className="p-6 border-t border-border">
+                    <a
+                      href="/book-a-call"
+                      className="flex items-center justify-center gap-2 w-full h-12 bg-secondary-background text-white font-medium rounded-full"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Book a Call
+                      <ArrowRight className="w-4 h-4" />
+                    </a>
+                  </div>
+                </div>
               </SheetContent>
             </Sheet>
           </div>
@@ -163,12 +180,14 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
       </header>
 
       {/* Mobile Sticky Bottom CTA */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden p-4 bg-background/95 backdrop-blur border-t border-border">
-        <Button asChild className="w-full min-h-[44px]">
-          <a href="/book-a-call">
-            Schedule A Call
-          </a>
-        </Button>
+      <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden p-4 bg-background/95 backdrop-blur-md border-t border-border">
+        <a
+          href="/book-a-call"
+          className="flex items-center justify-center gap-2 w-full h-12 bg-secondary-background text-white font-medium rounded-full"
+        >
+          Book a Call
+          <ArrowRight className="w-4 h-4" />
+        </a>
       </div>
     </>
   );
