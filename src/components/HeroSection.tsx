@@ -60,12 +60,12 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative bg-secondary text-secondary-foreground overflow-hidden" aria-labelledby="hero-heading">
+    <section className="relative bg-hero-background text-white overflow-hidden" aria-labelledby="hero-heading">
       {/* Subtle grid pattern */}
-      <div className="absolute inset-0 opacity-[0.03]">
+      <div className="absolute inset-0 opacity-[0.04]">
         <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(hsl(var(--secondary-foreground)) 1px, transparent 1px),
-                           linear-gradient(90deg, hsl(var(--secondary-foreground)) 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(white 1px, transparent 1px),
+                           linear-gradient(90deg, white 1px, transparent 1px)`,
           backgroundSize: '80px 80px'
         }} />
       </div>
@@ -81,10 +81,10 @@ const HeroSection = () => {
               transition={{ duration: 0.8 }}
               className="flex items-center gap-4 mb-10"
             >
-              <span className="text-xs font-medium tracking-[0.2em] uppercase text-secondary-foreground/50">
+              <span className="text-xs font-medium tracking-[0.2em] uppercase text-white/50">
                 Capacity Building for Canadian Nonprofits
               </span>
-              <div className="h-px w-16 bg-secondary-foreground/20" />
+              <div className="h-px w-16 bg-white/20" />
             </motion.div>
 
             {/* H1 with typing animation */}
@@ -115,7 +115,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg md:text-xl text-secondary-foreground/60 mb-10 leading-relaxed max-w-xl"
+              className="text-lg md:text-xl text-white/60 mb-10 leading-relaxed max-w-xl"
             >
               Nimara helps you set up simple systems for your board, money, staff, and 
               programs—so your team spends less time fixing problems and more time doing the work.
@@ -131,7 +131,7 @@ const HeroSection = () => {
               {["Ready for grants", "Ready to grow", "Ready for audits"].map((item, index) => (
                 <span 
                   key={index} 
-                  className="inline-flex items-center gap-2 text-sm text-secondary-foreground/70"
+                  className="inline-flex items-center gap-2 text-sm text-white/70"
                 >
                   <span className="w-1 h-1 rounded-full bg-accent" aria-hidden="true" />
                   {item}
@@ -148,18 +148,18 @@ const HeroSection = () => {
             >
               <a
                 href="/book-a-call"
-                className="group inline-flex items-center gap-3 text-secondary-foreground font-medium"
+                className="group inline-flex items-center gap-3 text-white font-medium"
               >
                 <span className="group-hover:text-accent transition-colors">Start the free check</span>
-                <span className="w-8 h-px bg-secondary-foreground group-hover:w-12 group-hover:bg-accent transition-all duration-300" />
+                <span className="w-8 h-px bg-white group-hover:w-12 group-hover:bg-accent transition-all duration-300" />
               </a>
 
               <a
                 href="/book-a-call"
-                className="group inline-flex items-center gap-3 text-secondary-foreground/60 font-medium"
+                className="group inline-flex items-center gap-3 text-white/60 font-medium"
               >
                 <span className="group-hover:text-accent transition-colors">Have an urgent problem?</span>
-                <span className="w-8 h-px bg-secondary-foreground/40 group-hover:w-12 group-hover:bg-accent transition-all duration-300" />
+                <span className="w-8 h-px bg-white/40 group-hover:w-12 group-hover:bg-accent transition-all duration-300" />
               </a>
             </motion.div>
           </div>
@@ -171,17 +171,17 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="lg:col-span-5"
           >
-            <div className="p-8 lg:p-10 border border-secondary-foreground/10 bg-secondary-foreground/[0.02]">
-              <h2 className="text-xl font-medium text-secondary-foreground mb-2">
+            <div className="p-8 lg:p-10 border border-white/10 bg-white/[0.03]">
+              <h2 className="text-xl font-medium text-white mb-2">
                 Start the free 4-minute check
               </h2>
-              <p className="text-sm text-secondary-foreground/50 mb-8">
+              <p className="text-sm text-white/50 mb-8">
                 See where your systems stand—no commitment required.
               </p>
 
               <form onSubmit={handleStartCheck} className="space-y-6">
                 <div>
-                  <label htmlFor="primary-email" className="block text-sm text-secondary-foreground/70 mb-2">
+                  <label htmlFor="primary-email" className="block text-sm text-white/70 mb-2">
                     Email (where we can reach you)
                   </label>
                   <Input 
@@ -191,23 +191,23 @@ const HeroSection = () => {
                     value={primaryEmail} 
                     onChange={e => setPrimaryEmail(e.target.value)} 
                     required 
-                    className="w-full h-12 bg-secondary-foreground/5 border-secondary-foreground/20 text-secondary-foreground placeholder:text-secondary-foreground/30 focus:border-accent focus:ring-accent text-base" 
+                    className="w-full h-12 bg-white/5 border-white/20 text-white placeholder:text-white/30 focus:border-accent focus:ring-accent text-base" 
                     aria-describedby="primary-email-hint" 
                   />
-                  <p id="primary-email-hint" className="text-xs text-secondary-foreground/40 mt-2">
+                  <p id="primary-email-hint" className="text-xs text-white/40 mt-2">
                     No domain email yet? That's okay — use your best contact email.
                   </p>
                 </div>
 
                 <button 
                   type="submit" 
-                  className="w-full h-14 bg-accent text-secondary font-medium hover:bg-accent/90 transition-colors"
+                  className="w-full h-14 bg-accent text-hero-background font-medium hover:bg-accent/90 transition-colors"
                 >
                   Start the check
                   <ArrowRight className="w-4 h-4 ml-2 inline" />
                 </button>
 
-                <p className="text-xs text-secondary-foreground/40 text-center">
+                <p className="text-xs text-white/40 text-center">
                   We'll reach out by email within 2 business days.
                 </p>
               </form>
@@ -220,7 +220,7 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-20 pt-12 border-t border-secondary-foreground/10"
+          className="mt-20 pt-12 border-t border-white/10"
         >
           <div className="grid grid-cols-3 gap-8">
             {[
@@ -229,10 +229,10 @@ const HeroSection = () => {
               { value: "Guaranteed", label: "If we can't help, you don't pay" },
             ].map((stat, index) => (
               <div key={index} className="text-center sm:text-left">
-                <p className="text-2xl sm:text-3xl font-light text-secondary-foreground mb-1">
+                <p className="text-2xl sm:text-3xl font-light text-white mb-1">
                   {stat.value}
                 </p>
-                <p className="text-xs text-secondary-foreground/40 uppercase tracking-wider">
+                <p className="text-xs text-white/40 uppercase tracking-wider">
                   {stat.label}
                 </p>
               </div>
