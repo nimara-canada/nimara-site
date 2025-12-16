@@ -47,14 +47,6 @@ export const FitCheck = () => {
       aria-labelledby="fit-check-heading" 
       id="fit-check"
     >
-      {/* Subtle grid pattern */}
-      <div className="absolute inset-0 opacity-[0.08]">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,1) 1px, transparent 1px),
-                           linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px'
-        }} />
-      </div>
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Editorial Header */}
