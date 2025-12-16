@@ -90,7 +90,7 @@ export default {
         soft: "var(--shadow-soft)",
       },
       fontFamily: {
-        sans: ['Inter Variable', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        sans: ['DM Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
         mono: ['IBM Plex Mono', 'monospace'],
       },
       spacing: {
