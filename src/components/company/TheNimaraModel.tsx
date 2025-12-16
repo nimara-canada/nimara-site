@@ -14,17 +14,17 @@ const tiers = [
 const paths = [
   {
     letter: "A",
-    title: "Fast Fixes",
-    description: "Short, Clearly Scoped Modules To Solve One Main Problem—Cash Flow, Board Basics, Or Simple HR Setup.",
+    title: "Urgent Fix",
+    description: "Fix one urgent issue fast. Grant deadline? Board issue? HR mess? We jump in, solve the problem, and leave you with a simple way to keep it running.",
     timeline: "1–4 Weeks",
-    features: ["Single Problem Focus", "Quick Turnaround", "Mini Acceptance Bundle"],
+    features: ["A deadline is coming up", "Something is broken right now", "You need a clear fix this month"],
   },
   {
     letter: "B",
-    title: "System Installs",
-    description: "Deeper, Pre-Built Bundles For Organizations That Need A Full Install Across Multiple Domains.",
+    title: "Build My Systems",
+    description: "For when things feel messy in more than one area—board, money, people, or programs. Start with a free check and decide from there.",
     timeline: "8–12 Weeks",
-    features: ["Full Health Check", "Multiple Domains", "Complete Acceptance Bundle"],
+    features: ["Free 4-minute check", "Deep check from $2,500", "Full setup in 8–12 weeks"],
   },
 ];
 
