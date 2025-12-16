@@ -109,10 +109,10 @@ const NimaraHeroPremium = () => {
             {/* Left - Headlines */}
             <div className={`transition-all duration-1000 ${isLoaded ? "opacity-100" : "opacity-0 translate-y-6"}`}>
               
-              {/* Eyebrow */}
-              <p className="text-xs uppercase tracking-[0.2em] text-accent font-medium mb-4">
+              {/* Eyebrow Badge */}
+              <span className="inline-block text-xs uppercase tracking-[0.15em] text-accent font-medium mb-4 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20">
                 Capacity building for Canadian nonprofits
-              </p>
+              </span>
               
               {/* Main Headline - First line (static, never moves) */}
               <h1 className="mb-0 text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.02em] text-white">
