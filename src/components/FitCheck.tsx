@@ -57,10 +57,10 @@ export const FitCheck = () => {
             transition={{ duration: 0.8 }}
             className="flex items-center gap-4 mb-8"
           >
-            <span className="text-xs font-medium tracking-[0.2em] uppercase text-[#0B1120]/60">
+            <span className="text-xs font-medium tracking-[0.2em] uppercase text-white/70">
               Who We Work With
             </span>
-            <div className="h-px flex-1 bg-[#0B1120]/20" />
+            <div className="h-px flex-1 bg-white/20" />
           </motion.div>
           
           <motion.h2
@@ -68,18 +68,18 @@ export const FitCheck = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
             id="fit-check-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-[1.1] mb-5 text-[#0B1120]"
+            className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-[1.1] mb-5 text-white"
           >
             Is Nimara Right
             <br />
-            <span className="font-normal italic text-[#0B1120]/70">For Your Nonprofit?</span>
+            <span className="font-normal italic text-white/80">For Your Nonprofit?</span>
           </motion.h2>
           
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg text-[#0B1120]/70 max-w-xl"
+            className="text-lg text-white/80 max-w-xl"
           >
             We Help Nonprofits That Do Strong Work In The Community But Feel Messy On The Inside. 
             If The Back-End Keeps You Up At Night, This Is For You.
@@ -93,7 +93,7 @@ export const FitCheck = () => {
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-xs font-medium tracking-[0.15em] uppercase text-[#0B1120]/60 mb-8"
+              className="text-xs font-medium tracking-[0.15em] uppercase text-white/70 mb-8"
             >
               Check what sounds like you
             </motion.p>
@@ -110,24 +110,24 @@ export const FitCheck = () => {
                     animate={isInView ? { opacity: 1 } : {}}
                     transition={{ duration: 0.5, delay: 0.3 + index * 0.08 }}
                     className={`
-                      w-full flex items-start gap-4 py-5 text-left transition-all duration-300 border-t border-[#0B1120]/10
+                      w-full flex items-start gap-4 py-5 text-left transition-all duration-300 border-t border-white/20
                       focus:outline-none group
-                      ${isChecked ? 'bg-[#0B1120]/10 -mx-4 px-4' : 'hover:bg-[#0B1120]/5 -mx-4 px-4'}
+                      ${isChecked ? 'bg-white/15 -mx-4 px-4' : 'hover:bg-white/10 -mx-4 px-4'}
                     `}
                     aria-pressed={isChecked}
                   >
                     <div className={`
                       flex-shrink-0 w-5 h-5 rounded border-2 flex items-center justify-center transition-all duration-300 mt-0.5
                       ${isChecked 
-                        ? 'bg-[#0B1120] border-[#0B1120]' 
-                        : 'border-[#0B1120]/30 group-hover:border-[#0B1120]/50'
+                        ? 'bg-white border-white' 
+                        : 'border-white/40 group-hover:border-white/60'
                       }
                     `}>
                       <motion.svg
                         initial={false}
                         animate={{ scale: isChecked ? 1 : 0, opacity: isChecked ? 1 : 0 }}
                         transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                        className="w-3 h-3 text-background"
+                        className="w-3 h-3 text-primary"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -138,14 +138,14 @@ export const FitCheck = () => {
                     </div>
 
                     <span className={`text-sm leading-relaxed transition-colors duration-300 ${
-                      isChecked ? 'text-[#0B1120]' : 'text-[#0B1120]/70 group-hover:text-[#0B1120]'
+                      isChecked ? 'text-white' : 'text-white/80 group-hover:text-white'
                     }`}>
                       {item.text}
                     </span>
                   </motion.button>
                 );
               })}
-              <div className="border-t border-[#0B1120]/10" />
+              <div className="border-t border-white/20" />
             </div>
 
             {/* Result */}
@@ -157,14 +157,14 @@ export const FitCheck = () => {
                   exit={{ opacity: 0, y: -10 }}
                   className="mt-8 flex items-center gap-4"
                 >
-                  <span className="text-sm text-[#0B1120]/60">
+                  <span className="text-sm text-white/70">
                     {matchCount} of {fitCriteria.length} selected
                   </span>
                   {isGoodFit && (
                     <motion.span
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
-                      className="text-sm text-[#0B1120] font-medium"
+                      className="text-sm text-white font-medium"
                     >
                       — Looks like a good fit
                     </motion.span>
@@ -178,14 +178,14 @@ export const FitCheck = () => {
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="mt-12 pt-8 border-t border-[#0B1120]/10"
+              className="mt-12 pt-8 border-t border-white/20"
             >
               <a
                 href="/book-a-call"
-                className="group inline-flex items-center gap-3 text-[#0B1120] font-medium"
+                className="group inline-flex items-center gap-3 text-white font-medium"
               >
-                <span className="group-hover:text-[#0B1120]/70 transition-colors">Need urgent help?</span>
-                <span className="w-8 h-px bg-[#0B1120] group-hover:w-12 transition-all duration-300" />
+                <span className="group-hover:text-white/80 transition-colors">Need urgent help?</span>
+                <span className="w-8 h-px bg-white group-hover:w-12 transition-all duration-300" />
               </a>
             </motion.div>
           </div>
@@ -199,7 +199,7 @@ export const FitCheck = () => {
             <motion.button
               type="button"
               onClick={() => setShowVideoModal(true)}
-              className="relative block w-full aspect-[4/3] bg-white group focus:outline-none focus:ring-2 focus:ring-[#0B1120] focus:ring-offset-4 focus:ring-offset-primary rounded-lg overflow-hidden shadow-lg"
+              className="relative block w-full aspect-[4/3] bg-white group focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-4 focus:ring-offset-primary rounded-lg overflow-hidden shadow-lg"
               aria-label="Play Nimara intro video"
               whileHover={{ y: -8, boxShadow: '0 25px 50px -12px rgba(11, 17, 32, 0.25)' }}
               transition={{ duration: 0.3 }}
