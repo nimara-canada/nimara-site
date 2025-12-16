@@ -212,35 +212,164 @@ const Partners = () => {
       >
         {/* Hero Section */}
         <section className="relative min-h-[90vh] flex items-center bg-secondary-background overflow-hidden">
-          {/* Background elements */}
+          {/* Animated Background Canvas */}
           <div className="absolute inset-0">
+            {/* Base gradients */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent" />
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-accent/10 via-transparent to-transparent" />
-            <div 
-              className="absolute inset-0 opacity-[0.03]"
+            
+            {/* Animated grid */}
+            <motion.div 
+              className="absolute inset-0 opacity-[0.04]"
               style={{
                 backgroundImage: `linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)`,
                 backgroundSize: '80px 80px'
               }}
+              animate={{ 
+                backgroundPosition: ['0px 0px', '80px 80px']
+              }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             />
+
+            {/* Animated geometric shapes */}
+            {/* Large rotating hexagon */}
+            <motion.div
+              className="absolute top-[15%] right-[10%] w-[400px] h-[400px] opacity-[0.08]"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+            >
+              <svg viewBox="0 0 100 100" className="w-full h-full">
+                <polygon 
+                  points="50,2 93,25 93,75 50,98 7,75 7,25" 
+                  fill="none" 
+                  stroke="url(#hexGradient)" 
+                  strokeWidth="0.5"
+                />
+                <defs>
+                  <linearGradient id="hexGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="hsl(262, 82%, 58%)" />
+                    <stop offset="100%" stopColor="hsl(172, 95%, 83%)" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </motion.div>
+
+            {/* Rotating rings */}
+            <motion.div
+              className="absolute bottom-[20%] left-[5%] w-[300px] h-[300px] opacity-[0.06]"
+              animate={{ rotate: -360 }}
+              transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+            >
+              <svg viewBox="0 0 100 100" className="w-full h-full">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="hsl(262, 82%, 58%)" strokeWidth="0.3" />
+                <circle cx="50" cy="50" r="35" fill="none" stroke="hsl(262, 82%, 58%)" strokeWidth="0.3" />
+                <circle cx="50" cy="50" r="25" fill="none" stroke="hsl(262, 82%, 58%)" strokeWidth="0.3" />
+              </svg>
+            </motion.div>
+
+            {/* Floating particles */}
+            {[...Array(20)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-1 h-1 rounded-full bg-white/30"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                }}
+                animate={{
+                  y: [0, -30, 0],
+                  x: [0, Math.random() * 20 - 10, 0],
+                  opacity: [0.2, 0.5, 0.2],
+                  scale: [1, 1.5, 1],
+                }}
+                transition={{
+                  duration: 4 + Math.random() * 4,
+                  repeat: Infinity,
+                  delay: Math.random() * 2,
+                  ease: "easeInOut",
+                }}
+              />
+            ))}
+
+            {/* Animated connection lines */}
+            <svg className="absolute inset-0 w-full h-full opacity-[0.03]">
+              <motion.line
+                x1="10%" y1="20%" x2="40%" y2="60%"
+                stroke="white" strokeWidth="1"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: [0, 1, 0] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <motion.line
+                x1="60%" y1="10%" x2="90%" y2="50%"
+                stroke="white" strokeWidth="1"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: [0, 1, 0] }}
+                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+              />
+              <motion.line
+                x1="20%" y1="80%" x2="70%" y2="90%"
+                stroke="white" strokeWidth="1"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: [0, 1, 0] }}
+                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 4 }}
+              />
+            </svg>
+
+            {/* Animated dots grid */}
+            <div className="absolute inset-0">
+              {[...Array(12)].map((_, i) => (
+                <motion.div
+                  key={`dot-${i}`}
+                  className="absolute w-2 h-2 rounded-full"
+                  style={{
+                    left: `${15 + (i % 4) * 25}%`,
+                    top: `${20 + Math.floor(i / 4) * 30}%`,
+                    background: i % 2 === 0 ? 'hsl(262, 82%, 58%)' : 'hsl(172, 95%, 83%)',
+                  }}
+                  animate={{
+                    scale: [1, 1.8, 1],
+                    opacity: [0.1, 0.3, 0.1],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    delay: i * 0.3,
+                    ease: "easeInOut",
+                  }}
+                />
+              ))}
+            </div>
           </div>
 
-          {/* Floating decorative elements */}
+          {/* Large floating orbs */}
           <motion.div 
-            className="absolute top-1/4 right-[15%] w-64 h-64 rounded-full bg-gradient-to-br from-primary/10 to-transparent blur-3xl"
+            className="absolute top-1/4 right-[15%] w-[500px] h-[500px] rounded-full bg-gradient-to-br from-primary/15 to-transparent blur-[100px]"
             animate={{ 
-              scale: [1, 1.2, 1],
+              scale: [1, 1.3, 1],
+              x: [0, 50, 0],
+              y: [0, -30, 0],
               opacity: [0.3, 0.5, 0.3]
             }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
           />
           <motion.div 
-            className="absolute bottom-1/4 left-[10%] w-48 h-48 rounded-full bg-gradient-to-br from-accent/10 to-transparent blur-3xl"
+            className="absolute bottom-1/4 left-[5%] w-[400px] h-[400px] rounded-full bg-gradient-to-br from-accent/15 to-transparent blur-[80px]"
             animate={{ 
               scale: [1.2, 1, 1.2],
+              x: [0, -30, 0],
+              y: [0, 40, 0],
               opacity: [0.2, 0.4, 0.2]
             }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div 
+            className="absolute top-[60%] right-[40%] w-[250px] h-[250px] rounded-full bg-gradient-to-br from-primary/10 via-accent/10 to-transparent blur-[60px]"
+            animate={{ 
+              scale: [1, 1.5, 1],
+              opacity: [0.15, 0.3, 0.15]
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 3 }}
           />
           
           <div className="relative max-w-7xl mx-auto px-6 lg:px-12 py-24 md:py-32 w-full">
