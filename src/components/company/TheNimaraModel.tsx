@@ -8,30 +8,90 @@ const tiers = [
     level: "0", 
     title: "Getting by", 
     subtitle: "Work gets done, but it lives in people's heads.",
+    expandedDesc: "Nothing is written down or done the same way twice.",
+    signs: [
+      "People can't explain \"how we do things\" without a long conversation",
+      "Approvals happen in DMs, texts, or someone's memory",
+      "Reporting takes too long because you rebuild it every time"
+    ],
+    fixes: [
+      "Write down the 5–10 tasks you repeat every month",
+      "Create one shared place for files and templates",
+      "Set one clear approval path for spending and decisions"
+    ],
+    outcome: "Less scramble. More clarity. A starting point you can build on.",
     isNimaraFocus: true
   },
   { 
     level: "1", 
     title: "Pieces in place", 
     subtitle: "Some tools exist, but they're inconsistent.",
+    expandedDesc: "You have some policies, trackers, or templates — but they're inconsistent.",
+    signs: [
+      "Multiple versions of the same document live in different places",
+      "People ask \"Which file is the right one?\"",
+      "New staff learn by guessing or watching others"
+    ],
+    fixes: [
+      "Create one \"source of truth\" folder and lock old versions",
+      "Choose one tracker for each key area",
+      "Assign owners (who keeps each tool up to date)"
+    ],
+    outcome: "Work becomes repeatable. New staff ramp faster.",
     isNimaraFocus: true
   },
   { 
     level: "2", 
     title: "Working basics", 
     subtitle: "The core systems work and are written down.",
+    expandedDesc: "Your core systems are in place and mostly working.",
+    signs: [
+      "You can explain \"how we do things\" in a few steps",
+      "Spending approvals and documentation are mostly consistent",
+      "Reporting is doable, but still takes effort"
+    ],
+    fixes: [
+      "Tighten financial tracking: budget vs actual, monthly review",
+      "Build a clean \"proof pack\" habit",
+      "Create simple dashboards for board and funder reporting"
+    ],
+    outcome: "Cleaner reporting. Better controls. Less last-minute stress.",
     isNimaraFocus: true
   },
   { 
     level: "3", 
     title: "Running smoothly", 
     subtitle: "Systems are connected and run the same way across the team.",
+    expandedDesc: "Systems are integrated. Work is consistent, roles are clear.",
+    signs: [
+      "People know who approves what and why",
+      "Data is consistent across programs and reports",
+      "Risks and issues are tracked early"
+    ],
+    fixes: [
+      "Improve quality: checklists, QA steps, and review cycles",
+      "Strengthen board reporting: fewer pages, clearer signals",
+      "Build capacity plans: training, back-up coverage"
+    ],
+    outcome: "Higher trust. Faster decisions. Growth without breaking systems.",
     isNimaraFocus: false
   },
   { 
     level: "4", 
     title: "Best-in-class", 
     subtitle: "Your systems are strong enough to teach others.",
+    expandedDesc: "You don't just operate well — you improve on purpose.",
+    signs: [
+      "Audits and funder reviews are smooth and predictable",
+      "The organization can scale because systems don't depend on one person",
+      "You measure performance and adjust quickly"
+    ],
+    fixes: [
+      "Keep systems current: annual policy and process reviews",
+      "Share your model: playbooks, training, peer learning",
+      "Invest in continuous improvement"
+    ],
+    outcome: "Sustainable growth. High credibility. A model others trust.",
     isNimaraFocus: false
   },
 ];
@@ -152,7 +212,7 @@ export const TheNimaraModel: React.FC = () => {
                   </div>
                 </motion.div>
 
-                {/* Expanded content placeholder */}
+                {/* Expanded Panel */}
                 <AnimatePresence>
                   {isExpanded && (
                     <motion.div
@@ -162,11 +222,55 @@ export const TheNimaraModel: React.FC = () => {
                       transition={{ duration: 0.3, ease: 'easeInOut' }}
                       className="overflow-hidden"
                     >
-                      <div className="pb-6 lg:pb-8">
-                        <div className="bg-white/[0.03] rounded-xl p-6 border border-white/[0.06]">
-                          <p className="text-white/60">
-                            {tier.subtitle}
+                      <div className="pb-8 lg:pb-10">
+                        <div className="bg-white/[0.03] rounded-xl p-6 lg:p-8 border border-white/[0.06]">
+                          {/* Description */}
+                          <p className="text-white/70 text-lg mb-8 max-w-2xl">
+                            {tier.expandedDesc}
                           </p>
+                          
+                          {/* Three columns */}
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                            {/* Signs */}
+                            <div>
+                              <h5 className="text-xs font-medium uppercase tracking-wider text-white/30 mb-4">
+                                Signs you're here
+                              </h5>
+                              <ul className="space-y-3">
+                                {tier.signs.map((sign, i) => (
+                                  <li key={i} className="text-sm text-white/50 flex items-start gap-2">
+                                    <span className="w-1 h-1 rounded-full bg-white/30 mt-2 flex-shrink-0" />
+                                    {sign}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                            
+                            {/* Fixes */}
+                            <div>
+                              <h5 className="text-xs font-medium uppercase tracking-wider text-white/30 mb-4">
+                                What to fix next
+                              </h5>
+                              <ul className="space-y-3">
+                                {tier.fixes.map((fix, i) => (
+                                  <li key={i} className="text-sm text-white/50 flex items-start gap-2">
+                                    <span className="w-1 h-1 rounded-full bg-accent/50 mt-2 flex-shrink-0" />
+                                    {fix}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                            
+                            {/* Outcome */}
+                            <div>
+                              <h5 className="text-xs font-medium uppercase tracking-wider text-white/30 mb-4">
+                                Outcome
+                              </h5>
+                              <p className="text-sm text-accent/80 leading-relaxed">
+                                {tier.outcome}
+                              </p>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </motion.div>
