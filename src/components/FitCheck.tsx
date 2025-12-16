@@ -164,9 +164,9 @@ export const FitCheck = () => {
                     <motion.span
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
-                      className="text-sm text-white font-medium"
+                      className="text-sm text-accent font-medium px-3 py-1 rounded-full bg-accent/20"
                     >
-                      — Looks like a good fit
+                      ✓ Looks like a good fit
                     </motion.span>
                   )}
                 </motion.div>
