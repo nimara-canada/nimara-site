@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 // Nimara brand tokens
 const brand = {
   navy: "#202654",
-  purple: "#6945D8",
+  purple: "#7C3AED",
   mint: "#ACFCE3",
   bg: "#F4F6FB",
 };

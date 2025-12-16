@@ -144,7 +144,7 @@ const AIMasterclass = () => {
             <Button 
               onClick={scrollToForm}
               size="lg"
-              className="bg-[#6945D8] hover:bg-[#5835c7] text-white mb-4"
+              className="bg-[#7C3AED] hover:bg-[#6D28D9] text-white mb-4"
             >
               Save your seat
             </Button>
@@ -164,7 +164,7 @@ const AIMasterclass = () => {
                     { label: "Minutes", value: countdown.minutes },
                     { label: "Seconds", value: countdown.seconds },
                   ].map((item) => (
-                    <div key={item.label} className="bg-[#6945D8] text-white rounded-2xl p-4 min-w-[80px]">
+                    <div key={item.label} className="bg-[#7C3AED] text-white rounded-2xl p-4 min-w-[80px]">
                       <div className="text-3xl font-bold">{String(item.value).padStart(2, "0")}</div>
                       <div className="text-sm">{item.label}</div>
                     </div>
@@ -203,7 +203,7 @@ const AIMasterclass = () => {
                 },
               ].map((item, index) => (
                 <div key={index} className="bg-white p-6 rounded-2xl shadow-sm">
-                  <item.icon className="w-8 h-8 text-[#6945D8] mb-4" />
+                  <item.icon className="w-8 h-8 text-[#7C3AED] mb-4" />
                   <h3 className="font-semibold text-[#202654] mb-2">{item.title}</h3>
                   {item.desc && <p className="text-sm text-[#96A0B5]">{item.desc}</p>}
                 </div>
@@ -219,9 +219,9 @@ const AIMasterclass = () => {
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
               {[
                 { time: "5 min", label: "Why now", color: "bg-[#ACFCE3]" },
-                { time: "10 min", label: "Best practices", color: "bg-[#6945D8] text-white" },
+                { time: "10 min", label: "Best practices", color: "bg-[#7C3AED] text-white" },
                 { time: "20 min", label: "Live demos", color: "bg-[#ACFCE3]" },
-                { time: "10 min", label: "Quick wins", color: "bg-[#6945D8] text-white" },
+                { time: "10 min", label: "Quick wins", color: "bg-[#7C3AED] text-white" },
                 { time: "15 min", label: "Q&A", color: "bg-[#ACFCE3]" },
               ].map((item, index) => (
                 <div key={index} className={`${item.color} p-6 rounded-2xl text-center`}>
@@ -247,7 +247,7 @@ const AIMasterclass = () => {
                 { icon: Target, title: "Communications", desc: "Marketing and outreach teams" },
               ].map((item, index) => (
                 <div key={index} className="bg-[#ACFCE3]/30 p-8 rounded-2xl text-center">
-                  <item.icon className="w-12 h-12 text-[#6945D8] mx-auto mb-4" />
+                  <item.icon className="w-12 h-12 text-[#7C3AED] mx-auto mb-4" />
                   <h3 className="font-semibold text-[#202654] mb-2">{item.title}</h3>
                   <p className="text-sm text-[#96A0B5]">{item.desc}</p>
                 </div>
@@ -269,7 +269,7 @@ const AIMasterclass = () => {
               ].map((item, index) => (
                 <div key={index} className="bg-white p-6 rounded-2xl shadow-sm">
                   <div className="flex items-start gap-3">
-                    <CheckCircle2 className="w-6 h-6 text-[#6945D8] flex-shrink-0 mt-1" />
+                    <CheckCircle2 className="w-6 h-6 text-[#7C3AED] flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="font-semibold text-[#202654] mb-1">{item.q}</h3>
                       <p className="text-[#96A0B5]">{item.a}</p>
@@ -282,7 +282,7 @@ const AIMasterclass = () => {
         </section>
 
         {/* Simple pilot promise */}
-        <section className="py-16 px-4 bg-[#6945D8] text-white">
+        <section className="py-16 px-4 bg-[#7C3AED] text-white">
           <div className="container mx-auto max-w-3xl text-center">
             <h2 className="text-3xl font-bold mb-6">Simple pilot promise</h2>
             <p className="text-lg mb-8 opacity-90">
@@ -385,7 +385,7 @@ const AIMasterclass = () => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-[#6945D8] hover:bg-[#5835c7] text-white"
+                className="w-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white"
                 size="lg"
               >
                 {isSubmitting ? "Saving your seat..." : "Save your seat"}
@@ -427,7 +427,7 @@ const AIMasterclass = () => {
         </section>
 
         {/* Final CTA */}
-        <section className="py-16 px-4 bg-[#6945D8] text-white">
+        <section className="py-16 px-4 bg-[#7C3AED] text-white">
           <div className="container mx-auto max-w-3xl text-center">
             <h2 className="text-3xl font-bold mb-4">Ready to make more impact with AI?</h2>
             <p className="text-lg mb-8 opacity-90">
@@ -436,7 +436,7 @@ const AIMasterclass = () => {
             <Button
               onClick={scrollToForm}
               size="lg"
-              className="bg-white text-[#6945D8] hover:bg-gray-100"
+              className="bg-white text-[#7C3AED] hover:bg-gray-100"
             >
               Reserve your seat
             </Button>
@@ -450,7 +450,7 @@ const AIMasterclass = () => {
         <div className="fixed bottom-0 left-0 right-0 p-4 bg-white border-t shadow-lg md:hidden z-50">
           <Button
             onClick={scrollToForm}
-            className="w-full bg-[#6945D8] hover:bg-[#5835c7] text-white"
+            className="w-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white"
           >
             Save your seat
           </Button>

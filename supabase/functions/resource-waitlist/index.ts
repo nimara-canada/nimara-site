@@ -118,7 +118,7 @@ const handler = async (req: Request): Promise<Response> => {
             </div>
             
             <p style="color: #64748b; font-size: 14px;">
-              Need help now? <a href="https://nimara.ca/book-a-call" style="color: #6945D8;">Get urgent help →</a>
+              Need help now? <a href="https://nimara.ca/book-a-call" style="color: #7C3AED;">Get urgent help →</a>
             </p>
             
             <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 32px 0;">

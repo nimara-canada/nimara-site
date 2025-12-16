@@ -26,7 +26,7 @@ const Terms = () => {
       
       <a 
         href="#main-content" 
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-[#202654] focus:ring-2 focus:ring-[#6945D8] focus:rounded-xl"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-[#202654] focus:ring-2 focus:ring-[#7C3AED] focus:rounded-xl"
       >
         Skip to content
       </a>
@@ -48,14 +48,14 @@ const Terms = () => {
               Nimara Technology Inc., Canada. Contact:{" "}
               <a 
                 href="mailto:hello@nimara.ca" 
-                className="text-[#6945D8] hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-[#6945D8] rounded"
+                className="text-[#7C3AED] hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-[#7C3AED] rounded"
               >
                 hello@nimara.ca
               </a>
               . Privacy questions:{" "}
               <a 
                 href="mailto:privacy@nimara.ca" 
-                className="text-[#6945D8] hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-[#6945D8] rounded"
+                className="text-[#7C3AED] hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-[#7C3AED] rounded"
               >
                 privacy@nimara.ca
               </a>
@@ -203,7 +203,7 @@ const Terms = () => {
               We store project data in Canada. Some service providers may process limited data elsewhere (e.g., email or analytics) — see our{" "}
               <a 
                 href="/privacy" 
-                className="text-[#6945D8] hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-[#6945D8] rounded"
+                className="text-[#7C3AED] hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-[#7C3AED] rounded"
               >
                 Privacy Policy
               </a>
@@ -287,7 +287,7 @@ const Terms = () => {
                 Questions about these terms:{" "}
                 <a 
                   href="mailto:hello@nimara.ca" 
-                  className="text-[#6945D8] hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-[#6945D8] rounded"
+                  className="text-[#7C3AED] hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-[#7C3AED] rounded"
                 >
                   hello@nimara.ca
                 </a>
@@ -296,7 +296,7 @@ const Terms = () => {
                 Privacy questions:{" "}
                 <a 
                   href="mailto:privacy@nimara.ca" 
-                  className="text-[#6945D8] hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-[#6945D8] rounded"
+                  className="text-[#7C3AED] hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-[#7C3AED] rounded"
                 >
                   privacy@nimara.ca
                 </a>

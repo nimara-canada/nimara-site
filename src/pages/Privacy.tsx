@@ -26,7 +26,7 @@ const Privacy = () => {
       
       <a 
         href="#main-content" 
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-[#202654] focus:ring-2 focus:ring-[#6945D8] focus:rounded-xl"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-[#202654] focus:ring-2 focus:ring-[#7C3AED] focus:rounded-xl"
       >
         Skip to content
       </a>
@@ -48,14 +48,14 @@ const Privacy = () => {
               Nimara Technology Inc. (Canada). You can reach us at{" "}
               <a 
                 href="mailto:privacy@nimara.ca" 
-                className="text-[#6945D8] hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-[#6945D8] rounded"
+                className="text-[#7C3AED] hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-[#7C3AED] rounded"
               >
                 privacy@nimara.ca
               </a>
               . For general questions use{" "}
               <a 
                 href="mailto:hello@nimara.ca" 
-                className="text-[#6945D8] hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-[#6945D8] rounded"
+                className="text-[#7C3AED] hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-[#7C3AED] rounded"
               >
                 hello@nimara.ca
               </a>
@@ -192,7 +192,7 @@ const Privacy = () => {
               To make a request, email{" "}
               <a 
                 href="mailto:privacy@nimara.ca" 
-                className="text-[#6945D8] hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-[#6945D8] rounded"
+                className="text-[#7C3AED] hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-[#7C3AED] rounded"
               >
                 privacy@nimara.ca
               </a>
@@ -235,7 +235,7 @@ const Privacy = () => {
                 Privacy questions or requests:{" "}
                 <a 
                   href="mailto:privacy@nimara.ca" 
-                  className="text-[#6945D8] hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-[#6945D8] rounded"
+                  className="text-[#7C3AED] hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-[#7C3AED] rounded"
                 >
                   privacy@nimara.ca
                 </a>
@@ -244,7 +244,7 @@ const Privacy = () => {
                 General questions:{" "}
                 <a 
                   href="mailto:hello@nimara.ca" 
-                  className="text-[#6945D8] hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-[#6945D8] rounded"
+                  className="text-[#7C3AED] hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-[#7C3AED] rounded"
                 >
                   hello@nimara.ca
                 </a>
