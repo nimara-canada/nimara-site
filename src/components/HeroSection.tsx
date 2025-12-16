@@ -1,218 +1,246 @@
 import React, { useState, useEffect } from "react";
 
-const NimaraHero = () => {
+const NimaraHeroPremium = () => {
   const [email, setEmail] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentWord, setCurrentWord] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
 
-  const rotatingWords = ["Fundable", "Efficient", "Audit-Ready", "Sustainable"];
+  const rotatingWords = ["Fundable", "Efficient", "Scalable"];
 
   useEffect(() => {
     setIsLoaded(true);
     const interval = setInterval(() => {
       setCurrentWord((prev) => (prev + 1) % rotatingWords.length);
-    }, 3000);
+    }, 2800);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0b] text-white relative overflow-hidden">
-      {/* Subtle gradient background */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#2dd4bf]/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#2dd4bf]/3 rounded-full blur-[100px]" />
+    <div className="min-h-screen bg-[#09090b] text-[#fafafa] relative overflow-hidden font-['Instrument_Sans',system-ui,sans-serif]">
+      {/* Abstract geometric accent - top right */}
+      <div className="absolute top-0 right-0 w-[45%] h-full overflow-hidden pointer-events-none">
+        <div
+          className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] opacity-[0.03]"
+          style={{
+            background: `conic-gradient(from 180deg at 50% 50%, #2dd4bf 0deg, transparent 60deg, transparent 180deg, #2dd4bf 240deg, transparent 300deg)`,
+          }}
+        />
       </div>
 
-      {/* Minimal grid accent - very subtle */}
+      {/* Noise texture overlay */}
       <div
-        className="absolute inset-0 opacity-[0.02]"
+        className="absolute inset-0 opacity-[0.015] pointer-events-none"
         style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                           linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-          backgroundSize: "100px 100px",
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
         }}
       />
 
-      {/* Navigation */}
-      <nav
-        className={`relative z-10 px-6 lg:px-16 py-6 flex items-center justify-between transition-all duration-1000 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"}`}
-      >
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#2dd4bf] to-[#14b8a6] flex items-center justify-center">
-            <span className="text-[#0a0a0b] font-bold text-sm">N</span>
+      {/* Accent line */}
+      <div className="absolute left-[8%] top-0 w-px h-full bg-gradient-to-b from-transparent via-[#2dd4bf]/20 to-transparent" />
+
+      {/* Main Content */}
+      <div className="relative z-10 min-h-screen flex items-center">
+        <div className="w-full px-[8%] py-20">
+          {/* Top Label */}
+          <div className={`mb-16 transition-all duration-700 ${isLoaded ? "opacity-100" : "opacity-0 -translate-y-4"}`}>
+            <span className="text-[11px] uppercase tracking-[0.3em] text-[#2dd4bf]/70 font-medium">
+              Capacity Building / Canadian Nonprofits
+            </span>
           </div>
-          <span className="text-lg font-medium tracking-tight">Nimara</span>
-        </div>
 
-        <div className="hidden md:flex items-center gap-8 text-sm text-white/60">
-          <a href="#" className="hover:text-white transition-colors">
-            How It Works
-          </a>
-          <a href="#" className="hover:text-white transition-colors">
-            Services
-          </a>
-          <a href="#" className="hover:text-white transition-colors">
-            About
-          </a>
-        </div>
-
-        <a href="#" className="text-sm text-[#2dd4bf] hover:text-[#5eead4] transition-colors">
-          Have an urgent problem? →
-        </a>
-      </nav>
-
-      {/* Main Hero Content */}
-      <div className="relative z-10 px-6 lg:px-16 pt-16 lg:pt-24 pb-20">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-[1fr,420px] gap-16 lg:gap-24 items-start">
-            {/* Left Content */}
+          {/* Two Column Layout */}
+          <div className="grid lg:grid-cols-[1.1fr,1fr] gap-20 xl:gap-32 items-start">
+            {/* Left - Headlines */}
             <div
-              className={`transition-all duration-1000 delay-200 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              className={`transition-all duration-1000 delay-100 ${isLoaded ? "opacity-100" : "opacity-0 translate-y-6"}`}
             >
-              {/* Tagline */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 mb-8">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#2dd4bf] animate-pulse" />
-                <span className="text-xs uppercase tracking-[0.2em] text-white/50">
-                  Capacity Building for Canadian Nonprofits
+              {/* Main Headline - Editorial Style */}
+              <h1 className="mb-10">
+                <span className="block text-[clamp(2.5rem,5.5vw,4.5rem)] font-light leading-[1.05] tracking-[-0.03em]">
+                  Keep Your
                 </span>
-              </div>
-
-              {/* Main Headline */}
-              <h1 className="text-5xl lg:text-7xl font-light tracking-tight leading-[1.1] mb-8">
-                Keep Your
-                <br />
-                Nonprofit{" "}
-                <span className="relative inline-block">
+                <span className="block text-[clamp(2.5rem,5.5vw,4.5rem)] font-light leading-[1.05] tracking-[-0.03em]">
+                  Nonprofit
+                </span>
+                <span className="relative block mt-2">
                   <span
                     key={currentWord}
-                    className="text-[#2dd4bf] italic font-normal animate-fade-in"
+                    className="text-[clamp(2.5rem,5.5vw,4.5rem)] font-light leading-[1.05] tracking-[-0.03em] text-[#2dd4bf]"
                     style={{
-                      animation: "fadeSlide 0.5s ease-out",
+                      fontStyle: "italic",
+                      animation: "wordReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
                     }}
                   >
                     {rotatingWords[currentWord]}
                   </span>
-                  <span className="absolute -bottom-1 left-0 right-0 h-px bg-gradient-to-r from-[#2dd4bf] to-transparent" />
                 </span>
               </h1>
 
               {/* Subheadline */}
-              <p className="text-lg lg:text-xl text-white/50 font-light leading-relaxed max-w-xl mb-12">
-                We help you set up simple systems for your board, finances, staff, and programs—so your team spends less
-                time fixing problems and more time doing the work.
+              <p className="text-[17px] leading-[1.7] text-white/40 max-w-md font-light mb-14">
+                Simple systems for your board, finances, staff, and programs. Less time fixing. More time doing.
               </p>
 
-              {/* Trust Indicators */}
-              <div className="flex flex-wrap items-center gap-x-8 gap-y-4 mb-12">
-                {["Ready for Grants", "Ready to Scale", "Ready for Audits"].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2 text-white/40">
-                    <svg className="w-4 h-4 text-[#2dd4bf]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-sm">{item}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Stats Row */}
-              <div className="grid grid-cols-3 gap-8 pt-8 border-t border-white/10">
-                <div>
-                  <div className="text-3xl lg:text-4xl font-light text-white mb-1">1–4</div>
-                  <div className="text-xs uppercase tracking-[0.15em] text-white/40">Weeks for Fast Fixes</div>
+              {/* Inline Stats - Horizontal */}
+              <div className="flex items-baseline gap-12 flex-wrap">
+                <div className="group">
+                  <span className="text-[2.75rem] font-extralight tracking-tight text-white/90 group-hover:text-[#2dd4bf] transition-colors duration-300">
+                    1–4
+                  </span>
+                  <span className="block text-[10px] uppercase tracking-[0.2em] text-white/30 mt-1">
+                    weeks / fast fixes
+                  </span>
                 </div>
-                <div>
-                  <div className="text-3xl lg:text-4xl font-light text-white mb-1">8–12</div>
-                  <div className="text-xs uppercase tracking-[0.15em] text-white/40">Weeks Full Setup</div>
+                <div className="group">
+                  <span className="text-[2.75rem] font-extralight tracking-tight text-white/90 group-hover:text-[#2dd4bf] transition-colors duration-300">
+                    8–12
+                  </span>
+                  <span className="block text-[10px] uppercase tracking-[0.2em] text-white/30 mt-1">
+                    weeks / full setup
+                  </span>
                 </div>
-                <div>
-                  <div className="text-3xl lg:text-4xl font-light text-[#2dd4bf] mb-1">100%</div>
-                  <div className="text-xs uppercase tracking-[0.15em] text-white/40">Satisfaction Guaranteed</div>
+                <div className="group">
+                  <span className="text-[2.75rem] font-extralight tracking-tight text-[#2dd4bf]">✓</span>
+                  <span className="block text-[10px] uppercase tracking-[0.2em] text-white/30 mt-1">guaranteed</span>
                 </div>
               </div>
             </div>
 
-            {/* Right Card */}
+            {/* Right - Form */}
             <div
-              className={`transition-all duration-1000 delay-500 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              className={`transition-all duration-1000 delay-300 ${isLoaded ? "opacity-100" : "opacity-0 translate-y-6"}`}
             >
-              <div className="relative">
-                {/* Card glow effect */}
-                <div className="absolute -inset-px rounded-2xl bg-gradient-to-b from-white/20 to-white/0 opacity-50" />
+              <div
+                className="relative"
+                onMouseEnter={() => setIsHovering(true)}
+                onMouseLeave={() => setIsHovering(false)}
+              >
+                {/* Form container */}
+                <div
+                  className="relative bg-[#0f0f11] border border-white/[0.06] p-10 transition-all duration-500"
+                  style={{
+                    clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%)",
+                  }}
+                >
+                  {/* Corner accent */}
+                  <div
+                    className="absolute bottom-0 right-0 w-6 h-6 border-t border-l border-white/[0.06]"
+                    style={{ transform: "translate(0, 0) rotate(45deg)", transformOrigin: "top left" }}
+                  />
 
-                {/* Main card */}
-                <div className="relative bg-[#111113] rounded-2xl p-8 border border-white/10">
-                  {/* Badge */}
-                  <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-[#2dd4bf]/10 mb-6">
-                    <span className="text-xs font-medium text-[#2dd4bf]">Free Assessment</span>
-                  </div>
-
-                  <h2 className="text-2xl font-light tracking-tight mb-2">Start the 4-Minute Check</h2>
-                  <p className="text-sm text-white/40 mb-8">See where your systems stand—no commitment required.</p>
-
-                  {/* Form */}
-                  <div className="space-y-4">
+                  {/* Form header */}
+                  <div className="flex items-start justify-between mb-10">
                     <div>
-                      <label className="block text-xs uppercase tracking-[0.15em] text-white/40 mb-2">Your Email</label>
-                      <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="name@yourorg.ca"
-                        className="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-lg text-white placeholder:text-white/25 focus:outline-none focus:border-[#2dd4bf]/50 focus:bg-white/[0.07] transition-all"
-                      />
-                      <p className="text-xs text-white/30 mt-2">No domain email? Use your best contact email.</p>
+                      <h2 className="text-[22px] font-light tracking-tight mb-2">Free 4-Minute Check</h2>
+                      <p className="text-[13px] text-white/35 font-light">See where your systems stand</p>
                     </div>
-
-                    <button className="w-full py-4 bg-[#2dd4bf] hover:bg-[#5eead4] text-[#0a0a0b] font-medium rounded-lg transition-all hover:translate-y-[-1px] hover:shadow-lg hover:shadow-[#2dd4bf]/20 active:translate-y-0">
-                      Start the Check
-                      <span className="ml-2">→</span>
-                    </button>
+                    <div className="w-10 h-10 rounded-full border border-[#2dd4bf]/30 flex items-center justify-center">
+                      <div
+                        className={`w-2 h-2 rounded-full bg-[#2dd4bf] transition-transform duration-300 ${isHovering ? "scale-150" : "scale-100"}`}
+                      />
+                    </div>
                   </div>
 
-                  {/* Footer note */}
-                  <p className="text-center text-xs text-white/30 mt-6">We'll reach out within 2 business days</p>
+                  {/* Email Input */}
+                  <div className="mb-6">
+                    <label className="block text-[10px] uppercase tracking-[0.2em] text-white/30 mb-3">
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="you@organization.ca"
+                      className="w-full px-0 py-4 bg-transparent border-0 border-b border-white/10 text-[15px] text-white placeholder:text-white/20 focus:outline-none focus:border-[#2dd4bf]/50 transition-colors font-light"
+                    />
+                  </div>
 
-                  {/* Decorative element */}
-                  <div className="absolute -bottom-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#2dd4bf]/30 to-transparent" />
+                  {/* Submit Button */}
+                  <button className="group w-full py-5 bg-[#2dd4bf] text-[#09090b] text-[13px] font-medium uppercase tracking-[0.15em] transition-all duration-300 hover:bg-[#5eead4] hover:tracking-[0.2em] active:scale-[0.99] mt-8 relative overflow-hidden">
+                    <span className="relative z-10 flex items-center justify-center gap-3">
+                      Start the Check
+                      <svg
+                        className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    </span>
+                  </button>
+
+                  {/* Footer */}
+                  <p className="text-[11px] text-white/25 mt-6 text-center font-light">
+                    Response within 2 business days · No commitment required
+                  </p>
                 </div>
+
+                {/* Side accent */}
+                <div className="absolute -left-4 top-10 bottom-10 w-px bg-gradient-to-b from-transparent via-[#2dd4bf]/40 to-transparent" />
               </div>
 
-              {/* Social proof hint */}
-              <div className="mt-6 flex items-center justify-center gap-3 text-xs text-white/30">
-                <div className="flex -space-x-2">
-                  {[...Array(4)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="w-6 h-6 rounded-full bg-gradient-to-br from-white/20 to-white/5 border border-white/10"
-                    />
-                  ))}
-                </div>
-                <span>Join 50+ nonprofits we've helped</span>
+              {/* Below card - trust signals */}
+              <div className="mt-10 flex items-center gap-6 text-[11px] text-white/25">
+                <span className="flex items-center gap-2">
+                  <span className="w-1 h-1 rounded-full bg-[#2dd4bf]/50" />
+                  Ready for grants
+                </span>
+                <span className="flex items-center gap-2">
+                  <span className="w-1 h-1 rounded-full bg-[#2dd4bf]/50" />
+                  Ready for audits
+                </span>
+                <span className="flex items-center gap-2">
+                  <span className="w-1 h-1 rounded-full bg-[#2dd4bf]/50" />
+                  Ready to scale
+                </span>
               </div>
             </div>
+          </div>
+
+          {/* Bottom Accent - Urgent CTA */}
+          <div
+            className={`mt-24 pt-10 border-t border-white/[0.04] transition-all duration-1000 delay-500 ${isLoaded ? "opacity-100" : "opacity-0"}`}
+          >
+            <a
+              href="#"
+              className="inline-flex items-center gap-3 text-[12px] uppercase tracking-[0.2em] text-white/30 hover:text-[#2dd4bf] transition-colors group"
+            >
+              <span className="w-8 h-px bg-current transition-all group-hover:w-12" />
+              Have an urgent problem?
+              <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all">
+                →
+              </span>
+            </a>
           </div>
         </div>
       </div>
 
-      {/* CSS for animations */}
+      {/* Keyframes */}
       <style>{`
-        @keyframes fadeSlide {
+        @import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap');
+        
+        @keyframes wordReveal {
           0% {
             opacity: 0;
-            transform: translateY(10px);
+            transform: translateY(20px) rotateX(-20deg);
+            filter: blur(4px);
           }
           100% {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) rotateX(0);
+            filter: blur(0);
           }
-        }
-        
-        .animate-fade-in {
-          animation: fadeSlide 0.5s ease-out;
         }
       `}</style>
     </div>
   );
 };
 
-export default NimaraHero;
+export default NimaraHeroPremium;
