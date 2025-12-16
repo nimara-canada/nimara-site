@@ -199,7 +199,7 @@ export const OptionalInfoModal = ({
         <button
           ref={lastFocusableRef}
           aria-label="Close"
-          className="absolute top-3 right-3 rounded-lg p-2 text-[#96A0B5] hover:text-[#202654] focus:outline-2 focus:outline-[#6945D8] focus:outline-offset-2"
+          className="absolute top-3 right-3 rounded-lg p-2 text-[#96A0B5] hover:text-[#202654] focus:outline-2 focus:outline-[#7C3AED] focus:outline-offset-2"
           onClick={handleClose}
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -238,7 +238,7 @@ export const OptionalInfoModal = ({
               id="om_note"
               value={formData.om_note}
               onChange={(e) => setFormData({ ...formData, om_note: e.target.value })}
-              className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2"
+              className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] focus:outline-none focus:outline-[#7C3AED] focus:outline-2 focus:outline-offset-2"
               placeholder="e.g., tight deadline, specific expertise needed"
             />
           </div>
@@ -251,7 +251,7 @@ export const OptionalInfoModal = ({
               id="om_start"
               value={formData.om_start}
               onChange={(e) => setFormData({ ...formData, om_start: e.target.value })}
-              className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2"
+              className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] focus:outline-none focus:outline-[#7C3AED] focus:outline-2 focus:outline-offset-2"
             >
               <option value="">Select timeline</option>
               <option value="asap">ASAP (within 2 weeks)</option>
@@ -268,7 +268,7 @@ export const OptionalInfoModal = ({
               id="om_budget"
               value={formData.om_budget}
               onChange={(e) => setFormData({ ...formData, om_budget: e.target.value })}
-              className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] focus:outline-none focus:outline-[#6945D8] focus:outline-2 focus:outline-offset-2"
+              className="w-full rounded-xl border border-[#E9ECF4] bg-white px-3 py-3 text-[#202654] focus:outline-none focus:outline-[#7C3AED] focus:outline-2 focus:outline-offset-2"
             >
               <option value="">Select budget</option>
               <option value="under5k">Under $5,000</option>
@@ -288,14 +288,14 @@ export const OptionalInfoModal = ({
         <div className="mt-6 flex flex-wrap gap-3">
           <button
             ref={firstFocusableRef}
-            className="inline-flex items-center justify-center rounded-xl bg-[#6945D8] px-5 py-3 font-bold text-white hover:brightness-95 focus:outline-2 focus:outline-[#6945D8] focus:outline-offset-2 disabled:opacity-50"
+            className="inline-flex items-center justify-center rounded-xl bg-[#7C3AED] px-5 py-3 font-bold text-white hover:brightness-95 focus:outline-2 focus:outline-[#7C3AED] focus:outline-offset-2 disabled:opacity-50"
             onClick={handleSave}
             disabled={isSaving}
           >
             {isSaving ? "Submitting..." : "Submit & continue"}
           </button>
           <button
-            className="inline-flex items-center justify-center rounded-xl border border-[#E9ECF4] bg-white px-5 py-3 font-semibold text-[#202654] hover:bg-[#F8F9FC] focus:outline-2 focus:outline-[#6945D8] focus:outline-offset-2"
+            className="inline-flex items-center justify-center rounded-xl border border-[#E9ECF4] bg-white px-5 py-3 font-semibold text-[#202654] hover:bg-[#F8F9FC] focus:outline-2 focus:outline-[#7C3AED] focus:outline-offset-2"
             onClick={handleClose}
           >
             Skip for now

@@ -182,7 +182,7 @@ const buildUserConfirmationEmail = (formCode: string, payload: Record<string, an
     <p style="margin: 0 0 16px 0; font-size: 15px; color: #4a5568;">
       Need help sooner?
     </p>
-    <a href="https://nimara.ca/book-a-call" style="display: inline-block; background-color: #6945D8; color: #ffffff; text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: 500; font-size: 15px;">
+    <a href="https://nimara.ca/book-a-call" style="display: inline-block; background-color: #7C3AED; color: #ffffff; text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: 500; font-size: 15px;">
       Book a call →
     </a>
   </div>

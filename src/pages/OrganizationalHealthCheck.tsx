@@ -135,7 +135,7 @@ const tierDescriptions = [
   {
     tier: 4,
     name: "Strategic",
-    color: "#6945D8",
+    color: "#7C3AED",
     description: "Organization has documented systems and uses data to inform decisions.",
     recommendation: "You may be ready for targeted optimization. Book a call to discuss whether a full NOHC Snapshot makes sense."
   },

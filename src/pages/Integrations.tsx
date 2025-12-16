@@ -181,7 +181,7 @@ export default function Integrations() {
                         className={`w-10 h-10 rounded-lg flex items-center justify-center
                         ${
                           level.level === 1
-                            ? "bg-[#6945D8] text-white"
+                            ? "bg-[#7C3AED] text-white"
                             : level.level === 2
                               ? "bg-[#ACFCE3] text-[#202654]"
                               : "bg-muted text-foreground"
@@ -224,7 +224,7 @@ export default function Integrations() {
                         <div
                           key={idx}
                           className={`h-1 flex-1 rounded-full transition-colors ${
-                            idx <= quizStep ? "bg-[#6945D8]" : "bg-muted"
+                            idx <= quizStep ? "bg-[#7C3AED]" : "bg-muted"
                           }`}
                         />
                       ))}
@@ -239,7 +239,7 @@ export default function Integrations() {
                           <button
                             key={option.value}
                             onClick={() => handleAnswer(quizQuestions[quizStep].id, option.value)}
-                            className="text-left p-4 bg-background border border-border rounded-lg hover:border-[#6945D8]/50 hover:bg-muted/50 transition-all"
+                            className="text-left p-4 bg-background border border-border rounded-lg hover:border-[#7C3AED]/50 hover:bg-muted/50 transition-all"
                           >
                             <span className="text-foreground">{option.text}</span>
                           </button>
@@ -265,7 +265,7 @@ export default function Integrations() {
                           className={`w-16 h-16 mx-auto mb-4 rounded-xl flex items-center justify-center
                         ${
                           recommendation.level === 1
-                            ? "bg-[#6945D8] text-white"
+                            ? "bg-[#7C3AED] text-white"
                             : recommendation.level === 2
                               ? "bg-[#ACFCE3] text-[#202654]"
                               : "bg-muted text-foreground"
@@ -284,7 +284,7 @@ export default function Integrations() {
                             href="https://calendly.com/hello-nimara/30min"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center gap-2 bg-[#6945D8] text-white hover:bg-[#6945D8]/90 font-medium px-6 py-3 rounded-lg transition-colors"
+                            className="inline-flex items-center justify-center gap-2 bg-[#7C3AED] text-white hover:bg-[#7C3AED]/90 font-medium px-6 py-3 rounded-lg transition-colors"
                           >
                             Schedule a Call
                             <ArrowRight className="w-4 h-4" />
@@ -368,7 +368,7 @@ export default function Integrations() {
                   className="w-full p-6 flex items-center justify-between hover:bg-muted/50 transition-colors"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 bg-[#6945D8] rounded-lg flex items-center justify-center">
+                    <div className="w-10 h-10 bg-[#7C3AED] rounded-lg flex items-center justify-center">
                       <Zap className="w-5 h-5 text-white" />
                     </div>
                     <div className="text-left">
@@ -400,8 +400,8 @@ export default function Integrations() {
                         <h4 className="font-medium text-foreground mb-4">Donor & Fundraising</h4>
                         <ul className="space-y-3">
                           <li className="flex items-center gap-3">
-                            <div className="w-6 h-6 bg-[#6945D8]/10 rounded flex items-center justify-center">
-                              <span className="text-xs font-bold text-[#6945D8]">K</span>
+                            <div className="w-6 h-6 bg-[#7C3AED]/10 rounded flex items-center justify-center">
+                              <span className="text-xs font-bold text-[#7C3AED]">K</span>
                             </div>
                             <span className="text-muted-foreground">Keela</span>
                           </li>
@@ -410,8 +410,8 @@ export default function Integrations() {
                             <span className="text-muted-foreground">Salesforce Nonprofit Cloud</span>
                           </li>
                           <li className="flex items-center gap-3">
-                            <div className="w-6 h-6 bg-[#6945D8]/10 rounded flex items-center justify-center">
-                              <span className="text-xs font-bold text-[#6945D8]">CH</span>
+                            <div className="w-6 h-6 bg-[#7C3AED]/10 rounded flex items-center justify-center">
+                              <span className="text-xs font-bold text-[#7C3AED]">CH</span>
                             </div>
                             <span className="text-muted-foreground">CanadaHelps</span>
                           </li>
@@ -598,7 +598,7 @@ export default function Integrations() {
 
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="text-center">
-                  <div className="w-12 h-12 rounded-lg bg-[#6945D8] text-white flex items-center justify-center mx-auto mb-4">
+                  <div className="w-12 h-12 rounded-lg bg-[#7C3AED] text-white flex items-center justify-center mx-auto mb-4">
                     <span className="font-bold">1</span>
                   </div>
                   <h3 className="font-semibold text-foreground mb-2">Assess your tools</h3>
@@ -606,7 +606,7 @@ export default function Integrations() {
                 </div>
 
                 <div className="text-center">
-                  <div className="w-12 h-12 rounded-lg bg-[#6945D8] text-white flex items-center justify-center mx-auto mb-4">
+                  <div className="w-12 h-12 rounded-lg bg-[#7C3AED] text-white flex items-center justify-center mx-auto mb-4">
                     <span className="font-bold">2</span>
                   </div>
                   <h3 className="font-semibold text-foreground mb-2">Choose the simplest path</h3>
@@ -616,7 +616,7 @@ export default function Integrations() {
                 </div>
 
                 <div className="text-center">
-                  <div className="w-12 h-12 rounded-lg bg-[#6945D8] text-white flex items-center justify-center mx-auto mb-4">
+                  <div className="w-12 h-12 rounded-lg bg-[#7C3AED] text-white flex items-center justify-center mx-auto mb-4">
                     <span className="font-bold">3</span>
                   </div>
                   <h3 className="font-semibold text-foreground mb-2">Document everything</h3>
