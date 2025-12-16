@@ -1,10 +1,17 @@
+import { motion } from "framer-motion";
+
 export const NewTrustLine = () => {
   return (
-    <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-background">
-      <div className="max-w-4xl mx-auto">
-        <p className="text-sm text-muted-foreground text-center">
+    <section className="bg-background py-16 border-t border-border">
+      <div className="container mx-auto px-6 sm:px-8 lg:px-16">
+        <motion.p 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-muted-foreground text-center text-sm tracking-wide"
+        >
           We don't share your info without permission. You stay in control of what you pitch, price, and deliver.
-        </p>
+        </motion.p>
       </div>
     </section>
   );
