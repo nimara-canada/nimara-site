@@ -104,16 +104,23 @@ const NimaraHeroPremium = () => {
             <div className={`transition-all duration-1000 ${isLoaded ? "opacity-100" : "opacity-0 translate-y-6"}`}>
               
               {/* Main Headline - Two-line structure */}
-              <h1 className="mb-6 text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.02em] text-white">
-                <span className="block">We Set Up Your Nonprofit To Be</span>
+              {/* Main Headline - First line (static, never moves) */}
+              <h1 className="mb-0 text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.02em] text-white">
+                We Set Up Your Nonprofit To Be
+              </h1>
+              
+              {/* Second line - Completely isolated from H1 */}
+              <div 
+                className="mb-6 text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.02em]"
+                style={{ height: '1.4em' }}
+              >
                 <motion.span 
-                  className="flex items-baseline whitespace-nowrap"
-                  style={{ width: '11ch' }}
+                  className="flex items-center whitespace-nowrap"
+                  style={{ width: '12ch', height: '100%' }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
                 >
-                  {/* Accessible rotating word with aria-live */}
                   <span
                     aria-live="polite"
                     aria-atomic="true"
@@ -121,14 +128,13 @@ const NimaraHeroPremium = () => {
                   >
                     {displayedText}
                   </span>
-                  {/* Typing cursor */}
                   <span 
                     className={`inline-block w-[3px] h-[0.8em] bg-accent ml-0.5 ${isTyping ? 'animate-pulse' : 'animate-blink'}`}
                     aria-hidden="true"
                   />
                   <span className="text-white">.</span>
                 </motion.span>
-              </h1>
+              </div>
 
               {/* Subheadline - improved contrast */}
               <p className="text-base md:text-lg leading-[1.7] text-white/90 max-w-lg mb-6">
