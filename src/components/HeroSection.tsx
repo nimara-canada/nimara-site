@@ -1,13 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Check } from "lucide-react";
+
+const PROVINCES = [
+  "Alberta",
+  "British Columbia",
+  "Manitoba",
+  "New Brunswick",
+  "Newfoundland and Labrador",
+  "Northwest Territories",
+  "Nova Scotia",
+  "Nunavut",
+  "Ontario",
+  "Prince Edward Island",
+  "Quebec",
+  "Saskatchewan",
+  "Yukon"
+];
 
 const NimaraHeroPremium = () => {
   const [email, setEmail] = useState("");
+  const [orgName, setOrgName] = useState("");
+  const [province, setProvince] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentWord, setCurrentWord] = useState(0);
   const navigate = useNavigate();
 
-  const rotatingWords = ["Fundable", "Efficient", "Scalable", "Compliant"];
+  const rotatingWords = ["audit-ready", "grant-ready", "board-ready", "scalable"];
 
   useEffect(() => {
     setIsLoaded(true);
@@ -20,7 +39,10 @@ const NimaraHeroPremium = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
-      navigate(`/check?email=${encodeURIComponent(email)}`);
+      const params = new URLSearchParams({ email });
+      if (orgName) params.append("org", orgName);
+      if (province) params.append("province", province);
+      navigate(`/check?${params.toString()}`);
     }
   };
 
@@ -40,135 +62,154 @@ const NimaraHeroPremium = () => {
         <div className="flex-1 w-full max-w-7xl mx-auto px-6 lg:px-12 py-20 lg:py-28 flex flex-col">
           
           {/* Two Column Layout */}
-          <div className="flex-1 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="flex-1 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             
             {/* Left - Headlines */}
             <div className={`transition-all duration-1000 ${isLoaded ? "opacity-100" : "opacity-0 translate-y-6"}`}>
               
-              {/* Eyebrow */}
-              <div className="flex items-center gap-4 mb-10">
-                <span className="text-[11px] uppercase tracking-[0.25em] text-white/50 font-medium">
-                  Capacity Building For Canadian Nonprofits
-                </span>
-                <div className="flex-1 h-px bg-white/20 max-w-[80px]" />
-              </div>
-
               {/* Main Headline */}
-              <h1 className="mb-8">
-                <span className="block text-[clamp(2.25rem,5vw,3.75rem)] font-normal leading-[1.1] tracking-[-0.02em]">
-                  Keep Your Nonprofit
+              <h1 className="mb-6">
+                <span className="block text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.02em]">
+                  We set up your
+                </span>
+                <span className="block text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.02em]">
+                  nonprofit to be
                 </span>
                 <span className="relative block mt-1">
                   <span
                     key={currentWord}
-                    className="text-[clamp(2.25rem,5vw,3.75rem)] font-normal leading-[1.1] tracking-[-0.02em] text-accent italic"
+                    className="text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.02em] text-accent italic"
                     style={{
                       animation: "wordReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
                     }}
                   >
                     {rotatingWords[currentWord]}
                   </span>
-                  <span className="inline-block w-[3px] h-[0.9em] bg-accent ml-1 animate-pulse align-middle" />
+                  <span className="inline-block w-[3px] h-[0.85em] bg-accent ml-0.5 animate-pulse align-middle" />
                 </span>
               </h1>
 
               {/* Subheadline */}
-              <p className="text-base md:text-lg leading-[1.7] text-white/60 max-w-lg mb-8">
-                Nimara Helps You Set Up Simple Systems For Your Board, Money, Staff, And Programs—So Your Team Spends Less Time Fixing Problems And More Time Doing The Work.
+              <p className="text-base md:text-lg leading-[1.7] text-white/70 max-w-lg mb-6">
+                Board, money, staff, and reporting systems—so you can manage grants and audits without the scramble.
               </p>
 
-              {/* Bullet Points */}
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-10 text-sm text-white/50">
-                <span className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
-                  Ready For Grants
+              {/* Quote */}
+              <div className="border-l-2 border-white/20 pl-4 mb-8">
+                <p className="text-sm md:text-base text-white/50 italic">
+                  We don't run your payroll or replace your team—we set up the system your team can run.
+                </p>
+              </div>
+
+              {/* Checkmark Items */}
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-3 mb-8">
+                <span className="flex items-center gap-2 text-sm text-white/70">
+                  <Check className="w-4 h-4 text-accent" />
+                  GRANT-READY
                 </span>
-                <span className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
-                  Ready To Grow
+                <span className="flex items-center gap-2 text-sm text-white/70">
+                  <Check className="w-4 h-4 text-accent" />
+                  AUDIT-READY
                 </span>
-                <span className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
-                  Ready For Audits
+                <span className="flex items-center gap-2 text-sm text-white/70">
+                  <Check className="w-4 h-4 text-accent" />
+                  BOARD-READY
                 </span>
               </div>
 
-              {/* CTAs */}
-              <div className="flex flex-wrap items-center gap-6">
-                <a
-                  href="/check"
-                  className="group inline-flex items-center gap-3 text-sm font-medium text-white hover:text-accent transition-colors"
-                >
-                  Start The Free Check
-                  <span className="w-12 h-px bg-current transition-all group-hover:w-16" />
-                </a>
-                <a
-                  href="/book-a-call"
-                  className="group inline-flex items-center gap-3 text-sm font-medium text-white/60 hover:text-accent transition-colors"
-                >
-                  Have An Urgent Problem?
-                  <span className="w-12 h-px bg-current transition-all group-hover:w-16" />
-                </a>
-              </div>
+              {/* CTA Link */}
+              <a
+                href="/book-a-call"
+                className="group inline-flex items-center gap-2 text-sm text-white/60 hover:text-accent transition-colors"
+              >
+                Have an urgent problem? Book a call.
+                <span className="transition-transform group-hover:translate-x-1">→</span>
+              </a>
             </div>
 
             {/* Right - Form Card */}
             <div className={`transition-all duration-1000 delay-200 ${isLoaded ? "opacity-100" : "opacity-0 translate-y-6"}`}>
-              <div className="relative bg-[#0d1117] border border-white/10 rounded-lg p-8 lg:p-10">
+              <div className="relative bg-[#0d1117] border border-white/10 rounded-lg p-6 lg:p-8">
                 
                 {/* Form Header */}
-                <h2 className="text-xl font-semibold mb-2">Start The Free 4-Minute Check</h2>
-                <p className="text-sm text-white/50 mb-8">
-                  See Where Your Systems Stand—No Commitment Required.
+                <h2 className="text-xl font-semibold mb-2">Start the free 4-minute check</h2>
+                <p className="text-sm text-white/60 mb-6">
+                  Answer a few questions. We email your systems score in <strong className="text-white">2 business days</strong>.
                 </p>
 
                 {/* Form */}
-                <form onSubmit={handleSubmit}>
-                  {/* Email Label */}
-                  <label className="block text-sm text-white/70 mb-3">
-                    Email (where we can reach you)
-                  </label>
-                  
-                  {/* Email Input */}
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  {/* Organization Name */}
+                  <input
+                    type="text"
+                    value={orgName}
+                    onChange={(e) => setOrgName(e.target.value)}
+                    placeholder="Organization name (optional)"
+                    className="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-md text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-accent/50 transition-colors"
+                  />
+
+                  {/* Province Dropdown */}
+                  <div className="relative">
+                    <select
+                      value={province}
+                      onChange={(e) => setProvince(e.target.value)}
+                      className="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-md text-sm text-white/40 focus:outline-none focus:border-accent/50 transition-colors appearance-none cursor-pointer"
+                      style={{ color: province ? 'white' : undefined }}
+                    >
+                      <option value="" className="bg-secondary-background">Province (optional)</option>
+                      {PROVINCES.map((p) => (
+                        <option key={p} value={p} className="bg-secondary-background text-white">{p}</option>
+                      ))}
+                    </select>
+                    <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                      <svg className="w-4 h-4 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* Email */}
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="name@gmail.com or name@yourorg.ca"
-                    className="w-full px-4 py-4 bg-white/5 border border-white/10 rounded-md text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-accent/50 transition-colors mb-3"
+                    placeholder="Email (required)"
+                    className="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-md text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-accent/50 transition-colors"
                     required
                   />
 
-                  {/* Helper Text */}
-                  <p className="text-xs text-white/40 mb-6">
-                    No domain email yet? That's okay — use your best contact email.
-                  </p>
+                  {/* You'll Get Section */}
+                  <div className="bg-white/5 rounded-md p-4 mt-2">
+                    <p className="text-xs font-semibold text-white/80 uppercase tracking-wide mb-3">You'll Get:</p>
+                    <ul className="space-y-2">
+                      <li className="flex items-start gap-2 text-sm text-white/60">
+                        <Check className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
+                        A score across: Board • Money • Staff • Reporting
+                      </li>
+                      <li className="flex items-start gap-2 text-sm text-white/60">
+                        <Check className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
+                        Top 3 fixes for the next 30 days
+                      </li>
+                      <li className="flex items-start gap-2 text-sm text-white/60">
+                        <Check className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
+                        A simple roadmap (if you want help)
+                      </li>
+                    </ul>
+                  </div>
 
                   {/* Submit Button */}
                   <button 
                     type="submit"
                     className="group w-full py-4 bg-accent text-secondary-background text-sm font-semibold rounded-md transition-all duration-300 hover:bg-accent/90 active:scale-[0.99] flex items-center justify-center gap-2"
                   >
-                    Start The Check
-                    <svg
-                      className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
+                    Start the check
+                    <span className="transition-transform group-hover:translate-x-1">→</span>
                   </button>
                 </form>
 
                 {/* Footer Text */}
-                <p className="text-xs text-white/40 mt-6 text-center">
-                  We'll Reach Out By Email Within 2 Business Days.
+                <p className="text-xs text-white/40 mt-4 text-center">
+                  No spam. We only use your email to send your results.
                 </p>
               </div>
             </div>
@@ -178,15 +219,15 @@ const NimaraHeroPremium = () => {
           <div className={`mt-16 pt-12 border-t border-white/10 transition-all duration-1000 delay-400 ${isLoaded ? "opacity-100" : "opacity-0"}`}>
             <div className="grid grid-cols-3 gap-8 text-center">
               <div>
-                <span className="block text-2xl md:text-3xl font-light text-white/90 mb-1">1–4 weeks</span>
+                <span className="block text-2xl md:text-3xl font-bold text-white/90 mb-1">1–4 weeks</span>
                 <span className="text-[10px] md:text-xs uppercase tracking-[0.15em] text-white/40">Fast Fixes</span>
               </div>
               <div>
-                <span className="block text-2xl md:text-3xl font-light text-white/90 mb-1">8–12 weeks</span>
+                <span className="block text-2xl md:text-3xl font-bold text-white/90 mb-1">8–12 weeks</span>
                 <span className="text-[10px] md:text-xs uppercase tracking-[0.15em] text-white/40">Full Setup</span>
               </div>
               <div>
-                <span className="block text-2xl md:text-3xl font-light text-white/90 mb-1">Guaranteed</span>
+                <span className="block text-2xl md:text-3xl font-bold text-white/90 mb-1">Guaranteed</span>
                 <span className="text-[10px] md:text-xs uppercase tracking-[0.15em] text-white/40">If We Can't Help, You Don't Pay</span>
               </div>
             </div>
