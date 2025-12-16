@@ -25,61 +25,63 @@ const steps = [
 
 export const NewHowItWorks = () => {
   return (
-    <section className="bg-background py-24 md:py-32 border-t border-border">
+    <section className="bg-background py-28 md:py-36 border-t border-border/30">
       <div className="container mx-auto px-6 sm:px-8 lg:px-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 lg:gap-32">
           {/* Left column */}
           <div className="lg:col-span-4">
             <motion.p 
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-muted-foreground uppercase tracking-[0.2em] text-sm mb-4"
+              transition={{ duration: 0.8 }}
+              className="text-muted-foreground/60 uppercase tracking-[0.25em] text-xs mb-6"
             >
               Process
             </motion.p>
             <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-bold text-foreground leading-tight"
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight"
             >
-              How it works
+              How it <span className="italic font-light">works</span>
             </motion.h2>
             
             <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-muted-foreground mt-8 text-base leading-relaxed"
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-muted-foreground/70 mt-10 text-base leading-relaxed font-light"
             >
               You decide what projects you take. No quotas. No hidden fees. No shady admin.
             </motion.p>
           </div>
           
-          {/* Right column - Steps */}
+          {/* Right column */}
           <div className="lg:col-span-8">
             <div className="space-y-0">
               {steps.map((step, index) => (
                 <motion.div 
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="group grid grid-cols-12 gap-6 py-8 border-b border-border last:border-b-0"
+                  transition={{ duration: 0.6, delay: index * 0.08 }}
+                  className="grid grid-cols-12 gap-8 py-8 border-b border-border/30 last:border-b-0"
                 >
                   <div className="col-span-2 md:col-span-1">
-                    <span className="text-muted-foreground/30 text-4xl md:text-5xl font-bold">
+                    <span className="text-muted-foreground/15 text-4xl md:text-5xl font-light">
                       {index + 1}
                     </span>
                   </div>
                   <div className="col-span-10 md:col-span-11 pt-2">
-                    <h3 className="text-foreground font-semibold text-lg mb-2">
+                    <h3 className="text-foreground/90 font-medium text-base mb-2 tracking-wide">
                       {step.title}
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-muted-foreground/60 leading-relaxed font-light text-sm">
                       {step.description}
                     </p>
                   </div>

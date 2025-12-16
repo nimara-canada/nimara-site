@@ -1,102 +1,73 @@
 import { motion } from "framer-motion";
 
 const benefits = [
-  {
-    number: "01",
-    text: "You get real projects—not 'maybe' calls or endless RFPs."
-  },
-  {
-    number: "02", 
-    text: "We scope and vet all briefs before they reach you."
-  },
-  {
-    number: "03",
-    text: "You only take on what fits your skills and schedule."
-  },
-  {
-    number: "04",
-    text: "You stay freelance—but never alone."
-  },
-  {
-    number: "05",
-    text: "You join a bench of people who care about quality and equity."
-  }
+  "You get real projects—not 'maybe' calls or endless RFPs.",
+  "We scope and vet all briefs before they reach you.",
+  "You only take on what fits your skills and schedule.",
+  "You stay freelance—but never alone.",
+  "You join a bench of people who care about quality and equity."
 ];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 }
-  }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 }
-};
 
 export const NewWhyJoin = () => {
   return (
-    <section id="why-join" className="bg-background py-24 md:py-32">
+    <section id="why-join" className="bg-background py-28 md:py-36">
       <div className="container mx-auto px-6 sm:px-8 lg:px-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
-          {/* Left column - Title */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 lg:gap-32">
+          {/* Left column */}
           <div className="lg:col-span-4">
             <motion.p 
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-muted-foreground uppercase tracking-[0.2em] text-sm mb-4"
+              transition={{ duration: 0.8 }}
+              className="text-muted-foreground/60 uppercase tracking-[0.25em] text-xs mb-6"
             >
               Why Join
             </motion.p>
             <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-bold text-foreground leading-tight"
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight"
             >
-              Why join the Nimara bench?
+              Why join the <span className="italic font-light">Nimara bench?</span>
             </motion.h2>
             
             <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-muted-foreground mt-8 text-lg leading-relaxed"
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-muted-foreground/70 mt-10 text-base leading-relaxed font-light"
             >
               This is not a staffing agency. It's a curated platform for real consultants who actually deliver.
             </motion.p>
           </div>
           
-          {/* Right column - Benefits */}
+          {/* Right column */}
           <div className="lg:col-span-8">
-            <motion.div 
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="space-y-0"
-            >
+            <div className="space-y-0">
               {benefits.map((benefit, index) => (
                 <motion.div 
                   key={index}
-                  variants={itemVariants}
-                  className="group border-t border-border py-8 first:border-t-0 first:pt-0"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.08 }}
+                  className="border-t border-border/50 py-8 first:border-t-0 first:pt-0"
                 >
-                  <div className="flex gap-8 items-baseline">
-                    <span className="text-muted-foreground/50 text-sm font-mono tracking-wider">
-                      {benefit.number}
+                  <div className="flex gap-10 items-baseline">
+                    <span className="text-muted-foreground/30 text-xs font-light tracking-wider w-6 flex-shrink-0">
+                      {String(index + 1).padStart(2, '0')}
                     </span>
-                    <p className="text-foreground text-lg md:text-xl leading-relaxed">
-                      {benefit.text}
+                    <p className="text-foreground/80 text-lg md:text-xl leading-relaxed font-light">
+                      {benefit}
                     </p>
                   </div>
                 </motion.div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

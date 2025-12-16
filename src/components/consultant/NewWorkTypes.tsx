@@ -13,64 +13,63 @@ const workTypes = [
 
 export const NewWorkTypes = () => {
   return (
-    <section className="bg-secondary-background py-24 md:py-32">
+    <section className="bg-secondary-background py-28 md:py-36">
       <div className="container mx-auto px-6 sm:px-8 lg:px-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 lg:gap-32">
           {/* Left column */}
           <div className="lg:col-span-5">
             <motion.p 
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-white/50 uppercase tracking-[0.2em] text-sm mb-4"
+              transition={{ duration: 0.8 }}
+              className="text-white/30 uppercase tracking-[0.25em] text-xs mb-6"
             >
               Project Types
             </motion.p>
             <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-bold text-white leading-tight mb-8"
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="text-3xl md:text-4xl font-semibold text-white leading-tight tracking-tight mb-10"
             >
-              What kinds of <span className="italic font-normal">work?</span>
+              What kinds of <span className="italic font-light">work?</span>
             </motion.h2>
             
             <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-white/60 text-lg leading-relaxed"
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-white/50 text-base leading-relaxed font-light"
             >
               Projects are time-bounded, scoped, and PM-supported. You focus on delivery—we handle 
               intake, payment, and client ops.
             </motion.p>
           </div>
           
-          {/* Right column - Work types grid */}
+          {/* Right column */}
           <div className="lg:col-span-7">
             <motion.div 
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6"
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-5"
             >
               {workTypes.map((type, index) => (
-                <motion.div 
+                <div 
                   key={index}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
-                  className="flex items-baseline gap-4"
+                  className="flex items-baseline gap-5"
                 >
-                  <span className="text-white/30 text-xs font-mono">
+                  <span className="text-white/20 text-xs font-light tracking-wider w-5 flex-shrink-0">
                     {String(index + 1).padStart(2, '0')}
                   </span>
-                  <p className="text-white/80 text-base leading-relaxed">
+                  <p className="text-white/70 text-base leading-relaxed font-light">
                     {type}
                   </p>
-                </motion.div>
+                </div>
               ))}
             </motion.div>
           </div>
