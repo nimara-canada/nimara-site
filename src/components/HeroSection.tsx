@@ -33,7 +33,7 @@ const NimaraHeroPremium = () => {
   const emailId = `${formId}-email`;
   const formDescId = `${formId}-desc`;
 
-  const rotatingWords = ["audit-ready", "grant-ready", "board-ready", "scalable"];
+  const rotatingWords = ["grant-ready", "audit-ready", "board-ready", "compliant", "organized", "fundable"];
 
   useEffect(() => {
     setIsLoaded(true);
@@ -79,20 +79,15 @@ const NimaraHeroPremium = () => {
             <div className={`transition-all duration-1000 ${isLoaded ? "opacity-100" : "opacity-0 translate-y-6"}`}>
               
               {/* Main Headline - improved contrast */}
-              <h1 className="mb-6">
-                <span className="block text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.02em] text-white">
-                  We set up your
-                </span>
-                <span className="block text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.02em] text-white">
-                  nonprofit to be
-                </span>
-                <span className="relative block mt-1">
+              <h1 className="mb-6 text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.02em] text-white">
+                We Set Up Your Nonprofit To Be{" "}
+                <span className="relative inline">
                   {/* Accessible rotating word with aria-live */}
                   <span
                     key={currentWord}
                     aria-live="polite"
                     aria-atomic="true"
-                    className="text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.02em] text-accent italic"
+                    className="text-accent italic"
                     style={{
                       animation: "wordReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
                     }}
@@ -105,6 +100,7 @@ const NimaraHeroPremium = () => {
                     aria-hidden="true"
                   />
                 </span>
+                .
               </h1>
 
               {/* Subheadline - improved contrast */}
