@@ -109,10 +109,23 @@ const NimaraHeroPremium = () => {
             {/* Left - Headlines */}
             <div className={`transition-all duration-1000 ${isLoaded ? "opacity-100" : "opacity-0 translate-y-6"}`}>
               
-              {/* Eyebrow Badge */}
-              <span className="inline-block text-xs uppercase tracking-[0.15em] text-accent font-medium mb-4 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20">
-                Capacity building for Canadian nonprofits
+              {/* Eyebrow Badge with shimmer */}
+              <span className="relative inline-block text-xs uppercase tracking-[0.15em] text-accent font-medium mb-4 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 overflow-hidden">
+                <span className="relative z-10">Capacity building for Canadian nonprofits</span>
+                <span 
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/20 to-transparent"
+                  style={{
+                    animation: 'shimmer 3s ease-in-out infinite',
+                  }}
+                  aria-hidden="true"
+                />
               </span>
+              <style>{`
+                @keyframes shimmer {
+                  0% { transform: translateX(-100%); }
+                  50%, 100% { transform: translateX(100%); }
+                }
+              `}</style>
               
               {/* Main Headline - First line (static, never moves) */}
               <h1 className="mb-0 text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.02em] text-white">
