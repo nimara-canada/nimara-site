@@ -107,10 +107,10 @@ const NimaraHeroPremium = () => {
               <h1 className="mb-6 text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.02em] text-white">
                 <span className="block">We Set Up Your Nonprofit To Be</span>
                 <motion.span 
-                  className="inline-flex items-baseline whitespace-nowrap"
-                  style={{ minWidth: '11ch' }}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  className="flex items-baseline whitespace-nowrap"
+                  style={{ width: '11ch' }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
                 >
                   {/* Accessible rotating word with aria-live */}
