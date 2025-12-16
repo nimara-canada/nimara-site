@@ -73,9 +73,7 @@ export const Footer = () => {
                 <ul className="space-y-3">
                   <li>
                     <a
-                      href="https://www.notion.so/Consultant-Hire-2bb227f1ee3a8018b693d47e9610c583"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href="/partners"
                       className="text-white/70 hover:text-white transition-colors duration-200"
                     >
                       For Consultants

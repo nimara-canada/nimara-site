@@ -102,9 +102,7 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-8">
               <a
-                href="https://www.notion.so/Consultant-Hire-2bb227f1ee3a8018b693d47e9610c583?source=copy_link"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/partners"
                 className="group text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 <span className="relative">
@@ -171,9 +169,7 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                         Join Our Team
                       </span>
                       <a
-                        href="https://www.notion.so/Consultant-Hire-2bb227f1ee3a8018b693d47e9610c583?source=copy_link"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href="/partners"
                         className="inline-flex items-center gap-2 text-foreground hover:text-primary transition-colors group"
                         onClick={() => setIsOpen(false)}
                       >
