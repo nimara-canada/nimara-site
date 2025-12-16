@@ -43,7 +43,7 @@ export const FitCheck = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-20 md:py-28 lg:py-36 bg-[#7C3AED] overflow-hidden" 
+      className="relative py-20 md:py-28 lg:py-36 bg-primary overflow-hidden" 
       aria-labelledby="fit-check-heading" 
       id="fit-check"
     >
