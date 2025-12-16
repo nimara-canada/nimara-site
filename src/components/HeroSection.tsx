@@ -39,7 +39,7 @@ const NimaraHeroPremium = () => {
     setIsLoaded(true);
     const interval = setInterval(() => {
       setCurrentWord((prev) => (prev + 1) % rotatingWords.length);
-    }, 2800);
+    }, 3800);
     return () => clearInterval(interval);
   }, []);
 
