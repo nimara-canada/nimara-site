@@ -5,32 +5,117 @@ const ladderSteps = [
   { 
     level: 0, 
     title: "Getting by", 
-    desc: "Work gets done, but it lives in people's heads. Nothing is written down or done the same way twice.",
-    detail: "Time to get the basics out of people's heads and into simple, shared tools."
+    desc: "Work gets done, but it lives in people's heads.",
+    youMightBeHereIf: [
+      "Nothing is written down",
+      "The same task is done 3 different ways",
+      "You rely on \"hero\" staff to keep things moving"
+    ],
+    nextFocus: "Get the basics into simple shared tools.",
+    expandedDesc: "Work gets done, but it lives in people's heads. Nothing is written down or done the same way twice.",
+    signs: [
+      "People can't explain \"how we do things\" without a long conversation",
+      "Approvals happen in DMs, texts, or someone's memory",
+      "Reporting takes too long because you rebuild it every time"
+    ],
+    fixes: [
+      "Write down the 5–10 tasks you repeat every month",
+      "Create one shared place for files and templates (not personal inboxes)",
+      "Set one clear approval path for spending and decisions"
+    ],
+    outcome: "Less scramble. More clarity. A starting point you can build on."
   },
   { 
     level: 1, 
     title: "Pieces in place", 
-    desc: "Some policies, templates, or trackers exist, but they're inconsistent and still very person-dependent.",
-    detail: "Time to firm up the basics so they work the same way every time."
+    desc: "Some tools exist, but they're inconsistent.",
+    youMightBeHereIf: [
+      "You have templates, but no one uses the same version",
+      "Policies exist, but they're outdated or hard to find",
+      "Tracking happens, but it's incomplete"
+    ],
+    nextFocus: "Standardize the basics and make them easy to follow.",
+    expandedDesc: "You have some policies, trackers, or templates — but they're inconsistent and hard to use day to day.",
+    signs: [
+      "Multiple versions of the same document live in different places",
+      "People ask \"Which file is the right one?\"",
+      "New staff learn by guessing or watching others"
+    ],
+    fixes: [
+      "Create one \"source of truth\" folder and lock old versions",
+      "Choose one tracker for each key area (money, staff, reporting)",
+      "Assign owners (who keeps each tool up to date)"
+    ],
+    outcome: "Work becomes repeatable. New staff ramp faster. Fewer dropped balls."
   },
   { 
     level: 2, 
     title: "Working basics", 
-    desc: "The core pieces are in place and mostly working. Systems are simple, written, and repeatable.",
-    detail: "Time to keep things tidy and connect key systems so they're easy to hand over."
+    desc: "The core systems work and are written down.",
+    youMightBeHereIf: [
+      "Monthly work has a routine",
+      "Approvals are clearer",
+      "Reporting is possible without panic"
+    ],
+    nextFocus: "Strengthen controls and make reporting easier.",
+    expandedDesc: "Your core systems are in place and mostly working. They're simple, written down, and your team can follow them.",
+    signs: [
+      "You can explain \"how we do things\" in a few steps",
+      "Spending approvals and documentation are mostly consistent",
+      "Reporting is doable, but still takes effort"
+    ],
+    fixes: [
+      "Tighten financial tracking: budget vs actual, monthly review",
+      "Build a clean \"proof pack\" habit (receipt, payment, deliverable)",
+      "Create simple dashboards for board and funder reporting"
+    ],
+    outcome: "Cleaner reporting. Better controls. Less last-minute stress."
   },
   { 
     level: 3, 
-    title: "Advanced systems", 
-    desc: "Systems are integrated across teams with strong reporting. This is more typical of larger organizations.",
-    detail: "Nimara mainly helps map and protect these systems; deep redesign is usually led by in-house teams."
+    title: "Running smoothly", 
+    desc: "Systems are connected and run the same way across the team.",
+    youMightBeHereIf: [
+      "You have clear roles and routines",
+      "Reporting is reliable",
+      "Risks are tracked, not guessed"
+    ],
+    nextFocus: "Improve performance and scale without chaos.",
+    expandedDesc: "Systems are integrated across the team. Work is consistent, roles are clear, and reporting is strong.",
+    signs: [
+      "People know who approves what and why",
+      "Data is consistent across programs and reports",
+      "Risks and issues are tracked early, not discovered late"
+    ],
+    fixes: [
+      "Improve quality: checklists, QA steps, and review cycles",
+      "Strengthen board reporting: fewer pages, clearer signals",
+      "Build capacity plans: training, back-up coverage, handoffs"
+    ],
+    outcome: "Higher trust. Faster decisions. Growth without breaking systems."
   },
   { 
     level: 4, 
-    title: "Reference point", 
-    desc: "Your systems are strong enough to teach others. You set the standard in your field.",
-    detail: "For most clients, Tier 4 is a north star. Nimara focuses on helping you build steady Tier 2 systems first."
+    title: "Best-in-class", 
+    desc: "Your systems are strong enough to teach others.",
+    youMightBeHereIf: [
+      "Processes are documented and audited easily",
+      "You improve systems on purpose, not by accident",
+      "You can scale or replicate programs confidently"
+    ],
+    nextFocus: "Maintain excellence and mentor others.",
+    expandedDesc: "Your systems are strong, documented, and easy to audit. You don't just operate well — you improve on purpose.",
+    signs: [
+      "Audits and funder reviews are smooth and predictable",
+      "The organization can scale because systems don't depend on one person",
+      "You measure performance and adjust quickly"
+    ],
+    fixes: [
+      "Keep systems current: annual policy and process reviews",
+      "Share your model: playbooks, training, peer learning",
+      "Invest in continuous improvement (small upgrades, ongoing)"
+    ],
+    outcome: "Sustainable growth. High credibility. A model others trust."
   },
 ];
 
@@ -235,9 +320,28 @@ export const SystemLadder = () => {
                     </h3>
 
                     {/* Description */}
-                    <p className="text-sm text-white/40 leading-relaxed line-clamp-3 group-hover:text-white/50 transition-colors duration-300">
+                    <p className="text-sm text-white/40 leading-relaxed mb-3 group-hover:text-white/50 transition-colors duration-300">
                       {step.desc}
                     </p>
+
+                    {/* You might be here if */}
+                    <div className="space-y-1.5 mb-3">
+                      <p className="text-[10px] uppercase tracking-wider text-white/30 font-medium">You might be here if:</p>
+                      <ul className="space-y-1">
+                        {step.youMightBeHereIf.slice(0, 2).map((item, i) => (
+                          <li key={i} className="text-xs text-white/40 flex items-start gap-1.5">
+                            <span className="text-accent/60 mt-0.5">•</span>
+                            <span className="line-clamp-1">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Next focus */}
+                    <div className="pt-3 border-t border-white/5">
+                      <p className="text-[10px] uppercase tracking-wider text-white/30 font-medium mb-1">Next focus:</p>
+                      <p className="text-xs text-accent/80 line-clamp-2">{step.nextFocus}</p>
+                    </div>
 
                     {/* Expand indicator */}
                     <div className={`
@@ -280,26 +384,67 @@ export const SystemLadder = () => {
               <div className="relative p-8 lg:p-10 rounded-2xl bg-white/[0.04] border border-white/10">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent via-primary to-accent/50 rounded-t-2xl" />
                 
-                <div className="flex flex-col lg:flex-row lg:items-start gap-8">
+                {/* Header */}
+                <div className="flex flex-col lg:flex-row lg:items-start gap-6 mb-8">
                   <div className="flex-shrink-0">
-                    <span className="text-8xl font-extralight text-accent/60">
+                    <span className="text-7xl lg:text-8xl font-extralight text-accent/60">
                       {ladderSteps[selectedLevel].level}
                     </span>
                   </div>
                   
                   <div className="flex-1">
-                    <h4 className="text-2xl lg:text-3xl font-medium text-white mb-4">
-                      {ladderSteps[selectedLevel].title}
+                    <h4 className="text-2xl lg:text-3xl font-medium text-white mb-2">
+                      Tier {ladderSteps[selectedLevel].level} — {ladderSteps[selectedLevel].title}
                     </h4>
-                    <p className="text-lg text-white/60 leading-relaxed mb-6">
-                      {ladderSteps[selectedLevel].desc}
+                    <p className="text-lg text-white/60 leading-relaxed">
+                      {ladderSteps[selectedLevel].expandedDesc}
                     </p>
-                    <div className="flex items-start gap-3 p-4 rounded-xl bg-accent/10 border border-accent/20">
-                      <span className="text-accent text-lg">→</span>
-                      <p className="text-accent/90 leading-relaxed">
-                        {ladderSteps[selectedLevel].detail}
-                      </p>
-                    </div>
+                  </div>
+                </div>
+
+                {/* Three columns */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                  {/* Signs you're here */}
+                  <div className="p-5 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+                    <h5 className="text-sm font-medium text-white/80 mb-4 flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary/60" />
+                      Signs you're here
+                    </h5>
+                    <ul className="space-y-3">
+                      {ladderSteps[selectedLevel].signs.map((sign, i) => (
+                        <li key={i} className="text-sm text-white/50 leading-relaxed flex items-start gap-2">
+                          <span className="text-white/30 mt-0.5">•</span>
+                          <span>{sign}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* What to fix next */}
+                  <div className="p-5 rounded-xl bg-accent/5 border border-accent/10">
+                    <h5 className="text-sm font-medium text-accent/90 mb-4 flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                      What to fix next (simple wins)
+                    </h5>
+                    <ul className="space-y-3">
+                      {ladderSteps[selectedLevel].fixes.map((fix, i) => (
+                        <li key={i} className="text-sm text-white/60 leading-relaxed flex items-start gap-2">
+                          <span className="text-accent/60 mt-0.5">→</span>
+                          <span>{fix}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Outcome */}
+                  <div className="p-5 rounded-xl bg-white/[0.03] border border-white/[0.06] flex flex-col">
+                    <h5 className="text-sm font-medium text-white/80 mb-4 flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent/60" />
+                      Outcome
+                    </h5>
+                    <p className="text-base text-white/70 leading-relaxed flex-1">
+                      {ladderSteps[selectedLevel].outcome}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -317,8 +462,8 @@ export const SystemLadder = () => {
           <div className="h-px flex-1 max-w-32 bg-gradient-to-r from-transparent to-accent/30" />
           <div className="flex items-center gap-3 px-5 py-2.5 rounded-full bg-accent/10 border border-accent/20">
             <div className="w-2 h-2 rounded-full bg-accent" />
-            <span className="text-xs font-medium tracking-widest uppercase text-accent">
-              Tier 0–2: Our primary focus
+            <span className="text-xs font-medium tracking-wide text-accent">
+              We specialize in Tiers 0–2: getting your basics written down and working.
             </span>
           </div>
           <div className="h-px flex-1 max-w-32 bg-gradient-to-l from-transparent to-accent/30" />
