@@ -102,10 +102,10 @@ const NimaraHeroPremium = () => {
             {/* Left - Headlines */}
             <div className={`transition-all duration-1000 ${isLoaded ? "opacity-100" : "opacity-0 translate-y-6"}`}>
               
-              {/* Main Headline - improved contrast */}
-              <h1 className="mb-6 text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.02em] text-white whitespace-nowrap">
+              {/* Main Headline */}
+              <h1 className="mb-6 text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.02em] text-white">
                 We Set Up Your Nonprofit To Be{" "}
-                <span className="relative inline-block" style={{ minWidth: '11ch' }}>
+                <span className="inline-flex items-baseline whitespace-nowrap">
                   {/* Accessible rotating word with aria-live */}
                   <span
                     aria-live="polite"
@@ -116,7 +116,7 @@ const NimaraHeroPremium = () => {
                   </span>
                   {/* Typing cursor */}
                   <span 
-                    className={`inline-block w-[3px] h-[0.85em] bg-accent ml-0.5 align-middle ${isTyping ? 'animate-pulse' : 'animate-blink'}`}
+                    className={`inline-block w-[3px] h-[0.8em] bg-accent ml-0.5 ${isTyping ? 'animate-pulse' : 'animate-blink'}`}
                     aria-hidden="true"
                   />
                 </span>
