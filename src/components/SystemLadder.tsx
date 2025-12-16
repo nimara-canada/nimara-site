@@ -269,30 +269,30 @@ export const SystemLadder = () => {
           <div className="border-t border-white/10" />
         </div>
 
-        {/* Focus note */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-10 text-center text-sm text-white/40"
-        >
-          We specialize in Tiers 0–2: getting your basics written down and working.
-        </motion.p>
-
-        {/* CTA */}
+        {/* CTA Card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6"
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-16 p-8 lg:p-10 rounded-2xl bg-white/[0.03] border border-white/[0.08]"
         >
-          <a
-            href="/check"
-            className="group inline-flex items-center gap-3 text-white font-medium"
-          >
-            <span className="group-hover:text-accent transition-colors">Find your tier</span>
-            <span className="w-8 h-px bg-white group-hover:w-12 group-hover:bg-accent transition-all duration-300" />
-          </a>
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+            <div>
+              <h3 className="text-xl lg:text-2xl font-medium text-white mb-2">
+                Not sure where you stand?
+              </h3>
+              <p className="text-white/50 max-w-lg">
+                Take the free 4-minute assessment and find out your tier—plus get a personalized recommendation.
+              </p>
+            </div>
+            <a
+              href="/check"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-secondary-background font-medium rounded-full hover:bg-accent/90 transition-colors flex-shrink-0"
+            >
+              Start the free check
+              <span>→</span>
+            </a>
+          </div>
         </motion.div>
       </div>
     </section>
