@@ -4,11 +4,11 @@ import { useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 
 const tiers = [
-  { level: "4", title: "Complex", subtitle: "Multi-Site Operations" },
-  { level: "3", title: "Growth-Ready", subtitle: "Scalable Foundation" },
-  { level: "2", title: "Audit-Ready", subtitle: "Compliant Systems" },
-  { level: "1", title: "Basic", subtitle: "Informal Processes" },
-  { level: "0", title: "Early", subtitle: "DIY Support" },
+  { level: "4", title: "Best-in-class", subtitle: "Your systems are strong enough to teach others." },
+  { level: "3", title: "Running smoothly", subtitle: "Systems are connected and run the same way across the team." },
+  { level: "2", title: "Working basics", subtitle: "The core systems work and are written down." },
+  { level: "1", title: "Pieces in place", subtitle: "Some tools exist, but they're inconsistent." },
+  { level: "0", title: "Getting by", subtitle: "Work gets done, but it lives in people's heads." },
 ];
 
 const paths = [
