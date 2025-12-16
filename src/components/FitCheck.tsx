@@ -43,7 +43,7 @@ export const FitCheck = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-20 md:py-28 lg:py-36 bg-accent overflow-hidden" 
+      className="relative py-20 md:py-28 lg:py-36 bg-primary overflow-hidden" 
       aria-labelledby="fit-check-heading" 
       id="fit-check"
     >
@@ -207,7 +207,7 @@ export const FitCheck = () => {
             <motion.button
               type="button"
               onClick={() => setShowVideoModal(true)}
-              className="relative block w-full aspect-[4/3] bg-white group focus:outline-none focus:ring-2 focus:ring-[#0B1120] focus:ring-offset-4 focus:ring-offset-accent rounded-lg overflow-hidden shadow-lg"
+              className="relative block w-full aspect-[4/3] bg-white group focus:outline-none focus:ring-2 focus:ring-[#0B1120] focus:ring-offset-4 focus:ring-offset-primary rounded-lg overflow-hidden shadow-lg"
               aria-label="Play Nimara intro video"
               whileHover={{ y: -8, boxShadow: '0 25px 50px -12px rgba(11, 17, 32, 0.25)' }}
               transition={{ duration: 0.3 }}
