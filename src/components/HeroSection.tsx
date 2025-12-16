@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useId } from "react";
 import { useNavigate } from "react-router-dom";
 import { Check } from "lucide-react";
+import { motion } from "framer-motion";
 
 const PROVINCES = [
   "Alberta",
@@ -105,9 +106,12 @@ const NimaraHeroPremium = () => {
               {/* Main Headline - Two-line structure */}
               <h1 className="mb-6 text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.02em] text-white">
                 <span className="block">We Set Up Your Nonprofit To Be</span>
-                <span 
+                <motion.span 
                   className="inline-flex items-baseline whitespace-nowrap"
                   style={{ minWidth: '11ch' }}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
                 >
                   {/* Accessible rotating word with aria-live */}
                   <span
@@ -123,7 +127,7 @@ const NimaraHeroPremium = () => {
                     aria-hidden="true"
                   />
                   <span className="text-white">.</span>
-                </span>
+                </motion.span>
               </h1>
 
               {/* Subheadline - improved contrast */}
