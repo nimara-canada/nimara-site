@@ -24,6 +24,8 @@ const NimaraHeroPremium = () => {
   const [province, setProvince] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentWord, setCurrentWord] = useState(0);
+  const [displayedText, setDisplayedText] = useState("");
+  const [isTyping, setIsTyping] = useState(true);
   const navigate = useNavigate();
   
   // Generate unique IDs for form accessibility
@@ -35,13 +37,35 @@ const NimaraHeroPremium = () => {
 
   const rotatingWords = ["grant-ready", "audit-ready", "board-ready", "compliant", "organized", "fundable"];
 
+  // Typewriter effect
   useEffect(() => {
     setIsLoaded(true);
-    const interval = setInterval(() => {
-      setCurrentWord((prev) => (prev + 1) % rotatingWords.length);
-    }, 3800);
-    return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    const word = rotatingWords[currentWord];
+    let charIndex = 0;
+    setDisplayedText("");
+    setIsTyping(true);
+
+    // Type out the word
+    const typingInterval = setInterval(() => {
+      if (charIndex < word.length) {
+        setDisplayedText(word.slice(0, charIndex + 1));
+        charIndex++;
+      } else {
+        clearInterval(typingInterval);
+        setIsTyping(false);
+        
+        // Wait then move to next word
+        setTimeout(() => {
+          setCurrentWord((prev) => (prev + 1) % rotatingWords.length);
+        }, 2000);
+      }
+    }, 80);
+
+    return () => clearInterval(typingInterval);
+  }, [currentWord]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -79,24 +103,20 @@ const NimaraHeroPremium = () => {
             <div className={`transition-all duration-1000 ${isLoaded ? "opacity-100" : "opacity-0 translate-y-6"}`}>
               
               {/* Main Headline - improved contrast */}
-              <h1 className="mb-6 text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.02em] text-white">
+              <h1 className="mb-6 text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.02em] text-white whitespace-nowrap">
                 We Set Up Your Nonprofit To Be{" "}
-                <span className="relative inline">
+                <span className="relative inline-block" style={{ minWidth: '11ch' }}>
                   {/* Accessible rotating word with aria-live */}
                   <span
-                    key={currentWord}
                     aria-live="polite"
                     aria-atomic="true"
                     className="text-accent italic"
-                    style={{
-                      animation: "wordReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
-                    }}
                   >
-                    {rotatingWords[currentWord]}
+                    {displayedText}
                   </span>
-                  {/* Decorative cursor */}
+                  {/* Typing cursor */}
                   <span 
-                    className="inline-block w-[3px] h-[0.85em] bg-accent ml-0.5 animate-pulse align-middle" 
+                    className={`inline-block w-[3px] h-[0.85em] bg-accent ml-0.5 align-middle ${isTyping ? 'animate-pulse' : 'animate-blink'}`}
                     aria-hidden="true"
                   />
                 </span>
@@ -293,17 +313,16 @@ const NimaraHeroPremium = () => {
 
       {/* Keyframes */}
       <style>{`
-        @keyframes wordReveal {
-          0% {
-            opacity: 0;
-            transform: translateY(20px) rotateX(-20deg);
-            filter: blur(4px);
-          }
-          100% {
+        @keyframes blink {
+          0%, 50% {
             opacity: 1;
-            transform: translateY(0) rotateX(0);
-            filter: blur(0);
           }
+          51%, 100% {
+            opacity: 0;
+          }
+        }
+        .animate-blink {
+          animation: blink 0.8s infinite;
         }
       `}</style>
     </section>
