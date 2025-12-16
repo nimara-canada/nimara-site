@@ -16,77 +16,71 @@ const notForCriteria = [
 
 export const NewWhoWeWant = () => {
   return (
-    <section className="bg-background py-24 md:py-32">
+    <section className="bg-background py-28 md:py-36">
       <div className="container mx-auto px-6 sm:px-8 lg:px-16">
         <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="max-w-xl mb-16"
+          transition={{ duration: 0.8 }}
+          className="max-w-2xl mb-20"
         >
-          <p className="text-muted-foreground uppercase tracking-[0.2em] text-sm mb-4">
+          <p className="text-muted-foreground/60 uppercase tracking-[0.25em] text-xs mb-6">
             Who We Want
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
+          <h2 className="text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight">
             This bench is built for people who want to do the work—
-            <span className="italic font-normal">and do it well.</span>
+            <span className="italic font-light">and do it well.</span>
           </h2>
         </motion.div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32">
           {/* Good fit */}
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <h3 className="text-lg font-semibold text-foreground mb-8 pb-4 border-b border-border">
+            <h3 className="text-sm font-medium text-foreground/80 mb-10 pb-5 border-b border-border/50 tracking-wide">
               You might be a fit if
             </h3>
-            <div className="space-y-6">
+            <div className="space-y-7">
               {fitCriteria.map((criterion, index) => (
-                <motion.div 
+                <div 
                   key={index}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
-                  className="flex gap-6"
+                  className="flex gap-8"
                 >
-                  <span className="text-muted-foreground/40 text-sm font-mono flex-shrink-0">
+                  <span className="text-muted-foreground/25 text-xs font-light tracking-wider w-5 flex-shrink-0 pt-1">
                     {String(index + 1).padStart(2, '0')}
                   </span>
-                  <p className="text-foreground/80 leading-relaxed">{criterion}</p>
-                </motion.div>
+                  <p className="text-foreground/70 leading-relaxed font-light">{criterion}</p>
+                </div>
               ))}
             </div>
           </motion.div>
           
           {/* Not for */}
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h3 className="text-lg font-semibold text-foreground mb-8 pb-4 border-b border-border">
+            <h3 className="text-sm font-medium text-foreground/80 mb-10 pb-5 border-b border-border/50 tracking-wide">
               Who this is not for
             </h3>
-            <div className="space-y-6">
+            <div className="space-y-7">
               {notForCriteria.map((criterion, index) => (
-                <motion.div 
+                <div 
                   key={index}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
-                  className="flex gap-6"
+                  className="flex gap-8"
                 >
-                  <span className="text-muted-foreground/40 text-sm font-mono flex-shrink-0">
+                  <span className="text-muted-foreground/25 text-xs font-light tracking-wider w-5 flex-shrink-0 pt-1">
                     —
                   </span>
-                  <p className="text-muted-foreground leading-relaxed">{criterion}</p>
-                </motion.div>
+                  <p className="text-muted-foreground/60 leading-relaxed font-light">{criterion}</p>
+                </div>
               ))}
             </div>
           </motion.div>
