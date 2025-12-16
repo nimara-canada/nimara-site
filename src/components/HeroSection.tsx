@@ -109,7 +109,11 @@ const NimaraHeroPremium = () => {
             {/* Left - Headlines */}
             <div className={`transition-all duration-1000 ${isLoaded ? "opacity-100" : "opacity-0 translate-y-6"}`}>
               
-              {/* Main Headline - Two-line structure */}
+              {/* Eyebrow */}
+              <p className="text-xs uppercase tracking-[0.2em] text-accent font-medium mb-4">
+                Capacity building for Canadian nonprofits
+              </p>
+              
               {/* Main Headline - First line (static, never moves) */}
               <h1 className="mb-0 text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.02em] text-white">
                 We Set Up Your Nonprofit To Be
