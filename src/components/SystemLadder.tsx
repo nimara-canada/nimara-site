@@ -269,6 +269,16 @@ export const SystemLadder = () => {
           <div className="border-t border-white/10" />
         </div>
 
+        {/* Focus note */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-8 text-center text-sm text-white/40"
+        >
+          We specialize in Tiers 0–2: getting your basics written down and working.
+        </motion.p>
+
         {/* CTA Card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
