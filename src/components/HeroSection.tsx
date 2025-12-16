@@ -27,6 +27,7 @@ const NimaraHeroPremium = () => {
   const [currentWord, setCurrentWord] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
+  const [isFadingOut, setIsFadingOut] = useState(false);
   const navigate = useNavigate();
   
   // Generate unique IDs for form accessibility
@@ -48,6 +49,7 @@ const NimaraHeroPremium = () => {
     let charIndex = 0;
     setDisplayedText("");
     setIsTyping(true);
+    setIsFadingOut(false);
 
     // Type out the word
     const typingInterval = setInterval(() => {
@@ -58,10 +60,14 @@ const NimaraHeroPremium = () => {
         clearInterval(typingInterval);
         setIsTyping(false);
         
-        // Wait then move to next word
+        // Wait, then fade out, then move to next word
         setTimeout(() => {
-          setCurrentWord((prev) => (prev + 1) % rotatingWords.length);
-        }, 2000);
+          setIsFadingOut(true);
+          // After fade-out completes, change word
+          setTimeout(() => {
+            setCurrentWord((prev) => (prev + 1) % rotatingWords.length);
+          }, 400); // Match fade-out duration
+        }, 1800);
       }
     }, 80);
 
@@ -118,8 +124,8 @@ const NimaraHeroPremium = () => {
                   className="flex items-center whitespace-nowrap"
                   style={{ width: '12ch', height: '100%' }}
                   initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
+                  animate={{ opacity: isFadingOut ? 0 : 1 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
                 >
                   <span
                     aria-live="polite"
