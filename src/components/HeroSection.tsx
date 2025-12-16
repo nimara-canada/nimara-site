@@ -110,7 +110,7 @@ const NimaraHeroPremium = () => {
                   <span
                     aria-live="polite"
                     aria-atomic="true"
-                    className="text-accent italic"
+                    className="text-accent italic text-[1.15em]"
                   >
                     {displayedText}
                   </span>
