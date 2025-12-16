@@ -364,43 +364,78 @@ const Partners = () => {
         </section>
 
         {/* Who We're Looking For */}
-        <section className="py-20 md:py-28 lg:py-32 bg-muted/30">
-          <div className="max-w-6xl mx-auto px-6 lg:px-12">
+        <section className="relative py-24 md:py-32 lg:py-40 bg-secondary-background overflow-hidden">
+          {/* Background elements */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
+          <div 
+            className="absolute inset-0 opacity-[0.02]"
+            style={{
+              backgroundImage: `linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)`,
+              backgroundSize: '80px 80px'
+            }}
+          />
+          
+          <div className="relative max-w-6xl mx-auto px-6 lg:px-12">
             <motion.div
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="grid lg:grid-cols-2 gap-12 lg:gap-20"
+              className="grid lg:grid-cols-12 gap-12 lg:gap-16"
             >
-              <motion.div variants={itemVariants}>
-                <span className="inline-block text-xs tracking-[0.2em] uppercase text-muted-foreground mb-4">
+              {/* Left column - Requirements */}
+              <motion.div variants={itemVariants} className="lg:col-span-7">
+                <span className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-white/40 mb-6">
+                  <span className="w-8 h-px bg-primary/60" />
                   Requirements
                 </span>
-                <h2 className="text-3xl md:text-4xl font-medium text-foreground leading-tight mb-8">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium text-white leading-[1.1] mb-10">
                   Who We're Looking For
                 </h2>
-                <ul className="space-y-3">
+                <div className="space-y-4">
                   {lookingFor.map((item, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                      <span className="text-foreground">{item}</span>
-                    </li>
+                    <motion.div 
+                      key={index}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 }}
+                      className="group flex items-start gap-4 p-4 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:bg-white/[0.06] hover:border-white/10 transition-all duration-300"
+                    >
+                      <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
+                        <span className="text-sm font-semibold text-primary">{index + 1}</span>
+                      </div>
+                      <span className="text-white/80 pt-1 group-hover:text-white transition-colors">{item}</span>
+                    </motion.div>
                   ))}
-                </ul>
+                </div>
               </motion.div>
               
-              <motion.div variants={itemVariants}>
-                <div className="p-8 bg-background rounded-2xl border border-border/50">
-                  <h3 className="text-lg font-medium text-foreground mb-6">We Value</h3>
-                  <ul className="space-y-4">
-                    {weValue.map((item, index) => (
-                      <li key={index} className="flex items-start gap-3">
-                        <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+              {/* Right column - We Value */}
+              <motion.div variants={itemVariants} className="lg:col-span-5">
+                <div className="sticky top-32">
+                  <div className="relative p-8 md:p-10 rounded-3xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/10 backdrop-blur-sm">
+                    {/* Decorative corner */}
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-primary/20 to-transparent rounded-bl-[80px] rounded-tr-3xl" />
+                    
+                    <div className="relative">
+                      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/20 text-primary text-xs font-medium mb-6">
+                        <UserCheck className="w-3.5 h-3.5" />
+                        Core Values
+                      </div>
+                      <h3 className="text-2xl font-medium text-white mb-8">What We Value</h3>
+                      <ul className="space-y-5">
+                        {weValue.map((item, index) => (
+                          <li key={index} className="flex items-start gap-4">
+                            <div className="flex-shrink-0 w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center mt-0.5">
+                              <CheckCircle2 className="w-3.5 h-3.5 text-accent" />
+                            </div>
+                            <span className="text-white/70 leading-relaxed">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             </motion.div>
