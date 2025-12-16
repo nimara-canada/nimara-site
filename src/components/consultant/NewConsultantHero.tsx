@@ -33,26 +33,21 @@ export const NewConsultantHero = () => {
   };
 
   return (
-    <section className="bg-secondary-background min-h-[85vh] flex items-center relative overflow-hidden">
-      {/* Subtle grain texture overlay */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-      }} />
-      
-      <div className="container mx-auto px-6 sm:px-8 lg:px-16 py-24 md:py-32 relative z-10">
+    <section className="bg-secondary-background min-h-[85vh] flex items-center">
+      <div className="container mx-auto px-6 sm:px-8 lg:px-16 py-24 md:py-32">
         <div className="max-w-4xl">
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             className="text-white/50 uppercase tracking-[0.2em] text-sm mb-8"
           >
             For Independent Consultants
           </motion.p>
           
           <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-8 leading-[1.1]"
           >
@@ -62,8 +57,8 @@ export const NewConsultantHero = () => {
           </motion.h1>
           
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="max-w-2xl"
           >
@@ -79,8 +74,8 @@ export const NewConsultantHero = () => {
           </motion.div>
 
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-6 items-start"
           >
@@ -100,9 +95,6 @@ export const NewConsultantHero = () => {
           </motion.div>
         </div>
       </div>
-      
-      {/* Decorative line */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
     </section>
   );
 };
