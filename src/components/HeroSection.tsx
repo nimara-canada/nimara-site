@@ -90,28 +90,28 @@ const NimaraHeroPremium = () => {
               </h1>
 
               {/* Subheadline */}
-              <p className="text-base md:text-lg leading-[1.7] text-white/70 max-w-lg mb-6">
+              <p className="text-base md:text-lg leading-[1.7] text-white/80 max-w-lg mb-6">
                 Board, money, staff, and reporting systems—so you can manage grants and audits without the scramble.
               </p>
 
               {/* Quote */}
               <div className="border-l-2 border-white/20 pl-4 mb-8">
-                <p className="text-sm md:text-base text-white/50 italic">
+                <p className="text-sm md:text-base text-white/70 italic">
                   We don't run your payroll or replace your team—we set up the system your team can run.
                 </p>
               </div>
 
               {/* Checkmark Items */}
               <div className="flex flex-wrap items-center gap-x-6 gap-y-3 mb-8">
-                <span className="flex items-center gap-2 text-sm text-white/70">
+                <span className="flex items-center gap-2 text-sm text-white/80">
                   <Check className="w-4 h-4 text-accent" />
                   GRANT-READY
                 </span>
-                <span className="flex items-center gap-2 text-sm text-white/70">
+                <span className="flex items-center gap-2 text-sm text-white/80">
                   <Check className="w-4 h-4 text-accent" />
                   AUDIT-READY
                 </span>
-                <span className="flex items-center gap-2 text-sm text-white/70">
+                <span className="flex items-center gap-2 text-sm text-white/80">
                   <Check className="w-4 h-4 text-accent" />
                   BOARD-READY
                 </span>
@@ -120,7 +120,7 @@ const NimaraHeroPremium = () => {
               {/* CTA Link */}
               <a
                 href="/book-a-call"
-                className="group inline-flex items-center gap-2 text-sm text-white/60 hover:text-accent transition-colors"
+                className="group inline-flex items-center gap-2 text-sm text-white/80 hover:text-accent transition-colors"
               >
                 Have an urgent problem? Book a call.
                 <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -133,7 +133,7 @@ const NimaraHeroPremium = () => {
                 
                 {/* Form Header */}
                 <h2 className="text-xl font-semibold mb-2">Start the free 4-minute check</h2>
-                <p className="text-sm text-white/60 mb-6">
+                <p className="text-sm text-white/70 mb-6">
                   Answer a few questions. We email your systems score in <strong className="text-white">2 business days</strong>.
                 </p>
 
@@ -145,7 +145,7 @@ const NimaraHeroPremium = () => {
                     value={orgName}
                     onChange={(e) => setOrgName(e.target.value)}
                     placeholder="Organization name (optional)"
-                    className="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-md text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-accent/50 transition-colors"
+                    className="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-md text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-accent/50 transition-colors"
                   />
 
                   {/* Province Dropdown */}
@@ -153,7 +153,7 @@ const NimaraHeroPremium = () => {
                     <select
                       value={province}
                       onChange={(e) => setProvince(e.target.value)}
-                      className="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-md text-sm text-white/40 focus:outline-none focus:border-accent/50 transition-colors appearance-none cursor-pointer"
+                      className="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-md text-sm text-white/50 focus:outline-none focus:border-accent/50 transition-colors appearance-none cursor-pointer"
                       style={{ color: province ? 'white' : undefined }}
                     >
                       <option value="" className="bg-secondary-background">Province (optional)</option>
@@ -162,7 +162,7 @@ const NimaraHeroPremium = () => {
                       ))}
                     </select>
                     <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                      <svg className="w-4 h-4 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="w-4 h-4 text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
                     </div>
@@ -174,7 +174,7 @@ const NimaraHeroPremium = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Email (required)"
-                    className="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-md text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-accent/50 transition-colors"
+                    className="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-md text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-accent/50 transition-colors"
                     required
                   />
 
@@ -182,15 +182,15 @@ const NimaraHeroPremium = () => {
                   <div className="bg-white/5 rounded-md p-4 mt-2">
                     <p className="text-xs font-semibold text-white/80 uppercase tracking-wide mb-3">You'll Get:</p>
                     <ul className="space-y-2">
-                      <li className="flex items-start gap-2 text-sm text-white/60">
+                      <li className="flex items-start gap-2 text-sm text-white/70">
                         <Check className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
                         A score across: Board • Money • Staff • Reporting
                       </li>
-                      <li className="flex items-start gap-2 text-sm text-white/60">
+                      <li className="flex items-start gap-2 text-sm text-white/70">
                         <Check className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
                         Top 3 fixes for the next 30 days
                       </li>
-                      <li className="flex items-start gap-2 text-sm text-white/60">
+                      <li className="flex items-start gap-2 text-sm text-white/70">
                         <Check className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
                         A simple roadmap (if you want help)
                       </li>
@@ -208,7 +208,7 @@ const NimaraHeroPremium = () => {
                 </form>
 
                 {/* Footer Text */}
-                <p className="text-xs text-white/40 mt-4 text-center">
+                <p className="text-xs text-white/50 mt-4 text-center">
                   No spam. We only use your email to send your results.
                 </p>
               </div>
@@ -220,15 +220,15 @@ const NimaraHeroPremium = () => {
             <div className="grid grid-cols-3 gap-8 text-center">
               <div>
                 <span className="block text-2xl md:text-3xl font-bold text-white/90 mb-1">1–4 weeks</span>
-                <span className="text-[10px] md:text-xs uppercase tracking-[0.15em] text-white/40">Fast Fixes</span>
+                <span className="text-[10px] md:text-xs uppercase tracking-[0.15em] text-white/50">Fast Fixes</span>
               </div>
               <div>
                 <span className="block text-2xl md:text-3xl font-bold text-white/90 mb-1">8–12 weeks</span>
-                <span className="text-[10px] md:text-xs uppercase tracking-[0.15em] text-white/40">Full Setup</span>
+                <span className="text-[10px] md:text-xs uppercase tracking-[0.15em] text-white/50">Full Setup</span>
               </div>
               <div>
                 <span className="block text-2xl md:text-3xl font-bold text-white/90 mb-1">Guaranteed</span>
-                <span className="text-[10px] md:text-xs uppercase tracking-[0.15em] text-white/40">If We Can't Help, You Don't Pay</span>
+                <span className="text-[10px] md:text-xs uppercase tracking-[0.15em] text-white/50">If We Can't Help, You Don't Pay</span>
               </div>
             </div>
           </div>
