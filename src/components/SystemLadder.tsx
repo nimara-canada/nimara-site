@@ -153,8 +153,10 @@ export const SystemLadder = () => {
                 transition={{ duration: 0.5, delay: 0.2 + index * 0.05 }}
               >
                 {/* Row */}
-                <div
+                <motion.div
                   onClick={() => setSelectedLevel(isSelected ? null : step.level)}
+                  whileHover={{ x: 4 }}
+                  transition={{ duration: 0.2 }}
                   className={`
                     group grid grid-cols-12 gap-4 lg:gap-6 py-6 lg:py-8 border-t border-white/10 cursor-pointer
                     transition-colors duration-300 hover:bg-white/[0.02]
@@ -193,7 +195,7 @@ export const SystemLadder = () => {
                       <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isSelected ? 'rotate-180' : ''}`} />
                     </button>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Expanded Panel */}
                 <AnimatePresence>
