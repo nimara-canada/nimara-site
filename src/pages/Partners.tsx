@@ -119,11 +119,11 @@ const Partners = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 0.4 }}
-                className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-white mb-10 leading-[1.05] tracking-tight"
+                className="font-sans text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-white mb-10 leading-[1.05] tracking-tight"
               >
-                Join Nimara's national team
+                Join Nimara's National Team
                 <br />
-                <span className="italic font-light">of operators.</span>
+                <span className="italic font-light">Of Operators.</span>
               </motion.h1>
               
               <motion.div 
@@ -193,9 +193,9 @@ const Partners = () => {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.1 }}
-                  className="text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight mb-10"
+                  className="font-sans text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight mb-10"
                 >
-                  We help Canadian nonprofits build <span className="italic font-light">core systems.</span>
+                  We Help Canadian Nonprofits Build <span className="italic font-light">Core Systems.</span>
                 </motion.h2>
                 <motion.p 
                   initial={{ opacity: 0 }}
@@ -252,9 +252,9 @@ const Partners = () => {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.1 }}
-                  className="text-3xl md:text-4xl font-semibold text-white leading-tight tracking-tight"
+                  className="font-sans text-3xl md:text-4xl font-semibold text-white leading-tight tracking-tight"
                 >
-                  How it <span className="italic font-light">works</span>
+                  How It <span className="italic font-light">Works</span>
                 </motion.h2>
               </div>
               
@@ -303,8 +303,8 @@ const Partners = () => {
               <p className="text-muted-foreground/60 uppercase tracking-[0.25em] text-xs mb-6">
                 Transparency
               </p>
-              <h2 className="text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight">
-                Important terms—<span className="italic font-light">upfront.</span>
+              <h2 className="font-sans text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight">
+                Important Terms—<span className="italic font-light">Upfront.</span>
               </h2>
             </motion.div>
             
@@ -344,8 +344,8 @@ const Partners = () => {
                 <p className="text-white/30 uppercase tracking-[0.25em] text-xs mb-6">
                   Requirements
                 </p>
-                <h2 className="text-3xl md:text-4xl font-semibold text-white leading-tight tracking-tight mb-12">
-                  Who we're <span className="italic font-light">looking for</span>
+                <h2 className="font-sans text-3xl md:text-4xl font-semibold text-white leading-tight tracking-tight mb-12">
+                  Who We're <span className="italic font-light">Looking For</span>
                 </h2>
                 <div className="space-y-6">
                   {lookingFor.map((item, index) => (
@@ -368,8 +368,8 @@ const Partners = () => {
                 <p className="text-white/30 uppercase tracking-[0.25em] text-xs mb-6">
                   Values
                 </p>
-                <h3 className="text-2xl md:text-3xl font-semibold text-white leading-tight tracking-tight mb-12">
-                  What we <span className="italic font-light">value</span>
+                <h3 className="font-sans text-2xl md:text-3xl font-semibold text-white leading-tight tracking-tight mb-12">
+                  What We <span className="italic font-light">Value</span>
                 </h3>
                 <div className="space-y-6">
                   {weValue.map((item, index) => (
@@ -405,9 +405,9 @@ const Partners = () => {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.1 }}
-                  className="text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight mb-10"
+                  className="font-sans text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight mb-10"
                 >
-                  Partner <span className="italic font-light">tracks</span>
+                  Partner <span className="italic font-light">Tracks</span>
                 </motion.h2>
                 <motion.p 
                   initial={{ opacity: 0 }}
@@ -461,8 +461,8 @@ const Partners = () => {
                 <p className="text-white/30 uppercase tracking-[0.25em] text-xs mb-6">
                   Location
                 </p>
-                <h3 className="text-3xl md:text-4xl font-semibold text-white leading-tight tracking-tight mb-10">
-                  Canada-wide, <span className="italic font-light">remote</span>
+                <h3 className="font-sans text-3xl md:text-4xl font-semibold text-white leading-tight tracking-tight mb-10">
+                  Canada-Wide, <span className="italic font-light">Remote</span>
                 </h3>
                 
                 <div className="space-y-6 mt-12">
@@ -490,8 +490,8 @@ const Partners = () => {
                 <p className="text-white/30 uppercase tracking-[0.25em] text-xs mb-6">
                   Work Types
                 </p>
-                <h3 className="text-2xl md:text-3xl font-semibold text-white leading-tight tracking-tight mb-10">
-                  Project <span className="italic font-light">types</span>
+                <h3 className="font-sans text-2xl md:text-3xl font-semibold text-white leading-tight tracking-tight mb-10">
+                  Project <span className="italic font-light">Types</span>
                 </h3>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-5">
@@ -525,8 +525,8 @@ const Partners = () => {
               <p className="text-muted-foreground/60 uppercase tracking-[0.25em] text-xs mb-6">
                 Questions
               </p>
-              <h2 className="text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight">
-                Frequently <span className="italic font-light">asked</span>
+              <h2 className="font-sans text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight">
+                Frequently <span className="italic font-light">Asked</span>
               </h2>
             </motion.div>
 
@@ -588,9 +588,9 @@ const Partners = () => {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.1 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-8 leading-tight tracking-tight"
+                className="font-sans text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-8 leading-tight tracking-tight"
               >
-                Ready to operate with a real <span className="italic font-light">backbone?</span>
+                Ready To Operate With A Real <span className="italic font-light">Backbone?</span>
               </motion.h2>
               
               <motion.p 
