@@ -46,7 +46,7 @@ export const NewPrimaryCTA = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-8 leading-tight tracking-tight"
+            className="font-sans text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-8 leading-tight tracking-tight"
           >
             Ready To See If You're <span className="italic font-light">Eligible?</span>
           </motion.h2>
