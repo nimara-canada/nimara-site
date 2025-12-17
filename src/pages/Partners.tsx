@@ -141,9 +141,8 @@ const Partners = () => {
             }} transition={{
               duration: 1,
               delay: 0.4
-            }} className="font-sans text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-white mb-10 leading-[1.05] tracking-tight">Join Nimara's National Team Of Operators.
-Of Operators.<br />
-                
+            }} className="font-sans text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-white mb-10 leading-[1.05] tracking-tight">
+                Join Nimara's National Team Of Operators.
               </motion.h1>
               
               <motion.div initial={{
