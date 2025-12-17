@@ -204,8 +204,8 @@ const Partners = () => {
         {/* What Nimara Does */}
         <section className="bg-background py-28 md:py-36">
           <div className="container mx-auto px-6 sm:px-8 lg:px-16">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 lg:gap-32">
-              <div className="lg:col-span-5">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+              <div className="lg:col-span-4">
                 <motion.p initial={{
                 opacity: 0
               }} whileInView={{
@@ -243,7 +243,7 @@ const Partners = () => {
                 </motion.p>
               </div>
               
-              <div className="lg:col-span-7">
+              <div className="lg:col-span-8">
                 <motion.div initial={{
                 opacity: 0
               }} whileInView={{
@@ -253,14 +253,14 @@ const Partners = () => {
               }} transition={{
                 duration: 0.8,
                 delay: 0.3
-              }} className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                  {whatWeDo.map((item, index) => <div key={index} className="flex items-baseline gap-5">
-                      <span className="text-muted-foreground/25 text-xs font-light tracking-wider w-5 flex-shrink-0">
+              }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-x-8 gap-y-6">
+                  {whatWeDo.map((item, index) => <div key={index} className="flex items-start gap-4">
+                      <span className="text-muted-foreground/25 text-xs font-light tracking-wider w-5 flex-shrink-0 pt-0.5">
                         {String(index + 1).padStart(2, '0')}
                       </span>
-                      <div>
-                        <h3 className="text-foreground/90 font-medium text-base mb-2">{item.title}</h3>
-                        <p className="text-muted-foreground/60 text-sm font-light">{item.desc}</p>
+                      <div className="min-w-0">
+                        <h3 className="text-foreground/90 font-medium text-sm mb-1">{item.title}</h3>
+                        <p className="text-muted-foreground/60 text-xs font-light leading-relaxed">{item.desc}</p>
                       </div>
                     </div>)}
                 </motion.div>
