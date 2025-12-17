@@ -107,7 +107,7 @@ const NimaraHeroPremium = () => {
               
               {/* Eyebrow - simple uppercase style */}
               <p className="text-white/40 uppercase tracking-[0.25em] text-xs mb-10">
-                For Canadian Nonprofits
+                Capacity Building For Canadian Nonprofits
               </p>
               
               {/* Main Headline - First line (static) */}
