@@ -151,7 +151,7 @@ const NimaraHeroPremium = () => {
               {/* Quote - improved contrast */}
               <blockquote className="border-l-2 border-white/30 pl-4 mb-8">
                 <p className="text-sm md:text-base text-white/80 italic">
-                  We don't run your payroll or replace your team—we set up the system your team can run.
+                  When funders ask for policies, reports, or audits—you'll have them ready.
                 </p>
               </blockquote>
 
