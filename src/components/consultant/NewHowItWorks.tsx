@@ -78,7 +78,7 @@ export const NewHowItWorks = () => {
                     </span>
                   </div>
                   <div className="col-span-10 md:col-span-11 pt-2">
-                    <h3 className="text-foreground/90 font-medium text-base mb-2 tracking-wide">
+                    <h3 className="font-sans text-foreground/90 font-medium text-base mb-2 tracking-wide">
                       {step.title}
                     </h3>
                     <p className="text-muted-foreground/60 leading-relaxed font-light text-sm">
