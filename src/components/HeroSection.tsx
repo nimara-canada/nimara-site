@@ -142,6 +142,17 @@ const NimaraHeroPremium = () => {
                 </motion.span>
               </div>
 
+              {/* Secondary link - scroll to section */}
+              <button
+                onClick={() => {
+                  const element = document.getElementById('how-we-help');
+                  element?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="text-white/50 hover:text-white/80 text-sm tracking-wide transition-colors duration-500 border-b border-white/20 hover:border-white/40 pb-1 mb-10"
+              >
+                How it works
+              </button>
+
               {/* Subheadline - improved contrast */}
               <p className="text-base md:text-lg leading-[1.7] text-white/90 max-w-lg mb-6">
                 Board, money, staff, and reporting systems—so you can manage grants and audits without the scramble.
