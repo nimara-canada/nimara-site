@@ -24,6 +24,10 @@ const NimaraHeroPremium = () => {
   const [orgName, setOrgName] = useState("");
   const [province, setProvince] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
+  const [currentWord, setCurrentWord] = useState(0);
+  const [displayedText, setDisplayedText] = useState("");
+  const [isTyping, setIsTyping] = useState(true);
+  const [isFadingOut, setIsFadingOut] = useState(false);
   const navigate = useNavigate();
   
   // Generate unique IDs for form accessibility
@@ -33,9 +37,38 @@ const NimaraHeroPremium = () => {
   const emailId = `${formId}-email`;
   const formDescId = `${formId}-desc`;
 
+  const rotatingWords = ["grant-ready", "audit-ready", "board-ready", "compliant", "organized", "fundable"];
+
   useEffect(() => {
     setIsLoaded(true);
   }, []);
+
+  useEffect(() => {
+    const word = rotatingWords[currentWord];
+    let charIndex = 0;
+    setDisplayedText("");
+    setIsTyping(true);
+    setIsFadingOut(false);
+
+    const typingInterval = setInterval(() => {
+      if (charIndex < word.length) {
+        setDisplayedText(word.slice(0, charIndex + 1));
+        charIndex++;
+      } else {
+        clearInterval(typingInterval);
+        setIsTyping(false);
+        
+        setTimeout(() => {
+          setIsFadingOut(true);
+          setTimeout(() => {
+            setCurrentWord((prev) => (prev + 1) % rotatingWords.length);
+          }, 400);
+        }, 1800);
+      }
+    }, 80);
+
+    return () => clearInterval(typingInterval);
+  }, [currentWord]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -90,17 +123,37 @@ const NimaraHeroPremium = () => {
                 }
               `}</style>
               
-              {/* Main Headline - Two line structure matching consultant hero */}
-              <motion.h1 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 0.4 }}
-                className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-white mb-10 leading-[1.05] tracking-tight font-sans"
+              {/* Main Headline - First line (static) */}
+              <h1 className="mb-0 text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-white leading-[1.05] tracking-tight font-sans">
+                We Set Up Your Nonprofit To Be
+              </h1>
+              
+              {/* Second line - Typing animation */}
+              <div 
+                className="mb-10 text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.05] tracking-tight font-sans"
+                style={{ height: '1.4em' }}
               >
-                Build Systems That Work.
-                <br />
-                <span className="italic font-light">Stay Grant-Ready.</span>
-              </motion.h1>
+                <motion.span 
+                  className="flex items-center whitespace-nowrap"
+                  style={{ width: '14ch', height: '100%' }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: isFadingOut ? 0 : 1 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                >
+                  <span
+                    aria-live="polite"
+                    aria-atomic="true"
+                    className="text-accent italic font-light"
+                  >
+                    {displayedText}
+                  </span>
+                  <span 
+                    className={`inline-block w-[3px] h-[0.7em] bg-accent ml-1 ${isTyping ? 'animate-pulse' : 'animate-blink'}`}
+                    aria-hidden="true"
+                  />
+                  <span className="text-white font-semibold">.</span>
+                </motion.span>
+              </div>
 
               {/* Subheadline - improved contrast */}
               <p className="text-base md:text-lg leading-[1.7] text-white/90 max-w-lg mb-6">
@@ -290,6 +343,16 @@ const NimaraHeroPremium = () => {
         </div>
       </div>
 
+      {/* Keyframes for blink animation */}
+      <style>{`
+        @keyframes blink {
+          0%, 50% { opacity: 1; }
+          51%, 100% { opacity: 0; }
+        }
+        .animate-blink {
+          animation: blink 0.8s infinite;
+        }
+      `}</style>
     </section>
   );
 };
