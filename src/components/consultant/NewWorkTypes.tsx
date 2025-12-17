@@ -34,7 +34,7 @@ export const NewWorkTypes = () => {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="text-3xl md:text-4xl font-semibold text-white leading-tight tracking-tight mb-10"
             >
-              What kinds of <span className="italic font-light">work?</span>
+              What Kinds Of <span className="italic font-light">Work?</span>
             </motion.h2>
             
             <motion.p 

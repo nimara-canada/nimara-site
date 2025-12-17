@@ -31,7 +31,7 @@ export const NewWhyJoin = () => {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight"
             >
-              Why join the <span className="italic font-light">Nimara bench?</span>
+              Why Join The <span className="italic font-light">Nimara Bench?</span>
             </motion.h2>
             
             <motion.p 

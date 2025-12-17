@@ -29,8 +29,8 @@ export const NewWhoWeWant = () => {
             Who We Want
           </p>
           <h2 className="text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight">
-            This bench is built for people who want to do the work—
-            <span className="italic font-light">and do it well.</span>
+            This Bench Is Built For People Who Want To Do The Work—
+            <span className="italic font-light">And Do It Well.</span>
           </h2>
         </motion.div>
         
@@ -43,7 +43,7 @@ export const NewWhoWeWant = () => {
             transition={{ duration: 0.8, delay: 0.1 }}
           >
             <h3 className="text-sm font-medium text-foreground/80 mb-10 pb-5 border-b border-border/50 tracking-wide">
-              You might be a fit if
+              You Might Be A Fit If
             </h3>
             <div className="space-y-7">
               {fitCriteria.map((criterion, index) => (
@@ -68,7 +68,7 @@ export const NewWhoWeWant = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h3 className="text-sm font-medium text-foreground/80 mb-10 pb-5 border-b border-border/50 tracking-wide">
-              Who this is not for
+              Who This Is Not For
             </h3>
             <div className="space-y-7">
               {notForCriteria.map((criterion, index) => (
