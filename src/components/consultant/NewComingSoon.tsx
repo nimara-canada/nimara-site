@@ -28,9 +28,9 @@ export const NewComingSoon = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight"
+              className="font-sans text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight"
             >
-              Consultant packages & <span className="italic font-light">perks</span>
+              Consultant Packages & <span className="italic font-light">Perks</span>
             </motion.h2>
             
             <motion.p 
