@@ -42,7 +42,7 @@ export const NewWhoWeWant = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <h3 className="text-sm font-medium text-foreground/80 mb-10 pb-5 border-b border-border/50 tracking-wide">
+            <h3 className="font-sans text-sm font-medium text-foreground/80 mb-10 pb-5 border-b border-border/50 tracking-wide">
               You Might Be A Fit If
             </h3>
             <div className="space-y-7">
@@ -67,7 +67,7 @@ export const NewWhoWeWant = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h3 className="text-sm font-medium text-foreground/80 mb-10 pb-5 border-b border-border/50 tracking-wide">
+            <h3 className="font-sans text-sm font-medium text-foreground/80 mb-10 pb-5 border-b border-border/50 tracking-wide">
               Who This Is Not For
             </h3>
             <div className="space-y-7">
