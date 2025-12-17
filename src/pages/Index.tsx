@@ -33,15 +33,15 @@ const Index = () => {
 
   return <div className="min-h-screen">
       <Helmet>
-        <title>Get Up to 3 Free Nonprofit Consulting Quotes in 72 Hours | Nimara</title>
-        <meta name="description" content="Get up to 3 vetted nonprofit consulting quotes in 72 hours. Free scope. PM oversight. Clear briefs. Audit-ready work from trusted Canadian experts." />
+        <title>Nimara | Helping Nonprofits Build Systems That Make Funding Easier</title>
+        <meta name="description" content="Helping nonprofits build systems that make funding easier to win and manage. Board, finance, HR, and program systems for Canadian nonprofits." />
         <meta name="keywords" content="nonprofit consulting Canada, Canadian nonprofit experts, nonprofit finance compliance, CRA compliance requirements, nonprofit strategic planning, governance best practices, program evaluation frameworks, financial management solutions, audit ready documentation" />
         
         <link rel="canonical" href="https://nimara.ca/" />
         
         <meta property="og:site_name" content="Nimara" />
-        <meta property="og:title" content="Get Up to 3 Free Nonprofit Consulting Quotes in 72 Hours" />
-        <meta property="og:description" content="Get up to 3 vetted nonprofit consulting quotes in 72 hours. Free scope. PM oversight. Clear briefs. Audit-ready work from trusted Canadian experts." />
+        <meta property="og:title" content="Nimara | Helping Nonprofits Build Systems That Make Funding Easier" />
+        <meta property="og:description" content="Helping nonprofits build systems that make funding easier to win and manage. Board, finance, HR, and program systems for Canadian nonprofits." />
         <meta property="og:url" content="https://nimara.ca/" />
         <meta property="og:image" content="https://nimara.ca/og-image.svg" />
         <meta property="og:image:width" content="1200" />
@@ -50,8 +50,8 @@ const Index = () => {
         <meta property="og:type" content="website" />
         
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Get Up to 3 Free Nonprofit Consulting Quotes in 72 Hours" />
-        <meta name="twitter:description" content="Get up to 3 vetted nonprofit consulting quotes in 72 hours. Free scope. PM oversight. Clear briefs. Audit-ready work from trusted Canadian experts." />
+        <meta name="twitter:title" content="Nimara | Helping Nonprofits Build Systems That Make Funding Easier" />
+        <meta name="twitter:description" content="Helping nonprofits build systems that make funding easier to win and manage. Board, finance, HR, and program systems for Canadian nonprofits." />
         <meta name="twitter:image" content="https://nimara.ca/og-image.svg" />
         
         <script type="application/ld+json">
