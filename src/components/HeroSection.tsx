@@ -145,7 +145,7 @@ const NimaraHeroPremium = () => {
 
               {/* Subheadline - improved contrast */}
               <p className="text-base md:text-lg leading-[1.7] text-white/90 max-w-lg mb-6">
-                Board, money, staff, and reporting systems—so you can manage grants and audits without the scramble.
+                We help Canadian nonprofits build funder-ready systems—finance, governance, operations, and capacity—so funding is easier to win and manage.
               </p>
 
               {/* Quote - improved contrast */}
