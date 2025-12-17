@@ -112,7 +112,7 @@ const NimaraHeroPremium = () => {
               
               {/* Main Headline - First line (static) */}
               <h1 className="mb-0 text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-white leading-[1.05] tracking-tight font-sans">
-                We Set Up Your Nonprofit To Be
+                Build Systems That Make Your Nonprofit
               </h1>
               
               {/* Second line - Typing animation */}
