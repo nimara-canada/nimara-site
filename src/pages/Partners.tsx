@@ -19,17 +19,26 @@ const getTypeformUrl = () => {
 
 // Data
 const whatWeDo = [{
-  title: "Finances",
-  desc: "From budget to spending to proof"
+  title: "Board & Governance",
+  desc: "Roles, rules, meetings, succession"
 }, {
-  title: "Governance",
-  desc: "Boards, policies, bylaws"
+  title: "Money & Compliance",
+  desc: "Budgeting, reconciliation, audit readiness"
 }, {
-  title: "Operations",
-  desc: "Systems, workflows, documentation"
+  title: "People & HR",
+  desc: "Job descriptions, hiring, HR policies"
 }, {
-  title: "People & Capacity",
-  desc: "Hiring, HR, team setup"
+  title: "Programs & Services",
+  desc: "Program planning, delivery, reviews"
+}, {
+  title: "Fundraising & Donors",
+  desc: "Gift acceptance, receipting, stewardship"
+}, {
+  title: "Volunteers",
+  desc: "Recruitment, agreements, training, safety"
+}, {
+  title: "Systems & Records",
+  desc: "File storage, CRM, data protection"
 }];
 const steps = [{
   title: "Check Eligibility",
@@ -230,7 +239,7 @@ const Partners = () => {
                 duration: 0.8,
                 delay: 0.2
               }} className="text-muted-foreground/70 text-base leading-relaxed font-light">
-                  Nimara works with small and mid-size nonprofits to set up the foundational systems funders expect. Our partners deliver hands-on work across four domains.
+                  Nimara works with small and mid-size nonprofits to set up the foundational systems funders expect. Our partners deliver hands-on work across seven domains.
                 </motion.p>
               </div>
               
