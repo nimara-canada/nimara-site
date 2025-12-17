@@ -29,7 +29,7 @@ export const NewWhyJoin = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight"
+              className="font-sans text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight"
             >
               Why Join The <span className="italic font-light">Nimara Bench?</span>
             </motion.h2>

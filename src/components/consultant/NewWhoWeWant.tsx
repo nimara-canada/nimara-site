@@ -28,7 +28,7 @@ export const NewWhoWeWant = () => {
           <p className="text-muted-foreground/60 uppercase tracking-[0.25em] text-xs mb-6">
             Who We Want
           </p>
-          <h2 className="text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight">
+          <h2 className="font-sans text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight">
             This Bench Is Built For People Who Want To Do The Work—
             <span className="italic font-light">And Do It Well.</span>
           </h2>

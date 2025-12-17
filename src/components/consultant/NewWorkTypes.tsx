@@ -32,7 +32,7 @@ export const NewWorkTypes = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-3xl md:text-4xl font-semibold text-white leading-tight tracking-tight mb-10"
+              className="font-sans text-3xl md:text-4xl font-semibold text-white leading-tight tracking-tight mb-10"
             >
               What Kinds Of <span className="italic font-light">Work?</span>
             </motion.h2>
