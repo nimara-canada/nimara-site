@@ -174,10 +174,10 @@ const NimaraHeroPremium = () => {
                 </li>
               </ul>
 
-              {/* CTA Link - improved contrast and focus */}
+              {/* CTA Link - more visible secondary button */}
               <a
                 href="/book-a-call"
-                className="group inline-flex items-center gap-2 text-sm text-white hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-secondary-background rounded-sm"
+                className="group inline-flex items-center gap-2 text-sm font-medium text-white bg-white/10 hover:bg-white/20 px-5 py-3 rounded-md border border-white/20 hover:border-white/40 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-secondary-background"
               >
                 Have an urgent problem? Book a call.
                 <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
