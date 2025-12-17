@@ -24,10 +24,6 @@ const NimaraHeroPremium = () => {
   const [orgName, setOrgName] = useState("");
   const [province, setProvince] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
-  const [currentWord, setCurrentWord] = useState(0);
-  const [displayedText, setDisplayedText] = useState("");
-  const [isTyping, setIsTyping] = useState(true);
-  const [isFadingOut, setIsFadingOut] = useState(false);
   const navigate = useNavigate();
   
   // Generate unique IDs for form accessibility
@@ -37,42 +33,9 @@ const NimaraHeroPremium = () => {
   const emailId = `${formId}-email`;
   const formDescId = `${formId}-desc`;
 
-  const rotatingWords = ["grant-ready", "audit-ready", "board-ready", "compliant", "organized", "fundable"];
-
-  // Typewriter effect
   useEffect(() => {
     setIsLoaded(true);
   }, []);
-
-  useEffect(() => {
-    const word = rotatingWords[currentWord];
-    let charIndex = 0;
-    setDisplayedText("");
-    setIsTyping(true);
-    setIsFadingOut(false);
-
-    // Type out the word
-    const typingInterval = setInterval(() => {
-      if (charIndex < word.length) {
-        setDisplayedText(word.slice(0, charIndex + 1));
-        charIndex++;
-      } else {
-        clearInterval(typingInterval);
-        setIsTyping(false);
-        
-        // Wait, then fade out, then move to next word
-        setTimeout(() => {
-          setIsFadingOut(true);
-          // After fade-out completes, change word
-          setTimeout(() => {
-            setCurrentWord((prev) => (prev + 1) % rotatingWords.length);
-          }, 400); // Match fade-out duration
-        }, 1800);
-      }
-    }, 80);
-
-    return () => clearInterval(typingInterval);
-  }, [currentWord]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -127,37 +90,17 @@ const NimaraHeroPremium = () => {
                 }
               `}</style>
               
-              {/* Main Headline - First line (static, never moves) */}
-              <h1 className="mb-0 text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.02em] text-white">
-                We Set Up Your Nonprofit To Be
-              </h1>
-              
-              {/* Second line - Completely isolated from H1 */}
-              <div 
-                className="mb-6 text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.15] tracking-[-0.02em]"
-                style={{ height: '1.4em' }}
+              {/* Main Headline - Two line structure matching consultant hero */}
+              <motion.h1 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.4 }}
+                className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-white mb-10 leading-[1.05] tracking-tight font-sans"
               >
-                <motion.span 
-                  className="flex items-center whitespace-nowrap"
-                  style={{ width: '12ch', height: '100%' }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: isFadingOut ? 0 : 1 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                >
-                  <span
-                    aria-live="polite"
-                    aria-atomic="true"
-                    className="text-accent italic text-[1.15em]"
-                  >
-                    {displayedText}
-                  </span>
-                  <span 
-                    className={`inline-block w-[3px] h-[0.8em] bg-accent ml-0.5 ${isTyping ? 'animate-pulse' : 'animate-blink'}`}
-                    aria-hidden="true"
-                  />
-                  <span className="text-white">.</span>
-                </motion.span>
-              </div>
+                Build Systems That Work.
+                <br />
+                <span className="italic font-light">Stay Grant-Ready.</span>
+              </motion.h1>
 
               {/* Subheadline - improved contrast */}
               <p className="text-base md:text-lg leading-[1.7] text-white/90 max-w-lg mb-6">
@@ -347,20 +290,6 @@ const NimaraHeroPremium = () => {
         </div>
       </div>
 
-      {/* Keyframes */}
-      <style>{`
-        @keyframes blink {
-          0%, 50% {
-            opacity: 1;
-          }
-          51%, 100% {
-            opacity: 0;
-          }
-        }
-        .animate-blink {
-          animation: blink 0.8s infinite;
-        }
-      `}</style>
     </section>
   );
 };
