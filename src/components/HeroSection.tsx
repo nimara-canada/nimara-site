@@ -162,7 +162,7 @@ const NimaraHeroPremium = () => {
               >
                 <li className="flex items-center gap-2 text-sm text-white">
                   <Check className="w-4 h-4 text-accent" aria-hidden="true" />
-                  <span>GRANT-READY</span>
+                  <span>FUNDER-READY</span>
                 </li>
                 <li className="flex items-center gap-2 text-sm text-white">
                   <Check className="w-4 h-4 text-accent" aria-hidden="true" />
@@ -170,7 +170,7 @@ const NimaraHeroPremium = () => {
                 </li>
                 <li className="flex items-center gap-2 text-sm text-white">
                   <Check className="w-4 h-4 text-accent" aria-hidden="true" />
-                  <span>BOARD-READY</span>
+                  <span>REPORT-READY</span>
                 </li>
               </ul>
 
