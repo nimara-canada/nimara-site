@@ -697,8 +697,8 @@ const Partners = () => {
               delay: 0.4
             }} className="mt-12 text-white/30 text-sm font-light">
                 Questions? Email us at{" "}
-                <a href="mailto:partnerships@nimara.ca" className="text-white/50 hover:text-white/70 transition-colors duration-500 border-b border-white/20 hover:border-white/40">
-                  partnerships@nimara.ca
+                <a className="text-white/50 hover:text-white/70 transition-colors duration-500 border-b border-white/20 hover:border-white/40" href="hello@nimara.ca">
+                  hello@nimara.ca
                 </a>
               </motion.p>
             </div>
