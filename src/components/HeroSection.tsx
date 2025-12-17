@@ -37,7 +37,7 @@ const NimaraHeroPremium = () => {
   const emailId = `${formId}-email`;
   const formDescId = `${formId}-desc`;
 
-  const rotatingWords = ["grant-ready", "audit-ready", "board-ready", "compliant", "organized", "fundable"];
+  const rotatingWords = ["funder-ready", "audit-ready", "board-ready", "easier to run", "stable", "ready to grow", "less chaotic"];
 
   useEffect(() => {
     setIsLoaded(true);
