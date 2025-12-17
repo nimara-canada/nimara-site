@@ -48,7 +48,7 @@ export const NewPrimaryCTA = () => {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-8 leading-tight tracking-tight"
           >
-            Ready to see if you're <span className="italic font-light">eligible?</span>
+            Ready To See If You're <span className="italic font-light">Eligible?</span>
           </motion.h2>
           
           <motion.p 
