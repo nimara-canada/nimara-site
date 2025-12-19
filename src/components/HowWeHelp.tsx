@@ -2,26 +2,10 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 
 const steps = [
-  {
-    number: "01",
-    title: "Check What's Really Going On",
-    text: "For urgent fixes, we start with a short intake around one problem. For bigger projects, we run a health check across your core systems so we know where each one stands."
-  },
-  {
-    number: "02",
-    title: "Clear, Small Workplan",
-    text: "We turn what we learn into a short workplan with clear jobs, owners, and dates. No 50-page reports, just what you need to move forward."
-  },
-  {
-    number: "03",
-    title: "Real Tools You Can Use",
-    text: "We build real things with you: plain-language policies, checklists, templates, and simple systems your team can use every week."
-  },
-  {
-    number: "04",
-    title: "Support And A Safety Net",
-    text: "When the main build is done, we stay long enough to help you use the new tools in real life. Bigger projects come with up to 3 months of support and a money-back guarantee."
-  }
+  { number: "01", title: "Check", text: "We assess where your systems stand today." },
+  { number: "02", title: "Plan", text: "A short workplan with clear jobs, owners, and dates." },
+  { number: "03", title: "Build", text: "Real tools: policies, checklists, templates your team can use." },
+  { number: "04", title: "Support", text: "We stay to help you use the new tools. Money-back guarantee." }
 ];
 
 export const HowWeHelp = () => {
@@ -31,21 +15,12 @@ export const HowWeHelp = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative py-20 md:py-28 lg:py-36 bg-background overflow-hidden"
+      className="relative py-20 md:py-28 bg-background overflow-hidden"
       id="how-we-help"
     >
-      {/* Subtle grid pattern */}
-      <div className="absolute inset-0 opacity-[0.02]">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
-                           linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px'
-        }} />
-      </div>
-
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Editorial Header */}
-        <div className="mb-14 lg:mb-18">
+        <div className="mb-12 lg:mb-16">
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
@@ -73,80 +48,51 @@ export const HowWeHelp = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg text-muted-foreground max-w-xl"
+            className="text-lg text-muted-foreground max-w-lg"
           >
-            We run the same 4-step loop every time: Check, Plan, Build, Support. The only thing that changes is how deep we go.
+            Check, Plan, Build, Support. The only thing that changes is how deep we go.
           </motion.p>
         </div>
 
-        {/* Steps */}
-        <div className="space-y-0">
-          {steps.map((step, index) => (
-            <motion.div
-              key={step.number}
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-              className="group"
-            >
-              <div className="grid grid-cols-12 gap-4 lg:gap-8 py-8 lg:py-12 border-t border-border hover:bg-muted/30 transition-colors duration-300">
-                {/* Number */}
-                <div className="col-span-2 lg:col-span-1">
-                  <span className="text-4xl lg:text-5xl font-extralight text-muted-foreground/40 group-hover:text-foreground/60 transition-colors">
-                    {step.number}
-                  </span>
-                </div>
-                
-                {/* Title */}
-                <div className="col-span-10 lg:col-span-4">
-                  <h3 className="text-lg lg:text-xl font-medium text-foreground group-hover:text-primary transition-colors">
-                    {step.title}
-                  </h3>
-                </div>
-                
-                {/* Description */}
-                <div className="col-span-12 lg:col-span-7 mt-4 lg:mt-0">
-                  <p className="text-muted-foreground leading-relaxed">
-                    {step.text}
-                  </p>
-                  
-                  {/* Guarantee badge on last step */}
-                  {index === steps.length - 1 && (
-                    <span className="inline-block mt-4 px-3 py-1.5 bg-foreground text-background text-xs font-medium">
-                      Money-back guarantee included
-                    </span>
-                  )}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-          <div className="border-t border-border" />
-        </div>
-
-        {/* Bottom CTA */}
+        {/* Steps - Compact Grid */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="mt-16 pt-8 border-t border-border"
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
         >
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-            <div>
-              <p className="text-lg font-medium text-foreground mb-1">
-                Check → Plan → Build → Support
-              </p>
-              <p className="text-sm text-muted-foreground">
-                The simple Nimara loop behind every project
+          {steps.map((step, index) => (
+            <div
+              key={step.number}
+              className="group p-6 border border-border rounded-lg hover:border-primary/30 hover:bg-muted/20 transition-all duration-300"
+            >
+              <span className="text-3xl font-extralight text-muted-foreground/40 group-hover:text-primary/60 transition-colors">
+                {step.number}
+              </span>
+              <h3 className="text-lg font-medium text-foreground mt-3 mb-2 group-hover:text-primary transition-colors">
+                {step.title}
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {step.text}
               </p>
             </div>
-            <a
-              href="/organizational-health-check"
-              className="group inline-flex items-center gap-3 text-foreground font-medium"
-            >
-              <span className="group-hover:text-primary transition-colors">Start the free check</span>
-              <span className="w-8 h-px bg-foreground group-hover:w-12 group-hover:bg-primary transition-all duration-300" />
-            </a>
-          </div>
+          ))}
+        </motion.div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="pt-8 border-t border-border"
+        >
+          <a
+            href="#hero-form"
+            className="group inline-flex items-center gap-3 text-foreground font-medium"
+          >
+            <span className="group-hover:text-primary transition-colors">Start the free check</span>
+            <span className="w-8 h-px bg-foreground group-hover:w-12 group-hover:bg-primary transition-all duration-300" />
+          </a>
         </motion.div>
       </div>
     </section>
