@@ -1,19 +1,48 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 const domains = [
-  { title: "Board & Governance", desc: "Clear roles, rules, and meetings" },
-  { title: "Money & Compliance", desc: "Budgets, controls, and audit readiness" },
-  { title: "People & HR", desc: "Hiring, policies, and performance" },
-  { title: "Programs & Services", desc: "Delivery, safety, and reviews" },
-  { title: "Fundraising & Donors", desc: "Gifts, receipting, and records" },
-  { title: "Volunteers", desc: "Agreements, training, and safety" },
-  { title: "Systems & Records", desc: "Files, dashboards, and data protection" }
+  { 
+    title: "Board & Governance", 
+    desc: "Clear roles, rules, and meetings",
+    examples: ["Board roles & responsibilities", "Meeting agendas & minutes", "Conflict of interest policy"]
+  },
+  { 
+    title: "Money & Compliance", 
+    desc: "Budgets, controls, and audit readiness",
+    examples: ["Budget approval process", "Monthly reconciliations", "Audit readiness checklist"]
+  },
+  { 
+    title: "People & HR", 
+    desc: "Hiring, policies, and performance",
+    examples: ["Job descriptions", "Onboarding steps", "HR policy manual"]
+  },
+  { 
+    title: "Programs & Services", 
+    desc: "Delivery, safety, and reviews",
+    examples: ["Intake procedures", "Safety logging", "Annual program review"]
+  },
+  { 
+    title: "Fundraising & Donors", 
+    desc: "Gifts, receipting, and records",
+    examples: ["Gift acceptance policy", "Receipting checklist", "Donor records"]
+  },
+  { 
+    title: "Volunteers", 
+    desc: "Agreements, training, and safety",
+    examples: ["Volunteer agreements", "Screening process", "Training records"]
+  },
+  { 
+    title: "Systems & Records", 
+    desc: "Files, dashboards, and data protection",
+    examples: ["Folder structure", "Naming conventions", "Data backup policy"]
+  }
 ];
 
 export const Expertise = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
     <section 
@@ -72,17 +101,53 @@ export const Expertise = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.4, delay: 0.3 + index * 0.05 }}
-              className="group p-5 bg-background border border-border rounded-lg hover:border-primary/30 hover:shadow-sm transition-all duration-300"
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              className="group relative p-5 bg-background border border-border rounded-lg hover:border-primary/30 hover:shadow-sm transition-all duration-300 cursor-default overflow-hidden"
+              style={{ minHeight: '140px' }}
             >
-              <span className="text-xs font-medium text-primary/60 mb-2 block">
-                0{index + 1}
-              </span>
-              <h3 className="text-base font-medium text-foreground group-hover:text-primary transition-colors mb-1">
-                {domain.title}
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                {domain.desc}
-              </p>
+              {/* Default Content */}
+              <motion.div
+                animate={{
+                  opacity: hoveredIndex === index ? 0 : 1,
+                  y: hoveredIndex === index ? -8 : 0
+                }}
+                transition={{ duration: 0.2 }}
+              >
+                <span className="text-xs font-medium text-primary/60 mb-2 block">
+                  0{index + 1}
+                </span>
+                <h3 className="text-base font-medium text-foreground group-hover:text-primary transition-colors mb-1">
+                  {domain.title}
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  {domain.desc}
+                </p>
+              </motion.div>
+
+              {/* Hover Examples */}
+              <motion.div
+                className="absolute inset-0 p-5 flex flex-col justify-center bg-primary/5 rounded-lg"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{
+                  opacity: hoveredIndex === index ? 1 : 0,
+                  y: hoveredIndex === index ? 0 : 16
+                }}
+                transition={{ duration: 0.25 }}
+                style={{ pointerEvents: hoveredIndex === index ? 'auto' : 'none' }}
+              >
+                <span className="text-xs font-semibold uppercase tracking-wider text-primary mb-3">
+                  {domain.title}
+                </span>
+                <ul className="space-y-1.5">
+                  {domain.examples.map((example, idx) => (
+                    <li key={idx} className="flex items-center gap-2 text-sm text-foreground">
+                      <span className="w-1 h-1 rounded-full bg-primary/50 flex-shrink-0" />
+                      {example}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
             </motion.div>
           ))}
         </motion.div>
