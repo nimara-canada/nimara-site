@@ -110,7 +110,7 @@ const NimaraHeroPremium = () => {
             </div>
 
             {/* Right - Form Card */}
-            <div className={`transition-all duration-1000 delay-200 ${isLoaded ? "opacity-100" : "opacity-0 translate-y-6"}`}>
+            <div id="hero-form" className={`transition-all duration-1000 delay-200 ${isLoaded ? "opacity-100" : "opacity-0 translate-y-6"}`}>
               <div 
                 className="relative bg-[#0d1117] border border-white/10 rounded-lg p-6 lg:p-8"
                 role="region"
