@@ -100,7 +100,7 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
             </nav>
 
             {/* Desktop CTA */}
-            <div className="hidden lg:flex items-center gap-8">
+            <div className="hidden lg:flex items-center gap-6">
               <a
                 href="/partners"
                 className="group text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -110,13 +110,22 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                   <span className="absolute left-0 -bottom-0.5 w-0 h-px bg-foreground transition-all duration-300 group-hover:w-full" />
                 </span>
               </a>
-              <motion.a
+              <a
                 href="/book-a-call"
+                className="group text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <span className="relative">
+                  Book a call
+                  <span className="absolute left-0 -bottom-0.5 w-0 h-px bg-foreground transition-all duration-300 group-hover:w-full" />
+                </span>
+              </a>
+              <motion.a
+                href="/#hero-form"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center gap-2 h-11 px-6 bg-primary text-primary-foreground text-sm font-medium rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 group"
               >
-                <span>Schedule a Call</span>
+                <span>Start the free check</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
               </motion.a>
             </div>
@@ -180,14 +189,21 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                   </nav>
 
                   {/* Mobile nav footer */}
-                  <div className="p-6 border-t border-border/50 bg-muted/30">
+                  <div className="p-6 border-t border-border/50 bg-muted/30 space-y-3">
                     <a
-                      href="/book-a-call"
+                      href="/#hero-form"
                       className="flex items-center justify-center gap-2 w-full h-14 bg-primary text-primary-foreground font-medium rounded-full transition-all hover:shadow-lg hover:shadow-primary/20"
                       onClick={() => setIsOpen(false)}
                     >
-                      Schedule a Call
+                      Start the free check
                       <ArrowRight className="w-4 h-4" />
+                    </a>
+                    <a
+                      href="/book-a-call"
+                      className="flex items-center justify-center text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Book a call
                     </a>
                   </div>
                 </div>
@@ -199,13 +215,21 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
 
       {/* Mobile Sticky Bottom CTA */}
       <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden p-4 bg-background/98 backdrop-blur-md border-t border-border/50">
-        <a
-          href="/book-a-call"
-          className="flex items-center justify-center gap-2 w-full h-12 bg-primary text-primary-foreground font-medium rounded-full transition-all hover:shadow-lg hover:shadow-primary/20"
-        >
-          Schedule a Call
-          <ArrowRight className="w-4 h-4" />
-        </a>
+        <div className="flex items-center gap-3">
+          <a
+            href="/#hero-form"
+            className="flex-1 flex items-center justify-center gap-2 h-12 bg-primary text-primary-foreground font-medium rounded-full transition-all hover:shadow-lg hover:shadow-primary/20"
+          >
+            Start the free check
+            <ArrowRight className="w-4 h-4" />
+          </a>
+          <a
+            href="/book-a-call"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
+          >
+            Book a call
+          </a>
+        </div>
       </div>
     </>
   );
