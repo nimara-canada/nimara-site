@@ -21,61 +21,22 @@ const PROVINCES = [
 
 const NimaraHeroPremium = () => {
   const [email, setEmail] = useState("");
-  const [orgName, setOrgName] = useState("");
-  const [province, setProvince] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
-  const [currentWord, setCurrentWord] = useState(0);
-  const [displayedText, setDisplayedText] = useState("");
-  const [isTyping, setIsTyping] = useState(true);
-  const [isFadingOut, setIsFadingOut] = useState(false);
   const navigate = useNavigate();
   
   // Generate unique IDs for form accessibility
   const formId = useId();
-  const orgNameId = `${formId}-org-name`;
-  const provinceId = `${formId}-province`;
   const emailId = `${formId}-email`;
   const formDescId = `${formId}-desc`;
-
-  const rotatingWords = ["funder-ready", "audit-ready", "board-ready", "easier to run", "stable", "ready to grow", "less chaotic"];
 
   useEffect(() => {
     setIsLoaded(true);
   }, []);
 
-  useEffect(() => {
-    const word = rotatingWords[currentWord];
-    let charIndex = 0;
-    setDisplayedText("");
-    setIsTyping(true);
-    setIsFadingOut(false);
-
-    const typingInterval = setInterval(() => {
-      if (charIndex < word.length) {
-        setDisplayedText(word.slice(0, charIndex + 1));
-        charIndex++;
-      } else {
-        clearInterval(typingInterval);
-        setIsTyping(false);
-        
-        setTimeout(() => {
-          setIsFadingOut(true);
-          setTimeout(() => {
-            setCurrentWord((prev) => (prev + 1) % rotatingWords.length);
-          }, 400);
-        }, 1800);
-      }
-    }, 80);
-
-    return () => clearInterval(typingInterval);
-  }, [currentWord]);
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
       const params = new URLSearchParams({ email });
-      if (orgName) params.append("org", orgName);
-      if (province) params.append("province", province);
       navigate(`/check?${params.toString()}`);
     }
   };
@@ -110,76 +71,40 @@ const NimaraHeroPremium = () => {
                 Capacity Building For Canadian Nonprofits
               </p>
               
-              {/* Main Headline - First line (static) */}
-              <h1 className="mb-0 text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-white leading-[1.05] tracking-tight font-sans">
-                Build Systems That Make Your Nonprofit
+              {/* Main Headline */}
+              <h1 className="mb-8 text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-[1.1] tracking-tight font-sans">
+                Build systems that make your nonprofit funder-ready.
               </h1>
-              
-              {/* Second line - Typing animation */}
-              <div 
-                className="mb-10 text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.05] tracking-tight font-sans"
-                style={{ height: '1.4em' }}
-              >
-                <motion.span 
-                  className="flex items-center whitespace-nowrap"
-                  style={{ width: '14ch', height: '100%' }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: isFadingOut ? 0 : 1 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                >
-                  <span
-                    aria-live="polite"
-                    aria-atomic="true"
-                    className="text-accent italic font-light"
-                  >
-                    {displayedText}
-                  </span>
-                  <span 
-                    className={`inline-block w-[3px] h-[0.7em] bg-accent ml-1 ${isTyping ? 'animate-pulse' : 'animate-blink'}`}
-                    aria-hidden="true"
-                  />
-                  <span className="text-white font-semibold">.</span>
-                </motion.span>
-              </div>
 
-
-              {/* Subheadline - improved contrast */}
+              {/* Subheadline */}
               <p className="text-base md:text-lg leading-[1.7] text-white/90 max-w-lg mb-6">
-                We help Canadian nonprofits build funder-ready systems—finance, governance, operations, and capacity—so funding is easier to win and manage.
+                We help Canadian nonprofits set up clear systems for board, money, people, and reporting so funding is easier to win and manage.
               </p>
 
-              {/* Quote - improved contrast */}
-              <blockquote className="border-l-2 border-white/30 pl-4 mb-8">
-                <p className="text-sm md:text-base text-white/80 italic">
-                  When funders ask for policies, reports, or audits—you'll have them ready.
-                </p>
-              </blockquote>
+              {/* Support line */}
+              <p className="text-sm md:text-base text-white/70 mb-8 max-w-lg">
+                When funders ask for policies, reports, or an audit, you can send them fast.
+              </p>
 
-              {/* Checkmark Items - as a list for screen readers */}
-              <ul 
-                className="flex flex-wrap items-center gap-x-6 gap-y-3 mb-8 list-none"
-                aria-label="What we help you become"
-              >
-                <li className="flex items-center gap-2 text-sm text-white">
-                  <Check className="w-4 h-4 text-accent" aria-hidden="true" />
-                  <span>FUNDER-READY</span>
-                </li>
-                <li className="flex items-center gap-2 text-sm text-white">
-                  <Check className="w-4 h-4 text-accent" aria-hidden="true" />
-                  <span>AUDIT-READY</span>
-                </li>
-                <li className="flex items-center gap-2 text-sm text-white">
-                  <Check className="w-4 h-4 text-accent" aria-hidden="true" />
-                  <span>REPORT-READY</span>
-                </li>
-              </ul>
+              {/* Mini-proof tags */}
+              <div className="flex flex-wrap items-center gap-3 mb-8">
+                <span className="px-3 py-1.5 bg-white/10 border border-white/20 rounded-full text-xs font-medium text-white/90">
+                  Funder-ready
+                </span>
+                <span className="px-3 py-1.5 bg-white/10 border border-white/20 rounded-full text-xs font-medium text-white/90">
+                  Audit-ready
+                </span>
+                <span className="px-3 py-1.5 bg-white/10 border border-white/20 rounded-full text-xs font-medium text-white/90">
+                  Report-ready
+                </span>
+              </div>
 
-              {/* CTA Link - more visible secondary button */}
+              {/* Secondary CTA - text link */}
               <a
                 href="/book-a-call"
-                className="group inline-flex items-center gap-2 text-sm font-medium text-white bg-white/10 hover:bg-white/20 px-5 py-3 rounded-md border border-white/20 hover:border-white/40 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-secondary-background"
+                className="group inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-secondary-background rounded"
               >
-                Have an urgent problem? Book a call.
+                Need urgent help? Book a call.
                 <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
               </a>
             </div>
@@ -194,10 +119,10 @@ const NimaraHeroPremium = () => {
                 
                 {/* Form Header */}
                 <h2 id="form-title" className="text-xl font-semibold mb-2 text-white">
-                  Start the free 4-minute check
+                  Free 4-minute systems check
                 </h2>
                 <p id={formDescId} className="text-sm text-white/80 mb-6">
-                  Answer a few questions. We email your systems score in <strong className="text-white">2 business days</strong>.
+                  Answer a few questions. We email your score and next steps in <strong className="text-white">2 business days</strong>.
                 </p>
 
                 {/* Form with proper accessibility */}
@@ -206,49 +131,6 @@ const NimaraHeroPremium = () => {
                   className="space-y-4"
                   aria-describedby={formDescId}
                 >
-                  {/* Organization Name */}
-                  <div>
-                    <label htmlFor={orgNameId} className="sr-only">
-                      Organization name (optional)
-                    </label>
-                    <input
-                      id={orgNameId}
-                      type="text"
-                      value={orgName}
-                      onChange={(e) => setOrgName(e.target.value)}
-                      placeholder="Organization name (optional)"
-                      aria-describedby={`${orgNameId}-hint`}
-                      className="w-full px-4 py-3.5 bg-white/5 border border-white/20 rounded-md text-sm text-white placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-colors"
-                    />
-                    <span id={`${orgNameId}-hint`} className="sr-only">Optional field for your organization name</span>
-                  </div>
-
-                  {/* Province Dropdown */}
-                  <div className="relative">
-                    <label htmlFor={provinceId} className="sr-only">
-                      Province (optional)
-                    </label>
-                    <select
-                      id={provinceId}
-                      value={province}
-                      onChange={(e) => setProvince(e.target.value)}
-                      aria-describedby={`${provinceId}-hint`}
-                      className="w-full px-4 py-3.5 bg-white/5 border border-white/20 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-colors appearance-none cursor-pointer"
-                      style={{ color: province ? 'white' : 'rgba(255,255,255,0.6)' }}
-                    >
-                      <option value="" className="bg-secondary-background">Province (optional)</option>
-                      {PROVINCES.map((p) => (
-                        <option key={p} value={p} className="bg-secondary-background text-white">{p}</option>
-                      ))}
-                    </select>
-                    <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" aria-hidden="true">
-                      <svg className="w-4 h-4 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </div>
-                    <span id={`${provinceId}-hint`} className="sr-only">Optional field for your Canadian province or territory</span>
-                  </div>
-
                   {/* Email */}
                   <div>
                     <label htmlFor={emailId} className="sr-only">
@@ -276,7 +158,7 @@ const NimaraHeroPremium = () => {
                     <ul className="space-y-2" aria-label="Benefits of the check">
                       <li className="flex items-start gap-2 text-sm text-white/90">
                         <Check className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" aria-hidden="true" />
-                        <span>A score across: Board • Money • Staff • Reporting</span>
+                        <span>A score across Board, Money, People, Reporting</span>
                       </li>
                       <li className="flex items-start gap-2 text-sm text-white/90">
                         <Check className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" aria-hidden="true" />
@@ -284,24 +166,24 @@ const NimaraHeroPremium = () => {
                       </li>
                       <li className="flex items-start gap-2 text-sm text-white/90">
                         <Check className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" aria-hidden="true" />
-                        <span>A simple roadmap (if you want help)</span>
+                        <span>A simple roadmap if you want help</span>
                       </li>
                     </ul>
                   </div>
 
-                  {/* Submit Button - improved focus state */}
+                  {/* Submit Button */}
                   <button 
                     type="submit"
                     className="group w-full py-4 bg-accent text-secondary-background text-sm font-semibold rounded-md transition-all duration-300 hover:bg-accent/90 active:scale-[0.99] flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-[#0d1117]"
                   >
-                    Start the check
+                    Get my score
                     <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
                   </button>
                 </form>
 
                 {/* Footer Text */}
                 <p className="text-xs text-white/60 mt-4 text-center">
-                  No spam. We only use your email to send your results.
+                  No spam. Unsubscribe anytime.
                 </p>
               </div>
             </div>
@@ -330,17 +212,6 @@ const NimaraHeroPremium = () => {
           </div>
         </div>
       </div>
-
-      {/* Keyframes for blink animation */}
-      <style>{`
-        @keyframes blink {
-          0%, 50% { opacity: 1; }
-          51%, 100% { opacity: 0; }
-        }
-        .animate-blink {
-          animation: blink 0.8s infinite;
-        }
-      `}</style>
     </section>
   );
 };
