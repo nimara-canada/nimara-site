@@ -31,7 +31,7 @@ const TIER_DATA = {
   ]
 };
 
-const ROTATING_WORDS = ["funder-ready", "grant-ready", "audit-ready", "less chaos"];
+const ROTATING_WORDS = ["Funder-Ready", "Audit-Ready", "Report-Ready", "Board-Ready", "Grant-Ready"];
 
 const NimaraHeroPremium = () => {
   const [email, setEmail] = useState("");
