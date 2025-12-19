@@ -4,24 +4,16 @@ import { Play, X } from 'lucide-react';
 
 const fitCriteria = [
   {
-    id: 'size',
-    text: 'You are a nonprofit or charity with 2–100 staff, or a very active ED with at least 3 active board members.'
+    id: 'board',
+    text: 'Board, money, or HR feels unclear'
   },
   {
-    id: 'messy',
-    text: 'Your work in the community is strong, but your board, money, HR, or fundraising systems feel messy or unclear.'
-  },
-  {
-    id: 'funder',
-    text: 'You worry about being funder-ready, audit-ready, or keeping up with new fund rules.'
+    id: 'compliance',
+    text: "You're chasing compliance or funder rules"
   },
   {
     id: 'tools',
-    text: 'You want clear, plain-language policies and tools your team will actually use—not just another binder.'
-  },
-  {
-    id: 'partner',
-    text: 'You would like a partner who will help install systems and stay for a while, not just run a workshop and leave.'
+    text: 'You want tools people actually use'
   }
 ];
 
@@ -70,9 +62,9 @@ export const FitCheck = () => {
             id="fit-check-heading"
             className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-[1.1] mb-5 text-white"
           >
-            Is Nimara Right
+            Is Nimara right
             <br />
-            <span className="font-normal italic text-white/80">For Your Nonprofit?</span>
+            <span className="font-normal italic text-white/80">for your nonprofit?</span>
           </motion.h2>
           
           <motion.p
@@ -81,8 +73,7 @@ export const FitCheck = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-white/80 max-w-xl"
           >
-            We Help Nonprofits That Do Strong Work In The Community But Feel Messy On The Inside. 
-            If The Back-End Keeps You Up At Night, This Is For You.
+            If your mission is strong but your systems feel messy, we can help.
           </motion.p>
         </div>
 
@@ -95,7 +86,7 @@ export const FitCheck = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-xs font-medium tracking-[0.15em] uppercase text-white/70 mb-8"
             >
-              Check what sounds like you
+              If 2+ are true, start here:
             </motion.p>
 
             <div className="space-y-0">
@@ -178,14 +169,19 @@ export const FitCheck = () => {
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="mt-12 pt-8 border-t border-white/20"
+              className="mt-12 pt-8 border-t border-white/20 flex flex-col sm:flex-row items-start sm:items-center gap-4"
             >
               <a
-                href="/book-a-call"
-                className="group inline-flex items-center gap-3 text-white font-medium"
+                href="/check"
+                className="inline-flex items-center justify-center px-6 py-3 bg-white text-primary font-medium rounded hover:bg-white/90 transition-colors"
               >
-                <span className="group-hover:text-white/80 transition-colors">Need urgent help?</span>
-                <span className="w-8 h-px bg-white group-hover:w-12 transition-all duration-300" />
+                Start the free check (4 min)
+              </a>
+              <a
+                href="/book-a-call"
+                className="text-white/80 hover:text-white transition-colors text-sm"
+              >
+                Or schedule a call
               </a>
             </motion.div>
           </div>
@@ -232,10 +228,7 @@ export const FitCheck = () => {
 
               {/* Content */}
               <div className="absolute bottom-0 left-0 right-0 p-8 text-left">
-                <p className="text-white font-medium text-lg mb-1">See how Nimara works</p>
-                <p className="text-white/60 text-sm">
-                  Who we help, what we install, and what working together feels like.
-                </p>
+                <p className="text-white font-medium text-lg">1-minute overview of how we work.</p>
               </div>
             </motion.button>
 
