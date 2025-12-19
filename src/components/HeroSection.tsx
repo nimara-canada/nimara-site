@@ -31,10 +31,13 @@ const TIER_DATA = {
   ]
 };
 
+const ROTATING_WORDS = ["funder-ready", "grant-ready", "audit-ready", "less chaos"];
+
 const NimaraHeroPremium = () => {
   const [email, setEmail] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [wordIndex, setWordIndex] = useState(0);
   const navigate = useNavigate();
   
   // Generate unique IDs for form accessibility
@@ -44,6 +47,14 @@ const NimaraHeroPremium = () => {
 
   useEffect(() => {
     setIsLoaded(true);
+  }, []);
+
+  // Rotate words
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % ROTATING_WORDS.length);
+    }, 2500);
+    return () => clearInterval(interval);
   }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -93,7 +104,22 @@ const NimaraHeroPremium = () => {
               
               {/* Main Headline */}
               <h1 className="mb-8 text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-[1.1] tracking-tight font-sans">
-                Build systems that make your nonprofit funder-ready.
+                Build systems that make your nonprofit{" "}
+                <span className="relative inline-block">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={wordIndex}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.4, ease: "easeOut" }}
+                      className="text-accent inline-block"
+                    >
+                      {ROTATING_WORDS[wordIndex]}
+                    </motion.span>
+                  </AnimatePresence>
+                  <span className="text-accent">.</span>
+                </span>
               </h1>
 
               {/* Subheadline */}
