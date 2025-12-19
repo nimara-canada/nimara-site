@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
@@ -123,6 +124,7 @@ const Partners = () => {
         <link rel="canonical" href="https://nimara.ca/partners" />
       </Helmet>
 
+      <AnnouncementBar />
       <Header activeRoute="/partners" />
 
       <main id="main" className="relative z-0" style={{

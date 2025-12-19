@@ -14,7 +14,7 @@ import { Expertise } from "@/components/Expertise";
 import { IntegrationsSection } from "@/components/IntegrationsSection";
 import { FAQ } from "@/components/FAQ";
 import { FinalCTA } from "@/components/FinalCTA";
-import { AnnouncementBar } from "@/components/AnnouncementBar";
+
 
 
 const Index = () => {
@@ -118,9 +118,8 @@ const Index = () => {
         })}
         </script>
       </Helmet>
-      <AnnouncementBar />
       <Header />
-      <main id="main" className="space-y-0" style={{ paddingTop: 'calc(var(--announcement-height, 0px) + 4rem)' }}>
+      <main id="main" className="space-y-0" style={{ paddingTop: '5rem' }}>
         <HeroSection />
         <TwoWaysSection />
         
