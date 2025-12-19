@@ -3,14 +3,12 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 
 const toolCategories = [
-  "Email & calendar",
-  "Files & folders",
+  "Email & Calendar",
   "Accounting",
   "Payroll",
-  "Donors & fundraising",
+  "Donors & CRM",
   "Payments",
-  "Project tracking",
-  "Forms & surveys"
+  "Project Tracking"
 ];
 
 export const IntegrationsSection = () => {
@@ -20,21 +18,12 @@ export const IntegrationsSection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-20 md:py-28 lg:py-36 bg-background overflow-hidden" 
+      className="relative py-20 md:py-28 bg-background overflow-hidden" 
       aria-labelledby="integrations-heading"
     >
-      {/* Subtle grid pattern */}
-      <div className="absolute inset-0 opacity-[0.02]">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
-                           linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px'
-        }} />
-      </div>
-
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Editorial Header */}
-        <div className="mb-14 lg:mb-18">
+        <div className="mb-12 lg:mb-16">
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
@@ -54,99 +43,55 @@ export const IntegrationsSection = () => {
             id="integrations-heading"
             className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-[1.1] mb-6"
           >
-            Works With The Tools
+            Works With Your
             <br />
-            <span className="font-normal italic text-muted-foreground">You Already Use</span>
+            <span className="font-normal italic text-muted-foreground">Existing Tools</span>
           </motion.h2>
           
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg text-muted-foreground max-w-xl"
+            className="text-lg text-muted-foreground max-w-lg"
           >
-            We Connect To Your Current Tools. No Big Switch. No "Rip And Replace." 
-            We Help You Make What You Have Work Better.
+            No big switch. We connect to what you already use and help you make it work better.
           </motion.p>
         </div>
 
-        {/* Benefits */}
+        {/* Tool Categories as Tags */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
+          initial={{ opacity: 0, y: 10 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mb-16"
+          className="flex flex-wrap gap-3 mb-12"
         >
-          <div className="flex flex-wrap gap-6">
-            {["Keep What's Working", "Make Things Easier", "One Simple System"].map((benefit, index) => (
-              <span 
-                key={index}
-                className="inline-flex items-center gap-2 text-foreground"
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                {benefit}
-              </span>
-            ))}
-          </div>
+          {toolCategories.map((category, index) => (
+            <motion.span
+              key={category}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.4, delay: 0.3 + index * 0.05 }}
+              className="px-4 py-2 border border-border rounded-full text-sm text-foreground hover:border-primary/50 hover:bg-muted/30 transition-colors duration-300"
+            >
+              {category}
+            </motion.span>
+          ))}
         </motion.div>
 
-        {/* Tool Categories */}
-        <div className="space-y-0 mb-16">
-          {toolCategories.map((category, index) => (
-            <motion.div
-              key={category}
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.5, delay: 0.3 + index * 0.04 }}
-              className="group"
-            >
-              <div className="flex items-center justify-between py-5 border-t border-border hover:bg-muted/30 transition-colors duration-300 -mx-4 px-4">
-                <span className="text-lg text-foreground group-hover:text-primary transition-colors">
-                  {category}
-                </span>
-                <span className="text-2xl font-extralight text-muted-foreground/40 group-hover:text-muted-foreground/60 transition-colors">
-                  0{index + 1}
-                </span>
-              </div>
-            </motion.div>
-          ))}
-          <div className="border-t border-border" />
-        </div>
-
-        {/* Helper text */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-muted-foreground mb-12"
-        >
-          Not Sure What You Have? We'll Help You Map It.
-        </motion.p>
-
-        {/* CTAs */}
+        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.7 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
           className="pt-8 border-t border-border"
         >
-          <div className="flex flex-col sm:flex-row sm:items-center gap-8">
-            <Link
-              to="/book-a-call"
-              className="group inline-flex items-center gap-3 text-foreground font-medium"
-            >
-              <span className="group-hover:text-primary transition-colors">Tell Us What Tools You Use</span>
-              <span className="w-8 h-px bg-foreground group-hover:w-12 group-hover:bg-primary transition-all duration-300" />
-            </Link>
-            
-            <Link
-              to="/check"
-              className="group inline-flex items-center gap-3 text-muted-foreground font-medium"
-            >
-              <span className="group-hover:text-primary transition-colors">Start The 4-Minute Check</span>
-              <span className="w-8 h-px bg-muted-foreground group-hover:w-12 group-hover:bg-primary transition-all duration-300" />
-            </Link>
-          </div>
+          <Link
+            to="/integrations"
+            className="group inline-flex items-center gap-3 text-foreground font-medium"
+          >
+            <span className="group-hover:text-primary transition-colors">See all integrations</span>
+            <span className="w-8 h-px bg-foreground group-hover:w-12 group-hover:bg-primary transition-all duration-300" />
+          </Link>
         </motion.div>
       </div>
     </section>
