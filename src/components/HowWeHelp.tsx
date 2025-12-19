@@ -10,7 +10,7 @@ const steps = [
   {
     number: "02",
     title: "Clear, Small Workplan",
-    text: "We turn what we learn into a short workplan with clear jobs, owners, and dates. No 50-page reports—just what you need to move forward."
+    text: "We turn what we learn into a short workplan with clear jobs, owners, and dates. No 50-page reports, just what you need to move forward."
   },
   {
     number: "03",
@@ -75,8 +75,7 @@ export const HowWeHelp = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-muted-foreground max-w-xl"
           >
-            We Don't Guess. Behind Every Project We Run The Same Clear Loop: 
-            Check What's Going On, Plan, Build, Support. The Only Thing That Changes Is How Deep We Go.
+            We run the same 4-step loop every time: Check, Plan, Build, Support. The only thing that changes is how deep we go.
           </motion.p>
         </div>
 
