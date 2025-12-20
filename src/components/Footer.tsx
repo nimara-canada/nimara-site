@@ -17,38 +17,32 @@ const legalLinks = [
 export const Footer = () => {
   return (
     <footer className="bg-secondary-background relative overflow-hidden">
-      {/* Subtle gradient */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent" />
-
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-12 py-20 md:py-28">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-12 py-20 md:py-24">
         {/* Main footer content */}
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 mb-16 md:mb-24">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 mb-16 md:mb-20">
           {/* Left - Brand */}
           <div className="lg:col-span-5">
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-white leading-[1.1] mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-white leading-[1.1] tracking-tight mb-6">
               Nimara
             </h2>
-            <p className="text-white/50 leading-relaxed max-w-sm mb-8">
-              Helping Canadian Nonprofits Build The Core Systems Funders Expect—So You Can Focus On Your Mission.
+            <p className="text-base text-white/60 leading-relaxed max-w-sm mb-8">
+              Helping Canadian nonprofits build the core systems funders expect—so you can focus on your mission.
             </p>
             <a
               href="/book-a-call"
-              className="group inline-flex items-center gap-2 text-white font-medium"
+              className="group inline-flex items-center gap-2 h-10 px-5 bg-primary text-primary-foreground text-sm font-semibold rounded-[10px] transition-all duration-200 hover:bg-primary/90 hover:shadow-md"
             >
-              <span className="relative">
-                Book A Discovery Call
-                <span className="absolute left-0 -bottom-0.5 w-full h-px bg-white/30 group-hover:bg-white transition-colors duration-300" />
-              </span>
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+              <span>Book a discovery call</span>
+              <ArrowRight className="w-4 h-4 transition-transform duration-150 group-hover:translate-x-0.5" />
             </a>
           </div>
 
           {/* Right - Navigation */}
           <div className="lg:col-span-7">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-10 md:gap-12">
               {/* Column 1 - Main nav */}
               <div>
-                <p className="text-xs tracking-widest text-white/40 uppercase mb-5">
+                <p className="text-xs font-semibold tracking-[0.1em] text-white/40 uppercase mb-5">
                   Navigation
                 </p>
                 <ul className="space-y-3">
@@ -56,7 +50,7 @@ export const Footer = () => {
                     <li key={item.name}>
                       <a
                         href={item.href}
-                        className="text-white/70 hover:text-white transition-colors duration-200"
+                        className="text-sm text-white/70 hover:text-white transition-colors duration-150"
                       >
                         {item.name}
                       </a>
@@ -67,14 +61,14 @@ export const Footer = () => {
 
               {/* Column 2 - Connect */}
               <div>
-                <p className="text-xs tracking-widest text-white/40 uppercase mb-5">
+                <p className="text-xs font-semibold tracking-[0.1em] text-white/40 uppercase mb-5">
                   Connect
                 </p>
                 <ul className="space-y-3">
                   <li>
                     <a
                       href="/partners"
-                      className="text-white/70 hover:text-white transition-colors duration-200"
+                      className="text-sm text-white/70 hover:text-white transition-colors duration-150"
                     >
                       For Consultants
                     </a>
@@ -82,7 +76,7 @@ export const Footer = () => {
                   <li>
                     <a
                       href="mailto:hello@nimara.ca"
-                      className="text-white/70 hover:text-white transition-colors duration-200"
+                      className="text-sm text-white/70 hover:text-white transition-colors duration-150"
                     >
                       hello@nimara.ca
                     </a>
@@ -90,7 +84,7 @@ export const Footer = () => {
                   <li>
                     <a
                       href="/book-a-call"
-                      className="text-white/70 hover:text-white transition-colors duration-200"
+                      className="text-sm text-white/70 hover:text-white transition-colors duration-150"
                     >
                       Book a Call
                     </a>
@@ -100,7 +94,7 @@ export const Footer = () => {
 
               {/* Column 3 - Legal */}
               <div>
-                <p className="text-xs tracking-widest text-white/40 uppercase mb-5">
+                <p className="text-xs font-semibold tracking-[0.1em] text-white/40 uppercase mb-5">
                   Legal
                 </p>
                 <ul className="space-y-3">
@@ -110,7 +104,7 @@ export const Footer = () => {
                         href={item.href}
                         target={item.external ? "_blank" : undefined}
                         rel={item.external ? "noopener noreferrer" : undefined}
-                        className="text-white/70 hover:text-white transition-colors duration-200"
+                        className="text-sm text-white/70 hover:text-white transition-colors duration-150"
                       >
                         {item.name}
                       </a>
@@ -126,10 +120,10 @@ export const Footer = () => {
         <div className="pt-8 border-t border-white/10">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-sm text-white/40">
-              © {new Date().getFullYear()} Nimara. All Rights Reserved.
+              © {new Date().getFullYear()} Nimara. All rights reserved.
             </p>
             <p className="text-sm text-white/40">
-              Made In Canada 🍁
+              Made in Canada 🍁
             </p>
           </div>
         </div>
