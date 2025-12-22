@@ -8,27 +8,22 @@ import { cn } from "@/lib/utils";
 // Import logos
 import slackLogo from "@/assets/integrations/slack.webp";
 import quickbooksLogo from "@/assets/integrations/quickbooks.svg";
-import mondayLogo from "@/assets/integrations/monday.svg";
-import googleWorkspaceLogo from "@/assets/integrations/google-workspace.png";
 import asanaLogo from "@/assets/integrations/asana.svg";
 import docusignLogo from "@/assets/integrations/docusign.webp";
-import salesforceLogo from "@/assets/integrations/salesforce.svg";
-import zoomLogo from "@/assets/integrations/zoom.svg";
+import zoomLogo from "@/assets/integrations/zoom-new.png";
 import sageLogo from "@/assets/integrations/sage.svg";
 import xeroLogo from "@/assets/integrations/xero.svg";
 import mailchimpLogo from "@/assets/integrations/mailchimp.png";
 import notionLogo from "@/assets/integrations/notion.svg";
-import surveymonkeyLogo from "@/assets/integrations/surveymonkey.webp";
-import blackbaudLogo from "@/assets/integrations/blackbaud.webp";
 import microsoft365Logo from "@/assets/integrations/microsoft-365.svg";
-import dextLogo from "@/assets/integrations/dext.png";
-import plootoLogo from "@/assets/integrations/plooto-new.png";
-import canadahelpsLogo from "@/assets/integrations/canadahelps-new.png";
-import keelaLogo from "@/assets/integrations/keela-new.png";
-import betterImpactLogo from "@/assets/integrations/better-impact.svg";
-import diligentLogo from "@/assets/integrations/diligent.png";
+import canvaLogo from "@/assets/integrations/canva.avif";
+import eventbriteLogo from "@/assets/integrations/eventbrite.png";
+import bloomerangLogo from "@/assets/integrations/bloomerang.png";
+import airtableLogo from "@/assets/integrations/airtable.webp";
+import softrLogo from "@/assets/integrations/softr-new.png";
+import salesforceLogo from "@/assets/integrations/salesforce-new.png";
 
-// Tool data - only tools with working logos
+// Tool data - tools with working logos
 const tools = [
   { name: "Microsoft 365", logo: microsoft365Logo },
   { name: "Zoom", logo: zoomLogo },
@@ -40,11 +35,17 @@ const tools = [
   { name: "Notion", logo: notionLogo },
   { name: "Asana", logo: asanaLogo },
   { name: "Slack", logo: slackLogo },
+  { name: "Canva", logo: canvaLogo },
+  { name: "Eventbrite", logo: eventbriteLogo },
+  { name: "Bloomerang", logo: bloomerangLogo },
+  { name: "Airtable", logo: airtableLogo },
+  { name: "Softr", logo: softrLogo },
+  { name: "Salesforce", logo: salesforceLogo },
 ];
 
 // Split tools into two rows for marquee
-const topRow = tools.slice(0, 5);
-const bottomRow = tools.slice(5);
+const topRow = tools.slice(0, 8);
+const bottomRow = tools.slice(8);
 
 const LogoOrb = ({ 
   tool, 
