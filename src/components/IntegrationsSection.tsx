@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay";
+import AutoplayPlugin from "embla-carousel-autoplay";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -97,11 +97,16 @@ export const IntegrationsSection = () => {
   const [loadedLogos, setLoadedLogos] = useState<Set<number>>(new Set());
   const [isPaused, setIsPaused] = useState(false);
 
-  const autoplayPlugin = Autoplay({
-    delay: 2000,
-    stopOnInteraction: false,
-    stopOnMouseEnter: true,
-  });
+  const autoplayOptions = useMemo(
+    () => [
+      AutoplayPlugin({
+        delay: 2000,
+        stopOnInteraction: false,
+        stopOnMouseEnter: true,
+      }),
+    ],
+    []
+  );
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
@@ -110,7 +115,7 @@ export const IntegrationsSection = () => {
       slidesToScroll: 1,
       dragFree: true,
     },
-    [autoplayPlugin]
+    autoplayOptions
   );
 
   const scrollPrev = useCallback(() => {
@@ -132,7 +137,9 @@ export const IntegrationsSection = () => {
     const onPointerDown = () => setIsPaused(true);
     const onPointerUp = () => {
       setIsPaused(false);
-      autoplayPlugin.play();
+      // Resume autoplay via emblaApi
+      const autoplay = emblaApi.plugins()?.autoplay;
+      if (autoplay) autoplay.play();
     };
 
     emblaApi.on("pointerDown", onPointerDown);
@@ -142,7 +149,7 @@ export const IntegrationsSection = () => {
       emblaApi.off("pointerDown", onPointerDown);
       emblaApi.off("pointerUp", onPointerUp);
     };
-  }, [emblaApi, autoplayPlugin]);
+  }, [emblaApi]);
 
   return (
     <section 
