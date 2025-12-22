@@ -110,7 +110,7 @@ export const IntegrationsSection = () => {
   const autoplayOptions = useMemo(
     () => [
       AutoplayPlugin({
-        delay: 2000,
+        delay: 3000,
         stopOnInteraction: false,
         stopOnMouseEnter: true,
       }),
@@ -124,6 +124,7 @@ export const IntegrationsSection = () => {
       align: "start",
       slidesToScroll: 1,
       dragFree: true,
+      duration: 35,
     },
     autoplayOptions
   );
