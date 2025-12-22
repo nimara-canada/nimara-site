@@ -171,9 +171,14 @@ export const IntegrationsSection = () => {
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 lg:gap-12 mb-12 lg:mb-16">
           {/* Left: Heading + Body */}
           <div className="max-w-2xl">
-            <span className="text-xs font-medium tracking-[0.2em] uppercase text-muted-foreground mb-4 block">
-              Integrations
-            </span>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-xs font-medium tracking-[0.2em] uppercase text-muted-foreground">
+                Integrations
+              </span>
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20">
+                20+ tools
+              </span>
+            </div>
             <h2
               id="integrations-heading"
               className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-[1.15] mb-4"
