@@ -52,6 +52,16 @@ export const ToolRequestForm = () => {
 
       if (error) throw error;
 
+      // Send email notification (fire and forget - don't block on this)
+      supabase.functions.invoke("tool-request-notification", {
+        body: {
+          name: data.name,
+          email: data.email,
+          tool_name: data.tool_name,
+          message: data.message || null,
+        },
+      }).catch((err) => console.error("Failed to send notification:", err));
+
       setIsSubmitted(true);
       toast({
         title: "Request submitted!",

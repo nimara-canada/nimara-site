@@ -8,3 +8,6 @@ verify_jwt = false
 
 [functions.resource-waitlist]
 verify_jwt = false
+
+[functions.tool-request-notification]
+verify_jwt = false
