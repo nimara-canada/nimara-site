@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { IntegrationsGrid } from "@/components/IntegrationsGrid";
 import { ArrowLeft, Zap, Users, Link2, ArrowRight, RefreshCw, ChevronDown, Check } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -167,6 +168,9 @@ export default function Integrations() {
                 We connect to your existing tools. No rip and replace needed—we make what you have work better.
               </p>
             </div>
+
+            {/* Tools Grid by Category */}
+            <IntegrationsGrid />
 
             {/* Integration Levels Overview */}
             <section className="mb-20">
