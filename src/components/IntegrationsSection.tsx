@@ -1,8 +1,9 @@
-import { useCallback, useEffect, useState, useMemo } from "react";
+import { useCallback, useEffect, useState, useMemo, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import AutoplayPlugin from "embla-carousel-autoplay";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -106,6 +107,16 @@ const LogoChip = ({
 export const IntegrationsSection = () => {
   const [loadedLogos, setLoadedLogos] = useState<Set<number>>(new Set());
   const [isPaused, setIsPaused] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Parallax scroll effect
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const parallaxX = useTransform(scrollYProgress, [0, 1], [-30, 30]);
+  const parallaxOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.8, 1, 1, 0.8]);
 
   const autoplayOptions = useMemo(
     () => [
@@ -164,6 +175,7 @@ export const IntegrationsSection = () => {
 
   return (
     <section 
+      ref={sectionRef}
       className="relative py-16 md:py-24 lg:py-32 bg-background overflow-hidden" 
       aria-labelledby="integrations-heading"
     >
@@ -214,8 +226,14 @@ export const IntegrationsSection = () => {
           </div>
         </div>
 
-        {/* Carousel Container */}
-        <div className="relative">
+        {/* Carousel Container with Parallax */}
+        <motion.div 
+          className="relative"
+          style={{ 
+            x: parallaxX,
+            opacity: parallaxOpacity,
+          }}
+        >
           {/* Left Fade Gradient */}
           <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-20 lg:w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
           
@@ -259,7 +277,7 @@ export const IntegrationsSection = () => {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Legal Footnote */}
         <p className="text-center text-[11px] text-muted-foreground/60 mt-8 lg:mt-12">
