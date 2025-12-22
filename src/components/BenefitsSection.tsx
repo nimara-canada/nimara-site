@@ -20,44 +20,32 @@ export const BenefitsSection = () => {
   ];
 
   return (
-    <section className="py-20 lg:py-28 bg-muted" aria-labelledby="benefits-heading">
-      <div className="max-w-5xl mx-auto px-6 lg:px-12">
-        <div className="space-y-12">
-          {/* Header */}
-          <div className="text-center space-y-4">
-            <span className="inline-block text-xs font-semibold tracking-[0.15em] uppercase text-primary">
-              What You Get
-            </span>
-            <h2 id="benefits-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tighter leading-[1.1]">
-              {t('benefits.title')}
-            </h2>
-          </div>
+    <section className="py-16 lg:py-24 bg-secondary" aria-labelledby="benefits-heading">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto space-y-12">
+          <h2 id="benefits-heading" className="text-3xl sm:text-4xl font-bold text-center">
+            {t('benefits.title')}
+          </h2>
 
-          {/* Benefits Grid */}
           <div className="grid md:grid-cols-3 gap-6">
-            {benefits.map((benefit, index) => {
-              const IconComponent = benefit.icon;
-              return (
-                <article
-                  key={index}
-                  className="bg-card border border-border rounded-xl p-8 text-center transition-all duration-200 hover:shadow-md hover:border-border/80"
-                >
-                  <div className="flex justify-center mb-5">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <IconComponent className="h-5 w-5 text-primary" aria-hidden="true" />
-                    </div>
+            {benefits.map((benefit, index) => (
+              <article
+                key={index}
+                className="bg-card border border-border rounded-2xl p-6 space-y-4 text-center"
+              >
+                <div className="flex justify-center">
+                  <div className="p-3 bg-primary/10 rounded-xl">
+                    <benefit.icon className="h-6 w-6 text-primary" aria-hidden="true" />
                   </div>
-                  <h3 className="font-semibold text-lg tracking-tight">{benefit.title}</h3>
-                </article>
-              );
-            })}
+                </div>
+                <h3 className="font-semibold text-lg">{benefit.title}</h3>
+              </article>
+            ))}
           </div>
 
-          {/* Data Note */}
-          <div className="bg-accent/20 border border-accent/30 rounded-xl p-5 text-center">
-            <p className="text-sm text-body">
-              <span className="font-semibold text-foreground">{t('benefits.dataNote')}</span>{' '}
-              {t('benefits.recordsNote')}
+          <div className="bg-accent/30 border border-accent rounded-xl p-4 text-center">
+            <p className="text-sm text-muted-foreground">
+              <span className="font-medium text-foreground">{t('benefits.dataNote')}</span> {t('benefits.recordsNote')}
             </p>
           </div>
         </div>

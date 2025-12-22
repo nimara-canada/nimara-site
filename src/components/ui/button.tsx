@@ -5,32 +5,21 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 min-h-[44px] min-w-[44px]",
   {
     variants: {
       variant: {
-        // Primary: Solid fill, strong contrast
-        default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm hover:shadow-md",
-        // Secondary: Outline/ghost style
-        secondary: "bg-transparent text-foreground border border-border hover:bg-muted hover:border-foreground/20",
-        // Outline: Clean border
-        outline: "border border-border bg-transparent text-foreground hover:bg-muted",
-        // Ghost: No background
-        ghost: "text-foreground hover:bg-muted",
-        // Link: Text only
+        default: "bg-primary text-primary-foreground hover:bg-[#7A5DE0] rounded-xl shadow-soft",
+        secondary: "bg-background text-foreground border border-border hover:bg-muted rounded-xl shadow-soft",
+        outline: "border border-border bg-background text-foreground hover:bg-muted rounded-xl",
+        ghost: "text-foreground hover:bg-muted rounded-lg",
         link: "text-foreground underline-offset-4 hover:underline focus-visible:underline p-0 h-auto min-h-0",
-        // Destructive
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-sm",
       },
       size: {
-        // Default: 48px height (premium standard)
-        default: "h-12 px-6 text-sm rounded-[10px] min-h-[48px]",
-        // Small
-        sm: "h-10 px-4 text-sm rounded-lg min-h-[40px]",
-        // Large: 52px height
-        lg: "h-[52px] px-8 text-base rounded-[10px] min-h-[52px]",
-        // Icon
-        icon: "h-12 w-12 rounded-[10px] min-h-[48px] min-w-[48px]",
+        default: "h-11 px-6 py-3 text-sm",
+        sm: "h-9 px-4 text-xs",
+        lg: "h-14 px-8 text-base",
+        icon: "h-11 w-11",
       },
     },
     defaultVariants: {

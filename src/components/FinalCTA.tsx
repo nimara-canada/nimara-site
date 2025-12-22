@@ -1,6 +1,5 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ArrowRight } from "lucide-react";
 
 export const FinalCTA = () => {
   const sectionRef = useRef(null);
@@ -9,72 +8,71 @@ export const FinalCTA = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-24 md:py-32 bg-secondary-background text-white overflow-hidden"
+      className="relative py-20 md:py-28 lg:py-36 bg-[#0B1120] text-white overflow-hidden"
     >
       {/* Subtle grid pattern */}
-      <div 
-        className="absolute inset-0 opacity-[0.02] pointer-events-none"
-        style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-                           linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)`,
+      <div className="absolute inset-0 opacity-[0.03]">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `linear-gradient(rgba(255,255,255,1) 1px, transparent 1px),
+                           linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)`,
           backgroundSize: '80px 80px'
-        }} 
-      />
+        }} />
+      </div>
 
-      <div className="relative max-w-6xl mx-auto px-6 lg:px-12">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
-          {/* Eyebrow */}
-          <motion.span
+          <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.5 }}
-            className="inline-block text-xs font-semibold tracking-[0.15em] uppercase text-primary mb-6"
+            transition={{ duration: 0.8 }}
+            className="flex items-center gap-4 mb-6"
           >
-            Ready to Start?
-          </motion.span>
+            <span className="text-xs font-medium tracking-[0.2em] uppercase text-white/50">
+              Ready to Start?
+            </span>
+            <div className="h-px w-16 bg-white/20" />
+          </motion.div>
 
-          {/* Headline */}
           <motion.h2 
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tighter leading-[1.05] mb-6"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-[1.1] mb-6"
           >
-            Ready to get
+            Ready To Get
             <br />
-            <span className="text-white/60">system-strong?</span>
+            <span className="font-normal italic text-white/70">System-Strong?</span>
           </motion.h2>
 
-          {/* Subheadline */}
           <motion.p 
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg text-white/60 leading-relaxed mb-10 max-w-xl"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg text-white/60 leading-relaxed mb-12 max-w-xl"
           >
-            Book a free 15-minute discovery call. We'll figure out if Nimara is the right fit—no pressure, no pitch.
+            Book A Free 15-Minute Discovery Call. We'll Figure Out If Nimara Is The Right Fit—No Pressure, No Pitch.
           </motion.p>
 
-          {/* CTAs */}
           <motion.div 
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-start gap-4"
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-start gap-8"
           >
             <a
               href="/book-a-call"
-              className="group inline-flex items-center gap-2 h-12 px-6 bg-primary text-primary-foreground text-sm font-semibold rounded-[10px] transition-all duration-200 hover:bg-primary/90 hover:shadow-md"
+              className="group inline-flex items-center gap-3 text-white font-medium"
             >
-              <span>Book a discovery call</span>
-              <ArrowRight className="w-4 h-4 transition-transform duration-150 group-hover:translate-x-0.5" />
+              <span className="group-hover:text-accent transition-colors">Book a Discovery Call</span>
+              <span className="w-8 h-px bg-white group-hover:w-12 group-hover:bg-accent transition-all duration-300" />
             </a>
 
             <a
               href="mailto:hello@nimara.ca"
-              className="group inline-flex items-center gap-2 h-12 px-6 text-white/70 text-sm font-semibold border border-white/20 rounded-[10px] transition-all duration-200 hover:text-white hover:border-white/40 hover:bg-white/5"
+              className="group inline-flex items-center gap-3 text-white/60 font-medium"
             >
-              <span>Email us instead</span>
+              <span className="group-hover:text-accent transition-colors">Email us instead</span>
+              <span className="w-8 h-px bg-white/40 group-hover:w-12 group-hover:bg-accent transition-all duration-300" />
             </a>
           </motion.div>
 
@@ -82,8 +80,8 @@ export const FinalCTA = () => {
           <motion.p
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="mt-16 pt-8 border-t border-white/10 text-sm text-white/40"
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="mt-20 pt-8 border-t border-white/10 text-sm text-white/40"
           >
             Trusted by nonprofits across Canada · Money-back guarantee on system builds
           </motion.p>
