@@ -6,7 +6,7 @@ import AutoplayPlugin from "embla-carousel-autoplay";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-// Import existing logos
+// Import logos
 import slackLogo from "@/assets/integrations/slack.svg";
 import quickbooksLogo from "@/assets/integrations/quickbooks.svg";
 import mondayLogo from "@/assets/integrations/monday.svg";
@@ -22,17 +22,27 @@ import notionLogo from "@/assets/integrations/notion.svg";
 import surveymonkeyLogo from "@/assets/integrations/surveymonkey.svg";
 import blackbaudLogo from "@/assets/integrations/blackbaud.svg";
 import microsoftLogo from "@/assets/integrations/microsoft-icon.png";
-import outlookLogo from "@/assets/integrations/outlook.svg";
+import dextLogo from "@/assets/integrations/dext.svg";
+import plootoLogo from "@/assets/integrations/plooto.svg";
+import canadahelpsLogo from "@/assets/integrations/canadahelps.svg";
+import keelaLogo from "@/assets/integrations/keela.svg";
+import betterImpactLogo from "@/assets/integrations/better-impact.svg";
+import diligentLogo from "@/assets/integrations/diligent.svg";
 
-// Tool data with categories
+// Tool data with categories - 20 nonprofit tools
 const tools = [
   { name: "Microsoft 365", logo: microsoftLogo, category: "Productivity" },
   { name: "Google Workspace", logo: googleLogo, category: "Productivity" },
   { name: "Zoom", logo: zoomLogo, category: "Communication" },
+  { name: "Diligent Boards", logo: diligentLogo, category: "Governance" },
   { name: "DocuSign", logo: docusignLogo, category: "Governance" },
   { name: "QuickBooks", logo: quickbooksLogo, category: "Accounting" },
   { name: "Sage", logo: sageLogo, category: "Accounting" },
   { name: "Xero", logo: xeroLogo, category: "Accounting" },
+  { name: "Dext", logo: dextLogo, category: "Expense" },
+  { name: "Plooto", logo: plootoLogo, category: "Payments" },
+  { name: "CanadaHelps", logo: canadahelpsLogo, category: "Donations" },
+  { name: "Keela", logo: keelaLogo, category: "CRM" },
   { name: "Salesforce", logo: salesforceLogo, category: "CRM" },
   { name: "Blackbaud", logo: blackbaudLogo, category: "Fundraising" },
   { name: "Mailchimp", logo: mailchimpLogo, category: "Marketing" },
@@ -40,8 +50,8 @@ const tools = [
   { name: "Asana", logo: asanaLogo, category: "Projects" },
   { name: "monday.com", logo: mondayLogo, category: "Projects" },
   { name: "SurveyMonkey", logo: surveymonkeyLogo, category: "Surveys" },
+  { name: "Better Impact", logo: betterImpactLogo, category: "Volunteers" },
   { name: "Slack", logo: slackLogo, category: "Communication" },
-  { name: "Outlook", logo: outlookLogo, category: "Email" },
 ];
 
 // Duplicate for infinite loop effect
