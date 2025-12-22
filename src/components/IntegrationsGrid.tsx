@@ -100,7 +100,31 @@ const tools = [
   { name: "Better Impact", logo: betterImpactLogo, category: "volunteers", description: "Volunteer management" },
 ];
 
-const ToolCard = ({ tool, index }: { tool: typeof tools[0]; index: number }) => {
+// Highlight matching text helper
+const HighlightText = ({ text, query }: { text: string; query: string }) => {
+  if (!query.trim()) {
+    return <>{text}</>;
+  }
+
+  const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+  const parts = text.split(regex);
+
+  return (
+    <>
+      {parts.map((part, index) =>
+        regex.test(part) ? (
+          <mark key={index} className="bg-primary/20 text-primary rounded-sm px-0.5">
+            {part}
+          </mark>
+        ) : (
+          <span key={index}>{part}</span>
+        )
+      )}
+    </>
+  );
+};
+
+const ToolCard = ({ tool, index, searchQuery }: { tool: typeof tools[0]; index: number; searchQuery: string }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -120,10 +144,10 @@ const ToolCard = ({ tool, index }: { tool: typeof tools[0]; index: number }) => 
       
       {/* Content */}
       <h3 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
-        {tool.name}
+        <HighlightText text={tool.name} query={searchQuery} />
       </h3>
       <p className="text-sm text-muted-foreground">
-        {tool.description}
+        <HighlightText text={tool.description} query={searchQuery} />
       </p>
       
       {/* Hover indicator */}
@@ -225,7 +249,7 @@ export const IntegrationsGrid = () => {
         className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"
       >
         {filteredTools.map((tool, index) => (
-          <ToolCard key={tool.name} tool={tool} index={index} />
+          <ToolCard key={tool.name} tool={tool} index={index} searchQuery={searchQuery} />
         ))}
       </motion.div>
 
