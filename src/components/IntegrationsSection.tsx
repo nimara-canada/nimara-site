@@ -11,18 +11,18 @@ import { cn } from "@/lib/utils";
 import slackLogo from "@/assets/integrations/slack.svg";
 import quickbooksLogo from "@/assets/integrations/quickbooks.svg";
 import mondayLogo from "@/assets/integrations/monday.svg";
-import googleLogo from "@/assets/integrations/google.svg";
+import googleWorkspaceLogo from "@/assets/integrations/google-workspace.svg";
 import asanaLogo from "@/assets/integrations/asana.svg";
 import docusignLogo from "@/assets/integrations/docusign.svg";
 import salesforceLogo from "@/assets/integrations/salesforce.svg";
 import zoomLogo from "@/assets/integrations/zoom.svg";
-import sageLogo from "@/assets/integrations/sage50.svg";
+import sageLogo from "@/assets/integrations/sage.svg";
 import xeroLogo from "@/assets/integrations/xero.svg";
 import mailchimpLogo from "@/assets/integrations/mailchimp.svg";
 import notionLogo from "@/assets/integrations/notion.svg";
 import surveymonkeyLogo from "@/assets/integrations/surveymonkey.svg";
 import blackbaudLogo from "@/assets/integrations/blackbaud.svg";
-import microsoftLogo from "@/assets/integrations/microsoft-icon.png";
+import microsoft365Logo from "@/assets/integrations/microsoft-365.svg";
 import dextLogo from "@/assets/integrations/dext.svg";
 import plootoLogo from "@/assets/integrations/plooto.svg";
 import canadahelpsLogo from "@/assets/integrations/canadahelps.svg";
@@ -32,8 +32,8 @@ import diligentLogo from "@/assets/integrations/diligent.svg";
 
 // Tool data with categories - 20 nonprofit tools
 const tools = [
-  { name: "Microsoft 365", logo: microsoftLogo, category: "Productivity" },
-  { name: "Google Workspace", logo: googleLogo, category: "Productivity" },
+  { name: "Microsoft 365", logo: microsoft365Logo, category: "Productivity" },
+  { name: "Google Workspace", logo: googleWorkspaceLogo, category: "Productivity" },
   { name: "Zoom", logo: zoomLogo, category: "Communication" },
   { name: "Diligent Boards", logo: diligentLogo, category: "Governance" },
   { name: "DocuSign", logo: docusignLogo, category: "Governance" },
