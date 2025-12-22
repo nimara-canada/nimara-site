@@ -59,7 +59,7 @@ export default function Integrations() {
                 </div>
                 
                 <div className="relative">
-                  <h2 className="text-3xl sm:text-4xl font-light mb-4">Don't see your tool?</h2>
+                  <h2 className="text-3xl sm:text-4xl font-light mb-4 text-white">Don't see your tool?</h2>
                   <p className="text-white/70 text-lg mb-8 max-w-2xl mx-auto">
                     That's okay. We work with what you have. Tell us about your tools and we'll find a way to connect
                     them.
