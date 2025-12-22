@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { IntegrationsGrid } from "@/components/IntegrationsGrid";
+import { ToolRequestForm } from "@/components/ToolRequestForm";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -74,6 +75,24 @@ export default function Integrations() {
                     Schedule a Call
                     <ArrowRight className="w-4 h-4" />
                   </a>
+                </div>
+              </div>
+            </section>
+
+            {/* Tool Request Form Section */}
+            <section className="mt-20">
+              <div className="bg-card border border-border rounded-2xl p-8 sm:p-12">
+                <div className="text-center mb-10">
+                  <h2 className="text-2xl sm:text-3xl font-semibold text-foreground mb-3">
+                    Request an Integration
+                  </h2>
+                  <p className="text-muted-foreground max-w-xl mx-auto">
+                    Let us know which tool you'd like to see supported. We review every request and prioritize based on demand.
+                  </p>
+                </div>
+                
+                <div className="max-w-2xl mx-auto">
+                  <ToolRequestForm />
                 </div>
               </div>
             </section>
