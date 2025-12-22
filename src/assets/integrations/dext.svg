@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40">
-  <rect width="120" height="40" fill="#fff" rx="4"/>
-  <text x="60" y="26" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1E3A5F" text-anchor="middle">Dext</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="45" fill="#00A86B"/>
+  <path d="M30 35 L50 35 Q65 35 65 50 Q65 65 50 65 L30 65 Z" fill="white"/>
+  <rect x="30" y="42" width="25" height="16" fill="#00A86B"/>
 </svg>
