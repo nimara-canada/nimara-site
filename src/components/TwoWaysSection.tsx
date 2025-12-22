@@ -19,8 +19,8 @@ const paths = [
     id: "build",
     icon: Layers,
     label: "Recommended",
-    title: "Build My Systems",
-    timeline: "Start free",
+    title: "Make Me Funder-Ready",
+    timeline: "Start Free",
     featured: true,
     description: "Start with a free check, then we recommend next steps based on what you actually need.",
     features: ["Multiple areas feel messy", "Want repeatable systems", "Need funder-ready basics"],
@@ -112,15 +112,18 @@ export const TwoWaysSection = () => {
                   <div className="flex items-center justify-between mb-8">
                     <span className={`
                       inline-flex items-center gap-1.5 text-[10px] font-semibold tracking-[0.2em] uppercase
-                      ${isFeatured ? 'text-background/50' : 'text-muted-foreground/60'}
+                      ${isFeatured 
+                        ? 'bg-background/20 text-background px-3 py-1.5 rounded-full' 
+                        : 'text-muted-foreground/60'
+                      }
                     `}>
                       {isFeatured && <Sparkles className="w-3 h-3" />}
                       {path.label}
                     </span>
                     <span className={`
-                      text-xs font-medium tracking-wide px-3 py-1 rounded-full
+                      text-xs font-semibold tracking-wide px-3 py-1.5 rounded-full
                       ${isFeatured 
-                        ? 'bg-background/10 text-background/70' 
+                        ? 'bg-background text-foreground' 
                         : 'bg-muted text-muted-foreground'
                       }
                     `}>
