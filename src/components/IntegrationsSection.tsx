@@ -1,8 +1,6 @@
-import { useCallback, useEffect, useState, useMemo, useRef } from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
-import useEmblaCarousel from "embla-carousel-react";
-import AutoplayPlugin from "embla-carousel-autoplay";
+import { ArrowRight } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -30,83 +28,150 @@ import keelaLogo from "@/assets/integrations/keela-new.png";
 import betterImpactLogo from "@/assets/integrations/better-impact.svg";
 import diligentLogo from "@/assets/integrations/diligent.png";
 
-// Tool data with categories - 20 nonprofit tools
+// Tool data - 21 nonprofit tools
 const tools = [
-  { name: "Microsoft 365", logo: microsoft365Logo, category: "Productivity" },
-  { name: "Google Workspace", logo: googleWorkspaceLogo, category: "Productivity" },
-  { name: "Zoom", logo: zoomLogo, category: "Communication" },
-  { name: "Diligent Boards", logo: diligentLogo, category: "Governance" },
-  { name: "DocuSign", logo: docusignLogo, category: "Governance" },
-  { name: "QuickBooks", logo: quickbooksLogo, category: "Accounting" },
-  { name: "Sage", logo: sageLogo, category: "Accounting" },
-  { name: "Xero", logo: xeroLogo, category: "Accounting" },
-  { name: "Dext", logo: dextLogo, category: "Expense" },
-  { name: "Plooto", logo: plootoLogo, category: "Payments" },
-  { name: "CanadaHelps", logo: canadahelpsLogo, category: "Donations" },
-  { name: "Keela", logo: keelaLogo, category: "CRM" },
-  { name: "Salesforce", logo: salesforceLogo, category: "CRM" },
-  { name: "Blackbaud", logo: blackbaudLogo, category: "Fundraising" },
-  { name: "Mailchimp", logo: mailchimpLogo, category: "Marketing" },
-  { name: "Notion", logo: notionLogo, category: "Knowledge" },
-  { name: "Asana", logo: asanaLogo, category: "Projects" },
-  { name: "monday.com", logo: mondayLogo, category: "Projects" },
-  { name: "SurveyMonkey", logo: surveymonkeyLogo, category: "Surveys" },
-  { name: "Better Impact", logo: betterImpactLogo, category: "Volunteers" },
-  { name: "Slack", logo: slackLogo, category: "Communication" },
+  { name: "Microsoft 365", logo: microsoft365Logo },
+  { name: "Google Workspace", logo: googleWorkspaceLogo },
+  { name: "Zoom", logo: zoomLogo },
+  { name: "Diligent Boards", logo: diligentLogo },
+  { name: "DocuSign", logo: docusignLogo },
+  { name: "QuickBooks", logo: quickbooksLogo },
+  { name: "Sage", logo: sageLogo },
+  { name: "Xero", logo: xeroLogo },
+  { name: "Dext", logo: dextLogo },
+  { name: "Plooto", logo: plootoLogo },
+  { name: "CanadaHelps", logo: canadahelpsLogo },
+  { name: "Keela", logo: keelaLogo },
+  { name: "Salesforce", logo: salesforceLogo },
+  { name: "Blackbaud", logo: blackbaudLogo },
+  { name: "Mailchimp", logo: mailchimpLogo },
+  { name: "Notion", logo: notionLogo },
+  { name: "Asana", logo: asanaLogo },
+  { name: "monday.com", logo: mondayLogo },
+  { name: "SurveyMonkey", logo: surveymonkeyLogo },
+  { name: "Better Impact", logo: betterImpactLogo },
+  { name: "Slack", logo: slackLogo },
 ];
 
-// Duplicate for infinite loop effect
-const duplicatedTools = [...tools, ...tools];
+// Split tools into two rows for marquee
+const topRow = tools.slice(0, 11);
+const bottomRow = tools.slice(11);
 
-const LogoChip = ({ 
+const LogoOrb = ({ 
   tool, 
-  isLoaded, 
-  onLoad 
+  index,
+  isLoaded,
+  onLoad
 }: { 
   tool: typeof tools[0]; 
+  index: number;
   isLoaded: boolean;
   onLoad: () => void;
 }) => {
   return (
     <div 
-      className="group relative flex flex-col items-center justify-center gap-3 p-5 sm:p-6 lg:p-8 rounded-xl bg-white border border-border/50 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 cursor-pointer min-w-[140px] sm:min-w-[160px] lg:min-w-[180px] h-[140px] sm:h-[160px] lg:h-[180px]"
-      title={tool.name}
+      className="group relative flex-shrink-0"
+      style={{ animationDelay: `${index * 0.1}s` }}
     >
-      {/* Skeleton loader */}
-      {!isLoaded && (
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-16 h-16 bg-muted animate-pulse rounded-lg" />
+      <div className="relative w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28">
+        {/* Outer glow ring */}
+        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/5 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl scale-150" />
+        
+        {/* Main container */}
+        <div className={cn(
+          "relative w-full h-full rounded-full bg-white shadow-lg shadow-black/5 border border-border/30",
+          "flex items-center justify-center overflow-hidden",
+          "transition-all duration-500 ease-out",
+          "group-hover:shadow-xl group-hover:shadow-primary/10 group-hover:border-primary/20 group-hover:scale-105"
+        )}>
+          {/* Inner gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white via-transparent to-muted/20 opacity-50" />
+          
+          {/* Skeleton loader */}
+          {!isLoaded && (
+            <div className="absolute inset-4 bg-muted animate-pulse rounded-full" />
+          )}
+          
+          {/* Logo */}
+          <div className={cn(
+            "relative w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 flex items-center justify-center transition-all duration-300",
+            isLoaded ? "opacity-100" : "opacity-0",
+            "group-hover:scale-110"
+          )}>
+            <img 
+              src={tool.logo} 
+              alt={tool.name}
+              className="w-full h-full object-contain"
+              onLoad={onLoad}
+              loading="lazy"
+            />
+          </div>
         </div>
-      )}
-      
-      {/* Logo */}
-      <div className={cn(
-        "w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 flex items-center justify-center transition-opacity duration-300",
-        isLoaded ? "opacity-100" : "opacity-0"
-      )}>
-        <img 
-          src={tool.logo} 
-          alt={`Logo: ${tool.name}`}
-          className="w-full h-full object-contain"
-          onLoad={onLoad}
-          loading="lazy"
-        />
       </div>
       
-      {/* Tool name - always visible */}
-      <span className={cn(
-        "text-center text-xs sm:text-sm font-medium text-muted-foreground transition-colors group-hover:text-foreground",
-        isLoaded ? "block" : "hidden"
+      {/* Tool name tooltip */}
+      <div className={cn(
+        "absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap",
+        "text-xs font-medium text-muted-foreground",
+        "opacity-0 group-hover:opacity-100 transition-all duration-300",
+        "translate-y-1 group-hover:translate-y-0"
       )}>
         {tool.name}
-      </span>
+      </div>
+    </div>
+  );
+};
+
+const MarqueeRow = ({ 
+  tools, 
+  direction = "left",
+  speed = 25,
+  loadedLogos,
+  onLogoLoad,
+  offset = 0
+}: { 
+  tools: typeof topRow;
+  direction?: "left" | "right";
+  speed?: number;
+  loadedLogos: Set<number>;
+  onLogoLoad: (index: number) => void;
+  offset?: number;
+}) => {
+  // Duplicate for seamless loop
+  const duplicatedTools = [...tools, ...tools, ...tools];
+  
+  return (
+    <div className="relative overflow-hidden py-4">
+      <motion.div 
+        className="flex gap-6 sm:gap-8 lg:gap-10"
+        animate={{
+          x: direction === "left" ? ["0%", "-33.33%"] : ["-33.33%", "0%"]
+        }}
+        transition={{
+          x: {
+            repeat: Infinity,
+            repeatType: "loop",
+            duration: speed,
+            ease: "linear",
+          },
+        }}
+      >
+        {duplicatedTools.map((tool, index) => (
+          <LogoOrb 
+            key={`${tool.name}-${index}`}
+            tool={tool}
+            index={index}
+            isLoaded={loadedLogos.has((index % tools.length) + offset)}
+            onLoad={() => onLogoLoad((index % tools.length) + offset)}
+          />
+        ))}
+      </motion.div>
     </div>
   );
 };
 
 export const IntegrationsSection = () => {
   const [loadedLogos, setLoadedLogos] = useState<Set<number>>(new Set());
-  const [isPaused, setIsPaused] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   // Parallax scroll effect
@@ -115,175 +180,113 @@ export const IntegrationsSection = () => {
     offset: ["start end", "end start"],
   });
 
-  const parallaxX = useTransform(scrollYProgress, [0, 1], [-30, 30]);
-  const parallaxOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.8, 1, 1, 0.8]);
-
-  const autoplayOptions = useMemo(
-    () => [
-      AutoplayPlugin({
-        delay: 3000,
-        stopOnInteraction: false,
-        stopOnMouseEnter: true,
-      }),
-    ],
-    []
-  );
-
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    {
-      loop: true,
-      align: "start",
-      slidesToScroll: 1,
-      dragFree: true,
-      duration: 35,
-    },
-    autoplayOptions
-  );
-
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
+  const parallaxOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.6, 1, 1, 0.6]);
+  const parallaxScale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.95, 1, 1, 0.95]);
 
   const handleLogoLoad = (index: number) => {
     setLoadedLogos(prev => new Set(prev).add(index));
   };
 
-  // Pause autoplay on interaction
-  useEffect(() => {
-    if (!emblaApi) return;
-
-    const onPointerDown = () => setIsPaused(true);
-    const onPointerUp = () => {
-      setIsPaused(false);
-      // Resume autoplay via emblaApi
-      const autoplay = emblaApi.plugins()?.autoplay;
-      if (autoplay) autoplay.play();
-    };
-
-    emblaApi.on("pointerDown", onPointerDown);
-    emblaApi.on("pointerUp", onPointerUp);
-
-    return () => {
-      emblaApi.off("pointerDown", onPointerDown);
-      emblaApi.off("pointerUp", onPointerUp);
-    };
-  }, [emblaApi]);
-
   return (
     <section 
       ref={sectionRef}
-      className="relative py-16 md:py-24 lg:py-32 bg-background overflow-hidden" 
+      className="relative py-20 md:py-28 lg:py-36 bg-gradient-to-b from-background via-muted/20 to-background overflow-hidden" 
       aria-labelledby="integrations-heading"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header Row */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 lg:gap-12 mb-12 lg:mb-16">
-          {/* Left: Heading + Body */}
-          <div className="max-w-2xl">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="text-xs font-medium tracking-[0.2em] uppercase text-muted-foreground">
-                Integrations
-              </span>
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20">
-                20+ tools
-              </span>
-            </div>
-            <h2
-              id="integrations-heading"
-              className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-[1.15] mb-4"
-            >
-              Works with the tools
-              <br className="hidden sm:block" />
-              <span className="font-normal italic text-muted-foreground"> nonprofits already use</span>
-            </h2>
-            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl">
-              We build funder-ready systems on top of your current stack — governance, finance, fundraising, delivery, and reporting.
-            </p>
-          </div>
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      </div>
 
-          {/* Right: CTA */}
-          <div className="flex flex-col items-start lg:items-end gap-3">
-            <Button 
-              asChild
-              size="lg"
-              className="group"
-            >
-              <Link to="/integrations">
-                Explore more tools
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </Button>
-            <Link 
-              to="/how-nimara-works"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors underline-offset-4 hover:underline"
-            >
-              See how we set this up
-            </Link>
-          </div>
-        </div>
-
-        {/* Carousel Container with Parallax */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <motion.div 
-          className="relative"
-          style={{ 
-            x: parallaxX,
-            opacity: parallaxOpacity,
-          }}
+          className="text-center mb-16 lg:mb-20"
+          style={{ opacity: parallaxOpacity, scale: parallaxScale }}
         >
-          {/* Left Fade Gradient */}
-          <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-20 lg:w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-          
-          {/* Right Fade Gradient */}
-          <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-20 lg:w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
-
-          {/* Navigation Arrows */}
-          <button
-            onClick={scrollPrev}
-            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-background border border-border shadow-md flex items-center justify-center hover:bg-muted transition-colors"
-            aria-label="Previous tools"
-          >
-            <ChevronLeft className="h-5 w-5 text-foreground" />
-          </button>
-          
-          <button
-            onClick={scrollNext}
-            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-background border border-border shadow-md flex items-center justify-center hover:bg-muted transition-colors"
-            aria-label="Next tools"
-          >
-            <ChevronRight className="h-5 w-5 text-foreground" />
-          </button>
-
-          {/* Carousel */}
-          <div 
-            className="overflow-hidden mx-8 sm:mx-16 lg:mx-20" 
-            ref={emblaRef}
-          >
-            <div className="flex gap-3 sm:gap-4 lg:gap-5">
-              {duplicatedTools.map((tool, index) => (
-                <div 
-                  key={`${tool.name}-${index}`} 
-                  className="flex-shrink-0"
-                >
-                  <LogoChip 
-                    tool={tool} 
-                    isLoaded={loadedLogos.has(index % tools.length)}
-                    onLoad={() => handleLogoLoad(index % tools.length)}
-                  />
-                </div>
-              ))}
-            </div>
+          <div className="inline-flex items-center gap-3 mb-6">
+            <div className="h-px w-8 bg-gradient-to-r from-transparent to-primary/50" />
+            <span className="text-xs font-medium tracking-[0.25em] uppercase text-primary">
+              Integrations
+            </span>
+            <div className="h-px w-8 bg-gradient-to-l from-transparent to-primary/50" />
           </div>
+          
+          <h2
+            id="integrations-heading"
+            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight leading-[1.1] mb-6"
+          >
+            Connects with tools
+            <br />
+            <span className="font-normal bg-gradient-to-r from-foreground via-foreground/80 to-foreground bg-clip-text">
+              nonprofits already trust
+            </span>
+          </h2>
+          
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            We build funder-ready systems on your current stack — governance, finance, 
+            fundraising, delivery, and reporting.
+          </p>
         </motion.div>
 
-        {/* Legal Footnote */}
-        <p className="text-center text-[11px] text-muted-foreground/60 mt-8 lg:mt-12">
-          All product names and logos are trademarks of their respective owners.
-        </p>
+        {/* Marquee Container */}
+        <div className="relative -mx-4 sm:-mx-6 lg:-mx-8">
+          {/* Left fade */}
+          <div className="absolute left-0 top-0 bottom-0 w-20 sm:w-32 lg:w-48 bg-gradient-to-r from-background via-background/80 to-transparent z-10 pointer-events-none" />
+          
+          {/* Right fade */}
+          <div className="absolute right-0 top-0 bottom-0 w-20 sm:w-32 lg:w-48 bg-gradient-to-l from-background via-background/80 to-transparent z-10 pointer-events-none" />
+
+          {/* Top row - moves left */}
+          <MarqueeRow 
+            tools={topRow}
+            direction="left"
+            speed={35}
+            loadedLogos={loadedLogos}
+            onLogoLoad={handleLogoLoad}
+            offset={0}
+          />
+          
+          {/* Bottom row - moves right */}
+          <MarqueeRow 
+            tools={bottomRow}
+            direction="right"
+            speed={30}
+            loadedLogos={loadedLogos}
+            onLogoLoad={handleLogoLoad}
+            offset={11}
+          />
+        </div>
+
+        {/* CTA */}
+        <motion.div 
+          className="flex flex-col items-center gap-4 mt-16 lg:mt-20"
+          style={{ opacity: parallaxOpacity }}
+        >
+          <Button 
+            asChild
+            size="lg"
+            className="group px-8 h-12 text-base"
+          >
+            <Link to="/integrations">
+              Explore all integrations
+              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </Button>
+          <Link 
+            to="/how-nimara-works"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors underline-offset-4 hover:underline"
+          >
+            See how we set this up
+          </Link>
+        </motion.div>
       </div>
+
+      {/* Legal Footnote */}
+      <p className="text-center text-[11px] text-muted-foreground/50 mt-16 lg:mt-20">
+        All product names and logos are trademarks of their respective owners.
+      </p>
     </section>
   );
 };
