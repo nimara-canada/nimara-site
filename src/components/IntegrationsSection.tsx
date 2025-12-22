@@ -13,14 +13,14 @@ import docusignLogo from "@/assets/integrations/docusign.webp";
 import zoomLogo from "@/assets/integrations/zoom-new.png";
 import sageLogo from "@/assets/integrations/sage.svg";
 import xeroLogo from "@/assets/integrations/xero.svg";
-import mailchimpLogo from "@/assets/integrations/mailchimp.png";
+import mailchimpLogo from "@/assets/integrations/mailchimp-new.webp";
 import notionLogo from "@/assets/integrations/notion.svg";
 import microsoft365Logo from "@/assets/integrations/microsoft-365.svg";
 import canvaLogo from "@/assets/integrations/canva.avif";
-import eventbriteLogo from "@/assets/integrations/eventbrite.png";
+import eventbriteLogo from "@/assets/integrations/eventbrite-new.png";
 import bloomerangLogo from "@/assets/integrations/bloomerang.png";
 import airtableLogo from "@/assets/integrations/airtable.webp";
-import softrLogo from "@/assets/integrations/softr-new.png";
+import softrLogo from "@/assets/integrations/softr-icon.webp";
 import salesforceLogo from "@/assets/integrations/salesforce-new.png";
 
 // Tool data - tools with working logos
