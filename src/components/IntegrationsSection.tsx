@@ -23,12 +23,12 @@ import notionLogo from "@/assets/integrations/notion.svg";
 import surveymonkeyLogo from "@/assets/integrations/surveymonkey.svg";
 import blackbaudLogo from "@/assets/integrations/blackbaud.svg";
 import microsoft365Logo from "@/assets/integrations/microsoft-365.svg";
-import dextLogo from "@/assets/integrations/dext.svg";
-import plootoLogo from "@/assets/integrations/plooto.svg";
-import canadahelpsLogo from "@/assets/integrations/canadahelps.svg";
-import keelaLogo from "@/assets/integrations/keela.svg";
+import dextLogo from "@/assets/integrations/dext.png";
+import plootoLogo from "@/assets/integrations/plooto.png";
+import canadahelpsLogo from "@/assets/integrations/canadahelps.png";
+import keelaLogo from "@/assets/integrations/keela.png";
 import betterImpactLogo from "@/assets/integrations/better-impact.svg";
-import diligentLogo from "@/assets/integrations/diligent.svg";
+import diligentLogo from "@/assets/integrations/diligent.png";
 
 // Tool data with categories - 20 nonprofit tools
 const tools = [
