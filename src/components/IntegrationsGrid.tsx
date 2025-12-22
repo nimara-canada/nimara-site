@@ -3,25 +3,25 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 // Import logos
-import slackLogo from "@/assets/integrations/slack.svg";
+import slackLogo from "@/assets/integrations/slack.webp";
 import quickbooksLogo from "@/assets/integrations/quickbooks.svg";
 import mondayLogo from "@/assets/integrations/monday.svg";
-import googleWorkspaceLogo from "@/assets/integrations/google-workspace.svg";
+import googleWorkspaceLogo from "@/assets/integrations/google-workspace.png";
 import asanaLogo from "@/assets/integrations/asana.svg";
-import docusignLogo from "@/assets/integrations/docusign.svg";
+import docusignLogo from "@/assets/integrations/docusign.webp";
 import salesforceLogo from "@/assets/integrations/salesforce.svg";
 import zoomLogo from "@/assets/integrations/zoom.svg";
 import sageLogo from "@/assets/integrations/sage.svg";
 import xeroLogo from "@/assets/integrations/xero.svg";
-import mailchimpLogo from "@/assets/integrations/mailchimp.svg";
+import mailchimpLogo from "@/assets/integrations/mailchimp.png";
 import notionLogo from "@/assets/integrations/notion.svg";
-import surveymonkeyLogo from "@/assets/integrations/surveymonkey.svg";
-import blackbaudLogo from "@/assets/integrations/blackbaud.svg";
+import surveymonkeyLogo from "@/assets/integrations/surveymonkey.webp";
+import blackbaudLogo from "@/assets/integrations/blackbaud.webp";
 import microsoft365Logo from "@/assets/integrations/microsoft-365.svg";
 import dextLogo from "@/assets/integrations/dext.png";
-import plootoLogo from "@/assets/integrations/plooto.png";
-import canadahelpsLogo from "@/assets/integrations/canadahelps.png";
-import keelaLogo from "@/assets/integrations/keela.png";
+import plootoLogo from "@/assets/integrations/plooto-new.png";
+import canadahelpsLogo from "@/assets/integrations/canadahelps-new.png";
+import keelaLogo from "@/assets/integrations/keela-new.png";
 import betterImpactLogo from "@/assets/integrations/better-impact.svg";
 import diligentLogo from "@/assets/integrations/diligent.png";
 
