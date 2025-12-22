@@ -25,7 +25,8 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Sending tool request notification for:", { name, email, tool_name });
 
-    const emailHtml = `
+    // Email to Nimara team
+    const adminEmailHtml = `
       <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
         <h2 style="color: #202654; margin-bottom: 24px;">New Integration Request</h2>
         
@@ -50,28 +51,85 @@ const handler = async (req: Request): Promise<Response> => {
       </div>
     `;
 
-    const res = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${RESEND_API_KEY}`,
-      },
-      body: JSON.stringify({
-        from: "Nimara <onboarding@resend.dev>",
-        to: ["hello@nimara.ca"],
-        subject: `New Tool Request: ${tool_name}`,
-        html: emailHtml,
+    // Confirmation email to requester
+    const confirmationEmailHtml = `
+      <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+        <h2 style="color: #202654; margin-bottom: 24px;">We received your request!</h2>
+        
+        <p style="color: #333; font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
+          Hi ${name},
+        </p>
+        
+        <p style="color: #333; font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
+          Thank you for requesting support for <strong>${tool_name}</strong>. We've added your request to our integration roadmap and will prioritize based on demand.
+        </p>
+        
+        <div style="background-color: #f8f9fa; border-radius: 8px; padding: 20px; margin-bottom: 20px;">
+          <p style="margin: 0 0 8px 0; color: #666; font-size: 14px;"><strong>Your request:</strong></p>
+          <p style="margin: 0; color: #333;">${tool_name}</p>
+          ${message ? `<p style="margin: 12px 0 0 0; color: #666; font-size: 14px;">${message}</p>` : ''}
+        </div>
+        
+        <p style="color: #333; font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
+          If this integration moves forward, we'll reach out to let you know. In the meantime, feel free to <a href="https://calendly.com/hello-nimara/30min" style="color: #7C3AED;">schedule a call</a> if you'd like to discuss your needs further.
+        </p>
+        
+        <p style="color: #333; font-size: 16px; line-height: 1.6; margin-bottom: 8px;">
+          Best,
+        </p>
+        <p style="color: #333; font-size: 16px; line-height: 1.6; margin: 0;">
+          The Nimara Team
+        </p>
+        
+        <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 24px 0;" />
+        
+        <p style="color: #888; font-size: 12px; margin: 0;">
+          You're receiving this email because you submitted an integration request on nimara.ca
+        </p>
+      </div>
+    `;
+
+    // Send both emails in parallel
+    const [adminRes, userRes] = await Promise.all([
+      fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${RESEND_API_KEY}`,
+        },
+        body: JSON.stringify({
+          from: "Nimara <onboarding@resend.dev>",
+          to: ["hello@nimara.ca"],
+          subject: `New Tool Request: ${tool_name}`,
+          html: adminEmailHtml,
+        }),
       }),
-    });
+      fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${RESEND_API_KEY}`,
+        },
+        body: JSON.stringify({
+          from: "Nimara <onboarding@resend.dev>",
+          to: [email],
+          subject: "We received your integration request",
+          html: confirmationEmailHtml,
+        }),
+      }),
+    ]);
 
-    const data = await res.json();
+    const adminData = await adminRes.json();
+    const userData = await userRes.json();
 
-    if (!res.ok) {
-      console.error("Resend API error:", data);
-      throw new Error(data.message || "Failed to send email");
+    if (!adminRes.ok) {
+      console.error("Resend API error (admin):", adminData);
+    }
+    if (!userRes.ok) {
+      console.error("Resend API error (user):", userData);
     }
 
-    console.log("Email sent successfully:", data);
+    console.log("Emails sent successfully:", { admin: adminData, user: userData });
 
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
