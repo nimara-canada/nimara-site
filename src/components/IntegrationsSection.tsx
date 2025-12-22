@@ -2,13 +2,20 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 
-const toolCategories = [
-  "Email & Calendar",
-  "Accounting",
-  "Payroll",
-  "Donors & CRM",
-  "Payments",
-  "Project Tracking"
+import slackLogo from "@/assets/integrations/slack.svg";
+import quickbooksLogo from "@/assets/integrations/quickbooks.svg";
+import stripeLogo from "@/assets/integrations/stripe.svg";
+import mondayLogo from "@/assets/integrations/monday.svg";
+import googleLogo from "@/assets/integrations/google.svg";
+import calendarLogo from "@/assets/integrations/google-calendar.svg";
+
+const tools = [
+  { name: "Slack", logo: slackLogo, category: "Communication" },
+  { name: "QuickBooks", logo: quickbooksLogo, category: "Payroll & Accounting" },
+  { name: "Stripe", logo: stripeLogo, category: "Payments" },
+  { name: "Monday.com", logo: mondayLogo, category: "Project Tracking" },
+  { name: "Google Suite", logo: googleLogo, category: "Productivity" },
+  { name: "Calendar", logo: calendarLogo, category: "Scheduling" },
 ];
 
 export const IntegrationsSection = () => {
@@ -58,23 +65,35 @@ export const IntegrationsSection = () => {
           </motion.p>
         </div>
 
-        {/* Tool Categories as Tags */}
+        {/* Tool Logos Grid */}
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-wrap gap-3 mb-12"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-6 mb-12"
         >
-          {toolCategories.map((category, index) => (
-            <motion.span
-              key={category}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.4, delay: 0.3 + index * 0.05 }}
-              className="px-4 py-2 border border-border rounded-full text-sm text-foreground hover:border-primary/50 hover:bg-muted/30 transition-colors duration-300"
+          {tools.map((tool, index) => (
+            <motion.div
+              key={tool.name}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.3 + index * 0.08 }}
+              className="group relative flex flex-col items-center justify-center p-6 lg:p-8 rounded-2xl border border-border bg-background hover:border-foreground/20 hover:shadow-lg transition-all duration-300"
             >
-              {category}
-            </motion.span>
+              <div className="w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center mb-4 grayscale group-hover:grayscale-0 transition-all duration-300">
+                <img 
+                  src={tool.logo} 
+                  alt={`${tool.name} logo`}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <span className="text-sm font-medium text-foreground text-center">
+                {tool.name}
+              </span>
+              <span className="text-[10px] text-muted-foreground mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                {tool.category}
+              </span>
+            </motion.div>
           ))}
         </motion.div>
 
