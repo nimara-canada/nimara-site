@@ -80,13 +80,24 @@ export const IntegrationsSection = () => {
               transition={{ duration: 0.5, delay: 0.3 + index * 0.08 }}
               className="group relative flex flex-col items-center justify-center p-6 lg:p-8 rounded-2xl border border-border bg-background hover:border-foreground/20 hover:shadow-lg transition-all duration-300"
             >
-              <div className="w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center mb-4 grayscale group-hover:grayscale-0 transition-all duration-300">
+              <motion.div 
+                className="w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center mb-4 grayscale group-hover:grayscale-0 transition-all duration-300"
+                animate={{ 
+                  y: [0, -6, 0],
+                }}
+                transition={{
+                  duration: 3 + index * 0.3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: index * 0.2,
+                }}
+              >
                 <img 
                   src={tool.logo} 
                   alt={`${tool.name} logo`}
                   className="w-full h-full object-contain"
                 />
-              </div>
+              </motion.div>
               <span className="text-sm font-medium text-foreground text-center">
                 {tool.name}
               </span>
