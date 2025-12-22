@@ -69,7 +69,7 @@ const LogoChip = ({
 }) => {
   return (
     <div 
-      className="group relative flex flex-col items-center justify-center p-5 sm:p-6 lg:p-8 rounded-xl bg-white border border-border/50 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 cursor-pointer min-w-[140px] sm:min-w-[160px] lg:min-w-[180px] h-[120px] sm:h-[140px] lg:h-[160px]"
+      className="group relative flex flex-col items-center justify-center gap-3 p-5 sm:p-6 lg:p-8 rounded-xl bg-white border border-border/50 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 cursor-pointer min-w-[140px] sm:min-w-[160px] lg:min-w-[180px] h-[140px] sm:h-[160px] lg:h-[180px]"
       title={tool.name}
     >
       {/* Skeleton loader */}
@@ -93,9 +93,9 @@ const LogoChip = ({
         />
       </div>
       
-      {/* Tool name - visible on hover */}
+      {/* Tool name - always visible */}
       <span className={cn(
-        "absolute bottom-2 left-0 right-0 text-center text-xs sm:text-sm font-medium text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300",
+        "text-center text-xs sm:text-sm font-medium text-muted-foreground transition-colors group-hover:text-foreground",
         isLoaded ? "block" : "hidden"
       )}>
         {tool.name}
