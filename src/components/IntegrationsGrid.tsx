@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Search, X } from "lucide-react";
+import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
 // Import logos
@@ -132,10 +134,15 @@ const ToolCard = ({ tool, index }: { tool: typeof tools[0]; index: number }) => 
 
 export const IntegrationsGrid = () => {
   const [activeCategory, setActiveCategory] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredTools = activeCategory === "all" 
-    ? tools 
-    : tools.filter(tool => tool.category === activeCategory);
+  const filteredTools = tools.filter(tool => {
+    const matchesCategory = activeCategory === "all" || tool.category === activeCategory;
+    const matchesSearch = searchQuery === "" || 
+      tool.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      tool.description.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
 
   const activeLabel = categories.find(c => c.id === activeCategory);
 
@@ -155,8 +162,28 @@ export const IntegrationsGrid = () => {
           All Supported Tools
         </h2>
         <p className="text-muted-foreground">
-          Filter by category to find the tools you use
+          Filter by category or search to find the tools you use
         </p>
+      </div>
+
+      {/* Search Bar */}
+      <div className="relative mb-6">
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+        <Input
+          type="text"
+          placeholder="Search integrations..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="pl-12 pr-10 h-12 text-base rounded-xl border-border/50 bg-muted/30 focus:bg-background transition-colors"
+        />
+        {searchQuery && (
+          <button
+            onClick={() => setSearchQuery("")}
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        )}
       </div>
 
       {/* Category Filter Tabs */}
@@ -205,7 +232,19 @@ export const IntegrationsGrid = () => {
       {/* Empty State */}
       {filteredTools.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-muted-foreground">No tools found in this category.</p>
+          <p className="text-muted-foreground">
+            {searchQuery 
+              ? `No tools found matching "${searchQuery}"` 
+              : "No tools found in this category."}
+          </p>
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery("")}
+              className="mt-4 text-sm text-primary hover:underline"
+            >
+              Clear search
+            </button>
+          )}
         </div>
       )}
 
