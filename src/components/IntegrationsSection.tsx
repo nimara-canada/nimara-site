@@ -69,19 +69,19 @@ const LogoChip = ({
 }) => {
   return (
     <div 
-      className="group relative flex flex-col items-center justify-center p-4 sm:p-5 lg:p-6 rounded-xl bg-white border border-border/50 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 cursor-pointer min-w-[120px] sm:min-w-[140px] lg:min-w-[160px] h-[100px] sm:h-[110px] lg:h-[120px]"
+      className="group relative flex flex-col items-center justify-center p-5 sm:p-6 lg:p-8 rounded-xl bg-white border border-border/50 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 cursor-pointer min-w-[140px] sm:min-w-[160px] lg:min-w-[180px] h-[120px] sm:h-[140px] lg:h-[160px]"
       title={tool.name}
     >
       {/* Skeleton loader */}
       {!isLoaded && (
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-10 h-10 bg-muted animate-pulse rounded-lg" />
+          <div className="w-16 h-16 bg-muted animate-pulse rounded-lg" />
         </div>
       )}
       
       {/* Logo */}
       <div className={cn(
-        "w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center transition-opacity duration-300",
+        "w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 flex items-center justify-center transition-opacity duration-300",
         isLoaded ? "opacity-100" : "opacity-0"
       )}>
         <img 
@@ -95,7 +95,7 @@ const LogoChip = ({
       
       {/* Tool name - visible on hover */}
       <span className={cn(
-        "absolute bottom-2 left-0 right-0 text-center text-[10px] sm:text-xs font-medium text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300",
+        "absolute bottom-2 left-0 right-0 text-center text-xs sm:text-sm font-medium text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300",
         isLoaded ? "block" : "hidden"
       )}>
         {tool.name}
