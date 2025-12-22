@@ -100,7 +100,7 @@ export const TwoWaysSection = () => {
                   relative h-full p-8 lg:p-10 rounded-2xl transition-all duration-500
                   ${isFeatured 
                     ? 'bg-foreground text-background shadow-2xl shadow-foreground/10' 
-                    : 'bg-background border border-border hover:border-foreground/15 hover:shadow-xl hover:shadow-foreground/5'
+                    : 'bg-background/60 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.04)] hover:bg-background/80 hover:shadow-[0_16px_48px_rgba(0,0,0,0.08)] hover:border-white/30'
                   }
                 `}>
                   {/* Featured indicator */}
