@@ -28,34 +28,23 @@ import keelaLogo from "@/assets/integrations/keela-new.png";
 import betterImpactLogo from "@/assets/integrations/better-impact.svg";
 import diligentLogo from "@/assets/integrations/diligent.png";
 
-// Tool data - 21 nonprofit tools
+// Tool data - only tools with working logos
 const tools = [
   { name: "Microsoft 365", logo: microsoft365Logo },
-  { name: "Google Workspace", logo: googleWorkspaceLogo },
   { name: "Zoom", logo: zoomLogo },
-  { name: "Diligent Boards", logo: diligentLogo },
   { name: "DocuSign", logo: docusignLogo },
   { name: "QuickBooks", logo: quickbooksLogo },
   { name: "Sage", logo: sageLogo },
   { name: "Xero", logo: xeroLogo },
-  { name: "Dext", logo: dextLogo },
-  { name: "Plooto", logo: plootoLogo },
-  { name: "CanadaHelps", logo: canadahelpsLogo },
-  { name: "Keela", logo: keelaLogo },
-  { name: "Salesforce", logo: salesforceLogo },
-  { name: "Blackbaud", logo: blackbaudLogo },
   { name: "Mailchimp", logo: mailchimpLogo },
   { name: "Notion", logo: notionLogo },
   { name: "Asana", logo: asanaLogo },
-  { name: "monday.com", logo: mondayLogo },
-  { name: "SurveyMonkey", logo: surveymonkeyLogo },
-  { name: "Better Impact", logo: betterImpactLogo },
   { name: "Slack", logo: slackLogo },
 ];
 
 // Split tools into two rows for marquee
-const topRow = tools.slice(0, 11);
-const bottomRow = tools.slice(11);
+const topRow = tools.slice(0, 5);
+const bottomRow = tools.slice(5);
 
 const LogoOrb = ({ 
   tool, 
