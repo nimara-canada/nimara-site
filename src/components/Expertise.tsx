@@ -1,40 +1,56 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { 
+  Users, 
+  DollarSign, 
+  UserCheck, 
+  Briefcase, 
+  Heart, 
+  HandHeart, 
+  Database 
+} from 'lucide-react';
 
 const domains = [
   { 
     title: "Board & Governance", 
-    desc: "Clear roles, rules, and meetings",
+    desc: "Establish clear roles, policies, and meeting structures that keep your board effective and accountable.",
+    icon: Users,
     examples: ["Board roles & responsibilities", "Meeting agendas & minutes", "Conflict of interest policy"]
   },
   { 
     title: "Money & Compliance", 
-    desc: "Budgets, controls, and audit readiness",
+    desc: "Build financial controls, budgeting processes, and audit-ready systems that satisfy funders.",
+    icon: DollarSign,
     examples: ["Budget approval process", "Monthly reconciliations", "Audit readiness checklist"]
   },
   { 
     title: "People & HR", 
-    desc: "Hiring, policies, and performance",
+    desc: "Create structured hiring, onboarding, and performance management systems for your team.",
+    icon: UserCheck,
     examples: ["Job descriptions", "Onboarding steps", "HR policy manual"]
   },
   { 
     title: "Programs & Services", 
-    desc: "Delivery, safety, and reviews",
+    desc: "Design delivery systems with proper intake, safety logging, and annual review processes.",
+    icon: Briefcase,
     examples: ["Intake procedures", "Safety logging", "Annual program review"]
   },
   { 
     title: "Fundraising & Donors", 
-    desc: "Gifts, receipting, and records",
+    desc: "Implement gift acceptance policies, receipting workflows, and donor stewardship practices.",
+    icon: Heart,
     examples: ["Gift acceptance policy", "Receipting checklist", "Donor records"]
   },
   { 
     title: "Volunteers", 
-    desc: "Agreements, training, and safety",
+    desc: "Set up volunteer agreements, screening processes, and training systems that protect everyone.",
+    icon: HandHeart,
     examples: ["Volunteer agreements", "Screening process", "Training records"]
   },
   { 
     title: "Systems & Records", 
-    desc: "Files, dashboards, and data protection",
+    desc: "Organize files, dashboards, and data protection so nothing gets lost or exposed.",
+    icon: Database,
     examples: ["Folder structure", "Naming conventions", "Data backup policy"]
   }
 ];
@@ -47,23 +63,23 @@ export const Expertise = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-20 md:py-28 bg-muted/30 overflow-hidden"
+      className="relative py-24 md:py-32 bg-[#1a1f2e] overflow-hidden"
       aria-labelledby="expertise-heading"
       id="expertise"
     >
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Editorial Header */}
-        <div className="mb-12 lg:mb-16">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="mb-16 lg:mb-20 max-w-3xl">
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.8 }}
             className="flex items-center gap-4 mb-8"
           >
-            <span className="text-xs font-medium tracking-[0.2em] uppercase text-muted-foreground">
+            <span className="text-xs font-medium tracking-[0.2em] uppercase text-white/50">
               What We Cover
             </span>
-            <div className="h-px flex-1 bg-border" />
+            <div className="h-px flex-1 bg-white/10 max-w-[100px]" />
           </motion.div>
           
           <motion.h2
@@ -71,100 +87,119 @@ export const Expertise = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
             id="expertise-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-[1.1] mb-6"
+            className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-[1.08] text-white mb-6"
+            style={{ fontFamily: "'DM Serif Display', Georgia, serif" }}
           >
-            Seven Domains
+            Seven domains that keep
             <br />
-            <span className="font-normal italic text-muted-foreground">That Keep Nonprofits Running</span>
+            <span className="italic text-white/70">nonprofits running</span>
           </motion.h2>
           
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg text-muted-foreground max-w-lg"
+            className="text-lg text-white/60 max-w-xl leading-relaxed"
           >
-            The critical systems that keep your nonprofit safe, fundable, and easier to run.
+            We're built to give you the structure and clarity to run your organization 
+            while focusing on what matters most — your mission and community.
           </motion.p>
         </div>
 
-        {/* Domain Grid */}
+        {/* Domain Grid - 4 columns on desktop, 2 on tablet, 1 on mobile */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
         >
-          {domains.map((domain, index) => (
-            <motion.div
-              key={domain.title}
-              initial={{ opacity: 0, y: 10 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: 0.3 + index * 0.05 }}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              className="group relative p-5 bg-background border border-border rounded-lg hover:border-primary/30 hover:shadow-sm transition-all duration-300 cursor-default overflow-hidden"
-              style={{ minHeight: '140px' }}
-            >
-              {/* Default Content */}
+          {domains.map((domain, index) => {
+            const IconComponent = domain.icon;
+            const isHovered = hoveredIndex === index;
+            
+            return (
               <motion.div
-                animate={{
-                  opacity: hoveredIndex === index ? 0 : 1,
-                  y: hoveredIndex === index ? -8 : 0
-                }}
-                transition={{ duration: 0.2 }}
-              >
-                <span className="text-xs font-medium text-primary/60 mb-2 block">
-                  0{index + 1}
-                </span>
-                <h3 className="text-base font-medium text-foreground group-hover:text-primary transition-colors mb-1">
-                  {domain.title}
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  {domain.desc}
-                </p>
-              </motion.div>
-
-              {/* Hover Examples */}
-              <motion.div
-                className="absolute inset-0 p-5 flex flex-col justify-center bg-primary/5 rounded-lg"
+                key={domain.title}
                 initial={{ opacity: 0, y: 16 }}
-                animate={{
-                  opacity: hoveredIndex === index ? 1 : 0,
-                  y: hoveredIndex === index ? 0 : 16
-                }}
-                transition={{ duration: 0.25 }}
-                style={{ pointerEvents: hoveredIndex === index ? 'auto' : 'none' }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.3 + index * 0.06 }}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                className="group relative bg-[#252b3b] rounded-2xl p-6 transition-all duration-300 cursor-default overflow-hidden hover:bg-[#2a3142]"
+                style={{ minHeight: '220px' }}
               >
-                <span className="text-xs font-semibold uppercase tracking-wider text-primary mb-3">
-                  {domain.title}
-                </span>
-                <ul className="space-y-1.5">
-                  {domain.examples.map((example, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-sm text-foreground">
-                      <span className="w-1 h-1 rounded-full bg-primary/50 flex-shrink-0" />
-                      {example}
-                    </li>
-                  ))}
-                </ul>
+                {/* Icon */}
+                <motion.div
+                  className="mb-5"
+                  animate={{
+                    scale: isHovered ? 1.05 : 1,
+                  }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
+                    <IconComponent className="w-5 h-5 text-white/80" strokeWidth={1.5} />
+                  </div>
+                </motion.div>
+
+                {/* Content */}
+                <motion.div
+                  animate={{
+                    opacity: isHovered ? 0 : 1,
+                    y: isHovered ? -8 : 0
+                  }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <h3 className="text-lg font-semibold text-white mb-3 leading-tight">
+                    {domain.title}
+                  </h3>
+                  <p className="text-sm text-white/50 leading-relaxed">
+                    {domain.desc}
+                  </p>
+                </motion.div>
+
+                {/* Hover Examples */}
+                <motion.div
+                  className="absolute inset-0 p-6 pt-20 flex flex-col justify-start"
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{
+                    opacity: isHovered ? 1 : 0,
+                    y: isHovered ? 0 : 16
+                  }}
+                  transition={{ duration: 0.25 }}
+                  style={{ pointerEvents: isHovered ? 'auto' : 'none' }}
+                >
+                  <span className="text-xs font-semibold uppercase tracking-wider text-primary mb-4">
+                    Example deliverables
+                  </span>
+                  <ul className="space-y-2">
+                    {domain.examples.map((example, idx) => (
+                      <li key={idx} className="flex items-start gap-2.5 text-sm text-white/80">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary/70 flex-shrink-0 mt-1.5" />
+                        {example}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
               </motion.div>
-            </motion.div>
-          ))}
+            );
+          })}
         </motion.div>
 
         {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="pt-8 border-t border-border"
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mt-16 pt-8 border-t border-white/10"
         >
           <a
             href="#hero-form"
-            className="group inline-flex items-center gap-3 text-foreground font-medium"
+            className="group inline-flex items-center gap-4 text-white font-medium"
           >
-            <span className="group-hover:text-primary transition-colors">See where you stand in each area</span>
-            <span className="w-8 h-px bg-foreground group-hover:w-12 group-hover:bg-primary transition-all duration-300" />
+            <span className="group-hover:text-primary transition-colors duration-200">
+              See where you stand in each area
+            </span>
+            <span className="w-8 h-px bg-white/40 group-hover:w-14 group-hover:bg-primary transition-all duration-300" />
           </a>
         </motion.div>
       </div>
