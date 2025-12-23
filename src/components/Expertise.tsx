@@ -63,7 +63,7 @@ export const Expertise = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-24 md:py-32 bg-[#1a1f2e] overflow-hidden"
+      className="relative py-24 md:py-32 bg-background overflow-hidden"
       aria-labelledby="expertise-heading"
       id="expertise"
     >
@@ -76,10 +76,10 @@ export const Expertise = () => {
             transition={{ duration: 0.8 }}
             className="flex items-center gap-4 mb-8"
           >
-            <span className="text-xs font-medium tracking-[0.2em] uppercase text-white/50">
+            <span className="text-xs font-medium tracking-[0.2em] uppercase text-muted-foreground">
               What We Cover
             </span>
-            <div className="h-px flex-1 bg-white/10 max-w-[100px]" />
+            <div className="h-px flex-1 bg-border max-w-[100px]" />
           </motion.div>
           
           <motion.h2
@@ -87,19 +87,19 @@ export const Expertise = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
             id="expertise-heading"
-            className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-[1.08] text-white mb-6"
+            className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-[1.08] text-foreground mb-6"
             style={{ fontFamily: "'DM Serif Display', Georgia, serif" }}
           >
             Seven domains that keep
             <br />
-            <span className="italic text-white/70">nonprofits running</span>
+            <span className="italic text-muted-foreground">nonprofits running</span>
           </motion.h2>
           
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg text-white/60 max-w-xl leading-relaxed"
+            className="text-lg text-muted-foreground max-w-xl leading-relaxed"
           >
             We're built to give you the structure and clarity to run your organization 
             while focusing on what matters most — your mission and community.
@@ -125,7 +125,7 @@ export const Expertise = () => {
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.06 }}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                className="group relative bg-[#252b3b] rounded-2xl p-6 transition-all duration-300 cursor-default overflow-hidden hover:bg-[#2a3142]"
+                className="group relative bg-muted rounded-2xl p-6 transition-all duration-300 cursor-default overflow-hidden hover:bg-muted/80 border border-border/50"
                 style={{ minHeight: '220px' }}
               >
                 {/* Icon */}
@@ -136,8 +136,8 @@ export const Expertise = () => {
                   }}
                   transition={{ duration: 0.2 }}
                 >
-                  <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                    <IconComponent className="w-5 h-5 text-white/80" strokeWidth={1.5} />
+                  <div className="w-12 h-12 rounded-xl bg-background border border-border flex items-center justify-center">
+                    <IconComponent className="w-5 h-5 text-foreground/80" strokeWidth={1.5} />
                   </div>
                 </motion.div>
 
@@ -149,10 +149,10 @@ export const Expertise = () => {
                   }}
                   transition={{ duration: 0.2 }}
                 >
-                  <h3 className="text-lg font-semibold text-white mb-3 leading-tight">
+                  <h3 className="text-lg font-semibold text-foreground mb-3 leading-tight">
                     {domain.title}
                   </h3>
-                  <p className="text-sm text-white/50 leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {domain.desc}
                   </p>
                 </motion.div>
@@ -173,7 +173,7 @@ export const Expertise = () => {
                   </span>
                   <ul className="space-y-2">
                     {domain.examples.map((example, idx) => (
-                      <li key={idx} className="flex items-start gap-2.5 text-sm text-white/80">
+                      <li key={idx} className="flex items-start gap-2.5 text-sm text-foreground/80">
                         <span className="w-1.5 h-1.5 rounded-full bg-primary/70 flex-shrink-0 mt-1.5" />
                         {example}
                       </li>
@@ -190,16 +190,16 @@ export const Expertise = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-16 pt-8 border-t border-white/10"
+          className="mt-16 pt-8 border-t border-border"
         >
           <a
             href="#hero-form"
-            className="group inline-flex items-center gap-4 text-white font-medium"
+            className="group inline-flex items-center gap-4 text-foreground font-medium"
           >
             <span className="group-hover:text-primary transition-colors duration-200">
               See where you stand in each area
             </span>
-            <span className="w-8 h-px bg-white/40 group-hover:w-14 group-hover:bg-primary transition-all duration-300" />
+            <span className="w-8 h-px bg-foreground/40 group-hover:w-14 group-hover:bg-primary transition-all duration-300" />
           </a>
         </motion.div>
       </div>
