@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { 
   Users, 
@@ -7,200 +7,149 @@ import {
   Briefcase, 
   Heart, 
   HandHeart, 
-  Database 
+  Database,
+  ArrowRight
 } from 'lucide-react';
 
 const domains = [
   { 
     title: "Board & Governance", 
-    desc: "Establish clear roles, policies, and meeting structures that keep your board effective and accountable.",
+    desc: "Clear roles, policies, and meeting structures that keep your board effective.",
     icon: Users,
-    examples: ["Board roles & responsibilities", "Meeting agendas & minutes", "Conflict of interest policy"]
   },
   { 
     title: "Money & Compliance", 
-    desc: "Build financial controls, budgeting processes, and audit-ready systems that satisfy funders.",
+    desc: "Financial controls, budgeting processes, and audit-ready systems.",
     icon: DollarSign,
-    examples: ["Budget approval process", "Monthly reconciliations", "Audit readiness checklist"]
   },
   { 
     title: "People & HR", 
-    desc: "Create structured hiring, onboarding, and performance management systems for your team.",
+    desc: "Structured hiring, onboarding, and performance management.",
     icon: UserCheck,
-    examples: ["Job descriptions", "Onboarding steps", "HR policy manual"]
   },
   { 
     title: "Programs & Services", 
-    desc: "Design delivery systems with proper intake, safety logging, and annual review processes.",
+    desc: "Delivery systems with proper intake, logging, and review processes.",
     icon: Briefcase,
-    examples: ["Intake procedures", "Safety logging", "Annual program review"]
   },
   { 
     title: "Fundraising & Donors", 
-    desc: "Implement gift acceptance policies, receipting workflows, and donor stewardship practices.",
+    desc: "Gift policies, receipting workflows, and donor stewardship.",
     icon: Heart,
-    examples: ["Gift acceptance policy", "Receipting checklist", "Donor records"]
   },
   { 
     title: "Volunteers", 
-    desc: "Set up volunteer agreements, screening processes, and training systems that protect everyone.",
+    desc: "Agreements, screening processes, and training systems.",
     icon: HandHeart,
-    examples: ["Volunteer agreements", "Screening process", "Training records"]
   },
   { 
     title: "Systems & Records", 
-    desc: "Organize files, dashboards, and data protection so nothing gets lost or exposed.",
+    desc: "Organized files, dashboards, and data protection.",
     icon: Database,
-    examples: ["Folder structure", "Naming conventions", "Data backup policy"]
   }
 ];
 
 export const Expertise = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
     <section 
       ref={sectionRef}
-      className="relative py-24 md:py-32 bg-background overflow-hidden"
+      className="relative py-28 md:py-36 bg-background overflow-hidden"
       aria-labelledby="expertise-heading"
       id="expertise"
     >
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-16 lg:mb-20 max-w-3xl">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.8 }}
-            className="flex items-center gap-4 mb-8"
+        <div className="text-center mb-20 lg:mb-24">
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="inline-block text-[11px] font-semibold tracking-[0.25em] uppercase text-primary mb-6"
           >
-            <span className="text-xs font-medium tracking-[0.2em] uppercase text-muted-foreground">
-              What We Cover
-            </span>
-            <div className="h-px flex-1 bg-border max-w-[100px]" />
-          </motion.div>
+            What We Cover
+          </motion.span>
           
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
             id="expertise-heading"
-            className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-[1.08] text-foreground mb-6"
-            style={{ fontFamily: "'DM Serif Display', Georgia, serif" }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight leading-[1.15] text-foreground mb-6"
           >
             Seven domains that keep
             <br />
-            <span className="italic text-muted-foreground">nonprofits running</span>
+            nonprofits running
           </motion.h2>
           
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg text-muted-foreground max-w-xl leading-relaxed"
+            className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed"
           >
-            We're built to give you the structure and clarity to run your organization 
-            while focusing on what matters most — your mission and community.
+            Structure and clarity to run your organization while focusing on what matters most.
           </motion.p>
         </div>
 
-        {/* Domain Grid - 4 columns on desktop, 2 on tablet, 1 on mobile */}
+        {/* Domain Grid */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4"
         >
           {domains.map((domain, index) => {
             const IconComponent = domain.icon;
-            const isHovered = hoveredIndex === index;
             
             return (
               <motion.div
                 key={domain.title}
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.3 + index * 0.06 }}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                className="group relative bg-muted rounded-2xl p-6 transition-all duration-300 cursor-default overflow-hidden hover:bg-muted/80 border border-border/50"
-                style={{ minHeight: '220px' }}
+                transition={{ duration: 0.5, delay: 0.35 + index * 0.05 }}
+                className="group relative bg-card border border-border/60 rounded-2xl p-5 sm:p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
               >
                 {/* Icon */}
-                <motion.div
-                  className="mb-5"
-                  animate={{
-                    scale: isHovered ? 1.05 : 1,
-                  }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <div className="w-12 h-12 rounded-xl bg-background border border-border flex items-center justify-center">
-                    <IconComponent className="w-5 h-5 text-foreground/80" strokeWidth={1.5} />
-                  </div>
-                </motion.div>
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/15 transition-colors duration-300">
+                  <IconComponent className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-primary" strokeWidth={1.8} />
+                </div>
 
                 {/* Content */}
-                <motion.div
-                  animate={{
-                    opacity: isHovered ? 0 : 1,
-                    y: isHovered ? -8 : 0
-                  }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <h3 className="text-lg font-semibold text-foreground mb-3 leading-tight">
-                    {domain.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {domain.desc}
-                  </p>
-                </motion.div>
-
-                {/* Hover Examples */}
-                <motion.div
-                  className="absolute inset-0 p-6 pt-20 flex flex-col justify-start"
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{
-                    opacity: isHovered ? 1 : 0,
-                    y: isHovered ? 0 : 16
-                  }}
-                  transition={{ duration: 0.25 }}
-                  style={{ pointerEvents: isHovered ? 'auto' : 'none' }}
-                >
-                  <span className="text-xs font-semibold uppercase tracking-wider text-primary mb-4">
-                    Example deliverables
-                  </span>
-                  <ul className="space-y-2">
-                    {domain.examples.map((example, idx) => (
-                      <li key={idx} className="flex items-start gap-2.5 text-sm text-foreground/80">
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary/70 flex-shrink-0 mt-1.5" />
-                        {example}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
+                <h3 className="text-sm sm:text-base font-semibold text-foreground mb-2 leading-tight">
+                  {domain.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  {domain.desc}
+                </p>
               </motion.div>
             );
           })}
-        </motion.div>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-16 pt-8 border-t border-border"
-        >
-          <a
+          {/* CTA Card */}
+          <motion.a
             href="#hero-form"
-            className="group inline-flex items-center gap-4 text-foreground font-medium"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.35 + domains.length * 0.05 }}
+            className="group relative bg-primary rounded-2xl p-5 sm:p-6 transition-all duration-300 hover:bg-primary/90 flex flex-col justify-between min-h-[140px] sm:min-h-[160px]"
           >
-            <span className="group-hover:text-primary transition-colors duration-200">
-              See where you stand in each area
-            </span>
-            <span className="w-8 h-px bg-foreground/40 group-hover:w-14 group-hover:bg-primary transition-all duration-300" />
-          </a>
+            <div>
+              <span className="text-xs sm:text-sm font-medium text-primary-foreground/80">
+                Ready to start?
+              </span>
+              <h3 className="text-sm sm:text-base font-semibold text-primary-foreground mt-1 leading-tight">
+                See where you stand
+              </h3>
+            </div>
+            
+            <div className="flex items-center gap-2 text-primary-foreground mt-4">
+              <span className="text-xs sm:text-sm font-medium">Take assessment</span>
+              <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform duration-200" />
+            </div>
+          </motion.a>
         </motion.div>
       </div>
     </section>
