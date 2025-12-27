@@ -1,2 +1,2 @@
 export { ResourceSection } from "./ResourceSection";
-export type { ResourceSectionProps, ResourceAssets } from "./ResourceSection";
+export type { ResourceSectionProps } from "./ResourceSection";
