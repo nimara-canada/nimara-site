@@ -46,18 +46,29 @@ export default function Resources() {
         id="main-content"
         style={{ paddingTop: "calc(var(--announcement-height, 0px) + 5rem)" }}
       >
-        {/* Page Header */}
-        <section className="pt-12 pb-8 md:pt-16 md:pb-12 px-6 lg:px-12">
-          <div className="max-w-5xl mx-auto text-center">
-            <p className="text-xs tracking-widest text-muted-foreground uppercase mb-4">
+        {/* Hero Header */}
+        <section className="relative pt-20 pb-16 md:pt-28 md:pb-24 overflow-hidden">
+          {/* Subtle gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-b from-secondary/50 to-background" />
+          
+          {/* Decorative elements */}
+          <div className="absolute top-20 left-1/4 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
+          
+          <div className="relative max-w-4xl mx-auto px-6 lg:px-8 text-center">
+            <span className="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-primary uppercase rounded-full bg-primary/10 mb-6">
               Resources
-            </p>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-4">
-              Free Tools for Nonprofits
+            </span>
+            
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] tracking-tight mb-6">
+              Free Tools for
+              <span className="block bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+                Canadian Nonprofits
+              </span>
             </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Templates, guides, and walkthroughs to help Canadian nonprofits
-              stay organized and audit-ready.
+            
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Templates, guides, and walkthroughs to help you stay organized and audit-ready.
             </p>
           </div>
         </section>
@@ -72,17 +83,20 @@ export default function Resources() {
         />
 
         {/* Secondary CTA */}
-        <section className="pb-16 md:pb-24 px-6 lg:px-12">
-          <div className="max-w-5xl mx-auto text-center">
-            <p className="text-muted-foreground">
-              Need help with something else?{" "}
+        <section className="py-20 md:py-28">
+          <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
+            <div className="p-8 md:p-12 rounded-3xl bg-gradient-to-br from-secondary/80 to-secondary/40 border border-border/50">
+              <p className="text-lg text-muted-foreground">
+                Need help with something else?
+              </p>
               <a
                 href="/book-a-call"
-                className="text-primary font-medium hover:underline"
+                className="inline-flex items-center gap-2 mt-4 text-primary font-semibold text-lg hover:text-primary/80 transition-colors group"
               >
-                Get urgent help →
+                Get urgent help
+                <span className="group-hover:translate-x-1 transition-transform">→</span>
               </a>
-            </p>
+            </div>
           </div>
         </section>
       </main>
