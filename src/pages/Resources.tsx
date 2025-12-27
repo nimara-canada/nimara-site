@@ -4,24 +4,20 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ResourceSection } from "@/components/resources";
 
-// Placeholder URLs - replace with actual URLs when available
 const CAPACITY_GRANT_TRACKER = {
-  title: "Capacity Grant Proof Tracker",
-  tag: "Free template",
-  description:
-    "Track spend, link each expense to one deliverable, and stay pack-ready with invoice + payment proof links.",
+  title: "Free Capacity Grant Proof Tracker (Excel)",
+  subhead:
+    "Track spending, keep proof links, and stay ready for funder reporting — without extra software.",
   bullets: [
-    "Shows READY vs BLOCKED automatically",
-    "Keeps proof links organized as you spend (not at the end)",
-    "Helps you reduce reporting stress",
+    "Simple setup (under 5 minutes)",
+    "Track spend vs remaining",
+    "Track what's accounted vs missing proof",
+    "Optional caps (Admin + one Other cap)",
+    "Proof Pack tab to keep links organized",
   ],
-  assets: {
-    excel_url: "{{EXCEL_DOWNLOAD_URL}}",
-    pdf_url: "{{PDF_DOWNLOAD_URL}}",
-    youtube_url: "{{YOUTUBE_URL}}",
-  },
-  resource_id: "capacity-grant-proof-tracker-v0",
-  webhook_url: "{{N8N_WEBHOOK_URL}}",
+  typeformUrl:
+    "https://form.typeform.com/to/gcRQHINk#resource_id=capacity-grant-proof-tracker-free&source=nimara-resource-page",
+  calendlyUrl: "https://calendly.com/hello-nimara/nohc-intake-call",
 };
 
 export default function Resources() {
@@ -52,7 +48,7 @@ export default function Resources() {
       >
         {/* Page Header */}
         <section className="pt-12 pb-8 md:pt-16 md:pb-12 px-6 lg:px-12">
-          <div className="max-w-6xl mx-auto text-center">
+          <div className="max-w-5xl mx-auto text-center">
             <p className="text-xs tracking-widest text-muted-foreground uppercase mb-4">
               Resources
             </p>
@@ -69,17 +65,15 @@ export default function Resources() {
         {/* Resource Section */}
         <ResourceSection
           title={CAPACITY_GRANT_TRACKER.title}
-          tag={CAPACITY_GRANT_TRACKER.tag}
-          description={CAPACITY_GRANT_TRACKER.description}
+          subhead={CAPACITY_GRANT_TRACKER.subhead}
           bullets={CAPACITY_GRANT_TRACKER.bullets}
-          assets={CAPACITY_GRANT_TRACKER.assets}
-          resource_id={CAPACITY_GRANT_TRACKER.resource_id}
-          webhook_url={CAPACITY_GRANT_TRACKER.webhook_url}
+          typeformUrl={CAPACITY_GRANT_TRACKER.typeformUrl}
+          calendlyUrl={CAPACITY_GRANT_TRACKER.calendlyUrl}
         />
 
         {/* Secondary CTA */}
         <section className="pb-16 md:pb-24 px-6 lg:px-12">
-          <div className="max-w-6xl mx-auto text-center">
+          <div className="max-w-5xl mx-auto text-center">
             <p className="text-muted-foreground">
               Need help with something else?{" "}
               <a
