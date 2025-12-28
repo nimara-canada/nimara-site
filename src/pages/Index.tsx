@@ -32,7 +32,13 @@ const Index = () => {
     }
   }, [location]);
 
-  return <div className="min-h-screen">
+  return (
+    <div className="min-h-screen">
+      {/* Global Scroll UI */}
+      <ScrollProgress />
+      <ScrollToTop />
+      <SectionIndicator />
+      
       <Helmet>
         <title>Nonprofit Operations & Grant Readiness Systems in Canada | Nimara</title>
         <meta name="description" content="Nimara helps Canadian nonprofits build funder-ready systems—finance, governance, operations, and capacity—so funding is easier to win and manage." />
@@ -119,7 +125,9 @@ const Index = () => {
         })}
         </script>
       </Helmet>
+      
       <Header />
+      
       <main id="main" className="space-y-0" style={{ paddingTop: '5rem' }}>
         <HeroSection />
         <TwoWaysSection />
@@ -130,15 +138,15 @@ const Index = () => {
         <FitCheck />
         <HowWeHelp />
         <SystemLadder />
-        
-        
         <Expertise />
         <IntegrationsSection />
         <FAQ />
         <FinalCTA />
       </main>
-      <Footer />
       
-    </div>;
+      <Footer />
+    </div>
+  );
 };
+
 export default Index;
