@@ -84,7 +84,7 @@ const HealthCheckRule = () => {
           >
             <p className="text-lg text-muted-foreground leading-relaxed">
               If You Want To Upgrade Your Systems Across Any Of Our 7 Domains, We Start With The{" "}
-              <span className="text-foreground font-medium">NOHC Snapshot ($2,500)</span> – A ~2-Week 
+              <span className="text-foreground font-medium">NOHC Snapshot (from $2,500)</span> – A ~2-Week 
               Health Check That Shows Your Tiers By Domain. Then We Design Path B Bundles To 
               Move Those Systems Up A Tier.
             </p>

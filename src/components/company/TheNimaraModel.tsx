@@ -109,7 +109,7 @@ const paths = [
     title: "Build My Systems",
     description: "For when things feel messy in more than one area—board, money, people, or programs. Start with a free check and decide from there.",
     timeline: "8–12 Weeks",
-    features: ["Free 4-minute check", "Deep check from $2,500", "Full setup in 8–12 weeks"],
+    features: ["Free 4-minute check", "Deep Check from $2,500", "Full setup in 8–12 weeks"],
   },
 ];
 

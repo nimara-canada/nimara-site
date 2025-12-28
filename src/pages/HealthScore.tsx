@@ -60,7 +60,7 @@ const timelineSteps = [{
 }, {
   number: 3,
   title: "Agreement and kickoff",
-  description: "We send a simple agreement with a fixed fee of $2,500 CAD + tax and a clear timeline. Once signed, we book your health-check sessions."
+  description: "We send a simple agreement starting at $2,500 CAD + tax with a clear timeline. Once signed, we book your health-check sessions."
 }, {
   number: 4,
   title: "Health check conversations",
@@ -97,8 +97,8 @@ const HealthScore = () => {
   };
   return <>
       <Helmet>
-        <title>NOHC Snapshot – $2,500 Fixed-Fee Health Check | Nimara</title>
-        <meta name="description" content="Get a clear picture of your nonprofit's core systems in about 2 weeks. The NOHC Snapshot is a fixed-fee check-up of governance, finance, HR, programs, and more." />
+        <title>NOHC Snapshot – Starting at $2,500 | Nimara</title>
+        <meta name="description" content="Get a clear picture of your nonprofit's core systems in about 2 weeks. The NOHC Snapshot is a health check-up of governance, finance, HR, programs, and more. Starting at $2,500." />
       </Helmet>
 
       <Header />
@@ -167,7 +167,7 @@ const HealthScore = () => {
             }} transition={{
               delay: 0.2
             }} className="text-lg sm:text-xl text-white/85 mb-10 max-w-3xl mx-auto leading-relaxed">
-                The Nimara NOHC Snapshot is a short, fixed-fee check-up of your core systems – governance, money, people, programs, data, volunteers, and tools – so you can see what's strong, what's fragile, and what kind of support actually makes sense.
+                The Nimara NOHC Snapshot is a short check-up of your core systems – governance, money, people, programs, data, volunteers, and tools – so you can see what's strong, what's fragile, and what kind of support actually makes sense.
               </motion.p>
 
               {/* Badges row */}
@@ -182,7 +182,7 @@ const HealthScore = () => {
             }} className="flex flex-wrap gap-3 justify-center mb-10">
                 {[{
                 icon: DollarSign,
-                text: "Fixed fee: $2,500 CAD"
+                text: "Starting at $2,500 CAD"
               }, {
                 icon: Calendar,
                 text: "Usually completed in ~2 weeks"
@@ -295,9 +295,9 @@ const HealthScore = () => {
             once: true
           }} className="text-center mb-12">
               <h2 className="heading-2 text-foreground mb-2">
-                What you get for $2,500
+                What you get starting at $2,500
               </h2>
-              <p className="text-subtitle">One fixed-fee package. No hidden extras.</p>
+              <p className="text-subtitle">Clear pricing. No hidden extras.</p>
             </motion.div>
 
             <div className="space-y-6">
