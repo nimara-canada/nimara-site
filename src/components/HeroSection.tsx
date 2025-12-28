@@ -97,13 +97,8 @@ const NimaraHeroPremium = () => {
             {/* Left - Headlines */}
             <div className={`transition-all duration-1000 ${isLoaded ? "opacity-100" : "opacity-0 translate-y-6"}`}>
               
-              {/* Eyebrow - simple uppercase style */}
-              <p className="text-white/40 uppercase tracking-[0.25em] text-xs mb-10">
-                Capacity Building For Canadian Nonprofits
-              </p>
-              
-              {/* Main Headline */}
-              <h1 className="mb-8 text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-[1.1] tracking-tight font-sans">
+              {/* Main Headline - Bold, large, clean */}
+              <h1 className="mb-6 text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-white leading-[1.1] tracking-tight">
                 Build systems that make your nonprofit{" "}
                 <span className="relative inline-block">
                   <AnimatePresence mode="wait">
@@ -113,46 +108,40 @@ const NimaraHeroPremium = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -20 }}
                       transition={{ duration: 0.4, ease: "easeOut" }}
-                      className="text-accent inline-block"
+                      className="inline-block"
                     >
                       {ROTATING_WORDS[wordIndex]}
                     </motion.span>
                   </AnimatePresence>
-                  <span className="text-accent">.</span>
+                  <span>.</span>
                 </span>
               </h1>
 
-              {/* Subheadline */}
-              <p className="text-base md:text-lg leading-[1.7] text-white/90 max-w-lg mb-6">
+              {/* Subheadline - Clean, muted */}
+              <p className="text-lg md:text-xl leading-relaxed text-white/60 max-w-xl mb-10">
                 We help Canadian nonprofits set up clear systems for board, money, people, and reporting so funding is easier to win and manage.
               </p>
 
-              {/* Support line */}
-              <p className="text-sm md:text-base text-white/70 mb-8 max-w-lg">
-                When funders ask for policies, reports, or an audit, you can send them fast.
-              </p>
+              {/* CTAs - Primary button + Secondary text link */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+                {/* Primary CTA Button */}
+                <a
+                  href="/health-score"
+                  className="inline-flex items-center gap-3 px-7 py-4 bg-primary text-primary-foreground font-semibold rounded-lg transition-all duration-300 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary-background"
+                >
+                  Get Free Health Check
+                  <span className="text-lg" aria-hidden="true">→</span>
+                </a>
 
-              {/* Mini-proof tags */}
-              <div className="flex flex-wrap items-center gap-3 mb-8">
-                <span className="px-3 py-1.5 bg-white/10 border border-white/20 rounded-full text-xs font-medium text-white/90">
-                  Funder-ready
-                </span>
-                <span className="px-3 py-1.5 bg-white/10 border border-white/20 rounded-full text-xs font-medium text-white/90">
-                  Audit-ready
-                </span>
-                <span className="px-3 py-1.5 bg-white/10 border border-white/20 rounded-full text-xs font-medium text-white/90">
-                  Report-ready
-                </span>
+                {/* Secondary CTA - text link */}
+                <a
+                  href="/book-a-call"
+                  className="group inline-flex items-center gap-2 text-base text-white/60 hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-secondary-background rounded"
+                >
+                  Need urgent help? Book a call
+                  <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+                </a>
               </div>
-
-              {/* Secondary CTA - text link */}
-              <a
-                href="/book-a-call"
-                className="group inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-secondary-background rounded"
-              >
-                Need urgent help? Book a call.
-                <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
-              </a>
             </div>
 
             {/* Right - Form Card */}
