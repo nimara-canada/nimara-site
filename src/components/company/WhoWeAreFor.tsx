@@ -7,7 +7,7 @@ const audiences = [
   {
     title: 'Nonprofits & community orgs',
     bullets: [
-      'Small and mid-size orgs (about 1–100 staff)',
+      'Canadian nonprofits with 0–50 staff',
       'Community-led and equity-seeking organizations',
       'Teams that want working systems, not just another training'
     ],

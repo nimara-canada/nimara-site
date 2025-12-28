@@ -5,7 +5,7 @@ const steps = [
   {
     number: "01",
     heading: "The Pattern We Kept Seeing",
-    text: "We worked with small and mid-size nonprofits where one tired person was holding everything together. The board, the books, HR, fundraising, and tech all lived in a few people's heads and messy spreadsheets. Every 2–3 years, the same problems came back."
+    text: "We worked with nonprofits where one tired person was holding everything together. The board, the books, HR, fundraising, and tech all lived in a few people's heads and messy spreadsheets. Every 2–3 years, the same problems came back."
   },
   {
     number: "02",

@@ -32,7 +32,7 @@ const deliverables = [{
   }, {
     tier: "Tier 2",
     name: "Working basics",
-    desc: "simple, written, repeatable for a small–mid nonprofit"
+    desc: "simple, written, repeatable"
   }],
   extra: "Most orgs have a mix of 0, 1, and 2. You'll see exactly where you land."
 }, {
@@ -268,7 +268,7 @@ const HealthScore = () => {
               <div className="bg-card rounded-2xl p-6 border border-border">
                 <p className="text-body-muted font-medium mb-4">Typical orgs:</p>
                 <ul className="space-y-2">
-                  {["Small–mid nonprofits (roughly 2–100 staff).", "Mix of paid staff and volunteers.", "Some policies and tools exist, but practice is inconsistent."].map((item, i) => <li key={i} className="flex items-start gap-3">
+                  {["Nonprofits with 0–50 staff.", "Mix of paid staff and volunteers.", "Some policies and tools exist, but practice is inconsistent."].map((item, i) => <li key={i} className="flex items-start gap-3">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 flex-shrink-0" />
                       <span className="text-body">{item}</span>
                     </li>)}

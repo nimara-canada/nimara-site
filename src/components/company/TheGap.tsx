@@ -32,7 +32,7 @@ export const TheGap = () => {
             </h2>
 
             <p className="text-lg text-body leading-relaxed">
-              Small and mid-size nonprofits are asked to do big work with weak systems. 
+              Nonprofits are asked to do big work with weak systems. 
               Most leaders are trying to keep the mission alive while their basic 
               operations are shaky.
             </p>

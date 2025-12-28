@@ -55,7 +55,7 @@ export const WhereWeAre = () => {
 
             <motion.div variants={itemVariants} className="lg:col-span-7 lg:pt-8">
               <p className="text-lg text-body-muted leading-relaxed">
-                We are starting with small and mid-size nonprofits across Canada and a clear 
+                We are starting with nonprofits across Canada and a clear 
                 way of working together. Over time, Nimara will add deeper tools for funders, 
                 better data on what fixes actually work, and stronger support for the people 
                 doing the work on the ground.

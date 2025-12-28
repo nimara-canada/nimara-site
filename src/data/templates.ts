@@ -17,7 +17,7 @@ export const templates: Template[] = [
     slug: "spending-checklist",
     title: "Nonprofit Spending Checklist",
     badge: "NEWEST",
-    subtitle: "For small community, faith-based, and volunteer-led organizations",
+    subtitle: "For community, faith-based, and volunteer-led organizations",
     description: "Use this checklist before and after you spend money. It helps you stay organized, ready for questions, and trusted by funders.",
     sections: [
       {

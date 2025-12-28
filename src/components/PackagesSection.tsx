@@ -10,7 +10,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 const packages = [{
   name: "Launch",
-  whoItsFor: "New or small orgs",
+  whoItsFor: "New or early-stage orgs",
   whatsIncluded: "Grant-ready basics are in place"
 }, {
   name: "Standard",
