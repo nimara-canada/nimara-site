@@ -98,12 +98,12 @@ export function ScaleReveal({ children, className, delay = 0 }: ScaleRevealProps
   );
 }
 
-// Section wrapper with reveal
+// Section wrapper with reveal and background transitions
 interface RevealSectionProps {
   children: React.ReactNode;
   className?: string;
   id?: string;
-  background?: 'default' | 'muted' | 'dark';
+  background?: 'default' | 'muted' | 'dark' | 'gradient';
 }
 
 export function RevealSection({
@@ -116,19 +116,47 @@ export function RevealSection({
     default: 'bg-background',
     muted: 'bg-muted/30',
     dark: 'bg-secondary-background text-white',
+    gradient: 'bg-gradient-to-b from-background via-muted/20 to-background',
   };
 
   return (
     <section
       id={id}
       className={cn(
-        'relative transition-colors duration-500',
+        'relative',
         bgClasses[background],
         className
       )}
     >
+      {/* Top fade for smooth section transitions */}
+      <div 
+        className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-background/50 to-transparent pointer-events-none opacity-50" 
+        aria-hidden="true"
+      />
+      
       {children}
+      
+      {/* Bottom fade for smooth section transitions */}
+      <div 
+        className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background/50 to-transparent pointer-events-none opacity-50" 
+        aria-hidden="true"
+      />
     </section>
+  );
+}
+
+// Soft section divider
+export function SectionDivider({ className }: { className?: string }) {
+  return (
+    <div 
+      className={cn(
+        'relative h-px w-full max-w-4xl mx-auto',
+        className
+      )}
+      aria-hidden="true"
+    >
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-border to-transparent" />
+    </div>
   );
 }
 

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Check } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
+import { useMotionPreferences, DROPBOX_EASING_CSS } from "@/hooks/use-scroll-reveal";
 
 const ROTATING_WORDS = ["Funder-Ready", "Audit-Ready", "Report-Ready", "Board-Ready", "Grant-Ready"];
 
@@ -8,6 +9,7 @@ const NimaraHeroPremium = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [wordIndex, setWordIndex] = useState(0);
   const heroRef = useRef<HTMLElement>(null);
+  const { reducedMotion } = useMotionPreferences();
 
   // Scroll-linked animations
   const { scrollYProgress } = useScroll({
@@ -15,20 +17,18 @@ const NimaraHeroPremium = () => {
     offset: ["start start", "end start"]
   });
 
-  // Smooth spring for parallax
+  // Smooth spring for parallax - disabled if reduced motion
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
+    stiffness: reducedMotion ? 1000 : 100,
+    damping: reducedMotion ? 100 : 30,
     restDelta: 0.001
   });
 
-  // Transform values based on scroll
-  const heroOpacity = useTransform(smoothProgress, [0, 0.5], [1, 0]);
-  const heroY = useTransform(smoothProgress, [0, 1], [0, 150]);
-  const heroScale = useTransform(smoothProgress, [0, 0.5], [1, 0.95]);
-  const dashboardY = useTransform(smoothProgress, [0, 1], [0, 100]);
-  const dashboardRotate = useTransform(smoothProgress, [0, 1], [0, -5]);
-  const floatingCardY = useTransform(smoothProgress, [0, 1], [0, 60]);
+  // Transform values based on scroll - reduced if motion preference
+  const heroOpacity = useTransform(smoothProgress, [0, 0.5], [1, reducedMotion ? 1 : 0]);
+  const heroY = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : 100]);
+  const heroScale = useTransform(smoothProgress, [0, 0.5], [1, reducedMotion ? 1 : 0.98]);
+  const dashboardY = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : 60]);
 
   useEffect(() => {
     setIsLoaded(true);
@@ -41,6 +41,14 @@ const NimaraHeroPremium = () => {
     }, 2500);
     return () => clearInterval(interval);
   }, []);
+
+  // Reveal animation styles with Dropbox easing
+  const revealStyle = (delay: number = 0): React.CSSProperties => 
+    reducedMotion ? { opacity: 1, transform: 'none' } : {
+      opacity: isLoaded ? 1 : 0,
+      transform: isLoaded ? 'translateY(0)' : 'translateY(16px)',
+      transition: `opacity 600ms ${DROPBOX_EASING_CSS} ${delay}ms, transform 600ms ${DROPBOX_EASING_CSS} ${delay}ms`,
+    };
 
   return (
     <section 
@@ -74,10 +82,12 @@ const NimaraHeroPremium = () => {
           <div className="flex-1 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             
             {/* Left - Headlines */}
-            <div className={`transition-all duration-1000 ${isLoaded ? "opacity-100" : "opacity-0 translate-y-6"}`}>
-              
+            <div>
               {/* Main Headline - Bold, large, clean */}
-              <h1 className="mb-6 text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-white leading-[1.1] tracking-tight">
+              <h1 
+                style={revealStyle(100)}
+                className="mb-6 text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-white leading-[1.1] tracking-tight"
+              >
                 Build systems that make your nonprofit{" "}
                 <span className="relative inline-block">
                   <AnimatePresence mode="wait">
@@ -86,7 +96,7 @@ const NimaraHeroPremium = () => {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -20 }}
-                      transition={{ duration: 0.4, ease: "easeOut" }}
+                      transition={{ duration: 0.4, ease: [0.65, 0, 0.45, 1] }}
                       className="inline-block text-accent"
                     >
                       {ROTATING_WORDS[wordIndex]}
@@ -97,12 +107,15 @@ const NimaraHeroPremium = () => {
               </h1>
 
               {/* Subheadline - Clean, muted */}
-              <p className="text-lg md:text-xl leading-relaxed text-white/60 max-w-xl mb-10">
+              <p 
+                style={revealStyle(200)}
+                className="text-lg md:text-xl leading-relaxed text-white/60 max-w-xl mb-10"
+              >
                 We help Canadian nonprofits set up clear systems for board, money, people, and reporting so funding is easier to win and manage.
               </p>
 
               {/* CTAs - Primary button + Secondary text link */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+              <div style={revealStyle(300)} className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
                 {/* Primary CTA Button */}
                 <a
                   href="/health-score"
@@ -123,7 +136,10 @@ const NimaraHeroPremium = () => {
               </div>
 
               {/* Mobile Dashboard Preview - Simplified */}
-              <div className={`mt-10 lg:hidden transition-all duration-1000 delay-200 ${isLoaded ? "opacity-100" : "opacity-0 translate-y-6"}`}>
+              <div 
+                style={revealStyle(400)}
+                className="mt-10 lg:hidden"
+              >
                 <div className="relative bg-[#0a0a0f] border border-white/10 rounded-xl overflow-hidden shadow-xl">
                   {/* Compact Window Header */}
                   <div className="flex items-center gap-2 px-3 py-2 border-b border-white/10 bg-white/[0.02]">
@@ -155,18 +171,19 @@ const NimaraHeroPremium = () => {
                         { label: "Finance", value: 72 },
                         { label: "Programs", value: 80 },
                         { label: "Operations", value: 68 },
-                      ].map((item) => (
+                      ].map((item, i) => (
                         <div key={item.label} className="space-y-1">
                           <div className="flex items-center justify-between text-[10px]">
                             <span className="text-white/60">{item.label}</span>
                             <span className="text-white/40">{item.value}%</span>
                           </div>
                           <div className="h-1 bg-white/10 rounded-full overflow-hidden">
-                            <motion.div 
-                              initial={{ width: 0 }}
-                              animate={{ width: `${item.value}%` }}
-                              transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+                            <div 
                               className="h-full bg-gradient-to-r from-accent to-primary rounded-full"
+                              style={{ 
+                                width: isLoaded ? `${item.value}%` : '0%',
+                                transition: `width 800ms ${DROPBOX_EASING_CSS} ${500 + i * 100}ms`
+                              }}
                             />
                           </div>
                         </div>
@@ -179,18 +196,12 @@ const NimaraHeroPremium = () => {
 
             {/* Right - Premium Dashboard Mockup (Desktop) with Parallax */}
             <motion.div 
-              className={`hidden lg:block transition-all duration-1000 delay-200 ${isLoaded ? "opacity-100" : "opacity-0 translate-y-6"}`}
+              className="hidden lg:block"
               style={{ y: dashboardY }}
             >
-              <div className="relative py-8">
+              <div style={revealStyle(300)} className="relative py-8">
                 {/* Main Dashboard Window */}
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                  style={{ rotate: dashboardRotate }}
-                  className="relative bg-[#0a0a0f] border border-white/10 rounded-2xl overflow-hidden shadow-2xl shadow-black/50"
-                >
+                <div className="relative bg-[#0a0a0f] border border-white/10 rounded-2xl overflow-hidden shadow-2xl shadow-black/50">
                   {/* Window Header */}
                   <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-white/[0.02]">
                     <div className="flex gap-1.5">
@@ -210,34 +221,22 @@ const NimaraHeroPremium = () => {
                       <div>
                         <p className="text-xs text-white/50 uppercase tracking-wider mb-1">Overall Score</p>
                         <div className="flex items-baseline gap-2">
-                          <motion.span 
-                            initial={{ opacity: 0, scale: 0.5 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.5, delay: 0.6 }}
-                            className="text-4xl font-bold text-white"
-                          >
-                            78
-                          </motion.span>
+                          <span className="text-4xl font-bold text-white">78</span>
                           <span className="text-lg text-white/40">/100</span>
                         </div>
                       </div>
-                      <motion.div 
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.4, delay: 0.8 }}
-                        className="px-3 py-1.5 bg-accent/20 text-accent text-xs font-medium rounded-full"
-                      >
+                      <div className="px-3 py-1.5 bg-accent/20 text-accent text-xs font-medium rounded-full">
                         Tier 3 — Strong
-                      </motion.div>
+                      </div>
                     </div>
 
                     {/* Progress Bars */}
                     <div className="space-y-3 pt-2">
                       {[
-                        { label: "Governance", value: 85, delay: 0.9 },
-                        { label: "Finance", value: 72, delay: 1.0 },
-                        { label: "Programs", value: 80, delay: 1.1 },
-                        { label: "Operations", value: 68, delay: 1.2 },
+                        { label: "Governance", value: 85, delay: 600 },
+                        { label: "Finance", value: 72, delay: 700 },
+                        { label: "Programs", value: 80, delay: 800 },
+                        { label: "Operations", value: 68, delay: 900 },
                       ].map((item) => (
                         <div key={item.label} className="space-y-1.5">
                           <div className="flex items-center justify-between text-xs">
@@ -245,25 +244,23 @@ const NimaraHeroPremium = () => {
                             <span className="text-white/50">{item.value}%</span>
                           </div>
                           <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
-                            <motion.div 
-                              initial={{ width: 0 }}
-                              animate={{ width: `${item.value}%` }}
-                              transition={{ duration: 0.8, delay: item.delay, ease: "easeOut" }}
+                            <div 
                               className="h-full bg-gradient-to-r from-accent to-primary rounded-full"
+                              style={{ 
+                                width: isLoaded ? `${item.value}%` : '0%',
+                                transition: `width 800ms ${DROPBOX_EASING_CSS} ${item.delay}ms`
+                              }}
                             />
                           </div>
                         </div>
                       ))}
                     </div>
                   </div>
-                </motion.div>
+                </div>
 
-                {/* Floating Card - Top Fixes with Parallax */}
-                <motion.div 
-                  initial={{ opacity: 0, x: 20, y: -10 }}
-                  animate={{ opacity: 1, x: 0, y: 0 }}
-                  transition={{ duration: 0.5, delay: 1.0 }}
-                  style={{ y: floatingCardY }}
+                {/* Floating Card - Top Fixes */}
+                <div 
+                  style={revealStyle(700)}
                   className="absolute -right-4 top-2 w-52 bg-white rounded-xl shadow-xl shadow-black/20 p-4 border border-gray-100 z-10"
                 >
                   <div className="flex items-center gap-2 mb-3">
@@ -274,28 +271,22 @@ const NimaraHeroPremium = () => {
                   </div>
                   <div className="space-y-2">
                     {["Board manual", "Monthly reviews", "HR policies"].map((fix, i) => (
-                      <motion.div 
+                      <div 
                         key={fix}
-                        initial={{ opacity: 0, x: 10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3, delay: 1.2 + i * 0.1 }}
                         className="flex items-center gap-2 text-xs text-gray-600"
                       >
                         <span className="w-4 h-4 rounded-full bg-accent text-white text-[10px] font-bold flex items-center justify-center flex-shrink-0">
                           {i + 1}
                         </span>
                         {fix}
-                      </motion.div>
+                      </div>
                     ))}
                   </div>
-                </motion.div>
+                </div>
 
-                {/* Floating Card - Status with Parallax */}
-                <motion.div 
-                  initial={{ opacity: 0, x: -20, y: 10 }}
-                  animate={{ opacity: 1, x: 0, y: 0 }}
-                  transition={{ duration: 0.5, delay: 1.3 }}
-                  style={{ y: useTransform(smoothProgress, [0, 1], [0, 40]) }}
+                {/* Floating Card - Status */}
+                <div 
+                  style={revealStyle(800)}
                   className="absolute -left-4 bottom-2 bg-white rounded-xl shadow-xl shadow-black/20 p-3 border border-gray-100 z-10"
                 >
                   <div className="flex items-center gap-3">
@@ -307,14 +298,15 @@ const NimaraHeroPremium = () => {
                       <p className="text-[10px] text-gray-500">All docs prepared</p>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               </div>
             </motion.div>
           </div>
 
           {/* Bottom Stats Section */}
           <div 
-            className={`mt-12 md:mt-16 pt-8 md:pt-12 border-t border-white/10 transition-all duration-1000 delay-400 ${isLoaded ? "opacity-100" : "opacity-0"}`}
+            style={revealStyle(500)}
+            className="mt-12 md:mt-16 pt-8 md:pt-12 border-t border-white/10"
             role="region"
             aria-label="Service timelines"
           >
@@ -339,14 +331,18 @@ const NimaraHeroPremium = () => {
       {/* Scroll indicator */}
       <motion.div 
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: isLoaded ? 1 : 0, y: 0 }}
-        transition={{ delay: 1.5, duration: 0.6 }}
-        style={{ opacity: useTransform(smoothProgress, [0, 0.2], [1, 0]) }}
+        style={{ 
+          opacity: useTransform(smoothProgress, [0, 0.15], [1, 0]),
+        }}
       >
-        <span className="text-[10px] uppercase tracking-widest text-white/40">Scroll</span>
+        <span 
+          style={revealStyle(1000)}
+          className="text-[10px] uppercase tracking-widest text-white/40"
+        >
+          Scroll
+        </span>
         <motion.div
-          animate={{ y: [0, 8, 0] }}
+          animate={reducedMotion ? {} : { y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           className="w-5 h-8 rounded-full border border-white/20 flex items-start justify-center pt-1.5"
         >

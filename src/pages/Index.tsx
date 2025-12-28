@@ -68,7 +68,9 @@ const Index = () => {
           <HeroSection />
           
           {/* Scroll Narrative - Assess/Fix/Prove/Report */}
-          <ScrollNarrative />
+          <RevealSection background="gradient">
+            <ScrollNarrative />
+          </RevealSection>
           
           {/* Fit Check */}
           <RevealSection background="muted">
@@ -85,7 +87,7 @@ const Index = () => {
           </RevealSection>
           
           {/* Integrations */}
-          <RevealSection background="muted">
+          <RevealSection background="gradient">
             <IntegrationsSection />
           </RevealSection>
           
