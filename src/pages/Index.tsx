@@ -16,7 +16,6 @@ import { ScrollProgress } from "@/components/ScrollProgress";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { ScrollSnapWrapper } from "@/components/ScrollSnapWrapper";
 import { DepthSection, SectionDivider } from "@/components/DepthBlur";
-import { VignetteOverlay } from "@/components/VignetteOverlay";
 
 const Index = () => {
   const location = useLocation();
@@ -38,7 +37,6 @@ const Index = () => {
         {/* Global Scroll UI */}
         <ScrollProgress />
         <ScrollToTop />
-        <VignetteOverlay />
         
         <Helmet>
           <title>Nonprofit Operations & Grant Readiness Systems in Canada | Nimara</title>
