@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import nimaraLogo from "@/assets/nimara-logo.png";
+import { useMotionPreferences, DROPBOX_EASING_CSS } from "@/hooks/use-scroll-reveal";
 
 const navigation = [
   { name: "For Nonprofits", href: "/" },
@@ -18,16 +19,59 @@ interface HeaderProps {
 
 export const Header = ({ activeRoute = "/" }: HeaderProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollState, setScrollState] = useState({
+    isScrolled: false,
+    isHidden: false,
+  });
+  
+  const { stickyHeaderAutoHide, reducedMotion } = useMotionPreferences();
+  const lastScrollY = useRef(0);
+  const ticking = useRef(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+    const updateScrollState = () => {
+      const currentScrollY = window.scrollY;
+      const isScrolled = currentScrollY > 40;
+      const scrollingDown = currentScrollY > lastScrollY.current;
+      const scrollDelta = Math.abs(currentScrollY - lastScrollY.current);
+      
+      // Auto-hide: hide when scrolling down fast (>15px), show on scroll up or near top
+      const shouldHide = 
+        stickyHeaderAutoHide && 
+        isScrolled && 
+        scrollingDown && 
+        scrollDelta > 15;
+      
+      const shouldShow = !scrollingDown || currentScrollY < 100;
+
+      setScrollState(prev => ({
+        isScrolled,
+        isHidden: shouldHide ? true : shouldShow ? false : prev.isHidden,
+      }));
+
+      lastScrollY.current = currentScrollY;
+      ticking.current = false;
     };
 
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      if (!ticking.current) {
+        requestAnimationFrame(updateScrollState);
+        ticking.current = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [stickyHeaderAutoHide]);
+
+  const { isScrolled, isHidden } = scrollState;
+
+  // Transition styles
+  const transitionStyle = reducedMotion 
+    ? {} 
+    : { 
+        transition: `transform 350ms ${DROPBOX_EASING_CSS}, height 350ms ${DROPBOX_EASING_CSS}, box-shadow 350ms ${DROPBOX_EASING_CSS}, background-color 350ms ${DROPBOX_EASING_CSS}` 
+      };
 
   return (
     <>
@@ -40,22 +84,33 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
       </a>
 
       <header
-        className={`fixed left-0 right-0 w-full border-b border-border/50 transition-all duration-300 ${
-          isScrolled ? "shadow-sm" : ""
-        }`}
+        className={cn(
+          "fixed left-0 right-0 w-full border-b",
+          isScrolled 
+            ? "border-border/50 shadow-sm" 
+            : "border-transparent"
+        )}
         style={{
           top: "var(--announcement-height, 0px)",
-          backgroundColor: "hsl(var(--background))",
+          backgroundColor: isScrolled 
+            ? "hsl(var(--background))" 
+            : "hsl(var(--background) / 0.8)",
           backdropFilter: "blur(12px)",
           WebkitBackdropFilter: "blur(12px)",
           zIndex: 9999,
           isolation: "isolate",
+          transform: isHidden ? "translateY(-100%)" : "translateY(0)",
+          ...transitionStyle,
         }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className={`flex items-center justify-between transition-all duration-300 ${
-            isScrolled ? "h-16" : "h-20"
-          }`}>
+          <div 
+            className="flex items-center justify-between"
+            style={{
+              height: isScrolled ? "64px" : "80px",
+              ...transitionStyle,
+            }}
+          >
             {/* Logo */}
             <a
               href="/"
@@ -65,9 +120,11 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
               <img
                 src={nimaraLogo}
                 alt="Nimara"
-                className={`w-auto transition-all duration-300 ${
-                  isScrolled ? "h-10 md:h-12" : "h-12 md:h-14"
-                }`}
+                className="w-auto"
+                style={{
+                  height: isScrolled ? "40px" : "48px",
+                  ...transitionStyle,
+                }}
                 fetchPriority="high"
                 width="120"
                 height="48"
@@ -81,18 +138,21 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                   key={item.name}
                   href={item.href}
                   aria-current={item.href === activeRoute ? "page" : undefined}
-                  className={`group relative px-4 py-2 text-sm font-medium transition-colors min-h-[44px] inline-flex items-center ${
+                  className={cn(
+                    "group relative px-4 py-2 text-sm font-medium transition-colors min-h-[44px] inline-flex items-center",
                     item.href === activeRoute
                       ? "text-primary"
                       : "text-foreground/70 hover:text-foreground"
-                  }`}
+                  )}
                 >
                   <span className="relative">
                     {item.name}
                     <span 
-                      className={`absolute left-0 -bottom-0.5 h-px bg-primary transition-all duration-300 ${
+                      className={cn(
+                        "absolute left-0 -bottom-0.5 h-px bg-primary",
                         item.href === activeRoute ? "w-full" : "w-0 group-hover:w-full"
-                      }`} 
+                      )} 
+                      style={{ transition: `width 200ms ${DROPBOX_EASING_CSS}` }}
                     />
                   </span>
                 </a>
@@ -107,7 +167,10 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
               >
                 <span className="relative">
                   For Consultants
-                  <span className="absolute left-0 -bottom-0.5 w-0 h-px bg-foreground transition-all duration-300 group-hover:w-full" />
+                  <span 
+                    className="absolute left-0 -bottom-0.5 w-0 h-px bg-foreground group-hover:w-full" 
+                    style={{ transition: `width 200ms ${DROPBOX_EASING_CSS}` }}
+                  />
                 </span>
               </a>
               <a
@@ -116,18 +179,33 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
               >
                 <span className="relative">
                   Book a call
-                  <span className="absolute left-0 -bottom-0.5 w-0 h-px bg-foreground transition-all duration-300 group-hover:w-full" />
+                  <span 
+                    className="absolute left-0 -bottom-0.5 w-0 h-px bg-foreground group-hover:w-full" 
+                    style={{ transition: `width 200ms ${DROPBOX_EASING_CSS}` }}
+                  />
                 </span>
               </a>
-              <motion.a
+              <a
                 href="/#hero-form"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-2 h-11 px-6 bg-primary text-primary-foreground text-sm font-medium rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 group"
+                className="inline-flex items-center gap-2 h-11 px-6 bg-primary text-primary-foreground text-sm font-medium rounded-full group"
+                style={{ transition: `transform 180ms ${DROPBOX_EASING_CSS}, box-shadow 180ms ${DROPBOX_EASING_CSS}` }}
+                onMouseEnter={(e) => {
+                  if (!reducedMotion) {
+                    e.currentTarget.style.transform = 'scale(1.02)';
+                    e.currentTarget.style.boxShadow = '0 8px 24px hsl(var(--primary) / 0.3)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'scale(1)';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
               >
                 <span>Start the free check</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-              </motion.a>
+                <ArrowRight 
+                  className="w-4 h-4" 
+                  style={{ transition: `transform 180ms ${DROPBOX_EASING_CSS}` }}
+                />
+              </a>
             </div>
 
             {/* Mobile Menu */}
@@ -154,22 +232,25 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                   <nav aria-label="Mobile navigation" className="flex-1 p-6">
                     <div className="space-y-1">
                       {navigation.map((item, index) => (
-                        <motion.a
+                        <a
                           key={item.name}
                           href={item.href}
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: index * 0.05 }}
                           aria-current={item.href === activeRoute ? "page" : undefined}
-                          className={`block py-4 text-lg font-medium transition-colors ${
+                          className={cn(
+                            "block py-4 text-lg font-medium transition-colors",
                             item.href === activeRoute
                               ? "text-primary"
                               : "text-foreground hover:text-primary"
-                          }`}
+                          )}
+                          style={{
+                            opacity: reducedMotion ? 1 : 0,
+                            transform: reducedMotion ? 'none' : 'translateX(-10px)',
+                            animation: reducedMotion ? 'none' : `slideIn 300ms ${DROPBOX_EASING_CSS} ${index * 50}ms forwards`,
+                          }}
                           onClick={() => setIsOpen(false)}
                         >
                           {item.name}
-                        </motion.a>
+                        </a>
                       ))}
                     </div>
 
@@ -231,6 +312,20 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
           </a>
         </div>
       </div>
+
+      {/* Keyframes for mobile menu animations */}
+      <style>{`
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateX(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+      `}</style>
     </>
   );
 };
