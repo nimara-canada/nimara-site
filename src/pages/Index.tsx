@@ -14,7 +14,6 @@ import { FAQ } from "@/components/FAQ";
 import { FinalCTA } from "@/components/FinalCTA";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { ScrollToTop } from "@/components/ScrollToTop";
-import { SectionIndicator } from "@/components/SectionIndicator";
 import { ScrollSnapWrapper } from "@/components/ScrollSnapWrapper";
 import { DepthSection, SectionDivider } from "@/components/DepthBlur";
 import { VignetteOverlay } from "@/components/VignetteOverlay";
@@ -39,7 +38,6 @@ const Index = () => {
         {/* Global Scroll UI */}
         <ScrollProgress />
         <ScrollToTop />
-        <SectionIndicator />
         <VignetteOverlay />
         
         <Helmet>
