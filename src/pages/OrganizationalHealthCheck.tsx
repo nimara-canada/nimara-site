@@ -116,21 +116,21 @@ const tierDescriptions = [
     name: "Emergent",
     color: "#EF4444",
     description: "Organization is in start-up mode or crisis. Basic structures are missing or non-functional.",
-    recommendation: "Path A (Fast Help) may address immediate fires. For a comprehensive view, consider the NOHC Snapshot ($2,500)."
+    recommendation: "Path A (Fast Help) may address immediate fires. For a comprehensive view, consider the NOHC Snapshot (from $2,500)."
   },
   {
     tier: 2,
     name: "Reactive",
     color: "#F59E0B",
     description: "Organization is operational but responds to issues as they arise. Inconsistent processes.",
-    recommendation: "Path A for one urgent fix, or the NOHC Snapshot ($2,500) to identify which systems to strengthen first."
+    recommendation: "Path A for one urgent fix, or the NOHC Snapshot (from $2,500) to identify which systems to strengthen first."
   },
   {
     tier: 3,
     name: "Stable",
     color: "#10B981",
     description: "Organization has working systems but they need refinement and documentation.",
-    recommendation: "The NOHC Snapshot ($2,500) can pinpoint exactly which domains to prioritize for Path B system bundles."
+    recommendation: "The NOHC Snapshot (from $2,500) can pinpoint exactly which domains to prioritize for Path B system bundles."
   },
   {
     tier: 4,
@@ -203,7 +203,7 @@ const OrganizationalHealthCheck = () => {
               {/* Disclaimer banner */}
               <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-8 text-center">
                 <p className="text-sm text-amber-800">
-                  <strong>Note:</strong> This is a quick self-assessment for general guidance. For a comprehensive, expert-reviewed health check with actionable recommendations, consider the <Link to="/health-score" className="underline font-semibold">NOHC Snapshot ($2,500)</Link>.
+                  <strong>Note:</strong> This is a quick self-assessment for general guidance. For a comprehensive, expert-reviewed health check with actionable recommendations, consider the <Link to="/health-score" className="underline font-semibold">NOHC Snapshot (from $2,500)</Link>.
                 </p>
               </div>
 
@@ -279,7 +279,7 @@ const OrganizationalHealthCheck = () => {
                     </ul>
                   </div>
                   <div className="bg-primary/5 rounded-xl p-4 border border-primary/10">
-                    <h3 className="font-medium text-foreground mb-2">NOHC Snapshot ($2,500)</h3>
+                    <h3 className="font-medium text-foreground mb-2">NOHC Snapshot (from $2,500)</h3>
                     <ul className="text-sm text-muted-foreground space-y-1">
                       <li>• ~2 weeks, expert-led conversations</li>
                       <li>• Reviews real documents and practices</li>
@@ -350,7 +350,7 @@ const OrganizationalHealthCheck = () => {
               Answer 6 questions to get a quick sense of where your organization stands.
             </p>
             <p className="text-sm text-muted-foreground max-w-xl mx-auto">
-              Want a comprehensive, expert-reviewed assessment? Learn about the <Link to="/health-score" className="text-primary underline font-medium">NOHC Snapshot ($2,500)</Link>.
+              Want a comprehensive, expert-reviewed assessment? Learn about the <Link to="/health-score" className="text-primary underline font-medium">NOHC Snapshot (from $2,500)</Link>.
             </p>
           </div>
 

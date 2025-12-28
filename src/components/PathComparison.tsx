@@ -58,7 +58,7 @@ const comparisonData: ComparisonRow[] = [{
   pathB: true
 }, {
   feature: "NOHC Snapshot included",
-  tooltip: "Nimara Organizational Health Check Snapshot ($2,500 fixed fee)—a ~2-week diagnostic showing your Tier scores across all domains",
+  tooltip: "Nimara Organizational Health Check Snapshot (from $2,500)—a ~2-week diagnostic showing your Tier scores across all domains",
   pathA: false,
   pathB: true
 }, {

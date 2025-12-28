@@ -41,10 +41,10 @@ const PathB = () => {
               For when one or more core systems feel messy.
             </p>
             <p className="text-lg text-primary font-medium mb-6">
-              NOHC Snapshot ($2,500) + 8–12 weeks per system bundle
+              NOHC Snapshot (from $2,500) + 8–12 weeks per system bundle
             </p>
             <p className="text-body-lg text-secondary-foreground/85 max-w-2xl mx-auto mb-8">
-              Finance, governance, HR, programs, or delivery feeling disorganized? We start with the <strong>NOHC Snapshot</strong> – a $2,500 fixed-fee health check completed in ~2 weeks that shows where each system sits on our Tier ladder. Then we design a System Phase using 1–2 bundles to move those systems up a Tier.
+              Finance, governance, HR, programs, or delivery feeling disorganized? We start with the <strong>NOHC Snapshot</strong> – a health check starting at $2,500, completed in ~2 weeks that shows where each system sits on our Tier ladder. Then we design a System Phase using 1–2 bundles to move those systems up a Tier.
             </p>
             
             <div className="flex flex-wrap justify-center gap-3 mb-10">
@@ -54,7 +54,7 @@ const PathB = () => {
               </Badge>
               <Badge variant="outline" className="bg-secondary-foreground/10 text-secondary-foreground border-secondary-foreground/20 px-4 py-2">
                 <Target className="w-4 h-4 mr-2" />
-                NOHC Snapshot ($2,500)
+                NOHC Snapshot (from $2,500)
               </Badge>
               <Badge variant="outline" className="bg-secondary-foreground/10 text-secondary-foreground border-secondary-foreground/20 px-4 py-2">
                 <Package className="w-4 h-4 mr-2" />

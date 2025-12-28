@@ -8,7 +8,7 @@ const faqs = [
   },
   {
     question: "What's the difference between Quick Check and Deep Check?",
-    answer: "The Quick Check is free. It takes about 5 minutes and gives you a score right away. The Deep Check costs $2,500. We look at your actual documents and give you a full report. It takes 2–4 weeks. Think of it this way: Quick Check tells you where to look. Deep Check tells you exactly what to fix."
+    answer: "The Quick Check is free. It takes about 5 minutes and gives you a score right away. The Deep Check starts at $2,500. We look at your actual documents and give you a full report. It takes 2–4 weeks. Think of it this way: Quick Check tells you where to look. Deep Check tells you exactly what to fix."
   },
   {
     question: "Is Nimara right for us? What size do we need to be?",
@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     question: "How much does it cost? Can a funder pay for this?",
-    answer: "Quick Check is free. Deep Check is $2,500. After that, we give you a flat price for each area you want to fix — no surprise bills. Yes, funders can pay for this. Many groups use grants or admin money. We can give you a one-page summary for your proposal."
+    answer: "Quick Check is free. Deep Check starts at $2,500. After that, we give you a flat price for each area you want to fix — no surprise bills. Yes, funders can pay for this. Many groups use grants or admin money. We can give you a one-page summary for your proposal."
   }
 ];
 
