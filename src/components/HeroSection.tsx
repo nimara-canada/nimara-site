@@ -277,22 +277,22 @@ const NimaraHeroPremium = () => {
 
           {/* Bottom Stats Section */}
           <div 
-            className={`mt-16 pt-12 border-t border-white/10 transition-all duration-1000 delay-400 ${isLoaded ? "opacity-100" : "opacity-0"}`}
+            className={`mt-12 md:mt-16 pt-8 md:pt-12 border-t border-white/10 transition-all duration-1000 delay-400 ${isLoaded ? "opacity-100" : "opacity-0"}`}
             role="region"
             aria-label="Service timelines"
           >
-            <div className="grid grid-cols-3 gap-8 text-center">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 text-center">
               <div>
                 <span className="block text-2xl md:text-3xl font-bold text-white mb-1">1–4 weeks</span>
-                <span className="text-[10px] md:text-xs uppercase tracking-[0.15em] text-white/60">Fast Fixes</span>
+                <span className="text-xs uppercase tracking-[0.15em] text-white/60">Fast Fixes</span>
               </div>
               <div>
                 <span className="block text-2xl md:text-3xl font-bold text-white mb-1">8–12 weeks</span>
-                <span className="text-[10px] md:text-xs uppercase tracking-[0.15em] text-white/60">Full Setup</span>
+                <span className="text-xs uppercase tracking-[0.15em] text-white/60">Full Setup</span>
               </div>
               <div>
                 <span className="block text-2xl md:text-3xl font-bold text-white mb-1">Guaranteed</span>
-                <span className="text-[10px] md:text-xs uppercase tracking-[0.15em] text-white/60">If We Can't Help, You Don't Pay</span>
+                <span className="text-xs uppercase tracking-[0.15em] text-white/60">If We Can't Help, You Don't Pay</span>
               </div>
             </div>
           </div>
