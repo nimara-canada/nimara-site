@@ -131,7 +131,7 @@ const NimaraHeroPremium = () => {
       ref={heroRef}
       id="hero"
       aria-label="Hero section - Get your nonprofit systems ready"
-      className="min-h-screen bg-secondary-background text-white relative overflow-hidden"
+      className="min-h-screen bg-secondary-background text-white relative overflow-x-clip overflow-y-visible"
     >
       {/* Subtle grid pattern - decorative */}
       <div 
@@ -271,7 +271,7 @@ const NimaraHeroPremium = () => {
             </div>
 
             {/* Right - Premium Dashboard Mockup (Desktop) with Layered Parallax */}
-            <div ref={dashboardContainerRef} className="hidden lg:block relative py-8">
+            <div ref={dashboardContainerRef} className="hidden lg:block relative py-8 overflow-visible">
               {/* Main Dashboard Window - Base layer */}
               <motion.div 
                 style={{ 
@@ -341,7 +341,7 @@ const NimaraHeroPremium = () => {
 
               {/* Floating Card - Top Fixes (Foreground layer - faster parallax + mouse) */}
               <motion.div 
-                className="absolute -right-4 top-16 z-20"
+                className="absolute -right-8 -top-8 z-20"
                 style={{ 
                   y: topCardScrollY,
                   x: topCardScrollX,
