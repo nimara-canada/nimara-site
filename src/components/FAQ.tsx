@@ -106,13 +106,19 @@ export const FAQ = () => {
             <div className="space-y-0">
               {faqs.map((faq, index) => {
                 const isOpen = openIndex === index;
+                // Staggered delay: 100ms between each item after initial 0.3s
+                const staggerDelay = 0.3 + index * 0.1;
 
                 return (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0 }}
-                    animate={isInView ? { opacity: 1 } : {}}
-                    transition={{ duration: 0.5, delay: 0.3 + index * 0.05 }}
+                    initial={{ opacity: 0, x: 30 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ 
+                      duration: 0.6, 
+                      delay: staggerDelay,
+                      ease: [0.16, 1, 0.3, 1] // Dropbox easing
+                    }}
                     className="border-t border-border"
                   >
                     <button
@@ -121,28 +127,55 @@ export const FAQ = () => {
                       aria-expanded={isOpen}
                     >
                       {/* Number */}
-                      <span className={`
-                        text-lg font-extralight tabular-nums transition-colors duration-300 mt-0.5
-                        ${isOpen ? 'text-primary' : 'text-muted-foreground/40 group-hover:text-muted-foreground/60'}
-                      `}>
+                      <motion.span 
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                        transition={{ 
+                          duration: 0.4, 
+                          delay: staggerDelay + 0.1,
+                          ease: [0.16, 1, 0.3, 1]
+                        }}
+                        className={`
+                          text-lg font-extralight tabular-nums transition-colors duration-300 mt-0.5
+                          ${isOpen ? 'text-primary' : 'text-muted-foreground/40 group-hover:text-muted-foreground/60'}
+                        `}
+                      >
                         0{index + 1}
-                      </span>
+                      </motion.span>
 
                       {/* Question */}
-                      <span className={`
-                        flex-1 text-lg font-medium transition-colors duration-300
-                        ${isOpen ? 'text-primary' : 'text-foreground group-hover:text-primary'}
-                      `}>
+                      <motion.span 
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ 
+                          duration: 0.5, 
+                          delay: staggerDelay + 0.05,
+                          ease: [0.16, 1, 0.3, 1]
+                        }}
+                        className={`
+                          flex-1 text-lg font-medium transition-colors duration-300
+                          ${isOpen ? 'text-primary' : 'text-foreground group-hover:text-primary'}
+                        `}
+                      >
                         {faq.question}
-                      </span>
+                      </motion.span>
 
                       {/* Toggle */}
-                      <span className={`
-                        text-2xl font-extralight transition-colors duration-300
-                        ${isOpen ? 'text-primary' : 'text-muted-foreground/40 group-hover:text-muted-foreground'}
-                      `}>
+                      <motion.span 
+                        initial={{ opacity: 0, rotate: -90 }}
+                        animate={isInView ? { opacity: 1, rotate: 0 } : {}}
+                        transition={{ 
+                          duration: 0.4, 
+                          delay: staggerDelay + 0.15,
+                          ease: [0.16, 1, 0.3, 1]
+                        }}
+                        className={`
+                          text-2xl font-extralight transition-colors duration-300
+                          ${isOpen ? 'text-primary' : 'text-muted-foreground/40 group-hover:text-muted-foreground'}
+                        `}
+                      >
                         {isOpen ? '−' : '+'}
-                      </span>
+                      </motion.span>
                     </button>
 
                     {/* Answer */}
@@ -152,14 +185,20 @@ export const FAQ = () => {
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                           className="overflow-hidden"
                         >
-                          <div className="pb-8 pl-10">
+                          <motion.div 
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.25, delay: 0.1 }}
+                            className="pb-8 pl-10"
+                          >
                             <p className="text-muted-foreground leading-relaxed">
                               {faq.answer}
                             </p>
-                          </div>
+                          </motion.div>
                         </motion.div>
                       )}
                     </AnimatePresence>
