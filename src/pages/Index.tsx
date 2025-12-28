@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import { ScrollNarrative } from "@/components/ScrollNarrative";
+import { SystemLadder } from "@/components/SystemLadder";
 import { FitCheck } from "@/components/FitCheck";
 import { Expertise } from "@/components/Expertise";
 import { IntegrationsSection } from "@/components/IntegrationsSection";
@@ -71,6 +72,9 @@ const Index = () => {
           <RevealSection background="gradient">
             <ScrollNarrative />
           </RevealSection>
+          
+          {/* System Ladder - 5 Tiers */}
+          <SystemLadder />
           
           {/* Fit Check */}
           <RevealSection background="muted">
