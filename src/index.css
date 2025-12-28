@@ -148,9 +148,26 @@ All colors MUST be HSL.
     scroll-behavior: smooth;
   }
 
+  /* Scroll snap container - applied via JS class for smooth magnetic scrolling */
+  .scroll-snap-container {
+    scroll-snap-type: y proximity;
+    overflow-y: scroll;
+    height: 100vh;
+  }
+
+  /* Scroll snap sections */
+  .scroll-snap-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
+    }
+    
+    .scroll-snap-container {
+      scroll-snap-type: none;
     }
   }
 
