@@ -90,9 +90,63 @@ const NimaraHeroPremium = () => {
                   <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
                 </a>
               </div>
+
+              {/* Mobile Dashboard Preview - Simplified */}
+              <div className={`mt-10 lg:hidden transition-all duration-1000 delay-200 ${isLoaded ? "opacity-100" : "opacity-0 translate-y-6"}`}>
+                <div className="relative bg-[#0a0a0f] border border-white/10 rounded-xl overflow-hidden shadow-xl">
+                  {/* Compact Window Header */}
+                  <div className="flex items-center gap-2 px-3 py-2 border-b border-white/10 bg-white/[0.02]">
+                    <div className="flex gap-1">
+                      <div className="w-2 h-2 rounded-full bg-white/20" />
+                      <div className="w-2 h-2 rounded-full bg-white/20" />
+                      <div className="w-2 h-2 rounded-full bg-white/20" />
+                    </div>
+                    <span className="text-[10px] text-white/40 font-medium ml-auto">Health Score</span>
+                  </div>
+
+                  {/* Compact Dashboard Content */}
+                  <div className="p-4">
+                    {/* Score Row */}
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-baseline gap-1.5">
+                        <span className="text-3xl font-bold text-white">78</span>
+                        <span className="text-sm text-white/40">/100</span>
+                      </div>
+                      <span className="px-2 py-1 bg-accent/20 text-accent text-[10px] font-medium rounded-full">
+                        Tier 3 — Strong
+                      </span>
+                    </div>
+
+                    {/* Mini Progress Bars */}
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+                      {[
+                        { label: "Governance", value: 85 },
+                        { label: "Finance", value: 72 },
+                        { label: "Programs", value: 80 },
+                        { label: "Operations", value: 68 },
+                      ].map((item) => (
+                        <div key={item.label} className="space-y-1">
+                          <div className="flex items-center justify-between text-[10px]">
+                            <span className="text-white/60">{item.label}</span>
+                            <span className="text-white/40">{item.value}%</span>
+                          </div>
+                          <div className="h-1 bg-white/10 rounded-full overflow-hidden">
+                            <motion.div 
+                              initial={{ width: 0 }}
+                              animate={{ width: `${item.value}%` }}
+                              transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+                              className="h-full bg-gradient-to-r from-accent to-primary rounded-full"
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            {/* Right - Premium Dashboard Mockup */}
+            {/* Right - Premium Dashboard Mockup (Desktop) */}
             <div className={`hidden lg:block transition-all duration-1000 delay-200 ${isLoaded ? "opacity-100" : "opacity-0 translate-y-6"}`}>
               <div className="relative py-8">
                 {/* Main Dashboard Window */}
