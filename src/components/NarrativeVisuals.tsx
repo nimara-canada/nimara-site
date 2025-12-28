@@ -217,43 +217,43 @@ export function ReportVisual({ className }: NarrativeVisualProps) {
   ];
 
   return (
-    <div className={cn('w-full h-full flex items-center justify-center p-8', className)}>
+    <div className={cn('w-full h-full flex items-center justify-center p-6', className)}>
       <div className="w-full max-w-sm bg-card border border-border rounded-2xl shadow-xl overflow-hidden">
         {/* Header */}
-        <div className="flex items-center gap-2 px-4 py-3 bg-muted/30 border-b border-border">
+        <div className="flex items-center gap-2 px-4 py-2.5 bg-muted/30 border-b border-border">
           <FileText className="w-4 h-4 text-primary" />
           <span className="text-sm font-medium">Funder Report</span>
           <span className="ml-auto text-xs text-muted-foreground">Ready to share</span>
         </div>
         
         {/* Content */}
-        <div className="p-4 space-y-4">
+        <div className="p-3 space-y-3">
           {/* Sections list */}
-          <div className="space-y-2">
-            <p className="text-xs text-muted-foreground uppercase tracking-wider">Included in Report</p>
+          <div className="space-y-1.5">
+            <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Included in Report</p>
             {sections.map((section, i) => (
-              <div key={i} className="flex items-center gap-3 p-2.5 rounded-lg bg-muted/30">
-                <div className="w-5 h-5 rounded-full bg-green-500 text-white flex items-center justify-center flex-shrink-0">
-                  <Check className="w-3 h-3" />
+              <div key={i} className="flex items-center gap-2 p-2 rounded-lg bg-muted/30">
+                <div className="w-4 h-4 rounded-full bg-green-500 text-white flex items-center justify-center flex-shrink-0">
+                  <Check className="w-2.5 h-2.5" />
                 </div>
-                <span className="text-sm text-foreground">{section.name}</span>
+                <span className="text-xs text-foreground">{section.name}</span>
               </div>
             ))}
           </div>
 
           {/* Export button */}
-          <button className="w-full py-3 px-4 bg-primary text-primary-foreground rounded-xl font-medium text-sm flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors">
+          <button className="w-full py-2.5 px-4 bg-primary text-primary-foreground rounded-xl font-medium text-sm flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors">
             <FileText className="w-4 h-4" />
             Export PDF
           </button>
 
           {/* Attached items */}
           <div className="pt-2 border-t border-border">
-            <p className="text-xs text-muted-foreground mb-2">Attached documents</p>
-            <div className="flex flex-wrap gap-2">
+            <p className="text-[10px] text-muted-foreground mb-1.5">Attached documents</p>
+            <div className="flex flex-wrap gap-1.5">
               {['Budget.xlsx', 'Photos.zip', 'Outcomes.pdf'].map((file, i) => (
-                <span key={i} className="inline-flex items-center gap-1 text-xs bg-muted/50 px-2 py-1 rounded-md text-muted-foreground">
-                  <Check className="w-3 h-3 text-green-500" />
+                <span key={i} className="inline-flex items-center gap-1 text-[10px] bg-muted/50 px-1.5 py-0.5 rounded text-muted-foreground">
+                  <Check className="w-2.5 h-2.5 text-green-500" />
                   {file}
                 </span>
               ))}
