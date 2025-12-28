@@ -30,6 +30,10 @@ import HealthScore from "./pages/HealthScore";
 import PathA from "./pages/PathA";
 import PathB from "./pages/PathB";
 import Check from "./pages/Check";
+import PrivacyAuditDashboard from "./pages/admin/PrivacyAuditDashboard";
+import PrivacyAuditWizard from "./pages/admin/PrivacyAuditWizard";
+import PrivacyAuditFindings from "./pages/admin/PrivacyAuditFindings";
+import PrivacyAuditTemplates from "./pages/admin/PrivacyAuditTemplates";
 
 const queryClient = new QueryClient();
 
@@ -64,6 +68,12 @@ const App = () => (
             <Route path="/path-a" element={<PathA />} />
             <Route path="/path-b" element={<PathB />} />
             <Route path="/check" element={<Check />} />
+            
+            {/* Admin routes */}
+            <Route path="/admin/privacy-audit" element={<PrivacyAuditDashboard />} />
+            <Route path="/admin/privacy-audit/wizard" element={<PrivacyAuditWizard />} />
+            <Route path="/admin/privacy-audit/findings" element={<PrivacyAuditFindings />} />
+            <Route path="/admin/privacy-audit/templates" element={<PrivacyAuditTemplates />} />
             
             {/* Redirects for old routes */}
             <Route path="/for-nonprofits" element={<Navigate to="/" replace />} />
