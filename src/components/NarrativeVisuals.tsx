@@ -68,6 +68,11 @@ export function AssessVisual({ className }: NarrativeVisualProps) {
               <span className="text-xs text-muted-foreground">areas need attention</span>
             </div>
           </div>
+
+          {/* Instant results badge */}
+          <div className="text-center pt-2">
+            <span className="text-xs text-primary font-medium">Instant results • Free Quick Check</span>
+          </div>
         </div>
       </div>
     </div>
@@ -201,53 +206,59 @@ export function ProveVisual({ className }: NarrativeVisualProps) {
   );
 }
 
-// Report Visual - Reporting dashboard
+// Report Visual - Funder Report / Funder Pack
 export function ReportVisual({ className }: NarrativeVisualProps) {
+  const sections = [
+    { name: 'Summary', included: true },
+    { name: 'What we did', included: true },
+    { name: 'Spending', included: true },
+    { name: 'Proof', included: true },
+    { name: 'Next steps', included: true },
+  ];
+
   return (
     <div className={cn('w-full h-full flex items-center justify-center p-8', className)}>
       <div className="w-full max-w-sm bg-card border border-border rounded-2xl shadow-xl overflow-hidden">
         {/* Header */}
         <div className="flex items-center gap-2 px-4 py-3 bg-muted/30 border-b border-border">
-          <TrendingUp className="w-4 h-4 text-primary" />
+          <FileText className="w-4 h-4 text-primary" />
           <span className="text-sm font-medium">Funder Report</span>
-          <span className="ml-auto text-xs text-muted-foreground">Q4 2024</span>
+          <span className="ml-auto text-xs text-muted-foreground">Ready to share</span>
         </div>
         
         {/* Content */}
         <div className="p-4 space-y-4">
-          {/* Key metrics */}
-          <div className="grid grid-cols-2 gap-3">
-            {[
-              { label: 'Impact Score', value: '94', change: '+12%' },
-              { label: 'Compliance', value: '100%', change: 'Full' },
-              { label: 'Budget Used', value: '87%', change: 'On track' },
-              { label: 'Goals Met', value: '8/10', change: '80%' },
-            ].map((metric, i) => (
-              <div key={i} className="p-3 bg-muted/30 rounded-xl">
-                <p className="text-xs text-muted-foreground mb-1">{metric.label}</p>
-                <p className="text-lg font-bold text-foreground">{metric.value}</p>
-                <p className="text-xs text-green-600">{metric.change}</p>
+          {/* Sections list */}
+          <div className="space-y-2">
+            <p className="text-xs text-muted-foreground uppercase tracking-wider">Included in Report</p>
+            {sections.map((section, i) => (
+              <div key={i} className="flex items-center gap-3 p-2.5 rounded-lg bg-muted/30">
+                <div className="w-5 h-5 rounded-full bg-green-500 text-white flex items-center justify-center flex-shrink-0">
+                  <Check className="w-3 h-3" />
+                </div>
+                <span className="text-sm text-foreground">{section.name}</span>
               </div>
             ))}
           </div>
 
-          {/* Export ready */}
-          <div className="p-4 bg-primary/5 border border-primary/20 rounded-xl">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                <ClipboardCheck className="w-5 h-5 text-primary" />
-              </div>
-              <div className="flex-1">
-                <p className="text-sm font-medium text-foreground">Report Ready</p>
-                <p className="text-xs text-muted-foreground">Export as PDF or share link</p>
-              </div>
+          {/* Export button */}
+          <button className="w-full py-3 px-4 bg-primary text-primary-foreground rounded-xl font-medium text-sm flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors">
+            <FileText className="w-4 h-4" />
+            Export PDF
+          </button>
+
+          {/* Attached items */}
+          <div className="pt-2 border-t border-border">
+            <p className="text-xs text-muted-foreground mb-2">Attached documents</p>
+            <div className="flex flex-wrap gap-2">
+              {['Budget.xlsx', 'Photos.zip', 'Outcomes.pdf'].map((file, i) => (
+                <span key={i} className="inline-flex items-center gap-1 text-xs bg-muted/50 px-2 py-1 rounded-md text-muted-foreground">
+                  <Check className="w-3 h-3 text-green-500" />
+                  {file}
+                </span>
+              ))}
             </div>
           </div>
-
-          {/* Next report */}
-          <p className="text-xs text-center text-muted-foreground">
-            Next funder report due in 28 days
-          </p>
         </div>
       </div>
     </div>
