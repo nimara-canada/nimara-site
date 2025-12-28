@@ -341,7 +341,7 @@ const NimaraHeroPremium = () => {
 
               {/* Floating Card - Top Fixes (Foreground layer - faster parallax + mouse) */}
               <motion.div 
-                className="absolute -right-4 top-2 z-20"
+                className="absolute -right-4 top-16 z-20"
                 style={{ 
                   y: topCardScrollY,
                   x: topCardScrollX,
