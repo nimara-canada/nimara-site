@@ -9,6 +9,7 @@ interface NarrativeStep {
   description: string;
   ctaText?: string;
   ctaHref?: string;
+  timeNote?: string;
   visual: React.ReactNode;
 }
 
@@ -165,13 +166,15 @@ function DesktopNarrativeStep({
         <p className="text-body-lg text-body-muted mb-8 max-w-lg">
           {step.description}
         </p>
+        {step.timeNote && (
+          <p className="text-sm text-muted-foreground mb-4">{step.timeNote}</p>
+        )}
         {step.ctaText && step.ctaHref && (
           <a
             href={step.ctaHref}
             className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all duration-200 group"
           >
             {step.ctaText}
-            <span className="transition-transform group-hover:translate-x-1">→</span>
           </a>
         )}
       </div>
@@ -239,13 +242,15 @@ function MobileNarrativeStep({
       <p className="text-body text-body-muted mb-6">
         {step.description}
       </p>
+      {step.timeNote && (
+        <p className="text-xs text-muted-foreground mb-3">{step.timeNote}</p>
+      )}
       {step.ctaText && step.ctaHref && (
         <a
           href={step.ctaHref}
           className="inline-flex items-center gap-2 text-primary font-medium text-sm"
         >
           {step.ctaText}
-          <span>→</span>
         </a>
       )}
     </div>
