@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Check } from "lucide-react";
-import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
 import { useMotionPreferences, DROPBOX_EASING_CSS } from "@/hooks/use-scroll-reveal";
 
 const ROTATING_WORDS = ["Funder-Ready", "Audit-Ready", "Report-Ready", "Board-Ready", "Grant-Ready"];
@@ -9,7 +9,67 @@ const NimaraHeroPremium = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [wordIndex, setWordIndex] = useState(0);
   const heroRef = useRef<HTMLElement>(null);
+  const dashboardContainerRef = useRef<HTMLDivElement>(null);
   const { reducedMotion } = useMotionPreferences();
+
+  // Mouse position for parallax effect
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  // Smooth spring for mouse movement
+  const springConfig = { stiffness: 150, damping: 20 };
+  const smoothMouseX = useSpring(mouseX, springConfig);
+  const smoothMouseY = useSpring(mouseY, springConfig);
+
+  // Transform mouse position to card movement (subtle range: -15px to 15px)
+  // Top card moves more (foreground), bottom card moves less (background)
+  const topCardMouseX = useTransform(smoothMouseX, [-1, 1], [-12, 12]);
+  const topCardMouseY = useTransform(smoothMouseY, [-1, 1], [-10, 10]);
+  const topCardMouseRotateX = useTransform(smoothMouseY, [-1, 1], [3, -3]);
+  const topCardMouseRotateY = useTransform(smoothMouseX, [-1, 1], [-3, 3]);
+
+  const bottomCardMouseX = useTransform(smoothMouseX, [-1, 1], [-6, 6]);
+  const bottomCardMouseY = useTransform(smoothMouseY, [-1, 1], [-5, 5]);
+  const bottomCardMouseRotateX = useTransform(smoothMouseY, [-1, 1], [2, -2]);
+  const bottomCardMouseRotateY = useTransform(smoothMouseX, [-1, 1], [-2, 2]);
+
+  const dashboardMouseX = useTransform(smoothMouseX, [-1, 1], [-3, 3]);
+  const dashboardMouseY = useTransform(smoothMouseY, [-1, 1], [-2, 2]);
+
+  // Track mouse position relative to dashboard container
+  useEffect(() => {
+    if (reducedMotion) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const container = dashboardContainerRef.current;
+      if (!container) return;
+
+      const rect = container.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      // Normalize to -1 to 1 range
+      const x = (e.clientX - centerX) / (rect.width / 2);
+      const y = (e.clientY - centerY) / (rect.height / 2);
+
+      // Clamp values
+      mouseX.set(Math.max(-1, Math.min(1, x)));
+      mouseY.set(Math.max(-1, Math.min(1, y)));
+    };
+
+    const handleMouseLeave = () => {
+      mouseX.set(0);
+      mouseY.set(0);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, [reducedMotion, mouseX, mouseY]);
 
   // Scroll-linked animations
   const { scrollYProgress } = useScroll({
@@ -35,15 +95,15 @@ const NimaraHeroPremium = () => {
   
   // Floating cards - independent parallax layers (different speeds for depth)
   // Top-right card moves faster (closer to viewer)
-  const topCardY = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : 80]);
-  const topCardX = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : 15]);
-  const topCardRotate = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : 5]);
+  const topCardScrollY = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : 80]);
+  const topCardScrollX = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : 15]);
+  const topCardScrollRotate = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : 5]);
   const topCardScale = useTransform(smoothProgress, [0, 0.5], [1, reducedMotion ? 1 : 0.95]);
   
   // Bottom-left card moves slower (further from viewer)
-  const bottomCardY = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : 35]);
-  const bottomCardX = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : -10]);
-  const bottomCardRotate = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : -3]);
+  const bottomCardScrollY = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : 35]);
+  const bottomCardScrollX = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : -10]);
+  const bottomCardScrollRotate = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : -3]);
   const bottomCardScale = useTransform(smoothProgress, [0, 0.5], [1, reducedMotion ? 1 : 0.97]);
 
   useEffect(() => {
@@ -211,12 +271,14 @@ const NimaraHeroPremium = () => {
             </div>
 
             {/* Right - Premium Dashboard Mockup (Desktop) with Layered Parallax */}
-            <div className="hidden lg:block relative py-8">
+            <div ref={dashboardContainerRef} className="hidden lg:block relative py-8">
               {/* Main Dashboard Window - Base layer */}
               <motion.div 
                 style={{ 
                   y: dashboardY,
+                  x: dashboardMouseX,
                   rotate: dashboardRotate,
+                  translateY: dashboardMouseY,
                 }}
               >
                 <div style={revealStyle(300)} className="relative bg-[#0a0a0f] border border-white/10 rounded-2xl overflow-hidden shadow-2xl shadow-black/50">
@@ -277,14 +339,19 @@ const NimaraHeroPremium = () => {
                 </div>
               </motion.div>
 
-              {/* Floating Card - Top Fixes (Foreground layer - faster parallax) */}
+              {/* Floating Card - Top Fixes (Foreground layer - faster parallax + mouse) */}
               <motion.div 
                 className="absolute -right-4 top-2 z-20"
                 style={{ 
-                  y: topCardY,
-                  x: topCardX,
-                  rotate: topCardRotate,
+                  y: topCardScrollY,
+                  x: topCardScrollX,
+                  rotate: topCardScrollRotate,
                   scale: topCardScale,
+                  translateX: topCardMouseX,
+                  translateY: topCardMouseY,
+                  rotateX: topCardMouseRotateX,
+                  rotateY: topCardMouseRotateY,
+                  transformPerspective: 1000,
                 }}
               >
                 <div 
@@ -313,14 +380,19 @@ const NimaraHeroPremium = () => {
                 </div>
               </motion.div>
 
-              {/* Floating Card - Status (Mid layer - slower parallax) */}
+              {/* Floating Card - Status (Mid layer - slower parallax + mouse) */}
               <motion.div 
                 className="absolute -left-4 bottom-2 z-10"
                 style={{ 
-                  y: bottomCardY,
-                  x: bottomCardX,
-                  rotate: bottomCardRotate,
+                  y: bottomCardScrollY,
+                  x: bottomCardScrollX,
+                  rotate: bottomCardScrollRotate,
                   scale: bottomCardScale,
+                  translateX: bottomCardMouseX,
+                  translateY: bottomCardMouseY,
+                  rotateX: bottomCardMouseRotateX,
+                  rotateY: bottomCardMouseRotateY,
+                  transformPerspective: 800,
                 }}
               >
                 <div 
