@@ -70,14 +70,6 @@ export const PackagesSection = ({
       timestamp: new Date().toISOString()
     };
     try {
-      // Send to webhook
-      await fetch("https://example.com/webhook", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-      });
 
       // Send email (non-blocking)
       supabase.functions.invoke("send-form-email", {

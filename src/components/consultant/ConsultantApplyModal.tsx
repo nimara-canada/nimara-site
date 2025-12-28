@@ -98,25 +98,17 @@ export const ConsultantApplyModal = ({ open, onOpenChange }: ConsultantApplyModa
         timestamp: new Date().toISOString(),
       };
 
-      const response = await fetch("https://example.com/webhook", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+      // Send email notification
+      await supabase.functions.invoke("send-form-email", {
+        body: { formCode: "CONSULT_APPLY", payload }
       });
 
-      if (response.ok) {
-        // Send email (non-blocking)
-        supabase.functions.invoke("send-form-email", {
-          body: { formCode: "CONSULT_APPLY", payload }
-        }).catch(err => console.error("Email error:", err));
-
-        toast({
-          title: "Application submitted",
-          description: "Thanks — we'll review your work and follow up if your focus areas match upcoming briefs.",
-        });
-        form.reset();
-        onOpenChange(false);
-      }
+      toast({
+        title: "Application submitted",
+        description: "Thanks — we'll review your work and follow up if your focus areas match upcoming briefs.",
+      });
+      form.reset();
+      onOpenChange(false);
     } catch (error) {
       toast({
         title: "Error",

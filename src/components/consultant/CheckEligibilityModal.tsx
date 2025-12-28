@@ -77,25 +77,17 @@ export const CheckEligibilityModal = ({ open, onOpenChange }: CheckEligibilityMo
         timestamp: new Date().toISOString(),
       };
 
-      const response = await fetch("https://example.com/webhook", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+      // Send email notification
+      await supabase.functions.invoke("send-form-email", {
+        body: { formCode: "CONSULT_ELIG", payload }
       });
 
-      if (response.ok) {
-        // Send email (non-blocking)
-        supabase.functions.invoke("send-form-email", {
-          body: { formCode: "CONSULT_ELIG", payload }
-        }).catch(err => console.error("Email error:", err));
-
-        toast({
-          title: "Check submitted",
-          description: "Thanks — we'll email you within 2 business days about next steps. If you're a close fit, you'll get the full application link.",
-        });
-        form.reset();
-        onOpenChange(false);
-      }
+      toast({
+        title: "Check submitted",
+        description: "Thanks — we'll email you within 2 business days about next steps. If you're a close fit, you'll get the full application link.",
+      });
+      form.reset();
+      onOpenChange(false);
     } catch (error) {
       toast({
         title: "Error",
