@@ -289,7 +289,7 @@ const NimaraHeroPremium = () => {
                       <div className="w-3 h-3 rounded-full bg-white/20" />
                       <div className="w-3 h-3 rounded-full bg-white/20" />
                     </div>
-                    <div className="flex-1 text-center">
+                    <div className="flex-1 text-center pr-16">
                       <span className="text-xs text-white/40 font-medium">Health Score Dashboard</span>
                     </div>
                   </div>
