@@ -5,6 +5,7 @@ import { Clock, Users, FileText, MessageSquare, ArrowRight, Check, Activity, Dol
 import { Link } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { DeepCheckPricingTable } from "@/components/DeepCheckPricingTable";
 const deliverables = [{
   number: 1,
   title: "Scoping call",
@@ -352,6 +353,9 @@ const HealthScore = () => {
             </div>
           </div>
         </section>
+
+        {/* Pricing by organization size */}
+        <DeepCheckPricingTable />
 
         {/* Section: How it works (timeline) */}
         <section className="py-20 md:py-28 bg-nimara-navy relative overflow-hidden">
