@@ -16,7 +16,8 @@ import { ScrollProgress } from "@/components/ScrollProgress";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { SectionIndicator } from "@/components/SectionIndicator";
 import { ScrollSnapWrapper } from "@/components/ScrollSnapWrapper";
-import { DepthSection } from "@/components/DepthBlur";
+import { DepthSection, SectionDivider } from "@/components/DepthBlur";
+import { VignetteOverlay } from "@/components/VignetteOverlay";
 
 const Index = () => {
   const location = useLocation();
@@ -39,6 +40,7 @@ const Index = () => {
         <ScrollProgress />
         <ScrollToTop />
         <SectionIndicator />
+        <VignetteOverlay />
         
         <Helmet>
           <title>Nonprofit Operations & Grant Readiness Systems in Canada | Nimara</title>
@@ -130,39 +132,50 @@ const Index = () => {
         <Header />
         
         <main id="main" className="space-y-0" style={{ paddingTop: '5rem' }}>
-          {/* Hero - no depth blur, stays crisp */}
+          {/* Hero - no depth effects, stays crisp as entry point */}
           <HeroSection />
           
           <DepthSection intensity="subtle">
             <TwoWaysSection />
           </DepthSection>
           
-          {/* Subtle divider between sections */}
-          <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+          <SectionDivider variant="gradient" />
           
           <DepthSection intensity="subtle">
             <FitCheck />
           </DepthSection>
           
+          <SectionDivider variant="gradient" />
+          
           <DepthSection intensity="subtle">
             <HowWeHelp />
           </DepthSection>
+          
+          <SectionDivider variant="gradient" />
           
           <DepthSection intensity="subtle">
             <SystemLadder />
           </DepthSection>
           
+          <SectionDivider variant="gradient" />
+          
           <DepthSection intensity="subtle">
             <Expertise />
           </DepthSection>
+          
+          <SectionDivider variant="gradient" />
           
           <DepthSection intensity="subtle">
             <IntegrationsSection />
           </DepthSection>
           
+          <SectionDivider variant="gradient" />
+          
           <DepthSection intensity="subtle" id="faq">
             <FAQ />
           </DepthSection>
+          
+          <SectionDivider variant="gradient" />
           
           <DepthSection intensity="subtle">
             <FinalCTA />
