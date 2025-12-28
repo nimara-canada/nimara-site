@@ -6,87 +6,87 @@ const ladderSteps = [
   { 
     level: 0, 
     title: "Getting by", 
-    desc: "Work gets done, but it lives in people's heads.",
-    expandedDesc: "Nothing is written down or done the same way twice.",
+    desc: "Work gets done, but nothing is written down.",
+    expandedDesc: "People know what to do, but it's all in their heads. Nothing is the same twice.",
     signs: [
-      "People can't explain \"how we do things\" without a long conversation",
-      "Approvals happen in DMs, texts, or someone's memory",
-      "Reporting takes too long because you rebuild it every time"
+      "No one can explain how things work without a long talk",
+      "Approvals happen in texts or by memory",
+      "Reports take forever because you start from scratch each time"
     ],
     fixes: [
-      "Write down the 5–10 tasks you repeat every month",
-      "Create one shared place for files and templates",
-      "Set one clear approval path for spending and decisions"
+      "Write down the 5–10 tasks you do every month",
+      "Pick one place to keep all your files",
+      "Decide who approves spending and stick to it"
     ],
-    outcome: "Less scramble. More clarity. A starting point you can build on."
+    outcome: "Less stress. More clarity. A starting point you can build on."
   },
   { 
     level: 1, 
     title: "Pieces in place", 
-    desc: "Some tools exist, but they're inconsistent.",
-    expandedDesc: "You have some policies, trackers, or templates — but they're inconsistent.",
+    desc: "You have some tools, but they don't match up.",
+    expandedDesc: "You have some forms and folders, but people use different ones.",
     signs: [
-      "Multiple versions of the same document live in different places",
-      "People ask \"Which file is the right one?\"",
-      "New staff learn by guessing or watching others"
+      "There are many versions of the same file",
+      "People ask \"Which one is the right one?\"",
+      "New staff learn by guessing"
     ],
     fixes: [
-      "Create one \"source of truth\" folder and lock old versions",
-      "Choose one tracker for each key area",
-      "Assign owners (who keeps each tool up to date)"
+      "Pick one folder as the \"main\" folder and lock old ones",
+      "Use one tracker for each area",
+      "Pick one person to keep each tool up to date"
     ],
-    outcome: "Work becomes repeatable. New staff ramp faster."
+    outcome: "Work becomes easier to repeat. New staff learn faster."
   },
   { 
     level: 2, 
-    title: "Working basics", 
-    desc: "The core systems work and are written down.",
-    expandedDesc: "Your core systems are in place and mostly working.",
+    title: "Basics working", 
+    desc: "Your main systems work and are written down.",
+    expandedDesc: "Your core systems are in place and working most of the time.",
     signs: [
-      "You can explain \"how we do things\" in a few steps",
-      "Spending approvals and documentation are mostly consistent",
-      "Reporting is doable, but still takes effort"
+      "You can explain how things work in a few steps",
+      "Money approvals are mostly the same each time",
+      "Reports are doable, but still take work"
     ],
     fixes: [
-      "Tighten financial tracking: budget vs actual, monthly review",
-      "Build a clean \"proof pack\" habit",
-      "Create simple dashboards for board and funder reporting"
+      "Track your budget vs what you spent each month",
+      "Keep proof of what you do in one place",
+      "Make simple reports for your board and funders"
     ],
-    outcome: "Cleaner reporting. Better controls. Less last-minute stress."
+    outcome: "Cleaner reports. Better controls. Less last-minute panic."
   },
   { 
     level: 3, 
     title: "Running smoothly", 
-    desc: "Systems are connected and run the same way across the team.",
-    expandedDesc: "Systems are integrated. Work is consistent, roles are clear.",
+    desc: "Systems are connected. Everyone does things the same way.",
+    expandedDesc: "Work is steady. People know their roles. Things run the same across the team.",
     signs: [
-      "People know who approves what and why",
-      "Data is consistent across programs and reports",
-      "Risks and issues are tracked early"
+      "People know who approves what",
+      "Data matches across programs and reports",
+      "Problems are caught early"
     ],
     fixes: [
-      "Improve quality: checklists, QA steps, and review cycles",
-      "Strengthen board reporting: fewer pages, clearer signals",
-      "Build capacity plans: training, back-up coverage"
+      "Add checklists and reviews to catch mistakes",
+      "Make board reports shorter and clearer",
+      "Plan for training and backup coverage"
     ],
-    outcome: "Higher trust. Faster decisions. Growth without breaking systems."
+    outcome: "More trust. Faster decisions. You can grow without breaking things."
   },
   { 
     level: 4, 
-    title: "Best-in-class", 
+    title: "Best in class", 
     desc: "Your systems are strong enough to teach others.",
-    expandedDesc: "You don't just operate well — you improve on purpose.",
+    expandedDesc: "You don't just run well — you keep getting better on purpose.",
     signs: [
-      "Audits and funder reviews are smooth and predictable",
-      "The organization can scale because systems don't depend on one person",
-      "You measure performance and adjust quickly"
+      "Audits and funder reviews are easy",
+      "Systems don't depend on one person",
+      "You track what works and fix what doesn't"
     ],
     fixes: [
-      "Keep systems current: annual policy and process reviews",
-      "Share your model: playbooks, training, peer learning",
-      "Invest in continuous improvement"
+      "Review your policies once a year",
+      "Share how you work with other groups",
+      "Keep improving, bit by bit"
     ],
-    outcome: "Sustainable growth. High credibility. A model others trust."
+    outcome: "Strong growth. High trust. A model others can follow."
   },
 ];
 
@@ -142,9 +142,9 @@ export const SystemLadder = () => {
             id="system-heading"
             className="text-3xl sm:text-4xl lg:text-5xl font-light text-white tracking-tight leading-[1.1] mb-6"
           >
-            Five Tiers Of
+            Five Levels Of
             <br />
-            <span className="font-normal italic text-white/60">Organizational Health</span>
+            <span className="font-normal italic text-white/60">Nonprofit Health</span>
           </motion.h2>
           
           <motion.p
@@ -153,7 +153,7 @@ export const SystemLadder = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-white/50 max-w-xl"
           >
-            A simple framework to understand where you are—and where you're going.
+            A simple way to see where you are — and where you want to go.
           </motion.p>
         </div>
 
@@ -353,7 +353,7 @@ export const SystemLadder = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-8 text-center text-sm text-white/40"
         >
-          We specialize in Tiers 0–2: getting your basics written down and working.
+          We help groups at Levels 0–2: getting your basics in place and working.
         </motion.p>
 
         {/* CTA Card */}
@@ -370,7 +370,7 @@ export const SystemLadder = () => {
                 Not sure where you stand?
               </h3>
               <p className="text-white/50 max-w-lg">
-                Take the free 4-minute assessment and find out your tier—plus get a personalized recommendation.
+                Take the free 5-minute check to find your level — and get tips on what to fix first.
               </p>
             </div>
             <motion.a
