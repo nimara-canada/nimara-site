@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform, useSpring } from 'framer-motion';
 import { 
   Users, 
   DollarSign, 
@@ -50,17 +50,35 @@ const domains = [
 ];
 
 export const Expertise = () => {
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
+  // Scroll-linked animations
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30
+  });
+
+  // Section reveal
+  const sectionY = useTransform(smoothProgress, [0, 0.25], [80, 0]);
+  const sectionOpacity = useTransform(smoothProgress, [0, 0.15], [0, 1]);
 
   return (
     <section 
       ref={sectionRef}
-      className="relative py-28 md:py-36 bg-background overflow-hidden"
+      className="relative py-28 md:py-36 bg-background overflow-hidden scroll-mt-20"
       aria-labelledby="expertise-heading"
       id="expertise"
     >
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div 
+        className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
+        style={{ y: sectionY, opacity: sectionOpacity }}
+      >
         {/* Header */}
         <div className="text-center mb-20 lg:mb-24">
           <motion.span
@@ -94,28 +112,44 @@ export const Expertise = () => {
           </motion.p>
         </div>
 
-        {/* Domain Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4"
-        >
+        {/* Domain Grid with scroll-linked stagger */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
           {domains.map((domain, index) => {
             const IconComponent = domain.icon;
+            
+            // Individual card scroll animations
+            const row = Math.floor(index / 4);
+            const cardY = useTransform(
+              smoothProgress,
+              [0.15 + row * 0.05, 0.35 + row * 0.05],
+              [60, 0]
+            );
+            const cardOpacity = useTransform(
+              smoothProgress,
+              [0.15 + row * 0.05, 0.28 + row * 0.05],
+              [0, 1]
+            );
+            const cardScale = useTransform(
+              smoothProgress,
+              [0.15 + row * 0.05, 0.35 + row * 0.05],
+              [0.9, 1]
+            );
             
             return (
               <motion.div
                 key={domain.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.35 + index * 0.05 }}
+                style={{ y: cardY, opacity: cardOpacity, scale: cardScale }}
                 className="group relative bg-card border border-border/60 rounded-2xl p-5 sm:p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
+                whileHover={{ y: -8, scale: 1.02 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               >
                 {/* Icon */}
-                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/15 transition-colors duration-300">
+                <motion.div 
+                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/15 transition-colors duration-300"
+                  whileHover={{ rotate: 5, scale: 1.1 }}
+                >
                   <IconComponent className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-primary" strokeWidth={1.8} />
-                </div>
+                </motion.div>
 
                 {/* Content */}
                 <h3 className="text-sm sm:text-base font-semibold text-foreground mb-2 leading-tight">
@@ -131,10 +165,14 @@ export const Expertise = () => {
           {/* CTA Card */}
           <motion.a
             href="#hero-form"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.35 + domains.length * 0.05 }}
+            style={{ 
+              y: useTransform(smoothProgress, [0.25, 0.45], [60, 0]),
+              opacity: useTransform(smoothProgress, [0.25, 0.38], [0, 1]),
+              scale: useTransform(smoothProgress, [0.25, 0.45], [0.9, 1])
+            }}
             className="group relative bg-primary rounded-2xl p-5 sm:p-6 transition-all duration-300 hover:bg-primary/90 flex flex-col justify-between min-h-[140px] sm:min-h-[160px]"
+            whileHover={{ y: -8, scale: 1.02 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
             <div>
               <span className="text-xs sm:text-sm font-medium text-primary-foreground/80">
@@ -150,8 +188,8 @@ export const Expertise = () => {
               <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform duration-200" />
             </div>
           </motion.a>
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
     </section>
   );
 };
