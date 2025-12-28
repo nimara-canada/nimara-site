@@ -12,7 +12,7 @@ const faqs = [
   },
   {
     question: "Is Nimara right for us? What size do we need to be?",
-    answer: "We work with small and mid-size nonprofits in Canada. Most have 2–100 people (staff and regular volunteers). If you deal with funders, audits, or staff issues, we can probably help. If you're just getting started and don't have a team yet, we'll point you to free tools instead."
+    answer: "We work with nonprofits in Canada — usually groups with 0–50 staff. If you deal with funders, audits, or staff issues, we can probably help. If you're just getting started and don't have a team yet, we'll point you to free tools instead."
   },
   {
     question: "What kinds of problems can you help with?",

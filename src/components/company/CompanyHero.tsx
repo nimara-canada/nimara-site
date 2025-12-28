@@ -26,7 +26,7 @@ export const CompanyHero = () => {
             </h1>
             
             <p className="text-lg md:text-xl text-white/70 leading-relaxed mb-10 max-w-xl">
-              We help small and mid-size nonprofits install strong systems so they can pass audits, keep staff, and keep the lights on.
+              We help nonprofits install strong systems so they can pass audits, keep staff, and keep the lights on.
             </p>
 
             {/* CTAs */}

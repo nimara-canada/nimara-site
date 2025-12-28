@@ -241,7 +241,7 @@ const Partners = () => {
                 duration: 0.8,
                 delay: 0.2
               }} className="text-muted-foreground/70 text-base leading-relaxed font-light">
-                  Nimara works with small and mid-size nonprofits to set up the foundational systems funders expect. Our partners deliver hands-on work across seven domains.
+                  Nimara works with nonprofits to set up the foundational systems funders expect. Our partners deliver hands-on work across seven domains.
                 </motion.p>
               </div>
               

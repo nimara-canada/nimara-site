@@ -26,7 +26,7 @@ const faqs = [
     answer: "Right now we focus on one area per quote. If you need multiple areas (ex: finance + HR + fundraising), you'll want to join the Fundability waitlist — bundled packages launch soon.",
   },
   {
-    question: "Do You Work With Very Small Or Grassroots Orgs?",
+    question: "Do You Work With Grassroots Orgs?",
     answer: "Yes — especially if you're building structure, applying for funding, or professionalizing systems. We match based on your stage and budget, not just your size.",
   },
 ];
