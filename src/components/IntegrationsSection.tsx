@@ -1,9 +1,9 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useScrollReveal, useMotionPreferences, TIMING, DROPBOX_EASING_CSS } from "@/hooks/use-scroll-reveal";
 
 // Import logos
 import slackLogo from "@/assets/integrations/slack.webp";
@@ -51,29 +51,61 @@ const LogoOrb = ({
   tool, 
   index,
   isLoaded,
-  onLoad
+  onLoad,
+  isVisible,
+  staggerDelay,
+  reducedMotion,
 }: { 
   tool: typeof tools[0]; 
   index: number;
   isLoaded: boolean;
   onLoad: () => void;
+  isVisible: boolean;
+  staggerDelay: number;
+  reducedMotion: boolean;
 }) => {
+  const revealStyle: React.CSSProperties = reducedMotion 
+    ? { opacity: 1, transform: 'none' }
+    : {
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(16px) scale(0.95)',
+        transition: `opacity ${TIMING.reveal}ms ${DROPBOX_EASING_CSS} ${staggerDelay}ms, transform ${TIMING.reveal}ms ${DROPBOX_EASING_CSS} ${staggerDelay}ms`,
+      };
+
   return (
     <div 
       className="group relative flex-shrink-0"
-      style={{ animationDelay: `${index * 0.1}s` }}
+      style={revealStyle}
     >
       <div className="relative w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28">
         {/* Outer glow ring */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/5 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl scale-150" />
+        <div 
+          className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/5 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 blur-xl scale-150 pointer-events-none" 
+          style={{ transition: `opacity 500ms ${DROPBOX_EASING_CSS}` }}
+        />
         
         {/* Main container */}
-        <div className={cn(
-          "relative w-full h-full rounded-full bg-white shadow-lg shadow-black/5 border border-border/30",
-          "flex items-center justify-center overflow-hidden",
-          "transition-all duration-500 ease-out",
-          "group-hover:shadow-xl group-hover:shadow-primary/10 group-hover:border-primary/20 group-hover:scale-105"
-        )}>
+        <div 
+          className={cn(
+            "relative w-full h-full rounded-full bg-white shadow-lg shadow-black/5 border border-border/30",
+            "flex items-center justify-center overflow-hidden",
+          )}
+          style={{ 
+            transition: `transform 300ms ${DROPBOX_EASING_CSS}, box-shadow 300ms ${DROPBOX_EASING_CSS}, border-color 300ms ${DROPBOX_EASING_CSS}` 
+          }}
+          onMouseEnter={(e) => {
+            if (!reducedMotion) {
+              e.currentTarget.style.transform = 'scale(1.05)';
+              e.currentTarget.style.boxShadow = '0 20px 40px -10px hsl(var(--primary) / 0.15)';
+              e.currentTarget.style.borderColor = 'hsl(var(--primary) / 0.2)';
+            }
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'scale(1)';
+            e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.05)';
+            e.currentTarget.style.borderColor = 'hsl(var(--border) / 0.3)';
+          }}
+        >
           {/* Inner gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-white via-transparent to-muted/20 opacity-50" />
           
@@ -83,11 +115,13 @@ const LogoOrb = ({
           )}
           
           {/* Logo */}
-          <div className={cn(
-            "relative w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 flex items-center justify-center transition-all duration-300",
-            isLoaded ? "opacity-100" : "opacity-0",
-            "group-hover:scale-110"
-          )}>
+          <div 
+            className={cn(
+              "relative w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 flex items-center justify-center",
+              isLoaded ? "opacity-100" : "opacity-0",
+            )}
+            style={{ transition: `opacity 300ms ${DROPBOX_EASING_CSS}, transform 300ms ${DROPBOX_EASING_CSS}` }}
+          >
             <img 
               src={tool.logo} 
               alt={tool.name}
@@ -100,12 +134,14 @@ const LogoOrb = ({
       </div>
       
       {/* Tool name tooltip */}
-      <div className={cn(
-        "absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap",
-        "text-xs font-medium text-muted-foreground",
-        "opacity-0 group-hover:opacity-100 transition-all duration-300",
-        "translate-y-1 group-hover:translate-y-0"
-      )}>
+      <div 
+        className={cn(
+          "absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap",
+          "text-xs font-medium text-muted-foreground",
+          "opacity-0 group-hover:opacity-100",
+        )}
+        style={{ transition: `opacity 200ms ${DROPBOX_EASING_CSS}, transform 200ms ${DROPBOX_EASING_CSS}` }}
+      >
         {tool.name}
       </div>
     </div>
@@ -118,7 +154,10 @@ const MarqueeRow = ({
   speed = 25,
   loadedLogos,
   onLogoLoad,
-  offset = 0
+  offset = 0,
+  isVisible,
+  baseDelay,
+  reducedMotion,
 }: { 
   tools: typeof topRow;
   direction?: "left" | "right";
@@ -126,74 +165,106 @@ const MarqueeRow = ({
   loadedLogos: Set<number>;
   onLogoLoad: (index: number) => void;
   offset?: number;
+  isVisible: boolean;
+  baseDelay: number;
+  reducedMotion: boolean;
 }) => {
+  const [shouldAnimate, setShouldAnimate] = useState(false);
+  
+  // Delay marquee animation until reveal is complete
+  useEffect(() => {
+    if (isVisible && !reducedMotion) {
+      const timer = setTimeout(() => {
+        setShouldAnimate(true);
+      }, baseDelay + tools.length * TIMING.stagger + TIMING.reveal);
+      return () => clearTimeout(timer);
+    } else if (reducedMotion) {
+      setShouldAnimate(true);
+    }
+  }, [isVisible, baseDelay, tools.length, reducedMotion]);
+
   // Duplicate for seamless loop
   const duplicatedTools = [...tools, ...tools, ...tools];
   
+  // Marquee animation style
+  const marqueeStyle: React.CSSProperties = shouldAnimate && !reducedMotion
+    ? {
+        animation: `marquee-${direction} ${speed}s linear infinite`,
+      }
+    : {};
+  
   return (
     <div className="relative overflow-hidden py-4">
-      <motion.div 
+      <div 
         className="flex gap-6 sm:gap-8 lg:gap-10"
-        animate={{
-          x: direction === "left" ? ["0%", "-33.33%"] : ["-33.33%", "0%"]
-        }}
-        transition={{
-          x: {
-            repeat: Infinity,
-            repeatType: "loop",
-            duration: speed,
-            ease: "linear",
-          },
-        }}
+        style={marqueeStyle}
       >
-        {duplicatedTools.map((tool, index) => (
-          <LogoOrb 
-            key={`${tool.name}-${index}`}
-            tool={tool}
-            index={index}
-            isLoaded={loadedLogos.has((index % tools.length) + offset)}
-            onLoad={() => onLogoLoad((index % tools.length) + offset)}
-          />
-        ))}
-      </motion.div>
+        {duplicatedTools.map((tool, index) => {
+          const originalIndex = index % tools.length;
+          const staggerDelay = baseDelay + originalIndex * TIMING.stagger;
+          
+          return (
+            <LogoOrb 
+              key={`${tool.name}-${index}`}
+              tool={tool}
+              index={index}
+              isLoaded={loadedLogos.has(originalIndex + offset)}
+              onLoad={() => onLogoLoad(originalIndex + offset)}
+              isVisible={isVisible}
+              staggerDelay={staggerDelay}
+              reducedMotion={reducedMotion}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };
 
 export const IntegrationsSection = () => {
   const [loadedLogos, setLoadedLogos] = useState<Set<number>>(new Set());
-  const sectionRef = useRef<HTMLElement>(null);
-
-  // Parallax scroll effect
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const parallaxOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.6, 1, 1, 0.6]);
-  const parallaxScale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.95, 1, 1, 0.95]);
+  const { ref: sectionRef, isVisible } = useScrollReveal<HTMLElement>();
+  const { reducedMotion } = useMotionPreferences();
 
   const handleLogoLoad = (index: number) => {
     setLoadedLogos(prev => new Set(prev).add(index));
   };
 
+  // Header reveal style
+  const headerStyle: React.CSSProperties = reducedMotion 
+    ? {} 
+    : {
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? 'translateY(0)' : 'translateY(16px)',
+        transition: `opacity ${TIMING.reveal}ms ${DROPBOX_EASING_CSS}, transform ${TIMING.reveal}ms ${DROPBOX_EASING_CSS}`,
+      };
+
+  // CTA reveal style with delay
+  const ctaStyle: React.CSSProperties = reducedMotion 
+    ? {} 
+    : {
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? 'translateY(0)' : 'translateY(16px)',
+        transition: `opacity ${TIMING.reveal}ms ${DROPBOX_EASING_CSS} 800ms, transform ${TIMING.reveal}ms ${DROPBOX_EASING_CSS} 800ms`,
+      };
+
   return (
     <section 
       ref={sectionRef}
-      className="relative py-20 md:py-28 lg:py-36 bg-gradient-to-b from-background via-muted/20 to-background overflow-hidden" 
+      className="relative py-20 md:py-28 lg:py-36 overflow-hidden" 
       aria-labelledby="integrations-heading"
     >
       {/* Subtle background pattern */}
-      <div className="absolute inset-0 opacity-30">
+      <div className="absolute inset-0 opacity-30 pointer-events-none" aria-hidden="true">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <motion.div 
+        <div 
           className="text-center mb-16 lg:mb-20"
-          style={{ opacity: parallaxOpacity, scale: parallaxScale }}
+          style={headerStyle}
         >
           <div className="inline-flex items-center gap-3 mb-6">
             <div className="h-px w-8 bg-gradient-to-r from-transparent to-primary/50" />
@@ -218,7 +289,7 @@ export const IntegrationsSection = () => {
             We build funder-ready systems on your current stack — governance, finance, 
             fundraising, delivery, and reporting.
           </p>
-        </motion.div>
+        </div>
 
         {/* Marquee Container */}
         <div className="relative -mx-4 sm:-mx-6 lg:-mx-8">
@@ -236,6 +307,9 @@ export const IntegrationsSection = () => {
             loadedLogos={loadedLogos}
             onLogoLoad={handleLogoLoad}
             offset={0}
+            isVisible={isVisible}
+            baseDelay={100}
+            reducedMotion={reducedMotion}
           />
           
           {/* Bottom row - moves right */}
@@ -245,14 +319,17 @@ export const IntegrationsSection = () => {
             speed={30}
             loadedLogos={loadedLogos}
             onLogoLoad={handleLogoLoad}
-            offset={11}
+            offset={8}
+            isVisible={isVisible}
+            baseDelay={400}
+            reducedMotion={reducedMotion}
           />
         </div>
 
         {/* CTA */}
-        <motion.div 
+        <div 
           className="flex flex-col items-center gap-4 mt-16 lg:mt-20"
-          style={{ opacity: parallaxOpacity }}
+          style={ctaStyle}
         >
           <Button 
             asChild
@@ -270,13 +347,28 @@ export const IntegrationsSection = () => {
           >
             See how we set this up
           </Link>
-        </motion.div>
+        </div>
       </div>
 
       {/* Legal Footnote */}
-      <p className="text-center text-[11px] text-muted-foreground/50 mt-16 lg:mt-20">
+      <p 
+        className="text-center text-[11px] text-muted-foreground/50 mt-16 lg:mt-20"
+        style={ctaStyle}
+      >
         All product names and logos are trademarks of their respective owners.
       </p>
+
+      {/* Keyframes for marquee */}
+      <style>{`
+        @keyframes marquee-left {
+          from { transform: translateX(0); }
+          to { transform: translateX(-33.33%); }
+        }
+        @keyframes marquee-right {
+          from { transform: translateX(-33.33%); }
+          to { transform: translateX(0); }
+        }
+      `}</style>
     </section>
   );
 };
