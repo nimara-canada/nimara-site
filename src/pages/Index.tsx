@@ -73,9 +73,6 @@ const Index = () => {
             <ScrollNarrative />
           </RevealSection>
           
-          {/* System Ladder - 5 Tiers */}
-          <SystemLadder />
-          
           {/* Fit Check */}
           <RevealSection background="muted">
             <ScrollReveal>
@@ -83,12 +80,15 @@ const Index = () => {
             </ScrollReveal>
           </RevealSection>
           
-          {/* Expertise */}
+          {/* Expertise - What we cover */}
           <RevealSection>
             <ScrollReveal>
               <Expertise />
             </ScrollReveal>
           </RevealSection>
+          
+          {/* System Ladder - 5 Levels */}
+          <SystemLadder />
           
           {/* Integrations */}
           <RevealSection background="gradient">
