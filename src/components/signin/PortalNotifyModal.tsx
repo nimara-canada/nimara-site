@@ -75,17 +75,10 @@ export function PortalNotifyModal({ isOpen, onClose }: PortalNotifyModalProps) {
         timestamp: new Date().toISOString(),
       };
 
-      // Send to webhook
-      await fetch("https://example.com/webhook", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-
-      // Send email (non-blocking)
-      supabase.functions.invoke("send-form-email", {
+      // Send email notification
+      await supabase.functions.invoke("send-form-email", {
         body: { formCode: "PORTAL_NOTIFY", payload }
-      }).catch(err => console.error("Email error:", err));
+      });
 
       toast.success("Thanks — we'll send your invite on Nov 5, 2025 and a short setup note beforehand.");
       form.reset();
