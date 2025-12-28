@@ -27,23 +27,23 @@ export function AssessVisual({ className }: NarrativeVisualProps) {
             <div>
               <p className="text-[10px] text-muted-foreground uppercase tracking-wider mb-1">Overall Score</p>
               <div className="flex items-baseline gap-1">
-                <span className="text-3xl font-bold text-foreground">67</span>
+                <span className="text-3xl font-bold text-foreground">52</span>
                 <span className="text-sm text-muted-foreground">/100</span>
               </div>
             </div>
             <div className="px-2.5 py-1 bg-amber-100 text-amber-700 text-[10px] font-medium rounded-full flex items-center gap-1">
               <AlertTriangle className="w-3 h-3" />
-              Tier 2
+              Tier 1
             </div>
           </div>
 
           {/* Categories */}
           <div className="space-y-2">
             {[
-              { label: 'Governance', value: 72, color: 'bg-primary' },
-              { label: 'Finance', value: 58, color: 'bg-amber-500' },
-              { label: 'Programs', value: 75, color: 'bg-primary' },
-              { label: 'Operations', value: 62, color: 'bg-amber-500' },
+              { label: 'Governance', value: 58, color: 'bg-amber-500' },
+              { label: 'Finance', value: 45, color: 'bg-red-500' },
+              { label: 'Programs', value: 60, color: 'bg-amber-500' },
+              { label: 'Operations', value: 48, color: 'bg-red-500' },
             ].map((item) => (
               <div key={item.label} className="space-y-1">
                 <div className="flex items-center justify-between text-[10px]">
