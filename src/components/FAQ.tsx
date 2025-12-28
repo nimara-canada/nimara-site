@@ -3,28 +3,28 @@ import { motion, AnimatePresence, useInView } from 'framer-motion';
 
 const faqs = [
   {
-    question: "Do We Have To Start With A Health Check?",
-    answer: "No. If you have one urgent problem (a scary email, audit, funder deadline, policy gap), the Urgent Fix path handles it in 1–4 weeks without a full health check. If you want to upgrade systems across multiple areas (governance, finance, HR, programs), you'd start with a health check to see where each system stands. From there, we design the right setup for you."
+    question: "Do we have to start with a Quick Check?",
+    answer: "No. If you have one problem you need to fix fast (like an audit coming up or a funder asking questions), we can help with that first. If you want to look at the whole picture — how your board, money, staff, and programs are set up — the Quick Check is a good place to start. It only takes 5 minutes and it's free."
   },
   {
-    question: "What's The Difference Between Urgent Fix And Build My Systems?",
-    answer: "Urgent Fix: One clear problem, 1–4 weeks. You get a small bundle of tools, files, and steps that solve that problem. Build My Systems: Bigger questions about how your org runs. Start with a free 4-minute check, then a paid deep check ($2,500) to see where you stand. Then 8–12 weeks to set up systems that make you audit- and funder-ready."
+    question: "What's the difference between Quick Check and Deep Check?",
+    answer: "The Quick Check is free. It takes about 5 minutes and gives you a score right away. The Deep Check costs $2,500. We look at your actual documents and give you a full report. It takes 2–4 weeks. Think of it this way: Quick Check tells you where to look. Deep Check tells you exactly what to fix."
   },
   {
-    question: "Who Is Nimara For? Are We The Right Size?",
-    answer: "We work with small and mid-size nonprofits in Canada: Usually 2–100 staff (mix of paid staff and active volunteers). Doing real community or program work. Big enough that audits, funders, and HR issues are on the table. If you're very early (no stable staff, still just an idea), we'll usually share light tools and point you to other supports instead of selling a full install."
+    question: "Is Nimara right for us? What size do we need to be?",
+    answer: "We work with small and mid-size nonprofits in Canada. Most have 2–100 people (staff and regular volunteers). If you deal with funders, audits, or staff issues, we can probably help. If you're just getting started and don't have a team yet, we'll point you to free tools instead."
   },
   {
-    question: "What Kinds Of Problems Can You Help With?",
-    answer: "We work across 7 areas: Board & Governance (rules, roles, minutes, policies), Money & Compliance (finance systems, grants, audits), People & HR (staff files, hiring, safety), Programs & Services (intake, delivery, safety logs), Fundraising & Donors (gift acceptance, receipting, records), Volunteers (agreements, screening, training), and Systems & Records (files, dashboards, data protection)."
+    question: "What kinds of problems can you help with?",
+    answer: "We help with 7 main areas: Board (policies, roles, meeting notes), Money (budgets, grants, audits), People (hiring, staff files, safety), Programs (how you track and deliver services), Fundraising (donations, receipts, records), Volunteers (agreements, screening), and Records (files, folders, data safety)."
   },
   {
-    question: "How Long Does It Take, And What Do We Actually Get?",
-    answer: "Urgent Fix: 1–4 weeks. You get the policies, templates, trackers, and steps needed to fix that one problem. Build My Systems: ~2 weeks for the deep check, then 8–12 weeks per system. You get a clear plan and tools your team can run without us. No 'advice only.' Every project ends in files and routines that live in your systems."
+    question: "How long does it take? What do we get?",
+    answer: "Quick Check: 5 minutes, instant results. Deep Check: 2–4 weeks. After that, fixing things usually takes 8–12 weeks per area. You always get real documents and tools you can keep and use — not just advice."
   },
   {
-    question: "How Does Pricing Work? Can A Funder Pay For This?",
-    answer: "We use flat project fees, not open-ended hourly billing. Urgent Fix = smaller fixed fee for one problem. Build My Systems = deep check ($2,500) plus fixed fees for each system setup. Yes, funders can pay. Many orgs use capacity-building grants, admin lines, or project funds. We can give you a simple one-page description for proposals."
+    question: "How much does it cost? Can a funder pay for this?",
+    answer: "Quick Check is free. Deep Check is $2,500. After that, we give you a flat price for each area you want to fix — no surprise bills. Yes, funders can pay for this. Many groups use grants or admin money. We can give you a one-page summary for your proposal."
   }
 ];
 
