@@ -15,7 +15,8 @@ import { FinalCTA } from "@/components/FinalCTA";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { SectionIndicator } from "@/components/SectionIndicator";
-import { ScrollSnapWrapper, ScrollSection } from "@/components/ScrollSnapWrapper";
+import { ScrollSnapWrapper } from "@/components/ScrollSnapWrapper";
+import { DepthSection } from "@/components/DepthBlur";
 
 const Index = () => {
   const location = useLocation();
@@ -129,44 +130,43 @@ const Index = () => {
         <Header />
         
         <main id="main" className="space-y-0" style={{ paddingTop: '5rem' }}>
-          <ScrollSection>
-            <HeroSection />
-          </ScrollSection>
+          {/* Hero - no depth blur, stays crisp */}
+          <HeroSection />
           
-          <ScrollSection>
+          <DepthSection intensity="subtle">
             <TwoWaysSection />
-          </ScrollSection>
+          </DepthSection>
           
           {/* Subtle divider between sections */}
           <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
           
-          <ScrollSection>
+          <DepthSection intensity="subtle">
             <FitCheck />
-          </ScrollSection>
+          </DepthSection>
           
-          <ScrollSection>
+          <DepthSection intensity="subtle">
             <HowWeHelp />
-          </ScrollSection>
+          </DepthSection>
           
-          <ScrollSection>
+          <DepthSection intensity="subtle">
             <SystemLadder />
-          </ScrollSection>
+          </DepthSection>
           
-          <ScrollSection>
+          <DepthSection intensity="subtle">
             <Expertise />
-          </ScrollSection>
+          </DepthSection>
           
-          <ScrollSection>
+          <DepthSection intensity="subtle">
             <IntegrationsSection />
-          </ScrollSection>
+          </DepthSection>
           
-          <ScrollSection id="faq">
+          <DepthSection intensity="subtle" id="faq">
             <FAQ />
-          </ScrollSection>
+          </DepthSection>
           
-          <ScrollSection>
+          <DepthSection intensity="subtle">
             <FinalCTA />
-          </ScrollSection>
+          </DepthSection>
         </main>
         
         <Footer />
