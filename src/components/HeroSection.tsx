@@ -24,11 +24,27 @@ const NimaraHeroPremium = () => {
     restDelta: 0.001
   });
 
-  // Transform values based on scroll - reduced if motion preference
+  // Main container transforms
   const heroOpacity = useTransform(smoothProgress, [0, 0.5], [1, reducedMotion ? 1 : 0]);
   const heroY = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : 100]);
   const heroScale = useTransform(smoothProgress, [0, 0.5], [1, reducedMotion ? 1 : 0.98]);
-  const dashboardY = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : 60]);
+  
+  // Dashboard parallax - slower movement
+  const dashboardY = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : 50]);
+  const dashboardRotate = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : -2]);
+  
+  // Floating cards - independent parallax layers (different speeds for depth)
+  // Top-right card moves faster (closer to viewer)
+  const topCardY = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : 80]);
+  const topCardX = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : 15]);
+  const topCardRotate = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : 5]);
+  const topCardScale = useTransform(smoothProgress, [0, 0.5], [1, reducedMotion ? 1 : 0.95]);
+  
+  // Bottom-left card moves slower (further from viewer)
+  const bottomCardY = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : 35]);
+  const bottomCardX = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : -10]);
+  const bottomCardRotate = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : -3]);
+  const bottomCardScale = useTransform(smoothProgress, [0, 0.5], [1, reducedMotion ? 1 : 0.97]);
 
   useEffect(() => {
     setIsLoaded(true);
@@ -194,14 +210,16 @@ const NimaraHeroPremium = () => {
               </div>
             </div>
 
-            {/* Right - Premium Dashboard Mockup (Desktop) with Parallax */}
-            <motion.div 
-              className="hidden lg:block"
-              style={{ y: dashboardY }}
-            >
-              <div style={revealStyle(300)} className="relative py-8">
-                {/* Main Dashboard Window */}
-                <div className="relative bg-[#0a0a0f] border border-white/10 rounded-2xl overflow-hidden shadow-2xl shadow-black/50">
+            {/* Right - Premium Dashboard Mockup (Desktop) with Layered Parallax */}
+            <div className="hidden lg:block relative py-8">
+              {/* Main Dashboard Window - Base layer */}
+              <motion.div 
+                style={{ 
+                  y: dashboardY,
+                  rotate: dashboardRotate,
+                }}
+              >
+                <div style={revealStyle(300)} className="relative bg-[#0a0a0f] border border-white/10 rounded-2xl overflow-hidden shadow-2xl shadow-black/50">
                   {/* Window Header */}
                   <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-white/[0.02]">
                     <div className="flex gap-1.5">
@@ -257,11 +275,21 @@ const NimaraHeroPremium = () => {
                     </div>
                   </div>
                 </div>
+              </motion.div>
 
-                {/* Floating Card - Top Fixes */}
+              {/* Floating Card - Top Fixes (Foreground layer - faster parallax) */}
+              <motion.div 
+                className="absolute -right-4 top-2 z-20"
+                style={{ 
+                  y: topCardY,
+                  x: topCardX,
+                  rotate: topCardRotate,
+                  scale: topCardScale,
+                }}
+              >
                 <div 
                   style={revealStyle(700)}
-                  className="absolute -right-4 top-2 w-52 bg-white rounded-xl shadow-xl shadow-black/20 p-4 border border-gray-100 z-10"
+                  className="w-52 bg-white rounded-xl shadow-2xl shadow-black/25 p-4 border border-gray-100"
                 >
                   <div className="flex items-center gap-2 mb-3">
                     <div className="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center">
@@ -283,11 +311,21 @@ const NimaraHeroPremium = () => {
                     ))}
                   </div>
                 </div>
+              </motion.div>
 
-                {/* Floating Card - Status */}
+              {/* Floating Card - Status (Mid layer - slower parallax) */}
+              <motion.div 
+                className="absolute -left-4 bottom-2 z-10"
+                style={{ 
+                  y: bottomCardY,
+                  x: bottomCardX,
+                  rotate: bottomCardRotate,
+                  scale: bottomCardScale,
+                }}
+              >
                 <div 
                   style={revealStyle(800)}
-                  className="absolute -left-4 bottom-2 bg-white rounded-xl shadow-xl shadow-black/20 p-3 border border-gray-100 z-10"
+                  className="bg-white rounded-xl shadow-2xl shadow-black/25 p-3 border border-gray-100"
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
@@ -299,8 +337,8 @@ const NimaraHeroPremium = () => {
                     </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </div>
 
           {/* Bottom Stats Section */}
