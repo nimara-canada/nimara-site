@@ -1,12 +1,34 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Check } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
 
 const ROTATING_WORDS = ["Funder-Ready", "Audit-Ready", "Report-Ready", "Board-Ready", "Grant-Ready"];
 
 const NimaraHeroPremium = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [wordIndex, setWordIndex] = useState(0);
+  const heroRef = useRef<HTMLElement>(null);
+
+  // Scroll-linked animations
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+
+  // Smooth spring for parallax
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  // Transform values based on scroll
+  const heroOpacity = useTransform(smoothProgress, [0, 0.5], [1, 0]);
+  const heroY = useTransform(smoothProgress, [0, 1], [0, 150]);
+  const heroScale = useTransform(smoothProgress, [0, 0.5], [1, 0.95]);
+  const dashboardY = useTransform(smoothProgress, [0, 1], [0, 100]);
+  const dashboardRotate = useTransform(smoothProgress, [0, 1], [0, -5]);
+  const floatingCardY = useTransform(smoothProgress, [0, 1], [0, 60]);
 
   useEffect(() => {
     setIsLoaded(true);
@@ -22,6 +44,8 @@ const NimaraHeroPremium = () => {
 
   return (
     <section 
+      ref={heroRef}
+      id="hero"
       aria-label="Hero section - Get your nonprofit systems ready"
       className="min-h-screen bg-secondary-background text-white relative overflow-hidden"
     >
@@ -35,8 +59,15 @@ const NimaraHeroPremium = () => {
         }}
       />
 
-      {/* Main Content */}
-      <div className="relative z-10 min-h-screen flex flex-col">
+      {/* Main Content with scroll transforms */}
+      <motion.div 
+        className="relative z-10 min-h-screen flex flex-col"
+        style={{ 
+          opacity: heroOpacity,
+          y: heroY,
+          scale: heroScale
+        }}
+      >
         <div className="flex-1 w-full max-w-7xl mx-auto px-6 lg:px-12 py-20 lg:py-28 flex flex-col">
           
           {/* Two Column Layout */}
@@ -146,14 +177,18 @@ const NimaraHeroPremium = () => {
               </div>
             </div>
 
-            {/* Right - Premium Dashboard Mockup (Desktop) */}
-            <div className={`hidden lg:block transition-all duration-1000 delay-200 ${isLoaded ? "opacity-100" : "opacity-0 translate-y-6"}`}>
+            {/* Right - Premium Dashboard Mockup (Desktop) with Parallax */}
+            <motion.div 
+              className={`hidden lg:block transition-all duration-1000 delay-200 ${isLoaded ? "opacity-100" : "opacity-0 translate-y-6"}`}
+              style={{ y: dashboardY }}
+            >
               <div className="relative py-8">
                 {/* Main Dashboard Window */}
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
+                  style={{ rotate: dashboardRotate }}
                   className="relative bg-[#0a0a0f] border border-white/10 rounded-2xl overflow-hidden shadow-2xl shadow-black/50"
                 >
                   {/* Window Header */}
@@ -223,11 +258,12 @@ const NimaraHeroPremium = () => {
                   </div>
                 </motion.div>
 
-                {/* Floating Card - Top Fixes */}
+                {/* Floating Card - Top Fixes with Parallax */}
                 <motion.div 
                   initial={{ opacity: 0, x: 20, y: -10 }}
                   animate={{ opacity: 1, x: 0, y: 0 }}
                   transition={{ duration: 0.5, delay: 1.0 }}
+                  style={{ y: floatingCardY }}
                   className="absolute -right-4 top-2 w-52 bg-white rounded-xl shadow-xl shadow-black/20 p-4 border border-gray-100 z-10"
                 >
                   <div className="flex items-center gap-2 mb-3">
@@ -254,11 +290,12 @@ const NimaraHeroPremium = () => {
                   </div>
                 </motion.div>
 
-                {/* Floating Card - Status */}
+                {/* Floating Card - Status with Parallax */}
                 <motion.div 
                   initial={{ opacity: 0, x: -20, y: 10 }}
                   animate={{ opacity: 1, x: 0, y: 0 }}
                   transition={{ duration: 0.5, delay: 1.3 }}
+                  style={{ y: useTransform(smoothProgress, [0, 1], [0, 40]) }}
                   className="absolute -left-4 bottom-2 bg-white rounded-xl shadow-xl shadow-black/20 p-3 border border-gray-100 z-10"
                 >
                   <div className="flex items-center gap-3">
@@ -272,7 +309,7 @@ const NimaraHeroPremium = () => {
                   </div>
                 </motion.div>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Bottom Stats Section */}
@@ -297,7 +334,25 @@ const NimaraHeroPremium = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
+
+      {/* Scroll indicator */}
+      <motion.div 
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: isLoaded ? 1 : 0, y: 0 }}
+        transition={{ delay: 1.5, duration: 0.6 }}
+        style={{ opacity: useTransform(smoothProgress, [0, 0.2], [1, 0]) }}
+      >
+        <span className="text-[10px] uppercase tracking-widest text-white/40">Scroll</span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          className="w-5 h-8 rounded-full border border-white/20 flex items-start justify-center pt-1.5"
+        >
+          <motion.div className="w-1 h-1.5 rounded-full bg-white/50" />
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { motion, AnimatePresence, useInView, useScroll, useTransform, useSpring } from 'framer-motion';
 import { Play, X } from 'lucide-react';
 
 const fitCriteria = [
@@ -20,8 +20,23 @@ const fitCriteria = [
 export const FitCheck = () => {
   const [checkedItems, setCheckedItems] = useState<string[]>([]);
   const [showVideoModal, setShowVideoModal] = useState(false);
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
+  // Scroll-linked animations
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30
+  });
+
+  // Section parallax
+  const contentY = useTransform(smoothProgress, [0, 1], [40, -40]);
+  const videoY = useTransform(smoothProgress, [0, 1], [60, -30]);
 
   const toggleItem = (id: string) => {
     setCheckedItems(prev =>
@@ -35,14 +50,17 @@ export const FitCheck = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-20 md:py-28 lg:py-36 bg-secondary-background overflow-hidden" 
+      className="relative py-20 md:py-28 lg:py-36 bg-secondary-background overflow-hidden scroll-mt-20" 
       aria-labelledby="fit-check-heading" 
       id="fit-check"
     >
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Editorial Header */}
-        <div className="mb-12 lg:mb-16">
+        <motion.div 
+          className="mb-12 lg:mb-16"
+          style={{ y: contentY }}
+        >
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
@@ -75,11 +93,11 @@ export const FitCheck = () => {
           >
             If your mission is strong but your systems feel messy, we can help.
           </motion.p>
-        </div>
+        </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Left - Checklist */}
-          <div>
+          <motion.div style={{ y: contentY }}>
             <motion.p
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
@@ -92,20 +110,33 @@ export const FitCheck = () => {
             <div className="space-y-0">
               {fitCriteria.map((item, index) => {
                 const isChecked = checkedItems.includes(item.id);
+                
+                // Staggered scroll reveal for each item
+                const itemY = useTransform(
+                  smoothProgress,
+                  [0.1 + index * 0.05, 0.3 + index * 0.05],
+                  [30, 0]
+                );
+                const itemOpacity = useTransform(
+                  smoothProgress,
+                  [0.1 + index * 0.05, 0.25 + index * 0.05],
+                  [0, 1]
+                );
+
                 return (
                   <motion.button
                     key={item.id}
                     type="button"
                     onClick={() => toggleItem(item.id)}
-                    initial={{ opacity: 0 }}
-                    animate={isInView ? { opacity: 1 } : {}}
-                    transition={{ duration: 0.5, delay: 0.3 + index * 0.08 }}
+                    style={{ y: itemY, opacity: itemOpacity }}
                     className={`
                       w-full flex items-start gap-4 py-5 text-left transition-all duration-300 border-t border-white/20
                       focus:outline-none group
                       ${isChecked ? 'bg-white/15 -mx-4 px-4' : 'hover:bg-white/10 -mx-4 px-4'}
                     `}
                     aria-pressed={isChecked}
+                    whileHover={{ x: 8 }}
+                    whileTap={{ scale: 0.98 }}
                   >
                     <div className={`
                       flex-shrink-0 w-5 h-5 rounded border-2 flex items-center justify-center transition-all duration-300 mt-0.5
@@ -153,8 +184,8 @@ export const FitCheck = () => {
                   </span>
                   {isGoodFit && (
                     <motion.span
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
+                      initial={{ opacity: 0, x: -10, scale: 0.9 }}
+                      animate={{ opacity: 1, x: 0, scale: 1 }}
                       className="text-sm text-accent font-medium px-3 py-1 rounded-full bg-accent/20"
                     >
                       ✓ Looks like a good fit
@@ -171,12 +202,14 @@ export const FitCheck = () => {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="mt-12 pt-8 border-t border-white/20 flex flex-col sm:flex-row items-start sm:items-center gap-4"
             >
-              <a
+              <motion.a
                 href="/check"
                 className="inline-flex items-center justify-center px-6 py-3 bg-white text-primary font-medium rounded hover:bg-white/90 transition-colors"
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
               >
                 Start the free check (4 min)
-              </a>
+              </motion.a>
               <a
                 href="/book-a-call"
                 className="text-white/80 hover:text-white transition-colors text-sm"
@@ -184,21 +217,17 @@ export const FitCheck = () => {
                 Or schedule a call
               </a>
             </motion.div>
-          </div>
+          </motion.div>
 
-          {/* Right - Video */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
+          {/* Right - Video with Parallax */}
+          <motion.div style={{ y: videoY }}>
             <motion.button
               type="button"
               onClick={() => setShowVideoModal(true)}
               className="relative block w-full aspect-[4/3] bg-white group focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-4 focus:ring-offset-primary rounded-lg overflow-hidden shadow-lg"
               aria-label="Play Nimara intro video"
-              whileHover={{ y: -8, boxShadow: '0 25px 50px -12px rgba(11, 17, 32, 0.25)' }}
-              transition={{ duration: 0.3 }}
+              whileHover={{ y: -8, scale: 1.02, boxShadow: '0 25px 50px -12px rgba(11, 17, 32, 0.25)' }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             >
               <motion.div
                 className="absolute inset-0 bg-cover bg-center"
@@ -212,11 +241,13 @@ export const FitCheck = () => {
 
               {/* Play button */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div
-                  className="w-20 h-20 rounded-full bg-white flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110"
+                <motion.div
+                  className="w-20 h-20 rounded-full bg-white flex items-center justify-center shadow-lg"
+                  whileHover={{ scale: 1.15 }}
+                  transition={{ type: "spring", stiffness: 400 }}
                 >
                   <Play size={28} className="text-[#0B1120] ml-1" fill="currentColor" />
-                </div>
+                </motion.div>
               </div>
 
               {/* Duration */}
@@ -232,10 +263,11 @@ export const FitCheck = () => {
               </div>
             </motion.button>
 
-            {/* Quote */}
+            {/* Quote with parallax offset */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
+              style={{ y: useTransform(smoothProgress, [0, 1], [30, -15]) }}
               whileHover={{ y: -6, boxShadow: '0 20px 40px -12px rgba(11, 17, 32, 0.2)' }}
               transition={{ delay: 0.6, duration: 0.3 }}
               className="mt-8 p-6 bg-white rounded-lg shadow-lg cursor-default"
@@ -262,9 +294,10 @@ export const FitCheck = () => {
             onClick={() => setShowVideoModal(false)}
           >
             <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ type: "spring", damping: 25 }}
               className="relative w-full max-w-4xl bg-secondary"
               onClick={e => e.stopPropagation()}
             >

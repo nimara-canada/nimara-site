@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef, useState } from "react";
 import { ArrowRight, Zap, Layers, Sparkles } from "lucide-react";
 
@@ -31,9 +31,24 @@ const paths = [
 
 export const TwoWaysSection = () => {
   const navigate = useNavigate();
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+
+  // Scroll-linked animations
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30
+  });
+
+  // Section reveal
+  const sectionY = useTransform(smoothProgress, [0, 0.3], [60, 0]);
+  const sectionOpacity = useTransform(smoothProgress, [0, 0.2], [0, 1]);
 
   const handleNavigate = (path: string) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -41,11 +56,18 @@ export const TwoWaysSection = () => {
   };
 
   return (
-    <section ref={sectionRef} className="relative py-32 md:py-40 bg-background overflow-hidden">
+    <section 
+      ref={sectionRef} 
+      id="two-ways"
+      className="relative py-32 md:py-40 bg-background overflow-hidden scroll-mt-20"
+    >
       {/* Subtle background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-muted/30 via-transparent to-transparent pointer-events-none" />
       
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div 
+        className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8"
+        style={{ y: sectionY, opacity: sectionOpacity }}
+      >
         {/* Header */}
         <div className="text-center mb-20 lg:mb-24">
           <motion.div
@@ -70,17 +92,29 @@ export const TwoWaysSection = () => {
           </motion.h2>
         </div>
 
-        {/* Cards */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="grid md:grid-cols-2 gap-4 lg:gap-6"
-        >
-          {paths.map((path) => {
+        {/* Cards with scroll-linked stagger */}
+        <div className="grid md:grid-cols-2 gap-4 lg:gap-6">
+          {paths.map((path, index) => {
             const Icon = path.icon;
             const isHovered = hoveredCard === path.id;
             const isFeatured = path.featured;
+            
+            // Individual card scroll animation
+            const cardY = useTransform(
+              smoothProgress, 
+              [0.1, 0.4], 
+              [40 + (index * 20), 0]
+            );
+            const cardOpacity = useTransform(
+              smoothProgress, 
+              [0.1 + (index * 0.05), 0.3 + (index * 0.05)], 
+              [0, 1]
+            );
+            const cardRotate = useTransform(
+              smoothProgress,
+              [0.1, 0.5],
+              [index === 0 ? -2 : 2, 0]
+            );
             
             return (
               <motion.div
@@ -92,8 +126,16 @@ export const TwoWaysSection = () => {
                   group relative cursor-pointer
                   ${isFeatured ? 'md:-mt-4 md:mb-4' : ''}
                 `}
-                whileHover={{ y: -8 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                style={{ 
+                  y: cardY, 
+                  opacity: cardOpacity,
+                  rotate: cardRotate
+                }}
+                whileHover={{ 
+                  y: -12,
+                  scale: 1.02,
+                  transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] }
+                }}
               >
                 {/* Card */}
                 <div className={`
@@ -132,13 +174,16 @@ export const TwoWaysSection = () => {
                   </div>
 
                   {/* Icon */}
-                  <div className={`
-                    w-11 h-11 rounded-xl flex items-center justify-center mb-6 transition-all duration-300
-                    ${isFeatured 
-                      ? 'bg-background/10 group-hover:bg-background/15' 
-                      : 'bg-muted group-hover:bg-primary/10'
-                    }
-                  `}>
+                  <motion.div 
+                    className={`
+                      w-11 h-11 rounded-xl flex items-center justify-center mb-6 transition-all duration-300
+                      ${isFeatured 
+                        ? 'bg-background/10 group-hover:bg-background/15' 
+                        : 'bg-muted group-hover:bg-primary/10'
+                      }
+                    `}
+                    whileHover={{ rotate: 5, scale: 1.1 }}
+                  >
                     <Icon className={`
                       w-5 h-5 transition-colors duration-300
                       ${isFeatured 
@@ -146,7 +191,7 @@ export const TwoWaysSection = () => {
                         : 'text-muted-foreground group-hover:text-primary'
                       }
                     `} />
-                  </div>
+                  </motion.div>
 
                   {/* Title */}
                   <h3 className={`
@@ -167,16 +212,22 @@ export const TwoWaysSection = () => {
                   {/* Features */}
                   <ul className="space-y-3 mb-10">
                     {path.features.map((feature, i) => (
-                      <li key={i} className={`
-                        flex items-center gap-3 text-sm
-                        ${isFeatured ? 'text-background/55' : 'text-muted-foreground/80'}
-                      `}>
+                      <motion.li 
+                        key={i} 
+                        className={`
+                          flex items-center gap-3 text-sm
+                          ${isFeatured ? 'text-background/55' : 'text-muted-foreground/80'}
+                        `}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ delay: 0.4 + i * 0.1 }}
+                      >
                         <span className={`
                           w-1 h-1 rounded-full flex-shrink-0
                           ${isFeatured ? 'bg-background/35' : 'bg-muted-foreground/40'}
                         `} />
                         {feature}
-                      </li>
+                      </motion.li>
                     ))}
                   </ul>
 
@@ -195,7 +246,7 @@ export const TwoWaysSection = () => {
               </motion.div>
             );
           })}
-        </motion.div>
+        </div>
 
         {/* Bottom helper */}
         <motion.div
@@ -211,7 +262,7 @@ export const TwoWaysSection = () => {
             Not sure which path? <span className="underline underline-offset-4 decoration-muted-foreground/30 hover:decoration-foreground/50">Book a free call</span>
           </button>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 };
