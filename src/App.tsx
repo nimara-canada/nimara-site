@@ -6,7 +6,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { CALENDLY_BOOKING_URL } from "@/constants/urls";
+import { CALENDLY_BOOKING_URL, TYPEFORM_HEALTH_CHECK_URL } from "@/constants/urls";
 import Index from "./pages/Index";
 import Consultants from "./pages/Consultants";
 import Partners from "./pages/Partners";
@@ -70,10 +70,10 @@ const App = () => (
             <Route path="/integrations" element={<Integrations />} />
             <Route path="/how-nimara-works" element={<HowNimaraWorks />} />
             <Route path="/organizational-health-check" element={<OrganizationalHealthCheck />} />
-            <Route path="/health-score" element={<HealthScore />} />
+            <Route path="/health-score" element={<ExternalRedirect to={TYPEFORM_HEALTH_CHECK_URL} />} />
             <Route path="/path-a" element={<PathA />} />
             <Route path="/path-b" element={<PathB />} />
-            <Route path="/check" element={<Check />} />
+            <Route path="/check" element={<ExternalRedirect to={TYPEFORM_HEALTH_CHECK_URL} />} />
             
             {/* Admin routes */}
             <Route path="/admin/privacy-audit" element={<PrivacyAuditDashboard />} />
