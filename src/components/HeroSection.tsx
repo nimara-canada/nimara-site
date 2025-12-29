@@ -203,7 +203,9 @@ const NimaraHeroPremium = () => {
 
                 {/* Secondary CTA - text link */}
                 <a
-                  href="/book-a-call"
+                  href="https://calendly.com/hello-nimara/nohc-intake-call"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group inline-flex items-center gap-2 text-base text-white/60 hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-secondary-background rounded"
                 >
                   Need urgent help? Book a call
