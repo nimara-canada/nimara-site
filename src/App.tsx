@@ -67,7 +67,7 @@ const App = () => (
             <Route path="/resources/:slug" element={<ResourceDetail />} />
             <Route path="/integrations" element={<Integrations />} />
             <Route path="/how-nimara-works" element={<HowNimaraWorks />} />
-            <Route path="/organizational-health-check" element={<OrganizationalHealthCheck />} />
+            <Route path="/organizational-health-check" element={<ExternalRedirect to={TYPEFORM_HEALTH_CHECK_URL} />} />
             <Route path="/health-score" element={<ExternalRedirect to={TYPEFORM_HEALTH_CHECK_URL} />} />
             <Route path="/path-a" element={<PathA />} />
             <Route path="/path-b" element={<PathB />} />
