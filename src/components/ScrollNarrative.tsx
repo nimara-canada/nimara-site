@@ -1,5 +1,6 @@
 import { StickyNarrative } from '@/components/StickyNarrative';
 import { AssessVisual, FixVisual, ProveVisual, ReportVisual } from '@/components/NarrativeVisuals';
+import { TYPEFORM_HEALTH_CHECK_URL } from "@/constants/urls";
 
 const narrativeSteps = [
   {
@@ -8,7 +9,8 @@ const narrativeSteps = [
     heading: 'See where you stand in 5 minutes',
     description: 'Take our free Quick Check (about 20–30 questions). You\'ll get your score right away, and we\'ll email your report instantly.',
     ctaText: 'Start the free check →',
-    ctaHref: '/health-score',
+    ctaHref: TYPEFORM_HEALTH_CHECK_URL,
+    ctaExternal: true,
     visual: <AssessVisual />,
   },
   {

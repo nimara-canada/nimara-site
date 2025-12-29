@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { TYPEFORM_HEALTH_CHECK_URL } from "@/constants/urls";
 
 const nextSteps = [
   {
@@ -7,7 +8,8 @@ const nextSteps = [
     heading: "I Run Or Support A Nonprofit",
     description: "I want to see if Nimara is a good fit for our team.",
     buttonText: "Start The Free Check",
-    link: "/organizational-health-check"
+    link: TYPEFORM_HEALTH_CHECK_URL,
+    external: true
   },
   {
     num: "02",

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { motion, useInView, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef, useState } from "react";
 import { ArrowRight, Zap, Layers, Sparkles } from "lucide-react";
-import { CALENDLY_BOOKING_URL } from "@/constants/urls";
+import { CALENDLY_BOOKING_URL, TYPEFORM_HEALTH_CHECK_URL } from "@/constants/urls";
 
 const paths = [
   {
@@ -14,7 +14,8 @@ const paths = [
     description: "One issue, one clear fix. We solve the problem and leave you a simple way to run it.",
     features: ["Deadline or audit pressure", "Something broken right now", "Need clarity this month"],
     cta: "Get urgent help",
-    href: "/book-a-call"
+    href: CALENDLY_BOOKING_URL,
+    external: true
   },
   {
     id: "build",
@@ -26,7 +27,8 @@ const paths = [
     description: "Start with a free check, then we recommend next steps based on what you actually need.",
     features: ["Multiple areas feel messy", "Want repeatable systems", "Need funder-ready basics"],
     cta: "Start the free check",
-    href: "/check"
+    href: TYPEFORM_HEALTH_CHECK_URL,
+    external: true
   }
 ];
 
@@ -51,9 +53,13 @@ export const TwoWaysSection = () => {
   const sectionY = useTransform(smoothProgress, [0, 0.3], [60, 0]);
   const sectionOpacity = useTransform(smoothProgress, [0, 0.2], [0, 1]);
 
-  const handleNavigate = (path: string) => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    setTimeout(() => navigate(path), 150);
+  const handleNavigate = (path: string, external?: boolean) => {
+    if (external) {
+      window.open(path, '_blank', 'noopener,noreferrer');
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setTimeout(() => navigate(path), 150);
+    }
   };
 
   return (
@@ -122,7 +128,7 @@ export const TwoWaysSection = () => {
                 key={path.id}
                 onMouseEnter={() => setHoveredCard(path.id)}
                 onMouseLeave={() => setHoveredCard(null)}
-                onClick={() => handleNavigate(path.href)}
+                onClick={() => handleNavigate(path.href, path.external)}
                 className={`
                   group relative cursor-pointer
                   ${isFeatured ? 'md:-mt-4 md:mb-4' : ''}

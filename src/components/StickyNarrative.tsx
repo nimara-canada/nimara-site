@@ -9,6 +9,7 @@ interface NarrativeStep {
   description: string;
   ctaText?: string;
   ctaHref?: string;
+  ctaExternal?: boolean;
   timeNote?: string;
   visual: React.ReactNode;
 }
@@ -172,6 +173,8 @@ function DesktopNarrativeStep({
         {step.ctaText && step.ctaHref && (
           <a
             href={step.ctaHref}
+            target={step.ctaExternal ? "_blank" : undefined}
+            rel={step.ctaExternal ? "noopener noreferrer" : undefined}
             className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all duration-200 group"
           >
             {step.ctaText}
@@ -248,6 +251,8 @@ function MobileNarrativeStep({
       {step.ctaText && step.ctaHref && (
         <a
           href={step.ctaHref}
+          target={step.ctaExternal ? "_blank" : undefined}
+          rel={step.ctaExternal ? "noopener noreferrer" : undefined}
           className="inline-flex items-center gap-2 text-primary font-medium text-sm"
         >
           {step.ctaText}
