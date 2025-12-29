@@ -211,7 +211,9 @@ export const FitCheck = () => {
                 Start the free check (4 min)
               </motion.a>
               <a
-                href="/book-a-call"
+                href="https://calendly.com/hello-nimara/nohc-intake-call"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white/80 hover:text-white transition-colors text-sm"
               >
                 Or schedule a call

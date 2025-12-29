@@ -39,7 +39,7 @@ const NotFound = () => {
               Company
             </a>
             <span className="text-muted-foreground">·</span>
-            <a href="/book-a-call" className="text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded">
+            <a href="https://calendly.com/hello-nimara/nohc-intake-call" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded">
               Book a call
             </a>
           </nav>

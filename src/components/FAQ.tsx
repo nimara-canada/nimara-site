@@ -93,7 +93,9 @@ export const FAQ = () => {
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
-              href="/book-a-call"
+              href="https://calendly.com/hello-nimara/nohc-intake-call"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex items-center gap-3 text-foreground font-medium"
             >
               <span className="group-hover:text-primary transition-colors">Book a call to ask us directly</span>

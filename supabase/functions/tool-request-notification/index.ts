@@ -78,7 +78,7 @@ const handler = async (req: Request): Promise<Response> => {
         </div>
         
         <p style="color: #333; font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
-          If this integration moves forward, we'll reach out to let you know. In the meantime, feel free to <a href="https://calendly.com/hello-nimara/30min" style="color: #7C3AED;">schedule a call</a> if you'd like to discuss your needs further.
+          If this integration moves forward, we'll reach out to let you know. In the meantime, feel free to <a href="https://calendly.com/hello-nimara/nohc-intake-call" style="color: #7C3AED;">schedule a call</a> if you'd like to discuss your needs further.
         </p>
         
         <p style="color: #333; font-size: 16px; line-height: 1.6; margin-bottom: 8px;">

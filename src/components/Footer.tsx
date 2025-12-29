@@ -32,7 +32,9 @@ export const Footer = () => {
               Helping Canadian Nonprofits Build The Core Systems Funders Expect—So You Can Focus On Your Mission.
             </p>
             <a
-              href="/book-a-call"
+              href="https://calendly.com/hello-nimara/nohc-intake-call"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 text-white font-medium"
             >
               <span className="relative">
@@ -89,7 +91,9 @@ export const Footer = () => {
                   </li>
                   <li>
                     <a
-                      href="/book-a-call"
+                      href="https://calendly.com/hello-nimara/nohc-intake-call"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-white/70 hover:text-white transition-colors duration-200"
                     >
                       Book a Call

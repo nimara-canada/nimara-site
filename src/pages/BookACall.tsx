@@ -572,7 +572,7 @@ const BookACall = () => {
                         </div>
                       )}
                       <iframe
-                        src="https://calendly.com/hello-nimara/30min"
+                        src="https://calendly.com/hello-nimara/nohc-intake-call"
                         width="100%"
                         height="680"
                         frameBorder="0"

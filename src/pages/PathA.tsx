@@ -282,7 +282,7 @@ const PathA = () => {
                     ))}
                   </ul>
                   <p className="text-sm text-muted-foreground">
-                    In those cases, <a href="/path-b" className="text-primary underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm">Path B (NOHC Snapshot + System Phase)</a> or a <a href="/book-a-call" className="text-primary underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm">quick call to talk through options</a> is better.
+                    In those cases, <a href="/path-b" className="text-primary underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm">Path B (NOHC Snapshot + System Phase)</a> or a <a href="https://calendly.com/hello-nimara/nohc-intake-call" target="_blank" rel="noopener noreferrer" className="text-primary underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm">quick call to talk through options</a> is better.
                   </p>
                 </CardContent>
               </Card>

@@ -255,12 +255,14 @@ export const TwoWaysSection = () => {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="mt-16 text-center"
         >
-          <button
-            onClick={() => handleNavigate("/book-a-call")}
+          <a
+            href="https://calendly.com/hello-nimara/nohc-intake-call"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-sm text-muted-foreground/70 hover:text-foreground transition-colors duration-300"
           >
             Not sure which path? <span className="underline underline-offset-4 decoration-muted-foreground/30 hover:decoration-foreground/50">Book a free call</span>
-          </button>
+          </a>
         </motion.div>
       </motion.div>
     </section>
