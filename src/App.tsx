@@ -10,7 +10,6 @@ import Index from "./pages/Index";
 import Consultants from "./pages/Consultants";
 import Partners from "./pages/Partners";
 import Company from "./pages/Company";
-import BookACall from "./pages/BookACall";
 import SignIn from "./pages/SignIn";
 import SampleBrief from "./pages/SampleBrief";
 import Privacy from "./pages/Privacy";
@@ -35,6 +34,12 @@ import PrivacyAuditWizard from "./pages/admin/PrivacyAuditWizard";
 import PrivacyAuditFindings from "./pages/admin/PrivacyAuditFindings";
 import PrivacyAuditTemplates from "./pages/admin/PrivacyAuditTemplates";
 
+// Redirect component for external URLs
+const ExternalRedirect = ({ to }: { to: string }) => {
+  window.location.href = to;
+  return null;
+};
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -50,7 +55,7 @@ const App = () => (
             <Route path="/partners" element={<Partners />} />
             <Route path="/company" element={<Company />} />
             <Route path="/signin" element={<SignIn />} />
-            <Route path="/book-a-call" element={<BookACall />} />
+            <Route path="/book-a-call" element={<ExternalRedirect to="https://calendly.com/hello-nimara/nohc-intake-call" />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/accessibility" element={<Accessibility />} />
