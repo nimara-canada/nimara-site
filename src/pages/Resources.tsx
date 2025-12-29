@@ -5,7 +5,7 @@ import { Footer } from "@/components/Footer";
 import { ResourceSection } from "@/components/resources";
 
 const CAPACITY_GRANT_TRACKER = {
-  title: "Free Capacity Grant Proof Tracker (Excel)",
+  title: "Free Proof Tool Template (Excel)",
   subhead:
     "Track spending, keep proof links, and stay ready for funder reporting — without extra software.",
   bullets: [
