@@ -4,15 +4,15 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ResourceSection } from "@/components/resources";
 import { MotionPreferencesProvider } from "@/hooks/use-scroll-reveal";
+import { CALENDLY_BOOKING_URL, TYPEFORM_GRANT_TRACKER_URL } from "@/constants/urls";
 
 const GRANT_PROOF_TRACKER = {
   title: "Grant Proof Pack Tracker (Free)",
   subhead:
     "This free tracker helps you collect spending proof and deliverables as you go — so reporting is fast and stress-free.",
   bullets: [],
-  typeformUrl:
-    "https://form.typeform.com/to/gcRQHINk#resource_id=grant-proof-pack-tracker&source=nimara-resource-page",
-  calendlyUrl: "https://calendly.com/hello-nimara/nohc-intake-call",
+  typeformUrl: TYPEFORM_GRANT_TRACKER_URL,
+  calendlyUrl: CALENDLY_BOOKING_URL,
 };
 
 export default function Resources() {

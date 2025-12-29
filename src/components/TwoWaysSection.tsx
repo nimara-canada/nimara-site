@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { motion, useInView, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef, useState } from "react";
 import { ArrowRight, Zap, Layers, Sparkles } from "lucide-react";
+import { CALENDLY_BOOKING_URL } from "@/constants/urls";
 
 const paths = [
   {
@@ -256,7 +257,7 @@ export const TwoWaysSection = () => {
           className="mt-16 text-center"
         >
           <a
-            href="https://calendly.com/hello-nimara/nohc-intake-call"
+            href={CALENDLY_BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-muted-foreground/70 hover:text-foreground transition-colors duration-300"

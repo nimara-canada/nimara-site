@@ -6,6 +6,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { CALENDLY_BOOKING_URL } from "@/constants/urls";
 import Index from "./pages/Index";
 import Consultants from "./pages/Consultants";
 import Partners from "./pages/Partners";
@@ -55,7 +56,7 @@ const App = () => (
             <Route path="/partners" element={<Partners />} />
             <Route path="/company" element={<Company />} />
             <Route path="/signin" element={<SignIn />} />
-            <Route path="/book-a-call" element={<ExternalRedirect to="https://calendly.com/hello-nimara/nohc-intake-call" />} />
+            <Route path="/book-a-call" element={<ExternalRedirect to={CALENDLY_BOOKING_URL} />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/accessibility" element={<Accessibility />} />

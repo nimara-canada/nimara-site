@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { CALENDLY_BOOKING_URL } from "@/constants/urls";
 
 const glossaryTerms = [
   {
@@ -140,7 +141,7 @@ export const Glossary = () => {
               Have Questions About A Term?
             </p>
             <a 
-              href="https://calendly.com/hello-nimara/nohc-intake-call"
+              href={CALENDLY_BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 text-foreground font-medium group"

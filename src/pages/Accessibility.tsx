@@ -1,6 +1,7 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Helmet } from "react-helmet";
+import { CALENDLY_BOOKING_URL } from "@/constants/urls";
 
 const Accessibility = () => {
   return (
@@ -143,7 +144,7 @@ const Accessibility = () => {
                 <p>
                   <strong className="text-foreground">Prefer a call?</strong> Book a call at{" "}
                   <a 
-                    href="https://calendly.com/hello-nimara/nohc-intake-call" 
+                    href={CALENDLY_BOOKING_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-primary hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"

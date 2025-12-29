@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { CALENDLY_BOOKING_URL } from "@/constants/urls";
 
 const steps = [
   {
@@ -206,7 +207,7 @@ const YourJourney: React.FC = () => {
               Ready To Start Your Journey?
             </p>
             <a
-              href="https://calendly.com/hello-nimara/nohc-intake-call"
+              href={CALENDLY_BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 text-foreground font-medium group"
