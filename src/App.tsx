@@ -25,7 +25,7 @@ import Resources from "./pages/Resources";
 import ResourceDetail from "./pages/ResourceDetail";
 import Integrations from "./pages/Integrations";
 import HowNimaraWorks from "./pages/HowNimaraWorks";
-import OrganizationalHealthCheck from "./pages/OrganizationalHealthCheck";
+
 import PathA from "./pages/PathA";
 import PathB from "./pages/PathB";
 import PrivacyAuditDashboard from "./pages/admin/PrivacyAuditDashboard";
