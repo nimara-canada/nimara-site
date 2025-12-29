@@ -5,6 +5,7 @@ import { IntegrationsGrid } from "@/components/IntegrationsGrid";
 import { ToolRequestForm } from "@/components/ToolRequestForm";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { CALENDLY_BOOKING_URL } from "@/constants/urls";
 
 export default function Integrations() {
   return (
@@ -67,7 +68,7 @@ export default function Integrations() {
                   </p>
 
                   <a
-                    href="https://calendly.com/hello-nimara/nohc-intake-call"
+                    href={CALENDLY_BOOKING_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 bg-[#ACFCE3] text-[#202654] hover:bg-[#9EEBD4] font-semibold px-8 py-3 rounded-lg transition-colors"

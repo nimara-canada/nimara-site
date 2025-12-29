@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { CALENDLY_BOOKING_URL } from "@/constants/urls";
 
 const faqs = [
   {
@@ -93,7 +94,7 @@ export const FAQ = () => {
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
-              href="https://calendly.com/hello-nimara/nohc-intake-call"
+              href={CALENDLY_BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-3 text-foreground font-medium"

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import nimaraLogo from "@/assets/nimara-logo.png";
 import { useMotionPreferences, DROPBOX_EASING_CSS } from "@/hooks/use-scroll-reveal";
+import { CALENDLY_BOOKING_URL } from "@/constants/urls";
 
 const navigation = [
   { name: "For Nonprofits", href: "/" },
@@ -174,7 +175,7 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                 </span>
               </a>
               <a
-                href="https://calendly.com/hello-nimara/nohc-intake-call"
+                href={CALENDLY_BOOKING_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -282,7 +283,7 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                       <ArrowRight className="w-4 h-4" />
                     </a>
                     <a
-                      href="https://calendly.com/hello-nimara/nohc-intake-call"
+                      href={CALENDLY_BOOKING_URL}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-center text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -309,7 +310,7 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
             <ArrowRight className="w-4 h-4" />
           </a>
           <a
-            href="https://calendly.com/hello-nimara/nohc-intake-call"
+            href={CALENDLY_BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"

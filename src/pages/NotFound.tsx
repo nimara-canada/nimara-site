@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { CALENDLY_BOOKING_URL } from "@/constants/urls";
 
 const NotFound = () => {
   const location = useLocation();
@@ -39,7 +40,7 @@ const NotFound = () => {
               Company
             </a>
             <span className="text-muted-foreground">·</span>
-            <a href="https://calendly.com/hello-nimara/nohc-intake-call" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded">
+            <a href={CALENDLY_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded">
               Book a call
             </a>
           </nav>

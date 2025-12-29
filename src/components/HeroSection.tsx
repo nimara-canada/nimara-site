@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Check } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
 import { useMotionPreferences, DROPBOX_EASING_CSS } from "@/hooks/use-scroll-reveal";
+import { CALENDLY_BOOKING_URL } from "@/constants/urls";
 
 const ROTATING_WORDS = ["Funder-Ready", "Audit-Ready", "Report-Ready", "Board-Ready", "Grant-Ready"];
 
@@ -203,7 +204,7 @@ const NimaraHeroPremium = () => {
 
                 {/* Secondary CTA - text link */}
                 <a
-                  href="https://calendly.com/hello-nimara/nohc-intake-call"
+                  href={CALENDLY_BOOKING_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group inline-flex items-center gap-2 text-base text-white/60 hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-secondary-background rounded"

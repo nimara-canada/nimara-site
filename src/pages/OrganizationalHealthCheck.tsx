@@ -9,6 +9,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
 import { Link } from "react-router-dom";
+import { CALENDLY_BOOKING_URL } from "@/constants/urls";
 
 const domains = [
   {
@@ -256,7 +257,7 @@ const OrganizationalHealthCheck = () => {
                       Learn About NOHC Snapshot
                     </Button>
                   </Link>
-                  <a href="https://calendly.com/hello-nimara/nohc-intake-call" target="_blank" rel="noopener noreferrer" className="flex-1">
+                  <a href={CALENDLY_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="flex-1">
                     <Button className="w-full">
                       Schedule A Call
                       <ChevronRight className="w-4 h-4 ml-2" />

@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useInView, useScroll, useTransform, useSpring } from 'framer-motion';
 import { Play, X } from 'lucide-react';
+import { CALENDLY_BOOKING_URL } from "@/constants/urls";
 
 const fitCriteria = [
   {
@@ -211,7 +212,7 @@ export const FitCheck = () => {
                 Start the free check (4 min)
               </motion.a>
               <a
-                href="https://calendly.com/hello-nimara/nohc-intake-call"
+                href={CALENDLY_BOOKING_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white/80 hover:text-white transition-colors text-sm"

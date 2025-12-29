@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { CALENDLY_BOOKING_URL } from "@/constants/urls";
 
 export const CompanyFinalCTA = () => {
   return (
@@ -19,7 +20,7 @@ export const CompanyFinalCTA = () => {
             asChild
             className="w-full sm:w-auto px-8 h-14 text-base font-semibold"
           >
-            <a href="https://calendly.com/hello-nimara/nohc-intake-call" target="_blank" rel="noopener noreferrer">
+            <a href={CALENDLY_BOOKING_URL} target="_blank" rel="noopener noreferrer">
               Book a Discovery Call
               <ArrowRight className="ml-2 h-5 w-5" />
             </a>

@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { DeepCheckPricingTable } from "@/components/DeepCheckPricingTable";
+import { CALENDLY_BOOKING_URL } from "@/constants/urls";
 const deliverables = [{
   number: 1,
   title: "Scoping call",
@@ -212,7 +213,7 @@ const HealthScore = () => {
             }} transition={{
               delay: 0.4
             }} className="flex flex-col items-center gap-4">
-                <a href="https://calendly.com/hello-nimara/nohc-intake-call" target="_blank" rel="noopener noreferrer">
+                <a href={CALENDLY_BOOKING_URL} target="_blank" rel="noopener noreferrer">
                   <motion.button whileHover={{
                   scale: 1.02,
                   boxShadow: "0 20px 40px -10px rgba(172, 252, 227, 0.3)"
@@ -443,7 +444,7 @@ const HealthScore = () => {
               <p className="text-lg sm:text-xl text-white/70 max-w-xl mx-auto">
                 Book a short call. We'll check fit, answer questions, and, if it makes sense, schedule your NOHC Snapshot.
               </p>
-              <a href="https://calendly.com/hello-nimara/nohc-intake-call" target="_blank" rel="noopener noreferrer">
+              <a href={CALENDLY_BOOKING_URL} target="_blank" rel="noopener noreferrer">
                 <motion.button whileHover={{
                 scale: 1.02,
                 boxShadow: "0 20px 40px -10px rgba(172, 252, 227, 0.3)"
