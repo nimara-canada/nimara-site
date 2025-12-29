@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Check } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
 import { useMotionPreferences, DROPBOX_EASING_CSS } from "@/hooks/use-scroll-reveal";
-import { CALENDLY_BOOKING_URL } from "@/constants/urls";
+import { CALENDLY_BOOKING_URL, TYPEFORM_HEALTH_CHECK_URL } from "@/constants/urls";
 
 const ROTATING_WORDS = ["Funder-Ready", "Audit-Ready", "Report-Ready", "Board-Ready", "Grant-Ready"];
 
@@ -195,7 +195,9 @@ const NimaraHeroPremium = () => {
               <div style={revealStyle(300)} className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
                 {/* Primary CTA Button */}
                 <a
-                  href="/health-score"
+                  href={TYPEFORM_HEALTH_CHECK_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 px-7 py-4 bg-primary text-primary-foreground font-semibold rounded-lg transition-all duration-300 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary-background"
                 >
                   Get Free Health Check
