@@ -1,5 +1,6 @@
-import React from "react";
-import { ArrowRight, ChevronDown, FileSpreadsheet, FolderCheck, FileText, Clock, Users, CheckCircle2, Sparkles } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { ArrowRight, ChevronDown, FileSpreadsheet, FolderCheck, FileText, CheckCircle2, Sparkles } from "lucide-react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -7,6 +8,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useMotionPreferences, DROPBOX_EASING_CSS } from "@/hooks/use-scroll-reveal";
 
 export interface ResourceSectionProps {
   title: string;
@@ -19,90 +21,138 @@ export interface ResourceSectionProps {
 export function ResourceSection({
   typeformUrl,
 }: ResourceSectionProps) {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const { reducedMotion } = useMotionPreferences();
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
   const scrollToContent = () => {
     document.getElementById("whats-inside")?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // Reveal animation styles with Dropbox easing
+  const revealStyle = (delay: number = 0): React.CSSProperties => 
+    reducedMotion ? { opacity: 1, transform: 'none' } : {
+      opacity: isLoaded ? 1 : 0,
+      transform: isLoaded ? 'translateY(0)' : 'translateY(20px)',
+      transition: `opacity 700ms ${DROPBOX_EASING_CSS} ${delay}ms, transform 700ms ${DROPBOX_EASING_CSS} ${delay}ms`,
+    };
+
+  // Card hover animation
+  const cardVariants = {
+    initial: { y: 0, scale: 1 },
+    hover: { y: -8, scale: 1.02, transition: { duration: 0.3 } },
+  };
+
   return (
-    <div className="space-y-24 md:space-y-32">
-      {/* 1) HERO */}
-      <section className="pt-8 md:pt-16">
-        <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
+    <div className="space-y-0">
+      {/* 1) HERO - Dark premium section like homepage */}
+      <section className="min-h-[85vh] bg-secondary-background text-white relative overflow-hidden flex items-center">
+        {/* Subtle grid pattern */}
+        <div 
+          className="absolute inset-0 opacity-[0.03] pointer-events-none"
+          aria-hidden="true"
+          style={{
+            backgroundImage: `linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)`,
+            backgroundSize: '60px 60px'
+          }}
+        />
+
+        {/* Gradient orbs */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-[100px] pointer-events-none" />
+
+        <div className="relative z-10 w-full max-w-4xl mx-auto px-6 lg:px-8 py-20 text-center">
           {/* Free badge */}
-          <span className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold tracking-widest uppercase rounded-full bg-primary/10 text-primary border border-primary/10 mb-8">
-            <Sparkles className="w-3.5 h-3.5" />
-            Free tool
-          </span>
+          <div style={revealStyle(0)}>
+            <span className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold tracking-widest uppercase rounded-full bg-accent/20 text-accent border border-accent/20 mb-8">
+              <Sparkles className="w-4 h-4" />
+              Free tool
+            </span>
+          </div>
           
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] tracking-tight mb-6">
+          <h1 
+            style={revealStyle(100)}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.08] tracking-tight mb-6"
+          >
             Stop scrambling for proof.
           </h1>
           
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-10">
+          <p 
+            style={revealStyle(200)}
+            className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed mb-12"
+          >
             This free tracker helps you collect spending proof and deliverables as you go — so reporting is fast and stress-free.
           </p>
           
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-            <Button
-              asChild
-              size="lg"
-              className="h-14 px-8 text-base font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
+          <div style={revealStyle(300)} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+            <a
+              href={typeformUrl}
+              className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-xl transition-all duration-300 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary-background group"
             >
-              <a href={typeformUrl} className="flex items-center gap-2">
-                Get the free tracker
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
-            </Button>
+              Get the free tracker
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
             
             <button
               onClick={scrollToContent}
-              className="flex items-center gap-2 text-muted-foreground hover:text-foreground font-medium transition-colors h-14 px-6"
+              className="flex items-center gap-2 text-white/60 hover:text-white font-medium transition-colors h-14 px-6 group"
             >
               See what's inside
-              <ChevronDown className="w-4 h-4" />
+              <ChevronDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
             </button>
           </div>
           
           {/* Trust line */}
-          <p className="text-sm text-muted-foreground">
+          <p style={revealStyle(400)} className="text-sm text-white/40">
             Takes 30 seconds • Free • Works in Excel or Google Sheets
           </p>
         </div>
       </section>
 
       {/* 2) WHO IT'S FOR */}
-      <section id="whats-inside" className="scroll-mt-24">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8">
-          <h2 className="text-sm font-semibold uppercase tracking-widest text-primary text-center mb-10">
-            Who this is for
-          </h2>
+      <section id="whats-inside" className="py-24 md:py-32 bg-background scroll-mt-24">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+          <ScrollRevealBlock delay={0}>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary text-center mb-4">
+              Who this is for
+            </p>
+          </ScrollRevealBlock>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-12">
             {[
               "Newer nonprofits building good habits",
               "Teams managing a grant with tight rules",
               "Anyone tired of last-minute reporting panic",
             ].map((text, idx) => (
-              <div
-                key={idx}
-                className="bg-card rounded-2xl border border-border/50 p-6 text-center shadow-sm hover:shadow-md transition-shadow"
-              >
-                <p className="text-foreground font-medium">{text}</p>
-              </div>
+              <ScrollRevealBlock key={idx} delay={100 + idx * 100}>
+                <motion.div
+                  variants={cardVariants}
+                  initial="initial"
+                  whileHover="hover"
+                  className="bg-card rounded-2xl border border-border p-8 text-center shadow-soft cursor-default"
+                >
+                  <p className="text-foreground font-medium text-lg">{text}</p>
+                </motion.div>
+              </ScrollRevealBlock>
             ))}
           </div>
         </div>
       </section>
 
       {/* 3) WHAT YOU GET */}
-      <section>
-        <div className="max-w-5xl mx-auto px-6 lg:px-8">
-          <h2 className="text-sm font-semibold uppercase tracking-widest text-primary text-center mb-12">
-            What you get
-          </h2>
+      <section className="py-24 md:py-32 bg-muted/30">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <ScrollRevealBlock delay={0}>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary text-center mb-4">
+              What you get
+            </p>
+          </ScrollRevealBlock>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-14">
             {[
               {
                 icon: FileSpreadsheet,
@@ -120,161 +170,226 @@ export function ResourceSection({
                 text: "When it's time to report, you're not hunting for files.",
               },
             ].map((card, idx) => (
-              <div
-                key={idx}
-                className="bg-card rounded-3xl border border-border/50 p-8 shadow-soft hover:shadow-lg transition-all duration-300"
-              >
-                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
-                  <card.icon className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-3">
-                  {card.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {card.text}
-                </p>
-              </div>
+              <ScrollRevealBlock key={idx} delay={100 + idx * 150}>
+                <motion.div
+                  variants={cardVariants}
+                  initial="initial"
+                  whileHover="hover"
+                  className="bg-card rounded-3xl border border-border p-10 shadow-soft cursor-default h-full"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center mb-8">
+                    <card.icon className="w-7 h-7 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-foreground mb-4">
+                    {card.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed text-lg">
+                    {card.text}
+                  </p>
+                </motion.div>
+              </ScrollRevealBlock>
             ))}
           </div>
         </div>
       </section>
 
       {/* 4) WHY IT MATTERS */}
-      <section>
-        <div className="max-w-2xl mx-auto px-6 lg:px-8 text-center">
-          <h2 className="text-sm font-semibold uppercase tracking-widest text-primary mb-10">
-            Why this matters
-          </h2>
+      <section className="py-24 md:py-32 bg-background">
+        <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
+          <ScrollRevealBlock delay={0}>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">
+              Why this matters
+            </p>
+          </ScrollRevealBlock>
           
-          <ul className="space-y-4">
+          <div className="mt-12 space-y-5">
             {[
               "Avoid missing receipts and explanations",
               "Reduce audit risk",
               "Make reporting faster",
               "Keep your team aligned",
             ].map((item, idx) => (
-              <li key={idx} className="flex items-center justify-center gap-3 text-foreground/90 text-lg">
-                <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
-                {item}
-              </li>
+              <ScrollRevealBlock key={idx} delay={100 + idx * 100}>
+                <div className="flex items-center justify-center gap-4 text-foreground text-lg md:text-xl">
+                  <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0" />
+                  {item}
+                </div>
+              </ScrollRevealBlock>
             ))}
-          </ul>
+          </div>
         </div>
       </section>
 
       {/* 5) HOW TO USE IT */}
-      <section>
-        <div className="max-w-4xl mx-auto px-6 lg:px-8">
-          <h2 className="text-sm font-semibold uppercase tracking-widest text-primary text-center mb-12">
-            How to use it
-          </h2>
+      <section className="py-24 md:py-32 bg-muted/30">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+          <ScrollRevealBlock delay={0}>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary text-center mb-4">
+              How to use it
+            </p>
+          </ScrollRevealBlock>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-14">
             {[
               { step: "1", text: "Download the tracker" },
               { step: "2", text: "Update it weekly (5 minutes)" },
               { step: "3", text: "Use it to build your proof pack when reporting is due" },
             ].map((item, idx) => (
-              <div key={idx} className="text-center">
-                <div className="w-14 h-14 rounded-full bg-primary text-primary-foreground text-xl font-bold flex items-center justify-center mx-auto mb-5">
-                  {item.step}
+              <ScrollRevealBlock key={idx} delay={100 + idx * 150}>
+                <div className="text-center">
+                  <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground text-2xl font-bold flex items-center justify-center mx-auto mb-6 shadow-lg shadow-primary/25">
+                    {item.step}
+                  </div>
+                  <p className="text-foreground font-medium text-lg leading-relaxed max-w-xs mx-auto">
+                    {item.text}
+                  </p>
                 </div>
-                <p className="text-foreground font-medium leading-relaxed">
-                  {item.text}
-                </p>
-              </div>
+              </ScrollRevealBlock>
             ))}
           </div>
         </div>
       </section>
 
       {/* 6) CALLOUT BAND */}
-      <section className="bg-gradient-to-br from-secondary/80 to-secondary/40 border-y border-border/30">
-        <div className="max-w-3xl mx-auto px-6 lg:px-8 py-16 md:py-20 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-            Built for real nonprofit work
-          </h2>
-          <p className="text-lg text-muted-foreground">
-            Simple enough to start today. Strong enough to use all year.
-          </p>
+      <section className="py-20 md:py-28 bg-secondary-background text-white relative overflow-hidden">
+        {/* Subtle grid pattern */}
+        <div 
+          className="absolute inset-0 opacity-[0.03] pointer-events-none"
+          aria-hidden="true"
+          style={{
+            backgroundImage: `linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)`,
+            backgroundSize: '60px 60px'
+          }}
+        />
+        
+        <div className="relative z-10 max-w-3xl mx-auto px-6 lg:px-8 text-center">
+          <ScrollRevealBlock delay={0}>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-5">
+              Built for real nonprofit work
+            </h2>
+            <p className="text-xl text-white/60">
+              Simple enough to start today. Strong enough to use all year.
+            </p>
+          </ScrollRevealBlock>
         </div>
       </section>
 
       {/* 7) GET THE TRACKER */}
-      <section>
+      <section className="py-24 md:py-32 bg-background">
         <div className="max-w-md mx-auto px-6 lg:px-8">
-          <div className="bg-card rounded-3xl border border-border/50 p-8 md:p-10 shadow-lg text-center">
-            <h2 className="text-2xl font-bold text-foreground mb-3">
-              Get the free tracker
-            </h2>
-            <p className="text-muted-foreground mb-8">
-              We'll email it to you.
-            </p>
-            
-            <Button
-              asChild
-              size="lg"
-              className="w-full h-14 text-base font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group mb-6"
+          <ScrollRevealBlock delay={0}>
+            <motion.div
+              variants={cardVariants}
+              initial="initial"
+              whileHover="hover"
+              className="bg-card rounded-3xl border border-border p-10 md:p-12 shadow-lg text-center"
             >
-              <a href={typeformUrl} className="flex items-center justify-center gap-2">
+              <div className="mb-6">
+                <span className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold tracking-widest uppercase rounded-full bg-primary/10 text-primary border border-primary/10">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  Free
+                </span>
+              </div>
+              
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
                 Get the free tracker
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
-            </Button>
-            
-            <p className="text-xs text-muted-foreground">
-              No spam. Unsubscribe anytime.
-            </p>
-          </div>
+              </h2>
+              <p className="text-muted-foreground text-lg mb-8">
+                We'll email it to you.
+              </p>
+              
+              <Button
+                asChild
+                size="lg"
+                className="w-full h-16 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
+              >
+                <a href={typeformUrl} className="flex items-center justify-center gap-3">
+                  Get the free tracker
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </Button>
+              
+              <p className="text-sm text-muted-foreground mt-6">
+                No spam. Unsubscribe anytime.
+              </p>
+            </motion.div>
+          </ScrollRevealBlock>
         </div>
       </section>
 
       {/* 8) FAQ */}
-      <section className="pb-8">
+      <section className="py-24 md:py-32 bg-muted/30">
         <div className="max-w-2xl mx-auto px-6 lg:px-8">
-          <h2 className="text-sm font-semibold uppercase tracking-widest text-primary text-center mb-10">
-            Questions
-          </h2>
+          <ScrollRevealBlock delay={0}>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary text-center mb-12">
+              Questions
+            </p>
+          </ScrollRevealBlock>
           
-          <Accordion type="single" collapsible className="space-y-3">
-            <AccordionItem value="free" className="bg-card rounded-2xl border border-border/50 px-6 shadow-sm">
-              <AccordionTrigger className="text-base font-medium text-foreground hover:no-underline py-5">
-                Is it really free?
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground pb-5">
-                Yes. Free.
-              </AccordionContent>
-            </AccordionItem>
-            
-            <AccordionItem value="grants" className="bg-card rounded-2xl border border-border/50 px-6 shadow-sm">
-              <AccordionTrigger className="text-base font-medium text-foreground hover:no-underline py-5">
-                Will this work for any grant?
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground pb-5">
-                Yes. Use it for most grants that require proof of spending and deliverables.
-              </AccordionContent>
-            </AccordionItem>
-            
-            <AccordionItem value="software" className="bg-card rounded-2xl border border-border/50 px-6 shadow-sm">
-              <AccordionTrigger className="text-base font-medium text-foreground hover:no-underline py-5">
-                Do I need special software?
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground pb-5">
-                No. Excel or Google Sheets.
-              </AccordionContent>
-            </AccordionItem>
-            
-            <AccordionItem value="submit" className="bg-card rounded-2xl border border-border/50 px-6 shadow-sm">
-              <AccordionTrigger className="text-base font-medium text-foreground hover:no-underline py-5">
-                What happens after I submit?
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground pb-5">
-                You get the tracker by email.
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+          <ScrollRevealBlock delay={100}>
+            <Accordion type="single" collapsible className="space-y-4">
+              {[
+                { q: "Is it really free?", a: "Yes. Free." },
+                { q: "Will this work for any grant?", a: "Yes. Use it for most grants that require proof of spending and deliverables." },
+                { q: "Do I need special software?", a: "No. Excel or Google Sheets." },
+                { q: "What happens after I submit?", a: "You get the tracker by email." },
+              ].map((item, idx) => (
+                <AccordionItem 
+                  key={idx} 
+                  value={`faq-${idx}`} 
+                  className="bg-card rounded-2xl border border-border px-8 shadow-soft data-[state=open]:shadow-md transition-shadow"
+                >
+                  <AccordionTrigger className="text-lg font-medium text-foreground hover:no-underline py-6">
+                    {item.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground text-base pb-6">
+                    {item.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </ScrollRevealBlock>
         </div>
       </section>
+    </div>
+  );
+}
+
+// Scroll reveal wrapper component
+function ScrollRevealBlock({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = React.useRef<HTMLDivElement>(null);
+  const { reducedMotion } = useMotionPreferences();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const style: React.CSSProperties = reducedMotion
+    ? { opacity: 1, transform: 'none' }
+    : {
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
+        transition: `opacity 700ms ${DROPBOX_EASING_CSS} ${delay}ms, transform 700ms ${DROPBOX_EASING_CSS} ${delay}ms`,
+      };
+
+  return (
+    <div ref={ref} style={style}>
+      {children}
     </div>
   );
 }
