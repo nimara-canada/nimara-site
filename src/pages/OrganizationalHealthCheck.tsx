@@ -256,12 +256,12 @@ const OrganizationalHealthCheck = () => {
                       Learn About NOHC Snapshot
                     </Button>
                   </Link>
-                  <Link to="/book-a-call" className="flex-1">
+                  <a href="https://calendly.com/hello-nimara/nohc-intake-call" target="_blank" rel="noopener noreferrer" className="flex-1">
                     <Button className="w-full">
                       Schedule A Call
                       <ChevronRight className="w-4 h-4 ml-2" />
                     </Button>
-                  </Link>
+                  </a>
                 </div>
               </div>
 

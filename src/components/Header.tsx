@@ -174,7 +174,9 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                 </span>
               </a>
               <a
-                href="/book-a-call"
+                href="https://calendly.com/hello-nimara/nohc-intake-call"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 <span className="relative">
@@ -280,7 +282,9 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                       <ArrowRight className="w-4 h-4" />
                     </a>
                     <a
-                      href="/book-a-call"
+                      href="https://calendly.com/hello-nimara/nohc-intake-call"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center justify-center text-sm text-muted-foreground hover:text-foreground transition-colors"
                       onClick={() => setIsOpen(false)}
                     >
@@ -305,7 +309,9 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
             <ArrowRight className="w-4 h-4" />
           </a>
           <a
-            href="/book-a-call"
+            href="https://calendly.com/hello-nimara/nohc-intake-call"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
           >
             Book a call

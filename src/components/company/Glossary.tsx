@@ -140,7 +140,9 @@ export const Glossary = () => {
               Have Questions About A Term?
             </p>
             <a 
-              href="/book-a-call" 
+              href="https://calendly.com/hello-nimara/nohc-intake-call"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-3 text-foreground font-medium group"
             >
               <span className="group-hover:text-primary transition-colors">Get In Touch</span>

@@ -19,7 +19,7 @@ export const CompanyFinalCTA = () => {
             asChild
             className="w-full sm:w-auto px-8 h-14 text-base font-semibold"
           >
-            <a href="/book-a-call">
+            <a href="https://calendly.com/hello-nimara/nohc-intake-call" target="_blank" rel="noopener noreferrer">
               Book a Discovery Call
               <ArrowRight className="ml-2 h-5 w-5" />
             </a>

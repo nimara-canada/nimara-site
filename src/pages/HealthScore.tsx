@@ -212,7 +212,7 @@ const HealthScore = () => {
             }} transition={{
               delay: 0.4
             }} className="flex flex-col items-center gap-4">
-                <Link to="/book-a-call">
+                <a href="https://calendly.com/hello-nimara/nohc-intake-call" target="_blank" rel="noopener noreferrer">
                   <motion.button whileHover={{
                   scale: 1.02,
                   boxShadow: "0 20px 40px -10px rgba(172, 252, 227, 0.3)"
@@ -224,7 +224,7 @@ const HealthScore = () => {
                       <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                     </span>
                   </motion.button>
-                </Link>
+                </a>
               </motion.div>
             </div>
           </div>
@@ -443,7 +443,7 @@ const HealthScore = () => {
               <p className="text-lg sm:text-xl text-white/70 max-w-xl mx-auto">
                 Book a short call. We'll check fit, answer questions, and, if it makes sense, schedule your NOHC Snapshot.
               </p>
-              <Link to="/book-a-call">
+              <a href="https://calendly.com/hello-nimara/nohc-intake-call" target="_blank" rel="noopener noreferrer">
                 <motion.button whileHover={{
                 scale: 1.02,
                 boxShadow: "0 20px 40px -10px rgba(172, 252, 227, 0.3)"
@@ -453,7 +453,7 @@ const HealthScore = () => {
                   Talk about a NOHC Snapshot
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </motion.button>
-              </Link>
+              </a>
             </motion.div>
           </div>
         </section>

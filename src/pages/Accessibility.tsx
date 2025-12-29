@@ -143,10 +143,12 @@ const Accessibility = () => {
                 <p>
                   <strong className="text-foreground">Prefer a call?</strong> Book a call at{" "}
                   <a 
-                    href="/book-a-call" 
+                    href="https://calendly.com/hello-nimara/nohc-intake-call" 
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-primary hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
                   >
-                    /book-a-call
+                    our booking page
                   </a>{" "}
                   and note "accessibility".
                 </p>

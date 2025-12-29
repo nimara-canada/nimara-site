@@ -134,7 +134,7 @@ const PathB = () => {
                   <li>• You're still figuring out your core mission and programs.</li>
                 </ul>
                 <p className="text-sm text-muted-foreground">
-                  Not sure? <a href="/book-a-call" className="text-primary underline">Talk through options</a> with us on a short call.
+                  Not sure? <a href="https://calendly.com/hello-nimara/nohc-intake-call" target="_blank" rel="noopener noreferrer" className="text-primary underline">Talk through options</a> with us on a short call.
                 </p>
               </CardContent>
             </Card>
@@ -405,7 +405,7 @@ const PathB = () => {
                   <a href="/health-score">Learn About NOHC Snapshot</a>
                 </Button>
                 <p className="text-secondary-foreground/70 text-sm text-center mb-6">
-                  Prefer to talk first? <a href="/book-a-call" className="text-accent underline">Book a consultation call.</a>
+                  Prefer to talk first? <a href="https://calendly.com/hello-nimara/nohc-intake-call" target="_blank" rel="noopener noreferrer" className="text-accent underline">Book a consultation call.</a>
                 </p>
                 
                 <Accordion type="single" collapsible className="w-full">

@@ -206,7 +206,9 @@ const YourJourney: React.FC = () => {
               Ready To Start Your Journey?
             </p>
             <a
-              href="/book-a-call"
+              href="https://calendly.com/hello-nimara/nohc-intake-call"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-3 text-foreground font-medium group"
             >
               <span className="group-hover:text-primary transition-colors">Book A Discovery Call</span>
