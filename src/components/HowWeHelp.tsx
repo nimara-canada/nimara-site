@@ -1,5 +1,6 @@
 import { motion, useInView, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useRef, useState } from 'react';
+import { TYPEFORM_HEALTH_CHECK_URL } from "@/constants/urls";
 
 const steps = [
   { 
@@ -196,7 +197,9 @@ export const HowWeHelp = () => {
           className="pt-8 border-t border-border"
         >
           <motion.a
-            href="#hero-form"
+            href={TYPEFORM_HEALTH_CHECK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group inline-flex items-center gap-3 text-foreground font-medium"
             whileHover={{ x: 8 }}
           >

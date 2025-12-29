@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { useRef } from 'react';
 import { ArrowRight, ChevronDown } from 'lucide-react';
+import { TYPEFORM_HEALTH_CHECK_URL } from "@/constants/urls";
 
 const tiers = [
   { 
@@ -383,7 +384,9 @@ export const TheNimaraModel: React.FC = () => {
               </p>
             </div>
             <a
-              href="/check"
+              href={TYPEFORM_HEALTH_CHECK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-secondary-background font-medium rounded-full hover:bg-accent/90 transition-colors flex-shrink-0"
             >
               Start the free check

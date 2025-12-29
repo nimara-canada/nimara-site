@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import nimaraLogo from "@/assets/nimara-logo.png";
 import { useMotionPreferences, DROPBOX_EASING_CSS } from "@/hooks/use-scroll-reveal";
-import { CALENDLY_BOOKING_URL } from "@/constants/urls";
+import { CALENDLY_BOOKING_URL, TYPEFORM_HEALTH_CHECK_URL } from "@/constants/urls";
 
 const navigation = [
   { name: "For Nonprofits", href: "/" },
@@ -189,7 +189,9 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                 </span>
               </a>
               <a
-                href="/#hero-form"
+                href={TYPEFORM_HEALTH_CHECK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 h-11 px-6 bg-primary text-primary-foreground text-sm font-medium rounded-full group"
                 style={{ transition: `transform 180ms ${DROPBOX_EASING_CSS}, box-shadow 180ms ${DROPBOX_EASING_CSS}` }}
                 onMouseEnter={(e) => {
@@ -275,7 +277,9 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                   {/* Mobile nav footer */}
                   <div className="p-6 border-t border-border/50 bg-muted/30 space-y-3">
                     <a
-                      href="/#hero-form"
+                      href={TYPEFORM_HEALTH_CHECK_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2 w-full h-14 bg-primary text-primary-foreground font-medium rounded-full transition-all hover:shadow-lg hover:shadow-primary/20"
                       onClick={() => setIsOpen(false)}
                     >
@@ -303,7 +307,9 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
       <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden p-4 bg-background/98 backdrop-blur-md border-t border-border/50">
         <div className="flex items-center gap-3">
           <a
-            href="/#hero-form"
+            href={TYPEFORM_HEALTH_CHECK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex-1 flex items-center justify-center gap-2 h-12 bg-primary text-primary-foreground font-medium rounded-full transition-all hover:shadow-lg hover:shadow-primary/20"
           >
             Start the free check

@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView, useScroll, useTransform, useSpring } from 'framer-motion';
+import { TYPEFORM_HEALTH_CHECK_URL } from "@/constants/urls";
 import { 
   Users, 
   DollarSign, 
@@ -164,7 +165,9 @@ export const Expertise = () => {
 
           {/* CTA Card */}
           <motion.a
-            href="#hero-form"
+            href={TYPEFORM_HEALTH_CHECK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             style={{ 
               y: useTransform(smoothProgress, [0.25, 0.45], [60, 0]),
               opacity: useTransform(smoothProgress, [0.25, 0.38], [0, 1]),

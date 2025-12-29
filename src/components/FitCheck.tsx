@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useInView, useScroll, useTransform, useSpring } from 'framer-motion';
 import { Play, X } from 'lucide-react';
-import { CALENDLY_BOOKING_URL } from "@/constants/urls";
+import { CALENDLY_BOOKING_URL, TYPEFORM_HEALTH_CHECK_URL } from "@/constants/urls";
 
 const fitCriteria = [
   {
@@ -204,7 +204,9 @@ export const FitCheck = () => {
               className="mt-12 pt-8 border-t border-white/20 flex flex-col sm:flex-row items-start sm:items-center gap-4"
             >
               <motion.a
-                href="/check"
+                href={TYPEFORM_HEALTH_CHECK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-6 py-3 bg-white text-primary font-medium rounded hover:bg-white/90 transition-colors"
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
