@@ -28,7 +28,7 @@ export default function Resources() {
           <link rel="canonical" href="https://nimara.ca/resources" />
         </Helmet>
 
-        <Header />
+        <Header activeRoute="/resources" />
 
         {/* Skip link */}
         <a
