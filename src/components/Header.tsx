@@ -20,7 +20,7 @@ interface HeaderProps {
 
 // Define which routes belong to which nav section (parent-child relationships)
 const routeGroups: Record<string, string[]> = {
-  "/": ["/", "/how-nimara-works"], // "For Nonprofits" section includes How It Works
+  "/": ["/", "/how-nimara-works", "/resources"], // "For Nonprofits" section includes these sub-pages
 };
 
 // Helper function to check if a route is active (including child routes)
