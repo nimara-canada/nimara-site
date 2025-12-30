@@ -18,6 +18,19 @@ interface HeaderProps {
   activeRoute?: string;
 }
 
+// Define which routes belong to which nav section (parent-child relationships)
+const routeGroups: Record<string, string[]> = {
+  "/": ["/", "/how-nimara-works"], // "For Nonprofits" section includes How It Works
+};
+
+// Helper function to check if a route is active (including child routes)
+const isRouteActive = (navHref: string, currentRoute: string) => {
+  if (routeGroups[navHref]) {
+    return routeGroups[navHref].includes(currentRoute);
+  }
+  return navHref === currentRoute;
+};
+
 export const Header = ({ activeRoute = "/" }: HeaderProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrollState, setScrollState] = useState({
@@ -138,12 +151,12 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                 <a
                   key={item.name}
                   href={item.href}
-                  aria-current={item.href === activeRoute ? "page" : undefined}
+                  aria-current={isRouteActive(item.href, activeRoute) ? "page" : undefined}
                   className={cn(
                     "group relative px-4 py-2 text-sm font-medium min-h-[44px] inline-flex items-center select-none",
                     "transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)]",
                     "active:translate-y-[-1px] active:opacity-85",
-                    item.href === activeRoute
+                    isRouteActive(item.href, activeRoute)
                       ? "text-primary"
                       : "text-foreground/70 hover:text-foreground"
                   )}
@@ -153,7 +166,7 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                     <span 
                       className={cn(
                         "absolute left-0 -bottom-0.5 h-px bg-primary",
-                        item.href === activeRoute ? "w-full" : "w-0 group-hover:w-full"
+                        isRouteActive(item.href, activeRoute) ? "w-full" : "w-0 group-hover:w-full"
                       )} 
                       style={{ transition: `width 200ms ${DROPBOX_EASING_CSS}` }}
                     />
@@ -230,10 +243,10 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                         <a
                           key={item.name}
                           href={item.href}
-                          aria-current={item.href === activeRoute ? "page" : undefined}
+                          aria-current={isRouteActive(item.href, activeRoute) ? "page" : undefined}
                           className={cn(
                             "block py-4 text-lg font-medium transition-colors",
-                            item.href === activeRoute
+                            isRouteActive(item.href, activeRoute)
                               ? "text-primary"
                               : "text-foreground hover:text-primary"
                           )}
