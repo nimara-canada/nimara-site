@@ -36,13 +36,13 @@ export const Footer = () => {
               href={CALENDLY_BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 text-white font-medium"
+              className="group inline-flex items-center gap-2 text-white font-medium select-none transition-all duration-150 active:opacity-70"
             >
               <span className="relative">
                 Book A Discovery Call
-                <span className="absolute left-0 -bottom-0.5 w-full h-px bg-white/30 group-hover:bg-white transition-colors duration-300" />
+                <span className="absolute left-0 -bottom-0.5 w-full h-px bg-white/30 group-hover:bg-white transition-colors duration-150" />
               </span>
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+              <ArrowRight className="w-4 h-4 transition-transform duration-150 group-hover:translate-x-1" />
             </a>
           </div>
 
@@ -59,7 +59,7 @@ export const Footer = () => {
                     <li key={item.name}>
                       <a
                         href={item.href}
-                        className="text-white/70 hover:text-white transition-colors duration-200"
+                        className="text-white/70 hover:text-white transition-all duration-150 active:opacity-70 select-none"
                       >
                         {item.name}
                       </a>
@@ -77,7 +77,7 @@ export const Footer = () => {
                   <li>
                     <a
                       href="/partners"
-                      className="text-white/70 hover:text-white transition-colors duration-200"
+                      className="text-white/70 hover:text-white transition-all duration-150 active:opacity-70 select-none"
                     >
                       For Consultants
                     </a>
@@ -85,7 +85,7 @@ export const Footer = () => {
                   <li>
                     <a
                       href="mailto:hello@nimara.ca"
-                      className="text-white/70 hover:text-white transition-colors duration-200"
+                      className="text-white/70 hover:text-white transition-all duration-150 active:opacity-70 select-none"
                     >
                       hello@nimara.ca
                     </a>
@@ -95,7 +95,7 @@ export const Footer = () => {
                       href={CALENDLY_BOOKING_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-white/70 hover:text-white transition-colors duration-200"
+                      className="text-white/70 hover:text-white transition-all duration-150 active:opacity-70 select-none"
                     >
                       Book a Call
                     </a>
@@ -115,7 +115,7 @@ export const Footer = () => {
                         href={item.href}
                         target={item.external ? "_blank" : undefined}
                         rel={item.external ? "noopener noreferrer" : undefined}
-                        className="text-white/70 hover:text-white transition-colors duration-200"
+                        className="text-white/70 hover:text-white transition-all duration-150 active:opacity-70 select-none"
                       >
                         {item.name}
                       </a>

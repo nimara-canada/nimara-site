@@ -5,15 +5,15 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 min-h-[44px] min-w-[44px]",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 min-h-[44px] min-w-[44px] select-none active:scale-[0.98] active:translate-y-px",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-[#7A5DE0] rounded-xl shadow-soft",
-        secondary: "bg-background text-foreground border border-border hover:bg-muted rounded-xl shadow-soft",
-        outline: "border border-border bg-background text-foreground hover:bg-muted rounded-xl",
+        default: "bg-primary text-primary-foreground hover:bg-[#7A5DE0] hover:scale-[1.02] rounded-xl shadow-soft hover:shadow-lg hover:shadow-primary/20",
+        secondary: "bg-background text-foreground border border-border hover:bg-muted hover:scale-[1.01] rounded-xl shadow-soft",
+        outline: "border border-border bg-background text-foreground hover:bg-muted hover:scale-[1.01] rounded-xl",
         ghost: "text-foreground hover:bg-muted rounded-lg",
-        link: "text-foreground underline-offset-4 hover:underline focus-visible:underline p-0 h-auto min-h-0",
+        link: "text-foreground underline-offset-4 hover:underline focus-visible:underline p-0 h-auto min-h-0 active:scale-100 active:translate-y-0 active:opacity-70",
       },
       size: {
         default: "h-11 px-6 py-3 text-sm",
