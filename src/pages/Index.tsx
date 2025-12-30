@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
+import FundingProofSection from "@/components/FundingProofSection";
 import { ScrollNarrative } from "@/components/ScrollNarrative";
 import { SystemLadder } from "@/components/SystemLadder";
 import { FitCheck } from "@/components/FitCheck";
@@ -67,6 +68,9 @@ const Index = () => {
         <main id="main" className="space-y-0" style={{ paddingTop: '5rem' }}>
           {/* Hero - full height entry */}
           <HeroSection />
+          
+          {/* Funding Proof - 2-column messaging */}
+          <FundingProofSection />
           
           {/* Scroll Narrative - Assess/Fix/Prove/Report */}
           <RevealSection background="gradient">
