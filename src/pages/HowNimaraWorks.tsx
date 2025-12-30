@@ -41,7 +41,7 @@ const HowNimaraWorks = () => {
           <meta name="twitter:image" content="https://nimara.ca/og-image.svg" />
         </Helmet>
         
-        <Header />
+        <Header activeRoute="/how-nimara-works" />
         
         <main id="main" className="space-y-0" style={{ paddingTop: 'calc(var(--announcement-height, 0px) + 4rem)' }}>
           {/* Hero */}
