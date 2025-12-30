@@ -198,7 +198,7 @@ const NimaraHeroPremium = () => {
                   href={TYPEFORM_HEALTH_CHECK_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 px-7 py-4 bg-primary text-primary-foreground font-semibold rounded-lg transition-all duration-300 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary-background"
+                  className="inline-flex items-center gap-3 px-7 py-4 bg-primary text-primary-foreground font-semibold rounded-lg select-none transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] hover:bg-primary/90 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98] active:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-secondary-background"
                 >
                   Get Free Health Check
                   <span className="text-lg" aria-hidden="true">→</span>
@@ -209,10 +209,10 @@ const NimaraHeroPremium = () => {
                   href={CALENDLY_BOOKING_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 text-base text-white/60 hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-secondary-background rounded"
+                  className="group inline-flex items-center gap-2 text-base text-white/60 hover:text-white select-none transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] active:opacity-70 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-secondary-background rounded"
                 >
                   Need urgent help? Book a call
-                  <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+                  <span className="transition-transform duration-150 group-hover:translate-x-1" aria-hidden="true">→</span>
                 </a>
               </div>
 

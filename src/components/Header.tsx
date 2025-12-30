@@ -140,7 +140,9 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                   href={item.href}
                   aria-current={item.href === activeRoute ? "page" : undefined}
                   className={cn(
-                    "group relative px-4 py-2 text-sm font-medium transition-colors min-h-[44px] inline-flex items-center",
+                    "group relative px-4 py-2 text-sm font-medium min-h-[44px] inline-flex items-center select-none",
+                    "transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)]",
+                    "active:translate-y-[-1px] active:opacity-85",
                     item.href === activeRoute
                       ? "text-primary"
                       : "text-foreground/70 hover:text-foreground"
@@ -164,7 +166,7 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
             <div className="hidden lg:flex items-center gap-6">
               <a
                 href="/partners"
-                className="group text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="group text-sm text-muted-foreground hover:text-foreground transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] active:opacity-70 select-none"
               >
                 <span className="relative">
                   For Consultants
@@ -178,7 +180,7 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                 href={CALENDLY_BOOKING_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="group text-sm text-muted-foreground hover:text-foreground transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] active:opacity-70 select-none"
               >
                 <span className="relative">
                   Book a call
@@ -192,23 +194,11 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                 href={TYPEFORM_HEALTH_CHECK_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 h-11 px-6 bg-primary text-primary-foreground text-sm font-medium rounded-full group"
-                style={{ transition: `transform 180ms ${DROPBOX_EASING_CSS}, box-shadow 180ms ${DROPBOX_EASING_CSS}` }}
-                onMouseEnter={(e) => {
-                  if (!reducedMotion) {
-                    e.currentTarget.style.transform = 'scale(1.02)';
-                    e.currentTarget.style.boxShadow = '0 8px 24px hsl(var(--primary) / 0.3)';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'scale(1)';
-                  e.currentTarget.style.boxShadow = 'none';
-                }}
+                className="inline-flex items-center gap-2 h-11 px-6 bg-primary text-primary-foreground text-sm font-medium rounded-full select-none transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/25 active:scale-[0.98] active:translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               >
                 <span>Start the free check</span>
                 <ArrowRight 
-                  className="w-4 h-4" 
-                  style={{ transition: `transform 180ms ${DROPBOX_EASING_CSS}` }}
+                  className="w-4 h-4 transition-transform duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] group-hover:translate-x-0.5" 
                 />
               </a>
             </div>
@@ -280,7 +270,7 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                       href={TYPEFORM_HEALTH_CHECK_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 w-full h-14 bg-primary text-primary-foreground font-medium rounded-full transition-all hover:shadow-lg hover:shadow-primary/20"
+                      className="flex items-center justify-center gap-2 w-full h-14 bg-primary text-primary-foreground font-medium rounded-full select-none transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98] active:translate-y-px"
                       onClick={() => setIsOpen(false)}
                     >
                       Start the free check
@@ -290,7 +280,7 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                       href={CALENDLY_BOOKING_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      className="flex items-center justify-center text-sm text-muted-foreground hover:text-foreground transition-all duration-150 active:opacity-70 select-none"
                       onClick={() => setIsOpen(false)}
                     >
                       Book a call
@@ -310,7 +300,7 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
             href={TYPEFORM_HEALTH_CHECK_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-2 h-12 bg-primary text-primary-foreground font-medium rounded-full transition-all hover:shadow-lg hover:shadow-primary/20"
+            className="flex-1 flex items-center justify-center gap-2 h-12 bg-primary text-primary-foreground font-medium rounded-full select-none transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98] active:translate-y-px"
           >
             Start the free check
             <ArrowRight className="w-4 h-4" />
@@ -319,7 +309,7 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
             href={CALENDLY_BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
+            className="text-sm text-muted-foreground hover:text-foreground transition-all duration-150 whitespace-nowrap active:opacity-70 select-none"
           >
             Book a call
           </a>
