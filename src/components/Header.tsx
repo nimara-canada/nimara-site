@@ -18,16 +18,8 @@ interface HeaderProps {
   activeRoute?: string;
 }
 
-// Define which routes belong to which nav section (parent-child relationships)
-const routeGroups: Record<string, string[]> = {
-  "/": ["/", "/how-nimara-works", "/resources"], // "For Nonprofits" section includes these sub-pages
-};
-
-// Helper function to check if a route is active (including child routes)
+// Helper function to check if a route is active (simple exact match)
 const isRouteActive = (navHref: string, currentRoute: string) => {
-  if (routeGroups[navHref]) {
-    return routeGroups[navHref].includes(currentRoute);
-  }
   return navHref === currentRoute;
 };
 
