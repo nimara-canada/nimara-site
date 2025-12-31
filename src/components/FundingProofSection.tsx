@@ -16,8 +16,15 @@ const FundingProofSection = () => {
   const headlineY = useTransform(scrollYProgress, [0, 1], [50, -50]);
 
   return (
-    <section ref={sectionRef} className="py-20 md:py-28 bg-background overflow-hidden">
-      <div className="container mx-auto px-6 lg:px-8">
+    <section 
+      ref={sectionRef} 
+      className="py-20 md:py-28 overflow-hidden relative"
+    >
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-muted/30 via-background to-muted/20" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent" />
+      
+      <div className="container mx-auto px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           {/* Left - Big Headline with Parallax */}
           <ScrollReveal>
