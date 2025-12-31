@@ -38,8 +38,9 @@ export const OurStory = () => {
           duration: 0.8,
           ease: [0.22, 1, 0.36, 1]
         }}>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-medium text-foreground leading-[1.15]">
-              Nimara was founded by Ben Serunyigo — a former fund manager for one of Canada's largest capacity-building funds for nonprofits.
+            <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-medium text-foreground leading-[1.1] tracking-tight">
+              I kept seeing the{' '}
+              <span className="italic text-muted-foreground">same thing.</span>
             </h2>
           </motion.div>
 
