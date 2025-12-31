@@ -46,6 +46,7 @@ export const FitCheck = () => {
   // Section parallax
   const contentY = useTransform(smoothProgress, [0, 1], [40, -40]);
   const videoY = useTransform(smoothProgress, [0, 1], [60, -30]);
+  const quoteY = useTransform(smoothProgress, [0, 1], [30, -15]);
 
   const toggleItem = (id: string) => {
     setCheckedItems(prev =>
@@ -128,25 +129,15 @@ export const FitCheck = () => {
             <div className="space-y-0">
               {fitCriteria.map((item, index) => {
                 const isChecked = checkedItems.includes(item.id);
-                
-                // Staggered scroll reveal for each item
-                const itemY = useTransform(
-                  smoothProgress,
-                  [0.1 + index * 0.05, 0.3 + index * 0.05],
-                  [30, 0]
-                );
-                const itemOpacity = useTransform(
-                  smoothProgress,
-                  [0.1 + index * 0.05, 0.25 + index * 0.05],
-                  [0, 1]
-                );
 
                 return (
                   <motion.button
                     key={item.id}
                     type="button"
                     onClick={() => toggleItem(item.id)}
-                    style={{ y: itemY, opacity: itemOpacity }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.4 + index * 0.08 }}
                     className={`
                       w-full flex items-start gap-4 py-5 text-left transition-all duration-300 border-t border-white/20
                       focus:outline-none group
@@ -308,7 +299,7 @@ export const FitCheck = () => {
             <motion.div
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
-              style={{ y: useTransform(smoothProgress, [0, 1], [30, -15]) }}
+              style={{ y: quoteY }}
               whileHover={{ y: -6, boxShadow: '0 20px 40px -12px rgba(11, 17, 32, 0.2)' }}
               transition={{ delay: 0.6, duration: 0.3 }}
               className="mt-8 p-6 bg-white rounded-lg shadow-lg cursor-default"
