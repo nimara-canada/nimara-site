@@ -3,20 +3,20 @@ import { motion, AnimatePresence, useInView, useScroll, useTransform, useSpring 
 import { Play, X } from 'lucide-react';
 import { CALENDLY_BOOKING_URL, TYPEFORM_HEALTH_CHECK_URL } from "@/constants/urls";
 const fitCriteria = [{
-  id: 'grant-funding',
-  text: 'Have received (or are applying for) grant funding'
+  id: 'board-decisions',
+  text: "Board decisions aren't written down consistently (so things get fuzzy later)."
 }, {
-  id: 'funders',
-  text: 'Want to be taken seriously by funders'
+  id: 'approvals',
+  text: "You're not always sure who can approve spending — or the rule changes by situation."
 }, {
-  id: 'unclear',
-  text: "Know something is off, but aren't sure what to fix first"
+  id: 'grant-rules',
+  text: "Grant rules live in emails and memory, not one clear place everyone uses."
 }, {
-  id: 'scrambling',
-  text: 'Are tired of scrambling before every report'
+  id: 'reporting',
+  text: 'Reporting turns into a scramble (receipts, files, proof, "who has that doc?").'
 }, {
-  id: 'systems',
-  text: 'Are ready to build systems that actually fit how they work'
+  id: 'tools',
+  text: "You have tools, but people don't use them — work still happens in texts, DMs, and spreadsheets."
 }];
 export const FitCheck = () => {
   const [checkedItems, setCheckedItems] = useState<string[]>([]);
@@ -109,8 +109,8 @@ export const FitCheck = () => {
           } : {}} transition={{
             duration: 0.6,
             delay: 0.3
-          }} className="text-xs font-medium tracking-[0.15em] uppercase text-white/70 mb-8">
-              Who this is for:
+          }} className="text-base text-white/90 mb-4">
+              For Canadian nonprofits with 0–50 staff (including volunteer-led teams).
             </motion.p>
             
             <motion.p initial={{
@@ -120,8 +120,8 @@ export const FitCheck = () => {
           } : {}} transition={{
             duration: 0.6,
             delay: 0.35
-          }} className="text-sm text-white/80 mb-6">
-              Small to mid-size nonprofits in Canada nonprofit teams  — typically 0 to 50 staff — who:
+          }} className="text-sm text-white/60 mb-8">
+              If 2+ are true, start here:
             </motion.p>
 
             <div className="space-y-0">
@@ -207,21 +207,11 @@ export const FitCheck = () => {
             duration: 0.6,
             delay: 0.6
           }} className="mt-12 pt-8 border-t border-white/20">
-              <p className="text-xs font-medium tracking-[0.15em] uppercase text-white/70 mb-4">
-                If this sounds like you
-              </p>
-              
-              <p className="text-sm text-white/80 mb-2">
-                Start with the NOHC — our free Nimara Organization Health Check.
-              </p>
-              <p className="text-sm text-white/80 mb-2">
-                10 minutes. Honest answers. Clear signal.
-              </p>
-              <p className="text-sm text-white/80 mb-2">
-                You'll see what's stable, what's at risk, and what to fix first.
+              <p className="text-sm text-white/80 leading-relaxed mb-2">
+                Start with the NOHC (10 min) to see what's stable, what's at risk, and what to fix first.
               </p>
               <p className="text-sm text-white/60 mb-6">
-                No pitch. No pressure. Just clarity.
+                No pressure. Just clarity.
               </p>
               
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
@@ -233,8 +223,8 @@ export const FitCheck = () => {
               }}>
                   Start the free check (10 min)
                 </motion.a>
-                <a href={CALENDLY_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors text-sm">
-                  Or schedule a call
+                <a href={CALENDLY_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors text-sm underline underline-offset-2">
+                  Or book a call
                 </a>
               </div>
             </motion.div>
