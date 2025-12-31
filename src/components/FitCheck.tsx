@@ -5,16 +5,24 @@ import { CALENDLY_BOOKING_URL, TYPEFORM_HEALTH_CHECK_URL } from "@/constants/url
 
 const fitCriteria = [
   {
-    id: 'board',
-    text: 'Board, money, or HR feels unclear'
+    id: 'grant-funding',
+    text: 'Have received (or are applying for) grant funding'
   },
   {
-    id: 'compliance',
-    text: "You're chasing compliance or funder rules"
+    id: 'funders',
+    text: 'Want to be taken seriously by funders'
   },
   {
-    id: 'tools',
-    text: 'You want tools people actually use'
+    id: 'unclear',
+    text: "Know something is off, but aren't sure what to fix first"
+  },
+  {
+    id: 'scrambling',
+    text: 'Are tired of scrambling before every report'
+  },
+  {
+    id: 'systems',
+    text: 'Are ready to build systems that actually fit how they work'
   }
 ];
 
@@ -105,7 +113,16 @@ export const FitCheck = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-xs font-medium tracking-[0.15em] uppercase text-white/70 mb-8"
             >
-              If 2+ are true, start here:
+              Who this is for:
+            </motion.p>
+            
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.6, delay: 0.35 }}
+              className="text-sm text-white/80 mb-6"
+            >
+              Small to mid-size nonprofits in Canada — typically 0 to 25 staff — who:
             </motion.p>
 
             <div className="space-y-0">
@@ -196,31 +213,50 @@ export const FitCheck = () => {
               )}
             </AnimatePresence>
 
-            {/* CTA */}
+            {/* CTA Section */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="mt-12 pt-8 border-t border-white/20 flex flex-col sm:flex-row items-start sm:items-center gap-4"
+              className="mt-12 pt-8 border-t border-white/20"
             >
-              <motion.a
-                href={TYPEFORM_HEALTH_CHECK_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-3 bg-white text-primary font-medium rounded hover:bg-white/90 transition-colors"
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Start the free check (4 min)
-              </motion.a>
-              <a
-                href={CALENDLY_BOOKING_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/80 hover:text-white transition-colors text-sm"
-              >
-                Or schedule a call
-              </a>
+              <p className="text-xs font-medium tracking-[0.15em] uppercase text-white/70 mb-4">
+                If this sounds like you
+              </p>
+              
+              <p className="text-sm text-white/80 mb-2">
+                Start with the NOHC — our free Nimara Organization Health Check.
+              </p>
+              <p className="text-sm text-white/80 mb-2">
+                10 minutes. Honest answers. Clear signal.
+              </p>
+              <p className="text-sm text-white/80 mb-2">
+                You'll see what's stable, what's at risk, and what to fix first.
+              </p>
+              <p className="text-sm text-white/60 mb-6">
+                No pitch. No pressure. Just clarity.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                <motion.a
+                  href={TYPEFORM_HEALTH_CHECK_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-white text-primary font-medium rounded hover:bg-white/90 transition-colors"
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Start the free check (10 min)
+                </motion.a>
+                <a
+                  href={CALENDLY_BOOKING_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/80 hover:text-white transition-colors text-sm"
+                >
+                  Or schedule a call
+                </a>
+              </div>
             </motion.div>
           </motion.div>
 
