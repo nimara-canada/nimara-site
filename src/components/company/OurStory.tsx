@@ -45,7 +45,7 @@ export const OurStory = () => {
           </motion.div>
 
           {/* Right column - Details + CTA */}
-          <motion.div className="flex flex-col justify-between" initial={{
+          <motion.div className="flex flex-col justify-between lg:pt-4" initial={{
           opacity: 0,
           y: 40
         }} whileInView={{
@@ -59,25 +59,30 @@ export const OurStory = () => {
           delay: 0.15,
           ease: [0.22, 1, 0.36, 1]
         }}>
-            <div className="space-y-6">
-              <p className="text-lg text-body leading-relaxed">Nimara was founded by Ben Serunyigo — a former fund manager for one of Canada's largest capacity-building funds for nonprofits. 
-
-
- He helped distribute millions of dollars to organizations across the country. And he watched the same patterns break them: passionate leaders with no systems, good work with no proof, and funders who couldn't tell the difference between confusion and corruption.</p>
-              
-              <p className="text-lg text-body leading-relaxed">
-                Most nonprofits don't fail because they don't care. They fail because no one showed them what to build.
+            <div className="space-y-8">
+              <p className="text-lg md:text-xl text-foreground/80 leading-relaxed font-light">
+                Nimara was founded by <span className="font-medium text-foreground">Ben Serunyigo</span> — a former fund manager for one of Canada's largest capacity-building funds for nonprofits.
               </p>
               
-              <p className="text-xl font-serif font-medium text-foreground">
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                He helped distribute millions of dollars to organizations across the country. And he watched the same patterns break them: passionate leaders with no systems, good work with no proof, and funders who couldn't tell the difference between confusion and corruption.
+              </p>
+              
+              <div className="border-l-2 border-foreground/20 pl-6 py-2">
+                <p className="text-base md:text-lg text-foreground/70 leading-relaxed italic">
+                  Most nonprofits don't fail because they don't care. They fail because no one showed them what to build.
+                </p>
+              </div>
+              
+              <p className="text-xl md:text-2xl font-serif font-medium text-foreground tracking-tight">
                 That's why Nimara exists.
               </p>
             </div>
 
-            <a href="/how-nimara-works" className="group inline-flex items-center gap-2 text-foreground font-medium mt-10">
+            <a href="/how-nimara-works" className="group inline-flex items-center gap-3 text-foreground font-medium mt-12 text-sm uppercase tracking-widest">
               <span className="relative">
                 Read our full story
-                <span className="absolute left-0 -bottom-0.5 w-full h-px bg-foreground/30 group-hover:bg-foreground transition-colors duration-300" />
+                <span className="absolute left-0 -bottom-0.5 w-full h-px bg-foreground/20 group-hover:bg-foreground transition-colors duration-300" />
               </span>
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
