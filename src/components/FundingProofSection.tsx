@@ -1,19 +1,34 @@
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { CALENDLY_BOOKING_URL } from "@/constants/urls";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
 const FundingProofSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+  
+  // Parallax effect - headline moves slower than scroll
+  const headlineY = useTransform(scrollYProgress, [0, 1], [50, -50]);
+
   return (
-    <section className="py-20 md:py-28 bg-background">
+    <section ref={sectionRef} className="py-20 md:py-28 bg-background overflow-hidden">
       <div className="container mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-          {/* Left - Big Headline */}
+          {/* Left - Big Headline with Parallax */}
           <ScrollReveal>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-muted-foreground leading-tight">
+            <motion.h2 
+              style={{ y: headlineY }}
+              className="text-4xl md:text-5xl lg:text-6xl font-light text-muted-foreground leading-tight"
+            >
               Funding doesn't follow hustle.
               <br />
               <span className="text-foreground">It follows proof.</span>
-            </h2>
+            </motion.h2>
           </ScrollReveal>
 
           {/* Right - Body Text */}
