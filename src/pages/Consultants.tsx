@@ -20,6 +20,7 @@ const Consultants = () => {
         <meta name="robots" content="index, follow" />
         <meta name="author" content="Nimara" />
         <meta name="geo.region" content="CA" />
+        <meta name="language" content="English" />
         
         <link rel="canonical" href="https://nimara.ca/consultants" />
         
