@@ -44,7 +44,7 @@ export const FitCheck = () => {
     setCheckedItems(prev => prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]);
   };
   const matchCount = checkedItems.length;
-  const isGoodFit = matchCount >= 2;
+  const isGoodFit = matchCount >= 1;
   return <section ref={sectionRef} className="relative py-20 md:py-28 lg:py-36 bg-secondary-background overflow-hidden scroll-mt-20" aria-labelledby="fit-check-heading" id="fit-check">
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
