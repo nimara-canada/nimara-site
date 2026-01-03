@@ -20,12 +20,25 @@ export default function Resources() {
     <MotionPreferencesProvider>
       <div className="min-h-screen bg-background">
         <Helmet>
-          <title>Free Grant Proof Tracker for Nonprofits | Nimara</title>
-          <meta
-            name="description"
-            content="Stop scrambling for proof. Get our free tracker to collect spending proof and deliverables as you go. Works in Excel or Google Sheets."
-          />
+          <title>Free Nonprofit Tools | Grant Proof Tracker | Nimara</title>
+          <meta name="description" content="Free tools for nonprofits. Download the Grant Proof Tracker and learn what documentation funders actually need." />
+          <meta name="robots" content="index, follow" />
+          <meta name="author" content="Nimara" />
+          <meta name="geo.region" content="CA" />
           <link rel="canonical" href="https://nimara.ca/resources" />
+          
+          <meta property="og:site_name" content="Nimara" />
+          <meta property="og:title" content="Free Nonprofit Tools | Grant Proof Tracker | Nimara" />
+          <meta property="og:description" content="Free tools for nonprofits. Download the Grant Proof Tracker and learn what documentation funders actually need." />
+          <meta property="og:url" content="https://nimara.ca/resources" />
+          <meta property="og:image" content="https://nimara.ca/og-image.png" />
+          <meta property="og:type" content="website" />
+          <meta property="og:locale" content="en_CA" />
+          
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="Free Nonprofit Tools | Grant Proof Tracker | Nimara" />
+          <meta name="twitter:description" content="Free tools for nonprofits. Download the Grant Proof Tracker and learn what documentation funders actually need." />
+          <meta name="twitter:image" content="https://nimara.ca/og-image.png" />
         </Helmet>
 
         <Header />

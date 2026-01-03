@@ -16,23 +16,26 @@ const Company = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Company | Nimara — We build the systems that make social impact measurable</title>
-        <meta name="description" content="Operators turned builders. Vetted Canadian experts, PM on every project, organized evidence, Canada-hosted data (7 years). Plain language, no lock-in." />
-        <meta name="keywords" content="nonprofit consulting company, Canadian nonprofit consulting, social impact measurement, nonprofit project management, governance framework support, compliance audit preparation, Canadian charity consultants" />
+        <title>About Nimara | Built by an Ex-Fund Manager</title>
+        <meta name="description" content="Nimara was founded by an ex-fund manager who saw why good nonprofits lose funding. We help Canadian organizations build systems that hold up." />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Nimara" />
+        <meta name="geo.region" content="CA" />
         
         <link rel="canonical" href="https://nimara.ca/company" />
         
         <meta property="og:site_name" content="Nimara" />
-        <meta property="og:title" content="Company | Nimara — We build the systems that make social impact measurable" />
-        <meta property="og:description" content="Operators turned builders. Vetted Canadian experts, PM on every project, organized evidence, Canada-hosted data (7 years). Plain language, no lock-in." />
+        <meta property="og:title" content="About Nimara | Built by an Ex-Fund Manager" />
+        <meta property="og:description" content="Nimara was founded by an ex-fund manager who saw why good nonprofits lose funding. We help Canadian organizations build systems that hold up." />
         <meta property="og:url" content="https://nimara.ca/company" />
-        <meta property="og:image" content="https://nimara.ca/og-image.svg" />
+        <meta property="og:image" content="https://nimara.ca/og-image.png" />
         <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_CA" />
         
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Company | Nimara — We build the systems that make social impact measurable" />
-        <meta name="twitter:description" content="Operators turned builders. Vetted Canadian experts, PM on every project, organized evidence, Canada-hosted data (7 years). Plain language, no lock-in." />
-        <meta name="twitter:image" content="https://nimara.ca/og-image.svg" />
+        <meta name="twitter:title" content="About Nimara | Built by an Ex-Fund Manager" />
+        <meta name="twitter:description" content="Nimara was founded by an ex-fund manager who saw why good nonprofits lose funding. We help Canadian organizations build systems that hold up." />
+        <meta name="twitter:image" content="https://nimara.ca/og-image.png" />
         
         <script type="application/ld+json">
           {JSON.stringify({
@@ -40,17 +43,20 @@ const Company = () => {
             "@type": "AboutPage",
             "name": "About Nimara",
             "url": "https://nimara.ca/company",
-            "description": "Operators turned builders. Vetted Canadian experts, PM on every project, organized evidence, Canada-hosted data (7 years). Plain language, no lock-in.",
+            "description": "Nimara was founded by an ex-fund manager who saw why good nonprofits lose funding. We help Canadian organizations build systems that hold up.",
             "mainEntity": {
               "@type": "Organization",
               "name": "Nimara",
               "url": "https://nimara.ca",
-              "logo": "https://nimara.ca/assets/nimara-logo.png",
-              "description": "Nimara matches Canadian nonprofits with vetted consultants for finance, governance, digital systems, and strategic work.",
+              "logo": "https://nimara.ca/logo.png",
+              "description": "Nimara helps Canadian nonprofits build simple systems for grant tracking, financial accountability, and funder trust.",
+              "founder": {
+                "@type": "Person",
+                "name": "Bernard Serunyigo",
+                "jobTitle": "Founder"
+              },
               "address": {
                 "@type": "PostalAddress",
-                "addressLocality": "Edmonton",
-                "addressRegion": "AB",
                 "addressCountry": "CA"
               },
               "contactPoint": {

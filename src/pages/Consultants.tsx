@@ -15,23 +15,26 @@ const Consultants = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Join the Nimara Bench — Vetted Consultant Roster (Canada) | Nimara</title>
+        <title>Join the Nimara Bench | Consulting for Canadian Nonprofits</title>
         <meta name="description" content="Real projects for independent consultants. Clear briefs, PM oversight, Net-15 payment. Join Canada's consulting bench for nonprofits and public-interest work." />
-        <meta name="keywords" content="nonprofit consulting jobs, Canadian charity consultants, independent consultant opportunities, nonprofit governance consulting, financial management consulting, program evaluation consultant, consulting roster Canada" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Nimara" />
+        <meta name="geo.region" content="CA" />
         
         <link rel="canonical" href="https://nimara.ca/consultants" />
         
         <meta property="og:site_name" content="Nimara" />
-        <meta property="og:title" content="Join the Nimara Bench — Vetted Consultant Roster" />
-        <meta property="og:description" content="Real projects for independent consultants. Clear briefs, PM oversight, Net-15 payment. Join Canada's consulting bench for nonprofits and public-interest work." />
+        <meta property="og:title" content="Join the Nimara Bench | Consulting for Canadian Nonprofits" />
+        <meta property="og:description" content="Real projects for independent consultants. Clear briefs, PM oversight, Net-15 payment. Join Canada's consulting bench for nonprofits." />
         <meta property="og:url" content="https://nimara.ca/consultants" />
-        <meta property="og:image" content="https://nimara.ca/og-image.svg" />
+        <meta property="og:image" content="https://nimara.ca/og-image.png" />
         <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_CA" />
         
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Join the Nimara Bench — Vetted Consultant Roster" />
-        <meta name="twitter:description" content="Real projects for independent consultants. Clear briefs, PM oversight, Net-15 payment. Join Canada's consulting bench for nonprofits and public-interest work." />
-        <meta name="twitter:image" content="https://nimara.ca/og-image.svg" />
+        <meta name="twitter:title" content="Join the Nimara Bench | Consulting for Canadian Nonprofits" />
+        <meta name="twitter:description" content="Real projects for independent consultants. Clear briefs, PM oversight, Net-15 payment. Join Canada's consulting bench for nonprofits." />
+        <meta name="twitter:image" content="https://nimara.ca/og-image.png" />
         
         <script type="application/ld+json">
           {JSON.stringify({
@@ -43,7 +46,7 @@ const Consultants = () => {
               "@type": "Organization",
               "name": "Nimara",
               "url": "https://nimara.ca",
-              "logo": "https://nimara.ca/assets/nimara-logo.png"
+              "logo": "https://nimara.ca/logo.png"
             },
             "jobLocation": {
               "@type": "Place",

@@ -40,26 +40,51 @@ const Index = () => {
         <MotionControls />
         
         <Helmet>
-          <title>Nonprofit Operations & Grant Readiness Systems in Canada | Nimara</title>
-          <meta name="description" content="Nimara helps Canadian nonprofits build funder-ready systems—finance, governance, operations, and capacity—so funding is easier to win and manage." />
-          <meta name="keywords" content="nonprofit consulting Canada, Canadian nonprofit experts, nonprofit finance compliance, CRA compliance requirements, nonprofit strategic planning, governance best practices, program evaluation frameworks, financial management solutions, audit ready documentation" />
+          <title>Nimara | Simple Systems for Canadian Nonprofits</title>
+          <meta name="description" content="Built by an ex-fund manager. Nimara helps Canadian nonprofits build systems that hold up when funders ask questions. Track it. Prove it. Keep it." />
+          <meta name="robots" content="index, follow" />
+          <meta name="author" content="Nimara" />
+          <meta name="geo.region" content="CA" />
+          <meta name="language" content="English" />
           <link rel="canonical" href="https://nimara.ca/" />
-          <meta property="og:site_name" content="Nimara" />
-          <meta property="og:title" content="Nonprofit Operations & Grant Readiness Systems in Canada | Nimara" />
-          <meta property="og:description" content="Nimara helps Canadian nonprofits build funder-ready systems—finance, governance, operations, and capacity—so funding is easier to win and manage." />
-          <meta property="og:url" content="https://nimara.ca/" />
-          <meta property="og:image" content="https://nimara.ca/og-image.svg" />
+          
+          <meta property="og:title" content="Nimara | Simple Systems for Canadian Nonprofits" />
+          <meta property="og:description" content="Built by an ex-fund manager. Nimara helps Canadian nonprofits build systems that hold up when funders ask questions." />
           <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://nimara.ca" />
+          <meta property="og:image" content="https://nimara.ca/og-image.png" />
+          <meta property="og:site_name" content="Nimara" />
+          <meta property="og:locale" content="en_CA" />
+          
           <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="Nimara | Simple Systems for Canadian Nonprofits" />
+          <meta name="twitter:description" content="Built by an ex-fund manager. Nimara helps Canadian nonprofits build systems that hold up when funders ask questions." />
+          <meta name="twitter:image" content="https://nimara.ca/og-image.png" />
+          
           <script type="application/ld+json">
             {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Nimara",
-            "url": "https://nimara.ca",
-            "logo": "https://nimara.ca/assets/nimara-logo.png",
-            "description": "Nimara matches Canadian nonprofits with vetted consultants for finance, governance, digital systems, and strategic work."
-          })}
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Nimara",
+              "url": "https://nimara.ca",
+              "logo": "https://nimara.ca/logo.png",
+              "description": "Nimara helps Canadian nonprofits build simple systems for grant tracking, financial accountability, and funder trust.",
+              "foundingDate": "2024",
+              "founder": {
+                "@type": "Person",
+                "name": "Bernard Serunyigo",
+                "jobTitle": "Founder"
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "Canada"
+              },
+              "serviceType": ["Nonprofit Consulting", "Capacity Building", "Grant Management Systems"],
+              "sameAs": [
+                "https://www.linkedin.com/company/nimara",
+                "https://www.linkedin.com/in/bernard-serunyigo"
+              ]
+            })}
           </script>
         </Helmet>
         

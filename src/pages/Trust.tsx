@@ -5,22 +5,26 @@ import { Helmet } from "react-helmet";
 const Trust = () => {
   return <>
       <Helmet>
-        <title>Our Commitment — PM Oversight, Canadian Data Storage & Audit-Ready Files | Nimara</title>
+        <title>Trust & Security | Nimara — PM Oversight & Canadian Data Storage</title>
         <meta name="description" content="PM oversight on every project, standard templates, evidence-ready files, data stored in Canada, 7-year retention for compliance and audits." />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Nimara" />
+        <meta name="geo.region" content="CA" />
         
         <link rel="canonical" href="https://nimara.ca/trust" />
         
         <meta property="og:site_name" content="Nimara" />
-        <meta property="og:title" content="Our Commitment — PM Oversight, Canadian Data Storage & Audit-Ready Files" />
+        <meta property="og:title" content="Trust & Security | Nimara — PM Oversight & Canadian Data Storage" />
         <meta property="og:description" content="PM oversight on every project, standard templates, evidence-ready files, data stored in Canada, 7-year retention for compliance and audits." />
         <meta property="og:url" content="https://nimara.ca/trust" />
-        <meta property="og:image" content="https://nimara.ca/og-image.jpg" />
+        <meta property="og:image" content="https://nimara.ca/og-image.png" />
         <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_CA" />
         
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Our Commitment — PM Oversight, Canadian Data Storage & Audit-Ready Files" />
+        <meta name="twitter:title" content="Trust & Security | Nimara — PM Oversight & Canadian Data Storage" />
         <meta name="twitter:description" content="PM oversight on every project, standard templates, evidence-ready files, data stored in Canada, 7-year retention for compliance and audits." />
-        <meta name="twitter:image" content="https://nimara.ca/og-image.jpg" />
+        <meta name="twitter:image" content="https://nimara.ca/og-image.png" />
       </Helmet>
 
       <div className="min-h-screen bg-background">
