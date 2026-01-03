@@ -41,15 +41,15 @@ const Index = () => {
         
         <Helmet>
           <title>Nimara | Simple Systems for Canadian Nonprofits</title>
-          <meta name="description" content="Built by an ex-fund manager. Nimara helps Canadian nonprofits build systems that hold up when funders ask questions. Track it. Prove it. Keep it." />
+          <meta name="description" content="Nimara helps Canadian nonprofits build systems that hold up when funders ask questions. Track it. Prove it. Keep it." />
           <meta name="robots" content="index, follow" />
           <meta name="author" content="Nimara" />
           <meta name="geo.region" content="CA" />
           <meta name="language" content="English" />
-          <link rel="canonical" href="https://nimara.ca/" />
+          <link rel="canonical" href="https://nimara.ca" />
           
           <meta property="og:title" content="Nimara | Simple Systems for Canadian Nonprofits" />
-          <meta property="og:description" content="Built by an ex-fund manager. Nimara helps Canadian nonprofits build systems that hold up when funders ask questions." />
+          <meta property="og:description" content="Nimara helps Canadian nonprofits build systems that hold up when funders ask questions. Track it. Prove it. Keep it." />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://nimara.ca" />
           <meta property="og:image" content="https://nimara.ca/og-image.png" />
@@ -58,7 +58,7 @@ const Index = () => {
           
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content="Nimara | Simple Systems for Canadian Nonprofits" />
-          <meta name="twitter:description" content="Built by an ex-fund manager. Nimara helps Canadian nonprofits build systems that hold up when funders ask questions." />
+          <meta name="twitter:description" content="Nimara helps Canadian nonprofits build systems that hold up when funders ask questions. Track it. Prove it. Keep it." />
           <meta name="twitter:image" content="https://nimara.ca/og-image.png" />
           
           <script type="application/ld+json">
