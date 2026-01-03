@@ -190,7 +190,7 @@ export const FitCheck = () => {
                 x: 0,
                 scale: 1
               }} className="text-sm text-accent font-medium px-3 py-1 rounded-full bg-accent/20">
-                      ✓ Looks like a good fit
+                      ✓ We can help with that
                     </motion.span>}
                 </motion.div>}
             </AnimatePresence>
