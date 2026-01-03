@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CALENDLY_BOOKING_URL } from "@/constants/urls";
@@ -13,6 +14,11 @@ const NotFound = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Page Not Found | Nimara</title>
+        <meta name="description" content="The page you're looking for doesn't exist. Let us help you find what you need." />
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <Header />
       <main id="main" className="flex items-center justify-center py-16 md:py-24 min-h-[60vh]">
         <div className="container mx-auto px-4 text-center">
