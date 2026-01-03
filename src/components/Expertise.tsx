@@ -15,37 +15,37 @@ import {
 const domains = [
   { 
     title: "Board & Governance", 
-    desc: "Clear roles, policies, and meeting structures that keep your board effective.",
+    desc: "Roles, policies, and meeting records — so decisions don't get fuzzy later.",
     icon: Users,
   },
   { 
-    title: "Money & Compliance", 
-    desc: "Financial controls, budgeting processes, and audit-ready systems.",
+    title: "Money, Grants & Compliance", 
+    desc: "Budgets, approvals, grant tracking, and proof of payment — so you can show where every dollar went.",
     icon: DollarSign,
   },
   { 
     title: "People & HR", 
-    desc: "Structured hiring, onboarding, and performance management.",
+    desc: "Hiring, onboarding, and clear expectations — on paper, not in someone's head.",
     icon: UserCheck,
   },
   { 
     title: "Programs & Services", 
-    desc: "Delivery systems with proper intake, logging, and review processes.",
+    desc: "How you deliver, track, and improve your programs.",
     icon: Briefcase,
   },
   { 
     title: "Fundraising & Donors", 
-    desc: "Gift policies, receipting workflows, and donor stewardship.",
+    desc: "Donation records, thank-yous, and policies that protect you.",
     icon: Heart,
   },
   { 
     title: "Volunteers", 
-    desc: "Agreements, screening processes, and training systems.",
+    desc: "Agreements, screening, and training — so everyone knows the rules.",
     icon: HandHeart,
   },
   { 
     title: "Systems & Records", 
-    desc: "Organized files, dashboards, and data protection.",
+    desc: "Files you can find, backups that work, and records that survive turnover.",
     icon: Database,
   }
 ];
