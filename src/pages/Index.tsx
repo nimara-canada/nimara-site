@@ -119,10 +119,10 @@ const Index = () => {
           {/* System Ladder - 5 Levels */}
           <SystemLadder />
           
-          {/* Integrations */}
-          <RevealSection background="gradient">
+          {/* Integrations - hidden for now */}
+          {/* <RevealSection background="gradient">
             <IntegrationsSection />
-          </RevealSection>
+          </RevealSection> */}
           
           {/* FAQ */}
           <RevealSection id="faq">
