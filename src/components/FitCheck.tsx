@@ -9,9 +9,6 @@ const fitCriteria = [{
   id: 'approvals',
   text: "You're not always sure who can approve spending — or the rule changes by situation."
 }, {
-  id: 'grant-rules',
-  text: "Grant rules live in emails and memory, not one clear place everyone uses."
-}, {
   id: 'reporting',
   text: 'Reporting turns into a scramble (receipts, files, proof, "who has that doc?").'
 }, {
