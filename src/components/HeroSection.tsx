@@ -4,7 +4,7 @@ import { motion, AnimatePresence, useScroll, useTransform, useSpring, useMotionV
 import { useMotionPreferences, DROPBOX_EASING_CSS } from "@/hooks/use-scroll-reveal";
 import { CALENDLY_BOOKING_URL, TYPEFORM_HEALTH_CHECK_URL } from "@/constants/urls";
 
-const ROTATING_WORDS = ["Funder-Ready", "Audit-Ready", "Report-Ready", "Board-Ready", "Grant-Ready"];
+const ROTATING_WORDS = ["Funder-Ready", "Grant-Ready", "Report-Ready", "Proof-Ready"];
 
 const NimaraHeroPremium = () => {
   const [isLoaded, setIsLoaded] = useState(false);
