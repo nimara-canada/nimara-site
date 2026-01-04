@@ -2,7 +2,6 @@ import { Helmet } from "react-helmet";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ArrowRight, Clock, FileCheck, Building2 } from "lucide-react";
-import { CALENDLY_BOOKING_URL, TYPEFORM_HEALTH_CHECK_URL } from "@/constants/urls";
 
 const StartHere = () => {
   return (
@@ -22,10 +21,10 @@ const StartHere = () => {
           {/* Header */}
           <div className="text-center mb-16">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-              Where would you like to start?
+              Pick a starting point.
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Two ways to get your nonprofit organized. Pick the one that fits your timeline.
+              Two ways to get your nonprofit organized. Choose the one that fits your timeline.
             </p>
           </div>
 
@@ -33,9 +32,7 @@ const StartHere = () => {
           <div className="grid md:grid-cols-2 gap-6 mb-12">
             {/* Grant Setup Card */}
             <a
-              href={CALENDLY_BOOKING_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/grant-setup"
               className="group relative flex flex-col p-8 bg-card border border-border rounded-2xl transition-all duration-200 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1"
             >
               <div className="flex items-center gap-3 mb-4">
@@ -56,16 +53,14 @@ const StartHere = () => {
               </p>
               
               <div className="flex items-center gap-2 text-primary font-medium">
-                <span>Book a setup call</span>
+                <span>Book a Grant Setup</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </div>
             </a>
 
             {/* Organization Check Card */}
             <a
-              href={CALENDLY_BOOKING_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/organization-check"
               className="group relative flex flex-col p-8 bg-card border border-border rounded-2xl transition-all duration-200 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1"
             >
               <div className="flex items-center gap-3 mb-4">
@@ -86,26 +81,33 @@ const StartHere = () => {
               </p>
               
               <div className="flex items-center gap-2 text-primary font-medium">
-                <span>Book a check call</span>
+                <span>Book an Organization Check</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </div>
             </a>
           </div>
 
-          {/* Small link to free tools */}
+          {/* Small links to free tools */}
           <div className="text-center">
-            <p className="text-sm text-muted-foreground mb-2">
+            <p className="text-sm text-muted-foreground mb-3">
               Not ready to book? Try our free tools first.
             </p>
-            <a
-              href={TYPEFORM_HEALTH_CHECK_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm text-foreground hover:text-primary transition-colors"
-            >
-              <span>Free Health Check</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </a>
+            <div className="flex items-center justify-center gap-6">
+              <a
+                href="/free-check"
+                className="inline-flex items-center gap-1.5 text-sm text-foreground hover:text-primary transition-colors"
+              >
+                <span>Try the free check</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href="/resources/tracker"
+                className="inline-flex items-center gap-1.5 text-sm text-foreground hover:text-primary transition-colors"
+              >
+                <span>$0 tracker</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
           </div>
         </div>
       </main>
