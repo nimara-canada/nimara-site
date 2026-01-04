@@ -185,10 +185,10 @@ const NimaraHeroPremium = () => {
                 </Link>
 
                 {/* Secondary CTA - text link */}
-                <a href={CALENDLY_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 text-base text-white/60 hover:text-white select-none transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] active:opacity-70 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-secondary-background rounded">
+                <Link to="/organization-check" className="group inline-flex items-center gap-2 text-base text-white/60 hover:text-white select-none transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] active:opacity-70 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-secondary-background rounded">
                   Book an Organization Check
                   <span className="transition-transform duration-150 group-hover:translate-x-1" aria-hidden="true">→</span>
-                </a>
+                </Link>
               </div>
 
               {/* Small link - Free Health Check */}
