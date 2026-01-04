@@ -65,14 +65,16 @@ export function StickyNarrative({ steps, className }: StickyNarrativeProps) {
     return () => observer.disconnect();
   }, [steps, isMobile]);
 
-  // Mobile: stack layout
+  // Mobile: card grid layout (matching other sections)
   if (isMobile) {
     return (
-      <div className={cn('py-16 md:py-24', className)}>
+      <div className={cn('py-8', className)}>
         <div className="max-w-7xl mx-auto px-6">
-          {steps.map((step, index) => (
-            <MobileNarrativeStep key={step.id} step={step} index={index} />
-          ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {steps.map((step, index) => (
+              <MobileNarrativeStep key={step.id} step={step} index={index} />
+            ))}
+          </div>
         </div>
       </div>
     );
@@ -197,7 +199,7 @@ function DesktopNarrativeStep({
   );
 }
 
-// Mobile step (stacked)
+// Mobile step (card-based, matching other sections)
 function MobileNarrativeStep({
   step,
   index,
@@ -241,32 +243,34 @@ function MobileNarrativeStep({
       };
 
   return (
-    <div ref={ref} className="py-12 border-b border-border last:border-b-0" style={style}>
-      {/* Visual first on mobile */}
-      <div className="mb-8 rounded-xl overflow-hidden bg-muted/30">
-        {step.visual}
+    <article 
+      ref={ref} 
+      className="bg-card rounded-2xl p-6 shadow-[0_8px_24px_rgba(32,38,84,0.08)] border border-border space-y-4" 
+      style={style}
+    >
+      {/* Step number and label */}
+      <div className="flex justify-center">
+        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+          <span className="text-2xl font-bold text-primary">
+            {index + 1}
+          </span>
+        </div>
       </div>
-
-      <span className="inline-flex items-center gap-3 text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-4">
-        <span className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm">
-          {index + 1}
-        </span>
-        {step.label}
-      </span>
-      <h3 className="heading-3 mb-4">{step.heading}</h3>
-      <p className="text-body text-body-muted mb-6">
+      
+      <h3 className="text-lg font-semibold text-center">{step.heading}</h3>
+      <p className="text-foreground/80 text-center text-sm">
         {step.description}
       </p>
       {step.timeNote && (
-        <p className="text-xs text-muted-foreground mb-3">{step.timeNote}</p>
+        <p className="text-xs text-muted-foreground text-center">{step.timeNote}</p>
       )}
       {step.ctaText && step.ctaHref && (
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col items-center gap-3 pt-2">
           <a
             href={step.ctaHref}
             target={step.ctaExternal ? "_blank" : undefined}
             rel={step.ctaExternal ? "noopener noreferrer" : undefined}
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium text-sm hover:bg-primary/90 transition-colors w-fit"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium text-sm hover:bg-primary/90 transition-colors"
           >
             {step.ctaText}
           </a>
@@ -280,7 +284,7 @@ function MobileNarrativeStep({
           )}
         </div>
       )}
-    </div>
+    </article>
   );
 }
 
