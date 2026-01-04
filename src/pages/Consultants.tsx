@@ -9,7 +9,6 @@ import { NewHowItWorks } from "@/components/consultant/NewHowItWorks";
 
 import { NewPrimaryCTA } from "@/components/consultant/NewPrimaryCTA";
 import { NewComingSoon } from "@/components/consultant/NewComingSoon";
-import { NewTrustLine } from "@/components/consultant/NewTrustLine";
 
 const Consultants = () => {
   return (
@@ -72,7 +71,6 @@ const Consultants = () => {
         <NewHowItWorks />
         <NewPrimaryCTA />
         <NewComingSoon />
-        <NewTrustLine />
       </main>
       <Footer />
     </div>
