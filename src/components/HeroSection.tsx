@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { Check } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
 import { useMotionPreferences, DROPBOX_EASING_CSS } from "@/hooks/use-scroll-reveal";
@@ -178,10 +179,10 @@ const NimaraHeroPremium = () => {
               {/* CTAs - Primary button + Secondary text link */}
               <div style={revealStyle(300)} className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
                 {/* Primary CTA Button */}
-                <a href={CALENDLY_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-7 py-4 bg-primary text-primary-foreground font-semibold rounded-lg select-none transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] hover:bg-primary/90 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98] active:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-secondary-background">
+                <Link to="/grant-setup" className="inline-flex items-center gap-3 px-7 py-4 bg-primary text-primary-foreground font-semibold rounded-lg select-none transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] hover:bg-primary/90 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98] active:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-secondary-background">
                   Book a Grant Setup
                   <span className="text-lg" aria-hidden="true">→</span>
-                </a>
+                </Link>
 
                 {/* Secondary CTA - text link */}
                 <a href={CALENDLY_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 text-base text-white/60 hover:text-white select-none transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] active:opacity-70 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-secondary-background rounded">
