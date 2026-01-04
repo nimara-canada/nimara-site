@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export const CompanyHero = () => {
   return (
@@ -22,43 +23,38 @@ export const CompanyHero = () => {
             </p>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-white leading-[1.1] mb-8">
-              A National Operator For Nonprofit Capacity-Building
+              We help nonprofits get the basics working.
             </h1>
             
             <p className="text-lg md:text-xl text-white/70 leading-relaxed mb-10 max-w-xl">
-              We help nonprofits install strong systems so they can pass audits, keep staff, and keep the lights on.
+              Simple systems for money, files, and reporting — so funding is easier to win and manage.
             </p>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <a
-                href="/health-score"
+              <Link
+                to="/start-here"
                 className="inline-flex items-center justify-center gap-2 h-14 px-8 bg-accent text-secondary-background font-semibold rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-accent/20"
               >
-                Learn About The Health Check
+                Get Started
                 <ArrowRight className="w-5 h-5" />
-              </a>
+              </Link>
               
               <a
-                href="/how-nimara-works"
+                href="mailto:hello@nimara.ca"
                 className="group inline-flex items-center gap-2 h-14 px-6 text-white/80 font-medium transition-colors duration-300 hover:text-white"
               >
                 <span className="relative">
-                  How Nimara Works
+                  Prefer email? hello@nimara.ca
                   <span className="absolute left-0 -bottom-0.5 w-full h-px bg-white/30 group-hover:bg-white transition-colors duration-300" />
                 </span>
-                <ArrowRight className="w-4 h-4" />
               </a>
             </div>
 
-            {/* Text link */}
-            <a 
-              href="#founding-story"
-              className="inline-flex items-center gap-2 text-accent/80 hover:text-accent transition-colors text-sm"
-            >
-              Read Our Founding Story
-              <ArrowRight className="w-3 h-3" />
-            </a>
+            {/* Small line */}
+            <p className="text-sm text-white/40 italic">
+              Built once. Used again.
+            </p>
           </motion.div>
 
           {/* Right: Abstract Visual */}

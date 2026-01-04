@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 
 const bullets = [
-  "Many orgs are asked to be audit-ready while running on volunteer systems.",
-  "Funders pay for short pilots and reports, not lasting backbone.",
-  "Consultants do great one-off work, but there is no shared install-and-maintain system.",
-  "Leaders are burning out trying to manage finance, HR, fundraising, and tech late at night."
+  "Files that are easy to find",
+  "Spending rules that are clear",
+  "Tracking that doesn't fall apart",
+  "Reporting that doesn't turn into panic"
 ];
 
 export const TheGap = () => {
@@ -23,18 +23,16 @@ export const TheGap = () => {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="mb-12"
           >
-          <p className="text-sm tracking-widest text-muted-foreground uppercase mb-4">
+            <p className="text-sm tracking-widest text-muted-foreground uppercase mb-4">
               The Problem
             </p>
 
             <h2 className="text-4xl md:text-5xl font-serif font-medium text-foreground leading-[1.1] mb-6">
-              The Gap No One Is Paid To Fix
+              The gap we close
             </h2>
 
             <p className="text-lg text-body leading-relaxed">
-              Nonprofits are asked to do big work with weak systems. 
-              Most leaders are trying to keep the mission alive while their basic 
-              operations are shaky.
+              Most nonprofits don't need more advice. They need basics that stick.
             </p>
           </motion.div>
 
@@ -66,7 +64,7 @@ export const TheGap = () => {
             className="pl-6 border-l-2 border-primary"
           >
             <p className="text-xl md:text-2xl font-serif font-medium text-foreground leading-snug">
-              Nimara exists to own this gap as our whole job.
+              We set up working basics your team can run.
             </p>
           </motion.div>
         </div>

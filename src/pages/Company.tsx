@@ -10,14 +10,13 @@ import { OperatorsSection } from "@/components/company/OperatorsSection";
 import { WhereWeAre } from "@/components/company/WhereWeAre";
 import { ReadyToWork } from "@/components/company/ReadyToWork";
 import { TLDR } from "@/components/company/TLDR";
-import { SmallPrint } from "@/components/company/SmallPrint";
 
 const Company = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>About Nimara | Our Story</title>
-        <meta name="description" content="Nimara was founded to help Canadian nonprofits build systems that hold up under funding pressure. Learn how we help organizations become funder-ready." />
+        <title>About Nimara | Simple Systems for Nonprofits</title>
+        <meta name="description" content="We help nonprofits get the basics working. Simple systems for money, files, and reporting — so funding is easier to win and manage." />
         <meta name="robots" content="index, follow" />
         <meta name="author" content="Nimara" />
         <meta name="geo.region" content="CA" />
@@ -26,16 +25,16 @@ const Company = () => {
         <link rel="canonical" href="https://nimara.ca/company" />
         
         <meta property="og:site_name" content="Nimara" />
-        <meta property="og:title" content="About Nimara | Our Story" />
-        <meta property="og:description" content="Nimara was founded to help Canadian nonprofits build systems that hold up under funding pressure. Learn how we help organizations become funder-ready." />
+        <meta property="og:title" content="About Nimara | Simple Systems for Nonprofits" />
+        <meta property="og:description" content="We help nonprofits get the basics working. Simple systems for money, files, and reporting — so funding is easier to win and manage." />
         <meta property="og:url" content="https://nimara.ca/company" />
         <meta property="og:image" content="https://nimara.ca/og-image.png" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_CA" />
         
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About Nimara | Our Story" />
-        <meta name="twitter:description" content="Nimara was founded to help Canadian nonprofits build systems that hold up under funding pressure. Learn how we help organizations become funder-ready." />
+        <meta name="twitter:title" content="About Nimara | Simple Systems for Nonprofits" />
+        <meta name="twitter:description" content="We help nonprofits get the basics working. Simple systems for money, files, and reporting — so funding is easier to win and manage." />
         <meta name="twitter:image" content="https://nimara.ca/og-image.png" />
         
         <script type="application/ld+json">
@@ -44,7 +43,7 @@ const Company = () => {
             "@type": "AboutPage",
             "name": "About Nimara",
             "url": "https://nimara.ca/company",
-            "description": "Nimara was founded by an ex-fund manager who saw why good nonprofits lose funding. We help Canadian organizations build systems that hold up.",
+            "description": "We help nonprofits get the basics working. Simple systems for money, files, and reporting.",
             "mainEntity": {
               "@type": "Organization",
               "name": "Nimara",
@@ -81,7 +80,6 @@ const Company = () => {
         <WhereWeAre />
         <ReadyToWork />
         <TLDR />
-        <SmallPrint />
       </main>
       <Footer />
     </div>

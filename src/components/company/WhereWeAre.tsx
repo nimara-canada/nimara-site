@@ -1,7 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, TrendingUp } from "lucide-react";
+import { Globe, Laptop, FileSpreadsheet } from "lucide-react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -23,10 +22,10 @@ const itemVariants = {
   },
 };
 
-const roadmapItems = [
-  "Stronger national data on organizational health",
-  "Better tools for funders to design capacity programs",
-  "A growing bench of trained Practice Partners",
+const features = [
+  { icon: Globe, label: "Canada-wide" },
+  { icon: Laptop, label: "Remote-first" },
+  { icon: FileSpreadsheet, label: "Works in Google tools" },
 ];
 
 export const WhereWeAre = () => {
@@ -45,59 +44,45 @@ export const WhereWeAre = () => {
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 mb-16">
             <motion.div variants={itemVariants} className="lg:col-span-5">
               <span className="text-xs font-medium tracking-[0.2em] uppercase text-primary mb-4 block">
-                Roadmap
+                Location
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-foreground leading-[1.1]">
-                Where Nimara Is{" "}
-                <span className="italic">Going Next</span>
+                Where we{" "}
+                <span className="italic">work</span>
               </h2>
             </motion.div>
 
             <motion.div variants={itemVariants} className="lg:col-span-7 lg:pt-8">
               <p className="text-lg text-body-muted leading-relaxed">
-                We are starting with nonprofits across Canada and a clear 
-                way of working together. Over time, Nimara will add deeper tools for funders, 
-                better data on what fixes actually work, and stronger support for the people 
-                doing the work on the ground.
+                We support Canadian nonprofits across the country. Most work is done remotely, with clear handover and simple training.
               </p>
             </motion.div>
           </div>
 
-          {/* Roadmap Items */}
-          <motion.div variants={containerVariants} className="mb-16">
-            <div className="grid md:grid-cols-3 gap-4">
-              {roadmapItems.map((item, index) => (
+          {/* Feature badges */}
+          <motion.div variants={containerVariants} className="mb-10">
+            <div className="flex flex-wrap gap-4">
+              {features.map((feature, index) => (
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  className="group"
+                  className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-muted border border-border"
                 >
-                  <div className="h-full p-6 rounded-2xl bg-card border border-border hover:border-primary/30 hover:shadow-md transition-all">
-                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                      <TrendingUp className="w-5 h-5 text-primary" />
-                    </div>
-                    <p className="text-foreground font-medium leading-relaxed">
-                      {item}
-                    </p>
-                  </div>
+                  <feature.icon className="w-5 h-5 text-primary" />
+                  <span className="text-foreground font-medium">{feature.label}</span>
                 </motion.div>
               ))}
             </div>
           </motion.div>
 
-          {/* CTA */}
-          <motion.div variants={itemVariants} className="text-center">
-            <Button 
-              size="lg"
-              asChild
-              className="group"
+          {/* Email link */}
+          <motion.div variants={itemVariants}>
+            <a 
+              href="mailto:hello@nimara.ca"
+              className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              <a href="/roadmap" className="gap-2">
-                View The Nimara Roadmap
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </a>
-            </Button>
+              Prefer email? <span className="underline underline-offset-4">hello@nimara.ca</span>
+            </a>
           </motion.div>
         </motion.div>
       </div>
