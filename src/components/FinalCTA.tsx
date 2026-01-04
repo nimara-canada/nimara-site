@@ -123,6 +123,7 @@ export const FinalCTA = () => {
             className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-[1.1] mb-6"
           >
             <motion.span
+              className="font-medium"
               initial={reducedMotion ? false : { opacity: 0, x: -30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.2, ease: DROPBOX_EASE }}
