@@ -1,31 +1,47 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
-import { CALENDLY_BOOKING_URL } from "@/constants/urls";
+import { Link } from 'react-router-dom';
 
 const faqs = [
   {
-    question: "Do we have to start with a Quick Check?",
-    answer: "No. If you have one problem you need to fix fast (like an audit coming up or a funder asking questions), we can help with that first. If you want to look at the whole picture — how your board, money, staff, and programs are set up — the Quick Check is a good place to start. It only takes 5 minutes and it's free."
+    question: "What does Nimara do?",
+    answer: "We help Canadian nonprofits set up simple systems for money, files, and reporting — so funding is easier to win and manage."
   },
   {
-    question: "What's the difference between Quick Check and Deep Check?",
-    answer: "The Quick Check is free. It takes about 5 minutes and gives you a score right away. The Deep Check starts at $2,500. We look at your actual documents and give you a full report. It takes 2–4 weeks. Think of it this way: Quick Check tells you where to look. Deep Check tells you exactly what to fix."
+    question: "Where should we start?",
+    answer: "Start with Get Started. We'll point you to the right first step: Grant Setup or an Organization Check."
   },
   {
-    question: "Is Nimara right for us? What size do we need to be?",
-    answer: "We work with nonprofits in Canada — usually groups with 0–50 staff. If you deal with funders, audits, or staff issues, we can probably help. If you're just getting started and don't have a team yet, we'll point you to free tools instead."
+    question: "Is this an audit?",
+    answer: "No. We don't inspect you. We help you set up working systems that your team can run."
   },
   {
-    question: "What kinds of problems can you help with?",
-    answer: "We help with 7 main areas: Board (policies, roles, meeting notes), Money (budgets, grants, audits), People (hiring, staff files, safety), Programs (how you track and deliver services), Fundraising (donations, receipts, records), Volunteers (agreements, screening), and Records (files, folders, data safety)."
+    question: "Is this bookkeeping or accounting?",
+    answer: "No. We don't do your books or taxes. We organize how you track and store records so it's easier to report."
   },
   {
-    question: "How long does it take? What do we get?",
-    answer: "Quick Check: 5 minutes, instant results. Deep Check: 2–4 weeks. After that, fixing things usually takes 8–12 weeks per area. You always get real documents and tools you can keep and use — not just advice."
+    question: "Is this only for one grant?",
+    answer: "No. We set it up once so you can reuse it for every grant."
   },
   {
-    question: "How much does it cost? Can a funder pay for this?",
-    answer: "Quick Check is free. Deep Check starts at $2,500. After that, we give you a flat price for each area you want to fix — no surprise bills. Yes, funders can pay for this. Many groups use grants or admin money. We can give you a one-page summary for your proposal."
+    question: "What is \"Grant Setup\"?",
+    answer: "A short project (about 2 weeks) where we set up a clear folder system, simple tracking, and a routine your team can follow."
+  },
+  {
+    question: "What is an \"Organization Check\"?",
+    answer: "A full review (2–4 weeks) that shows what's working, what's missing, and what to fix first — across your whole nonprofit."
+  },
+  {
+    question: "What happens after the Organization Check?",
+    answer: "You get a clear plan. If you want help building what comes next, we offer bundles to put the systems in place."
+  },
+  {
+    question: "Do you work with small nonprofits or volunteer-led teams?",
+    answer: "Yes. We keep things simple, clear, and easy to run — even with small teams."
+  },
+  {
+    question: "What if we're not sure we can afford this?",
+    answer: "Start with the free check. If you can fix it yourself, we'll tell you. If you need help, we'll show you the smallest next step."
   }
 ];
 
@@ -90,18 +106,26 @@ export const FAQ = () => {
               Everything you need to know about working with Nimara.
             </motion.p>
 
-            <motion.a
+            <motion.div
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
-              href={CALENDLY_BOOKING_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 text-foreground font-medium"
+              className="flex flex-col gap-3"
             >
-              <span className="group-hover:text-primary transition-colors">Book a call to ask us directly</span>
-              <span className="w-8 h-px bg-foreground group-hover:w-12 group-hover:bg-primary transition-all duration-300" />
-            </motion.a>
+              <Link
+                to="/start-here"
+                className="group inline-flex items-center gap-3 text-foreground font-medium"
+              >
+                <span className="group-hover:text-primary transition-colors">Get Started</span>
+                <span className="w-8 h-px bg-foreground group-hover:w-12 group-hover:bg-primary transition-all duration-300" />
+              </Link>
+              <Link
+                to="/free-check"
+                className="text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                Try the free check →
+              </Link>
+            </motion.div>
           </div>
 
           {/* FAQ Accordion */}
