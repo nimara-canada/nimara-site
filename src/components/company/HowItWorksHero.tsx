@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight } from 'lucide-react';
 
 const HowItWorksHero: React.FC = () => {
   return (
@@ -33,11 +32,9 @@ const HowItWorksHero: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight leading-[1.05] mb-8 text-white"
           >
-            A Simple Way To Go From
+            A simple way to get your
             <br />
-            <span className="font-normal italic">"We Need Help"</span>
-            <br />
-            To <span className="font-normal italic">"This Works."</span>
+            <span className="font-normal italic">basics working.</span>
           </motion.h1>
 
           {/* Subhead */}
@@ -47,7 +44,7 @@ const HowItWorksHero: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg md:text-xl text-white/50 leading-relaxed mb-12 max-w-xl"
           >
-            This page walks through The Nimara Model, the steps in a typical project, and how we manage quality, risk, and refunds.
+            We help you set up simple systems for money, files, and reporting — so funding is easier to win and manage.
           </motion.p>
 
           {/* CTAs */}
@@ -55,47 +52,61 @@ const HowItWorksHero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-start gap-8"
+            className="flex flex-col sm:flex-row items-start gap-6"
           >
+            {/* Primary CTA */}
             <Link
-              to="/health-score"
-              className="group inline-flex items-center gap-3 text-white font-medium"
+              to="/start-here"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-secondary-background font-medium rounded-full hover:bg-accent/90 transition-colors"
             >
-              <span className="group-hover:text-accent transition-colors">Learn About Health Check</span>
-              <span className="w-8 h-px bg-white group-hover:w-12 group-hover:bg-accent transition-all duration-300" />
+              Get Started
             </Link>
 
-            <a
-              href="https://www.notion.so/Nimara-Refund-Policy-2bc227f1ee3a80f299fbc42501d338ac"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 text-white/50 font-medium hover:text-white/70 transition-colors"
+            {/* Secondary CTA */}
+            <Link
+              to="/grant-setup"
+              className="group inline-flex items-center gap-3 text-white font-medium"
             >
-              <span>See Refund Policy</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </a>
+              <span className="group-hover:text-accent transition-colors">See Grant Setup</span>
+              <span className="w-8 h-px bg-white group-hover:w-12 group-hover:bg-accent transition-all duration-300" />
+            </Link>
+          </motion.div>
+
+          {/* Small link */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="mt-10"
+          >
+            <Link 
+              to="/organization-check" 
+              className="text-sm text-white/40 hover:text-white/70 transition-colors underline underline-offset-4"
+            >
+              See Organization Check →
+            </Link>
           </motion.div>
 
           {/* Helper text */}
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
             className="mt-16 pt-8 border-t border-white/10"
           >
             <p className="text-sm text-white/40">
-              New To Nimara?{' '}
+              New to Nimara?{' '}
               <Link 
                 to="/company" 
                 className="text-white/70 hover:text-accent transition-colors underline underline-offset-4"
               >
-                Learn Who We Are
+                Learn who we are
               </Link>
             </p>
           </motion.div>
         </div>
 
-        {/* Large decorative question mark */}
+        {/* Large decorative arrow */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -104,7 +115,7 @@ const HowItWorksHero: React.FC = () => {
           aria-hidden="true"
         >
           <span className="text-[24rem] font-extralight leading-none text-white/[0.06]">
-            ?
+            →
           </span>
         </motion.div>
       </div>
