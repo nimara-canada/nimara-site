@@ -179,6 +179,16 @@ export const FinalCTA = () => {
               Try the free check →
             </Link>
 
+            <p className="text-sm text-white/50 mt-2">
+              Prefer email?{" "}
+              <a 
+                href="mailto:hello@nimara.ca" 
+                className="hover:text-accent transition-colors underline-offset-2 hover:underline"
+              >
+                hello@nimara.ca
+              </a>
+            </p>
+
             <p className="text-xs text-white/30 mt-2">
               No pressure. We'll tell you the best next step.
             </p>
