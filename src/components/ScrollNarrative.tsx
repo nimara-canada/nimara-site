@@ -34,6 +34,8 @@ const narrativeSteps = [
     timeNote: 'At your pace.',
     ctaText: 'Get Started',
     ctaHref: '/start-here',
+    secondaryCtaText: 'Try the free check →',
+    secondaryCtaHref: '/free-check',
     visual: <ReportVisual />,
   },
 ];
