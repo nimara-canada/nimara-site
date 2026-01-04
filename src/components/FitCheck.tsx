@@ -1,19 +1,19 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useInView, useScroll, useTransform, useSpring } from 'framer-motion';
 import { Play, X } from 'lucide-react';
-import { CALENDLY_BOOKING_URL, TYPEFORM_HEALTH_CHECK_URL } from "@/constants/urls";
+
 const fitCriteria = [{
   id: 'board-decisions',
-  text: "Board decisions aren't written down consistently (so things get fuzzy later)."
+  text: "Board decisions aren't written down (so things get fuzzy later)."
 }, {
   id: 'approvals',
-  text: "You're not always sure who can approve spending — or the rule changes by situation."
+  text: "It's not always clear who can approve spending."
 }, {
   id: 'reporting',
-  text: 'Reporting turns into a scramble (receipts, files, proof, "who has that doc?").'
+  text: 'Reporting turns into a scramble (receipts, files, "who has that doc?").'
 }, {
   id: 'tools',
-  text: "You have tools, but people don't use them — work still happens in texts, DMs, and spreadsheets."
+  text: "You have tools, but people don't use them (work stays in texts and spreadsheets)."
 }];
 export const FitCheck = () => {
   const [checkedItems, setCheckedItems] = useState<string[]>([]);
@@ -90,7 +90,7 @@ export const FitCheck = () => {
           duration: 0.6,
           delay: 0.2
         }} className="text-lg text-white/80 max-w-xl">
-            If your mission is strong but your systems feel messy, we can help.
+            If your work is strong but the basics feel messy, we can help.
           </motion.p>
         </motion.div>
 
@@ -107,7 +107,7 @@ export const FitCheck = () => {
             duration: 0.6,
             delay: 0.3
           }} className="text-base text-white/90 mb-4">
-              For Canadian nonprofits with 0–50 staff (including volunteer-led teams).
+              For Canadian nonprofits with small teams (including volunteer-led).
             </motion.p>
             
             <motion.p initial={{
@@ -204,24 +204,17 @@ export const FitCheck = () => {
             duration: 0.6,
             delay: 0.6
           }} className="mt-12 pt-8 border-t border-white/20">
-              <p className="text-sm text-white/80 leading-relaxed mb-2">
-                Start with the NOHC (10 min) to see what's stable, what's at risk, and what to fix first.
-              </p>
-              <p className="text-sm text-white/60 mb-6">
-                No pressure. Just clarity.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                <motion.a href={TYPEFORM_HEALTH_CHECK_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-6 py-3 bg-white text-primary font-medium rounded hover:bg-white/90 transition-colors" whileHover={{
+              <div className="flex flex-col gap-3">
+                <motion.a href="/start-here" className="inline-flex items-center justify-center px-6 py-3 bg-white text-primary font-medium rounded hover:bg-white/90 transition-colors w-fit" whileHover={{
                 scale: 1.02,
                 y: -2
               }} whileTap={{
                 scale: 0.98
               }}>
-                  Start the free check (10 min)
+                  Get Started
                 </motion.a>
-                <a href={CALENDLY_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors text-sm underline underline-offset-2">
-                  Or book a call
+                <a href="/free-check" className="text-white/70 hover:text-white transition-colors text-sm">
+                  Try the free check (10 min) →
                 </a>
               </div>
             </motion.div>
@@ -285,6 +278,9 @@ export const FitCheck = () => {
             delay: 0.6,
             duration: 0.3
           }} className="mt-8 p-6 bg-white rounded-lg shadow-lg cursor-default">
+              <p className="text-xs text-[#0B1120]/50 mb-2 font-medium uppercase tracking-wide">
+                Early feedback
+              </p>
               <p className="text-[#0B1120]/80 italic leading-relaxed mb-3">
                 "Finally, someone who gets what we actually need."
               </p>
