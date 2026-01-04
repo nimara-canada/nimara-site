@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { CALENDLY_BOOKING_URL } from "@/constants/urls";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
 const FundingProofSection = () => {
@@ -42,25 +41,31 @@ const FundingProofSection = () => {
           <ScrollReveal delay={150}>
             <div className="space-y-6">
               <p className="text-lg md:text-xl font-medium text-foreground">
-                You can't "fundraise" your way out of messy basics.
+                Good work isn't enough. Funders need working systems.
               </p>
               
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                When spending, decisions, and files don't line up, funders pause.
+                When money, files, and decisions are hard to track, funders pause.
                 <br />
-                Not because your mission is weak — because the risk feels unclear.
+                Not because your mission is weak — but because it's hard to follow.
               </p>
               
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                Nimara helps you build simple, funder-ready systems: clear rules, clean records, and reporting that doesn't turn into a panic.
+                Nimara helps Canadian nonprofits set up simple systems for money, files, and reporting — so funding is easier to win and manage.
               </p>
 
-              <div className="pt-4">
+              <div className="pt-4 flex flex-col items-start gap-3">
                 <Button asChild size="lg">
-                  <a href={CALENDLY_BOOKING_URL} target="_blank" rel="noopener noreferrer">
-                    Book a call
+                  <a href="/start-here">
+                    Get Started
                   </a>
                 </Button>
+                <a 
+                  href="/free-check" 
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Try the free check →
+                </a>
               </div>
             </div>
           </ScrollReveal>
