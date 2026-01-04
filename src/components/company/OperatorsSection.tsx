@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import teamBenard from "@/assets/team-benard-new.png";
 import teamThabani from "@/assets/team-thabani-new.jpg";
 import teamDarryl from "@/assets/team-darryl-new.jpg";
@@ -76,20 +77,21 @@ export const OperatorsSection = () => {
               The Team
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-foreground leading-[1.1] mb-6">
-              The Operators{" "}
-              <span className="italic">Behind Nimara</span>
+              We're operators,{" "}
+              <span className="italic">not just advisors</span>
             </h2>
+            <p className="text-lg text-body-muted max-w-3xl leading-relaxed mb-4">
+              Our team has worked inside nonprofits and funding programs. We know how messy it gets — and what actually helps.
+            </p>
             <p className="text-lg text-body-muted max-w-3xl leading-relaxed">
-              Nimara is built by operators who have served as fund managers, board members, 
-              and backbone roles across nonprofits and public-interest work. We care more 
-              about working systems than glossy reports.
+              We build simple systems that people will use on busy weeks.
             </p>
           </motion.div>
 
           {/* Team Grid */}
           <motion.div 
             variants={containerVariants} 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
           >
             {operators.map((operator) => (
               <motion.div
@@ -121,25 +123,18 @@ export const OperatorsSection = () => {
             ))}
           </motion.div>
 
-          {/* Footer */}
+          {/* CTA */}
           <motion.div variants={itemVariants} className="text-center">
-            <p className="text-body-muted mb-6 max-w-2xl mx-auto">
-              We also work with a cross-Canada bench of Nimara Practice Partners in finance, 
-              HR, governance, fundraising, technology, and operations.
-            </p>
-            
-            <a 
-              href="https://www.notion.so/Consultant-Hire-2bb227f1ee3a8018b693d47e9610c583" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <Link 
+              to="/start-here"
               className="inline-flex items-center gap-2 text-primary font-medium group"
             >
               <span className="relative">
-                Learn About Nimara Practice Partners
+                Start here
                 <span className="absolute left-0 -bottom-0.5 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
               </span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </a>
+            </Link>
           </motion.div>
         </motion.div>
       </div>
