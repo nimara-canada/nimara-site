@@ -74,10 +74,10 @@ const HeroSection = () => {
               <ArrowRight className="w-4 h-4" />
             </a>
             <Link
-              to="/start-here"
+              to="/free-check"
               className="inline-flex items-center gap-2 text-white/60 hover:text-white transition-colors font-medium"
             >
-              Not sure yet? Get Started
+              Not sure yet? Take a free Health Check
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
