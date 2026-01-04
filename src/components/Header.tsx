@@ -196,12 +196,10 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                 </span>
               </a>
               <a
-                href={TYPEFORM_HEALTH_CHECK_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/start-here"
                 className="inline-flex items-center gap-2 h-11 px-6 bg-primary text-primary-foreground text-sm font-medium rounded-full select-none transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/25 active:scale-[0.98] active:translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               >
-                <span>Start the free check</span>
+                <span>Get Started</span>
                 <ArrowRight 
                   className="w-4 h-4 transition-transform duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] group-hover:translate-x-0.5" 
                 />
@@ -272,13 +270,11 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                   {/* Mobile nav footer */}
                   <div className="p-6 border-t border-border/50 bg-muted/30 space-y-3">
                     <a
-                      href={TYPEFORM_HEALTH_CHECK_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href="/start-here"
                       className="flex items-center justify-center gap-2 w-full h-14 bg-primary text-primary-foreground font-medium rounded-full select-none transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98] active:translate-y-px"
                       onClick={() => setIsOpen(false)}
                     >
-                      Start the free check
+                      Get Started
                       <ArrowRight className="w-4 h-4" />
                     </a>
                     <a
@@ -302,12 +298,10 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
       <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden p-4 bg-background/98 backdrop-blur-md border-t border-border/50">
         <div className="flex items-center gap-3">
           <a
-            href={TYPEFORM_HEALTH_CHECK_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/start-here"
             className="flex-1 flex items-center justify-center gap-2 h-12 bg-primary text-primary-foreground font-medium rounded-full select-none transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98] active:translate-y-px"
           >
-            Start the free check
+            Get Started
             <ArrowRight className="w-4 h-4" />
           </a>
           <a
