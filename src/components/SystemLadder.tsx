@@ -1,18 +1,18 @@
 import { useState, useRef } from 'react';
 import { motion, useInView, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
-import { TYPEFORM_HEALTH_CHECK_URL } from "@/constants/urls";
+import { Link } from 'react-router-dom';
 
 const ladderSteps = [
   { 
     level: 0, 
-    title: "Getting by", 
-    desc: "Work gets done, but nothing is written down.",
-    expandedDesc: "People know what to do, but it's all in their heads. Nothing is the same twice.",
+    title: "Messy basics", 
+    desc: "Things live in people's heads. Files are scattered.",
+    expandedDesc: "People know what to do, but nothing is written down. Every time feels like starting over.",
     signs: [
       "No one can explain how things work without a long talk",
       "Approvals happen in texts or by memory",
-      "Reports take forever because you start from scratch each time"
+      "Reports take forever because you start from scratch"
     ],
     fixes: [
       "Write down the 5–10 tasks you do every month",
@@ -23,13 +23,13 @@ const ladderSteps = [
   },
   { 
     level: 1, 
-    title: "Pieces in place", 
-    desc: "You have some tools, but they don't match up.",
-    expandedDesc: "You have some forms and folders, but people use different ones.",
+    title: "Working basics", 
+    desc: "Clear folders and simple routines. Less scrambling.",
+    expandedDesc: "You have some tools in place. People mostly know where to find things.",
     signs: [
-      "There are many versions of the same file",
-      "People ask \"Which one is the right one?\"",
-      "New staff learn by guessing"
+      "Files are in one place (not everywhere)",
+      "People can do basic tasks without asking",
+      "New staff still learn by guessing sometimes"
     ],
     fixes: [
       "Pick one folder as the \"main\" folder and lock old ones",
@@ -40,9 +40,9 @@ const ladderSteps = [
   },
   { 
     level: 2, 
-    title: "Basics working", 
-    desc: "Your main systems work and are written down.",
-    expandedDesc: "Your core systems are in place and working most of the time.",
+    title: "Team-ready", 
+    desc: "People know who does what. Work doesn't get stuck.",
+    expandedDesc: "Roles are clear. Handoffs happen without confusion. The team can work without you.",
     signs: [
       "You can explain how things work in a few steps",
       "Money approvals are mostly the same each time",
@@ -57,8 +57,8 @@ const ladderSteps = [
   },
   { 
     level: 3, 
-    title: "Running smoothly", 
-    desc: "Systems are connected. Everyone does things the same way.",
+    title: "Steady", 
+    desc: "Monthly work runs calmly. Reporting is easier.",
     expandedDesc: "Work is steady. People know their roles. Things run the same across the team.",
     signs: [
       "People know who approves what",
@@ -74,11 +74,11 @@ const ladderSteps = [
   },
   { 
     level: 4, 
-    title: "Best in class", 
-    desc: "Your systems are strong enough to teach others.",
+    title: "Strong", 
+    desc: "Systems hold up as you grow. It's easy to show what happened.",
     expandedDesc: "You don't just run well — you keep getting better on purpose.",
     signs: [
-      "Audits and funder reviews are easy",
+      "Reviews and funder checks are easy",
       "Systems don't depend on one person",
       "You track what works and fix what doesn't"
     ],
@@ -131,7 +131,7 @@ export const SystemLadder = () => {
             className="flex items-center gap-4 mb-6"
           >
             <span className="text-xs font-medium tracking-[0.2em] uppercase text-white/40">
-              The System
+              System Ladder
             </span>
             <div className="h-px flex-1 bg-white/10" />
           </motion.div>
@@ -143,9 +143,7 @@ export const SystemLadder = () => {
             id="system-heading"
             className="text-3xl sm:text-4xl lg:text-5xl font-light text-white tracking-tight leading-[1.1] mb-6"
           >
-            Five Levels Of
-            <br />
-            <span className="font-normal italic text-white/60">Nonprofit Health</span>
+            See where you are today
           </motion.h2>
           
           <motion.p
@@ -154,7 +152,7 @@ export const SystemLadder = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-white/50 max-w-xl"
           >
-            A simple way to see where you are — and where you want to go.
+            Most nonprofits aren't broken — the basics are just messy. This shows the next step.
           </motion.p>
         </div>
 
@@ -354,7 +352,7 @@ export const SystemLadder = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-8 text-center text-sm text-white/40"
         >
-          We help groups at Levels 0–2: getting your basics in place and working.
+          Not sure where to start? If you're at Level 0–1, start with Grant Setup. If you want a full plan, start with an Organization Check.
         </motion.p>
 
         {/* CTA Card */}
@@ -371,20 +369,29 @@ export const SystemLadder = () => {
                 Not sure where you stand?
               </h3>
               <p className="text-white/50 max-w-lg">
-                Take the free 5-minute check to find your level — and get tips on what to fix first.
+                Answer a few questions. We'll point you to the right next step.
               </p>
             </div>
-            <motion.a
-              href={TYPEFORM_HEALTH_CHECK_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-secondary-background font-medium rounded-full hover:bg-accent/90 transition-colors flex-shrink-0"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Start the free check
-              <span>→</span>
-            </motion.a>
+            <div className="flex flex-col items-start lg:items-end gap-3 flex-shrink-0">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Link
+                  to="/start-here"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-secondary-background font-medium rounded-full hover:bg-accent/90 transition-colors"
+                >
+                  Get Started
+                  <span>→</span>
+                </Link>
+              </motion.div>
+              <Link
+                to="/free-check"
+                className="text-sm text-white/50 hover:text-white/70 transition-colors"
+              >
+                Try the free check →
+              </Link>
+            </div>
           </div>
         </motion.div>
       </motion.div>
