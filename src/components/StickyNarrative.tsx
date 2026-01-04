@@ -10,6 +10,8 @@ interface NarrativeStep {
   ctaText?: string;
   ctaHref?: string;
   ctaExternal?: boolean;
+  secondaryCtaText?: string;
+  secondaryCtaHref?: string;
   timeNote?: string;
   visual: React.ReactNode;
 }
@@ -171,14 +173,24 @@ function DesktopNarrativeStep({
           <p className="text-sm text-muted-foreground mb-4">{step.timeNote}</p>
         )}
         {step.ctaText && step.ctaHref && (
-          <a
-            href={step.ctaHref}
-            target={step.ctaExternal ? "_blank" : undefined}
-            rel={step.ctaExternal ? "noopener noreferrer" : undefined}
-            className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all duration-200 group"
-          >
-            {step.ctaText}
-          </a>
+          <div className="flex flex-col gap-3">
+            <a
+              href={step.ctaHref}
+              target={step.ctaExternal ? "_blank" : undefined}
+              rel={step.ctaExternal ? "noopener noreferrer" : undefined}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors w-fit"
+            >
+              {step.ctaText}
+            </a>
+            {step.secondaryCtaText && step.secondaryCtaHref && (
+              <a
+                href={step.secondaryCtaHref}
+                className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                {step.secondaryCtaText}
+              </a>
+            )}
+          </div>
         )}
       </div>
     </div>
@@ -249,14 +261,24 @@ function MobileNarrativeStep({
         <p className="text-xs text-muted-foreground mb-3">{step.timeNote}</p>
       )}
       {step.ctaText && step.ctaHref && (
-        <a
-          href={step.ctaHref}
-          target={step.ctaExternal ? "_blank" : undefined}
-          rel={step.ctaExternal ? "noopener noreferrer" : undefined}
-          className="inline-flex items-center gap-2 text-primary font-medium text-sm"
-        >
-          {step.ctaText}
-        </a>
+        <div className="flex flex-col gap-3">
+          <a
+            href={step.ctaHref}
+            target={step.ctaExternal ? "_blank" : undefined}
+            rel={step.ctaExternal ? "noopener noreferrer" : undefined}
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium text-sm hover:bg-primary/90 transition-colors w-fit"
+          >
+            {step.ctaText}
+          </a>
+          {step.secondaryCtaText && step.secondaryCtaHref && (
+            <a
+              href={step.secondaryCtaHref}
+              className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors"
+            >
+              {step.secondaryCtaText}
+            </a>
+          )}
+        </div>
       )}
     </div>
   );
