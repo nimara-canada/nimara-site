@@ -245,45 +245,58 @@ function MobileNarrativeStep({
   return (
     <article 
       ref={ref} 
-      className="bg-card rounded-2xl p-6 shadow-[0_8px_24px_rgba(32,38,84,0.08)] border border-border space-y-4" 
+      className="bg-card rounded-2xl shadow-[0_8px_24px_rgba(32,38,84,0.08)] border border-border overflow-hidden" 
       style={style}
     >
-      {/* Step number and label */}
-      <div className="flex justify-center">
-        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-          <span className="text-2xl font-bold text-primary">
-            {index + 1}
-          </span>
+      {/* Visual preview - compact version */}
+      <div className="bg-muted/30 border-b border-border">
+        <div className="max-h-48 overflow-hidden [&>div]:!p-3 [&>div>div]:!max-w-none [&>div>div]:!shadow-none [&>div>div]:!border-0 [&>div>div]:!rounded-none">
+          {step.visual}
         </div>
       </div>
       
-      <h3 className="text-lg font-semibold text-center">{step.heading}</h3>
-      <p className="text-foreground/80 text-center text-sm">
-        {step.description}
-      </p>
-      {step.timeNote && (
-        <p className="text-xs text-muted-foreground text-center">{step.timeNote}</p>
-      )}
-      {step.ctaText && step.ctaHref && (
-        <div className="flex flex-col items-center gap-3 pt-2">
-          <a
-            href={step.ctaHref}
-            target={step.ctaExternal ? "_blank" : undefined}
-            rel={step.ctaExternal ? "noopener noreferrer" : undefined}
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium text-sm hover:bg-primary/90 transition-colors"
-          >
-            {step.ctaText}
-          </a>
-          {step.secondaryCtaText && step.secondaryCtaHref && (
-            <a
-              href={step.secondaryCtaHref}
-              className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors"
-            >
-              {step.secondaryCtaText}
-            </a>
-          )}
+      {/* Content */}
+      <div className="p-5 space-y-3">
+        {/* Step number and label */}
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+            <span className="text-sm font-bold text-primary">
+              {index + 1}
+            </span>
+          </div>
+          <span className="text-xs font-semibold tracking-[0.15em] uppercase text-primary">
+            {step.label}
+          </span>
         </div>
-      )}
+        
+        <h3 className="text-lg font-semibold">{step.heading}</h3>
+        <p className="text-foreground/80 text-sm leading-relaxed">
+          {step.description}
+        </p>
+        {step.timeNote && (
+          <p className="text-xs text-muted-foreground">{step.timeNote}</p>
+        )}
+        {step.ctaText && step.ctaHref && (
+          <div className="flex flex-col gap-3 pt-2">
+            <a
+              href={step.ctaHref}
+              target={step.ctaExternal ? "_blank" : undefined}
+              rel={step.ctaExternal ? "noopener noreferrer" : undefined}
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium text-sm hover:bg-primary/90 transition-colors"
+            >
+              {step.ctaText}
+            </a>
+            {step.secondaryCtaText && step.secondaryCtaHref && (
+              <a
+                href={step.secondaryCtaHref}
+                className="inline-flex items-center justify-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors"
+              >
+                {step.secondaryCtaText}
+              </a>
+            )}
+          </div>
+        )}
+      </div>
     </article>
   );
 }
