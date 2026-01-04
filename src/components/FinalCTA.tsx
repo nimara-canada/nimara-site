@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { Link } from "react-router-dom";
 import { useMotionPreferences, DROPBOX_EASING_CSS } from "@/hooks/use-scroll-reveal";
 
 // Dropbox easing as array for framer-motion
@@ -126,7 +127,7 @@ export const FinalCTA = () => {
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.2, ease: DROPBOX_EASE }}
             >
-              Ready To Get
+              Ready to make funding
             </motion.span>
             <br />
             <motion.span 
@@ -135,7 +136,7 @@ export const FinalCTA = () => {
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.35, ease: DROPBOX_EASE }}
             >
-              System-Strong?
+              easier to win and manage?
             </motion.span>
           </motion.h2>
 
@@ -144,45 +145,43 @@ export const FinalCTA = () => {
             variants={itemVariants}
             className="text-lg text-white/60 leading-relaxed mb-12 max-w-xl"
           >
-            Book A Free 15-Minute Discovery Call. We'll Figure Out If Nimara Is The Right Fit—No Pressure, No Pitch.
+            Let's set up working systems for money, files, and reporting — so your team can stop scrambling.
           </motion.p>
 
           {/* CTAs */}
           <motion.div 
             variants={itemVariants}
-            className="flex flex-col sm:flex-row items-start gap-8"
+            className="flex flex-col items-start gap-4"
           >
-            <motion.a
-              href="/book-a-call"
-              className="group inline-flex items-center gap-3 text-white font-medium"
+            <motion.div
               whileHover={{ x: 4 }}
               transition={{ duration: 0.2, ease: DROPBOX_EASE }}
             >
-              <span className="group-hover:text-accent transition-colors">Book a Discovery Call</span>
-              <motion.span 
-                className="h-px bg-white group-hover:bg-accent" 
-                initial={{ width: 32 }}
-                whileHover={{ width: 48 }}
-                transition={{ duration: 0.2, ease: DROPBOX_EASE }}
-                style={{ transition: `background-color 200ms ${DROPBOX_EASING_CSS}` }}
-              />
-            </motion.a>
+              <Link
+                to="/start-here"
+                className="group inline-flex items-center gap-3 text-white font-medium"
+              >
+                <span className="group-hover:text-accent transition-colors">Get Started</span>
+                <motion.span 
+                  className="h-px bg-white group-hover:bg-accent" 
+                  initial={{ width: 32 }}
+                  whileHover={{ width: 48 }}
+                  transition={{ duration: 0.2, ease: DROPBOX_EASE }}
+                  style={{ transition: `background-color 200ms ${DROPBOX_EASING_CSS}` }}
+                />
+              </Link>
+            </motion.div>
 
-            <motion.a
-              href="mailto:hello@nimara.ca"
-              className="group inline-flex items-center gap-3 text-white/60 font-medium"
-              whileHover={{ x: 4 }}
-              transition={{ duration: 0.2, ease: DROPBOX_EASE }}
+            <Link
+              to="/free-check"
+              className="text-sm text-white/50 hover:text-accent transition-colors"
             >
-              <span className="group-hover:text-accent transition-colors">Email us instead</span>
-              <motion.span 
-                className="h-px bg-white/40 group-hover:bg-accent" 
-                initial={{ width: 32 }}
-                whileHover={{ width: 48 }}
-                transition={{ duration: 0.2, ease: DROPBOX_EASE }}
-                style={{ transition: `background-color 200ms ${DROPBOX_EASING_CSS}` }}
-              />
-            </motion.a>
+              Try the free check →
+            </Link>
+
+            <p className="text-xs text-white/30 mt-2">
+              No pressure. We'll tell you the best next step.
+            </p>
           </motion.div>
 
           {/* Trust line with border reveal */}
