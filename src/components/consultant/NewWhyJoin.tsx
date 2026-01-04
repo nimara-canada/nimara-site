@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 
 const benefits = [
-  "You get real projects—not 'maybe' calls or endless RFPs.",
-  "We scope and vet all briefs before they reach you.",
-  "You only take on what fits your skills and schedule.",
-  "You stay freelance—but never alone.",
-  "You join a bench of people who care about quality and equity."
+  "Clear projects. Defined deliverables. No endless 'advice' loops.",
+  "Operator-led work. You help build working systems, not slide decks.",
+  "Repeatable playbooks. Templates and checklists so delivery is faster.",
+  "Respect for time. Fewer meetings, clean handoffs, clear timelines.",
+  "Real outcomes. Less scrambling. Easier reporting. More trust."
 ];
 
 export const NewWhyJoin = () => {
@@ -31,7 +31,7 @@ export const NewWhyJoin = () => {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="font-sans text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight"
             >
-              Why Join The <span className="italic font-light">Nimara Bench?</span>
+              Why Join <span className="italic font-light">Nimara</span>
             </motion.h2>
             
             <motion.p 
@@ -41,7 +41,7 @@ export const NewWhyJoin = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-muted-foreground/70 mt-10 text-base leading-relaxed font-light"
             >
-              This is not a staffing agency. It's a curated platform for real consultants who actually deliver.
+              We keep work clear. We keep scope tight. We build things teams will actually use.
             </motion.p>
           </div>
           
