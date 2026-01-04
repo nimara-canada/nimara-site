@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { CALENDLY_BOOKING_URL, EXTERNAL_URLS } from "@/constants/urls";
 
 const navigation = [
+  { name: "Start Here", href: "/start-here" },
   { name: "For Nonprofits", href: "/" },
   { name: "How It Works", href: "/how-nimara-works" },
   { name: "About", href: "/company" },
@@ -30,16 +31,14 @@ export const Footer = () => {
               Nimara
             </h2>
             <p className="text-white/50 leading-relaxed max-w-sm mb-8">
-              Helping Canadian Nonprofits Build The Core Systems Funders Expect—So You Can Focus On Your Mission.
+              Simple systems for money, files, and reporting — so funding is easier to win and manage.
             </p>
             <a
-              href={CALENDLY_BOOKING_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/start-here"
               className="group inline-flex items-center gap-2 text-white font-medium select-none transition-all duration-150 active:opacity-70"
             >
               <span className="relative">
-                Book A Discovery Call
+                Get Started
                 <span className="absolute left-0 -bottom-0.5 w-full h-px bg-white/30 group-hover:bg-white transition-colors duration-150" />
               </span>
               <ArrowRight className="w-4 h-4 transition-transform duration-150 group-hover:translate-x-1" />
@@ -92,12 +91,10 @@ export const Footer = () => {
                   </li>
                   <li>
                     <a
-                      href={CALENDLY_BOOKING_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href="/start-here"
                       className="text-white/70 hover:text-white transition-all duration-150 active:opacity-70 select-none"
                     >
-                      Book a Call
+                      Start Here
                     </a>
                   </li>
                 </ul>
