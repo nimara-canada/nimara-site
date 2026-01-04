@@ -27,6 +27,7 @@ import Integrations from "./pages/Integrations";
 import HowNimaraWorks from "./pages/HowNimaraWorks";
 import StartHere from "./pages/StartHere";
 import GrantSetup from "./pages/GrantSetup";
+import OrganizationCheck from "./pages/OrganizationCheck";
 
 import PathA from "./pages/PathA";
 import PathB from "./pages/PathB";
@@ -71,6 +72,7 @@ const App = () => (
             <Route path="/how-nimara-works" element={<HowNimaraWorks />} />
             <Route path="/start-here" element={<StartHere />} />
             <Route path="/grant-setup" element={<GrantSetup />} />
+            <Route path="/organization-check" element={<OrganizationCheck />} />
             <Route path="/organizational-health-check" element={<ExternalRedirect to={TYPEFORM_HEALTH_CHECK_URL} />} />
             <Route path="/health-score" element={<ExternalRedirect to={TYPEFORM_HEALTH_CHECK_URL} />} />
             <Route path="/path-a" element={<PathA />} />
