@@ -425,8 +425,8 @@ const Timeline = () => {
 // Pricing - Premium cards
 const Pricing = () => {
   const tiers = [
-    { name: "Standard", desc: "Small teams", price: "From $2,500" },
-    { name: "Complex", desc: "10+ staff / more moving parts", price: "Request a Quote" }
+    { name: "Standard", desc: "Small teams", price: "From $2,500", isCta: false },
+    { name: "Complex", desc: "10+ staff / more moving parts", price: "Request a Quote", isCta: true }
   ];
 
   const { ref, getItemStyle } = useStaggeredReveal(tiers.length + 3, { staggerDelay: TIMING.stagger, baseDelay: 0 });
@@ -466,7 +466,19 @@ const Pricing = () => {
             >
               <h3 className="font-semibold text-lg text-foreground mb-1">{tier.name}</h3>
               <p className="text-sm text-muted-foreground mb-4">{tier.desc}</p>
-              <p className="text-2xl font-semibold text-primary">{tier.price}</p>
+              {tier.isCta ? (
+                <a
+                  href={CALENDLY_BOOKING_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-semibold rounded-lg transition-all duration-150 hover:bg-primary/90 hover:scale-[1.02] active:scale-[0.98] text-sm"
+                >
+                  {tier.price}
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              ) : (
+                <p className="text-2xl font-semibold text-primary">{tier.price}</p>
+              )}
             </div>
           ))}
         </div>
