@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
 
-const perks = [
-  "Peer learning sessions",
-  "Shared resources (templates, tools)",
-  "Preferred vendor access",
-  "Co-branded proposal support"
+const features = [
+  "A project board with clear scopes and timelines",
+  "Standard templates you can reuse",
+  "Short training guides (Grant Setup + Organization Check)",
+  "Quality checks that help you deliver faster",
+  "A referral loop for repeat work"
 ];
 
 export const NewComingSoon = () => {
@@ -30,7 +31,7 @@ export const NewComingSoon = () => {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="font-sans text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight"
             >
-              Consultant Packages & <span className="italic font-light">Perks</span>
+              Coming <span className="italic font-light">Soon</span>
             </motion.h2>
             
             <motion.p 
@@ -40,7 +41,7 @@ export const NewComingSoon = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-muted-foreground/70 mt-10 text-base font-light"
             >
-              Want in early? Now's the time to apply.
+              We're building a simple consultant experience.
             </motion.p>
           </div>
           
@@ -51,9 +52,9 @@ export const NewComingSoon = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-10"
+              className="space-y-6"
             >
-              {perks.map((perk, index) => (
+              {features.map((feature, index) => (
                 <div 
                   key={index}
                   className="flex items-baseline gap-5"
@@ -61,10 +62,26 @@ export const NewComingSoon = () => {
                   <span className="text-muted-foreground/25 text-xs font-light tracking-wider w-5 flex-shrink-0">
                     {String(index + 1).padStart(2, '0')}
                   </span>
-                  <p className="text-foreground/80 text-base font-light">{perk}</p>
+                  <p className="text-foreground/80 text-base font-light">{feature}</p>
                 </div>
               ))}
             </motion.div>
+            
+            <motion.p 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="text-muted-foreground/50 text-sm mt-10 font-light"
+            >
+              Want early access?{" "}
+              <a 
+                href="mailto:hello@nimara.ca" 
+                className="text-foreground/70 hover:text-foreground border-b border-foreground/30 hover:border-foreground/50 transition-colors"
+              >
+                Email hello@nimara.ca
+              </a>
+            </motion.p>
           </div>
         </div>
       </div>

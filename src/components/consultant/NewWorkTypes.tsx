@@ -1,14 +1,22 @@
 import { motion } from "framer-motion";
 
 const workTypes = [
-  "Budgeting, forecasting, CRA-ready finance",
-  "Grant tracking & fundraising systems",
-  "Operational workflows and tool setup",
-  "Strategic planning, evaluation frameworks",
-  "Board governance and policy",
-  "HR and role design",
-  "Compliance and risk processes",
-  "Data and metrics dashboards"
+  {
+    title: "Grant Setup support",
+    description: "Help install folders, tracking, and simple routines that teams can follow."
+  },
+  {
+    title: "Organization Check support",
+    description: "Help review docs and workflows, then turn it into clear next steps."
+  },
+  {
+    title: "Build bundles (after the check)",
+    description: "Help implement policies, workflows, and tools across key areas."
+  },
+  {
+    title: "Fix-and-finish projects",
+    description: "Short projects to complete missing basics (templates, guides, file cleanup)."
+  }
 ];
 
 export const NewWorkTypes = () => {
@@ -25,7 +33,7 @@ export const NewWorkTypes = () => {
               transition={{ duration: 0.8 }}
               className="text-white/30 uppercase tracking-[0.25em] text-xs mb-6"
             >
-              Project Types
+              Types of Work
             </motion.p>
             <motion.h2 
               initial={{ opacity: 0 }}
@@ -34,7 +42,7 @@ export const NewWorkTypes = () => {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="font-sans text-3xl md:text-4xl font-semibold text-white leading-tight tracking-tight mb-10"
             >
-              What Kinds Of <span className="italic font-light">Work?</span>
+              Types Of <span className="italic font-light">Work</span>
             </motion.h2>
             
             <motion.p 
@@ -44,8 +52,7 @@ export const NewWorkTypes = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-white/50 text-base leading-relaxed font-light"
             >
-              Projects are time-bounded, scoped, and PM-supported. You focus on delivery—we handle 
-              intake, payment, and client ops.
+              Most work starts with one of these and grows from there.
             </motion.p>
           </div>
           
@@ -56,22 +63,37 @@ export const NewWorkTypes = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-5"
+              className="space-y-8"
             >
               {workTypes.map((type, index) => (
                 <div 
                   key={index}
-                  className="flex items-baseline gap-5"
+                  className="border-b border-white/10 pb-8 last:border-b-0"
                 >
-                  <span className="text-white/20 text-xs font-light tracking-wider w-5 flex-shrink-0">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <p className="text-white/70 text-base leading-relaxed font-light">
-                    {type}
+                  <div className="flex items-baseline gap-5 mb-2">
+                    <span className="text-white/20 text-xs font-light tracking-wider w-5 flex-shrink-0">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <h3 className="text-white/90 text-lg font-medium">
+                      {type.title}
+                    </h3>
+                  </div>
+                  <p className="text-white/50 text-base leading-relaxed font-light pl-10">
+                    {type.description}
                   </p>
                 </div>
               ))}
             </motion.div>
+            
+            <motion.p 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="text-white/30 text-sm mt-10 font-light"
+            >
+              We don't do bookkeeping or audits.
+            </motion.p>
           </div>
         </div>
       </div>

@@ -3,23 +3,23 @@ import { motion } from "framer-motion";
 const steps = [
   {
     title: "Apply",
-    description: "Fill out a quick eligibility form"
+    description: "Share your background and what work you want"
   },
   {
-    title: "Review", 
-    description: "We review your experience and alignment"
+    title: "Short call", 
+    description: "We confirm fit and availability"
   },
   {
-    title: "Vetting",
-    description: "If it's a fit, we set up a short vetting call"
-  },
-  {
-    title: "Access",
-    description: "Once onboarded, you get access to scoped project briefs"
+    title: "Get matched",
+    description: "We send projects that match your skills"
   },
   {
     title: "Deliver",
-    description: "If selected, you deliver. We back you up."
+    description: "You follow Nimara's playbook with clear scope"
+  },
+  {
+    title: "Grow",
+    description: "As trust builds, you get bigger projects"
   }
 ];
 
@@ -54,9 +54,9 @@ export const NewHowItWorks = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-muted-foreground/70 mt-10 text-base leading-relaxed font-light"
+              className="text-muted-foreground/50 mt-10 text-sm font-light"
             >
-              You decide what projects you take. No quotas. No hidden fees. No shady admin.
+              We prefer fewer, stronger consultants over a huge directory.
             </motion.p>
           </div>
           

@@ -1,17 +1,17 @@
 import { motion } from "framer-motion";
 
 const fitCriteria = [
-  "You have 3–10+ years of experience in nonprofit, public, or consulting work",
-  "You're independent, but collaborative",
-  "You have deep subject-matter expertise (and can explain it in plain language)",
-  "You deliver audit-ready work—not vibes",
-  "You care about EDI in practice, not just in theory"
+  "You've worked inside nonprofits (ops, admin, finance support, programs, HR support, project work)",
+  "You can take messy info and turn it into a clean, usable system",
+  "You write in plain language (teams can follow it)",
+  "You keep scope tight and ship deliverables",
+  "You're comfortable working remotely with deadlines"
 ];
 
-const notForCriteria = [
-  "If you're new to consulting and figuring it out",
-  "If you ghost clients, overpromise, or can't hit deadlines",
-  "If you think 'mission' excuses poor execution"
+const niceToHave = [
+  "Comfortable with Google Drive/Sheets and simple tool setup",
+  "Experience with multi-grant reporting and document tracking",
+  "Ability to train a team quickly (short handover)"
 ];
 
 export const NewWhoWeWant = () => {
@@ -26,16 +26,18 @@ export const NewWhoWeWant = () => {
           className="max-w-2xl mb-20"
         >
           <p className="text-muted-foreground/60 uppercase tracking-[0.25em] text-xs mb-6">
-            Who We Want
+            Who We're Looking For
           </p>
-          <h2 className="font-sans text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight">
-            This Bench Is Built For People Who Want To Do The Work—
-            <span className="italic font-light">And Do It Well.</span>
+          <h2 className="font-sans text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight mb-6">
+            Who We're <span className="italic font-light">Looking For</span>
           </h2>
+          <p className="text-muted-foreground/70 text-base leading-relaxed font-light">
+            We want people who can make things simple and finish the work.
+          </p>
         </motion.div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32">
-          {/* Good fit */}
+          {/* Must have */}
           <motion.div 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -60,7 +62,7 @@ export const NewWhoWeWant = () => {
             </div>
           </motion.div>
           
-          {/* Not for */}
+          {/* Nice to have */}
           <motion.div 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -68,18 +70,18 @@ export const NewWhoWeWant = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h3 className="font-sans text-sm font-medium text-foreground/80 mb-10 pb-5 border-b border-border/50 tracking-wide">
-              Who This Is Not For
+              Nice To Have
             </h3>
             <div className="space-y-7">
-              {notForCriteria.map((criterion, index) => (
+              {niceToHave.map((item, index) => (
                 <div 
                   key={index}
                   className="flex gap-8"
                 >
                   <span className="text-muted-foreground/25 text-xs font-light tracking-wider w-5 flex-shrink-0 pt-1">
-                    —
+                    +
                   </span>
-                  <p className="text-muted-foreground/60 leading-relaxed font-light">{criterion}</p>
+                  <p className="text-muted-foreground/60 leading-relaxed font-light">{item}</p>
                 </div>
               ))}
             </div>
