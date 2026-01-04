@@ -426,7 +426,7 @@ const Timeline = () => {
 const Pricing = () => {
   const tiers = [
     { name: "Standard", desc: "Small teams", price: "From $2,500" },
-    { name: "Complex", desc: "10+ staff / more moving parts", price: "Up to $5,000" }
+    { name: "Complex", desc: "10+ staff / more moving parts", price: "Request a Quote" }
   ];
 
   const { ref, getItemStyle } = useStaggeredReveal(tiers.length + 3, { staggerDelay: TIMING.stagger, baseDelay: 0 });
