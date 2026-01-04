@@ -78,6 +78,7 @@ const App = () => (
             <Route path="/path-a" element={<PathA />} />
             <Route path="/path-b" element={<PathB />} />
             <Route path="/check" element={<ExternalRedirect to={TYPEFORM_HEALTH_CHECK_URL} />} />
+            <Route path="/free-check" element={<ExternalRedirect to={TYPEFORM_HEALTH_CHECK_URL} />} />
             
             {/* Admin routes */}
             <Route path="/admin/privacy-audit" element={<PrivacyAuditDashboard />} />
