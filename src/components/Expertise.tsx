@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView, useScroll, useTransform, useSpring } from 'framer-motion';
-import { TYPEFORM_HEALTH_CHECK_URL } from "@/constants/urls";
+
 import { 
   Users, 
   DollarSign, 
@@ -14,38 +14,38 @@ import {
 
 const domains = [
   { 
-    title: "Board & Governance", 
-    desc: "Roles, policies, and meeting records — so decisions don't get fuzzy later.",
+    title: "Board", 
+    desc: "Clear decisions, clear notes, clear follow-through.",
     icon: Users,
   },
   { 
-    title: "Money, Grants & Compliance", 
-    desc: "Budgets, approvals, grant tracking, and proof of payment — so you can show where every dollar went.",
+    title: "Money & Grants", 
+    desc: "Track spending, save receipts, and make reporting easier.",
     icon: DollarSign,
   },
   { 
-    title: "People & HR", 
-    desc: "Hiring, onboarding, and clear expectations — on paper, not in someone's head.",
+    title: "People", 
+    desc: "Clear roles, simple handoffs, and basic HR basics.",
     icon: UserCheck,
   },
   { 
-    title: "Programs & Services", 
-    desc: "How you deliver, track, and improve your programs.",
+    title: "Programs", 
+    desc: "Simple plans, tracking, and updates you can reuse.",
     icon: Briefcase,
   },
   { 
-    title: "Fundraising & Donors", 
-    desc: "Donation records, thank-yous, and policies that protect you.",
+    title: "Fundraising", 
+    desc: "Simple donor tracking and routines that don't fall apart.",
     icon: Heart,
   },
   { 
     title: "Volunteers", 
-    desc: "Agreements, screening, and training — so everyone knows the rules.",
+    desc: "Clear roles, onboarding, and schedules people can follow.",
     icon: HandHeart,
   },
   { 
-    title: "Systems & Records", 
-    desc: "Files you can find, backups that work, and records that survive turnover.",
+    title: "Tools & Files", 
+    desc: "Folders, templates, and simple ways to keep things organized.",
     icon: Database,
   }
 ];
@@ -98,9 +98,7 @@ export const Expertise = () => {
             id="expertise-heading"
             className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight leading-[1.15] text-foreground mb-6"
           >
-            Seven domains that keep
-            <br />
-            nonprofits running
+            What we can help with
           </motion.h2>
           
           <motion.p
@@ -109,7 +107,16 @@ export const Expertise = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed"
           >
-            Structure and clarity to run your organization while focusing on what matters most.
+            We help across 7 areas. Most nonprofits start with Grant Setup or an Organization Check.
+          </motion.p>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-sm text-muted-foreground/70 mt-2"
+          >
+            Start small. Build what matters first.
           </motion.p>
         </div>
 
@@ -164,33 +171,41 @@ export const Expertise = () => {
           })}
 
           {/* CTA Card */}
-          <motion.a
-            href={TYPEFORM_HEALTH_CHECK_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <motion.div
             style={{ 
               y: useTransform(smoothProgress, [0.25, 0.45], [60, 0]),
               opacity: useTransform(smoothProgress, [0.25, 0.38], [0, 1]),
               scale: useTransform(smoothProgress, [0.25, 0.45], [0.9, 1])
             }}
-            className="group relative bg-primary rounded-2xl p-5 sm:p-6 transition-all duration-300 hover:bg-primary/90 flex flex-col justify-between min-h-[140px] sm:min-h-[160px]"
-            whileHover={{ y: -8, scale: 1.02 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="group relative bg-primary rounded-2xl p-5 sm:p-6 transition-all duration-300 flex flex-col justify-between min-h-[140px] sm:min-h-[160px]"
           >
             <div>
-              <span className="text-xs sm:text-sm font-medium text-primary-foreground/80">
-                Ready to start?
-              </span>
-              <h3 className="text-sm sm:text-base font-semibold text-primary-foreground mt-1 leading-tight">
-                See where you stand
+              <h3 className="text-sm sm:text-base font-semibold text-primary-foreground leading-tight">
+                Not sure where to start?
               </h3>
+              <p className="text-xs sm:text-sm text-primary-foreground/80 mt-1 leading-relaxed">
+                Answer a few questions. We'll point you to the right next step.
+              </p>
             </div>
             
-            <div className="flex items-center gap-2 text-primary-foreground mt-4">
-              <span className="text-xs sm:text-sm font-medium">Take assessment</span>
-              <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform duration-200" />
+            <div className="flex flex-col gap-2 mt-4">
+              <motion.a 
+                href="/start-here"
+                className="inline-flex items-center gap-2 text-primary bg-white px-3 py-1.5 rounded text-xs sm:text-sm font-medium hover:bg-white/90 transition-colors w-fit"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Get Started
+                <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" />
+              </motion.a>
+              <a 
+                href="/free-check"
+                className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-xs"
+              >
+                Try the free check →
+              </a>
             </div>
-          </motion.a>
+          </motion.div>
         </div>
       </motion.div>
     </section>
