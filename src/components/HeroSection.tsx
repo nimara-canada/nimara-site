@@ -3,7 +3,7 @@ import { Check } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
 import { useMotionPreferences, DROPBOX_EASING_CSS } from "@/hooks/use-scroll-reveal";
 import { CALENDLY_BOOKING_URL, TYPEFORM_HEALTH_CHECK_URL } from "@/constants/urls";
-const ROTATING_WORDS = ["Funder-Ready", "Grant-Ready", "Report-Ready", "Proof-Ready"];
+const ROTATING_WORDS = ["Grant-Ready", "Fund-Ready", "Board-Ready", "Report-Ready", "Staff-Ready"];
 const NimaraHeroPremium = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [wordIndex, setWordIndex] = useState(0);
@@ -172,21 +172,28 @@ const NimaraHeroPremium = () => {
 
               {/* Subheadline - Clean, muted */}
               <p style={revealStyle(200)} className="text-lg md:text-xl leading-relaxed text-white/60 max-w-xl mb-10">
-                ​Nimara helps Canadian nonprofits build simple, documented processes for finances, governance, and reporting — so funding is easier to keep.
+                Nimara helps Canadian nonprofits set up simple systems for money, files, and reporting — so funding is easier to win and manage.
               </p>
 
               {/* CTAs - Primary button + Secondary text link */}
               <div style={revealStyle(300)} className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
                 {/* Primary CTA Button */}
-                <a href={TYPEFORM_HEALTH_CHECK_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-7 py-4 bg-primary text-primary-foreground font-semibold rounded-lg select-none transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] hover:bg-primary/90 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98] active:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-secondary-background">
-                  Get Free Health Check
+                <a href={CALENDLY_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-7 py-4 bg-primary text-primary-foreground font-semibold rounded-lg select-none transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] hover:bg-primary/90 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98] active:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-secondary-background">
+                  Book a Grant Setup
                   <span className="text-lg" aria-hidden="true">→</span>
                 </a>
 
                 {/* Secondary CTA - text link */}
                 <a href={CALENDLY_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 text-base text-white/60 hover:text-white select-none transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] active:opacity-70 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-secondary-background rounded">
-                  Need urgent help? Book a call
+                  Book an Organization Check
                   <span className="transition-transform duration-150 group-hover:translate-x-1" aria-hidden="true">→</span>
+                </a>
+              </div>
+
+              {/* Small link - Free Health Check */}
+              <div style={revealStyle(350)} className="mt-4">
+                <a href={TYPEFORM_HEALTH_CHECK_URL} target="_blank" rel="noopener noreferrer" className="text-sm text-white/40 hover:text-white/60 transition-colors underline underline-offset-2">
+                  Try the free Health Check
                 </a>
               </div>
 
@@ -382,16 +389,16 @@ const NimaraHeroPremium = () => {
           <div style={revealStyle(500)} className="mt-12 md:mt-16 pt-8 md:pt-12 border-t border-white/10" role="region" aria-label="Service timelines">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 text-center">
               <div>
-                <span className="block text-2xl md:text-3xl font-bold text-white mb-1">1–4 weeks</span>
-                <span className="text-xs uppercase tracking-[0.15em] text-white/60">Fast Fixes</span>
+                <span className="block text-2xl md:text-3xl font-bold text-white mb-1">About 2 weeks</span>
+                <span className="text-xs uppercase tracking-[0.15em] text-white/60">Grant Setup</span>
               </div>
               <div>
-                <span className="block text-2xl md:text-3xl font-bold text-white mb-1">8–12 weeks</span>
-                <span className="text-xs uppercase tracking-[0.15em] text-white/60">Full Setup</span>
+                <span className="block text-2xl md:text-3xl font-bold text-white mb-1">2–4 weeks</span>
+                <span className="text-xs uppercase tracking-[0.15em] text-white/60">Organization Check</span>
               </div>
               <div>
-                <span className="block text-2xl md:text-3xl font-bold text-white mb-1">Guaranteed</span>
-                <span className="text-xs uppercase tracking-[0.15em] text-white/60">If We Can't Help, You Don't Pay</span>
+                <span className="block text-2xl md:text-3xl font-bold text-white mb-1">Built once. Use again.</span>
+                <span className="text-xs uppercase tracking-[0.15em] text-white/60">Works for every grant</span>
               </div>
             </div>
           </div>
