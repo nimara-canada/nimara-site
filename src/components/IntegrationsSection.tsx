@@ -9,7 +9,7 @@ import { useScrollReveal, useMotionPreferences, TIMING, DROPBOX_EASING_CSS } fro
 import googleWorkspaceLogo from "@/assets/integrations/google-workspace.webp";
 import quickbooksLogo from "@/assets/integrations/quickbooks.svg";
 import xeroLogo from "@/assets/integrations/xero.svg";
-import microsoft365Logo from "@/assets/integrations/microsoft-365.svg";
+import microsoft365Logo from "@/assets/integrations/microsoft-365.png";
 
 // Core tools we actually work with
 const tools = [
