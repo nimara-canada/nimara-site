@@ -29,8 +29,26 @@ const BehindTheScenes: React.FC = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const [activeStep, setActiveStep] = useState<string | undefined>(undefined);
+  
+  // Refs for each accordion item
+  const stepRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
   const activeIndex = steps.findIndex(s => s.id === activeStep);
+
+  const handleStepClick = (stepId: string) => {
+    const newStep = activeStep === stepId ? undefined : stepId;
+    setActiveStep(newStep);
+    
+    // Scroll to the accordion item with a slight delay to allow accordion to open
+    if (newStep && stepRefs.current[newStep]) {
+      setTimeout(() => {
+        stepRefs.current[newStep]?.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'center' 
+        });
+      }, 100);
+    }
+  };
 
   return (
     <section 
@@ -92,7 +110,7 @@ const BehindTheScenes: React.FC = () => {
               <React.Fragment key={step.id}>
                 {/* Step circle */}
                 <button
-                  onClick={() => setActiveStep(activeStep === step.id ? undefined : step.id)}
+                  onClick={() => handleStepClick(step.id)}
                   className={`
                     relative flex flex-col items-center gap-2 group cursor-pointer
                     transition-all duration-300
@@ -155,107 +173,115 @@ const BehindTheScenes: React.FC = () => {
             onValueChange={setActiveStep}
           >
             {/* Step 1 */}
-            <AccordionItem value="step-1" className="border border-border rounded-xl overflow-hidden bg-muted/20">
-              <AccordionTrigger className="px-6 py-5 hover:no-underline hover:bg-muted/30 transition-colors [&[data-state=open]>svg]:rotate-180">
-                <div className="flex items-center gap-4 text-left">
-                  <span className={`
-                    flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors duration-300
-                    ${activeStep === 'step-1' ? 'bg-primary text-primary-foreground' : 'bg-primary/10 text-primary'}
-                  `}>
-                    1
-                  </span>
-                  <span className="text-lg font-medium text-foreground">Health Check (optional)</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="px-6 pb-6 pt-2">
-                <p className="text-muted-foreground leading-relaxed pl-12">
-                  A quick check to spot what's shaky. This helps us understand where to focus before we start building.
-                </p>
-              </AccordionContent>
-            </AccordionItem>
+            <div ref={(el) => { stepRefs.current['step-1'] = el; }}>
+              <AccordionItem value="step-1" className="border border-border rounded-xl overflow-hidden bg-muted/20">
+                <AccordionTrigger className="px-6 py-5 hover:no-underline hover:bg-muted/30 transition-colors [&[data-state=open]>svg]:rotate-180">
+                  <div className="flex items-center gap-4 text-left">
+                    <span className={`
+                      flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors duration-300
+                      ${activeStep === 'step-1' ? 'bg-primary text-primary-foreground' : 'bg-primary/10 text-primary'}
+                    `}>
+                      1
+                    </span>
+                    <span className="text-lg font-medium text-foreground">Health Check (optional)</span>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="px-6 pb-6 pt-2">
+                  <p className="text-muted-foreground leading-relaxed pl-12">
+                    A quick check to spot what's shaky. This helps us understand where to focus before we start building.
+                  </p>
+                </AccordionContent>
+              </AccordionItem>
+            </div>
 
             {/* Step 2 */}
-            <AccordionItem value="step-2" className="border border-border rounded-xl overflow-hidden bg-muted/20">
-              <AccordionTrigger className="px-6 py-5 hover:no-underline hover:bg-muted/30 transition-colors [&[data-state=open]>svg]:rotate-180">
-                <div className="flex items-center gap-4 text-left">
-                  <span className={`
-                    flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors duration-300
-                    ${activeStep === 'step-2' ? 'bg-primary text-primary-foreground' : 'bg-primary/10 text-primary'}
-                  `}>
-                    2
-                  </span>
-                  <span className="text-lg font-medium text-foreground">We check 7 areas</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="px-6 pb-6 pt-2">
-                <div className="pl-12">
-                  <p className="text-muted-foreground leading-relaxed mb-4">
-                    We look at how things work across your organization:
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {sevenAreas.map((area) => (
-                      <span 
-                        key={area}
-                        className="px-3 py-1.5 text-sm bg-background border border-border rounded-full text-foreground"
-                      >
-                        {area}
-                      </span>
-                    ))}
+            <div ref={(el) => { stepRefs.current['step-2'] = el; }}>
+              <AccordionItem value="step-2" className="border border-border rounded-xl overflow-hidden bg-muted/20">
+                <AccordionTrigger className="px-6 py-5 hover:no-underline hover:bg-muted/30 transition-colors [&[data-state=open]>svg]:rotate-180">
+                  <div className="flex items-center gap-4 text-left">
+                    <span className={`
+                      flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors duration-300
+                      ${activeStep === 'step-2' ? 'bg-primary text-primary-foreground' : 'bg-primary/10 text-primary'}
+                    `}>
+                      2
+                    </span>
+                    <span className="text-lg font-medium text-foreground">We check 7 areas</span>
                   </div>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
+                </AccordionTrigger>
+                <AccordionContent className="px-6 pb-6 pt-2">
+                  <div className="pl-12">
+                    <p className="text-muted-foreground leading-relaxed mb-4">
+                      We look at how things work across your organization:
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {sevenAreas.map((area) => (
+                        <span 
+                          key={area}
+                          className="px-3 py-1.5 text-sm bg-background border border-border rounded-full text-foreground"
+                        >
+                          {area}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </div>
 
             {/* Step 3 */}
-            <AccordionItem value="step-3" className="border border-border rounded-xl overflow-hidden bg-muted/20">
-              <AccordionTrigger className="px-6 py-5 hover:no-underline hover:bg-muted/30 transition-colors [&[data-state=open]>svg]:rotate-180">
-                <div className="flex items-center gap-4 text-left">
-                  <span className={`
-                    flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors duration-300
-                    ${activeStep === 'step-3' ? 'bg-primary text-primary-foreground' : 'bg-primary/10 text-primary'}
-                  `}>
-                    3
-                  </span>
-                  <span className="text-lg font-medium text-foreground">We recommend a path</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="px-6 pb-6 pt-2">
-                <div className="pl-12 space-y-4">
-                  <div className="p-4 bg-background border border-border rounded-lg">
-                    <p className="font-medium text-foreground mb-1">Path A: Fix a specific problem fast</p>
-                    <p className="text-sm text-muted-foreground">
-                      When you have one area that needs attention right now.
-                    </p>
+            <div ref={(el) => { stepRefs.current['step-3'] = el; }}>
+              <AccordionItem value="step-3" className="border border-border rounded-xl overflow-hidden bg-muted/20">
+                <AccordionTrigger className="px-6 py-5 hover:no-underline hover:bg-muted/30 transition-colors [&[data-state=open]>svg]:rotate-180">
+                  <div className="flex items-center gap-4 text-left">
+                    <span className={`
+                      flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors duration-300
+                      ${activeStep === 'step-3' ? 'bg-primary text-primary-foreground' : 'bg-primary/10 text-primary'}
+                    `}>
+                      3
+                    </span>
+                    <span className="text-lg font-medium text-foreground">We recommend a path</span>
                   </div>
-                  <div className="p-4 bg-background border border-border rounded-lg">
-                    <p className="font-medium text-foreground mb-1">Path B: Build the system so it sticks</p>
-                    <p className="text-sm text-muted-foreground">
-                      When you want lasting systems that grow with you.
-                    </p>
+                </AccordionTrigger>
+                <AccordionContent className="px-6 pb-6 pt-2">
+                  <div className="pl-12 space-y-4">
+                    <div className="p-4 bg-background border border-border rounded-lg">
+                      <p className="font-medium text-foreground mb-1">Path A: Fix a specific problem fast</p>
+                      <p className="text-sm text-muted-foreground">
+                        When you have one area that needs attention right now.
+                      </p>
+                    </div>
+                    <div className="p-4 bg-background border border-border rounded-lg">
+                      <p className="font-medium text-foreground mb-1">Path B: Build the system so it sticks</p>
+                      <p className="text-sm text-muted-foreground">
+                        When you want lasting systems that grow with you.
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
+                </AccordionContent>
+              </AccordionItem>
+            </div>
 
             {/* Step 4 */}
-            <AccordionItem value="step-4" className="border border-border rounded-xl overflow-hidden bg-muted/20">
-              <AccordionTrigger className="px-6 py-5 hover:no-underline hover:bg-muted/30 transition-colors [&[data-state=open]>svg]:rotate-180">
-                <div className="flex items-center gap-4 text-left">
-                  <span className={`
-                    flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors duration-300
-                    ${activeStep === 'step-4' ? 'bg-primary text-primary-foreground' : 'bg-primary/10 text-primary'}
-                  `}>
-                    4
-                  </span>
-                  <span className="text-lg font-medium text-foreground">We place you on a level (0–4)</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="px-6 pb-6 pt-2">
-                <p className="text-muted-foreground leading-relaxed pl-12">
-                  This helps us match the right bundle and avoid overbuilding. We start where you are and move you up one step at a time.
-                </p>
-              </AccordionContent>
-            </AccordionItem>
+            <div ref={(el) => { stepRefs.current['step-4'] = el; }}>
+              <AccordionItem value="step-4" className="border border-border rounded-xl overflow-hidden bg-muted/20">
+                <AccordionTrigger className="px-6 py-5 hover:no-underline hover:bg-muted/30 transition-colors [&[data-state=open]>svg]:rotate-180">
+                  <div className="flex items-center gap-4 text-left">
+                    <span className={`
+                      flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors duration-300
+                      ${activeStep === 'step-4' ? 'bg-primary text-primary-foreground' : 'bg-primary/10 text-primary'}
+                    `}>
+                      4
+                    </span>
+                    <span className="text-lg font-medium text-foreground">We place you on a level (0–4)</span>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="px-6 pb-6 pt-2">
+                  <p className="text-muted-foreground leading-relaxed pl-12">
+                    This helps us match the right bundle and avoid overbuilding. We start where you are and move you up one step at a time.
+                  </p>
+                </AccordionContent>
+              </AccordionItem>
+            </div>
           </Accordion>
         </motion.div>
       </div>
