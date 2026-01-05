@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { ChevronDown } from 'lucide-react';
 import {
   Accordion,
   AccordionContent,
@@ -19,9 +18,19 @@ const sevenAreas = [
   "Tools & Files",
 ];
 
+const steps = [
+  { id: "step-1", label: "Check", shortLabel: "1" },
+  { id: "step-2", label: "7 Areas", shortLabel: "2" },
+  { id: "step-3", label: "Path", shortLabel: "3" },
+  { id: "step-4", label: "Level", shortLabel: "4" },
+];
+
 const BehindTheScenes: React.FC = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const [activeStep, setActiveStep] = useState<string | undefined>(undefined);
+
+  const activeIndex = steps.findIndex(s => s.id === activeStep);
 
   return (
     <section 
@@ -71,18 +80,88 @@ const BehindTheScenes: React.FC = () => {
           </motion.p>
         </div>
 
+        {/* Progress Stepper */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.18 }}
+          className="mb-8"
+        >
+          <div className="flex items-center justify-between max-w-md mx-auto">
+            {steps.map((step, index) => (
+              <React.Fragment key={step.id}>
+                {/* Step circle */}
+                <button
+                  onClick={() => setActiveStep(activeStep === step.id ? undefined : step.id)}
+                  className={`
+                    relative flex flex-col items-center gap-2 group cursor-pointer
+                    transition-all duration-300
+                  `}
+                >
+                  <div
+                    className={`
+                      w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium
+                      transition-all duration-300
+                      ${activeStep === step.id 
+                        ? 'bg-primary text-primary-foreground scale-110 shadow-lg shadow-primary/20' 
+                        : index <= activeIndex && activeIndex !== -1
+                          ? 'bg-primary/20 text-primary'
+                          : 'bg-muted text-muted-foreground group-hover:bg-muted/80'
+                      }
+                    `}
+                  >
+                    {step.shortLabel}
+                  </div>
+                  <span 
+                    className={`
+                      text-xs font-medium transition-colors duration-300 hidden sm:block
+                      ${activeStep === step.id ? 'text-primary' : 'text-muted-foreground'}
+                    `}
+                  >
+                    {step.label}
+                  </span>
+                </button>
+                
+                {/* Connector line */}
+                {index < steps.length - 1 && (
+                  <div className="flex-1 h-0.5 mx-2 relative">
+                    <div className="absolute inset-0 bg-border" />
+                    <motion.div 
+                      className="absolute inset-0 bg-primary origin-left"
+                      initial={{ scaleX: 0 }}
+                      animate={{ 
+                        scaleX: index < activeIndex ? 1 : 0 
+                      }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                    />
+                  </div>
+                )}
+              </React.Fragment>
+            ))}
+          </div>
+        </motion.div>
+
         {/* Accordion */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <Accordion type="single" collapsible className="space-y-3">
+          <Accordion 
+            type="single" 
+            collapsible 
+            className="space-y-3"
+            value={activeStep}
+            onValueChange={setActiveStep}
+          >
             {/* Step 1 */}
             <AccordionItem value="step-1" className="border border-border rounded-xl overflow-hidden bg-muted/20">
               <AccordionTrigger className="px-6 py-5 hover:no-underline hover:bg-muted/30 transition-colors [&[data-state=open]>svg]:rotate-180">
                 <div className="flex items-center gap-4 text-left">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-sm font-medium text-primary">
+                  <span className={`
+                    flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors duration-300
+                    ${activeStep === 'step-1' ? 'bg-primary text-primary-foreground' : 'bg-primary/10 text-primary'}
+                  `}>
                     1
                   </span>
                   <span className="text-lg font-medium text-foreground">Health Check (optional)</span>
@@ -99,7 +178,10 @@ const BehindTheScenes: React.FC = () => {
             <AccordionItem value="step-2" className="border border-border rounded-xl overflow-hidden bg-muted/20">
               <AccordionTrigger className="px-6 py-5 hover:no-underline hover:bg-muted/30 transition-colors [&[data-state=open]>svg]:rotate-180">
                 <div className="flex items-center gap-4 text-left">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-sm font-medium text-primary">
+                  <span className={`
+                    flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors duration-300
+                    ${activeStep === 'step-2' ? 'bg-primary text-primary-foreground' : 'bg-primary/10 text-primary'}
+                  `}>
                     2
                   </span>
                   <span className="text-lg font-medium text-foreground">We check 7 areas</span>
@@ -128,7 +210,10 @@ const BehindTheScenes: React.FC = () => {
             <AccordionItem value="step-3" className="border border-border rounded-xl overflow-hidden bg-muted/20">
               <AccordionTrigger className="px-6 py-5 hover:no-underline hover:bg-muted/30 transition-colors [&[data-state=open]>svg]:rotate-180">
                 <div className="flex items-center gap-4 text-left">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-sm font-medium text-primary">
+                  <span className={`
+                    flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors duration-300
+                    ${activeStep === 'step-3' ? 'bg-primary text-primary-foreground' : 'bg-primary/10 text-primary'}
+                  `}>
                     3
                   </span>
                   <span className="text-lg font-medium text-foreground">We recommend a path</span>
@@ -156,7 +241,10 @@ const BehindTheScenes: React.FC = () => {
             <AccordionItem value="step-4" className="border border-border rounded-xl overflow-hidden bg-muted/20">
               <AccordionTrigger className="px-6 py-5 hover:no-underline hover:bg-muted/30 transition-colors [&[data-state=open]>svg]:rotate-180">
                 <div className="flex items-center gap-4 text-left">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-sm font-medium text-primary">
+                  <span className={`
+                    flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors duration-300
+                    ${activeStep === 'step-4' ? 'bg-primary text-primary-foreground' : 'bg-primary/10 text-primary'}
+                  `}>
                     4
                   </span>
                   <span className="text-lg font-medium text-foreground">We place you on a level (0–4)</span>
