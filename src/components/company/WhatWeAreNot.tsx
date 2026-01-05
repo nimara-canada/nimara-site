@@ -16,7 +16,7 @@ const WhatWeAreNot: React.FC = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-24 lg:py-32 bg-muted/30 overflow-hidden"
+      className="relative py-24 lg:py-32 bg-background overflow-hidden"
     >
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Header */}

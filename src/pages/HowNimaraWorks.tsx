@@ -5,8 +5,10 @@ import HowItWorksHero from "@/components/company/HowItWorksHero";
 import TwoStartingPoints from "@/components/company/TwoStartingPoints";
 import TheProcess from "@/components/company/TheProcess";
 import WhatYouGet from "@/components/company/WhatYouGet";
+import BehindTheScenes from "@/components/company/BehindTheScenes";
+import LevelsOverview from "@/components/company/LevelsOverview";
 import WhatWeAreNot from "@/components/company/WhatWeAreNot";
-import OurPromise from "@/components/company/OurPromise";
+import HowItWorksFAQ from "@/components/company/HowItWorksFAQ";
 import HowItWorksFinalCTA from "@/components/company/HowItWorksFinalCTA";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { ScrollToTop } from "@/components/ScrollToTop";
@@ -80,7 +82,7 @@ const HowNimaraWorks = () => {
             </ScrollReveal>
           </RevealSection>
           
-          {/* Section 3 - The Process */}
+          {/* Section 3 - The Process (Start → Build → Run → Grow) */}
           <RevealSection background="gradient">
             <ScrollReveal>
               <TheProcess />
@@ -94,21 +96,35 @@ const HowNimaraWorks = () => {
             </ScrollReveal>
           </RevealSection>
           
-          {/* Section 5 - What We Are Not */}
+          {/* Section 5 - Behind the Scenes (accordion) */}
+          <RevealSection>
+            <ScrollReveal>
+              <BehindTheScenes />
+            </ScrollReveal>
+          </RevealSection>
+          
+          {/* Section 6 - Levels Overview */}
           <RevealSection background="muted">
+            <ScrollReveal>
+              <LevelsOverview />
+            </ScrollReveal>
+          </RevealSection>
+          
+          {/* Section 7 - What We Are Not */}
+          <RevealSection>
             <ScrollReveal>
               <WhatWeAreNot />
             </ScrollReveal>
           </RevealSection>
           
-          {/* Section 6 - Our Promise (Quality + Refunds) */}
-          <RevealSection>
+          {/* Section 8 - FAQ */}
+          <RevealSection background="muted">
             <ScrollReveal>
-              <OurPromise />
+              <HowItWorksFAQ />
             </ScrollReveal>
           </RevealSection>
           
-          {/* Section 7 - Final CTA */}
+          {/* Section 9 - Final CTA */}
           <HowItWorksFinalCTA />
         </main>
         
