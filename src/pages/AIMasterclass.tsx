@@ -122,7 +122,7 @@ const AIMasterclass = () => {
 
       <Header />
 
-      <main className="min-h-screen bg-white">
+      <main id="main" className="min-h-screen bg-white">
         {/* Hero Section */}
         <section className="pt-24 pb-16 px-4">
           <div className="container mx-auto max-w-4xl text-center">

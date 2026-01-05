@@ -239,7 +239,7 @@ function ResourcesContent() {
         Skip to main content
       </a>
 
-      <main id="main-content">
+      <main id="main">
         {/* HERO */}
         <section className="min-h-[70vh] bg-secondary-background text-white relative overflow-hidden flex items-center">
           <div 

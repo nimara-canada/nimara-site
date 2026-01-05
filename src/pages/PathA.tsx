@@ -225,7 +225,7 @@ const PathA = () => {
       </section>
 
       {/* MAIN CONTENT */}
-      <main id="main-content">
+      <main id="main">
         {/* IS PATH A RIGHT FOR YOU? */}
         <section 
           className="py-20 md:py-28 bg-background"

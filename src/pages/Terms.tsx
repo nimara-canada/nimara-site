@@ -33,7 +33,7 @@ const Terms = () => {
       
       <Header />
       
-      <main id="main-content" className="flex-1 container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-[1280px]">
+      <main id="main" className="flex-1 container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-[1280px]">
         <article className="space-y-12">
           <header>
             <h1 className="text-4xl font-bold text-[#202654] mb-6">Terms of Service — Nimara</h1>

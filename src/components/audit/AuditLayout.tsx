@@ -73,7 +73,7 @@ export function AuditLayout({ children }: AuditLayoutProps) {
       </nav>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-6">
+      <main id="main" className="container mx-auto px-4 py-6">
         {children}
       </main>
     </div>
