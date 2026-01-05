@@ -42,19 +42,19 @@ const narrativeSteps = [
 
 export function ScrollNarrative() {
   return (
-    <section className="py-16 md:py-20 bg-background">
+    <section className="py-16 md:py-20">
       {/* Section header */}
       <div className="max-w-7xl mx-auto px-6 lg:px-12 mb-8 lg:mb-0">
         <div className="flex items-center gap-3 mb-4">
-          <div className="h-px w-8 bg-gradient-to-r from-transparent to-primary/50" />
-          <span className="text-xs font-medium tracking-[0.2em] uppercase text-primary">
+          <div className="h-px w-8 bg-gradient-to-r from-transparent to-accent/50" />
+          <span className="text-xs font-medium tracking-[0.2em] uppercase text-accent">
             How it works
           </span>
         </div>
-        <h2 className="heading-2 max-w-2xl">
+        <h2 className="heading-2 max-w-2xl text-white">
           From scattered to system-strong in four steps
         </h2>
-        <p className="text-body-lg text-body-muted mt-4 max-w-xl">
+        <p className="text-lg text-white/70 mt-4 max-w-xl">
           A guided path from your first health check to funder-ready confidence.
         </p>
       </div>

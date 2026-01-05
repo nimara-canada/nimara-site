@@ -109,7 +109,7 @@ const LogoOrb = ({
       <div 
         className={cn(
           "absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap",
-          "text-xs font-medium text-muted-foreground",
+          "text-xs font-medium text-white/70",
           "opacity-0 group-hover:opacity-100",
         )}
         style={{ transition: `opacity 200ms ${DROPBOX_EASING_CSS}, transform 200ms ${DROPBOX_EASING_CSS}` }}
@@ -155,8 +155,8 @@ export const IntegrationsSection = () => {
     >
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-30 pointer-events-none" aria-hidden="true">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -166,25 +166,25 @@ export const IntegrationsSection = () => {
           style={headerStyle}
         >
           <div className="inline-flex items-center gap-3 mb-6">
-            <div className="h-px w-8 bg-gradient-to-r from-transparent to-primary/50" />
-            <span className="text-xs font-medium tracking-[0.25em] uppercase text-primary">
+            <div className="h-px w-8 bg-gradient-to-r from-transparent to-accent/50" />
+            <span className="text-xs font-medium tracking-[0.25em] uppercase text-accent">
               Integrations
             </span>
-            <div className="h-px w-8 bg-gradient-to-l from-transparent to-primary/50" />
+            <div className="h-px w-8 bg-gradient-to-l from-transparent to-accent/50" />
           </div>
           
           <h2
             id="integrations-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight leading-[1.1] mb-6"
+            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight leading-[1.1] mb-6 text-white"
           >
             Works with the tools
             <br />
-            <span className="font-normal bg-gradient-to-r from-foreground via-foreground/80 to-foreground bg-clip-text">
+            <span className="font-normal text-white/80">
               you already use
             </span>
           </h2>
           
-          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-white/70 leading-relaxed max-w-2xl mx-auto">
             We don't make you switch software. We set up a simple system inside the tools you already have.
           </p>
         </div>
@@ -211,7 +211,7 @@ export const IntegrationsSection = () => {
 
         {/* Microcopy */}
         <p 
-          className="text-center text-sm text-muted-foreground max-w-xl mx-auto mb-12"
+          className="text-center text-sm text-white/60 max-w-xl mx-auto mb-12"
           style={ctaStyle}
         >
           We don't do bookkeeping. We organize files and tracking so it's easy to show what happened.
@@ -225,7 +225,7 @@ export const IntegrationsSection = () => {
           <Button 
             asChild
             size="lg"
-            className="group px-8 h-12 text-base"
+            className="group px-8 h-12 text-base bg-white text-secondary-background hover:bg-white/90"
           >
             <Link to="/start-here">
               Get Started
@@ -234,7 +234,7 @@ export const IntegrationsSection = () => {
           </Button>
           <Link 
             to="/how-nimara-works"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors underline-offset-4 hover:underline"
+            className="text-sm text-white/60 hover:text-white transition-colors underline-offset-4 hover:underline"
           >
             See how it works →
           </Link>
@@ -243,7 +243,7 @@ export const IntegrationsSection = () => {
 
       {/* Legal Footnote */}
       <p 
-        className="text-center text-[11px] text-muted-foreground/50 mt-16 lg:mt-20"
+        className="text-center text-[11px] text-white/40 mt-16 lg:mt-20"
         style={ctaStyle}
       >
         All product names and logos are trademarks of their respective owners.

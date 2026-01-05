@@ -161,18 +161,18 @@ function DesktopNarrativeStep({
         'transition-opacity duration-300',
         isActive ? 'opacity-100' : 'opacity-60'
       )}>
-        <span className="inline-flex items-center gap-3 text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-4">
-          <span className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+        <span className="inline-flex items-center gap-3 text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-4">
+          <span className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-accent font-bold">
             {index + 1}
           </span>
           {step.label}
         </span>
-        <h2 className="heading-2 mb-6">{step.heading}</h2>
-        <p className="text-body-lg text-body-muted mb-8 max-w-lg">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight leading-[1.1] text-white mb-6">{step.heading}</h2>
+        <p className="text-lg text-white/70 mb-8 max-w-lg">
           {step.description}
         </p>
         {step.timeNote && (
-          <p className="text-sm text-muted-foreground mb-4">{step.timeNote}</p>
+          <p className="text-sm text-white/50 mb-4">{step.timeNote}</p>
         )}
         {step.ctaText && step.ctaHref && (
           <div className="flex flex-col gap-3">
@@ -180,14 +180,14 @@ function DesktopNarrativeStep({
               href={step.ctaHref}
               target={step.ctaExternal ? "_blank" : undefined}
               rel={step.ctaExternal ? "noopener noreferrer" : undefined}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors w-fit"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-secondary-background rounded-lg font-medium hover:bg-white/90 transition-colors w-fit"
             >
               {step.ctaText}
             </a>
             {step.secondaryCtaText && step.secondaryCtaHref && (
               <a
                 href={step.secondaryCtaHref}
-                className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors"
+                className="inline-flex items-center gap-1 text-sm text-white/60 hover:text-accent transition-colors"
               >
                 {step.secondaryCtaText}
               </a>
@@ -245,11 +245,11 @@ function MobileNarrativeStep({
   return (
     <article 
       ref={ref} 
-      className="bg-card rounded-2xl shadow-[0_8px_24px_rgba(32,38,84,0.08)] border border-border overflow-hidden" 
+      className="bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 overflow-hidden" 
       style={style}
     >
       {/* Visual preview - compact version */}
-      <div className="bg-muted/30 border-b border-border">
+      <div className="bg-white/5 border-b border-white/10">
         <div className="max-h-48 overflow-hidden [&>div]:!p-3 [&>div>div]:!max-w-none [&>div>div]:!shadow-none [&>div>div]:!border-0 [&>div>div]:!rounded-none">
           {step.visual}
         </div>
@@ -259,22 +259,22 @@ function MobileNarrativeStep({
       <div className="p-5 space-y-3">
         {/* Step number and label */}
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-            <span className="text-sm font-bold text-primary">
+          <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+            <span className="text-sm font-bold text-accent">
               {index + 1}
             </span>
           </div>
-          <span className="text-xs font-semibold tracking-[0.15em] uppercase text-primary">
+          <span className="text-xs font-semibold tracking-[0.15em] uppercase text-accent">
             {step.label}
           </span>
         </div>
         
-        <h3 className="text-lg font-semibold">{step.heading}</h3>
-        <p className="text-foreground/80 text-sm leading-relaxed">
+        <h3 className="text-lg font-semibold text-white">{step.heading}</h3>
+        <p className="text-white/70 text-sm leading-relaxed">
           {step.description}
         </p>
         {step.timeNote && (
-          <p className="text-xs text-muted-foreground">{step.timeNote}</p>
+          <p className="text-xs text-white/50">{step.timeNote}</p>
         )}
         {step.ctaText && step.ctaHref && (
           <div className="flex flex-col gap-3 pt-2">
@@ -282,14 +282,14 @@ function MobileNarrativeStep({
               href={step.ctaHref}
               target={step.ctaExternal ? "_blank" : undefined}
               rel={step.ctaExternal ? "noopener noreferrer" : undefined}
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium text-sm hover:bg-primary/90 transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-white text-secondary-background rounded-lg font-medium text-sm hover:bg-white/90 transition-colors"
             >
               {step.ctaText}
             </a>
             {step.secondaryCtaText && step.secondaryCtaHref && (
               <a
                 href={step.secondaryCtaHref}
-                className="inline-flex items-center justify-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors"
+                className="inline-flex items-center justify-center gap-1 text-xs text-white/60 hover:text-accent transition-colors"
               >
                 {step.secondaryCtaText}
               </a>
@@ -312,7 +312,7 @@ function StickyMediaPanel({
   reducedMotion: boolean;
 }) {
   return (
-    <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-muted/30">
+    <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-white/5 border border-white/10">
       {steps.map((step, index) => {
         const isActive = index === activeIndex;
         
@@ -341,7 +341,7 @@ function StickyMediaPanel({
             key={index}
             className={cn(
               'w-2 h-2 rounded-full transition-all duration-300',
-              index === activeIndex ? 'bg-primary w-6' : 'bg-primary/30'
+              index === activeIndex ? 'bg-accent w-6' : 'bg-white/30'
             )}
           />
         ))}
