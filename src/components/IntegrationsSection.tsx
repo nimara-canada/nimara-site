@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { useScrollReveal, useMotionPreferences, TIMING, DROPBOX_EASING_CSS } from "@/hooks/use-scroll-reveal";
 
 // Import logos
-import googleWorkspaceLogo from "@/assets/integrations/google-workspace.svg";
+import googleWorkspaceLogo from "@/assets/integrations/google-workspace.webp";
 import quickbooksLogo from "@/assets/integrations/quickbooks.svg";
 import xeroLogo from "@/assets/integrations/xero.svg";
 import microsoft365Logo from "@/assets/integrations/microsoft-365.svg";
