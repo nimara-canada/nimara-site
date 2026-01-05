@@ -707,7 +707,7 @@ const OrganizationCheckPage = () => {
         <Header />
         <ScrollProgress />
 
-        <main className="relative">
+        <main id="main" className="relative">
           <HeroSection />
           <WhoThisIsFor />
           <WhatYouGet />

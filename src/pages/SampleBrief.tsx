@@ -9,7 +9,7 @@ const SampleBrief = () => {
     <div className="min-h-screen bg-background">
       <Header activeRoute="/sample-brief" />
       
-      <main id="main-content">
+      <main id="main">
         {/* Hero */}
         <section className="container mx-auto px-4 pt-24 pb-16">
           <div className="max-w-3xl mx-auto text-center">

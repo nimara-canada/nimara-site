@@ -50,7 +50,7 @@ export default function SignIn() {
     <div className="min-h-screen bg-background">
       <Header activeRoute="/signin" />
       
-      <main className="pt-8 pb-16">
+      <main id="main" className="pt-8 pb-16">
         {/* Hero */}
         <section className="container max-w-5xl mx-auto px-6 py-8 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 text-accent-foreground text-sm font-medium mb-8">
