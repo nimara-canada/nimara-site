@@ -243,7 +243,10 @@ All colors MUST be HSL.
     -webkit-touch-callout: none;
   }
 
-  /* Focus styles for accessibility - keyboard only */
+  /* Focus styles for accessibility - keyboard only
+   * WCAG 2.1 AA requires 3:1 contrast ratio for focus indicators
+   * Using a double-ring pattern that works on both light and dark backgrounds
+   */
   *:focus {
     outline: none;
   }
@@ -252,6 +255,31 @@ All colors MUST be HSL.
     outline: 2px solid hsl(var(--nim-purple));
     outline-offset: 2px;
     border-radius: 4px;
+    box-shadow: 0 0 0 4px hsl(var(--nim-white)), 0 0 0 6px hsl(var(--nim-purple));
+  }
+
+  /* Focus styles for elements on dark backgrounds */
+  .dark *:focus-visible,
+  [data-theme="dark"] *:focus-visible,
+  .bg-secondary-background *:focus-visible,
+  .bg-hero-background *:focus-visible,
+  [class*="bg-nim-navy"] *:focus-visible,
+  [class*="bg-gradient"] *:focus-visible {
+    outline: 2px solid hsl(var(--nim-mint));
+    box-shadow: 0 0 0 4px hsl(var(--nim-navy) / 0.8), 0 0 0 6px hsl(var(--nim-mint));
+  }
+
+  /* High contrast focus for critical interactive elements */
+  button:focus-visible,
+  [role="button"]:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:not([tabindex="-1"]):focus-visible {
+    outline: 2px solid hsl(var(--nim-purple));
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px hsl(var(--background)), 0 0 0 6px hsl(var(--nim-purple));
   }
 
   /* Skip to content link */
