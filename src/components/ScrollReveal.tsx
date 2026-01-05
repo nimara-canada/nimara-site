@@ -116,8 +116,10 @@ export function RevealSection({
     default: 'bg-background',
     muted: 'bg-muted/30',
     dark: 'bg-secondary-background text-white',
-    gradient: 'bg-gradient-to-b from-background via-muted/20 to-background',
+    gradient: 'bg-secondary-background text-white',
   };
+
+  const isDark = background === 'dark' || background === 'gradient';
 
   return (
     <section
@@ -128,19 +130,7 @@ export function RevealSection({
         className
       )}
     >
-      {/* Top fade for smooth section transitions */}
-      <div 
-        className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-background/50 to-transparent pointer-events-none opacity-50" 
-        aria-hidden="true"
-      />
-      
       {children}
-      
-      {/* Bottom fade for smooth section transitions */}
-      <div 
-        className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background/50 to-transparent pointer-events-none opacity-50" 
-        aria-hidden="true"
-      />
     </section>
   );
 }
