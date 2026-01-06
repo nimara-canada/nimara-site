@@ -8,7 +8,7 @@ export const CALENDLY_BOOKING_URL = "https://calendly.com/hello-nimara/nohc-inta
 
 // Typeform URLs
 export const TYPEFORM_HEALTH_CHECK_URL = "https://form.typeform.com/to/YthorC3U";
-export const TYPEFORM_GRANT_TRACKER_URL = "https://form.typeform.com/to/gcRQHINk#resource_id=grant-proof-pack-tracker&source=nimara-resource-page";
+export const TYPEFORM_GRANT_TRACKER_URL = "https://form.typeform.com/to/YthorC3U";
 
 // External Legal Pages (Notion)
 export const EXTERNAL_URLS = {
