@@ -270,10 +270,10 @@ function ResourcesContent() {
             
             <div style={revealStyle(300)} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
               <Button asChild size="lg" className="group">
-                <Link to="/start-here">
+                <a href="#free-tools">
                   Get Started
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Link>
+                </a>
               </Button>
               
               <a
@@ -287,7 +287,7 @@ function ResourcesContent() {
         </section>
 
         {/* START WITH ONE */}
-        <section className="py-24 md:py-32 bg-background">
+        <section id="free-tools" className="py-24 md:py-32 bg-background scroll-mt-20">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
             <ScrollRevealBlock delay={0}>
               <div className="text-center mb-14">
