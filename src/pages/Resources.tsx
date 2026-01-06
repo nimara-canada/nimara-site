@@ -269,11 +269,15 @@ function ResourcesContent() {
             </p>
             
             <div style={revealStyle(300)} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-              <Button asChild size="lg" className="group">
-                <a href="#free-tools">
-                  Get Started
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </a>
+              <Button 
+                size="lg" 
+                className="group"
+                onClick={() => {
+                  document.getElementById('free-tools')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Get Started
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
               
               <a
