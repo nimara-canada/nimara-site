@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { getTemplateBySlug } from "@/data/templates";
 import { ChevronLeft } from "lucide-react";
+import { TYPEFORM_GRANT_TRACKER_URL } from "@/constants/urls";
 
 const brand = {
   navy: "#202654",
@@ -117,7 +118,7 @@ export default function ResourceDetail() {
                   style={{ background: brand.navy }}
                   asChild
                 >
-                  <a href="#">DOWNLOAD TEMPLATE NOW</a>
+                  <a href={TYPEFORM_GRANT_TRACKER_URL}>DOWNLOAD TEMPLATE NOW</a>
                 </Button>
               </div>
             </div>
@@ -174,7 +175,7 @@ export default function ResourceDetail() {
                 style={{ background: brand.navy }}
                 asChild
               >
-                <a href="#">DOWNLOAD TEMPLATE NOW</a>
+                <a href={TYPEFORM_GRANT_TRACKER_URL}>DOWNLOAD TEMPLATE NOW</a>
               </Button>
             </div>
           </div>
