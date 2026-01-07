@@ -243,9 +243,15 @@ const WhoThisIsFor = () => {
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           {/* For You */}
-          <div 
+          <motion.div 
             style={getItemStyle(1)}
             className="bg-white rounded-2xl p-8 shadow-sm border border-mint-dark/10"
+            whileHover={{ 
+              y: -4, 
+              boxShadow: "0 12px 32px -8px hsl(var(--mint-dark) / 0.15)",
+              borderColor: "hsl(var(--mint-dark) / 0.25)"
+            }}
+            transition={{ type: "spring", stiffness: 300, damping: 25 }}
           >
             <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-foreground mb-8">
               This is for you if…
@@ -265,12 +271,17 @@ const WhoThisIsFor = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Not For You */}
-          <div 
+          <motion.div 
             style={getItemStyle(2 + forYou.length)}
             className="bg-white/60 rounded-2xl p-8 border border-border/50"
+            whileHover={{ 
+              y: -4, 
+              boxShadow: "0 8px 24px -8px hsl(var(--foreground) / 0.08)"
+            }}
+            transition={{ type: "spring", stiffness: 300, damping: 25 }}
           >
             <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-muted-foreground mb-8">
               Not for you if…
@@ -290,7 +301,7 @@ const WhoThisIsFor = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
