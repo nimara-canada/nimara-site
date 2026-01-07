@@ -6,6 +6,7 @@ import { Footer } from '@/components/Footer';
 import { ScrollProgress } from '@/components/ScrollProgress';
 import { ScrollToTop } from '@/components/ScrollToTop';
 import { MotionControls } from '@/components/MotionControls';
+import { SectionNav } from '@/components/SectionNav';
 import { 
   MotionPreferencesProvider, 
   useStaggeredReveal,
@@ -87,6 +88,7 @@ const HeroSection = () => {
 
   return (
     <section 
+      id="hero"
       ref={ref} 
       className="min-h-[90vh] bg-background relative overflow-hidden flex items-center pt-16"
     >
@@ -203,7 +205,7 @@ const WhoThisIsFor = () => {
   const { ref, getItemStyle } = useStaggeredReveal(forYou.length + notForYou.length + 3, { staggerDelay: 60, baseDelay: 0 });
 
   return (
-    <section className="py-24 md:py-32 bg-mint-light relative overflow-hidden">
+    <section id="who-its-for" className="py-24 md:py-32 bg-mint-light relative overflow-hidden">
       {/* Subtle pattern overlay */}
       <div 
         className="absolute inset-0 opacity-30 pointer-events-none"
@@ -329,7 +331,7 @@ const OutcomeSection = () => {
   };
 
   return (
-    <section className="py-24 md:py-32 bg-muted/30 relative overflow-hidden">
+    <section id="outcomes" className="py-24 md:py-32 bg-muted/30 relative overflow-hidden">
       {/* Subtle gradient accent */}
       <div 
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] opacity-[0.04] pointer-events-none"
@@ -457,7 +459,7 @@ const FrameworkSection = () => {
   };
 
   return (
-    <section className="py-24 md:py-32 bg-background relative overflow-hidden">
+    <section id="framework" className="py-24 md:py-32 bg-background relative overflow-hidden">
       {/* Subtle gradient accent */}
       <div 
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] opacity-[0.03] pointer-events-none"
@@ -902,7 +904,7 @@ const DeliverablesSection = () => {
   };
 
   return (
-    <section className="py-24 md:py-32 bg-background relative overflow-hidden">
+    <section id="deliverables" className="py-24 md:py-32 bg-background relative overflow-hidden">
       <div className="max-w-4xl mx-auto px-6 lg:px-12">
         {/* Section header */}
         <motion.div 
@@ -1023,7 +1025,7 @@ const TimelineSection = () => {
   };
 
   return (
-    <section className="py-24 md:py-32 bg-background relative overflow-hidden">
+    <section id="timeline" className="py-24 md:py-32 bg-background relative overflow-hidden">
       {/* Subtle background pattern */}
       <div 
         className="absolute inset-0 opacity-[0.015] pointer-events-none"
@@ -1167,7 +1169,7 @@ const GuaranteeSection = () => {
   const { ref, getItemStyle } = useStaggeredReveal(insurance.length + 4, { staggerDelay: 80, baseDelay: 0 });
 
   return (
-    <section className="py-20 md:py-28 bg-background">
+    <section id="guarantee" className="py-20 md:py-28 bg-background">
       <div ref={ref} className="max-w-4xl mx-auto px-6 lg:px-12">
         <div className="grid md:grid-cols-2 gap-8">
           {/* Delivery Guarantee */}
@@ -1239,7 +1241,7 @@ const FAQSection = () => {
   const { ref, getItemStyle } = useStaggeredReveal(faqs.length + 2, { staggerDelay: 50, baseDelay: 0 });
 
   return (
-    <section className="py-24 md:py-32 bg-gradient-to-b from-background via-background to-muted/20 relative overflow-hidden">
+    <section id="faq" className="py-24 md:py-32 bg-gradient-to-b from-background via-background to-muted/20 relative overflow-hidden">
       {/* Subtle background pattern */}
       <div 
         className="absolute inset-0 opacity-[0.015] pointer-events-none" 
@@ -1357,7 +1359,7 @@ const FinalCTASection = () => {
   const { ref, getItemStyle } = useStaggeredReveal(4, { staggerDelay: 100, baseDelay: 0 });
 
   return (
-    <section ref={ref} className="py-20 md:py-28 bg-secondary-background text-white relative overflow-hidden">
+    <section id="cta" ref={ref} className="py-20 md:py-28 bg-secondary-background text-white relative overflow-hidden">
       <div 
         className="absolute inset-0 opacity-[0.02] pointer-events-none" 
         style={{
@@ -1433,12 +1435,26 @@ const FooterMicrocopy = () => {
 
 // Main Page Component
 const CapacityBuildout = () => {
+  const sections = [
+    { id: 'hero', label: 'Overview' },
+    { id: 'who-its-for', label: 'Fit Check' },
+    { id: 'outcomes', label: 'Outcomes' },
+    { id: 'framework', label: 'Framework' },
+    { id: 'pricing', label: 'Pricing' },
+    { id: 'deliverables', label: 'Deliverables' },
+    { id: 'timeline', label: 'Timeline' },
+    { id: 'guarantee', label: 'Guarantee' },
+    { id: 'faq', label: 'FAQ' },
+    { id: 'cta', label: 'Get Started' },
+  ];
+
   return (
     <MotionPreferencesProvider>
       <div className="min-h-screen">
         <ScrollProgress />
         <ScrollToTop />
         <MotionControls />
+        <SectionNav sections={sections} />
         
         <Helmet>
           <title>Capacity Buildout | Build Funder-Ready Systems in 6 Weeks | Nimara</title>
