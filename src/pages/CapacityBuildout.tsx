@@ -575,6 +575,242 @@ const WhatWeInstallSection = () => {
   );
 };
 
+// 1.9) SIX-WEEK PROCESS Section
+const SixWeekProcessSection = () => {
+  const [openWeek, setOpenWeek] = useState<string>("week-1");
+  const { ref, getItemStyle } = useStaggeredReveal<HTMLElement>(10, { staggerDelay: 60, baseDelay: 100 });
+
+  const weeks = [
+    {
+      id: "week-1",
+      title: "Week 1 — Set the structure",
+      bullets: [
+        "Install tracker + folder map + naming rules",
+        "Confirm grants, reporting needs, and approvals",
+        "Quick win: first \"Proof Pack\" folder set up"
+      ]
+    },
+    {
+      id: "week-2",
+      title: "Week 2 — Build with real data",
+      bullets: [
+        "Connect spending to invoices, receipts, and approvals",
+        "Set coding rules so reports match records",
+        "Start populating proof packs"
+      ]
+    },
+    {
+      id: "week-3",
+      title: "Week 3 — Make routines simple",
+      bullets: [
+        "Budget vs actual setup + month-end checklist",
+        "Draft micro-SOPs (short steps people follow)",
+        "Clean handoffs between staff"
+      ]
+    },
+    {
+      id: "week-4",
+      title: "Week 4 — Train and roll out",
+      bullets: [
+        "Train staff on the routine + proof packs",
+        "Start using the system in real work",
+        "Fix confusion fast"
+      ]
+    },
+    {
+      id: "week-5",
+      title: "Week 5 — Stabilize",
+      bullets: [
+        "Tighten rules, permissions, and file hygiene",
+        "Review one full grant proof pack end-to-end",
+        "Reduce \"special cases\" that break the process"
+      ]
+    },
+    {
+      id: "week-6",
+      title: "Week 6 — Handoff + prove it works",
+      bullets: [
+        "Run a \"Funder Request Drill\" (pull proof fast)",
+        "Finalize SOPs + handoff guide",
+        "Set the 90-day support plan (Core 5)"
+      ]
+    }
+  ];
+
+  const requiredInputs = [
+    "List of active grants (or top 3–5)",
+    "Access to current files (Drive/SharePoint)",
+    "Your current tracking method (sheet/QBO/etc.)",
+    "1–2 staff champions to meet weekly"
+  ];
+
+  const outcomes = [
+    "Proof packs you can pull fast",
+    "Clean tracking that matches reporting",
+    "Clear steps (SOPs) your team follows",
+    "Staff trained to run the system"
+  ];
+
+  return (
+    <section 
+      id="six-week-process" 
+      ref={ref}
+      className="py-20 md:py-28 bg-background relative"
+    >
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        {/* Section header */}
+        <div className="text-center mb-12 md:mb-16">
+          <motion.h2
+            style={getItemStyle(0)}
+            className="text-3xl sm:text-4xl font-bold text-foreground tracking-tight mb-4"
+          >
+            How the 6-week install works
+          </motion.h2>
+          <motion.p
+            style={getItemStyle(1)}
+            className="text-lg text-muted-foreground"
+          >
+            We build, train, and stabilize the system so it sticks.
+          </motion.p>
+        </div>
+
+        {/* 2-column layout */}
+        <div className="grid lg:grid-cols-[1fr_320px] gap-10 lg:gap-12">
+          {/* Left: Accordion */}
+          <motion.div style={getItemStyle(2)}>
+            <div className="space-y-3">
+              {weeks.map((week) => (
+                <div
+                  key={week.id}
+                  className={`border rounded-xl overflow-hidden transition-colors ${
+                    openWeek === week.id 
+                      ? "border-primary/30 bg-primary/[0.02]" 
+                      : "border-border bg-card"
+                  }`}
+                >
+                  <button
+                    onClick={() => setOpenWeek(openWeek === week.id ? "" : week.id)}
+                    className="w-full flex items-center justify-between px-5 py-4 text-left"
+                  >
+                    <span className={`font-semibold ${
+                      openWeek === week.id ? "text-foreground" : "text-muted-foreground"
+                    }`}>
+                      {week.title}
+                    </span>
+                    <ChevronDown 
+                      className={`w-5 h-5 text-muted-foreground transition-transform ${
+                        openWeek === week.id ? "rotate-180" : ""
+                      }`} 
+                    />
+                  </button>
+                  
+                  <motion.div
+                    initial={false}
+                    animate={{ 
+                      height: openWeek === week.id ? "auto" : 0,
+                      opacity: openWeek === week.id ? 1 : 0
+                    }}
+                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-5 pb-4">
+                      <ul className="space-y-2">
+                        {week.bullets.map((bullet, i) => (
+                          <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground">
+                            <Check className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" strokeWidth={2.5} />
+                            <span>{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </motion.div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Right: Sidebar cards */}
+          <div className="space-y-5">
+            {/* Required inputs card */}
+            <motion.div 
+              style={getItemStyle(3)}
+              className="bg-card border border-border rounded-xl p-5"
+            >
+              <h3 className="text-base font-semibold text-foreground mb-4">
+                What we need from you
+              </h3>
+              <ul className="space-y-2.5">
+                {requiredInputs.map((item, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground">
+                    <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/50 mt-1.5 flex-shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* What you get card */}
+            <motion.div 
+              style={getItemStyle(4)}
+              className="bg-primary/[0.04] border border-primary/20 rounded-xl p-5"
+            >
+              <h3 className="text-base font-semibold text-foreground mb-4">
+                What you'll have by Week 6
+              </h3>
+              <ul className="space-y-2.5">
+                {outcomes.map((item, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground">
+                    <Check className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" strokeWidth={2.5} />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* CTA row */}
+        <motion.div 
+          style={getItemStyle(5)}
+          className="mt-12 text-center"
+        >
+          <motion.a
+            href={CALENDLY_BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-primary-foreground font-semibold rounded-xl shadow-md shadow-primary/20 transition-all hover:shadow-lg hover:shadow-primary/30"
+          >
+            Book a 20-min Fit Call
+            <ArrowRight className="w-4 h-4" />
+          </motion.a>
+
+          <div className="mt-4">
+            <a
+              href={TYPEFORM_HEALTH_CHECK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors group"
+            >
+              <span className="relative">
+                Not sure? Take the Free Health Check (10 min)
+                <span className="absolute left-0 -bottom-0.5 w-full h-px bg-current opacity-40 group-hover:opacity-70 transition-opacity" />
+              </span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            </a>
+          </div>
+
+          {/* Micro disclaimer */}
+          <p className="text-xs text-muted-foreground/50 mt-6">
+            Not legal, tax, or audit advice. No funding guarantees.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 // 2) WHO THIS IS FOR Section - with hard filters inspired by Acquisition.com
 const WhoThisIsFor = () => {
   const forYou = [
@@ -2032,6 +2268,7 @@ const CapacityBuildout = () => {
           <HeroSection />
           <BuildoutTiersSection />
           <WhatWeInstallSection />
+          <SixWeekProcessSection />
           <ScrollSection parallaxStrength={0.15}>
             <WhoThisIsFor />
           </ScrollSection>
