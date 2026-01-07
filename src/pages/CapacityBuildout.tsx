@@ -496,53 +496,64 @@ const FrameworkSection = () => {
           ))}
         </motion.div>
 
-        {/* Optional areas */}
+        {/* Optional areas - Premium styling */}
         <motion.div 
-          className="mb-10"
+          className="mb-12"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={containerVariants}
         >
-          <motion.p 
+          <motion.div 
             variants={headerVariants}
-            className="text-xs font-semibold tracking-[0.2em] uppercase text-muted-foreground text-center mb-5"
+            className="flex items-center justify-center gap-3 mb-8"
           >
-            Optional Add-ons
-          </motion.p>
+            <div className="h-px w-12 bg-gradient-to-r from-transparent to-amber-400/50" />
+            <p className="text-xs font-bold tracking-[0.25em] uppercase text-amber-600">
+              Premium Add-ons
+            </p>
+            <div className="h-px w-12 bg-gradient-to-l from-transparent to-amber-400/50" />
+          </motion.div>
           
-          <div className="grid sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
+          <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {coreAreas.filter(a => a.optional).map((area, index) => (
               <motion.article
                 key={index}
                 variants={cardVariants}
                 whileHover={{ 
-                  y: -3,
-                  transition: { duration: 0.2 }
+                  y: -6,
+                  scale: 1.02,
+                  transition: { duration: 0.25 }
                 }}
-                className="group relative bg-white border border-dashed border-primary/30 rounded-2xl p-6 transition-colors duration-300 hover:border-primary/50 hover:bg-primary/[0.02] focus-within:ring-2 focus-within:ring-primary/20"
+                className="group relative overflow-hidden bg-gradient-to-br from-amber-50 to-orange-50/50 border-2 border-amber-200/60 rounded-2xl p-7 transition-all duration-300 hover:border-amber-300 hover:shadow-2xl hover:shadow-amber-500/10"
               >
-                {/* Optional badge */}
-                <span className="absolute top-4 right-4 text-[10px] font-semibold tracking-wider uppercase text-primary bg-primary/10 px-2.5 py-1 rounded-full">
-                  Optional
+                {/* Premium glow effect */}
+                <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-amber-400/20 to-orange-300/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                {/* Optional badge - premium gold style */}
+                <span className="absolute top-4 right-4 text-[10px] font-bold tracking-wider uppercase text-amber-700 bg-gradient-to-r from-amber-200 to-yellow-200 px-3 py-1.5 rounded-full shadow-sm border border-amber-300/50">
+                  ✦ Optional
                 </span>
                 
-                {/* Icon container */}
+                {/* Icon container - premium gold */}
                 <motion.div 
-                  className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-4 transition-colors group-hover:bg-primary/15"
+                  className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-100 to-orange-100 border border-amber-200/50 flex items-center justify-center mb-5 shadow-sm"
                   aria-hidden="true"
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.1, rotate: -5 }}
                   transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 >
-                  <area.icon className="w-5 h-5 text-primary" strokeWidth={1.8} />
+                  <area.icon className="w-6 h-6 text-amber-600" strokeWidth={1.8} />
                 </motion.div>
                 
-                <h3 className="text-base font-semibold text-foreground mb-1.5 tracking-tight">
+                <h3 className="text-lg font-bold text-foreground mb-2 tracking-tight">
                   {area.title}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {area.desc}
                 </p>
+                
+                {/* Bottom accent line */}
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-300/0 via-amber-400/40 to-amber-300/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </motion.article>
             ))}
           </div>
