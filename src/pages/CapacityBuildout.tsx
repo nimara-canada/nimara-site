@@ -89,194 +89,115 @@ const StickyCTA = () => {
   );
 };
 
-// 1) HERO Section
+// 1) HERO Section - Clean, calm, premium
 const HeroSection = () => {
-  const { ref, getItemStyle } = useStaggeredReveal<HTMLElement>(10, { staggerDelay: 80, baseDelay: 100 });
-
-  const bullets = [
-    "Proof-of-payment and grant tracking that's easy to pull",
-    "Simple routines your team actually follows",
-    "90-day Ops Insurance so it sticks"
-  ];
-
-  // Industries served for validation
-  const industries = ["Youth Programs", "Arts & Culture", "Community Services", "Health & Wellness", "Education", "Environmental"];
+  const { ref, getItemStyle } = useStaggeredReveal<HTMLElement>(8, { staggerDelay: 100, baseDelay: 150 });
 
   return (
     <section 
       id="hero"
       ref={ref} 
-      className="min-h-[100vh] bg-background relative overflow-hidden flex items-center pt-16"
+      className="min-h-[100vh] bg-background relative overflow-hidden flex items-center pt-20"
     >
-      {/* Premium layered background */}
+      {/* Subtle, calm background */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Large primary orb - top right */}
+        {/* Single soft primary glow */}
         <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="absolute -top-32 -right-32 w-[900px] h-[700px] bg-gradient-to-bl from-primary/[0.08] via-primary/[0.03] to-transparent rounded-full blur-3xl" 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2, ease: "easeOut" }}
+          className="absolute top-0 right-0 w-[800px] h-[600px] bg-gradient-to-bl from-primary/[0.04] via-primary/[0.02] to-transparent rounded-full blur-3xl" 
         />
-        {/* Accent orb - bottom left */}
+        {/* Subtle accent glow */}
         <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
-          className="absolute -bottom-32 -left-32 w-[700px] h-[500px] bg-gradient-to-tr from-accent/[0.06] via-accent/[0.02] to-transparent rounded-full blur-3xl" 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2, delay: 0.3, ease: "easeOut" }}
+          className="absolute bottom-0 left-0 w-[600px] h-[400px] bg-gradient-to-tr from-accent/[0.03] to-transparent rounded-full blur-3xl" 
         />
-        {/* Center subtle glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gradient-radial from-primary/[0.02] to-transparent rounded-full blur-3xl" />
       </div>
-      
-      {/* Premium grid pattern */}
-      <div 
-        className="absolute inset-0 opacity-[0.025] pointer-events-none"
-        style={{
-          backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
-          backgroundSize: '64px 64px'
-        }}
-      />
-      
-      {/* Noise texture overlay */}
-      <div className="absolute inset-0 opacity-[0.015] pointer-events-none bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzMDAiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iMC4xIi8+PC9zdmc+')]" />
 
-      <div className="relative z-10 w-full max-w-4xl mx-auto px-6 lg:px-12 py-24 lg:py-32">
-        <div className="text-center">
-          {/* Urgency badge */}
-          <motion.div
-            style={getItemStyle(0)}
-            className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-orange-500/10 border border-amber-500/20 backdrop-blur-sm"
-            whileHover={{ scale: 1.02 }}
-            transition={{ type: "spring", stiffness: 400, damping: 25 }}
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-500 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
-            </span>
-            <span className="text-[11px] font-semibold tracking-[0.1em] uppercase text-amber-600 dark:text-amber-400">
-              Next Cohort: Limited to 5 Orgs — Q1 2025
-            </span>
-          </motion.div>
-
-          {/* Provocative Problem Headline */}
-          <motion.h1
-            style={getItemStyle(1)}
-            className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-[1.06] tracking-[-0.02em] mb-6"
-          >
-            <span className="block text-muted-foreground font-medium text-2xl sm:text-3xl lg:text-4xl mb-4">
-              Is your filing system a
-            </span>
-            <span className="relative inline-block">
-              <motion.span 
-                className="relative z-10 bg-gradient-to-r from-red-500 via-orange-500 to-amber-500 bg-clip-text text-transparent"
-                initial={{ backgroundPosition: "0% 50%" }}
-                animate={{ backgroundPosition: "100% 50%" }}
-                transition={{ duration: 3, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
-                style={{ backgroundSize: "200% 200%" }}
-              >
-                funder's nightmare?
-              </motion.span>
-              <motion.span 
-                className="absolute bottom-1 sm:bottom-2 left-0 right-0 h-3 sm:h-4 bg-gradient-to-r from-red-500/20 to-amber-500/15 -z-0 rounded-md"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ delay: 0.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                style={{ originX: 0 }}
-              />
-            </span>
-          </motion.h1>
-
-          {/* Solution Headline */}
+      <div className="relative z-10 w-full max-w-3xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
+        <div className="text-left">
+          {/* Eyebrow */}
           <motion.p
-            style={getItemStyle(2)}
-            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-6"
+            style={getItemStyle(0)}
+            className="text-[11px] font-semibold tracking-[0.15em] uppercase text-primary/80 mb-6"
           >
-            Build funder-ready systems in{" "}
-            <span className="text-primary">6 weeks</span>
-            <span className="block text-xl sm:text-2xl font-normal text-muted-foreground mt-2">
-              — without the chaos.
-            </span>
+            Core 5 Capacity Buildout
           </motion.p>
 
+          {/* Headline */}
+          <motion.h1
+            style={getItemStyle(1)}
+            className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-foreground leading-[1.1] tracking-[-0.02em] mb-6"
+          >
+            Build funder-ready systems in 6 weeks.
+          </motion.h1>
+
           {/* Subhead */}
-          <p
+          <motion.p
+            style={getItemStyle(2)}
+            className="text-lg sm:text-xl text-muted-foreground max-w-xl leading-relaxed mb-6"
+          >
+            We install your core nonprofit systems and train your team to run them — without audit talk.
+          </motion.p>
+
+          {/* Support line */}
+          <motion.p
             style={getItemStyle(3)}
-            className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed font-normal"
+            className="text-sm text-muted-foreground/70 mb-10"
           >
-            We install your core nonprofit systems (Core 3 / Core 5 / Premium 7) and train your team to run them.
-          </p>
+            Includes 90-Day Ops Insurance (free support after install so it sticks).
+          </motion.p>
 
-          {/* Bullets */}
-          <div style={getItemStyle(4)} className="flex flex-col items-center gap-4 mb-12">
-            {bullets.map((bullet, index) => (
-              <div key={index} className="flex items-center gap-3 text-foreground/80">
-                <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Check className="w-3 h-3 text-primary" strokeWidth={2.5} />
-                </div>
-                <span className="text-base">{bullet}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* CTAs - Outcome focused */}
+          {/* CTAs */}
           <motion.div
-            style={getItemStyle(5)}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
+            style={getItemStyle(4)}
+            className="flex flex-col sm:flex-row items-start gap-4 mb-6"
           >
+            {/* Primary CTA */}
             <motion.a
               href={CALENDLY_BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.03, y: -2 }}
+              whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary via-primary to-primary/90 text-primary-foreground font-semibold rounded-2xl shadow-xl shadow-primary/25 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/35 overflow-hidden"
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-primary-foreground font-semibold rounded-xl shadow-lg shadow-primary/20 transition-all hover:shadow-xl hover:shadow-primary/30"
             >
-              <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-              <span className="relative">I'm Ready for Funder-Proof Systems</span>
-              <ArrowRight className="relative w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+              Book a 20-min Fit Call
+              <ArrowRight className="w-4 h-4" />
             </motion.a>
-            <motion.a
+
+            {/* Secondary CTA - Text link */}
+            <a
               href={TYPEFORM_HEALTH_CHECK_URL}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2 px-7 py-4 bg-card/50 backdrop-blur-sm border border-border/60 text-foreground font-medium rounded-2xl transition-all hover:bg-card hover:border-primary/30 hover:shadow-lg"
+              className="group inline-flex items-center gap-1.5 py-3.5 text-muted-foreground hover:text-foreground transition-colors"
             >
-              Take the Free Health Check (10 min)
-            </motion.a>
+              <span className="relative">
+                Take the Free Health Check (10 min)
+                <span className="absolute left-0 -bottom-0.5 w-full h-px bg-current opacity-40 group-hover:opacity-70 transition-opacity" />
+              </span>
+            </a>
           </motion.div>
 
-          {/* Industry validation */}
-          <motion.div 
-            style={getItemStyle(6)} 
-            className="mb-10"
+          {/* Micro-trust line */}
+          <motion.p
+            style={getItemStyle(5)}
+            className="text-xs text-muted-foreground/50 mb-8"
           >
-            <p className="text-xs text-muted-foreground/60 mb-3 uppercase tracking-widest font-medium">
-              Built for organizations in
-            </p>
-            <div className="flex flex-wrap justify-center gap-2">
-              {industries.map((industry, index) => (
-                <motion.span
-                  key={industry}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.8 + index * 0.05 }}
-                  className="px-3 py-1.5 text-xs font-medium text-muted-foreground bg-muted/50 rounded-full border border-border/50"
-                >
-                  {industry}
-                </motion.span>
-              ))}
-            </div>
-          </motion.div>
+            Built for Canadian nonprofits (0–25 staff). No funding guarantees.
+          </motion.p>
 
-          {/* Disclaimer */}
-          <p
-            style={getItemStyle(7)}
-            className="text-xs text-muted-foreground/60 max-w-md mx-auto tracking-wide"
+          {/* Cohort info - subtle */}
+          <motion.p
+            style={getItemStyle(6)}
+            className="text-xs text-muted-foreground/40"
           >
-            No funding guarantees. Not an audit firm. Built for small teams (0–25 staff).
-          </p>
+            Next cohort limited to 5 organizations.
+          </motion.p>
         </div>
       </div>
     </section>
