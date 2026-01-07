@@ -617,10 +617,47 @@ const PricingSection = () => {
     }
   ];
 
-  const { ref, getItemStyle } = useStaggeredReveal(tiers.length + 4, { staggerDelay: 80, baseDelay: 0 });
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: 0.1
+      }
+    }
+  } as const;
+
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 32,
+      scale: 0.95
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+      transition: {
+        type: "spring" as const,
+        stiffness: 80,
+        damping: 15,
+        mass: 0.9
+      }
+    }
+  };
+
+  const headerVariants = {
+    hidden: { opacity: 0, y: 16 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.5 }
+    }
+  };
 
   return (
-    <section id="pricing" className="py-20 md:py-28 bg-secondary-background text-white overflow-hidden relative">
+    <section id="pricing" className="py-24 md:py-32 bg-secondary-background text-white overflow-hidden relative">
       <div 
         className="absolute inset-0 opacity-[0.02] pointer-events-none" 
         style={{
@@ -629,79 +666,110 @@ const PricingSection = () => {
         }} 
       />
 
-      <div ref={ref} className="relative max-w-6xl mx-auto px-6 lg:px-12">
-        <div className="text-center mb-16">
-          <span
-            style={getItemStyle(0)}
-            className="inline-block text-[11px] font-semibold tracking-[0.25em] uppercase text-accent mb-6"
+      <div className="relative max-w-6xl mx-auto px-6 lg:px-12">
+        {/* Section header */}
+        <motion.div 
+          className="text-center mb-16 md:mb-20"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
+          <motion.span
+            variants={headerVariants}
+            className="inline-block text-[11px] font-semibold tracking-[0.25em] uppercase text-accent mb-5"
           >
             Investment
-          </span>
+          </motion.span>
 
-          <h2
-            style={getItemStyle(1)}
-            className="text-3xl sm:text-4xl font-medium tracking-tight text-white mb-4"
+          <motion.h2
+            variants={headerVariants}
+            className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-white mb-4"
           >
             Pick your buildout level
-          </h2>
+          </motion.h2>
 
-          <p
-            style={getItemStyle(2)}
-            className="text-white/60 max-w-xl mx-auto"
+          <motion.p
+            variants={headerVariants}
+            className="text-white/60 max-w-xl mx-auto text-lg"
           >
             We recommend Core 5 for most teams with active grants.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-6 mb-10">
+        {/* Pricing cards */}
+        <motion.div 
+          className="grid lg:grid-cols-3 gap-6 lg:gap-8 mb-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={containerVariants}
+        >
           {tiers.map((tier, index) => (
-            <div
+            <motion.article
               key={index}
-              style={getItemStyle(3 + index)}
-              className={`relative bg-white/5 border rounded-2xl p-6 transition-all duration-300 hover:bg-white/10 ${
+              variants={cardVariants}
+              whileHover={{ 
+                y: -6, 
+                scale: 1.02,
+                transition: { duration: 0.25, ease: "easeOut" }
+              }}
+              className={`group relative bg-white/5 backdrop-blur-sm border rounded-2xl p-7 lg:p-8 transition-colors duration-300 ${
                 tier.badge 
-                  ? 'border-accent ring-2 ring-accent/30' 
-                  : 'border-white/10 hover:border-white/20'
+                  ? 'border-accent ring-2 ring-accent/30 bg-white/[0.08]' 
+                  : 'border-white/10 hover:border-white/25 hover:bg-white/[0.08]'
               }`}
             >
               {tier.badge && (
-                <span className="absolute -top-3 left-6 px-3 py-1 bg-accent text-secondary-background text-xs font-semibold rounded-full">
+                <motion.span 
+                  className="absolute -top-3.5 left-6 px-4 py-1.5 bg-accent text-secondary-background text-xs font-bold tracking-wide rounded-full shadow-lg shadow-accent/25"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                >
                   {tier.badge}
-                </span>
+                </motion.span>
               )}
 
               <div className="mb-6">
-                <p className="text-sm text-white/50 mb-1">{tier.subtitle}</p>
-                <h3 className="text-xl font-bold text-white mb-2">{tier.name}</h3>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-3xl font-bold text-white">{tier.price}</span>
-                  <span className="text-sm text-white/50">{tier.currency}</span>
+                <p className="text-sm text-white/50 mb-1 font-medium">{tier.subtitle}</p>
+                <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">{tier.name}</h3>
+                <div className="flex items-baseline gap-1.5">
+                  <span className="text-4xl font-bold text-white tracking-tight">{tier.price}</span>
+                  <span className="text-sm text-white/50 font-medium">{tier.currency}</span>
                 </div>
               </div>
 
-              <p className="text-sm text-white/60 mb-6 pb-6 border-b border-white/10">
-                <span className="text-white/40">Best for:</span> {tier.bestFor}
+              <p className="text-sm text-white/60 mb-6 pb-6 border-b border-white/10 leading-relaxed">
+                <span className="text-white/40 font-medium">Best for:</span> {tier.bestFor}
               </p>
 
-              <div className="space-y-3 mb-6">
+              <div className="space-y-3.5 mb-6">
                 {tier.includes.map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
-                    <Check className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-white/70">{item}</span>
+                    <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Check className="w-3 h-3 text-accent" strokeWidth={2.5} />
+                    </div>
+                    <span className="text-sm text-white/75 leading-relaxed">{item}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="space-y-3 mb-6">
-                <div className="flex items-center gap-2 text-sm text-white/50">
+              <div className="space-y-3 mb-7">
+                <div className="flex items-center gap-2.5 text-sm text-white/50">
                   <Clock className="w-4 h-4" />
                   <span>{tier.timeline}</span>
                 </div>
                 {tier.insurance && (
-                  <div className="flex items-center gap-2">
+                  <motion.div 
+                    className="flex items-center gap-2.5"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.5 }}
+                  >
                     <Shield className="w-4 h-4 text-accent" />
-                    <span className="text-sm text-accent font-medium">90-day Ops Insurance included</span>
-                  </div>
+                    <span className="text-sm text-accent font-semibold">90-day Ops Insurance included</span>
+                  </motion.div>
                 )}
               </div>
 
@@ -709,26 +777,34 @@ const PricingSection = () => {
                 href={CALENDLY_BOOKING_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`w-full inline-flex items-center justify-center gap-2 px-5 py-3 font-medium rounded-lg text-sm transition-all ${
+                className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 font-semibold rounded-xl text-sm transition-all duration-200 ${
                   tier.badge
-                    ? 'bg-accent text-secondary-background hover:bg-accent/90'
-                    : 'bg-white/10 text-white hover:bg-white/20'
+                    ? 'bg-accent text-secondary-background hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/25'
+                    : 'bg-white/10 text-white hover:bg-white/20 hover:shadow-lg hover:shadow-white/10'
                 }`}
               >
                 {tier.cta}
+                <ArrowRight className="w-4 h-4" />
               </a>
-            </div>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
 
-        <div style={getItemStyle(3 + tiers.length)} className="text-center space-y-2">
+        {/* Footer notes */}
+        <motion.div 
+          className="text-center space-y-2"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
           <p className="text-sm text-white/50">
-            <span className="text-white/70">Payment terms:</span> 50% to start, 50% at delivery.
+            <span className="text-white/70 font-medium">Payment terms:</span> 50% to start, 50% at delivery.
           </p>
           <p className="text-sm text-white/40">
             We can invoice as capacity building.
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
