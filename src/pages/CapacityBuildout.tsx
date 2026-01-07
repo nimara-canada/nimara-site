@@ -53,49 +53,48 @@ const HeroSection = () => {
   return (
     <section 
       ref={ref} 
-      className="min-h-[90vh] bg-secondary-background text-white relative overflow-hidden flex items-center pt-16"
+      className="min-h-[90vh] bg-background relative overflow-hidden flex items-center pt-16"
     >
-      {/* Grid pattern */}
-      <div 
-        className="absolute inset-0 opacity-[0.03] pointer-events-none" 
-        style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px'
-        }} 
-      />
-
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-6 lg:px-12 py-20">
+      <div className="relative z-10 w-full max-w-4xl mx-auto px-6 lg:px-12 py-24 lg:py-32">
         <div className="text-center">
-          {/* Tag */}
+          {/* Eyebrow */}
           <span
             style={getItemStyle(0)}
-            className="inline-block px-4 py-1.5 bg-accent/20 text-accent text-sm font-medium rounded-full mb-8"
+            className="inline-block text-[11px] font-semibold tracking-[0.2em] uppercase text-muted-foreground mb-6"
           >
-            Capacity Buildout
+            For Canadian Nonprofits and Charities
           </span>
 
           {/* Headline */}
           <h1
             style={getItemStyle(1)}
-            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-[1.1] tracking-tight mb-6"
+            className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-[1.08] tracking-tight mb-8"
           >
-            Build funder-ready systems in 6 weeks — without the chaos.
+            Build funder-ready systems in{' '}
+            <span className="relative inline-block">
+              <span className="relative z-10 text-primary">6 weeks</span>
+              <span className="absolute bottom-2 left-0 right-0 h-3 bg-primary/15 -z-0 rounded-sm" />
+            </span>
+            <br className="hidden sm:block" />
+            <span className="text-muted-foreground font-medium"> — without the chaos.</span>
           </h1>
 
           {/* Subhead */}
           <p
             style={getItemStyle(2)}
-            className="text-lg sm:text-xl text-white/60 max-w-3xl mx-auto mb-8 leading-relaxed"
+            className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed font-normal"
           >
             We install your core nonprofit systems (Core 3 / Core 5 / Premium 7) and train your team to run them.
           </p>
 
           {/* Bullets */}
-          <div style={getItemStyle(3)} className="flex flex-col items-center gap-3 mb-10">
+          <div style={getItemStyle(3)} className="flex flex-col items-center gap-4 mb-14">
             {bullets.map((bullet, index) => (
-              <div key={index} className="flex items-center gap-3 text-white/70 text-sm sm:text-base">
-                <Check className="w-4 h-4 text-accent flex-shrink-0" />
-                <span>{bullet}</span>
+              <div key={index} className="flex items-center gap-3 text-foreground/80">
+                <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Check className="w-3 h-3 text-primary" strokeWidth={2.5} />
+                </div>
+                <span className="text-base">{bullet}</span>
               </div>
             ))}
           </div>
@@ -103,13 +102,13 @@ const HeroSection = () => {
           {/* CTAs */}
           <div
             style={getItemStyle(4)}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
           >
             <a
               href={CALENDLY_BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg transition-all duration-150 hover:bg-primary/90 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98]"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-xl transition-all duration-200 hover:bg-primary/90 hover:scale-[1.02] hover:shadow-xl hover:shadow-primary/25 active:scale-[0.98]"
             >
               Book a 20-min Fit Call
               <ArrowRight className="w-4 h-4" />
@@ -118,19 +117,19 @@ const HeroSection = () => {
               href={TYPEFORM_HEALTH_CHECK_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-4 border border-white/20 text-white font-medium rounded-lg transition-all hover:bg-white/5 hover:border-white/30"
+              className="inline-flex items-center gap-2 px-7 py-4 border border-border text-foreground font-medium rounded-xl transition-all hover:bg-muted hover:border-border/80"
             >
               Start the Free NOHC (10 min)
             </a>
           </div>
 
           {/* Tertiary link */}
-          <p style={getItemStyle(5)} className="text-sm text-white/40 mb-8">
+          <p style={getItemStyle(5)} className="text-sm text-muted-foreground mb-10">
             <a 
               href={TYPEFORM_HEALTH_CHECK_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="underline underline-offset-2 hover:text-white/60 transition-colors"
+              className="underline underline-offset-4 hover:text-foreground transition-colors"
             >
               Download the Proof Tracker
             </a>
@@ -139,7 +138,7 @@ const HeroSection = () => {
           {/* Disclaimer */}
           <p
             style={getItemStyle(6)}
-            className="text-xs text-white/30 max-w-lg mx-auto"
+            className="text-xs text-muted-foreground/60 max-w-md mx-auto tracking-wide"
           >
             No funding guarantees. Not an audit firm. Built for small teams.
           </p>
