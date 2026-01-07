@@ -508,11 +508,11 @@ const FrameworkSection = () => {
             variants={headerVariants}
             className="flex items-center justify-center gap-3 mb-8"
           >
-            <div className="h-px w-12 bg-gradient-to-r from-transparent to-amber-400/50" />
-            <p className="text-xs font-bold tracking-[0.25em] uppercase text-amber-600">
+            <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary/50" />
+            <p className="text-xs font-bold tracking-[0.25em] uppercase text-primary">
               Premium Add-ons
             </p>
-            <div className="h-px w-12 bg-gradient-to-l from-transparent to-amber-400/50" />
+            <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary/50" />
           </motion.div>
           
           <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
@@ -525,24 +525,24 @@ const FrameworkSection = () => {
                   scale: 1.02,
                   transition: { duration: 0.25 }
                 }}
-                className="group relative overflow-hidden bg-gradient-to-br from-amber-50 to-orange-50/50 border-2 border-amber-200/60 rounded-2xl p-7 transition-all duration-300 hover:border-amber-300 hover:shadow-2xl hover:shadow-amber-500/10"
+                className="group relative overflow-hidden bg-gradient-to-br from-primary/[0.06] to-accent/[0.04] border-2 border-primary/20 rounded-2xl p-7 transition-all duration-300 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10"
               >
                 {/* Premium glow effect */}
-                <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-amber-400/20 to-orange-300/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-primary/15 to-accent/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
-                {/* Optional badge - premium gold style */}
-                <span className="absolute top-4 right-4 text-[10px] font-bold tracking-wider uppercase text-amber-700 bg-gradient-to-r from-amber-200 to-yellow-200 px-3 py-1.5 rounded-full shadow-sm border border-amber-300/50">
+                {/* Optional badge - Nimara branded */}
+                <span className="absolute top-4 right-4 text-[10px] font-bold tracking-wider uppercase text-primary bg-gradient-to-r from-primary/15 to-accent/10 px-3 py-1.5 rounded-full shadow-sm border border-primary/20">
                   ✦ Optional
                 </span>
                 
-                {/* Icon container - premium gold */}
+                {/* Icon container - Nimara branded */}
                 <motion.div 
-                  className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-100 to-orange-100 border border-amber-200/50 flex items-center justify-center mb-5 shadow-sm"
+                  className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/5 border border-primary/15 flex items-center justify-center mb-5 shadow-sm"
                   aria-hidden="true"
                   whileHover={{ scale: 1.1, rotate: -5 }}
                   transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 >
-                  <area.icon className="w-6 h-6 text-amber-600" strokeWidth={1.8} />
+                  <area.icon className="w-6 h-6 text-primary" strokeWidth={1.8} />
                 </motion.div>
                 
                 <h3 className="text-lg font-bold text-foreground mb-2 tracking-tight">
@@ -553,7 +553,7 @@ const FrameworkSection = () => {
                 </p>
                 
                 {/* Bottom accent line */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-300/0 via-amber-400/40 to-amber-300/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/0 via-primary/30 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </motion.article>
             ))}
           </div>
