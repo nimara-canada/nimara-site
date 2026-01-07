@@ -603,8 +603,8 @@ const PricingSection = () => {
     {
       name: "Premium 7",
       subtitle: "Custom",
-      price: "From $34,900+",
-      currency: "CAD",
+      price: "Custom",
+      currency: "",
       bestFor: "Complex orgs, 5+ grants, multiple programs, or 25+ staff.",
       includes: [
         "Everything in Core 5",
