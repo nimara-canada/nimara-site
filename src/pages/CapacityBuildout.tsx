@@ -110,12 +110,20 @@ const HeroSection = () => {
       <div className="relative z-10 w-full max-w-4xl mx-auto px-6 lg:px-12 py-24 lg:py-32">
         <div className="text-center">
           {/* Eyebrow */}
-          <span
+          <motion.div
             style={getItemStyle(0)}
-            className="inline-block text-[11px] font-semibold tracking-[0.2em] uppercase text-muted-foreground mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-gradient-to-r from-primary/10 via-primary/5 to-accent/10 border border-primary/20 backdrop-blur-sm"
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
           >
-            For Canadian Nonprofits and Charities
-          </span>
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+            </span>
+            <span className="text-[11px] font-semibold tracking-[0.15em] uppercase text-foreground/80">
+              For Canadian Nonprofits and Charities
+            </span>
+          </motion.div>
 
           {/* Headline */}
           <h1
