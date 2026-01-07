@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { ScrollProgress } from '@/components/ScrollProgress';
@@ -17,8 +17,42 @@ import {
   Building2, DollarSign, UserCog, Briefcase, Database, Heart, HandHeart,
   Shield, Clock, Mail, ChevronDown
 } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
+
+// Premium scroll-based section wrapper with parallax and reveal
+const ScrollSection = ({ 
+  children, 
+  className = "",
+  parallaxStrength = 0.1,
+  fadeIn = true 
+}: { 
+  children: React.ReactNode; 
+  className?: string;
+  parallaxStrength?: number;
+  fadeIn?: boolean;
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+  
+  const smoothProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
+  const y = useTransform(smoothProgress, [0, 1], [50 * parallaxStrength, -50 * parallaxStrength]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.4, 1, 1, 0.4]);
+  const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.98, 1, 1, 0.98]);
+
+  return (
+    <motion.div
+      ref={ref}
+      style={fadeIn ? { y, opacity, scale } : { y }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 // Sticky CTA Header Component
 const StickyCTA = () => {
@@ -1425,18 +1459,35 @@ const CapacityBuildout = () => {
         
         <StickyCTA />
         
-        <main id="main">
+        <main id="main" className="overflow-hidden">
           <HeroSection />
-          <WhoThisIsFor />
-          <OutcomeSection />
-          <FrameworkSection />
-          <PricingSection />
-          <DeliverablesSection />
-          <TimelineSection />
-          <GuaranteeSection />
-          
-          <FAQSection />
-          <FinalCTASection />
+          <ScrollSection parallaxStrength={0.15}>
+            <WhoThisIsFor />
+          </ScrollSection>
+          <ScrollSection parallaxStrength={0.1}>
+            <OutcomeSection />
+          </ScrollSection>
+          <ScrollSection parallaxStrength={0.12}>
+            <FrameworkSection />
+          </ScrollSection>
+          <ScrollSection parallaxStrength={0.08}>
+            <PricingSection />
+          </ScrollSection>
+          <ScrollSection parallaxStrength={0.1}>
+            <DeliverablesSection />
+          </ScrollSection>
+          <ScrollSection parallaxStrength={0.12}>
+            <TimelineSection />
+          </ScrollSection>
+          <ScrollSection parallaxStrength={0.08}>
+            <GuaranteeSection />
+          </ScrollSection>
+          <ScrollSection parallaxStrength={0.1}>
+            <FAQSection />
+          </ScrollSection>
+          <ScrollSection parallaxStrength={0.05} fadeIn={false}>
+            <FinalCTASection />
+          </ScrollSection>
           <FooterMicrocopy />
         </main>
         
