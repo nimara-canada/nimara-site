@@ -58,21 +58,34 @@ const ScrollSection = ({
 // Sticky CTA Header Component
 const StickyCTA = () => {
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 bg-secondary-background/95 backdrop-blur-sm border-b border-white/10">
+    <motion.div 
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed top-0 left-0 right-0 z-50 bg-secondary-background/90 backdrop-blur-xl border-b border-white/[0.08]"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <Link to="/" className="text-white font-semibold text-lg">
-          Nimara
+        <Link to="/" className="group flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center">
+            <span className="text-sm font-bold text-primary-foreground">N</span>
+          </div>
+          <span className="text-white font-semibold text-lg tracking-tight group-hover:text-white/80 transition-colors">
+            Nimara
+          </span>
         </Link>
-        <a
+        <motion.a
           href={CALENDLY_BOOKING_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-medium rounded-lg text-sm transition-all hover:bg-primary/90"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground font-semibold rounded-xl text-sm shadow-lg shadow-primary/20 transition-all hover:shadow-xl hover:shadow-primary/30"
         >
           Book a 20-min Fit Call
-        </a>
+          <ArrowRight className="w-3.5 h-3.5" />
+        </motion.a>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -90,22 +103,39 @@ const HeroSection = () => {
     <section 
       id="hero"
       ref={ref} 
-      className="min-h-[90vh] bg-background relative overflow-hidden flex items-center pt-16"
+      className="min-h-[100vh] bg-background relative overflow-hidden flex items-center pt-16"
     >
-      {/* Premium gradient background */}
+      {/* Premium layered background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[800px] h-[600px] bg-gradient-to-bl from-primary/[0.04] via-transparent to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[400px] bg-gradient-to-tr from-accent/[0.03] via-transparent to-transparent rounded-full blur-3xl" />
+        {/* Large primary orb - top right */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="absolute -top-32 -right-32 w-[900px] h-[700px] bg-gradient-to-bl from-primary/[0.08] via-primary/[0.03] to-transparent rounded-full blur-3xl" 
+        />
+        {/* Accent orb - bottom left */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
+          className="absolute -bottom-32 -left-32 w-[700px] h-[500px] bg-gradient-to-tr from-accent/[0.06] via-accent/[0.02] to-transparent rounded-full blur-3xl" 
+        />
+        {/* Center subtle glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gradient-radial from-primary/[0.02] to-transparent rounded-full blur-3xl" />
       </div>
       
-      {/* Subtle dot pattern */}
+      {/* Premium grid pattern */}
       <div 
-        className="absolute inset-0 opacity-[0.02] pointer-events-none"
+        className="absolute inset-0 opacity-[0.025] pointer-events-none"
         style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)`,
-          backgroundSize: '32px 32px'
+          backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
+          backgroundSize: '64px 64px'
         }}
       />
+      
+      {/* Noise texture overlay */}
+      <div className="absolute inset-0 opacity-[0.015] pointer-events-none bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzMDAiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iMC4xIi8+PC9zdmc+')]" />
 
       <div className="relative z-10 w-full max-w-4xl mx-auto px-6 lg:px-12 py-24 lg:py-32">
         <div className="text-center">
@@ -126,18 +156,31 @@ const HeroSection = () => {
           </motion.div>
 
           {/* Headline */}
-          <h1
+          <motion.h1
             style={getItemStyle(1)}
-            className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-[1.08] tracking-tight mb-8"
+            className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-[1.06] tracking-[-0.02em] mb-8"
           >
-            Build funder-ready systems in{' '}
-            <span className="relative inline-block">
-              <span className="relative z-10 text-primary">6 weeks</span>
-              <span className="absolute bottom-2 left-0 right-0 h-3 bg-primary/15 -z-0 rounded-sm" />
+            <span className="block">Build funder-ready systems in</span>
+            <span className="relative inline-block mt-2">
+              <motion.span 
+                className="relative z-10 bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent"
+                initial={{ backgroundPosition: "0% 50%" }}
+                animate={{ backgroundPosition: "100% 50%" }}
+                transition={{ duration: 3, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
+                style={{ backgroundSize: "200% 200%" }}
+              >
+                6 weeks
+              </motion.span>
+              <motion.span 
+                className="absolute bottom-1 sm:bottom-2 left-0 right-0 h-3 sm:h-4 bg-gradient-to-r from-primary/20 to-accent/15 -z-0 rounded-md"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ delay: 0.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                style={{ originX: 0 }}
+              />
             </span>
-            <br className="hidden sm:block" />
-            <span className="text-muted-foreground font-medium"> — without the chaos.</span>
-          </h1>
+            <span className="block text-muted-foreground font-normal mt-2 text-3xl sm:text-4xl lg:text-5xl">— without the chaos.</span>
+          </motion.h1>
 
           {/* Subhead */}
           <p
@@ -160,28 +203,33 @@ const HeroSection = () => {
           </div>
 
           {/* CTAs */}
-          <div
+          <motion.div
             style={getItemStyle(4)}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
           >
-            <a
+            <motion.a
               href={CALENDLY_BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-xl transition-all duration-200 hover:bg-primary/90 hover:scale-[1.02] hover:shadow-xl hover:shadow-primary/25 active:scale-[0.98]"
+              whileHover={{ scale: 1.03, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary via-primary to-primary/90 text-primary-foreground font-semibold rounded-2xl shadow-xl shadow-primary/25 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/35 overflow-hidden"
             >
-              Book a 20-min Fit Call
-              <ArrowRight className="w-4 h-4" />
-            </a>
-            <a
+              <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+              <span className="relative">Book a 20-min Fit Call</span>
+              <ArrowRight className="relative w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </motion.a>
+            <motion.a
               href={TYPEFORM_HEALTH_CHECK_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-7 py-4 border border-border text-foreground font-medium rounded-xl transition-all hover:bg-muted hover:border-border/80"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center gap-2 px-7 py-4 bg-card/50 backdrop-blur-sm border border-border/60 text-foreground font-medium rounded-2xl transition-all hover:bg-card hover:border-primary/30 hover:shadow-lg"
             >
               Start the Free NOHC (10 min)
-            </a>
-          </div>
+            </motion.a>
+          </motion.div>
 
           {/* Tertiary link */}
           <p style={getItemStyle(5)} className="text-sm text-muted-foreground mb-10">
@@ -738,9 +786,18 @@ const PricingSection = () => {
   };
 
   return (
-    <section id="pricing" className="py-24 md:py-32 bg-secondary-background text-white overflow-hidden relative">
+    <section id="pricing" className="py-28 md:py-36 bg-secondary-background text-white overflow-hidden relative">
+      {/* Premium background effects */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Large gradient orb */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-radial from-primary/[0.06] via-primary/[0.02] to-transparent rounded-full blur-3xl" />
+        {/* Accent orb */}
+        <div className="absolute bottom-0 right-0 w-[400px] h-[300px] bg-gradient-to-tl from-accent/[0.05] to-transparent rounded-full blur-3xl" />
+      </div>
+      
+      {/* Grid pattern */}
       <div 
-        className="absolute inset-0 opacity-[0.02] pointer-events-none" 
+        className="absolute inset-0 opacity-[0.025] pointer-events-none" 
         style={{
           backgroundImage: `linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)`,
           backgroundSize: '60px 60px'
@@ -756,23 +813,24 @@ const PricingSection = () => {
           viewport={{ once: true, margin: "-100px" }}
           variants={containerVariants}
         >
-          <motion.span
-            variants={headerVariants}
-            className="inline-block text-[11px] font-semibold tracking-[0.25em] uppercase text-accent mb-5"
-          >
-            Investment
-          </motion.span>
+          <motion.div variants={headerVariants} className="inline-flex items-center gap-3 mb-6">
+            <div className="h-px w-8 bg-gradient-to-r from-transparent to-accent/60" />
+            <span className="text-[11px] font-bold tracking-[0.3em] uppercase text-accent">
+              Investment
+            </span>
+            <div className="h-px w-8 bg-gradient-to-l from-transparent to-accent/60" />
+          </motion.div>
 
           <motion.h2
             variants={headerVariants}
-            className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-white mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-[-0.02em] text-white mb-5"
           >
             Pick your buildout level
           </motion.h2>
 
           <motion.p
             variants={headerVariants}
-            className="text-white/60 max-w-xl mx-auto text-lg"
+            className="text-white/50 max-w-xl mx-auto text-lg"
           >
             We recommend Core 5 for most teams with active grants.
           </motion.p>
@@ -1485,9 +1543,18 @@ const FinalCTASection = () => {
   const { ref, getItemStyle } = useStaggeredReveal(4, { staggerDelay: 100, baseDelay: 0 });
 
   return (
-    <section id="cta" ref={ref} className="py-20 md:py-28 bg-secondary-background text-white relative overflow-hidden">
+    <section id="cta" ref={ref} className="py-24 md:py-32 bg-secondary-background text-white relative overflow-hidden">
+      {/* Premium background effects */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Large decorative orb */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-gradient-radial from-primary/[0.08] via-primary/[0.03] to-transparent rounded-full blur-3xl" />
+        {/* Accent orb */}
+        <div className="absolute -bottom-32 -right-32 w-[500px] h-[400px] bg-gradient-to-tl from-accent/[0.06] to-transparent rounded-full blur-3xl" />
+      </div>
+      
+      {/* Grid pattern */}
       <div 
-        className="absolute inset-0 opacity-[0.02] pointer-events-none" 
+        className="absolute inset-0 opacity-[0.03] pointer-events-none" 
         style={{
           backgroundImage: `linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)`,
           backgroundSize: '60px 60px'
@@ -1495,49 +1562,61 @@ const FinalCTASection = () => {
       />
 
       <div className="relative max-w-3xl mx-auto px-6 lg:px-12 text-center">
-        <h2
-          style={getItemStyle(0)}
-          className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight mb-6"
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
-          Want this off your plate?
-        </h2>
-
-        <p
-          style={getItemStyle(1)}
-          className="text-lg text-white/60 mb-10"
-        >
-          Book a 20-min Fit Call. We'll recommend Core 3, Core 5, or Premium 7.
-        </p>
-
-        <div
-          style={getItemStyle(2)}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
-        >
-          <a
-            href={CALENDLY_BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg transition-all duration-150 hover:bg-primary/90 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98]"
+          <h2
+            style={getItemStyle(0)}
+            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight tracking-[-0.02em] mb-6"
           >
-            Book a 20-min Fit Call
-            <ArrowRight className="w-4 h-4" />
-          </a>
-          <a
-            href={TYPEFORM_HEALTH_CHECK_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-4 border border-white/20 text-white font-medium rounded-lg transition-all hover:bg-white/5 hover:border-white/30"
-          >
-            Start the Free NOHC
-          </a>
-        </div>
+            Want this off your plate?
+          </h2>
 
-        <p style={getItemStyle(3)} className="text-sm text-white/40">
-          Questions?{' '}
-          <a href={`mailto:${CONTACT_EMAIL}`} className="underline underline-offset-2 hover:text-white/60 transition-colors">
-            {CONTACT_EMAIL}
-          </a>
-        </p>
+          <p
+            style={getItemStyle(1)}
+            className="text-lg sm:text-xl text-white/60 mb-12 max-w-xl mx-auto"
+          >
+            Book a 20-min Fit Call. We'll recommend Core 3, Core 5, or Premium 7.
+          </p>
+
+          <div
+            style={getItemStyle(2)}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
+          >
+            <motion.a
+              href={CALENDLY_BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.03, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="group relative inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-primary via-primary to-primary/90 text-primary-foreground font-bold rounded-2xl shadow-2xl shadow-primary/30 transition-all duration-300 hover:shadow-[0_20px_50px_-10px] hover:shadow-primary/40 text-lg overflow-hidden"
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/15 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+              <span className="relative">Book a 20-min Fit Call</span>
+              <ArrowRight className="relative w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </motion.a>
+            <motion.a
+              href={TYPEFORM_HEALTH_CHECK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center gap-2 px-8 py-5 bg-white/5 backdrop-blur-sm border border-white/15 text-white font-semibold rounded-2xl transition-all hover:bg-white/10 hover:border-white/25"
+            >
+              Start the Free NOHC
+            </motion.a>
+          </div>
+
+          <p style={getItemStyle(3)} className="text-sm text-white/40">
+            Questions?{' '}
+            <a href={`mailto:${CONTACT_EMAIL}`} className="underline underline-offset-4 hover:text-white/60 transition-colors">
+              {CONTACT_EMAIL}
+            </a>
+          </p>
+        </motion.div>
       </div>
     </section>
   );
