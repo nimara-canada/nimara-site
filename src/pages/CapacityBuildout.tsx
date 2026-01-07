@@ -6,7 +6,7 @@ import { Footer } from '@/components/Footer';
 import { ScrollProgress } from '@/components/ScrollProgress';
 import { ScrollToTop } from '@/components/ScrollToTop';
 import { MotionControls } from '@/components/MotionControls';
-import { SectionNav } from '@/components/SectionNav';
+
 import { 
   MotionPreferencesProvider, 
   useStaggeredReveal,
@@ -1553,26 +1553,12 @@ const FooterMicrocopy = () => {
 
 // Main Page Component
 const CapacityBuildout = () => {
-  const sections = [
-    { id: 'hero', label: 'Overview' },
-    { id: 'who-its-for', label: 'Fit Check' },
-    { id: 'outcomes', label: 'Outcomes' },
-    { id: 'framework', label: 'Framework' },
-    { id: 'pricing', label: 'Pricing' },
-    { id: 'deliverables', label: 'Deliverables' },
-    { id: 'timeline', label: 'Timeline' },
-    { id: 'guarantee', label: 'Guarantee' },
-    { id: 'faq', label: 'FAQ' },
-    { id: 'cta', label: 'Get Started' },
-  ];
-
   return (
     <MotionPreferencesProvider>
       <div className="min-h-screen">
         <ScrollProgress />
         <ScrollToTop />
         <MotionControls />
-        <SectionNav sections={sections} />
         
         <Helmet>
           <title>Capacity Buildout | Build Funder-Ready Systems in 6 Weeks | Nimara</title>
