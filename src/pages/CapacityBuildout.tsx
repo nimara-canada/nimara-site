@@ -1186,70 +1186,6 @@ const GuaranteeSection = () => {
 };
 
 // 9) SOCIAL PROOF Section
-const SocialProofSection = () => {
-  const testimonials = [
-    { before: "[Organization situation before]", after: "[What changed after working with Nimara]" },
-    { before: "[Organization situation before]", after: "[What changed after working with Nimara]" },
-    { before: "[Organization situation before]", after: "[What changed after working with Nimara]" }
-  ];
-
-  const { ref, getItemStyle } = useStaggeredReveal(testimonials.length + 3, { staggerDelay: 80, baseDelay: 0 });
-
-  return (
-    <section className="py-20 md:py-28 bg-muted/30">
-      <div ref={ref} className="max-w-6xl mx-auto px-6 lg:px-12">
-        <div className="text-center mb-12">
-          <span
-            style={getItemStyle(0)}
-            className="inline-block text-[11px] font-semibold tracking-[0.25em] uppercase text-primary mb-6"
-          >
-            Results
-          </span>
-
-          <h2
-            style={getItemStyle(1)}
-            className="text-3xl sm:text-4xl font-medium tracking-tight"
-          >
-            Built for small teams
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
-          {testimonials.map((item, index) => (
-            <div
-              key={index}
-              style={getItemStyle(2 + index)}
-              className="bg-card border border-border/60 rounded-2xl p-6"
-            >
-              <div className="space-y-4">
-                <div>
-                  <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">Before</p>
-                  <p className="text-sm text-muted-foreground italic">{item.before}</p>
-                </div>
-                <div className="h-px bg-border" />
-                <div>
-                  <p className="text-xs font-medium text-primary uppercase tracking-wider mb-2">After</p>
-                  <p className="text-sm text-foreground">{item.after}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Logos placeholder */}
-        <div style={getItemStyle(2 + testimonials.length)} className="text-center">
-          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-4">Funders / Partners</p>
-          <div className="flex items-center justify-center gap-8 opacity-40">
-            <div className="w-24 h-8 bg-muted rounded" />
-            <div className="w-24 h-8 bg-muted rounded" />
-            <div className="w-24 h-8 bg-muted rounded" />
-            <div className="w-24 h-8 bg-muted rounded" />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
 
 // 10) FAQ Section
 const FAQSection = () => {
@@ -1430,7 +1366,7 @@ const CapacityBuildout = () => {
           <DeliverablesSection />
           <TimelineSection />
           <GuaranteeSection />
-          <SocialProofSection />
+          
           <FAQSection />
           <FinalCTASection />
           <FooterMicrocopy />
