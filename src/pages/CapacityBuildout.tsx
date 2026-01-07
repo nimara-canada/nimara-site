@@ -204,6 +204,203 @@ const HeroSection = () => {
   );
 };
 
+// 1.5) BUILDOUT TIERS Section - Pick your level
+const BuildoutTiersSection = () => {
+  const { ref, getItemStyle } = useStaggeredReveal<HTMLElement>(8, { staggerDelay: 80, baseDelay: 100 });
+
+  const tiers = [
+    {
+      name: "Core 3",
+      label: "Starter",
+      price: "$14,900 CAD",
+      bestFor: "Newer orgs or 1–2 grants.",
+      includes: [
+        "Board & Governance",
+        "Money & Grants (Proof Pack system)",
+        "Programs & Ops"
+      ],
+      timeline: "4–5 weeks",
+      highlighted: false,
+      ctaText: "Book a Fit Call",
+      ctaLink: CALENDLY_BOOKING_URL
+    },
+    {
+      name: "Core 5",
+      label: "Flagship",
+      price: "$24,900 CAD",
+      bestFor: "2+ grants or recurring reporting.",
+      includes: [
+        "Everything in Core 3",
+        "People (Staff & HR)",
+        "Tools & Data"
+      ],
+      bonus: "Includes 90-Day Ops Insurance",
+      timeline: "6 weeks",
+      highlighted: true,
+      ctaText: "Book a 20-min Fit Call",
+      ctaLink: CALENDLY_BOOKING_URL
+    },
+    {
+      name: "Premium 7",
+      label: "Custom",
+      price: "From $34,900+ CAD",
+      bestFor: "5+ grants, multiple programs, or 25+ staff.",
+      includes: [
+        "Everything in Core 5",
+        "Fundraising & Donors (Optional)",
+        "Volunteers (Optional)"
+      ],
+      timeline: "6–10 weeks (typical)",
+      highlighted: false,
+      ctaText: "Request Custom Scope",
+      ctaLink: CALENDLY_BOOKING_URL
+    }
+  ];
+
+  return (
+    <section 
+      id="tiers" 
+      ref={ref}
+      className="py-20 md:py-28 bg-background relative"
+    >
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        {/* Section header */}
+        <div className="text-center mb-12 md:mb-16">
+          <motion.h2
+            style={getItemStyle(0)}
+            className="text-3xl sm:text-4xl font-bold text-foreground tracking-tight mb-4"
+          >
+            Pick your buildout level
+          </motion.h2>
+          <motion.p
+            style={getItemStyle(1)}
+            className="text-lg text-muted-foreground"
+          >
+            Most teams with grants choose Core 5.
+          </motion.p>
+        </div>
+
+        {/* Tier cards */}
+        <motion.div 
+          style={getItemStyle(2)}
+          className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-8"
+        >
+          {tiers.map((tier, index) => (
+            <motion.div
+              key={tier.name}
+              whileHover={{ y: -4 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              className={`relative rounded-2xl p-6 lg:p-8 transition-all ${
+                tier.highlighted
+                  ? "bg-primary/[0.04] border-2 border-primary/30 shadow-lg shadow-primary/5"
+                  : "bg-card border border-border"
+              }`}
+            >
+              {/* Most Popular badge */}
+              {tier.highlighted && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <span className="px-4 py-1.5 text-xs font-semibold uppercase tracking-wide bg-primary text-primary-foreground rounded-full shadow-md">
+                    Most Popular
+                  </span>
+                </div>
+              )}
+
+              {/* Tier header */}
+              <div className={tier.highlighted ? "pt-3" : ""}>
+                <h3 className="text-xl font-semibold text-foreground mb-1">
+                  {tier.name} <span className="font-normal text-muted-foreground">({tier.label})</span>
+                </h3>
+                <p className="text-2xl sm:text-3xl font-bold text-foreground mb-4">
+                  {tier.price}
+                </p>
+              </div>
+
+              {/* Best for */}
+              <p className="text-sm text-muted-foreground mb-5">
+                <span className="font-medium text-foreground">Best for:</span> {tier.bestFor}
+              </p>
+
+              {/* Includes */}
+              <div className="space-y-3 mb-5">
+                {tier.includes.map((item, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <Check className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" strokeWidth={2.5} />
+                    <span className="text-sm text-foreground">{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Bonus line */}
+              {tier.bonus && (
+                <p className="text-sm text-primary font-medium mb-5">
+                  {tier.bonus}
+                </p>
+              )}
+
+              {/* Timeline */}
+              <p className="text-sm text-muted-foreground mb-6">
+                <span className="font-medium text-foreground">Timeline:</span> {tier.timeline}
+              </p>
+
+              {/* CTA */}
+              {tier.highlighted ? (
+                <motion.a
+                  href={tier.ctaLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-xl shadow-md shadow-primary/20 transition-all hover:shadow-lg hover:shadow-primary/30"
+                >
+                  {tier.ctaText}
+                  <ArrowRight className="w-4 h-4" />
+                </motion.a>
+              ) : (
+                <a
+                  href={tier.ctaLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full inline-flex items-center justify-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group"
+                >
+                  {tier.ctaText}
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                </a>
+              )}
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Payment microcopy */}
+        <motion.p
+          style={getItemStyle(3)}
+          className="text-center text-sm text-muted-foreground/70 mb-6"
+        >
+          Payment: 50% to start, 50% at delivery. Invoiced as capacity building.
+        </motion.p>
+
+        {/* Not sure link */}
+        <motion.div
+          style={getItemStyle(4)}
+          className="text-center"
+        >
+          <a
+            href={TYPEFORM_HEALTH_CHECK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors group"
+          >
+            <span className="relative">
+              Not sure? Take the Free Health Check (10 min)
+              <span className="absolute left-0 -bottom-0.5 w-full h-px bg-current opacity-40 group-hover:opacity-70 transition-opacity" />
+            </span>
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 // 2) WHO THIS IS FOR Section - with hard filters inspired by Acquisition.com
 const WhoThisIsFor = () => {
   const forYou = [
@@ -1659,6 +1856,7 @@ const CapacityBuildout = () => {
         
         <main id="main" className="overflow-hidden">
           <HeroSection />
+          <BuildoutTiersSection />
           <ScrollSection parallaxStrength={0.15}>
             <WhoThisIsFor />
           </ScrollSection>
