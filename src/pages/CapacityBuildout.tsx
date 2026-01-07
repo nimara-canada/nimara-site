@@ -401,6 +401,180 @@ const BuildoutTiersSection = () => {
   );
 };
 
+// 1.75) WHAT WE INSTALL Section
+const WhatWeInstallSection = () => {
+  const { ref, getItemStyle } = useStaggeredReveal<HTMLElement>(10, { staggerDelay: 60, baseDelay: 100 });
+
+  const deliverables = [
+    {
+      title: "Grant Proof Pack System",
+      bullets: [
+        "Proof tracker set up for your grants",
+        "Folder map + file naming rules",
+        "Pull checklist (what to send when asked)",
+        "Approvals linked to spending"
+      ]
+    },
+    {
+      title: "Money & Grants Routine",
+      bullets: [
+        "Simple coding rules (so numbers match)",
+        "Budget vs actual tracking setup",
+        "Month-end checklist (30–60 min)",
+        "Clear \"how we track\" steps"
+      ]
+    },
+    {
+      title: "Governance Basics",
+      bullets: [
+        "Minutes template + decision log",
+        "Policy tracker (what exists / what's missing)",
+        "Board folder structure",
+        "Clear approval trail"
+      ]
+    },
+    {
+      title: "Programs & Ops Basics",
+      bullets: [
+        "6–10 micro-SOPs (1–2 pages each)",
+        "\"Where things live\" guide",
+        "Onboarding checklist",
+        "Simple weekly/monthly routine"
+      ]
+    },
+    {
+      title: "Tools & Data Setup",
+      bullets: [
+        "Clean shared folders (Drive/SharePoint)",
+        "Templates installed where staff work",
+        "Simple access + naming rules",
+        "Easy handoff for new staff"
+      ]
+    }
+  ];
+
+  const trustPoints = [
+    "Plain language (no audit talk)",
+    "Works with the tools you already use",
+    "Training + handoff so it sticks",
+    "90-Day Ops Insurance on Core 5"
+  ];
+
+  return (
+    <section 
+      id="what-we-install" 
+      ref={ref}
+      className="py-20 md:py-28 bg-muted/30 relative"
+    >
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        {/* Section header */}
+        <div className="text-center mb-12 md:mb-16">
+          <motion.h2
+            style={getItemStyle(0)}
+            className="text-3xl sm:text-4xl font-bold text-foreground tracking-tight mb-4"
+          >
+            What we install (not just advise)
+          </motion.h2>
+          <motion.p
+            style={getItemStyle(1)}
+            className="text-lg text-muted-foreground max-w-2xl mx-auto"
+          >
+            You leave with a working system, clear steps, and a team that knows how to run it.
+          </motion.p>
+        </div>
+
+        {/* 2-column layout */}
+        <div className="grid lg:grid-cols-[1fr_320px] gap-10 lg:gap-12">
+          {/* Left: Deliverables grid */}
+          <motion.div 
+            style={getItemStyle(2)}
+            className="grid sm:grid-cols-2 gap-5"
+          >
+            {deliverables.map((item, index) => (
+              <motion.div
+                key={item.title}
+                whileHover={{ y: -2 }}
+                transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                className="bg-card border border-border rounded-xl p-5 lg:p-6"
+              >
+                <h3 className="text-base font-semibold text-foreground mb-3">
+                  {item.title}
+                </h3>
+                <ul className="space-y-2">
+                  {item.bullets.map((bullet, i) => (
+                    <li key={i} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                      <Check className="w-3.5 h-3.5 text-primary mt-0.5 flex-shrink-0" strokeWidth={2.5} />
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Right: Trust box */}
+          <motion.div 
+            style={getItemStyle(3)}
+            className="lg:sticky lg:top-24 h-fit"
+          >
+            <div className="bg-primary/[0.04] border border-primary/20 rounded-xl p-6">
+              <h3 className="text-base font-semibold text-foreground mb-4">
+                Built for small teams
+              </h3>
+              <ul className="space-y-3 mb-6">
+                {trustPoints.map((point, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground">
+                    <Check className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" strokeWidth={2.5} />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Primary CTA */}
+              <motion.a
+                href={CALENDLY_BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-xl shadow-md shadow-primary/20 transition-all hover:shadow-lg hover:shadow-primary/30 mb-4"
+              >
+                Book a 20-min Fit Call
+                <ArrowRight className="w-4 h-4" />
+              </motion.a>
+
+              {/* Secondary text link */}
+              <a
+                href={TYPEFORM_HEALTH_CHECK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors group"
+              >
+                <span className="relative">
+                  Not sure? Take the Free Health Check (10 min)
+                  <span className="absolute left-0 -bottom-0.5 w-full h-px bg-current opacity-40 group-hover:opacity-70 transition-opacity" />
+                </span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+              </a>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Disclaimer row */}
+        <motion.p
+          style={getItemStyle(4)}
+          className="text-center text-xs text-muted-foreground/50 mt-10"
+        >
+          Not legal, tax, or audit advice. No funding guarantees. Not full bookkeeping cleanup.
+        </motion.p>
+      </div>
+
+      {/* Subtle divider */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+    </section>
+  );
+};
+
 // 2) WHO THIS IS FOR Section - with hard filters inspired by Acquisition.com
 const WhoThisIsFor = () => {
   const forYou = [
@@ -1857,6 +2031,7 @@ const CapacityBuildout = () => {
         <main id="main" className="overflow-hidden">
           <HeroSection />
           <BuildoutTiersSection />
+          <WhatWeInstallSection />
           <ScrollSection parallaxStrength={0.15}>
             <WhoThisIsFor />
           </ScrollSection>
