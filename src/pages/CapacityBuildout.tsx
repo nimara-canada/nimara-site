@@ -92,6 +92,21 @@ const HeroSection = () => {
       ref={ref} 
       className="min-h-[90vh] bg-background relative overflow-hidden flex items-center pt-16"
     >
+      {/* Premium gradient background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[800px] h-[600px] bg-gradient-to-bl from-primary/[0.04] via-transparent to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[400px] bg-gradient-to-tr from-accent/[0.03] via-transparent to-transparent rounded-full blur-3xl" />
+      </div>
+      
+      {/* Subtle dot pattern */}
+      <div 
+        className="absolute inset-0 opacity-[0.02] pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)`,
+          backgroundSize: '32px 32px'
+        }}
+      />
+
       <div className="relative z-10 w-full max-w-4xl mx-auto px-6 lg:px-12 py-24 lg:py-32">
         <div className="text-center">
           {/* Eyebrow */}
@@ -1166,21 +1181,90 @@ const GuaranteeSection = () => {
     "Light template/process updates within scope"
   ];
 
-  const { ref, getItemStyle } = useStaggeredReveal(insurance.length + 4, { staggerDelay: 80, baseDelay: 0 });
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1
+      }
+    }
+  } as const;
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 24, scale: 0.98 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+      transition: { type: "spring" as const, stiffness: 100, damping: 15 }
+    }
+  };
+
+  const headerVariants = {
+    hidden: { opacity: 0, y: 16 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+  };
 
   return (
-    <section id="guarantee" className="py-20 md:py-28 bg-background">
-      <div ref={ref} className="max-w-4xl mx-auto px-6 lg:px-12">
-        <div className="grid md:grid-cols-2 gap-8">
+    <section id="guarantee" className="py-24 md:py-32 bg-gradient-to-b from-background to-muted/20 relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-1/4 w-80 h-80 bg-primary/[0.03] rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-accent/[0.05] rounded-full blur-3xl pointer-events-none" />
+      
+      <div className="relative max-w-4xl mx-auto px-6 lg:px-12">
+        {/* Premium header */}
+        <motion.div 
+          className="text-center mb-14"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
+          <motion.div variants={headerVariants} className="inline-flex items-center gap-3 mb-6">
+            <div className="h-px w-8 bg-gradient-to-r from-transparent to-primary/60" />
+            <span className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary">
+              Protection
+            </span>
+            <div className="h-px w-8 bg-gradient-to-l from-transparent to-primary/60" />
+          </motion.div>
+
+          <motion.h2
+            variants={headerVariants}
+            className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent"
+          >
+            Built-in guarantees
+          </motion.h2>
+        </motion.div>
+
+        <motion.div 
+          className="grid md:grid-cols-2 gap-6 lg:gap-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={containerVariants}
+        >
           {/* Delivery Guarantee */}
-          <div style={getItemStyle(0)} className="bg-card border border-border/60 rounded-2xl p-6">
-            <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-              <Shield className="w-5 h-5 text-primary" />
-            </div>
-            <h3 className="text-lg font-semibold text-foreground mb-4">
-              Our delivery guarantee (simple and fair)
+          <motion.div 
+            variants={cardVariants}
+            whileHover={{ y: -4, transition: { duration: 0.2 } }}
+            className="group relative bg-card/80 backdrop-blur-sm border border-border/60 rounded-2xl p-7 lg:p-8 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.02] to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+            
+            <motion.div 
+              className="relative w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5"
+              whileHover={{ scale: 1.05, rotate: -3 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
+              <Shield className="w-6 h-6 text-primary" />
+            </motion.div>
+            
+            <h3 className="relative text-xl font-semibold text-foreground mb-4 tracking-tight">
+              Delivery guarantee
             </h3>
-            <div className="space-y-4 text-sm text-muted-foreground">
+            <div className="relative space-y-4 text-[15px] text-muted-foreground leading-relaxed">
               <p>
                 If we don't deliver the listed deliverables by the end of the install period (with required inputs), you don't pay the final payment until we do.
               </p>
@@ -1188,34 +1272,57 @@ const GuaranteeSection = () => {
                 If we still can't deliver within 14 extra days, you can request a refund.
               </p>
             </div>
-          </div>
+          </motion.div>
 
           {/* 90-Day Insurance */}
-          <div style={getItemStyle(1)} className="bg-accent/5 border border-accent/20 rounded-2xl p-6">
-            <div className="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
-              <Clock className="w-5 h-5 text-accent" />
-            </div>
-            <h3 className="text-lg font-semibold text-foreground mb-4">
-              90-Day Ops Insurance (included)
+          <motion.div 
+            variants={cardVariants}
+            whileHover={{ y: -4, transition: { duration: 0.2 } }}
+            className="group relative bg-gradient-to-br from-accent/[0.08] to-accent/[0.02] border border-accent/20 rounded-2xl p-7 lg:p-8 transition-all duration-300 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/10"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-accent/[0.03] to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+            
+            <motion.div 
+              className="relative w-12 h-12 rounded-xl bg-accent/15 flex items-center justify-center mb-5"
+              whileHover={{ scale: 1.05, rotate: 3 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
+              <Clock className="w-6 h-6 text-mint-dark" />
+            </motion.div>
+            
+            <h3 className="relative text-xl font-semibold text-foreground mb-5 tracking-tight">
+              90-Day Ops Insurance
+              <span className="ml-2 text-xs font-medium text-mint-dark bg-accent/30 px-2 py-0.5 rounded-full">Included</span>
             </h3>
-            <div className="space-y-3">
+            <div className="relative space-y-3">
               {insurance.map((item, index) => (
-                <div 
+                <motion.div 
                   key={index}
-                  style={getItemStyle(2 + index)}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 + index * 0.08 }}
                   className="flex items-start gap-3"
                 >
-                  <Check className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground">{item}</span>
-                </div>
+                  <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-3 h-3 text-mint-dark" strokeWidth={2.5} />
+                  </div>
+                  <span className="text-[15px] text-muted-foreground">{item}</span>
+                </motion.div>
               ))}
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <p style={getItemStyle(2 + insurance.length)} className="text-xs text-muted-foreground text-center mt-6">
+        <motion.p 
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="text-sm text-muted-foreground text-center mt-10"
+        >
           We don't guarantee funding outcomes.
-        </p>
+        </motion.p>
       </div>
     </section>
   );
