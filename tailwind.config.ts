@@ -79,6 +79,12 @@ export default {
           mint: "hsl(var(--nimara-mint))",
           bg: "hsl(var(--nimara-bg))",
         },
+        mint: {
+          DEFAULT: "hsl(var(--mint))",
+          light: "hsl(var(--mint-light))",
+          dark: "hsl(var(--mint-dark))",
+          foreground: "hsl(var(--mint-foreground))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

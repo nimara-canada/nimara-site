@@ -55,6 +55,12 @@ All colors MUST be HSL.
     --accent: var(--nim-mint);
     --accent-foreground: var(--nim-navy);
 
+    /* Mint semantic tokens */
+    --mint: 162 91% 83%; /* #ACFCE3 - bright mint */
+    --mint-light: 160 60% 94%; /* #E8F5F0 - soft mint background */
+    --mint-dark: 162 75% 28%; /* #0A7558 - dark mint for text */
+    --mint-foreground: 162 75% 22%; /* Deep green text on mint backgrounds */
+
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: var(--nim-white);
 
