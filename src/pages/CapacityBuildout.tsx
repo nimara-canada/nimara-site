@@ -926,10 +926,10 @@ const TimelineSection = () => {
   const [openWeek, setOpenWeek] = useState<number | null>(0);
   
   const weeks = [
-    { week: 1, title: "Map + set structure", desc: "Folders, naming, tracker installed" },
-    { week: "2–3", title: "Build proof packs", desc: "Using your real data" },
-    { week: 4, title: "Train staff", desc: "Start using the routine" },
-    { week: "5–6", title: "Stabilize + handoff", desc: "Tighten, document, transition" }
+    { week: 1, title: "Map + set structure", desc: "Folders, naming, tracker installed. We audit what you have and build the foundation." },
+    { week: "2–3", title: "Build proof packs", desc: "Using your real data to create organized, funder-ready documentation systems." },
+    { week: 4, title: "Train staff", desc: "Start using the routine. Hands-on sessions so your team owns the process." },
+    { week: "5–6", title: "Stabilize + handoff", desc: "Tighten, document, and transition. Final polish and complete knowledge transfer." }
   ];
 
   const inputs = [
@@ -944,7 +944,7 @@ const TimelineSection = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.12,
         delayChildren: 0.1
       }
     }
@@ -953,11 +953,13 @@ const TimelineSection = () => {
   const itemVariants = {
     hidden: { 
       opacity: 0, 
-      y: 20
+      y: 24,
+      scale: 0.98
     },
     visible: { 
       opacity: 1, 
       y: 0,
+      scale: 1,
       transition: {
         type: "spring" as const,
         stiffness: 100,
@@ -976,11 +978,20 @@ const TimelineSection = () => {
   };
 
   return (
-    <section className="py-24 md:py-32 bg-muted/30 relative overflow-hidden">
-      <div className="max-w-4xl mx-auto px-6 lg:px-12">
+    <section className="py-24 md:py-32 bg-background relative overflow-hidden">
+      {/* Subtle background pattern */}
+      <div 
+        className="absolute inset-0 opacity-[0.015] pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)`,
+          backgroundSize: '48px 48px'
+        }}
+      />
+
+      <div className="relative max-w-5xl mx-auto px-6 lg:px-12">
         {/* Section header */}
         <motion.div 
-          className="text-center mb-14 md:mb-16"
+          className="text-center mb-16 md:mb-20"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -995,78 +1006,86 @@ const TimelineSection = () => {
 
           <motion.h2
             variants={headerVariants}
-            className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground"
+            className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground mb-4"
           >
             How the 6-week install works
           </motion.h2>
+          
+          <motion.p
+            variants={headerVariants}
+            className="text-lg text-muted-foreground max-w-2xl mx-auto"
+          >
+            A structured, proven process that gets you from scattered to organized.
+          </motion.p>
         </motion.div>
 
-        {/* Accordion */}
+        {/* Timeline cards - horizontal on desktop */}
         <motion.div 
-          className="space-y-3 mb-12"
+          className="grid md:grid-cols-4 gap-4 lg:gap-6 mb-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={containerVariants}
         >
           {weeks.map((item, index) => (
-            <motion.div
+            <motion.article
               key={index}
               variants={itemVariants}
-              className="bg-card border border-border rounded-xl overflow-hidden transition-colors duration-300 hover:border-primary/30"
+              whileHover={{ 
+                y: -6,
+                boxShadow: "0 20px 40px -12px rgba(0, 0, 0, 0.1)",
+                transition: { duration: 0.25 }
+              }}
+              className="group relative bg-card border border-border rounded-2xl p-6 transition-colors duration-300 hover:border-primary/40"
             >
-              <button
-                onClick={() => setOpenWeek(openWeek === index ? null : index)}
-                className="w-full flex items-center justify-between p-5 lg:p-6 text-left hover:bg-muted/30 transition-colors"
+              {/* Week badge */}
+              <motion.div 
+                className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-5 transition-colors group-hover:bg-primary/15"
+                whileHover={{ scale: 1.05, rotate: -3 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                <div className="flex items-center gap-4">
-                  <motion.span 
-                    className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center text-sm font-bold text-primary"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                  >
-                    W{item.week}
-                  </motion.span>
-                  <span className="font-semibold text-foreground text-lg">{item.title}</span>
-                </div>
-                <motion.div
-                  animate={{ rotate: openWeek === index ? 180 : 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <ChevronDown className="w-5 h-5 text-muted-foreground" />
-                </motion.div>
-              </button>
-              <motion.div
-                initial={false}
-                animate={{ 
-                  height: openWeek === index ? "auto" : 0,
-                  opacity: openWeek === index ? 1 : 0
-                }}
-                transition={{ duration: 0.25, ease: "easeInOut" }}
-                className="overflow-hidden"
-              >
-                <div className="px-5 lg:px-6 pb-5 lg:pb-6 pl-[4.75rem] lg:pl-[5.25rem]">
-                  <p className="text-[15px] text-muted-foreground leading-relaxed">{item.desc}</p>
-                </div>
+                <span className="text-lg font-bold text-primary">W{item.week}</span>
               </motion.div>
-            </motion.div>
+              
+              {/* Connector line (hidden on mobile, visible on desktop) */}
+              {index < weeks.length - 1 && (
+                <div className="hidden md:block absolute top-10 -right-3 lg:-right-4 w-6 lg:w-8 h-0.5 bg-gradient-to-r from-primary/30 to-transparent" />
+              )}
+              
+              <h3 className="text-lg font-semibold text-foreground mb-2 tracking-tight">
+                {item.title}
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {item.desc}
+              </p>
+            </motion.article>
           ))}
         </motion.div>
 
         {/* Required Inputs */}
         <motion.div 
-          className="bg-primary/5 border border-primary/20 rounded-2xl p-6 lg:p-8"
-          initial={{ opacity: 0, y: 20 }}
+          className="bg-gradient-to-br from-primary/[0.06] to-primary/[0.02] border border-primary/20 rounded-2xl p-8 lg:p-10"
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <h3 className="font-semibold text-foreground text-lg mb-5 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-              <ClipboardCheck className="w-5 h-5 text-primary" />
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+            <motion.div 
+              className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center"
+              whileHover={{ scale: 1.1, rotate: -5 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
+              <ClipboardCheck className="w-6 h-6 text-primary" />
+            </motion.div>
+            <div>
+              <h3 className="font-semibold text-foreground text-xl tracking-tight">
+                Required inputs from you
+              </h3>
+              <p className="text-sm text-muted-foreground">What we need to get started</p>
             </div>
-            Required inputs from you
-          </h3>
+          </div>
+          
           <div className="grid sm:grid-cols-2 gap-4">
             {inputs.map((input, index) => (
               <motion.div 
@@ -1074,13 +1093,14 @@ const TimelineSection = () => {
                 initial={{ opacity: 0, x: -10 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.3 + index * 0.1 }}
-                className="flex items-center gap-3 text-[15px] text-muted-foreground"
+                transition={{ delay: 0.3 + index * 0.08 }}
+                whileHover={{ x: 4 }}
+                className="flex items-center gap-4 p-4 bg-white/50 rounded-xl border border-primary/10 transition-colors hover:border-primary/25"
               >
-                <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Check className="w-3 h-3 text-primary" strokeWidth={2.5} />
+                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Check className="w-4 h-4 text-primary" strokeWidth={2.5} />
                 </div>
-                <span>{input}</span>
+                <span className="text-[15px] text-foreground font-medium">{input}</span>
               </motion.div>
             ))}
           </div>
