@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { ScrollProgress } from '@/components/ScrollProgress';
@@ -307,7 +308,44 @@ const FrameworkSection = () => {
     { icon: HandHeart, title: "Volunteers", desc: "Onboarding, scheduling, hours tracking.", optional: true }
   ];
 
-  const { ref, getItemStyle } = useStaggeredReveal(coreAreas.length + 3, { staggerDelay: 60, baseDelay: 0 });
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.1
+      }
+    }
+  } as const;
+
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 24,
+      scale: 0.96
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+      transition: {
+        type: "spring" as const,
+        stiffness: 100,
+        damping: 15,
+        mass: 0.8
+      }
+    }
+  };
+
+  const headerVariants = {
+    hidden: { opacity: 0, y: 16 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.5 }
+    }
+  };
 
   return (
     <section className="py-24 md:py-32 bg-background relative overflow-hidden">
@@ -319,40 +357,59 @@ const FrameworkSection = () => {
         }}
       />
       
-      <div ref={ref} className="relative max-w-6xl mx-auto px-6 lg:px-12">
+      <div className="relative max-w-6xl mx-auto px-6 lg:px-12">
         {/* Section header */}
-        <div className="text-center mb-16 md:mb-20">
-          <span
-            style={getItemStyle(0)}
+        <motion.div 
+          className="text-center mb-16 md:mb-20"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
+          <motion.span
+            variants={headerVariants}
             className="inline-block text-[11px] font-semibold tracking-[0.25em] uppercase text-primary mb-5"
           >
             Framework
-          </span>
+          </motion.span>
 
-          <h2
-            style={getItemStyle(1)}
+          <motion.h2
+            variants={headerVariants}
             className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground mb-4"
           >
             The Core 5{' '}
             <span className="text-muted-foreground font-normal">(plus 2 optional areas)</span>
-          </h2>
-        </div>
+          </motion.h2>
+        </motion.div>
 
         {/* Core areas grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 mb-12">
+        <motion.div 
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 mb-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={containerVariants}
+        >
           {coreAreas.filter(a => !a.optional).map((area, index) => (
-            <article
+            <motion.article
               key={index}
-              style={getItemStyle(2 + index)}
-              className="group relative bg-card border border-border rounded-2xl p-6 lg:p-7 transition-all duration-300 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 focus-within:ring-2 focus-within:ring-primary/20"
+              variants={cardVariants}
+              whileHover={{ 
+                y: -4, 
+                boxShadow: "0 20px 40px -12px rgba(0, 0, 0, 0.08)",
+                transition: { duration: 0.2 }
+              }}
+              className="group relative bg-card border border-border rounded-2xl p-6 lg:p-7 transition-colors duration-300 hover:border-primary/40 focus-within:ring-2 focus-within:ring-primary/20"
             >
               {/* Icon container */}
-              <div 
+              <motion.div 
                 className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 transition-colors group-hover:bg-primary/15"
                 aria-hidden="true"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
                 <area.icon className="w-5 h-5 text-primary" strokeWidth={1.8} />
-              </div>
+              </motion.div>
               
               <h3 className="text-lg font-semibold text-foreground mb-2 tracking-tight">
                 {area.title}
@@ -360,25 +417,35 @@ const FrameworkSection = () => {
               <p className="text-[15px] text-muted-foreground leading-relaxed">
                 {area.desc}
               </p>
-            </article>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
 
         {/* Optional areas */}
-        <div 
-          style={getItemStyle(2 + 5)}
+        <motion.div 
           className="mb-10"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={containerVariants}
         >
-          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-muted-foreground text-center mb-5">
+          <motion.p 
+            variants={headerVariants}
+            className="text-xs font-semibold tracking-[0.2em] uppercase text-muted-foreground text-center mb-5"
+          >
             Optional Add-ons
-          </p>
+          </motion.p>
           
           <div className="grid sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
             {coreAreas.filter(a => a.optional).map((area, index) => (
-              <article
+              <motion.article
                 key={index}
-                style={getItemStyle(7 + index)}
-                className="group relative bg-muted/30 border border-dashed border-border rounded-2xl p-6 transition-all duration-300 hover:border-accent/50 hover:bg-muted/50 focus-within:ring-2 focus-within:ring-accent/20"
+                variants={cardVariants}
+                whileHover={{ 
+                  y: -3,
+                  transition: { duration: 0.2 }
+                }}
+                className="group relative bg-muted/30 border border-dashed border-border rounded-2xl p-6 transition-colors duration-300 hover:border-accent/50 hover:bg-muted/50 focus-within:ring-2 focus-within:ring-accent/20"
               >
                 {/* Optional badge */}
                 <span className="absolute top-4 right-4 text-[10px] font-semibold tracking-wider uppercase text-accent bg-accent/10 px-2.5 py-1 rounded-full">
@@ -386,12 +453,14 @@ const FrameworkSection = () => {
                 </span>
                 
                 {/* Icon container */}
-                <div 
+                <motion.div 
                   className="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center mb-4 transition-colors group-hover:bg-accent/15"
                   aria-hidden="true"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 >
                   <area.icon className="w-5 h-5 text-accent" strokeWidth={1.8} />
-                </div>
+                </motion.div>
                 
                 <h3 className="text-base font-semibold text-foreground mb-1.5 tracking-tight">
                   {area.title}
@@ -399,20 +468,23 @@ const FrameworkSection = () => {
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {area.desc}
                 </p>
-              </article>
+              </motion.article>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Footer note */}
-        <p
-          style={getItemStyle(9)}
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
           className="text-sm sm:text-base text-muted-foreground text-center max-w-lg mx-auto leading-relaxed"
         >
           Most teams start with <strong className="text-foreground font-medium">Core 3</strong> or{' '}
           <strong className="text-foreground font-medium">Core 5</strong>.{' '}
           <span className="text-muted-foreground/80">Premium 7 is for higher complexity.</span>
-        </p>
+        </motion.p>
       </div>
     </section>
   );
