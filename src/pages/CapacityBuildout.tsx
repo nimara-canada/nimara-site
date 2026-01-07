@@ -1205,45 +1205,113 @@ const FAQSection = () => {
   const { ref, getItemStyle } = useStaggeredReveal(faqs.length + 2, { staggerDelay: 50, baseDelay: 0 });
 
   return (
-    <section className="py-20 md:py-28 bg-background">
-      <div ref={ref} className="max-w-3xl mx-auto px-6 lg:px-12">
-        <div className="text-center mb-12">
-          <span
-            style={getItemStyle(0)}
-            className="inline-block text-[11px] font-semibold tracking-[0.25em] uppercase text-primary mb-6"
-          >
-            FAQ
-          </span>
+    <section className="py-24 md:py-32 bg-gradient-to-b from-background via-background to-muted/20 relative overflow-hidden">
+      {/* Subtle background pattern */}
+      <div 
+        className="absolute inset-0 opacity-[0.015] pointer-events-none" 
+        style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)`,
+          backgroundSize: '32px 32px'
+        }} 
+      />
+      
+      {/* Decorative gradient orbs */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-primary/3 rounded-full blur-3xl pointer-events-none" />
+
+      <div ref={ref} className="relative max-w-4xl mx-auto px-6 lg:px-12">
+        {/* Premium header */}
+        <div className="text-center mb-16">
+          <div style={getItemStyle(0)} className="inline-flex items-center gap-3 mb-6">
+            <div className="h-px w-8 bg-gradient-to-r from-transparent to-primary/60" />
+            <span className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary">
+              FAQ
+            </span>
+            <div className="h-px w-8 bg-gradient-to-l from-transparent to-primary/60" />
+          </div>
 
           <h2
             style={getItemStyle(1)}
-            className="text-3xl sm:text-4xl font-medium tracking-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent"
           >
             Common questions
           </h2>
         </div>
 
-        <div className="space-y-3">
+        {/* FAQ items with premium styling */}
+        <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div
+            <motion.div
               key={index}
               style={getItemStyle(2 + index)}
-              className="bg-card border border-border/60 rounded-xl overflow-hidden"
+              initial={false}
+              className={`
+                group relative bg-card/80 backdrop-blur-sm border rounded-2xl overflow-hidden
+                transition-all duration-300 ease-out
+                ${openFaq === index 
+                  ? 'border-primary/30 shadow-lg shadow-primary/5 ring-1 ring-primary/10' 
+                  : 'border-border/40 hover:border-border/80 hover:shadow-md'}
+              `}
             >
+              {/* Subtle gradient overlay on hover/open */}
+              <div className={`
+                absolute inset-0 opacity-0 transition-opacity duration-300 pointer-events-none
+                bg-gradient-to-br from-primary/[0.02] via-transparent to-primary/[0.01]
+                ${openFaq === index ? 'opacity-100' : 'group-hover:opacity-50'}
+              `} />
+              
               <button
                 onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                className="w-full flex items-center justify-between p-5 text-left hover:bg-muted/50 transition-colors"
+                className="relative w-full flex items-center justify-between p-6 text-left transition-colors"
               >
-                <span className="font-medium text-foreground pr-4">{faq.q}</span>
-                <ChevronDown className={`w-5 h-5 text-muted-foreground flex-shrink-0 transition-transform ${openFaq === index ? 'rotate-180' : ''}`} />
-              </button>
-              {openFaq === index && (
-                <div className="px-5 pb-5">
-                  <p className="text-sm text-muted-foreground">{faq.a}</p>
+                <span className={`
+                  font-medium pr-6 transition-colors duration-200
+                  ${openFaq === index ? 'text-foreground' : 'text-foreground/80 group-hover:text-foreground'}
+                `}>
+                  {faq.q}
+                </span>
+                <div className={`
+                  flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center
+                  transition-all duration-300
+                  ${openFaq === index 
+                    ? 'bg-primary/10 text-primary rotate-180' 
+                    : 'bg-muted/50 text-muted-foreground group-hover:bg-muted'}
+                `}>
+                  <ChevronDown className="w-4 h-4" />
                 </div>
-              )}
-            </div>
+              </button>
+              
+              <motion.div
+                initial={false}
+                animate={{
+                  height: openFaq === index ? 'auto' : 0,
+                  opacity: openFaq === index ? 1 : 0
+                }}
+                transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                className="overflow-hidden"
+              >
+                <div className="px-6 pb-6">
+                  <div className="h-px bg-gradient-to-r from-border/60 via-border/30 to-transparent mb-4" />
+                  <p className="text-[15px] leading-relaxed text-muted-foreground">
+                    {faq.a}
+                  </p>
+                </div>
+              </motion.div>
+            </motion.div>
           ))}
+        </div>
+
+        {/* Bottom accent */}
+        <div style={getItemStyle(2 + faqs.length)} className="mt-12 text-center">
+          <p className="text-sm text-muted-foreground">
+            Have another question?{' '}
+            <a 
+              href="mailto:hello@nimara.ca" 
+              className="text-primary hover:text-primary/80 underline underline-offset-4 transition-colors"
+            >
+              Reach out directly
+            </a>
+          </p>
         </div>
       </div>
     </section>
