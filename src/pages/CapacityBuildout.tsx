@@ -91,13 +91,16 @@ const StickyCTA = () => {
 
 // 1) HERO Section
 const HeroSection = () => {
-  const { ref, getItemStyle } = useStaggeredReveal<HTMLElement>(8, { staggerDelay: 80, baseDelay: 100 });
+  const { ref, getItemStyle } = useStaggeredReveal<HTMLElement>(10, { staggerDelay: 80, baseDelay: 100 });
 
   const bullets = [
     "Proof-of-payment and grant tracking that's easy to pull",
     "Simple routines your team actually follows",
     "90-day Ops Insurance so it sticks"
   ];
+
+  // Industries served for validation
+  const industries = ["Youth Programs", "Arts & Culture", "Community Services", "Health & Wellness", "Education", "Environmental"];
 
   return (
     <section 
@@ -139,59 +142,72 @@ const HeroSection = () => {
 
       <div className="relative z-10 w-full max-w-4xl mx-auto px-6 lg:px-12 py-24 lg:py-32">
         <div className="text-center">
-          {/* Eyebrow */}
+          {/* Urgency badge */}
           <motion.div
             style={getItemStyle(0)}
-            className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-gradient-to-r from-primary/10 via-primary/5 to-accent/10 border border-primary/20 backdrop-blur-sm"
+            className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-orange-500/10 border border-amber-500/20 backdrop-blur-sm"
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 400, damping: 25 }}
           >
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-500 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
             </span>
-            <span className="text-[11px] font-semibold tracking-[0.15em] uppercase text-foreground/80">
-              For Canadian Nonprofits and Charities
+            <span className="text-[11px] font-semibold tracking-[0.1em] uppercase text-amber-600 dark:text-amber-400">
+              Next Cohort: Limited to 5 Orgs — Q1 2025
             </span>
           </motion.div>
 
-          {/* Headline */}
+          {/* Provocative Problem Headline */}
           <motion.h1
             style={getItemStyle(1)}
-            className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-[1.06] tracking-[-0.02em] mb-8"
+            className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-[1.06] tracking-[-0.02em] mb-6"
           >
-            <span className="block">Build funder-ready systems in</span>
-            <span className="relative inline-block mt-2">
+            <span className="block text-muted-foreground font-medium text-2xl sm:text-3xl lg:text-4xl mb-4">
+              Is your filing system a
+            </span>
+            <span className="relative inline-block">
               <motion.span 
-                className="relative z-10 bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent"
+                className="relative z-10 bg-gradient-to-r from-red-500 via-orange-500 to-amber-500 bg-clip-text text-transparent"
                 initial={{ backgroundPosition: "0% 50%" }}
                 animate={{ backgroundPosition: "100% 50%" }}
                 transition={{ duration: 3, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
                 style={{ backgroundSize: "200% 200%" }}
               >
-                6 weeks
+                funder's nightmare?
               </motion.span>
               <motion.span 
-                className="absolute bottom-1 sm:bottom-2 left-0 right-0 h-3 sm:h-4 bg-gradient-to-r from-primary/20 to-accent/15 -z-0 rounded-md"
+                className="absolute bottom-1 sm:bottom-2 left-0 right-0 h-3 sm:h-4 bg-gradient-to-r from-red-500/20 to-amber-500/15 -z-0 rounded-md"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ delay: 0.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 style={{ originX: 0 }}
               />
             </span>
-            <span className="block text-muted-foreground font-normal mt-2 text-3xl sm:text-4xl lg:text-5xl">— without the chaos.</span>
           </motion.h1>
+
+          {/* Solution Headline */}
+          <motion.p
+            style={getItemStyle(2)}
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-6"
+          >
+            Build funder-ready systems in{" "}
+            <span className="text-primary">6 weeks</span>
+            <span className="block text-xl sm:text-2xl font-normal text-muted-foreground mt-2">
+              — without the chaos.
+            </span>
+          </motion.p>
 
           {/* Subhead */}
           <p
-            style={getItemStyle(2)}
-            className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed font-normal"
+            style={getItemStyle(3)}
+            className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed font-normal"
           >
             We install your core nonprofit systems (Core 3 / Core 5 / Premium 7) and train your team to run them.
           </p>
 
           {/* Bullets */}
-          <div style={getItemStyle(3)} className="flex flex-col items-center gap-4 mb-14">
+          <div style={getItemStyle(4)} className="flex flex-col items-center gap-4 mb-12">
             {bullets.map((bullet, index) => (
               <div key={index} className="flex items-center gap-3 text-foreground/80">
                 <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -202,9 +218,9 @@ const HeroSection = () => {
             ))}
           </div>
 
-          {/* CTAs */}
+          {/* CTAs - Outcome focused */}
           <motion.div
-            style={getItemStyle(4)}
+            style={getItemStyle(5)}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
           >
             <motion.a
@@ -216,7 +232,7 @@ const HeroSection = () => {
               className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary via-primary to-primary/90 text-primary-foreground font-semibold rounded-2xl shadow-xl shadow-primary/25 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/35 overflow-hidden"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-              <span className="relative">Book a 20-min Fit Call</span>
+              <span className="relative">I'm Ready for Funder-Proof Systems</span>
               <ArrowRight className="relative w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </motion.a>
             <motion.a
@@ -227,28 +243,39 @@ const HeroSection = () => {
               whileTap={{ scale: 0.98 }}
               className="inline-flex items-center gap-2 px-7 py-4 bg-card/50 backdrop-blur-sm border border-border/60 text-foreground font-medium rounded-2xl transition-all hover:bg-card hover:border-primary/30 hover:shadow-lg"
             >
-              Start the Free NOHC (10 min)
+              Take the Free Health Check (10 min)
             </motion.a>
           </motion.div>
 
-          {/* Tertiary link */}
-          <p style={getItemStyle(5)} className="text-sm text-muted-foreground mb-10">
-            <a 
-              href={TYPEFORM_HEALTH_CHECK_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-4 hover:text-foreground transition-colors"
-            >
-              Download the Proof Tracker
-            </a>
-          </p>
+          {/* Industry validation */}
+          <motion.div 
+            style={getItemStyle(6)} 
+            className="mb-10"
+          >
+            <p className="text-xs text-muted-foreground/60 mb-3 uppercase tracking-widest font-medium">
+              Built for organizations in
+            </p>
+            <div className="flex flex-wrap justify-center gap-2">
+              {industries.map((industry, index) => (
+                <motion.span
+                  key={industry}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.8 + index * 0.05 }}
+                  className="px-3 py-1.5 text-xs font-medium text-muted-foreground bg-muted/50 rounded-full border border-border/50"
+                >
+                  {industry}
+                </motion.span>
+              ))}
+            </div>
+          </motion.div>
 
           {/* Disclaimer */}
           <p
-            style={getItemStyle(6)}
+            style={getItemStyle(7)}
             className="text-xs text-muted-foreground/60 max-w-md mx-auto tracking-wide"
           >
-            No funding guarantees. Not an audit firm. Built for small teams.
+            No funding guarantees. Not an audit firm. Built for small teams (0–25 staff).
           </p>
         </div>
       </div>
@@ -256,21 +283,23 @@ const HeroSection = () => {
   );
 };
 
-// 2) WHO THIS IS FOR Section
+// 2) WHO THIS IS FOR Section - with hard filters inspired by Acquisition.com
 const WhoThisIsFor = () => {
   const forYou = [
-    "0–25 staff",
-    "You have grants or funder reporting",
-    "Receipts/approvals/files are scattered",
-    "Reports don't match records",
-    "You want one simple way your team can keep using"
+    "You're a Canadian nonprofit or charity",
+    "You have 0–25 staff (or heavy volunteer ops)",
+    "You have grants or funder reporting requirements",
+    "Receipts, approvals, and files are scattered across inboxes",
+    "Your reports don't match your records",
+    "You want one simple system your team will actually use"
   ];
 
   const notForYou = [
-    "You want guaranteed funding",
-    "You want a big report but no change",
-    "You need legal/tax advice",
-    "You want a full bookkeeping cleanup"
+    "You're looking for guaranteed funding (we don't do that)",
+    "You want a big report but no operational change",
+    "You need legal, tax, or CRA advice (not our thing)",
+    "You need a full bookkeeping cleanup (we're not accountants)",
+    "You're over 25 staff (we work with small teams only)"
   ];
 
   const { ref, getItemStyle } = useStaggeredReveal(forYou.length + notForYou.length + 3, { staggerDelay: 60, baseDelay: 0 });
@@ -287,28 +316,41 @@ const WhoThisIsFor = () => {
       />
       
       <div ref={ref} className="relative max-w-5xl mx-auto px-6 lg:px-12">
-        {/* Section header */}
+        {/* Section header with exclusivity framing */}
         <div className="text-center mb-16">
           <span
             style={getItemStyle(0)}
             className="inline-block text-[11px] font-semibold tracking-[0.25em] uppercase text-mint-dark mb-4"
           >
-            Fit Check
+            Hard Fit Check
           </span>
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">
+            We're selective about who we work with.
+          </h2>
+          <p className="text-muted-foreground max-w-xl mx-auto">
+            This program is intense. We want to make sure it's the right fit before we both invest the time.
+          </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           {/* For You */}
           <motion.div 
             style={getItemStyle(1)}
-            className="bg-white rounded-2xl p-8 shadow-sm border border-mint-dark/10"
+            className="bg-white rounded-2xl p-8 shadow-sm border-2 border-mint-dark/20 relative overflow-hidden"
             whileHover={{ 
               y: -4, 
               boxShadow: "0 12px 32px -8px hsl(var(--mint-dark) / 0.15)",
-              borderColor: "hsl(var(--mint-dark) / 0.25)"
+              borderColor: "hsl(var(--mint-dark) / 0.4)"
             }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
           >
+            {/* Recommended badge */}
+            <div className="absolute top-4 right-4">
+              <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider bg-mint-dark text-white rounded-full">
+                Good Fit
+              </span>
+            </div>
+            
             <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-foreground mb-8">
               This is for you if…
             </h2>
@@ -329,18 +371,25 @@ const WhoThisIsFor = () => {
             </div>
           </motion.div>
 
-          {/* Not For You */}
+          {/* Not For You - with stronger language */}
           <motion.div 
             style={getItemStyle(2 + forYou.length)}
-            className="bg-white/60 rounded-2xl p-8 border border-border/50"
+            className="bg-white/60 rounded-2xl p-8 border border-red-200/50 relative"
             whileHover={{ 
               y: -4, 
               boxShadow: "0 8px 24px -8px hsl(var(--foreground) / 0.08)"
             }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
           >
+            {/* Not a fit badge */}
+            <div className="absolute top-4 right-4">
+              <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider bg-red-100 text-red-600 rounded-full">
+                Not a Fit
+              </span>
+            </div>
+            
             <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-muted-foreground mb-8">
-              Not for you if…
+              Please don't apply if…
             </h2>
 
             <div className="space-y-4">
@@ -350,8 +399,8 @@ const WhoThisIsFor = () => {
                   style={getItemStyle(3 + forYou.length + index)}
                   className="flex items-start gap-4"
                 >
-                  <div className="w-6 h-6 rounded-full bg-muted flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <X className="w-3.5 h-3.5 text-muted-foreground" strokeWidth={2.5} />
+                  <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <X className="w-3.5 h-3.5 text-red-500" strokeWidth={2.5} />
                   </div>
                   <span className="text-muted-foreground text-base leading-relaxed">{item}</span>
                 </div>
@@ -1538,9 +1587,9 @@ const FAQSection = () => {
   );
 };
 
-// 11) FINAL CTA Section
+// 11) FINAL CTA Section - with urgency and outcome focus
 const FinalCTASection = () => {
-  const { ref, getItemStyle } = useStaggeredReveal(4, { staggerDelay: 100, baseDelay: 0 });
+  const { ref, getItemStyle } = useStaggeredReveal(6, { staggerDelay: 100, baseDelay: 0 });
 
   return (
     <section id="cta" ref={ref} className="py-24 md:py-32 bg-secondary-background text-white relative overflow-hidden">
@@ -1568,23 +1617,39 @@ const FinalCTASection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2
+          {/* Urgency badge */}
+          <motion.div
             style={getItemStyle(0)}
-            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight tracking-[-0.02em] mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-amber-500/10 border border-amber-500/20"
           >
-            Want this off your plate?
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-400"></span>
+            </span>
+            <span className="text-[11px] font-semibold tracking-[0.1em] uppercase text-amber-400">
+              Only 5 spots per cohort — Q1 2025 filling up
+            </span>
+          </motion.div>
+
+          <h2
+            style={getItemStyle(1)}
+            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight tracking-[-0.02em] mb-4"
+          >
+            Ready to stop dreading
+            <br />
+            <span className="text-primary">funder requests?</span>
           </h2>
 
           <p
-            style={getItemStyle(1)}
-            className="text-lg sm:text-xl text-white/60 mb-12 max-w-xl mx-auto"
+            style={getItemStyle(2)}
+            className="text-lg sm:text-xl text-white/60 mb-10 max-w-xl mx-auto"
           >
-            Book a 20-min Fit Call. We'll recommend Core 3, Core 5, or Premium 7.
+            In 6 weeks, your team will pull proof in minutes — not hours. Book a call to see if you qualify.
           </p>
 
           <div
-            style={getItemStyle(2)}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
+            style={getItemStyle(3)}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
           >
             <motion.a
               href={CALENDLY_BOOKING_URL}
@@ -1595,7 +1660,7 @@ const FinalCTASection = () => {
               className="group relative inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-primary via-primary to-primary/90 text-primary-foreground font-bold rounded-2xl shadow-2xl shadow-primary/30 transition-all duration-300 hover:shadow-[0_20px_50px_-10px] hover:shadow-primary/40 text-lg overflow-hidden"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/15 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-              <span className="relative">Book a 20-min Fit Call</span>
+              <span className="relative">I'm Ready to Get Funder-Proof</span>
               <ArrowRight className="relative w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </motion.a>
             <motion.a
@@ -1606,11 +1671,16 @@ const FinalCTASection = () => {
               whileTap={{ scale: 0.98 }}
               className="inline-flex items-center gap-2 px-8 py-5 bg-white/5 backdrop-blur-sm border border-white/15 text-white font-semibold rounded-2xl transition-all hover:bg-white/10 hover:border-white/25"
             >
-              Start the Free NOHC
+              Take the Free Health Check First
             </motion.a>
           </div>
 
-          <p style={getItemStyle(3)} className="text-sm text-white/40">
+          {/* Trust/authority line */}
+          <p style={getItemStyle(4)} className="text-sm text-white/50 mb-6">
+            We've helped Canadian nonprofits save <strong className="text-white/70">100+ hours/year</strong> on reporting.
+          </p>
+
+          <p style={getItemStyle(5)} className="text-sm text-white/40">
             Questions?{' '}
             <a href={`mailto:${CONTACT_EMAIL}`} className="underline underline-offset-4 hover:text-white/60 transition-colors">
               {CONTACT_EMAIL}
