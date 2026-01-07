@@ -168,61 +168,73 @@ const WhoThisIsFor = () => {
   const { ref, getItemStyle } = useStaggeredReveal(forYou.length + notForYou.length + 3, { staggerDelay: 60, baseDelay: 0 });
 
   return (
-    <section className="py-20 md:py-28 bg-background">
-      <div ref={ref} className="max-w-5xl mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* For You */}
-          <div>
-            <div style={getItemStyle(0)} className="flex items-center gap-4 mb-6">
-              <span className="text-xs font-medium tracking-[0.2em] uppercase text-muted-foreground">
-                Fit Check
-              </span>
-              <div className="h-px flex-1 bg-border" />
-            </div>
+    <section className="py-24 md:py-32 bg-[#E8F5F0] relative overflow-hidden">
+      {/* Subtle pattern overlay */}
+      <div 
+        className="absolute inset-0 opacity-30 pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(0, 120, 90, 0.08) 1px, transparent 0)`,
+          backgroundSize: '32px 32px'
+        }}
+      />
+      
+      <div ref={ref} className="relative max-w-5xl mx-auto px-6 lg:px-12">
+        {/* Section header */}
+        <div className="text-center mb-16">
+          <span
+            style={getItemStyle(0)}
+            className="inline-block text-[11px] font-semibold tracking-[0.25em] uppercase text-[#0A7558] mb-4"
+          >
+            Fit Check
+          </span>
+        </div>
 
-            <h2
-              style={getItemStyle(1)}
-              className="text-2xl sm:text-3xl font-medium tracking-tight mb-8"
-            >
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+          {/* For You */}
+          <div 
+            style={getItemStyle(1)}
+            className="bg-white rounded-2xl p-8 shadow-sm border border-[#0A7558]/10"
+          >
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-foreground mb-8">
               This is for you if…
             </h2>
 
-            <div className="space-y-0">
+            <div className="space-y-4">
               {forYou.map((item, index) => (
                 <div
                   key={index}
                   style={getItemStyle(2 + index)}
-                  className="flex items-start gap-4 py-4 border-b border-border first:border-t"
+                  className="flex items-start gap-4"
                 >
-                  <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                  <span className="text-foreground">{item}</span>
+                  <div className="w-6 h-6 rounded-full bg-[#0A7558]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-3.5 h-3.5 text-[#0A7558]" strokeWidth={2.5} />
+                  </div>
+                  <span className="text-foreground text-base leading-relaxed">{item}</span>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Not For You */}
-          <div>
-            <div style={getItemStyle(2 + forYou.length)} className="flex items-center gap-4 mb-6">
-              <div className="h-px flex-1 bg-border" />
-            </div>
-
-            <h2
-              style={getItemStyle(3 + forYou.length)}
-              className="text-2xl sm:text-3xl font-medium tracking-tight mb-8 text-muted-foreground"
-            >
+          <div 
+            style={getItemStyle(2 + forYou.length)}
+            className="bg-white/60 rounded-2xl p-8 border border-border/50"
+          >
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-muted-foreground mb-8">
               Not for you if…
             </h2>
 
-            <div className="space-y-0">
+            <div className="space-y-4">
               {notForYou.map((item, index) => (
                 <div
                   key={index}
-                  style={getItemStyle(4 + forYou.length + index)}
-                  className="flex items-start gap-4 py-4 border-b border-border first:border-t"
+                  style={getItemStyle(3 + forYou.length + index)}
+                  className="flex items-start gap-4"
                 >
-                  <X className="w-5 h-5 text-muted-foreground mt-0.5 flex-shrink-0" />
-                  <span className="text-muted-foreground">{item}</span>
+                  <div className="w-6 h-6 rounded-full bg-muted flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <X className="w-3.5 h-3.5 text-muted-foreground" strokeWidth={2.5} />
+                  </div>
+                  <span className="text-muted-foreground text-base leading-relaxed">{item}</span>
                 </div>
               ))}
             </div>
