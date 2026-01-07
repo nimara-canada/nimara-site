@@ -310,56 +310,108 @@ const FrameworkSection = () => {
   const { ref, getItemStyle } = useStaggeredReveal(coreAreas.length + 3, { staggerDelay: 60, baseDelay: 0 });
 
   return (
-    <section className="py-20 md:py-28 bg-background">
-      <div ref={ref} className="max-w-6xl mx-auto px-6 lg:px-12">
-        <div className="text-center mb-16">
+    <section className="py-24 md:py-32 bg-background relative overflow-hidden">
+      {/* Subtle gradient accent */}
+      <div 
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] opacity-[0.03] pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse at center, hsl(var(--primary)) 0%, transparent 70%)'
+        }}
+      />
+      
+      <div ref={ref} className="relative max-w-6xl mx-auto px-6 lg:px-12">
+        {/* Section header */}
+        <div className="text-center mb-16 md:mb-20">
           <span
             style={getItemStyle(0)}
-            className="inline-block text-[11px] font-semibold tracking-[0.25em] uppercase text-primary mb-6"
+            className="inline-block text-[11px] font-semibold tracking-[0.25em] uppercase text-primary mb-5"
           >
             Framework
           </span>
 
           <h2
             style={getItemStyle(1)}
-            className="text-3xl sm:text-4xl font-medium tracking-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground mb-4"
           >
-            The Core 5 (plus 2 optional areas)
+            The Core 5{' '}
+            <span className="text-muted-foreground font-normal">(plus 2 optional areas)</span>
           </h2>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-8">
-          {coreAreas.map((area, index) => (
-            <div
+        {/* Core areas grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 mb-12">
+          {coreAreas.filter(a => !a.optional).map((area, index) => (
+            <article
               key={index}
               style={getItemStyle(2 + index)}
-              className={`group bg-card border rounded-2xl p-5 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
-                area.optional 
-                  ? 'border-dashed border-border/80 hover:border-accent/40' 
-                  : 'border-border/60 hover:border-primary/30'
-              }`}
+              className="group relative bg-card border border-border rounded-2xl p-6 lg:p-7 transition-all duration-300 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 focus-within:ring-2 focus-within:ring-primary/20"
             >
-              {area.optional && (
-                <span className="inline-block text-[10px] font-medium tracking-wider uppercase text-accent mb-3">
-                  Optional
-                </span>
-              )}
-              <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 ${
-                area.optional ? 'bg-accent/10' : 'bg-primary/10'
-              }`}>
-                <area.icon className={`w-5 h-5 ${area.optional ? 'text-accent' : 'text-primary'}`} strokeWidth={1.8} />
+              {/* Icon container */}
+              <div 
+                className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 transition-colors group-hover:bg-primary/15"
+                aria-hidden="true"
+              >
+                <area.icon className="w-5 h-5 text-primary" strokeWidth={1.8} />
               </div>
-              <h3 className="font-semibold text-foreground mb-1 text-sm">{area.title}</h3>
-              <p className="text-xs text-muted-foreground leading-relaxed">{area.desc}</p>
-            </div>
+              
+              <h3 className="text-lg font-semibold text-foreground mb-2 tracking-tight">
+                {area.title}
+              </h3>
+              <p className="text-[15px] text-muted-foreground leading-relaxed">
+                {area.desc}
+              </p>
+            </article>
           ))}
         </div>
 
-        <p
-          style={getItemStyle(2 + coreAreas.length)}
-          className="text-sm text-muted-foreground text-center"
+        {/* Optional areas */}
+        <div 
+          style={getItemStyle(2 + 5)}
+          className="mb-10"
         >
-          Most teams start with Core 3 or Core 5. Premium 7 is for higher complexity.
+          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-muted-foreground text-center mb-5">
+            Optional Add-ons
+          </p>
+          
+          <div className="grid sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
+            {coreAreas.filter(a => a.optional).map((area, index) => (
+              <article
+                key={index}
+                style={getItemStyle(7 + index)}
+                className="group relative bg-muted/30 border border-dashed border-border rounded-2xl p-6 transition-all duration-300 hover:border-accent/50 hover:bg-muted/50 focus-within:ring-2 focus-within:ring-accent/20"
+              >
+                {/* Optional badge */}
+                <span className="absolute top-4 right-4 text-[10px] font-semibold tracking-wider uppercase text-accent bg-accent/10 px-2.5 py-1 rounded-full">
+                  Optional
+                </span>
+                
+                {/* Icon container */}
+                <div 
+                  className="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center mb-4 transition-colors group-hover:bg-accent/15"
+                  aria-hidden="true"
+                >
+                  <area.icon className="w-5 h-5 text-accent" strokeWidth={1.8} />
+                </div>
+                
+                <h3 className="text-base font-semibold text-foreground mb-1.5 tracking-tight">
+                  {area.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {area.desc}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        {/* Footer note */}
+        <p
+          style={getItemStyle(9)}
+          className="text-sm sm:text-base text-muted-foreground text-center max-w-lg mx-auto leading-relaxed"
+        >
+          Most teams start with <strong className="text-foreground font-medium">Core 3</strong> or{' '}
+          <strong className="text-foreground font-medium">Core 5</strong>.{' '}
+          <span className="text-muted-foreground/80">Premium 7 is for higher complexity.</span>
         </p>
       </div>
     </section>
