@@ -520,21 +520,21 @@ const FrameworkSection = () => {
                   y: -3,
                   transition: { duration: 0.2 }
                 }}
-                className="group relative bg-muted/30 border border-dashed border-border rounded-2xl p-6 transition-colors duration-300 hover:border-accent/50 hover:bg-muted/50 focus-within:ring-2 focus-within:ring-accent/20"
+                className="group relative bg-white border border-dashed border-primary/30 rounded-2xl p-6 transition-colors duration-300 hover:border-primary/50 hover:bg-primary/[0.02] focus-within:ring-2 focus-within:ring-primary/20"
               >
                 {/* Optional badge */}
-                <span className="absolute top-4 right-4 text-[10px] font-semibold tracking-wider uppercase text-accent bg-accent/10 px-2.5 py-1 rounded-full">
+                <span className="absolute top-4 right-4 text-[10px] font-semibold tracking-wider uppercase text-primary bg-primary/10 px-2.5 py-1 rounded-full">
                   Optional
                 </span>
                 
                 {/* Icon container */}
                 <motion.div 
-                  className="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center mb-4 transition-colors group-hover:bg-accent/15"
+                  className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-4 transition-colors group-hover:bg-primary/15"
                   aria-hidden="true"
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 >
-                  <area.icon className="w-5 h-5 text-accent" strokeWidth={1.8} />
+                  <area.icon className="w-5 h-5 text-primary" strokeWidth={1.8} />
                 </motion.div>
                 
                 <h3 className="text-base font-semibold text-foreground mb-1.5 tracking-tight">
