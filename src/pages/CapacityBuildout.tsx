@@ -820,42 +820,102 @@ const DeliverablesSection = () => {
     { title: "Training + handoff", desc: "2–3 sessions + recordings + handoff guide" }
   ];
 
-  const { ref, getItemStyle } = useStaggeredReveal(deliverables.length + 2, { staggerDelay: 80, baseDelay: 0 });
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.1
+      }
+    }
+  } as const;
+
+  const itemVariants = {
+    hidden: { 
+      opacity: 0, 
+      x: -20
+    },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: {
+        type: "spring" as const,
+        stiffness: 100,
+        damping: 15
+      }
+    }
+  };
+
+  const headerVariants = {
+    hidden: { opacity: 0, y: 16 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.5 }
+    }
+  };
 
   return (
-    <section className="py-20 md:py-28 bg-background">
-      <div ref={ref} className="max-w-4xl mx-auto px-6 lg:px-12">
-        <div className="text-center mb-12">
-          <span
-            style={getItemStyle(0)}
-            className="inline-block text-[11px] font-semibold tracking-[0.25em] uppercase text-primary mb-6"
+    <section className="py-24 md:py-32 bg-background relative overflow-hidden">
+      <div className="max-w-4xl mx-auto px-6 lg:px-12">
+        {/* Section header */}
+        <motion.div 
+          className="text-center mb-14 md:mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
+          <motion.span
+            variants={headerVariants}
+            className="inline-block text-[11px] font-semibold tracking-[0.25em] uppercase text-primary mb-5"
           >
             Deliverables
-          </span>
+          </motion.span>
 
-          <h2
-            style={getItemStyle(1)}
-            className="text-3xl sm:text-4xl font-medium tracking-tight"
+          <motion.h2
+            variants={headerVariants}
+            className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground"
           >
-            What we install (not just advise)
-          </h2>
-        </div>
+            What we install{' '}
+            <span className="text-muted-foreground font-normal">(not just advise)</span>
+          </motion.h2>
+        </motion.div>
 
-        <div className="space-y-4">
+        {/* Deliverables list */}
+        <motion.div 
+          className="space-y-4"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={containerVariants}
+        >
           {deliverables.map((item, index) => (
-            <div
+            <motion.div
               key={index}
-              style={getItemStyle(2 + index)}
-              className="flex items-start gap-4 p-5 bg-card border border-border/60 rounded-xl transition-all hover:border-primary/30"
+              variants={itemVariants}
+              whileHover={{ 
+                x: 4,
+                boxShadow: "0 10px 30px -10px rgba(0, 0, 0, 0.08)",
+                transition: { duration: 0.2 }
+              }}
+              className="flex items-start gap-4 p-5 lg:p-6 bg-card border border-border rounded-xl transition-colors duration-300 hover:border-primary/40"
             >
-              <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+              <motion.div 
+                className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0"
+                whileHover={{ scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                <Check className="w-5 h-5 text-primary" strokeWidth={2} />
+              </motion.div>
               <div>
-                <h3 className="font-semibold text-foreground">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">{item.desc}</p>
+                <h3 className="font-semibold text-foreground text-lg mb-1">{item.title}</h3>
+                <p className="text-[15px] text-muted-foreground leading-relaxed">{item.desc}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -863,7 +923,7 @@ const DeliverablesSection = () => {
 
 // 7) TIMELINE Section
 const TimelineSection = () => {
-  const [openWeek, setOpenWeek] = useState<number | null>(1);
+  const [openWeek, setOpenWeek] = useState<number | null>(0);
   
   const weeks = [
     { week: 1, title: "Map + set structure", desc: "Folders, naming, tracker installed" },
@@ -879,75 +939,152 @@ const TimelineSection = () => {
     "1–2 staff champions"
   ];
 
-  const { ref, getItemStyle } = useStaggeredReveal(weeks.length + inputs.length + 4, { staggerDelay: 60, baseDelay: 0 });
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1
+      }
+    }
+  } as const;
+
+  const itemVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 20
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        type: "spring" as const,
+        stiffness: 100,
+        damping: 15
+      }
+    }
+  };
+
+  const headerVariants = {
+    hidden: { opacity: 0, y: 16 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.5 }
+    }
+  };
 
   return (
-    <section className="py-20 md:py-28 bg-muted/30">
-      <div ref={ref} className="max-w-4xl mx-auto px-6 lg:px-12">
-        <div className="text-center mb-12">
-          <span
-            style={getItemStyle(0)}
-            className="inline-block text-[11px] font-semibold tracking-[0.25em] uppercase text-primary mb-6"
+    <section className="py-24 md:py-32 bg-muted/30 relative overflow-hidden">
+      <div className="max-w-4xl mx-auto px-6 lg:px-12">
+        {/* Section header */}
+        <motion.div 
+          className="text-center mb-14 md:mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
+          <motion.span
+            variants={headerVariants}
+            className="inline-block text-[11px] font-semibold tracking-[0.25em] uppercase text-primary mb-5"
           >
             Timeline
-          </span>
+          </motion.span>
 
-          <h2
-            style={getItemStyle(1)}
-            className="text-3xl sm:text-4xl font-medium tracking-tight"
+          <motion.h2
+            variants={headerVariants}
+            className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground"
           >
             How the 6-week install works
-          </h2>
-        </div>
+          </motion.h2>
+        </motion.div>
 
         {/* Accordion */}
-        <div className="space-y-3 mb-12">
+        <motion.div 
+          className="space-y-3 mb-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={containerVariants}
+        >
           {weeks.map((item, index) => (
-            <div
+            <motion.div
               key={index}
-              style={getItemStyle(2 + index)}
-              className="bg-card border border-border/60 rounded-xl overflow-hidden"
+              variants={itemVariants}
+              className="bg-card border border-border rounded-xl overflow-hidden transition-colors duration-300 hover:border-primary/30"
             >
               <button
                 onClick={() => setOpenWeek(openWeek === index ? null : index)}
-                className="w-full flex items-center justify-between p-5 text-left hover:bg-muted/50 transition-colors"
+                className="w-full flex items-center justify-between p-5 lg:p-6 text-left hover:bg-muted/30 transition-colors"
               >
                 <div className="flex items-center gap-4">
-                  <span className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-sm font-semibold text-primary">
+                  <motion.span 
+                    className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center text-sm font-bold text-primary"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  >
                     W{item.week}
-                  </span>
-                  <span className="font-medium text-foreground">{item.title}</span>
+                  </motion.span>
+                  <span className="font-semibold text-foreground text-lg">{item.title}</span>
                 </div>
-                <ChevronDown className={`w-5 h-5 text-muted-foreground transition-transform ${openWeek === index ? 'rotate-180' : ''}`} />
+                <motion.div
+                  animate={{ rotate: openWeek === index ? 180 : 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <ChevronDown className="w-5 h-5 text-muted-foreground" />
+                </motion.div>
               </button>
-              {openWeek === index && (
-                <div className="px-5 pb-5 pl-[4.5rem]">
-                  <p className="text-sm text-muted-foreground">{item.desc}</p>
+              <motion.div
+                initial={false}
+                animate={{ 
+                  height: openWeek === index ? "auto" : 0,
+                  opacity: openWeek === index ? 1 : 0
+                }}
+                transition={{ duration: 0.25, ease: "easeInOut" }}
+                className="overflow-hidden"
+              >
+                <div className="px-5 lg:px-6 pb-5 lg:pb-6 pl-[4.75rem] lg:pl-[5.25rem]">
+                  <p className="text-[15px] text-muted-foreground leading-relaxed">{item.desc}</p>
                 </div>
-              )}
-            </div>
+              </motion.div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Required Inputs */}
-        <div style={getItemStyle(2 + weeks.length)} className="bg-primary/5 border border-primary/20 rounded-xl p-6">
-          <h3 className="font-semibold text-foreground mb-4 flex items-center gap-2">
-            <ClipboardCheck className="w-5 h-5 text-primary" />
+        <motion.div 
+          className="bg-primary/5 border border-primary/20 rounded-2xl p-6 lg:p-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <h3 className="font-semibold text-foreground text-lg mb-5 flex items-center gap-3">
+            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+              <ClipboardCheck className="w-5 h-5 text-primary" />
+            </div>
             Required inputs from you
           </h3>
-          <div className="grid sm:grid-cols-2 gap-3">
+          <div className="grid sm:grid-cols-2 gap-4">
             {inputs.map((input, index) => (
-              <div 
+              <motion.div 
                 key={index}
-                style={getItemStyle(3 + weeks.length + index)}
-                className="flex items-center gap-3 text-sm text-muted-foreground"
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 + index * 0.1 }}
+                className="flex items-center gap-3 text-[15px] text-muted-foreground"
               >
-                <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Check className="w-3 h-3 text-primary" strokeWidth={2.5} />
+                </div>
                 <span>{input}</span>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
