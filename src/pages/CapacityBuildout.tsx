@@ -255,42 +255,117 @@ const OutcomeSection = () => {
     { icon: Sparkles, title: "New staff can onboard fast", desc: "Files and SOPs are obvious" }
   ];
 
-  const { ref, getItemStyle } = useStaggeredReveal(outcomes.length + 2, { staggerDelay: 80, baseDelay: 0 });
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1
+      }
+    }
+  } as const;
+
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 24,
+      scale: 0.96
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+      transition: {
+        type: "spring" as const,
+        stiffness: 100,
+        damping: 15,
+        mass: 0.8
+      }
+    }
+  };
+
+  const headerVariants = {
+    hidden: { opacity: 0, y: 16 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.5 }
+    }
+  };
 
   return (
-    <section className="py-20 md:py-28 bg-muted/30">
-      <div ref={ref} className="max-w-6xl mx-auto px-6 lg:px-12">
-        <div className="text-center mb-16">
-          <span
-            style={getItemStyle(0)}
-            className="inline-block text-[11px] font-semibold tracking-[0.25em] uppercase text-primary mb-6"
+    <section className="py-24 md:py-32 bg-muted/30 relative overflow-hidden">
+      {/* Subtle gradient accent */}
+      <div 
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] opacity-[0.04] pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse at center, hsl(var(--primary)) 0%, transparent 70%)'
+        }}
+      />
+
+      <div className="relative max-w-6xl mx-auto px-6 lg:px-12">
+        {/* Section header */}
+        <motion.div 
+          className="text-center mb-16 md:mb-20"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
+          <motion.span
+            variants={headerVariants}
+            className="inline-block text-[11px] font-semibold tracking-[0.25em] uppercase text-primary mb-5"
           >
             Outcomes
-          </span>
+          </motion.span>
 
-          <h2
-            style={getItemStyle(1)}
-            className="text-3xl sm:text-4xl font-medium tracking-tight"
+          <motion.h2
+            variants={headerVariants}
+            className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground"
           >
             What "done" looks like
-          </h2>
-        </div>
+          </motion.h2>
+        </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Outcomes grid */}
+        <motion.div 
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={containerVariants}
+        >
           {outcomes.map((item, index) => (
-            <div
+            <motion.article
               key={index}
-              style={getItemStyle(2 + index)}
-              className="group bg-card border border-border/60 rounded-2xl p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1"
+              variants={cardVariants}
+              whileHover={{ 
+                y: -4, 
+                boxShadow: "0 20px 40px -12px rgba(0, 0, 0, 0.08)",
+                transition: { duration: 0.2 }
+              }}
+              className="group relative bg-card border border-border rounded-2xl p-6 lg:p-7 transition-colors duration-300 hover:border-primary/40 focus-within:ring-2 focus-within:ring-primary/20"
             >
-              <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/15 transition-colors">
+              {/* Icon container */}
+              <motion.div 
+                className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 transition-colors group-hover:bg-primary/15"
+                aria-hidden="true"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
                 <item.icon className="w-5 h-5 text-primary" strokeWidth={1.8} />
-              </div>
-              <h3 className="font-semibold text-foreground mb-1">{item.title}</h3>
-              <p className="text-sm text-muted-foreground">{item.desc}</p>
-            </div>
+              </motion.div>
+              
+              <h3 className="text-lg font-semibold text-foreground mb-2 tracking-tight">
+                {item.title}
+              </h3>
+              <p className="text-[15px] text-muted-foreground leading-relaxed">
+                {item.desc}
+              </p>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
