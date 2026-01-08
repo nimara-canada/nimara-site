@@ -191,24 +191,24 @@ const HeroSection = () => {
   );
 };
 
-// 1.5) BUILDOUT TIERS Section - Clean Nimara branding
-const BuildoutTiersSection = () => {
-  const { ref, getItemStyle } = useStaggeredReveal<HTMLElement>(8, { staggerDelay: 80, baseDelay: 100 });
+// 1.5) PRICING Section - Clean Nimara branding
+const PricingTiersSection = () => {
+  const { ref, getItemStyle } = useStaggeredReveal<HTMLElement>(12, { staggerDelay: 60, baseDelay: 100 });
 
   const tiers = [
     {
-      name: "Core 3",
+      name: "Starter",
       badge: "STARTER",
       price: "$14,900",
       priceSuffix: "CAD",
-      bestFor: "Newer orgs or 1–2 grants",
+      bestFor: "Newer orgs or 1–2 active grants",
       features: [
         "Board & Governance setup",
         "Money & Grants (Proof Pack system)",
         "Programs & Ops basics",
         "4–5 week timeline"
       ],
-      bgColor: "bg-nim-cloud",
+      bgColor: "bg-white",
       borderColor: "border-nim-mist",
       ctaText: "Book a Fit Call",
       ctaLink: CALENDLY_BOOKING_URL,
@@ -219,21 +219,21 @@ const BuildoutTiersSection = () => {
       badge: "MOST POPULAR",
       price: "$24,900",
       priceSuffix: "CAD",
-      bestFor: "2+ grants or recurring reporting",
+      bestFor: "2+ grants or regular funder reporting",
       features: [
-        "Everything in Core 3",
+        "Everything in Starter",
         "People (Staff & HR)",
         "Tools & Data setup",
         "90-Day Ops Insurance included"
       ],
-      bgColor: "bg-nim-mint/20",
+      bgColor: "bg-nim-mint/15",
       borderColor: "border-nim-mint",
       ctaText: "Book a 20-min Fit Call",
       ctaLink: CALENDLY_BOOKING_URL,
       highlighted: true
     },
     {
-      name: "Premium 7",
+      name: "Custom",
       badge: "CUSTOM",
       price: "$34,900+",
       priceSuffix: "CAD",
@@ -244,7 +244,7 @@ const BuildoutTiersSection = () => {
         "Volunteers (Optional)",
         "6–10 week timeline"
       ],
-      bgColor: "bg-nim-cloud",
+      bgColor: "bg-white",
       borderColor: "border-nim-mist",
       ctaText: "Request Custom Scope",
       ctaLink: CALENDLY_BOOKING_URL,
@@ -254,9 +254,9 @@ const BuildoutTiersSection = () => {
 
   return (
     <section 
-      id="tiers" 
+      id="pricing" 
       ref={ref}
-      className="py-20 md:py-28 bg-white relative"
+      className="py-20 md:py-28 bg-nim-cloud relative"
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         {/* Section header */}
@@ -265,22 +265,20 @@ const BuildoutTiersSection = () => {
             style={getItemStyle(0)}
             className="text-3xl sm:text-4xl md:text-5xl font-bold text-nim-navy tracking-tight mb-4"
           >
-            Simple pricing,
-            <br />
-            <span className="italic">no hidden fees</span>
+            Simple pricing. No hidden fees.
           </motion.h2>
           <motion.p
             style={getItemStyle(1)}
-            className="text-lg text-nim-slate max-w-xl mx-auto"
+            className="text-lg text-nim-slate max-w-2xl mx-auto"
           >
-            Capacity buildout packages for Canadian nonprofits at every stage.
+            Systems that protect your funding and save your team hours every month. Often covered by capacity building or operational grants.
           </motion.p>
         </div>
 
         {/* Tier cards */}
         <motion.div 
           style={getItemStyle(2)}
-          className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-10"
+          className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-12"
         >
           {tiers.map((tier) => (
             <motion.div
@@ -304,13 +302,17 @@ const BuildoutTiersSection = () => {
                   <span className="text-4xl sm:text-5xl font-bold text-nim-navy tracking-tight">
                     {tier.price}
                   </span>
-                  <p className="text-sm text-nim-slate mt-2">
-                    {tier.priceSuffix} • {tier.bestFor}
-                  </p>
+                  <span className="text-lg text-nim-slate ml-1">{tier.priceSuffix}</span>
                 </div>
+
+                {/* Best for */}
+                <p className="text-sm text-nim-slate mb-6">
+                  <span className="font-medium text-nim-navy">Best for:</span> {tier.bestFor}
+                </p>
 
                 {/* Features list */}
                 <div className="space-y-3 mb-8 flex-grow">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-nim-slate mb-2">What's included:</p>
                   {tier.features.map((feature, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <Check className="w-4 h-4 text-nim-purple mt-0.5 flex-shrink-0" strokeWidth={2.5} />
@@ -319,46 +321,62 @@ const BuildoutTiersSection = () => {
                   ))}
                 </div>
 
-                {/* CTA Button */}
+                {/* CTA */}
                 <motion.a
                   href={tier.ctaLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-nim-navy text-white font-semibold rounded-xl transition-all hover:bg-nim-navy/90"
+                  className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 font-semibold rounded-xl transition-all ${
+                    tier.highlighted
+                      ? "bg-nim-mint text-nim-navy hover:bg-nim-mint/90"
+                      : "bg-nim-navy text-white hover:bg-nim-navy/90"
+                  }`}
                 >
                   {tier.ctaText}
+                  <ArrowRight className="w-4 h-4" />
                 </motion.a>
               </div>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Payment microcopy */}
+        {/* Payment line */}
         <motion.p
           style={getItemStyle(3)}
-          className="text-center text-sm text-nim-slate mb-6"
+          className="text-center text-sm font-medium text-nim-navy mb-6"
         >
-          Payment: 50% to start, 50% at delivery. Invoiced as capacity building.
+          50% to start. 50% at delivery. Invoiced as capacity building.
         </motion.p>
 
-        {/* Not sure link */}
+        {/* ROI line */}
         <motion.div
           style={getItemStyle(4)}
+          className="max-w-2xl mx-auto bg-white border border-nim-mist rounded-xl p-6 mb-8"
+        >
+          <p className="text-center text-nim-slate-dark">
+            <span className="font-semibold text-nim-navy">One missing receipt can cost you $20,000 in clawbacks.</span>
+            {" "}These systems pay for themselves the first time a funder asks for proof.
+          </p>
+        </motion.div>
+
+        {/* Escape hatch */}
+        <motion.div
+          style={getItemStyle(5)}
           className="text-center"
         >
           <a
             href={TYPEFORM_HEALTH_CHECK_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm text-nim-slate hover:text-nim-navy transition-colors group"
+            className="inline-flex items-center gap-2 text-nim-slate hover:text-nim-navy transition-colors group"
           >
             <span className="relative">
-              Not sure? Take the Free Health Check (10 min)
+              Not sure yet? Take the Free Health Check (10 min)
               <span className="absolute left-0 -bottom-0.5 w-full h-px bg-current opacity-40 group-hover:opacity-70 transition-opacity" />
             </span>
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
           </a>
         </motion.div>
       </div>
@@ -1734,7 +1752,7 @@ const CapacityBuildout = () => {
         
         <main id="main" className="overflow-hidden">
           <HeroSection />
-          <BuildoutTiersSection />
+          <PricingTiersSection />
           <ScrollSection parallaxStrength={0.15}>
             <WhoThisIsFor />
           </ScrollSection>
