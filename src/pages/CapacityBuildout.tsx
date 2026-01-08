@@ -298,7 +298,7 @@ const HowItWorksSection = () => {
   );
 };
 
-// 1.75) DOMAINS Section - Premium Linear/Stripe style
+// 1.75) DOMAINS Section - Ultra-clean scannable design
 const DomainsSection = () => {
   const { ref, getItemStyle } = useStaggeredReveal<HTMLElement>(12, { staggerDelay: 50, baseDelay: 100 });
 
@@ -307,57 +307,57 @@ const DomainsSection = () => {
       id: 1,
       title: "Board & Governance",
       icon: ClipboardCheck,
-      mostCommon: false,
-      description: "Clear records, policies, and decision logs so your board runs without you chasing anyone.",
-      deliverables: ["Conflict of interest policy", "Minutes template", "Decision log", "Board calendar"],
+      popular: false,
+      outcome: "Your board runs with clear records — no more chasing people.",
+      includes: ["Conflict of interest policy", "Minutes template", "Decision log", "Board calendar"],
     },
     {
       id: 2,
       title: "Money & Grants",
       icon: DollarSign,
-      mostCommon: true,
-      description: "When a funder asks for proof, you find it in minutes — not days.",
-      deliverables: ["Grant Proof Pack", "Expense tracker", "Folder system", "Month-end routine"],
+      popular: true,
+      outcome: "Find proof for funders in minutes, not days.",
+      includes: ["Grant Proof Pack", "Expense tracker", "Folder system", "Month-end routine"],
     },
     {
       id: 3,
-      title: "People (Staff & HR)",
+      title: "People & HR",
       icon: UserCog,
-      mostCommon: false,
-      description: "New staff get up to speed fast. Nothing lives in one person's head.",
-      deliverables: ["Role clarity docs", "Onboarding checklist", "Handoff guides", "HR file structure"],
+      popular: false,
+      outcome: "New staff get up to speed fast. Nothing in anyone's head.",
+      includes: ["Role clarity docs", "Onboarding checklist", "Handoff guides", "HR file structure"],
     },
     {
       id: 4,
       title: "Volunteers",
       icon: HandHeart,
-      mostCommon: true,
-      description: "Volunteers know what they signed up for — and they stay longer.",
-      deliverables: ["Intake process", "Role descriptions", "Appreciation rhythm", "Tracking system"],
+      popular: true,
+      outcome: "Volunteers know what they signed up for — and stay longer.",
+      includes: ["Intake process", "Role descriptions", "Appreciation rhythm", "Tracking system"],
     },
     {
       id: 5,
       title: "Tools & Files",
       icon: Database,
-      mostCommon: false,
-      description: "Anyone on your team — or your next ED — can find what they need.",
-      deliverables: ["Folder structure", "Naming conventions", "Permissions setup", "File audit checklist"],
+      popular: false,
+      outcome: "Anyone on your team can find what they need.",
+      includes: ["Folder structure", "Naming rules", "Permissions setup", "File audit checklist"],
     },
     {
       id: 6,
       title: "Programs & Ops",
       icon: Briefcase,
-      mostCommon: true,
-      description: "Show what you're doing and whether it's working — without starting from scratch.",
-      deliverables: ["Program documentation", "Tracking templates", "Reporting formats"],
+      popular: true,
+      outcome: "Show what you're doing and whether it's working.",
+      includes: ["Program documentation", "Tracking templates", "Reporting formats"],
     },
     {
       id: 7,
       title: "Fundraising & Donors",
       icon: Heart,
-      mostCommon: false,
-      description: "Know who gave, when, and how to keep them giving.",
-      deliverables: ["Donor tracking", "Gift acknowledgment", "Retention calendar"],
+      popular: false,
+      outcome: "Know who gave, when, and how to keep them giving.",
+      includes: ["Donor tracking", "Gift acknowledgment", "Retention calendar"],
     }
   ];
 
@@ -365,109 +365,120 @@ const DomainsSection = () => {
     <section 
       id="domains" 
       ref={ref}
-      className="py-28 md:py-36 bg-[#FAFBFC] relative"
+      className="py-24 md:py-32 bg-white relative"
     >
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        {/* Section header */}
-        <div className="max-w-2xl mb-20 md:mb-24">
-          <motion.span
+      <div className="max-w-5xl mx-auto px-6 lg:px-8">
+        {/* Section header - centered */}
+        <div className="text-center mb-16 md:mb-20">
+          <motion.p
             style={getItemStyle(0)}
-            className="inline-block text-[11px] font-medium uppercase tracking-[0.15em] text-nim-purple/80 mb-5"
+            className="text-nim-purple text-sm font-medium tracking-wide mb-4"
           >
             What We Fix
-          </motion.span>
+          </motion.p>
           <motion.h2
             style={getItemStyle(1)}
-            className="text-3xl sm:text-4xl md:text-[2.75rem] font-semibold text-nim-navy tracking-[-0.02em] leading-[1.15] mb-5"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold text-nim-navy tracking-tight mb-6"
           >
-            7 areas. You choose which ones.
+            7 areas. You choose.
           </motion.h2>
           <motion.p
             style={getItemStyle(2)}
-            className="text-lg text-[#1A1A1A]/55 leading-relaxed"
+            className="text-lg text-nim-slate max-w-xl mx-auto"
           >
-            Every nonprofit runs on the same foundations. Pick where you need the most help.
+            Pick where you need the most help. We handle the rest.
           </motion.p>
         </div>
 
-        {/* Domain cards - clean grid */}
+        {/* Domain list - clean vertical stack */}
         <motion.div 
           style={getItemStyle(3)}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6"
+          className="space-y-4"
         >
           {domains.map((domain, index) => {
             const IconComponent = domain.icon;
             return (
               <motion.div
                 key={domain.id}
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, delay: index * 0.04, ease: [0.25, 0.1, 0.25, 1] }}
-                className="group relative bg-white rounded-2xl p-8 border border-[#E8E8EC] hover:border-[#D4D4D8] transition-all duration-300"
+                viewport={{ once: true, margin: "-20px" }}
+                transition={{ duration: 0.4, delay: index * 0.03 }}
+                className={`group grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 p-6 lg:p-8 rounded-2xl border transition-all duration-200 ${
+                  domain.popular 
+                    ? 'bg-nim-mint/5 border-nim-mint/40 hover:border-nim-mint' 
+                    : 'bg-white border-nim-mist hover:border-nim-slate/30'
+                }`}
               >
-                {/* Most common indicator - subtle top accent */}
-                {domain.mostCommon && (
-                  <div className="absolute top-0 left-8 right-8 h-[2px] bg-gradient-to-r from-nim-mint via-nim-mint to-transparent rounded-full" />
-                )}
-
-                {/* Header row */}
-                <div className="flex items-start justify-between mb-6">
-                  <div className="w-10 h-10 rounded-xl bg-[#F4F4F5] flex items-center justify-center group-hover:bg-nim-mint/30 transition-colors duration-300">
-                    <IconComponent className="w-[18px] h-[18px] text-nim-navy/70" strokeWidth={1.5} />
+                {/* Left: Icon + Title + Badge */}
+                <div className="lg:col-span-4 flex items-start gap-4">
+                  <div className={`w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 ${
+                    domain.popular ? 'bg-nim-mint/30' : 'bg-nim-cloud'
+                  }`}>
+                    <IconComponent className="w-5 h-5 text-nim-navy" strokeWidth={1.75} />
                   </div>
-                  {domain.mostCommon && (
-                    <span className="text-[10px] font-medium text-nim-purple/70 uppercase tracking-wide">
-                      Popular
-                    </span>
-                  )}
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <h3 className="text-lg font-semibold text-nim-navy">
+                        {domain.title}
+                      </h3>
+                      {domain.popular && (
+                        <span className="px-2 py-0.5 bg-nim-mint text-nim-navy text-[10px] font-bold uppercase tracking-wide rounded">
+                          Popular
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-sm text-nim-slate lg:hidden">
+                      {domain.outcome}
+                    </p>
+                  </div>
                 </div>
 
-                {/* Title */}
-                <h3 className="text-[17px] font-semibold text-nim-navy mb-3 tracking-[-0.01em]">
-                  {domain.title}
-                </h3>
+                {/* Middle: Outcome (desktop only) */}
+                <div className="hidden lg:flex lg:col-span-4 items-center">
+                  <p className="text-[15px] text-nim-slate-dark leading-relaxed">
+                    {domain.outcome}
+                  </p>
+                </div>
 
-                {/* Description - the outcome */}
-                <p className="text-[15px] text-[#1A1A1A]/50 leading-relaxed mb-6">
-                  {domain.description}
-                </p>
-
-                {/* Deliverables list - clean inline style */}
-                <div className="flex flex-wrap gap-2">
-                  {domain.deliverables.map((item, i) => (
-                    <span 
-                      key={i}
-                      className="inline-flex items-center px-2.5 py-1 bg-[#F4F4F5] text-[12px] text-[#1A1A1A]/60 rounded-md"
-                    >
-                      {item}
-                    </span>
-                  ))}
+                {/* Right: What's included */}
+                <div className="lg:col-span-4">
+                  <p className="text-[11px] font-medium uppercase tracking-wide text-nim-slate/70 mb-2 lg:mb-3">
+                    Includes
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {domain.includes.map((item, i) => (
+                      <span 
+                        key={i}
+                        className="inline-block px-2.5 py-1 bg-nim-cloud/80 text-nim-navy/80 text-xs rounded-md"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             );
           })}
         </motion.div>
 
-        {/* Footer CTA - minimal */}
+        {/* Footer CTA */}
         <motion.div
           style={getItemStyle(4)}
-          className="mt-20 md:mt-24 pt-12 border-t border-[#E8E8EC]"
+          className="mt-16 text-center"
         >
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-            <p className="text-[15px] text-[#1A1A1A]/50">
-              Not sure which areas you need? We'll help you figure it out.
-            </p>
-            <a
-              href={TYPEFORM_HEALTH_CHECK_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-nim-navy font-medium text-[15px] hover:text-nim-purple transition-colors group"
-            >
-              Take the Free Health Check
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-            </a>
-          </div>
+          <p className="text-nim-slate mb-4">
+            Not sure which areas you need?
+          </p>
+          <a
+            href={TYPEFORM_HEALTH_CHECK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-nim-navy text-white font-medium rounded-xl hover:bg-nim-navy/90 transition-colors group"
+          >
+            Take the Free Health Check
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+          </a>
         </motion.div>
       </div>
     </section>
