@@ -1284,39 +1284,34 @@ const PricingSection = () => {
   );
 };
 
-// 6) WHAT WE INSTALL Section - Premium modern design
+// 6) WHAT WE INSTALL Section - Clean, accessible design
 const DeliverablesSection = () => {
   const coreDomains = [
     {
-      icon: Building2,
       title: "Board & Governance",
       review: "Board setup, meeting frequency, existing policies, gaps",
       build: "Conflict of interest policy, minutes template, decision log, board calendar, policy tracker",
       outcome: "Board runs with clear records — without chasing people"
     },
     {
-      icon: DollarSign,
       title: "Money & Grants",
       review: "How grants come in, how spending is tracked, how proof is stored, where things get lost",
       build: "Grant Proof Pack (tracker, folders, naming system, pull checklist), month-end routine",
       outcome: "Find proof in minutes when funders ask"
     },
     {
-      icon: UserCog,
       title: "People (Staff & HR)",
       review: "Role definitions, onboarding process, what happens when someone leaves",
       build: "Role clarity docs, onboarding checklist, handoff guides, basic HR file structure",
-      outcome: "New staff get up to speed fast. Nothing lives in one person's head"
+      outcome: "New staff get up to speed fast — nothing lives in one person's head"
     },
     {
-      icon: HandHeart,
       title: "Volunteers",
       review: "Recruitment process, onboarding, appreciation, retention, existing systems",
       build: "Volunteer intake process, onboarding checklist, role descriptions, appreciation rhythm, tracking system",
       outcome: "Volunteers know what they signed up for — and stay longer"
     },
     {
-      icon: Database,
       title: "Tools & Files",
       review: "Current tools, file organization, access permissions",
       build: "Folder structure, naming rules, permissions setup, file audit checklist",
@@ -1326,14 +1321,12 @@ const DeliverablesSection = () => {
 
   const premiumAddons = [
     {
-      icon: Briefcase,
       title: "Programs & Ops",
       review: "Program structure, tracking methods, reporting process",
       build: "Program documentation, tracking templates, reusable reporting formats",
       outcome: "Show what you're doing and whether it's working — without starting from scratch"
     },
     {
-      icon: Heart,
       title: "Fundraising & Donors",
       review: "How donations come in, donor tracking, relationship maintenance",
       build: "Donor tracking system, gift acknowledgment process, retention calendar",
@@ -1341,296 +1334,178 @@ const DeliverablesSection = () => {
     }
   ];
 
-  const training = {
-    icon: GraduationCap,
-    title: "Training & Handoff",
-    included: "Included in all packages",
-    build: "2–3 live sessions, recorded walkthroughs, written handoff guide",
-    outcome: "Team knows how to use systems. We don't leave until it sticks"
-  };
-
   return (
-    <section id="deliverables" className="py-24 md:py-32 bg-gradient-to-b from-white to-nim-cloud relative overflow-hidden">
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 opacity-[0.02]" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-      }} />
-      
-      <div className="relative max-w-6xl mx-auto px-6 lg:px-12">
+    <section 
+      id="deliverables" 
+      className="py-20 md:py-28 bg-white"
+      aria-labelledby="deliverables-heading"
+    >
+      <div className="max-w-4xl mx-auto px-6 lg:px-8">
         {/* Section header */}
-        <div className="text-center mb-16 md:mb-20">
-          <motion.span
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-block text-[11px] font-bold tracking-[0.3em] uppercase text-nim-purple mb-6"
-          >
+        <header className="mb-12 md:mb-16">
+          <p className="text-sm font-semibold text-nim-purple uppercase tracking-wide mb-3">
             Deliverables
-          </motion.span>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-nim-navy mb-6"
+          </p>
+          <h2 
+            id="deliverables-heading"
+            className="text-3xl md:text-4xl font-bold text-nim-navy mb-4"
           >
-            What we install{' '}
-            <span className="text-nim-slate/60 font-normal">(not just advise)</span>
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-lg md:text-xl text-nim-slate max-w-2xl mx-auto leading-relaxed"
-          >
+            What we install (not just advise)
+          </h2>
+          <p className="text-lg text-nim-slate max-w-2xl">
             We review what you have, fix what's broken, build what's missing — then train your team to run it.
-          </motion.p>
-        </div>
+          </p>
+        </header>
 
         {/* Core 5 Domains */}
-        <div className="mb-16">
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="flex items-center gap-4 mb-8"
-          >
-            <div className="flex items-center gap-3 px-4 py-2 bg-nim-purple/5 rounded-full border border-nim-purple/10">
-              <div className="w-2 h-2 rounded-full bg-nim-purple" />
-              <span className="text-sm font-semibold tracking-wide text-nim-navy">
-                Core 5 Domains
-              </span>
-            </div>
-            <div className="h-px flex-1 bg-gradient-to-r from-nim-mist to-transparent" />
-          </motion.div>
+        <div className="mb-14" role="region" aria-label="Core 5 Domains">
+          <h3 className="text-lg font-bold text-nim-navy mb-6 pb-3 border-b-2 border-nim-navy">
+            Core 5 Domains
+          </h3>
 
-          <div className="space-y-5">
+          <div className="divide-y divide-nim-mist">
             {coreDomains.map((domain, index) => (
-              <motion.div
+              <article 
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.08 }}
-                className="group relative bg-white rounded-2xl border border-nim-mist/80 shadow-sm hover:shadow-lg hover:border-nim-purple/20 transition-all duration-300"
+                className="py-6 first:pt-0 last:pb-0"
               >
-                {/* Card content */}
-                <div className="p-6 lg:p-8">
-                  {/* Header row */}
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="relative">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-nim-purple/10 to-nim-purple/5 flex items-center justify-center border border-nim-purple/10 group-hover:border-nim-purple/20 transition-colors">
-                        <domain.icon className="w-5 h-5 text-nim-purple" strokeWidth={1.8} />
-                      </div>
-                      <div className="absolute -bottom-1 -right-1 w-3 h-3 rounded-full bg-nim-mint border-2 border-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg lg:text-xl font-bold text-nim-navy tracking-tight">
-                        {domain.title}
-                      </h3>
-                    </div>
+                <h4 className="text-xl font-bold text-nim-navy mb-4">
+                  {domain.title}
+                </h4>
+                
+                <dl className="grid gap-4 sm:grid-cols-3 sm:gap-6">
+                  <div>
+                    <dt className="text-sm font-semibold text-nim-slate uppercase tracking-wide mb-1">
+                      We review
+                    </dt>
+                    <dd className="text-base text-nim-slate leading-relaxed">
+                      {domain.review}
+                    </dd>
                   </div>
-
-                  {/* Three-column content */}
-                  <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-                    {/* Review */}
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-2">
-                        <div className="w-1 h-4 rounded-full bg-nim-slate/20" />
-                        <p className="text-xs font-bold tracking-[0.15em] uppercase text-nim-slate/70">
-                          What we review
-                        </p>
-                      </div>
-                      <p className="text-[15px] text-nim-slate leading-relaxed pl-3">
-                        {domain.review}
-                      </p>
-                    </div>
-
-                    {/* Build */}
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-2">
-                        <div className="w-1 h-4 rounded-full bg-nim-purple/40" />
-                        <p className="text-xs font-bold tracking-[0.15em] uppercase text-nim-slate/70">
-                          What we build
-                        </p>
-                      </div>
-                      <p className="text-[15px] text-nim-navy leading-relaxed pl-3 font-medium">
-                        {domain.build}
-                      </p>
-                    </div>
-
-                    {/* Outcome */}
-                    <div className="space-y-2 md:bg-nim-mint/5 md:-m-4 md:p-4 md:rounded-xl">
-                      <div className="flex items-center gap-2">
-                        <div className="w-1 h-4 rounded-full bg-nim-purple" />
-                        <p className="text-xs font-bold tracking-[0.15em] uppercase text-nim-purple">
-                          What you get
-                        </p>
-                      </div>
-                      <p className="text-[15px] text-nim-navy leading-relaxed pl-3 font-medium">
-                        {domain.outcome}
-                      </p>
-                    </div>
+                  
+                  <div>
+                    <dt className="text-sm font-semibold text-nim-slate uppercase tracking-wide mb-1">
+                      We build
+                    </dt>
+                    <dd className="text-base text-nim-navy leading-relaxed">
+                      {domain.build}
+                    </dd>
                   </div>
-                </div>
-              </motion.div>
+                  
+                  <div className="sm:bg-nim-mint/10 sm:rounded-lg sm:p-4 sm:-m-4">
+                    <dt className="text-sm font-semibold text-nim-purple uppercase tracking-wide mb-1">
+                      You get
+                    </dt>
+                    <dd className="text-base text-nim-navy font-medium leading-relaxed">
+                      {domain.outcome}
+                    </dd>
+                  </div>
+                </dl>
+              </article>
             ))}
           </div>
         </div>
 
         {/* Premium Add-Ons */}
-        <div className="mb-16">
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="flex flex-wrap items-center gap-3 mb-8"
-          >
-            <div className="flex items-center gap-3 px-4 py-2 bg-nim-mint/10 rounded-full border border-nim-mint/30">
-              <div className="w-2 h-2 rounded-full bg-nim-mint" />
-              <span className="text-sm font-semibold tracking-wide text-nim-navy">
-                Premium Add-Ons
-              </span>
-            </div>
-            <span className="text-[10px] font-bold tracking-wider uppercase text-nim-navy bg-nim-mint px-3 py-1.5 rounded-full shadow-sm">
+        <div className="mb-14" role="region" aria-label="Premium Add-Ons">
+          <div className="flex flex-wrap items-center gap-3 mb-6 pb-3 border-b-2 border-nim-mint">
+            <h3 className="text-lg font-bold text-nim-navy">
+              Premium Add-Ons
+            </h3>
+            <span className="text-xs font-bold text-nim-navy bg-nim-mint px-3 py-1 rounded-full">
               Custom tier only
             </span>
-            <div className="h-px flex-1 bg-gradient-to-r from-nim-mist to-transparent" />
-          </motion.div>
+          </div>
 
-          <div className="grid md:grid-cols-2 gap-5">
+          <div className="grid sm:grid-cols-2 gap-6">
             {premiumAddons.map((addon, index) => (
-              <motion.div
+              <article 
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group relative bg-white rounded-2xl border-2 border-nim-mint/40 shadow-sm hover:shadow-lg hover:border-nim-mint transition-all duration-300 overflow-hidden"
+                className="p-5 bg-nim-cloud rounded-xl border border-nim-mist"
               >
-                {/* Accent gradient */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-nim-mint to-nim-mint/50" />
+                <h4 className="text-lg font-bold text-nim-navy mb-4">
+                  {addon.title}
+                </h4>
                 
-                <div className="p-6 lg:p-7">
-                  {/* Header */}
-                  <div className="flex items-center gap-4 mb-5">
-                    <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-nim-mint/30 to-nim-mint/10 flex items-center justify-center border border-nim-mint/20">
-                      <addon.icon className="w-5 h-5 text-nim-navy" strokeWidth={1.8} />
-                    </div>
-                    <h3 className="text-lg font-bold text-nim-navy tracking-tight">
-                      {addon.title}
-                    </h3>
+                <dl className="space-y-3">
+                  <div>
+                    <dt className="text-xs font-semibold text-nim-slate uppercase tracking-wide">
+                      Review
+                    </dt>
+                    <dd className="text-sm text-nim-slate leading-relaxed mt-0.5">
+                      {addon.review}
+                    </dd>
                   </div>
-
-                  {/* Stacked content */}
-                  <div className="space-y-4">
-                    <div className="flex gap-3">
-                      <div className="w-1 rounded-full bg-nim-slate/20 flex-shrink-0" />
-                      <div>
-                        <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-nim-slate/60 mb-1">
-                          Review
-                        </p>
-                        <p className="text-sm text-nim-slate leading-relaxed">
-                          {addon.review}
-                        </p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex gap-3">
-                      <div className="w-1 rounded-full bg-nim-purple/40 flex-shrink-0" />
-                      <div>
-                        <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-nim-slate/60 mb-1">
-                          Build
-                        </p>
-                        <p className="text-sm text-nim-navy leading-relaxed font-medium">
-                          {addon.build}
-                        </p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex gap-3 bg-nim-mint/5 -mx-4 px-4 py-3 rounded-lg">
-                      <div className="w-1 rounded-full bg-nim-purple flex-shrink-0" />
-                      <div>
-                        <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-nim-purple mb-1">
-                          Outcome
-                        </p>
-                        <p className="text-sm text-nim-navy leading-relaxed font-medium">
-                          {addon.outcome}
-                        </p>
-                      </div>
-                    </div>
+                  
+                  <div>
+                    <dt className="text-xs font-semibold text-nim-slate uppercase tracking-wide">
+                      Build
+                    </dt>
+                    <dd className="text-sm text-nim-navy leading-relaxed mt-0.5">
+                      {addon.build}
+                    </dd>
                   </div>
-                </div>
-              </motion.div>
+                  
+                  <div className="bg-nim-mint/15 rounded-lg p-3 -mx-1">
+                    <dt className="text-xs font-semibold text-nim-purple uppercase tracking-wide">
+                      Outcome
+                    </dt>
+                    <dd className="text-sm text-nim-navy font-medium leading-relaxed mt-0.5">
+                      {addon.outcome}
+                    </dd>
+                  </div>
+                </dl>
+              </article>
             ))}
           </div>
         </div>
 
         {/* Training & Handoff */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="relative bg-nim-navy rounded-3xl p-8 lg:p-10 mb-14 overflow-hidden"
+        <article 
+          className="bg-nim-navy rounded-2xl p-6 md:p-8 mb-12"
+          role="region"
+          aria-label="Training and Handoff"
         >
-          {/* Background decoration */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-nim-mint/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-nim-purple/5 rounded-full blur-3xl" />
-          
-          <div className="relative">
-            {/* Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-8">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-nim-mint/20 to-nim-mint/10 flex items-center justify-center border border-nim-mint/20">
-                <GraduationCap className="w-7 h-7 text-nim-mint" strokeWidth={1.8} />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-white tracking-tight">
-                  {training.title}
-                </h3>
-                <span className="inline-flex items-center gap-2 text-sm text-nim-mint font-medium mt-1">
-                  <Check className="w-4 h-4" />
-                  {training.included}
-                </span>
-              </div>
+          <div className="flex items-start gap-4 mb-6">
+            <div className="w-12 h-12 rounded-xl bg-nim-mint/20 flex items-center justify-center flex-shrink-0">
+              <GraduationCap className="w-6 h-6 text-nim-mint" aria-hidden="true" />
             </div>
-
-            {/* Two-column content */}
-            <div className="grid sm:grid-cols-2 gap-8">
-              <div className="space-y-3">
-                <p className="text-xs font-bold tracking-[0.2em] uppercase text-white/40">
-                  What we deliver
-                </p>
-                <p className="text-base text-white/90 leading-relaxed">
-                  {training.build}
-                </p>
-              </div>
-              <div className="space-y-3 sm:bg-white/5 sm:-m-4 sm:p-6 sm:rounded-2xl">
-                <p className="text-xs font-bold tracking-[0.2em] uppercase text-nim-mint">
-                  What you get
-                </p>
-                <p className="text-base text-white leading-relaxed font-medium">
-                  {training.outcome}
-                </p>
-              </div>
+            <div>
+              <h3 className="text-xl font-bold text-white">
+                Training & Handoff
+              </h3>
+              <p className="text-nim-mint text-sm font-medium mt-1">
+                Included in all packages
+              </p>
             </div>
           </div>
-        </motion.div>
+
+          <dl className="grid sm:grid-cols-2 gap-6">
+            <div>
+              <dt className="text-xs font-semibold text-white/60 uppercase tracking-wide mb-2">
+                What we deliver
+              </dt>
+              <dd className="text-base text-white/90 leading-relaxed">
+                2–3 live sessions, recorded walkthroughs, written handoff guide
+              </dd>
+            </div>
+            <div className="bg-white/10 rounded-xl p-4">
+              <dt className="text-xs font-semibold text-nim-mint uppercase tracking-wide mb-2">
+                What you get
+              </dt>
+              <dd className="text-base text-white font-medium leading-relaxed">
+                Team knows how to use systems. We don't leave until it sticks.
+              </dd>
+            </div>
+          </dl>
+        </article>
 
         {/* Closing line */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <p className="text-lg md:text-xl text-nim-navy font-medium max-w-2xl mx-auto leading-relaxed">
-            <span className="text-nim-purple">"</span>
-            Most consultants hand you a report and leave. We hand you a working back office — and train your team to run it.
-            <span className="text-nim-purple">"</span>
+        <blockquote className="text-center border-l-0 pl-0">
+          <p className="text-lg md:text-xl text-nim-navy font-medium max-w-xl mx-auto leading-relaxed">
+            "Most consultants hand you a report and leave. We hand you a working back office — and train your team to run it."
           </p>
-        </motion.div>
+        </blockquote>
       </div>
     </section>
   );
