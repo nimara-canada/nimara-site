@@ -1221,124 +1221,6 @@ const WhoThisIsFor = () => {
   );
 };
 
-
-// 4) THE FRAMEWORK Section - Clean Nimara branding
-const FrameworkSection = () => {
-  const coreAreas = [
-    { icon: Building2, title: "Board & Governance", desc: "Clear decisions, minutes, and follow-through.", optional: false },
-    { icon: DollarSign, title: "Money & Grants", desc: "Track spending, save proof, make reporting easier.", optional: false },
-    { icon: UserCog, title: "People (Staff & HR)", desc: "Clear roles, handoffs, basic HR.", optional: false },
-    { icon: Briefcase, title: "Programs & Ops", desc: "Simple plans, tracking, reusable updates.", optional: false },
-    { icon: Database, title: "Tools & Data", desc: "Folders, templates, and simple tools people can find.", optional: false },
-    { icon: Heart, title: "Fundraising & Donors", desc: "Simple donor tracking + routines.", optional: true },
-    { icon: HandHeart, title: "Volunteers", desc: "Onboarding, scheduling, hours tracking.", optional: true }
-  ];
-
-  return (
-    <section id="framework" className="py-24 md:py-32 bg-nim-cloud relative overflow-hidden">
-      <div className="relative max-w-6xl mx-auto px-6 lg:px-12">
-        {/* Section header */}
-        <div className="text-center mb-16 md:mb-20">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-nim-navy mb-4"
-          >
-            The Core 5 Framework
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-lg text-nim-slate"
-          >
-            Plus 2 optional add-ons for complex organizations.
-          </motion.p>
-        </div>
-
-        {/* Core areas grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 mb-12">
-          {coreAreas.filter(a => !a.optional).map((area, index) => (
-            <motion.article
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.08 }}
-              whileHover={{ y: -4 }}
-              className="group relative rounded-2xl p-6 lg:p-7 bg-white border border-nim-mist"
-            >
-              <div className="w-12 h-12 rounded-xl bg-nim-purple/10 flex items-center justify-center mb-5">
-                <area.icon className="w-5 h-5 text-nim-purple" strokeWidth={1.8} />
-              </div>
-              
-              <h3 className="text-lg font-semibold text-nim-navy mb-2 tracking-tight">
-                {area.title}
-              </h3>
-              <p className="text-sm text-nim-slate leading-relaxed">
-                {area.desc}
-              </p>
-            </motion.article>
-          ))}
-        </div>
-
-        {/* Optional areas */}
-        <div className="mb-12">
-          <div className="flex items-center justify-center gap-3 mb-8">
-            <div className="h-px w-12 bg-nim-mist" />
-            <p className="text-xs font-bold tracking-[0.25em] uppercase text-nim-slate">
-              Premium Add-ons
-            </p>
-            <div className="h-px w-12 bg-nim-mist" />
-          </div>
-          
-          <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
-            {coreAreas.filter(a => a.optional).map((area, index) => (
-              <motion.article
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -4 }}
-                className="group relative rounded-2xl p-7 bg-white border-2 border-nim-mint overflow-hidden"
-              >
-                <span className="absolute top-4 right-4 text-[10px] font-bold tracking-wider uppercase text-nim-navy bg-nim-mint px-3 py-1.5 rounded-full">
-                  Optional
-                </span>
-                
-                <div className="w-12 h-12 rounded-xl bg-nim-mint/30 flex items-center justify-center mb-5">
-                  <area.icon className="w-5 h-5 text-nim-navy" strokeWidth={1.8} />
-                </div>
-                
-                <h3 className="text-lg font-bold text-nim-navy mb-2 tracking-tight">
-                  {area.title}
-                </h3>
-                <p className="text-sm text-nim-slate leading-relaxed">
-                  {area.desc}
-                </p>
-              </motion.article>
-            ))}
-          </div>
-        </div>
-
-        {/* Footer note */}
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-sm text-nim-slate text-center max-w-lg mx-auto"
-        >
-          Most teams start with <strong className="text-nim-navy font-medium">Core 3</strong> or{' '}
-          <strong className="text-nim-navy font-medium">Core 5</strong>.
-        </motion.p>
-      </div>
-    </section>
-  );
-};
-
 // 5) PRICING Section - Clean Nimara branding
 // Removed local PricingSection - now using imported component from @/components/PricingSection
 const DeliverablesSection = () => {
@@ -1660,9 +1542,6 @@ const CapacityBuildout = () => {
           <PricingSection />
           <ScrollSection parallaxStrength={0.15}>
             <WhoThisIsFor />
-          </ScrollSection>
-          <ScrollSection parallaxStrength={0.12}>
-            <FrameworkSection />
           </ScrollSection>
           <ScrollSection parallaxStrength={0.1}>
             <DeliverablesSection />
