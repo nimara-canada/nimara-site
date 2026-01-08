@@ -16,7 +16,7 @@ import { CALENDLY_BOOKING_URL, TYPEFORM_HEALTH_CHECK_URL, CONTACT_EMAIL } from '
 import { 
   Check, X, ArrowRight, FileCheck, ClipboardCheck, Users, Sparkles,
   Building2, DollarSign, UserCog, Briefcase, Database, Heart, HandHeart,
-  Shield, Clock, Mail, ChevronDown
+  Shield, Clock, Mail, ChevronDown, GraduationCap
 } from 'lucide-react';
 import { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
@@ -1283,19 +1283,74 @@ const PricingSection = () => {
   );
 };
 
-// 6) WHAT'S INCLUDED Section - Clean Nimara branding
+// 6) WHAT WE INSTALL Section - Three-part format
 const DeliverablesSection = () => {
-  const deliverables = [
-    { title: "Grant Proof Pack System", desc: "Tracker + folders + naming + pull checklist" },
-    { title: "Simple finance routine", desc: "Coding rules + month-end checklist" },
-    { title: "Documentation pack", desc: "6–10 micro-SOPs (1–2 pages each)" },
-    { title: "Governance basics", desc: "Minutes template + decision log + policy tracker" },
-    { title: "Training + handoff", desc: "2–3 sessions + recordings + handoff guide" }
+  const coreDomains = [
+    {
+      icon: Building2,
+      title: "Board & Governance",
+      review: "Board setup, meeting frequency, existing policies, gaps",
+      build: "Conflict of interest policy, minutes template, decision log, board calendar, policy tracker",
+      outcome: "Board runs with clear records — without chasing people"
+    },
+    {
+      icon: DollarSign,
+      title: "Money & Grants",
+      review: "How grants come in, how spending is tracked, how proof is stored, where things get lost",
+      build: "Grant Proof Pack (tracker, folders, naming system, pull checklist), month-end routine",
+      outcome: "Find proof in minutes when funders ask"
+    },
+    {
+      icon: UserCog,
+      title: "People (Staff & HR)",
+      review: "Role definitions, onboarding process, what happens when someone leaves",
+      build: "Role clarity docs, onboarding checklist, handoff guides, basic HR file structure",
+      outcome: "New staff get up to speed fast. Nothing lives in one person's head"
+    },
+    {
+      icon: HandHeart,
+      title: "Volunteers",
+      review: "Recruitment process, onboarding, appreciation, retention, existing systems",
+      build: "Volunteer intake process, onboarding checklist, role descriptions, appreciation rhythm, tracking system",
+      outcome: "Volunteers know what they signed up for — and stay longer"
+    },
+    {
+      icon: Database,
+      title: "Tools & Files",
+      review: "Current tools, file organization, access permissions",
+      build: "Folder structure, naming rules, permissions setup, file audit checklist",
+      outcome: "Anyone on team — or next ED — can find what they need"
+    }
   ];
+
+  const premiumAddons = [
+    {
+      icon: Briefcase,
+      title: "Programs & Ops",
+      review: "Program structure, tracking methods, reporting process",
+      build: "Program documentation, tracking templates, reusable reporting formats",
+      outcome: "Show what you're doing and whether it's working — without starting from scratch"
+    },
+    {
+      icon: Heart,
+      title: "Fundraising & Donors",
+      review: "How donations come in, donor tracking, relationship maintenance",
+      build: "Donor tracking system, gift acknowledgment process, retention calendar",
+      outcome: "Know who gave, when, and how to keep them giving"
+    }
+  ];
+
+  const training = {
+    icon: GraduationCap,
+    title: "Training & Handoff",
+    included: "Included in all packages",
+    build: "2–3 live sessions, recorded walkthroughs, written handoff guide",
+    outcome: "Team knows how to use systems. We don't leave until it sticks"
+  };
 
   return (
     <section id="deliverables" className="py-24 md:py-32 bg-nim-cloud relative">
-      <div className="max-w-4xl mx-auto px-6 lg:px-12">
+      <div className="max-w-5xl mx-auto px-6 lg:px-12">
         {/* Section header */}
         <div className="text-center mb-14 md:mb-16">
           <motion.span
@@ -1311,35 +1366,198 @@ const DeliverablesSection = () => {
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-nim-navy"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-nim-navy mb-5"
           >
             What we install{' '}
             <span className="text-nim-slate font-normal">(not just advise)</span>
           </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-lg text-nim-slate max-w-2xl mx-auto"
+          >
+            We review what you have, fix what's broken, build what's missing — then train your team to run it.
+          </motion.p>
         </div>
 
-        {/* Deliverables list */}
-        <div className="space-y-4">
-          {deliverables.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.08 }}
-              whileHover={{ x: 4 }}
-              className="flex items-start gap-4 p-5 lg:p-6 bg-white border border-nim-mist rounded-xl transition-all hover:border-nim-purple/30"
-            >
-              <div className="w-10 h-10 rounded-lg bg-nim-mint/30 flex items-center justify-center flex-shrink-0">
-                <Check className="w-5 h-5 text-nim-purple" strokeWidth={2} />
-              </div>
-              <div>
-                <h3 className="font-semibold text-nim-navy text-lg mb-1">{item.title}</h3>
-                <p className="text-[15px] text-nim-slate leading-relaxed">{item.desc}</p>
-              </div>
-            </motion.div>
-          ))}
+        {/* Core 5 Domains */}
+        <div className="mb-10">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="text-xs font-bold tracking-[0.2em] uppercase text-nim-navy">
+              Core 5 Domains
+            </span>
+            <div className="h-px flex-1 bg-nim-mist" />
+          </div>
+
+          <div className="space-y-4">
+            {coreDomains.map((domain, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.06 }}
+                className="bg-white border border-nim-mist rounded-2xl p-6 lg:p-7 transition-all hover:border-nim-purple/30"
+              >
+                {/* Header */}
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="w-11 h-11 rounded-xl bg-nim-purple/10 flex items-center justify-center flex-shrink-0">
+                    <domain.icon className="w-5 h-5 text-nim-purple" strokeWidth={1.8} />
+                  </div>
+                  <h3 className="text-xl font-bold text-nim-navy tracking-tight">
+                    {domain.title}
+                  </h3>
+                </div>
+
+                {/* Three-part content */}
+                <div className="grid md:grid-cols-3 gap-5 lg:gap-6">
+                  <div>
+                    <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-nim-slate mb-2">
+                      What we review
+                    </p>
+                    <p className="text-[15px] text-nim-slate leading-relaxed">
+                      {domain.review}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-nim-slate mb-2">
+                      What we build
+                    </p>
+                    <p className="text-[15px] text-nim-navy leading-relaxed font-medium">
+                      {domain.build}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-nim-purple mb-2">
+                      What you get
+                    </p>
+                    <p className="text-[15px] text-nim-navy leading-relaxed">
+                      {domain.outcome}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
+
+        {/* Premium Add-Ons */}
+        <div className="mb-10">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="text-xs font-bold tracking-[0.2em] uppercase text-nim-navy">
+              Premium Add-Ons
+            </span>
+            <span className="text-[10px] font-bold tracking-wider uppercase text-nim-navy bg-nim-mint px-3 py-1 rounded-full">
+              Custom tier only
+            </span>
+            <div className="h-px flex-1 bg-nim-mist" />
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-4">
+            {premiumAddons.map((addon, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.08 }}
+                className="bg-white border-2 border-nim-mint rounded-2xl p-6 lg:p-7"
+              >
+                {/* Header */}
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="w-11 h-11 rounded-xl bg-nim-mint/30 flex items-center justify-center flex-shrink-0">
+                    <addon.icon className="w-5 h-5 text-nim-navy" strokeWidth={1.8} />
+                  </div>
+                  <h3 className="text-lg font-bold text-nim-navy tracking-tight">
+                    {addon.title}
+                  </h3>
+                </div>
+
+                {/* Three-part content - stacked on premium */}
+                <div className="space-y-4">
+                  <div>
+                    <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-nim-slate mb-1.5">
+                      What we review
+                    </p>
+                    <p className="text-sm text-nim-slate leading-relaxed">
+                      {addon.review}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-nim-slate mb-1.5">
+                      What we build
+                    </p>
+                    <p className="text-sm text-nim-navy leading-relaxed font-medium">
+                      {addon.build}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-nim-purple mb-1.5">
+                      What you get
+                    </p>
+                    <p className="text-sm text-nim-navy leading-relaxed">
+                      {addon.outcome}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Training & Handoff */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-nim-navy rounded-2xl p-7 lg:p-8 mb-12"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+            <div className="w-12 h-12 rounded-xl bg-nim-mint/20 flex items-center justify-center flex-shrink-0">
+              <GraduationCap className="w-6 h-6 text-nim-mint" strokeWidth={1.8} />
+            </div>
+            <div>
+              <h3 className="text-xl font-bold text-white tracking-tight">
+                {training.title}
+              </h3>
+              <span className="text-sm text-nim-mint font-medium">
+                {training.included}
+              </span>
+            </div>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-6">
+            <div>
+              <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-white/50 mb-2">
+                What we deliver
+              </p>
+              <p className="text-[15px] text-white/90 leading-relaxed">
+                {training.build}
+              </p>
+            </div>
+            <div>
+              <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-nim-mint mb-2">
+                What you get
+              </p>
+              <p className="text-[15px] text-white leading-relaxed font-medium">
+                {training.outcome}
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Closing line */}
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center text-lg text-nim-navy font-medium max-w-2xl mx-auto"
+        >
+          "Most consultants hand you a report and leave. We hand you a working back office — and train your team to run it."
+        </motion.p>
       </div>
     </section>
   );
