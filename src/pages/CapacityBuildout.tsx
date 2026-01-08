@@ -298,6 +298,270 @@ const HowItWorksSection = () => {
   );
 };
 
+// 1.75) DOMAINS Section - 7 operational areas
+const DomainsSection = () => {
+  const { ref, getItemStyle } = useStaggeredReveal<HTMLElement>(12, { staggerDelay: 50, baseDelay: 100 });
+
+  const domains = [
+    {
+      id: 1,
+      title: "Board & Governance",
+      icon: ClipboardCheck,
+      mostCommon: false,
+      review: "How your board is set up. How often they meet. What policies exist. Where the gaps are.",
+      build: "Conflict of interest policy. Minutes template. Decision log. Board calendar. Policy tracker.",
+      outcome: "A board that runs with clear records — without you chasing people.",
+      price: "$6,999"
+    },
+    {
+      id: 2,
+      title: "Money & Grants",
+      icon: DollarSign,
+      mostCommon: true,
+      review: "How grants come in. How spending is tracked. How proof is stored. Where things get lost.",
+      build: "Grant Proof Pack: tracker, folders, naming system, pull checklist. Month-end routine.",
+      outcome: "When a funder asks for proof, you find it in minutes — not days.",
+      price: "$6,999"
+    },
+    {
+      id: 3,
+      title: "People (Staff & HR)",
+      icon: UserCog,
+      mostCommon: false,
+      review: "How roles are defined. How onboarding works. What happens when someone leaves.",
+      build: "Role clarity docs. Onboarding checklist. Handoff guides. Basic HR file structure.",
+      outcome: "New staff get up to speed fast. Nothing lives in one person's head.",
+      price: "$6,999"
+    },
+    {
+      id: 4,
+      title: "Volunteers",
+      icon: HandHeart,
+      mostCommon: true,
+      review: "How you recruit volunteers. How you onboard them. How you appreciate and retain them.",
+      build: "Volunteer intake process. Onboarding checklist. Role descriptions. Appreciation rhythm. Tracking system.",
+      outcome: "Volunteers know what they signed up for — and they stay longer.",
+      price: "$6,999"
+    },
+    {
+      id: 5,
+      title: "Tools & Files",
+      icon: Database,
+      mostCommon: false,
+      review: "What tools you use. How files are organized. Who has access to what.",
+      build: "Folder structure. Naming rules. Permissions setup. File audit checklist.",
+      outcome: "Anyone on your team — or your next ED — can find what they need.",
+      price: "$6,999"
+    },
+    {
+      id: 6,
+      title: "Programs & Ops",
+      icon: Briefcase,
+      mostCommon: true,
+      review: "How your programs are structured. How you track what's working. How you report on outcomes.",
+      build: "Program documentation. Tracking templates. Reusable reporting formats.",
+      outcome: "Show what you're doing and whether it's working — without starting from scratch.",
+      price: "$6,999"
+    },
+    {
+      id: 7,
+      title: "Fundraising & Donors",
+      icon: Heart,
+      mostCommon: false,
+      review: "How donations come in. How you track donors. How you keep relationships warm.",
+      build: "Donor tracking system. Gift acknowledgment process. Retention calendar.",
+      outcome: "Know who gave, when, and how to keep them giving.",
+      price: "$6,999"
+    }
+  ];
+
+  return (
+    <section 
+      id="domains" 
+      ref={ref}
+      className="py-24 md:py-32 bg-white relative"
+    >
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        {/* Section header */}
+        <div className="text-center mb-16 md:mb-20">
+          <motion.span
+            style={getItemStyle(0)}
+            className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-nim-purple mb-4"
+          >
+            What We Fix
+          </motion.span>
+          <motion.h2
+            style={getItemStyle(1)}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-nim-navy tracking-tight mb-5"
+          >
+            7 areas. You choose which ones.
+          </motion.h2>
+          <motion.p
+            style={getItemStyle(2)}
+            className="text-lg md:text-xl text-[#1A1A1A]/70 max-w-2xl mx-auto leading-relaxed"
+          >
+            Every nonprofit runs on the same foundations. Pick the areas where you need the most help — we'll handle the rest.
+          </motion.p>
+        </div>
+
+        {/* Domain cards grid */}
+        <motion.div 
+          style={getItemStyle(3)}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {domains.slice(0, 6).map((domain, index) => (
+            <motion.div
+              key={domain.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ duration: 0.4, delay: index * 0.06 }}
+              className="group relative bg-white rounded-xl border border-[#E5E7EB] p-7 hover:border-nim-purple/30 hover:shadow-lg hover:shadow-nim-purple/5 transition-all duration-300"
+            >
+              {/* Most common badge */}
+              {domain.mostCommon && (
+                <span className="absolute top-4 right-4 px-2.5 py-1 bg-nim-mint text-nim-navy text-[10px] font-bold uppercase tracking-wide rounded-full">
+                  Most common
+                </span>
+              )}
+
+              {/* Icon */}
+              <div className="w-11 h-11 rounded-xl bg-nim-mint/40 flex items-center justify-center mb-5">
+                <domain.icon className="w-5 h-5 text-nim-navy" strokeWidth={1.75} />
+              </div>
+
+              {/* Title */}
+              <h3 className="text-lg font-bold text-nim-navy mb-5 tracking-tight">
+                {domain.title}
+              </h3>
+
+              {/* Content sections */}
+              <div className="space-y-4">
+                {/* What we review */}
+                <div>
+                  <span className="block text-[10px] font-semibold uppercase tracking-[0.15em] text-nim-purple mb-1.5">
+                    What we review
+                  </span>
+                  <p className="text-sm text-[#1A1A1A]/60 leading-relaxed">
+                    {domain.review}
+                  </p>
+                </div>
+
+                {/* What we build */}
+                <div>
+                  <span className="block text-[10px] font-semibold uppercase tracking-[0.15em] text-nim-purple mb-1.5">
+                    What we build
+                  </span>
+                  <p className="text-sm text-[#1A1A1A]/60 leading-relaxed">
+                    {domain.build}
+                  </p>
+                </div>
+
+                {/* What you get */}
+                <div>
+                  <span className="block text-[10px] font-semibold uppercase tracking-[0.15em] text-nim-purple mb-1.5">
+                    What you get
+                  </span>
+                  <p className="text-sm text-nim-navy font-medium leading-relaxed">
+                    {domain.outcome}
+                  </p>
+                </div>
+              </div>
+
+              {/* Price hint */}
+              <div className="mt-6 pt-4 border-t border-[#E5E7EB]">
+                <span className="text-xs text-[#1A1A1A]/40">
+                  {domain.price} per area
+                </span>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* 7th card - centered */}
+        <motion.div 
+          style={getItemStyle(4)}
+          className="mt-6 flex justify-center"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-30px" }}
+            transition={{ duration: 0.4, delay: 0.36 }}
+            className="group relative bg-white rounded-xl border border-[#E5E7EB] p-7 hover:border-nim-purple/30 hover:shadow-lg hover:shadow-nim-purple/5 transition-all duration-300 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
+          >
+            {/* Icon */}
+            <div className="w-11 h-11 rounded-xl bg-nim-mint/40 flex items-center justify-center mb-5">
+              <Heart className="w-5 h-5 text-nim-navy" strokeWidth={1.75} />
+            </div>
+
+            {/* Title */}
+            <h3 className="text-lg font-bold text-nim-navy mb-5 tracking-tight">
+              {domains[6].title}
+            </h3>
+
+            {/* Content sections */}
+            <div className="space-y-4">
+              <div>
+                <span className="block text-[10px] font-semibold uppercase tracking-[0.15em] text-nim-purple mb-1.5">
+                  What we review
+                </span>
+                <p className="text-sm text-[#1A1A1A]/60 leading-relaxed">
+                  {domains[6].review}
+                </p>
+              </div>
+
+              <div>
+                <span className="block text-[10px] font-semibold uppercase tracking-[0.15em] text-nim-purple mb-1.5">
+                  What we build
+                </span>
+                <p className="text-sm text-[#1A1A1A]/60 leading-relaxed">
+                  {domains[6].build}
+                </p>
+              </div>
+
+              <div>
+                <span className="block text-[10px] font-semibold uppercase tracking-[0.15em] text-nim-purple mb-1.5">
+                  What you get
+                </span>
+                <p className="text-sm text-nim-navy font-medium leading-relaxed">
+                  {domains[6].outcome}
+                </p>
+              </div>
+            </div>
+
+            {/* Price hint */}
+            <div className="mt-6 pt-4 border-t border-[#E5E7EB]">
+              <span className="text-xs text-[#1A1A1A]/40">
+                {domains[6].price} per area
+              </span>
+            </div>
+          </motion.div>
+        </motion.div>
+
+        {/* Footer CTA */}
+        <motion.div
+          style={getItemStyle(5)}
+          className="text-center mt-16 md:mt-20"
+        >
+          <p className="text-[#1A1A1A]/60 mb-5">
+            Not sure which areas you need? Take the Free Health Check — we'll show you where to start.
+          </p>
+          <a
+            href={TYPEFORM_HEALTH_CHECK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-nim-purple font-semibold hover:text-nim-purple/80 transition-colors group"
+          >
+            Take the Free Health Check
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 // 2) PRICING Section - Clean Nimara branding
 const PricingTiersSection = () => {
   const { ref, getItemStyle } = useStaggeredReveal<HTMLElement>(12, { staggerDelay: 60, baseDelay: 100 });
@@ -2053,6 +2317,7 @@ const CapacityBuildout = () => {
         <main id="main" className="overflow-hidden">
           <HeroSection />
           <HowItWorksSection />
+          <DomainsSection />
           <PricingTiersSection />
           <ScrollSection parallaxStrength={0.15}>
             <WhoThisIsFor />
