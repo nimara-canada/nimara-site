@@ -338,7 +338,7 @@ const DesktopDashboard = ({ isLoaded, revealStyle, progressBars }: DashboardProp
       {/* Floating Badge - Funder Ready */}
       <div 
         style={revealStyle(700)} 
-        className="absolute -left-4 bottom-8 z-10 bg-white rounded-xl shadow-2xl px-4 py-3"
+        className="absolute -left-4 -bottom-4 z-10 bg-white rounded-xl shadow-2xl px-4 py-3"
       >
         <div className="flex items-center gap-3">
           <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
