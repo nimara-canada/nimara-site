@@ -8,6 +8,7 @@ import { ScrollToTop } from '@/components/ScrollToTop';
 import { MotionControls } from '@/components/MotionControls';
 import { PricingSection } from '@/components/PricingSection';
 import { WhatYouGetSection } from '@/components/WhatYouGetSection';
+import { CapacityFAQ } from '@/components/CapacityFAQ';
 
 import { 
   MotionPreferencesProvider, 
@@ -1855,122 +1856,7 @@ const GuaranteeSection = () => {
 
 // 9) SOCIAL PROOF Section
 
-// 10) FAQ Section - Clean Nimara branding
-const FAQSection = () => {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
-  
-  const faqs = [
-    { q: "Do you guarantee funding?", a: "No. We help you build systems that make reporting easier and funder relationships smoother, but funding decisions are made by funders." },
-    { q: "Are you an audit firm?", a: "No. We're an operations and systems consultancy. We don't provide audit, legal, or tax advice." },
-    { q: "How fast can you start?", a: "Usually within 1–2 weeks of signed agreement and deposit. We'll confirm timing on the fit call." },
-    { q: "What if we're 25+ staff?", a: "You'll likely need Premium 7 or a custom scope. Book a call and we'll assess together." },
-    { q: "What tools do you use?", a: "We work inside the tools you already have: Google Workspace, Microsoft 365, QuickBooks, Xero, etc. No new software required." },
-    { q: "Will you work with our internal hire/contractor?", a: "Yes. We can collaborate with your team or train them to maintain the systems we build." },
-    { q: "What's not included?", a: "Bookkeeping, tax prep, legal advice, full HR policy development, and custom software builds." },
-    { q: "How do payments work?", a: "50% deposit to start, 50% on delivery. We can invoice as capacity building if that helps with funder reporting." }
-  ];
-
-  return (
-    <section id="faq" className="py-24 md:py-32 bg-white relative">
-      <div className="max-w-4xl mx-auto px-6 lg:px-12">
-        {/* Section header */}
-        <div className="text-center mb-16">
-          <motion.span
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-block text-[11px] font-bold tracking-[0.25em] uppercase text-nim-purple mb-5"
-          >
-            FAQ
-          </motion.span>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-nim-navy"
-          >
-            Common questions
-          </motion.h2>
-        </div>
-
-        {/* FAQ items */}
-        <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.05 }}
-              className={`
-                group relative bg-nim-cloud border rounded-2xl overflow-hidden transition-all
-                ${openFaq === index 
-                  ? 'border-nim-purple/30' 
-                  : 'border-nim-mist hover:border-nim-purple/20'}
-              `}
-            >
-              <button
-                onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                className="w-full flex items-center justify-between p-6 text-left"
-              >
-                <span className={`
-                  font-medium pr-6 transition-colors
-                  ${openFaq === index ? 'text-nim-navy' : 'text-nim-slate-dark group-hover:text-nim-navy'}
-                `}>
-                  {faq.q}
-                </span>
-                <div className={`
-                  flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all
-                  ${openFaq === index 
-                    ? 'bg-nim-purple/10 text-nim-purple rotate-180' 
-                    : 'bg-nim-mist text-nim-slate group-hover:bg-nim-purple/10'}
-                `}>
-                  <ChevronDown className="w-4 h-4" />
-                </div>
-              </button>
-              
-              <motion.div
-                initial={false}
-                animate={{
-                  height: openFaq === index ? 'auto' : 0,
-                  opacity: openFaq === index ? 1 : 0
-                }}
-                transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-                className="overflow-hidden"
-              >
-                <div className="px-6 pb-6">
-                  <div className="h-px bg-nim-mist mb-4" />
-                  <p className="text-[15px] leading-relaxed text-nim-slate">
-                    {faq.a}
-                  </p>
-                </div>
-              </motion.div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Bottom text */}
-        <motion.div 
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-12 text-center"
-        >
-          <p className="text-sm text-nim-slate">
-            Have another question?{' '}
-            <a 
-              href="mailto:hello@nimara.ca" 
-              className="text-nim-purple hover:text-nim-navy underline underline-offset-4 transition-colors"
-            >
-              Reach out directly
-            </a>
-          </p>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
+// 10) FAQ Section - imported from component
 
 // 11) FINAL CTA Section - Clean Nimara branding
 const FinalCTASection = () => {
@@ -2078,7 +1964,7 @@ const CapacityBuildout = () => {
             <GuaranteeSection />
           </ScrollSection>
           <ScrollSection parallaxStrength={0.1}>
-            <FAQSection />
+            <CapacityFAQ />
           </ScrollSection>
           <ScrollSection parallaxStrength={0.05} fadeIn={false}>
             <FinalCTASection />
