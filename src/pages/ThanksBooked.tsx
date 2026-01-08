@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { Header } from '@/components/Header';
@@ -6,30 +7,36 @@ import { CalendarCheck, Calendar, FileText, FolderOpen, ArrowRight } from 'lucid
 import { Button } from '@/components/ui/button';
 import { CALENDLY_BOOKING_URL } from '@/constants/urls';
 
+// Declare gtag for TypeScript
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
 /**
  * Thank You Page: /thanks-booked
  * Shown after user completes a Calendly booking for Capacity Buildout.
  * 
- * CONVERSION TRACKING NOTE:
- * Google Ads conversion: "Booked Call" fires on page view of /thanks-booked
- * Add: gtag('event', 'conversion', { 'send_to': 'AW-XXXXXXXXX/booked-call' });
+ * CONVERSION TRACKING:
+ * Google Ads conversion "Booked Call" fires on page view.
  */
 
 const ThanksBooked = () => {
+  // Fire Google Ads conversion on page load
+  useEffect(() => {
+    if (window.gtag) {
+      window.gtag('event', 'conversion', {
+        'send_to': 'AW-17855110713/booked_call'
+      });
+    }
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Helmet>
         <title>Booking Confirmed | Nimara</title>
         <meta name="robots" content="noindex, nofollow" />
-        {/* 
-          GOOGLE ADS CONVERSION TAG PLACEHOLDER
-          Add your conversion tracking script here:
-          <script>
-            gtag('event', 'conversion', {
-              'send_to': 'AW-XXXXXXXXX/booked-call'
-            });
-          </script>
-        */}
       </Helmet>
 
       <Header />
