@@ -397,62 +397,47 @@ const PricingTiersSection = () => {
 
 // 1.75) WHAT WE INSTALL Section
 const WhatWeInstallSection = () => {
-  const { ref, getItemStyle } = useStaggeredReveal<HTMLElement>(10, { staggerDelay: 60, baseDelay: 100 });
+  const { ref, getItemStyle } = useStaggeredReveal<HTMLElement>(12, { staggerDelay: 60, baseDelay: 100 });
 
-  const deliverables = [
+  const domains = [
     {
-      title: "Grant Proof Pack System",
-      bullets: [
-        "Proof tracker set up for your grants",
-        "Folder map + file naming rules",
-        "Pull checklist (what to send when asked)",
-        "Approvals linked to spending"
-      ]
+      number: "1",
+      title: "Board & Governance",
+      install: "Minutes template + decision log + policy tracker",
+      meaning: "Your board meetings have clear records. Decisions are tracked. Nothing falls through."
     },
     {
-      title: "Money & Grants Routine",
-      bullets: [
-        "Simple coding rules (so numbers match)",
-        "Budget vs actual tracking setup",
-        "Month-end checklist (30–60 min)",
-        "Clear \"how we track\" steps"
-      ]
+      number: "2",
+      title: "Money & Grants",
+      install: "Grant Proof Pack (tracker + folders + naming system + pull checklist)",
+      meaning: "When a funder asks for proof, you find it in minutes — not days."
     },
     {
-      title: "Governance Basics",
-      bullets: [
-        "Minutes template + decision log",
-        "Policy tracker (what exists / what's missing)",
-        "Board folder structure",
-        "Clear approval trail"
-      ]
+      number: "3",
+      title: "People & Roles",
+      install: "Role clarity docs + handoff guides + basic HR checklist",
+      meaning: "Everyone knows what they own. New staff can get up to speed fast."
     },
     {
-      title: "Programs & Ops Basics",
-      bullets: [
-        "6–10 micro-SOPs (1–2 pages each)",
-        "\"Where things live\" guide",
-        "Onboarding checklist",
-        "Simple weekly/monthly routine"
-      ]
+      number: "4",
+      title: "Programs & Ops",
+      install: "Simple program plans + tracking templates + reusable reporting formats",
+      meaning: "You can show what you're doing and whether it's working — without starting from scratch each time."
     },
     {
-      title: "Tools & Data Setup",
-      bullets: [
-        "Clean shared folders (Drive/SharePoint)",
-        "Templates installed where staff work",
-        "Simple access + naming rules",
-        "Easy handoff for new staff"
-      ]
+      number: "5",
+      title: "Tools & Files",
+      install: "Folder structure + naming rules + file access setup",
+      meaning: "Your team can find what they need. So can your next ED."
     }
   ];
 
-  const trustPoints = [
-    "Plain language (no audit talk)",
-    "Works with the tools you already use",
-    "Training + handoff so it sticks",
-    "90-Day Ops Insurance on Core 5"
-  ];
+  const training = {
+    title: "Training & Handoff",
+    subtitle: "Included in all packages",
+    install: "2–3 live sessions + recordings + written handoff guide",
+    meaning: "Your team knows how to use the systems — and we don't leave until it sticks."
+  };
 
   return (
     <section 
@@ -460,103 +445,134 @@ const WhatWeInstallSection = () => {
       ref={ref}
       className="py-20 md:py-28 bg-muted/30 relative"
     >
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center mb-12 md:mb-16">
-          <motion.h2
+          <motion.span
             style={getItemStyle(0)}
+            className="inline-block text-xs font-semibold uppercase tracking-widest text-primary mb-3"
+          >
+            Deliverables
+          </motion.span>
+          <motion.h2
+            style={getItemStyle(1)}
             className="text-3xl sm:text-4xl font-bold text-foreground tracking-tight mb-4"
           >
             What we install (not just advise)
           </motion.h2>
           <motion.p
-            style={getItemStyle(1)}
+            style={getItemStyle(2)}
             className="text-lg text-muted-foreground max-w-2xl mx-auto"
           >
-            You leave with a working system, clear steps, and a team that knows how to run it.
+            Five systems. One goal: a nonprofit that runs — even when you're not in the room.
           </motion.p>
         </div>
 
-        {/* 2-column layout */}
-        <div className="grid lg:grid-cols-[1fr_320px] gap-10 lg:gap-12">
-          {/* Left: Deliverables grid */}
-          <motion.div 
-            style={getItemStyle(2)}
-            className="grid sm:grid-cols-2 gap-5"
-          >
-            {deliverables.map((item, index) => (
-              <motion.div
-                key={item.title}
-                whileHover={{ y: -2 }}
-                transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                className="bg-card border border-border rounded-xl p-5 lg:p-6"
-              >
-                <h3 className="text-base font-semibold text-foreground mb-3">
-                  {item.title}
-                </h3>
-                <ul className="space-y-2">
-                  {item.bullets.map((bullet, i) => (
-                    <li key={i} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                      <Check className="w-3.5 h-3.5 text-primary mt-0.5 flex-shrink-0" strokeWidth={2.5} />
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Right: Trust box */}
-          <motion.div 
-            style={getItemStyle(3)}
-            className="lg:sticky lg:top-24 h-fit"
-          >
-            <div className="bg-primary/[0.04] border border-primary/20 rounded-xl p-6">
-              <h3 className="text-base font-semibold text-foreground mb-4">
-                Built for small teams
-              </h3>
-              <ul className="space-y-3 mb-6">
-                {trustPoints.map((point, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground">
-                    <Check className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" strokeWidth={2.5} />
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Primary CTA */}
-              <motion.a
-                href={CALENDLY_BOOKING_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-xl shadow-md shadow-primary/20 transition-all hover:shadow-lg hover:shadow-primary/30 mb-4"
-              >
-                Book a 20-min Fit Call
-                <ArrowRight className="w-4 h-4" />
-              </motion.a>
-
-              {/* Secondary text link */}
-              <a
-                href={TYPEFORM_HEALTH_CHECK_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors group"
-              >
-                <span className="relative">
-                  Not sure? Take the Free Health Check (10 min)
-                  <span className="absolute left-0 -bottom-0.5 w-full h-px bg-current opacity-40 group-hover:opacity-70 transition-opacity" />
-                </span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-              </a>
-            </div>
-          </motion.div>
+        {/* Domains grid */}
+        <div className="space-y-4 mb-8">
+          {domains.map((domain, index) => (
+            <motion.div
+              key={domain.number}
+              style={getItemStyle(3 + index)}
+              className="bg-card border border-border rounded-xl p-5 lg:p-6"
+            >
+              <div className="flex items-start gap-4">
+                {/* Number badge */}
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                  <span className="text-sm font-bold text-primary">{domain.number}</span>
+                </div>
+                
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-base font-semibold text-foreground mb-3">
+                    {domain.title}
+                  </h3>
+                  
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {/* What we install */}
+                    <div>
+                      <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground/70 mb-1.5">
+                        What we install
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        {domain.install}
+                      </p>
+                    </div>
+                    
+                    {/* What it means */}
+                    <div>
+                      <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground/70 mb-1.5">
+                        What it means
+                      </p>
+                      <p className="text-sm text-foreground/80">
+                        {domain.meaning}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
+
+        {/* Training & Handoff - highlighted */}
+        <motion.div
+          style={getItemStyle(8)}
+          className="bg-primary/[0.04] border border-primary/20 rounded-xl p-5 lg:p-6 mb-10"
+        >
+          <div className="flex items-start gap-4">
+            {/* Icon */}
+            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+              <Check className="w-4 h-4 text-primary" strokeWidth={2.5} />
+            </div>
+            
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2 mb-3">
+                <h3 className="text-base font-semibold text-foreground">
+                  {training.title}
+                </h3>
+                <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+                  {training.subtitle}
+                </span>
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-4">
+                {/* What we install */}
+                <div>
+                  <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground/70 mb-1.5">
+                    What we install
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    {training.install}
+                  </p>
+                </div>
+                
+                {/* What it means */}
+                <div>
+                  <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground/70 mb-1.5">
+                    What it means
+                  </p>
+                  <p className="text-sm text-foreground/80">
+                    {training.meaning}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Closing line */}
+        <motion.div
+          style={getItemStyle(9)}
+          className="text-center"
+        >
+          <p className="text-base md:text-lg font-medium text-foreground max-w-2xl mx-auto italic">
+            "Most consultants hand you a report. We hand you a working back office — then we train your team to run it."
+          </p>
+        </motion.div>
 
         {/* Disclaimer row */}
         <motion.p
-          style={getItemStyle(4)}
+          style={getItemStyle(10)}
           className="text-center text-xs text-muted-foreground/50 mt-10"
         >
           Not legal, tax, or audit advice. No funding guarantees. Not full bookkeeping cleanup.
