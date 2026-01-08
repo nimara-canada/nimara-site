@@ -219,7 +219,7 @@ const PricingTiersSection = () => {
       badge: "MOST POPULAR",
       price: "$24,900",
       priceSuffix: "CAD",
-      bestFor: "2+ grants or regular funder reporting",
+      bestFor: "1-4 grants or regular funder reporting",
       features: [
         "Everything in Starter",
         "People (Staff & HR)",
