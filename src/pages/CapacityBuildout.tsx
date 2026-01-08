@@ -1052,7 +1052,7 @@ const FrameworkSection = () => {
   );
 };
 
-// 5) PRICING Section
+// 5) PRICING Section - Clean Nimara branding
 const PricingSection = () => {
   const tiers = [
     {
@@ -1104,169 +1104,101 @@ const PricingSection = () => {
     }
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.1
-      }
-    }
-  } as const;
-
-  const cardVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 32,
-      scale: 0.95
-    },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring" as const,
-        stiffness: 80,
-        damping: 15,
-        mass: 0.9
-      }
-    }
-  };
-
-  const headerVariants = {
-    hidden: { opacity: 0, y: 16 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.5 }
-    }
-  };
-
   return (
-    <section id="pricing" className="py-28 md:py-36 bg-secondary-background text-white overflow-hidden relative">
-      {/* Premium background effects */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Large gradient orb */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-radial from-primary/[0.06] via-primary/[0.02] to-transparent rounded-full blur-3xl" />
-        {/* Accent orb */}
-        <div className="absolute bottom-0 right-0 w-[400px] h-[300px] bg-gradient-to-tl from-accent/[0.05] to-transparent rounded-full blur-3xl" />
-      </div>
-      
-      {/* Grid pattern */}
-      <div 
-        className="absolute inset-0 opacity-[0.025] pointer-events-none" 
-        style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px'
-        }} 
-      />
-
+    <section id="pricing" className="py-24 md:py-32 bg-nim-navy relative overflow-hidden">
       <div className="relative max-w-6xl mx-auto px-6 lg:px-12">
         {/* Section header */}
         <motion.div 
           className="text-center mb-16 md:mb-20"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
         >
-          <motion.div variants={headerVariants} className="inline-flex items-center gap-3 mb-6">
-            <div className="h-px w-8 bg-gradient-to-r from-transparent to-accent/60" />
-            <span className="text-[11px] font-bold tracking-[0.3em] uppercase text-accent">
-              Investment
-            </span>
-            <div className="h-px w-8 bg-gradient-to-l from-transparent to-accent/60" />
-          </motion.div>
+          <span className="inline-block text-[11px] font-bold tracking-[0.25em] uppercase text-nim-mint mb-5">
+            Investment
+          </span>
 
-          <motion.h2
-            variants={headerVariants}
-            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-[-0.02em] text-white mb-5"
-          >
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-5">
             Pick your buildout level
-          </motion.h2>
+          </h2>
 
-          <motion.p
-            variants={headerVariants}
-            className="text-white/50 max-w-xl mx-auto text-lg"
-          >
+          <p className="text-white/60 max-w-xl mx-auto text-lg">
             We recommend Core 5 for most teams with active grants.
-          </motion.p>
+          </p>
         </motion.div>
 
         {/* Pricing cards */}
-        <motion.div 
-          className="grid lg:grid-cols-3 gap-6 lg:gap-8 mb-12"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={containerVariants}
-        >
+        <div className="grid lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
           {tiers.map((tier, index) => (
             <motion.article
               key={index}
-              variants={cardVariants}
-              whileHover={{ 
-                y: -6, 
-                scale: 1.02,
-                transition: { duration: 0.25, ease: "easeOut" }
-              }}
-              className={`group relative bg-white/5 backdrop-blur-sm border rounded-2xl p-7 lg:p-8 transition-colors duration-300 ${
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              whileHover={{ y: -6 }}
+              className={`group relative rounded-2xl p-7 lg:p-8 transition-all ${
                 tier.badge 
-                  ? 'border-accent ring-2 ring-accent/30 bg-white/[0.08]' 
-                  : 'border-white/10 hover:border-white/25 hover:bg-white/[0.08]'
+                  ? 'bg-white border-2 border-nim-mint' 
+                  : 'bg-white/5 border border-white/10 hover:bg-white/10'
               }`}
             >
               {tier.badge && (
-                <motion.span 
-                  className="absolute -top-3.5 left-6 px-4 py-1.5 bg-accent text-secondary-background text-xs font-bold tracking-wide rounded-full shadow-lg shadow-accent/25"
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                >
+                <span className="absolute -top-3.5 left-6 px-4 py-1.5 bg-nim-mint text-nim-navy text-xs font-bold tracking-wide rounded-full">
                   {tier.badge}
-                </motion.span>
+                </span>
               )}
 
               <div className="mb-6">
-                <p className="text-sm text-white/50 mb-1 font-medium">{tier.subtitle}</p>
-                <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">{tier.name}</h3>
+                <p className={`text-sm mb-1 font-medium ${tier.badge ? 'text-nim-slate' : 'text-white/50'}`}>
+                  {tier.subtitle}
+                </p>
+                <h3 className={`text-2xl font-bold mb-3 tracking-tight ${tier.badge ? 'text-nim-navy' : 'text-white'}`}>
+                  {tier.name}
+                </h3>
                 <div className="flex items-baseline gap-1.5">
-                  <span className="text-4xl font-bold text-white tracking-tight">{tier.price}</span>
-                  <span className="text-sm text-white/50 font-medium">{tier.currency}</span>
+                  <span className={`text-4xl font-bold tracking-tight ${tier.badge ? 'text-nim-navy' : 'text-white'}`}>
+                    {tier.price}
+                  </span>
+                  <span className={`text-sm font-medium ${tier.badge ? 'text-nim-slate' : 'text-white/50'}`}>
+                    {tier.currency}
+                  </span>
                 </div>
               </div>
 
-              <p className="text-sm text-white/60 mb-6 pb-6 border-b border-white/10 leading-relaxed">
-                <span className="text-white/40 font-medium">Best for:</span> {tier.bestFor}
+              <p className={`text-sm mb-6 pb-6 leading-relaxed ${
+                tier.badge 
+                  ? 'border-b border-nim-mist text-nim-slate' 
+                  : 'border-b border-white/10 text-white/60'
+              }`}>
+                <span className={tier.badge ? 'text-nim-slate font-medium' : 'text-white/40 font-medium'}>Best for:</span> {tier.bestFor}
               </p>
 
               <div className="space-y-3.5 mb-6">
                 {tier.includes.map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Check className="w-3 h-3 text-accent" strokeWidth={2.5} />
+                    <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
+                      tier.badge ? 'bg-nim-purple/20' : 'bg-nim-mint/20'
+                    }`}>
+                      <Check className={`w-3 h-3 ${tier.badge ? 'text-nim-purple' : 'text-nim-mint'}`} strokeWidth={2.5} />
                     </div>
-                    <span className="text-sm text-white/75 leading-relaxed">{item}</span>
+                    <span className={`text-sm leading-relaxed ${tier.badge ? 'text-nim-slate-dark' : 'text-white/75'}`}>
+                      {item}
+                    </span>
                   </div>
                 ))}
               </div>
 
               <div className="space-y-3 mb-7">
-                <div className="flex items-center gap-2.5 text-sm text-white/50">
+                <div className={`flex items-center gap-2.5 text-sm ${tier.badge ? 'text-nim-slate' : 'text-white/50'}`}>
                   <Clock className="w-4 h-4" />
                   <span>{tier.timeline}</span>
                 </div>
                 {tier.insurance && (
-                  <motion.div 
-                    className="flex items-center gap-2.5"
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.5 }}
-                  >
-                    <Shield className="w-4 h-4 text-accent" />
-                    <span className="text-sm text-accent font-semibold">90-day Ops Insurance included</span>
-                  </motion.div>
+                  <div className="flex items-center gap-2.5">
+                    <Shield className="w-4 h-4 text-nim-purple" />
+                    <span className="text-sm text-nim-purple font-semibold">90-day Ops Insurance included</span>
+                  </div>
                 )}
               </div>
 
@@ -1274,10 +1206,10 @@ const PricingSection = () => {
                 href={CALENDLY_BOOKING_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 font-semibold rounded-xl text-sm transition-all duration-200 ${
+                className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 font-semibold rounded-xl text-sm transition-all ${
                   tier.badge
-                    ? 'bg-accent text-secondary-background hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/25'
-                    : 'bg-white/10 text-white hover:bg-white/20 hover:shadow-lg hover:shadow-white/10'
+                    ? 'bg-nim-navy text-white hover:bg-nim-navy/90'
+                    : 'bg-white/10 text-white hover:bg-white/20'
                 }`}
               >
                 {tier.cta}
@@ -1285,7 +1217,7 @@ const PricingSection = () => {
               </a>
             </motion.article>
           ))}
-        </motion.div>
+        </div>
 
         {/* Footer notes */}
         <motion.div 
@@ -1293,7 +1225,6 @@ const PricingSection = () => {
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
         >
           <p className="text-sm text-white/50">
             <span className="text-white/70 font-medium">Payment terms:</span> 50% to start, 50% at delivery.
@@ -1307,7 +1238,7 @@ const PricingSection = () => {
   );
 };
 
-// 6) WHAT'S INCLUDED Section
+// 6) WHAT'S INCLUDED Section - Clean Nimara branding
 const DeliverablesSection = () => {
   const deliverables = [
     { title: "Grant Proof Pack System", desc: "Tracker + folders + naming + pull checklist" },
@@ -1317,111 +1248,60 @@ const DeliverablesSection = () => {
     { title: "Training + handoff", desc: "2–3 sessions + recordings + handoff guide" }
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.1
-      }
-    }
-  } as const;
-
-  const itemVariants = {
-    hidden: { 
-      opacity: 0, 
-      x: -20
-    },
-    visible: { 
-      opacity: 1, 
-      x: 0,
-      transition: {
-        type: "spring" as const,
-        stiffness: 100,
-        damping: 15
-      }
-    }
-  };
-
-  const headerVariants = {
-    hidden: { opacity: 0, y: 16 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.5 }
-    }
-  };
-
   return (
-    <section id="deliverables" className="py-24 md:py-32 bg-background relative overflow-hidden">
+    <section id="deliverables" className="py-24 md:py-32 bg-nim-cloud relative">
       <div className="max-w-4xl mx-auto px-6 lg:px-12">
         {/* Section header */}
-        <motion.div 
-          className="text-center mb-14 md:mb-16"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-        >
+        <div className="text-center mb-14 md:mb-16">
           <motion.span
-            variants={headerVariants}
-            className="inline-block text-[11px] font-semibold tracking-[0.25em] uppercase text-primary mb-5"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-block text-[11px] font-bold tracking-[0.25em] uppercase text-nim-purple mb-5"
           >
             Deliverables
           </motion.span>
 
           <motion.h2
-            variants={headerVariants}
-            className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-nim-navy"
           >
             What we install{' '}
-            <span className="text-muted-foreground font-normal">(not just advise)</span>
+            <span className="text-nim-slate font-normal">(not just advise)</span>
           </motion.h2>
-        </motion.div>
+        </div>
 
         {/* Deliverables list */}
-        <motion.div 
-          className="space-y-4"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={containerVariants}
-        >
+        <div className="space-y-4">
           {deliverables.map((item, index) => (
             <motion.div
               key={index}
-              variants={itemVariants}
-              whileHover={{ 
-                x: 4,
-                boxShadow: "0 10px 30px -10px rgba(0, 0, 0, 0.08)",
-                transition: { duration: 0.2 }
-              }}
-              className="flex items-start gap-4 p-5 lg:p-6 bg-card border border-border rounded-xl transition-colors duration-300 hover:border-primary/40"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.08 }}
+              whileHover={{ x: 4 }}
+              className="flex items-start gap-4 p-5 lg:p-6 bg-white border border-nim-mist rounded-xl transition-all hover:border-nim-purple/30"
             >
-              <motion.div 
-                className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0"
-                whileHover={{ scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              >
-                <Check className="w-5 h-5 text-primary" strokeWidth={2} />
-              </motion.div>
+              <div className="w-10 h-10 rounded-lg bg-nim-mint/30 flex items-center justify-center flex-shrink-0">
+                <Check className="w-5 h-5 text-nim-purple" strokeWidth={2} />
+              </div>
               <div>
-                <h3 className="font-semibold text-foreground text-lg mb-1">{item.title}</h3>
-                <p className="text-[15px] text-muted-foreground leading-relaxed">{item.desc}</p>
+                <h3 className="font-semibold text-nim-navy text-lg mb-1">{item.title}</h3>
+                <p className="text-[15px] text-nim-slate leading-relaxed">{item.desc}</p>
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 };
 
-// 7) TIMELINE Section
+// 7) TIMELINE Section - Clean Nimara branding
 const TimelineSection = () => {
-  const [openWeek, setOpenWeek] = useState<number | null>(0);
-  
   const weeks = [
     { week: 1, title: "Map + set structure", desc: "Folders, naming, tracker installed. We audit what you have and build the foundation." },
     { week: "2–3", title: "Build proof packs", desc: "Using your real data to create organized, funder-ready documentation systems." },
@@ -1436,150 +1316,87 @@ const TimelineSection = () => {
     "1–2 staff champions"
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.1
-      }
-    }
-  } as const;
-
-  const itemVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 24,
-      scale: 0.98
-    },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring" as const,
-        stiffness: 100,
-        damping: 15
-      }
-    }
-  };
-
-  const headerVariants = {
-    hidden: { opacity: 0, y: 16 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.5 }
-    }
-  };
-
   return (
-    <section id="timeline" className="py-24 md:py-32 bg-background relative overflow-hidden">
-      {/* Subtle background pattern */}
-      <div 
-        className="absolute inset-0 opacity-[0.015] pointer-events-none"
-        style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)`,
-          backgroundSize: '48px 48px'
-        }}
-      />
-
-      <div className="relative max-w-5xl mx-auto px-6 lg:px-12">
+    <section id="timeline" className="py-24 md:py-32 bg-white relative">
+      <div className="max-w-5xl mx-auto px-6 lg:px-12">
         {/* Section header */}
-        <motion.div 
-          className="text-center mb-16 md:mb-20"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-        >
+        <div className="text-center mb-16 md:mb-20">
           <motion.span
-            variants={headerVariants}
-            className="inline-block text-[11px] font-semibold tracking-[0.25em] uppercase text-primary mb-5"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-block text-[11px] font-bold tracking-[0.25em] uppercase text-nim-purple mb-5"
           >
             Timeline
           </motion.span>
 
           <motion.h2
-            variants={headerVariants}
-            className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground mb-4"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-nim-navy mb-4"
           >
             How the 6-week install works
           </motion.h2>
           
           <motion.p
-            variants={headerVariants}
-            className="text-lg text-muted-foreground max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-lg text-nim-slate max-w-2xl mx-auto"
           >
             A structured, proven process that gets you from scattered to organized.
           </motion.p>
-        </motion.div>
+        </div>
 
         {/* Timeline cards - horizontal on desktop */}
-        <motion.div 
-          className="grid md:grid-cols-4 gap-4 lg:gap-6 mb-16"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={containerVariants}
-        >
+        <div className="grid md:grid-cols-4 gap-4 lg:gap-6 mb-16">
           {weeks.map((item, index) => (
             <motion.article
               key={index}
-              variants={itemVariants}
-              whileHover={{ 
-                y: -6,
-                boxShadow: "0 20px 40px -12px rgba(0, 0, 0, 0.1)",
-                transition: { duration: 0.25 }
-              }}
-              className="group relative bg-card border border-border rounded-2xl p-6 transition-colors duration-300 hover:border-primary/40"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              whileHover={{ y: -6 }}
+              className="group relative bg-nim-cloud border border-nim-mist rounded-2xl p-6 transition-all hover:border-nim-mint"
             >
               {/* Week badge */}
-              <motion.div 
-                className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-5 transition-colors group-hover:bg-primary/15"
-                whileHover={{ scale: 1.05, rotate: -3 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              >
-                <span className="text-lg font-bold text-primary">W{item.week}</span>
-              </motion.div>
+              <div className="w-14 h-14 rounded-2xl bg-nim-mint/30 flex items-center justify-center mb-5 transition-colors group-hover:bg-nim-mint/50">
+                <span className="text-lg font-bold text-nim-navy">W{item.week}</span>
+              </div>
               
               {/* Connector line (hidden on mobile, visible on desktop) */}
               {index < weeks.length - 1 && (
-                <div className="hidden md:block absolute top-10 -right-3 lg:-right-4 w-6 lg:w-8 h-0.5 bg-gradient-to-r from-primary/30 to-transparent" />
+                <div className="hidden md:block absolute top-10 -right-3 lg:-right-4 w-6 lg:w-8 h-0.5 bg-nim-mist" />
               )}
               
-              <h3 className="text-lg font-semibold text-foreground mb-2 tracking-tight">
+              <h3 className="text-lg font-semibold text-nim-navy mb-2 tracking-tight">
                 {item.title}
               </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-sm text-nim-slate leading-relaxed">
                 {item.desc}
               </p>
             </motion.article>
           ))}
-        </motion.div>
+        </div>
 
         {/* Required Inputs */}
         <motion.div 
-          className="bg-gradient-to-br from-primary/[0.06] to-primary/[0.02] border border-primary/20 rounded-2xl p-8 lg:p-10"
+          className="bg-nim-cloud border border-nim-mist rounded-2xl p-8 lg:p-10"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
         >
           <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
-            <motion.div 
-              className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center"
-              whileHover={{ scale: 1.1, rotate: -5 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <ClipboardCheck className="w-6 h-6 text-primary" />
-            </motion.div>
+            <div className="w-12 h-12 rounded-xl bg-nim-purple/10 flex items-center justify-center">
+              <ClipboardCheck className="w-6 h-6 text-nim-purple" />
+            </div>
             <div>
-              <h3 className="font-semibold text-foreground text-xl tracking-tight">
+              <h3 className="font-semibold text-nim-navy text-xl tracking-tight">
                 Required inputs from you
               </h3>
-              <p className="text-sm text-muted-foreground">What we need to get started</p>
+              <p className="text-sm text-nim-slate">What we need to get started</p>
             </div>
           </div>
           
@@ -1590,14 +1407,13 @@ const TimelineSection = () => {
                 initial={{ opacity: 0, x: -10 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.3 + index * 0.08 }}
-                whileHover={{ x: 4 }}
-                className="flex items-center gap-4 p-4 bg-white/50 rounded-xl border border-primary/10 transition-colors hover:border-primary/25"
+                transition={{ delay: 0.1 + index * 0.08 }}
+                className="flex items-center gap-4 p-4 bg-white rounded-xl border border-nim-mist"
               >
-                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Check className="w-4 h-4 text-primary" strokeWidth={2.5} />
+                <div className="w-8 h-8 rounded-lg bg-nim-mint/30 flex items-center justify-center flex-shrink-0">
+                  <Check className="w-4 h-4 text-nim-purple" strokeWidth={2.5} />
                 </div>
-                <span className="text-[15px] text-foreground font-medium">{input}</span>
+                <span className="text-[15px] text-nim-navy font-medium">{input}</span>
               </motion.div>
             ))}
           </div>
@@ -1607,7 +1423,7 @@ const TimelineSection = () => {
   );
 };
 
-// 8) GUARANTEE Section
+// 8) GUARANTEE Section - Clean Nimara branding
 const GuaranteeSection = () => {
   const insurance = [
     "2 check-ins per month",
@@ -1616,90 +1432,47 @@ const GuaranteeSection = () => {
     "Light template/process updates within scope"
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.1
-      }
-    }
-  } as const;
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 24, scale: 0.98 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      scale: 1,
-      transition: { type: "spring" as const, stiffness: 100, damping: 15 }
-    }
-  };
-
-  const headerVariants = {
-    hidden: { opacity: 0, y: 16 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-  };
-
   return (
-    <section id="guarantee" className="py-24 md:py-32 bg-gradient-to-b from-background to-muted/20 relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-0 left-1/4 w-80 h-80 bg-primary/[0.03] rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-accent/[0.05] rounded-full blur-3xl pointer-events-none" />
-      
-      <div className="relative max-w-4xl mx-auto px-6 lg:px-12">
-        {/* Premium header */}
-        <motion.div 
-          className="text-center mb-14"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-        >
-          <motion.div variants={headerVariants} className="inline-flex items-center gap-3 mb-6">
-            <div className="h-px w-8 bg-gradient-to-r from-transparent to-primary/60" />
-            <span className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary">
-              Protection
-            </span>
-            <div className="h-px w-8 bg-gradient-to-l from-transparent to-primary/60" />
-          </motion.div>
+    <section id="guarantee" className="py-24 md:py-32 bg-nim-cloud relative">
+      <div className="max-w-4xl mx-auto px-6 lg:px-12">
+        {/* Section header */}
+        <div className="text-center mb-14">
+          <motion.span
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-block text-[11px] font-bold tracking-[0.25em] uppercase text-nim-purple mb-5"
+          >
+            Protection
+          </motion.span>
 
           <motion.h2
-            variants={headerVariants}
-            className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-nim-navy"
           >
             Built-in guarantees
           </motion.h2>
-        </motion.div>
+        </div>
 
-        <motion.div 
-          className="grid md:grid-cols-2 gap-6 lg:gap-8"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={containerVariants}
-        >
+        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
           {/* Delivery Guarantee */}
           <motion.div 
-            variants={cardVariants}
-            whileHover={{ y: -4, transition: { duration: 0.2 } }}
-            className="group relative bg-card/80 backdrop-blur-sm border border-border/60 rounded-2xl p-7 lg:p-8 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            whileHover={{ y: -4 }}
+            className="bg-white border border-nim-mist rounded-2xl p-7 lg:p-8 transition-all hover:border-nim-purple/30"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.02] to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+            <div className="w-12 h-12 rounded-xl bg-nim-purple/10 flex items-center justify-center mb-5">
+              <Shield className="w-6 h-6 text-nim-purple" />
+            </div>
             
-            <motion.div 
-              className="relative w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5"
-              whileHover={{ scale: 1.05, rotate: -3 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <Shield className="w-6 h-6 text-primary" />
-            </motion.div>
-            
-            <h3 className="relative text-xl font-semibold text-foreground mb-4 tracking-tight">
+            <h3 className="text-xl font-semibold text-nim-navy mb-4 tracking-tight">
               Delivery guarantee
             </h3>
-            <div className="relative space-y-4 text-[15px] text-muted-foreground leading-relaxed">
+            <div className="space-y-4 text-[15px] text-nim-slate leading-relaxed">
               <p>
                 If we don't deliver the listed deliverables by the end of the install period (with required inputs), you don't pay the final payment until we do.
               </p>
@@ -1711,25 +1484,22 @@ const GuaranteeSection = () => {
 
           {/* 90-Day Insurance */}
           <motion.div 
-            variants={cardVariants}
-            whileHover={{ y: -4, transition: { duration: 0.2 } }}
-            className="group relative bg-gradient-to-br from-accent/[0.08] to-accent/[0.02] border border-accent/20 rounded-2xl p-7 lg:p-8 transition-all duration-300 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/10"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            whileHover={{ y: -4 }}
+            className="bg-white border-2 border-nim-mint rounded-2xl p-7 lg:p-8 transition-all"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-accent/[0.03] to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+            <div className="w-12 h-12 rounded-xl bg-nim-mint/30 flex items-center justify-center mb-5">
+              <Clock className="w-6 h-6 text-nim-navy" />
+            </div>
             
-            <motion.div 
-              className="relative w-12 h-12 rounded-xl bg-accent/15 flex items-center justify-center mb-5"
-              whileHover={{ scale: 1.05, rotate: 3 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <Clock className="w-6 h-6 text-mint-dark" />
-            </motion.div>
-            
-            <h3 className="relative text-xl font-semibold text-foreground mb-5 tracking-tight">
+            <h3 className="text-xl font-semibold text-nim-navy mb-5 tracking-tight">
               90-Day Ops Insurance
-              <span className="ml-2 text-xs font-medium text-mint-dark bg-accent/30 px-2 py-0.5 rounded-full">Included</span>
+              <span className="ml-2 text-xs font-bold text-nim-navy bg-nim-mint px-2 py-0.5 rounded-full">Included</span>
             </h3>
-            <div className="relative space-y-3">
+            <div className="space-y-3">
               {insurance.map((item, index) => (
                 <motion.div 
                   key={index}
@@ -1739,22 +1509,21 @@ const GuaranteeSection = () => {
                   transition={{ delay: 0.2 + index * 0.08 }}
                   className="flex items-start gap-3"
                 >
-                  <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Check className="w-3 h-3 text-mint-dark" strokeWidth={2.5} />
+                  <div className="w-5 h-5 rounded-full bg-nim-purple/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-3 h-3 text-nim-purple" strokeWidth={2.5} />
                   </div>
-                  <span className="text-[15px] text-muted-foreground">{item}</span>
+                  <span className="text-[15px] text-nim-slate">{item}</span>
                 </motion.div>
               ))}
             </div>
           </motion.div>
-        </motion.div>
+        </div>
 
         <motion.p 
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="text-sm text-muted-foreground text-center mt-10"
+          className="text-sm text-nim-slate text-center mt-10"
         >
           We don't guarantee funding outcomes.
         </motion.p>
@@ -1765,7 +1534,7 @@ const GuaranteeSection = () => {
 
 // 9) SOCIAL PROOF Section
 
-// 10) FAQ Section
+// 10) FAQ Section - Clean Nimara branding
 const FAQSection = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   
@@ -1780,80 +1549,61 @@ const FAQSection = () => {
     { q: "How do payments work?", a: "50% deposit to start, 50% on delivery. We can invoice as capacity building if that helps with funder reporting." }
   ];
 
-  const { ref, getItemStyle } = useStaggeredReveal(faqs.length + 2, { staggerDelay: 50, baseDelay: 0 });
-
   return (
-    <section id="faq" className="py-24 md:py-32 bg-gradient-to-b from-background via-background to-muted/20 relative overflow-hidden">
-      {/* Subtle background pattern */}
-      <div 
-        className="absolute inset-0 opacity-[0.015] pointer-events-none" 
-        style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)`,
-          backgroundSize: '32px 32px'
-        }} 
-      />
-      
-      {/* Decorative gradient orbs */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-primary/3 rounded-full blur-3xl pointer-events-none" />
-
-      <div ref={ref} className="relative max-w-4xl mx-auto px-6 lg:px-12">
-        {/* Premium header */}
+    <section id="faq" className="py-24 md:py-32 bg-white relative">
+      <div className="max-w-4xl mx-auto px-6 lg:px-12">
+        {/* Section header */}
         <div className="text-center mb-16">
-          <div style={getItemStyle(0)} className="inline-flex items-center gap-3 mb-6">
-            <div className="h-px w-8 bg-gradient-to-r from-transparent to-primary/60" />
-            <span className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary">
-              FAQ
-            </span>
-            <div className="h-px w-8 bg-gradient-to-l from-transparent to-primary/60" />
-          </div>
+          <motion.span
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-block text-[11px] font-bold tracking-[0.25em] uppercase text-nim-purple mb-5"
+          >
+            FAQ
+          </motion.span>
 
-          <h2
-            style={getItemStyle(1)}
-            className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent"
+          <motion.h2
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-nim-navy"
           >
             Common questions
-          </h2>
+          </motion.h2>
         </div>
 
-        {/* FAQ items with premium styling */}
+        {/* FAQ items */}
         <div className="space-y-4">
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
-              style={getItemStyle(2 + index)}
-              initial={false}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.05 }}
               className={`
-                group relative bg-card/80 backdrop-blur-sm border rounded-2xl overflow-hidden
-                transition-all duration-300 ease-out
+                group relative bg-nim-cloud border rounded-2xl overflow-hidden transition-all
                 ${openFaq === index 
-                  ? 'border-primary/30 shadow-lg shadow-primary/5 ring-1 ring-primary/10' 
-                  : 'border-border/40 hover:border-border/80 hover:shadow-md'}
+                  ? 'border-nim-purple/30' 
+                  : 'border-nim-mist hover:border-nim-purple/20'}
               `}
             >
-              {/* Subtle gradient overlay on hover/open */}
-              <div className={`
-                absolute inset-0 opacity-0 transition-opacity duration-300 pointer-events-none
-                bg-gradient-to-br from-primary/[0.02] via-transparent to-primary/[0.01]
-                ${openFaq === index ? 'opacity-100' : 'group-hover:opacity-50'}
-              `} />
-              
               <button
                 onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                className="relative w-full flex items-center justify-between p-6 text-left transition-colors"
+                className="w-full flex items-center justify-between p-6 text-left"
               >
                 <span className={`
-                  font-medium pr-6 transition-colors duration-200
-                  ${openFaq === index ? 'text-foreground' : 'text-foreground/80 group-hover:text-foreground'}
+                  font-medium pr-6 transition-colors
+                  ${openFaq === index ? 'text-nim-navy' : 'text-nim-slate-dark group-hover:text-nim-navy'}
                 `}>
                   {faq.q}
                 </span>
                 <div className={`
-                  flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center
-                  transition-all duration-300
+                  flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all
                   ${openFaq === index 
-                    ? 'bg-primary/10 text-primary rotate-180' 
-                    : 'bg-muted/50 text-muted-foreground group-hover:bg-muted'}
+                    ? 'bg-nim-purple/10 text-nim-purple rotate-180' 
+                    : 'bg-nim-mist text-nim-slate group-hover:bg-nim-purple/10'}
                 `}>
                   <ChevronDown className="w-4 h-4" />
                 </div>
@@ -1869,8 +1619,8 @@ const FAQSection = () => {
                 className="overflow-hidden"
               >
                 <div className="px-6 pb-6">
-                  <div className="h-px bg-gradient-to-r from-border/60 via-border/30 to-transparent mb-4" />
-                  <p className="text-[15px] leading-relaxed text-muted-foreground">
+                  <div className="h-px bg-nim-mist mb-4" />
+                  <p className="text-[15px] leading-relaxed text-nim-slate">
                     {faq.a}
                   </p>
                 </div>
@@ -1879,38 +1629,42 @@ const FAQSection = () => {
           ))}
         </div>
 
-        {/* Bottom accent */}
-        <div style={getItemStyle(2 + faqs.length)} className="mt-12 text-center">
-          <p className="text-sm text-muted-foreground">
+        {/* Bottom text */}
+        <motion.div 
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-12 text-center"
+        >
+          <p className="text-sm text-nim-slate">
             Have another question?{' '}
             <a 
               href="mailto:hello@nimara.ca" 
-              className="text-primary hover:text-primary/80 underline underline-offset-4 transition-colors"
+              className="text-nim-purple hover:text-nim-navy underline underline-offset-4 transition-colors"
             >
               Reach out directly
             </a>
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 };
 
-// 11) FINAL CTA Section - clean, minimal, high-impact
+// 11) FINAL CTA Section - Clean Nimara branding
 const FinalCTASection = () => {
   return (
-    <section id="cta" className="py-28 md:py-36 lg:py-44 bg-primary">
+    <section id="cta" className="py-28 md:py-36 lg:py-44 bg-nim-navy">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-primary-foreground leading-[1.15] tracking-[-0.02em] mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-white leading-[1.15] tracking-[-0.02em] mb-12">
             Want this off your plate?
             <br />
-            We'll handle the buildout.
+            <span className="text-nim-mint">We'll handle the buildout.</span>
           </h2>
 
           <motion.a
@@ -1919,20 +1673,25 @@ const FinalCTASection = () => {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center justify-center px-8 py-4 bg-secondary-background text-white font-semibold rounded-lg transition-all hover:bg-secondary-background/90"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-nim-mint text-nim-navy font-semibold rounded-xl transition-all hover:bg-nim-mint/90"
           >
             Book a 20-min Fit Call
+            <ArrowRight className="w-4 h-4" />
           </motion.a>
+
+          <p className="text-sm text-white/50 mt-8">
+            No pressure. We'll tell you the best next step.
+          </p>
         </motion.div>
       </div>
     </section>
   );
 };
 
-// Footer Microcopy
+// Footer Microcopy - Clean Nimara branding
 const FooterMicrocopy = () => {
   return (
-    <div className="bg-secondary-background border-t border-white/10 py-6">
+    <div className="bg-nim-navy border-t border-white/10 py-6">
       <div className="max-w-6xl mx-auto px-6 text-center">
         <p className="text-sm text-white/40">
           Nimara Technology Inc — Canada-first, small-team systems.
