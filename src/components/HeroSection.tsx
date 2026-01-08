@@ -1,12 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Check, ChevronDown } from "lucide-react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
 import { useMotionPreferences, DROPBOX_EASING_CSS } from "@/hooks/use-scroll-reveal";
 import { TYPEFORM_HEALTH_CHECK_URL } from "@/constants/urls";
 
+const ROTATING_WORDS = ["Proof-Ready", "Grant-Ready", "Fund-Ready", "Board-Ready", "Report-Ready"];
+
 const NimaraHeroPremium = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [wordIndex, setWordIndex] = useState(0);
   const heroRef = useRef<HTMLElement>(null);
   const { reducedMotion } = useMotionPreferences();
 
@@ -29,6 +32,14 @@ const NimaraHeroPremium = () => {
 
   useEffect(() => {
     setIsLoaded(true);
+  }, []);
+
+  // Rotate words
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWordIndex(prev => (prev + 1) % ROTATING_WORDS.length);
+    }, 2500);
+    return () => clearInterval(interval);
   }, []);
 
   // Reveal animation styles with Dropbox easing
@@ -85,8 +96,21 @@ const NimaraHeroPremium = () => {
                 className="mb-6 text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.5rem] font-bold text-white leading-[1.08] tracking-tight"
               >
                 Build systems that make your nonprofit{" "}
-                <span className="italic font-light" style={{ color: '#ACFCE3' }}>
-                  Proof-Ready.
+                <span className="relative inline-block">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={wordIndex}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.4, ease: [0.65, 0, 0.45, 1] }}
+                      className="inline-block italic font-light"
+                      style={{ color: '#ACFCE3' }}
+                    >
+                      {ROTATING_WORDS[wordIndex]}
+                    </motion.span>
+                  </AnimatePresence>
+                  <span className="italic font-light" style={{ color: '#ACFCE3' }}>.</span>
                 </span>
               </h1>
 
