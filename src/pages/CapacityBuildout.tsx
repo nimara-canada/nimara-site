@@ -7,6 +7,7 @@ import { ScrollProgress } from '@/components/ScrollProgress';
 import { ScrollToTop } from '@/components/ScrollToTop';
 import { MotionControls } from '@/components/MotionControls';
 import { PricingSection } from '@/components/PricingSection';
+import { WhatYouGetSection } from '@/components/WhatYouGetSection';
 
 import { 
   MotionPreferencesProvider, 
@@ -2056,6 +2057,7 @@ const CapacityBuildout = () => {
           <HeroSection />
           <HowItWorksSection />
           <DomainsSection />
+          <WhatYouGetSection />
           <PricingSection />
           <ScrollSection parallaxStrength={0.15}>
             <WhoThisIsFor />
