@@ -116,9 +116,7 @@ const HeroSection = () => {
             style={getItemStyle(1)}
             className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-nim-navy leading-[1.1] tracking-[-0.02em] mb-6"
           >
-            Be proof-ready before funders ask.
-            <br />
-            <span className="italic">In 4–6 weeks.</span>
+            Be proof-ready before funders ask in 4 weeks
           </motion.h1>
 
           {/* Subhead */}
@@ -126,7 +124,7 @@ const HeroSection = () => {
             style={getItemStyle(2)}
             className="text-lg sm:text-xl text-nim-slate-dark max-w-2xl mx-auto leading-relaxed mb-4"
           >
-            We set up your board minutes, grant tracking, staff roles, program plans, and file systems — then train your team to keep it running.
+            We set up your board records, grant tracking, team files, and volunteer systems — then train your staff to keep it running.
           </motion.p>
 
           {/* Support line */}
@@ -134,7 +132,7 @@ const HeroSection = () => {
             style={getItemStyle(3)}
             className="text-sm text-nim-slate mb-10"
           >
-            Includes 90 days of free support after install.
+            Pick the areas you need most. Start with 2. Add more anytime.
           </motion.p>
 
           {/* CTAs */}
@@ -163,7 +161,7 @@ const HeroSection = () => {
               className="group inline-flex items-center gap-1.5 py-3.5 px-4 text-nim-slate hover:text-nim-navy transition-colors"
             >
               <span className="relative font-medium">
-                Free Health Check (10 min)
+                Not sure what you need? Take the Free Health Check
                 <span className="absolute left-0 -bottom-0.5 w-full h-px bg-current opacity-40 group-hover:opacity-70 transition-opacity" />
               </span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -182,7 +180,7 @@ const HeroSection = () => {
             <span className="hidden sm:inline text-nim-mist">·</span>
             <span className="flex items-center gap-1.5">
               <Check className="w-3.5 h-3.5 text-nim-purple" />
-              Next cohort: 5 orgs only
+              Pay only for what you need
             </span>
           </motion.div>
         </div>
