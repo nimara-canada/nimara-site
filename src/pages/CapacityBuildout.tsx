@@ -189,7 +189,116 @@ const HeroSection = () => {
   );
 };
 
-// 1.5) PRICING Section - Clean Nimara branding
+// 1.5) HOW IT WORKS Section - Clean, premium SaaS aesthetic
+const HowItWorksSection = () => {
+  const { ref, getItemStyle } = useStaggeredReveal<HTMLElement>(8, { staggerDelay: 80, baseDelay: 100 });
+
+  const steps = [
+    {
+      number: "01",
+      title: "Book a Fit Call",
+      description: "A 20-minute call to see if this is right for you. No pressure."
+    },
+    {
+      number: "02",
+      title: "We dig in with your team",
+      description: "We run a 90-minute discovery session. We ask questions. We listen. We find out what's working and what's not."
+    },
+    {
+      number: "03",
+      title: "We build what matters most",
+      description: "You choose at least 2 areas to fix. We set up the systems. We train your team. You get back to your mission."
+    }
+  ];
+
+  return (
+    <section 
+      id="how-it-works" 
+      ref={ref}
+      className="py-24 md:py-32 bg-[#F8F9FC] relative"
+    >
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        {/* Section header */}
+        <div className="text-center mb-16 md:mb-20">
+          <motion.span
+            style={getItemStyle(0)}
+            className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-nim-purple mb-4"
+          >
+            The Process
+          </motion.span>
+          <motion.h2
+            style={getItemStyle(1)}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-nim-navy tracking-tight mb-5"
+          >
+            How it works
+          </motion.h2>
+          <motion.p
+            style={getItemStyle(2)}
+            className="text-lg md:text-xl text-[#1A1A1A]/70 max-w-xl mx-auto leading-relaxed"
+          >
+            We learn your org first. Then we build what you actually need.
+          </motion.p>
+        </div>
+
+        {/* Steps grid */}
+        <motion.div 
+          style={getItemStyle(3)}
+          className="relative"
+        >
+          {/* Connector line - desktop only */}
+          <div className="hidden md:block absolute top-16 left-[16.67%] right-[16.67%] h-px">
+            <div className="w-full h-full border-t-2 border-dashed border-nim-purple/20" />
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 md:gap-12">
+            {steps.map((step, index) => (
+              <motion.div
+                key={step.number}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="relative text-center md:text-left"
+              >
+                {/* Step number */}
+                <div className="flex justify-center md:justify-start mb-6">
+                  <div className="w-14 h-14 rounded-full bg-nim-mint flex items-center justify-center">
+                    <span className="text-lg font-bold text-nim-navy tracking-tight">
+                      {step.number}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Mobile connector - between steps */}
+                {index < steps.length - 1 && (
+                  <div className="md:hidden absolute left-1/2 -translate-x-1/2 top-[72px] w-px h-8 border-l-2 border-dashed border-nim-purple/20" />
+                )}
+
+                {/* Content */}
+                <h3 className="text-xl font-bold text-nim-navy mb-3 tracking-tight">
+                  {step.title}
+                </h3>
+                <p className="text-[#1A1A1A]/60 leading-relaxed text-[15px]">
+                  {step.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Footer line */}
+        <motion.p
+          style={getItemStyle(4)}
+          className="text-center text-sm text-[#1A1A1A]/50 mt-16 md:mt-20 max-w-2xl mx-auto leading-relaxed"
+        >
+          The Free Health Check is always available if you want to self-assess first — but the real diagnostic happens when we meet your team.
+        </motion.p>
+      </div>
+    </section>
+  );
+};
+
+// 2) PRICING Section - Clean Nimara branding
 const PricingTiersSection = () => {
   const { ref, getItemStyle } = useStaggeredReveal<HTMLElement>(12, { staggerDelay: 60, baseDelay: 100 });
 
@@ -1943,6 +2052,7 @@ const CapacityBuildout = () => {
         
         <main id="main" className="overflow-hidden">
           <HeroSection />
+          <HowItWorksSection />
           <PricingTiersSection />
           <ScrollSection parallaxStrength={0.15}>
             <WhoThisIsFor />
