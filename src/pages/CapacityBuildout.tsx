@@ -101,13 +101,13 @@ const HeroSection = () => {
     >
       <div className="relative z-10 w-full max-w-4xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
         <div className="text-center">
-          {/* Badge */}
+          {/* Tag */}
           <motion.div
             style={getItemStyle(0)}
             className="inline-flex items-center gap-2 px-4 py-2 bg-nim-mint/30 border border-nim-mint rounded-full mb-8"
           >
             <span className="text-xs font-bold uppercase tracking-wider text-nim-navy">
-              Capacity Buildout
+              For Nonprofits and Charities
             </span>
           </motion.div>
 
@@ -116,9 +116,9 @@ const HeroSection = () => {
             style={getItemStyle(1)}
             className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-nim-navy leading-[1.1] tracking-[-0.02em] mb-6"
           >
-            Build funder-ready systems
+            Be proof-ready before funders ask.
             <br />
-            <span className="italic">in 6 weeks.</span>
+            <span className="italic">In 4–6 weeks.</span>
           </motion.h1>
 
           {/* Subhead */}
@@ -126,7 +126,7 @@ const HeroSection = () => {
             style={getItemStyle(2)}
             className="text-lg sm:text-xl text-nim-slate-dark max-w-2xl mx-auto leading-relaxed mb-4"
           >
-            We install your core nonprofit systems and train your team to run them — without audit talk.
+            We set up your board minutes, grant tracking, staff roles, program plans, and file systems — then train your team to keep it running.
           </motion.p>
 
           {/* Support line */}
@@ -134,7 +134,7 @@ const HeroSection = () => {
             style={getItemStyle(3)}
             className="text-sm text-nim-slate mb-10"
           >
-            Includes 90-Day Ops Insurance (free support after install so it sticks).
+            Includes 90 days of free support after install.
           </motion.p>
 
           {/* CTAs */}
@@ -179,7 +179,7 @@ const HeroSection = () => {
               <Check className="w-3.5 h-3.5 text-nim-purple" />
               Canadian nonprofits (0–25 staff)
             </span>
-            <span className="hidden sm:inline text-nim-mist">•</span>
+            <span className="hidden sm:inline text-nim-mist">·</span>
             <span className="flex items-center gap-1.5">
               <Check className="w-3.5 h-3.5 text-nim-purple" />
               Next cohort: 5 orgs only
