@@ -55,19 +55,19 @@ const ScrollSection = ({
   );
 };
 
-// Sticky CTA Header Component
+// Sticky CTA Header Component - Clean Nimara branding
 const StickyCTA = () => {
   return (
     <motion.div 
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 bg-secondary-background/90 backdrop-blur-xl border-b border-white/[0.08]"
+      className="fixed top-0 left-0 right-0 z-50 bg-nim-navy backdrop-blur-xl border-b border-white/5"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <Link to="/" className="group flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center">
-            <span className="text-sm font-bold text-primary-foreground">N</span>
+          <div className="w-8 h-8 rounded-lg bg-nim-purple flex items-center justify-center">
+            <span className="text-sm font-bold text-white">N</span>
           </div>
           <span className="text-white font-semibold text-lg tracking-tight group-hover:text-white/80 transition-colors">
             Nimara
@@ -79,7 +79,7 @@ const StickyCTA = () => {
           rel="noopener noreferrer"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground font-semibold rounded-xl text-sm shadow-lg shadow-primary/20 transition-all hover:shadow-xl hover:shadow-primary/30"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-nim-mint text-nim-navy font-semibold rounded-xl text-sm transition-all hover:bg-nim-mint/90"
         >
           Book a 20-min Fit Call
           <ArrowRight className="w-3.5 h-3.5" />
@@ -89,7 +89,7 @@ const StickyCTA = () => {
   );
 };
 
-// 1) HERO Section - Premium pastel aesthetic
+// 1) HERO Section - Clean, minimal, Nimara branded
 const HeroSection = () => {
   const { ref, getItemStyle } = useStaggeredReveal<HTMLElement>(8, { staggerDelay: 100, baseDelay: 150 });
 
@@ -97,35 +97,16 @@ const HeroSection = () => {
     <section 
       id="hero"
       ref={ref} 
-      className="min-h-[100vh] relative overflow-hidden flex items-center pt-20"
-      style={{ background: 'linear-gradient(135deg, hsl(195, 76%, 91%) 0%, hsl(300, 76%, 91%) 50%, hsl(150, 60%, 90%) 100%)' }}
+      className="min-h-[100vh] bg-nim-cloud relative overflow-hidden flex items-center pt-20"
     >
-      {/* Decorative shapes */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 0.4, scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full"
-          style={{ background: 'radial-gradient(circle, hsl(300, 76%, 85%) 0%, transparent 70%)' }}
-        />
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 0.3, scale: 1 }}
-          transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
-          className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full"
-          style={{ background: 'radial-gradient(circle, hsl(150, 60%, 85%) 0%, transparent 70%)' }}
-        />
-      </div>
-
       <div className="relative z-10 w-full max-w-4xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
         <div className="text-center">
           {/* Badge */}
           <motion.div
             style={getItemStyle(0)}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-secondary-background/10 backdrop-blur-sm border-2 border-secondary-background/30 rounded-full mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-nim-mint/30 border border-nim-mint rounded-full mb-8"
           >
-            <span className="text-xs font-bold uppercase tracking-wider text-secondary-background">
+            <span className="text-xs font-bold uppercase tracking-wider text-nim-navy">
               Capacity Buildout
             </span>
           </motion.div>
@@ -133,7 +114,7 @@ const HeroSection = () => {
           {/* Headline */}
           <motion.h1
             style={getItemStyle(1)}
-            className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-secondary-background leading-[1.1] tracking-[-0.02em] mb-6"
+            className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-nim-navy leading-[1.1] tracking-[-0.02em] mb-6"
           >
             Build funder-ready systems
             <br />
@@ -143,7 +124,7 @@ const HeroSection = () => {
           {/* Subhead */}
           <motion.p
             style={getItemStyle(2)}
-            className="text-lg sm:text-xl text-secondary-background/70 max-w-2xl mx-auto leading-relaxed mb-4"
+            className="text-lg sm:text-xl text-nim-slate-dark max-w-2xl mx-auto leading-relaxed mb-4"
           >
             We install your core nonprofit systems and train your team to run them — without audit talk.
           </motion.p>
@@ -151,7 +132,7 @@ const HeroSection = () => {
           {/* Support line */}
           <motion.p
             style={getItemStyle(3)}
-            className="text-sm text-secondary-background/50 mb-10"
+            className="text-sm text-nim-slate mb-10"
           >
             Includes 90-Day Ops Insurance (free support after install so it sticks).
           </motion.p>
@@ -168,7 +149,7 @@ const HeroSection = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-secondary-background text-white font-semibold rounded-xl shadow-lg transition-all hover:bg-secondary-background/90"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-nim-navy text-white font-semibold rounded-xl transition-all hover:bg-nim-navy/90"
             >
               Book a 20-min Fit Call
               <ArrowRight className="w-4 h-4" />
@@ -179,7 +160,7 @@ const HeroSection = () => {
               href={TYPEFORM_HEALTH_CHECK_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-1.5 py-3.5 px-4 text-secondary-background/70 hover:text-secondary-background transition-colors"
+              className="group inline-flex items-center gap-1.5 py-3.5 px-4 text-nim-slate hover:text-nim-navy transition-colors"
             >
               <span className="relative font-medium">
                 Free Health Check (10 min)
@@ -192,15 +173,15 @@ const HeroSection = () => {
           {/* Trust badges */}
           <motion.div
             style={getItemStyle(5)}
-            className="flex flex-wrap items-center justify-center gap-4 text-xs text-secondary-background/50"
+            className="flex flex-wrap items-center justify-center gap-4 text-xs text-nim-slate"
           >
             <span className="flex items-center gap-1.5">
-              <Check className="w-3.5 h-3.5" />
+              <Check className="w-3.5 h-3.5 text-nim-purple" />
               Canadian nonprofits (0–25 staff)
             </span>
-            <span className="hidden sm:inline">•</span>
+            <span className="hidden sm:inline text-nim-mist">•</span>
             <span className="flex items-center gap-1.5">
-              <Check className="w-3.5 h-3.5" />
+              <Check className="w-3.5 h-3.5 text-nim-purple" />
               Next cohort: 5 orgs only
             </span>
           </motion.div>
@@ -210,7 +191,7 @@ const HeroSection = () => {
   );
 };
 
-// 1.5) BUILDOUT TIERS Section - Premium pricing cards
+// 1.5) BUILDOUT TIERS Section - Clean Nimara branding
 const BuildoutTiersSection = () => {
   const { ref, getItemStyle } = useStaggeredReveal<HTMLElement>(8, { staggerDelay: 80, baseDelay: 100 });
 
@@ -227,7 +208,8 @@ const BuildoutTiersSection = () => {
         "Programs & Ops basics",
         "4–5 week timeline"
       ],
-      bgColor: "bg-[hsl(195,76%,91%)]",
+      bgColor: "bg-nim-cloud",
+      borderColor: "border-nim-mist",
       ctaText: "Book a Fit Call",
       ctaLink: CALENDLY_BOOKING_URL,
       highlighted: false
@@ -244,7 +226,8 @@ const BuildoutTiersSection = () => {
         "Tools & Data setup",
         "90-Day Ops Insurance included"
       ],
-      bgColor: "bg-[hsl(300,76%,91%)]",
+      bgColor: "bg-nim-mint/20",
+      borderColor: "border-nim-mint",
       ctaText: "Book a 20-min Fit Call",
       ctaLink: CALENDLY_BOOKING_URL,
       highlighted: true
@@ -261,7 +244,8 @@ const BuildoutTiersSection = () => {
         "Volunteers (Optional)",
         "6–10 week timeline"
       ],
-      bgColor: "bg-[hsl(150,60%,90%)]",
+      bgColor: "bg-nim-cloud",
+      borderColor: "border-nim-mist",
       ctaText: "Request Custom Scope",
       ctaLink: CALENDLY_BOOKING_URL,
       highlighted: false
@@ -272,22 +256,22 @@ const BuildoutTiersSection = () => {
     <section 
       id="tiers" 
       ref={ref}
-      className="py-20 md:py-28 bg-muted/30 relative"
+      className="py-20 md:py-28 bg-white relative"
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center mb-14 md:mb-20">
           <motion.h2
             style={getItemStyle(0)}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground tracking-tight mb-4 italic"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-nim-navy tracking-tight mb-4"
           >
-            Simple pricing with
+            Simple pricing,
             <br />
-            no hidden fees
+            <span className="italic">no hidden fees</span>
           </motion.h2>
           <motion.p
             style={getItemStyle(1)}
-            className="text-lg text-muted-foreground max-w-xl mx-auto"
+            className="text-lg text-nim-slate max-w-xl mx-auto"
           >
             Capacity buildout packages for Canadian nonprofits at every stage.
           </motion.p>
@@ -301,28 +285,26 @@ const BuildoutTiersSection = () => {
           {tiers.map((tier) => (
             <motion.div
               key={tier.name}
-              whileHover={{ y: -6, scale: 1.01 }}
+              whileHover={{ y: -6 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className={`relative rounded-3xl p-8 ${tier.bgColor} overflow-hidden`}
+              className={`relative rounded-2xl p-8 ${tier.bgColor} border-2 ${tier.borderColor} overflow-hidden`}
             >
-              {/* Card content - two column layout */}
               <div className="flex flex-col h-full">
-                {/* Top section: Badge + Price */}
+                {/* Badge */}
+                <span className={`inline-block w-fit px-3 py-1 text-[10px] font-bold uppercase tracking-wide rounded-full mb-6 ${
+                  tier.highlighted 
+                    ? "bg-nim-navy text-white" 
+                    : "bg-nim-mist text-nim-navy"
+                }`}>
+                  {tier.badge}
+                </span>
+                
+                {/* Price */}
                 <div className="mb-6">
-                  <span className={`inline-block px-4 py-1.5 text-xs font-bold uppercase tracking-wide rounded-lg border-2 mb-6 ${
-                    tier.highlighted 
-                      ? "border-secondary-background text-secondary-background" 
-                      : "border-foreground/80 text-foreground/80"
-                  }`}>
-                    {tier.badge}
+                  <span className="text-4xl sm:text-5xl font-bold text-nim-navy tracking-tight">
+                    {tier.price}
                   </span>
-                  
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-5xl sm:text-6xl font-bold text-foreground tracking-tight">
-                      {tier.price}
-                    </span>
-                  </div>
-                  <p className="text-sm text-foreground/70 mt-1">
+                  <p className="text-sm text-nim-slate mt-2">
                     {tier.priceSuffix} • {tier.bestFor}
                   </p>
                 </div>
@@ -331,8 +313,8 @@ const BuildoutTiersSection = () => {
                 <div className="space-y-3 mb-8 flex-grow">
                   {tier.features.map((feature, i) => (
                     <div key={i} className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-secondary-background mt-0.5 flex-shrink-0" strokeWidth={2.5} />
-                      <span className="text-sm text-foreground/90">{feature}</span>
+                      <Check className="w-4 h-4 text-nim-purple mt-0.5 flex-shrink-0" strokeWidth={2.5} />
+                      <span className="text-sm text-nim-slate-dark">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -344,7 +326,7 @@ const BuildoutTiersSection = () => {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-secondary-background text-white font-semibold rounded-xl transition-all hover:bg-secondary-background/90"
+                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-nim-navy text-white font-semibold rounded-xl transition-all hover:bg-nim-navy/90"
                 >
                   {tier.ctaText}
                 </motion.a>
@@ -356,7 +338,7 @@ const BuildoutTiersSection = () => {
         {/* Payment microcopy */}
         <motion.p
           style={getItemStyle(3)}
-          className="text-center text-sm text-muted-foreground mb-6"
+          className="text-center text-sm text-nim-slate mb-6"
         >
           Payment: 50% to start, 50% at delivery. Invoiced as capacity building.
         </motion.p>
@@ -370,7 +352,7 @@ const BuildoutTiersSection = () => {
             href={TYPEFORM_HEALTH_CHECK_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors group"
+            className="inline-flex items-center gap-1.5 text-sm text-nim-slate hover:text-nim-navy transition-colors group"
           >
             <span className="relative">
               Not sure? Take the Free Health Check (10 min)
@@ -794,7 +776,7 @@ const SixWeekProcessSection = () => {
   );
 };
 
-// 2) WHO THIS IS FOR Section - Premium pastel cards
+// 2) WHO THIS IS FOR Section - Clean Nimara branding
 const WhoThisIsFor = () => {
   const forYou = [
     "You're a Canadian nonprofit or charity",
@@ -813,77 +795,80 @@ const WhoThisIsFor = () => {
     "You're over 25 staff (we work with small teams only)"
   ];
 
-  const { ref, getItemStyle } = useStaggeredReveal(forYou.length + notForYou.length + 3, { staggerDelay: 60, baseDelay: 0 });
-
   return (
-    <section id="who-its-for" className="py-24 md:py-32 bg-background relative overflow-hidden">
-      <div ref={ref} className="relative max-w-5xl mx-auto px-6 lg:px-12">
+    <section id="who-its-for" className="py-24 md:py-32 bg-nim-cloud relative overflow-hidden">
+      <div className="relative max-w-5xl mx-auto px-6 lg:px-12">
         {/* Section header */}
         <div className="text-center mb-16">
           <motion.h2
-            style={getItemStyle(0)}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground tracking-tight mb-4 italic"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-nim-navy tracking-tight mb-4"
           >
             Is this right for you?
           </motion.h2>
           <motion.p
-            style={getItemStyle(1)}
-            className="text-lg text-muted-foreground max-w-xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-lg text-nim-slate max-w-xl mx-auto"
           >
             This program is intense. Let's make sure it's the right fit.
           </motion.p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
-          {/* For You - Mint pastel */}
+          {/* Good Fit */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            whileHover={{ y: -6, scale: 1.01 }}
+            whileHover={{ y: -4 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="rounded-3xl p-8 relative overflow-hidden bg-[hsl(150,60%,90%)]"
+            className="rounded-2xl p-8 bg-white border-2 border-nim-mint"
           >
-            <span className="inline-block px-4 py-1.5 text-xs font-bold uppercase tracking-wide rounded-lg border-2 border-secondary-background text-secondary-background mb-6">
+            <span className="inline-block px-3 py-1 text-[10px] font-bold uppercase tracking-wide rounded-full bg-nim-mint text-nim-navy mb-6">
               Good Fit
             </span>
             
-            <h3 className="text-2xl font-bold text-foreground mb-6">
+            <h3 className="text-2xl font-bold text-nim-navy mb-6">
               This is for you if…
             </h3>
 
             <div className="space-y-3">
               {forYou.map((item, index) => (
                 <div key={index} className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-secondary-background mt-0.5 flex-shrink-0" strokeWidth={2.5} />
-                  <span className="text-sm text-foreground/90">{item}</span>
+                  <Check className="w-4 h-4 text-nim-purple mt-0.5 flex-shrink-0" strokeWidth={2.5} />
+                  <span className="text-sm text-nim-slate-dark">{item}</span>
                 </div>
               ))}
             </div>
           </motion.div>
 
-          {/* Not For You - Soft red/coral pastel */}
+          {/* Not a Fit */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            whileHover={{ y: -6, scale: 1.01 }}
+            whileHover={{ y: -4 }}
             transition={{ type: "spring", stiffness: 300, damping: 25, delay: 0.1 }}
-            className="rounded-3xl p-8 relative overflow-hidden bg-[hsl(0,60%,94%)]"
+            className="rounded-2xl p-8 bg-white border border-nim-mist"
           >
-            <span className="inline-block px-4 py-1.5 text-xs font-bold uppercase tracking-wide rounded-lg border-2 border-red-400 text-red-500 mb-6">
+            <span className="inline-block px-3 py-1 text-[10px] font-bold uppercase tracking-wide rounded-full bg-nim-mist text-nim-slate mb-6">
               Not a Fit
             </span>
             
-            <h3 className="text-2xl font-bold text-foreground/70 mb-6">
+            <h3 className="text-2xl font-bold text-nim-slate mb-6">
               Please don't apply if…
             </h3>
 
             <div className="space-y-3">
               {notForYou.map((item, index) => (
                 <div key={index} className="flex items-start gap-3">
-                  <X className="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0" strokeWidth={2.5} />
-                  <span className="text-sm text-foreground/70">{item}</span>
+                  <X className="w-4 h-4 text-nim-slate mt-0.5 flex-shrink-0" strokeWidth={2.5} />
+                  <span className="text-sm text-nim-slate">{item}</span>
                 </div>
               ))}
             </div>
@@ -894,287 +879,173 @@ const WhoThisIsFor = () => {
   );
 };
 
-// 3) THE OUTCOME Section - Premium pastel cards
+// 3) THE OUTCOME Section - Clean Nimara branding
 const OutcomeSection = () => {
   const outcomes = [
-    { icon: FileCheck, title: "Pull proof fast", desc: "Invoices, receipts, approvals in one place", color: "hsl(195, 76%, 91%)" },
-    { icon: ClipboardCheck, title: "Reports match records", desc: "Budget vs actual is clean", color: "hsl(300, 76%, 91%)" },
-    { icon: Users, title: "Clear roles + approvals", desc: "People know the steps", color: "hsl(150, 60%, 90%)" },
-    { icon: Sparkles, title: "New staff can onboard fast", desc: "Files and SOPs are obvious", color: "hsl(45, 90%, 88%)" }
+    { icon: FileCheck, title: "Pull proof fast", desc: "Invoices, receipts, approvals in one place" },
+    { icon: ClipboardCheck, title: "Reports match records", desc: "Budget vs actual is clean" },
+    { icon: Users, title: "Clear roles + approvals", desc: "People know the steps" },
+    { icon: Sparkles, title: "New staff can onboard fast", desc: "Files and SOPs are obvious" }
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.1
-      }
-    }
-  } as const;
-
-  const cardVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 24,
-      scale: 0.96
-    },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring" as const,
-        stiffness: 100,
-        damping: 15,
-        mass: 0.8
-      }
-    }
-  };
-
-  const headerVariants = {
-    hidden: { opacity: 0, y: 16 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.5 }
-    }
-  };
-
   return (
-    <section id="outcomes" className="py-24 md:py-32 bg-muted/30 relative overflow-hidden">
-      {/* Subtle gradient accent */}
-      <div 
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] opacity-[0.04] pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse at center, hsl(var(--primary)) 0%, transparent 70%)'
-        }}
-      />
-
+    <section id="outcomes" className="py-24 md:py-32 bg-white relative overflow-hidden">
       <div className="relative max-w-6xl mx-auto px-6 lg:px-12">
         {/* Section header */}
-        <motion.div 
-          className="text-center mb-16 md:mb-20"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-        >
-          <motion.span
-            variants={headerVariants}
-            className="inline-block text-[11px] font-semibold tracking-[0.25em] uppercase text-primary mb-5"
-          >
-            Outcomes
-          </motion.span>
-
+        <div className="text-center mb-16 md:mb-20">
           <motion.h2
-            variants={headerVariants}
-            className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-nim-navy mb-4"
           >
             What "done" looks like
           </motion.h2>
-        </motion.div>
+        </div>
 
-        {/* Outcomes grid - Pastel cards */}
-        <motion.div 
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={containerVariants}
-        >
+        {/* Outcomes grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
           {outcomes.map((item, index) => (
             <motion.article
               key={index}
-              variants={cardVariants}
-              whileHover={{ y: -6, scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className="group relative rounded-3xl p-6 lg:p-7"
-              style={{ background: item.color }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              whileHover={{ y: -4 }}
+              className="group relative rounded-2xl p-6 lg:p-7 bg-nim-cloud border border-nim-mist"
             >
-              {/* Icon container */}
-              <motion.div 
-                className="w-12 h-12 rounded-xl bg-secondary-background/10 flex items-center justify-center mb-5"
-                aria-hidden="true"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              <div 
+                className="w-12 h-12 rounded-xl bg-nim-mint/30 flex items-center justify-center mb-5"
               >
-                <item.icon className="w-5 h-5 text-secondary-background" strokeWidth={1.8} />
-              </motion.div>
+                <item.icon className="w-5 h-5 text-nim-navy" strokeWidth={1.8} />
+              </div>
               
-              <h3 className="text-lg font-semibold text-foreground mb-2 tracking-tight">
+              <h3 className="text-lg font-semibold text-nim-navy mb-2 tracking-tight">
                 {item.title}
               </h3>
-              <p className="text-sm text-foreground/70 leading-relaxed">
+              <p className="text-sm text-nim-slate leading-relaxed">
                 {item.desc}
               </p>
             </motion.article>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 };
 
-// 4) THE FRAMEWORK Section - Premium pastel cards
+// 4) THE FRAMEWORK Section - Clean Nimara branding
 const FrameworkSection = () => {
   const coreAreas = [
-    { icon: Building2, title: "Board & Governance", desc: "Clear decisions, minutes, and follow-through.", optional: false, color: "hsl(195, 76%, 91%)" },
-    { icon: DollarSign, title: "Money & Grants", desc: "Track spending, save proof, make reporting easier.", optional: false, color: "hsl(300, 76%, 91%)" },
-    { icon: UserCog, title: "People (Staff & HR)", desc: "Clear roles, handoffs, basic HR.", optional: false, color: "hsl(150, 60%, 90%)" },
-    { icon: Briefcase, title: "Programs & Ops", desc: "Simple plans, tracking, reusable updates.", optional: false, color: "hsl(45, 90%, 88%)" },
-    { icon: Database, title: "Tools & Data", desc: "Folders, templates, and simple tools people can find.", optional: false, color: "hsl(220, 70%, 92%)" },
-    { icon: Heart, title: "Fundraising & Donors", desc: "Simple donor tracking + routines.", optional: true, color: "hsl(350, 70%, 92%)" },
-    { icon: HandHeart, title: "Volunteers", desc: "Onboarding, scheduling, hours tracking.", optional: true, color: "hsl(280, 60%, 92%)" }
+    { icon: Building2, title: "Board & Governance", desc: "Clear decisions, minutes, and follow-through.", optional: false },
+    { icon: DollarSign, title: "Money & Grants", desc: "Track spending, save proof, make reporting easier.", optional: false },
+    { icon: UserCog, title: "People (Staff & HR)", desc: "Clear roles, handoffs, basic HR.", optional: false },
+    { icon: Briefcase, title: "Programs & Ops", desc: "Simple plans, tracking, reusable updates.", optional: false },
+    { icon: Database, title: "Tools & Data", desc: "Folders, templates, and simple tools people can find.", optional: false },
+    { icon: Heart, title: "Fundraising & Donors", desc: "Simple donor tracking + routines.", optional: true },
+    { icon: HandHeart, title: "Volunteers", desc: "Onboarding, scheduling, hours tracking.", optional: true }
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.1
-      }
-    }
-  } as const;
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 24, scale: 0.96 },
-    visible: { 
-      opacity: 1, y: 0, scale: 1,
-      transition: { type: "spring" as const, stiffness: 100, damping: 15, mass: 0.8 }
-    }
-  };
-
-  const headerVariants = {
-    hidden: { opacity: 0, y: 16 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-  };
-
   return (
-    <section id="framework" className="py-24 md:py-32 bg-background relative overflow-hidden">
+    <section id="framework" className="py-24 md:py-32 bg-nim-cloud relative overflow-hidden">
       <div className="relative max-w-6xl mx-auto px-6 lg:px-12">
         {/* Section header */}
-        <motion.div 
-          className="text-center mb-16 md:mb-20"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-        >
+        <div className="text-center mb-16 md:mb-20">
           <motion.h2
-            variants={headerVariants}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-4 italic"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-nim-navy mb-4"
           >
             The Core 5 Framework
           </motion.h2>
           <motion.p
-            variants={headerVariants}
-            className="text-lg text-muted-foreground"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-lg text-nim-slate"
           >
             Plus 2 optional add-ons for complex organizations.
           </motion.p>
-        </motion.div>
+        </div>
 
-        {/* Core areas grid - Pastel cards */}
-        <motion.div 
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 mb-12"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={containerVariants}
-        >
+        {/* Core areas grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 mb-12">
           {coreAreas.filter(a => !a.optional).map((area, index) => (
             <motion.article
               key={index}
-              variants={cardVariants}
-              whileHover={{ y: -6, scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className="group relative rounded-3xl p-6 lg:p-7"
-              style={{ background: area.color }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.08 }}
+              whileHover={{ y: -4 }}
+              className="group relative rounded-2xl p-6 lg:p-7 bg-white border border-nim-mist"
             >
-              <motion.div 
-                className="w-12 h-12 rounded-xl bg-secondary-background/10 flex items-center justify-center mb-5"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              >
-                <area.icon className="w-5 h-5 text-secondary-background" strokeWidth={1.8} />
-              </motion.div>
+              <div className="w-12 h-12 rounded-xl bg-nim-purple/10 flex items-center justify-center mb-5">
+                <area.icon className="w-5 h-5 text-nim-purple" strokeWidth={1.8} />
+              </div>
               
-              <h3 className="text-lg font-semibold text-foreground mb-2 tracking-tight">
+              <h3 className="text-lg font-semibold text-nim-navy mb-2 tracking-tight">
                 {area.title}
               </h3>
-              <p className="text-sm text-foreground/70 leading-relaxed">
+              <p className="text-sm text-nim-slate leading-relaxed">
                 {area.desc}
               </p>
             </motion.article>
           ))}
-        </motion.div>
+        </div>
 
         {/* Optional areas */}
-        <motion.div 
-          className="mb-12"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={containerVariants}
-        >
-          <motion.div 
-            variants={headerVariants}
-            className="flex items-center justify-center gap-3 mb-8"
-          >
-            <div className="h-px w-12 bg-foreground/20" />
-            <p className="text-xs font-bold tracking-[0.25em] uppercase text-muted-foreground">
+        <div className="mb-12">
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <div className="h-px w-12 bg-nim-mist" />
+            <p className="text-xs font-bold tracking-[0.25em] uppercase text-nim-slate">
               Premium Add-ons
             </p>
-            <div className="h-px w-12 bg-foreground/20" />
-          </motion.div>
+            <div className="h-px w-12 bg-nim-mist" />
+          </div>
           
           <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {coreAreas.filter(a => a.optional).map((area, index) => (
               <motion.article
                 key={index}
-                variants={cardVariants}
-                whileHover={{ y: -6, scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                className="group relative rounded-3xl p-7 overflow-hidden"
-                style={{ background: area.color }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -4 }}
+                className="group relative rounded-2xl p-7 bg-white border-2 border-nim-mint overflow-hidden"
               >
-                <span className="absolute top-4 right-4 text-[10px] font-bold tracking-wider uppercase text-secondary-background bg-secondary-background/10 px-3 py-1.5 rounded-full">
-                  ✦ Optional
+                <span className="absolute top-4 right-4 text-[10px] font-bold tracking-wider uppercase text-nim-navy bg-nim-mint px-3 py-1.5 rounded-full">
+                  Optional
                 </span>
                 
-                <motion.div 
-                  className="w-14 h-14 rounded-2xl bg-secondary-background/10 flex items-center justify-center mb-5"
-                  whileHover={{ scale: 1.1, rotate: -5 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                >
-                  <area.icon className="w-6 h-6 text-secondary-background" strokeWidth={1.8} />
-                </motion.div>
+                <div className="w-12 h-12 rounded-xl bg-nim-mint/30 flex items-center justify-center mb-5">
+                  <area.icon className="w-5 h-5 text-nim-navy" strokeWidth={1.8} />
+                </div>
                 
-                <h3 className="text-lg font-bold text-foreground mb-2 tracking-tight">
+                <h3 className="text-lg font-bold text-nim-navy mb-2 tracking-tight">
                   {area.title}
                 </h3>
-                <p className="text-sm text-foreground/70 leading-relaxed">
+                <p className="text-sm text-nim-slate leading-relaxed">
                   {area.desc}
                 </p>
               </motion.article>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* Footer note */}
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-sm sm:text-base text-muted-foreground text-center max-w-lg mx-auto leading-relaxed"
+          className="text-sm text-nim-slate text-center max-w-lg mx-auto"
         >
-          Most teams start with <strong className="text-foreground font-medium">Core 3</strong> or{' '}
-          <strong className="text-foreground font-medium">Core 5</strong>.
+          Most teams start with <strong className="text-nim-navy font-medium">Core 3</strong> or{' '}
+          <strong className="text-nim-navy font-medium">Core 5</strong>.
         </motion.p>
       </div>
     </section>
