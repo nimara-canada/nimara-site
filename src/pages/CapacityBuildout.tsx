@@ -309,49 +309,42 @@ const DomainsSection = () => {
     {
       id: 1,
       title: "Board & Governance",
-      icon: ClipboardCheck,
       popular: false,
       outcome: "Your board runs with clear records — no more chasing people.",
     },
     {
       id: 2,
       title: "Money & Grants",
-      icon: DollarSign,
       popular: true,
       outcome: "Find proof for funders in minutes, not days.",
     },
     {
       id: 3,
       title: "People & HR",
-      icon: UserCog,
       popular: false,
       outcome: "New staff get up to speed fast. Nothing in anyone's head.",
     },
     {
       id: 4,
       title: "Volunteers",
-      icon: HandHeart,
       popular: true,
       outcome: "Volunteers know what they signed up for — and stay longer.",
     },
     {
       id: 5,
       title: "Tools & Files",
-      icon: Database,
       popular: false,
       outcome: "Anyone on your team can find what they need.",
     },
     {
       id: 6,
       title: "Programs & Ops",
-      icon: Briefcase,
       popular: true,
       outcome: "Show what you're doing and whether it's working.",
     },
     {
       id: 7,
       title: "Fundraising & Donors",
-      icon: Heart,
       popular: false,
       outcome: "Know who gave, when, and how to keep them giving.",
     }
@@ -392,7 +385,6 @@ const DomainsSection = () => {
           className="space-y-4"
         >
           {domains.map((domain, index) => {
-            const IconComponent = domain.icon;
             return (
               <motion.div
                 key={domain.id}
@@ -406,11 +398,11 @@ const DomainsSection = () => {
                     : 'bg-white border-nim-mist hover:border-nim-slate/30'
                 }`}
               >
-                {/* Icon */}
+                {/* Number indicator */}
                 <div className={`w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 ${
                   domain.popular ? 'bg-nim-mint/30' : 'bg-nim-cloud'
                 }`}>
-                  <IconComponent className="w-5 h-5 text-nim-navy" strokeWidth={1.75} />
+                  <span className="text-lg font-semibold text-nim-navy">{domain.id}</span>
                 </div>
 
                 {/* Title + Outcome */}
