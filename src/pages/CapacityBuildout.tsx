@@ -1622,128 +1622,6 @@ const DeliverablesSection = () => {
   );
 };
 
-// 7) TIMELINE Section - Clean Nimara branding
-const TimelineSection = () => {
-  const weeks = [
-    { week: 1, title: "Map + set structure", desc: "Folders, naming, tracker installed. We audit what you have and build the foundation." },
-    { week: "2–3", title: "Build proof packs", desc: "Using your real data to create organized, funder-ready documentation systems." },
-    { week: 4, title: "Train staff", desc: "Start using the routine. Hands-on sessions so your team owns the process." },
-    { week: "5–6", title: "Stabilize + handoff", desc: "Tighten, document, and transition. Final polish and complete knowledge transfer." }
-  ];
-
-  const inputs = [
-    "Access to existing files",
-    "List of active grants",
-    "Your current tracking method",
-    "1–2 staff champions"
-  ];
-
-  return (
-    <section id="timeline" className="py-24 md:py-32 bg-white relative">
-      <div className="max-w-5xl mx-auto px-6 lg:px-12">
-        {/* Section header */}
-        <div className="text-center mb-16 md:mb-20">
-          <motion.span
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-block text-[11px] font-bold tracking-[0.25em] uppercase text-nim-purple mb-5"
-          >
-            Timeline
-          </motion.span>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-nim-navy mb-4"
-          >
-            How the 6-week install works
-          </motion.h2>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-lg text-nim-slate max-w-2xl mx-auto"
-          >
-            A structured, proven process that gets you from scattered to organized.
-          </motion.p>
-        </div>
-
-        {/* Timeline cards - horizontal on desktop */}
-        <div className="grid md:grid-cols-4 gap-4 lg:gap-6 mb-16">
-          {weeks.map((item, index) => (
-            <motion.article
-              key={index}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -6 }}
-              className="group relative bg-nim-cloud border border-nim-mist rounded-2xl p-6 transition-all hover:border-nim-mint"
-            >
-              {/* Week badge */}
-              <div className="w-14 h-14 rounded-2xl bg-nim-mint/30 flex items-center justify-center mb-5 transition-colors group-hover:bg-nim-mint/50">
-                <span className="text-lg font-bold text-nim-navy">W{item.week}</span>
-              </div>
-              
-              {/* Connector line (hidden on mobile, visible on desktop) */}
-              {index < weeks.length - 1 && (
-                <div className="hidden md:block absolute top-10 -right-3 lg:-right-4 w-6 lg:w-8 h-0.5 bg-nim-mist" />
-              )}
-              
-              <h3 className="text-lg font-semibold text-nim-navy mb-2 tracking-tight">
-                {item.title}
-              </h3>
-              <p className="text-sm text-nim-slate leading-relaxed">
-                {item.desc}
-              </p>
-            </motion.article>
-          ))}
-        </div>
-
-        {/* Required Inputs */}
-        <motion.div 
-          className="bg-nim-cloud border border-nim-mist rounded-2xl p-8 lg:p-10"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
-            <div className="w-12 h-12 rounded-xl bg-nim-purple/10 flex items-center justify-center">
-              <ClipboardCheck className="w-6 h-6 text-nim-purple" />
-            </div>
-            <div>
-              <h3 className="font-semibold text-nim-navy text-xl tracking-tight">
-                Required inputs from you
-              </h3>
-              <p className="text-sm text-nim-slate">What we need to get started</p>
-            </div>
-          </div>
-          
-          <div className="grid sm:grid-cols-2 gap-4">
-            {inputs.map((input, index) => (
-              <motion.div 
-                key={index}
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 + index * 0.08 }}
-                className="flex items-center gap-4 p-4 bg-white rounded-xl border border-nim-mist"
-              >
-                <div className="w-8 h-8 rounded-lg bg-nim-mint/30 flex items-center justify-center flex-shrink-0">
-                  <Check className="w-4 h-4 text-nim-purple" strokeWidth={2.5} />
-                </div>
-                <span className="text-[15px] text-nim-navy font-medium">{input}</span>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
 
 // 8) GUARANTEE Section - Clean Nimara branding
 const GuaranteeSection = () => {
@@ -1956,9 +1834,6 @@ const CapacityBuildout = () => {
           </ScrollSection>
           <ScrollSection parallaxStrength={0.1}>
             <DeliverablesSection />
-          </ScrollSection>
-          <ScrollSection parallaxStrength={0.12}>
-            <TimelineSection />
           </ScrollSection>
           <ScrollSection parallaxStrength={0.08}>
             <GuaranteeSection />
