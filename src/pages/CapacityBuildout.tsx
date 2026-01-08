@@ -2115,105 +2115,33 @@ const FAQSection = () => {
   );
 };
 
-// 11) FINAL CTA Section - with urgency and outcome focus
+// 11) FINAL CTA Section - clean, minimal, high-impact
 const FinalCTASection = () => {
-  const { ref, getItemStyle } = useStaggeredReveal(6, { staggerDelay: 100, baseDelay: 0 });
-
   return (
-    <section id="cta" ref={ref} className="py-24 md:py-32 bg-secondary-background text-white relative overflow-hidden">
-      {/* Premium background effects */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Large decorative orb */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-gradient-radial from-primary/[0.08] via-primary/[0.03] to-transparent rounded-full blur-3xl" />
-        {/* Accent orb */}
-        <div className="absolute -bottom-32 -right-32 w-[500px] h-[400px] bg-gradient-to-tl from-accent/[0.06] to-transparent rounded-full blur-3xl" />
-      </div>
-      
-      {/* Grid pattern */}
-      <div 
-        className="absolute inset-0 opacity-[0.03] pointer-events-none" 
-        style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px'
-        }} 
-      />
-
-      <div className="relative max-w-3xl mx-auto px-6 lg:px-12 text-center">
+    <section id="cta" className="py-28 md:py-36 lg:py-44 bg-primary">
+      <div className="max-w-4xl mx-auto px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
-          {/* Urgency badge */}
-          <motion.div
-            style={getItemStyle(0)}
-            className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-amber-500/10 border border-amber-500/20"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-400"></span>
-            </span>
-            <span className="text-[11px] font-semibold tracking-[0.1em] uppercase text-amber-400">
-              Only 5 spots per cohort — Q1 2025 filling up
-            </span>
-          </motion.div>
-
-          <h2
-            style={getItemStyle(1)}
-            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight tracking-[-0.02em] mb-4"
-          >
-            Ready to stop dreading
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-primary-foreground leading-[1.15] tracking-[-0.02em] mb-12">
+            Want this off your plate?
             <br />
-            <span className="text-primary">funder requests?</span>
+            We'll handle the buildout.
           </h2>
 
-          <p
-            style={getItemStyle(2)}
-            className="text-lg sm:text-xl text-white/60 mb-10 max-w-xl mx-auto"
+          <motion.a
+            href={CALENDLY_BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="inline-flex items-center justify-center px-8 py-4 bg-secondary-background text-white font-semibold rounded-lg transition-all hover:bg-secondary-background/90"
           >
-            In 6 weeks, your team will pull proof in minutes — not hours. Book a call to see if you qualify.
-          </p>
-
-          <div
-            style={getItemStyle(3)}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
-          >
-            <motion.a
-              href={CALENDLY_BOOKING_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.03, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="group relative inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-primary via-primary to-primary/90 text-primary-foreground font-bold rounded-2xl shadow-2xl shadow-primary/30 transition-all duration-300 hover:shadow-[0_20px_50px_-10px] hover:shadow-primary/40 text-lg overflow-hidden"
-            >
-              <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/15 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-              <span className="relative">I'm Ready to Get Funder-Proof</span>
-              <ArrowRight className="relative w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </motion.a>
-            <motion.a
-              href={TYPEFORM_HEALTH_CHECK_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2 px-8 py-5 bg-white/5 backdrop-blur-sm border border-white/15 text-white font-semibold rounded-2xl transition-all hover:bg-white/10 hover:border-white/25"
-            >
-              Take the Free Health Check First
-            </motion.a>
-          </div>
-
-          {/* Trust/authority line */}
-          <p style={getItemStyle(4)} className="text-sm text-white/50 mb-6">
-            We've helped Canadian nonprofits save <strong className="text-white/70">100+ hours/year</strong> on reporting.
-          </p>
-
-          <p style={getItemStyle(5)} className="text-sm text-white/40">
-            Questions?{' '}
-            <a href={`mailto:${CONTACT_EMAIL}`} className="underline underline-offset-4 hover:text-white/60 transition-colors">
-              {CONTACT_EMAIL}
-            </a>
-          </p>
+            Book a 20-min Fit Call
+          </motion.a>
         </motion.div>
       </div>
     </section>
