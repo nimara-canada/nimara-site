@@ -1118,108 +1118,6 @@ const SixWeekProcessSection = () => {
   );
 };
 
-// 2) WHO THIS IS FOR Section - Clean Nimara branding
-const WhoThisIsFor = () => {
-  const forYou = [
-    "You're a Canadian nonprofit or charity",
-    "You have 0–25 staff (or heavy volunteer ops)",
-    "You have grants or funder reporting requirements",
-    "Receipts, approvals, and files are scattered across inboxes",
-    "Your reports don't match your records",
-    "You want one simple system your team will actually use"
-  ];
-
-  const notForYou = [
-    "You're looking for guaranteed funding (we don't do that)",
-    "You want a big report but no operational change",
-    "You need legal, tax, or CRA advice (not our thing)",
-    "You need a full bookkeeping cleanup (we're not accountants)",
-    "You're over 25 staff (we work with small teams only)"
-  ];
-
-  return (
-    <section id="who-its-for" className="py-24 md:py-32 bg-nim-cloud relative overflow-hidden">
-      <div className="relative max-w-5xl mx-auto px-6 lg:px-12">
-        {/* Section header */}
-        <div className="text-center mb-16">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-nim-navy tracking-tight mb-4"
-          >
-            Is this right for you?
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-lg text-nim-slate max-w-xl mx-auto"
-          >
-            This program is intense. Let's make sure it's the right fit.
-          </motion.p>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
-          {/* Good Fit */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            whileHover={{ y: -4 }}
-            transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="rounded-2xl p-8 bg-white border-2 border-nim-mint"
-          >
-            <span className="inline-block px-3 py-1 text-[10px] font-bold uppercase tracking-wide rounded-full bg-nim-mint text-nim-navy mb-6">
-              Good Fit
-            </span>
-            
-            <h3 className="text-2xl font-bold text-nim-navy mb-6">
-              This is for you if…
-            </h3>
-
-            <div className="space-y-3">
-              {forYou.map((item, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <Check className="w-4 h-4 text-nim-purple mt-0.5 flex-shrink-0" strokeWidth={2.5} />
-                  <span className="text-sm text-nim-slate-dark">{item}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Not a Fit */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            whileHover={{ y: -4 }}
-            transition={{ type: "spring", stiffness: 300, damping: 25, delay: 0.1 }}
-            className="rounded-2xl p-8 bg-white border border-nim-mist"
-          >
-            <span className="inline-block px-3 py-1 text-[10px] font-bold uppercase tracking-wide rounded-full bg-nim-mist text-nim-slate mb-6">
-              Not a Fit
-            </span>
-            
-            <h3 className="text-2xl font-bold text-nim-slate mb-6">
-              Please don't apply if…
-            </h3>
-
-            <div className="space-y-3">
-              {notForYou.map((item, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <X className="w-4 h-4 text-nim-slate mt-0.5 flex-shrink-0" strokeWidth={2.5} />
-                  <span className="text-sm text-nim-slate">{item}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-};
 
 
 // 9) SOCIAL PROOF Section
@@ -1313,9 +1211,6 @@ const CapacityBuildout = () => {
           <DomainsSection />
           <WhatYouGetSection />
           <PricingSection />
-          <ScrollSection parallaxStrength={0.15}>
-            <WhoThisIsFor />
-          </ScrollSection>
           <ScrollSection parallaxStrength={0.1}>
             <CapacityFAQ />
           </ScrollSection>
