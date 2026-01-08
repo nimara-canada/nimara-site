@@ -1221,61 +1221,6 @@ const WhoThisIsFor = () => {
   );
 };
 
-// 3) THE OUTCOME Section - Clean Nimara branding
-const OutcomeSection = () => {
-  const outcomes = [
-    { icon: FileCheck, title: "Pull proof fast", desc: "Invoices, receipts, approvals in one place" },
-    { icon: ClipboardCheck, title: "Reports match records", desc: "Budget vs actual is clean" },
-    { icon: Users, title: "Clear roles + approvals", desc: "People know the steps" },
-    { icon: Sparkles, title: "New staff can onboard fast", desc: "Files and SOPs are obvious" }
-  ];
-
-  return (
-    <section id="outcomes" className="py-24 md:py-32 bg-white relative overflow-hidden">
-      <div className="relative max-w-6xl mx-auto px-6 lg:px-12">
-        {/* Section header */}
-        <div className="text-center mb-16 md:mb-20">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-nim-navy mb-4"
-          >
-            What "done" looks like
-          </motion.h2>
-        </div>
-
-        {/* Outcomes grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
-          {outcomes.map((item, index) => (
-            <motion.article
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -4 }}
-              className="group relative rounded-2xl p-6 lg:p-7 bg-nim-cloud border border-nim-mist"
-            >
-              <div 
-                className="w-12 h-12 rounded-xl bg-nim-mint/30 flex items-center justify-center mb-5"
-              >
-                <item.icon className="w-5 h-5 text-nim-navy" strokeWidth={1.8} />
-              </div>
-              
-              <h3 className="text-lg font-semibold text-nim-navy mb-2 tracking-tight">
-                {item.title}
-              </h3>
-              <p className="text-sm text-nim-slate leading-relaxed">
-                {item.desc}
-              </p>
-            </motion.article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
 
 // 4) THE FRAMEWORK Section - Clean Nimara branding
 const FrameworkSection = () => {
@@ -1715,9 +1660,6 @@ const CapacityBuildout = () => {
           <PricingSection />
           <ScrollSection parallaxStrength={0.15}>
             <WhoThisIsFor />
-          </ScrollSection>
-          <ScrollSection parallaxStrength={0.1}>
-            <OutcomeSection />
           </ScrollSection>
           <ScrollSection parallaxStrength={0.12}>
             <FrameworkSection />
