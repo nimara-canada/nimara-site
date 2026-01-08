@@ -1622,116 +1622,6 @@ const DeliverablesSection = () => {
   );
 };
 
-
-// 8) GUARANTEE Section - Clean Nimara branding
-const GuaranteeSection = () => {
-  const insurance = [
-    "2 check-ins per month",
-    "48-hour response for questions",
-    "One refresh training",
-    "Light template/process updates within scope"
-  ];
-
-  return (
-    <section id="guarantee" className="py-24 md:py-32 bg-nim-cloud relative">
-      <div className="max-w-4xl mx-auto px-6 lg:px-12">
-        {/* Section header */}
-        <div className="text-center mb-14">
-          <motion.span
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-block text-[11px] font-bold tracking-[0.25em] uppercase text-nim-purple mb-5"
-          >
-            Protection
-          </motion.span>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-nim-navy"
-          >
-            Built-in guarantees
-          </motion.h2>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-          {/* Delivery Guarantee */}
-          <motion.div 
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            whileHover={{ y: -4 }}
-            className="bg-white border border-nim-mist rounded-2xl p-7 lg:p-8 transition-all hover:border-nim-purple/30"
-          >
-            <div className="w-12 h-12 rounded-xl bg-nim-purple/10 flex items-center justify-center mb-5">
-              <Shield className="w-6 h-6 text-nim-purple" />
-            </div>
-            
-            <h3 className="text-xl font-semibold text-nim-navy mb-4 tracking-tight">
-              Delivery guarantee
-            </h3>
-            <div className="space-y-4 text-[15px] text-nim-slate leading-relaxed">
-              <p>
-                If we don't deliver the listed deliverables by the end of the install period (with required inputs), you don't pay the final payment until we do.
-              </p>
-              <p>
-                If we still can't deliver within 14 extra days, you can request a refund.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* 90-Day Insurance */}
-          <motion.div 
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            whileHover={{ y: -4 }}
-            className="bg-white border-2 border-nim-mint rounded-2xl p-7 lg:p-8 transition-all"
-          >
-            <div className="w-12 h-12 rounded-xl bg-nim-mint/30 flex items-center justify-center mb-5">
-              <Clock className="w-6 h-6 text-nim-navy" />
-            </div>
-            
-            <h3 className="text-xl font-semibold text-nim-navy mb-5 tracking-tight">
-              90-Day Ops Insurance
-              <span className="ml-2 text-xs font-bold text-nim-navy bg-nim-mint px-2 py-0.5 rounded-full">Included</span>
-            </h3>
-            <div className="space-y-3">
-              {insurance.map((item, index) => (
-                <motion.div 
-                  key={index}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 + index * 0.08 }}
-                  className="flex items-start gap-3"
-                >
-                  <div className="w-5 h-5 rounded-full bg-nim-purple/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Check className="w-3 h-3 text-nim-purple" strokeWidth={2.5} />
-                  </div>
-                  <span className="text-[15px] text-nim-slate">{item}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-
-        <motion.p 
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-sm text-nim-slate text-center mt-10"
-        >
-          We don't guarantee funding outcomes.
-        </motion.p>
-      </div>
-    </section>
-  );
-};
-
 // 9) SOCIAL PROOF Section
 
 // 10) FAQ Section - imported from component
@@ -1834,9 +1724,6 @@ const CapacityBuildout = () => {
           </ScrollSection>
           <ScrollSection parallaxStrength={0.1}>
             <DeliverablesSection />
-          </ScrollSection>
-          <ScrollSection parallaxStrength={0.08}>
-            <GuaranteeSection />
           </ScrollSection>
           <ScrollSection parallaxStrength={0.1}>
             <CapacityFAQ />
