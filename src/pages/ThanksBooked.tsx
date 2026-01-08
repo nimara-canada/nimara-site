@@ -99,7 +99,7 @@ const ThanksBooked = () => {
           <div className="flex flex-col gap-3 mb-6">
             <Button asChild size="lg" className="w-full">
               <a
-                href="https://calendar.google.com"
+                href="https://mail.google.com/mail/u/0/#search/from%3Acalendly"
                 target="_blank"
                 rel="noopener noreferrer"
               >
