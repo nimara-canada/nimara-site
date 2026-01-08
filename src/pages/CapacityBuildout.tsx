@@ -6,6 +6,7 @@ import { Footer } from '@/components/Footer';
 import { ScrollProgress } from '@/components/ScrollProgress';
 import { ScrollToTop } from '@/components/ScrollToTop';
 import { MotionControls } from '@/components/MotionControls';
+import { PricingSection } from '@/components/PricingSection';
 
 import { 
   MotionPreferencesProvider, 
@@ -1392,193 +1393,7 @@ const FrameworkSection = () => {
 };
 
 // 5) PRICING Section - Clean Nimara branding
-const PricingSection = () => {
-  const tiers = [
-    {
-      name: "Core 3",
-      subtitle: "Starter",
-      price: "$14,900",
-      currency: "CAD",
-      bestFor: "Newer orgs, 1–2 grants, tight budget.",
-      includes: [
-        "Board & Governance",
-        "Money & Grants (includes Proof Tracker)",
-        "Tools & Files"
-      ],
-      timeline: "4–5 weeks",
-      badge: null,
-      cta: "Book a Fit Call (Core 3)"
-    },
-    {
-      name: "Core 5",
-      subtitle: "Flagship",
-      price: "$24,900",
-      currency: "CAD",
-      bestFor: "1–4 grants or regular funder reporting.",
-      includes: [
-        "Board & Governance",
-        "Money & Grants (includes Proof Tracker)",
-        "People (Staff & HR)",
-        "Volunteers",
-        "Tools & Files"
-      ],
-      timeline: "6-week install",
-      badge: "Most Popular",
-      insurance: true,
-      cta: "Book a Fit Call (Core 5)"
-    },
-    {
-      name: "Premium 7",
-      subtitle: "Custom",
-      price: "Custom",
-      currency: "",
-      bestFor: "5+ grants, multiple programs, or 25+ staff.",
-      includes: [
-        "Everything in Core 5",
-        "Programs & Ops",
-        "Fundraising & Donors"
-      ],
-      timeline: "Custom (typically 6–10 weeks)",
-      badge: null,
-      cta: "Request Custom Scope"
-    }
-  ];
-
-  return (
-    <section id="pricing" className="py-24 md:py-32 bg-nim-navy relative overflow-hidden">
-      <div className="relative max-w-6xl mx-auto px-6 lg:px-12">
-        {/* Section header */}
-        <motion.div 
-          className="text-center mb-16 md:mb-20"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <span className="inline-block text-[11px] font-bold tracking-[0.25em] uppercase text-nim-mint mb-5">
-            Investment
-          </span>
-
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-5">
-            Pick your buildout level
-          </h2>
-
-          <p className="text-white/60 max-w-xl mx-auto text-lg">
-            We recommend Core 5 for most teams with active grants.
-          </p>
-        </motion.div>
-
-        {/* Pricing cards */}
-        <div className="grid lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
-          {tiers.map((tier, index) => (
-            <motion.article
-              key={index}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -6 }}
-              className={`group relative rounded-2xl p-7 lg:p-8 transition-all ${
-                tier.badge 
-                  ? 'bg-white border-2 border-nim-mint' 
-                  : 'bg-white/5 border border-white/10 hover:bg-white/10'
-              }`}
-            >
-              {tier.badge && (
-                <span className="absolute -top-3.5 left-6 px-4 py-1.5 bg-nim-mint text-nim-navy text-xs font-bold tracking-wide rounded-full">
-                  {tier.badge}
-                </span>
-              )}
-
-              <div className="mb-6">
-                <p className={`text-sm mb-1 font-medium ${tier.badge ? 'text-nim-slate' : 'text-white/50'}`}>
-                  {tier.subtitle}
-                </p>
-                <h3 className={`text-2xl font-bold mb-3 tracking-tight ${tier.badge ? 'text-nim-navy' : 'text-white'}`}>
-                  {tier.name}
-                </h3>
-                <div className="flex items-baseline gap-1.5">
-                  <span className={`text-4xl font-bold tracking-tight ${tier.badge ? 'text-nim-navy' : 'text-white'}`}>
-                    {tier.price}
-                  </span>
-                  <span className={`text-sm font-medium ${tier.badge ? 'text-nim-slate' : 'text-white/50'}`}>
-                    {tier.currency}
-                  </span>
-                </div>
-              </div>
-
-              <p className={`text-sm mb-6 pb-6 leading-relaxed ${
-                tier.badge 
-                  ? 'border-b border-nim-mist text-nim-slate' 
-                  : 'border-b border-white/10 text-white/60'
-              }`}>
-                <span className={tier.badge ? 'text-nim-slate font-medium' : 'text-white/40 font-medium'}>Best for:</span> {tier.bestFor}
-              </p>
-
-              <div className="space-y-3.5 mb-6">
-                {tier.includes.map((item, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
-                      tier.badge ? 'bg-nim-purple/20' : 'bg-nim-mint/20'
-                    }`}>
-                      <Check className={`w-3 h-3 ${tier.badge ? 'text-nim-purple' : 'text-nim-mint'}`} strokeWidth={2.5} />
-                    </div>
-                    <span className={`text-sm leading-relaxed ${tier.badge ? 'text-nim-slate-dark' : 'text-white/75'}`}>
-                      {item}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="space-y-3 mb-7">
-                <div className={`flex items-center gap-2.5 text-sm ${tier.badge ? 'text-nim-slate' : 'text-white/50'}`}>
-                  <Clock className="w-4 h-4" />
-                  <span>{tier.timeline}</span>
-                </div>
-                {tier.insurance && (
-                  <div className="flex items-center gap-2.5">
-                    <Shield className="w-4 h-4 text-nim-purple" />
-                    <span className="text-sm text-nim-purple font-semibold">90-day Ops Insurance included</span>
-                  </div>
-                )}
-              </div>
-
-              <a
-                href={CALENDLY_BOOKING_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 font-semibold rounded-xl text-sm transition-all ${
-                  tier.badge
-                    ? 'bg-nim-navy text-white hover:bg-nim-navy/90'
-                    : 'bg-white/10 text-white hover:bg-white/20'
-                }`}
-              >
-                {tier.cta}
-                <ArrowRight className="w-4 h-4" />
-              </a>
-            </motion.article>
-          ))}
-        </div>
-
-        {/* Footer notes */}
-        <motion.div 
-          className="text-center space-y-2"
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <p className="text-sm text-white/50">
-            <span className="text-white/70 font-medium">Payment terms:</span> 50% to start, 50% at delivery.
-          </p>
-          <p className="text-sm text-white/40">
-            We can invoice as capacity building.
-          </p>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
-
-// 6) WHAT WE INSTALL Section - Clean, accessible design
+// Removed local PricingSection - now using imported component from @/components/PricingSection
 const DeliverablesSection = () => {
   const coreDomains = [
     {
@@ -2241,7 +2056,7 @@ const CapacityBuildout = () => {
           <HeroSection />
           <HowItWorksSection />
           <DomainsSection />
-          <PricingTiersSection />
+          <PricingSection />
           <ScrollSection parallaxStrength={0.15}>
             <WhoThisIsFor />
           </ScrollSection>
