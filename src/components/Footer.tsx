@@ -18,7 +18,7 @@ const legalLinks = [
 
 export const Footer = () => {
   return (
-    <footer className="bg-secondary-background relative overflow-hidden">
+    <footer className="bg-nim-navy relative overflow-hidden">
       {/* Subtle gradient */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent" />
 
