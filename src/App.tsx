@@ -32,6 +32,7 @@ import CapacityBuildout from "./pages/CapacityBuildout";
 import ThanksCapacityCall from "./pages/ThanksCapacityCall";
 import ThanksNohc from "./pages/ThanksNohc";
 import ThanksProofTracker from "./pages/ThanksProofTracker";
+import ThanksBooked from "./pages/ThanksBooked";
 
 import PathA from "./pages/PathA";
 import PathB from "./pages/PathB";
@@ -81,6 +82,7 @@ const App = () => (
             <Route path="/thanks-capacity-call" element={<ThanksCapacityCall />} />
             <Route path="/thanks-nohc" element={<ThanksNohc />} />
             <Route path="/thanks-proof-tracker" element={<ThanksProofTracker />} />
+            <Route path="/thanks-booked" element={<ThanksBooked />} />
             <Route path="/organizational-health-check" element={<ExternalRedirect to={TYPEFORM_HEALTH_CHECK_URL} />} />
             <Route path="/health-score" element={<ExternalRedirect to={TYPEFORM_HEALTH_CHECK_URL} />} />
             <Route path="/path-a" element={<PathA />} />
