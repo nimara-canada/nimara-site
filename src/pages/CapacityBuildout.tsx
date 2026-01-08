@@ -1773,9 +1773,6 @@ const CapacityBuildout = () => {
           <ScrollSection parallaxStrength={0.12}>
             <FrameworkSection />
           </ScrollSection>
-          <ScrollSection parallaxStrength={0.08}>
-            <PricingSection />
-          </ScrollSection>
           <ScrollSection parallaxStrength={0.1}>
             <DeliverablesSection />
           </ScrollSection>
