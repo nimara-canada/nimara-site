@@ -74,6 +74,9 @@ const buildEmailSubject = (formCode: string, payload: Record<string, any>): stri
       orgOrName = payload.organization || payload.name || "";
       const helpType = getHelpTypeLabel(payload.help_type || "");
       return `🚨 [NIMARA:URGENT] ${orgOrName} — ${helpType}`;
+    case "CAPACITY_CONTACT":
+      orgOrName = payload.organization || payload.name || "";
+      return `[NIMARA:CAPACITY] ${orgOrName} — Buildout inquiry`;
     default:
       return `[NIMARA:${formCode}] ${payload.email || payload.name || ""}`;
   }
@@ -138,6 +141,21 @@ const buildEmailBody = (formCode: string, payload: Record<string, any>): string 
     body += `UTM Medium: ${payload.utm_medium || ""}\n`;
     body += `UTM Campaign: ${payload.utm_campaign || ""}\n`;
     body += `Referrer: ${payload.referrer || ""}\n`;
+  } else if (formCode === "CAPACITY_CONTACT") {
+    body += `CAPACITY BUILDOUT INQUIRY\n`;
+    body += `${"=".repeat(40)}\n\n`;
+    
+    body += `CONTACT INFO\n`;
+    body += `${"-".repeat(20)}\n`;
+    body += `Name: ${payload.name || ""}\n`;
+    body += `Email: ${payload.email || ""}\n`;
+    body += `Phone: ${payload.phone || "(not provided)"}\n`;
+    body += `Organization: ${payload.organization || ""}\n\n`;
+    
+    body += `SOURCE\n`;
+    body += `${"-".repeat(20)}\n`;
+    body += `Page: ${payload.source || ""}\n`;
+    body += `Timestamp: ${payload.timestamp || ""}\n`;
   } else {
     // Fallback for other forms
     for (const [key, value] of Object.entries(payload)) {

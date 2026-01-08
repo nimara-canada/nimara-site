@@ -1095,36 +1095,176 @@ const SixWeekProcessSection = () => {
 
 // 11) FINAL CTA Section - Clean Nimara branding
 const FinalCTASection = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    organization: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-form-email`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            formCode: 'CAPACITY_CONTACT',
+            payload: {
+              ...formData,
+              timestamp: new Date().toISOString(),
+              source: 'capacity-buildout-footer',
+            },
+          }),
+        }
+      );
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', phone: '', organization: '' });
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
-    <section id="cta" className="py-28 md:py-36 lg:py-44">
-      <div className="max-w-4xl mx-auto px-6 text-center">
+    <section id="cta" className="py-20 md:py-28 lg:py-36">
+      <div className="max-w-2xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          className="text-center mb-10"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-white leading-[1.15] tracking-[-0.02em] mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-[1.15] tracking-[-0.02em] mb-4">
             Want this off your plate?
-            <br />
-            <span className="text-nim-mint">We'll handle the buildout.</span>
           </h2>
-
-          <motion.a
-            href={CALENDLY_BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-nim-mint text-nim-navy font-semibold rounded-xl transition-all hover:bg-nim-mint/90"
-          >
-            Book a 20-min Fit Call
-            <ArrowRight className="w-4 h-4" />
-          </motion.a>
-
-          <p className="text-sm text-white/50 mt-8">
-            No pressure. We'll tell you the best next step.
+          <p className="text-lg text-white/70">
+            Drop your details and we'll reach out to discuss your buildout.
           </p>
         </motion.div>
+
+        {isSubmitted ? (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center border border-white/20"
+          >
+            <div className="w-16 h-16 bg-nim-mint/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Check className="w-8 h-8 text-nim-mint" />
+            </div>
+            <h3 className="text-xl font-semibold text-white mb-2">Thank you!</h3>
+            <p className="text-white/70">We'll be in touch within 1 business day.</p>
+          </motion.div>
+        ) : (
+          <motion.form
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            onSubmit={handleSubmit}
+            className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/20"
+          >
+            <div className="grid gap-4 md:gap-5">
+              {/* Name */}
+              <div>
+                <label htmlFor="cta-name" className="block text-sm font-medium text-white/80 mb-1.5">
+                  Name <span className="text-nim-mint">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="cta-name"
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-nim-mint/50 focus:border-nim-mint/50 transition-all"
+                  placeholder="Your name"
+                />
+              </div>
+
+              {/* Email */}
+              <div>
+                <label htmlFor="cta-email" className="block text-sm font-medium text-white/80 mb-1.5">
+                  Email <span className="text-nim-mint">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="cta-email"
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-nim-mint/50 focus:border-nim-mint/50 transition-all"
+                  placeholder="you@organization.ca"
+                />
+              </div>
+
+              {/* Phone (optional) */}
+              <div>
+                <label htmlFor="cta-phone" className="block text-sm font-medium text-white/80 mb-1.5">
+                  Phone <span className="text-white/40 text-xs">(optional)</span>
+                </label>
+                <input
+                  type="tel"
+                  id="cta-phone"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-nim-mint/50 focus:border-nim-mint/50 transition-all"
+                  placeholder="(123) 456-7890"
+                />
+              </div>
+
+              {/* Organization */}
+              <div>
+                <label htmlFor="cta-org" className="block text-sm font-medium text-white/80 mb-1.5">
+                  Organization <span className="text-nim-mint">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="cta-org"
+                  required
+                  value={formData.organization}
+                  onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-nim-mint/50 focus:border-nim-mint/50 transition-all"
+                  placeholder="Your nonprofit or charity"
+                />
+              </div>
+            </div>
+
+            {/* Submit */}
+            <motion.button
+              type="submit"
+              disabled={isSubmitting}
+              whileHover={{ scale: 1.01 }}
+              whileTap={{ scale: 0.99 }}
+              className="w-full mt-6 px-8 py-4 bg-nim-mint text-nim-navy font-semibold rounded-xl transition-all hover:bg-nim-mint/90 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            >
+              {isSubmitting ? (
+                <>
+                  <span className="w-5 h-5 border-2 border-nim-navy/30 border-t-nim-navy rounded-full animate-spin" />
+                  Sending...
+                </>
+              ) : (
+                <>
+                  Get in Touch
+                  <ArrowRight className="w-4 h-4" />
+                </>
+              )}
+            </motion.button>
+
+            <p className="text-xs text-white/40 text-center mt-4">
+              No pressure. We'll tell you the best next step.
+            </p>
+          </motion.form>
+        )}
       </div>
     </section>
   );
