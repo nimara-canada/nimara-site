@@ -312,7 +312,6 @@ const DomainsSection = () => {
       icon: ClipboardCheck,
       popular: false,
       outcome: "Your board runs with clear records — no more chasing people.",
-      includes: ["Conflict of interest policy", "Minutes template", "Decision log", "Board calendar"],
     },
     {
       id: 2,
@@ -320,7 +319,6 @@ const DomainsSection = () => {
       icon: DollarSign,
       popular: true,
       outcome: "Find proof for funders in minutes, not days.",
-      includes: ["Grant Proof Pack", "Expense tracker", "Folder system", "Month-end routine"],
     },
     {
       id: 3,
@@ -328,7 +326,6 @@ const DomainsSection = () => {
       icon: UserCog,
       popular: false,
       outcome: "New staff get up to speed fast. Nothing in anyone's head.",
-      includes: ["Role clarity docs", "Onboarding checklist", "Handoff guides", "HR file structure"],
     },
     {
       id: 4,
@@ -336,7 +333,6 @@ const DomainsSection = () => {
       icon: HandHeart,
       popular: true,
       outcome: "Volunteers know what they signed up for — and stay longer.",
-      includes: ["Intake process", "Role descriptions", "Appreciation rhythm", "Tracking system"],
     },
     {
       id: 5,
@@ -344,7 +340,6 @@ const DomainsSection = () => {
       icon: Database,
       popular: false,
       outcome: "Anyone on your team can find what they need.",
-      includes: ["Folder structure", "Naming rules", "Permissions setup", "File audit checklist"],
     },
     {
       id: 6,
@@ -352,7 +347,6 @@ const DomainsSection = () => {
       icon: Briefcase,
       popular: true,
       outcome: "Show what you're doing and whether it's working.",
-      includes: ["Program documentation", "Tracking templates", "Reporting formats"],
     },
     {
       id: 7,
@@ -360,7 +354,6 @@ const DomainsSection = () => {
       icon: Heart,
       popular: false,
       outcome: "Know who gave, when, and how to keep them giving.",
-      includes: ["Donor tracking", "Gift acknowledgment", "Retention calendar"],
     }
   ];
 
@@ -407,58 +400,34 @@ const DomainsSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-20px" }}
                 transition={{ duration: 0.4, delay: index * 0.03 }}
-                className={`group grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 p-6 lg:p-8 rounded-2xl border transition-all duration-200 ${
+                className={`group flex items-center gap-4 lg:gap-6 p-5 lg:p-6 rounded-xl border transition-all duration-200 ${
                   domain.popular 
                     ? 'bg-nim-mint/5 border-nim-mint/40 hover:border-nim-mint' 
                     : 'bg-white border-nim-mist hover:border-nim-slate/30'
                 }`}
               >
-                {/* Left: Icon + Title + Badge */}
-                <div className="lg:col-span-4 flex items-start gap-4">
-                  <div className={`w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 ${
-                    domain.popular ? 'bg-nim-mint/30' : 'bg-nim-cloud'
-                  }`}>
-                    <IconComponent className="w-5 h-5 text-nim-navy" strokeWidth={1.75} />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <h3 className="text-lg font-semibold text-nim-navy">
-                        {domain.title}
-                      </h3>
-                      {domain.popular && (
-                        <span className="px-2 py-0.5 bg-nim-mint text-nim-navy text-[10px] font-bold uppercase tracking-wide rounded">
-                          Popular
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-sm text-nim-slate lg:hidden">
-                      {domain.outcome}
-                    </p>
-                  </div>
+                {/* Icon */}
+                <div className={`w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 ${
+                  domain.popular ? 'bg-nim-mint/30' : 'bg-nim-cloud'
+                }`}>
+                  <IconComponent className="w-5 h-5 text-nim-navy" strokeWidth={1.75} />
                 </div>
 
-                {/* Middle: Outcome (desktop only) */}
-                <div className="hidden lg:flex lg:col-span-4 items-center">
-                  <p className="text-[15px] text-nim-slate-dark leading-relaxed">
+                {/* Title + Outcome */}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1">
+                    <h3 className="text-lg font-semibold text-nim-navy">
+                      {domain.title}
+                    </h3>
+                    {domain.popular && (
+                      <span className="px-2 py-0.5 bg-nim-mint text-nim-navy text-[10px] font-bold uppercase tracking-wide rounded">
+                        Popular
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-sm text-nim-slate">
                     {domain.outcome}
                   </p>
-                </div>
-
-                {/* Right: What's included */}
-                <div className="lg:col-span-4">
-                  <p className="text-[11px] font-medium uppercase tracking-wide text-nim-slate/70 mb-2 lg:mb-3">
-                    Includes
-                  </p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {domain.includes.map((item, i) => (
-                      <span 
-                        key={i}
-                        className="inline-block px-2.5 py-1 bg-nim-cloud/80 text-nim-navy/80 text-xs rounded-md"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
                 </div>
               </motion.div>
             );
