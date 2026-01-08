@@ -364,7 +364,7 @@ const PricingTiersSection = () => {
         {/* Escape hatch */}
         <motion.div
           style={getItemStyle(5)}
-          className="text-center"
+          className="text-center space-y-2"
         >
           <a
             href={TYPEFORM_HEALTH_CHECK_URL}
@@ -378,6 +378,17 @@ const PricingTiersSection = () => {
             </span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
           </a>
+          <p className="text-xs text-nim-slate/70">
+            We have different packages for medium-size teams — check{" "}
+            <a 
+              href="https://nimara.ca" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="underline hover:text-nim-navy transition-colors"
+            >
+              nimara.ca
+            </a>
+          </p>
         </motion.div>
       </div>
     </section>
