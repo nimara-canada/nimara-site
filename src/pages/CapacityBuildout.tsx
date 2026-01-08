@@ -100,16 +100,16 @@ const HeroSection = () => {
     <section 
       id="hero"
       ref={ref} 
-      className="min-h-[100vh] bg-nim-cloud relative overflow-hidden flex items-center pt-20"
+      className="min-h-[100vh] bg-nim-navy relative overflow-hidden flex items-center pt-20"
     >
       <div className="relative z-10 w-full max-w-4xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
         <div className="text-center">
           {/* Tag */}
           <motion.div
             style={getItemStyle(0)}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-nim-mint/30 border border-nim-mint rounded-full mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-nim-mint/20 border border-nim-mint/50 rounded-full mb-8"
           >
-            <span className="text-xs font-bold uppercase tracking-wider text-nim-navy">
+            <span className="text-xs font-bold uppercase tracking-wider text-nim-mint">
               For Nonprofits and Charities
             </span>
           </motion.div>
@@ -117,7 +117,7 @@ const HeroSection = () => {
           {/* Headline */}
           <motion.h1
             style={getItemStyle(1)}
-            className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-nim-navy leading-[1.1] tracking-[-0.02em] mb-6"
+            className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.1] tracking-[-0.02em] mb-6"
           >
             Be proof-ready before funders ask in 4 weeks
           </motion.h1>
@@ -125,7 +125,7 @@ const HeroSection = () => {
           {/* Subhead */}
           <motion.p
             style={getItemStyle(2)}
-            className="text-lg sm:text-xl text-nim-slate-dark max-w-2xl mx-auto leading-relaxed mb-4"
+            className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed mb-4"
           >
             We set up your board records, grant tracking, team files, and volunteer systems — then train your staff to keep it running.
           </motion.p>
@@ -133,7 +133,7 @@ const HeroSection = () => {
           {/* Support line */}
           <motion.p
             style={getItemStyle(3)}
-            className="text-sm text-nim-slate mb-10"
+            className="text-sm text-white/60 mb-10"
           >
             Pick the areas you need most. Start with 2. Add more anytime.
           </motion.p>
