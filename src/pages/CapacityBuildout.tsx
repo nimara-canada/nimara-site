@@ -1105,11 +1105,11 @@ const PricingSection = () => {
       subtitle: "Starter",
       price: "$14,900",
       currency: "CAD",
-      bestFor: "Newer orgs, 1–2 grants, tight capacity budget.",
+      bestFor: "Newer orgs, 1–2 grants, tight budget.",
       includes: [
-        "Board & Governance basics",
-        "Money & Grants proof system (includes Proof Tracker setup)",
-        "Programs & Ops basics"
+        "Board & Governance",
+        "Money & Grants (includes Proof Tracker)",
+        "Tools & Files"
       ],
       timeline: "4–5 weeks",
       badge: null,
@@ -1120,12 +1120,13 @@ const PricingSection = () => {
       subtitle: "Flagship",
       price: "$24,900",
       currency: "CAD",
-      bestFor: "Most orgs with 2+ grants or recurring reporting.",
+      bestFor: "1–4 grants or regular funder reporting.",
       includes: [
-        "Everything in Core 3",
-        "People (Staff & HR) basics",
-        "Tools & Data setup",
-        "Reporting-ready pack structure"
+        "Board & Governance",
+        "Money & Grants (includes Proof Tracker)",
+        "People (Staff & HR)",
+        "Volunteers",
+        "Tools & Files"
       ],
       timeline: "6-week install",
       badge: "Most Popular",
@@ -1137,11 +1138,11 @@ const PricingSection = () => {
       subtitle: "Custom",
       price: "Custom",
       currency: "",
-      bestFor: "Complex orgs, 5+ grants, multiple programs, or 25+ staff.",
+      bestFor: "5+ grants, multiple programs, or 25+ staff.",
       includes: [
         "Everything in Core 5",
-        "Fundraising & Donors module",
-        "Volunteers module"
+        "Programs & Ops",
+        "Fundraising & Donors"
       ],
       timeline: "Custom (typically 6–10 weeks)",
       badge: null,
