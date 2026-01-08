@@ -204,56 +204,61 @@ const HeroSection = () => {
   );
 };
 
-// 1.5) BUILDOUT TIERS Section - Pick your level
+// 1.5) BUILDOUT TIERS Section - Premium pricing cards
 const BuildoutTiersSection = () => {
   const { ref, getItemStyle } = useStaggeredReveal<HTMLElement>(8, { staggerDelay: 80, baseDelay: 100 });
 
   const tiers = [
     {
       name: "Core 3",
-      label: "Starter",
-      price: "$14,900 CAD",
-      bestFor: "Newer orgs or 1–2 grants.",
-      includes: [
-        "Board & Governance",
+      badge: "STARTER",
+      price: "$14,900",
+      priceSuffix: "CAD",
+      bestFor: "Newer orgs or 1–2 grants",
+      features: [
+        "Board & Governance setup",
         "Money & Grants (Proof Pack system)",
-        "Programs & Ops"
+        "Programs & Ops basics",
+        "4–5 week timeline"
       ],
-      timeline: "4–5 weeks",
-      highlighted: false,
+      bgColor: "bg-[hsl(195,76%,91%)]",
       ctaText: "Book a Fit Call",
-      ctaLink: CALENDLY_BOOKING_URL
+      ctaLink: CALENDLY_BOOKING_URL,
+      highlighted: false
     },
     {
       name: "Core 5",
-      label: "Flagship",
-      price: "$24,900 CAD",
-      bestFor: "2+ grants or recurring reporting.",
-      includes: [
+      badge: "MOST POPULAR",
+      price: "$24,900",
+      priceSuffix: "CAD",
+      bestFor: "2+ grants or recurring reporting",
+      features: [
         "Everything in Core 3",
         "People (Staff & HR)",
-        "Tools & Data"
+        "Tools & Data setup",
+        "90-Day Ops Insurance included"
       ],
-      bonus: "Includes 90-Day Ops Insurance",
-      timeline: "6 weeks",
-      highlighted: true,
+      bgColor: "bg-[hsl(300,76%,91%)]",
       ctaText: "Book a 20-min Fit Call",
-      ctaLink: CALENDLY_BOOKING_URL
+      ctaLink: CALENDLY_BOOKING_URL,
+      highlighted: true
     },
     {
       name: "Premium 7",
-      label: "Custom",
-      price: "From $34,900+ CAD",
-      bestFor: "5+ grants, multiple programs, or 25+ staff.",
-      includes: [
+      badge: "CUSTOM",
+      price: "$34,900+",
+      priceSuffix: "CAD",
+      bestFor: "5+ grants, multiple programs, or 25+ staff",
+      features: [
         "Everything in Core 5",
         "Fundraising & Donors (Optional)",
-        "Volunteers (Optional)"
+        "Volunteers (Optional)",
+        "6–10 week timeline"
       ],
-      timeline: "6–10 weeks (typical)",
-      highlighted: false,
+      bgColor: "bg-[hsl(150,60%,90%)]",
       ctaText: "Request Custom Scope",
-      ctaLink: CALENDLY_BOOKING_URL
+      ctaLink: CALENDLY_BOOKING_URL,
+      highlighted: false
     }
   ];
 
@@ -261,111 +266,83 @@ const BuildoutTiersSection = () => {
     <section 
       id="tiers" 
       ref={ref}
-      className="py-20 md:py-28 bg-background relative"
+      className="py-20 md:py-28 bg-muted/30 relative"
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         {/* Section header */}
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-14 md:mb-20">
           <motion.h2
             style={getItemStyle(0)}
-            className="text-3xl sm:text-4xl font-bold text-foreground tracking-tight mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground tracking-tight mb-4 italic"
           >
-            Pick your buildout level
+            Simple pricing with
+            <br />
+            no hidden fees
           </motion.h2>
           <motion.p
             style={getItemStyle(1)}
-            className="text-lg text-muted-foreground"
+            className="text-lg text-muted-foreground max-w-xl mx-auto"
           >
-            Most teams with grants choose Core 5.
+            Capacity buildout packages for Canadian nonprofits at every stage.
           </motion.p>
         </div>
 
         {/* Tier cards */}
         <motion.div 
           style={getItemStyle(2)}
-          className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-8"
+          className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-10"
         >
-          {tiers.map((tier, index) => (
+          {tiers.map((tier) => (
             <motion.div
               key={tier.name}
-              whileHover={{ y: -4 }}
+              whileHover={{ y: -6, scale: 1.01 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className={`relative rounded-2xl p-6 lg:p-8 transition-all ${
-                tier.highlighted
-                  ? "bg-primary/[0.04] border-2 border-primary/30 shadow-lg shadow-primary/5"
-                  : "bg-card border border-border"
-              }`}
+              className={`relative rounded-3xl p-8 ${tier.bgColor} overflow-hidden`}
             >
-              {/* Most Popular badge */}
-              {tier.highlighted && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="px-4 py-1.5 text-xs font-semibold uppercase tracking-wide bg-primary text-primary-foreground rounded-full shadow-md">
-                    Most Popular
+              {/* Card content - two column layout */}
+              <div className="flex flex-col h-full">
+                {/* Top section: Badge + Price */}
+                <div className="mb-6">
+                  <span className={`inline-block px-4 py-1.5 text-xs font-bold uppercase tracking-wide rounded-lg border-2 mb-6 ${
+                    tier.highlighted 
+                      ? "border-secondary-background text-secondary-background" 
+                      : "border-foreground/80 text-foreground/80"
+                  }`}>
+                    {tier.badge}
                   </span>
-                </div>
-              )}
-
-              {/* Tier header */}
-              <div className={tier.highlighted ? "pt-3" : ""}>
-                <h3 className="text-xl font-semibold text-foreground mb-1">
-                  {tier.name} <span className="font-normal text-muted-foreground">({tier.label})</span>
-                </h3>
-                <p className="text-2xl sm:text-3xl font-bold text-foreground mb-4">
-                  {tier.price}
-                </p>
-              </div>
-
-              {/* Best for */}
-              <p className="text-sm text-muted-foreground mb-5">
-                <span className="font-medium text-foreground">Best for:</span> {tier.bestFor}
-              </p>
-
-              {/* Includes */}
-              <div className="space-y-3 mb-5">
-                {tier.includes.map((item, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <Check className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" strokeWidth={2.5} />
-                    <span className="text-sm text-foreground">{item}</span>
+                  
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-5xl sm:text-6xl font-bold text-foreground tracking-tight">
+                      {tier.price}
+                    </span>
                   </div>
-                ))}
-              </div>
+                  <p className="text-sm text-foreground/70 mt-1">
+                    {tier.priceSuffix} • {tier.bestFor}
+                  </p>
+                </div>
 
-              {/* Bonus line */}
-              {tier.bonus && (
-                <p className="text-sm text-primary font-medium mb-5">
-                  {tier.bonus}
-                </p>
-              )}
+                {/* Features list */}
+                <div className="space-y-3 mb-8 flex-grow">
+                  {tier.features.map((feature, i) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-secondary-background mt-0.5 flex-shrink-0" strokeWidth={2.5} />
+                      <span className="text-sm text-foreground/90">{feature}</span>
+                    </div>
+                  ))}
+                </div>
 
-              {/* Timeline */}
-              <p className="text-sm text-muted-foreground mb-6">
-                <span className="font-medium text-foreground">Timeline:</span> {tier.timeline}
-              </p>
-
-              {/* CTA */}
-              {tier.highlighted ? (
+                {/* CTA Button */}
                 <motion.a
                   href={tier.ctaLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-xl shadow-md shadow-primary/20 transition-all hover:shadow-lg hover:shadow-primary/30"
+                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-secondary-background text-white font-semibold rounded-xl transition-all hover:bg-secondary-background/90"
                 >
                   {tier.ctaText}
-                  <ArrowRight className="w-4 h-4" />
                 </motion.a>
-              ) : (
-                <a
-                  href={tier.ctaLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group"
-                >
-                  {tier.ctaText}
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                </a>
-              )}
+              </div>
             </motion.div>
           ))}
         </motion.div>
@@ -373,7 +350,7 @@ const BuildoutTiersSection = () => {
         {/* Payment microcopy */}
         <motion.p
           style={getItemStyle(3)}
-          className="text-center text-sm text-muted-foreground/70 mb-6"
+          className="text-center text-sm text-muted-foreground mb-6"
         >
           Payment: 50% to start, 50% at delivery. Invoiced as capacity building.
         </motion.p>
