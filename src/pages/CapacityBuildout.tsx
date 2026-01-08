@@ -1137,7 +1137,7 @@ const FinalCTASection = () => {
   };
 
   return (
-    <section id="cta" className="py-20 md:py-28 lg:py-36">
+    <section id="cta" className="py-20 md:py-28 lg:py-36 bg-nim-navy">
       <div className="max-w-2xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
