@@ -1096,7 +1096,7 @@ const SixWeekProcessSection = () => {
 // 11) FINAL CTA Section - Clean Nimara branding
 const FinalCTASection = () => {
   return (
-    <section id="cta" className="py-28 md:py-36 lg:py-44 bg-nim-navy">
+    <section id="cta" className="py-28 md:py-36 lg:py-44 bg-nim-purple">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
