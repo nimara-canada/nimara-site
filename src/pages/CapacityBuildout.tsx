@@ -1157,13 +1157,13 @@ const FinalCTASection = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center border border-white/20"
+            className="bg-white rounded-2xl p-8 text-center border border-gray-200 shadow-lg"
           >
             <div className="w-16 h-16 bg-nim-mint/20 rounded-full flex items-center justify-center mx-auto mb-4">
               <Check className="w-8 h-8 text-nim-mint" />
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">Thank you!</h3>
-            <p className="text-white/70">We'll be in touch within 1 business day.</p>
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">Thank you!</h3>
+            <p className="text-gray-600">We'll be in touch within 1 business day.</p>
           </motion.div>
         ) : (
           <motion.form
@@ -1172,12 +1172,12 @@ const FinalCTASection = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             onSubmit={handleSubmit}
-            className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/20"
+            className="bg-white rounded-2xl p-6 md:p-8 border border-gray-200 shadow-lg"
           >
             <div className="grid gap-4 md:gap-5">
               {/* Name */}
               <div>
-                <label htmlFor="cta-name" className="block text-sm font-medium text-white/80 mb-1.5">
+                <label htmlFor="cta-name" className="block text-sm font-medium text-gray-700 mb-1.5">
                   Name <span className="text-nim-mint">*</span>
                 </label>
                 <input
@@ -1186,14 +1186,14 @@ const FinalCTASection = () => {
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-nim-mint/50 focus:border-nim-mint/50 transition-all"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-nim-mint/50 focus:border-nim-mint/50 transition-all"
                   placeholder="Your name"
                 />
               </div>
 
               {/* Email */}
               <div>
-                <label htmlFor="cta-email" className="block text-sm font-medium text-white/80 mb-1.5">
+                <label htmlFor="cta-email" className="block text-sm font-medium text-gray-700 mb-1.5">
                   Email <span className="text-nim-mint">*</span>
                 </label>
                 <input
@@ -1202,29 +1202,29 @@ const FinalCTASection = () => {
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-nim-mint/50 focus:border-nim-mint/50 transition-all"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-nim-mint/50 focus:border-nim-mint/50 transition-all"
                   placeholder="you@organization.ca"
                 />
               </div>
 
               {/* Phone (optional) */}
               <div>
-                <label htmlFor="cta-phone" className="block text-sm font-medium text-white/80 mb-1.5">
-                  Phone <span className="text-white/40 text-xs">(optional)</span>
+                <label htmlFor="cta-phone" className="block text-sm font-medium text-gray-700 mb-1.5">
+                  Phone <span className="text-gray-400 text-xs">(optional)</span>
                 </label>
                 <input
                   type="tel"
                   id="cta-phone"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-nim-mint/50 focus:border-nim-mint/50 transition-all"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-nim-mint/50 focus:border-nim-mint/50 transition-all"
                   placeholder="(123) 456-7890"
                 />
               </div>
 
               {/* Organization */}
               <div>
-                <label htmlFor="cta-org" className="block text-sm font-medium text-white/80 mb-1.5">
+                <label htmlFor="cta-org" className="block text-sm font-medium text-gray-700 mb-1.5">
                   Organization <span className="text-nim-mint">*</span>
                 </label>
                 <input
@@ -1233,7 +1233,7 @@ const FinalCTASection = () => {
                   required
                   value={formData.organization}
                   onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-nim-mint/50 focus:border-nim-mint/50 transition-all"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-nim-mint/50 focus:border-nim-mint/50 transition-all"
                   placeholder="Your nonprofit or charity"
                 />
               </div>
@@ -1260,7 +1260,7 @@ const FinalCTASection = () => {
               )}
             </motion.button>
 
-            <p className="text-xs text-white/40 text-center mt-4">
+            <p className="text-xs text-gray-500 text-center mt-4">
               No pressure. We'll tell you the best next step.
             </p>
           </motion.form>
