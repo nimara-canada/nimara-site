@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { Header } from '@/components/Header';
@@ -5,30 +6,36 @@ import { Footer } from '@/components/Footer';
 import { ClipboardCheck, ArrowRight } from 'lucide-react';
 import { CALENDLY_BOOKING_URL, CONTACT_EMAIL } from '@/constants/urls';
 
+// Declare gtag for TypeScript
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
 /**
  * Thank You Page: /thanks-nohc
  * Shown after user completes the Free NOHC (Nonprofit Organizational Health Check).
  * 
- * CONVERSION TRACKING NOTE:
- * Add Google Ads conversion tag here for "NOHC Completed" conversion.
- * Example: gtag('event', 'conversion', { 'send_to': 'AW-XXXXXXXXX/XXXXXXX' });
+ * CONVERSION TRACKING:
+ * Google Ads conversion "NOHC Completed" fires on page view.
  */
 
 const ThanksNohc = () => {
+  // Fire Google Ads conversion on page load
+  useEffect(() => {
+    if (window.gtag) {
+      window.gtag('event', 'conversion', {
+        'send_to': 'AW-17855110713/nohc_completed'
+      });
+    }
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Helmet>
         <title>NOHC Complete | Nimara</title>
         <meta name="robots" content="noindex, nofollow" />
-        {/* 
-          GOOGLE ADS CONVERSION TAG PLACEHOLDER
-          Add your conversion tracking script here:
-          <script>
-            gtag('event', 'conversion', {
-              'send_to': 'AW-XXXXXXXXX/nohc-completed'
-            });
-          </script>
-        */}
       </Helmet>
 
       <Header />

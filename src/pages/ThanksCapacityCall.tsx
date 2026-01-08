@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { Header } from '@/components/Header';
@@ -5,30 +6,36 @@ import { Footer } from '@/components/Footer';
 import { Check, ArrowRight, Calendar } from 'lucide-react';
 import { CONTACT_EMAIL } from '@/constants/urls';
 
+// Declare gtag for TypeScript
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
 /**
  * Thank You Page: /thanks-capacity-call
  * Shown after user books a Calendly call for Capacity Buildout.
  * 
- * CONVERSION TRACKING NOTE:
- * Add Google Ads conversion tag here for "Capacity Call Booked" conversion.
- * Example: gtag('event', 'conversion', { 'send_to': 'AW-XXXXXXXXX/XXXXXXX' });
+ * CONVERSION TRACKING:
+ * Google Ads conversion "Capacity Call Booked" fires on page view.
  */
 
 const ThanksCapacityCall = () => {
+  // Fire Google Ads conversion on page load
+  useEffect(() => {
+    if (window.gtag) {
+      window.gtag('event', 'conversion', {
+        'send_to': 'AW-17855110713/capacity_call_booked'
+      });
+    }
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Helmet>
         <title>Call Booked | Nimara</title>
         <meta name="robots" content="noindex, nofollow" />
-        {/* 
-          GOOGLE ADS CONVERSION TAG PLACEHOLDER
-          Add your conversion tracking script here:
-          <script>
-            gtag('event', 'conversion', {
-              'send_to': 'AW-XXXXXXXXX/capacity-call-booked'
-            });
-          </script>
-        */}
       </Helmet>
 
       <Header />

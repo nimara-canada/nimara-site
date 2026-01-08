@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { Header } from '@/components/Header';
@@ -5,30 +6,36 @@ import { Footer } from '@/components/Footer';
 import { FileSpreadsheet, ArrowRight, Download } from 'lucide-react';
 import { CALENDLY_BOOKING_URL, CONTACT_EMAIL } from '@/constants/urls';
 
+// Declare gtag for TypeScript
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
 /**
  * Thank You Page: /thanks-proof-tracker
  * Shown after user downloads/requests the Proof Tracker via Typeform.
  * 
- * CONVERSION TRACKING NOTE:
- * Add Google Ads conversion tag here for "Proof Tracker Downloaded" conversion.
- * Example: gtag('event', 'conversion', { 'send_to': 'AW-XXXXXXXXX/XXXXXXX' });
+ * CONVERSION TRACKING:
+ * Google Ads conversion "Proof Tracker Downloaded" fires on page view.
  */
 
 const ThanksProofTracker = () => {
+  // Fire Google Ads conversion on page load
+  useEffect(() => {
+    if (window.gtag) {
+      window.gtag('event', 'conversion', {
+        'send_to': 'AW-17855110713/proof_tracker_downloaded'
+      });
+    }
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Helmet>
         <title>Proof Tracker Sent | Nimara</title>
         <meta name="robots" content="noindex, nofollow" />
-        {/* 
-          GOOGLE ADS CONVERSION TAG PLACEHOLDER
-          Add your conversion tracking script here:
-          <script>
-            gtag('event', 'conversion', {
-              'send_to': 'AW-XXXXXXXXX/proof-tracker-downloaded'
-            });
-          </script>
-        */}
       </Helmet>
 
       <Header />
