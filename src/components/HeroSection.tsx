@@ -313,7 +313,7 @@ const DesktopDashboard = ({ isLoaded, revealStyle, progressBars }: DashboardProp
       {/* Floating Card - Top 3 Fixes */}
       <div 
         style={revealStyle(600)} 
-        className="absolute -right-6 -top-6 z-20 w-48 bg-white rounded-xl shadow-2xl p-4"
+        className="absolute -right-6 -top-16 z-20 w-48 bg-white rounded-xl shadow-2xl p-4"
       >
         <div className="flex items-center gap-2 mb-3">
           <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center">
