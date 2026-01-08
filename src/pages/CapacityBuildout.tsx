@@ -2267,8 +2267,6 @@ const CapacityBuildout = () => {
         <main id="main" className="overflow-hidden">
           <HeroSection />
           <BuildoutTiersSection />
-          <WhatWeInstallSection />
-          <SixWeekProcessSection />
           <ScrollSection parallaxStrength={0.15}>
             <WhoThisIsFor />
           </ScrollSection>
