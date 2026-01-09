@@ -4,28 +4,20 @@ import { Play, X, ArrowRight, Check } from 'lucide-react';
 
 const fitCriteria = [
   {
-    id: 'board-decisions',
-    text: "Board decisions aren't written down — so things get fuzzy later."
+    id: 'proof-scramble',
+    text: "You've scrambled to find proof when a funder asked."
   },
   {
-    id: 'receipts',
-    text: "You can't find receipts or proof when funders ask."
+    id: 'key-person-risk',
+    text: "If one person left, important knowledge would leave with them."
   },
   {
-    id: 'approvals',
-    text: "It's not clear who approves spending or how."
+    id: 'reporting-fire-drill',
+    text: "Reporting time always feels like a fire drill."
   },
   {
-    id: 'volunteers',
-    text: "Volunteers come and go without a system."
-  },
-  {
-    id: 'files',
-    text: "Files live in emails, texts, and random folders."
-  },
-  {
-    id: 'reporting',
-    text: "Reporting is always a scramble."
+    id: 'board-gaps',
+    text: "Board decisions don't always get written down."
   }
 ];
 
@@ -105,36 +97,11 @@ export const FitCheck = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg md:text-xl text-[#A0A0A0] max-w-lg"
             >
-              If your mission is strong but your back office feels shaky, we can help.
-            </motion.p>
-
-            {/* Audience Line */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-8"
-            >
-              <p className="text-base font-medium text-white">
-                For Canadian nonprofits with 0–50 staff (including volunteer-led).
-              </p>
-              <p className="text-sm text-[#A0A0A0] mt-2">
-                Standard packages for 0–25 staff. Custom support for 25–50.
-              </p>
-            </motion.div>
-            
-            {/* Qualifier */}
-            <motion.p 
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.6, delay: 0.35 }}
-              className="text-sm text-[#A0A0A0] mt-6 mb-4"
-            >
-              If any of these sound familiar, start here:
+              For Canadian nonprofits with 0–50 staff. If your mission is strong but your back office feels shaky — we can help.
             </motion.p>
 
             {/* Checklist */}
-            <div className="border-t border-[#2D3140]">
+            <div className="mt-8 flex flex-col gap-5">
               {fitCriteria.map((item, index) => {
                 const isChecked = checkedItems.includes(item.id);
                 return (
@@ -144,17 +111,16 @@ export const FitCheck = () => {
                     onClick={() => toggleItem(item.id)}
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.5, delay: 0.4 + index * 0.06 }}
+                    transition={{ duration: 0.5, delay: 0.3 + index * 0.06 }}
                     className={`
-                      w-full flex items-start gap-4 py-5 text-left transition-all duration-300
-                      border-b border-[#2D3140]
+                      w-full flex items-start gap-4 text-left transition-all duration-300
                       focus:outline-none group
-                      ${isChecked ? 'bg-white/5' : 'hover:bg-white/[0.02]'}
+                      ${isChecked ? 'opacity-100' : 'hover:opacity-90'}
                     `}
                     aria-pressed={isChecked}
                   >
                     <div className={`
-                      flex-shrink-0 w-6 h-6 rounded border-2 flex items-center justify-center transition-all duration-300 mt-0.5
+                      flex-shrink-0 w-6 h-6 rounded border-2 flex items-center justify-center transition-all duration-300
                       ${isChecked 
                         ? 'bg-[#ACFCE3] border-[#ACFCE3]' 
                         : 'border-[#4B5563] group-hover:border-[#ACFCE3]'}
@@ -175,10 +141,7 @@ export const FitCheck = () => {
                       </motion.div>
                     </div>
 
-                    <span className={`
-                      text-base leading-relaxed transition-colors duration-300
-                      ${isChecked ? 'text-white' : 'text-white group-hover:text-white'}
-                    `}>
+                    <span className="text-[17px] leading-relaxed text-white">
                       {item.text}
                     </span>
                   </motion.button>
@@ -242,7 +205,7 @@ export const FitCheck = () => {
                 rel="noopener noreferrer"
                 className="text-[#A0A0A0] hover:text-white transition-colors text-[15px] inline-flex items-center gap-1 group"
               >
-                Try the Free Health Check (10 min)
+                Or try the Free Health Check (10 min)
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </a>
             </motion.div>
