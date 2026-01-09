@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import TwoPathsSection from "@/components/TwoPathsSection";
 import FundingProofSection from "@/components/FundingProofSection";
-import { ScrollNarrative } from "@/components/ScrollNarrative";
+import { HowItWorksTimeline } from "@/components/HowItWorksTimeline";
 import { SystemLadder } from "@/components/SystemLadder";
 import { FitCheck } from "@/components/FitCheck";
 import { Expertise } from "@/components/Expertise";
@@ -101,10 +101,8 @@ const Index = () => {
           {/* Funding Proof - 2-column messaging */}
           <FundingProofSection />
           
-          {/* Scroll Narrative - Assess/Fix/Prove/Report */}
-          <RevealSection background="gradient">
-            <ScrollNarrative />
-          </RevealSection>
+          {/* How It Works - 4 Step Timeline */}
+          <HowItWorksTimeline />
           
           {/* Fit Check */}
           <RevealSection background="muted">
