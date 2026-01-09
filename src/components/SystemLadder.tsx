@@ -3,11 +3,11 @@ import { motion, useInView, useScroll, useTransform, useSpring } from 'framer-mo
 import { Link } from 'react-router-dom';
 
 const ladderSteps = [
-  { level: 0, title: "Messy basics", desc: "Things live in people's heads. Files are scattered." },
-  { level: 1, title: "Working basics", desc: "Clear folders and simple routines. Less scrambling." },
-  { level: 2, title: "Team-ready", desc: "People know who does what. Work doesn't get stuck." },
-  { level: 3, title: "Steady", desc: "Monthly work runs calmly. Reporting is easier." },
-  { level: 4, title: "Strong", desc: "Systems hold up as you grow. It's easy to show what happened." },
+  { level: 0, title: "Getting by", desc: "Work lives in people's heads" },
+  { level: 1, title: "Pieces in place", desc: "Some tools exist, inconsistent use" },
+  { level: 2, title: "Working basics", desc: "Core routines are written and followed" },
+  { level: 3, title: "Running smoothly", desc: "Systems are consistent across the team" },
+  { level: 4, title: "Best-in-class", desc: "Documented, reviewable, scalable" },
 ];
 
 export const SystemLadder = () => {
@@ -59,7 +59,7 @@ export const SystemLadder = () => {
             id="system-heading"
             className="text-3xl sm:text-4xl lg:text-5xl font-light text-white tracking-tight leading-[1.1] mb-6"
           >
-            See where you are today
+            How scoring works (Tier 0–4)
           </motion.h2>
           
           <motion.p
@@ -68,7 +68,7 @@ export const SystemLadder = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-white/50 max-w-xl"
           >
-            Most nonprofits aren't broken — the basics are just messy. This shows the next step.
+            Each domain gets a Tier score. It's not judgment — it's a map.
           </motion.p>
         </div>
 
@@ -113,7 +113,7 @@ export const SystemLadder = () => {
                   <div className="pt-1">
                     <div className="flex items-center gap-3 mb-1">
                       <h3 className="text-lg lg:text-xl font-medium text-white">
-                        {step.title}
+                        Tier {step.level} — {step.title}
                       </h3>
                       {isNimaraFocus && (
                         <span className="px-2 py-0.5 text-[9px] tracking-wider uppercase text-accent bg-accent/10 rounded">
