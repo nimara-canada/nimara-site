@@ -16,6 +16,7 @@ const navigation = [
 
 interface HeaderProps {
   activeRoute?: string;
+  hideCTA?: boolean;
 }
 
 // Helper function to check if a route is active (simple exact match)
@@ -23,7 +24,7 @@ const isRouteActive = (navHref: string, currentRoute: string) => {
   return navHref === currentRoute;
 };
 
-export const Header = ({ activeRoute = "/" }: HeaderProps) => {
+export const Header = ({ activeRoute = "/", hideCTA = false }: HeaderProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrollState, setScrollState] = useState({
     isScrolled: false,
@@ -168,43 +169,45 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
             </nav>
 
             {/* Desktop CTA */}
-            <div className="hidden lg:flex items-center gap-6">
-              <a
-                href="/partners"
-                className="group text-sm text-muted-foreground hover:text-foreground transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] active:opacity-70 select-none"
-              >
-                <span className="relative">
-                  For Consultants
-                  <span 
-                    className="absolute left-0 -bottom-0.5 w-0 h-px bg-foreground group-hover:w-full" 
-                    style={{ transition: `width 200ms ${DROPBOX_EASING_CSS}` }}
+            {!hideCTA && (
+              <div className="hidden lg:flex items-center gap-6">
+                <a
+                  href="/partners"
+                  className="group text-sm text-muted-foreground hover:text-foreground transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] active:opacity-70 select-none"
+                >
+                  <span className="relative">
+                    For Consultants
+                    <span 
+                      className="absolute left-0 -bottom-0.5 w-0 h-px bg-foreground group-hover:w-full" 
+                      style={{ transition: `width 200ms ${DROPBOX_EASING_CSS}` }}
+                    />
+                  </span>
+                </a>
+                <a
+                  href={CALENDLY_BOOKING_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group text-sm text-muted-foreground hover:text-foreground transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] active:opacity-70 select-none"
+                >
+                  <span className="relative">
+                    Book a call
+                    <span 
+                      className="absolute left-0 -bottom-0.5 w-0 h-px bg-foreground group-hover:w-full" 
+                      style={{ transition: `width 200ms ${DROPBOX_EASING_CSS}` }}
+                    />
+                  </span>
+                </a>
+                <a
+                  href="/start-here"
+                  className="inline-flex items-center gap-2 h-11 px-6 bg-primary text-primary-foreground text-sm font-medium rounded-full select-none transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/25 active:scale-[0.98] active:translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                >
+                  <span>Get Started</span>
+                  <ArrowRight 
+                    className="w-4 h-4 transition-transform duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] group-hover:translate-x-0.5" 
                   />
-                </span>
-              </a>
-              <a
-                href={CALENDLY_BOOKING_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group text-sm text-muted-foreground hover:text-foreground transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] active:opacity-70 select-none"
-              >
-                <span className="relative">
-                  Book a call
-                  <span 
-                    className="absolute left-0 -bottom-0.5 w-0 h-px bg-foreground group-hover:w-full" 
-                    style={{ transition: `width 200ms ${DROPBOX_EASING_CSS}` }}
-                  />
-                </span>
-              </a>
-              <a
-                href="/start-here"
-                className="inline-flex items-center gap-2 h-11 px-6 bg-primary text-primary-foreground text-sm font-medium rounded-full select-none transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/25 active:scale-[0.98] active:translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-              >
-                <span>Get Started</span>
-                <ArrowRight 
-                  className="w-4 h-4 transition-transform duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] group-hover:translate-x-0.5" 
-                />
-              </a>
-            </div>
+                </a>
+              </div>
+            )}
 
             {/* Mobile Menu */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -268,25 +271,27 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
                   </nav>
 
                   {/* Mobile nav footer */}
-                  <div className="p-6 border-t border-border/50 bg-muted/30 space-y-3">
-                    <a
-                      href="/start-here"
-                      className="flex items-center justify-center gap-2 w-full h-14 bg-primary text-primary-foreground font-medium rounded-full select-none transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98] active:translate-y-px"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Get Started
-                      <ArrowRight className="w-4 h-4" />
-                    </a>
-                    <a
-                      href={CALENDLY_BOOKING_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center text-sm text-muted-foreground hover:text-foreground transition-all duration-150 active:opacity-70 select-none"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Book a call
-                    </a>
-                  </div>
+                  {!hideCTA && (
+                    <div className="p-6 border-t border-border/50 bg-muted/30 space-y-3">
+                      <a
+                        href="/start-here"
+                        className="flex items-center justify-center gap-2 w-full h-14 bg-primary text-primary-foreground font-medium rounded-full select-none transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98] active:translate-y-px"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        Get Started
+                        <ArrowRight className="w-4 h-4" />
+                      </a>
+                      <a
+                        href={CALENDLY_BOOKING_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center text-sm text-muted-foreground hover:text-foreground transition-all duration-150 active:opacity-70 select-none"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        Book a call
+                      </a>
+                    </div>
+                  )}
                 </div>
               </SheetContent>
             </Sheet>
@@ -295,25 +300,27 @@ export const Header = ({ activeRoute = "/" }: HeaderProps) => {
       </header>
 
       {/* Mobile Sticky Bottom CTA */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden p-4 bg-background/98 backdrop-blur-md border-t border-border/50">
-        <div className="flex items-center gap-3">
-          <a
-            href="/start-here"
-            className="flex-1 flex items-center justify-center gap-2 h-12 bg-primary text-primary-foreground font-medium rounded-full select-none transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98] active:translate-y-px"
-          >
-            Get Started
-            <ArrowRight className="w-4 h-4" />
-          </a>
-          <a
-            href={CALENDLY_BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-muted-foreground hover:text-foreground transition-all duration-150 whitespace-nowrap active:opacity-70 select-none"
-          >
-            Book a call
-          </a>
+      {!hideCTA && (
+        <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden p-4 bg-background/98 backdrop-blur-md border-t border-border/50">
+          <div className="flex items-center gap-3">
+            <a
+              href="/start-here"
+              className="flex-1 flex items-center justify-center gap-2 h-12 bg-primary text-primary-foreground font-medium rounded-full select-none transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98] active:translate-y-px"
+            >
+              Get Started
+              <ArrowRight className="w-4 h-4" />
+            </a>
+            <a
+              href={CALENDLY_BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-muted-foreground hover:text-foreground transition-all duration-150 whitespace-nowrap active:opacity-70 select-none"
+            >
+              Book a call
+            </a>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Keyframes for mobile menu animations */}
       <style>{`

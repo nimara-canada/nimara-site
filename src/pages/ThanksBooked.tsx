@@ -46,7 +46,7 @@ const ThanksBooked = () => {
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
-      <Header />
+      <Header hideCTA />
 
       <main className="flex-1 flex items-center justify-center py-16 sm:py-24 px-6">
         <div className="max-w-lg w-full">
@@ -109,41 +109,14 @@ const ThanksBooked = () => {
             </p>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col gap-3 mb-6">
+          {/* CTA Button */}
+          <div className="mb-8">
             <Button asChild size="lg" className="w-full">
-              <a
-                href="https://mail.google.com/mail/u/0/#search/from%3Acalendly"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Open my calendar invite
+              <Link to="/capacity-buildout">
+                Back to Capacity Buildout
                 <ArrowRight className="w-4 h-4 ml-1" />
-              </a>
+              </Link>
             </Button>
-            <p className="text-xs text-center text-muted-foreground">
-              If you can't open the invite, use the fallback button below.
-            </p>
-            <Button asChild variant="outline" size="lg" className="w-full">
-              <a
-                href={CALENDLY_BOOKING_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Book another time
-              </a>
-            </Button>
-          </div>
-
-          {/* Back link */}
-          <div className="text-center mb-8">
-            <Link
-              to="/capacity-buildout"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1"
-            >
-              Back to Capacity Buildout
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
           </div>
 
           {/* Footnote */}
