@@ -3,11 +3,11 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 
 const levels = [
-  { level: 0, name: "Starting out", description: "New or rebuilding from scratch" },
-  { level: 1, name: "Getting by", description: "Basic pieces exist but gaps show up" },
-  { level: 2, name: "Growing steady", description: "Systems work but need polish" },
-  { level: 3, name: "Running smooth", description: "Team can handle most things on their own" },
-  { level: 4, name: "Scaling up", description: "Ready to grow without breaking" },
+  { level: 0, name: "Getting by", description: "Work lives in people's heads" },
+  { level: 1, name: "Pieces in place", description: "Some tools exist, inconsistent use" },
+  { level: 2, name: "Working basics", description: "Core routines are written and followed" },
+  { level: 3, name: "Running smoothly", description: "Systems are consistent across the team" },
+  { level: 4, name: "Best-in-class", description: "Documented, reviewable, scalable" },
 ];
 
 const LevelsOverview: React.FC = () => {
@@ -40,8 +40,17 @@ const LevelsOverview: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-2xl sm:text-3xl font-light tracking-tight leading-[1.1] mb-4"
           >
-            Where you are → where you're going
+            How scoring works (Tier 0–4)
           </motion.h2>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="text-muted-foreground"
+          >
+            Each domain gets a Tier score. It's not judgment — it's a map.
+          </motion.p>
         </div>
 
         {/* Levels list */}
@@ -60,9 +69,8 @@ const LevelsOverview: React.FC = () => {
                 {item.level}
               </span>
               <div className="flex-1 min-w-0">
-                <span className="font-medium text-foreground">{item.name}</span>
-                <span className="text-muted-foreground mx-2">—</span>
-                <span className="text-muted-foreground">{item.description}</span>
+                <span className="font-medium text-foreground">Tier {item.level} — {item.name}</span>
+                <p className="text-muted-foreground text-sm mt-0.5">{item.description}</p>
               </div>
             </div>
           ))}
