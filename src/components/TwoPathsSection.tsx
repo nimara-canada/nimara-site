@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Check, ArrowRight } from "lucide-react";
 import { TYPEFORM_HEALTH_CHECK_URL, TYPEFORM_GRANT_TRACKER_URL } from "@/constants/urls";
+// Two paths section for homepage
 
 const TwoPathsSection = () => {
   const cards = [
