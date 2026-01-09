@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -84,9 +84,14 @@ export function HowItWorksTimeline() {
                 {/* Step number circle */}
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className="w-[60px] h-[60px] rounded-full bg-[#ACFCE3] border-[3px] border-white shadow-[0_4px_12px_rgba(105,69,216,0.15)] flex items-center justify-center"
+                  className={`relative w-[60px] h-[60px] rounded-full bg-[#ACFCE3] border-[3px] border-white shadow-[0_4px_12px_rgba(105,69,216,0.15)] flex items-center justify-center ${step.number === 4 ? 'shadow-[0_0_20px_rgba(172,252,227,0.5)]' : ''}`}
                 >
                   <span className="text-2xl font-bold text-[#202654]">{step.number}</span>
+                  {step.number === 4 && (
+                    <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-[#6945D8] flex items-center justify-center shadow-md">
+                      <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />
+                    </div>
+                  )}
                 </motion.div>
                 
                 {/* Step content - tighter grouping */}
@@ -123,8 +128,13 @@ export function HowItWorksTimeline() {
                 className="flex gap-5"
               >
                 {/* Step number circle */}
-                <div className="w-[60px] h-[60px] rounded-full bg-[#ACFCE3] border-[3px] border-white shadow-[0_4px_12px_rgba(105,69,216,0.15)] flex items-center justify-center flex-shrink-0">
+                <div className={`relative w-[60px] h-[60px] rounded-full bg-[#ACFCE3] border-[3px] border-white shadow-[0_4px_12px_rgba(105,69,216,0.15)] flex items-center justify-center flex-shrink-0 ${step.number === 4 ? 'shadow-[0_0_20px_rgba(172,252,227,0.5)]' : ''}`}>
                   <span className="text-2xl font-bold text-[#202654]">{step.number}</span>
+                  {step.number === 4 && (
+                    <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-[#6945D8] flex items-center justify-center shadow-md">
+                      <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />
+                    </div>
+                  )}
                 </div>
                 
                 {/* Step content */}
