@@ -67,11 +67,13 @@ const TwoPathsSection = () => {
             <div
               key={path.id}
               className={`
-                relative bg-card rounded-xl p-8 
-                border border-border
-                transition-all duration-300 
-                hover:shadow-lg hover:-translate-y-1
-                ${path.isPrimary ? 'ring-2 ring-primary/20' : ''}
+                relative rounded-2xl p-8 
+                border-l-4 transition-all duration-300 
+                hover:shadow-xl hover:-translate-y-1
+                ${path.isPrimary 
+                  ? 'bg-gradient-to-br from-sky-50 to-emerald-50/50 border-l-emerald-500' 
+                  : 'bg-gradient-to-br from-rose-50 to-purple-50/50 border-l-purple-400'
+                }
               `}
             >
               {/* Recommended Badge */}
