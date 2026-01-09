@@ -14,38 +14,38 @@ import {
 
 const domains = [
   { 
-    title: "Board", 
-    desc: "Clear decisions, clear notes, clear follow-through.",
+    title: "Board & Governance", 
+    desc: "Your board runs with clear records — no more chasing people.",
     icon: Users,
   },
   { 
     title: "Money & Grants", 
-    desc: "Track spending, save receipts, and make reporting easier.",
+    desc: "Find proof for funders in minutes, not days.",
     icon: DollarSign,
   },
   { 
-    title: "People", 
-    desc: "Clear roles, simple handoffs, and basic HR basics.",
+    title: "People & HR", 
+    desc: "New staff get up to speed fast. Nothing stuck in anyone's head.",
     icon: UserCheck,
   },
   { 
-    title: "Programs", 
-    desc: "Simple plans, tracking, and updates you can reuse.",
+    title: "Programs & Ops", 
+    desc: "Show what you're doing and whether it's working.",
     icon: Briefcase,
   },
   { 
-    title: "Fundraising", 
-    desc: "Simple donor tracking and routines that don't fall apart.",
+    title: "Fundraising & Donors", 
+    desc: "Know who gave, when, and how to keep them giving.",
     icon: Heart,
   },
   { 
     title: "Volunteers", 
-    desc: "Clear roles, onboarding, and schedules people can follow.",
+    desc: "Volunteers know what they signed up for — and stay longer.",
     icon: HandHeart,
   },
   { 
     title: "Tools & Files", 
-    desc: "Folders, templates, and simple ways to keep things organized.",
+    desc: "Anyone on your team can find what they need.",
     icon: Database,
   }
 ];
@@ -98,7 +98,7 @@ export const Expertise = () => {
             id="expertise-heading"
             className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight leading-[1.15] text-foreground mb-6"
           >
-            What we can help with
+            7 areas we build for you
           </motion.h2>
           
           <motion.p
@@ -107,16 +107,7 @@ export const Expertise = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed"
           >
-            We help across 7 areas. Most nonprofits start with Grant Setup or an Organization Check.
-          </motion.p>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-sm text-muted-foreground/70 mt-2"
-          >
-            Start small. Build what matters first.
+            Pick the areas you need most. We build the systems. Your team learns how to run them.
           </motion.p>
         </div>
 
