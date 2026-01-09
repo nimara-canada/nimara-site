@@ -25,11 +25,18 @@ declare global {
 const ThanksBooked = () => {
   // Fire Google Ads conversion on page load
   useEffect(() => {
-    if (window.gtag) {
-      window.gtag('event', 'conversion', {
-        'send_to': 'AW-17855110713/do02COTvr98bELm8_cFC'
-      });
-    }
+    // Always create the queue function (works even if gtag.js loads a moment later)
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    (window as any).gtag =
+      (window as any).gtag ||
+      function () {
+        (window as any).dataLayer.push(arguments);
+      };
+
+    // Fire conversion
+    (window as any).gtag("event", "conversion", {
+      send_to: "AW-17855110713/do02COTvr98bELm8_cFC",
+    });
   }, []);
 
   return (
