@@ -41,30 +41,36 @@ const FundingProofSection = () => {
           <ScrollReveal delay={150}>
             <div className="space-y-6">
               <p className="text-lg md:text-xl font-medium text-foreground">
-                Good work isn't enough. Funders need working systems.
+                Good work isn't enough. Funders need to see it.
               </p>
               
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                When money, files, and decisions are hard to track, funders pause.
+                When files are scattered and decisions aren't tracked, funders pause.
                 <br />
                 Not because your mission is weak — but because it's hard to follow.
               </p>
               
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                Nimara helps Canadian nonprofits set up simple systems for money, files, and reporting — so funding is easier to win and manage.
+                We help you build the systems that make proof easy to find.
               </p>
 
               <div className="pt-4 flex flex-col items-start gap-3">
                 <Button asChild size="lg">
-                  <a href="/start-here">
-                    Get Started
+                  <a 
+                    href="https://calendly.com/thabani-nimara/fit-call"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Book a 20-min Fit Call →
                   </a>
                 </Button>
                 <a 
-                  href="/free-check" 
+                  href="https://form.typeform.com/to/hpY1Ikmr"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Try the free check →
+                  Or try the Free Health Check →
                 </a>
               </div>
             </div>
