@@ -27,7 +27,7 @@ const ThanksBooked = () => {
   useEffect(() => {
     if (window.gtag) {
       window.gtag('event', 'conversion', {
-        'send_to': 'AW-17855110713/booked_call'
+        'send_to': 'AW-17855110713/do02COTvr98bELm8_cFC'
       });
     }
   }, []);
