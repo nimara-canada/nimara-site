@@ -32,9 +32,9 @@ const HowItWorksHero: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight leading-[1.05] mb-8 text-white"
           >
-            A simple way to get your
+            Scattered to strong
             <br />
-            <span className="font-normal italic">basics working.</span>
+            <span className="font-normal italic">in 4 steps.</span>
           </motion.h1>
 
           {/* Subhead */}
@@ -44,7 +44,7 @@ const HowItWorksHero: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg md:text-xl text-white/50 leading-relaxed mb-12 max-w-xl"
           >
-            We help you set up simple systems for money, files, and reporting — so funding is easier to win and manage.
+            Simple systems. Clear proof. No more guessing.
           </motion.p>
 
           {/* CTAs */}
@@ -55,36 +55,43 @@ const HowItWorksHero: React.FC = () => {
             className="flex flex-col sm:flex-row items-start gap-6"
           >
             {/* Primary CTA */}
-            <Link
-              to="/start-here"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-secondary-background font-medium rounded-full hover:bg-accent/90 transition-colors"
-            >
-              Get Started
-            </Link>
-
-            {/* Secondary CTA */}
-            <Link
-              to="/grant-setup"
+            <a
+              href="https://calendly.com/thabani-nimara/fit-call"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex items-center gap-3 text-white font-medium"
             >
-              <span className="group-hover:text-accent transition-colors">See Grant Setup</span>
+              <span className="group-hover:text-accent transition-colors">Book a 20-min Fit Call</span>
               <span className="w-8 h-px bg-white group-hover:w-12 group-hover:bg-accent transition-all duration-300" />
-            </Link>
+            </a>
+
+            {/* Secondary CTA */}
+            <a
+              href="https://form.typeform.com/to/hpY1Ikmr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/50 hover:text-accent transition-colors"
+            >
+              Or try the Free Health Check →
+            </a>
           </motion.div>
 
-          {/* Small link */}
+          {/* Email option */}
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-10"
+            className="mt-8"
           >
-            <Link 
-              to="/organization-check" 
-              className="text-sm text-white/40 hover:text-white/70 transition-colors underline underline-offset-4"
-            >
-              See Organization Check →
-            </Link>
+            <p className="text-sm text-white/40">
+              Prefer email?{" "}
+              <a 
+                href="mailto:hello@nimara.ca" 
+                className="text-white/60 hover:text-accent transition-colors underline underline-offset-4"
+              >
+                hello@nimara.ca
+              </a>
+            </p>
           </motion.div>
 
           {/* Helper text */}

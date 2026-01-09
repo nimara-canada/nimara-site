@@ -5,19 +5,23 @@ import { useRef } from 'react';
 const steps = [
   {
     label: "Start",
-    description: "We learn how you work today (quick intake + short call).",
+    subtitle: "Book a Fit Call",
+    description: "20 minutes. No pressure. We figure out if we're the right fit.",
+  },
+  {
+    label: "Discover",
+    subtitle: "We meet your team",
+    description: "90 minutes. We learn how your org works. We find the gaps together.",
   },
   {
     label: "Build",
-    description: "We set up folders, tracking, and simple rules your team can follow.",
+    subtitle: "We install what you need",
+    description: "You pick the areas. We build the systems. We train your team.",
   },
   {
     label: "Run",
-    description: "We test it with real examples so it works in real life.",
-  },
-  {
-    label: "Grow",
-    description: "When you're ready, we build the next system.",
+    subtitle: "You're proof-ready",
+    description: "Clear records. Easy reporting. Add more areas when you're ready to grow.",
   },
 ];
 
@@ -49,10 +53,18 @@ const TheProcess: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-[1.1] mb-6 text-white"
+            className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-[1.1] mb-4 text-white"
           >
-            How it <span className="font-normal italic text-white/60">works</span>
+            Scattered to strong in <span className="font-normal italic text-white/60">4 steps.</span>
           </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="text-lg text-white/50 mb-6"
+          >
+            Simple systems. Clear proof. No more guessing.
+          </motion.p>
 
           {/* Step labels row */}
           <motion.div
@@ -90,11 +102,14 @@ const TheProcess: React.FC = () => {
                   </span>
                 </div>
                 
-                {/* Label */}
+                {/* Label & Subtitle */}
                 <div className="col-span-10 lg:col-span-3">
                   <h3 className="text-xl lg:text-2xl font-medium text-white group-hover:text-accent transition-colors">
                     {step.label}
                   </h3>
+                  <p className="text-sm text-accent/80 mt-1">
+                    {step.subtitle}
+                  </p>
                 </div>
                 
                 {/* Description */}
