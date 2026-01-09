@@ -128,7 +128,7 @@ export const FinalCTA = () => {
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.2, ease: DROPBOX_EASE }}
             >
-              Ready to make funding
+              Ready to be proof-ready
             </motion.span>
             <br />
             <motion.span 
@@ -137,7 +137,7 @@ export const FinalCTA = () => {
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.35, ease: DROPBOX_EASE }}
             >
-              easier to win and manage?
+              before funders ask?
             </motion.span>
           </motion.h2>
 
@@ -146,7 +146,7 @@ export const FinalCTA = () => {
             variants={itemVariants}
             className="text-lg text-white/60 leading-relaxed mb-12 max-w-xl"
           >
-            Let's set up working systems for money, files, and reporting — so your team can stop scrambling.
+            Let's set up the systems your nonprofit actually needs — so your team can stop scrambling.
           </motion.p>
 
           {/* CTAs */}
@@ -158,11 +158,13 @@ export const FinalCTA = () => {
               whileHover={{ x: 4 }}
               transition={{ duration: 0.2, ease: DROPBOX_EASE }}
             >
-              <Link
-                to="/start-here"
+              <a
+                href="https://calendly.com/thabani-nimara/fit-call"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 text-white font-medium"
               >
-                <span className="group-hover:text-accent transition-colors">Get Started</span>
+                <span className="group-hover:text-accent transition-colors">Book a 20-min Fit Call</span>
                 <motion.span 
                   className="h-px bg-white group-hover:bg-accent" 
                   initial={{ width: 32 }}
@@ -170,15 +172,17 @@ export const FinalCTA = () => {
                   transition={{ duration: 0.2, ease: DROPBOX_EASE }}
                   style={{ transition: `background-color 200ms ${DROPBOX_EASING_CSS}` }}
                 />
-              </Link>
+              </a>
             </motion.div>
 
-            <Link
-              to="/free-check"
+            <a
+              href="https://form.typeform.com/to/hpY1Ikmr"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-sm text-white/50 hover:text-accent transition-colors"
             >
-              Try the free check →
-            </Link>
+              Or try the Free Health Check →
+            </a>
 
             <p className="text-sm text-white/50 mt-2">
               Prefer email?{" "}
@@ -207,7 +211,7 @@ export const FinalCTA = () => {
               transition={{ duration: 1.2, delay: 0.6, ease: DROPBOX_EASE }}
             />
             <p className="text-sm text-white/40">
-              Trusted by nonprofits across Canada · Money-back guarantee on system builds
+              Trusted by nonprofits across Canada · Money-back guarantee on every build
             </p>
           </motion.div>
         </motion.div>
