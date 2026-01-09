@@ -5,43 +5,27 @@ import { Link } from 'react-router-dom';
 const faqs = [
   {
     question: "What does Nimara do?",
-    answer: "We help Canadian nonprofits set up simple systems for money, files, and reporting — so funding is easier to win and manage."
-  },
-  {
-    question: "Where should we start?",
-    answer: "Start with Get Started. We'll point you to the right first step: Grant Setup or an Organization Check."
+    answer: "We help Canadian nonprofits set up simple systems for boards, grants, teams, volunteers, and files. You pick the areas you need. We build the systems. We train your team to run them."
   },
   {
     question: "Is this an audit?",
-    answer: "No. We don't inspect you. We help you set up working systems that your team can run."
+    answer: "No. We're not here to grade you or find problems to report. We're here to fix what's not working — and build what's missing. No judgment. Just solutions."
   },
   {
-    question: "Is this bookkeeping or accounting?",
-    answer: "No. We don't do your books or taxes. We organize how you track and store records so it's easier to report."
+    question: "What if it doesn't work?",
+    answer: "If we don't deliver what we promised, you get your money back. No fine print. No hoops. We only win when your systems actually work."
   },
   {
-    question: "Is this only for one grant?",
-    answer: "No. We set it up once so you can reuse it for every grant."
+    question: "Can this be funded by a grant?",
+    answer: "Yes. We invoice as capacity building, which is eligible under most operational and capacity grants. Many clients use grant funding to cover part or all of the cost."
   },
   {
-    question: "What is \"Grant Setup\"?",
-    answer: "A short project (about 2 weeks) where we set up a clear folder system, simple tracking, and a routine your team can follow."
+    question: "How do I know where to start?",
+    answer: "Take the Free Health Check. It takes 10 minutes and shows you where your gaps are. Or book a Fit Call and we'll figure it out together."
   },
   {
-    question: "What is an \"Organization Check\"?",
-    answer: "A full review (2–4 weeks) that shows what's working, what's missing, and what to fix first — across your whole nonprofit."
-  },
-  {
-    question: "What happens after the Organization Check?",
-    answer: "You get a clear plan. If you want help building what comes next, we offer bundles to put the systems in place."
-  },
-  {
-    question: "Do you work with small nonprofits or volunteer-led teams?",
-    answer: "Yes. We keep things simple, clear, and easy to run — even with small teams."
-  },
-  {
-    question: "What if we're not sure we can afford this?",
-    answer: "Start with the free check. If you can fix it yourself, we'll tell you. If you need help, we'll show you the smallest next step."
+    question: "Will you judge us for being messy?",
+    answer: "No. We've seen it all. Most nonprofits are messy — not because they don't care, but because no one showed them what to build. No shame. Just solutions."
   }
 ];
 
@@ -103,7 +87,7 @@ export const FAQ = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg text-muted-foreground mb-8"
             >
-              Everything you need to know about working with Nimara.
+              Honest answers. No surprises.
             </motion.p>
 
             <motion.div
@@ -112,19 +96,23 @@ export const FAQ = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="flex flex-col gap-3"
             >
-              <Link
-                to="/start-here"
+              <a
+                href="https://calendly.com/thabani-nimara/fit-call"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 text-foreground font-medium"
               >
-                <span className="group-hover:text-primary transition-colors">Get Started</span>
+                <span className="group-hover:text-primary transition-colors">Book a 20-min Fit Call</span>
                 <span className="w-8 h-px bg-foreground group-hover:w-12 group-hover:bg-primary transition-all duration-300" />
-              </Link>
-              <Link
-                to="/free-check"
+              </a>
+              <a
+                href="https://form.typeform.com/to/hpY1Ikmr"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-sm text-muted-foreground hover:text-primary transition-colors"
               >
-                Try the free check →
-              </Link>
+                Or try the Free Health Check →
+              </a>
             </motion.div>
           </div>
 
