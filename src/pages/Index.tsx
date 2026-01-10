@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import TwoStartingPoints from "@/components/company/TwoStartingPoints";
 import FundingProofSection from "@/components/FundingProofSection";
-import { HowItWorksTimeline } from "@/components/HowItWorksTimeline";
+import TheProcess from "@/components/company/TheProcess";
 import { SystemLadder } from "@/components/SystemLadder";
 import { FitCheck } from "@/components/FitCheck";
 import { Expertise } from "@/components/Expertise";
@@ -101,8 +101,8 @@ const Index = () => {
           {/* Funding Proof - 2-column messaging */}
           <FundingProofSection />
           
-          {/* How It Works - 4 Step Timeline */}
-          <HowItWorksTimeline />
+          {/* How It Works - 4 Steps */}
+          <TheProcess />
           
           {/* Fit Check */}
           <RevealSection background="muted">
