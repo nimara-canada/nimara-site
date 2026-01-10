@@ -201,14 +201,14 @@ const StartingPointSplit = () => {
           </div>
         </motion.div>
 
-        {/* Card 2: I want to see what's missing - Light lavender background */}
+        {/* Card 2: I want to see what's missing - White background, clean modern */}
         <motion.div
           variants={itemVariants}
-          className="bg-[hsl(var(--nim-purple))]/10 w-full border-b border-border/50"
+          className="bg-background w-full border-b border-border/50"
         >
           <div className="max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-2 min-h-[550px] md:min-h-[600px]">
-              {/* Visual - Left side with phone mockup */}
+              {/* Visual - Left side */}
               <div className="relative order-1 min-h-[300px] lg:min-h-0 overflow-visible">
                 <QuickCheckVisual />
               </div>
@@ -217,7 +217,7 @@ const StartingPointSplit = () => {
               <div className="flex items-center px-6 md:px-12 lg:px-16 py-12 md:py-16 lg:py-20 order-2">
                 <div className="max-w-lg">
                   {/* Badge */}
-                  <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-6 bg-[hsl(var(--nim-purple))]/20 text-[hsl(var(--nim-purple))]">
+                  <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-6 bg-[hsl(var(--nim-purple))]/10 text-[hsl(var(--nim-purple))]">
                     02
                   </span>
                   
