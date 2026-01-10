@@ -115,20 +115,20 @@ function Card({
         cursor-pointer
         w-[260px] h-[200px] md:w-[300px] md:h-[200px]
       `}
-      style={{
-        boxShadow: isActive 
-          ? '0 0 40px rgba(139, 92, 246, 0.25)' 
-          : '0 4px 20px rgba(0, 0, 0, 0.2)',
-      }}
       animate={{
         opacity: isActive ? 1 : 0.6,
         scale: isActive ? 1.05 : 1,
         y: 0,
+        boxShadow: isActive 
+          ? '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(139, 92, 246, 0.1)' 
+          : '0 4px 20px rgba(0, 0, 0, 0.2)',
       }}
       whileHover={!isActive ? { 
         opacity: 0.8, 
         y: -4,
-      } : {}}
+      } : {
+        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 60px rgba(139, 92, 246, 0.15)',
+      }}
       transition={{ 
         duration: prefersReducedMotion ? 0 : 0.35, 
         ease: [0.4, 0, 0.2, 1] 
@@ -400,11 +400,11 @@ export default function HelpOrbitCarousel() {
                 key={card.id}
                 onClick={() => setActiveIndex(index)}
                 className={`
-                  h-2 rounded-full transition-all duration-300
+                  w-2 h-2 rounded-full transition-all duration-200 ease-out
                   focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background
                   ${activeIndex === index 
-                    ? 'bg-primary w-6' 
-                    : 'bg-white/30 hover:bg-white/50 w-2'
+                    ? 'bg-primary' 
+                    : 'bg-white/30 hover:bg-white/50'
                   }
                 `}
                 aria-label={`Go to ${card.title}`}
@@ -415,7 +415,7 @@ export default function HelpOrbitCarousel() {
         </div>
         
         {/* Dynamic Content Panel */}
-        <div className="mt-10 md:mt-12 text-center max-w-2xl mx-auto">
+        <div className="mt-10 text-center max-w-2xl mx-auto">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCard.id}
@@ -424,15 +424,15 @@ export default function HelpOrbitCarousel() {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
             >
-              <h3 className="text-2xl md:text-[28px] font-bold text-white mb-3">
+              <h3 className="text-[28px] font-bold text-white mb-3">
                 {activeCard.title}
               </h3>
-              <p className="text-base md:text-lg text-muted-foreground mb-5 max-w-xl mx-auto leading-relaxed">
+              <p className="text-base text-[#9ca3af] mb-6 max-w-[600px] mx-auto leading-[1.6]">
                 {activeCard.longDesc}
               </p>
               <Link 
                 to="/start-here" 
-                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors group"
+                className="inline-flex items-center gap-2 text-primary hover:underline font-medium transition-colors group"
               >
                 See what you get 
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
