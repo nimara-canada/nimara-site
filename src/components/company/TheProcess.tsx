@@ -1,49 +1,27 @@
 import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { TYPEFORM_HEALTH_CHECK_URL, CALENDLY_BOOKING_URL } from '@/constants/urls';
 
 const steps = [
   {
-    label: "Start",
-    subtitle: "Choose your start",
-    description: [
-      "Pick one:",
-      "• Book a free 20-minute call (if you know what you want help with)",
-      "• Take the free 6-minute check (if you're not sure)"
-    ],
+    number: "01",
+    title: "See where you stand",
+    subtitle: "We check 7 areas",
+    body: "We ask a few questions about how your organization runs. You get a clear picture of what's strong and what needs work — scored from Level 0 to 4.",
   },
   {
-    label: "Check where you stand",
-    subtitle: "We do a health check",
-    description: [
-      "We ask a few questions about how your organization runs.",
-      "We look at 7 areas and show what's going well and what needs work.",
-      "Then we place you on a Level from 0 to 4 so you know what to fix first.",
-      "(Level 0 = very messy. Level 4 = very strong.)"
-    ],
+    number: "02",
+    title: "Pick what to build",
+    subtitle: "You choose",
+    body: "Start with one area or a few — whatever fits your budget. Most teams begin with board records, grant tracking, or file systems.",
   },
   {
-    label: "Choose what to fix first",
-    subtitle: "You choose the area(s)",
-    description: [
-      "You can start with 1 area or a few — whatever fits your budget.",
-      "Most teams start here because it helps with reporting:",
-      "• Board (meeting notes, decisions, approvals)",
-      "• Money & Grants (spending, receipts, grant records)",
-      "• Tools & Files (folders, templates, simple routines)"
-    ],
-  },
-  {
-    label: "We build it with you",
-    subtitle: "We set it up and help you use it",
-    description: [
-      "We set up the folders, templates, and simple routines.",
-      "We show your team how to use them.",
-      "Then we check in for 90 days so it doesn't fall apart."
-    ],
+    number: "03",
+    title: "We build it with you",
+    subtitle: "We set it up and stick around",
+    body: "We create the folders, templates, and routines. We train your team. Then we check in for 90 days to make sure it holds.",
   },
 ];
 
@@ -59,7 +37,7 @@ const TheProcess: React.FC = () => {
     >
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Header */}
-        <div className="mb-16 lg:mb-20">
+        <div className="mb-12 lg:mb-16">
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
@@ -79,27 +57,27 @@ const TheProcess: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-[1.1] mb-4 text-white"
           >
-            From messy to clear in <span className="font-normal italic text-white/60">4 steps.</span>
+            Ready to report in <span className="font-normal italic text-white/60">3 steps.</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="text-lg text-white/50 mb-6"
+            className="text-lg text-white/50 mb-8"
           >
-            Simple habits. Clear records. Less stress.
+            Simple systems. Clear records. Less stress when funders ask.
           </motion.p>
 
-          {/* Step labels row */}
+          {/* Process bar */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-wrap items-center gap-2 text-sm text-white/50"
+            className="flex flex-wrap items-center gap-2 sm:gap-3 text-sm text-white/50"
           >
             {steps.map((step, index) => (
-              <React.Fragment key={step.label}>
-                <span className="text-white font-medium">{step.label}</span>
+              <React.Fragment key={step.number}>
+                <span className="text-white font-medium">{step.title}</span>
                 {index < steps.length - 1 && (
                   <span className="text-white/30">→</span>
                 )}
@@ -112,7 +90,7 @@ const TheProcess: React.FC = () => {
         <div className="space-y-0">
           {steps.map((step, index) => (
             <motion.div
-              key={step.label}
+              key={step.number}
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
@@ -122,38 +100,25 @@ const TheProcess: React.FC = () => {
                 {/* Number */}
                 <div className="col-span-2 lg:col-span-1">
                   <span className="text-4xl lg:text-5xl font-extralight text-white/20 group-hover:text-white/40 transition-colors">
-                    {String(index + 1).padStart(2, '0')}
+                    {step.number}
                   </span>
                 </div>
                 
-                {/* Label & Subtitle */}
+                {/* Title & Subtitle */}
                 <div className="col-span-10 lg:col-span-3">
                   <h3 className="text-xl lg:text-2xl font-medium text-white group-hover:text-accent transition-colors">
-                    {step.label}
+                    {step.title}
                   </h3>
                   <p className="text-sm text-accent/80 mt-1">
                     {step.subtitle}
                   </p>
                 </div>
                 
-                {/* Description */}
+                {/* Body */}
                 <div className="col-span-12 lg:col-span-8 mt-3 lg:mt-0">
-                  <div className="space-y-2">
-                    {step.description.map((line, lineIndex) => (
-                      <p 
-                        key={lineIndex} 
-                        className={`leading-relaxed text-lg ${
-                          line.startsWith('•') 
-                            ? 'text-white/70 pl-2' 
-                            : line.startsWith('(') 
-                              ? 'text-white/40 text-base italic' 
-                              : 'text-white/50'
-                        }`}
-                      >
-                        {line}
-                      </p>
-                    ))}
-                  </div>
+                  <p className="text-lg leading-relaxed text-white/60">
+                    {step.body}
+                  </p>
                 </div>
               </div>
             </motion.div>
@@ -166,7 +131,7 @@ const TheProcess: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.7 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
           className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <Button
@@ -179,7 +144,7 @@ const TheProcess: React.FC = () => {
               target="_blank" 
               rel="noopener noreferrer"
             >
-              Book a free 20-minute call
+              Book a free call
             </a>
           </Button>
           <Button
