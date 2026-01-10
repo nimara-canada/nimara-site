@@ -126,7 +126,7 @@ const Index = () => {
           <FinalCTA />
         </main>
         
-        <StickyFooterCTA />
+        
         <Footer />
       </div>
     </MotionPreferencesProvider>
