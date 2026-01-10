@@ -151,7 +151,7 @@ const TheProcess: React.FC = () => {
             asChild
             variant="outline"
             size="lg"
-            className="border-white/20 text-white hover:bg-white/10 font-medium px-8"
+            className="border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white font-medium px-8"
           >
             <a 
               href={TYPEFORM_HEALTH_CHECK_URL} 
