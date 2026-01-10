@@ -2,131 +2,135 @@ import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Check } from 'lucide-react';
 
 const TwoStartingPoints: React.FC = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
+  const cards = [
+    {
+      title: "I know what's broken",
+      body: "A board issue. Messy receipts. Grant tracking that doesn't match. Files everywhere.",
+      bullets: [
+        "Fix one urgent problem fast",
+        "Clear next steps for your team",
+        "No long process"
+      ],
+      cta: "Get a Quick Fix",
+      note: "Best when you have a deadline.",
+      link: "/path-a",
+      primary: true
+    },
+    {
+      title: "I'm not sure what's wrong",
+      body: "You feel behind, but you don't know what to fix first.",
+      bullets: [
+        "Free 6-minute check",
+        "Self-check (no document review)",
+        "Get your next step"
+      ],
+      cta: "Take the free 6-minute check",
+      note: "Paid version includes evidence review.",
+      link: "/path-b",
+      primary: false
+    }
+  ];
+
   return (
     <section 
       ref={sectionRef}
-      className="relative py-24 lg:py-32 bg-muted/30 overflow-hidden"
+      className="relative py-20 lg:py-28 bg-background overflow-hidden"
     >
-      {/* Subtle grid pattern */}
-      <div className="absolute inset-0 opacity-[0.015]">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
-                           linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px'
-        }} />
-      </div>
-
-      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
         {/* Header */}
-        <div className="mb-16 lg:mb-20">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.8 }}
-            className="flex items-center gap-4 mb-6"
+        <div className="text-center mb-12 lg:mb-16">
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="inline-block text-xs font-medium tracking-[0.2em] uppercase text-muted-foreground mb-4"
           >
-            <span className="text-xs font-medium tracking-[0.2em] uppercase text-muted-foreground">
-              Choose Your Path
-            </span>
-            <div className="h-px flex-1 bg-border" />
-          </motion.div>
+            Start Here
+          </motion.span>
           
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-[1.1] mb-6"
+            className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-[1.15] mb-4"
           >
-            Pick a <span className="font-normal italic text-muted-foreground">starting point</span>
+            Pick what fits you today
           </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="text-lg text-muted-foreground max-w-xl mx-auto"
+          >
+            Most nonprofits with 0–50 staff are in one of these two spots.
+          </motion.p>
         </div>
 
         {/* Two Cards */}
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8 mb-12">
-          {/* Card A - Grant Setup */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="group bg-background p-8 lg:p-10 rounded-2xl border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300"
-          >
-            <div className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-medium tracking-wider uppercase bg-accent/10 text-accent rounded-full">
-                About 2 weeks
-              </span>
-            </div>
-            
-            <h3 className="text-2xl lg:text-3xl font-medium text-foreground mb-4 group-hover:text-primary transition-colors">
-              Grant Setup
-            </h3>
-            
-            <p className="text-muted-foreground leading-relaxed mb-8">
-              Best if reporting feels stressful or receipts and files are hard to find.
-            </p>
-            
-            <Link
-              to="/grant-setup"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-medium rounded-full hover:bg-primary/90 transition-colors"
+        <div className="grid md:grid-cols-2 gap-6 lg:gap-8 mb-10">
+          {cards.map((card, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+              className="group bg-card p-8 lg:p-10 rounded-2xl border border-border hover:border-primary/20 hover:shadow-lg transition-all duration-300"
             >
-              Book a Grant Setup
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </motion.div>
+              <h3 className="text-xl lg:text-2xl font-medium text-foreground mb-4">
+                {card.title}
+              </h3>
+              
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                {card.body}
+              </p>
 
-          {/* Card B - Organization Check */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="group bg-background p-8 lg:p-10 rounded-2xl border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300"
-          >
-            <div className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-medium tracking-wider uppercase bg-muted text-muted-foreground rounded-full">
-                2–4 weeks
-              </span>
-            </div>
-            
-            <h3 className="text-2xl lg:text-3xl font-medium text-foreground mb-4 group-hover:text-primary transition-colors">
-              Organization Check
-            </h3>
-            
-            <p className="text-muted-foreground leading-relaxed mb-8">
-              Best if you want a clear plan for the whole organization.
-            </p>
-            
-            <Link
-              to="/organization-check"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background font-medium rounded-full hover:bg-foreground/90 transition-colors"
-            >
-              Book an Organization Check
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </motion.div>
+              {/* Bullets */}
+              <ul className="space-y-3 mb-8">
+                {card.bullets.map((bullet, bulletIndex) => (
+                  <li key={bulletIndex} className="flex items-start gap-3">
+                    <Check className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-foreground/80">{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+              
+              <div className="space-y-3">
+                <Link
+                  to={card.link}
+                  className={`inline-flex items-center justify-center gap-2 w-full px-6 py-3.5 font-medium rounded-full transition-colors ${
+                    card.primary 
+                      ? 'bg-primary text-primary-foreground hover:bg-primary/90' 
+                      : 'bg-foreground text-background hover:bg-foreground/90'
+                  }`}
+                >
+                  {card.cta}
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                
+                <p className="text-xs text-muted-foreground text-center">
+                  {card.note}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
-        {/* Small line under cards */}
-        <motion.div
+        {/* Bottom Microcopy */}
+        <motion.p
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center"
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="text-center text-sm text-muted-foreground"
         >
-          <p className="text-muted-foreground">
-            Not sure?{' '}
-            <Link 
-              to="/start-here" 
-              className="text-foreground font-medium hover:text-primary transition-colors underline underline-offset-4"
-            >
-              Start with Get Started
-            </Link>
-          </p>
-        </motion.div>
+          Built for nonprofits with 0–50 staff in Canada. Practical support, not paperwork.
+        </motion.p>
       </div>
     </section>
   );
