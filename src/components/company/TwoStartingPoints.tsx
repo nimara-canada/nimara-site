@@ -10,28 +10,28 @@ const TwoStartingPoints: React.FC = () => {
 
   const cards = [
     {
-      title: "I know what's broken",
-      body: "A board issue. Messy receipts. Grant tracking that doesn't match. Files everywhere.",
+      title: "I know what I need",
+      body: "A policy. A tracking system. A plan that needs a second look. You've already figured out the gap — now you need it built or refined.",
       bullets: [
-        "Fix one urgent problem fast",
-        "Clear next steps for your team",
-        "No long process"
+        "Tell us what you need",
+        "We build or review it with you",
+        "Walk away with something ready to use"
       ],
-      cta: "Get a Quick Fix",
-      note: "Best when you have a deadline.",
+      cta: "Build with us",
+      note: "Works for one project or a bigger plan.",
       link: "/path-a",
       primary: true
     },
     {
-      title: "I'm not sure what's wrong",
-      body: "You feel behind, but you don't know what to fix first.",
+      title: "I want to see where we stand",
+      body: "You're curious. Maybe you want to stay ready, attract new funding, or just make sure your systems are solid.",
       bullets: [
-        "Free 6-minute check",
-        "Self-check (no document review)",
-        "Get your next step"
+        "Free and takes 6 minutes",
+        "Answer questions yourself (no documents needed)",
+        "See what's strong and what needs work"
       ],
-      cta: "Take the free 6-minute check",
-      note: "Paid version includes evidence review.",
+      cta: "Take the free check",
+      note: "Upgrade available with document review.",
       link: "/path-b",
       primary: false
     }
@@ -72,7 +72,7 @@ const TwoStartingPoints: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-3xl sm:text-4xl lg:text-[2.75rem] font-medium tracking-[-0.02em] leading-[1.2] mb-5 text-foreground"
           >
-            Pick what fits you today
+            Choose your starting point.
           </motion.h2>
 
           <motion.p
