@@ -10,27 +10,29 @@ const TwoStartingPoints: React.FC = () => {
 
   const cards = [
     {
-      title: "I know what I need",
-      body: "A policy. A tracking system. A plan that needs a second look. You've already figured out the gap — now you need it built or refined.",
+      title: "I have a clear request",
+      body: "We already know what we want to build or improve. We just need a partner to help us do it right.",
+      examples: "Examples: a policy, a tracker, board minutes, a simple grant file system.",
       bullets: [
-        "Tell us what you need",
-        "We build or review it with you",
-        "Walk away with something ready to use"
+        "Tell us what you want to build",
+        "We review it or build it with you",
+        "You leave with something ready to use"
       ],
-      cta: "Build with us",
-      note: "Works for one project or a bigger plan.",
+      cta: "Book a free call →",
+      note: "Best when you know the deliverable.",
       link: "/path-a",
       primary: true
     },
     {
       title: "I want to see where we stand",
-      body: "You're curious. Maybe you want to stay ready, attract new funding, or just make sure your systems are solid.",
+      body: "Not sure what to fix first? Take a quick check. You'll see what's strong and what needs work.",
+      examples: null,
       bullets: [
         "Free and takes 6 minutes",
-        "Answer questions yourself (no documents needed)",
-        "See what's strong and what needs work"
+        "Answer it yourself (no documents needed)",
+        "Get a clear next step"
       ],
-      cta: "Take the free check",
+      cta: "Take the free check →",
       note: "Upgrade available with document review.",
       link: "/path-b",
       primary: false
@@ -120,9 +122,17 @@ const TwoStartingPoints: React.FC = () => {
                     {card.title}
                   </h3>
                   
-                  <p className="text-[15px] text-muted-foreground leading-relaxed mb-8">
+                  <p className="text-[15px] text-muted-foreground leading-relaxed mb-3">
                     {card.body}
                   </p>
+                  
+                  {card.examples && (
+                    <p className="text-[13px] text-muted-foreground/70 italic mb-8">
+                      {card.examples}
+                    </p>
+                  )}
+                  
+                  {!card.examples && <div className="mb-8" />}
 
                   {/* Bullets - clean and minimal */}
                   <ul className="space-y-3 mb-10">
