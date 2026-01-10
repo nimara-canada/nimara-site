@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { motion, useInView, useMotionValue, useSpring, animate } from "framer-motion";
 import { 
   ClipboardList, 
   DollarSign, 
@@ -117,6 +117,11 @@ const useReducedMotion = () => {
   return prefersReduced;
 };
 
+// Card widths for calculating slide distances
+const CARD_WIDTH_MOBILE = 260;
+const CARD_WIDTH_DESKTOP = 300;
+const CARD_GAP = 24; // gap-6 = 24px
+
 function Card({ 
   card, 
   cardIndex,
@@ -152,7 +157,6 @@ function Card({
       animate={{
         opacity: isActive ? 1 : 0.6,
         scale: isActive ? 1.05 : 1,
-        y: 0,
         boxShadow: colorStyle.boxShadow,
       }}
       whileHover={!isActive ? { 
@@ -162,7 +166,7 @@ function Card({
         boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 60px ${brandColors[cardIndex % brandColors.length].glow}`,
       }}
       transition={{ 
-        duration: prefersReducedMotion ? 0 : 0.35, 
+        duration: prefersReducedMotion ? 0 : 0.3, 
         ease: [0.4, 0, 0.2, 1] 
       }}
       tabIndex={0}
@@ -241,13 +245,14 @@ function ReducedMotionFallback() {
 
 export default function HelpOrbitCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(3);
   const [isPaused, setIsPaused] = useState(false);
   const [viewedCards, setViewedCards] = useState<Set<number>>(new Set([0]));
   const [hasCompletedViewing, setHasCompletedViewing] = useState(false);
   const [showScrollIndicator, setShowScrollIndicator] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isScrollLocked, setIsScrollLocked] = useState(false);
+  const [hasEntered, setHasEntered] = useState(false);
+  const [isSliding, setIsSliding] = useState(false);
   
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
@@ -260,27 +265,37 @@ export default function HelpOrbitCarousel() {
   const prefersReducedMotion = useReducedMotion();
   const isInView = useInView(sectionRef, { once: false, margin: "-30%" });
   
+  // Track x offset for sliding animation
+  const trackX = useMotionValue(0);
+  const smoothTrackX = useSpring(trackX, { stiffness: 300, damping: 30 });
+  
+  // Calculate card step size
+  const cardWidth = isMobile ? CARD_WIDTH_MOBILE : CARD_WIDTH_DESKTOP;
+  const stepSize = cardWidth + CARD_GAP;
+  
+  // Visible cards: 1 on mobile, 3 on desktop
+  const visibleCount = isMobile ? 1 : 3;
+  
   // Auto-play interval (2.5s desktop, 2s mobile)
   const autoPlayInterval = isMobile ? 2000 : 2500;
   
-  // Handle responsive visible cards and mobile detection
+  // Handle responsive detection
   useEffect(() => {
     const handleResize = () => {
-      const mobile = window.innerWidth < 768;
-      setIsMobile(mobile);
-      if (mobile) {
-        setVisibleCount(1);
-      } else if (window.innerWidth < 1024) {
-        setVisibleCount(2);
-      } else {
-        setVisibleCount(3);
-      }
+      setIsMobile(window.innerWidth < 768);
     };
     
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+  
+  // Mark section as entered (for one-time entrance animations)
+  useEffect(() => {
+    if (isInView && !hasEntered) {
+      setHasEntered(true);
+    }
+  }, [isInView, hasEntered]);
   
   // Track viewed cards
   useEffect(() => {
@@ -322,6 +337,44 @@ export default function HelpOrbitCarousel() {
     }
   }, [isInView, hasCompletedViewing, prefersReducedMotion]);
   
+  // Unified slide function - animates track then updates index
+  const slideTo = useCallback((direction: 'next' | 'prev') => {
+    if (isSliding) return;
+    
+    setIsSliding(true);
+    
+    const targetX = direction === 'next' ? -stepSize : stepSize;
+    
+    // Animate track to target position
+    animate(trackX, targetX, {
+      duration: 0.4,
+      ease: [0.4, 0, 0.2, 1],
+      onComplete: () => {
+        // Update index
+        setActiveIndex(prev => {
+          if (direction === 'next') {
+            return (prev + 1) % cards.length;
+          } else {
+            return (prev - 1 + cards.length) % cards.length;
+          }
+        });
+        
+        // Instantly snap track back to center
+        trackX.set(0);
+        setIsSliding(false);
+      }
+    });
+  }, [isSliding, stepSize, trackX]);
+  
+  const slideToNext = useCallback(() => slideTo('next'), [slideTo]);
+  const slideToPrev = useCallback(() => slideTo('prev'), [slideTo]);
+  
+  // Jump to specific index (for dots that are far away)
+  const jumpTo = useCallback((index: number) => {
+    if (isSliding || index === activeIndex) return;
+    setActiveIndex(index);
+  }, [isSliding, activeIndex]);
+  
   // Wheel event handler - navigate cards instead of scrolling
   useEffect(() => {
     if (!isScrollLocked || prefersReducedMotion) return;
@@ -330,9 +383,12 @@ export default function HelpOrbitCarousel() {
       // Check if the wheel event is within our section
       if (!sectionRef.current?.contains(e.target as Node)) return;
       
+      // Ignore small deltas (trackpad noise)
+      if (Math.abs(e.deltaY) < 15) return;
+      
       // Throttle wheel events
       const now = Date.now();
-      if (now - lastWheelTime.current < 400) {
+      if (now - lastWheelTime.current < 500) {
         e.preventDefault();
         return;
       }
@@ -340,22 +396,24 @@ export default function HelpOrbitCarousel() {
       
       e.preventDefault();
       
+      // Pause autoplay temporarily after wheel interaction
+      setIsPaused(true);
+      setTimeout(() => setIsPaused(false), 2000);
+      
       if (e.deltaY > 0) {
-        // Scrolling down - next card
-        setActiveIndex(prev => (prev + 1) % cards.length);
+        slideToNext();
       } else if (e.deltaY < 0) {
-        // Scrolling up - previous card
-        setActiveIndex(prev => (prev - 1 + cards.length) % cards.length);
+        slideToPrev();
       }
     };
     
     window.addEventListener('wheel', handleWheel, { passive: false });
     return () => window.removeEventListener('wheel', handleWheel);
-  }, [isScrollLocked, prefersReducedMotion]);
+  }, [isScrollLocked, prefersReducedMotion, slideToNext, slideToPrev]);
   
   // Auto-play functionality with proper cleanup
   useEffect(() => {
-    if (isPaused || prefersReducedMotion || !isInView) {
+    if (isPaused || prefersReducedMotion || !isInView || isSliding) {
       if (autoPlayRef.current) {
         clearInterval(autoPlayRef.current);
         autoPlayRef.current = null;
@@ -366,7 +424,7 @@ export default function HelpOrbitCarousel() {
     // Small delay before starting auto-play when entering view
     const startDelay = setTimeout(() => {
       autoPlayRef.current = setInterval(() => {
-        setActiveIndex(prev => (prev + 1) % cards.length);
+        slideToNext();
       }, autoPlayInterval);
     }, 500);
     
@@ -377,17 +435,7 @@ export default function HelpOrbitCarousel() {
         autoPlayRef.current = null;
       }
     };
-  }, [isPaused, prefersReducedMotion, isInView, autoPlayInterval]);
-  
-  const goTo = useCallback((index: number) => {
-    let newIndex = index;
-    if (newIndex < 0) newIndex = cards.length - 1;
-    if (newIndex >= cards.length) newIndex = 0;
-    setActiveIndex(newIndex);
-  }, []);
-  
-  const goNext = useCallback(() => goTo(activeIndex + 1), [activeIndex, goTo]);
-  const goPrev = useCallback(() => goTo(activeIndex - 1), [activeIndex, goTo]);
+  }, [isPaused, prefersReducedMotion, isInView, autoPlayInterval, slideToNext, isSliding]);
   
   const handleSkip = useCallback(() => {
     // Mark all cards as viewed
@@ -400,13 +448,21 @@ export default function HelpOrbitCarousel() {
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') goPrev();
-      if (e.key === 'ArrowRight') goNext();
+      if (e.key === 'ArrowLeft') {
+        slideToPrev();
+        setIsPaused(true);
+        setTimeout(() => setIsPaused(false), 3000);
+      }
+      if (e.key === 'ArrowRight') {
+        slideToNext();
+        setIsPaused(true);
+        setTimeout(() => setIsPaused(false), 3000);
+      }
     };
     
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [goNext, goPrev]);
+  }, [slideToNext, slideToPrev]);
   
   // Touch/swipe handling for mobile
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -424,26 +480,27 @@ export default function HelpOrbitCarousel() {
     
     if (Math.abs(diff) > threshold) {
       if (diff > 0) {
-        goNext();
+        slideToNext();
       } else {
-        goPrev();
+        slideToPrev();
       }
     }
     
     // Resume auto-play after a delay
-    setTimeout(() => setIsPaused(false), 1000);
+    setTimeout(() => setIsPaused(false), 1500);
   };
   
-  // Get visible card indices (centered around active)
+  // Get visible card indices (for rendering stable slots)
   const getVisibleIndices = () => {
     const indices: number[] = [];
     const half = Math.floor(visibleCount / 2);
     
-    for (let i = -half; i <= half; i++) {
+    // For sliding, we need extra cards on each side
+    for (let i = -half - 1; i <= half + 1; i++) {
       let idx = activeIndex + i;
       // Wrap around for infinite loop
       if (idx < 0) idx = cards.length + idx;
-      if (idx >= cards.length) idx = idx - cards.length;
+      if (idx >= cards.length) idx = idx % cards.length;
       indices.push(idx);
     }
     
@@ -459,6 +516,9 @@ export default function HelpOrbitCarousel() {
   
   const visibleIndices = getVisibleIndices();
   const activeCard = cards[activeIndex];
+  
+  // Content panel animation
+  const contentKey = `content-${activeIndex}`;
   
   return (
     <section 
@@ -480,11 +540,11 @@ export default function HelpOrbitCarousel() {
       )}
       
       <div className="container mx-auto px-4">
-        {/* Header */}
+        {/* Header - animates once on enter */}
         <div className="text-center mb-12 md:mb-16">
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            animate={hasEntered ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
             className="text-sm font-medium text-primary uppercase tracking-wider mb-3"
           >
@@ -492,7 +552,7 @@ export default function HelpOrbitCarousel() {
           </motion.p>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            animate={hasEntered ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.5, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
             className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4"
           >
@@ -500,7 +560,7 @@ export default function HelpOrbitCarousel() {
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            animate={hasEntered ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.5, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
             className="text-lg text-muted-foreground max-w-xl mx-auto"
           >
@@ -512,13 +572,13 @@ export default function HelpOrbitCarousel() {
         <motion.div 
           className="relative max-w-5xl mx-auto"
           initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          animate={hasEntered ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, delay: 0.3, ease: [0.4, 0, 0.2, 1] }}
         >
           {/* Arrow Buttons - Desktop Only */}
           <motion.button
             onClick={() => {
-              goPrev();
+              slideToPrev();
               setIsPaused(true);
               setTimeout(() => setIsPaused(false), 3000);
             }}
@@ -529,7 +589,7 @@ export default function HelpOrbitCarousel() {
               focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             aria-label="Previous domain"
             initial={{ opacity: 0, x: -20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+            animate={hasEntered ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
             transition={{ duration: 0.5, delay: 0.5, ease: [0.4, 0, 0.2, 1] }}
           >
             <ChevronLeft className="w-6 h-6 text-white" />
@@ -537,7 +597,7 @@ export default function HelpOrbitCarousel() {
           
           <motion.button
             onClick={() => {
-              goNext();
+              slideToNext();
               setIsPaused(true);
               setTimeout(() => setIsPaused(false), 3000);
             }}
@@ -548,72 +608,78 @@ export default function HelpOrbitCarousel() {
               focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             aria-label="Next domain"
             initial={{ opacity: 0, x: 20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+            animate={hasEntered ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
             transition={{ duration: 0.5, delay: 0.5, ease: [0.4, 0, 0.2, 1] }}
           >
             <ChevronRight className="w-6 h-6 text-white" />
           </motion.button>
           
-          {/* Cards Container */}
+          {/* Cards Track - slides horizontally */}
           <div
             ref={containerRef}
-            className="relative flex items-center justify-center gap-6"
+            className="relative overflow-hidden"
             style={{ minHeight: 240 }}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
-            <AnimatePresence mode="sync">
+            <motion.div 
+              className="flex items-center justify-center gap-6"
+              style={{ x: smoothTrackX }}
+            >
               {visibleIndices.map((cardIndex, i) => {
                 const card = cards[cardIndex];
                 const isCenter = cardIndex === activeIndex;
-                const position = i - Math.floor(visibleCount / 2);
+                const slotOffset = i - Math.floor(visibleIndices.length / 2);
+                
+                // Hide extra buffer cards on edges (only show visibleCount cards)
+                const isVisible = Math.abs(slotOffset) <= Math.floor(visibleCount / 2);
                 
                 return (
-                  <motion.div
-                    key={`${card.id}-${position}`}
-                    initial={{ opacity: 0, x: position * 50, scale: 0.9 }}
-                    animate={{ 
-                      opacity: 1, 
-                      x: 0, 
-                      scale: 1,
+                  <div
+                    key={`slot-${i}-${cardIndex}`}
+                    className={`flex-shrink-0 ${!isVisible ? 'opacity-0 pointer-events-none' : ''}`}
+                    style={{
+                      // Maintain consistent spacing
+                      width: cardWidth,
                     }}
-                    exit={{ opacity: 0, x: -position * 50, scale: 0.9 }}
-                    transition={{ 
-                      duration: 0.35, 
-                      ease: [0.4, 0, 0.2, 1],
-                    }}
-                    className={visibleCount === 1 && !isCenter ? 'hidden' : 'flex-shrink-0'}
                   >
                     <Card
                       card={card}
                       cardIndex={cardIndex}
                       isActive={isCenter}
                       onClick={() => {
-                        setActiveIndex(cardIndex);
+                        if (!isCenter) {
+                          // Slide to clicked card
+                          if (slotOffset > 0) {
+                            slideToNext();
+                          } else {
+                            slideToPrev();
+                          }
+                        }
                         setIsPaused(true);
                         setTimeout(() => setIsPaused(false), 3000);
                       }}
                       prefersReducedMotion={!!prefersReducedMotion}
                     />
-                  </motion.div>
+                  </div>
                 );
               })}
-            </AnimatePresence>
+            </motion.div>
           </div>
           
           {/* Dot Indicators */}
           <motion.div 
             className="flex items-center justify-center gap-3 mt-8"
             initial={{ opacity: 0, y: 10 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+            animate={hasEntered ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
             transition={{ duration: 0.5, delay: 0.6, ease: [0.4, 0, 0.2, 1] }}
           >
             {cards.map((card, index) => (
               <button
                 key={card.id}
                 onClick={() => {
-                  setActiveIndex(index);
+                  jumpTo(index);
                   setIsPaused(true);
                   setTimeout(() => setIsPaused(false), 3000);
                 }}
@@ -636,32 +702,29 @@ export default function HelpOrbitCarousel() {
         <motion.div 
           className="mt-10 text-center max-w-2xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          animate={hasEntered ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5, delay: 0.7, ease: [0.4, 0, 0.2, 1] }}
         >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeCard.id}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+          <motion.div
+            key={contentKey}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+          >
+            <h3 className="text-[28px] font-bold text-white mb-3">
+              {activeCard.title}
+            </h3>
+            <p className="text-base text-[#9ca3af] mb-6 max-w-[600px] mx-auto leading-[1.6]">
+              {activeCard.longDesc}
+            </p>
+            <Link 
+              to="/start-here" 
+              className="inline-flex items-center gap-2 text-primary hover:underline font-medium transition-colors group"
             >
-              <h3 className="text-[28px] font-bold text-white mb-3">
-                {activeCard.title}
-              </h3>
-              <p className="text-base text-[#9ca3af] mb-6 max-w-[600px] mx-auto leading-[1.6]">
-                {activeCard.longDesc}
-              </p>
-              <Link 
-                to="/start-here" 
-                className="inline-flex items-center gap-2 text-primary hover:underline font-medium transition-colors group"
-              >
-                See what you get 
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </motion.div>
-          </AnimatePresence>
+              See what you get 
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
       
@@ -683,24 +746,22 @@ export default function HelpOrbitCarousel() {
       )}
       
       {/* Scroll Unlock Indicator */}
-      <AnimatePresence>
-        {showScrollIndicator && (
+      {showScrollIndicator && (
+        <motion.div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           <motion.div
-            className="absolute bottom-8 left-1/2 -translate-x-1/2"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           >
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <ChevronDown className="w-6 h-6 text-primary" />
-            </motion.div>
+            <ChevronDown className="w-6 h-6 text-primary" />
           </motion.div>
-        )}
-      </AnimatePresence>
+        </motion.div>
+      )}
     </section>
   );
 }
