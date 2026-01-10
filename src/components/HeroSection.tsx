@@ -99,21 +99,35 @@ const NimaraHeroPremium = () => {
             ...revealStyle(200),
             color: '#A0A0A0'
           }} className="text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-8">
-              We help nonprofits with 0–50 staff set up simple systems for board, money, and files — so you can find proof fast and report with confidence.
+              ​We set up simple systems for board, money, and files — so reporting feels easy, not stressful.
+
+
             </p>
 
             {/* Bullets */}
             <ul style={revealStyle(250)} className="space-y-3 mb-10 max-w-xl mx-auto text-left">
-              <li className="flex items-start gap-3" style={{ color: '#A0A0A0' }}>
-                <Check className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: '#ACFCE3' }} />
+              <li className="flex items-start gap-3" style={{
+              color: '#A0A0A0'
+            }}>
+                <Check className="w-5 h-5 mt-0.5 flex-shrink-0" style={{
+                color: '#ACFCE3'
+              }} />
                 <span>Proof-of-payment and grant tracking you can pull in minutes</span>
               </li>
-              <li className="flex items-start gap-3" style={{ color: '#A0A0A0' }}>
-                <Check className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: '#ACFCE3' }} />
+              <li className="flex items-start gap-3" style={{
+              color: '#A0A0A0'
+            }}>
+                <Check className="w-5 h-5 mt-0.5 flex-shrink-0" style={{
+                color: '#ACFCE3'
+              }} />
                 <span>Clear board notes and approvals (so decisions don't disappear)</span>
               </li>
-              <li className="flex items-start gap-3" style={{ color: '#A0A0A0' }}>
-                <Check className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: '#ACFCE3' }} />
+              <li className="flex items-start gap-3" style={{
+              color: '#A0A0A0'
+            }}>
+                <Check className="w-5 h-5 mt-0.5 flex-shrink-0" style={{
+                color: '#ACFCE3'
+              }} />
                 <span>Simple files and routines your team will actually use</span>
               </li>
             </ul>
@@ -138,7 +152,9 @@ const NimaraHeroPremium = () => {
 
             {/* Trust line */}
             <div style={revealStyle(400)} className="mt-6">
-              <p className="text-sm" style={{ color: '#A0A0A0' }}>
+              <p className="text-sm" style={{
+              color: '#A0A0A0'
+            }}>
                 Built for nonprofits with 0–50 staff in Canada. Not an audit firm.
               </p>
             </div>
