@@ -13,6 +13,7 @@ import { FitCheck } from "@/components/FitCheck";
 import { IntegrationsSection } from "@/components/IntegrationsSection";
 import { FAQ } from "@/components/FAQ";
 import { FinalCTA } from "@/components/FinalCTA";
+import StickyFooterCTA from "@/components/StickyFooterCTA";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { MotionControls } from "@/components/MotionControls";
@@ -131,6 +132,7 @@ const Index = () => {
           <FinalCTA />
         </main>
         
+        <StickyFooterCTA />
         <Footer />
       </div>
     </MotionPreferencesProvider>
