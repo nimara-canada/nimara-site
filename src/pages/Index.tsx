@@ -7,6 +7,7 @@ import HeroSection from "@/components/HeroSection";
 import TwoStartingPoints from "@/components/company/TwoStartingPoints";
 
 import TheProcess from "@/components/company/TheProcess";
+import WhatWeHelpWith from "@/components/WhatWeHelpWith";
 import OutcomesSection from "@/components/OutcomesSection";
 import { FitCheck } from "@/components/FitCheck";
 import { IntegrationsSection } from "@/components/IntegrationsSection";
@@ -98,8 +99,11 @@ const Index = () => {
           <TwoStartingPoints />
           
           
-          {/* How It Works - 3 Steps */}
+          {/* How It Works - 4 Steps */}
           <TheProcess />
+          
+          {/* What We Help With - 7 Areas */}
+          <WhatWeHelpWith />
           
           {/* What You Get - Outcomes */}
           <OutcomesSection />
