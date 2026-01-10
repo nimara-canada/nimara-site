@@ -109,13 +109,6 @@ const Index = () => {
           {/* What You Get - Outcomes */}
           <OutcomesSection />
           
-          {/* Fit Check */}
-          <RevealSection background="muted">
-            <ScrollReveal>
-              <FitCheck />
-            </ScrollReveal>
-          </RevealSection>
-          
           {/* Integrations */}
           <RevealSection background="gradient">
             <IntegrationsSection />
