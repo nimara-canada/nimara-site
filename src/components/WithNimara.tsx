@@ -3,22 +3,25 @@ import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion
 
 const cards = [
   {
-    title: "Win more funding",
-    description: "Make it easy to submit strong applications fast.",
+    title: "Win funding faster",
+    description: "Because your board, books, and files are ready when you apply.",
+    microLine: "Decisions documented. Numbers consistent. Story clear.",
     bgClass: "bg-background",
     textClass: "text-foreground",
     subtextClass: "text-muted-foreground",
   },
   {
-    title: "Spend it cleanly",
-    description: "Proof of payment + approvals attached to every expense.",
+    title: "Spend cleanly",
+    description: "Every expense has the full proof chain — so nothing goes missing.",
+    microLine: "Payment + Receipt + Approval (together, every time).",
     bgClass: "bg-[hsl(var(--nim-purple))]",
     textClass: "text-white",
     subtextClass: "text-white/80",
   },
   {
     title: "Report without stress",
-    description: "Pull reports and documents in minutes when funders ask.",
+    description: "When funders ask, you can pull what they need in minutes — not weeks.",
+    microLine: "Budget vs actual. Files attached. Clear owners.",
     bgClass: "bg-[hsl(var(--nim-mint))]",
     textClass: "text-[hsl(var(--nim-navy))]",
     subtextClass: "text-[hsl(var(--nim-navy))]/70",
@@ -122,6 +125,7 @@ interface FullScreenCardProps {
   card: {
     title: string;
     description: string;
+    microLine: string;
     bgClass: string;
     textClass: string;
     subtextClass: string;
@@ -138,8 +142,11 @@ const FullScreenCard = ({ card }: FullScreenCardProps) => {
         <h3 className={`text-4xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 ${card.textClass}`}>
           {card.title}
         </h3>
-        <p className={`text-xl md:text-2xl lg:text-3xl leading-relaxed max-w-2xl mx-auto ${card.subtextClass}`}>
+        <p className={`text-xl md:text-2xl lg:text-3xl leading-relaxed max-w-2xl mx-auto mb-6 ${card.subtextClass}`}>
           {card.description}
+        </p>
+        <p className={`text-sm md:text-base tracking-wide ${card.subtextClass} opacity-80`}>
+          {card.microLine}
         </p>
       </div>
     </div>
