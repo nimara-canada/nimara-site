@@ -7,6 +7,7 @@ import HeroSection from "@/components/HeroSection";
 import TwoStartingPoints from "@/components/company/TwoStartingPoints";
 
 import TheProcess from "@/components/company/TheProcess";
+import OutcomesSection from "@/components/OutcomesSection";
 import { SystemLadder } from "@/components/SystemLadder";
 import { FitCheck } from "@/components/FitCheck";
 import { Expertise } from "@/components/Expertise";
@@ -101,6 +102,9 @@ const Index = () => {
           
           {/* How It Works - 3 Steps */}
           <TheProcess />
+          
+          {/* What You Get - Outcomes */}
+          <OutcomesSection />
           
           {/* Fit Check */}
           <RevealSection background="muted">
