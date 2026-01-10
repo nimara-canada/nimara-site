@@ -112,7 +112,8 @@ const NimaraHeroPremium = () => {
                 <Check className="w-5 h-5 mt-0.5 flex-shrink-0" style={{
                 color: '#ACFCE3'
               }} />
-                <span>Proof-of-payment and grant tracking you can pull in minutes</span>
+                <span>​✓ Pull grant records and payment proof fast  
+              </span>
               </li>
               <li className="flex items-start gap-3" style={{
               color: '#A0A0A0'
@@ -120,7 +121,12 @@ const NimaraHeroPremium = () => {
                 <Check className="w-5 h-5 mt-0.5 flex-shrink-0" style={{
                 color: '#ACFCE3'
               }} />
-                <span>Clear board notes and approvals (so decisions don't disappear)</span>
+                <span>
+
+
+
+           Board notes and approvals that stay findable  
+              </span>
               </li>
               <li className="flex items-start gap-3" style={{
               color: '#A0A0A0'
@@ -128,7 +134,10 @@ const NimaraHeroPremium = () => {
                 <Check className="w-5 h-5 mt-0.5 flex-shrink-0" style={{
                 color: '#ACFCE3'
               }} />
-                <span>Simple files and routines your team will actually use</span>
+                <span>
+
+
+Files and routines your team will actually use  </span>
               </li>
             </ul>
 
