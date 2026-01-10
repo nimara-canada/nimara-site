@@ -9,6 +9,7 @@ import { MotionControls } from '@/components/MotionControls';
 import { PricingSection } from '@/components/PricingSection';
 import { WhatYouGetSection } from '@/components/WhatYouGetSection';
 import { CapacityFAQ } from '@/components/CapacityFAQ';
+import StartHereSection from '@/components/StartHereSection';
 
 import { 
   MotionPreferencesProvider, 
@@ -1308,10 +1309,13 @@ const CapacityBuildout = () => {
         
         <main id="main" className="overflow-hidden">
           <HeroSection />
+          <StartHereSection />
           <HowItWorksSection />
           <DomainsSection />
           <WhatYouGetSection />
-          <PricingSection />
+          <div id="pick-your-buildout">
+            <PricingSection />
+          </div>
           <ScrollSection parallaxStrength={0.1}>
             <CapacityFAQ />
           </ScrollSection>
