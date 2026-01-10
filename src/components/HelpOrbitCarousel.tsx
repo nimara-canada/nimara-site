@@ -10,6 +10,7 @@ import {
   FolderOpen,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
   ArrowRight,
   LucideIcon
 } from "lucide-react";
@@ -75,6 +76,32 @@ const cards: CardData[] = [
   }
 ];
 
+// Brand colors for cycling
+const brandColors = [
+  { bg: '#7c3aed', glow: 'rgba(124, 58, 237, 0.4)' },  // Deep purple
+  { bg: '#6366f1', glow: 'rgba(99, 102, 241, 0.4)' },   // Indigo
+  { bg: '#1e1b4b', glow: 'rgba(30, 27, 75, 0.4)' },     // Dark navy
+  { bg: '#4c1d95', glow: 'rgba(76, 29, 149, 0.4)' },    // Slate purple
+];
+
+const getCardColor = (cardIndex: number, isActive: boolean) => {
+  const colorIndex = cardIndex % brandColors.length;
+  const color = brandColors[colorIndex];
+  
+  if (isActive) {
+    return {
+      background: color.bg,
+      boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px ${color.glow}`,
+    };
+  }
+  
+  // Muted version for inactive cards (40% darker)
+  return {
+    background: `color-mix(in srgb, ${color.bg} 60%, #000000)`,
+    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
+  };
+};
+
 const useReducedMotion = () => {
   const [prefersReduced, setPrefersReduced] = useState(false);
   
@@ -92,53 +119,61 @@ const useReducedMotion = () => {
 
 function Card({ 
   card, 
+  cardIndex,
   isActive, 
   onClick,
   prefersReducedMotion
 }: { 
   card: CardData; 
+  cardIndex: number;
   isActive: boolean;
   onClick: () => void;
   prefersReducedMotion: boolean;
 }) {
   const Icon = card.icon;
+  const colorStyle = getCardColor(cardIndex, isActive);
   
   return (
     <motion.button
       onClick={onClick}
       className={`
         relative flex-shrink-0 rounded-2xl p-6
-        bg-[#1a1a2e] border border-white/[0.08]
+        border border-white/[0.08]
         backdrop-blur-sm
         flex flex-col items-start text-left
         focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background
         cursor-pointer
         w-[260px] h-[200px] md:w-[300px] md:h-[200px]
+        overflow-hidden
       `}
+      style={{
+        background: colorStyle.background,
+      }}
       animate={{
         opacity: isActive ? 1 : 0.6,
         scale: isActive ? 1.05 : 1,
         y: 0,
-        boxShadow: isActive 
-          ? '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(139, 92, 246, 0.1)' 
-          : '0 4px 20px rgba(0, 0, 0, 0.2)',
+        boxShadow: colorStyle.boxShadow,
       }}
       whileHover={!isActive ? { 
         opacity: 0.8, 
         y: -4,
       } : {
-        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 60px rgba(139, 92, 246, 0.15)',
+        boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 60px ${brandColors[cardIndex % brandColors.length].glow}`,
       }}
       transition={{ 
-        duration: prefersReducedMotion ? 0 : 0.35, 
+        duration: prefersReducedMotion ? 0 : 0.5, 
         ease: [0.4, 0, 0.2, 1] 
       }}
       tabIndex={0}
       aria-label={`${card.title}: ${card.shortDesc}`}
     >
-      <Icon className="w-9 h-9 text-primary mb-3" strokeWidth={1.5} />
-      <h3 className="text-xl font-semibold text-white mb-2">{card.title}</h3>
-      <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">{card.shortDesc}</p>
+      {/* Gradient overlay for depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20 pointer-events-none" />
+      
+      <Icon className="w-9 h-9 text-white mb-3 relative z-10" strokeWidth={1.5} />
+      <h3 className="text-xl font-semibold text-white mb-2 relative z-10">{card.title}</h3>
+      <p className="text-sm text-white/80 leading-relaxed line-clamp-3 relative z-10">{card.shortDesc}</p>
     </motion.button>
   );
 }
@@ -167,20 +202,22 @@ function ReducedMotionFallback() {
           {cards.map((card, index) => {
             const Icon = card.icon;
             const isActive = activeIndex === index;
+            const colorStyle = getCardColor(index, isActive);
             return (
               <button
                 key={card.id}
                 onClick={() => setActiveIndex(index)}
+                style={{ background: colorStyle.background }}
                 className={`
                   p-6 rounded-2xl text-left
-                  bg-[#1a1a2e] border border-white/[0.08]
+                  border border-white/[0.08]
                   transition-all duration-300
-                  ${isActive ? 'ring-2 ring-primary shadow-[0_0_30px_rgba(139,92,246,0.2)]' : 'hover:bg-[#1f1f35]'}
+                  ${isActive ? 'ring-2 ring-primary' : 'hover:opacity-80'}
                 `}
               >
-                <Icon className="w-9 h-9 text-primary mb-3" strokeWidth={1.5} />
+                <Icon className="w-9 h-9 text-white mb-3" strokeWidth={1.5} />
                 <h3 className="text-lg font-semibold text-white mb-2">{card.title}</h3>
-                <p className="text-sm text-muted-foreground">{card.shortDesc}</p>
+                <p className="text-sm text-white/70">{card.shortDesc}</p>
               </button>
             );
           })}
@@ -205,12 +242,21 @@ function ReducedMotionFallback() {
 export default function HelpOrbitCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(3);
+  const [isPaused, setIsPaused] = useState(false);
+  const [viewedCards, setViewedCards] = useState<Set<number>>(new Set([0]));
+  const [isScrollLocked, setIsScrollLocked] = useState(false);
+  const [hasCompletedViewing, setHasCompletedViewing] = useState(false);
+  const [showScrollIndicator, setShowScrollIndicator] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
+  const scrollLockEngaged = useRef(false);
+  
   const prefersReducedMotion = useReducedMotion();
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const isInView = useInView(sectionRef, { once: false, margin: "-20%" });
   
   // Parallax scroll effect
   const { scrollYProgress } = useScroll({
@@ -222,10 +268,15 @@ export default function HelpOrbitCarousel() {
   const parallaxScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
   const parallaxOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.8, 1, 1, 0.8]);
   
-  // Handle responsive visible cards
+  // Auto-play interval (2.5s desktop, 2s mobile)
+  const autoPlayInterval = isMobile ? 2000 : 2500;
+  
+  // Handle responsive visible cards and mobile detection
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      if (mobile) {
         setVisibleCount(1);
       } else if (window.innerWidth < 1024) {
         setVisibleCount(2);
@@ -239,6 +290,69 @@ export default function HelpOrbitCarousel() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
   
+  // Track viewed cards
+  useEffect(() => {
+    setViewedCards(prev => new Set([...prev, activeIndex]));
+  }, [activeIndex]);
+  
+  // Check if all cards have been viewed
+  useEffect(() => {
+    if (viewedCards.size === cards.length && !hasCompletedViewing) {
+      setHasCompletedViewing(true);
+      setIsScrollLocked(false);
+      setShowScrollIndicator(true);
+      
+      // Hide scroll indicator after user starts scrolling
+      const hideIndicator = () => {
+        setShowScrollIndicator(false);
+        window.removeEventListener('scroll', hideIndicator);
+      };
+      window.addEventListener('scroll', hideIndicator);
+      
+      return () => window.removeEventListener('scroll', hideIndicator);
+    }
+  }, [viewedCards, hasCompletedViewing]);
+  
+  // Scroll lock behavior
+  useEffect(() => {
+    if (!isInView || hasCompletedViewing || scrollLockEngaged.current || prefersReducedMotion) {
+      return;
+    }
+    
+    // Engage scroll lock when section comes into view
+    if (isInView && !scrollLockEngaged.current && !hasCompletedViewing) {
+      scrollLockEngaged.current = true;
+      setIsScrollLocked(true);
+    }
+  }, [isInView, hasCompletedViewing, prefersReducedMotion]);
+  
+  // Apply scroll lock to body
+  useEffect(() => {
+    if (isScrollLocked && !prefersReducedMotion) {
+      document.body.style.overflow = 'hidden';
+      
+      // Scroll section into view
+      sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else {
+      document.body.style.overflow = '';
+    }
+    
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isScrollLocked, prefersReducedMotion]);
+  
+  // Auto-play functionality
+  useEffect(() => {
+    if (isPaused || prefersReducedMotion || !isInView) return;
+    
+    const interval = setInterval(() => {
+      setActiveIndex(prev => (prev + 1) % cards.length);
+    }, autoPlayInterval);
+    
+    return () => clearInterval(interval);
+  }, [isPaused, prefersReducedMotion, isInView, autoPlayInterval]);
+  
   const goTo = useCallback((index: number) => {
     let newIndex = index;
     if (newIndex < 0) newIndex = cards.length - 1;
@@ -248,6 +362,14 @@ export default function HelpOrbitCarousel() {
   
   const goNext = useCallback(() => goTo(activeIndex + 1), [activeIndex, goTo]);
   const goPrev = useCallback(() => goTo(activeIndex - 1), [activeIndex, goTo]);
+  
+  const handleSkip = useCallback(() => {
+    // Mark all cards as viewed
+    setViewedCards(new Set(cards.map((_, i) => i)));
+    setHasCompletedViewing(true);
+    setIsScrollLocked(false);
+    setShowScrollIndicator(true);
+  }, []);
   
   // Keyboard navigation
   useEffect(() => {
@@ -263,6 +385,7 @@ export default function HelpOrbitCarousel() {
   // Touch/swipe handling for mobile
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
+    setIsPaused(true);
   };
   
   const handleTouchMove = (e: React.TouchEvent) => {
@@ -280,6 +403,9 @@ export default function HelpOrbitCarousel() {
         goPrev();
       }
     }
+    
+    // Resume auto-play after a delay
+    setTimeout(() => setIsPaused(false), 1000);
   };
   
   // Get visible card indices (centered around active)
@@ -298,6 +424,9 @@ export default function HelpOrbitCarousel() {
     return indices;
   };
   
+  // Calculate progress percentage
+  const progressPercentage = (viewedCards.size / cards.length) * 100;
+  
   if (prefersReducedMotion) {
     return <ReducedMotionFallback />;
   }
@@ -306,7 +435,24 @@ export default function HelpOrbitCarousel() {
   const activeCard = cards[activeIndex];
   
   return (
-    <section ref={sectionRef} className="py-20 md:py-28 bg-background overflow-hidden">
+    <section 
+      ref={sectionRef} 
+      className="py-20 md:py-28 bg-background overflow-hidden relative"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      {/* Skip Button for Accessibility */}
+      {isScrollLocked && (
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="absolute top-4 right-4 md:top-6 md:right-6 z-20 text-sm text-white/60 hover:text-white transition-colors underline underline-offset-2"
+          onClick={handleSkip}
+        >
+          Skip
+        </motion.button>
+      )}
+      
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
@@ -345,7 +491,11 @@ export default function HelpOrbitCarousel() {
         >
           {/* Arrow Buttons - Desktop Only */}
           <motion.button
-            onClick={goPrev}
+            onClick={() => {
+              goPrev();
+              setIsPaused(true);
+              setTimeout(() => setIsPaused(false), 3000);
+            }}
             className="hidden md:flex absolute -left-16 lg:-left-20 top-1/2 -translate-y-1/2 z-10
               w-12 h-12 rounded-full items-center justify-center
               bg-white/[0.05] border border-white/[0.1]
@@ -360,7 +510,11 @@ export default function HelpOrbitCarousel() {
           </motion.button>
           
           <motion.button
-            onClick={goNext}
+            onClick={() => {
+              goNext();
+              setIsPaused(true);
+              setTimeout(() => setIsPaused(false), 3000);
+            }}
             className="hidden md:flex absolute -right-16 lg:-right-20 top-1/2 -translate-y-1/2 z-10
               w-12 h-12 rounded-full items-center justify-center
               bg-white/[0.05] border border-white/[0.1]
@@ -401,16 +555,21 @@ export default function HelpOrbitCarousel() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8 }}
                     transition={{ 
-                      duration: 0.4, 
+                      duration: 0.5, 
                       ease: [0.4, 0, 0.2, 1],
-                      layout: { duration: 0.4 }
+                      layout: { duration: 0.5 }
                     }}
                     className={visibleCount === 1 && !isCenter ? 'hidden' : 'flex-shrink-0'}
                   >
                     <Card
                       card={card}
+                      cardIndex={cardIndex}
                       isActive={isCenter}
-                      onClick={() => setActiveIndex(cardIndex)}
+                      onClick={() => {
+                        setActiveIndex(cardIndex);
+                        setIsPaused(true);
+                        setTimeout(() => setIsPaused(false), 3000);
+                      }}
                       prefersReducedMotion={!!prefersReducedMotion}
                     />
                   </motion.div>
@@ -429,7 +588,11 @@ export default function HelpOrbitCarousel() {
             {cards.map((card, index) => (
               <button
                 key={card.id}
-                onClick={() => setActiveIndex(index)}
+                onClick={() => {
+                  setActiveIndex(index);
+                  setIsPaused(true);
+                  setTimeout(() => setIsPaused(false), 3000);
+                }}
                 className={`
                   w-2 h-2 rounded-full transition-all duration-200 ease-out
                   focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background
@@ -477,6 +640,43 @@ export default function HelpOrbitCarousel() {
           </AnimatePresence>
         </motion.div>
       </div>
+      
+      {/* Progress Bar */}
+      {!hasCompletedViewing && isScrollLocked && (
+        <motion.div 
+          className="absolute bottom-0 left-0 right-0 h-[3px] bg-white/10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <motion.div
+            className="h-full bg-primary"
+            initial={{ width: 0 }}
+            animate={{ width: `${progressPercentage}%` }}
+            transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+          />
+        </motion.div>
+      )}
+      
+      {/* Scroll Unlock Indicator */}
+      <AnimatePresence>
+        {showScrollIndicator && (
+          <motion.div
+            className="absolute bottom-8 left-1/2 -translate-x-1/2"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <ChevronDown className="w-6 h-6 text-primary" />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
