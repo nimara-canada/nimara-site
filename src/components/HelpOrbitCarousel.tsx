@@ -263,6 +263,7 @@ export default function HelpOrbitCarousel() {
   const [isDragging, setIsDragging] = useState(false);
   const [showArrows, setShowArrows] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
   
@@ -276,6 +277,17 @@ export default function HelpOrbitCarousel() {
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+  
+  // Auto-rotate carousel
+  useEffect(() => {
+    if (prefersReducedMotion || isPaused || isDragging) return;
+    
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % cards.length);
+    }, 4000); // Rotate every 4 seconds
+    
+    return () => clearInterval(interval);
+  }, [prefersReducedMotion, isPaused, isDragging]);
   
   // Navigate to next/prev card
   const goTo = useCallback((index: number) => {
@@ -424,8 +436,10 @@ export default function HelpOrbitCarousel() {
           ref={containerRef}
           className="relative mx-auto"
           style={{ height: isMobile ? 280 : 420 }}
-          onMouseEnter={() => setShowArrows(true)}
-          onMouseLeave={() => setShowArrows(false)}
+          onMouseEnter={() => { setShowArrows(true); setIsPaused(true); }}
+          onMouseLeave={() => { setShowArrows(false); setIsPaused(false); }}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
         >
           {/* Orbit Ring Glow */}
           <div 
