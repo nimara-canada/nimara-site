@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
+import NimaraLoop from "@/components/NimaraLoop";
 import TwoStartingPoints from "@/components/company/TwoStartingPoints";
 import TheProcess from "@/components/company/TheProcess";
 import WhatWeHelpWith from "@/components/WhatWeHelpWith";
@@ -92,6 +93,9 @@ const Index = () => {
         <main id="main" className="space-y-0" style={{ paddingTop: '5rem' }}>
           {/* Hero - full height entry */}
           <HeroSection />
+          
+          {/* The Nimara Loop - Flywheel approach */}
+          <NimaraLoop />
           
           {/* Start Here - Pick what fits you */}
           <TwoStartingPoints />
