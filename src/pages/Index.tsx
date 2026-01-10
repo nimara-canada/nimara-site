@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
-import TwoPathsSection from "@/components/TwoPathsSection";
+import TwoStartingPoints from "@/components/company/TwoStartingPoints";
 import FundingProofSection from "@/components/FundingProofSection";
 import { HowItWorksTimeline } from "@/components/HowItWorksTimeline";
 import { SystemLadder } from "@/components/SystemLadder";
@@ -95,8 +95,8 @@ const Index = () => {
           {/* Hero - full height entry */}
           <HeroSection />
           
-          {/* Two Paths - Pick a starting point */}
-          <TwoPathsSection />
+          {/* Start Here - Pick what fits you */}
+          <TwoStartingPoints />
           
           {/* Funding Proof - 2-column messaging */}
           <FundingProofSection />
