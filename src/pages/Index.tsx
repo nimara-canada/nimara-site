@@ -109,10 +109,6 @@ const Index = () => {
           {/* What You Get - Outcomes */}
           <OutcomesSection />
           
-          {/* Integrations */}
-          <RevealSection background="gradient">
-            <IntegrationsSection />
-          </RevealSection>
           
           {/* FAQ */}
           <RevealSection id="faq">
