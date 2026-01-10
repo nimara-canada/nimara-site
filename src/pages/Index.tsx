@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import WithNimara from "@/components/WithNimara";
 import NimaraLoop from "@/components/NimaraLoop";
-import TwoStartingPoints from "@/components/company/TwoStartingPoints";
+import StartingPointSplit from "@/components/StartingPointSplit";
 import TheProcess from "@/components/company/TheProcess";
 import WhatWeHelpWith from "@/components/WhatWeHelpWith";
 import OutcomesSection from "@/components/OutcomesSection";
@@ -102,7 +102,7 @@ const Index = () => {
           <NimaraLoop />
           
           {/* Start Here - Pick what fits you */}
-          <TwoStartingPoints />
+          <StartingPointSplit />
           
           
           {/* How It Works - 4 Steps */}
