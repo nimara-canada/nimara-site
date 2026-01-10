@@ -5,14 +5,23 @@ const cards = [
   {
     title: "Find proof fast",
     description: "Receipts, approvals, and reports stay organized so you're not scrambling.",
+    bgClass: "bg-[hsl(var(--nim-navy))]",
+    textClass: "text-white",
+    subtextClass: "text-white/80",
   },
   {
     title: "Stay funder-ready",
     description: "Simple routines keep your records clean and easy to show.",
+    bgClass: "bg-[hsl(var(--nim-purple))]",
+    textClass: "text-white",
+    subtextClass: "text-white/80",
   },
   {
     title: "Hand over a system",
     description: "We set it up. Your team runs it without us.",
+    bgClass: "bg-[hsl(var(--nim-mint))]",
+    textClass: "text-[hsl(var(--nim-navy))]",
+    subtextClass: "text-[hsl(var(--nim-navy))]/70",
   },
 ];
 
@@ -32,36 +41,28 @@ const WithNimara = () => {
   });
 
   // Calculate Y transforms for each card based on scroll progress
-  // Card 1: Always at 0 (base layer)
-  // Card 2: Moves from 100% to 0% during first half of scroll
-  // Card 3: Moves from 100% to 0% during second half of scroll
   const card2Y = useTransform(scrollYProgress, [0, 0.5], ["100%", "0%"]);
   const card3Y = useTransform(scrollYProgress, [0.5, 1], ["100%", "0%"]);
 
   // Reduced motion fallback - show cards stacked normally
   if (prefersReducedMotion) {
     return (
-      <section className="bg-background py-24 md:py-32">
-        <div className="max-w-5xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl md:text-4xl font-semibold text-foreground text-center mb-16 md:mb-20">
-            With Nimara, you can
-          </h2>
-          <div className="space-y-8">
-            {cards.map((card, index) => (
-              <div
-                key={index}
-                className="bg-card rounded-2xl p-8 md:p-12 shadow-sm border border-border"
-              >
-                <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">
-                  {card.title}
-                </h3>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  {card.description}
-                </p>
-              </div>
-            ))}
+      <section className="bg-background">
+        {cards.map((card, index) => (
+          <div
+            key={index}
+            className={`${card.bgClass} min-h-[60vh] flex items-center justify-center px-6 py-20`}
+          >
+            <div className="max-w-4xl mx-auto text-center">
+              <h3 className={`text-3xl md:text-5xl font-bold mb-6 ${card.textClass}`}>
+                {card.title}
+              </h3>
+              <p className={`text-xl md:text-2xl leading-relaxed ${card.subtextClass}`}>
+                {card.description}
+              </p>
+            </div>
           </div>
-        </div>
+        ))}
       </section>
     );
   }
@@ -69,53 +70,46 @@ const WithNimara = () => {
   return (
     <section
       ref={containerRef}
-      className="relative bg-background"
+      className="relative"
       style={{ height: `${cards.length * 100}vh` }}
     >
       {/* Sticky container that pins during scroll */}
       <div className="sticky top-0 h-screen overflow-hidden">
-        {/* Section heading - pinned at top */}
-        <div className="absolute top-0 left-0 right-0 z-50 pt-16 md:pt-20 pb-8 bg-gradient-to-b from-background via-background to-transparent pointer-events-none">
-          <h2 className="text-3xl md:text-4xl font-semibold text-foreground text-center">
-            With Nimara, you can
-          </h2>
-        </div>
-
         {/* Cards container */}
         <div className="relative h-full w-full">
-          {/* Card 1 - Base layer, always visible */}
+          {/* Card 1 - Base layer (Navy) */}
           <div
-            className="absolute inset-0 flex items-center justify-center p-6 md:p-12"
+            className="absolute inset-0"
             style={{ zIndex: 1 }}
           >
-            <CardContent card={cards[0]} />
+            <FullScreenCard card={cards[0]} />
           </div>
 
-          {/* Card 2 - Slides up over Card 1 */}
+          {/* Card 2 - Slides up (Purple) */}
           {isMounted && (
             <motion.div
-              className="absolute inset-0 flex items-center justify-center p-6 md:p-12"
+              className="absolute inset-0"
               style={{ 
                 zIndex: 2,
                 y: card2Y,
                 willChange: "transform",
               }}
             >
-              <CardContent card={cards[1]} />
+              <FullScreenCard card={cards[1]} />
             </motion.div>
           )}
 
-          {/* Card 3 - Slides up over Card 2 */}
+          {/* Card 3 - Slides up (Mint) */}
           {isMounted && (
             <motion.div
-              className="absolute inset-0 flex items-center justify-center p-6 md:p-12"
+              className="absolute inset-0"
               style={{ 
                 zIndex: 3,
                 y: card3Y,
                 willChange: "transform",
               }}
             >
-              <CardContent card={cards[2]} />
+              <FullScreenCard card={cards[2]} />
             </motion.div>
           )}
         </div>
@@ -124,21 +118,27 @@ const WithNimara = () => {
   );
 };
 
-interface CardContentProps {
+interface FullScreenCardProps {
   card: {
     title: string;
     description: string;
+    bgClass: string;
+    textClass: string;
+    subtextClass: string;
   };
 }
 
-const CardContent = ({ card }: CardContentProps) => {
+const FullScreenCard = ({ card }: FullScreenCardProps) => {
   return (
-    <div className="w-full max-w-[980px] bg-card rounded-2xl md:rounded-3xl p-8 md:p-16 lg:p-20 shadow-lg border border-border/50">
-      <div className="text-center">
-        <h3 className="text-2xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-4 md:mb-6">
+    <div className={`h-full w-full ${card.bgClass} flex items-center justify-center px-6 md:px-12`}>
+      <div className="max-w-4xl mx-auto text-center">
+        <p className={`text-sm md:text-base uppercase tracking-widest mb-4 md:mb-6 ${card.subtextClass}`}>
+          With Nimara, you can
+        </p>
+        <h3 className={`text-4xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 ${card.textClass}`}>
           {card.title}
         </h3>
-        <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+        <p className={`text-xl md:text-2xl lg:text-3xl leading-relaxed max-w-2xl mx-auto ${card.subtextClass}`}>
           {card.description}
         </p>
       </div>
