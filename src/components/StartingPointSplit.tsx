@@ -154,64 +154,69 @@ const StartingPointSplit = () => {
             variants={itemVariants}
             whileHover={prefersReducedMotion ? {} : { scale: 1.01 }}
             transition={{ duration: 0.2 }}
-            className={`${card.bgClass} min-h-[70vh] md:min-h-[80vh] flex items-center justify-center px-6 md:px-12 py-16 md:py-20`}
+            className={`${card.bgClass} flex flex-col`}
           >
-            <div className="max-w-md w-full">
-              {/* Badge */}
-              <span className={`inline-block px-3 py-1 rounded-full text-sm font-semibold mb-6 ${
-                index === 0 
-                  ? 'bg-white/20 text-white' 
-                  : 'bg-[hsl(var(--nim-navy))]/10 text-[hsl(var(--nim-navy))]'
-              }`}>
-                {card.badge}
-              </span>
-              
-              {/* Title */}
-              <h3 className={`text-2xl md:text-3xl lg:text-4xl font-bold mb-4 ${card.textClass}`}>
-                {card.title}
-              </h3>
-              
-              {/* One-liner */}
-              <p className={`text-lg md:text-xl mb-6 ${card.subtextClass}`}>
-                {card.oneLiner}
-              </p>
-              
-              {/* Visual */}
-              <div className="mb-8">
+            {/* Text Content Section */}
+            <div className="flex-1 flex items-center justify-center px-6 md:px-12 py-12 md:py-16">
+              <div className="max-w-md w-full">
+                {/* Badge */}
+                <span className={`inline-block px-3 py-1 rounded-full text-sm font-semibold mb-6 ${
+                  index === 0 
+                    ? 'bg-white/20 text-white' 
+                    : 'bg-[hsl(var(--nim-navy))]/10 text-[hsl(var(--nim-navy))]'
+                }`}>
+                  {card.badge}
+                </span>
+                
+                {/* Title */}
+                <h3 className={`text-2xl md:text-3xl lg:text-4xl font-bold mb-4 ${card.textClass}`}>
+                  {card.title}
+                </h3>
+                
+                {/* One-liner */}
+                <p className={`text-lg md:text-xl mb-6 ${card.subtextClass}`}>
+                  {card.oneLiner}
+                </p>
+                
+                {/* Bullets */}
+                <ul className="space-y-2 mb-8">
+                  {card.bullets.map((bullet, i) => (
+                    <li key={i} className={`flex items-start gap-2 ${card.textClass}`}>
+                      <span className="mt-1">•</span>
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                {/* Button */}
+                <Button 
+                  asChild 
+                  size="lg" 
+                  variant={card.buttonVariant}
+                  className={`mb-4 ${
+                    index === 0 
+                      ? 'bg-white text-[hsl(var(--nim-purple))] hover:bg-white/90' 
+                      : ''
+                  }`}
+                >
+                  <a href={card.buttonHref}>
+                    {card.buttonText}
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </a>
+                </Button>
+                
+                {/* Helper text */}
+                <p className={`text-sm ${card.subtextClass}`}>
+                  {card.helperText}
+                </p>
+              </div>
+            </div>
+            
+            {/* Visual Section - Below the content */}
+            <div className="px-6 md:px-12 pb-12 md:pb-16">
+              <div className="max-w-md mx-auto">
                 {card.visual}
               </div>
-              
-              {/* Bullets */}
-              <ul className="space-y-2 mb-8">
-                {card.bullets.map((bullet, i) => (
-                  <li key={i} className={`flex items-start gap-2 ${card.textClass}`}>
-                    <span className="mt-1">•</span>
-                    <span>{bullet}</span>
-                  </li>
-                ))}
-              </ul>
-              
-              {/* Button */}
-              <Button 
-                asChild 
-                size="lg" 
-                variant={card.buttonVariant}
-                className={`mb-4 ${
-                  index === 0 
-                    ? 'bg-white text-[hsl(var(--nim-purple))] hover:bg-white/90' 
-                    : ''
-                }`}
-              >
-                <a href={card.buttonHref}>
-                  {card.buttonText}
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </a>
-              </Button>
-              
-              {/* Helper text */}
-              <p className={`text-sm ${card.subtextClass}`}>
-                {card.helperText}
-              </p>
             </div>
           </motion.div>
         ))}
