@@ -3,22 +3,22 @@ import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion
 
 const cards = [
   {
-    title: "Find proof fast",
-    description: "Receipts, approvals, and reports stay organized so you're not scrambling.",
+    title: "Win more funding",
+    description: "Make it easy to submit strong applications fast.",
     bgClass: "bg-background",
     textClass: "text-foreground",
     subtextClass: "text-muted-foreground",
   },
   {
-    title: "Stay funder-ready",
-    description: "Simple routines keep your records clean and easy to show.",
+    title: "Spend it cleanly",
+    description: "Proof of payment + approvals attached to every expense.",
     bgClass: "bg-[hsl(var(--nim-purple))]",
     textClass: "text-white",
     subtextClass: "text-white/80",
   },
   {
-    title: "Hand over a system",
-    description: "We set it up. Your team runs it without us.",
+    title: "Report without stress",
+    description: "Pull reports and documents in minutes when funders ask.",
     bgClass: "bg-[hsl(var(--nim-mint))]",
     textClass: "text-[hsl(var(--nim-navy))]",
     subtextClass: "text-[hsl(var(--nim-navy))]/70",
