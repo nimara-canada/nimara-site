@@ -5,12 +5,9 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import TwoStartingPoints from "@/components/company/TwoStartingPoints";
-
 import TheProcess from "@/components/company/TheProcess";
 import WhatWeHelpWith from "@/components/WhatWeHelpWith";
 import OutcomesSection from "@/components/OutcomesSection";
-import { FitCheck } from "@/components/FitCheck";
-import { IntegrationsSection } from "@/components/IntegrationsSection";
 import { FAQ } from "@/components/FAQ";
 import { FinalCTA } from "@/components/FinalCTA";
 import StickyFooterCTA from "@/components/StickyFooterCTA";
