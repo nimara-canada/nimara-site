@@ -72,15 +72,15 @@ const NimaraHeroPremium = () => {
             <ul style={revealStyle(250)} className="space-y-3 mb-10 max-w-xl mx-auto text-left" aria-label="Key benefits">
               <li className="flex items-start gap-3 text-white/70">
                 <Check className="w-5 h-5 mt-0.5 flex-shrink-0 text-accent" aria-hidden="true" />
-                <span>Pull grant records and payment proof fast</span>
+                <span>Find receipts, approvals, and proof of payment in minutes</span>
               </li>
               <li className="flex items-start gap-3 text-white/70">
                 <Check className="w-5 h-5 mt-0.5 flex-shrink-0 text-accent" aria-hidden="true" />
-                <span>Board notes and approvals that stay findable</span>
+                <span>Keep grant budgets and spending clean and easy to track</span>
               </li>
               <li className="flex items-start gap-3 text-white/70">
                 <Check className="w-5 h-5 mt-0.5 flex-shrink-0 text-accent" aria-hidden="true" />
-                <span>Files and routines your team will actually use</span>
+                <span>Send reports without scrambling or guessing</span>
               </li>
             </ul>
 
