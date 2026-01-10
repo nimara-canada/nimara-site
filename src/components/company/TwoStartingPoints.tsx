@@ -81,7 +81,7 @@ const TwoStartingPoints: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="text-base lg:text-lg text-muted-foreground max-w-md mx-auto font-light"
           >
-            Most nonprofits with 0–50 staff are in one of these two spots.
+            Most nonprofits with 0–50 staff fall into one of these two situations.
           </motion.p>
         </div>
 
