@@ -249,7 +249,7 @@ export default function HelpOrbitCarousel() {
   const [viewedCards, setViewedCards] = useState<Set<number>>(new Set([0]));
   const [hasCompletedViewing, setHasCompletedViewing] = useState(false);
   const [showScrollIndicator, setShowScrollIndicator] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => (typeof window !== "undefined" ? window.innerWidth < 768 : false));
   const [isScrollLocked, setIsScrollLocked] = useState(false);
   const [hasEntered, setHasEntered] = useState(false);
   const [isSliding, setIsSliding] = useState(false);
@@ -261,6 +261,8 @@ export default function HelpOrbitCarousel() {
   const scrollLockEngaged = useRef(false);
   const lastWheelTime = useRef(0);
   const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const prevBodyOverflow = useRef<string | null>(null);
+  const lockedScrollY = useRef(0);
   
   const prefersReducedMotion = useReducedMotion();
   const isInView = useInView(sectionRef, { once: false, margin: "-30%" });
@@ -272,6 +274,13 @@ export default function HelpOrbitCarousel() {
   // Calculate card step size
   const cardWidth = isMobile ? CARD_WIDTH_MOBILE : CARD_WIDTH_DESKTOP;
   const stepSize = cardWidth + CARD_GAP;
+  const baseX = -stepSize;
+
+  useEffect(() => {
+    if (prefersReducedMotion) return;
+    if (isSliding) return;
+    trackX.set(baseX);
+  }, [baseX, isSliding, prefersReducedMotion, trackX]);
   
   // Visible cards: 1 on mobile, 3 on desktop
   const visibleCount = isMobile ? 1 : 3;
@@ -336,35 +345,60 @@ export default function HelpOrbitCarousel() {
       }, 100);
     }
   }, [isInView, hasCompletedViewing, prefersReducedMotion]);
+
+  // Hard scroll lock: prevent the page from scrolling past this section until complete/skip
+  useEffect(() => {
+    if (!isScrollLocked || prefersReducedMotion) {
+      if (prevBodyOverflow.current !== null) {
+        document.body.style.overflow = prevBodyOverflow.current;
+        prevBodyOverflow.current = null;
+      }
+      return;
+    }
+
+    prevBodyOverflow.current = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    lockedScrollY.current = window.scrollY;
+
+    const enforceScroll = () => {
+      window.scrollTo({ top: lockedScrollY.current });
+    };
+
+    window.addEventListener("scroll", enforceScroll);
+    return () => {
+      window.removeEventListener("scroll", enforceScroll);
+      document.body.style.overflow = prevBodyOverflow.current ?? "";
+      prevBodyOverflow.current = null;
+    };
+  }, [isScrollLocked, prefersReducedMotion]);
   
   // Unified slide function - animates track then updates index
-  const slideTo = useCallback((direction: 'next' | 'prev') => {
-    if (isSliding) return;
-    
-    setIsSliding(true);
-    
-    const targetX = direction === 'next' ? -stepSize : stepSize;
-    
-    // Animate track to target position
-    animate(trackX, targetX, {
-      duration: 0.4,
-      ease: [0.4, 0, 0.2, 1],
-      onComplete: () => {
-        // Update index
-        setActiveIndex(prev => {
-          if (direction === 'next') {
-            return (prev + 1) % cards.length;
-          } else {
-            return (prev - 1 + cards.length) % cards.length;
-          }
-        });
-        
-        // Instantly snap track back to center
-        trackX.set(0);
-        setIsSliding(false);
-      }
-    });
-  }, [isSliding, stepSize, trackX]);
+  const slideTo = useCallback(
+    (direction: "next" | "prev") => {
+      if (isSliding) return;
+
+      setIsSliding(true);
+
+      const targetX = baseX + (direction === "next" ? -stepSize : stepSize);
+
+      animate(trackX, targetX, {
+        duration: 0.4,
+        ease: [0.4, 0, 0.2, 1],
+        onComplete: () => {
+          setActiveIndex((prev) =>
+            direction === "next"
+              ? (prev + 1) % cards.length
+              : (prev - 1 + cards.length) % cards.length
+          );
+
+          // Reset to base position (the window of cards shifts, so this should be visually seamless)
+          trackX.set(baseX);
+          setIsSliding(false);
+        },
+      });
+    },
+    [isSliding, baseX, stepSize, trackX]
+  );
   
   const slideToNext = useCallback(() => slideTo('next'), [slideTo]);
   const slideToPrev = useCallback(() => slideTo('prev'), [slideTo]);
@@ -448,6 +482,25 @@ export default function HelpOrbitCarousel() {
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      // When locked, block scroll-related keys and translate them into carousel navigation
+      if (isScrollLocked) {
+        if (e.key === "ArrowDown" || e.key === "PageDown" || e.key === " " || e.key === "Spacebar") {
+          e.preventDefault();
+          setIsPaused(true);
+          slideToNext();
+          setTimeout(() => setIsPaused(false), 2000);
+          return;
+        }
+
+        if (e.key === "ArrowUp" || e.key === "PageUp") {
+          e.preventDefault();
+          setIsPaused(true);
+          slideToPrev();
+          setTimeout(() => setIsPaused(false), 2000);
+          return;
+        }
+      }
+
       if (e.key === 'ArrowLeft') {
         slideToPrev();
         setIsPaused(true);
@@ -462,7 +515,7 @@ export default function HelpOrbitCarousel() {
     
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [slideToNext, slideToPrev]);
+  }, [slideToNext, slideToPrev, isScrollLocked]);
   
   // Touch/swipe handling for mobile
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -490,21 +543,18 @@ export default function HelpOrbitCarousel() {
     setTimeout(() => setIsPaused(false), 1500);
   };
   
-  // Get visible card indices (for rendering stable slots)
-  const getVisibleIndices = () => {
-    const indices: number[] = [];
+  // Build a small window of cards around the active card (buffers on each side)
+  const getWindowItems = () => {
     const half = Math.floor(visibleCount / 2);
-    
-    // For sliding, we need extra cards on each side
-    for (let i = -half - 1; i <= half + 1; i++) {
-      let idx = activeIndex + i;
-      // Wrap around for infinite loop
-      if (idx < 0) idx = cards.length + idx;
-      if (idx >= cards.length) idx = idx % cards.length;
-      indices.push(idx);
+    const span = half + 1;
+    const items: { cardIndex: number; offset: number }[] = [];
+
+    for (let offset = -span; offset <= span; offset++) {
+      const idx = (activeIndex + offset + cards.length) % cards.length;
+      items.push({ cardIndex: idx, offset });
     }
-    
-    return indices;
+
+    return items;
   };
   
   // Calculate progress percentage
@@ -514,8 +564,9 @@ export default function HelpOrbitCarousel() {
     return <ReducedMotionFallback />;
   }
   
-  const visibleIndices = getVisibleIndices();
+  const windowItems = getWindowItems();
   const activeCard = cards[activeIndex];
+  const viewportWidth = visibleCount * cardWidth + (visibleCount - 1) * CARD_GAP;
   
   // Content panel animation
   const contentKey = `content-${activeIndex}`;
@@ -617,46 +668,29 @@ export default function HelpOrbitCarousel() {
           {/* Cards Track - slides horizontally */}
           <div
             ref={containerRef}
-            className="relative overflow-hidden"
-            style={{ minHeight: 240 }}
+            className="relative overflow-hidden mx-auto"
+            style={{ minHeight: 240, width: viewportWidth, maxWidth: "100%" }}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
             <motion.div 
-              className="flex items-center justify-center gap-6"
+              className="flex items-center gap-6"
               style={{ x: smoothTrackX }}
             >
-              {visibleIndices.map((cardIndex, i) => {
+              {windowItems.map(({ cardIndex, offset }, i) => {
                 const card = cards[cardIndex];
-                const isCenter = cardIndex === activeIndex;
-                const slotOffset = i - Math.floor(visibleIndices.length / 2);
-                
-                // Hide extra buffer cards on edges (only show visibleCount cards)
-                const isVisible = Math.abs(slotOffset) <= Math.floor(visibleCount / 2);
-                
+                const isCenter = offset === 0;
+
                 return (
-                  <div
-                    key={`slot-${i}-${cardIndex}`}
-                    className={`flex-shrink-0 ${!isVisible ? 'opacity-0 pointer-events-none' : ''}`}
-                    style={{
-                      // Maintain consistent spacing
-                      width: cardWidth,
-                    }}
-                  >
+                  <div key={`window-${i}-${cardIndex}`} className="flex-shrink-0">
                     <Card
                       card={card}
                       cardIndex={cardIndex}
                       isActive={isCenter}
                       onClick={() => {
-                        if (!isCenter) {
-                          // Slide to clicked card
-                          if (slotOffset > 0) {
-                            slideToNext();
-                          } else {
-                            slideToPrev();
-                          }
-                        }
+                        if (offset > 0) slideToNext();
+                        if (offset < 0) slideToPrev();
                         setIsPaused(true);
                         setTimeout(() => setIsPaused(false), 3000);
                       }}
