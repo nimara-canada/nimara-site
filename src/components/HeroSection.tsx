@@ -65,7 +65,7 @@ const NimaraHeroPremium = () => {
 
             {/* Subheadline */}
             <p style={revealStyle(200)} className="text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-8 text-white/70">
-              ​We install the systems behind the scenes so your applications, spending, and reporting don’t fall apart.
+              We set up simple systems so your team can apply faster, track spending, and report without stress.
             </p>
 
             {/* Bullets */}
