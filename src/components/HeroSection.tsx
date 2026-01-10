@@ -59,8 +59,8 @@ const NimaraHeroPremium = () => {
           {/* Single Column - Clean Copy */}
           <div className="text-center">
             {/* Main Headline */}
-            <h1 id="hero-heading" style={revealStyle(100)} className="mb-6 text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.5rem] font-bold text-white leading-[1.08] tracking-tight">
-              Make funding easier to win — and easier to manage.
+            <h1 id="hero-heading" style={revealStyle(100)} className="mb-8 text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[1.05] tracking-tight">
+              We make funding easier to win — and manage.
             </h1>
 
             {/* Subheadline */}
