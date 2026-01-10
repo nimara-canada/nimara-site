@@ -140,27 +140,25 @@ const StartingPointSplit = () => {
         </p>
       </motion.div>
 
-      {/* Full-width cards container */}
+      {/* Full-width stacked cards */}
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         variants={containerVariants}
-        className="grid md:grid-cols-2"
+        className="flex flex-col"
       >
         {cards.map((card, index) => (
           <motion.div
             key={card.badge}
             variants={itemVariants}
-            whileHover={prefersReducedMotion ? {} : { scale: 1.01 }}
-            transition={{ duration: 0.2 }}
-            className={`${card.bgClass} flex flex-col`}
+            className={`${card.bgClass} w-full`}
           >
             {/* Text Content Section */}
-            <div className="flex-1 flex items-center justify-center px-6 md:px-12 py-12 md:py-16">
-              <div className="max-w-md w-full">
+            <div className="flex items-start justify-center px-6 md:px-12 lg:px-20 py-16 md:py-24">
+              <div className="max-w-2xl w-full">
                 {/* Badge */}
-                <span className={`inline-block px-3 py-1 rounded-full text-sm font-semibold mb-6 ${
+                <span className={`inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-6 ${
                   index === 0 
                     ? 'bg-white/20 text-white' 
                     : 'bg-[hsl(var(--nim-navy))]/10 text-[hsl(var(--nim-navy))]'
@@ -169,19 +167,19 @@ const StartingPointSplit = () => {
                 </span>
                 
                 {/* Title */}
-                <h3 className={`text-2xl md:text-3xl lg:text-4xl font-bold mb-4 ${card.textClass}`}>
+                <h3 className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-5 ${card.textClass}`}>
                   {card.title}
                 </h3>
                 
                 {/* One-liner */}
-                <p className={`text-lg md:text-xl mb-6 ${card.subtextClass}`}>
+                <p className={`text-lg md:text-xl lg:text-2xl mb-8 ${card.subtextClass}`}>
                   {card.oneLiner}
                 </p>
                 
                 {/* Bullets */}
-                <ul className="space-y-2 mb-8">
+                <ul className="space-y-3 mb-10">
                   {card.bullets.map((bullet, i) => (
-                    <li key={i} className={`flex items-start gap-2 ${card.textClass}`}>
+                    <li key={i} className={`flex items-start gap-3 text-lg ${card.textClass}`}>
                       <span className="mt-1">•</span>
                       <span>{bullet}</span>
                     </li>
@@ -193,7 +191,7 @@ const StartingPointSplit = () => {
                   asChild 
                   size="lg" 
                   variant={card.buttonVariant}
-                  className={`mb-4 ${
+                  className={`mb-4 text-base px-8 py-6 ${
                     index === 0 
                       ? 'bg-white text-[hsl(var(--nim-purple))] hover:bg-white/90' 
                       : ''
@@ -201,20 +199,20 @@ const StartingPointSplit = () => {
                 >
                   <a href={card.buttonHref}>
                     {card.buttonText}
-                    <ArrowRight className="ml-2 w-4 h-4" />
+                    <ArrowRight className="ml-2 w-5 h-5" />
                   </a>
                 </Button>
                 
                 {/* Helper text */}
-                <p className={`text-sm ${card.subtextClass}`}>
+                <p className={`text-sm md:text-base ${card.subtextClass}`}>
                   {card.helperText}
                 </p>
               </div>
             </div>
             
             {/* Visual Section - Below the content */}
-            <div className="px-6 md:px-12 pb-12 md:pb-16">
-              <div className="max-w-md mx-auto">
+            <div className="px-6 md:px-12 lg:px-20 pb-16 md:pb-24">
+              <div className="max-w-2xl mx-auto">
                 {card.visual}
               </div>
             </div>
