@@ -99,7 +99,10 @@ const NimaraHeroPremium = () => {
             ...revealStyle(200),
             color: '#A0A0A0'
           }} className="text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-8">
-              ​We set up simple systems for board, money, and files — so reporting feels easy, not stressful.
+              ​We set up simple systems for board, money, and files — so reporting feels easy, not stressful
+
+
+
 
 
             </p>
