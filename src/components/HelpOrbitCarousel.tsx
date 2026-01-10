@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { motion, AnimatePresence, useInView, useScroll, useTransform } from "framer-motion";
 import { 
   ClipboardList, 
   DollarSign, 
@@ -212,6 +212,16 @@ export default function HelpOrbitCarousel() {
   const prefersReducedMotion = useReducedMotion();
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   
+  // Parallax scroll effect
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+  
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const parallaxScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
+  const parallaxOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.8, 1, 1, 0.8]);
+  
   // Handle responsive visible cards
   useEffect(() => {
     const handleResize = () => {
@@ -364,11 +374,16 @@ export default function HelpOrbitCarousel() {
             <ChevronRight className="w-6 h-6 text-white" />
           </motion.button>
           
-          {/* Cards Container */}
-          <div
+          {/* Cards Container with Parallax */}
+          <motion.div
             ref={containerRef}
             className="relative flex items-center justify-center gap-6"
-            style={{ minHeight: 240 }}
+            style={{ 
+              minHeight: 240,
+              y: prefersReducedMotion ? 0 : parallaxY,
+              scale: prefersReducedMotion ? 1 : parallaxScale,
+              opacity: prefersReducedMotion ? 1 : parallaxOpacity,
+            }}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
@@ -402,7 +417,7 @@ export default function HelpOrbitCarousel() {
                 );
               })}
             </AnimatePresence>
-          </div>
+          </motion.div>
           
           {/* Dot Indicators */}
           <motion.div 
