@@ -253,6 +253,7 @@ export default function HelpOrbitCarousel() {
   const [isScrollLocked, setIsScrollLocked] = useState(false);
   const [hasEntered, setHasEntered] = useState(false);
   const [isSliding, setIsSliding] = useState(false);
+  const [showTutorial, setShowTutorial] = useState(false);
   
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
@@ -343,9 +344,28 @@ export default function HelpOrbitCarousel() {
     sectionRef.current?.scrollIntoView({ behavior: "auto", block: "center" });
 
     // Lock shortly after scrollIntoView has taken effect (prevents locking at the wrong Y).
-    const t = window.setTimeout(() => setIsScrollLocked(true), 60);
+    const t = window.setTimeout(() => {
+      setIsScrollLocked(true);
+      // Show tutorial hint
+      setShowTutorial(true);
+    }, 60);
     return () => window.clearTimeout(t);
   }, [isInView, hasCompletedViewing, prefersReducedMotion]);
+
+  // Hide tutorial after first card change or after 4 seconds
+  useEffect(() => {
+    if (!showTutorial) return;
+
+    // Hide after first interaction (card change)
+    if (viewedCards.size > 1) {
+      setShowTutorial(false);
+      return;
+    }
+
+    // Auto-hide after 4 seconds
+    const t = window.setTimeout(() => setShowTutorial(false), 4000);
+    return () => window.clearTimeout(t);
+  }, [showTutorial, viewedCards.size]);
 
   // Hard scroll lock: prevent the page from scrolling past this section until complete/skip
   useEffect(() => {
@@ -785,6 +805,24 @@ export default function HelpOrbitCarousel() {
         </motion.div>
       )}
       
+      {/* Tutorial Overlay */}
+      {showTutorial && (
+        <motion.div
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 pointer-events-none"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 10 }}
+          transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+        >
+          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+            <ChevronDown className="w-4 h-4 text-primary animate-bounce" />
+            <span className="text-sm text-white/80">
+              {isMobile ? "Swipe to cycle through cards, then continue" : "Scroll to cycle through cards, then continue"}
+            </span>
+          </div>
+        </motion.div>
+      )}
+
       {/* Scroll Unlock Indicator */}
       {showScrollIndicator && (
         <motion.div
