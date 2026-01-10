@@ -252,8 +252,13 @@ const StartingPointSplit = () => {
         >
           <div className="max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-2 min-h-[550px] md:min-h-[600px]">
-              {/* Text Content - Left side */}
-              <div className="flex items-center px-6 md:px-12 lg:px-16 py-12 md:py-16 lg:py-20 order-2 lg:order-1">
+              {/* Visual - Left side with phone mockup */}
+              <div className="relative order-1 min-h-[300px] lg:min-h-0 overflow-visible">
+                <QuickCheckVisual />
+              </div>
+              
+              {/* Text Content - Right side */}
+              <div className="flex items-center px-6 md:px-12 lg:px-16 py-12 md:py-16 lg:py-20 order-2">
                 <div className="max-w-lg">
                   {/* Badge */}
                   <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-6 bg-[hsl(var(--nim-purple))]/20 text-[hsl(var(--nim-purple))]">
@@ -297,11 +302,6 @@ const StartingPointSplit = () => {
                     Upgrade available (we review your documents).
                   </p>
                 </div>
-              </div>
-              
-              {/* Visual - Right side with phone mockup */}
-              <div className="relative order-1 lg:order-2 min-h-[300px] lg:min-h-0 overflow-visible">
-                <QuickCheckVisual />
               </div>
             </div>
           </div>
