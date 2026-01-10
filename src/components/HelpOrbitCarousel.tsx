@@ -243,11 +243,40 @@ function ReducedMotionFallback() {
   );
 }
 
+const STORAGE_KEY = "helpOrbitCarousel";
+
+function loadStoredProgress(): { viewedCards: Set<number>; completed: boolean } {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const data = JSON.parse(raw);
+      return {
+        viewedCards: new Set(Array.isArray(data.viewedCards) ? data.viewedCards : [0]),
+        completed: !!data.completed,
+      };
+    }
+  } catch {
+    // ignore
+  }
+  return { viewedCards: new Set([0]), completed: false };
+}
+
+function saveProgress(viewedCards: Set<number>, completed: boolean) {
+  try {
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({ viewedCards: Array.from(viewedCards), completed })
+    );
+  } catch {
+    // ignore
+  }
+}
+
 export default function HelpOrbitCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [viewedCards, setViewedCards] = useState<Set<number>>(new Set([0]));
-  const [hasCompletedViewing, setHasCompletedViewing] = useState(false);
+  const [viewedCards, setViewedCards] = useState<Set<number>>(() => loadStoredProgress().viewedCards);
+  const [hasCompletedViewing, setHasCompletedViewing] = useState(() => loadStoredProgress().completed);
   const [showScrollIndicator, setShowScrollIndicator] = useState(false);
   const [isMobile, setIsMobile] = useState(() => (typeof window !== "undefined" ? window.innerWidth < 768 : false));
   const [isScrollLocked, setIsScrollLocked] = useState(false);
@@ -308,10 +337,14 @@ export default function HelpOrbitCarousel() {
     }
   }, [isInView, hasEntered]);
   
-  // Track viewed cards
+  // Track viewed cards and persist to localStorage
   useEffect(() => {
-    setViewedCards(prev => new Set([...prev, activeIndex]));
-  }, [activeIndex]);
+    setViewedCards(prev => {
+      const next = new Set([...prev, activeIndex]);
+      saveProgress(next, hasCompletedViewing);
+      return next;
+    });
+  }, [activeIndex, hasCompletedViewing]);
   
   // Check if all cards have been viewed and unlock scroll
   useEffect(() => {
@@ -319,6 +352,7 @@ export default function HelpOrbitCarousel() {
       setHasCompletedViewing(true);
       setIsScrollLocked(false);
       setShowScrollIndicator(true);
+      saveProgress(viewedCards, true);
       
       // Hide scroll indicator after user starts scrolling
       const hideIndicator = () => {
@@ -495,10 +529,12 @@ export default function HelpOrbitCarousel() {
   
   const handleSkip = useCallback(() => {
     // Mark all cards as viewed
-    setViewedCards(new Set(cards.map((_, i) => i)));
+    const allViewed = new Set(cards.map((_, i) => i));
+    setViewedCards(allViewed);
     setHasCompletedViewing(true);
     setIsScrollLocked(false);
     setShowScrollIndicator(true);
+    saveProgress(allViewed, true);
   }, []);
   
   // Keyboard navigation
