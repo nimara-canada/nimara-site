@@ -18,11 +18,11 @@ export const FinalCTA = () => {
           asChild 
           size="lg" 
           variant="secondary"
-          className="bg-accent text-accent-foreground hover:bg-accent/90 px-8 py-6 text-base font-medium"
+          className="bg-accent text-primary hover:bg-accent/90 px-10 py-7 text-lg font-semibold rounded-full shadow-[0_0_30px_rgba(172,252,227,0.4)] hover:shadow-[0_0_40px_rgba(172,252,227,0.6)] transition-all duration-300 hover:scale-105"
         >
           <a href={TYPEFORM_HEALTH_CHECK_URL} target="_blank" rel="noopener noreferrer">
             Take the free check
-            <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
+            <ArrowRight className="ml-3 w-5 h-5" aria-hidden="true" />
           </a>
         </Button>
       </div>
