@@ -148,13 +148,22 @@ Files and routines your team will actually use  </span>
               backgroundColor: '#6945D8',
               color: '#FFFFFF'
             }}>
-                Book a 20-minute call
+                ​Book a free call
+
+
+
+
+
+
                 <span className="text-lg" aria-hidden="true">→</span>
               </Link>
 
               {/* Secondary CTA */}
               <a href={TYPEFORM_HEALTH_CHECK_URL} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 text-base text-white hover:opacity-80 select-none transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 rounded">
-                Take the free 6-minute check
+                ​Try the 6-minute check
+
+
+
                 <span className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span>
               </a>
             </div>
