@@ -48,7 +48,7 @@ const FundingFolderVisual = () => (
   </div>
 );
 
-// Visual 2: Simple health check result card
+// Visual 2: Simple health check result card (mint/teal accent)
 const QuickCheckVisual = () => (
   <div className="relative h-full w-full flex items-center justify-center py-12 md:py-0">
     {/* Mint blob background */}
@@ -56,8 +56,8 @@ const QuickCheckVisual = () => (
     
     {/* Result card */}
     <div className="relative z-10 w-[220px] md:w-[260px] bg-white rounded-2xl shadow-xl overflow-hidden">
-      {/* Header */}
-      <div className="bg-[hsl(var(--nim-purple))] px-5 py-4">
+      {/* Header - mint accent */}
+      <div className="bg-[hsl(var(--nim-navy))] px-5 py-4">
         <div className="flex items-center gap-2 text-white">
           <ClipboardCheck className="w-5 h-5" />
           <span className="font-semibold text-sm">Health Check</span>
@@ -77,7 +77,7 @@ const QuickCheckVisual = () => (
           {['Board', 'Finance', 'Docs'].map((area) => (
             <span 
               key={area}
-              className="px-2.5 py-1 bg-[hsl(var(--nim-mint))]/40 text-[hsl(var(--nim-navy))] rounded-full text-xs font-medium"
+              className="px-2.5 py-1 bg-[hsl(var(--nim-mint))]/50 text-[hsl(var(--nim-navy))] rounded-full text-xs font-medium"
             >
               {area}
             </span>
@@ -86,7 +86,7 @@ const QuickCheckVisual = () => (
       </div>
       
       {/* Next step */}
-      <div className="bg-muted/50 px-5 py-3 border-t">
+      <div className="bg-[hsl(var(--nim-mint))]/20 px-5 py-3 border-t border-[hsl(var(--nim-mint))]/30">
         <p className="text-xs text-muted-foreground mb-0.5">Suggested next step</p>
         <p className="text-sm font-medium text-foreground">Set up grant tracking</p>
       </div>
@@ -216,8 +216,8 @@ const StartingPointSplit = () => {
               {/* Text Content - Right side */}
               <div className="flex items-center px-6 md:px-12 lg:px-16 py-12 md:py-16 lg:py-20 order-2">
                 <div className="max-w-lg">
-                  {/* Badge */}
-                  <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-6 bg-[hsl(var(--nim-purple))]/10 text-[hsl(var(--nim-purple))]">
+                  {/* Badge - mint/navy accent */}
+                  <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-6 bg-[hsl(var(--nim-mint))]/30 text-[hsl(var(--nim-navy))]">
                     02
                   </span>
                   
@@ -231,21 +231,21 @@ const StartingPointSplit = () => {
                     Take a quick check. Get a clear next step.
                   </p>
                   
-                  {/* Bullets */}
+                  {/* Bullets - mint accent */}
                   <ul className="space-y-3 mb-10">
                     {['Free • 6 minutes', 'No documents needed', 'Get a clear next step'].map((bullet, i) => (
                       <li key={i} className="flex items-start gap-3 text-lg text-foreground">
-                        <span className="mt-0.5 text-[hsl(var(--nim-purple))]">•</span>
+                        <span className="mt-0.5 text-[hsl(var(--nim-navy))]">•</span>
                         <span>{bullet}</span>
                       </li>
                     ))}
                   </ul>
                   
-                  {/* Button */}
+                  {/* Button - navy with mint hover */}
                   <Button 
                     asChild 
                     size="lg" 
-                    className="mb-4 text-base px-8 py-6 rounded-full bg-[hsl(var(--nim-purple))] text-white hover:bg-[hsl(var(--nim-purple))]/90"
+                    className="mb-4 text-base px-8 py-6 rounded-full bg-[hsl(var(--nim-navy))] text-white hover:bg-[hsl(var(--nim-navy))]/90"
                   >
                     <a href="https://tally.so/r/wa9dLv">
                       Take the free check
