@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { 
   ClipboardList, 
   DollarSign, 
@@ -162,7 +162,7 @@ function Card({
         boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 60px ${brandColors[cardIndex % brandColors.length].glow}`,
       }}
       transition={{ 
-        duration: prefersReducedMotion ? 0 : 0.5, 
+        duration: prefersReducedMotion ? 0 : 0.35, 
         ease: [0.4, 0, 0.2, 1] 
       }}
       tabIndex={0}
@@ -244,29 +244,21 @@ export default function HelpOrbitCarousel() {
   const [visibleCount, setVisibleCount] = useState(3);
   const [isPaused, setIsPaused] = useState(false);
   const [viewedCards, setViewedCards] = useState<Set<number>>(new Set([0]));
-  const [isScrollLocked, setIsScrollLocked] = useState(false);
   const [hasCompletedViewing, setHasCompletedViewing] = useState(false);
   const [showScrollIndicator, setShowScrollIndicator] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isScrollLocked, setIsScrollLocked] = useState(false);
   
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
   const scrollLockEngaged = useRef(false);
+  const lastWheelTime = useRef(0);
+  const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null);
   
   const prefersReducedMotion = useReducedMotion();
-  const isInView = useInView(sectionRef, { once: false, margin: "-20%" });
-  
-  // Parallax scroll effect
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-  
-  const parallaxY = useTransform(scrollYProgress, [0, 1], [40, -40]);
-  const parallaxScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
-  const parallaxOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.8, 1, 1, 0.8]);
+  const isInView = useInView(sectionRef, { once: false, margin: "-30%" });
   
   // Auto-play interval (2.5s desktop, 2s mobile)
   const autoPlayInterval = isMobile ? 2000 : 2500;
@@ -295,7 +287,7 @@ export default function HelpOrbitCarousel() {
     setViewedCards(prev => new Set([...prev, activeIndex]));
   }, [activeIndex]);
   
-  // Check if all cards have been viewed
+  // Check if all cards have been viewed and unlock scroll
   useEffect(() => {
     if (viewedCards.size === cards.length && !hasCompletedViewing) {
       setHasCompletedViewing(true);
@@ -313,44 +305,78 @@ export default function HelpOrbitCarousel() {
     }
   }, [viewedCards, hasCompletedViewing]);
   
-  // Scroll lock behavior
+  // Engage scroll lock when section comes into view (only once)
   useEffect(() => {
     if (!isInView || hasCompletedViewing || scrollLockEngaged.current || prefersReducedMotion) {
       return;
     }
     
-    // Engage scroll lock when section comes into view
     if (isInView && !scrollLockEngaged.current && !hasCompletedViewing) {
       scrollLockEngaged.current = true;
       setIsScrollLocked(true);
+      
+      // Scroll section into center of viewport
+      setTimeout(() => {
+        sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
     }
   }, [isInView, hasCompletedViewing, prefersReducedMotion]);
   
-  // Apply scroll lock to body
+  // Wheel event handler - navigate cards instead of scrolling
   useEffect(() => {
-    if (isScrollLocked && !prefersReducedMotion) {
-      document.body.style.overflow = 'hidden';
-      
-      // Scroll section into view
-      sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    } else {
-      document.body.style.overflow = '';
-    }
+    if (!isScrollLocked || prefersReducedMotion) return;
     
-    return () => {
-      document.body.style.overflow = '';
+    const handleWheel = (e: WheelEvent) => {
+      // Check if the wheel event is within our section
+      if (!sectionRef.current?.contains(e.target as Node)) return;
+      
+      // Throttle wheel events
+      const now = Date.now();
+      if (now - lastWheelTime.current < 400) {
+        e.preventDefault();
+        return;
+      }
+      lastWheelTime.current = now;
+      
+      e.preventDefault();
+      
+      if (e.deltaY > 0) {
+        // Scrolling down - next card
+        setActiveIndex(prev => (prev + 1) % cards.length);
+      } else if (e.deltaY < 0) {
+        // Scrolling up - previous card
+        setActiveIndex(prev => (prev - 1 + cards.length) % cards.length);
+      }
     };
+    
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    return () => window.removeEventListener('wheel', handleWheel);
   }, [isScrollLocked, prefersReducedMotion]);
   
-  // Auto-play functionality
+  // Auto-play functionality with proper cleanup
   useEffect(() => {
-    if (isPaused || prefersReducedMotion || !isInView) return;
+    if (isPaused || prefersReducedMotion || !isInView) {
+      if (autoPlayRef.current) {
+        clearInterval(autoPlayRef.current);
+        autoPlayRef.current = null;
+      }
+      return;
+    }
     
-    const interval = setInterval(() => {
-      setActiveIndex(prev => (prev + 1) % cards.length);
-    }, autoPlayInterval);
+    // Small delay before starting auto-play when entering view
+    const startDelay = setTimeout(() => {
+      autoPlayRef.current = setInterval(() => {
+        setActiveIndex(prev => (prev + 1) % cards.length);
+      }, autoPlayInterval);
+    }, 500);
     
-    return () => clearInterval(interval);
+    return () => {
+      clearTimeout(startDelay);
+      if (autoPlayRef.current) {
+        clearInterval(autoPlayRef.current);
+        autoPlayRef.current = null;
+      }
+    };
   }, [isPaused, prefersReducedMotion, isInView, autoPlayInterval]);
   
   const goTo = useCallback((index: number) => {
@@ -528,36 +554,34 @@ export default function HelpOrbitCarousel() {
             <ChevronRight className="w-6 h-6 text-white" />
           </motion.button>
           
-          {/* Cards Container with Parallax */}
-          <motion.div
+          {/* Cards Container */}
+          <div
             ref={containerRef}
             className="relative flex items-center justify-center gap-6"
-            style={{ 
-              minHeight: 240,
-              y: prefersReducedMotion ? 0 : parallaxY,
-              scale: prefersReducedMotion ? 1 : parallaxScale,
-              opacity: prefersReducedMotion ? 1 : parallaxOpacity,
-            }}
+            style={{ minHeight: 240 }}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
-            <AnimatePresence mode="popLayout">
-              {visibleIndices.map((cardIndex) => {
+            <AnimatePresence mode="sync">
+              {visibleIndices.map((cardIndex, i) => {
                 const card = cards[cardIndex];
                 const isCenter = cardIndex === activeIndex;
+                const position = i - Math.floor(visibleCount / 2);
                 
                 return (
                   <motion.div
-                    key={card.id}
-                    layout
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.8 }}
+                    key={`${card.id}-${position}`}
+                    initial={{ opacity: 0, x: position * 50, scale: 0.9 }}
+                    animate={{ 
+                      opacity: 1, 
+                      x: 0, 
+                      scale: 1,
+                    }}
+                    exit={{ opacity: 0, x: -position * 50, scale: 0.9 }}
                     transition={{ 
-                      duration: 0.5, 
+                      duration: 0.35, 
                       ease: [0.4, 0, 0.2, 1],
-                      layout: { duration: 0.5 }
                     }}
                     className={visibleCount === 1 && !isCenter ? 'hidden' : 'flex-shrink-0'}
                   >
@@ -576,7 +600,7 @@ export default function HelpOrbitCarousel() {
                 );
               })}
             </AnimatePresence>
-          </motion.div>
+          </div>
           
           {/* Dot Indicators */}
           <motion.div 
@@ -621,7 +645,7 @@ export default function HelpOrbitCarousel() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+              transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
             >
               <h3 className="text-[28px] font-bold text-white mb-3">
                 {activeCard.title}
@@ -644,7 +668,7 @@ export default function HelpOrbitCarousel() {
       {/* Progress Bar */}
       {!hasCompletedViewing && isScrollLocked && (
         <motion.div 
-          className="absolute bottom-0 left-0 right-0 h-[3px] bg-white/10"
+          className="absolute bottom-0 left-0 right-0 h-1 bg-white/10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -653,7 +677,7 @@ export default function HelpOrbitCarousel() {
             className="h-full bg-primary"
             initial={{ width: 0 }}
             animate={{ width: `${progressPercentage}%` }}
-            transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+            transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           />
         </motion.div>
       )}
