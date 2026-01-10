@@ -40,125 +40,135 @@ const TwoStartingPoints: React.FC = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-24 lg:py-32 overflow-hidden"
+      className="relative py-28 lg:py-36 overflow-hidden"
     >
-      {/* Subtle gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-muted/30 via-background to-background" />
+      {/* Premium gradient background - Stripe inspired */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/20 to-background" />
       
-      {/* Refined dot pattern */}
+      {/* Subtle mesh gradient overlay */}
       <div 
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-30"
         style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
-          backgroundSize: '32px 32px'
+          background: 'radial-gradient(ellipse 80% 50% at 50% 0%, hsl(var(--primary) / 0.08), transparent)',
         }}
       />
 
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-        {/* Header */}
+        {/* Header - Notion inspired clean typography */}
         <div className="text-center mb-16 lg:mb-20">
-          <motion.span
-            initial={{ opacity: 0, y: 10 }}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="inline-block text-[11px] font-semibold tracking-[0.25em] uppercase text-primary/80 mb-5 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/10"
+            transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="inline-flex items-center gap-2 mb-6"
           >
-            Start Here
-          </motion.span>
+            <span className="h-px w-8 bg-primary/40" />
+            <span className="text-[11px] font-medium tracking-[0.2em] uppercase text-primary">
+              Start Here
+            </span>
+            <span className="h-px w-8 bg-primary/40" />
+          </motion.div>
           
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-4xl lg:text-[2.75rem] font-medium tracking-[-0.02em] leading-[1.2] mb-5 text-foreground"
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="text-[2rem] sm:text-[2.5rem] lg:text-[3rem] font-semibold tracking-[-0.03em] leading-[1.1] mb-4 text-foreground"
           >
             Choose your starting point.
           </motion.h2>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="text-base lg:text-lg text-muted-foreground max-w-md mx-auto font-light"
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="text-base lg:text-[17px] text-muted-foreground max-w-lg mx-auto leading-relaxed"
           >
             Most nonprofits with 0–50 staff fall into one of these two situations.
           </motion.p>
         </div>
 
-        {/* Two Cards */}
-        <div className="grid md:grid-cols-2 gap-5 lg:gap-6 mb-14">
+        {/* Two Cards - Premium glass design */}
+        <div className="grid md:grid-cols-2 gap-4 lg:gap-5">
           {cards.map((card, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.2 + index * 0.12, ease: [0.21, 0.47, 0.32, 0.98] }}
+              transition={{ 
+                duration: 0.7, 
+                delay: 0.25 + index * 0.1, 
+                ease: [0.25, 0.46, 0.45, 0.94] 
+              }}
               className="group relative"
             >
-              {/* Card glow effect on hover */}
-              <div className="absolute -inset-px rounded-2xl bg-gradient-to-b from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" />
-              
-              <div className="relative bg-card/80 backdrop-blur-sm p-8 lg:p-10 rounded-2xl border border-border/60 group-hover:border-primary/20 group-hover:shadow-xl group-hover:shadow-primary/5 transition-all duration-500 h-full flex flex-col">
-                {/* Card number indicator */}
-                <div className="absolute top-6 right-6 w-8 h-8 rounded-full bg-muted/50 flex items-center justify-center">
-                  <span className="text-xs font-medium text-muted-foreground">{index + 1}</span>
+              {/* Card container with glass effect */}
+              <div className="relative h-full rounded-2xl bg-card/60 backdrop-blur-sm border border-border/50 p-8 lg:p-10 transition-all duration-500 hover:border-border hover:shadow-[0_8px_40px_-12px_rgba(0,0,0,0.12)] hover:bg-card/80">
+                
+                {/* Subtle gradient overlay on hover */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                {/* Card number - minimal */}
+                <div className="relative mb-8">
+                  <span className="text-[13px] font-medium text-muted-foreground/60">
+                    0{index + 1}
+                  </span>
                 </div>
 
-                <h3 className="text-xl lg:text-2xl font-semibold text-foreground mb-3 tracking-[-0.01em] pr-10">
-                  {card.title}
-                </h3>
-                
-                <p className="text-muted-foreground leading-relaxed mb-7 text-[15px]">
-                  {card.body}
-                </p>
-
-                {/* Bullets with refined styling */}
-                <ul className="space-y-3.5 mb-8 flex-grow">
-                  {card.bullets.map((bullet, bulletIndex) => (
-                    <li key={bulletIndex} className="flex items-start gap-3">
-                      <span className="mt-1.5 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <Check className="w-3 h-3 text-primary" strokeWidth={3} />
-                      </span>
-                      <span className="text-sm text-foreground/75 leading-relaxed">{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-                
-                <div className="space-y-3 mt-auto">
-                  <Link
-                    to={card.link}
-                    className={`inline-flex items-center justify-center gap-2.5 w-full px-6 py-4 font-medium rounded-xl transition-all duration-300 group/btn ${
-                      card.primary 
-                        ? 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5' 
-                        : 'bg-foreground text-background hover:bg-foreground/90 shadow-lg shadow-foreground/10 hover:shadow-xl hover:shadow-foreground/20 hover:-translate-y-0.5'
-                    }`}
-                  >
-                    <span>{card.cta}</span>
-                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-0.5" />
-                  </Link>
+                <div className="relative">
+                  <h3 className="text-xl lg:text-[22px] font-semibold text-foreground mb-3 tracking-[-0.01em]">
+                    {card.title}
+                  </h3>
                   
-                  <p className="text-[11px] text-muted-foreground/70 text-center tracking-wide">
-                    {card.note}
+                  <p className="text-[15px] text-muted-foreground leading-relaxed mb-8">
+                    {card.body}
                   </p>
+
+                  {/* Bullets - clean and minimal */}
+                  <ul className="space-y-3 mb-10">
+                    {card.bullets.map((bullet, bulletIndex) => (
+                      <li key={bulletIndex} className="flex items-start gap-3">
+                        <span className="mt-0.5 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                          <Check className="w-3 h-3 text-primary" strokeWidth={2.5} />
+                        </span>
+                        <span className="text-[14px] text-foreground/80 leading-relaxed">{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  {/* CTA area */}
+                  <div className="space-y-3">
+                    <Link
+                      to={card.link}
+                      className={`inline-flex items-center justify-center gap-2 w-full px-6 py-3.5 text-[15px] font-medium rounded-xl transition-all duration-300 group/btn ${
+                        card.primary 
+                          ? 'bg-foreground text-background hover:bg-foreground/90' 
+                          : 'bg-muted/80 text-foreground hover:bg-muted'
+                      }`}
+                    >
+                      <span>{card.cta}</span>
+                      <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-0.5" />
+                    </Link>
+                    
+                    <p className="text-[12px] text-muted-foreground/60 text-center">
+                      {card.note}
+                    </p>
+                  </div>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Bottom Microcopy with divider */}
-        <motion.div
+        {/* Bottom note - refined */}
+        <motion.p
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex items-center justify-center gap-4"
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="text-center text-[13px] text-muted-foreground/50 mt-12 tracking-wide"
         >
-          <div className="h-px w-12 bg-border/50" />
-          <p className="text-center text-xs text-muted-foreground/60 tracking-wide">
-            Built for nonprofits with 0–50 staff in Canada. Practical support, not paperwork.
-          </p>
-          <div className="h-px w-12 bg-border/50" />
-        </motion.div>
+          Built for Canadian nonprofits with 0–50 staff
+        </motion.p>
       </div>
     </section>
   );
