@@ -62,11 +62,12 @@ const StartingPointSplit = () => {
       buttonHref: 'https://calendly.com/nimara-ops/capacity-call',
       helperText: 'Best if you already know what you want.',
       visual: <FundingFolderVisual />,
-      bgClass: 'bg-[hsl(var(--nim-purple))]',
-      visualBgClass: 'bg-white/20',
-      textClass: 'text-white',
-      subtextClass: 'text-white/80',
-      buttonClass: 'bg-white text-[hsl(var(--nim-purple))] hover:bg-white/90',
+      bgClass: 'bg-background',
+      visualBgClass: 'bg-[hsl(var(--nim-purple))]',
+      textClass: 'text-foreground',
+      subtextClass: 'text-muted-foreground',
+      badgeClass: 'bg-[hsl(var(--nim-purple))]/10 text-[hsl(var(--nim-purple))]',
+      buttonClass: 'bg-[hsl(var(--nim-purple))] text-white hover:bg-[hsl(var(--nim-purple))]/90',
     },
     {
       badge: '02',
@@ -85,6 +86,7 @@ const StartingPointSplit = () => {
       visualBgClass: 'bg-[hsl(var(--nim-mint))]',
       textClass: 'text-white',
       subtextClass: 'text-white/70',
+      badgeClass: 'bg-white/20 text-white',
       buttonClass: 'bg-[hsl(var(--nim-mint))] text-[hsl(var(--nim-navy))] hover:bg-[hsl(var(--nim-mint))]/90',
     },
   ];
@@ -130,7 +132,7 @@ const StartingPointSplit = () => {
               <div className="flex items-center px-8 md:px-12 lg:px-16 py-12 md:py-16 lg:py-20 order-2 lg:order-1">
                 <div className="max-w-lg">
                   {/* Badge */}
-                  <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-6 bg-white/20 text-white">
+                  <span className={`inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-6 ${card.badgeClass}`}>
                     {card.badge}
                   </span>
                   
