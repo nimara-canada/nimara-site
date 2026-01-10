@@ -1,4 +1,4 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { CALENDLY_BOOKING_URL, TYPEFORM_HEALTH_CHECK_URL } from "@/constants/urls";
@@ -14,27 +14,35 @@ import {
 
 const areas = [
   { icon: Users, title: "Board", description: "Decisions, minutes, approvals" },
-  { icon: Wallet, title: "Money & Grants", description: "Track spending, find proof fast" },
-  { icon: UserCog, title: "People", description: "Roles, hiring basics, handoffs" },
-  { icon: LayoutGrid, title: "Programs", description: "Plans, updates, simple tracking" },
-  { icon: Heart, title: "Fundraising", description: "Donor list + thank-you routine" },
-  { icon: HandHeart, title: "Volunteers", description: "Clear roles + onboarding" },
-  { icon: FolderOpen, title: "Tools & Files", description: "Clean folders + templates" },
+  { icon: Wallet, title: "Money & Grants", description: "Track spending, find proof" },
+  { icon: UserCog, title: "People", description: "Roles, hiring, handoffs" },
+  { icon: LayoutGrid, title: "Programs", description: "Plans, updates, tracking" },
+  { icon: Heart, title: "Fundraising", description: "Donors + thank-yous" },
+  { icon: HandHeart, title: "Volunteers", description: "Roles + onboarding" },
+  { icon: FolderOpen, title: "Tools & Files", description: "Folders + templates" },
 ];
 
 export const WhatWeHelpWith = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Transform for fanning effect
+  const fanProgress = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
 
   return (
     <section
       ref={sectionRef}
-      className="py-24 lg:py-32 bg-background"
+      className="py-24 lg:py-32 bg-background overflow-hidden"
       aria-labelledby="help-heading"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Header */}
-        <div className="mb-12 lg:mb-16">
+        <div className="mb-16 lg:mb-20">
           <motion.h2
             id="help-heading"
             initial={{ opacity: 0, y: 20 }}
@@ -55,33 +63,81 @@ export const WhatWeHelpWith = () => {
           </motion.p>
         </div>
 
-        {/* Visual card grid */}
+        {/* Stacking cards - horizontal scroll on mobile, fanned stack on desktop */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-14"
+          className="mb-16"
         >
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
+          {/* Mobile: horizontal scroll */}
+          <div className="lg:hidden overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide">
+            <div className="flex gap-3" style={{ width: 'max-content' }}>
+              {areas.map((area, index) => {
+                const Icon = area.icon;
+                return (
+                  <motion.div
+                    key={area.title}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.4, delay: 0.2 + index * 0.05 }}
+                    className="w-[140px] shrink-0 bg-foreground text-background rounded-2xl p-4"
+                  >
+                    <Icon className="w-5 h-5 mb-3 opacity-80" strokeWidth={1.5} />
+                    <h3 className="text-sm font-medium mb-1">{area.title}</h3>
+                    <p className="text-xs opacity-70 leading-snug">{area.description}</p>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Desktop: fanned stack */}
+          <div className="hidden lg:flex justify-center items-center relative h-[280px]">
             {areas.map((area, index) => {
               const Icon = area.icon;
+              const totalCards = areas.length;
+              const centerIndex = (totalCards - 1) / 2;
+              const offset = index - centerIndex;
+              
               return (
                 <motion.div
                   key={area.title}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.4, delay: 0.25 + index * 0.05 }}
-                  className="group bg-muted/40 hover:bg-muted/70 border border-border/40 rounded-2xl p-5 md:p-6 transition-all duration-200"
+                  className="absolute w-[160px] bg-foreground text-background rounded-2xl p-5 cursor-pointer shadow-2xl"
+                  initial={{ 
+                    opacity: 0,
+                    x: 0,
+                    rotate: 0,
+                    scale: 0.9
+                  }}
+                  animate={isInView ? { 
+                    opacity: 1,
+                    x: offset * 85,
+                    rotate: offset * 3,
+                    scale: 1,
+                    y: Math.abs(offset) * 8
+                  } : {}}
+                  transition={{ 
+                    duration: 0.6, 
+                    delay: 0.3 + index * 0.08,
+                    type: "spring",
+                    stiffness: 100
+                  }}
+                  whileHover={{ 
+                    y: -16,
+                    scale: 1.05,
+                    rotate: 0,
+                    zIndex: 50,
+                    transition: { duration: 0.2 }
+                  }}
+                  style={{ 
+                    zIndex: totalCards - Math.abs(offset),
+                    transformOrigin: "center bottom"
+                  }}
                 >
-                  <div className="w-10 h-10 md:w-11 md:h-11 rounded-full bg-foreground flex items-center justify-center mb-4">
-                    <Icon className="w-5 h-5 md:w-5.5 md:h-5.5 text-background" strokeWidth={1.75} />
-                  </div>
-                  <h3 className="text-base md:text-lg font-medium text-foreground mb-1">
-                    {area.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-snug">
-                    {area.description}
-                  </p>
+                  <Icon className="w-6 h-6 mb-4 opacity-80" strokeWidth={1.5} />
+                  <h3 className="text-base font-medium mb-1">{area.title}</h3>
+                  <p className="text-sm opacity-70 leading-snug">{area.description}</p>
                 </motion.div>
               );
             })}
@@ -92,8 +148,8 @@ export const WhatWeHelpWith = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex flex-col sm:flex-row items-start sm:items-center gap-6"
+          transition={{ duration: 0.6, delay: 0.7 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-6"
         >
           <p className="text-muted-foreground">
             Not sure where to start?
