@@ -144,7 +144,7 @@ const StartingPointSplit = () => {
           variants={itemVariants}
           className="w-full py-8 md:py-12 px-4 md:px-8"
         >
-          <div className="max-w-7xl mx-auto relative rounded-3xl bg-background overflow-hidden shadow-[0_4px_40px_rgb(0,0,0,0.06)] border border-border/60">
+          <div className="max-w-7xl mx-auto relative rounded-[2.5rem] bg-background overflow-hidden shadow-[0_4px_40px_rgb(0,0,0,0.06)] border border-border/60">
             <div className="grid lg:grid-cols-2 min-h-[500px] md:min-h-[550px]">
               {/* Text Content - Left side */}
               <div className="flex items-center px-6 md:px-12 lg:px-16 py-12 md:py-16 lg:py-20 order-2 lg:order-1">
@@ -206,7 +206,7 @@ const StartingPointSplit = () => {
           variants={itemVariants}
           className="w-full py-8 md:py-12 px-4 md:px-8"
         >
-          <div className="max-w-7xl mx-auto relative rounded-3xl bg-background overflow-hidden shadow-[0_4px_40px_rgb(0,0,0,0.06)] border border-border/60">
+          <div className="max-w-7xl mx-auto relative rounded-[2.5rem] bg-background overflow-hidden shadow-[0_4px_40px_rgb(0,0,0,0.06)] border border-border/60">
             <div className="grid lg:grid-cols-2 min-h-[500px] md:min-h-[550px]">
               {/* Visual - Left side */}
               <div className="relative order-1 min-h-[300px] lg:min-h-0 overflow-visible">
