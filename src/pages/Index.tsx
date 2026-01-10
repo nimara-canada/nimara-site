@@ -5,7 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import TwoStartingPoints from "@/components/company/TwoStartingPoints";
-import FundingProofSection from "@/components/FundingProofSection";
+
 import TheProcess from "@/components/company/TheProcess";
 import { SystemLadder } from "@/components/SystemLadder";
 import { FitCheck } from "@/components/FitCheck";
@@ -98,10 +98,8 @@ const Index = () => {
           {/* Start Here - Pick what fits you */}
           <TwoStartingPoints />
           
-          {/* Funding Proof - 2-column messaging */}
-          <FundingProofSection />
           
-          {/* How It Works - 4 Steps */}
+          {/* How It Works - 3 Steps */}
           <TheProcess />
           
           {/* Fit Check */}
