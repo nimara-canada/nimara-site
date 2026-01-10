@@ -1,95 +1,78 @@
-import { useState, useRef, useEffect, useCallback } from "react";
-import { motion, useMotionValue, useSpring, animate, PanInfo } from "framer-motion";
+import { useState, useCallback, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
+  ClipboardList, 
+  DollarSign, 
   Users, 
-  Wallet, 
-  UserCog, 
-  LayoutGrid, 
+  BarChart3, 
   Heart, 
-  HandHeart, 
+  HandHelping, 
   FolderOpen,
-  ArrowRight,
   ChevronLeft,
   ChevronRight,
+  ArrowRight,
   LucideIcon
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { TYPEFORM_HEALTH_CHECK_URL, CALENDLY_BOOKING_URL } from "@/constants/urls";
+import { Link } from "react-router-dom";
 
 interface CardData {
-  icon: LucideIcon;
+  id: number;
   title: string;
-  shortDescription: string;
-  detail: string;
-  gradientFrom: string;
-  gradientTo: string;
-  textColor: string;
+  icon: LucideIcon;
+  shortDesc: string;
+  longDesc: string;
 }
 
 const cards: CardData[] = [
-  { 
-    icon: Users, 
-    title: "Board", 
-    shortDescription: "Decisions stay written down",
-    detail: "Get your board organized with clear agendas, tracked decisions, and easy-to-find minutes.",
-    gradientFrom: "hsl(220, 53%, 12%)",
-    gradientTo: "hsl(220, 53%, 22%)",
-    textColor: "text-white"
+  {
+    id: 1,
+    title: "Board & Governance",
+    icon: ClipboardList,
+    shortDesc: "Meetings, decisions, and approvals you can find later.",
+    longDesc: "Your board meets, makes decisions, and approves things. We help you track it all — so nothing gets lost and everything holds up when funders ask."
   },
-  { 
-    icon: Wallet, 
-    title: "Money", 
-    shortDescription: "Spending is easy to prove",
-    detail: "Know where every dollar goes and find grant receipts in seconds, not hours.",
-    gradientFrom: "hsl(162, 91%, 78%)",
-    gradientTo: "hsl(162, 75%, 60%)",
-    textColor: "text-nim-navy"
+  {
+    id: 2,
+    title: "Money & Grants",
+    icon: DollarSign,
+    shortDesc: "Spending, receipts, and grant records that hold up.",
+    longDesc: "Grant tracking, proof of payment, budget vs. actual — all in one place. When accountability is due, your proof is ready."
   },
-  { 
-    icon: UserCog, 
-    title: "People", 
-    shortDescription: "Roles and handoffs are clear",
-    detail: "Clear job descriptions, smooth onboarding, and handoffs that actually work.",
-    gradientFrom: "hsl(262, 82%, 55%)",
-    gradientTo: "hsl(262, 82%, 42%)",
-    textColor: "text-white"
+  {
+    id: 3,
+    title: "People",
+    icon: Users,
+    shortDesc: "Roles, contracts, and onboarding basics.",
+    longDesc: "Clear job descriptions, contractor vs. employee clarity, and simple onboarding steps your team can follow."
   },
-  { 
-    icon: LayoutGrid, 
-    title: "Programs", 
-    shortDescription: "Plans and updates in one place",
-    detail: "Simple dashboards that show what's working and what needs attention.",
-    gradientFrom: "hsl(220, 53%, 15%)",
-    gradientTo: "hsl(262, 70%, 35%)",
-    textColor: "text-white"
+  {
+    id: 4,
+    title: "Programs",
+    icon: BarChart3,
+    shortDesc: "Clear services, outcomes, and delivery tracking.",
+    longDesc: "What you deliver, who you serve, and how you measure it — documented so you can report with confidence."
   },
-  { 
-    icon: Heart, 
-    title: "Fundraising", 
-    shortDescription: "Grant work stays organized",
-    detail: "Keep track of who gave, when to follow up, and never miss a thank-you.",
-    gradientFrom: "hsl(262, 82%, 48%)",
-    gradientTo: "hsl(162, 65%, 55%)",
-    textColor: "text-white"
+  {
+    id: 5,
+    title: "Fundraising",
+    icon: Heart,
+    shortDesc: "Donor records and giving history in one place.",
+    longDesc: "Track who gave, when, and how much. No more digging through spreadsheets before a campaign."
   },
-  { 
-    icon: HandHeart, 
-    title: "Volunteers", 
-    shortDescription: "Simple onboarding and tracking",
-    detail: "Clear expectations, easy sign-ups, and volunteers who know what to do.",
-    gradientFrom: "hsl(162, 85%, 72%)",
-    gradientTo: "hsl(162, 70%, 52%)",
-    textColor: "text-nim-navy"
+  {
+    id: 6,
+    title: "Volunteers",
+    icon: HandHelping,
+    shortDesc: "Simple onboarding and tracking for volunteers.",
+    longDesc: "Know who's helping, what they signed, and when they started. Simple records that protect your org."
   },
-  { 
-    icon: FolderOpen, 
-    title: "Tools & Files", 
-    shortDescription: "Templates your team can use",
-    detail: "One place for everything. Templates that save time. Files you can find.",
-    gradientFrom: "hsl(220, 53%, 14%)",
-    gradientTo: "hsl(220, 53%, 24%)",
-    textColor: "text-white"
-  },
+  {
+    id: 7,
+    title: "Tools & Files",
+    icon: FolderOpen,
+    shortDesc: "Folders, templates, and routines your team will use.",
+    longDesc: "A file system that makes sense. Templates your team will actually use. Routines that keep it clean."
+  }
 ];
 
 const useReducedMotion = () => {
@@ -107,191 +90,147 @@ const useReducedMotion = () => {
   return prefersReduced;
 };
 
-// Orbit Card Component
-const OrbitCard = ({ 
+function Card({ 
   card, 
-  index, 
-  activeIndex, 
-  totalCards,
-  dragOffset,
-  isMobile
+  isActive, 
+  onClick,
+  prefersReducedMotion
 }: { 
   card: CardData; 
-  index: number; 
-  activeIndex: number;
-  totalCards: number;
-  dragOffset: number;
-  isMobile: boolean;
-}) => {
+  isActive: boolean;
+  onClick: () => void;
+  prefersReducedMotion: boolean;
+}) {
   const Icon = card.icon;
   
-  // Calculate position on orbit
-  const anglePerCard = (2 * Math.PI) / totalCards;
-  const baseAngle = (index - activeIndex) * anglePerCard;
-  const dragAngle = (dragOffset / 300) * anglePerCard;
-  const angle = baseAngle + dragAngle;
-  
-  // Orbit dimensions
-  const orbitRadiusX = isMobile ? 140 : 380;
-  const orbitRadiusZ = isMobile ? 80 : 200;
-  
-  // Calculate 3D position
-  const x = Math.sin(angle) * orbitRadiusX;
-  const z = Math.cos(angle) * orbitRadiusZ;
-  
-  // Normalize z for scaling (0 = back, 1 = front)
-  const normalizedZ = (z + orbitRadiusZ) / (2 * orbitRadiusZ);
-  
-  // Scale based on depth
-  const minScale = isMobile ? 0.5 : 0.55;
-  const maxScale = 1;
-  const scale = minScale + normalizedZ * (maxScale - minScale);
-  
-  // Opacity based on depth
-  const opacity = 0.3 + normalizedZ * 0.7;
-  
-  // Y rotation for perspective tilt
-  const rotateY = -angle * (180 / Math.PI) * 0.15;
-  
-  // Card dimensions
-  const cardWidth = isMobile ? 200 : 420;
-  const cardHeight = isMobile ? 140 : 280;
-  
-  // Z-index based on depth
-  const zIndex = Math.round(normalizedZ * 100);
-  
-  const isActive = Math.abs(angle) < 0.1;
-
   return (
-    <motion.div
-      className="absolute"
+    <motion.button
+      onClick={onClick}
+      className={`
+        relative flex-shrink-0 rounded-2xl p-6
+        bg-[#1a1a2e] border border-white/[0.08]
+        backdrop-blur-sm
+        flex flex-col items-start text-left
+        focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background
+        cursor-pointer
+        w-[260px] h-[200px] md:w-[300px] md:h-[200px]
+      `}
       style={{
-        width: cardWidth,
-        height: cardHeight,
-        x: x - cardWidth / 2,
-        y: 0,
-        scale,
-        opacity,
-        zIndex,
-        rotateY,
-        transformStyle: "preserve-3d",
+        boxShadow: isActive 
+          ? '0 0 40px rgba(139, 92, 246, 0.25)' 
+          : '0 4px 20px rgba(0, 0, 0, 0.2)',
       }}
-      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      animate={{
+        opacity: isActive ? 1 : 0.6,
+        scale: isActive ? 1.05 : 1,
+        y: 0,
+      }}
+      whileHover={!isActive ? { 
+        opacity: 0.8, 
+        y: -4,
+      } : {}}
+      transition={{ 
+        duration: prefersReducedMotion ? 0 : 0.35, 
+        ease: [0.4, 0, 0.2, 1] 
+      }}
+      tabIndex={0}
+      aria-label={`${card.title}: ${card.shortDesc}`}
     >
-      <div 
-        className={`w-full h-full rounded-3xl p-6 md:p-8 flex flex-col justify-between shadow-2xl ${card.textColor}`}
-        style={{
-          background: `linear-gradient(135deg, ${card.gradientFrom} 0%, ${card.gradientTo} 100%)`,
-          boxShadow: isActive 
-            ? '0 25px 60px -15px rgba(0,0,0,0.4), 0 0 40px rgba(124,58,237,0.15)'
-            : '0 15px 40px -10px rgba(0,0,0,0.3)',
-        }}
-      >
-        <div className={`w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center ${card.textColor === 'text-white' ? 'bg-white/15' : 'bg-nim-navy/10'}`}>
-          <Icon className="w-6 h-6 md:w-8 md:h-8" strokeWidth={1.5} />
+      <Icon className="w-9 h-9 text-primary mb-3" strokeWidth={1.5} />
+      <h3 className="text-xl font-semibold text-white mb-2">{card.title}</h3>
+      <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">{card.shortDesc}</p>
+    </motion.button>
+  );
+}
+
+function ReducedMotionFallback() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  
+  return (
+    <section className="py-20 md:py-28 bg-background">
+      <div className="container mx-auto px-4">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <p className="text-sm font-medium text-primary uppercase tracking-wider mb-3">
+            What We Help With
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            Pick an area. Start there.
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+            You don't need to fix everything. Choose one domain — we'll build it with you.
+          </p>
         </div>
         
-        <div className="mt-auto">
-          <h3 className="text-xl md:text-3xl font-bold mb-2">{card.title}</h3>
-          <p className="text-sm md:text-lg opacity-85 leading-snug">{card.shortDescription}</p>
+        {/* Grid Layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 max-w-6xl mx-auto mb-12">
+          {cards.map((card, index) => {
+            const Icon = card.icon;
+            const isActive = activeIndex === index;
+            return (
+              <button
+                key={card.id}
+                onClick={() => setActiveIndex(index)}
+                className={`
+                  p-6 rounded-2xl text-left
+                  bg-[#1a1a2e] border border-white/[0.08]
+                  transition-all duration-300
+                  ${isActive ? 'ring-2 ring-primary shadow-[0_0_30px_rgba(139,92,246,0.2)]' : 'hover:bg-[#1f1f35]'}
+                `}
+              >
+                <Icon className="w-9 h-9 text-primary mb-3" strokeWidth={1.5} />
+                <h3 className="text-lg font-semibold text-white mb-2">{card.title}</h3>
+                <p className="text-sm text-muted-foreground">{card.shortDesc}</p>
+              </button>
+            );
+          })}
+        </div>
+        
+        {/* Dynamic Content */}
+        <div className="text-center max-w-xl mx-auto">
+          <h3 className="text-2xl font-bold text-white mb-3">{cards[activeIndex].title}</h3>
+          <p className="text-muted-foreground mb-4">{cards[activeIndex].longDesc}</p>
+          <Link 
+            to="/start-here" 
+            className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors"
+          >
+            See what you get <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </div>
-    </motion.div>
+    </section>
   );
-};
+}
 
-// Detail Panel Component
-const DetailPanel = ({ card }: { card: CardData }) => {
-  return (
-    <motion.div
-      key={card.title}
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      transition={{ duration: 0.3 }}
-      className="text-center max-w-xl mx-auto"
-    >
-      <h4 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-        {card.title}
-      </h4>
-      <p className="text-lg md:text-xl text-muted-foreground mb-4">
-        {card.detail}
-      </p>
-      <a 
-        href="/start-here" 
-        className="inline-flex items-center text-primary font-medium hover:underline group"
-      >
-        See what you get
-        <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-      </a>
-    </motion.div>
-  );
-};
-
-// Reduced Motion Fallback Grid
-const FallbackGrid = ({ activeIndex, onSelect }: { activeIndex: number; onSelect: (i: number) => void }) => {
-  return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-      {cards.map((card, index) => {
-        const Icon = card.icon;
-        const isActive = index === activeIndex;
-        
-        return (
-          <button
-            key={card.title}
-            onClick={() => onSelect(index)}
-            className={`rounded-2xl p-5 md:p-6 text-left transition-all duration-200 ${card.textColor} ${isActive ? 'ring-2 ring-primary ring-offset-2' : ''}`}
-            style={{
-              background: `linear-gradient(135deg, ${card.gradientFrom} 0%, ${card.gradientTo} 100%)`,
-            }}
-          >
-            <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center mb-4 ${card.textColor === 'text-white' ? 'bg-white/15' : 'bg-nim-navy/10'}`}>
-              <Icon className="w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
-            </div>
-            <h3 className="text-lg md:text-xl font-bold mb-1">{card.title}</h3>
-            <p className="text-sm opacity-80">{card.shortDescription}</p>
-          </button>
-        );
-      })}
-    </div>
-  );
-};
-
-// Main Component
 export default function HelpOrbitCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const [showArrows, setShowArrows] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(3);
   const containerRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
   const prefersReducedMotion = useReducedMotion();
   
-  const dragX = useMotionValue(0);
-  const springX = useSpring(dragX, { stiffness: 300, damping: 30 });
-  
-  // Check if mobile
+  // Handle responsive visible cards
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setVisibleCount(1);
+      } else if (window.innerWidth < 1024) {
+        setVisibleCount(2);
+      } else {
+        setVisibleCount(3);
+      }
+    };
+    
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
   
-  // Auto-rotate carousel
-  useEffect(() => {
-    if (prefersReducedMotion || isPaused || isDragging) return;
-    
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % cards.length);
-    }, 4000); // Rotate every 4 seconds
-    
-    return () => clearInterval(interval);
-  }, [prefersReducedMotion, isPaused, isDragging]);
-  
-  // Navigate to next/prev card
   const goTo = useCallback((index: number) => {
-    const newIndex = ((index % cards.length) + cards.length) % cards.length;
+    let newIndex = index;
+    if (newIndex < 0) newIndex = cards.length - 1;
+    if (newIndex >= cards.length) newIndex = 0;
     setActiveIndex(newIndex);
   }, []);
   
@@ -309,260 +248,198 @@ export default function HelpOrbitCarousel() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [goNext, goPrev]);
   
-  // Mouse wheel navigation
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-    
-    let wheelTimeout: NodeJS.Timeout;
-    let wheelDelta = 0;
-    
-    const handleWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      wheelDelta += e.deltaX || e.deltaY;
-      
-      clearTimeout(wheelTimeout);
-      wheelTimeout = setTimeout(() => {
-        if (Math.abs(wheelDelta) > 30) {
-          if (wheelDelta > 0) goNext();
-          else goPrev();
-        }
-        wheelDelta = 0;
-      }, 50);
-    };
-    
-    container.addEventListener('wheel', handleWheel, { passive: false });
-    return () => container.removeEventListener('wheel', handleWheel);
-  }, [goNext, goPrev]);
-  
-  // Handle drag
-  const handleDragStart = () => setIsDragging(true);
-  
-  const handleDrag = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-    dragX.set(info.offset.x);
+  // Touch/swipe handling for mobile
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
   };
   
-  const handleDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-    setIsDragging(false);
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+  
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    const threshold = 50;
     
-    const threshold = isMobile ? 40 : 80;
-    const velocity = info.velocity.x;
-    const offset = info.offset.x;
+    if (Math.abs(diff) > threshold) {
+      if (diff > 0) {
+        goNext();
+      } else {
+        goPrev();
+      }
+    }
+  };
+  
+  // Get visible card indices (centered around active)
+  const getVisibleIndices = () => {
+    const indices: number[] = [];
+    const half = Math.floor(visibleCount / 2);
     
-    // Factor in velocity for momentum
-    const momentum = velocity * 0.1;
-    const totalOffset = offset + momentum;
-    
-    if (totalOffset < -threshold) {
-      goNext();
-    } else if (totalOffset > threshold) {
-      goPrev();
+    for (let i = -half; i <= half; i++) {
+      let idx = activeIndex + i;
+      // Wrap around for infinite loop
+      if (idx < 0) idx = cards.length + idx;
+      if (idx >= cards.length) idx = idx - cards.length;
+      indices.push(idx);
     }
     
-    animate(dragX, 0, { type: "spring", stiffness: 400, damping: 35 });
+    return indices;
   };
-
-  // Reduced motion fallback
+  
   if (prefersReducedMotion) {
-    return (
-      <section className="py-20 md:py-32 bg-background overflow-hidden" aria-labelledby="help-orbit-heading">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          {/* Header */}
-          <div className="mb-12 md:mb-16">
-            <h2 id="help-orbit-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground tracking-tight mb-4">
-              What we help with
-            </h2>
-            <p className="text-lg md:text-xl text-muted-foreground">
-              Pick one. Start there. Add more later.
-            </p>
-          </div>
-          
-          <FallbackGrid activeIndex={activeIndex} onSelect={setActiveIndex} />
-          
-          {/* Detail Panel */}
-          <div className="mt-12 md:mt-16">
-            <DetailPanel card={cards[activeIndex]} />
-          </div>
-          
-          {/* CTA Row */}
-          <div className="mt-12 md:mt-16 text-center">
-            <p className="text-lg text-muted-foreground mb-6">Not sure where to start?</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="px-8">
-                <a href={CALENDLY_BOOKING_URL} target="_blank" rel="noopener noreferrer">
-                  Book a free call
-                </a>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="px-8">
-                <a href={TYPEFORM_HEALTH_CHECK_URL} target="_blank" rel="noopener noreferrer">
-                  Take the free check
-                </a>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
+    return <ReducedMotionFallback />;
   }
-
+  
+  const visibleIndices = getVisibleIndices();
+  const activeCard = cards[activeIndex];
+  
   return (
-    <section className="py-20 md:py-32 bg-background overflow-hidden" aria-labelledby="help-orbit-heading">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+    <section className="py-20 md:py-28 bg-background overflow-hidden">
+      <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="mb-12 md:mb-20">
+        <div className="text-center mb-12 md:mb-16">
+          <motion.p 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-sm font-medium text-primary uppercase tracking-wider mb-3"
+          >
+            What We Help With
+          </motion.p>
           <motion.h2 
-            id="help-orbit-heading"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground tracking-tight mb-4"
+            transition={{ delay: 0.1 }}
+            className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4"
           >
-            What we help with
+            Pick an area. Start there.
           </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
+          <motion.p 
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-lg md:text-xl text-muted-foreground"
+            transition={{ delay: 0.2 }}
+            className="text-lg text-muted-foreground max-w-xl mx-auto"
           >
-            Pick one. Start there. Add more later.
+            You don't need to fix everything. Choose one domain — we'll build it with you.
           </motion.p>
         </div>
         
-        {/* Orbit Carousel */}
-        <div
-          ref={containerRef}
-          className="relative mx-auto"
-          style={{ height: isMobile ? 280 : 420 }}
-          onMouseEnter={() => { setShowArrows(true); setIsPaused(true); }}
-          onMouseLeave={() => { setShowArrows(false); setIsPaused(false); }}
-          onTouchStart={() => setIsPaused(true)}
-          onTouchEnd={() => setIsPaused(false)}
-        >
-          {/* Orbit Ring Glow */}
-          <div 
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-            style={{
-              width: isMobile ? 320 : 820,
-              height: isMobile ? 180 : 420,
-              background: 'radial-gradient(ellipse at center, hsl(var(--primary) / 0.05) 0%, transparent 70%)',
-              borderRadius: '50%',
-            }}
-          />
-          
-          {/* Subtle orbit line */}
-          <div 
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none border border-primary/5 rounded-full"
-            style={{
-              width: isMobile ? 280 : 760,
-              height: isMobile ? 160 : 400,
-            }}
-          />
-          
-          {/* Draggable area */}
-          <motion.div
-            className="absolute inset-0 cursor-grab active:cursor-grabbing"
-            style={{ perspective: 1200 }}
-            drag="x"
-            dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={0.1}
-            onDragStart={handleDragStart}
-            onDrag={handleDrag}
-            onDragEnd={handleDragEnd}
-          >
-            {/* Cards container */}
-            <div 
-              className="absolute left-1/2 top-1/2 -translate-y-1/2"
-              style={{ transformStyle: "preserve-3d" }}
-            >
-              {cards.map((card, index) => (
-                <OrbitCard
-                  key={card.title}
-                  card={card}
-                  index={index}
-                  activeIndex={activeIndex}
-                  totalCards={cards.length}
-                  dragOffset={isDragging ? springX.get() : 0}
-                  isMobile={isMobile}
-                />
-              ))}
-            </div>
-          </motion.div>
-          
-          {/* Navigation Arrows */}
-          <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: showArrows || isMobile ? 0.8 : 0 }}
-            whileHover={{ opacity: 1, scale: 1.1 }}
+        {/* Carousel Container */}
+        <div className="relative max-w-5xl mx-auto">
+          {/* Arrow Buttons - Desktop Only */}
+          <button
             onClick={goPrev}
-            className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-background/80 backdrop-blur-sm border border-border shadow-lg flex items-center justify-center text-foreground hover:bg-background transition-colors"
-            aria-label="Previous card"
+            className="hidden md:flex absolute -left-16 lg:-left-20 top-1/2 -translate-y-1/2 z-10
+              w-12 h-12 rounded-full items-center justify-center
+              bg-white/[0.05] border border-white/[0.1]
+              hover:bg-white/[0.1] transition-colors duration-200
+              focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            aria-label="Previous domain"
           >
-            <ChevronLeft className="w-6 h-6" />
-          </motion.button>
+            <ChevronLeft className="w-6 h-6 text-white" />
+          </button>
           
-          <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: showArrows || isMobile ? 0.8 : 0 }}
-            whileHover={{ opacity: 1, scale: 1.1 }}
+          <button
             onClick={goNext}
-            className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-background/80 backdrop-blur-sm border border-border shadow-lg flex items-center justify-center text-foreground hover:bg-background transition-colors"
-            aria-label="Next card"
+            className="hidden md:flex absolute -right-16 lg:-right-20 top-1/2 -translate-y-1/2 z-10
+              w-12 h-12 rounded-full items-center justify-center
+              bg-white/[0.05] border border-white/[0.1]
+              hover:bg-white/[0.1] transition-colors duration-200
+              focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            aria-label="Next domain"
           >
-            <ChevronRight className="w-6 h-6" />
-          </motion.button>
+            <ChevronRight className="w-6 h-6 text-white" />
+          </button>
           
-          {/* Dot indicators */}
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex gap-2">
-            {cards.map((_, index) => (
+          {/* Cards Container */}
+          <div
+            ref={containerRef}
+            className="relative flex items-center justify-center gap-6"
+            style={{ minHeight: 240 }}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            <AnimatePresence mode="popLayout">
+              {visibleIndices.map((cardIndex) => {
+                const card = cards[cardIndex];
+                const isCenter = cardIndex === activeIndex;
+                
+                return (
+                  <motion.div
+                    key={card.id}
+                    layout
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ 
+                      duration: 0.4, 
+                      ease: [0.4, 0, 0.2, 1],
+                      layout: { duration: 0.4 }
+                    }}
+                    className={visibleCount === 1 && !isCenter ? 'hidden' : 'flex-shrink-0'}
+                  >
+                    <Card
+                      card={card}
+                      isActive={isCenter}
+                      onClick={() => setActiveIndex(cardIndex)}
+                      prefersReducedMotion={!!prefersReducedMotion}
+                    />
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
+          </div>
+          
+          {/* Dot Indicators */}
+          <div className="flex items-center justify-center gap-3 mt-8">
+            {cards.map((card, index) => (
               <button
-                key={index}
+                key={card.id}
                 onClick={() => setActiveIndex(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === activeIndex 
+                className={`
+                  h-2 rounded-full transition-all duration-300
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background
+                  ${activeIndex === index 
                     ? 'bg-primary w-6' 
-                    : 'bg-primary/30 hover:bg-primary/50'
-                }`}
-                aria-label={`Go to card ${index + 1}`}
+                    : 'bg-white/30 hover:bg-white/50 w-2'
+                  }
+                `}
+                aria-label={`Go to ${card.title}`}
+                aria-current={activeIndex === index ? 'true' : 'false'}
               />
             ))}
           </div>
         </div>
         
-        {/* Detail Panel */}
-        <motion.div 
-          className="mt-12 md:mt-16"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          <DetailPanel card={cards[activeIndex]} />
-        </motion.div>
-        
-        {/* CTA Row */}
-        <motion.div 
-          className="mt-12 md:mt-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <p className="text-lg md:text-xl text-muted-foreground mb-6">Not sure where to start?</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="px-8 py-6 text-base">
-              <a href={CALENDLY_BOOKING_URL} target="_blank" rel="noopener noreferrer">
-                Book a free call
-              </a>
-            </Button>
-            <Button asChild variant="outline" size="lg" className="px-8 py-6 text-base">
-              <a href={TYPEFORM_HEALTH_CHECK_URL} target="_blank" rel="noopener noreferrer">
-                Take the free check
-              </a>
-            </Button>
-          </div>
-        </motion.div>
+        {/* Dynamic Content Panel */}
+        <div className="mt-10 md:mt-12 text-center max-w-2xl mx-auto">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeCard.id}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+            >
+              <h3 className="text-2xl md:text-[28px] font-bold text-white mb-3">
+                {activeCard.title}
+              </h3>
+              <p className="text-base md:text-lg text-muted-foreground mb-5 max-w-xl mx-auto leading-relaxed">
+                {activeCard.longDesc}
+              </p>
+              <Link 
+                to="/start-here" 
+                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors group"
+              >
+                See what you get 
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
     </section>
   );
