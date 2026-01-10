@@ -20,60 +20,74 @@ export const WhatWeHelpWith = () => {
   return (
     <section
       ref={sectionRef}
-      className="py-20 lg:py-28 bg-background"
+      className="py-24 lg:py-32 bg-background"
       aria-labelledby="help-heading"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Header */}
-        <div className="text-center mb-12 lg:mb-16">
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6 }}
-            className="inline-block text-xs font-medium tracking-[0.2em] uppercase text-muted-foreground mb-4"
-          >
-            What We Help With
-          </motion.span>
-
+        <div className="mb-16 lg:mb-20">
           <motion.h2
             id="help-heading"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight mb-3"
+            transition={{ duration: 0.6 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-semibold text-foreground tracking-tight mb-4"
           >
-            Pick what you want to fix.
+            What we help with
           </motion.h2>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="text-lg text-muted-foreground"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-lg text-muted-foreground max-w-xl"
           >
-            Start with one area. Add more later.
+            Pick what you want to fix. Start with one area. Add more later.
           </motion.p>
         </div>
 
-        {/* Clean list layout */}
+        {/* Clean list with dividers */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-12"
+          className="mb-16"
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-6 lg:gap-y-8">
+          <div className="divide-y divide-border/50">
             {areas.map((area, index) => (
-              <div
+              <motion.div
                 key={area.title}
-                className="flex items-baseline gap-3"
+                initial={{ opacity: 0, y: 10 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, delay: 0.25 + index * 0.05 }}
+                className="py-5 md:py-6 flex items-center justify-between group"
               >
-                <span className="text-primary text-lg">•</span>
-                <div>
-                  <span className="font-semibold text-foreground">{area.title}</span>
-                  <span className="text-muted-foreground"> — {area.description}</span>
+                <div className="flex items-baseline gap-3">
+                  <span className="text-base md:text-lg font-medium text-foreground">
+                    {area.title}
+                  </span>
+                  <span className="text-muted-foreground text-sm md:text-base">
+                    — {area.description}
+                  </span>
                 </div>
-              </div>
+                <div className="w-8 h-8 md:w-9 md:h-9 rounded-full border border-border/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <svg 
+                    width="14" 
+                    height="14" 
+                    viewBox="0 0 14 14" 
+                    fill="none" 
+                    className="text-foreground"
+                  >
+                    <path 
+                      d="M1 7H13M7 1L13 7L7 13" 
+                      stroke="currentColor" 
+                      strokeWidth="1.5" 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>
@@ -82,19 +96,19 @@ export const WhatWeHelpWith = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center"
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="flex flex-col sm:flex-row items-start sm:items-center gap-6"
         >
-          <p className="text-muted-foreground mb-6">
-            Not sure what to start with? Take the free 6-minute check.
+          <p className="text-muted-foreground">
+            Not sure where to start?
           </p>
 
           <div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3"
             role="group"
             aria-label="Call to action"
           >
-            <Button asChild size="lg" className="px-8">
+            <Button asChild size="lg" className="px-6 rounded-full">
               <a
                 href={CALENDLY_BOOKING_URL}
                 target="_blank"
@@ -103,7 +117,7 @@ export const WhatWeHelpWith = () => {
                 Book a free call
               </a>
             </Button>
-            <Button asChild variant="outline" size="lg" className="px-8">
+            <Button asChild variant="outline" size="lg" className="px-6 rounded-full">
               <a
                 href={TYPEFORM_HEALTH_CHECK_URL}
                 target="_blank"
