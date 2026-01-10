@@ -108,29 +108,29 @@ const NimaraHeroPremium = () => {
           </div>
 
           {/* Stats Bar */}
-          <div style={revealStyle(600)} className="mt-16 md:mt-20 pt-10 md:pt-12 border-t border-white/10" role="region" aria-label="Service timelines">
-            <dl className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-4 text-center">
+          <div style={revealStyle(600)} className="mt-12 md:mt-16 pt-8 border-t border-white/10" role="region" aria-label="Service timelines">
+            <dl className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4 text-center">
               <div className="relative sm:border-r sm:border-white/10">
-                <dt className="text-xs uppercase tracking-[0.2em] text-white/60 order-2">
+                <dt className="text-[10px] uppercase tracking-[0.15em] text-white/50 mb-1">
                   Capacity Install
                 </dt>
-                <dd className="text-2xl md:text-3xl font-bold text-white italic mb-2">
+                <dd className="text-base md:text-lg font-medium text-white/80 italic">
                   4–8 weeks
                 </dd>
               </div>
               <div className="relative sm:border-r sm:border-white/10">
-                <dt className="text-xs uppercase tracking-[0.2em] text-white/60 order-2">
+                <dt className="text-[10px] uppercase tracking-[0.15em] text-white/50 mb-1">
                   Health Check
                 </dt>
-                <dd className="text-2xl md:text-3xl font-bold text-white italic mb-2">
+                <dd className="text-base md:text-lg font-medium text-white/80 italic">
                   2 weeks
                 </dd>
               </div>
               <div>
-                <dt className="text-xs uppercase tracking-[0.2em] text-white/60 order-2">
+                <dt className="text-[10px] uppercase tracking-[0.15em] text-white/50 mb-1">
                   Works for every funder
                 </dt>
-                <dd className="text-2xl md:text-3xl font-bold text-white italic mb-2">
+                <dd className="text-base md:text-lg font-medium text-white/80 italic">
                   Built once. Use again.
                 </dd>
               </div>
