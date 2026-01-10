@@ -71,9 +71,7 @@ const NimaraHeroPremium = () => {
     score: 68,
     color: "gradient"
   }];
-  return <section ref={heroRef} id="hero" aria-label="Hero section - Build systems that make your nonprofit Proof-Ready" className="min-h-screen relative overflow-hidden" style={{
-    backgroundColor: '#0F1219'
-  }}>
+  return <section ref={heroRef} id="hero" aria-labelledby="hero-heading" className="min-h-screen relative overflow-hidden bg-secondary-background">
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none" aria-hidden="true" style={{
       backgroundImage: `linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)`,
@@ -90,7 +88,7 @@ const NimaraHeroPremium = () => {
           {/* Single Column - Clean Copy */}
           <div className="text-center">
             {/* Main Headline */}
-            <h1 style={revealStyle(100)} className="mb-6 text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.5rem] font-bold text-white leading-[1.08] tracking-tight">
+            <h1 id="hero-heading" style={revealStyle(100)} className="mb-6 text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.5rem] font-bold text-white leading-[1.08] tracking-tight">
               Be ready when a funder asks.
             </h1>
 
