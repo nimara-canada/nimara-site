@@ -13,13 +13,13 @@ import {
 } from "lucide-react";
 
 const areas = [
-  { icon: Users, title: "Board", description: "Decisions, minutes, approvals" },
-  { icon: Wallet, title: "Money & Grants", description: "Track spending, find proof" },
-  { icon: UserCog, title: "People", description: "Roles, hiring, handoffs" },
-  { icon: LayoutGrid, title: "Programs", description: "Plans, updates, tracking" },
-  { icon: Heart, title: "Fundraising", description: "Donors + thank-yous" },
-  { icon: HandHeart, title: "Volunteers", description: "Roles + onboarding" },
-  { icon: FolderOpen, title: "Tools & Files", description: "Folders + templates" },
+  { icon: Users, title: "Board", description: "Decisions, minutes, approvals", color: "from-violet-500 to-purple-600" },
+  { icon: Wallet, title: "Money & Grants", description: "Track spending, find proof", color: "from-emerald-500 to-teal-600" },
+  { icon: UserCog, title: "People", description: "Roles, hiring, handoffs", color: "from-blue-500 to-indigo-600" },
+  { icon: LayoutGrid, title: "Programs", description: "Plans, updates, tracking", color: "from-orange-500 to-red-500" },
+  { icon: Heart, title: "Fundraising", description: "Donors + thank-yous", color: "from-pink-500 to-rose-600" },
+  { icon: HandHeart, title: "Volunteers", description: "Roles + onboarding", color: "from-amber-500 to-orange-600" },
+  { icon: FolderOpen, title: "Tools & Files", description: "Folders + templates", color: "from-cyan-500 to-blue-600" },
 ];
 
 export const WhatWeHelpWith = () => {
@@ -28,11 +28,12 @@ export const WhatWeHelpWith = () => {
   
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start end", "end start"]
+    offset: ["start end", "center center"]
   });
 
-  // Transform for fanning effect
-  const fanProgress = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+  // Scale cards from 0.7 to 1 as user scrolls
+  const cardScale = useTransform(scrollYProgress, [0, 0.8], [0.65, 1]);
+  const cardOpacity = useTransform(scrollYProgress, [0, 0.5], [0.5, 1]);
 
   return (
     <section
@@ -63,11 +64,9 @@ export const WhatWeHelpWith = () => {
           </motion.p>
         </div>
 
-        {/* Stacking cards - horizontal scroll on mobile, fanned stack on desktop */}
+        {/* Stacking cards with scroll-linked scaling */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          style={{ scale: cardScale, opacity: cardOpacity }}
           className="mb-16"
         >
           {/* Mobile: horizontal scroll */}
@@ -81,19 +80,19 @@ export const WhatWeHelpWith = () => {
                     initial={{ opacity: 0, x: 20 }}
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.4, delay: 0.2 + index * 0.05 }}
-                    className="w-[140px] shrink-0 bg-foreground text-background rounded-2xl p-4"
+                    className={`w-[150px] shrink-0 bg-gradient-to-br ${area.color} text-white rounded-2xl p-5 shadow-lg`}
                   >
-                    <Icon className="w-5 h-5 mb-3 opacity-80" strokeWidth={1.5} />
-                    <h3 className="text-sm font-medium mb-1">{area.title}</h3>
-                    <p className="text-xs opacity-70 leading-snug">{area.description}</p>
+                    <Icon className="w-6 h-6 mb-3 opacity-90" strokeWidth={1.5} />
+                    <h3 className="text-sm font-semibold mb-1">{area.title}</h3>
+                    <p className="text-xs opacity-80 leading-snug">{area.description}</p>
                   </motion.div>
                 );
               })}
             </div>
           </div>
 
-          {/* Desktop: fanned stack */}
-          <div className="hidden lg:flex justify-center items-center relative h-[280px]">
+          {/* Desktop: fanned stack with colors */}
+          <div className="hidden lg:flex justify-center items-center relative h-[320px]">
             {areas.map((area, index) => {
               const Icon = area.icon;
               const totalCards = areas.length;
@@ -103,41 +102,42 @@ export const WhatWeHelpWith = () => {
               return (
                 <motion.div
                   key={area.title}
-                  className="absolute w-[160px] bg-foreground text-background rounded-2xl p-5 cursor-pointer shadow-2xl"
+                  className={`absolute w-[180px] bg-gradient-to-br ${area.color} text-white rounded-3xl p-6 cursor-pointer shadow-2xl`}
                   initial={{ 
                     opacity: 0,
                     x: 0,
                     rotate: 0,
-                    scale: 0.9
+                    scale: 0.8
                   }}
                   animate={isInView ? { 
                     opacity: 1,
-                    x: offset * 85,
-                    rotate: offset * 3,
+                    x: offset * 95,
+                    rotate: offset * 4,
                     scale: 1,
-                    y: Math.abs(offset) * 8
+                    y: Math.abs(offset) * 12
                   } : {}}
                   transition={{ 
-                    duration: 0.6, 
+                    duration: 0.7, 
                     delay: 0.3 + index * 0.08,
                     type: "spring",
-                    stiffness: 100
+                    stiffness: 80,
+                    damping: 15
                   }}
                   whileHover={{ 
-                    y: -16,
-                    scale: 1.05,
+                    y: -24,
+                    scale: 1.08,
                     rotate: 0,
                     zIndex: 50,
-                    transition: { duration: 0.2 }
+                    transition: { duration: 0.25 }
                   }}
                   style={{ 
                     zIndex: totalCards - Math.abs(offset),
                     transformOrigin: "center bottom"
                   }}
                 >
-                  <Icon className="w-6 h-6 mb-4 opacity-80" strokeWidth={1.5} />
-                  <h3 className="text-base font-medium mb-1">{area.title}</h3>
-                  <p className="text-sm opacity-70 leading-snug">{area.description}</p>
+                  <Icon className="w-7 h-7 mb-5 opacity-90" strokeWidth={1.5} />
+                  <h3 className="text-lg font-semibold mb-1">{area.title}</h3>
+                  <p className="text-sm opacity-80 leading-snug">{area.description}</p>
                 </motion.div>
               );
             })}
