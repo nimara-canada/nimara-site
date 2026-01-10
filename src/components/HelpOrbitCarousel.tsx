@@ -260,12 +260,13 @@ export default function HelpOrbitCarousel() {
   const touchEndX = useRef(0);
   const scrollLockEngaged = useRef(false);
   const lastWheelTime = useRef(0);
+  const wheelDeltaAccum = useRef(0);
   const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const prevBodyOverflow = useRef<string | null>(null);
   const lockedScrollY = useRef(0);
   
   const prefersReducedMotion = useReducedMotion();
-  const isInView = useInView(sectionRef, { once: false, margin: "-30%" });
+  const isInView = useInView(sectionRef, { once: false, margin: "-45% 0px -45% 0px" });
   
   // Track x offset for sliding animation
   const trackX = useMotionValue(0);
@@ -334,16 +335,16 @@ export default function HelpOrbitCarousel() {
     if (!isInView || hasCompletedViewing || scrollLockEngaged.current || prefersReducedMotion) {
       return;
     }
-    
-    if (isInView && !scrollLockEngaged.current && !hasCompletedViewing) {
-      scrollLockEngaged.current = true;
-      setIsScrollLocked(true);
-      
-      // Scroll section into center of viewport
-      setTimeout(() => {
-        sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }, 100);
-    }
+
+    scrollLockEngaged.current = true;
+
+    // Put the section in a deterministic position before locking scroll.
+    // Using "auto" avoids smooth-scroll fighting the hard lock.
+    sectionRef.current?.scrollIntoView({ behavior: "auto", block: "center" });
+
+    // Lock shortly after scrollIntoView has taken effect (prevents locking at the wrong Y).
+    const t = window.setTimeout(() => setIsScrollLocked(true), 60);
+    return () => window.clearTimeout(t);
   }, [isInView, hasCompletedViewing, prefersReducedMotion]);
 
   // Hard scroll lock: prevent the page from scrolling past this section until complete/skip
@@ -361,7 +362,9 @@ export default function HelpOrbitCarousel() {
     lockedScrollY.current = window.scrollY;
 
     const enforceScroll = () => {
-      window.scrollTo({ top: lockedScrollY.current });
+      if (window.scrollY !== lockedScrollY.current) {
+        window.scrollTo({ top: lockedScrollY.current });
+      }
     };
 
     window.addEventListener("scroll", enforceScroll);
@@ -412,35 +415,34 @@ export default function HelpOrbitCarousel() {
   // Wheel event handler - navigate cards instead of scrolling
   useEffect(() => {
     if (!isScrollLocked || prefersReducedMotion) return;
-    
+
     const handleWheel = (e: WheelEvent) => {
-      // Check if the wheel event is within our section
-      if (!sectionRef.current?.contains(e.target as Node)) return;
-      
-      // Ignore small deltas (trackpad noise)
-      if (Math.abs(e.deltaY) < 15) return;
-      
-      // Throttle wheel events
+      // While locked, always intercept wheel so the page doesn't move.
+      e.preventDefault();
+
+      // Accumulate small trackpad deltas until they cross a threshold.
+      wheelDeltaAccum.current += e.deltaY;
+      if (Math.abs(wheelDeltaAccum.current) < 35) return;
+
+      // Throttle to one slide per ~animation
       const now = Date.now();
-      if (now - lastWheelTime.current < 500) {
-        e.preventDefault();
+      if (now - lastWheelTime.current < 520) {
+        wheelDeltaAccum.current = 0;
         return;
       }
       lastWheelTime.current = now;
-      
-      e.preventDefault();
-      
+
+      const dir: "next" | "prev" = wheelDeltaAccum.current > 0 ? "next" : "prev";
+      wheelDeltaAccum.current = 0;
+
       // Pause autoplay temporarily after wheel interaction
       setIsPaused(true);
       setTimeout(() => setIsPaused(false), 2000);
-      
-      if (e.deltaY > 0) {
-        slideToNext();
-      } else if (e.deltaY < 0) {
-        slideToPrev();
-      }
+
+      if (dir === "next") slideToNext();
+      else slideToPrev();
     };
-    
+
     window.addEventListener('wheel', handleWheel, { passive: false });
     return () => window.removeEventListener('wheel', handleWheel);
   }, [isScrollLocked, prefersReducedMotion, slideToNext, slideToPrev]);
@@ -575,8 +577,12 @@ export default function HelpOrbitCarousel() {
     <section 
       ref={sectionRef} 
       className="py-20 md:py-28 bg-background overflow-hidden relative"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
+      onMouseEnter={() => {
+        if (!isScrollLocked) setIsPaused(true);
+      }}
+      onMouseLeave={() => {
+        if (!isScrollLocked) setIsPaused(false);
+      }}
     >
       {/* Skip Button for Accessibility */}
       {isScrollLocked && (
