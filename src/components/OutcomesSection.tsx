@@ -2,7 +2,6 @@ import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { FileCheck, Clock, ListChecks } from 'lucide-react';
 import { TYPEFORM_HEALTH_CHECK_URL } from '@/constants/urls';
 
 const OutcomesSection: React.FC = () => {
@@ -11,22 +10,16 @@ const OutcomesSection: React.FC = () => {
 
   const cards = [
     {
-      icon: FileCheck,
       title: "Clear decisions",
-      description: "Your board and team can make decisions — and find them later.",
-      examples: "Board notes, approvals, meeting routine."
+      examples: "Examples: board notes, approvals"
     },
     {
-      icon: Clock,
       title: "Proof you can pull fast",
-      description: "When a funder asks, you can show proof without scrambling.",
-      examples: "Grant records, payment proof, reporting routine."
+      examples: "Examples: grant records, payment proof"
     },
     {
-      icon: ListChecks,
       title: "A routine your team follows",
-      description: "Simple habits so the system stays clean after we leave.",
-      examples: "Folders, naming rules, monthly checklist."
+      examples: "Examples: folders, monthly checklist"
     }
   ];
 
@@ -38,7 +31,7 @@ const OutcomesSection: React.FC = () => {
     >
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
         {/* Header */}
-        <header className="text-center mb-14 lg:mb-20">
+        <header className="text-center mb-12 lg:mb-16">
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -53,65 +46,46 @@ const OutcomesSection: React.FC = () => {
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-5 text-foreground"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-4 text-foreground"
           >
-            Systems that work — in the areas you need.
+            Real systems that work.
           </motion.h2>
 
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="text-lg text-muted-foreground max-w-xl mx-auto"
+            className="text-lg text-muted-foreground"
           >
-            Start with one area or a few. We match the work to your goal and budget.
+            Start with 1 area or a few.
           </motion.p>
         </header>
 
         {/* Cards Grid */}
-        <ul className="grid md:grid-cols-3 gap-5 lg:gap-6 mb-10" role="list" aria-label="Outcomes you can expect">
-          {cards.map((card, index) => {
-            const IconComponent = card.icon;
-            return (
-              <motion.li
-                key={card.title}
-                initial={{ opacity: 0, y: 24 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ 
-                  duration: 0.6, 
-                  delay: 0.2 + index * 0.08, 
-                  ease: [0.25, 0.46, 0.45, 0.94] 
-                }}
-                className="h-full"
-              >
-                <article className="group h-full rounded-2xl bg-card border border-border/60 p-7 lg:p-8 transition-all duration-300 hover:shadow-lg hover:border-border flex flex-col">
-                  {/* Icon */}
-                  <div 
-                    className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 transition-colors duration-300 group-hover:bg-primary/15"
-                    aria-hidden="true"
-                  >
-                    <IconComponent className="w-6 h-6 text-primary" strokeWidth={1.75} />
-                  </div>
-                  
-                  {/* Title */}
-                  <h3 className="text-xl lg:text-[22px] font-semibold text-foreground mb-3 tracking-tight leading-snug">
-                    {card.title}
-                  </h3>
-                  
-                  {/* Description */}
-                  <p className="text-base text-muted-foreground leading-relaxed mb-5 flex-grow">
-                    {card.description}
-                  </p>
-                  
-                  {/* Examples */}
-                  <p className="text-sm text-muted-foreground border-t border-border/40 pt-4">
-                    <span className="font-medium text-foreground/70">Examples:</span>{' '}
-                    {card.examples}
-                  </p>
-                </article>
-              </motion.li>
-            );
-          })}
+        <ul className="grid md:grid-cols-3 gap-5 lg:gap-6 mb-8" role="list" aria-label="What you get">
+          {cards.map((card, index) => (
+            <motion.li
+              key={card.title}
+              initial={{ opacity: 0, y: 24 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ 
+                duration: 0.6, 
+                delay: 0.2 + index * 0.08, 
+                ease: [0.25, 0.46, 0.45, 0.94] 
+              }}
+              className="h-full"
+            >
+              <article className="h-full rounded-2xl bg-card border border-border/60 p-6 lg:p-8 transition-all duration-300 hover:shadow-lg hover:border-border">
+                <h3 className="text-xl lg:text-[22px] font-semibold text-foreground mb-3 tracking-tight">
+                  {card.title}
+                </h3>
+                
+                <p className="text-sm text-muted-foreground">
+                  {card.examples}
+                </p>
+              </article>
+            </motion.li>
+          ))}
         </ul>
 
         {/* Disclaimer */}
@@ -121,7 +95,7 @@ const OutcomesSection: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="text-center text-sm text-muted-foreground max-w-2xl mx-auto mb-8"
         >
-          These are examples — not the full list. We can help across board, money & grants, people, programs, fundraising, volunteers, and tools & files.
+          Examples only. We cover board, money & grants, people, programs, fundraising, volunteers, tools & files.
         </motion.p>
 
         {/* CTA Row */}
@@ -131,7 +105,7 @@ const OutcomesSection: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
           role="group"
-          aria-label="Get started options"
+          aria-label="Get started"
         >
           <Link
             to="/capacity-buildout"
