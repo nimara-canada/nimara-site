@@ -78,14 +78,12 @@ const cards: CardData[] = [
   },
 ];
 
+// Nimara brand colors cycling through 4 colors
 const brandColors = [
-  { bg: "bg-nim-mint/90", shadow: "shadow-nim-mint/30" },
-  { bg: "bg-nim-sky/90", shadow: "shadow-nim-sky/30" },
-  { bg: "bg-nim-coral/90", shadow: "shadow-nim-coral/30" },
-  { bg: "bg-nim-gold/90", shadow: "shadow-nim-gold/30" },
-  { bg: "bg-nim-lavender/90", shadow: "shadow-nim-lavender/30" },
-  { bg: "bg-nim-mint/90", shadow: "shadow-nim-mint/30" },
-  { bg: "bg-nim-sky/90", shadow: "shadow-nim-sky/30" },
+  { bg: "bg-[#7c3aed]", shadow: "shadow-[#7c3aed]/40" },    // Deep purple
+  { bg: "bg-[#6366f1]", shadow: "shadow-[#6366f1]/40" },    // Indigo
+  { bg: "bg-[#1e1b4b]", shadow: "shadow-[#1e1b4b]/40" },    // Dark navy
+  { bg: "bg-[#4c1d95]", shadow: "shadow-[#4c1d95]/40" },    // Slate purple
 ];
 
 function getCardColor(index: number, isActive: boolean) {
@@ -144,7 +142,7 @@ export default function HelpOrbitCarousel() {
               }}
               transition={{
                 x: {
-                  duration: 40,
+                  duration: 55,
                   repeat: Infinity,
                   ease: "linear",
                 },
