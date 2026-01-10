@@ -73,7 +73,7 @@ const NimaraHeroPremium = () => {
               style={revealStyle(100)} 
               className="mb-6 text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.5rem] font-bold text-white leading-[1.08] tracking-tight"
             >
-              Be ready when a funder asks.
+              Make funding easier to win — and easier to manage.
             </h1>
 
             {/* Subheadline */}
