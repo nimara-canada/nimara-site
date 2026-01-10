@@ -120,24 +120,35 @@ const HeroSection = () => {
             style={getItemStyle(1)}
             className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.1] tracking-[-0.02em] mb-6"
           >
-            Be proof-ready before funders ask in 4 weeks
+            Be ready when a funder asks.
           </motion.h1>
 
           {/* Subhead */}
           <motion.p
             style={getItemStyle(2)}
-            className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed mb-4"
+            className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed mb-6"
           >
-            We set up your board records, grant tracking, team files, and volunteer systems — then train your staff to keep it running.
+            We help nonprofits with 0–50 staff set up simple systems for board, money, and files — so you can find proof fast and report with confidence.
           </motion.p>
 
-          {/* Support line */}
-          <motion.p
+          {/* Bullets */}
+          <motion.ul
             style={getItemStyle(3)}
-            className="text-sm text-white/60 mb-10"
+            className="text-left max-w-xl mx-auto space-y-3 mb-10"
           >
-            Pick the areas you need most. Start with 2. Add more anytime.
-          </motion.p>
+            <li className="flex items-start gap-3 text-white/80">
+              <Check className="w-5 h-5 text-nim-mint mt-0.5 flex-shrink-0" />
+              <span>Proof-of-payment and grant tracking you can pull in minutes</span>
+            </li>
+            <li className="flex items-start gap-3 text-white/80">
+              <Check className="w-5 h-5 text-nim-mint mt-0.5 flex-shrink-0" />
+              <span>Clear board notes and approvals (so decisions don't disappear)</span>
+            </li>
+            <li className="flex items-start gap-3 text-white/80">
+              <Check className="w-5 h-5 text-nim-mint mt-0.5 flex-shrink-0" />
+              <span>Simple files and routines your team will actually use</span>
+            </li>
+          </motion.ul>
 
           {/* CTAs */}
           <motion.div
@@ -151,9 +162,9 @@ const HeroSection = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-nim-navy text-white font-semibold rounded-xl transition-all hover:bg-nim-navy/90"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-nim-mint text-nim-navy font-semibold rounded-xl transition-all hover:bg-nim-mint/90"
             >
-              Book a 20-min Fit Call
+              Book a 20-minute call
               <ArrowRight className="w-4 h-4" />
             </motion.a>
 
@@ -162,31 +173,23 @@ const HeroSection = () => {
               href={TYPEFORM_HEALTH_CHECK_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-1.5 py-3.5 px-4 text-nim-slate hover:text-nim-navy transition-colors"
+              className="group inline-flex items-center gap-1.5 py-3.5 px-4 text-white/70 hover:text-white transition-colors"
             >
               <span className="relative font-medium">
-                Not sure what you need? Take the Free Health Check
+                Take the free 6-minute check
                 <span className="absolute left-0 -bottom-0.5 w-full h-px bg-current opacity-40 group-hover:opacity-70 transition-opacity" />
               </span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
             </a>
           </motion.div>
 
-          {/* Trust badges */}
-          <motion.div
+          {/* Trust line */}
+          <motion.p
             style={getItemStyle(5)}
-            className="flex flex-wrap items-center justify-center gap-4 text-xs text-nim-slate"
+            className="text-sm text-white/50"
           >
-            <span className="flex items-center gap-1.5">
-              <Check className="w-3.5 h-3.5 text-nim-purple" />
-              Canadian nonprofits (0–25 staff)
-            </span>
-            <span className="hidden sm:inline text-nim-mist">·</span>
-            <span className="flex items-center gap-1.5">
-              <Check className="w-3.5 h-3.5 text-nim-purple" />
-              Pay only for what you need
-            </span>
-          </motion.div>
+            Built for nonprofits with 0–50 staff in Canada. Not an audit firm.
+          </motion.p>
         </div>
       </div>
     </section>
