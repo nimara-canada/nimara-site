@@ -139,13 +139,15 @@ const StartingPointSplit = () => {
         variants={containerVariants}
         className="flex flex-col gap-0"
       >
-        {/* Card 1: I know what we need - Open layout with circles */}
+        {/* Card 1: I know what we need - Premium bordered card */}
         <motion.div
           variants={itemVariants}
-          className="bg-background w-full border-y border-border/50"
+          className="w-full py-8 md:py-12 px-4 md:px-8"
         >
-          <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 min-h-[550px] md:min-h-[600px]">
+          <div className="max-w-7xl mx-auto relative rounded-3xl bg-background overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[hsl(var(--nim-purple))]/20">
+            {/* Top accent line */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[hsl(var(--nim-purple))]/60 via-[hsl(var(--nim-purple))] to-[hsl(var(--nim-purple))]/60" />
+            <div className="grid lg:grid-cols-2 min-h-[500px] md:min-h-[550px]">
               {/* Text Content - Left side */}
               <div className="flex items-center px-6 md:px-12 lg:px-16 py-12 md:py-16 lg:py-20 order-2 lg:order-1">
                 <div className="max-w-lg">
@@ -201,13 +203,15 @@ const StartingPointSplit = () => {
           </div>
         </motion.div>
 
-        {/* Card 2: I want to see what's missing - White background, clean modern */}
+        {/* Card 2: I want to see what's missing - Premium bordered card */}
         <motion.div
           variants={itemVariants}
-          className="bg-background w-full border-b border-border/50"
+          className="w-full py-8 md:py-12 px-4 md:px-8"
         >
-          <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 min-h-[550px] md:min-h-[600px]">
+          <div className="max-w-7xl mx-auto relative rounded-3xl bg-background overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[hsl(var(--nim-mint))]/40">
+            {/* Top accent line */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[hsl(var(--nim-mint))]/60 via-[hsl(var(--nim-navy))] to-[hsl(var(--nim-mint))]/60" />
+            <div className="grid lg:grid-cols-2 min-h-[500px] md:min-h-[550px]">
               {/* Visual - Left side */}
               <div className="relative order-1 min-h-[300px] lg:min-h-0 overflow-visible">
                 <QuickCheckVisual />
