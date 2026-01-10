@@ -8,7 +8,7 @@ import WithNimara from "@/components/WithNimara";
 
 import StartingPointSplit from "@/components/StartingPointSplit";
 import TheProcess from "@/components/company/TheProcess";
-import WhatWeHelpWith from "@/components/WhatWeHelpWith";
+import HelpDeck from "@/components/HelpDeck";
 import OutcomesSection from "@/components/OutcomesSection";
 import { FAQ } from "@/components/FAQ";
 import { FinalCTA } from "@/components/FinalCTA";
@@ -107,7 +107,7 @@ const Index = () => {
           <TheProcess />
           
           {/* What We Help With - 7 Areas */}
-          <WhatWeHelpWith />
+          <HelpDeck />
           
           {/* What You Get - Outcomes */}
           <OutcomesSection />
