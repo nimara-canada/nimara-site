@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { 
   ClipboardList, 
   DollarSign, 
@@ -206,9 +206,11 @@ export default function HelpOrbitCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(3);
   const containerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
   const prefersReducedMotion = useReducedMotion();
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   
   // Handle responsive visible cards
   useEffect(() => {
@@ -294,32 +296,30 @@ export default function HelpOrbitCarousel() {
   const activeCard = cards[activeIndex];
   
   return (
-    <section className="py-20 md:py-28 bg-background overflow-hidden">
+    <section ref={sectionRef} className="py-20 md:py-28 bg-background overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
           <motion.p 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
             className="text-sm font-medium text-primary uppercase tracking-wider mb-3"
           >
             What We Help With
           </motion.p>
           <motion.h2 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
             className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4"
           >
             Pick an area. Start there.
           </motion.h2>
           <motion.p 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
             className="text-lg text-muted-foreground max-w-xl mx-auto"
           >
             You don't need to fix everything. Choose one domain — we'll build it with you.
@@ -327,9 +327,14 @@ export default function HelpOrbitCarousel() {
         </div>
         
         {/* Carousel Container */}
-        <div className="relative max-w-5xl mx-auto">
+        <motion.div 
+          className="relative max-w-5xl mx-auto"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6, delay: 0.3, ease: [0.4, 0, 0.2, 1] }}
+        >
           {/* Arrow Buttons - Desktop Only */}
-          <button
+          <motion.button
             onClick={goPrev}
             className="hidden md:flex absolute -left-16 lg:-left-20 top-1/2 -translate-y-1/2 z-10
               w-12 h-12 rounded-full items-center justify-center
@@ -337,11 +342,14 @@ export default function HelpOrbitCarousel() {
               hover:bg-white/[0.1] transition-colors duration-200
               focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             aria-label="Previous domain"
+            initial={{ opacity: 0, x: -20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+            transition={{ duration: 0.5, delay: 0.5, ease: [0.4, 0, 0.2, 1] }}
           >
             <ChevronLeft className="w-6 h-6 text-white" />
-          </button>
+          </motion.button>
           
-          <button
+          <motion.button
             onClick={goNext}
             className="hidden md:flex absolute -right-16 lg:-right-20 top-1/2 -translate-y-1/2 z-10
               w-12 h-12 rounded-full items-center justify-center
@@ -349,9 +357,12 @@ export default function HelpOrbitCarousel() {
               hover:bg-white/[0.1] transition-colors duration-200
               focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             aria-label="Next domain"
+            initial={{ opacity: 0, x: 20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+            transition={{ duration: 0.5, delay: 0.5, ease: [0.4, 0, 0.2, 1] }}
           >
             <ChevronRight className="w-6 h-6 text-white" />
-          </button>
+          </motion.button>
           
           {/* Cards Container */}
           <div
@@ -394,7 +405,12 @@ export default function HelpOrbitCarousel() {
           </div>
           
           {/* Dot Indicators */}
-          <div className="flex items-center justify-center gap-3 mt-8">
+          <motion.div 
+            className="flex items-center justify-center gap-3 mt-8"
+            initial={{ opacity: 0, y: 10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+            transition={{ duration: 0.5, delay: 0.6, ease: [0.4, 0, 0.2, 1] }}
+          >
             {cards.map((card, index) => (
               <button
                 key={card.id}
@@ -411,11 +427,16 @@ export default function HelpOrbitCarousel() {
                 aria-current={activeIndex === index ? 'true' : 'false'}
               />
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
         
         {/* Dynamic Content Panel */}
-        <div className="mt-10 text-center max-w-2xl mx-auto">
+        <motion.div 
+          className="mt-10 text-center max-w-2xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, delay: 0.7, ease: [0.4, 0, 0.2, 1] }}
+        >
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCard.id}
@@ -439,7 +460,7 @@ export default function HelpOrbitCarousel() {
               </Link>
             </motion.div>
           </AnimatePresence>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
