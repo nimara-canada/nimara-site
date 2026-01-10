@@ -5,9 +5,9 @@ const cards = [
   {
     title: "Find proof fast",
     description: "Receipts, approvals, and reports stay organized so you're not scrambling.",
-    bgClass: "bg-[hsl(var(--nim-navy))]",
-    textClass: "text-white",
-    subtextClass: "text-white/80",
+    bgClass: "bg-background",
+    textClass: "text-foreground",
+    subtextClass: "text-muted-foreground",
   },
   {
     title: "Stay funder-ready",
