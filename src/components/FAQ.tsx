@@ -37,13 +37,10 @@ export const FAQ = () => {
         {/* Heading */}
         <h2
           id="faq-heading"
-          className="text-3xl sm:text-4xl md:text-5xl font-semibold text-center text-foreground mb-12 md:mb-16 tracking-tight"
+          className="text-3xl sm:text-4xl md:text-5xl font-semibold text-foreground mb-12 md:mb-16 tracking-tight"
         >
-          Frequently asked questions
+          Questions?
         </h2>
-
-        {/* Separator */}
-        <div className="border-t border-border" aria-hidden="true" />
 
         {/* FAQ Items */}
         <dl>
@@ -53,27 +50,41 @@ export const FAQ = () => {
             return (
               <div
                 key={index}
-                className="border-b border-border"
+                className="border-b border-border/50"
               >
                 <dt>
                   <button
                     onClick={() => toggleFAQ(index)}
-                    className="w-full py-8 flex items-center gap-8 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded group"
+                    className="w-full py-6 md:py-7 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded group"
                     aria-expanded={isOpen}
                     aria-controls={`faq-answer-${index}`}
                     id={`faq-question-${index}`}
                   >
-                    {/* Plus/Minus */}
-                    <span 
-                      className="text-2xl font-light text-foreground shrink-0"
-                      aria-hidden="true"
-                    >
-                      {isOpen ? '−' : '+'}
+                    {/* Question */}
+                    <span className="text-base md:text-lg font-normal text-foreground pr-4">
+                      {faq.question}
                     </span>
 
-                    {/* Question */}
-                    <span className="text-lg md:text-xl font-medium text-foreground group-hover:text-foreground/80 transition-colors">
-                      {faq.question}
+                    {/* Plus/Minus Button */}
+                    <span 
+                      className="w-10 h-10 md:w-11 md:h-11 rounded-full bg-foreground flex items-center justify-center shrink-0 transition-transform duration-200"
+                      aria-hidden="true"
+                      style={{ transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)' }}
+                    >
+                      <svg 
+                        width="16" 
+                        height="16" 
+                        viewBox="0 0 16 16" 
+                        fill="none" 
+                        className="text-background"
+                      >
+                        <path 
+                          d="M8 3V13M3 8H13" 
+                          stroke="currentColor" 
+                          strokeWidth="2" 
+                          strokeLinecap="round"
+                        />
+                      </svg>
                     </span>
                   </button>
                 </dt>
@@ -89,8 +100,8 @@ export const FAQ = () => {
                       transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                       className="overflow-hidden"
                     >
-                      <div className="pb-8 pl-14">
-                        <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
+                      <div className="pb-6 pr-16">
+                        <p className="text-muted-foreground leading-relaxed text-base">
                           {faq.answer}
                         </p>
                       </div>
