@@ -54,12 +54,12 @@ const NimaraHeroPremium = () => {
       opacity: heroOpacity,
       y: heroY
     }}>
-        <div className="flex-1 w-full max-w-3xl mx-auto px-6 lg:px-12 py-20 lg:py-28 flex flex-col justify-center">
+        <div className="flex-1 w-full max-w-3xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto px-6 lg:px-12 xl:px-16 2xl:px-20 py-20 lg:py-28 xl:py-32 2xl:py-36 flex flex-col justify-center">
           
           {/* Single Column - Clean Copy */}
           <div className="text-center">
             {/* Main Headline */}
-            <h1 id="hero-heading" style={revealStyle(100)} className="mb-8 text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[1.05] tracking-tight">
+            <h1 id="hero-heading" style={revealStyle(100)} className="mb-8 md:mb-10 xl:mb-12 text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold text-white leading-[1.05] tracking-tight">
               We make funding easier to <span className="text-accent">win</span> — and <span className="text-accent">manage</span>.
             </h1>
 
