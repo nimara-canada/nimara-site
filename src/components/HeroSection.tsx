@@ -60,7 +60,7 @@ const NimaraHeroPremium = () => {
           <div className="text-center">
             {/* Main Headline */}
             <h1 id="hero-heading" style={revealStyle(100)} className="mb-8 text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[1.05] tracking-tight">
-              We make funding easier to win — and manage.
+              We make funding easier to <span className="text-accent">win</span> — and <span className="text-accent">manage</span>.
             </h1>
 
             {/* Subheadline */}
