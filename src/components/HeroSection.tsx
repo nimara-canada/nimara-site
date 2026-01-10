@@ -85,76 +85,62 @@ const NimaraHeroPremium = () => {
       opacity: heroOpacity,
       y: heroY
     }}>
-        <div className="flex-1 w-full max-w-7xl mx-auto px-6 lg:px-12 py-20 lg:py-28 flex flex-col">
+        <div className="flex-1 w-full max-w-3xl mx-auto px-6 lg:px-12 py-20 lg:py-28 flex flex-col justify-center">
           
-          {/* Two Column Layout */}
-          <div className="flex-1 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            
-            {/* Left - Copy */}
-            <div>
-              {/* Main Headline */}
-              <h1 style={revealStyle(100)} className="mb-6 text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.5rem] font-bold text-white leading-[1.08] tracking-tight">
-                Be ready when a funder asks.
-              </h1>
+          {/* Single Column - Clean Copy */}
+          <div className="text-center">
+            {/* Main Headline */}
+            <h1 style={revealStyle(100)} className="mb-6 text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.5rem] font-bold text-white leading-[1.08] tracking-tight">
+              Be ready when a funder asks.
+            </h1>
 
-              {/* Subheadline */}
-              <p style={{
-              ...revealStyle(200),
-              color: '#A0A0A0'
-            }} className="text-lg md:text-xl leading-relaxed max-w-xl mb-8">
-                We help nonprofits with 0–50 staff set up simple systems for board, money, and files — so you can find proof fast and report with confidence.
-              </p>
+            {/* Subheadline */}
+            <p style={{
+            ...revealStyle(200),
+            color: '#A0A0A0'
+          }} className="text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-8">
+              We help nonprofits with 0–50 staff set up simple systems for board, money, and files — so you can find proof fast and report with confidence.
+            </p>
 
-              {/* Bullets */}
-              <ul style={revealStyle(250)} className="space-y-3 mb-10 max-w-xl">
-                <li className="flex items-start gap-3" style={{ color: '#A0A0A0' }}>
-                  <Check className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: '#ACFCE3' }} />
-                  <span>Proof-of-payment and grant tracking you can pull in minutes</span>
-                </li>
-                <li className="flex items-start gap-3" style={{ color: '#A0A0A0' }}>
-                  <Check className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: '#ACFCE3' }} />
-                  <span>Clear board notes and approvals (so decisions don't disappear)</span>
-                </li>
-                <li className="flex items-start gap-3" style={{ color: '#A0A0A0' }}>
-                  <Check className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: '#ACFCE3' }} />
-                  <span>Simple files and routines your team will actually use</span>
-                </li>
-              </ul>
+            {/* Bullets */}
+            <ul style={revealStyle(250)} className="space-y-3 mb-10 max-w-xl mx-auto text-left">
+              <li className="flex items-start gap-3" style={{ color: '#A0A0A0' }}>
+                <Check className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: '#ACFCE3' }} />
+                <span>Proof-of-payment and grant tracking you can pull in minutes</span>
+              </li>
+              <li className="flex items-start gap-3" style={{ color: '#A0A0A0' }}>
+                <Check className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: '#ACFCE3' }} />
+                <span>Clear board notes and approvals (so decisions don't disappear)</span>
+              </li>
+              <li className="flex items-start gap-3" style={{ color: '#A0A0A0' }}>
+                <Check className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: '#ACFCE3' }} />
+                <span>Simple files and routines your team will actually use</span>
+              </li>
+            </ul>
 
-              {/* CTAs */}
-              <div style={revealStyle(300)} className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
-                {/* Primary CTA */}
-                <Link to="/capacity-buildout" className="inline-flex items-center gap-3 px-8 py-4 font-semibold rounded-lg select-none transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2" style={{
-                backgroundColor: '#6945D8',
-                color: '#FFFFFF'
-              }}>
-                  Book a 20-minute call
-                  <span className="text-lg" aria-hidden="true">→</span>
-                </Link>
+            {/* CTAs */}
+            <div style={revealStyle(300)} className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+              {/* Primary CTA */}
+              <Link to="/capacity-buildout" className="inline-flex items-center gap-3 px-8 py-4 font-semibold rounded-lg select-none transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2" style={{
+              backgroundColor: '#6945D8',
+              color: '#FFFFFF'
+            }}>
+                Book a 20-minute call
+                <span className="text-lg" aria-hidden="true">→</span>
+              </Link>
 
-                {/* Secondary CTA */}
-                <a href={TYPEFORM_HEALTH_CHECK_URL} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 text-base text-white hover:opacity-80 select-none transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 rounded">
-                  Take the free 6-minute check
-                  <span className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span>
-                </a>
-              </div>
-
-              {/* Trust line */}
-              <div style={revealStyle(400)} className="mt-6">
-                <p className="text-sm" style={{ color: '#A0A0A0' }}>
-                  Built for nonprofits with 0–50 staff in Canada. Not an audit firm.
-                </p>
-              </div>
-
-              {/* Mobile Dashboard Preview */}
-              <div style={revealStyle(500)} className="mt-12 lg:hidden">
-                <MobileDashboard isLoaded={isLoaded} progressBars={progressBars} />
-              </div>
+              {/* Secondary CTA */}
+              <a href={TYPEFORM_HEALTH_CHECK_URL} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 text-base text-white hover:opacity-80 select-none transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 rounded">
+                Take the free 6-minute check
+                <span className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span>
+              </a>
             </div>
 
-            {/* Right - Dashboard Visual (Desktop) */}
-            <div className="hidden lg:block relative">
-              <DesktopDashboard isLoaded={isLoaded} revealStyle={revealStyle} progressBars={progressBars} />
+            {/* Trust line */}
+            <div style={revealStyle(400)} className="mt-6">
+              <p className="text-sm" style={{ color: '#A0A0A0' }}>
+                Built for nonprofits with 0–50 staff in Canada. Not an audit firm.
+              </p>
             </div>
           </div>
 
