@@ -18,6 +18,7 @@ const FundingProofSection = () => {
     <section 
       ref={sectionRef} 
       className="py-20 md:py-28 overflow-hidden relative"
+      aria-labelledby="funding-proof-heading"
     >
       {/* Subtle gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-muted/30 via-background to-muted/20" />
@@ -28,6 +29,7 @@ const FundingProofSection = () => {
           {/* Left - Big Headline with Parallax */}
           <ScrollReveal>
             <motion.h2 
+              id="funding-proof-heading"
               style={{ y: headlineY }}
               className="text-4xl md:text-5xl lg:text-6xl font-light text-muted-foreground leading-tight"
             >
