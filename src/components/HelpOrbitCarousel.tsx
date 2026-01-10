@@ -78,19 +78,14 @@ const cards: CardData[] = [
   },
 ];
 
-// Nimara brand colors cycling through 4 colors
-const brandColors = [
-  { bg: "bg-[#7c3aed]", shadow: "shadow-[#7c3aed]/40" },    // Deep purple
-  { bg: "bg-[#6366f1]", shadow: "shadow-[#6366f1]/40" },    // Indigo
-  { bg: "bg-[#1e1b4b]", shadow: "shadow-[#1e1b4b]/40" },    // Dark navy
-  { bg: "bg-[#4c1d95]", shadow: "shadow-[#4c1d95]/40" },    // Slate purple
-];
-
-function getCardColor(index: number, isActive: boolean) {
-  const color = brandColors[index % brandColors.length];
+function getCardStyle(isActive: boolean) {
   return {
-    bg: isActive ? color.bg : "bg-white/10",
-    shadow: isActive ? `shadow-xl ${color.shadow}` : "shadow-lg shadow-black/10",
+    bg: isActive ? "bg-white" : "bg-white/95",
+    shadow: isActive ? "shadow-xl shadow-black/10" : "shadow-lg shadow-black/5",
+    text: isActive ? "text-foreground" : "text-foreground/80",
+    subtext: isActive ? "text-muted-foreground" : "text-muted-foreground/70",
+    iconBg: isActive ? "bg-primary/10" : "bg-muted",
+    iconColor: isActive ? "text-primary" : "text-foreground/70",
   };
 }
 
@@ -151,10 +146,10 @@ export default function HelpOrbitCarousel() {
                 animationPlayState: isPaused ? "paused" : "running",
               }}
             >
-              {duplicatedCards.map((card, index) => {
+            {duplicatedCards.map((card, index) => {
                 const realIndex = index % cards.length;
                 const isActive = realIndex === activeIndex;
-                const colors = getCardColor(realIndex, isActive);
+                const styles = getCardStyle(isActive);
                 const Icon = card.icon;
 
                 return (
@@ -163,9 +158,9 @@ export default function HelpOrbitCarousel() {
                     onClick={() => setActiveIndex(realIndex)}
                     className={`
                       flex-shrink-0 w-[200px] md:w-[240px] p-5 md:p-6 rounded-2xl
-                      cursor-pointer transition-all duration-500 ease-out
-                      ${colors.bg} ${colors.shadow}
-                      ${isActive ? "scale-105 ring-2 ring-white/30" : "hover:scale-102 hover:bg-white/15"}
+                      cursor-pointer transition-all duration-300 ease-out
+                      ${styles.bg} ${styles.shadow}
+                      ${isActive ? "scale-105 ring-2 ring-primary/20" : "hover:scale-[1.02]"}
                     `}
                     whileHover={{ y: -4 }}
                     whileTap={{ scale: 0.98 }}
@@ -174,27 +169,21 @@ export default function HelpOrbitCarousel() {
                       <div
                         className={`
                           p-2.5 rounded-xl transition-colors duration-300
-                          ${isActive ? "bg-nim-navy/20" : "bg-white/10"}
+                          ${styles.iconBg}
                         `}
                       >
                         <Icon
-                          className={`w-5 h-5 md:w-6 md:h-6 transition-colors duration-300 ${
-                            isActive ? "text-nim-navy" : "text-white"
-                          }`}
+                          className={`w-5 h-5 md:w-6 md:h-6 transition-colors duration-300 ${styles.iconColor}`}
                         />
                       </div>
                       <div className="text-left">
                         <h3
-                          className={`font-semibold text-sm md:text-base transition-colors duration-300 ${
-                            isActive ? "text-nim-navy" : "text-white"
-                          }`}
+                          className={`font-semibold text-sm md:text-base transition-colors duration-300 ${styles.text}`}
                         >
                           {card.title}
                         </h3>
                         <p
-                          className={`text-xs md:text-sm mt-1 transition-colors duration-300 ${
-                            isActive ? "text-nim-navy/70" : "text-white/60"
-                          }`}
+                          className={`text-xs md:text-sm mt-1 transition-colors duration-300 ${styles.subtext}`}
                         >
                           {card.shortDesc}
                         </p>
