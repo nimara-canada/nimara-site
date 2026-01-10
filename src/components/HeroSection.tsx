@@ -112,7 +112,7 @@ const NimaraHeroPremium = () => {
                 <Check className="w-5 h-5 mt-0.5 flex-shrink-0" style={{
                 color: '#ACFCE3'
               }} />
-                <span>​✓ Pull grant records and payment proof fast  
+                <span>Pull grant records and payment proof fast  
               </span>
               </li>
               <li className="flex items-start gap-3" style={{
