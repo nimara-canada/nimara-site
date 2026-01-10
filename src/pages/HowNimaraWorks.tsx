@@ -10,6 +10,8 @@ import LevelsOverview from "@/components/company/LevelsOverview";
 import WhatWeAreNot from "@/components/company/WhatWeAreNot";
 import HowItWorksFAQ from "@/components/company/HowItWorksFAQ";
 import HowItWorksFinalCTA from "@/components/company/HowItWorksFinalCTA";
+import { Expertise } from "@/components/Expertise";
+import { SystemLadder } from "@/components/SystemLadder";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { MotionControls } from "@/components/MotionControls";
@@ -103,7 +105,17 @@ const HowNimaraWorks = () => {
             </ScrollReveal>
           </RevealSection>
           
-          {/* Section 6 - Levels Overview */}
+          {/* Section 6 - The 7 Domains (Expertise) */}
+          <RevealSection>
+            <ScrollReveal>
+              <Expertise />
+            </ScrollReveal>
+          </RevealSection>
+          
+          {/* Section 7 - System Ladder */}
+          <SystemLadder />
+          
+          {/* Section 8 - Levels Overview */}
           <RevealSection background="muted">
             <ScrollReveal>
               <LevelsOverview />
