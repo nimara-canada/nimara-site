@@ -8,9 +8,7 @@ import TwoStartingPoints from "@/components/company/TwoStartingPoints";
 
 import TheProcess from "@/components/company/TheProcess";
 import OutcomesSection from "@/components/OutcomesSection";
-import { SystemLadder } from "@/components/SystemLadder";
 import { FitCheck } from "@/components/FitCheck";
-import { Expertise } from "@/components/Expertise";
 import { IntegrationsSection } from "@/components/IntegrationsSection";
 import { FAQ } from "@/components/FAQ";
 import { FinalCTA } from "@/components/FinalCTA";
@@ -112,16 +110,6 @@ const Index = () => {
               <FitCheck />
             </ScrollReveal>
           </RevealSection>
-          
-          {/* Expertise - What we cover */}
-          <RevealSection>
-            <ScrollReveal>
-              <Expertise />
-            </ScrollReveal>
-          </RevealSection>
-          
-          {/* System Ladder - 5 Levels */}
-          <SystemLadder />
           
           {/* Integrations */}
           <RevealSection background="gradient">
