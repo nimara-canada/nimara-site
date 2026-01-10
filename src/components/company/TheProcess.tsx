@@ -45,22 +45,20 @@ const TheProcess: React.FC = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-24 lg:py-32 bg-secondary-background text-white overflow-hidden"
+      className="relative py-24 lg:py-32 bg-secondary-background overflow-hidden"
       aria-labelledby="process-heading"
     >
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Header */}
-        <div className="mb-16 lg:mb-20 text-center">
-          <motion.div
+        <header className="mb-16 lg:mb-20 text-center">
+          <motion.p
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.8 }}
-            className="mb-6"
+            className="text-xs font-medium tracking-[0.2em] uppercase text-white/40 mb-6"
           >
-            <span className="text-xs font-medium tracking-[0.2em] uppercase text-white/40">
-              How It Works
-            </span>
-          </motion.div>
+            How It Works
+          </motion.p>
           
           <motion.h2
             id="process-heading"
@@ -79,12 +77,15 @@ const TheProcess: React.FC = () => {
           >
             Start with a call or a quick check. We guide the rest.
           </motion.p>
-        </div>
+        </header>
 
-        {/* Steps - Desktop horizontal, Mobile stacked */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 mb-16">
+        {/* Steps */}
+        <ol 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 mb-16"
+          aria-label="Process steps"
+        >
           {steps.map((step, index) => (
-            <motion.div
+            <motion.li
               key={step.number}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -92,9 +93,12 @@ const TheProcess: React.FC = () => {
               className="relative"
             >
               {/* Step number */}
-              <div className="text-6xl lg:text-7xl font-extralight text-white/10 mb-4">
+              <span 
+                className="block text-6xl lg:text-7xl font-extralight text-white/10 mb-4"
+                aria-hidden="true"
+              >
                 {step.number}
-              </div>
+              </span>
               
               {/* Step label */}
               <h3 className="text-lg font-medium text-white mb-2">
@@ -108,20 +112,24 @@ const TheProcess: React.FC = () => {
               
               {/* Areas chips for step 3 */}
               {step.hasAreas && (
-                <div className="flex flex-wrap gap-2 mt-4">
+                <ul 
+                  className="flex flex-wrap gap-2 mt-4"
+                  aria-label="Service areas"
+                >
                   {areas.map((area) => (
-                    <span
+                    <li
                       key={area}
                       className="text-xs px-3 py-1 rounded-full bg-white/5 text-white/50 border border-white/10"
                     >
                       {area}
-                    </span>
+                    </li>
                   ))}
-                </div>
+                </ul>
               )}
-            </motion.div>
+            </motion.li>
           ))}
-        </div>
+        </ol>
+
         {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

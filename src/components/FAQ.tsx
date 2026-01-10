@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { CALENDLY_BOOKING_URL, TYPEFORM_HEALTH_CHECK_URL } from '@/constants/urls';
 
 const faqs = [
   {
@@ -46,35 +46,39 @@ export const FAQ = () => {
       aria-labelledby="faq-heading"
     >
       {/* Subtle grid pattern */}
-      <div className="absolute inset-0 opacity-[0.015]">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
-                           linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px'
-        }} />
+      <div 
+        className="absolute inset-0 opacity-[0.015] pointer-events-none"
+        aria-hidden="true"
+      >
+        <div 
+          className="absolute inset-0" 
+          style={{
+            backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
+                             linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
+            backgroundSize: '60px 60px'
+          }} 
+        />
       </div>
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Editorial Header */}
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
           <div className="lg:col-span-4">
-            <motion.div
+            <motion.p
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.8 }}
-              className="flex items-center gap-4 mb-6"
+              className="text-xs font-medium tracking-[0.2em] uppercase text-muted-foreground mb-6"
             >
-              <span className="text-xs font-medium tracking-[0.2em] uppercase text-muted-foreground">
-                Common Questions
-              </span>
-            </motion.div>
+              Common Questions
+            </motion.p>
             
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 }}
               id="faq-heading"
-              className="text-3xl sm:text-4xl font-light tracking-tight leading-[1.1] mb-5"
+              className="text-3xl sm:text-4xl font-light tracking-tight leading-[1.1] mb-5 text-foreground"
             >
               Questions
               <br />
@@ -97,19 +101,22 @@ export const FAQ = () => {
               className="flex flex-col gap-3"
             >
               <a
-                href="https://calendly.com/thabani-nimara/fit-call"
+                href={CALENDLY_BOOKING_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 text-foreground font-medium"
+                className="group inline-flex items-center gap-3 text-foreground font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded"
               >
                 <span className="group-hover:text-primary transition-colors">Book a 20-min Fit Call</span>
-                <span className="w-8 h-px bg-foreground group-hover:w-12 group-hover:bg-primary transition-all duration-300" />
+                <span 
+                  className="w-8 h-px bg-foreground group-hover:w-12 group-hover:bg-primary transition-all duration-300" 
+                  aria-hidden="true"
+                />
               </a>
               <a
-                href="https://form.typeform.com/to/hpY1Ikmr"
+                href={TYPEFORM_HEALTH_CHECK_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                className="text-sm text-muted-foreground hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded"
               >
                 Or try the Free Health Check →
               </a>
@@ -118,10 +125,9 @@ export const FAQ = () => {
 
           {/* FAQ Accordion */}
           <div className="lg:col-span-8">
-            <div className="space-y-0">
+            <dl className="space-y-0">
               {faqs.map((faq, index) => {
                 const isOpen = openIndex === index;
-                // Staggered delay: 100ms between each item after initial 0.3s
                 const staggerDelay = 0.3 + index * 0.1;
 
                 return (
@@ -132,96 +138,76 @@ export const FAQ = () => {
                     transition={{ 
                       duration: 0.6, 
                       delay: staggerDelay,
-                      ease: [0.16, 1, 0.3, 1] // Dropbox easing
+                      ease: [0.16, 1, 0.3, 1]
                     }}
                     className="border-t border-border"
                   >
-                    <button
-                      onClick={() => toggleFAQ(index)}
-                      className="w-full py-6 flex items-start gap-5 text-left focus:outline-none group"
-                      aria-expanded={isOpen}
-                    >
-                      {/* Number */}
-                      <motion.span 
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                        transition={{ 
-                          duration: 0.4, 
-                          delay: staggerDelay + 0.1,
-                          ease: [0.16, 1, 0.3, 1]
-                        }}
-                        className={`
-                          text-lg font-extralight tabular-nums transition-colors duration-300 mt-0.5
-                          ${isOpen ? 'text-primary' : 'text-muted-foreground/40 group-hover:text-muted-foreground/60'}
-                        `}
+                    <dt>
+                      <button
+                        onClick={() => toggleFAQ(index)}
+                        className="w-full py-6 flex items-start gap-5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded group"
+                        aria-expanded={isOpen}
+                        aria-controls={`faq-answer-${index}`}
+                        id={`faq-question-${index}`}
                       >
-                        0{index + 1}
-                      </motion.span>
+                        {/* Number */}
+                        <span 
+                          className={`
+                            text-lg font-extralight tabular-nums transition-colors duration-300 mt-0.5
+                            ${isOpen ? 'text-primary' : 'text-muted-foreground/40 group-hover:text-muted-foreground/60'}
+                          `}
+                          aria-hidden="true"
+                        >
+                          0{index + 1}
+                        </span>
 
-                      {/* Question */}
-                      <motion.span 
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={isInView ? { opacity: 1, y: 0 } : {}}
-                        transition={{ 
-                          duration: 0.5, 
-                          delay: staggerDelay + 0.05,
-                          ease: [0.16, 1, 0.3, 1]
-                        }}
-                        className={`
-                          flex-1 text-lg font-medium transition-colors duration-300
-                          ${isOpen ? 'text-primary' : 'text-foreground group-hover:text-primary'}
-                        `}
-                      >
-                        {faq.question}
-                      </motion.span>
+                        {/* Question */}
+                        <span 
+                          className={`
+                            flex-1 text-lg font-medium transition-colors duration-300
+                            ${isOpen ? 'text-primary' : 'text-foreground group-hover:text-primary'}
+                          `}
+                        >
+                          {faq.question}
+                        </span>
 
-                      {/* Toggle */}
-                      <motion.span 
-                        initial={{ opacity: 0, rotate: -90 }}
-                        animate={isInView ? { opacity: 1, rotate: 0 } : {}}
-                        transition={{ 
-                          duration: 0.4, 
-                          delay: staggerDelay + 0.15,
-                          ease: [0.16, 1, 0.3, 1]
-                        }}
-                        className={`
-                          text-2xl font-extralight transition-colors duration-300
-                          ${isOpen ? 'text-primary' : 'text-muted-foreground/40 group-hover:text-muted-foreground'}
-                        `}
-                      >
-                        {isOpen ? '−' : '+'}
-                      </motion.span>
-                    </button>
+                        {/* Toggle */}
+                        <span 
+                          className={`
+                            text-2xl font-extralight transition-colors duration-300
+                            ${isOpen ? 'text-primary' : 'text-muted-foreground/40 group-hover:text-muted-foreground'}
+                          `}
+                          aria-hidden="true"
+                        >
+                          {isOpen ? '−' : '+'}
+                        </span>
+                      </button>
+                    </dt>
 
                     {/* Answer */}
                     <AnimatePresence initial={false}>
                       {isOpen && (
-                        <motion.div
+                        <motion.dd
+                          id={`faq-answer-${index}`}
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                           className="overflow-hidden"
                         >
-                          <motion.div 
-                            initial={{ opacity: 0, y: -10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -10 }}
-                            transition={{ duration: 0.25, delay: 0.1 }}
-                            className="pb-8 pl-10"
-                          >
+                          <div className="pb-8 pl-10">
                             <p className="text-muted-foreground leading-relaxed">
                               {faq.answer}
                             </p>
-                          </motion.div>
-                        </motion.div>
+                          </div>
+                        </motion.dd>
                       )}
                     </AnimatePresence>
                   </motion.div>
                 );
               })}
-              <div className="border-t border-border" />
-            </div>
+              <div className="border-t border-border" aria-hidden="true" />
+            </dl>
           </div>
         </div>
       </div>
