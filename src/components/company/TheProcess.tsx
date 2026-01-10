@@ -12,8 +12,8 @@ const steps = [
   },
   {
     number: "02",
-    label: "Find the gap",
-    text: "We show what's strong, what's missing, and what to fix first.",
+    label: "Get clear on priorities",
+    text: "Already know what you need? We confirm scope together. Not sure yet? We show what's strong and where to start.",
   },
   {
     number: "03",
