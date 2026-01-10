@@ -2,15 +2,24 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { CALENDLY_BOOKING_URL, TYPEFORM_HEALTH_CHECK_URL } from "@/constants/urls";
+import { 
+  Users, 
+  Wallet, 
+  UserCog, 
+  LayoutGrid, 
+  Heart, 
+  HandHeart, 
+  FolderOpen 
+} from "lucide-react";
 
 const areas = [
-  { title: "Board", description: "Decisions, minutes, approvals" },
-  { title: "Money & Grants", description: "Track spending, find proof fast" },
-  { title: "People", description: "Roles, hiring basics, handoffs" },
-  { title: "Programs", description: "Plans, updates, simple tracking" },
-  { title: "Fundraising", description: "Donor list + thank-you routine" },
-  { title: "Volunteers", description: "Clear roles + onboarding" },
-  { title: "Tools & Files", description: "Clean folders + templates" },
+  { icon: Users, title: "Board", description: "Decisions, minutes, approvals" },
+  { icon: Wallet, title: "Money & Grants", description: "Track spending, find proof fast" },
+  { icon: UserCog, title: "People", description: "Roles, hiring basics, handoffs" },
+  { icon: LayoutGrid, title: "Programs", description: "Plans, updates, simple tracking" },
+  { icon: Heart, title: "Fundraising", description: "Donor list + thank-you routine" },
+  { icon: HandHeart, title: "Volunteers", description: "Clear roles + onboarding" },
+  { icon: FolderOpen, title: "Tools & Files", description: "Clean folders + templates" },
 ];
 
 export const WhatWeHelpWith = () => {
@@ -25,7 +34,7 @@ export const WhatWeHelpWith = () => {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Header */}
-        <div className="mb-16 lg:mb-20">
+        <div className="mb-12 lg:mb-16">
           <motion.h2
             id="help-heading"
             initial={{ opacity: 0, y: 20 }}
@@ -42,53 +51,40 @@ export const WhatWeHelpWith = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-lg text-muted-foreground max-w-xl"
           >
-            Pick what you want to fix. Start with one area. Add more later.
+            Pick one. Start there. Add more later.
           </motion.p>
         </div>
 
-        {/* Clean list with dividers */}
+        {/* Visual card grid */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-16"
+          className="mb-14"
         >
-          <div className="divide-y divide-border/50">
-            {areas.map((area, index) => (
-              <motion.div
-                key={area.title}
-                initial={{ opacity: 0, y: 10 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: 0.25 + index * 0.05 }}
-                className="py-5 md:py-6 flex items-center justify-between group"
-              >
-                <div className="flex items-baseline gap-3">
-                  <span className="text-base md:text-lg font-medium text-foreground">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
+            {areas.map((area, index) => {
+              const Icon = area.icon;
+              return (
+                <motion.div
+                  key={area.title}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.4, delay: 0.25 + index * 0.05 }}
+                  className="group bg-muted/40 hover:bg-muted/70 border border-border/40 rounded-2xl p-5 md:p-6 transition-all duration-200"
+                >
+                  <div className="w-10 h-10 md:w-11 md:h-11 rounded-full bg-foreground flex items-center justify-center mb-4">
+                    <Icon className="w-5 h-5 md:w-5.5 md:h-5.5 text-background" strokeWidth={1.75} />
+                  </div>
+                  <h3 className="text-base md:text-lg font-medium text-foreground mb-1">
                     {area.title}
-                  </span>
-                  <span className="text-muted-foreground text-sm md:text-base">
-                    — {area.description}
-                  </span>
-                </div>
-                <div className="w-8 h-8 md:w-9 md:h-9 rounded-full border border-border/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  <svg 
-                    width="14" 
-                    height="14" 
-                    viewBox="0 0 14 14" 
-                    fill="none" 
-                    className="text-foreground"
-                  >
-                    <path 
-                      d="M1 7H13M7 1L13 7L7 13" 
-                      stroke="currentColor" 
-                      strokeWidth="1.5" 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-              </motion.div>
-            ))}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-snug">
+                    {area.description}
+                  </p>
+                </motion.div>
+              );
+            })}
           </div>
         </motion.div>
 
