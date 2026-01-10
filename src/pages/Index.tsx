@@ -5,7 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import WithNimara from "@/components/WithNimara";
-import NimaraLoop from "@/components/NimaraLoop";
+
 import StartingPointSplit from "@/components/StartingPointSplit";
 import TheProcess from "@/components/company/TheProcess";
 import WhatWeHelpWith from "@/components/WhatWeHelpWith";
@@ -98,8 +98,6 @@ const Index = () => {
           {/* With Nimara, you can - 3 Features */}
           <WithNimara />
           
-          {/* The Nimara Loop - Flywheel approach */}
-          <NimaraLoop />
           
           {/* Start Here - Pick what fits you */}
           <StartingPointSplit />
