@@ -4,7 +4,7 @@ import { TYPEFORM_HEALTH_CHECK_URL } from "@/constants/urls";
 
 export const FinalCTA = () => {
   return (
-    <section className="py-24 md:py-32 lg:py-40 bg-primary">
+    <section className="py-24 md:py-32 lg:py-40 bg-nim-navy">
       <div className="container max-w-4xl mx-auto px-4 text-center">
         {/* Heading */}
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-10 md:mb-12 tracking-tight leading-tight">
