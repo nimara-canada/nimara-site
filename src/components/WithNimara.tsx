@@ -1,23 +1,23 @@
 import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 const cards = [{
-  title: "Win funding faster",
-  description: "Because your board, books, and files are ready when you apply.",
-  microLine: "Decisions documented. Numbers consistent. Story clear.",
+  title: "Clarity",
+  description: "A shared system everyone follows.",
+  microLine: "Decisions, roles, and files stay consistent.",
   bgClass: "bg-background",
   textClass: "text-foreground",
   subtextClass: "text-muted-foreground"
 }, {
-  title: "Spend cleanly",
-  description: "Every expense has the full proof chain — so nothing goes missing.",
-  microLine: "Payment + Receipt + Approval (together, every time).",
+  title: "Control",
+  description: "Tracking that stays clean.",
+  microLine: "Money, work, donors, and volunteers stay up to date.",
   bgClass: "bg-[hsl(var(--nim-purple))]",
   textClass: "text-white",
   subtextClass: "text-white/80"
 }, {
-  title: "Report without stress",
-  description: "When funders ask, you can pull what they need in minutes — not weeks.",
-  microLine: "Budget vs actual. Files attached. Clear owners.",
+  title: "Proof",
+  description: "A complete story for funders.",
+  microLine: "What was done, what was spent, and what was delivered.",
   bgClass: "bg-[hsl(var(--nim-mint))]",
   textClass: "text-[hsl(var(--nim-navy))]",
   subtextClass: "text-[hsl(var(--nim-navy))]/70"
