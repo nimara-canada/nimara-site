@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Layers } from 'lucide-react';
 
 const areas = [
   'Board / governance',
@@ -20,43 +19,47 @@ const WhereWeWorkSection: React.FC = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-16 lg:py-24 bg-background overflow-hidden"
+      className="relative py-24 lg:py-32 bg-background overflow-hidden"
       aria-labelledby="where-we-work-heading"
     >
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="flex items-center gap-4 mb-8"
-        >
-          <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-            <Layers className="w-5 h-5 text-primary" />
-          </div>
-          <h2 
-            id="where-we-work-heading"
-            className="text-2xl sm:text-3xl font-light tracking-tight"
+        {/* Header */}
+        <div className="text-center mb-12 lg:mb-16">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-4"
           >
-            Where we <span className="font-semibold text-primary">work</span>
-          </h2>
-        </motion.div>
+            7 Areas
+          </motion.p>
+          <motion.h2 
+            id="where-we-work-heading"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground"
+          >
+            Where we <span className="text-primary">work</span>
+          </motion.h2>
+        </div>
 
         {/* Area chips */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex flex-wrap gap-3 mb-6"
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="flex flex-wrap justify-center gap-3 lg:gap-4 mb-10"
           role="list"
           aria-label="Service areas"
         >
           {areas.map((area, index) => (
             <motion.span
               key={area}
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.9 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.3, delay: 0.15 + index * 0.05 }}
-              className="px-4 py-2.5 rounded-full bg-primary/5 border border-primary/20 text-foreground font-medium"
+              transition={{ duration: 0.3, delay: 0.25 + index * 0.06 }}
+              className="px-6 py-3 rounded-full bg-nim-purple/10 border border-nim-purple/20 text-nim-navy font-semibold text-base hover:bg-nim-purple/15 transition-colors cursor-default"
               role="listitem"
             >
               {area}
@@ -67,8 +70,8 @@ const WhereWeWorkSection: React.FC = () => {
         <motion.p
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-muted-foreground italic"
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="text-center text-muted-foreground italic text-lg"
         >
           We start with what's breaking first.
         </motion.p>

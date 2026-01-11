@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 import { CALENDLY_BOOKING_URL, TYPEFORM_HEALTH_CHECK_URL } from '@/constants/urls';
 
 const NextStepSection: React.FC = () => {
@@ -11,7 +11,7 @@ const NextStepSection: React.FC = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-16 lg:py-24 bg-background overflow-hidden"
+      className="relative py-24 lg:py-32 bg-background overflow-hidden"
       aria-labelledby="next-step-heading"
     >
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
@@ -21,48 +21,50 @@ const NextStepSection: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center"
         >
+          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-4">
+            Ready?
+          </p>
           <h2 
             id="next-step-heading"
-            className="text-2xl sm:text-3xl font-light tracking-tight mb-8"
+            className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-10"
           >
-            Next <span className="font-semibold text-primary">step</span>
+            Next <span className="text-primary">step</span>
           </h2>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-            <Button
-              asChild
-              size="lg"
-              className="px-8 py-6 text-base font-medium"
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+            {/* Primary CTA */}
+            <motion.a
+              href={CALENDLY_BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 16 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="inline-flex items-center gap-3 px-8 py-4 text-base font-semibold rounded-full bg-nim-purple text-white hover:bg-nim-purple/90 transition-all duration-200"
             >
-              <a 
-                href={CALENDLY_BOOKING_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Book a free call
-              </a>
-            </Button>
+              Book a free call
+              <ArrowRight className="w-5 h-5" />
+            </motion.a>
             
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="px-8 py-6 text-base font-medium"
+            {/* Secondary CTA */}
+            <motion.a
+              href={TYPEFORM_HEALTH_CHECK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 16 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="inline-flex items-center gap-3 px-8 py-4 text-base font-semibold rounded-full bg-nim-navy text-white hover:bg-nim-navy/90 transition-all duration-200"
             >
-              <a 
-                href={TYPEFORM_HEALTH_CHECK_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Try the 6-minute check
-              </a>
-            </Button>
+              Try the 6-minute check
+              <ArrowRight className="w-5 h-5" />
+            </motion.a>
           </div>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
             className="text-sm text-muted-foreground"
           >
             For Canadian nonprofits with 0–50 staff.

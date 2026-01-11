@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { Check } from 'lucide-react';
 
 const steps = [
   {
@@ -62,10 +63,7 @@ const MobileStepCard: React.FC<{
           }
         });
       },
-      {
-        threshold: 0.6, // Card needs to be 60% visible
-        rootMargin: '-20% 0px -20% 0px', // Focus on center of viewport
-      }
+      { threshold: 0.6, rootMargin: '-20% 0px -20% 0px' }
     );
 
     observer.observe(card);
@@ -79,40 +77,41 @@ const MobileStepCard: React.FC<{
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.4, delay: 0.1 + index * 0.08 }}
       className={`
-        rounded-xl p-5 border transition-all duration-300
+        rounded-2xl p-6 border transition-all duration-300
         ${isActive 
-          ? 'bg-primary/5 border-primary/30 shadow-lg shadow-primary/5' 
-          : 'bg-muted/30 border-border'
+          ? 'bg-white border-nim-purple/20 shadow-xl' 
+          : 'bg-white/80 border-border'
         }
       `}
     >
-      <div className="flex items-center gap-3 mb-3">
+      <div className="flex items-center gap-4 mb-4">
         <span className={`
-          w-7 h-7 rounded-full flex items-center justify-center text-sm font-medium transition-colors duration-300
+          w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-colors duration-300
           ${isActive 
-            ? 'bg-primary text-primary-foreground' 
-            : 'bg-muted text-muted-foreground'
+            ? 'bg-nim-purple text-white' 
+            : 'bg-nim-purple/10 text-nim-purple'
           }
         `}>
-          {index + 1}
+          {String(index + 1).padStart(2, '0')}
         </span>
         <h3 className={`
-          text-lg font-semibold transition-colors duration-300
-          ${isActive ? 'text-primary' : 'text-foreground'}
+          text-xl font-bold transition-colors duration-300
+          ${isActive ? 'text-nim-purple' : 'text-foreground'}
         `}>
           {step.name}
         </h3>
       </div>
-      <p className="text-muted-foreground mb-4">{step.line}</p>
-      <div className={`
-        rounded-lg p-3 border transition-all duration-300
-        ${isActive 
-          ? 'bg-background border-primary/20' 
-          : 'bg-background border-border'
-        }
-      `}>
-        <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">You get:</p>
-        <p className="text-sm text-foreground font-medium">{step.youGet}</p>
+      <p className="text-muted-foreground mb-5 leading-relaxed">{step.line}</p>
+      <div className="bg-nim-mint/20 rounded-xl p-4 border border-nim-mint/30">
+        <div className="flex items-start gap-3">
+          <div className="w-5 h-5 rounded-full bg-nim-mint flex items-center justify-center flex-shrink-0 mt-0.5">
+            <Check className="w-3 h-3 text-nim-navy" strokeWidth={3} />
+          </div>
+          <div>
+            <p className="text-xs font-semibold text-nim-navy/60 uppercase tracking-wider mb-1">You get:</p>
+            <p className="text-sm text-nim-navy font-medium">{step.youGet}</p>
+          </div>
+        </div>
       </div>
     </motion.article>
   );
@@ -122,21 +121,20 @@ const MobileStepCard: React.FC<{
 const MobileProgressIndicator: React.FC<{ activeIndex: number }> = ({ activeIndex }) => {
   return (
     <div className="sticky top-20 z-10 lg:hidden mb-6">
-      <div className="bg-background/90 backdrop-blur-sm rounded-full p-2 border border-border shadow-sm mx-auto w-fit">
-        <div className="flex items-center gap-1.5">
+      <div className="bg-white/95 backdrop-blur-sm rounded-full py-2 px-4 border border-border shadow-lg mx-auto w-fit">
+        <div className="flex items-center gap-2">
           {steps.map((_, index) => (
-            <button
+            <div
               key={index}
               className={`
-                w-2.5 h-2.5 rounded-full transition-all duration-300
+                h-2 rounded-full transition-all duration-300
                 ${index === activeIndex 
-                  ? 'bg-primary w-6' 
+                  ? 'bg-nim-purple w-8' 
                   : index < activeIndex 
-                    ? 'bg-primary/40' 
-                    : 'bg-muted'
+                    ? 'bg-nim-purple/40 w-2' 
+                    : 'bg-muted w-2'
                 }
               `}
-              aria-label={`Step ${index + 1}: ${steps[index].name}`}
             />
           ))}
         </div>
@@ -158,61 +156,70 @@ const StepsSection: React.FC = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-20 lg:py-28 bg-background overflow-hidden"
+      className="relative py-24 lg:py-32 overflow-hidden"
+      style={{ backgroundColor: '#faf8f5' }}
       aria-labelledby="steps-heading"
     >
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Header */}
-        <header className="mb-12 lg:mb-16">
+        <header className="text-center mb-16 lg:mb-20">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-4"
+          >
+            The Process
+          </motion.p>
           <motion.h2
             id="steps-heading"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight leading-[1.1]"
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-foreground"
           >
-            How it <span className="font-semibold text-primary">works</span>
+            How it <span className="text-primary">works</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-muted-foreground mt-3 text-lg"
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="text-lg text-muted-foreground mt-4 max-w-lg mx-auto"
           >
             6 steps. One clear flow.
           </motion.p>
         </header>
 
         {/* Desktop: Two-column layout */}
-        <div className="hidden lg:grid lg:grid-cols-[280px_1fr] gap-8 lg:gap-12">
+        <div className="hidden lg:grid lg:grid-cols-[320px_1fr] gap-10 lg:gap-16">
           {/* Left rail - Step names */}
-          <nav className="space-y-1" aria-label="Process steps">
+          <nav className="space-y-2" aria-label="Process steps">
             {steps.map((step, index) => (
               <motion.button
                 key={step.id}
                 initial={{ opacity: 0, x: -20 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.4, delay: 0.1 + index * 0.05 }}
+                transition={{ duration: 0.4, delay: 0.2 + index * 0.05 }}
                 onClick={() => setActiveStep(index)}
                 className={`
-                  w-full text-left px-5 py-4 rounded-xl transition-all duration-300
+                  w-full text-left px-6 py-5 rounded-2xl transition-all duration-300
                   flex items-center gap-4 group
                   ${activeStep === index 
-                    ? 'bg-primary text-primary-foreground shadow-lg' 
-                    : 'hover:bg-muted'
+                    ? 'bg-nim-purple text-white shadow-xl shadow-nim-purple/20' 
+                    : 'bg-white hover:bg-white/80 border border-transparent hover:border-border'
                   }
                 `}
               >
                 <span className={`
-                  w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium
+                  w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold
                   ${activeStep === index 
-                    ? 'bg-primary-foreground/20 text-primary-foreground' 
-                    : 'bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary'
+                    ? 'bg-white/20 text-white' 
+                    : 'bg-nim-purple/10 text-nim-purple group-hover:bg-nim-purple/20'
                   }
                 `}>
-                  {index + 1}
+                  {String(index + 1).padStart(2, '0')}
                 </span>
-                <span className={`font-medium text-lg ${activeStep === index ? '' : 'text-foreground'}`}>
+                <span className={`font-semibold text-lg ${activeStep === index ? '' : 'text-foreground'}`}>
                   {step.name}
                 </span>
               </motion.button>
@@ -225,35 +232,41 @@ const StepsSection: React.FC = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="bg-muted/40 rounded-2xl p-8 lg:p-10 border border-border"
+            className="bg-white rounded-3xl p-10 lg:p-12 border border-border shadow-lg"
           >
-            <div className="flex items-center gap-3 mb-6">
-              <span className="text-sm font-medium text-primary uppercase tracking-wider">
-                Step {activeStep + 1}
+            <div className="flex items-center gap-3 mb-8">
+              <span className="px-4 py-1.5 rounded-full text-sm font-semibold bg-nim-purple/10 text-nim-purple">
+                Step {String(activeStep + 1).padStart(2, '0')}
               </span>
-              <div className="h-px flex-1 bg-border" />
             </div>
             
-            <h3 className="text-2xl lg:text-3xl font-semibold text-foreground mb-4">
+            <h3 className="text-3xl lg:text-4xl font-bold text-foreground mb-5 tracking-tight">
               {steps[activeStep].name}
             </h3>
             
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+            <p className="text-lg text-muted-foreground leading-relaxed mb-10">
               {steps[activeStep].line}
             </p>
             
-            <div className="bg-background rounded-xl p-5 border border-border">
-              <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">
-                You get:
-              </p>
-              <p className="text-foreground font-medium">
-                {steps[activeStep].youGet}
-              </p>
+            <div className="bg-nim-mint/20 rounded-2xl p-6 border border-nim-mint/30">
+              <div className="flex items-start gap-4">
+                <div className="w-6 h-6 rounded-full bg-nim-mint flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Check className="w-4 h-4 text-nim-navy" strokeWidth={3} />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-nim-navy/60 uppercase tracking-wider mb-2">
+                    You get:
+                  </p>
+                  <p className="text-nim-navy font-medium text-lg">
+                    {steps[activeStep].youGet}
+                  </p>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
 
-        {/* Mobile: Progress indicator + Vertical list with scroll highlighting */}
+        {/* Mobile: Progress indicator + Vertical list */}
         <div className="lg:hidden">
           <MobileProgressIndicator activeIndex={mobileActiveStep} />
           
