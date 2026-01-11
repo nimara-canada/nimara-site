@@ -284,9 +284,7 @@ export default function HelpOrbitCarousel() {
       {/* Scroll progress indicator */}
       <motion.div
         className="fixed right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-2"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: false }}
+        style={{ opacity: stickyOpacity }}
       >
         {cards.map((_, index) => (
           <ScrollDot key={index} index={index} activeIndex={activeIndex} />
