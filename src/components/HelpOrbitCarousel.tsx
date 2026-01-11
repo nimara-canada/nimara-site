@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ClipboardList,
   DollarSign,
@@ -9,7 +9,10 @@ import {
   HandHelping,
   FolderOpen,
   LucideIcon,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface CardData {
   id: number;
@@ -24,7 +27,7 @@ const cards: CardData[] = [
     id: 1,
     title: "Board & Governance",
     icon: ClipboardList,
-    shortDesc: "Meetings, decisions, and approvals you can find later.",
+    shortDesc: "Meetings, decisions, approvals",
     longDesc:
       "Your board meets, makes decisions, and approves things. We help you track it all — so nothing gets lost and everything holds up when funders ask.",
   },
@@ -32,7 +35,7 @@ const cards: CardData[] = [
     id: 2,
     title: "Money & Grants",
     icon: DollarSign,
-    shortDesc: "Spending, receipts, and grant records that hold up.",
+    shortDesc: "Spending, receipts, grant records",
     longDesc:
       "Grant tracking, proof of payment, budget vs. actual — all in one place. When accountability is due, your proof is ready.",
   },
@@ -40,7 +43,7 @@ const cards: CardData[] = [
     id: 3,
     title: "People",
     icon: Users,
-    shortDesc: "Roles, contracts, and onboarding basics.",
+    shortDesc: "Roles, contracts, onboarding",
     longDesc:
       "Clear job descriptions, contractor vs. employee clarity, and simple onboarding steps your team can follow.",
   },
@@ -48,7 +51,7 @@ const cards: CardData[] = [
     id: 4,
     title: "Programs",
     icon: BarChart3,
-    shortDesc: "Clear services, outcomes, and delivery tracking.",
+    shortDesc: "Services, outcomes, tracking",
     longDesc:
       "What you deliver, who you serve, and how you measure it — documented so you can report with confidence.",
   },
@@ -56,7 +59,7 @@ const cards: CardData[] = [
     id: 5,
     title: "Fundraising",
     icon: Heart,
-    shortDesc: "Donor records and giving history in one place.",
+    shortDesc: "Donor records, giving history",
     longDesc:
       "Track who gave, when, and how much. No more digging through spreadsheets before a campaign.",
   },
@@ -64,7 +67,7 @@ const cards: CardData[] = [
     id: 6,
     title: "Volunteers",
     icon: HandHelping,
-    shortDesc: "Simple onboarding and tracking for volunteers.",
+    shortDesc: "Onboarding, tracking, records",
     longDesc:
       "Know who's helping, what they signed, and when they started. Simple records that protect your org.",
   },
@@ -72,155 +75,138 @@ const cards: CardData[] = [
     id: 7,
     title: "Tools & Files",
     icon: FolderOpen,
-    shortDesc: "Folders, templates, and routines your team will use.",
+    shortDesc: "Folders, templates, routines",
     longDesc:
       "A file system that makes sense. Templates your team will actually use. Routines that keep it clean.",
   },
 ];
 
-function getCardStyle(isActive: boolean) {
-  return {
-    bg: isActive ? "bg-white" : "bg-white/95",
-    shadow: isActive ? "shadow-xl shadow-black/10" : "shadow-lg shadow-black/5",
-    text: isActive ? "text-foreground" : "text-foreground/80",
-    subtext: isActive ? "text-muted-foreground" : "text-muted-foreground/70",
-    iconBg: isActive ? "bg-primary/10" : "bg-muted",
-    iconColor: isActive ? "text-primary" : "text-foreground/70",
-  };
-}
-
 export default function HelpOrbitCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
 
   const activeCard = cards[activeIndex];
   const ActiveIcon = activeCard.icon;
 
-  // Duplicate cards for seamless infinite scroll
-  const duplicatedCards = [...cards, ...cards];
+  const goNext = () => {
+    setActiveIndex((prev) => (prev + 1) % cards.length);
+  };
+
+  const goPrev = () => {
+    setActiveIndex((prev) => (prev - 1 + cards.length) % cards.length);
+  };
 
   return (
     <section
       id="what-we-help-with"
-      className="relative py-16 md:py-24 bg-nim-navy overflow-hidden"
+      className="relative py-20 md:py-28 bg-primary/10 overflow-hidden"
     >
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-nim-navy via-nim-navy/95 to-nim-navy pointer-events-none" />
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Main Card Container */}
+        <div className="bg-white rounded-3xl shadow-xl shadow-black/5 p-8 md:p-12 lg:p-16">
+          {/* Featured Card */}
+          <div className="flex justify-center mb-10 md:mb-12">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="relative w-full max-w-lg aspect-[16/10] bg-nim-navy rounded-2xl overflow-hidden flex items-center justify-center"
+              >
+                {/* Decorative background elements */}
+                <div className="absolute inset-0 overflow-hidden">
+                  <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary/30 rounded-full blur-3xl" />
+                  <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl" />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-primary/10 rounded-full blur-2xl" />
+                </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-            What we help with
-          </h2>
-          <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
-            From messy spreadsheets to streamlined systems — we handle the operational heavy lifting.
-          </p>
-        </div>
+                {/* Card content */}
+                <div className="relative z-10 text-center p-8">
+                  {/* Category pill */}
+                  <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
+                    <ActiveIcon className="w-4 h-4 text-white" />
+                    <span className="text-sm font-medium text-white">
+                      {activeCard.shortDesc}
+                    </span>
+                  </div>
 
-        {/* Infinite Marquee */}
-        <div
-          className="relative mb-12 md:mb-16"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          {/* Gradient fade edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-nim-navy to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-nim-navy to-transparent z-10 pointer-events-none" />
+                  {/* Title */}
+                  <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                    {activeCard.title}
+                  </h3>
 
-          {/* Scrolling track */}
-          <div className="overflow-hidden">
-            <motion.div
-              className="flex gap-4 md:gap-6"
-              animate={{
-                x: ["0%", "-50%"],
-              }}
-              transition={{
-                x: {
-                  duration: 55,
-                  repeat: Infinity,
-                  ease: "linear",
-                },
-              }}
-              style={{
-                animationPlayState: isPaused ? "paused" : "running",
-              }}
-            >
-            {duplicatedCards.map((card, index) => {
-                const realIndex = index % cards.length;
-                const isActive = realIndex === activeIndex;
-                const styles = getCardStyle(isActive);
-                const Icon = card.icon;
-
-                return (
-                  <motion.button
-                    key={`${card.title}-${index}`}
-                    onClick={() => setActiveIndex(realIndex)}
-                    className={`
-                      flex-shrink-0 w-[200px] md:w-[240px] p-5 md:p-6 rounded-2xl
-                      cursor-pointer transition-all duration-300 ease-out
-                      ${styles.bg} ${styles.shadow}
-                      ${isActive ? "scale-105 ring-2 ring-primary/20" : "hover:scale-[1.02]"}
-                    `}
-                    whileHover={{ y: -4 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <div className="flex flex-col items-start gap-3">
-                      <div
-                        className={`
-                          p-2.5 rounded-xl transition-colors duration-300
-                          ${styles.iconBg}
-                        `}
-                      >
-                        <Icon
-                          className={`w-5 h-5 md:w-6 md:h-6 transition-colors duration-300 ${styles.iconColor}`}
-                        />
-                      </div>
-                      <div className="text-left">
-                        <h3
-                          className={`font-semibold text-sm md:text-base transition-colors duration-300 ${styles.text}`}
-                        >
-                          {card.title}
-                        </h3>
-                        <p
-                          className={`text-xs md:text-sm mt-1 transition-colors duration-300 ${styles.subtext}`}
-                        >
-                          {card.shortDesc}
-                        </p>
-                      </div>
+                  {/* Nimara badge */}
+                  <div className="mt-8 flex items-center justify-center gap-2">
+                    <div className="w-5 h-5 bg-nim-mint rounded-full flex items-center justify-center">
+                      <span className="text-nim-navy text-xs font-bold">N</span>
                     </div>
-                  </motion.button>
-                );
-              })}
+                    <span className="text-white/60 text-sm">Nimara</span>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Navigation dots */}
+          <div className="flex items-center justify-center gap-2 mb-8">
+            <button
+              onClick={goPrev}
+              className="p-2 rounded-full hover:bg-muted transition-colors"
+              aria-label="Previous"
+            >
+              <ChevronLeft className="w-5 h-5 text-muted-foreground" />
+            </button>
+            <div className="flex gap-1.5">
+              {cards.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    index === activeIndex
+                      ? "bg-primary w-6"
+                      : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+            <button
+              onClick={goNext}
+              className="p-2 rounded-full hover:bg-muted transition-colors"
+              aria-label="Next"
+            >
+              <ChevronRight className="w-5 h-5 text-muted-foreground" />
+            </button>
+          </div>
+
+          {/* Description text */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeIndex}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="text-center max-w-2xl mx-auto mb-10"
+            >
+              <p className="text-lg md:text-xl text-foreground leading-relaxed">
+                {activeCard.longDesc}
+              </p>
             </motion.div>
+          </AnimatePresence>
+
+          {/* CTA Button */}
+          <div className="text-center">
+            <Button
+              asChild
+              size="lg"
+              className="rounded-full px-8 py-6 text-base font-semibold"
+            >
+              <a href="/start-here">See how we can help</a>
+            </Button>
           </div>
         </div>
-
-        {/* Content Panel */}
-        <motion.div
-          key={activeIndex}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-          className="max-w-3xl mx-auto text-center"
-        >
-          <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-white/10 mb-6">
-            <ActiveIcon className="w-8 h-8 text-nim-mint" />
-          </div>
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            {activeCard.title}
-          </h3>
-          <p className="text-lg md:text-xl text-white/80 leading-relaxed mb-6">
-            {activeCard.longDesc}
-          </p>
-          <a
-            href="/start-here"
-            className="inline-flex items-center gap-2 text-nim-mint hover:text-nim-mint/80 font-medium transition-colors"
-          >
-            See how we can help
-            <span className="text-lg">→</span>
-          </a>
-        </motion.div>
       </div>
     </section>
   );
