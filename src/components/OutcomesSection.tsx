@@ -102,17 +102,17 @@ const OutcomesSection: React.FC = () => {
           </motion.div>
         </header>
 
-        {/* Cards Grid - Colorful gradient cards with mock UIs */}
+        {/* Cards Grid - Flat Nimara colors with mock UIs */}
         <ul className="grid md:grid-cols-3 gap-6 lg:gap-8" role="list" aria-label="What you get">
           
-          {/* Card 1 - Clear Tracking - Mint gradient */}
+          {/* Card 1 - Clear Tracking - Mint */}
           <motion.li
             initial={{ opacity: 0, y: 32 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="h-full"
           >
-            <article className="h-full rounded-3xl p-6 lg:p-8 relative overflow-hidden min-h-[380px] flex flex-col" style={{ background: 'linear-gradient(135deg, hsl(162 91% 83%), hsl(162 75% 65%), hsl(165 70% 50%))' }}>
+            <article className="h-full rounded-3xl p-6 lg:p-8 relative overflow-hidden min-h-[380px] flex flex-col bg-nim-mint">
               {/* Mock UI Element */}
               <motion.div 
                 className="flex-1 flex items-center justify-end"
@@ -128,16 +128,16 @@ const OutcomesSection: React.FC = () => {
                   >
                     <motion.div 
                       variants={sideItemVariants}
-                      className="flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg"
+                      className="flex items-center gap-2 bg-white rounded-lg px-3 py-2"
                     >
-                      <div className="w-5 h-5 rounded-full bg-nim-mint/50 flex items-center justify-center">
+                      <div className="w-5 h-5 rounded-full bg-nim-mint flex items-center justify-center">
                         <FileText className="w-3 h-3 text-nim-navy" />
                       </div>
                       <span className="text-xs font-medium text-nim-navy">Board</span>
                     </motion.div>
                     <motion.div 
                       variants={sideItemVariants}
-                      className="flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg"
+                      className="flex items-center gap-2 bg-white rounded-lg px-3 py-2"
                     >
                       <div className="w-5 h-5 rounded-full bg-nim-purple/20 flex items-center justify-center">
                         <Users className="w-3 h-3 text-nim-purple" />
@@ -146,9 +146,9 @@ const OutcomesSection: React.FC = () => {
                     </motion.div>
                     <motion.div 
                       variants={sideItemVariants}
-                      className="flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg"
+                      className="flex items-center gap-2 bg-white rounded-lg px-3 py-2"
                     >
-                      <div className="w-5 h-5 rounded-full bg-nim-navy/10 flex items-center justify-center">
+                      <div className="w-5 h-5 rounded-full bg-nim-mist flex items-center justify-center">
                         <FolderOpen className="w-3 h-3 text-nim-navy" />
                       </div>
                       <span className="text-xs font-medium text-nim-navy">Files</span>
@@ -158,7 +158,7 @@ const OutcomesSection: React.FC = () => {
                   {/* Main card */}
                   <motion.div 
                     variants={itemVariants}
-                    className="bg-white rounded-2xl shadow-2xl p-4 ml-16"
+                    className="bg-white rounded-2xl p-4 ml-16"
                   >
                     <motion.div 
                       variants={listItemVariants}
@@ -180,8 +180,7 @@ const OutcomesSection: React.FC = () => {
                       className="w-20 h-1.5 bg-nim-mist rounded-full overflow-hidden"
                     >
                       <motion.div 
-                        className="h-full rounded-full" 
-                        style={{ background: 'hsl(162 91% 83%)' }}
+                        className="h-full rounded-full bg-nim-purple"
                         initial={{ width: 0 }}
                         animate={isInView ? { width: '75%' } : { width: 0 }}
                         transition={{ duration: 0.8, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -194,7 +193,7 @@ const OutcomesSection: React.FC = () => {
                       {[...Array(4)].map((_, i) => (
                         <motion.div 
                           key={i} 
-                          className="w-6 h-6 rounded-full bg-gradient-to-br from-nim-mist to-nim-cloud border-2 border-white"
+                          className="w-6 h-6 rounded-full bg-nim-mist border-2 border-white"
                           initial={{ opacity: 0, scale: 0 }}
                           animate={isInView ? { opacity: 1, scale: 1 } : {}}
                           transition={{ duration: 0.3, delay: 0.9 + i * 0.08 }}
@@ -225,14 +224,14 @@ const OutcomesSection: React.FC = () => {
             </article>
           </motion.li>
 
-          {/* Card 2 - Fast Proof - Purple gradient */}
+          {/* Card 2 - Fast Proof - Purple */}
           <motion.li
             initial={{ opacity: 0, y: 32 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="h-full"
           >
-            <article className="h-full rounded-3xl p-6 lg:p-8 relative overflow-hidden min-h-[380px] flex flex-col" style={{ background: 'linear-gradient(135deg, hsl(262 82% 68%), hsl(262 82% 58%), hsl(262 82% 48%))' }}>
+            <article className="h-full rounded-3xl p-6 lg:p-8 relative overflow-hidden min-h-[380px] flex flex-col bg-nim-purple">
               {/* Mock UI Element */}
               <motion.div 
                 className="flex-1 flex items-center justify-center"
@@ -242,7 +241,7 @@ const OutcomesSection: React.FC = () => {
               >
                 <motion.div 
                   variants={itemVariants}
-                  className="bg-white rounded-2xl shadow-2xl p-4 w-full max-w-[220px]"
+                  className="bg-white rounded-2xl p-4 w-full max-w-[220px]"
                 >
                   <motion.div 
                     variants={listItemVariants}
@@ -258,30 +257,30 @@ const OutcomesSection: React.FC = () => {
                   >
                     <motion.div 
                       variants={listItemVariants}
-                      className="flex items-center gap-3 p-2 hover:bg-nim-cloud rounded-lg transition-colors"
+                      className="flex items-center gap-3 p-2"
                     >
-                      <div className="w-8 h-8 rounded-full" style={{ background: 'linear-gradient(135deg, hsl(262 82% 68%), hsl(262 82% 58%))' }} />
+                      <div className="w-8 h-8 rounded-full bg-nim-purple" />
                       <div className="flex-1">
                         <p className="text-sm font-medium text-nim-navy">Q3 Report</p>
                         <p className="text-[10px] text-nim-slate">Due in 3 days</p>
                       </div>
-                      <button className="text-[10px] font-medium text-nim-slate border border-nim-mist rounded-md px-2 py-1 hover:bg-nim-cloud">
+                      <button className="text-[10px] font-medium text-nim-navy border border-nim-mist rounded-md px-2 py-1">
                         Review
                       </button>
                     </motion.div>
                     
                     <motion.div 
                       variants={listItemVariants}
-                      className="flex items-center gap-3 p-2 hover:bg-nim-cloud rounded-lg transition-colors"
+                      className="flex items-center gap-3 p-2"
                     >
-                      <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style={{ background: 'linear-gradient(135deg, hsl(162 91% 70%), hsl(162 75% 50%))' }}>
+                      <div className="w-8 h-8 rounded-full bg-nim-mint flex items-center justify-center text-nim-navy text-xs font-bold">
                         CB
                       </div>
                       <div className="flex-1">
                         <p className="text-sm font-medium text-nim-navy">Grant proof</p>
                         <p className="text-[10px] text-nim-slate">Funder request</p>
                       </div>
-                      <button className="text-[10px] font-medium text-nim-slate border border-nim-mist rounded-md px-2 py-1 hover:bg-nim-cloud">
+                      <button className="text-[10px] font-medium text-nim-navy border border-nim-mist rounded-md px-2 py-1">
                         Review
                       </button>
                     </motion.div>
@@ -301,14 +300,14 @@ const OutcomesSection: React.FC = () => {
             </article>
           </motion.li>
 
-          {/* Card 3 - Team Routine - Navy gradient */}
+          {/* Card 3 - Team Routine - Navy */}
           <motion.li
             initial={{ opacity: 0, y: 32 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="h-full"
           >
-            <article className="h-full rounded-3xl p-6 lg:p-8 relative overflow-hidden min-h-[380px] flex flex-col" style={{ background: 'linear-gradient(135deg, hsl(220 53% 20%), hsl(220 53% 12%), hsl(220 53% 8%))' }}>
+            <article className="h-full rounded-3xl p-6 lg:p-8 relative overflow-hidden min-h-[380px] flex flex-col bg-nim-navy">
               {/* Mock UI Element */}
               <motion.div 
                 className="flex-1 flex items-center justify-center"
@@ -318,13 +317,13 @@ const OutcomesSection: React.FC = () => {
               >
                 <motion.div 
                   variants={itemVariants}
-                  className="bg-white rounded-2xl shadow-2xl p-4 w-full max-w-[220px]"
+                  className="bg-white rounded-2xl p-4 w-full max-w-[220px]"
                 >
                   <motion.div 
                     variants={listItemVariants}
                     className="flex items-center gap-3 mb-4"
                   >
-                    <div className="w-10 h-10 rounded-full" style={{ background: 'linear-gradient(135deg, hsl(262 82% 68%), hsl(262 82% 58%))' }} />
+                    <div className="w-10 h-10 rounded-full bg-nim-purple" />
                     <div>
                       <p className="text-sm font-semibold text-nim-navy">Team Lead</p>
                       <p className="text-[10px] text-nim-slate">Program Manager</p>
@@ -333,18 +332,16 @@ const OutcomesSection: React.FC = () => {
                   
                   <motion.div 
                     variants={listItemVariants}
-                    className="rounded-xl p-3" 
-                    style={{ background: 'hsl(162 91% 93%)' }}
+                    className="rounded-xl p-3 bg-nim-mint/30"
                   >
                     <div className="flex items-start gap-2">
                       <motion.div 
-                        className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" 
-                        style={{ background: 'hsl(162 75% 40%)' }}
+                        className="w-4 h-4 rounded-full bg-nim-mint flex items-center justify-center flex-shrink-0 mt-0.5"
                         initial={{ scale: 0 }}
                         animate={isInView ? { scale: 1 } : {}}
                         transition={{ duration: 0.4, delay: 1.0, type: "spring", stiffness: 300 }}
                       >
-                        <Check className="w-2.5 h-2.5 text-white" />
+                        <Check className="w-2.5 h-2.5 text-nim-navy" />
                       </motion.div>
                       <div>
                         <p className="text-xs font-medium text-nim-navy">
