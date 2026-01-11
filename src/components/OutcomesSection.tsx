@@ -56,56 +56,56 @@ const OutcomesSection: React.FC = () => {
         {/* Cards Grid - Colorful gradient cards with mock UIs */}
         <ul className="grid md:grid-cols-3 gap-6 lg:gap-8" role="list" aria-label="What you get">
           
-          {/* Card 1 - Clear Tracking */}
+          {/* Card 1 - Clear Tracking - Mint gradient */}
           <motion.li
             initial={{ opacity: 0, y: 32 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="h-full"
           >
-            <article className="h-full rounded-3xl bg-gradient-to-br from-teal-400 via-teal-500 to-cyan-600 p-6 lg:p-8 relative overflow-hidden min-h-[380px] flex flex-col">
+            <article className="h-full rounded-3xl p-6 lg:p-8 relative overflow-hidden min-h-[380px] flex flex-col" style={{ background: 'linear-gradient(135deg, hsl(162 91% 83%), hsl(162 75% 65%), hsl(165 70% 50%))' }}>
               {/* Mock UI Element */}
               <div className="flex-1 flex items-center justify-end">
                 <div className="relative">
                   {/* Side list */}
                   <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 space-y-3">
                     <div className="flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg">
-                      <div className="w-5 h-5 rounded-full bg-teal-100 flex items-center justify-center">
-                        <FileText className="w-3 h-3 text-teal-600" />
+                      <div className="w-5 h-5 rounded-full bg-nim-mint/50 flex items-center justify-center">
+                        <FileText className="w-3 h-3 text-nim-navy" />
                       </div>
-                      <span className="text-xs font-medium text-gray-700">Board</span>
+                      <span className="text-xs font-medium text-nim-navy">Board</span>
                     </div>
                     <div className="flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg">
-                      <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center">
-                        <Users className="w-3 h-3 text-blue-600" />
+                      <div className="w-5 h-5 rounded-full bg-nim-purple/20 flex items-center justify-center">
+                        <Users className="w-3 h-3 text-nim-purple" />
                       </div>
-                      <span className="text-xs font-medium text-gray-700">People</span>
+                      <span className="text-xs font-medium text-nim-navy">People</span>
                     </div>
                     <div className="flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg">
-                      <div className="w-5 h-5 rounded-full bg-purple-100 flex items-center justify-center">
-                        <FolderOpen className="w-3 h-3 text-purple-600" />
+                      <div className="w-5 h-5 rounded-full bg-nim-navy/10 flex items-center justify-center">
+                        <FolderOpen className="w-3 h-3 text-nim-navy" />
                       </div>
-                      <span className="text-xs font-medium text-gray-700">Files</span>
+                      <span className="text-xs font-medium text-nim-navy">Files</span>
                     </div>
                   </div>
                   
                   {/* Main card */}
                   <div className="bg-white rounded-2xl shadow-2xl p-4 ml-16">
                     <div className="flex items-center justify-between mb-3">
-                      <span className="text-[10px] font-semibold text-orange-500 uppercase tracking-wide">Tasks Due</span>
-                      <div className="w-5 h-5 rounded-full bg-orange-100 flex items-center justify-center">
-                        <AlertTriangle className="w-3 h-3 text-orange-500" />
+                      <span className="text-[10px] font-semibold text-nim-purple uppercase tracking-wide">Tasks Due</span>
+                      <div className="w-5 h-5 rounded-full bg-nim-purple/10 flex items-center justify-center">
+                        <AlertTriangle className="w-3 h-3 text-nim-purple" />
                       </div>
                     </div>
-                    <div className="text-4xl font-bold text-gray-900 mb-2">7</div>
-                    <div className="w-20 h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                      <div className="w-3/4 h-full bg-teal-500 rounded-full" />
+                    <div className="text-4xl font-bold text-nim-navy mb-2">7</div>
+                    <div className="w-20 h-1.5 bg-nim-mist rounded-full overflow-hidden">
+                      <div className="w-3/4 h-full rounded-full" style={{ background: 'hsl(162 91% 83%)' }} />
                     </div>
                     <div className="flex -space-x-2 mt-3">
                       {[...Array(4)].map((_, i) => (
-                        <div key={i} className="w-6 h-6 rounded-full bg-gradient-to-br from-gray-200 to-gray-300 border-2 border-white" />
+                        <div key={i} className="w-6 h-6 rounded-full bg-gradient-to-br from-nim-mist to-nim-cloud border-2 border-white" />
                       ))}
-                      <div className="w-6 h-6 rounded-full bg-teal-500 border-2 border-white flex items-center justify-center">
+                      <div className="w-6 h-6 rounded-full bg-nim-purple border-2 border-white flex items-center justify-center">
                         <span className="text-[8px] font-bold text-white">+3</span>
                       </div>
                     </div>
@@ -114,49 +114,49 @@ const OutcomesSection: React.FC = () => {
               </div>
               
               {/* Title */}
-              <h3 className="text-xl font-bold text-white mt-6">
+              <h3 className="text-xl font-bold text-nim-navy mt-6">
                 Clear tracking you can actually see
               </h3>
             </article>
           </motion.li>
 
-          {/* Card 2 - Fast Proof */}
+          {/* Card 2 - Fast Proof - Purple gradient */}
           <motion.li
             initial={{ opacity: 0, y: 32 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="h-full"
           >
-            <article className="h-full rounded-3xl bg-gradient-to-br from-orange-400 via-coral-500 to-rose-500 p-6 lg:p-8 relative overflow-hidden min-h-[380px] flex flex-col" style={{ background: 'linear-gradient(135deg, #f97316, #fb7185, #f43f5e)' }}>
+            <article className="h-full rounded-3xl p-6 lg:p-8 relative overflow-hidden min-h-[380px] flex flex-col" style={{ background: 'linear-gradient(135deg, hsl(262 82% 68%), hsl(262 82% 58%), hsl(262 82% 48%))' }}>
               {/* Mock UI Element */}
               <div className="flex-1 flex items-center justify-center">
                 <div className="bg-white rounded-2xl shadow-2xl p-4 w-full max-w-[220px]">
-                  <div className="flex items-center gap-2 bg-rose-50 text-rose-600 rounded-lg px-3 py-1.5 mb-4">
+                  <div className="flex items-center gap-2 bg-nim-purple/10 text-nim-purple rounded-lg px-3 py-1.5 mb-4">
                     <AlertTriangle className="w-3.5 h-3.5" />
                     <span className="text-xs font-medium">2 items need attention</span>
                   </div>
                   
                   <div className="space-y-3">
-                    <div className="flex items-center gap-3 p-2 hover:bg-gray-50 rounded-lg transition-colors">
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-pink-400 to-rose-500" />
+                    <div className="flex items-center gap-3 p-2 hover:bg-nim-cloud rounded-lg transition-colors">
+                      <div className="w-8 h-8 rounded-full" style={{ background: 'linear-gradient(135deg, hsl(262 82% 68%), hsl(262 82% 58%))' }} />
                       <div className="flex-1">
-                        <p className="text-sm font-medium text-gray-900">Q3 Report</p>
-                        <p className="text-[10px] text-gray-500">Due in 3 days</p>
+                        <p className="text-sm font-medium text-nim-navy">Q3 Report</p>
+                        <p className="text-[10px] text-nim-slate">Due in 3 days</p>
                       </div>
-                      <button className="text-[10px] font-medium text-gray-500 border border-gray-200 rounded-md px-2 py-1 hover:bg-gray-50">
+                      <button className="text-[10px] font-medium text-nim-slate border border-nim-mist rounded-md px-2 py-1 hover:bg-nim-cloud">
                         Review
                       </button>
                     </div>
                     
-                    <div className="flex items-center gap-3 p-2 hover:bg-gray-50 rounded-lg transition-colors">
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-amber-500 flex items-center justify-center text-white text-xs font-bold">
+                    <div className="flex items-center gap-3 p-2 hover:bg-nim-cloud rounded-lg transition-colors">
+                      <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style={{ background: 'linear-gradient(135deg, hsl(162 91% 70%), hsl(162 75% 50%))' }}>
                         CB
                       </div>
                       <div className="flex-1">
-                        <p className="text-sm font-medium text-gray-900">Grant proof</p>
-                        <p className="text-[10px] text-gray-500">Funder request</p>
+                        <p className="text-sm font-medium text-nim-navy">Grant proof</p>
+                        <p className="text-[10px] text-nim-slate">Funder request</p>
                       </div>
-                      <button className="text-[10px] font-medium text-gray-500 border border-gray-200 rounded-md px-2 py-1 hover:bg-gray-50">
+                      <button className="text-[10px] font-medium text-nim-slate border border-nim-mist rounded-md px-2 py-1 hover:bg-nim-cloud">
                         Review
                       </button>
                     </div>
@@ -171,35 +171,35 @@ const OutcomesSection: React.FC = () => {
             </article>
           </motion.li>
 
-          {/* Card 3 - Team Routine */}
+          {/* Card 3 - Team Routine - Navy gradient */}
           <motion.li
             initial={{ opacity: 0, y: 32 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="h-full"
           >
-            <article className="h-full rounded-3xl bg-gradient-to-br from-violet-400 via-purple-500 to-fuchsia-500 p-6 lg:p-8 relative overflow-hidden min-h-[380px] flex flex-col">
+            <article className="h-full rounded-3xl p-6 lg:p-8 relative overflow-hidden min-h-[380px] flex flex-col" style={{ background: 'linear-gradient(135deg, hsl(220 53% 20%), hsl(220 53% 12%), hsl(220 53% 8%))' }}>
               {/* Mock UI Element */}
               <div className="flex-1 flex items-center justify-center">
                 <div className="bg-white rounded-2xl shadow-2xl p-4 w-full max-w-[220px]">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-fuchsia-500" />
+                    <div className="w-10 h-10 rounded-full" style={{ background: 'linear-gradient(135deg, hsl(262 82% 68%), hsl(262 82% 58%))' }} />
                     <div>
-                      <p className="text-sm font-semibold text-gray-900">Team Lead</p>
-                      <p className="text-[10px] text-gray-500">Program Manager</p>
+                      <p className="text-sm font-semibold text-nim-navy">Team Lead</p>
+                      <p className="text-[10px] text-nim-slate">Program Manager</p>
                     </div>
                   </div>
                   
-                  <div className="bg-green-50 border border-green-100 rounded-xl p-3">
+                  <div className="rounded-xl p-3" style={{ background: 'hsl(162 91% 93%)' }}>
                     <div className="flex items-start gap-2">
-                      <div className="w-4 h-4 rounded-full bg-green-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <div className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: 'hsl(162 75% 40%)' }}>
                         <Check className="w-2.5 h-2.5 text-white" />
                       </div>
                       <div>
-                        <p className="text-xs font-medium text-gray-900">
+                        <p className="text-xs font-medium text-nim-navy">
                           Monthly checklist complete
                         </p>
-                        <p className="text-[10px] text-gray-500 mt-0.5">
+                        <p className="text-[10px] text-nim-slate mt-0.5">
                           Based on your routine setup
                         </p>
                       </div>
@@ -207,8 +207,8 @@ const OutcomesSection: React.FC = () => {
                   </div>
                   
                   <div className="flex items-center gap-2 mt-4">
-                    <Calendar className="w-3.5 h-3.5 text-gray-400" />
-                    <span className="text-[10px] text-gray-500">Next check: Feb 1st</span>
+                    <Calendar className="w-3.5 h-3.5 text-nim-slate" />
+                    <span className="text-[10px] text-nim-slate">Next check: Feb 1st</span>
                   </div>
                 </div>
               </div>
