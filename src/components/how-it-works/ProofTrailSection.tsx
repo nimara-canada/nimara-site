@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { ArrowRight, FileCheck } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const trailSteps = [
   'Decision',
@@ -19,46 +19,92 @@ const ProofTrailSection: React.FC = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-16 lg:py-24 bg-muted/30 overflow-hidden"
+      className="relative py-24 lg:py-32 bg-secondary-background overflow-hidden"
       aria-labelledby="proof-trail-heading"
     >
-      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="mb-8"
-        >
-          <div className="flex items-center gap-4 mb-4">
-            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-              <FileCheck className="w-5 h-5 text-primary" />
-            </div>
-            <h2 
-              id="proof-trail-heading"
-              className="text-2xl sm:text-3xl font-light tracking-tight"
-            >
-              Proof <span className="font-semibold text-primary">Trail</span>
-            </h2>
-          </div>
-          <p className="text-muted-foreground text-lg max-w-2xl">
-            One clear chain from decision to report.
-          </p>
-        </motion.div>
+      {/* Subtle grid pattern */}
+      <div 
+        className="absolute inset-0 opacity-[0.02] pointer-events-none" 
+        aria-hidden="true"
+        style={{
+          backgroundImage: `linear-gradient(hsl(var(--foreground) / 0.08) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground) / 0.08) 1px, transparent 1px)`,
+          backgroundSize: '80px 80px'
+        }}
+      />
 
-        {/* Trail chips */}
+      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+        {/* Header */}
+        <div className="text-center mb-12 lg:mb-16">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="text-xs font-semibold tracking-[0.2em] uppercase text-white/50 mb-4"
+          >
+            The Chain
+          </motion.p>
+          <motion.h2 
+            id="proof-trail-heading"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6"
+          >
+            Proof <span className="text-accent">Trail</span>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="text-lg text-white/70 max-w-2xl mx-auto"
+          >
+            One clear chain from decision to report.
+          </motion.p>
+        </div>
+
+        {/* Trail chips - Desktop */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="flex flex-wrap items-center gap-2 sm:gap-3 mb-6"
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="hidden sm:flex items-center justify-center gap-3 mb-10"
         >
           {trailSteps.map((step, index) => (
             <React.Fragment key={step}>
-              <span className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-background border border-border text-foreground font-medium text-sm sm:text-base">
+              <motion.span 
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.3, delay: 0.3 + index * 0.08 }}
+                className="px-5 py-3 rounded-full bg-white text-nim-navy font-semibold text-sm"
+              >
                 {step}
-              </span>
+              </motion.span>
               {index < trailSteps.length - 1 && (
-                <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0 hidden sm:block" />
+                <ArrowRight className="w-5 h-5 text-white/40 flex-shrink-0" />
+              )}
+            </React.Fragment>
+          ))}
+        </motion.div>
+
+        {/* Trail chips - Mobile (wrapped) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="flex sm:hidden flex-wrap items-center justify-center gap-2 mb-10"
+        >
+          {trailSteps.map((step, index) => (
+            <React.Fragment key={step}>
+              <motion.span 
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.3, delay: 0.3 + index * 0.08 }}
+                className="px-4 py-2 rounded-full bg-white text-nim-navy font-semibold text-sm"
+              >
+                {step}
+              </motion.span>
+              {index < trailSteps.length - 1 && (
+                <span className="text-white/40 text-sm">→</span>
               )}
             </React.Fragment>
           ))}
@@ -67,8 +113,8 @@ const ProofTrailSection: React.FC = () => {
         <motion.p
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.25 }}
-          className="text-muted-foreground italic"
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="text-center text-white/60 italic text-lg"
         >
           The chain is not complete until the deliverable is saved.
         </motion.p>

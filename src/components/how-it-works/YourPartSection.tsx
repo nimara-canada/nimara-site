@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { User } from 'lucide-react';
+import { Check } from 'lucide-react';
 
 const bullets = [
   'Answer a few questions',
@@ -16,41 +16,84 @@ const YourPartSection: React.FC = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-16 lg:py-20 bg-muted/30 overflow-hidden"
+      className="relative py-20 lg:py-28 bg-background overflow-hidden"
       aria-labelledby="your-part-heading"
     >
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="flex items-center gap-4 mb-6"
-        >
-          <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-            <User className="w-5 h-5 text-primary" />
-          </div>
-          <h2 
-            id="your-part-heading"
-            className="text-2xl sm:text-3xl font-light tracking-tight"
-          >
-            Your <span className="font-semibold text-primary">part</span>
-          </h2>
-        </motion.div>
-
-        <ul className="space-y-3" role="list">
-          {bullets.map((bullet, index) => (
-            <motion.li
-              key={bullet}
-              initial={{ opacity: 0, x: -10 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.4, delay: 0.1 + index * 0.08 }}
-              className="flex items-center gap-3 text-lg text-foreground"
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left - Content */}
+          <div>
+            <motion.span
+              initial={{ opacity: 0, y: 12 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5 }}
+              className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-6 bg-nim-mint/30 text-nim-navy"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-              {bullet}
-            </motion.li>
-          ))}
-        </ul>
+              Your role
+            </motion.span>
+            
+            <motion.h2 
+              id="your-part-heading"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-8"
+            >
+              Your <span className="text-primary">part</span>
+            </motion.h2>
+
+            <ul className="space-y-4" role="list">
+              {bullets.map((bullet, index) => (
+                <motion.li
+                  key={bullet}
+                  initial={{ opacity: 0, x: -16 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
+                  className="flex items-start gap-4"
+                >
+                  <div className="w-6 h-6 rounded-full bg-nim-mint flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-4 h-4 text-nim-navy" strokeWidth={3} />
+                  </div>
+                  <span className="text-lg text-foreground">{bullet}</span>
+                </motion.li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Right - Visual */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="relative"
+          >
+            <div 
+              className="rounded-3xl p-8 lg:p-10 relative overflow-hidden"
+              style={{ backgroundColor: 'hsl(165, 45%, 88%)' }}
+            >
+              {/* Noise texture */}
+              <div 
+                className="absolute inset-0 opacity-30 mix-blend-overlay"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+                }}
+              />
+              
+              {/* Geometric lines */}
+              <svg className="absolute inset-0 w-full h-full opacity-20" preserveAspectRatio="none">
+                <line x1="0%" y1="30%" x2="100%" y2="70%" stroke="hsl(165, 40%, 40%)" strokeWidth="1" />
+                <line x1="20%" y1="0%" x2="80%" y2="100%" stroke="hsl(165, 40%, 40%)" strokeWidth="1" />
+              </svg>
+
+              <div className="relative bg-white rounded-2xl p-6 shadow-xl">
+                <p className="text-nim-navy font-medium text-lg leading-relaxed">
+                  "Just bring what you have. We'll ask questions and figure out the rest together."
+                </p>
+                <p className="text-sm text-muted-foreground mt-4">— Every Nimara engagement</p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
