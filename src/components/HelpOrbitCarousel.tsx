@@ -191,6 +191,10 @@ export default function HelpOrbitCarousel() {
   // Calculate active card index for left side highlighting
   const activeIndex = useTransform(smoothProgress, [0, 1], [0, cards.length - 1]);
 
+  // Fade out the entire sticky content as user scrolls past
+  const stickyOpacity = useTransform(smoothProgress, [0.85, 1], [1, 0]);
+  const stickyY = useTransform(smoothProgress, [0.85, 1], [0, -50]);
+
   return (
     <section
       ref={containerRef}
@@ -199,7 +203,10 @@ export default function HelpOrbitCarousel() {
       style={{ minHeight: "350vh" }}
     >
       {/* Sticky content wrapper */}
-      <div className="sticky top-0 min-h-screen flex items-center py-12 md:py-20">
+      <motion.div 
+        className="sticky top-0 min-h-screen flex items-center py-12 md:py-20"
+        style={{ opacity: stickyOpacity, y: stickyY }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             {/* Left side - Headline and description */}
@@ -265,7 +272,7 @@ export default function HelpOrbitCarousel() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Scroll progress indicator */}
       <motion.div
