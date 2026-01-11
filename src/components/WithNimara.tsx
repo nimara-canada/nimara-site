@@ -44,7 +44,7 @@ const WithNimara = () => {
 
   // Reduced motion fallback - show cards stacked normally
   if (prefersReducedMotion) {
-    return <section className="bg-background">
+    return <section className="bg-[#f5f5f0]">
         {cards.map((card, index) => <div key={index} className={`${card.bgClass} min-h-[60vh] flex items-center justify-center px-6 py-20`}>
             <div className="max-w-4xl mx-auto text-center">
               <h3 className={`text-3xl md:text-5xl font-bold mb-6 ${card.textClass}`}>
@@ -57,7 +57,7 @@ const WithNimara = () => {
           </div>)}
       </section>;
   }
-  return <section ref={containerRef} className="relative" style={{
+  return <section ref={containerRef} className="relative bg-[#f5f5f0]" style={{
     height: `${cards.length * 100}vh`
   }}>
       {/* Sticky container that pins during scroll */}
