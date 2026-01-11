@@ -34,7 +34,7 @@ const ProblemSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+          className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
         >
           Not because anyone did something wrong. But because funders look for proof, clarity, and control—not just passion.
         </motion.p>
