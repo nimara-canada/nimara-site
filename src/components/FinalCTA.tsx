@@ -18,7 +18,7 @@ export const FinalCTA = () => {
           asChild 
           size="lg" 
           variant="secondary"
-          className="bg-accent text-primary hover:bg-accent/90 px-10 py-7 text-lg font-semibold rounded-full shadow-[0_0_30px_rgba(172,252,227,0.4)] hover:shadow-[0_0_40px_rgba(172,252,227,0.6)] transition-all duration-300 hover:scale-105"
+          className="bg-white text-nim-navy hover:bg-white/90 px-10 py-7 text-lg font-semibold rounded-full transition-all duration-300"
         >
           <a href={TYPEFORM_HEALTH_CHECK_URL} target="_blank" rel="noopener noreferrer">
             Take the free check
