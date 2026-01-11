@@ -74,7 +74,7 @@ const OutcomesSection: React.FC = () => {
             transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-6 text-foreground"
           >
-            Where your system works
+            Where Nimara installs systems that stick
           </motion.h2>
 
           <motion.p
@@ -83,7 +83,7 @@ const OutcomesSection: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8"
           >
-            Real systems that keep your organization running smoothly. Every buildout delivers working tools you'll actually use — not reports that collect dust.
+            Real working tools and routines—so you can track, prove, and report without scrambling.
           </motion.p>
 
           <motion.div
@@ -97,7 +97,7 @@ const OutcomesSection: React.FC = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-6 py-3 text-sm font-medium rounded-full border border-border bg-background text-foreground hover:bg-muted transition-all duration-200"
             >
-              Get started
+              See what's included
             </a>
           </motion.div>
         </header>
@@ -213,14 +213,24 @@ const OutcomesSection: React.FC = () => {
               </motion.div>
               
               {/* Title */}
-              <motion.h3 
-                className="text-xl font-bold text-nim-navy mt-6"
-                initial={{ opacity: 0, y: 10 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.6 }}
-              >
-                Clear tracking you can actually see
-              </motion.h3>
+              <div className="mt-6">
+                <motion.h3 
+                  className="text-xl font-bold text-nim-navy"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.6 }}
+                >
+                  Clear decisions and ownership
+                </motion.h3>
+                <motion.p
+                  className="text-sm text-nim-navy/70 mt-2"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.65 }}
+                >
+                  Board records, roles, and files organized so work doesn't depend on one person.
+                </motion.p>
+              </div>
             </article>
           </motion.li>
 
@@ -289,14 +299,24 @@ const OutcomesSection: React.FC = () => {
               </motion.div>
               
               {/* Title */}
-              <motion.h3 
-                className="text-xl font-bold text-white mt-6"
-                initial={{ opacity: 0, y: 10 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.7 }}
-              >
-                Pull proof fast when funders ask
-              </motion.h3>
+              <div className="mt-6">
+                <motion.h3 
+                  className="text-xl font-bold text-white"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.7 }}
+                >
+                  Clean tracking across your work
+                </motion.h3>
+                <motion.p
+                  className="text-sm text-white/70 mt-2"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.75 }}
+                >
+                  Budgets, spending, donors, volunteers, and activities kept current—so nothing gets lost.
+                </motion.p>
+              </div>
             </article>
           </motion.li>
 
@@ -365,14 +385,24 @@ const OutcomesSection: React.FC = () => {
               </motion.div>
               
               {/* Title */}
-              <motion.h3 
-                className="text-xl font-bold text-white mt-6"
-                initial={{ opacity: 0, y: 10 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.8 }}
-              >
-                A routine your team actually follows
-              </motion.h3>
+              <div className="mt-6">
+                <motion.h3 
+                  className="text-xl font-bold text-white"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.8 }}
+                >
+                  Proof tied to the deliverable
+                </motion.h3>
+                <motion.p
+                  className="text-sm text-white/70 mt-2"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.85 }}
+                >
+                  A simple trail from decision → spend → deliverable → report, ready when asked.
+                </motion.p>
+              </div>
             </article>
           </motion.li>
         </ul>
