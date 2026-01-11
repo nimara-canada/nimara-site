@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 
 const ProblemSection = () => {
   return (
-    <section className="py-24 md:py-32 bg-background">
-      <div className="container max-w-4xl mx-auto px-4 text-center">
+    <section className="py-28 md:py-40 bg-background">
+      <div className="container max-w-5xl mx-auto px-4 text-center">
         {/* Label */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -21,7 +21,7 @@ const ProblemSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.1] mb-6"
+          className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.05] mb-8"
         >
           Good organizations still lose funding
           <br />
