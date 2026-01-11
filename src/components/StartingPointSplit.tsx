@@ -35,7 +35,7 @@ const PremiumFolderVisual = ({ isInView }: { isInView: boolean }) => (
         initial={{ opacity: 0, y: 40 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.5 }}
-        className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-6 lg:p-8 w-[85%] max-w-[320px]"
+        className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-6 lg:p-8 w-[85%] max-w-[320px]"
       >
         {/* Header */}
         <div className="flex items-center gap-3 mb-4">
@@ -108,7 +108,7 @@ const PremiumCheckVisual = ({ isInView }: { isInView: boolean }) => (
         initial={{ opacity: 0, y: 40 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.5 }}
-        className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-6 lg:p-8 w-[85%] max-w-[320px]"
+        className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-6 lg:p-8 w-[85%] max-w-[320px]"
       >
         {/* Header */}
         <div className="flex items-center gap-3 mb-4">
