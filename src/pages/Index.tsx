@@ -4,20 +4,21 @@ import { useLocation } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
-import WithNimara from "@/components/WithNimara";
-
-import StartingPointSplit from "@/components/StartingPointSplit";
-import TheProcess from "@/components/company/TheProcess";
-import HelpOrbitCarousel from "@/components/HelpOrbitCarousel";
-import OutcomesSection from "@/components/OutcomesSection";
-import { FAQ } from "@/components/FAQ";
-import { FinalCTA } from "@/components/FinalCTA";
-import StickyFooterCTA from "@/components/StickyFooterCTA";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { MotionControls } from "@/components/MotionControls";
 import { MotionPreferencesProvider } from "@/hooks/use-scroll-reveal";
-import { ScrollReveal, RevealSection } from "@/components/ScrollReveal";
+
+// New MindMarket-style sections
+import TheProblem from "@/components/landing/TheProblem";
+import TheProofTrail from "@/components/landing/TheProofTrail";
+import ComparisonSection from "@/components/landing/ComparisonSection";
+import ProcessSection from "@/components/landing/ProcessSection";
+import WhatWeHelp from "@/components/landing/WhatWeHelp";
+import OutcomesGrid from "@/components/landing/OutcomesGrid";
+import TrustSection from "@/components/landing/TrustSection";
+import SimpleFAQ from "@/components/landing/SimpleFAQ";
+import FinalCTASection from "@/components/landing/FinalCTASection";
 
 const Index = () => {
   const location = useLocation();
@@ -91,39 +92,37 @@ const Index = () => {
         
         <Header />
         
-        <main id="main" className="space-y-0" style={{ paddingTop: '5rem' }}>
-          {/* Hero - full height entry */}
+        <main id="main" style={{ paddingTop: '5rem' }}>
+          {/* 1. Hero - Entry point, unchanged H1 and CTAs */}
           <HeroSection />
           
-          {/* With Nimara, you can - 3 Features */}
-          <WithNimara />
+          {/* 2. The Problem - Set up the pain point */}
+          <TheProblem />
           
+          {/* 3. The Proof Trail - The solution framework */}
+          <TheProofTrail />
           
-          {/* Start Here - Pick what fits you */}
-          <StartingPointSplit />
+          {/* 4. Traditional vs Nimara - Clear comparison */}
+          <ComparisonSection />
           
+          {/* 5. How It Works - 6-step process with scroll interaction */}
+          <ProcessSection />
           
-          {/* How It Works - 4 Steps */}
-          <TheProcess />
+          {/* 6. What We Help With - 7 areas */}
+          <WhatWeHelp />
           
-          {/* What We Help With - 7 Areas */}
-          <HelpOrbitCarousel />
+          {/* 7. What You Get - Outcomes */}
+          <OutcomesGrid />
           
-          {/* What You Get - Outcomes */}
-          <OutcomesSection />
+          {/* 8. Trust Section - Guarantees */}
+          <TrustSection />
           
+          {/* 9. FAQ */}
+          <SimpleFAQ />
           
-          {/* FAQ */}
-          <RevealSection id="faq">
-            <ScrollReveal>
-              <FAQ />
-            </ScrollReveal>
-          </RevealSection>
-          
-          {/* Final CTA */}
-          <FinalCTA />
+          {/* 10. Final CTA */}
+          <FinalCTASection />
         </main>
-        
         
         <Footer />
       </div>
