@@ -65,22 +65,22 @@ const NimaraHeroPremium = () => {
 
             {/* Subheadline */}
             <p style={revealStyle(200)} className="text-lg md:text-xl leading-relaxed max-w-[50ch] mx-auto mb-10 text-white/70">
-              Simple systems to track every dollar — so you're always ready when funders ask.
+              Less chasing paperwork. More time for the work that matters.
             </p>
 
             {/* Bullets */}
             <ul style={revealStyle(250)} className="space-y-3 mb-10 max-w-xl mx-auto text-left" aria-label="Key benefits">
               <li className="flex items-start gap-3 text-white/65">
                 <Check className="w-5 h-5 mt-0.5 flex-shrink-0 text-accent" aria-hidden="true" />
-                <span>Every receipt, approval, and payment — documented</span>
+                <span>Find proof of payment in minutes, not hours</span>
               </li>
               <li className="flex items-start gap-3 text-white/65">
                 <Check className="w-5 h-5 mt-0.5 flex-shrink-0 text-accent" aria-hidden="true" />
-                <span>Grant budgets tracked in one place</span>
+                <span>Keep spending and budgets clean and current</span>
               </li>
               <li className="flex items-start gap-3 text-white/65">
                 <Check className="w-5 h-5 mt-0.5 flex-shrink-0 text-accent" aria-hidden="true" />
-                <span>Reports ready without the scramble</span>
+                <span>Pull reports without digging through files</span>
               </li>
             </ul>
 
@@ -102,7 +102,7 @@ const NimaraHeroPremium = () => {
             {/* Trust line */}
             <div style={revealStyle(400)} className="mt-5">
               <p className="text-sm text-white/60 tracking-[0.01em]">
-                Built for Canadian nonprofits with 0–50 staff. Not an audit firm.
+                For Canadian nonprofits with 0–50 staff. Not an audit firm.
               </p>
             </div>
           </div>
