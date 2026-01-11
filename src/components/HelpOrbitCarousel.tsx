@@ -113,9 +113,16 @@ function StackingCard({
     [0, 1]
   );
 
-  // Calculate stacking offset and scale
+  // Calculate stacking offset and base scale
   const stackOffset = index * 12;
-  const scale = 1 - (totalCards - 1 - index) * 0.02;
+  const baseScale = 1 - (totalCards - 1 - index) * 0.02;
+
+  // Scale down effect as user scrolls past the section
+  const exitScale = useTransform(
+    scrollProgress,
+    [0.85, 1],
+    [baseScale, baseScale * 0.85]
+  );
 
   return (
     <motion.div
@@ -126,7 +133,7 @@ function StackingCard({
         zIndex: index + 1,
         top: stackOffset,
         height: "calc(100% - 60px)",
-        scale,
+        scale: exitScale,
       }}
     >
       {/* Corner icon */}
