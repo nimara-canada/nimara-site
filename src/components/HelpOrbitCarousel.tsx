@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import {
   ClipboardList,
   DollarSign,
@@ -9,7 +9,6 @@ import {
   HandHelping,
   FolderOpen,
   LucideIcon,
-  Check,
   ArrowRight,
 } from "lucide-react";
 
@@ -28,7 +27,7 @@ const cards: CardData[] = [
     title: "Board & Governance",
     icon: ClipboardList,
     shortDesc: "Meetings, decisions, approvals",
-    color: "bg-[#1e1b4b]", // Dark navy
+    color: "bg-[#1e1b4b]",
     textColor: "text-white",
   },
   {
@@ -36,7 +35,7 @@ const cards: CardData[] = [
     title: "Money & Grants",
     icon: DollarSign,
     shortDesc: "Spending, receipts, grant records",
-    color: "bg-[#22c55e]", // Green
+    color: "bg-[#22c55e]",
     textColor: "text-white",
   },
   {
@@ -44,7 +43,7 @@ const cards: CardData[] = [
     title: "People",
     icon: Users,
     shortDesc: "Roles, contracts, onboarding",
-    color: "bg-[#f97316]", // Orange/coral
+    color: "bg-[#f97316]",
     textColor: "text-white",
   },
   {
@@ -60,7 +59,7 @@ const cards: CardData[] = [
     title: "Fundraising",
     icon: Heart,
     shortDesc: "Donor records, giving history",
-    color: "bg-[#7c3aed]", // Purple
+    color: "bg-[#7c3aed]",
     textColor: "text-white",
   },
   {
@@ -68,7 +67,7 @@ const cards: CardData[] = [
     title: "Volunteers",
     icon: HandHelping,
     shortDesc: "Onboarding, tracking, records",
-    color: "bg-[#06b6d4]", // Cyan
+    color: "bg-[#06b6d4]",
     textColor: "text-white",
   },
   {
@@ -76,177 +75,274 @@ const cards: CardData[] = [
     title: "Tools & Files",
     icon: FolderOpen,
     shortDesc: "Folders, templates, routines",
-    color: "bg-[#ec4899]", // Pink
+    color: "bg-[#ec4899]",
     textColor: "text-white",
   },
 ];
 
-export default function HelpOrbitCarousel() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+// Individual card component with its own scroll-based animation
+function StackingCard({
+  card,
+  index,
+  totalCards,
+  scrollProgress,
+}: {
+  card: CardData;
+  index: number;
+  totalCards: number;
+  scrollProgress: ReturnType<typeof useSpring>;
+}) {
+  const Icon = card.icon;
 
-  // Display cards for the stacked visual (showing top 4)
-  const displayCards = cards.slice(0, 4);
+  // Each card appears at a specific scroll threshold
+  // Card 0: 0%, Card 1: ~14%, Card 2: ~28%, etc.
+  const cardStart = index / totalCards;
+  const cardEnd = (index + 1) / totalCards;
+
+  // Transform for y position - card slides up from below
+  const y = useTransform(
+    scrollProgress,
+    [cardStart, cardEnd],
+    ["100%", "0%"]
+  );
+
+  // Opacity for smooth fade in
+  const opacity = useTransform(
+    scrollProgress,
+    [cardStart, cardStart + 0.05],
+    [0, 1]
+  );
+
+  // Calculate stacking offset and scale
+  const stackOffset = index * 12;
+  const scale = 1 - (totalCards - 1 - index) * 0.02;
+
+  return (
+    <motion.div
+      className={`absolute inset-x-4 md:inset-x-0 rounded-3xl shadow-2xl ${card.color} overflow-hidden`}
+      style={{
+        y,
+        opacity,
+        zIndex: index + 1,
+        top: stackOffset,
+        height: "calc(100% - 60px)",
+        scale,
+      }}
+    >
+      {/* Corner icon */}
+      <div className="absolute top-6 right-6">
+        <div
+          className={`w-12 h-12 rounded-full flex items-center justify-center ${
+            card.color === "bg-white" ? "bg-primary/10" : "bg-white/20"
+          }`}
+        >
+          <Icon
+            className={`w-6 h-6 ${
+              card.color === "bg-white" ? "text-primary" : "text-white"
+            }`}
+          />
+        </div>
+      </div>
+
+      {/* Card content */}
+      <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+        <h3
+          className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-3 ${card.textColor}`}
+        >
+          {card.title.split(" ")[0]}
+        </h3>
+        <p
+          className={`text-base md:text-lg ${
+            card.color === "bg-white" ? "text-muted-foreground" : "text-white/80"
+          }`}
+        >
+          {card.shortDesc}
+        </p>
+      </div>
+
+      {/* Subtle gradient overlay for depth */}
+      <div
+        className={`absolute inset-0 pointer-events-none ${
+          card.color === "bg-white"
+            ? "bg-gradient-to-t from-white/50 to-transparent"
+            : "bg-gradient-to-t from-black/10 to-transparent"
+        }`}
+      />
+    </motion.div>
+  );
+}
+
+export default function HelpOrbitCarousel() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Track scroll progress within this section
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  // Smooth the progress for premium feel
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 80,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
+  // Calculate active card index for left side highlighting
+  const activeIndex = useTransform(smoothProgress, [0, 1], [0, cards.length - 1]);
 
   return (
     <section
+      ref={containerRef}
       id="what-we-help-with"
-      className="relative py-20 md:py-28 lg:py-32 bg-[#f5f5f0] overflow-hidden"
+      className="relative bg-[#f5f5f0]"
+      style={{ minHeight: "350vh" }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left side - Headline and description */}
-          <div className="order-2 lg:order-1">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-8">
-              What we{" "}
-              <span className="relative inline-block">
-                help
-                <svg
-                  className="absolute -bottom-2 left-0 w-full"
-                  viewBox="0 0 100 12"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="M0,8 Q25,0 50,8 T100,8"
-                    stroke="#a78bfa"
-                    strokeWidth="3"
-                    fill="none"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </span>{" "}
-              you with
-            </h2>
-
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-10 max-w-lg">
-              From messy spreadsheets to streamlined systems. We handle the operational heavy lifting so you can focus on mission.
-            </p>
-
-            {/* Quick list */}
-            <div className="space-y-4 mb-10">
-              {cards.map((card) => (
-                <motion.div
-                  key={card.id}
-                  className="flex items-center gap-3 cursor-pointer group"
-                  onMouseEnter={() => setHoveredIndex(card.id)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                  whileHover={{ x: 8 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <div
-                    className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors duration-300 ${
-                      hoveredIndex === card.id ? card.color : "bg-muted"
-                    }`}
+      {/* Sticky content wrapper */}
+      <div className="sticky top-0 min-h-screen flex items-center py-12 md:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            {/* Left side - Headline and description */}
+            <div className="order-2 lg:order-1">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6 md:mb-8">
+                What we{" "}
+                <span className="relative inline-block">
+                  help
+                  <svg
+                    className="absolute -bottom-2 left-0 w-full"
+                    viewBox="0 0 100 12"
+                    preserveAspectRatio="none"
                   >
-                    <card.icon
-                      className={`w-4 h-4 transition-colors duration-300 ${
-                        hoveredIndex === card.id ? card.textColor : "text-muted-foreground"
-                      }`}
+                    <path
+                      d="M0,8 Q25,0 50,8 T100,8"
+                      stroke="#a78bfa"
+                      strokeWidth="3"
+                      fill="none"
+                      strokeLinecap="round"
                     />
-                  </div>
-                  <span
-                    className={`font-medium transition-colors duration-300 ${
-                      hoveredIndex === card.id ? "text-foreground" : "text-muted-foreground"
-                    }`}
-                  >
-                    {card.title}
-                  </span>
-                  <ArrowRight
-                    className={`w-4 h-4 transition-all duration-300 ${
-                      hoveredIndex === card.id
-                        ? "opacity-100 translate-x-0 text-foreground"
-                        : "opacity-0 -translate-x-2"
-                    }`}
+                  </svg>
+                </span>{" "}
+                you with
+              </h2>
+
+              <p className="text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed mb-8 md:mb-10 max-w-lg">
+                From messy spreadsheets to streamlined systems. We handle the
+                operational heavy lifting so you can focus on mission.
+              </p>
+
+              {/* Progress list that highlights as cards stack */}
+              <div className="space-y-3 md:space-y-4 mb-8 md:mb-10">
+                {cards.map((card, index) => (
+                  <CardListItem
+                    key={card.id}
+                    card={card}
+                    index={index}
+                    activeIndex={activeIndex}
                   />
-                </motion.div>
-              ))}
+                ))}
+              </div>
+
+              <a
+                href="/start-here"
+                className="inline-flex items-center gap-2 text-foreground font-semibold hover:gap-3 transition-all duration-300"
+              >
+                See how we can help
+                <ArrowRight className="w-5 h-5" />
+              </a>
             </div>
 
-            <a
-              href="/start-here"
-              className="inline-flex items-center gap-2 text-foreground font-semibold hover:gap-3 transition-all duration-300"
-            >
-              See how we can help
-              <ArrowRight className="w-5 h-5" />
-            </a>
-          </div>
-
-          {/* Right side - Stacked cards */}
-          <div className="order-1 lg:order-2 relative h-[400px] md:h-[500px]">
-            {displayCards.map((card, index) => {
-              const Icon = card.icon;
-              const isTop = index === displayCards.length - 1;
-              const offset = (displayCards.length - 1 - index) * 20;
-              const scale = 1 - (displayCards.length - 1 - index) * 0.03;
-
-              return (
-                <motion.div
+            {/* Right side - Stacking cards */}
+            <div className="order-1 lg:order-2 relative h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px]">
+              {cards.map((card, index) => (
+                <StackingCard
                   key={card.id}
-                  className={`absolute inset-x-0 rounded-3xl shadow-xl ${card.color} overflow-hidden`}
-                  style={{
-                    top: offset,
-                    zIndex: index,
-                    height: "85%",
-                  }}
-                  initial={{ scale, y: offset }}
-                  animate={{
-                    scale: hoveredIndex === card.id ? 1.02 : scale,
-                    y: hoveredIndex === card.id ? offset - 10 : offset,
-                  }}
-                  transition={{ duration: 0.3 }}
-                  onMouseEnter={() => setHoveredIndex(card.id)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                >
-                  {/* Corner icon */}
-                  <div className="absolute top-6 right-6">
-                    <div
-                      className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                        card.color === "bg-white"
-                          ? "bg-primary/10"
-                          : "bg-white/20"
-                      }`}
-                    >
-                      <Icon
-                        className={`w-6 h-6 ${
-                          card.color === "bg-white"
-                            ? "text-primary"
-                            : "text-white"
-                        }`}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Card content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-8">
-                    <h3
-                      className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-4 ${card.textColor}`}
-                    >
-                      {card.title.split(" ")[0]}
-                    </h3>
-                    <p
-                      className={`text-lg ${
-                        card.color === "bg-white"
-                          ? "text-muted-foreground"
-                          : "text-white/80"
-                      }`}
-                    >
-                      {card.shortDesc}
-                    </p>
-                  </div>
-
-                  {/* Check icon for completed feel */}
-                  {index < displayCards.length - 1 && (
-                    <div className="absolute top-6 right-24">
-                      <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
-                        <Check className="w-4 h-4 text-white" />
-                      </div>
-                    </div>
-                  )}
-                </motion.div>
-              );
-            })}
+                  card={card}
+                  index={index}
+                  totalCards={cards.length}
+                  scrollProgress={smoothProgress}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Scroll progress indicator */}
+      <motion.div
+        className="fixed right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-2"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false }}
+      >
+        {cards.map((_, index) => (
+          <ScrollDot key={index} index={index} activeIndex={activeIndex} />
+        ))}
+      </motion.div>
     </section>
+  );
+}
+
+// Card list item with scroll-based highlighting
+function CardListItem({
+  card,
+  index,
+  activeIndex,
+}: {
+  card: CardData;
+  index: number;
+  activeIndex: ReturnType<typeof useTransform<number, number>>;
+}) {
+  const isActive = useTransform(activeIndex, (latest: number) => Math.round(latest) >= index);
+
+  return (
+    <motion.div
+      className="flex items-center gap-3 group"
+      style={{
+        opacity: useTransform(isActive, (active: boolean) => (active ? 1 : 0.4)),
+      }}
+    >
+      <motion.div
+        className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors duration-500`}
+        style={{
+          backgroundColor: useTransform(isActive, (active: boolean) =>
+            active ? card.color.replace("bg-", "").replace("[", "").replace("]", "") : "hsl(var(--muted))"
+          ),
+        }}
+        animate={{
+          scale: 1,
+        }}
+      >
+        <card.icon className="w-4 h-4 text-white" />
+      </motion.div>
+      <span className="font-medium text-sm md:text-base text-foreground">
+        {card.title}
+      </span>
+    </motion.div>
+  );
+}
+
+// Scroll progress dot indicator
+function ScrollDot({
+  index,
+  activeIndex,
+}: {
+  index: number;
+  activeIndex: ReturnType<typeof useTransform<number, number>>;
+}) {
+  const isActive = useTransform(activeIndex, (latest: number) => Math.round(latest) === index);
+  const isPast = useTransform(activeIndex, (latest: number) => Math.round(latest) > index);
+
+  return (
+    <motion.div
+      className="w-2 h-2 rounded-full transition-all duration-300"
+      style={{
+        backgroundColor: useTransform(
+          [isActive, isPast] as any,
+          ([active, past]: [boolean, boolean]) =>
+            active ? "hsl(var(--primary))" : past ? "hsl(var(--primary) / 0.5)" : "hsl(var(--muted))"
+        ),
+        scale: useTransform(isActive, (active: boolean) => (active ? 1.5 : 1)),
+      }}
+    />
   );
 }
