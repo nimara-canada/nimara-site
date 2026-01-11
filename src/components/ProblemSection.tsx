@@ -23,7 +23,7 @@ const ProblemSection = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.1] mb-6"
         >
-          Good programs still lose funding
+          Good organizations still lose funding
           <br />
           <span className="text-primary">when systems are weak.</span>
         </motion.h2>
