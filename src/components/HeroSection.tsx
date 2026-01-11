@@ -64,23 +64,23 @@ const NimaraHeroPremium = () => {
             </h1>
 
             {/* Subheadline */}
-            <p style={revealStyle(200)} className="text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-8 text-white/70">
-              We set up simple systems so your team can apply faster, track spending, and report without stress.
+            <p style={revealStyle(200)} className="text-lg md:text-xl leading-relaxed max-w-[50ch] mx-auto mb-10 text-white/70">
+              Simple systems to track every dollar — so you're always ready when funders ask.
             </p>
 
             {/* Bullets */}
             <ul style={revealStyle(250)} className="space-y-3 mb-10 max-w-xl mx-auto text-left" aria-label="Key benefits">
-              <li className="flex items-start gap-3 text-white/70">
+              <li className="flex items-start gap-3 text-white/65">
                 <Check className="w-5 h-5 mt-0.5 flex-shrink-0 text-accent" aria-hidden="true" />
-                <span>Find receipts, approvals, and proof of payment in minutes</span>
+                <span>Every receipt, approval, and payment — documented</span>
               </li>
-              <li className="flex items-start gap-3 text-white/70">
+              <li className="flex items-start gap-3 text-white/65">
                 <Check className="w-5 h-5 mt-0.5 flex-shrink-0 text-accent" aria-hidden="true" />
-                <span>Keep grant budgets and spending clean and easy to track</span>
+                <span>Grant budgets tracked in one place</span>
               </li>
-              <li className="flex items-start gap-3 text-white/70">
+              <li className="flex items-start gap-3 text-white/65">
                 <Check className="w-5 h-5 mt-0.5 flex-shrink-0 text-accent" aria-hidden="true" />
-                <span>Send reports without scrambling or guessing</span>
+                <span>Reports ready without the scramble</span>
               </li>
             </ul>
 
@@ -100,15 +100,15 @@ const NimaraHeroPremium = () => {
             </div>
 
             {/* Trust line */}
-            <div style={revealStyle(400)} className="mt-6">
-              <p className="text-sm text-white/60">
-                Built for nonprofits with 0–50 staff in Canada. Not an audit firm.
+            <div style={revealStyle(400)} className="mt-5">
+              <p className="text-sm text-white/60 tracking-[0.01em]">
+                Built for Canadian nonprofits with 0–50 staff. Not an audit firm.
               </p>
             </div>
           </div>
 
           {/* Stats Bar */}
-          <div style={revealStyle(600)} className="mt-12 md:mt-16 pt-8 border-t border-white/10" role="region" aria-label="Service timelines">
+          <div style={revealStyle(600)} className="mt-14 md:mt-18 pt-8 border-t border-white/[0.08]" role="region" aria-label="Service timelines">
             <dl className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4 text-center">
               <div className="relative sm:border-r sm:border-white/10">
                 <dt className="text-[10px] uppercase tracking-[0.15em] text-white/50 mb-1">
