@@ -59,39 +59,39 @@ const NimaraHeroPremium = () => {
           {/* Single Column - Clean Copy */}
           <div className="text-center">
             {/* Main Headline */}
-            <h1 id="hero-heading" style={revealStyle(100)} className="mb-8 md:mb-10 xl:mb-12 text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-white leading-[1.05] tracking-tight">
+            <h1 id="hero-heading" style={revealStyle(100)} className="mb-8 md:mb-10 xl:mb-12 text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-white leading-[1.05] tracking-[-0.02em]">
               We make funding easier to <span className="text-accent">win</span> — and <span className="text-accent">manage</span>.
             </h1>
 
             {/* Subheadline */}
-            <p style={revealStyle(200)} className="text-lg md:text-xl leading-snug max-w-[50ch] mx-auto mb-10 text-white/80">
+            <p style={revealStyle(200)} className="text-lg md:text-xl lg:text-[1.35rem] leading-snug max-w-[48ch] mx-auto mb-12 text-white/80">
               Every receipt, approval, and payment — documented and ready.
             </p>
 
-            {/* Bullets */}
-            <ul style={revealStyle(250)} className="space-y-3 mb-6 max-w-md mx-auto text-left" aria-label="Key benefits">
-              <li className="flex items-start gap-3 text-white/70">
-                <Check className="w-5 h-5 mt-0.5 flex-shrink-0 text-accent" aria-hidden="true" />
+            {/* Bullets - centered alignment */}
+            <ul style={revealStyle(250)} className="inline-flex flex-col items-start gap-3 mb-8 text-left" aria-label="Key benefits">
+              <li className="flex items-center gap-3 text-base md:text-lg text-white/75">
+                <Check className="w-5 h-5 flex-shrink-0 text-accent" aria-hidden="true" />
                 <span>Find proof of payment in minutes</span>
               </li>
-              <li className="flex items-start gap-3 text-white/70">
-                <Check className="w-5 h-5 mt-0.5 flex-shrink-0 text-accent" aria-hidden="true" />
+              <li className="flex items-center gap-3 text-base md:text-lg text-white/75">
+                <Check className="w-5 h-5 flex-shrink-0 text-accent" aria-hidden="true" />
                 <span>Track grant spending without guesswork</span>
               </li>
-              <li className="flex items-start gap-3 text-white/70">
-                <Check className="w-5 h-5 mt-0.5 flex-shrink-0 text-accent" aria-hidden="true" />
+              <li className="flex items-center gap-3 text-base md:text-lg text-white/75">
+                <Check className="w-5 h-5 flex-shrink-0 text-accent" aria-hidden="true" />
                 <span>Pull reports when funders ask</span>
               </li>
             </ul>
 
             {/* Proof Trail */}
-            <div style={revealStyle(275)} className="flex items-center justify-center gap-2 text-[11px] uppercase tracking-[0.12em] text-white/40 mb-8" aria-label="Proof trail flow">
+            <div style={revealStyle(275)} className="flex items-center justify-center gap-3 text-[11px] md:text-xs uppercase tracking-[0.15em] text-white/40 mb-10" aria-label="Proof trail flow">
               <span>Receipt</span>
-              <span className="text-white/25">→</span>
+              <span className="text-white/20">→</span>
               <span>Approval</span>
-              <span className="text-white/25">→</span>
+              <span className="text-white/20">→</span>
               <span>Payment</span>
-              <span className="text-white/25">→</span>
+              <span className="text-white/20">→</span>
               <span>Report</span>
             </div>
 
@@ -111,8 +111,8 @@ const NimaraHeroPremium = () => {
             </div>
 
             {/* Trust line */}
-            <div style={revealStyle(400)} className="mt-6">
-              <p className="text-sm text-white/60 tracking-[0.01em]">
+            <div style={revealStyle(400)} className="mt-8">
+              <p className="text-sm md:text-[0.9rem] text-white/55 tracking-[0.02em]">
                 For Canadian nonprofits with 0–50 staff. Not an audit firm.
               </p>
             </div>
