@@ -1,22 +1,18 @@
 import { Helmet } from "react-helmet";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import HowItWorksHero from "@/components/company/HowItWorksHero";
-import TwoStartingPoints from "@/components/company/TwoStartingPoints";
-import TheProcess from "@/components/company/TheProcess";
-import WhatYouGet from "@/components/company/WhatYouGet";
-import BehindTheScenes from "@/components/company/BehindTheScenes";
-import LevelsOverview from "@/components/company/LevelsOverview";
-import WhatWeAreNot from "@/components/company/WhatWeAreNot";
-import HowItWorksFAQ from "@/components/company/HowItWorksFAQ";
-import HowItWorksFinalCTA from "@/components/company/HowItWorksFinalCTA";
-import { Expertise } from "@/components/Expertise";
-import { SystemLadder } from "@/components/SystemLadder";
+import HowItWorksPageHero from "@/components/how-it-works/HowItWorksPageHero";
+import StepsSection from "@/components/how-it-works/StepsSection";
+import YourPartSection from "@/components/how-it-works/YourPartSection";
+import OurPartSection from "@/components/how-it-works/OurPartSection";
+import ProofTrailSection from "@/components/how-it-works/ProofTrailSection";
+import WhereWeWorkSection from "@/components/how-it-works/WhereWeWorkSection";
+import WhatWeAreNotSection from "@/components/how-it-works/WhatWeAreNotSection";
+import NextStepSection from "@/components/how-it-works/NextStepSection";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { MotionControls } from "@/components/MotionControls";
 import { MotionPreferencesProvider } from "@/hooks/use-scroll-reveal";
-import { ScrollReveal, RevealSection } from "@/components/ScrollReveal";
 
 const HowNimaraWorks = () => {
   return (
@@ -28,7 +24,7 @@ const HowNimaraWorks = () => {
         
         <Helmet>
           <title>How It Works | Nimara - Simple Systems for Nonprofits</title>
-          <meta name="description" content="Learn how Nimara helps nonprofits set up simple systems for money, files, and reporting. Choose Grant Setup or Organization Check to get started." />
+          <meta name="description" content="Learn how Nimara helps nonprofits set up simple systems for money, files, and reporting. 6 clear steps from start to handover." />
           <meta name="robots" content="index, follow" />
           <meta name="author" content="Nimara" />
           <meta name="geo.region" content="CA" />
@@ -38,7 +34,7 @@ const HowNimaraWorks = () => {
           
           <meta property="og:site_name" content="Nimara" />
           <meta property="og:title" content="How It Works | Nimara - Simple Systems for Nonprofits" />
-          <meta property="og:description" content="Learn how Nimara helps nonprofits set up simple systems for money, files, and reporting. Choose Grant Setup or Organization Check to get started." />
+          <meta property="og:description" content="Learn how Nimara helps nonprofits set up simple systems for money, files, and reporting. 6 clear steps from start to handover." />
           <meta property="og:url" content="https://nimara.ca/how-nimara-works" />
           <meta property="og:image" content="https://nimara.ca/og-image.png" />
           <meta property="og:type" content="website" />
@@ -46,27 +42,47 @@ const HowNimaraWorks = () => {
           
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content="How It Works | Nimara - Simple Systems for Nonprofits" />
-          <meta name="twitter:description" content="Learn how Nimara helps nonprofits set up simple systems for money, files, and reporting. Choose Grant Setup or Organization Check to get started." />
+          <meta name="twitter:description" content="Learn how Nimara helps nonprofits set up simple systems for money, files, and reporting. 6 clear steps from start to handover." />
           <meta name="twitter:image" content="https://nimara.ca/og-image.png" />
           
           <script type="application/ld+json">
             {JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Service",
-              "serviceType": "Nonprofit Systems Setup",
-              "provider": {
-                "@type": "Organization",
-                "name": "Nimara"
-              },
-              "areaServed": {
-                "@type": "Country",
-                "name": "Canada"
-              },
-              "description": "Simple systems for money, files, and reporting — so funding is easier to win and manage.",
-              "offers": {
-                "@type": "Offer",
-                "availability": "https://schema.org/InStock"
-              }
+              "@type": "HowTo",
+              "name": "How Nimara Works",
+              "description": "A step-by-step guide to how Nimara helps Canadian nonprofits set up simple systems.",
+              "step": [
+                {
+                  "@type": "HowToStep",
+                  "name": "Start",
+                  "text": "Book a free call or try the 6-minute check."
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Check",
+                  "text": "We review what you have. (2 weeks for Full Health Check)"
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Choose",
+                  "text": "Pick the areas that matter most right now."
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Set up",
+                  "text": "We put simple systems in place. (4–8 weeks)"
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Keep it going",
+                  "text": "We train your team and check in for 90 days."
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Handover",
+                  "text": "You own it. We step back."
+                }
+              ]
             })}
           </script>
         </Helmet>
@@ -74,70 +90,29 @@ const HowNimaraWorks = () => {
         <Header />
         
         <main id="main" className="space-y-0" style={{ paddingTop: 'calc(var(--announcement-height, 0px) + 4rem)' }}>
-          {/* Section 1 - Hero */}
-          <HowItWorksHero />
+          {/* Hero - minimal, clean */}
+          <HowItWorksPageHero />
           
-          {/* Section 2 - Two Starting Points */}
-          <RevealSection background="muted">
-            <ScrollReveal>
-              <TwoStartingPoints />
-            </ScrollReveal>
-          </RevealSection>
+          {/* Section 1 - 6-step process (main feature) */}
+          <StepsSection />
           
-          {/* Section 3 - The Process (Start → Build → Run → Grow) */}
-          <RevealSection background="gradient">
-            <ScrollReveal>
-              <TheProcess />
-            </ScrollReveal>
-          </RevealSection>
+          {/* Section 2 - Your part */}
+          <YourPartSection />
           
-          {/* Section 4 - What You Get */}
-          <RevealSection>
-            <ScrollReveal>
-              <WhatYouGet />
-            </ScrollReveal>
-          </RevealSection>
+          {/* Section 3 - Our part */}
+          <OurPartSection />
           
-          {/* Section 5 - Behind the Scenes (accordion) */}
-          <RevealSection>
-            <ScrollReveal>
-              <BehindTheScenes />
-            </ScrollReveal>
-          </RevealSection>
+          {/* Section 4 - Proof Trail */}
+          <ProofTrailSection />
           
-          {/* Section 6 - The 7 Domains (Expertise) */}
-          <RevealSection>
-            <ScrollReveal>
-              <Expertise />
-            </ScrollReveal>
-          </RevealSection>
+          {/* Section 5 - Where we work (7 areas) */}
+          <WhereWeWorkSection />
           
-          {/* Section 7 - System Ladder */}
-          <SystemLadder />
+          {/* Section 6 - What we are not */}
+          <WhatWeAreNotSection />
           
-          {/* Section 8 - Levels Overview */}
-          <RevealSection background="muted">
-            <ScrollReveal>
-              <LevelsOverview />
-            </ScrollReveal>
-          </RevealSection>
-          
-          {/* Section 7 - What We Are Not */}
-          <RevealSection>
-            <ScrollReveal>
-              <WhatWeAreNot />
-            </ScrollReveal>
-          </RevealSection>
-          
-          {/* Section 8 - FAQ */}
-          <RevealSection background="muted">
-            <ScrollReveal>
-              <HowItWorksFAQ />
-            </ScrollReveal>
-          </RevealSection>
-          
-          {/* Section 9 - Final CTA */}
-          <HowItWorksFinalCTA />
+          {/* Section 7 - Next step (small CTA) */}
+          <NextStepSection />
         </main>
         
         <Footer />
