@@ -64,25 +64,36 @@ const NimaraHeroPremium = () => {
             </h1>
 
             {/* Subheadline */}
-            <p style={revealStyle(200)} className="text-lg md:text-xl leading-snug max-w-[50ch] mx-auto mb-10 text-white/70">
+            <p style={revealStyle(200)} className="text-lg md:text-xl leading-snug max-w-[50ch] mx-auto mb-10 text-white/80">
               Every receipt, approval, and payment — documented and ready.
             </p>
 
             {/* Bullets */}
-            <ul style={revealStyle(250)} className="space-y-3 mb-10 max-w-xl mx-auto text-left" aria-label="Key benefits">
+            <ul style={revealStyle(250)} className="space-y-3 mb-6 max-w-md mx-auto text-left" aria-label="Key benefits">
               <li className="flex items-start gap-3 text-white/70">
                 <Check className="w-5 h-5 mt-0.5 flex-shrink-0 text-accent" aria-hidden="true" />
-                <span>Find proof of payment in minutes, not hours</span>
+                <span>Find proof of payment in minutes</span>
               </li>
               <li className="flex items-start gap-3 text-white/70">
                 <Check className="w-5 h-5 mt-0.5 flex-shrink-0 text-accent" aria-hidden="true" />
-                <span>Track grant spending without the guesswork</span>
+                <span>Track grant spending without guesswork</span>
               </li>
               <li className="flex items-start gap-3 text-white/70">
                 <Check className="w-5 h-5 mt-0.5 flex-shrink-0 text-accent" aria-hidden="true" />
-                <span>Pull reports when funders or boards ask</span>
+                <span>Pull reports when funders ask</span>
               </li>
             </ul>
+
+            {/* Proof Trail */}
+            <div style={revealStyle(275)} className="flex items-center justify-center gap-2 text-[11px] uppercase tracking-[0.12em] text-white/40 mb-8" aria-label="Proof trail flow">
+              <span>Receipt</span>
+              <span className="text-white/25">→</span>
+              <span>Approval</span>
+              <span className="text-white/25">→</span>
+              <span>Payment</span>
+              <span className="text-white/25">→</span>
+              <span>Report</span>
+            </div>
 
             {/* CTAs */}
             <div style={revealStyle(300)} className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6" role="group" aria-label="Get started options">
@@ -120,7 +131,7 @@ const NimaraHeroPremium = () => {
               </div>
               <div className="relative sm:border-r sm:border-white/10">
                 <dt className="text-[10px] uppercase tracking-[0.15em] text-white/50 mb-1">
-                  Health Check
+                  Full Health Check
                 </dt>
                 <dd className="text-base md:text-lg font-medium text-white/80 italic">
                   2 weeks
