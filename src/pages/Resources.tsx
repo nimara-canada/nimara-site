@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
-import { ArrowRight, FileSpreadsheet, ClipboardCheck, FolderOpen, CheckCircle2 } from "lucide-react";
-import { motion } from "framer-motion";
+import { ArrowRight, FileSpreadsheet, ClipboardCheck, FolderOpen, CheckCircle2, ChevronDown, Sparkles } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -51,6 +51,75 @@ function ScrollRevealBlock({ children, delay = 0 }: { children: React.ReactNode;
     <div ref={ref} style={style}>
       {children}
     </div>
+  );
+}
+
+// Premium floating card visual component
+interface VisualCardProps {
+  color: string;
+  lineColor: string;
+  statNumber: string;
+  statLabel: string;
+  substat?: string;
+  badge?: { text: string; color: 'green' | 'purple' | 'blue' };
+  isInView: boolean;
+}
+
+function PremiumVisualCard({ color, lineColor, statNumber, statLabel, substat, badge, isInView }: VisualCardProps) {
+  const badgeColors = {
+    green: 'bg-emerald-100 text-emerald-700 border-emerald-200',
+    purple: 'bg-purple-100 text-purple-700 border-purple-200',
+    blue: 'bg-blue-100 text-blue-700 border-blue-200',
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
+      transition={{ duration: 0.6, delay: 0.2 }}
+      className="relative w-full max-w-md mx-auto"
+    >
+      {/* Main colored panel */}
+      <div 
+        className="relative rounded-3xl overflow-hidden aspect-[4/3]"
+        style={{ backgroundColor: color }}
+      >
+        {/* Noise texture overlay */}
+        <div 
+          className="absolute inset-0 opacity-40 mix-blend-overlay pointer-events-none"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E")`,
+          }}
+        />
+
+        {/* Geometric lines */}
+        <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+          <line x1="20%" y1="0" x2="20%" y2="100%" stroke={lineColor} strokeWidth="1" opacity="0.3" />
+          <line x1="80%" y1="0" x2="80%" y2="100%" stroke={lineColor} strokeWidth="1" opacity="0.3" />
+          <line x1="0" y1="30%" x2="100%" y2="30%" stroke={lineColor} strokeWidth="1" opacity="0.2" />
+          <line x1="0" y1="70%" x2="100%" y2="70%" stroke={lineColor} strokeWidth="1" opacity="0.2" />
+        </svg>
+
+        {/* Floating white card */}
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-xl p-6 min-w-[180px]"
+        >
+          {badge && (
+            <span className={`inline-block px-3 py-1 text-xs font-semibold rounded-full border mb-3 ${badgeColors[badge.color]}`}>
+              {badge.text}
+            </span>
+          )}
+          <div className="text-4xl font-bold text-primary mb-1">{statNumber}</div>
+          <div className="text-sm font-medium text-muted-foreground">{statLabel}</div>
+          {substat && (
+            <div className="text-xs text-muted-foreground/70 mt-1">{substat}</div>
+          )}
+        </motion.div>
+      </div>
+    </motion.div>
   );
 }
 
@@ -127,46 +196,72 @@ function ResourceCard({ icon: Icon, title, description, tags, buttonText, button
   );
 }
 
-// Service card component
+// Service card component with premium visual
 interface ServiceCardProps {
   title: string;
   timeline: string;
   buttonText: string;
   buttonLink: string;
+  visual: {
+    color: string;
+    lineColor: string;
+    statNumber: string;
+    statLabel: string;
+    substat?: string;
+    badge?: { text: string; color: 'green' | 'purple' | 'blue' };
+  };
 }
 
-function ServiceCard({ title, timeline, buttonText, buttonLink }: ServiceCardProps) {
-  const cardVariants = {
-    initial: { y: 0, scale: 1 },
-    hover: { y: -4, scale: 1.01, transition: { duration: 0.3 } },
-  };
+function ServiceCard({ title, timeline, buttonText, buttonLink, visual }: ServiceCardProps) {
+  const [isInView, setIsInView] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <motion.div
-      variants={cardVariants}
-      initial="initial"
-      whileHover="hover"
-      className="bg-card rounded-2xl border border-border p-8 shadow-soft text-center"
-    >
-      <h3 className="text-xl font-semibold text-foreground mb-2">
-        {title}
-      </h3>
-      <p className="text-sm text-muted-foreground mb-6">
-        {timeline}
-      </p>
-      <Button asChild variant="secondary" className="w-full group">
-        <Link to={buttonLink}>
-          {buttonText}
-          <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-        </Link>
-      </Button>
-    </motion.div>
+    <div ref={ref} className="space-y-6">
+      <PremiumVisualCard {...visual} isInView={isInView} />
+      <div className="text-center">
+        <h3 className="text-xl font-semibold text-foreground mb-2">
+          {title}
+        </h3>
+        <p className="text-sm text-muted-foreground mb-4">
+          {timeline}
+        </p>
+        <Button asChild variant="secondary" className="group">
+          <Link to={buttonLink}>
+            {buttonText}
+            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </Button>
+      </div>
+    </div>
   );
 }
 
 function ResourcesContent() {
   const [isLoaded, setIsLoaded] = useState(false);
   const { reducedMotion } = useMotionPreferences();
+  const heroRef = useRef<HTMLElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+  
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const heroY = useTransform(scrollYProgress, [0, 0.5], [0, 100]);
 
   useEffect(() => {
     setIsLoaded(true);
@@ -217,6 +312,10 @@ function ResourcesContent() {
     { q: "Is this only for one grant?", a: "No. Set it up once and reuse it." },
   ];
 
+  const scrollToContent = () => {
+    document.getElementById('free-tools')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
@@ -240,8 +339,12 @@ function ResourcesContent() {
       </a>
 
       <main id="main">
-        {/* HERO */}
-        <section className="min-h-[70vh] bg-secondary-background text-white relative overflow-hidden flex items-center">
+        {/* HERO - Dark navy with grid pattern */}
+        <section 
+          ref={heroRef}
+          className="min-h-screen bg-secondary-background text-white relative overflow-hidden flex items-center"
+        >
+          {/* Grid pattern */}
           <div 
             className="absolute inset-0 opacity-[0.03] pointer-events-none"
             aria-hidden="true"
@@ -250,33 +353,45 @@ function ResourcesContent() {
               backgroundSize: '60px 60px'
             }}
           />
+          
+          {/* Gradient orbs */}
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] pointer-events-none" />
           <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-[100px] pointer-events-none" />
 
-          <div className="relative z-10 w-full max-w-4xl mx-auto px-6 lg:px-8 py-20 text-center">
+          <motion.div 
+            style={reducedMotion ? {} : { opacity: heroOpacity, y: heroY }}
+            className="relative z-10 w-full max-w-4xl mx-auto px-6 lg:px-8 py-20 text-center"
+          >
+            {/* Badge */}
+            <div style={revealStyle(0)}>
+              <span className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold tracking-widest uppercase rounded-full bg-accent/20 text-accent border border-accent/20 mb-8">
+                <Sparkles className="w-4 h-4" />
+                Free resources
+              </span>
+            </div>
+            
             <h1 
               style={revealStyle(100)}
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.08] tracking-tight mb-6"
             >
-              Free tools for nonprofits
+              Tools that make <span className="text-accent">nonprofit work</span> easier
             </h1>
             
             <p 
               style={revealStyle(200)}
-              className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed mb-10"
+              className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed mb-12"
             >
-              Simple tools to help you track grants, organize files, and make reporting easier.
+              Simple tools to help you track grants, organize files, and make reporting easier — so you can focus on your mission.
             </p>
             
-            <div style={revealStyle(300)} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+            {/* CTAs */}
+            <div style={revealStyle(300)} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
               <Button 
                 size="lg" 
-                className="group"
-                onClick={() => {
-                  document.getElementById('free-tools')?.scrollIntoView({ behavior: 'smooth' });
-                }}
+                className="group h-14 px-8 text-base"
+                onClick={scrollToContent}
               >
-                Get Started
+                Browse Tools
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
               
@@ -287,19 +402,43 @@ function ResourcesContent() {
                 Prefer email? hello@nimara.ca
               </a>
             </div>
-          </div>
+            
+            {/* Trust indicators */}
+            <p style={revealStyle(400)} className="text-sm text-white/40">
+              No signup walls • Works with Google Sheets & Excel • Free forever
+            </p>
+          </motion.div>
+
+          {/* Scroll indicator */}
+          <motion.div 
+            style={reducedMotion ? {} : { opacity: heroOpacity }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          >
+            <motion.button
+              onClick={scrollToContent}
+              className="flex flex-col items-center gap-2 text-white/40 hover:text-white/60 transition-colors"
+              animate={reducedMotion ? {} : { y: [0, 8, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <span className="text-xs uppercase tracking-widest">Scroll</span>
+              <ChevronDown className="w-5 h-5" />
+            </motion.button>
+          </motion.div>
         </section>
 
-        {/* START WITH ONE */}
-        <section id="free-tools" className="py-24 md:py-32 bg-background scroll-mt-20">
+        {/* START WITH ONE - Cream background */}
+        <section id="free-tools" className="py-24 md:py-32 scroll-mt-20" style={{ backgroundColor: '#faf8f5' }}>
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
             <ScrollRevealBlock delay={0}>
               <div className="text-center mb-14">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">
                   Start with one
                 </p>
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                  Pick the tool that matches your <span className="text-primary">biggest pain</span>
+                </h2>
                 <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-                  Pick the tool that matches your biggest pain today.
+                  Each one solves a real problem. Start where it hurts most.
                 </p>
               </div>
             </ScrollRevealBlock>
@@ -314,24 +453,29 @@ function ResourcesContent() {
           </div>
         </section>
 
-        {/* QUICK TIPS */}
-        <section className="py-20 md:py-28 bg-muted/30">
+        {/* QUICK TIPS - White background */}
+        <section className="py-20 md:py-28 bg-background">
           <div className="max-w-3xl mx-auto px-6 lg:px-8">
             <ScrollRevealBlock delay={0}>
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary text-center mb-4">
                 Quick tips
               </p>
-              <p className="text-center text-muted-foreground mb-10">
-                So the tools actually work
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-4">
+                So the tools actually <span className="text-primary">work</span>
+              </h2>
+              <p className="text-center text-muted-foreground mb-10 max-w-lg mx-auto">
+                Small habits that make a big difference
               </p>
             </ScrollRevealBlock>
             
             <div className="space-y-5">
               {quickTips.map((tip, idx) => (
                 <ScrollRevealBlock key={idx} delay={100 + idx * 100}>
-                  <div className="flex items-start gap-4 text-foreground">
-                    <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                    <p className="text-lg">{tip}</p>
+                  <div className="flex items-start gap-4 p-6 bg-muted/30 rounded-2xl border border-border">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <CheckCircle2 className="w-5 h-5 text-primary" />
+                    </div>
+                    <p className="text-lg text-foreground leading-relaxed">{tip}</p>
                   </div>
                 </ScrollRevealBlock>
               ))}
@@ -339,13 +483,16 @@ function ResourcesContent() {
           </div>
         </section>
 
-        {/* WANT THIS SET UP */}
-        <section className="py-24 md:py-32 bg-background">
-          <div className="max-w-4xl mx-auto px-6 lg:px-8">
+        {/* WANT THIS SET UP - Cream background with premium visuals */}
+        <section className="py-24 md:py-32" style={{ backgroundColor: '#faf8f5' }}>
+          <div className="max-w-5xl mx-auto px-6 lg:px-8">
             <ScrollRevealBlock delay={0}>
               <div className="text-center mb-14">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">
+                  Want help?
+                </p>
                 <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                  Want this set up for your team?
+                  Want this set up <span className="text-primary">for your team?</span>
                 </h2>
                 <p className="text-lg text-muted-foreground">
                   If you want a system that sticks, we can install it.
@@ -353,13 +500,21 @@ function ResourcesContent() {
               </div>
             </ScrollRevealBlock>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <ScrollRevealBlock delay={100}>
                 <ServiceCard 
                   title="Grant Setup"
                   timeline="About 2 weeks"
                   buttonText="See Grant Setup"
                   buttonLink="/grant-setup"
+                  visual={{
+                    color: 'hsl(262, 60%, 88%)',
+                    lineColor: 'hsl(262, 50%, 50%)',
+                    statNumber: '2',
+                    statLabel: 'weeks',
+                    substat: 'Full system installed',
+                    badge: { text: 'Most popular', color: 'purple' },
+                  }}
                 />
               </ScrollRevealBlock>
               <ScrollRevealBlock delay={200}>
@@ -368,19 +523,30 @@ function ResourcesContent() {
                   timeline="2–4 weeks"
                   buttonText="See Organization Check"
                   buttonLink="/organization-check"
+                  visual={{
+                    color: 'hsl(160, 60%, 85%)',
+                    lineColor: 'hsl(160, 50%, 40%)',
+                    statNumber: '10+',
+                    statLabel: 'areas reviewed',
+                    substat: 'Full operations audit',
+                    badge: { text: 'Comprehensive', color: 'green' },
+                  }}
                 />
               </ScrollRevealBlock>
             </div>
           </div>
         </section>
 
-        {/* FAQ */}
-        <section className="py-20 md:py-28 bg-muted/30">
+        {/* FAQ - White background */}
+        <section className="py-20 md:py-28 bg-background">
           <div className="max-w-2xl mx-auto px-6 lg:px-8">
             <ScrollRevealBlock delay={0}>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary text-center mb-10">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary text-center mb-4">
                 Questions
               </p>
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-10">
+                Common questions
+              </h2>
             </ScrollRevealBlock>
             
             <ScrollRevealBlock delay={100}>
@@ -404,7 +570,7 @@ function ResourcesContent() {
           </div>
         </section>
 
-        {/* FINAL CTA */}
+        {/* FINAL CTA - Dark navy with grid */}
         <section className="py-24 md:py-32 bg-secondary-background text-white relative overflow-hidden">
           <div 
             className="absolute inset-0 opacity-[0.03] pointer-events-none"
@@ -418,15 +584,18 @@ function ResourcesContent() {
 
           <div className="relative z-10 max-w-2xl mx-auto px-6 lg:px-8 text-center">
             <ScrollRevealBlock delay={0}>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent mb-6">
+                Not sure where to start?
+              </p>
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Not sure what to pick?
+                Let us point you to the <span className="text-accent">best next step</span>
               </h2>
               <p className="text-lg text-white/60 mb-10">
-                Start here and we'll point you to the best next step.
+                Take 6 minutes. We'll show you what to focus on first.
               </p>
               
               <div className="flex flex-col items-center gap-4">
-                <Button asChild size="lg" className="group">
+                <Button asChild size="lg" className="group h-14 px-8 text-base">
                   <Link to="/start-here">
                     Get Started
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
