@@ -1,59 +1,81 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 import { TYPEFORM_HEALTH_CHECK_URL } from "@/constants/urls";
+import { useRef } from "react";
 
 export const ReadyToWork = () => {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
   return (
-    <section className="py-24 md:py-36 lg:py-44 bg-muted/30 relative overflow-hidden">
-      {/* Subtle texture */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-background via-muted/30 to-muted/30" />
-
+    <section 
+      ref={sectionRef}
+      className="py-24 lg:py-32 bg-background relative overflow-hidden"
+    >
       <div className="relative max-w-4xl mx-auto px-6 lg:px-12 text-center">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        {/* Label */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-4"
         >
-          <p className="text-sm tracking-widest text-muted-foreground uppercase mb-4">
-            Next Steps
-          </p>
+          Next Steps
+        </motion.p>
 
-          <h2 className="text-4xl md:text-5xl font-serif font-medium text-foreground leading-[1.1] mb-6">
-            Ready to get unstuck?
-          </h2>
+        {/* Headline */}
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-[1.1] tracking-tight mb-6"
+        >
+          Ready to get <span className="text-primary">unstuck</span>?
+        </motion.h2>
 
-          <p className="text-lg text-muted-foreground mb-10 max-w-xl mx-auto">
-            Pick a starting point. We'll help you build working basics.
-          </p>
+        {/* Subhead */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="text-lg text-muted-foreground mb-10 max-w-xl mx-auto"
+        >
+          Pick a starting point. We'll help you build working basics.
+        </motion.p>
 
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-            <Button size="lg" asChild className="group">
-              <Link to="/start-here" className="gap-2">
-                Get Started
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Button>
-            
-            <a
-              href={TYPEFORM_HEALTH_CHECK_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-foreground font-medium group"
-            >
-              <span className="relative">
-                Try the free check
-                <span className="absolute left-0 -bottom-0.5 w-0 h-px bg-foreground transition-all duration-300 group-hover:w-full" />
-              </span>
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </a>
-          </div>
+        {/* CTAs */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
+        >
+          <Link 
+            to="/start-here" 
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-nim-purple text-white font-semibold transition-all duration-200 hover:opacity-90 hover:scale-[1.02]"
+          >
+            Get Started
+            <ArrowRight className="w-5 h-5" />
+          </Link>
+          
+          <a
+            href={TYPEFORM_HEALTH_CHECK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-nim-navy text-white font-semibold transition-all duration-200 hover:opacity-90 hover:scale-[1.02]"
+          >
+            Try the free check
+            <ArrowRight className="w-5 h-5" />
+          </a>
+        </motion.div>
 
-          {/* Email line */}
+        {/* Email line */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
           <a 
             href="mailto:hello@nimara.ca"
             className="text-muted-foreground hover:text-foreground transition-colors"
