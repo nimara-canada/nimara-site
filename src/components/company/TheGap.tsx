@@ -1,72 +1,166 @@
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import { Check, AlertCircle, FileSearch, Clock, BarChart3 } from 'lucide-react';
+import { useRef } from 'react';
 
 const bullets = [
-  "Files that are easy to find",
-  "Spending rules that are clear",
-  "Tracking that doesn't fall apart",
-  "Reporting that doesn't turn into panic"
+  { text: "Files that are easy to find", icon: FileSearch },
+  { text: "Spending rules that are clear", icon: BarChart3 },
+  { text: "Tracking that doesn't fall apart", icon: Clock },
+  { text: "Reporting that doesn't turn into panic", icon: AlertCircle }
 ];
 
+// Premium floating visual
+const GapVisual = ({ isInView }: { isInView: boolean }) => (
+  <div className="relative h-full w-full flex items-center justify-center p-6 lg:p-8">
+    {/* Large rounded panel - mint with texture */}
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={isInView ? { opacity: 1, scale: 1 } : {}}
+      transition={{ duration: 0.7, delay: 0.2 }}
+      className="relative w-full h-full min-h-[360px] lg:min-h-[440px] rounded-[2rem] overflow-hidden"
+      style={{ backgroundColor: 'hsl(165, 45%, 82%)' }}
+    >
+      {/* Noise texture overlay */}
+      <div 
+        className="absolute inset-0 opacity-40 mix-blend-overlay"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        }}
+      />
+      
+      {/* Geometric lines */}
+      <svg className="absolute inset-0 w-full h-full opacity-25" preserveAspectRatio="none">
+        <line x1="100%" y1="30%" x2="0%" y2="70%" stroke="hsl(165, 40%, 40%)" strokeWidth="1" />
+        <line x1="80%" y1="0%" x2="20%" y2="100%" stroke="hsl(165, 40%, 40%)" strokeWidth="1" />
+        <line x1="40%" y1="0%" x2="0%" y2="50%" stroke="hsl(165, 40%, 40%)" strokeWidth="1" />
+      </svg>
+      
+      {/* Floating white card */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, delay: 0.5 }}
+        className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-6 lg:p-8 w-[85%] max-w-[300px]"
+      >
+        {/* Header */}
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center">
+            <AlertCircle className="w-5 h-5 text-amber-600" />
+          </div>
+          <span className="text-base font-semibold text-nim-navy">The Problem:</span>
+        </div>
+        
+        {/* Message */}
+        <p className="text-nim-navy text-lg font-medium mb-6 leading-snug">
+          Strong work, scattered records. Reporting becomes a scramble.
+        </p>
+        
+        {/* Stats box */}
+        <div className="bg-gray-50 rounded-xl p-4 border border-gray-100">
+          <div className="flex items-baseline gap-2 mb-1">
+            <motion.span
+              className="text-4xl font-bold text-nim-navy tracking-tight"
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.5, delay: 0.9 }}
+            >
+              4
+            </motion.span>
+            <span className="text-sm text-gray-600">basics we fix</span>
+          </div>
+          <p className="text-xs text-gray-500">Files • Tracking • Spending • Reports</p>
+        </div>
+      </motion.div>
+    </motion.div>
+  </div>
+);
+
 export const TheGap = () => {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
   return (
-    <section className="py-24 md:py-36 lg:py-44 bg-muted/30 relative overflow-hidden">
-      {/* Subtle texture */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-background via-muted/30 to-muted/30" />
-
+    <section 
+      ref={sectionRef}
+      className="py-24 lg:py-32 bg-background relative overflow-hidden"
+    >
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="max-w-3xl">
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-12"
-          >
-            <p className="text-sm tracking-widest text-muted-foreground uppercase mb-4">
-              The Problem
-            </p>
-
-            <h2 className="text-4xl md:text-5xl font-serif font-medium text-foreground leading-[1.1] mb-6">
-              The gap we close
-            </h2>
-
-            <p className="text-lg text-body leading-relaxed">
-              Most nonprofits don't need more advice. They need basics that stick.
-            </p>
-          </motion.div>
-
-          {/* Bullet points */}
-          <div className="space-y-0 mb-12">
-            {bullets.map((bullet, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex items-start gap-4 py-4 border-b border-border/50 group"
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 group-hover:scale-150 transition-transform duration-300" />
-                <p className="text-body leading-relaxed group-hover:text-foreground transition-colors duration-300">
-                  {bullet}
-                </p>
-              </motion.div>
-            ))}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left: Premium Visual */}
+          <div className="hidden lg:block order-2 lg:order-1">
+            <GapVisual isInView={isInView} />
           </div>
 
-          {/* Closing statement */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="pl-6 border-l-2 border-primary"
-          >
-            <p className="text-xl md:text-2xl font-serif font-medium text-foreground leading-snug">
-              We set up working basics your team can run.
-            </p>
-          </motion.div>
+          {/* Right: Text Content */}
+          <div className="order-1 lg:order-2">
+            {/* Label */}
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5 }}
+              className="text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-4"
+            >
+              The Problem
+            </motion.p>
+
+            {/* Headline */}
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-[1.1] tracking-tight mb-6"
+            >
+              The gap we <span className="text-primary">close</span>
+            </motion.h2>
+
+            {/* Subhead */}
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              className="text-lg text-muted-foreground mb-10"
+            >
+              Most nonprofits don't need more advice. They need basics that stick.
+            </motion.p>
+
+            {/* Bullet cards */}
+            <div className="space-y-3 mb-10">
+              {bullets.map((bullet, index) => {
+                const Icon = bullet.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
+                    className="flex items-center gap-4 p-4 rounded-xl bg-muted/50 border border-border hover:border-primary/20 transition-colors"
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-nim-mint/30 flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-5 h-5 text-nim-navy" />
+                    </div>
+                    <span className="text-foreground font-medium">{bullet.text}</span>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Closing statement */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="bg-nim-purple/10 rounded-2xl p-6 border border-nim-purple/20"
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-6 h-6 rounded-full bg-nim-purple flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Check className="w-4 h-4 text-white" strokeWidth={3} />
+                </div>
+                <p className="text-nim-navy font-medium text-lg">
+                  We set up working basics your team can run.
+                </p>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
