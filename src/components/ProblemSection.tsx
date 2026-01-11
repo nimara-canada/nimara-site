@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 
 const ProblemSection = () => {
   return (
-    <section className="py-28 md:py-40 bg-background">
-      <div className="container max-w-5xl mx-auto px-4 text-center">
+    <section className="relative pb-0 pt-28 md:pt-40 bg-background">
+      <div className="container max-w-5xl mx-auto px-4 text-center pb-28 md:pb-40">
         {/* Label */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -39,6 +39,14 @@ const ProblemSection = () => {
           Not because anyone did something wrong. But because funders look for proof, clarity, and control—not just passion.
         </motion.p>
       </div>
+      
+      {/* Gradient fade to next section */}
+      <div 
+        className="absolute bottom-0 left-0 right-0 h-32 md:h-40 pointer-events-none"
+        style={{
+          background: "linear-gradient(to bottom, hsl(var(--background)) 0%, hsl(var(--background) / 0) 100%)"
+        }}
+      />
     </section>
   );
 };
