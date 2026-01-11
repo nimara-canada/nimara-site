@@ -1,77 +1,49 @@
 import React from 'react';
-import { motion, useInView, Variants } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { TYPEFORM_HEALTH_CHECK_URL, CALENDLY_BOOKING_URL } from '@/constants/urls';
-import { Check, FileText, Users, FolderOpen, AlertTriangle, Calendar } from 'lucide-react';
+import { FileText, Users, FolderOpen, TrendingUp, MessageCircle, CheckCircle2 } from 'lucide-react';
+
+// Decorative wavy lines SVG component
+const WavyLines = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 50 Q 25 30, 50 50 T 100 50 T 150 50 T 200 50" stroke="currentColor" strokeWidth="1.5" fill="none" opacity="0.3"/>
+    <path d="M0 60 Q 25 40, 50 60 T 100 60 T 150 60 T 200 60" stroke="currentColor" strokeWidth="1.5" fill="none" opacity="0.2"/>
+    <path d="M0 70 Q 25 50, 50 70 T 100 70 T 150 70 T 200 70" stroke="currentColor" strokeWidth="1.5" fill="none" opacity="0.15"/>
+  </svg>
+);
 
 const OutcomesSection: React.FC = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
-  // Stagger animation variants for UI elements
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3,
-      }
-    }
-  };
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 20, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const sideItemVariants: Variants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const listItemVariants: Variants = {
-    hidden: { opacity: 0, x: -10 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut"
-      }
-    }
-  };
-
   return (
     <section 
       ref={sectionRef}
       aria-labelledby="outcomes-heading"
-      className="relative py-24 lg:py-32 overflow-hidden bg-background"
+      className="relative py-24 lg:py-32 overflow-hidden"
+      style={{ backgroundColor: 'hsl(270, 60%, 92%)' }}
     >
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Header */}
         <header className="text-center mb-16 lg:mb-20">
+          {/* Category label */}
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="text-xs font-semibold uppercase tracking-[0.2em] mb-6"
+            style={{ color: 'hsl(270, 40%, 45%)' }}
+          >
+            Systems & Outcomes
+          </motion.p>
+
           <motion.h2
             id="outcomes-heading"
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-6 text-foreground"
           >
             Where Nimara installs systems that stick
@@ -80,7 +52,7 @@ const OutcomesSection: React.FC = () => {
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8"
           >
             Real working tools and routines—so you can track, prove, and report without scrambling.
@@ -89,144 +61,113 @@ const OutcomesSection: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <a
               href={CALENDLY_BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-6 py-3 text-sm font-medium rounded-full border border-border bg-background text-foreground hover:bg-muted transition-all duration-200"
+              className="inline-flex items-center justify-center px-6 py-3 text-sm font-medium rounded-full bg-white text-foreground hover:bg-white/90 transition-all duration-200 shadow-sm"
             >
               See what's included
             </a>
           </motion.div>
         </header>
 
-        {/* Cards Grid - Flat Nimara colors with mock UIs */}
+        {/* Cards Grid */}
         <ul className="grid md:grid-cols-3 gap-6 lg:gap-8" role="list" aria-label="What you get">
           
-          {/* Card 1 - Clear Tracking - Mint */}
+          {/* Card 1 - Clear decisions and ownership */}
           <motion.li
             initial={{ opacity: 0, y: 32 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.7, delay: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="h-full"
           >
-            <article className="h-full rounded-3xl p-6 lg:p-8 relative overflow-hidden min-h-[380px] flex flex-col bg-nim-mint">
-              {/* Mock UI Element */}
-              <motion.div 
-                className="flex-1 flex items-center justify-end"
-                variants={containerVariants}
-                initial="hidden"
-                animate={isInView ? "visible" : "hidden"}
-              >
-                <div className="relative">
-                  {/* Side list */}
-                  <motion.div 
-                    className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 space-y-3"
-                    variants={containerVariants}
+            <article 
+              className="h-full rounded-3xl p-6 lg:p-8 relative overflow-hidden min-h-[420px] flex flex-col border"
+              style={{ 
+                backgroundColor: 'hsl(270, 50%, 95%)',
+                borderColor: 'hsl(270, 40%, 85%)'
+              }}
+            >
+              {/* Decorative wavy lines */}
+              <WavyLines className="absolute inset-0 w-full h-full text-nim-purple pointer-events-none" />
+              
+              {/* Visual area */}
+              <div className="flex-1 flex items-center justify-center relative z-10 mb-6">
+                <motion.div 
+                  className="relative"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                >
+                  {/* Central icon/shape */}
+                  <div 
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center shadow-lg"
+                    style={{ backgroundColor: 'hsl(270, 60%, 60%)' }}
                   >
-                    <motion.div 
-                      variants={sideItemVariants}
-                      className="flex items-center gap-2 bg-white rounded-lg px-3 py-2"
-                    >
-                      <div className="w-5 h-5 rounded-full bg-nim-mint flex items-center justify-center">
-                        <FileText className="w-3 h-3 text-nim-navy" />
+                    <FolderOpen className="w-10 h-10 text-white" />
+                  </div>
+                  
+                  {/* Floating elements */}
+                  <motion.div 
+                    className="absolute -top-4 -right-8 bg-white rounded-xl p-2 shadow-lg"
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.6 }}
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 rounded-full bg-nim-mint flex items-center justify-center">
+                        <Users className="w-3 h-3 text-nim-navy" />
                       </div>
-                      <span className="text-xs font-medium text-nim-navy">Board</span>
-                    </motion.div>
-                    <motion.div 
-                      variants={sideItemVariants}
-                      className="flex items-center gap-2 bg-white rounded-lg px-3 py-2"
-                    >
-                      <div className="w-5 h-5 rounded-full bg-nim-purple/20 flex items-center justify-center">
-                        <Users className="w-3 h-3 text-nim-purple" />
-                      </div>
-                      <span className="text-xs font-medium text-nim-navy">People</span>
-                    </motion.div>
-                    <motion.div 
-                      variants={sideItemVariants}
-                      className="flex items-center gap-2 bg-white rounded-lg px-3 py-2"
-                    >
-                      <div className="w-5 h-5 rounded-full bg-nim-mist flex items-center justify-center">
-                        <FolderOpen className="w-3 h-3 text-nim-navy" />
-                      </div>
-                      <span className="text-xs font-medium text-nim-navy">Files</span>
-                    </motion.div>
+                      <span className="text-xs font-medium text-nim-navy">Roles</span>
+                    </div>
                   </motion.div>
                   
-                  {/* Main card */}
                   <motion.div 
-                    variants={itemVariants}
-                    className="bg-white rounded-2xl p-4 ml-16"
+                    className="absolute -bottom-4 -left-8 bg-white rounded-xl p-2 shadow-lg"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.7 }}
                   >
-                    <motion.div 
-                      variants={listItemVariants}
-                      className="flex items-center justify-between mb-3"
-                    >
-                      <span className="text-[10px] font-semibold text-nim-purple uppercase tracking-wide">Tasks Due</span>
-                      <div className="w-5 h-5 rounded-full bg-nim-purple/10 flex items-center justify-center">
-                        <AlertTriangle className="w-3 h-3 text-nim-purple" />
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 rounded-full bg-nim-purple/20 flex items-center justify-center">
+                        <FileText className="w-3 h-3 text-nim-purple" />
                       </div>
-                    </motion.div>
-                    <motion.div 
-                      variants={listItemVariants}
-                      className="text-4xl font-bold text-nim-navy mb-2"
-                    >
-                      7
-                    </motion.div>
-                    <motion.div 
-                      variants={listItemVariants}
-                      className="w-20 h-1.5 bg-nim-mist rounded-full overflow-hidden"
-                    >
-                      <motion.div 
-                        className="h-full rounded-full bg-nim-purple"
-                        initial={{ width: 0 }}
-                        animate={isInView ? { width: '75%' } : { width: 0 }}
-                        transition={{ duration: 0.8, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-                      />
-                    </motion.div>
-                    <motion.div 
-                      variants={listItemVariants}
-                      className="flex -space-x-2 mt-3"
-                    >
-                      {[...Array(4)].map((_, i) => (
-                        <motion.div 
-                          key={i} 
-                          className="w-6 h-6 rounded-full bg-nim-mist border-2 border-white"
-                          initial={{ opacity: 0, scale: 0 }}
-                          animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                          transition={{ duration: 0.3, delay: 0.9 + i * 0.08 }}
-                        />
-                      ))}
-                      <motion.div 
-                        className="w-6 h-6 rounded-full bg-nim-purple border-2 border-white flex items-center justify-center"
-                        initial={{ opacity: 0, scale: 0 }}
-                        animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                        transition={{ duration: 0.3, delay: 1.2 }}
-                      >
-                        <span className="text-[8px] font-bold text-white">+3</span>
-                      </motion.div>
-                    </motion.div>
+                      <span className="text-xs font-medium text-nim-navy">Board</span>
+                    </div>
                   </motion.div>
-                </div>
-              </motion.div>
+                  
+                  <motion.div 
+                    className="absolute top-8 -left-12 bg-white rounded-xl p-2 shadow-lg"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.8 }}
+                  >
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-nim-mint" />
+                      <span className="text-xs font-medium text-nim-navy">Files</span>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              </div>
               
-              {/* Title */}
-              <div className="mt-6">
+              {/* Title and description */}
+              <div className="relative z-10 mt-auto">
                 <motion.h3 
-                  className="text-xl font-bold text-nim-navy"
+                  className="text-xl font-bold text-foreground mb-2"
                   initial={{ opacity: 0, y: 10 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.6 }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
                 >
                   Clear decisions and ownership
                 </motion.h3>
                 <motion.p
-                  className="text-sm text-nim-navy/70 mt-2"
+                  className="text-sm text-muted-foreground"
                   initial={{ opacity: 0, y: 10 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.65 }}
+                  transition={{ duration: 0.5, delay: 0.55 }}
                 >
                   Board records, roles, and files organized so work doesn't depend on one person.
                 </motion.p>
@@ -234,85 +175,85 @@ const OutcomesSection: React.FC = () => {
             </article>
           </motion.li>
 
-          {/* Card 2 - Fast Proof - Purple */}
+          {/* Card 2 - Clean tracking */}
           <motion.li
             initial={{ opacity: 0, y: 32 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.7, delay: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="h-full"
           >
-            <article className="h-full rounded-3xl p-6 lg:p-8 relative overflow-hidden min-h-[380px] flex flex-col bg-nim-purple">
-              {/* Mock UI Element */}
-              <motion.div 
-                className="flex-1 flex items-center justify-center"
-                variants={containerVariants}
-                initial="hidden"
-                animate={isInView ? "visible" : "hidden"}
-              >
-                <motion.div 
-                  variants={itemVariants}
-                  className="bg-white rounded-2xl p-4 w-full max-w-[220px]"
-                >
-                  <motion.div 
-                    variants={listItemVariants}
-                    className="flex items-center gap-2 bg-nim-purple/10 text-nim-purple rounded-lg px-3 py-1.5 mb-4"
-                  >
-                    <AlertTriangle className="w-3.5 h-3.5" />
-                    <span className="text-xs font-medium">2 items need attention</span>
-                  </motion.div>
-                  
-                  <motion.div 
-                    className="space-y-3"
-                    variants={containerVariants}
-                  >
-                    <motion.div 
-                      variants={listItemVariants}
-                      className="flex items-center gap-3 p-2"
-                    >
-                      <div className="w-8 h-8 rounded-full bg-nim-purple" />
-                      <div className="flex-1">
-                        <p className="text-sm font-medium text-nim-navy">Q3 Report</p>
-                        <p className="text-[10px] text-nim-slate">Due in 3 days</p>
-                      </div>
-                      <button className="text-[10px] font-medium text-nim-navy border border-nim-mist rounded-md px-2 py-1">
-                        Review
-                      </button>
-                    </motion.div>
-                    
-                    <motion.div 
-                      variants={listItemVariants}
-                      className="flex items-center gap-3 p-2"
-                    >
-                      <div className="w-8 h-8 rounded-full bg-nim-mint flex items-center justify-center text-nim-navy text-xs font-bold">
-                        CB
-                      </div>
-                      <div className="flex-1">
-                        <p className="text-sm font-medium text-nim-navy">Grant proof</p>
-                        <p className="text-[10px] text-nim-slate">Funder request</p>
-                      </div>
-                      <button className="text-[10px] font-medium text-nim-navy border border-nim-mist rounded-md px-2 py-1">
-                        Review
-                      </button>
-                    </motion.div>
-                  </motion.div>
-                </motion.div>
-              </motion.div>
+            <article 
+              className="h-full rounded-3xl p-6 lg:p-8 relative overflow-hidden min-h-[420px] flex flex-col border"
+              style={{ 
+                backgroundColor: 'hsl(270, 50%, 95%)',
+                borderColor: 'hsl(270, 40%, 85%)'
+              }}
+            >
+              {/* Decorative wavy lines */}
+              <WavyLines className="absolute inset-0 w-full h-full text-nim-purple pointer-events-none" />
               
-              {/* Title */}
-              <div className="mt-6">
+              {/* Visual area - Chart mockup */}
+              <div className="flex-1 flex items-center justify-center relative z-10 mb-6">
+                <motion.div 
+                  className="bg-white rounded-2xl p-5 shadow-lg w-full max-w-[240px]"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                >
+                  <p className="text-sm font-medium text-nim-navy mb-4">
+                    Budget tracking stayed current through Q3 reporting.
+                  </p>
+                  
+                  {/* Simple chart lines */}
+                  <div className="h-20 relative">
+                    <svg className="w-full h-full" viewBox="0 0 200 80" fill="none">
+                      <motion.path 
+                        d="M0 60 Q 30 50, 50 40 T 100 35 T 150 25 T 200 20" 
+                        stroke="hsl(270, 60%, 60%)" 
+                        strokeWidth="3" 
+                        fill="none"
+                        initial={{ pathLength: 0 }}
+                        animate={isInView ? { pathLength: 1 } : {}}
+                        transition={{ duration: 1.2, delay: 0.7, ease: "easeOut" }}
+                      />
+                      <motion.path 
+                        d="M0 70 Q 30 65, 50 55 T 100 50 T 150 40 T 200 35" 
+                        stroke="hsl(165, 50%, 55%)" 
+                        strokeWidth="3" 
+                        fill="none"
+                        initial={{ pathLength: 0 }}
+                        animate={isInView ? { pathLength: 1 } : {}}
+                        transition={{ duration: 1.2, delay: 0.8, ease: "easeOut" }}
+                      />
+                      <motion.path 
+                        d="M0 65 Q 30 60, 50 50 T 100 48 T 150 45 T 200 42" 
+                        stroke="hsl(40, 90%, 60%)" 
+                        strokeWidth="3" 
+                        fill="none"
+                        initial={{ pathLength: 0 }}
+                        animate={isInView ? { pathLength: 1 } : {}}
+                        transition={{ duration: 1.2, delay: 0.9, ease: "easeOut" }}
+                      />
+                    </svg>
+                  </div>
+                </motion.div>
+              </div>
+              
+              {/* Title and description */}
+              <div className="relative z-10 mt-auto">
                 <motion.h3 
-                  className="text-xl font-bold text-white"
+                  className="text-xl font-bold text-foreground mb-2"
                   initial={{ opacity: 0, y: 10 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.7 }}
+                  transition={{ duration: 0.5, delay: 0.6 }}
                 >
                   Clean tracking across your work
                 </motion.h3>
                 <motion.p
-                  className="text-sm text-white/70 mt-2"
+                  className="text-sm text-muted-foreground"
                   initial={{ opacity: 0, y: 10 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.75 }}
+                  transition={{ duration: 0.5, delay: 0.65 }}
                 >
                   Budgets, spending, donors, volunteers, and activities kept current—so nothing gets lost.
                 </motion.p>
@@ -320,85 +261,78 @@ const OutcomesSection: React.FC = () => {
             </article>
           </motion.li>
 
-          {/* Card 3 - Team Routine - Navy */}
+          {/* Card 3 - Proof tied to deliverable */}
           <motion.li
             initial={{ opacity: 0, y: 32 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.7, delay: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="h-full"
           >
-            <article className="h-full rounded-3xl p-6 lg:p-8 relative overflow-hidden min-h-[380px] flex flex-col bg-nim-navy">
-              {/* Mock UI Element */}
-              <motion.div 
-                className="flex-1 flex items-center justify-center"
-                variants={containerVariants}
-                initial="hidden"
-                animate={isInView ? "visible" : "hidden"}
-              >
-                <motion.div 
-                  variants={itemVariants}
-                  className="bg-white rounded-2xl p-4 w-full max-w-[220px]"
-                >
-                  <motion.div 
-                    variants={listItemVariants}
-                    className="flex items-center gap-3 mb-4"
-                  >
-                    <div className="w-10 h-10 rounded-full bg-nim-purple" />
-                    <div>
-                      <p className="text-sm font-semibold text-nim-navy">Team Lead</p>
-                      <p className="text-[10px] text-nim-slate">Program Manager</p>
-                    </div>
-                  </motion.div>
-                  
-                  <motion.div 
-                    variants={listItemVariants}
-                    className="rounded-xl p-3 bg-nim-mint/30"
-                  >
-                    <div className="flex items-start gap-2">
-                      <motion.div 
-                        className="w-4 h-4 rounded-full bg-nim-mint flex items-center justify-center flex-shrink-0 mt-0.5"
-                        initial={{ scale: 0 }}
-                        animate={isInView ? { scale: 1 } : {}}
-                        transition={{ duration: 0.4, delay: 1.0, type: "spring", stiffness: 300 }}
-                      >
-                        <Check className="w-2.5 h-2.5 text-nim-navy" />
-                      </motion.div>
-                      <div>
-                        <p className="text-xs font-medium text-nim-navy">
-                          Monthly checklist complete
-                        </p>
-                        <p className="text-[10px] text-nim-slate mt-0.5">
-                          Based on your routine setup
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                  
-                  <motion.div 
-                    variants={listItemVariants}
-                    className="flex items-center gap-2 mt-4"
-                  >
-                    <Calendar className="w-3.5 h-3.5 text-nim-slate" />
-                    <span className="text-[10px] text-nim-slate">Next check: Feb 1st</span>
-                  </motion.div>
-                </motion.div>
-              </motion.div>
+            <article 
+              className="h-full rounded-3xl p-6 lg:p-8 relative overflow-hidden min-h-[420px] flex flex-col border"
+              style={{ 
+                backgroundColor: 'hsl(270, 50%, 95%)',
+                borderColor: 'hsl(270, 40%, 85%)'
+              }}
+            >
+              {/* Decorative wavy lines */}
+              <WavyLines className="absolute inset-0 w-full h-full text-nim-purple pointer-events-none" />
               
-              {/* Title */}
-              <div className="mt-6">
+              {/* Visual area - Chat/Support mockup */}
+              <div className="flex-1 flex items-center justify-center relative z-10 mb-6">
+                <div className="relative">
+                  {/* Chat bubble */}
+                  <motion.div 
+                    className="bg-white rounded-2xl p-4 shadow-lg max-w-[220px] relative"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                  >
+                    <p className="text-sm text-nim-navy mb-3">
+                      Grant report ready: decision → spend → deliverable → proof.
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-full bg-nim-purple flex items-center justify-center">
+                        <span className="text-xs font-bold text-white">N</span>
+                      </div>
+                      <span className="text-xs text-muted-foreground">Nimara System</span>
+                    </div>
+                    
+                    {/* Speech bubble tail */}
+                    <div 
+                      className="absolute -bottom-2 right-8 w-4 h-4 bg-white transform rotate-45"
+                      style={{ boxShadow: '2px 2px 4px rgba(0,0,0,0.05)' }}
+                    />
+                  </motion.div>
+                  
+                  {/* Floating chat icon */}
+                  <motion.div 
+                    className="absolute -bottom-8 right-0 w-12 h-12 rounded-xl flex items-center justify-center shadow-lg"
+                    style={{ backgroundColor: 'hsl(270, 60%, 70%)' }}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.8 }}
+                  >
+                    <MessageCircle className="w-5 h-5 text-white" />
+                  </motion.div>
+                </div>
+              </div>
+              
+              {/* Title and description */}
+              <div className="relative z-10 mt-auto">
                 <motion.h3 
-                  className="text-xl font-bold text-white"
+                  className="text-xl font-bold text-foreground mb-2"
                   initial={{ opacity: 0, y: 10 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.8 }}
+                  transition={{ duration: 0.5, delay: 0.7 }}
                 >
                   Proof tied to the deliverable
                 </motion.h3>
                 <motion.p
-                  className="text-sm text-white/70 mt-2"
+                  className="text-sm text-muted-foreground"
                   initial={{ opacity: 0, y: 10 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.85 }}
+                  transition={{ duration: 0.5, delay: 0.75 }}
                 >
                   A simple trail from decision → spend → deliverable → report, ready when asked.
                 </motion.p>
@@ -420,7 +354,7 @@ const OutcomesSection: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               to="/capacity-buildout"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-xl bg-foreground text-background hover:bg-foreground/90 transition-all duration-200"
             >
               Book a free 20-minute call
               <span aria-hidden="true">→</span>
