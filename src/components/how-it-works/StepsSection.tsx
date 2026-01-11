@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Check } from 'lucide-react';
+import { Check, Calendar, FileCheck, Settings, Users, HandHeart, FolderOpen } from 'lucide-react';
 
 const steps = [
   {
@@ -8,38 +8,168 @@ const steps = [
     name: 'Start',
     line: 'Book a free call or try the 6-minute check.',
     youGet: 'A clear next step — no pressure.',
+    icon: Calendar,
+    visual: {
+      color: 'hsl(262, 60%, 85%)',
+      lineColor: 'hsl(262, 50%, 50%)',
+      statNumber: '15',
+      statLabel: 'min call',
+      substat: 'or 6-min check',
+      badge: { text: 'No prep needed', color: 'green' },
+    }
   },
   {
     id: 'check',
     name: 'Check',
     line: 'We review what you have. (2 weeks for Full Health Check)',
     youGet: "A short report on what's working and what's not.",
+    icon: FileCheck,
+    visual: {
+      color: 'hsl(165, 45%, 82%)',
+      lineColor: 'hsl(165, 40%, 40%)',
+      statNumber: '2',
+      statLabel: 'weeks',
+      substat: 'Full Health Check',
+      badge: { text: '7 areas reviewed', color: 'mint' },
+    }
   },
   {
     id: 'choose',
     name: 'Choose',
     line: 'Pick the areas that matter most right now.',
     youGet: 'A focused plan — no extras.',
+    icon: Check,
+    visual: {
+      color: 'hsl(210, 60%, 85%)',
+      lineColor: 'hsl(210, 50%, 50%)',
+      statNumber: '3',
+      statLabel: 'priorities',
+      substat: 'you decide what first',
+      badge: { text: 'No pressure', color: 'blue' },
+    }
   },
   {
     id: 'setup',
     name: 'Set up',
     line: 'We put simple systems in place. (4–8 weeks)',
     youGet: 'Working tools and routines your team can use.',
+    icon: Settings,
+    visual: {
+      color: 'hsl(262, 60%, 85%)',
+      lineColor: 'hsl(262, 50%, 50%)',
+      statNumber: '4-8',
+      statLabel: 'weeks',
+      substat: 'systems built',
+      badge: { text: 'Ready to use', color: 'purple' },
+    }
   },
   {
     id: 'keep',
     name: 'Keep it going',
     line: 'We train your team and check in for 90 days.',
     youGet: 'Confidence that it sticks.',
+    icon: Users,
+    visual: {
+      color: 'hsl(165, 45%, 82%)',
+      lineColor: 'hsl(165, 40%, 40%)',
+      statNumber: '90',
+      statLabel: 'days support',
+      substat: 'training included',
+      badge: { text: 'Team trained', color: 'mint' },
+    }
   },
   {
     id: 'handover',
     name: 'Handover',
     line: 'You own it. We step back.',
     youGet: 'A system your team runs on their own.',
+    icon: HandHeart,
+    visual: {
+      color: 'hsl(210, 60%, 85%)',
+      lineColor: 'hsl(210, 50%, 50%)',
+      statNumber: '100',
+      statLabel: '% yours',
+      substat: 'full ownership',
+      badge: { text: 'You run it', color: 'green' },
+    }
   },
 ];
+
+// Premium floating card visual for each step
+const StepVisual: React.FC<{ step: typeof steps[0]; isInView: boolean }> = ({ step, isInView }) => {
+  const Icon = step.icon;
+  const badgeColors = {
+    green: 'bg-green-100 text-green-700',
+    mint: 'bg-nim-mint/40 text-nim-navy',
+    blue: 'bg-blue-100 text-blue-700',
+    purple: 'bg-nim-purple/20 text-nim-purple',
+  };
+
+  return (
+    <div className="relative h-full w-full flex items-center justify-center p-4 lg:p-6">
+      {/* Large rounded panel with texture */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={isInView ? { opacity: 1, scale: 1 } : {}}
+        transition={{ duration: 0.7, delay: 0.2 }}
+        className="relative w-full h-full min-h-[320px] lg:min-h-[380px] rounded-[2rem] overflow-hidden"
+        style={{ backgroundColor: step.visual.color }}
+      >
+        {/* Noise texture overlay */}
+        <div 
+          className="absolute inset-0 opacity-40 mix-blend-overlay"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+          }}
+        />
+        
+        {/* Geometric lines */}
+        <svg className="absolute inset-0 w-full h-full opacity-25" preserveAspectRatio="none">
+          <line x1="0%" y1="20%" x2="100%" y2="60%" stroke={step.visual.lineColor} strokeWidth="1" />
+          <line x1="20%" y1="0%" x2="80%" y2="100%" stroke={step.visual.lineColor} strokeWidth="1" />
+          <line x1="60%" y1="0%" x2="100%" y2="40%" stroke={step.visual.lineColor} strokeWidth="1" />
+          <line x1="0%" y1="80%" x2="40%" y2="100%" stroke={step.visual.lineColor} strokeWidth="1" />
+        </svg>
+        
+        {/* Floating white card */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-5 lg:p-6 w-[88%] max-w-[280px]"
+        >
+          {/* Header */}
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-9 h-9 rounded-xl bg-nim-purple/15 flex items-center justify-center">
+              <Icon className="w-4 h-4 text-nim-purple" />
+            </div>
+            <span className="text-sm font-semibold text-nim-navy">{step.name}</span>
+          </div>
+          
+          {/* Stats box */}
+          <div className="bg-gray-50 rounded-xl p-4 border border-gray-100">
+            <div className="flex items-baseline gap-2 mb-1">
+              <motion.span
+                className="text-4xl font-bold text-nim-navy tracking-tight"
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.5, delay: 0.9 }}
+              >
+                {step.visual.statNumber}
+              </motion.span>
+              <span className="text-sm text-gray-600">{step.visual.statLabel}</span>
+            </div>
+            <p className="text-xs text-gray-500 mb-3">{step.visual.substat}</p>
+            <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold ${badgeColors[step.visual.badge.color as keyof typeof badgeColors]}`}>
+              <Check className="w-3 h-3" strokeWidth={3} />
+              {step.visual.badge.text}
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    </div>
+  );
+};
 
 // Mobile step card with intersection observer
 const MobileStepCard: React.FC<{
@@ -160,7 +290,7 @@ const StepsSection: React.FC = () => {
       style={{ backgroundColor: '#faf8f5' }}
       aria-labelledby="steps-heading"
     >
-      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         {/* Header */}
         <header className="text-center mb-16 lg:mb-20">
           <motion.p
@@ -190,8 +320,8 @@ const StepsSection: React.FC = () => {
           </motion.p>
         </header>
 
-        {/* Desktop: Two-column layout */}
-        <div className="hidden lg:grid lg:grid-cols-[320px_1fr] gap-10 lg:gap-16">
+        {/* Desktop: Two-column layout with visual */}
+        <div className="hidden lg:grid lg:grid-cols-[340px_1fr_1fr] gap-8">
           {/* Left rail - Step names */}
           <nav className="space-y-2" aria-label="Process steps">
             {steps.map((step, index) => (
@@ -202,7 +332,7 @@ const StepsSection: React.FC = () => {
                 transition={{ duration: 0.4, delay: 0.2 + index * 0.05 }}
                 onClick={() => setActiveStep(index)}
                 className={`
-                  w-full text-left px-6 py-5 rounded-2xl transition-all duration-300
+                  w-full text-left px-5 py-4 rounded-2xl transition-all duration-300
                   flex items-center gap-4 group
                   ${activeStep === index 
                     ? 'bg-nim-purple text-white shadow-xl shadow-nim-purple/20' 
@@ -211,7 +341,7 @@ const StepsSection: React.FC = () => {
                 `}
               >
                 <span className={`
-                  w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold
+                  w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold
                   ${activeStep === index 
                     ? 'bg-white/20 text-white' 
                     : 'bg-nim-purple/10 text-nim-purple group-hover:bg-nim-purple/20'
@@ -219,51 +349,56 @@ const StepsSection: React.FC = () => {
                 `}>
                   {String(index + 1).padStart(2, '0')}
                 </span>
-                <span className={`font-semibold text-lg ${activeStep === index ? '' : 'text-foreground'}`}>
+                <span className={`font-semibold text-base ${activeStep === index ? '' : 'text-foreground'}`}>
                   {step.name}
                 </span>
               </motion.button>
             ))}
           </nav>
 
-          {/* Right panel - Step details */}
+          {/* Middle panel - Step details */}
           <motion.div 
             key={activeStep}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="bg-white rounded-3xl p-10 lg:p-12 border border-border shadow-lg"
+            className="bg-white rounded-3xl p-8 lg:p-10 border border-border shadow-lg flex flex-col justify-center"
           >
-            <div className="flex items-center gap-3 mb-8">
+            <div className="flex items-center gap-3 mb-6">
               <span className="px-4 py-1.5 rounded-full text-sm font-semibold bg-nim-purple/10 text-nim-purple">
                 Step {String(activeStep + 1).padStart(2, '0')}
               </span>
             </div>
             
-            <h3 className="text-3xl lg:text-4xl font-bold text-foreground mb-5 tracking-tight">
+            <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 tracking-tight">
               {steps[activeStep].name}
             </h3>
             
-            <p className="text-lg text-muted-foreground leading-relaxed mb-10">
+            <p className="text-base lg:text-lg text-muted-foreground leading-relaxed mb-8">
               {steps[activeStep].line}
             </p>
             
-            <div className="bg-nim-mint/20 rounded-2xl p-6 border border-nim-mint/30">
+            <div className="bg-nim-mint/20 rounded-2xl p-5 border border-nim-mint/30">
               <div className="flex items-start gap-4">
                 <div className="w-6 h-6 rounded-full bg-nim-mint flex items-center justify-center flex-shrink-0 mt-0.5">
                   <Check className="w-4 h-4 text-nim-navy" strokeWidth={3} />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-nim-navy/60 uppercase tracking-wider mb-2">
+                  <p className="text-sm font-semibold text-nim-navy/60 uppercase tracking-wider mb-1">
                     You get:
                   </p>
-                  <p className="text-nim-navy font-medium text-lg">
+                  <p className="text-nim-navy font-medium text-base lg:text-lg">
                     {steps[activeStep].youGet}
                   </p>
                 </div>
               </div>
             </div>
           </motion.div>
+
+          {/* Right panel - Premium floating visual */}
+          <div className="flex items-center justify-center">
+            <StepVisual step={steps[activeStep]} isInView={isInView} />
+          </div>
         </div>
 
         {/* Mobile: Progress indicator + Vertical list */}
