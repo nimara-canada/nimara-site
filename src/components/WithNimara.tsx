@@ -113,10 +113,12 @@ const FullScreenCard = ({
         <h3 className={`text-4xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 ${card.textClass}`}>
           {card.title}
         </h3>
-        <p className={`text-xl md:text-2xl lg:text-3xl leading-relaxed max-w-2xl mx-auto mb-6 ${card.subtextClass}`}>
+        <p className={`text-xl md:text-2xl lg:text-3xl leading-relaxed max-w-2xl mx-auto mb-4 ${card.subtextClass}`}>
           {card.description}
         </p>
-        
+        <p className={`text-lg md:text-xl leading-relaxed max-w-2xl mx-auto ${card.subtextClass} opacity-80`}>
+          {card.microLine}
+        </p>
       </div>
     </div>;
 };
