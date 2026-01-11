@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
+import ProblemSection from "@/components/ProblemSection";
 import WithNimara from "@/components/WithNimara";
 
 import StartingPointSplit from "@/components/StartingPointSplit";
@@ -94,6 +95,9 @@ const Index = () => {
         <main id="main" className="space-y-0" style={{ paddingTop: '5rem' }}>
           {/* Hero - full height entry */}
           <HeroSection />
+          
+          {/* The Problem */}
+          <ProblemSection />
           
           {/* With Nimara, you can - 3 Features */}
           <WithNimara />
