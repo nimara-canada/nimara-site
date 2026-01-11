@@ -3,146 +3,148 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Check, FileCheck, Clock, FolderOpen, ClipboardCheck, AlertCircle } from 'lucide-react';
 import { useRef } from 'react';
 
-// Premium Visual for Card 1 - Deel-style floating UI composition
+// Premium Visual for Card 1 - Deel-style with light blue panel and floating card
 const PremiumFolderVisual = ({ isInView }: { isInView: boolean }) => (
-  <div className="relative h-full w-full flex items-center justify-center overflow-hidden">
-    {/* Decorative background panel with subtle texture */}
+  <div className="relative h-full w-full flex items-center justify-center p-6 lg:p-8">
+    {/* Large rounded panel - light blue with texture */}
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={isInView ? { opacity: 1 } : {}}
-      transition={{ duration: 0.6, delay: 0.3 }}
-      className="absolute inset-4 lg:inset-6 rounded-2xl bg-gradient-to-br from-nim-purple/15 via-nim-purple/10 to-nim-mint/20"
-      style={{
-        backgroundImage: `
-          radial-gradient(circle at 30% 20%, hsl(var(--nim-purple) / 0.15) 0%, transparent 50%),
-          radial-gradient(circle at 70% 80%, hsl(var(--nim-mint) / 0.2) 0%, transparent 50%),
-          linear-gradient(135deg, transparent 40%, hsl(var(--nim-purple) / 0.05) 50%, transparent 60%)
-        `
-      }}
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={isInView ? { opacity: 1, scale: 1 } : {}}
+      transition={{ duration: 0.7, delay: 0.2 }}
+      className="relative w-full h-full min-h-[360px] lg:min-h-[440px] rounded-[2rem] overflow-hidden"
+      style={{ backgroundColor: 'hsl(210, 60%, 85%)' }}
     >
-      {/* Subtle geometric lines */}
-      <div className="absolute inset-0 opacity-[0.15]" style={{
-        backgroundImage: `
-          linear-gradient(45deg, hsl(var(--nim-purple) / 0.3) 1px, transparent 1px),
-          linear-gradient(-45deg, hsl(var(--nim-purple) / 0.3) 1px, transparent 1px)
-        `,
-        backgroundSize: '60px 60px'
-      }} />
-    </motion.div>
-    
-    {/* Main floating card */}
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: 0.5 }}
-      className="relative z-10 bg-white rounded-2xl shadow-xl p-6 lg:p-8 w-[280px] lg:w-[320px] border border-nim-mist/50"
-    >
-      {/* Header */}
-      <div className="flex items-center gap-3 mb-4">
-        <div className="w-10 h-10 rounded-xl bg-nim-purple/10 flex items-center justify-center">
-          <FolderOpen className="w-5 h-5 text-nim-purple" />
-        </div>
-        <span className="text-sm font-semibold text-nim-navy">Your Project:</span>
-      </div>
+      {/* Noise texture overlay */}
+      <div 
+        className="absolute inset-0 opacity-40 mix-blend-overlay"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        }}
+      />
       
-      {/* Message */}
-      <p className="text-nim-navy text-base lg:text-lg font-medium mb-6 leading-snug">
-        Board policies, grant tracking, and file systems — ready in 6 weeks.
-      </p>
+      {/* Geometric lines */}
+      <svg className="absolute inset-0 w-full h-full opacity-30" preserveAspectRatio="none">
+        <line x1="0%" y1="20%" x2="100%" y2="60%" stroke="hsl(210, 50%, 50%)" strokeWidth="1" />
+        <line x1="20%" y1="0%" x2="80%" y2="100%" stroke="hsl(210, 50%, 50%)" strokeWidth="1" />
+        <line x1="60%" y1="0%" x2="100%" y2="40%" stroke="hsl(210, 50%, 50%)" strokeWidth="1" />
+        <line x1="0%" y1="80%" x2="40%" y2="100%" stroke="hsl(210, 50%, 50%)" strokeWidth="1" />
+      </svg>
       
-      {/* Stats card */}
-      <div className="bg-nim-mist/50 rounded-xl p-4 border border-nim-mist">
-        <div className="flex items-baseline gap-2 mb-1">
-          <motion.span
-            className="text-4xl lg:text-5xl font-bold text-nim-navy"
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.9 }}
-          >
-            3
-          </motion.span>
-          <span className="text-sm text-nim-slate font-medium">systems built</span>
-        </div>
-        <p className="text-xs text-nim-slate mb-3">vs. 0 before starting</p>
-        <div className="flex items-center gap-2">
-          <div className="w-5 h-5 rounded-full bg-nim-mint flex items-center justify-center">
-            <ArrowRight className="w-3 h-3 text-nim-navy rotate-[-45deg]" />
+      {/* Floating white card */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, delay: 0.5 }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-6 lg:p-8 w-[85%] max-w-[320px]"
+      >
+        {/* Header */}
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-10 h-10 rounded-xl bg-nim-purple/15 flex items-center justify-center">
+            <FolderOpen className="w-5 h-5 text-nim-purple" />
           </div>
-          <span className="text-sm font-medium text-nim-purple">100% ready for funders</span>
+          <span className="text-base font-semibold text-nim-navy">Your Project:</span>
         </div>
-      </div>
+        
+        {/* Message */}
+        <p className="text-nim-navy text-lg font-medium mb-6 leading-snug">
+          Board policies, grant tracking, and file systems — ready in 6 weeks.
+        </p>
+        
+        {/* Stats box */}
+        <div className="bg-gray-50 rounded-xl p-4 border border-gray-100">
+          <div className="flex items-baseline gap-2 mb-1">
+            <motion.span
+              className="text-5xl font-bold text-nim-navy tracking-tight"
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.5, delay: 0.9 }}
+            >
+              3
+            </motion.span>
+            <span className="text-base text-gray-600">systems built</span>
+          </div>
+          <p className="text-sm text-gray-500 mb-3">vs. 0 before starting</p>
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center">
+              <ArrowRight className="w-3.5 h-3.5 text-green-600 rotate-[-45deg]" />
+            </div>
+            <span className="text-sm font-semibold text-green-600">100% ready for funders</span>
+          </div>
+        </div>
+      </motion.div>
     </motion.div>
   </div>
 );
 
-// Premium Visual for Card 2 - Health Check floating UI
+// Premium Visual for Card 2 - Deel-style with mint panel and floating card
 const PremiumCheckVisual = ({ isInView }: { isInView: boolean }) => (
-  <div className="relative h-full w-full flex items-center justify-center overflow-hidden">
-    {/* Decorative background panel with subtle texture */}
+  <div className="relative h-full w-full flex items-center justify-center p-6 lg:p-8">
+    {/* Large rounded panel - mint/teal with texture */}
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={isInView ? { opacity: 1 } : {}}
-      transition={{ duration: 0.6, delay: 0.3 }}
-      className="absolute inset-4 lg:inset-6 rounded-2xl bg-gradient-to-br from-nim-mint/20 via-nim-mint/10 to-nim-navy/5"
-      style={{
-        backgroundImage: `
-          radial-gradient(circle at 70% 20%, hsl(var(--nim-mint) / 0.25) 0%, transparent 50%),
-          radial-gradient(circle at 30% 80%, hsl(var(--nim-navy) / 0.08) 0%, transparent 50%),
-          linear-gradient(-45deg, transparent 40%, hsl(var(--nim-mint) / 0.1) 50%, transparent 60%)
-        `
-      }}
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={isInView ? { opacity: 1, scale: 1 } : {}}
+      transition={{ duration: 0.7, delay: 0.2 }}
+      className="relative w-full h-full min-h-[360px] lg:min-h-[440px] rounded-[2rem] overflow-hidden"
+      style={{ backgroundColor: 'hsl(165, 45%, 82%)' }}
     >
-      {/* Subtle geometric lines */}
-      <div className="absolute inset-0 opacity-[0.12]" style={{
-        backgroundImage: `
-          linear-gradient(45deg, hsl(var(--nim-navy) / 0.2) 1px, transparent 1px),
-          linear-gradient(-45deg, hsl(var(--nim-navy) / 0.2) 1px, transparent 1px)
-        `,
-        backgroundSize: '60px 60px'
-      }} />
-    </motion.div>
-    
-    {/* Main floating card */}
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: 0.5 }}
-      className="relative z-10 bg-white rounded-2xl shadow-xl p-6 lg:p-8 w-[280px] lg:w-[320px] border border-nim-mist/50"
-    >
-      {/* Header */}
-      <div className="flex items-center gap-3 mb-4">
-        <div className="w-10 h-10 rounded-xl bg-nim-mint/30 flex items-center justify-center">
-          <ClipboardCheck className="w-5 h-5 text-nim-navy" />
-        </div>
-        <span className="text-sm font-semibold text-nim-navy">Health Check:</span>
-      </div>
+      {/* Noise texture overlay */}
+      <div 
+        className="absolute inset-0 opacity-40 mix-blend-overlay"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        }}
+      />
       
-      {/* Message */}
-      <p className="text-nim-navy text-base lg:text-lg font-medium mb-6 leading-snug">
-        We found 3 gaps that funders usually flag.
-      </p>
+      {/* Geometric lines */}
+      <svg className="absolute inset-0 w-full h-full opacity-25" preserveAspectRatio="none">
+        <line x1="100%" y1="30%" x2="0%" y2="70%" stroke="hsl(165, 40%, 40%)" strokeWidth="1" />
+        <line x1="80%" y1="0%" x2="20%" y2="100%" stroke="hsl(165, 40%, 40%)" strokeWidth="1" />
+        <line x1="40%" y1="0%" x2="0%" y2="50%" stroke="hsl(165, 40%, 40%)" strokeWidth="1" />
+        <line x1="100%" y1="70%" x2="60%" y2="100%" stroke="hsl(165, 40%, 40%)" strokeWidth="1" />
+      </svg>
       
-      {/* Stats card */}
-      <div className="bg-nim-mist/50 rounded-xl p-4 border border-nim-mist">
-        <div className="flex items-baseline gap-2 mb-1">
-          <motion.span
-            className="text-4xl lg:text-5xl font-bold text-nim-navy"
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.9 }}
-          >
-            62
-          </motion.span>
-          <span className="text-sm text-nim-slate font-medium">/ 100 score</span>
-        </div>
-        <p className="text-xs text-nim-slate mb-3">before any fixes</p>
-        <div className="flex items-center gap-2">
-          <div className="w-5 h-5 rounded-full bg-nim-mint flex items-center justify-center">
-            <AlertCircle className="w-3 h-3 text-nim-navy" />
+      {/* Floating white card */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, delay: 0.5 }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-6 lg:p-8 w-[85%] max-w-[320px]"
+      >
+        {/* Header */}
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-10 h-10 rounded-xl bg-nim-mint/40 flex items-center justify-center">
+            <ClipboardCheck className="w-5 h-5 text-nim-navy" />
           </div>
-          <span className="text-sm font-medium text-nim-navy">3 priority areas to fix</span>
+          <span className="text-base font-semibold text-nim-navy">Health Check:</span>
         </div>
-      </div>
+        
+        {/* Message */}
+        <p className="text-nim-navy text-lg font-medium mb-6 leading-snug">
+          We found 3 gaps that funders usually flag.
+        </p>
+        
+        {/* Stats box */}
+        <div className="bg-gray-50 rounded-xl p-4 border border-gray-100">
+          <div className="flex items-baseline gap-2 mb-1">
+            <motion.span
+              className="text-5xl font-bold text-nim-navy tracking-tight"
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.5, delay: 0.9 }}
+            >
+              62
+            </motion.span>
+            <span className="text-base text-gray-600">/ 100 score</span>
+          </div>
+          <p className="text-sm text-gray-500 mb-3">before any fixes</p>
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-full bg-amber-100 flex items-center justify-center">
+              <AlertCircle className="w-3.5 h-3.5 text-amber-600" />
+            </div>
+            <span className="text-sm font-semibold text-amber-700">3 priority areas to fix</span>
+          </div>
+        </div>
+      </motion.div>
     </motion.div>
   </div>
 );
@@ -166,7 +168,7 @@ const StartingPointSplit = () => {
   };
 
   return (
-    <section ref={sectionRef} className="bg-background">
+    <section ref={sectionRef} style={{ backgroundColor: '#faf8f5' }}>
       {/* Header */}
       <motion.div
         initial="hidden"
@@ -199,8 +201,8 @@ const StartingPointSplit = () => {
           variants={itemVariants}
           className="w-full px-4 md:px-8"
         >
-          <div className="max-w-7xl mx-auto relative rounded-3xl bg-nim-cloud overflow-hidden">
-            <div className="grid lg:grid-cols-2 min-h-[480px] md:min-h-[520px]">
+          <div className="max-w-7xl mx-auto relative overflow-hidden" style={{ backgroundColor: '#faf8f5' }}>
+            <div className="grid lg:grid-cols-2 min-h-[520px] md:min-h-[580px]">
               {/* Text Content - Left side */}
               <div className="flex items-center px-6 md:px-12 lg:px-16 py-12 md:py-16 order-2 lg:order-1">
                 <div className="max-w-lg">
@@ -295,8 +297,8 @@ const StartingPointSplit = () => {
           variants={itemVariants}
           className="w-full px-4 md:px-8"
         >
-          <div className="max-w-7xl mx-auto relative rounded-3xl bg-nim-cloud overflow-hidden">
-            <div className="grid lg:grid-cols-2 min-h-[480px] md:min-h-[520px]">
+          <div className="max-w-7xl mx-auto relative overflow-hidden" style={{ backgroundColor: '#faf8f5' }}>
+            <div className="grid lg:grid-cols-2 min-h-[520px] md:min-h-[580px]">
               {/* Visual - Left side */}
               <div className="relative order-1 min-h-[280px] lg:min-h-0 overflow-visible px-4 lg:px-0">
                 <PremiumCheckVisual isInView={isInView} />
