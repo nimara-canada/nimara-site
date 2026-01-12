@@ -1,13 +1,14 @@
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { Footer } from '@/components/Footer';
 import { ScrollToTop } from '@/components/ScrollToTop';
+import { MotionPreferencesProvider, useMotionPreferences, DROPBOX_EASING_CSS } from '@/hooks/use-scroll-reveal';
 import { CALENDLY_BOOKING_URL, TYPEFORM_HEALTH_CHECK_URL, CONTACT_EMAIL } from '@/constants/urls';
 import { 
-  Check, X, ArrowRight, Clipboard, MessageSquare, FileCheck, ChevronDown
+  Check, X, ArrowRight, Clipboard, MessageSquare, FileCheck, Calendar
 } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import {
@@ -16,6 +17,45 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+
+// Scroll reveal wrapper component
+function ScrollRevealBlock({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const { reducedMotion } = useMotionPreferences();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const style: React.CSSProperties = reducedMotion
+    ? { opacity: 1, transform: 'none' }
+    : {
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
+        transition: `opacity 700ms ${DROPBOX_EASING_CSS} ${delay}ms, transform 700ms ${DROPBOX_EASING_CSS} ${delay}ms`,
+      };
+
+  return (
+    <div ref={ref} style={style}>
+      {children}
+    </div>
+  );
+}
 
 // Area selection data
 const areas = [
@@ -48,6 +88,50 @@ const faqs = [
   }
 ];
 
+// Premium Visual Card with noise texture and geometric lines
+interface PremiumVisualCardProps {
+  color: string;
+  lineColor: string;
+  isInView: boolean;
+  children: React.ReactNode;
+}
+
+function PremiumVisualCard({ color, lineColor, isInView, children }: PremiumVisualCardProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
+      transition={{ duration: 0.6, delay: 0.2 }}
+      className="relative w-full"
+    >
+      {/* Main colored panel */}
+      <div 
+        className="relative rounded-3xl overflow-hidden aspect-[4/3]"
+        style={{ backgroundColor: color }}
+      >
+        {/* Noise texture overlay */}
+        <div 
+          className="absolute inset-0 opacity-40 mix-blend-overlay pointer-events-none"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E")`,
+          }}
+        />
+
+        {/* Geometric lines */}
+        <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+          <line x1="20%" y1="0" x2="20%" y2="100%" stroke={lineColor} strokeWidth="1" opacity="0.3" />
+          <line x1="80%" y1="0" x2="80%" y2="100%" stroke={lineColor} strokeWidth="1" opacity="0.3" />
+          <line x1="0" y1="30%" x2="100%" y2="30%" stroke={lineColor} strokeWidth="1" opacity="0.2" />
+          <line x1="0" y1="70%" x2="100%" y2="70%" stroke={lineColor} strokeWidth="1" opacity="0.2" />
+        </svg>
+
+        {/* Content */}
+        {children}
+      </div>
+    </motion.div>
+  );
+}
+
 // Sticky Header
 const StickyHeader = () => {
   return (
@@ -77,27 +161,43 @@ const StickyHeader = () => {
   );
 };
 
-// 1. Hero Section
+// 1. Hero Section - Dark Navy with Grid Pattern
 const HeroSection = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
-    <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-white">
-      <div className="max-w-3xl mx-auto px-6 text-center">
+    <section 
+      ref={ref}
+      className="relative min-h-[90vh] flex items-center bg-secondary-background overflow-hidden pt-20"
+    >
+      {/* Subtle grid pattern */}
+      <div 
+        className="absolute inset-0 opacity-[0.02] pointer-events-none" 
+        aria-hidden="true" 
+        style={{
+          backgroundImage: `linear-gradient(hsl(var(--foreground) / 0.08) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground) / 0.08) 1px, transparent 1px)`,
+          backgroundSize: '80px 80px'
+        }} 
+      />
+
+      <div className="relative z-10 w-full max-w-4xl mx-auto px-6 py-20 lg:py-28 text-center">
         {/* H1 */}
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-nim-navy tracking-tight leading-[1.1] mb-6"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-[-0.02em] leading-[1.1] mb-6"
         >
           Book a call for a quote
         </motion.h1>
 
         {/* Subhead */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto mb-8"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="text-lg md:text-xl text-white/70 max-w-xl mx-auto mb-10"
         >
           Tell us what you need help with. We'll give you a clear scope and price.
         </motion.p>
@@ -105,24 +205,24 @@ const HeroSection = () => {
         {/* Pricing Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="inline-flex items-center px-5 py-2.5 bg-nim-cloud border border-border rounded-full mb-8"
+          className="inline-flex items-center px-6 py-3 bg-white/10 border border-white/20 rounded-full mb-10"
         >
-          <span className="text-nim-navy font-semibold">From $6,499 CAD per area</span>
+          <span className="text-white font-semibold text-lg">From $6,499 CAD per area</span>
         </motion.div>
 
         {/* Trust Badges */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-wrap items-center justify-center gap-3 mb-10"
+          className="flex flex-wrap items-center justify-center gap-3 mb-12"
         >
           {['Canada-only', 'Not an audit firm', 'Not grant writers'].map((badge) => (
             <span 
               key={badge}
-              className="px-3 py-1.5 bg-nim-mist text-nim-slate text-sm font-medium rounded-full"
+              className="px-4 py-2 bg-white/5 border border-white/10 text-white/60 text-sm font-medium rounded-full"
             >
               {badge}
             </span>
@@ -132,11 +232,11 @@ const HeroSection = () => {
         {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-col items-center gap-4"
+          className="flex flex-col items-center gap-5"
         >
-          <Button asChild size="lg" className="bg-nim-navy hover:bg-nim-navy/90 text-white px-10 py-6 text-base">
+          <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 px-10 py-6 text-base font-semibold rounded-xl">
             <a href="#booking">
               Book a call
               <ArrowRight className="w-4 h-4 ml-2" />
@@ -146,7 +246,7 @@ const HeroSection = () => {
             href={TYPEFORM_HEALTH_CHECK_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-nim-navy transition-colors text-sm underline underline-offset-4"
+            className="text-white/50 hover:text-white/80 transition-colors text-sm underline underline-offset-4"
           >
             Try the 6-minute check
           </a>
@@ -159,6 +259,8 @@ const HeroSection = () => {
 // 2. Interactive Area Selection
 const AreaSelectionSection = () => {
   const [selectedAreas, setSelectedAreas] = useState<string[]>([]);
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const toggleArea = (id: string) => {
     setSelectedAreas(prev => 
@@ -169,60 +271,55 @@ const AreaSelectionSection = () => {
   };
 
   return (
-    <section className="py-20 md:py-28 bg-nim-cloud">
-      <div className="max-w-3xl mx-auto px-6 text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-2xl sm:text-3xl md:text-4xl font-bold text-nim-navy tracking-tight mb-4"
-        >
-          What areas do you want to strengthen?
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-muted-foreground mb-10"
-        >
-          Pick at least 2. We'll start with what's most urgent.
-        </motion.p>
+    <section ref={ref} className="py-24 md:py-32 bg-white">
+      <div className="max-w-4xl mx-auto px-6 text-center">
+        <ScrollRevealBlock>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">
+            Choose Your Focus
+          </p>
+        </ScrollRevealBlock>
+        <ScrollRevealBlock delay={100}>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground tracking-tight mb-4">
+            What areas do you want to <span className="text-primary">strengthen?</span>
+          </h2>
+        </ScrollRevealBlock>
+        <ScrollRevealBlock delay={200}>
+          <p className="text-lg text-muted-foreground mb-12 max-w-xl mx-auto">
+            Pick at least 2. We'll start with what's most urgent.
+          </p>
+        </ScrollRevealBlock>
 
         {/* Area Chips */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-3"
-        >
-          {areas.map((area) => {
-            const isSelected = selectedAreas.includes(area.id);
-            return (
-              <button
-                key={area.id}
-                onClick={() => toggleArea(area.id)}
-                className={`px-5 py-3 rounded-xl font-medium text-sm transition-all duration-200 border-2 ${
-                  isSelected
-                    ? 'bg-nim-navy text-white border-nim-navy'
-                    : 'bg-white text-nim-navy border-border hover:border-nim-slate/50'
-                }`}
-              >
-                {area.label}
-              </button>
-            );
-          })}
-        </motion.div>
+        <ScrollRevealBlock delay={300}>
+          <div className="flex flex-wrap justify-center gap-3 mb-10">
+            {areas.map((area) => {
+              const isSelected = selectedAreas.includes(area.id);
+              return (
+                <motion.button
+                  key={area.id}
+                  onClick={() => toggleArea(area.id)}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`px-6 py-3.5 rounded-xl font-medium text-sm transition-all duration-200 border-2 ${
+                    isSelected
+                      ? 'bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/20'
+                      : 'bg-white text-foreground border-border hover:border-primary/50 hover:shadow-md'
+                  }`}
+                >
+                  {area.label}
+                </motion.button>
+              );
+            })}
+          </div>
+        </ScrollRevealBlock>
 
         {selectedAreas.length >= 2 && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="mt-8"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mt-6"
           >
-            <Button asChild size="lg" className="bg-nim-navy hover:bg-nim-navy/90 text-white">
+            <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
               <a href="#booking">
                 Continue to booking
                 <ArrowRight className="w-4 h-4 ml-2" />
@@ -235,52 +332,78 @@ const AreaSelectionSection = () => {
   );
 };
 
-// 3. Process Steps
+// 3. Process Steps with Premium Visuals
 const ProcessSection = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   const steps = [
     {
       icon: Clipboard,
       title: "Before the call",
-      description: "You answer a few short questions. You get: a clear agenda."
+      description: "You answer a few short questions. You get: a clear agenda.",
+      color: "hsl(210, 60%, 85%)",
+      lineColor: "hsl(210, 50%, 50%)"
     },
     {
       icon: MessageSquare,
       title: "On the call",
-      description: "We agree on areas and what 'done' looks like. You get: a clear plan in plain words."
+      description: "We agree on areas and what 'done' looks like. You get: a clear plan in plain words.",
+      color: "hsl(165, 45%, 82%)",
+      lineColor: "hsl(165, 40%, 40%)"
     },
     {
       icon: FileCheck,
       title: "After the call",
-      description: "We send a quote based on your choices. You get: scope + price + next steps."
+      description: "We send a quote based on your choices. You get: scope + price + next steps.",
+      color: "hsl(262, 60%, 85%)",
+      lineColor: "hsl(262, 50%, 50%)"
     }
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-white">
-      <div className="max-w-5xl mx-auto px-6">
-        <div className="grid md:grid-cols-3 gap-6">
+    <section ref={ref} className="py-24 md:py-32" style={{ backgroundColor: '#faf8f5' }}>
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="text-center mb-16">
+          <ScrollRevealBlock>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">
+              The Process
+            </p>
+          </ScrollRevealBlock>
+          <ScrollRevealBlock delay={100}>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground tracking-tight mb-4">
+              Simple. <span className="text-primary">Clear.</span> No surprises.
+            </h2>
+          </ScrollRevealBlock>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
           {steps.map((step, index) => (
-            <motion.div
-              key={step.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <Card className="h-full border-border bg-white hover:shadow-md transition-shadow">
-                <CardContent className="p-6">
-                  <div className="w-12 h-12 rounded-xl bg-nim-cloud flex items-center justify-center mb-5">
-                    <step.icon className="w-6 h-6 text-nim-navy" />
+            <ScrollRevealBlock key={step.title} delay={200 + index * 100}>
+              <PremiumVisualCard
+                color={step.color}
+                lineColor={step.lineColor}
+                isInView={isInView}
+              >
+                {/* Floating white card */}
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-xl p-6 min-w-[200px] max-w-[280px]"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                    <step.icon className="w-6 h-6 text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold text-nim-navy mb-2">
+                  <h3 className="text-lg font-semibold text-foreground mb-2">
                     {step.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {step.description}
                   </p>
-                </CardContent>
-              </Card>
-            </motion.div>
+                </motion.div>
+              </PremiumVisualCard>
+            </ScrollRevealBlock>
           ))}
         </div>
       </div>
@@ -297,29 +420,25 @@ const PreparationSection = () => {
   ];
 
   return (
-    <section className="py-16 md:py-20 bg-nim-cloud">
+    <section className="py-20 md:py-28 bg-white">
       <div className="max-w-2xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="bg-white rounded-2xl p-8 md:p-10 border border-border"
-        >
-          <h3 className="text-xl md:text-2xl font-bold text-nim-navy mb-6">
-            What we'll ask on the call
-          </h3>
-          <ul className="space-y-4">
-            {items.map((item, index) => (
-              <li key={index} className="flex items-start gap-3">
-                <div className="w-5 h-5 rounded-full bg-nim-mint flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Check className="w-3 h-3 text-nim-navy" />
-                </div>
-                <span className="text-nim-slate-dark">{item}</span>
-              </li>
-            ))}
-          </ul>
-        </motion.div>
+        <ScrollRevealBlock>
+          <div className="bg-nim-cloud rounded-3xl p-8 md:p-12 border border-border">
+            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-8">
+              What we'll ask on the call
+            </h3>
+            <ul className="space-y-5">
+              {items.map((item, index) => (
+                <li key={index} className="flex items-start gap-4">
+                  <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-3.5 h-3.5 text-accent-foreground" />
+                  </div>
+                  <span className="text-foreground text-lg">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </ScrollRevealBlock>
       </div>
     </section>
   );
@@ -327,35 +446,50 @@ const PreparationSection = () => {
 
 // 5. Pricing Block
 const PricingBlock = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
-    <section className="py-20 md:py-28 bg-white">
+    <section ref={ref} className="py-24 md:py-32" style={{ backgroundColor: '#faf8f5' }}>
       <div className="max-w-2xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <Card className="border-2 border-nim-navy shadow-lg">
-            <CardContent className="p-8 md:p-10 text-center">
-              <h3 className="text-xl font-semibold text-nim-navy mb-6">
+        <ScrollRevealBlock>
+          <div className="text-center mb-8">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">
+              Transparent Pricing
+            </p>
+          </div>
+        </ScrollRevealBlock>
+
+        <ScrollRevealBlock delay={100}>
+          <PremiumVisualCard
+            color="hsl(220, 53%, 15%)"
+            lineColor="hsl(220, 50%, 40%)"
+            isInView={isInView}
+          >
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-8 md:p-10 text-center w-[90%] max-w-[400px]"
+            >
+              <h3 className="text-lg font-semibold text-muted-foreground mb-4">
                 Pricing
               </h3>
               <div className="mb-4">
-                <span className="text-4xl md:text-5xl font-bold text-nim-navy">
-                  From $6,499 CAD
+                <span className="text-4xl md:text-5xl font-bold text-primary">
+                  $6,499
                 </span>
-                <span className="text-muted-foreground ml-2">per area</span>
+                <span className="text-muted-foreground ml-2">CAD / area</span>
               </div>
-              <p className="text-nim-navy font-medium mb-4">
+              <p className="text-foreground font-medium mb-4">
                 Minimum 2 areas (starting at $12,998 CAD)
               </p>
               <p className="text-sm text-muted-foreground">
                 Final price depends on what you already have and what's missing.
               </p>
-            </CardContent>
-          </Card>
-        </motion.div>
+            </motion.div>
+          </PremiumVisualCard>
+        </ScrollRevealBlock>
       </div>
     </section>
   );
@@ -376,60 +510,63 @@ const FitFilterSection = () => {
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-nim-cloud">
+    <section className="py-24 md:py-32 bg-white">
       <div className="max-w-4xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="text-center mb-14">
+          <ScrollRevealBlock>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">
+              Is This Right For You?
+            </p>
+          </ScrollRevealBlock>
+          <ScrollRevealBlock delay={100}>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground tracking-tight">
+              Let's make sure we're a <span className="text-primary">good fit</span>
+            </h2>
+          </ScrollRevealBlock>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8">
           {/* Best Fit */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <Card className="h-full border-border bg-white">
-              <CardContent className="p-8">
-                <h3 className="text-lg font-semibold text-nim-navy mb-6">
+          <ScrollRevealBlock delay={200}>
+            <Card className="h-full border-border bg-white hover:shadow-lg transition-shadow">
+              <CardContent className="p-8 md:p-10">
+                <h3 className="text-xl font-semibold text-foreground mb-6">
                   Best fit if you want
                 </h3>
                 <ul className="space-y-4">
                   {bestFit.map((item, index) => (
                     <li key={index} className="flex items-start gap-3">
-                      <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <Check className="w-3 h-3 text-green-600" />
+                      <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-3.5 h-3.5 text-green-600" />
                       </div>
-                      <span className="text-nim-slate-dark">{item}</span>
+                      <span className="text-foreground">{item}</span>
                     </li>
                   ))}
                 </ul>
               </CardContent>
             </Card>
-          </motion.div>
+          </ScrollRevealBlock>
 
           {/* Not a Fit */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <Card className="h-full border-border bg-white">
-              <CardContent className="p-8">
-                <h3 className="text-lg font-semibold text-nim-navy mb-6">
+          <ScrollRevealBlock delay={300}>
+            <Card className="h-full border-border bg-white hover:shadow-lg transition-shadow">
+              <CardContent className="p-8 md:p-10">
+                <h3 className="text-xl font-semibold text-foreground mb-6">
                   Not a fit if you want
                 </h3>
                 <ul className="space-y-4">
                   {notAFit.map((item, index) => (
                     <li key={index} className="flex items-start gap-3">
-                      <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <X className="w-3 h-3 text-red-400" />
+                      <div className="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <X className="w-3.5 h-3.5 text-red-400" />
                       </div>
-                      <span className="text-nim-slate-dark">{item}</span>
+                      <span className="text-foreground">{item}</span>
                     </li>
                   ))}
                 </ul>
               </CardContent>
             </Card>
-          </motion.div>
+          </ScrollRevealBlock>
         </div>
       </div>
     </section>
@@ -439,29 +576,24 @@ const FitFilterSection = () => {
 // 7. Booking Section
 const BookingSection = () => {
   return (
-    <section id="booking" className="py-20 md:py-28 bg-white">
+    <section id="booking" className="py-24 md:py-32" style={{ backgroundColor: '#faf8f5' }}>
       <div className="max-w-3xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-10"
-        >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-nim-navy tracking-tight mb-4">
-            Book your call
-          </h2>
-        </motion.div>
+        <div className="text-center mb-12">
+          <ScrollRevealBlock>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">
+              Get Started
+            </p>
+          </ScrollRevealBlock>
+          <ScrollRevealBlock delay={100}>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground tracking-tight mb-4">
+              Book your call
+            </h2>
+          </ScrollRevealBlock>
+        </div>
 
-        {/* Calendly Embed Placeholder */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-8"
-        >
-          <div className="w-full bg-nim-cloud border border-border rounded-2xl overflow-hidden" style={{ height: '700px' }}>
+        {/* Calendly Embed */}
+        <ScrollRevealBlock delay={200}>
+          <div className="w-full bg-white border border-border rounded-3xl overflow-hidden shadow-lg" style={{ height: '700px' }}>
             <iframe
               src={CALENDLY_BOOKING_URL}
               width="100%"
@@ -471,46 +603,38 @@ const BookingSection = () => {
               className="w-full h-full"
             />
           </div>
-        </motion.div>
+        </ScrollRevealBlock>
 
         {/* Backup Contact */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-center text-muted-foreground mb-12"
-        >
-          Prefer email?{' '}
-          <a 
-            href={`mailto:${CONTACT_EMAIL}`}
-            className="text-nim-navy underline underline-offset-4 hover:text-nim-purple transition-colors"
-          >
-            {CONTACT_EMAIL}
-          </a>
-        </motion.p>
+        <ScrollRevealBlock delay={300}>
+          <p className="text-center text-muted-foreground mt-8 mb-14">
+            Prefer email?{' '}
+            <a 
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="text-primary underline underline-offset-4 hover:text-primary/80 transition-colors"
+            >
+              {CONTACT_EMAIL}
+            </a>
+          </p>
+        </ScrollRevealBlock>
 
         {/* FAQ Accordion */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="max-w-xl mx-auto"
-        >
-          <Accordion type="single" collapsible className="w-full">
-            {faqs.map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="border-border">
-                <AccordionTrigger className="text-left text-nim-navy hover:text-nim-purple hover:no-underline py-4">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pb-4">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </motion.div>
+        <ScrollRevealBlock delay={400}>
+          <div className="max-w-xl mx-auto bg-white rounded-2xl border border-border p-6 md:p-8">
+            <Accordion type="single" collapsible className="w-full">
+              {faqs.map((faq, index) => (
+                <AccordionItem key={index} value={`item-${index}`} className="border-border">
+                  <AccordionTrigger className="text-left text-foreground hover:text-primary hover:no-underline py-4 text-base">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground pb-4">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </ScrollRevealBlock>
       </div>
     </section>
   );
@@ -519,40 +643,42 @@ const BookingSection = () => {
 // Main Page Component
 const CapacityBuildout = () => {
   return (
-    <div className="min-h-screen bg-white">
-      <ScrollToTop />
-      
-      <Helmet>
-        <title>Book a Call | Capacity Buildout | Nimara</title>
-        <meta name="description" content="Book a call to get a clear scope and price for strengthening your nonprofit's operations. From $6,499 CAD per area. Canada-only." />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://nimara.ca/capacity-buildout" />
+    <MotionPreferencesProvider>
+      <div className="min-h-screen bg-white">
+        <ScrollToTop />
         
-        <meta property="og:title" content="Book a Call | Capacity Buildout | Nimara" />
-        <meta property="og:description" content="Tell us what you need help with. We'll give you a clear scope and price for your nonprofit." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://nimara.ca/capacity-buildout" />
-        <meta property="og:image" content="https://nimara.ca/og-image.png" />
+        <Helmet>
+          <title>Book a Call | Capacity Buildout | Nimara</title>
+          <meta name="description" content="Book a call to get a clear scope and price for strengthening your nonprofit's operations. From $6,499 CAD per area. Canada-only." />
+          <meta name="robots" content="index, follow" />
+          <link rel="canonical" href="https://nimara.ca/capacity-buildout" />
+          
+          <meta property="og:title" content="Book a Call | Capacity Buildout | Nimara" />
+          <meta property="og:description" content="Tell us what you need help with. We'll give you a clear scope and price for your nonprofit." />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://nimara.ca/capacity-buildout" />
+          <meta property="og:image" content="https://nimara.ca/og-image.png" />
+          
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="Book a Call | Capacity Buildout | Nimara" />
+          <meta name="twitter:description" content="Tell us what you need help with. We'll give you a clear scope and price." />
+        </Helmet>
         
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Book a Call | Capacity Buildout | Nimara" />
-        <meta name="twitter:description" content="Tell us what you need help with. We'll give you a clear scope and price." />
-      </Helmet>
-      
-      <StickyHeader />
-      
-      <main id="main">
-        <HeroSection />
-        <AreaSelectionSection />
-        <ProcessSection />
-        <PreparationSection />
-        <PricingBlock />
-        <FitFilterSection />
-        <BookingSection />
-      </main>
-      
-      <Footer />
-    </div>
+        <StickyHeader />
+        
+        <main id="main">
+          <HeroSection />
+          <AreaSelectionSection />
+          <ProcessSection />
+          <PreparationSection />
+          <PricingBlock />
+          <FitFilterSection />
+          <BookingSection />
+        </main>
+        
+        <Footer />
+      </div>
+    </MotionPreferencesProvider>
   );
 };
 
