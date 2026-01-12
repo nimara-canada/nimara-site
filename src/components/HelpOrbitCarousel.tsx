@@ -94,34 +94,38 @@ function StackingCard({
 }) {
   const Icon = card.icon;
 
-  // Each card appears at a specific scroll threshold
-  // Card 0: 0%, Card 1: ~14%, Card 2: ~28%, etc.
-  const cardStart = index / totalCards;
-  const cardEnd = (index + 1) / totalCards;
+  // Calculate stacking offset - each card stacks slightly below previous
+  const stackOffset = index * 8;
 
-  // Transform for y position - card slides up from below
+  // First card is always visible - no animation needed
+  if (index === 0) {
+    return (
+      <div
+        className={`absolute inset-x-4 md:inset-x-0 rounded-3xl shadow-2xl ${card.color} overflow-hidden`}
+        style={{
+          zIndex: 1,
+          top: 0,
+          height: "calc(100% - 48px)",
+        }}
+      >
+        <CardContent card={card} Icon={Icon} />
+      </div>
+    );
+  }
+
+  // Cards 2-7: Distribute scroll range among remaining cards
+  // Each card gets an equal portion of the scroll range
+  const animatingCards = totalCards - 1; // 6 cards animate
+  const cardIndex = index - 1; // 0-5 for cards 2-7
+  
+  const cardStart = cardIndex / animatingCards;
+  const cardEnd = (cardIndex + 0.7) / animatingCards; // Slightly faster for snappier feel
+
+  // Transform for y position - card slides up from below (no fade)
   const y = useTransform(
     scrollProgress,
     [cardStart, cardEnd],
-    ["100%", "0%"]
-  );
-
-  // Opacity for smooth fade in
-  const opacity = useTransform(
-    scrollProgress,
-    [cardStart, cardStart + 0.05],
-    [0, 1]
-  );
-
-  // Calculate stacking offset and base scale
-  const stackOffset = index * 12;
-  const baseScale = 1 - (totalCards - 1 - index) * 0.02;
-
-  // Scale down effect as user scrolls past the section
-  const exitScale = useTransform(
-    scrollProgress,
-    [0.85, 1],
-    [baseScale, baseScale * 0.85]
+    ["110%", "0%"]
   );
 
   return (
@@ -129,13 +133,20 @@ function StackingCard({
       className={`absolute inset-x-4 md:inset-x-0 rounded-3xl shadow-2xl ${card.color} overflow-hidden`}
       style={{
         y,
-        opacity,
         zIndex: index + 1,
         top: stackOffset,
-        height: "calc(100% - 60px)",
-        scale: exitScale,
+        height: "calc(100% - 48px)",
       }}
     >
+      <CardContent card={card} Icon={Icon} />
+    </motion.div>
+  );
+}
+
+// Extracted card content for reuse
+function CardContent({ card, Icon }: { card: CardData; Icon: LucideIcon }) {
+  return (
+    <>
       {/* Corner icon */}
       <div className="absolute top-6 right-6">
         <div
@@ -175,7 +186,7 @@ function StackingCard({
             : "bg-gradient-to-t from-black/10 to-transparent"
         }`}
       />
-    </motion.div>
+    </>
   );
 }
 
@@ -304,7 +315,11 @@ function CardListItem({
   index: number;
   activeIndex: ReturnType<typeof useTransform<number, number>>;
 }) {
-  const isActive = useTransform(activeIndex, (latest: number) => Math.round(latest) >= index);
+  // First card (Board) is always active, others activate based on scroll
+  const isActive = useTransform(activeIndex, (latest: number) => {
+    if (index === 0) return true; // Board is always highlighted
+    return Math.round(latest) >= index;
+  });
 
   return (
     <motion.div
