@@ -32,7 +32,7 @@ export const TheTeam = () => {
           The Team
         </h2>
         <p className="text-center text-muted-foreground mb-12">
-          Small, focused, growing. We've all worked on the front lines of Canadian nonprofits.
+          Lean, focused, growing. We've all worked on the front lines of Canadian nonprofits.
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
@@ -65,7 +65,7 @@ export const TheTeam = () => {
         </div>
 
         <p className="text-center text-sm text-muted-foreground">
-          We're a small team and hiring carefully. If this work matters to you, say hello →{" "}
+          We're a lean team and hiring carefully. If this work matters to you, say hello →{" "}
           <a href="mailto:hello@nimara.ca" className="text-primary hover:underline">
             hello@nimara.ca
           </a>
