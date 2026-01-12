@@ -189,7 +189,7 @@ const HeroSection = () => {
           transition={{ duration: 0.7 }}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-[-0.02em] leading-[1.1] mb-6"
         >
-          Book a call for a quote
+          We know what funders look for.
         </motion.h1>
 
         {/* Subhead */}
@@ -197,9 +197,9 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-lg md:text-xl text-white/70 max-w-xl mx-auto mb-10"
+          className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-10"
         >
-          Tell us what you need help with. We'll give you a clear scope and price.
+          Built by a former grant fund manager. Nimara helps Canadian nonprofits build the systems funders actually look for. Simple. Documented. Proof-ready.
         </motion.p>
 
         {/* Pricing Badge */}
