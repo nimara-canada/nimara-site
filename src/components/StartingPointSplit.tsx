@@ -184,7 +184,7 @@ const StartingPointSplit = () => {
           Choose where to start.
         </h2>
         <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-          Most small nonprofits start in one of these two places.
+          Most nonprofits start in one of these two places.
         </p>
       </motion.div>
 

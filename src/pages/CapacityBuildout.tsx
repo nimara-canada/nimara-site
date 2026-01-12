@@ -1272,7 +1272,7 @@ const FooterMicrocopy = () => {
     <div className="bg-nim-navy border-t border-white/10 py-6">
       <div className="max-w-6xl mx-auto px-6 text-center">
         <p className="text-sm text-white/40">
-          Nimara Technology Inc — Canada-first, small-team systems.
+          Nimara Technology Inc — Canada-first, lean-team systems.
         </p>
         <p className="text-xs text-white/30 mt-1">
           Not legal, tax, or audit advice.

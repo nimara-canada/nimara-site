@@ -73,7 +73,7 @@
         "problem": "Picked the wrong consultant before",
         "solution": "Vetted Canadian experts. Proposals use the same format so you can compare."
       },
-      "smallTeam": {
+      "leanTeam": {
         "problem": "Lean team; we need simple",
         "solution": "Right-sized scope, quick wins, templates you can reuse."
       },

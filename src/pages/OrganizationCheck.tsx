@@ -425,7 +425,7 @@ const Timeline = () => {
 // Pricing - Premium cards
 const Pricing = () => {
   const tiers = [
-    { name: "Standard", desc: "Small teams", price: "From $2,500", isCta: false },
+    { name: "Standard", desc: "Lean teams", price: "From $2,500", isCta: false },
     { name: "Complex", desc: "10+ staff / more moving parts", price: "Request a Quote", isCta: true }
   ];
 

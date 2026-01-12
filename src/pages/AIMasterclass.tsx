@@ -134,7 +134,7 @@ const AIMasterclass = () => {
             </p>
             
             <div className="flex flex-wrap justify-center gap-2 mb-8">
-              {["EDs", "Fundraising", "Programs", "Comms", "Small teams"].map((chip) => (
+              {["EDs", "Fundraising", "Programs", "Comms", "Lean teams"].map((chip) => (
                 <span key={chip} className="px-4 py-2 bg-[#ACFCE3] text-[#202654] rounded-full text-sm font-medium">
                   {chip}
                 </span>
@@ -238,7 +238,7 @@ const AIMasterclass = () => {
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-3xl font-bold text-[#202654] text-center mb-8">Who it's for</h2>
             <p className="text-center text-[#96A0B5] mb-12">
-              EDs, development, program leads, comms, small teams, volunteers. No tech background needed.
+              EDs, development, program leads, comms, lean teams, volunteers. No tech background needed.
             </p>
             <div className="grid md:grid-cols-3 gap-6">
               {[
