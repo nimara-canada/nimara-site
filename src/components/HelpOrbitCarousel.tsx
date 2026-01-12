@@ -209,9 +209,9 @@ export default function HelpOrbitCarousel() {
   // Calculate active card index for left side highlighting
   const activeIndex = useTransform(smoothProgress, [0, 1], [0, cards.length - 1]);
 
-  // Fade out the entire sticky content as user scrolls past
-  const stickyOpacity = useTransform(smoothProgress, [0.85, 1], [1, 0]);
-  const stickyY = useTransform(smoothProgress, [0.85, 1], [0, -50]);
+  // Subtle fade out as user scrolls past - less intense transition
+  const stickyOpacity = useTransform(smoothProgress, [0.9, 1], [1, 0.3]);
+  const stickyY = useTransform(smoothProgress, [0.9, 1], [0, -20]);
 
   return (
     <section
