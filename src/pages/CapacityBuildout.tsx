@@ -398,7 +398,7 @@ const AreaSelectionSection = () => {
   );
 };
 
-// 3. Process Steps - Clean Card Grid
+// 3. Process Steps - Clean Neutral Style
 const ProcessSection = () => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -425,19 +425,19 @@ const ProcessSection = () => {
   ];
 
   return (
-    <section ref={ref} className="py-24 md:py-32 bg-background">
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Header */}
+    <section ref={ref} className="py-24 md:py-32" style={{ backgroundColor: '#f0efec' }}>
+      <div className="max-w-5xl mx-auto px-6">
+        {/* Header - Centered, Bold */}
         <div className="text-center mb-16">
           <ScrollRevealBlock>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">
-              The Process
-            </p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-foreground tracking-[-0.03em] leading-[1.05] mb-6 uppercase">
+              The process
+            </h2>
           </ScrollRevealBlock>
           <ScrollRevealBlock delay={100}>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground tracking-tight mb-4">
-              Simple. <span className="text-primary">Clear.</span> No surprises.
-            </h2>
+            <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto">
+              Simple. Clear. No surprises.
+            </p>
           </ScrollRevealBlock>
         </div>
 
@@ -452,12 +452,12 @@ const ProcessSection = () => {
                 className="bg-white rounded-2xl border border-border p-8 h-full flex flex-col"
               >
                 {/* Icon */}
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                  <step.icon className="w-6 h-6 text-primary" />
+                <div className="w-12 h-12 rounded-xl bg-foreground/5 flex items-center justify-center mb-6">
+                  <step.icon className="w-6 h-6 text-foreground/60" />
                 </div>
                 
                 {/* Title */}
-                <h3 className="text-xl font-semibold text-foreground mb-3">
+                <h3 className="text-xl font-bold text-foreground mb-3">
                   {step.title}
                 </h3>
                 
@@ -488,7 +488,7 @@ const ProcessSection = () => {
   );
 };
 
-// 4. Preparation Section
+// 4. Preparation Section - Clean Neutral Style
 const PreparationSection = () => {
   const items = [
     "What funding or deadline is coming up",
@@ -498,17 +498,22 @@ const PreparationSection = () => {
 
   return (
     <section className="py-20 md:py-28 bg-white">
-      <div className="max-w-2xl mx-auto px-6">
-        <ScrollRevealBlock>
-          <div className="bg-nim-cloud rounded-3xl p-8 md:p-12 border border-border">
-            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-8">
+      <div className="max-w-3xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <ScrollRevealBlock>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-foreground tracking-[-0.03em] leading-[1.05] uppercase">
               What we'll ask on the call
-            </h3>
+            </h2>
+          </ScrollRevealBlock>
+        </div>
+        
+        <ScrollRevealBlock delay={100}>
+          <div className="bg-white rounded-2xl border border-border p-8 md:p-10">
             <ul className="space-y-5">
               {items.map((item, index) => (
                 <li key={index} className="flex items-start gap-4">
-                  <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Check className="w-3.5 h-3.5 text-accent-foreground" />
+                  <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-3.5 h-3.5 text-primary-foreground" />
                   </div>
                   <span className="text-foreground text-lg">{item}</span>
                 </li>
@@ -521,58 +526,50 @@ const PreparationSection = () => {
   );
 };
 
-// 5. Pricing Block
+// 5. Pricing Block - Clean Neutral Style
 const PricingBlock = () => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="py-24 md:py-32" style={{ backgroundColor: '#faf8f5' }}>
-      <div className="max-w-2xl mx-auto px-6">
-        <ScrollRevealBlock>
-          <div className="text-center mb-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">
-              Transparent Pricing
-            </p>
-          </div>
-        </ScrollRevealBlock>
+    <section ref={ref} className="py-24 md:py-32" style={{ backgroundColor: '#f0efec' }}>
+      <div className="max-w-3xl mx-auto px-6">
+        {/* Header - Centered, Bold */}
+        <div className="text-center mb-12">
+          <ScrollRevealBlock>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-foreground tracking-[-0.03em] leading-[1.05] uppercase">
+              Pricing
+            </h2>
+          </ScrollRevealBlock>
+        </div>
 
         <ScrollRevealBlock delay={100}>
-          <PremiumVisualCard
-            color="hsl(220, 53%, 15%)"
-            lineColor="hsl(220, 50%, 40%)"
-            isInView={isInView}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="bg-white rounded-2xl border border-border p-10 md:p-14 text-center"
           >
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-8 md:p-10 text-center w-[90%] max-w-[400px]"
-            >
-              <h3 className="text-lg font-semibold text-muted-foreground mb-4">
-                Pricing
-              </h3>
-              <div className="mb-4">
-                <span className="text-4xl md:text-5xl font-bold text-primary">
-                  $6,499
-                </span>
-                <span className="text-muted-foreground ml-2">CAD / area</span>
-              </div>
-              <p className="text-foreground font-medium mb-4">
-                Minimum 2 areas (starting at $12,998 CAD)
-              </p>
-              <p className="text-sm text-muted-foreground">
-                Final price depends on what you already have and what's missing.
-              </p>
-            </motion.div>
-          </PremiumVisualCard>
+            <div className="mb-6">
+              <span className="text-5xl md:text-6xl font-black text-foreground">
+                $6,499
+              </span>
+              <span className="text-muted-foreground ml-2 text-lg">CAD / area</span>
+            </div>
+            <p className="text-foreground font-semibold text-lg mb-4">
+              Minimum 2 areas (starting at $12,998 CAD)
+            </p>
+            <p className="text-muted-foreground">
+              Final price depends on what you already have and what's missing.
+            </p>
+          </motion.div>
         </ScrollRevealBlock>
       </div>
     </section>
   );
 };
 
-// 6. Fit Filter
+// 6. Fit Filter - Clean Neutral Style
 const FitFilterSection = () => {
   const bestFit = [
     "Less stress at reporting time",
@@ -589,60 +586,57 @@ const FitFilterSection = () => {
   return (
     <section className="py-24 md:py-32 bg-white">
       <div className="max-w-4xl mx-auto px-6">
+        {/* Header - Centered, Bold */}
         <div className="text-center mb-14">
           <ScrollRevealBlock>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">
-              Is This Right For You?
-            </p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground tracking-[-0.03em] leading-[1.05] uppercase mb-6">
+              Is this right for you?
+            </h2>
           </ScrollRevealBlock>
           <ScrollRevealBlock delay={100}>
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground tracking-tight">
-              Let's make sure we're a <span className="text-primary">good fit</span>
-            </h2>
+            <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto">
+              Let's make sure we're a good fit before you book.
+            </p>
           </ScrollRevealBlock>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6">
           {/* Best Fit */}
           <ScrollRevealBlock delay={200}>
-            <Card className="h-full border-border bg-white hover:shadow-lg transition-shadow">
-              <CardContent className="p-8 md:p-10">
-                <h3 className="text-xl font-semibold text-foreground mb-6">
-                  Best fit if you want
-                </h3>
-                <ul className="space-y-4">
-                  {bestFit.map((item, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <Check className="w-3.5 h-3.5 text-green-600" />
-                      </div>
-                      <span className="text-foreground">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+            <div className="h-full bg-white rounded-2xl border border-border p-8 md:p-10">
+              <h3 className="text-xl font-bold text-foreground mb-6">
+                Best fit if you want
+              </h3>
+              <ul className="space-y-4">
+                {bestFit.map((item, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Check className="w-3.5 h-3.5 text-primary-foreground" />
+                    </div>
+                    <span className="text-foreground">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </ScrollRevealBlock>
 
           {/* Not a Fit */}
           <ScrollRevealBlock delay={300}>
-            <Card className="h-full border-border bg-white hover:shadow-lg transition-shadow">
-              <CardContent className="p-8 md:p-10">
-                <h3 className="text-xl font-semibold text-foreground mb-6">
-                  Not a fit if you want
-                </h3>
-                <ul className="space-y-4">
-                  {notAFit.map((item, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <X className="w-3.5 h-3.5 text-red-400" />
-                      </div>
-                      <span className="text-foreground">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+            <div className="h-full bg-white rounded-2xl border border-border p-8 md:p-10">
+              <h3 className="text-xl font-bold text-foreground mb-6">
+                Not a fit if you want
+              </h3>
+              <ul className="space-y-4">
+                {notAFit.map((item, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-foreground/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <X className="w-3.5 h-3.5 text-foreground/60" />
+                    </div>
+                    <span className="text-foreground">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </ScrollRevealBlock>
         </div>
       </div>
@@ -650,19 +644,15 @@ const FitFilterSection = () => {
   );
 };
 
-// 7. Booking Section
+// 7. Booking Section - Clean Neutral Style
 const BookingSection = () => {
   return (
-    <section id="booking" className="py-24 md:py-32" style={{ backgroundColor: '#faf8f5' }}>
+    <section id="booking" className="py-24 md:py-32" style={{ backgroundColor: '#f0efec' }}>
       <div className="max-w-3xl mx-auto px-6">
+        {/* Header - Centered, Bold */}
         <div className="text-center mb-12">
           <ScrollRevealBlock>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">
-              Get Started
-            </p>
-          </ScrollRevealBlock>
-          <ScrollRevealBlock delay={100}>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground tracking-tight mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-foreground tracking-[-0.03em] leading-[1.05] uppercase">
               Book your call
             </h2>
           </ScrollRevealBlock>
@@ -670,7 +660,7 @@ const BookingSection = () => {
 
         {/* Calendly Embed */}
         <ScrollRevealBlock delay={200}>
-          <div className="w-full bg-white border border-border rounded-3xl overflow-hidden shadow-lg" style={{ height: '700px' }}>
+          <div className="w-full bg-white border border-border rounded-2xl overflow-hidden" style={{ height: '700px' }}>
             <iframe
               src={CALENDLY_BOOKING_URL}
               width="100%"
@@ -688,20 +678,20 @@ const BookingSection = () => {
             Prefer email?{' '}
             <a 
               href={`mailto:${CONTACT_EMAIL}`}
-              className="text-primary underline underline-offset-4 hover:text-primary/80 transition-colors"
+              className="text-foreground font-medium underline underline-offset-4 hover:text-foreground/80 transition-colors"
             >
               {CONTACT_EMAIL}
             </a>
           </p>
         </ScrollRevealBlock>
 
-        {/* FAQ Section - Deel-style design */}
+        {/* FAQ Section */}
         <ScrollRevealBlock delay={400}>
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-col md:flex-row md:gap-16">
               {/* Title on the left */}
               <div className="md:w-48 flex-shrink-0 mb-8 md:mb-0">
-                <h3 className="text-3xl md:text-4xl font-bold text-foreground">FAQs</h3>
+                <h3 className="text-3xl md:text-4xl font-black text-foreground uppercase">FAQs</h3>
               </div>
               
               {/* Accordion on the right */}
