@@ -6,7 +6,9 @@ import { ScrollToTop } from '@/components/ScrollToTop';
 import { MotionPreferencesProvider, useMotionPreferences, DROPBOX_EASING_CSS } from '@/hooks/use-scroll-reveal';
 import { CALENDLY_BOOKING_URL, TYPEFORM_HEALTH_CHECK_URL, CONTACT_EMAIL } from '@/constants/urls';
 import { 
-  Check, X, ArrowRight, Clipboard, MessageSquare, FileCheck, Calendar
+  Check, X, ArrowRight, Clipboard, MessageSquare, FileCheck, Calendar,
+  ClipboardList, DollarSign, Users, BarChart3, Heart, HandHelping, FolderOpen,
+  LucideIcon
 } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
@@ -57,15 +59,23 @@ function ScrollRevealBlock({ children, delay = 0 }: { children: React.ReactNode;
   );
 }
 
-// Area selection data
-const areas = [
-  { id: 'board', label: 'Board/Governance' },
-  { id: 'money', label: 'Money/Grants' },
-  { id: 'people', label: 'People/HR' },
-  { id: 'programs', label: 'Programs' },
-  { id: 'fundraising', label: 'Fundraising/Donors' },
-  { id: 'volunteers', label: 'Volunteers' },
-  { id: 'tools', label: 'Tools/Files' },
+// Area selection data with icons and colors matching HelpOrbitCarousel
+interface AreaData {
+  id: string;
+  label: string;
+  icon: LucideIcon;
+  shortDesc: string;
+  color: string;
+}
+
+const areas: AreaData[] = [
+  { id: 'board', label: 'Board & Governance', icon: ClipboardList, shortDesc: 'Meetings, decisions, approvals', color: '#1e1b4b' },
+  { id: 'money', label: 'Money & Grants', icon: DollarSign, shortDesc: 'Spending, receipts, grant records', color: '#22c55e' },
+  { id: 'people', label: 'People', icon: Users, shortDesc: 'Roles, contracts, onboarding', color: '#f97316' },
+  { id: 'programs', label: 'Programs', icon: BarChart3, shortDesc: 'Services, outcomes, tracking', color: '#1e1b4b' },
+  { id: 'fundraising', label: 'Fundraising', icon: Heart, shortDesc: 'Donor records, giving history', color: '#7c3aed' },
+  { id: 'volunteers', label: 'Volunteers', icon: HandHelping, shortDesc: 'Onboarding, tracking, records', color: '#06b6d4' },
+  { id: 'tools', label: 'Tools & Files', icon: FolderOpen, shortDesc: 'Folders, templates, routines', color: '#ec4899' },
 ];
 
 // FAQ data
@@ -256,7 +266,7 @@ const HeroSection = () => {
   );
 };
 
-// 2. Interactive Area Selection
+// 2. Interactive Area Selection - Premium Card Grid
 const AreaSelectionSection = () => {
   const [selectedAreas, setSelectedAreas] = useState<string[]>([]);
   const ref = useRef<HTMLDivElement>(null);
@@ -271,62 +281,161 @@ const AreaSelectionSection = () => {
   };
 
   return (
-    <section ref={ref} className="py-24 md:py-32 bg-white">
-      <div className="max-w-4xl mx-auto px-6 text-center">
-        <ScrollRevealBlock>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">
-            Choose Your Focus
-          </p>
-        </ScrollRevealBlock>
-        <ScrollRevealBlock delay={100}>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground tracking-tight mb-4">
-            What areas do you want to <span className="text-primary">strengthen?</span>
-          </h2>
-        </ScrollRevealBlock>
-        <ScrollRevealBlock delay={200}>
-          <p className="text-lg text-muted-foreground mb-12 max-w-xl mx-auto">
-            Pick at least 2. We'll start with what's most urgent.
-          </p>
-        </ScrollRevealBlock>
-
-        {/* Area Chips */}
-        <ScrollRevealBlock delay={300}>
-          <div className="flex flex-wrap justify-center gap-3 mb-10">
-            {areas.map((area) => {
-              const isSelected = selectedAreas.includes(area.id);
-              return (
-                <motion.button
-                  key={area.id}
-                  onClick={() => toggleArea(area.id)}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className={`px-6 py-3.5 rounded-xl font-medium text-sm transition-all duration-200 border-2 ${
-                    isSelected
-                      ? 'bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/20'
-                      : 'bg-white text-foreground border-border hover:border-primary/50 hover:shadow-md'
-                  }`}
+    <section ref={ref} className="py-24 md:py-32" style={{ backgroundColor: '#f5f5f0' }}>
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Header */}
+        <div className="max-w-2xl mb-16">
+          <ScrollRevealBlock>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">
+              Choose Your Focus
+            </p>
+          </ScrollRevealBlock>
+          <ScrollRevealBlock delay={100}>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight leading-tight mb-6">
+              What areas do you want to{" "}
+              <span className="relative inline-block">
+                strengthen
+                <svg
+                  className="absolute -bottom-2 left-0 w-full"
+                  viewBox="0 0 100 12"
+                  preserveAspectRatio="none"
                 >
-                  {area.label}
+                  <path
+                    d="M0,8 Q25,0 50,8 T100,8"
+                    stroke="#a78bfa"
+                    strokeWidth="3"
+                    fill="none"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </span>
+              ?
+            </h2>
+          </ScrollRevealBlock>
+          <ScrollRevealBlock delay={200}>
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+              Pick at least 2. We'll start with what's most urgent.
+            </p>
+          </ScrollRevealBlock>
+        </div>
+
+        {/* Area Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-12">
+          {areas.map((area, index) => {
+            const isSelected = selectedAreas.includes(area.id);
+            const Icon = area.icon;
+            return (
+              <ScrollRevealBlock key={area.id} delay={300 + index * 50}>
+                <motion.button
+                  onClick={() => toggleArea(area.id)}
+                  whileHover={{ scale: 1.02, y: -4 }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`relative w-full text-left rounded-2xl overflow-hidden transition-all duration-300 ${
+                    isSelected
+                      ? 'ring-4 ring-primary ring-offset-2 ring-offset-[#f5f5f0]'
+                      : 'hover:shadow-xl'
+                  }`}
+                  style={{ 
+                    backgroundColor: area.color,
+                    aspectRatio: '4/3'
+                  }}
+                >
+                  {/* Noise texture overlay */}
+                  <div 
+                    className="absolute inset-0 opacity-30 mix-blend-overlay pointer-events-none"
+                    style={{
+                      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E")`,
+                    }}
+                  />
+                  
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+
+                  {/* Selection indicator */}
+                  {isSelected && (
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-lg"
+                    >
+                      <Check className="w-5 h-5 text-primary" />
+                    </motion.div>
+                  )}
+
+                  {/* Icon */}
+                  <div className="absolute top-4 left-4">
+                    <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                      <Icon className="w-6 h-6 text-white" />
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="absolute bottom-0 left-0 right-0 p-5">
+                    <h3 className="text-xl md:text-2xl font-bold text-white mb-1">
+                      {area.label}
+                    </h3>
+                    <p className="text-sm text-white/80">
+                      {area.shortDesc}
+                    </p>
+                  </div>
                 </motion.button>
-              );
-            })}
+              </ScrollRevealBlock>
+            );
+          })}
+        </div>
+
+        {/* Selection Counter & CTA */}
+        <ScrollRevealBlock delay={600}>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 p-6 bg-white rounded-2xl border border-border shadow-sm">
+            <div className="flex items-center gap-4">
+              <div className="flex -space-x-2">
+                {areas.slice(0, 3).map((area) => (
+                  <div 
+                    key={area.id}
+                    className={`w-10 h-10 rounded-full border-2 border-white flex items-center justify-center transition-all duration-300 ${
+                      selectedAreas.includes(area.id) ? 'ring-2 ring-primary' : ''
+                    }`}
+                    style={{ backgroundColor: area.color }}
+                  >
+                    <area.icon className="w-4 h-4 text-white" />
+                  </div>
+                ))}
+                <div className="w-10 h-10 rounded-full bg-muted border-2 border-white flex items-center justify-center text-xs font-semibold text-muted-foreground">
+                  +{areas.length - 3}
+                </div>
+              </div>
+              <div>
+                <p className="font-semibold text-foreground">
+                  {selectedAreas.length} of {areas.length} selected
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  {selectedAreas.length < 2 ? `Select ${2 - selectedAreas.length} more to continue` : 'Ready to book your call'}
+                </p>
+              </div>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0.5 }}
+              animate={{ opacity: selectedAreas.length >= 2 ? 1 : 0.5 }}
+            >
+              <Button 
+                asChild 
+                size="lg" 
+                className={`transition-all duration-300 ${
+                  selectedAreas.length >= 2 
+                    ? 'bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20' 
+                    : 'bg-muted text-muted-foreground cursor-not-allowed'
+                }`}
+                disabled={selectedAreas.length < 2}
+              >
+                <a href={selectedAreas.length >= 2 ? "#booking" : undefined}>
+                  Continue to booking
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </a>
+              </Button>
+            </motion.div>
           </div>
         </ScrollRevealBlock>
-
-        {selectedAreas.length >= 2 && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mt-6"
-          >
-            <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-              <a href="#booking">
-                Continue to booking
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </a>
-            </Button>
-          </motion.div>
-        )}
       </div>
     </section>
   );
