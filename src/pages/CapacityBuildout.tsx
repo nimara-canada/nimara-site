@@ -69,13 +69,13 @@ interface AreaData {
 }
 
 const areas: AreaData[] = [
-  { id: 'board', label: 'Board & Governance', icon: ClipboardList, shortDesc: 'Meetings, decisions, approvals', color: '#1e1b4b' },
-  { id: 'money', label: 'Money & Grants', icon: DollarSign, shortDesc: 'Spending, receipts, grant records', color: '#22c55e' },
-  { id: 'people', label: 'People', icon: Users, shortDesc: 'Roles, contracts, onboarding', color: '#f97316' },
-  { id: 'programs', label: 'Programs', icon: BarChart3, shortDesc: 'Services, outcomes, tracking', color: '#1e1b4b' },
-  { id: 'fundraising', label: 'Fundraising', icon: Heart, shortDesc: 'Donor records, giving history', color: '#7c3aed' },
-  { id: 'volunteers', label: 'Volunteers', icon: HandHelping, shortDesc: 'Onboarding, tracking, records', color: '#06b6d4' },
-  { id: 'tools', label: 'Tools & Files', icon: FolderOpen, shortDesc: 'Folders, templates, routines', color: '#ec4899' },
+  { id: 'board', label: 'Board & Governance', icon: ClipboardList, shortDesc: 'Meetings, decisions, approvals', color: 'hsl(220, 53%, 12%)' },
+  { id: 'money', label: 'Money & Grants', icon: DollarSign, shortDesc: 'Spending, receipts, grant records', color: 'hsl(220, 40%, 18%)' },
+  { id: 'people', label: 'People', icon: Users, shortDesc: 'Roles, contracts, onboarding', color: 'hsl(220, 35%, 24%)' },
+  { id: 'programs', label: 'Programs', icon: BarChart3, shortDesc: 'Services, outcomes, tracking', color: 'hsl(220, 53%, 12%)' },
+  { id: 'fundraising', label: 'Fundraising', icon: Heart, shortDesc: 'Donor records, giving history', color: 'hsl(262, 45%, 28%)' },
+  { id: 'volunteers', label: 'Volunteers', icon: HandHelping, shortDesc: 'Onboarding, tracking, records', color: 'hsl(220, 40%, 18%)' },
+  { id: 'tools', label: 'Tools & Files', icon: FolderOpen, shortDesc: 'Folders, templates, routines', color: 'hsl(220, 35%, 24%)' },
 ];
 
 // FAQ data
@@ -386,23 +386,33 @@ const AreaSelectionSection = () => {
 
         {/* Selection Counter & CTA */}
         <ScrollRevealBlock delay={600}>
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 p-6 bg-white rounded-2xl border border-border shadow-sm">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 p-6 bg-white rounded-2xl border border-border">
             <div className="flex items-center gap-4">
               <div className="flex -space-x-2">
-                {areas.slice(0, 3).map((area) => (
-                  <div 
-                    key={area.id}
-                    className={`w-10 h-10 rounded-full border-2 border-white flex items-center justify-center transition-all duration-300 ${
-                      selectedAreas.includes(area.id) ? 'ring-2 ring-primary' : ''
-                    }`}
-                    style={{ backgroundColor: area.color }}
-                  >
-                    <area.icon className="w-4 h-4 text-white" />
+                {selectedAreas.length > 0 ? (
+                  selectedAreas.slice(0, 4).map((areaId) => {
+                    const area = areas.find(a => a.id === areaId);
+                    if (!area) return null;
+                    return (
+                      <div 
+                        key={area.id}
+                        className="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center shadow-sm"
+                        style={{ backgroundColor: area.color }}
+                      >
+                        <area.icon className="w-4 h-4 text-white" />
+                      </div>
+                    );
+                  })
+                ) : (
+                  <div className="w-10 h-10 rounded-full bg-muted border-2 border-white flex items-center justify-center">
+                    <ClipboardList className="w-4 h-4 text-muted-foreground" />
                   </div>
-                ))}
-                <div className="w-10 h-10 rounded-full bg-muted border-2 border-white flex items-center justify-center text-xs font-semibold text-muted-foreground">
-                  +{areas.length - 3}
-                </div>
+                )}
+                {selectedAreas.length > 4 && (
+                  <div className="w-10 h-10 rounded-full bg-secondary-background border-2 border-white flex items-center justify-center text-xs font-semibold text-white">
+                    +{selectedAreas.length - 4}
+                  </div>
+                )}
               </div>
               <div>
                 <p className="font-semibold text-foreground">
@@ -414,26 +424,27 @@ const AreaSelectionSection = () => {
               </div>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0.5 }}
-              animate={{ opacity: selectedAreas.length >= 2 ? 1 : 0.5 }}
+            <Button 
+              asChild={selectedAreas.length >= 2}
+              size="lg" 
+              className={`px-8 py-6 text-base font-semibold rounded-xl transition-all duration-300 ${
+                selectedAreas.length >= 2 
+                  ? 'bg-secondary-background hover:bg-secondary-background/90 text-white' 
+                  : 'bg-muted text-muted-foreground cursor-not-allowed pointer-events-none'
+              }`}
             >
-              <Button 
-                asChild 
-                size="lg" 
-                className={`transition-all duration-300 ${
-                  selectedAreas.length >= 2 
-                    ? 'bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20' 
-                    : 'bg-muted text-muted-foreground cursor-not-allowed'
-                }`}
-                disabled={selectedAreas.length < 2}
-              >
-                <a href={selectedAreas.length >= 2 ? "#booking" : undefined}>
+              {selectedAreas.length >= 2 ? (
+                <a href="#booking">
                   Continue to booking
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </a>
-              </Button>
-            </motion.div>
+              ) : (
+                <span>
+                  Continue to booking
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </span>
+              )}
+            </Button>
           </div>
         </ScrollRevealBlock>
       </div>
