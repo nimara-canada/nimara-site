@@ -142,28 +142,53 @@ function PremiumVisualCard({ color, lineColor, isInView, children }: PremiumVisu
   );
 }
 
-// Sticky Header
+// Sticky Header with scroll-based transparency
 const StickyHeader = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <motion.header 
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-border"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled 
+          ? 'bg-white/95 backdrop-blur-md border-b border-border' 
+          : 'bg-transparent border-b border-transparent'
+      }`}
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link to="/" className="group flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-nim-navy flex items-center justify-center">
-            <span className="text-sm font-bold text-white">N</span>
+          <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors duration-300 ${
+            scrolled ? 'bg-foreground' : 'bg-foreground'
+          }`}>
+            <span className="text-sm font-bold text-background">N</span>
           </div>
-          <span className="text-nim-navy font-semibold text-lg tracking-tight">
+          <span className={`font-semibold text-lg tracking-tight transition-colors duration-300 ${
+            scrolled ? 'text-foreground' : 'text-foreground'
+          }`}>
             Nimara
           </span>
         </Link>
-        <Button asChild size="default" className="bg-nim-navy hover:bg-nim-navy/90 text-white">
+        <Button 
+          asChild 
+          size="default" 
+          className={`rounded-full px-6 font-semibold transition-all duration-300 ${
+            scrolled 
+              ? 'bg-primary hover:bg-primary/90 text-primary-foreground' 
+              : 'bg-foreground hover:bg-foreground/90 text-background'
+          }`}
+        >
           <a href="#booking">
             Book a call
-            <ArrowRight className="w-4 h-4 ml-2" />
           </a>
         </Button>
       </div>
