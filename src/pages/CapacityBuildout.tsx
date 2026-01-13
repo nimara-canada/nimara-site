@@ -253,7 +253,7 @@ const HeroSection = () => {
   );
 };
 
-// 2. Interactive Area Selection - Premium Card Grid
+// 2. Interactive Area Selection - Clean Neutral Style
 const AreaSelectionSection = () => {
   const [selectedAreas, setSelectedAreas] = useState<string[]>([]);
   const ref = useRef<HTMLDivElement>(null);
@@ -268,112 +268,74 @@ const AreaSelectionSection = () => {
   };
 
   return (
-    <section ref={ref} className="py-24 md:py-32" style={{ backgroundColor: '#f5f5f0' }}>
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Header */}
-        <div className="max-w-2xl mb-16">
+    <section ref={ref} className="py-24 md:py-32 bg-white">
+      <div className="max-w-5xl mx-auto px-6">
+        {/* Header - Centered, Bold */}
+        <div className="text-center mb-16">
           <ScrollRevealBlock>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">
-              Choose Your Focus
-            </p>
-          </ScrollRevealBlock>
-          <ScrollRevealBlock delay={100}>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight leading-tight mb-6">
-              What areas do you want to{" "}
-              <span className="relative inline-block">
-                strengthen
-                <svg
-                  className="absolute -bottom-2 left-0 w-full"
-                  viewBox="0 0 100 12"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="M0,8 Q25,0 50,8 T100,8"
-                    stroke="#a78bfa"
-                    strokeWidth="3"
-                    fill="none"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </span>
-              ?
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-foreground tracking-[-0.03em] leading-[1.05] mb-6 uppercase">
+              Choose your focus
             </h2>
           </ScrollRevealBlock>
-          <ScrollRevealBlock delay={200}>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-              Pick at least 2. We'll start with what's most urgent.
+          <ScrollRevealBlock delay={100}>
+            <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto">
+              Pick at least 2 areas. We'll start with what's most urgent.
             </p>
           </ScrollRevealBlock>
         </div>
 
-        {/* Area Cards Grid */}
+        {/* Area Cards Grid - Simple, clean cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-12">
           {areas.map((area, index) => {
             const isSelected = selectedAreas.includes(area.id);
             const Icon = area.icon;
             return (
-              <ScrollRevealBlock key={area.id} delay={300 + index * 50}>
+              <ScrollRevealBlock key={area.id} delay={200 + index * 50}>
                 <motion.button
                   onClick={() => toggleArea(area.id)}
-                  whileHover={{ scale: 1.02, y: -4 }}
+                  whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className={`relative w-full text-left rounded-2xl overflow-hidden transition-all duration-300 ${
+                  className={`relative w-full text-left p-6 rounded-2xl border-2 transition-all duration-300 ${
                     isSelected
-                      ? 'ring-4 ring-primary ring-offset-2 ring-offset-[#f5f5f0]'
-                      : 'hover:shadow-xl'
+                      ? 'border-primary bg-primary/5'
+                      : 'border-border bg-white hover:border-foreground/20 hover:shadow-md'
                   }`}
-                  style={{ 
-                    backgroundColor: area.color,
-                    aspectRatio: '4/3'
-                  }}
                 >
-                  {/* Noise texture overlay */}
-                  <div 
-                    className="absolute inset-0 opacity-30 mix-blend-overlay pointer-events-none"
-                    style={{
-                      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E")`,
-                    }}
-                  />
-                  
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
-
                   {/* Selection indicator */}
-                  {isSelected && (
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-lg"
-                    >
-                      <Check className="w-5 h-5 text-primary" />
-                    </motion.div>
-                  )}
+                  <div className={`absolute top-4 right-4 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
+                    isSelected 
+                      ? 'bg-primary border-primary' 
+                      : 'border-foreground/20 bg-white'
+                  }`}>
+                    {isSelected && <Check className="w-3.5 h-3.5 text-white" />}
+                  </div>
 
                   {/* Icon */}
-                  <div className="absolute top-4 left-4">
-                    <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                      <Icon className="w-6 h-6 text-white" />
-                    </div>
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-colors ${
+                    isSelected ? 'bg-primary/10' : 'bg-foreground/5'
+                  }`}>
+                    <Icon className={`w-6 h-6 ${isSelected ? 'text-primary' : 'text-foreground/60'}`} />
                   </div>
 
                   {/* Content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-5">
-                    <h3 className="text-xl md:text-2xl font-bold text-white mb-1">
-                      {area.label}
-                    </h3>
-                    <p className="text-sm text-white/80">
-                      {area.shortDesc}
-                    </p>
-                  </div>
+                  <h3 className="text-lg font-bold text-foreground mb-1">
+                    {area.label}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {area.shortDesc}
+                  </p>
                 </motion.button>
               </ScrollRevealBlock>
             );
           })}
         </div>
 
-        {/* Selection Counter & CTA */}
-        <ScrollRevealBlock delay={600}>
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 p-6 bg-white rounded-2xl border border-border">
+        {/* Selection Counter & CTA - Clean bottom bar */}
+        <ScrollRevealBlock delay={500}>
+          <div 
+            className="flex flex-col sm:flex-row items-center justify-between gap-6 p-6 rounded-2xl border border-border"
+            style={{ backgroundColor: '#f0efec' }}
+          >
             <div className="flex items-center gap-4">
               <div className="flex -space-x-2">
                 {selectedAreas.length > 0 ? (
@@ -383,20 +345,19 @@ const AreaSelectionSection = () => {
                     return (
                       <div 
                         key={area.id}
-                        className="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center shadow-sm"
-                        style={{ backgroundColor: area.color }}
+                        className="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center bg-primary shadow-sm"
                       >
                         <area.icon className="w-4 h-4 text-white" />
                       </div>
                     );
                   })
                 ) : (
-                  <div className="w-10 h-10 rounded-full bg-muted border-2 border-white flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full bg-foreground/10 border-2 border-white flex items-center justify-center">
                     <ClipboardList className="w-4 h-4 text-muted-foreground" />
                   </div>
                 )}
                 {selectedAreas.length > 4 && (
-                  <div className="w-10 h-10 rounded-full bg-secondary-background border-2 border-white flex items-center justify-center text-xs font-semibold text-white">
+                  <div className="w-10 h-10 rounded-full bg-primary border-2 border-white flex items-center justify-center text-xs font-semibold text-white">
                     +{selectedAreas.length - 4}
                   </div>
                 )}
@@ -414,21 +375,19 @@ const AreaSelectionSection = () => {
             <Button 
               asChild={selectedAreas.length >= 2}
               size="lg" 
-              className={`px-8 py-6 text-base font-semibold rounded-xl transition-all duration-300 ${
+              className={`px-10 py-6 text-base font-semibold rounded-full uppercase tracking-wide transition-all duration-300 ${
                 selectedAreas.length >= 2 
-                  ? 'bg-secondary-background hover:bg-secondary-background/90 text-white' 
-                  : 'bg-muted text-muted-foreground cursor-not-allowed pointer-events-none'
+                  ? 'bg-primary hover:bg-primary/90 text-primary-foreground' 
+                  : 'bg-foreground/10 text-muted-foreground cursor-not-allowed pointer-events-none'
               }`}
             >
               {selectedAreas.length >= 2 ? (
                 <a href="#booking">
                   Continue to booking
-                  <ArrowRight className="w-4 h-4 ml-2" />
                 </a>
               ) : (
                 <span>
                   Continue to booking
-                  <ArrowRight className="w-4 h-4 ml-2" />
                 </span>
               )}
             </Button>
