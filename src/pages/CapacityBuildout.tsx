@@ -452,7 +452,7 @@ const AreaSelectionSection = () => {
   );
 };
 
-// 3. Process Steps with Premium Visuals
+// 3. Process Steps - Clean Card Grid
 const ProcessSection = () => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -461,29 +461,27 @@ const ProcessSection = () => {
     {
       icon: Clipboard,
       title: "Before the call",
-      description: "You answer a few short questions. You get: a clear agenda.",
-      color: "hsl(210, 60%, 85%)",
-      lineColor: "hsl(210, 50%, 50%)"
+      description: "You answer the Nimara Health Check (NOHC).",
+      outcome: "You get: a clear starting point."
     },
     {
       icon: MessageSquare,
       title: "On the call",
-      description: "We agree on areas and what 'done' looks like. You get: a clear plan in plain words.",
-      color: "hsl(165, 45%, 82%)",
-      lineColor: "hsl(165, 40%, 40%)"
+      description: "We review your NOHC level and pick what to fix first.",
+      outcome: "You get: a simple plan."
     },
     {
       icon: FileCheck,
       title: "After the call",
-      description: "We send a quote based on your choices. You get: scope + price + next steps.",
-      color: "hsl(262, 60%, 85%)",
-      lineColor: "hsl(262, 50%, 50%)"
+      description: "We send a quote based on your areas.",
+      outcome: "You get: price + next steps."
     }
   ];
 
   return (
-    <section ref={ref} className="py-24 md:py-32" style={{ backgroundColor: '#faf8f5' }}>
+    <section ref={ref} className="py-24 md:py-32 bg-background">
       <div className="max-w-6xl mx-auto px-6">
+        {/* Header */}
         <div className="text-center mb-16">
           <ScrollRevealBlock>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">
@@ -497,35 +495,48 @@ const ProcessSection = () => {
           </ScrollRevealBlock>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        {/* Cards Grid */}
+        <div className="grid md:grid-cols-3 gap-6 mb-10">
           {steps.map((step, index) => (
             <ScrollRevealBlock key={step.title} delay={200 + index * 100}>
-              <PremiumVisualCard
-                color={step.color}
-                lineColor={step.lineColor}
-                isInView={isInView}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                className="bg-white rounded-2xl border border-border p-8 h-full flex flex-col"
               >
-                {/* Floating white card */}
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-xl p-6 min-w-[200px] max-w-[280px]"
-                >
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                    <step.icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {step.description}
+                {/* Icon */}
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                  <step.icon className="w-6 h-6 text-primary" />
+                </div>
+                
+                {/* Title */}
+                <h3 className="text-xl font-semibold text-foreground mb-3">
+                  {step.title}
+                </h3>
+                
+                {/* Description */}
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  {step.description}
+                </p>
+                
+                {/* Outcome - highlighted */}
+                <div className="mt-auto pt-4 border-t border-border">
+                  <p className="text-sm font-medium text-foreground">
+                    {step.outcome}
                   </p>
-                </motion.div>
-              </PremiumVisualCard>
+                </div>
+              </motion.div>
             </ScrollRevealBlock>
           ))}
         </div>
+
+        {/* Pricing line */}
+        <ScrollRevealBlock delay={500}>
+          <p className="text-center text-muted-foreground text-sm">
+            From $6,499 CAD per area. Minimum 2 areas.
+          </p>
+        </ScrollRevealBlock>
       </div>
     </section>
   );
