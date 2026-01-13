@@ -437,29 +437,26 @@ const AreaSelectionSection = () => {
   );
 };
 
-// 3. Process Steps - Clean Neutral Style
+// 3. Process Steps - Premium Editorial Style
 const ProcessSection = () => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const steps = [
     {
-      icon: Clipboard,
       title: "Before the call",
       description: "You answer the Nimara Health Check (NOHC).",
-      outcome: "You get: a clear starting point."
+      outcome: "A clear starting point."
     },
     {
-      icon: MessageSquare,
       title: "On the call",
       description: "We review your NOHC level and pick what to fix first.",
-      outcome: "You get: a simple plan."
+      outcome: "A simple plan."
     },
     {
-      icon: FileCheck,
       title: "After the call",
       description: "We send a quote based on your areas.",
-      outcome: "You get: price + next steps."
+      outcome: "Price + next steps."
     }
   ];
 
@@ -467,7 +464,7 @@ const ProcessSection = () => {
     <section ref={ref} className="py-24 md:py-32" style={{ backgroundColor: '#f0efec' }}>
       <div className="max-w-5xl mx-auto px-6">
         {/* Header - Centered, Bold */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
           <ScrollRevealBlock>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-foreground tracking-[-0.03em] leading-[1.05] mb-6 uppercase">
               The process
@@ -480,46 +477,54 @@ const ProcessSection = () => {
           </ScrollRevealBlock>
         </div>
 
-        {/* Cards Grid */}
-        <div className="grid md:grid-cols-3 gap-6 mb-10">
+        {/* Premium Editorial Cards */}
+        <div className="grid md:grid-cols-3 gap-3 mb-12">
           {steps.map((step, index) => (
-            <ScrollRevealBlock key={step.title} delay={200 + index * 100}>
+            <ScrollRevealBlock key={step.title} delay={200 + index * 80}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                className="bg-white rounded-2xl border border-border p-8 h-full flex flex-col"
+                className="group relative bg-white p-8 md:p-10 rounded-sm h-full flex flex-col"
               >
-                {/* Icon */}
-                <div className="w-12 h-12 rounded-xl bg-foreground/5 flex items-center justify-center mb-6">
-                  <step.icon className="w-6 h-6 text-foreground/60" />
-                </div>
+                {/* Number */}
+                <span className="text-xs font-medium tracking-[0.15em] uppercase text-foreground/30 mb-10">
+                  0{index + 1}
+                </span>
                 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-foreground mb-3">
+                <h3 className="text-2xl md:text-3xl font-semibold tracking-[-0.02em] text-foreground mb-4">
                   {step.title}
                 </h3>
                 
                 {/* Description */}
-                <p className="text-muted-foreground leading-relaxed mb-4">
+                <p className="text-foreground/50 leading-relaxed mb-8">
                   {step.description}
                 </p>
                 
-                {/* Outcome - highlighted */}
-                <div className="mt-auto pt-4 border-t border-border">
-                  <p className="text-sm font-medium text-foreground">
+                {/* Outcome - at bottom */}
+                <div className="mt-auto pt-6 border-t border-foreground/10">
+                  <p className="text-xs font-medium tracking-[0.05em] uppercase text-foreground/70">
+                    You get
+                  </p>
+                  <p className="text-base font-semibold text-foreground mt-1">
                     {step.outcome}
                   </p>
+                </div>
+
+                {/* Subtle corner accent */}
+                <div className="absolute bottom-0 right-0 w-16 h-16 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="absolute bottom-4 right-4 w-8 h-8 border-r border-b border-foreground/10" />
                 </div>
               </motion.div>
             </ScrollRevealBlock>
           ))}
         </div>
 
-        {/* Pricing line */}
+        {/* Pricing line - minimal */}
         <ScrollRevealBlock delay={500}>
-          <p className="text-center text-muted-foreground text-sm">
-            From $6,499 CAD per area. Minimum 2 areas.
+          <p className="text-center text-foreground/40 text-sm tracking-wide">
+            From $6,499 CAD per area · Minimum 2 areas
           </p>
         </ScrollRevealBlock>
       </div>
