@@ -171,7 +171,7 @@ const StickyHeader = () => {
   );
 };
 
-// 1. Hero Section - Dark Navy with Grid Pattern
+// 1. Hero Section - Clean, Bold Style
 const HeroSection = () => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -179,27 +179,19 @@ const HeroSection = () => {
   return (
     <section 
       ref={ref}
-      className="relative min-h-[90vh] flex items-center bg-secondary-background overflow-hidden pt-20"
+      className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-20"
+      style={{ backgroundColor: '#f0efec' }}
     >
-      {/* Subtle grid pattern */}
-      <div 
-        className="absolute inset-0 opacity-[0.02] pointer-events-none" 
-        aria-hidden="true" 
-        style={{
-          backgroundImage: `linear-gradient(hsl(var(--foreground) / 0.08) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground) / 0.08) 1px, transparent 1px)`,
-          backgroundSize: '80px 80px'
-        }} 
-      />
-
       <div className="relative z-10 w-full max-w-4xl mx-auto px-6 py-20 lg:py-28 text-center">
-        {/* H1 */}
+        {/* Bold Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-[-0.02em] leading-[1.1] mb-6"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground tracking-[-0.03em] leading-[1.05] mb-6 uppercase"
+          style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
         >
-          We know what funders look for.
+          Ready to get<br />funder-ready?
         </motion.h1>
 
         {/* Subhead */}
@@ -207,19 +199,37 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-10"
+          className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto mb-10"
         >
-          Built by a former grant fund manager. Nimara helps Canadian nonprofits build the systems funders actually look for. Simple. Documented. Proof-ready.
+          Built by a former grant fund manager. Nimara helps Canadian nonprofits build the systems funders actually look for.
         </motion.p>
 
-        {/* Pricing Badge */}
+        {/* CTA Button - Purple Rounded */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="inline-flex items-center px-6 py-3 bg-white/10 border border-white/20 rounded-full mb-10"
+          className="flex flex-col items-center gap-6"
         >
-          <span className="text-white font-semibold text-lg">From $6,499 CAD per area</span>
+          <Button 
+            asChild 
+            size="lg" 
+            className="bg-primary hover:bg-primary/90 text-primary-foreground px-12 py-7 text-base font-semibold rounded-full uppercase tracking-wide"
+          >
+            <a href="#booking">
+              Book a call
+            </a>
+          </Button>
+
+          {/* Secondary link */}
+          <a
+            href={TYPEFORM_HEALTH_CHECK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-foreground transition-colors text-sm underline underline-offset-4"
+          >
+            Or try the 6-minute check first
+          </a>
         </motion.div>
 
         {/* Trust Badges */}
@@ -227,39 +237,16 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-wrap items-center justify-center gap-3 mb-12"
+          className="flex flex-wrap items-center justify-center gap-3 mt-14"
         >
-          {['Canada-only', 'Not an audit firm', 'Not grant writers'].map((badge) => (
+          {['Canada-only', 'From $6,499 CAD/area', 'Not grant writers'].map((badge) => (
             <span 
               key={badge}
-              className="px-4 py-2 bg-white/5 border border-white/10 text-white/60 text-sm font-medium rounded-full"
+              className="px-4 py-2 bg-foreground/5 border border-foreground/10 text-muted-foreground text-sm font-medium rounded-full"
             >
               {badge}
             </span>
           ))}
-        </motion.div>
-
-        {/* CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-col items-center gap-5"
-        >
-          <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 px-10 py-6 text-base font-semibold rounded-xl">
-            <a href="#booking">
-              Book a call
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </a>
-          </Button>
-          <a
-            href={TYPEFORM_HEALTH_CHECK_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white/50 hover:text-white/80 transition-colors text-sm underline underline-offset-4"
-          >
-            Try the 6-minute check
-          </a>
         </motion.div>
       </div>
     </section>
