@@ -8,7 +8,7 @@ import { CALENDLY_BOOKING_URL, TYPEFORM_HEALTH_CHECK_URL, CONTACT_EMAIL } from '
 import { 
   Check, X, ArrowRight, Clipboard, MessageSquare, FileCheck, Calendar,
   ClipboardList, DollarSign, Users, BarChart3, Heart, HandHelping, FolderOpen,
-  LucideIcon
+  LucideIcon, Plus
 } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
@@ -749,21 +749,38 @@ const BookingSection = () => {
           </p>
         </ScrollRevealBlock>
 
-        {/* FAQ Accordion */}
+        {/* FAQ Section - Deel-style design */}
         <ScrollRevealBlock delay={400}>
-          <div className="max-w-xl mx-auto bg-white rounded-2xl border border-border p-6 md:p-8">
-            <Accordion type="single" collapsible className="w-full">
-              {faqs.map((faq, index) => (
-                <AccordionItem key={index} value={`item-${index}`} className="border-border">
-                  <AccordionTrigger className="text-left text-foreground hover:text-primary hover:no-underline py-4 text-base">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground pb-4">
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
+          <div className="max-w-4xl mx-auto">
+            <div className="flex flex-col md:flex-row md:gap-16">
+              {/* Title on the left */}
+              <div className="md:w-48 flex-shrink-0 mb-8 md:mb-0">
+                <h3 className="text-3xl md:text-4xl font-bold text-foreground">FAQs</h3>
+              </div>
+              
+              {/* Accordion on the right */}
+              <div className="flex-1">
+                <Accordion type="single" collapsible className="w-full">
+                  {faqs.map((faq, index) => (
+                    <AccordionItem 
+                      key={index} 
+                      value={`item-${index}`} 
+                      className="border-b-0 border-t border-dashed border-foreground/20 py-1"
+                    >
+                      <AccordionTrigger className="text-left text-foreground hover:no-underline py-5 text-base md:text-lg font-medium [&>svg]:hidden group flex justify-between items-center gap-4">
+                        <span className="flex-1">{faq.question}</span>
+                        <span className="w-10 h-10 rounded-full bg-foreground flex items-center justify-center flex-shrink-0 group-data-[state=open]:rotate-45 transition-transform duration-200">
+                          <Plus className="w-5 h-5 text-background" />
+                        </span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-muted-foreground pb-5 pr-14">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+            </div>
           </div>
         </ScrollRevealBlock>
       </div>
