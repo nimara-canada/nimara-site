@@ -278,7 +278,7 @@ const HeroSection = () => {
   );
 };
 
-// 2. Interactive Area Selection - Clean Neutral Style
+// 2. Interactive Area Selection - Premium Editorial Style
 const AreaSelectionSection = () => {
   const [selectedAreas, setSelectedAreas] = useState<string[]>([]);
   const ref = useRef<HTMLDivElement>(null);
@@ -296,7 +296,7 @@ const AreaSelectionSection = () => {
     <section ref={ref} className="py-24 md:py-32 bg-white">
       <div className="max-w-5xl mx-auto px-6">
         {/* Header - Centered, Bold */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
           <ScrollRevealBlock>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-foreground tracking-[-0.03em] leading-[1.05] mb-6 uppercase">
               Choose your focus
@@ -309,110 +309,124 @@ const AreaSelectionSection = () => {
           </ScrollRevealBlock>
         </div>
 
-        {/* Area Cards Grid - Simple, clean cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-12">
+        {/* Premium Area Cards - Editorial Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-16">
           {areas.map((area, index) => {
             const isSelected = selectedAreas.includes(area.id);
-            const Icon = area.icon;
             return (
-              <ScrollRevealBlock key={area.id} delay={200 + index * 50}>
+              <ScrollRevealBlock key={area.id} delay={150 + index * 40}>
                 <motion.button
                   onClick={() => toggleArea(area.id)}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className={`relative w-full text-left p-6 rounded-2xl border-2 transition-all duration-300 ${
-                    isSelected
-                      ? 'border-primary bg-primary/5'
-                      : 'border-border bg-white hover:border-foreground/20 hover:shadow-md'
+                  whileTap={{ scale: 0.995 }}
+                  className={`group relative w-full text-left transition-all duration-500 ${
+                    isSelected ? 'z-10' : ''
                   }`}
                 >
-                  {/* Selection indicator */}
-                  <div className={`absolute top-4 right-4 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
-                    isSelected 
-                      ? 'bg-primary border-primary' 
-                      : 'border-foreground/20 bg-white'
-                  }`}>
-                    {isSelected && <Check className="w-3.5 h-3.5 text-white" />}
-                  </div>
+                  {/* Card */}
+                  <div 
+                    className={`relative p-8 md:p-10 rounded-sm overflow-hidden transition-all duration-500 ${
+                      isSelected
+                        ? 'bg-foreground text-background'
+                        : 'bg-[#f7f6f3] hover:bg-[#efede8]'
+                    }`}
+                  >
+                    {/* Top row: Number + Selection indicator */}
+                    <div className="flex items-start justify-between mb-12">
+                      <span className={`text-xs font-medium tracking-[0.15em] uppercase transition-colors duration-500 ${
+                        isSelected ? 'text-background/50' : 'text-foreground/30'
+                      }`}>
+                        0{index + 1}
+                      </span>
+                      
+                      {/* Selection circle */}
+                      <div className={`w-5 h-5 rounded-full border transition-all duration-300 flex items-center justify-center ${
+                        isSelected 
+                          ? 'border-background bg-background' 
+                          : 'border-foreground/20 group-hover:border-foreground/40'
+                      }`}>
+                        {isSelected && (
+                          <motion.div
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            className="w-2.5 h-2.5 rounded-full bg-foreground"
+                          />
+                        )}
+                      </div>
+                    </div>
 
-                  {/* Icon */}
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-colors ${
-                    isSelected ? 'bg-primary/10' : 'bg-foreground/5'
-                  }`}>
-                    <Icon className={`w-6 h-6 ${isSelected ? 'text-primary' : 'text-foreground/60'}`} />
-                  </div>
+                    {/* Content */}
+                    <div>
+                      <h3 className={`text-2xl md:text-3xl font-semibold tracking-[-0.02em] mb-3 transition-colors duration-500 ${
+                        isSelected ? 'text-background' : 'text-foreground'
+                      }`}>
+                        {area.label}
+                      </h3>
+                      <p className={`text-sm leading-relaxed transition-colors duration-500 ${
+                        isSelected ? 'text-background/70' : 'text-foreground/50'
+                      }`}>
+                        {area.shortDesc}
+                      </p>
+                    </div>
 
-                  {/* Content */}
-                  <h3 className="text-lg font-bold text-foreground mb-1">
-                    {area.label}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {area.shortDesc}
-                  </p>
+                    {/* Subtle corner accent on hover/selected */}
+                    <div className={`absolute bottom-0 right-0 w-24 h-24 transition-opacity duration-500 ${
+                      isSelected ? 'opacity-10' : 'opacity-0 group-hover:opacity-5'
+                    }`}>
+                      <div className={`absolute bottom-4 right-4 w-12 h-12 border-r-2 border-b-2 ${
+                        isSelected ? 'border-background' : 'border-foreground'
+                      }`} />
+                    </div>
+                  </div>
                 </motion.button>
               </ScrollRevealBlock>
             );
           })}
         </div>
 
-        {/* Selection Counter & CTA - Clean bottom bar */}
+        {/* Selection Counter & CTA - Minimal bottom bar */}
         <ScrollRevealBlock delay={500}>
-          <div 
-            className="flex flex-col sm:flex-row items-center justify-between gap-6 p-6 rounded-2xl border border-border"
-            style={{ backgroundColor: '#f0efec' }}
-          >
-            <div className="flex items-center gap-4">
-              <div className="flex -space-x-2">
-                {selectedAreas.length > 0 ? (
-                  selectedAreas.slice(0, 4).map((areaId) => {
-                    const area = areas.find(a => a.id === areaId);
-                    if (!area) return null;
-                    return (
-                      <div 
-                        key={area.id}
-                        className="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center bg-primary shadow-sm"
-                      >
-                        <area.icon className="w-4 h-4 text-white" />
-                      </div>
-                    );
-                  })
-                ) : (
-                  <div className="w-10 h-10 rounded-full bg-foreground/10 border-2 border-white flex items-center justify-center">
-                    <ClipboardList className="w-4 h-4 text-muted-foreground" />
-                  </div>
-                )}
-                {selectedAreas.length > 4 && (
-                  <div className="w-10 h-10 rounded-full bg-primary border-2 border-white flex items-center justify-center text-xs font-semibold text-white">
-                    +{selectedAreas.length - 4}
-                  </div>
-                )}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-8 py-8 border-t border-foreground/10">
+            <div className="flex items-center gap-6">
+              {/* Visual counter dots */}
+              <div className="flex items-center gap-1.5">
+                {areas.map((area) => (
+                  <div 
+                    key={area.id}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      selectedAreas.includes(area.id) 
+                        ? 'bg-foreground scale-110' 
+                        : 'bg-foreground/15'
+                    }`}
+                  />
+                ))}
               </div>
-              <div>
-                <p className="font-semibold text-foreground">
-                  {selectedAreas.length} of {areas.length} selected
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  {selectedAreas.length < 2 ? `Select ${2 - selectedAreas.length} more to continue` : 'Ready to book your call'}
-                </p>
-              </div>
+              
+              <div className="h-4 w-px bg-foreground/10" />
+              
+              <p className="text-sm text-muted-foreground">
+                <span className="font-semibold text-foreground">{selectedAreas.length}</span> of {areas.length} selected
+                {selectedAreas.length < 2 && (
+                  <span className="ml-2 text-foreground/40">· {2 - selectedAreas.length} more required</span>
+                )}
+              </p>
             </div>
 
             <Button 
               asChild={selectedAreas.length >= 2}
               size="lg" 
-              className={`px-10 py-6 text-base font-semibold rounded-full uppercase tracking-wide transition-all duration-300 ${
+              className={`px-10 py-6 text-sm font-semibold rounded-full uppercase tracking-[0.1em] transition-all duration-500 ${
                 selectedAreas.length >= 2 
-                  ? 'bg-primary hover:bg-primary/90 text-primary-foreground' 
-                  : 'bg-foreground/10 text-muted-foreground cursor-not-allowed pointer-events-none'
+                  ? 'bg-foreground hover:bg-foreground/90 text-background' 
+                  : 'bg-foreground/5 text-foreground/30 cursor-not-allowed pointer-events-none'
               }`}
             >
               {selectedAreas.length >= 2 ? (
                 <a href="#booking">
-                  Continue to booking
+                  Continue
                 </a>
               ) : (
                 <span>
-                  Continue to booking
+                  Continue
                 </span>
               )}
             </Button>
