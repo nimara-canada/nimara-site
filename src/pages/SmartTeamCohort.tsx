@@ -472,85 +472,70 @@ const SmartTeamCohortHero = () => {
       </section>
 
       {/* Section 6: Stress Test */}
-      <section className="w-full px-5 md:px-8 lg:px-12 py-20 md:py-28 lg:py-36 bg-[#0a0f1a]">
-        <div className="max-w-4xl mx-auto">
+      <section 
+        className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#0a0f1a]"
+        aria-labelledby="stress-test-heading"
+      >
+        <div className="max-w-3xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16 md:mb-24">
-            <span className="text-[11px] md:text-xs font-semibold uppercase tracking-[0.2em] text-[#5eead4] mb-6 block">
+          <header className="text-center mb-14 md:mb-16">
+            <p className="text-sm font-medium uppercase tracking-[0.25em] text-[#5eead4] mb-6">
               Stress test
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.03em] leading-[1.1] mb-6">
-              We check that it
-              <br />
-              <span className="text-[#5eead4]">works in real life.</span>
+            </p>
+            <h2 
+              id="stress-test-heading"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.03em] leading-[1.1]"
+            >
+              We check that it works in real life.
             </h2>
-          </div>
+          </header>
 
-          {/* Week 6 stress test content */}
-          <div className="max-w-2xl mx-auto">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-12 rounded-full bg-[#5eead4]/10 flex items-center justify-center">
-                <ShieldCheck className="w-6 h-6 text-[#5eead4]" />
-              </div>
-              <div>
-                <h3 className="text-xl md:text-2xl font-semibold text-white">
-                  Week 6 stress test
-                </h3>
-                <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[#5eead4]">
-                  <BadgeCheck className="w-3.5 h-3.5" />
-                  Verified
-                </span>
-              </div>
-            </div>
+          {/* Card */}
+          <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 md:p-12 mb-12">
+            <h3 className="text-xl md:text-2xl font-semibold text-white mb-6">
+              Week 6 stress test
+            </h3>
 
-            <p className="text-white/50 text-base mb-8">
-              You will be asked to show:
+            <p className="text-white/50 text-base mb-6">
+              You show:
             </p>
 
-            <ul className="space-y-4 mb-10">
-              <li className="flex items-center gap-4 text-white text-base">
-                <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
-                  <Check className="w-3.5 h-3.5 text-white/60" />
-                </div>
+            <ul className="space-y-3 mb-8" aria-label="Stress test requirements">
+              <li className="flex items-center gap-3 text-white/70 text-base">
+                <Check className="w-4 h-4 text-[#5eead4]/70 flex-shrink-0" aria-hidden="true" />
                 Proof for a real purchase
               </li>
-              <li className="flex items-center gap-4 text-white text-base">
-                <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
-                  <Check className="w-3.5 h-3.5 text-white/60" />
-                </div>
+              <li className="flex items-center gap-3 text-white/70 text-base">
+                <Check className="w-4 h-4 text-[#5eead4]/70 flex-shrink-0" aria-hidden="true" />
                 A board decision record
               </li>
-              <li className="flex items-center gap-4 text-white text-base">
-                <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
-                  <Check className="w-3.5 h-3.5 text-white/60" />
-                </div>
+              <li className="flex items-center gap-3 text-white/70 text-base">
+                <Check className="w-4 h-4 text-[#5eead4]/70 flex-shrink-0" aria-hidden="true" />
                 Your latest report
               </li>
-              <li className="flex items-center gap-4 text-white text-base">
-                <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
-                  <Check className="w-3.5 h-3.5 text-white/60" />
-                </div>
+              <li className="flex items-center gap-3 text-white/70 text-base">
+                <Check className="w-4 h-4 text-[#5eead4]/70 flex-shrink-0" aria-hidden="true" />
                 A key document in under 3 minutes
               </li>
             </ul>
 
-            <p className="text-white/40 text-sm border-t border-white/10 pt-6 mb-12">
+            <p className="text-white/40 text-sm border-t border-white/10 pt-6">
               If you can't show it fast, we help fix it.
             </p>
+          </div>
 
-            {/* CTA Row */}
-            <div className="text-center">
-              <Button
-                size="lg"
-                className="w-full sm:w-auto bg-white hover:bg-white/90 text-[#0a0f1a] rounded-lg px-8 py-6 text-base font-semibold transition-all hover:scale-[1.02] active:scale-[0.98]"
-                asChild
-              >
-                <a href="#apply">
-                  Apply for a seat
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </a>
-              </Button>
-            </div>
+          {/* CTA */}
+          <div className="text-center">
+            <Button
+              size="lg"
+              className="w-full sm:w-auto bg-white hover:bg-white/90 text-[#0a0f1a] rounded-xl px-10 py-7 text-base font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/50"
+              asChild
+            >
+              <a href="#apply">
+                Apply for a seat
+                <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
+              </a>
+            </Button>
           </div>
         </div>
       </section>
