@@ -278,86 +278,104 @@ const SmartTeamCohortHero = () => {
       </section>
 
       {/* Section 4: How It Works */}
-      <section id="how-it-works" className="w-full px-5 md:px-8 lg:px-12 py-20 md:py-28 lg:py-36 bg-[#0a0f1a]">
-        <div className="max-w-4xl mx-auto">
+      <section 
+        id="how-it-works" 
+        className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#0a0f1a]"
+        aria-labelledby="how-it-works-heading"
+      >
+        <div className="max-w-5xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16 md:mb-20">
-            <span className="text-[11px] md:text-xs font-semibold uppercase tracking-[0.2em] text-[#5eead4] mb-6 block">
+          <header className="text-center mb-20 md:mb-28">
+            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-[#5eead4] mb-8">
               How it works
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.03em] leading-[1.1] mb-6">
-              2–3 hours/week for 6 weeks.
+            </p>
+            <h2 
+              id="how-it-works-heading"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-[-0.04em] leading-[1.05] mb-8"
+            >
+              2–3 hours/week.
+              <br />
+              <span className="text-white/70">6 weeks total.</span>
             </h2>
-            <p className="text-white/50 text-base md:text-lg">
+            <p className="text-xl md:text-2xl text-white/60 font-light max-w-xl mx-auto leading-relaxed">
               One Ops Lead. We build it with you.
             </p>
-          </div>
+          </header>
 
-          {/* 3-Step Flow - Simplified */}
-          <div className="grid md:grid-cols-3 gap-10 md:gap-12 lg:gap-16 mb-16 md:mb-20">
+          {/* 3-Step Flow */}
+          <ol className="grid md:grid-cols-3 gap-12 md:gap-16 lg:gap-20 mb-20 md:mb-28" aria-label="Program steps">
             {/* Step 1 */}
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-11 h-11 rounded-full border border-[#5eead4]/30 text-[#5eead4] text-sm font-medium mb-5">
+            <li className="text-center">
+              <div 
+                className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-[#5eead4]/40 text-[#5eead4] text-xl md:text-2xl font-bold mb-8"
+                aria-hidden="true"
+              >
                 01
               </div>
-              <h3 className="text-lg md:text-xl font-semibold text-white mb-2">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-[-0.02em]">
                 Set up your files
               </h3>
-              <p className="text-white/40 text-sm">
+              <p className="text-lg md:text-xl text-white/50 font-light">
                 Stop losing documents.
               </p>
-            </div>
+            </li>
 
             {/* Step 2 */}
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-11 h-11 rounded-full border border-[#5eead4]/30 text-[#5eead4] text-sm font-medium mb-5">
+            <li className="text-center">
+              <div 
+                className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-[#5eead4]/40 text-[#5eead4] text-xl md:text-2xl font-bold mb-8"
+                aria-hidden="true"
+              >
                 02
               </div>
-              <h3 className="text-lg md:text-xl font-semibold text-white mb-2">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-[-0.02em]">
                 Set up 4 systems
               </h3>
-              <p className="text-white/40 text-sm">
+              <p className="text-lg md:text-xl text-white/50 font-light">
                 Proof, board, reporting, and files.
               </p>
-            </div>
+            </li>
 
             {/* Step 3 */}
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-11 h-11 rounded-full border border-[#5eead4]/30 text-[#5eead4] text-sm font-medium mb-5">
+            <li className="text-center">
+              <div 
+                className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-[#5eead4]/40 text-[#5eead4] text-xl md:text-2xl font-bold mb-8"
+                aria-hidden="true"
+              >
                 03
               </div>
-              <h3 className="text-lg md:text-xl font-semibold text-white mb-2">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-[-0.02em]">
                 Prove it works
               </h3>
-              <p className="text-white/40 text-sm">
+              <p className="text-lg md:text-xl text-white/50 font-light">
                 Stress test + 90-day plan.
               </p>
-            </div>
-          </div>
+            </li>
+          </ol>
 
-          {/* Compact Schedule Row */}
-          <div className="border-t border-white/10 pt-10 mb-14 md:mb-16">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-2 text-center">
-              <span className="text-xs font-semibold uppercase tracking-[0.15em] text-white/40">
+          {/* Schedule Row */}
+          <div className="border-t border-white/10 pt-12 mb-16 md:mb-20">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-center">
+              <span className="text-sm md:text-base font-semibold uppercase tracking-[0.2em] text-white/50">
                 Weekly schedule
               </span>
-              <span className="hidden sm:block text-white/20">—</span>
-              <span className="text-white/60 text-sm">
+              <span className="hidden sm:block text-white/20 text-2xl" aria-hidden="true">—</span>
+              <span className="text-lg md:text-xl text-white/70 font-light">
                 1 group (90 min) • 1 lab (90 min) • office hours (optional)
               </span>
             </div>
           </div>
 
-          {/* CTA Row */}
+          {/* CTA */}
           <div className="text-center">
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-[#5eead4] hover:bg-[#5eead4]/90 text-[#0a0f1a] rounded-lg px-10 py-7 text-base font-semibold transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full sm:w-auto bg-[#5eead4] hover:bg-[#5eead4]/90 text-[#0a0f1a] rounded-xl px-12 py-8 text-lg md:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#5eead4]/50"
               asChild
             >
               <a href="#apply">
                 Apply for a seat
-                <ArrowRight className="ml-2 w-4 h-4" />
+                <ArrowRight className="ml-3 w-5 h-5" aria-hidden="true" />
               </a>
             </Button>
           </div>
