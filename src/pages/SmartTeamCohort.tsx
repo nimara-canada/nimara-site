@@ -6,6 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import FadeInSection from "@/components/FadeInSection";
 
 const SmartTeamCohortHero = () => {
   const bullets = [
@@ -33,11 +34,12 @@ const SmartTeamCohortHero = () => {
       </header>
 
       {/* Hero Section */}
-      <section 
-        className="w-full px-6 md:px-10 lg:px-16 py-20 md:py-28 lg:py-36 bg-[#0a0f1a]"
-        aria-labelledby="hero-heading"
-      >
-        <div className="max-w-4xl mx-auto text-center">
+      <FadeInSection>
+        <section 
+          className="w-full px-6 md:px-10 lg:px-16 py-20 md:py-28 lg:py-36 bg-[#0a0f1a]"
+          aria-labelledby="hero-heading"
+        >
+          <div className="max-w-4xl mx-auto text-center">
           {/* Headline */}
           <h1 
             id="hero-heading"
@@ -91,13 +93,15 @@ const SmartTeamCohortHero = () => {
             $12,000 CAD per org • 15 seats • 2–3 hours/week
           </p>
         </div>
-      </section>
+        </section>
+      </FadeInSection>
 
       {/* Section 2: Is This For You? */}
-      <section 
-        className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#0a0f1a]"
-        aria-labelledby="fit-heading"
-      >
+      <FadeInSection delay={0.1}>
+        <section 
+          className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#0a0f1a]"
+          aria-labelledby="fit-heading"
+        >
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-16 md:mb-20">
@@ -203,14 +207,16 @@ const SmartTeamCohortHero = () => {
             </p>
           </div>
         </div>
-      </section>
+        </section>
+      </FadeInSection>
 
       {/* Section 3: What You Get */}
-      <section 
-        id="what-you-get" 
-        className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#0a0f1a]"
-        aria-labelledby="what-you-get-heading"
-      >
+      <FadeInSection delay={0.1}>
+        <section 
+          id="what-you-get" 
+          className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#0a0f1a]"
+          aria-labelledby="what-you-get-heading"
+        >
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-16 md:mb-24">
@@ -292,14 +298,16 @@ const SmartTeamCohortHero = () => {
             </article>
           </div>
         </div>
-      </section>
+        </section>
+      </FadeInSection>
 
       {/* Section 4: How It Works */}
-      <section 
-        id="how-it-works" 
-        className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#0a0f1a]"
-        aria-labelledby="how-it-works-heading"
-      >
+      <FadeInSection delay={0.1}>
+        <section 
+          id="how-it-works" 
+          className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#0a0f1a]"
+          aria-labelledby="how-it-works-heading"
+        >
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-20 md:mb-28">
@@ -397,13 +405,15 @@ const SmartTeamCohortHero = () => {
             </Button>
           </div>
         </div>
-      </section>
+        </section>
+      </FadeInSection>
 
       {/* Section 5: Early Win */}
-      <section 
-        className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#0a0f1a]"
-        aria-labelledby="early-win-heading"
-      >
+      <FadeInSection delay={0.1}>
+        <section 
+          className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#0a0f1a]"
+          aria-labelledby="early-win-heading"
+        >
         <div className="max-w-4xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-16 md:mb-20">
@@ -486,13 +496,15 @@ const SmartTeamCohortHero = () => {
             </Button>
           </div>
         </div>
-      </section>
+        </section>
+      </FadeInSection>
 
       {/* Section 6: Stress Test */}
-      <section 
-        className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#0a0f1a]"
-        aria-labelledby="stress-test-heading"
-      >
+      <FadeInSection delay={0.1}>
+        <section 
+          className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#0a0f1a]"
+          aria-labelledby="stress-test-heading"
+        >
         <div className="max-w-3xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-14 md:mb-16">
@@ -555,13 +567,15 @@ const SmartTeamCohortHero = () => {
             </Button>
           </div>
         </div>
-      </section>
+        </section>
+      </FadeInSection>
 
       {/* Section 7: Guarantee */}
-      <section 
-        className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#0a0f1a]"
-        aria-labelledby="guarantee-heading"
-      >
+      <FadeInSection delay={0.1}>
+        <section 
+          className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#0a0f1a]"
+          aria-labelledby="guarantee-heading"
+        >
         <div className="max-w-4xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-16 md:mb-20">
@@ -658,14 +672,16 @@ const SmartTeamCohortHero = () => {
             </p>
           </div>
         </div>
-      </section>
+        </section>
+      </FadeInSection>
 
       {/* Section 8: Price and Seats */}
-      <section 
-        id="price" 
-        className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#0a0f1a]"
-        aria-labelledby="price-heading"
-      >
+      <FadeInSection delay={0.1}>
+        <section 
+          id="price" 
+          className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#0a0f1a]"
+          aria-labelledby="price-heading"
+        >
         <div className="max-w-xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-16 md:mb-20">
@@ -775,14 +791,16 @@ const SmartTeamCohortHero = () => {
             Nimara supports 0–50 staff. This cohort is only for 1–15 staff.
           </p>
         </div>
-      </section>
+        </section>
+      </FadeInSection>
 
       {/* Section 9: FAQ */}
-      <section 
-        id="faq" 
-        className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#0a0f1a]"
-        aria-labelledby="faq-heading"
-      >
+      <FadeInSection delay={0.1}>
+        <section 
+          id="faq" 
+          className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#0a0f1a]"
+          aria-labelledby="faq-heading"
+        >
         <div className="max-w-2xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-16 md:mb-20">
@@ -874,14 +892,16 @@ const SmartTeamCohortHero = () => {
             Nimara supports 0–50 staff. This cohort is only for 1–15 staff.
           </p>
         </div>
-      </section>
+        </section>
+      </FadeInSection>
 
       {/* Section 10: Final CTA Strip */}
-      <section 
-        id="apply" 
-        className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#5eead4]"
-        aria-labelledby="apply-heading"
-      >
+      <FadeInSection delay={0.1}>
+        <section 
+          id="apply" 
+          className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#5eead4]"
+          aria-labelledby="apply-heading"
+        >
         <div className="max-w-3xl mx-auto text-center">
           {/* Heading */}
           <h2 
@@ -932,7 +952,8 @@ const SmartTeamCohortHero = () => {
             Nimara supports 0–50 staff. This cohort is only for 1–15 staff.
           </p>
         </div>
-      </section>
+        </section>
+      </FadeInSection>
 
       {/* Footer */}
       <footer className="w-full px-6 md:px-10 lg:px-16 py-12 bg-[#0a0f1a] border-t border-white/10">
