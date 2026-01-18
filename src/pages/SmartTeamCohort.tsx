@@ -279,112 +279,72 @@ const SmartTeamCohortHero = () => {
 
       {/* Section 4: How It Works */}
       <section id="how-it-works" className="w-full px-5 md:px-8 lg:px-12 py-20 md:py-28 lg:py-36 bg-[#0a0f1a]">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16 md:mb-24">
-            <span className="text-[11px] md:text-xs font-semibold uppercase tracking-[0.2em] text-white/40 mb-6 block">
+          <div className="text-center mb-16 md:mb-20">
+            <span className="text-[11px] md:text-xs font-semibold uppercase tracking-[0.2em] text-[#5eead4] mb-6 block">
               How it works
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.03em] leading-[1.1] mb-6">
-              Simple, made for
-              <br />
-              <span className="text-[#5eead4]">small teams.</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.03em] leading-[1.1] mb-6">
+              2–3 hours/week for 6 weeks.
             </h2>
-            <p className="text-white/60 text-base md:text-lg max-w-2xl mx-auto">
-              2–3 hours/week for 6 weeks. One Ops Lead. We build it with you.
+            <p className="text-white/50 text-base md:text-lg">
+              One Ops Lead. We build it with you.
             </p>
           </div>
 
-          {/* 3-Step Flow */}
-          <div className="grid md:grid-cols-3 gap-8 md:gap-12 lg:gap-16 mb-20 md:mb-28">
+          {/* 3-Step Flow - Simplified */}
+          <div className="grid md:grid-cols-3 gap-10 md:gap-12 lg:gap-16 mb-16 md:mb-20">
             {/* Step 1 */}
-            <div className="text-center md:text-left">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full border border-white/20 text-white/60 text-sm font-medium mb-6">
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-11 h-11 rounded-full border border-[#5eead4]/30 text-[#5eead4] text-sm font-medium mb-5">
                 01
               </div>
-              <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
+              <h3 className="text-lg md:text-xl font-semibold text-white mb-2">
                 Set up your files
               </h3>
-              <p className="text-white/50 text-base leading-relaxed">
-                So you stop losing documents. Everything in one place with clear naming.
+              <p className="text-white/40 text-sm">
+                Stop losing documents.
               </p>
             </div>
 
             {/* Step 2 */}
-            <div className="text-center md:text-left">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full border border-white/20 text-white/60 text-sm font-medium mb-6">
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-11 h-11 rounded-full border border-[#5eead4]/30 text-[#5eead4] text-sm font-medium mb-5">
                 02
               </div>
-              <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
+              <h3 className="text-lg md:text-xl font-semibold text-white mb-2">
                 Set up 4 systems
               </h3>
-              <p className="text-white/50 text-base leading-relaxed">
-                Proof, board, reporting, and files. Built with you in working labs.
+              <p className="text-white/40 text-sm">
+                Proof, board, reporting, and files.
               </p>
             </div>
 
             {/* Step 3 */}
-            <div className="text-center md:text-left">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full border border-white/20 text-white/60 text-sm font-medium mb-6">
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-11 h-11 rounded-full border border-[#5eead4]/30 text-[#5eead4] text-sm font-medium mb-5">
                 03
               </div>
-              <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
+              <h3 className="text-lg md:text-xl font-semibold text-white mb-2">
                 Prove it works
               </h3>
-              <p className="text-white/50 text-base leading-relaxed">
-                Stress test everything. Get a 90-day plan to keep it running.
+              <p className="text-white/40 text-sm">
+                Stress test + 90-day plan.
               </p>
             </div>
           </div>
 
-          {/* Weekly Schedule + Time and Team */}
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-20 mb-16 md:mb-20">
-            {/* Weekly Schedule */}
-            <div>
-              <div className="mb-6">
-                <Calendar className="w-10 h-10 text-white" strokeWidth={1.5} />
-              </div>
-              <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
+          {/* Compact Schedule Row */}
+          <div className="border-t border-white/10 pt-10 mb-14 md:mb-16">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-2 text-center">
+              <span className="text-xs font-semibold uppercase tracking-[0.15em] text-white/40">
                 Weekly schedule
-              </h3>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-3 text-white/50 text-base">
-                  <div className="w-1 h-1 rounded-full bg-white/30 flex-shrink-0" />
-                  1 group session (90 min)
-                </li>
-                <li className="flex items-center gap-3 text-white/50 text-base">
-                  <div className="w-1 h-1 rounded-full bg-white/30 flex-shrink-0" />
-                  1 working lab (90 min)
-                </li>
-                <li className="flex items-center gap-3 text-white/50 text-base">
-                  <div className="w-1 h-1 rounded-full bg-white/30 flex-shrink-0" />
-                  Office hours (optional)
-                </li>
-              </ul>
-            </div>
-
-            {/* Time and Team */}
-            <div>
-              <div className="mb-6">
-                <UserCheck className="w-10 h-10 text-white" strokeWidth={1.5} />
-              </div>
-              <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
-                Time and team
-              </h3>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-3 text-white/50 text-base">
-                  <div className="w-1 h-1 rounded-full bg-white/30 flex-shrink-0" />
-                  2–3 hours/week total
-                </li>
-                <li className="flex items-center gap-3 text-white/50 text-base">
-                  <div className="w-1 h-1 rounded-full bg-white/30 flex-shrink-0" />
-                  One Ops Lead needed
-                </li>
-                <li className="flex items-center gap-3 text-white/50 text-base">
-                  <div className="w-1 h-1 rounded-full bg-white/30 flex-shrink-0" />
-                  We build it with you in labs
-                </li>
-              </ul>
+              </span>
+              <span className="hidden sm:block text-white/20">—</span>
+              <span className="text-white/60 text-sm">
+                1 group (90 min) • 1 lab (90 min) • office hours (optional)
+              </span>
             </div>
           </div>
 
@@ -392,7 +352,7 @@ const SmartTeamCohortHero = () => {
           <div className="text-center">
             <Button
               size="lg"
-              className="bg-white hover:bg-white/90 text-[#0a0f1a] rounded-lg px-8 py-6 text-base font-semibold transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full sm:w-auto bg-[#5eead4] hover:bg-[#5eead4]/90 text-[#0a0f1a] rounded-lg px-10 py-7 text-base font-semibold transition-all hover:scale-[1.02] active:scale-[0.98]"
               asChild
             >
               <a href="#apply">
@@ -400,9 +360,6 @@ const SmartTeamCohortHero = () => {
                 <ArrowRight className="ml-2 w-4 h-4" />
               </a>
             </Button>
-            <p className="text-xs text-white/30 mt-6">
-              Nimara supports 0–50 staff. This cohort is only for 1–15 staff.
-            </p>
           </div>
         </div>
       </section>
