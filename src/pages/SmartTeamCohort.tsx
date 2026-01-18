@@ -570,8 +570,119 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Placeholder for Weekly Plan section */}
-      <section id="weekly-plan" className="py-24 px-6 bg-white">
+      {/* Section 5: Early Win */}
+      <section className="w-full px-5 md:px-8 lg:px-12 py-16 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-5xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-12 md:mb-14">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground tracking-[-0.02em] mb-3">
+              Early win
+            </h2>
+            <p className="text-foreground/60 text-base md:text-lg">
+              You will feel progress fast.
+            </p>
+          </div>
+
+          {/* Week 1 and Week 2 Cards */}
+          <div className="grid md:grid-cols-2 gap-4 md:gap-5 mb-8">
+            {/* Card A: Week 1 */}
+            <div className="bg-[#FAFAF8] rounded-2xl border border-foreground/[0.08] p-6 md:p-8 relative overflow-hidden">
+              {/* Subtle accent */}
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-400/40 to-emerald-400/10" />
+              
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-700 mb-5">
+                By the end of Week 1
+              </span>
+              
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-11 h-11 rounded-xl bg-foreground/[0.05] flex items-center justify-center">
+                  <Folder className="w-5 h-5 text-foreground/60" />
+                </div>
+                <h3 className="text-xl font-semibold text-foreground">
+                  Your file system is set up.
+                </h3>
+              </div>
+              
+              <ul className="space-y-3">
+                <li className="flex items-center gap-3 text-foreground/70 text-[0.95rem]">
+                  <Check className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                  A clear folder map
+                </li>
+                <li className="flex items-center gap-3 text-foreground/70 text-[0.95rem]">
+                  <Check className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                  Simple naming rules
+                </li>
+                <li className="flex items-center gap-3 text-foreground/70 text-[0.95rem]">
+                  <Check className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                  Key documents easy to find
+                </li>
+              </ul>
+            </div>
+
+            {/* Card B: Week 2 */}
+            <div className="bg-[#FAFAF8] rounded-2xl border border-foreground/[0.08] p-6 md:p-8 relative overflow-hidden">
+              {/* Subtle accent */}
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400/40 to-blue-400/10" />
+              
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700 mb-5">
+                By the end of Week 2
+              </span>
+              
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-11 h-11 rounded-xl bg-foreground/[0.05] flex items-center justify-center">
+                  <Receipt className="w-5 h-5 text-foreground/60" />
+                </div>
+                <h3 className="text-xl font-semibold text-foreground">
+                  You will finish 10 proof bundles.
+                </h3>
+              </div>
+              
+              <ul className="space-y-3">
+                <li className="flex items-center gap-3 text-foreground/70 text-[0.95rem]">
+                  <Check className="w-4 h-4 text-blue-500 flex-shrink-0" />
+                  Approval, invoice, and payment proof
+                </li>
+                <li className="flex items-center gap-3 text-foreground/70 text-[0.95rem]">
+                  <Check className="w-4 h-4 text-blue-500 flex-shrink-0" />
+                  What was delivered
+                </li>
+                <li className="flex items-center gap-3 text-foreground/70 text-[0.95rem]">
+                  <Check className="w-4 h-4 text-blue-500 flex-shrink-0" />
+                  Saved in the right place
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Reassurance Line */}
+          <p className="text-center text-foreground/50 text-sm md:text-base mb-10">
+            This is when most teams feel the biggest relief.
+          </p>
+
+          {/* CTA Row */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button
+              size="lg"
+              className="bg-foreground hover:bg-foreground/90 text-background rounded-full px-8 py-6 text-base font-semibold shadow-lg shadow-foreground/10 transition-all hover:shadow-xl hover:shadow-foreground/15 hover:scale-[1.02] active:scale-[0.98]"
+              asChild
+            >
+              <a href="#apply">
+                Apply for a seat
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </a>
+            </Button>
+            <a 
+              href="#what-you-get" 
+              className="text-foreground/70 hover:text-foreground text-sm font-medium underline underline-offset-4 decoration-foreground/30 hover:decoration-foreground/50 transition-colors"
+            >
+              See what you get
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Placeholder for next section */}
+      <section id="weekly-plan" className="py-24 px-6 bg-[#FAFAF8]">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-foreground/40 text-sm uppercase tracking-widest">
             Weekly plan section placeholder
