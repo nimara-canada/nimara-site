@@ -90,68 +90,85 @@ const SmartTeamCohortHero = () => {
       </section>
 
       {/* Section 2: Is This For You? */}
-      <section className="w-full px-5 md:px-8 lg:px-12 py-16 md:py-20 lg:py-24 bg-[#FAFAF8]">
-        <div className="max-w-4xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-8 md:mb-10">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground tracking-[-0.02em] mb-2">
+      <section className="w-full px-5 md:px-8 lg:px-12 py-20 md:py-28 lg:py-36 bg-white">
+        <div className="max-w-5xl mx-auto">
+          {/* Section Header - Minimal like reference */}
+          <div className="text-center mb-16 md:mb-20">
+            <span className="text-[11px] md:text-xs font-semibold uppercase tracking-[0.2em] text-[#8b5cf6] mb-6 block">
               Is this for you?
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-[-0.03em] leading-[1.1] mb-6">
+              Built for teams that are
+              <br />
+              <span className="text-[#8b5cf6]">ready to get organized.</span>
             </h2>
-            <p className="text-foreground/50 text-sm">
-              Quick check.
+            <p className="text-foreground/50 text-base md:text-lg max-w-2xl mx-auto">
+              Not free advice. Real systems, built with you.
             </p>
           </div>
 
-          {/* Two-Column Cards */}
-          <div className="grid md:grid-cols-2 gap-4 mb-8">
-            {/* Left Card - Fit */}
-            <div className="bg-white rounded-xl border border-foreground/[0.06] p-5 md:p-6">
-              <h3 className="text-base font-semibold text-foreground mb-4">
-                This is a fit if:
+          {/* Two-Column Layout - Clean & Premium */}
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 mb-16 md:mb-20">
+            {/* Left Column - Fit */}
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-[0.1em] text-foreground/40 mb-6">
+                This is a fit if
               </h3>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-2.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
-                  <span className="text-foreground/70 text-sm">
+              <ul className="space-y-4">
+                <li className="flex items-start gap-4">
+                  <div className="w-5 h-5 rounded-full bg-[#8b5cf6]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-3 h-3 text-[#8b5cf6]" />
+                  </div>
+                  <span className="text-foreground text-base md:text-lg leading-relaxed">
                     You have funding (or budget set aside)
                   </span>
                 </li>
-                <li className="flex items-center gap-2.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
-                  <span className="text-foreground/70 text-sm">
+                <li className="flex items-start gap-4">
+                  <div className="w-5 h-5 rounded-full bg-[#8b5cf6]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-3 h-3 text-[#8b5cf6]" />
+                  </div>
+                  <span className="text-foreground text-base md:text-lg leading-relaxed">
                     You can assign one Ops Lead
                   </span>
                 </li>
-                <li className="flex items-center gap-2.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
-                  <span className="text-foreground/70 text-sm">
+                <li className="flex items-start gap-4">
+                  <div className="w-5 h-5 rounded-full bg-[#8b5cf6]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-3 h-3 text-[#8b5cf6]" />
+                  </div>
+                  <span className="text-foreground text-base md:text-lg leading-relaxed">
                     You can commit 2–3 hours/week for 6 weeks
                   </span>
                 </li>
               </ul>
             </div>
 
-            {/* Right Card - Not a Fit */}
-            <div className="bg-white rounded-xl border border-foreground/[0.06] p-5 md:p-6">
-              <h3 className="text-base font-semibold text-foreground mb-4">
-                Not a fit if:
+            {/* Right Column - Not a Fit */}
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-[0.1em] text-foreground/40 mb-6">
+                Not a fit if
               </h3>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-2.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
-                  <span className="text-foreground/70 text-sm">
+              <ul className="space-y-4">
+                <li className="flex items-start gap-4">
+                  <div className="w-5 h-5 rounded-full bg-foreground/5 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <X className="w-3 h-3 text-foreground/40" />
+                  </div>
+                  <span className="text-foreground/60 text-base md:text-lg leading-relaxed">
                     You want free advice
                   </span>
                 </li>
-                <li className="flex items-center gap-2.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
-                  <span className="text-foreground/70 text-sm">
+                <li className="flex items-start gap-4">
+                  <div className="w-5 h-5 rounded-full bg-foreground/5 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <X className="w-3 h-3 text-foreground/40" />
+                  </div>
+                  <span className="text-foreground/60 text-base md:text-lg leading-relaxed">
                     You can't share documents
                   </span>
                 </li>
-                <li className="flex items-center gap-2.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
-                  <span className="text-foreground/70 text-sm">
+                <li className="flex items-start gap-4">
+                  <div className="w-5 h-5 rounded-full bg-foreground/5 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <X className="w-3 h-3 text-foreground/40" />
+                  </div>
+                  <span className="text-foreground/60 text-base md:text-lg leading-relaxed">
                     You can't make weekly time
                   </span>
                 </li>
@@ -159,11 +176,11 @@ const SmartTeamCohortHero = () => {
             </div>
           </div>
 
-          {/* Single CTA */}
+          {/* Single CTA - Centered */}
           <div className="text-center">
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-foreground hover:bg-foreground/90 text-background rounded-full px-8 py-6 text-base font-semibold transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full sm:w-auto bg-[#8b5cf6] hover:bg-[#7c3aed] text-white rounded-full px-10 py-7 text-base font-semibold shadow-xl shadow-[#8b5cf6]/20 transition-all hover:shadow-2xl hover:shadow-[#8b5cf6]/30 hover:scale-[1.02] active:scale-[0.98]"
               asChild
             >
               <a href="#apply">
@@ -171,7 +188,7 @@ const SmartTeamCohortHero = () => {
                 <ArrowRight className="ml-2 w-4 h-4" />
               </a>
             </Button>
-            <p className="text-[11px] text-foreground/40 mt-4">
+            <p className="text-xs text-foreground/40 mt-6">
               Nimara supports 0–50 staff. This cohort is only for 1–15 staff.
             </p>
           </div>
