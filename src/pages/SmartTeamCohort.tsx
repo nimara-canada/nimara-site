@@ -776,11 +776,128 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Placeholder for next section */}
-      <section id="weekly-plan" className="py-24 px-6 bg-white">
+      {/* Section 7: Guarantee */}
+      <section className="w-full px-5 md:px-8 lg:px-12 py-16 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-3xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-12 md:mb-14">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground tracking-[-0.02em] mb-3">
+              Guarantee
+            </h2>
+            <p className="text-foreground/60 text-base md:text-lg">
+              We take the risk seriously.
+            </p>
+          </div>
+
+          {/* Main Guarantee Card */}
+          <div className="bg-[#FAFAF8] rounded-2xl border border-foreground/[0.08] shadow-lg shadow-foreground/[0.04] p-6 md:p-8 mb-10">
+            {/* Guarantee Statement */}
+            <div className="bg-white rounded-xl border border-foreground/[0.06] p-5 md:p-6 mb-6">
+              <div className="flex items-start gap-4">
+                <div className="w-11 h-11 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                  <ShieldCheck className="w-5 h-5 text-emerald-600" />
+                </div>
+                <p className="text-lg md:text-xl font-semibold text-foreground leading-snug pt-2">
+                  If we do not set up the 4 systems, you get a full refund.
+                </p>
+              </div>
+            </div>
+
+            {/* Two Column Layout on Desktop */}
+            <div className="grid md:grid-cols-2 gap-6 mb-6">
+              {/* To Qualify */}
+              <div>
+                <h4 className="text-sm font-semibold text-foreground/80 uppercase tracking-wide mb-4">
+                  To qualify, you must:
+                </h4>
+                <ul className="space-y-3">
+                  <li className="flex items-center gap-3 text-foreground/70 text-[0.95rem]">
+                    <div className="w-5 h-5 rounded-full bg-foreground/[0.06] flex items-center justify-center flex-shrink-0">
+                      <Check className="w-3 h-3 text-foreground/50" />
+                    </div>
+                    Attend 5 of the 6 weeks
+                  </li>
+                  <li className="flex items-center gap-3 text-foreground/70 text-[0.95rem]">
+                    <div className="w-5 h-5 rounded-full bg-foreground/[0.06] flex items-center justify-center flex-shrink-0">
+                      <Check className="w-3 h-3 text-foreground/50" />
+                    </div>
+                    Submit the weekly items
+                  </li>
+                  <li className="flex items-center gap-3 text-foreground/70 text-[0.95rem]">
+                    <div className="w-5 h-5 rounded-full bg-foreground/[0.06] flex items-center justify-center flex-shrink-0">
+                      <Check className="w-3 h-3 text-foreground/50" />
+                    </div>
+                    Share the needed documents
+                  </li>
+                </ul>
+              </div>
+
+              {/* The 4 Systems */}
+              <div>
+                <h4 className="text-sm font-semibold text-foreground/80 uppercase tracking-wide mb-4">
+                  The 4 systems are:
+                </h4>
+                <ul className="space-y-3">
+                  <li className="flex items-center gap-3 text-foreground/70 text-[0.95rem]">
+                    <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
+                    Spending proof
+                  </li>
+                  <li className="flex items-center gap-3 text-foreground/70 text-[0.95rem]">
+                    <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
+                    Board decisions
+                  </li>
+                  <li className="flex items-center gap-3 text-foreground/70 text-[0.95rem]">
+                    <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
+                    Simple reporting
+                  </li>
+                  <li className="flex items-center gap-3 text-foreground/70 text-[0.95rem]">
+                    <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
+                    Find-it-fast files
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Reassurance Line */}
+            <div className="pt-5 border-t border-foreground/[0.06]">
+              <p className="text-foreground/50 text-sm text-center">
+                Clear and fair. No long fine print.
+              </p>
+            </div>
+          </div>
+
+          {/* CTA Row */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-5">
+            <Button
+              size="lg"
+              className="bg-foreground hover:bg-foreground/90 text-background rounded-full px-8 py-6 text-base font-semibold shadow-lg shadow-foreground/10 transition-all hover:shadow-xl hover:shadow-foreground/15 hover:scale-[1.02] active:scale-[0.98]"
+              asChild
+            >
+              <a href="#apply">
+                Apply for a seat
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </a>
+            </Button>
+            <a 
+              href="#price" 
+              className="text-foreground/70 hover:text-foreground text-sm font-medium underline underline-offset-4 decoration-foreground/30 hover:decoration-foreground/50 transition-colors"
+            >
+              Price and seats
+            </a>
+          </div>
+
+          {/* Micro note */}
+          <p className="text-xs text-foreground/40 text-center">
+            Nimara supports 0–50 staff. This cohort is only for 1–15 staff.
+          </p>
+        </div>
+      </section>
+
+      {/* Placeholder for Price section */}
+      <section id="price" className="py-24 px-6 bg-[#FAFAF8]">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-foreground/40 text-sm uppercase tracking-widest">
-            Next section placeholder
+            Price section placeholder
           </p>
         </div>
       </section>
