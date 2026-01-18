@@ -1,4 +1,4 @@
-import { FileCheck, Users, BarChart3, FolderSearch, ArrowRight, Check, X, Receipt, Gavel, LineChart, FolderOpen, Plus } from "lucide-react";
+import { FileCheck, Users, BarChart3, FolderSearch, ArrowRight, Check, X, Receipt, Gavel, LineChart, FolderOpen, Plus, Folder, ClipboardList, ShieldCheck, Calendar, Clock, UserCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const SmartTeamCohortHero = () => {
@@ -416,11 +416,165 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Placeholder for How It Works section */}
-      <section id="how-it-works" className="py-24 px-6 bg-[#FAFAF8]">
+      {/* Section 4: How It Works */}
+      <section id="how-it-works" className="w-full px-5 md:px-8 lg:px-12 py-16 md:py-20 lg:py-24 bg-[#FAFAF8]">
+        <div className="max-w-5xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-12 md:mb-14">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground tracking-[-0.02em] mb-3">
+              How it works
+            </h2>
+            <p className="text-foreground/60 text-base md:text-lg">
+              Simple, and made for small teams.
+            </p>
+          </div>
+
+          {/* 3-Step Flow */}
+          <div className="grid md:grid-cols-3 gap-4 md:gap-5 mb-10">
+            {/* Step 1 */}
+            <div className="relative bg-white rounded-2xl border border-foreground/[0.06] p-6 md:p-7">
+              <span className="text-[11px] font-medium uppercase tracking-[0.12em] text-foreground/35 mb-5 block">
+                Step 1
+              </span>
+              <div className="w-11 h-11 rounded-xl bg-foreground/[0.05] flex items-center justify-center mb-4">
+                <Folder className="w-5 h-5 text-foreground/60" />
+              </div>
+              <h3 className="text-lg font-semibold text-foreground mb-2">
+                Set up your files
+              </h3>
+              <p className="text-foreground/60 text-sm leading-relaxed">
+                So you stop losing documents.
+              </p>
+              {/* Connector arrow - hidden on mobile */}
+              <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-6 -translate-y-1/2 text-foreground/20">
+                →
+              </div>
+            </div>
+
+            {/* Step 2 */}
+            <div className="relative bg-white rounded-2xl border border-foreground/[0.06] p-6 md:p-7">
+              <span className="text-[11px] font-medium uppercase tracking-[0.12em] text-foreground/35 mb-5 block">
+                Step 2
+              </span>
+              <div className="w-11 h-11 rounded-xl bg-foreground/[0.05] flex items-center justify-center mb-4">
+                <ClipboardList className="w-5 h-5 text-foreground/60" />
+              </div>
+              <h3 className="text-lg font-semibold text-foreground mb-2">
+                Set up the 4 systems
+              </h3>
+              <p className="text-foreground/60 text-sm leading-relaxed">
+                Proof, board, reporting, and files.
+              </p>
+              {/* Connector arrow - hidden on mobile */}
+              <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-6 -translate-y-1/2 text-foreground/20">
+                →
+              </div>
+            </div>
+
+            {/* Step 3 */}
+            <div className="bg-white rounded-2xl border border-foreground/[0.06] p-6 md:p-7">
+              <span className="text-[11px] font-medium uppercase tracking-[0.12em] text-foreground/35 mb-5 block">
+                Step 3
+              </span>
+              <div className="w-11 h-11 rounded-xl bg-foreground/[0.05] flex items-center justify-center mb-4">
+                <ShieldCheck className="w-5 h-5 text-foreground/60" />
+              </div>
+              <h3 className="text-lg font-semibold text-foreground mb-2">
+                Prove it works
+              </h3>
+              <p className="text-foreground/60 text-sm leading-relaxed">
+                Stress test + a 90-day plan.
+              </p>
+            </div>
+          </div>
+
+          {/* Weekly Schedule + Time and Team Cards */}
+          <div className="grid md:grid-cols-2 gap-4 md:gap-5 mb-10">
+            {/* Weekly Schedule Card */}
+            <div className="bg-white rounded-2xl border border-foreground/[0.06] p-6 md:p-7">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-10 h-10 rounded-xl bg-foreground/[0.05] flex items-center justify-center">
+                  <Calendar className="w-5 h-5 text-foreground/60" />
+                </div>
+                <h3 className="text-lg font-semibold text-foreground">
+                  Weekly schedule
+                </h3>
+              </div>
+              <ul className="space-y-3">
+                <li className="flex items-center gap-3 text-foreground/70 text-[0.95rem]">
+                  <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
+                  1 group session (90 min)
+                </li>
+                <li className="flex items-center gap-3 text-foreground/70 text-[0.95rem]">
+                  <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
+                  1 working lab (90 min)
+                </li>
+                <li className="flex items-center gap-3 text-foreground/70 text-[0.95rem]">
+                  <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
+                  Office hours (optional)
+                </li>
+              </ul>
+            </div>
+
+            {/* Time and Team Card */}
+            <div className="bg-white rounded-2xl border border-foreground/[0.06] p-6 md:p-7">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-10 h-10 rounded-xl bg-foreground/[0.05] flex items-center justify-center">
+                  <Clock className="w-5 h-5 text-foreground/60" />
+                </div>
+                <h3 className="text-lg font-semibold text-foreground">
+                  Time and team
+                </h3>
+              </div>
+              <ul className="space-y-3">
+                <li className="flex items-center gap-3 text-foreground/70 text-[0.95rem]">
+                  <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
+                  2–3 hours/week total
+                </li>
+                <li className="flex items-center gap-3 text-foreground/70 text-[0.95rem]">
+                  <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
+                  One Ops Lead needed
+                </li>
+                <li className="flex items-center gap-3 text-foreground/70 text-[0.95rem]">
+                  <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
+                  We build it with you in labs
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* CTA Row */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-5">
+            <Button
+              size="lg"
+              className="bg-foreground hover:bg-foreground/90 text-background rounded-full px-8 py-6 text-base font-semibold shadow-lg shadow-foreground/10 transition-all hover:shadow-xl hover:shadow-foreground/15 hover:scale-[1.02] active:scale-[0.98]"
+              asChild
+            >
+              <a href="#apply">
+                Apply for a seat
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </a>
+            </Button>
+            <a 
+              href="#weekly-plan" 
+              className="text-foreground/70 hover:text-foreground text-sm font-medium underline underline-offset-4 decoration-foreground/30 hover:decoration-foreground/50 transition-colors"
+            >
+              See the weekly plan
+            </a>
+          </div>
+
+          {/* Micro note */}
+          <p className="text-xs text-foreground/40 text-center">
+            Nimara supports 0–50 staff. This cohort is only for 1–15 staff.
+          </p>
+        </div>
+      </section>
+
+      {/* Placeholder for Weekly Plan section */}
+      <section id="weekly-plan" className="py-24 px-6 bg-white">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-foreground/40 text-sm uppercase tracking-widest">
-            How it works section placeholder
+            Weekly plan section placeholder
           </p>
         </div>
       </section>
