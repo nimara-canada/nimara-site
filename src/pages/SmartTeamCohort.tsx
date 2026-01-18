@@ -14,78 +14,129 @@ const SmartTeamCohortHero = () => {
     "Send reports fast when funders ask",
   ];
 
+  const whatGetsInstalled = [
+    { icon: Receipt, label: "Spending proof" },
+    { icon: Gavel, label: "Board decisions" },
+    { icon: LineChart, label: "Simple reporting" },
+    { icon: FolderOpen, label: "Find-it-fast files" },
+  ];
+
   return (
     <div className="min-h-screen bg-[#FAFAF8]">
       {/* Minimal Header */}
-      <header className="w-full px-5 md:px-8 lg:px-12 py-4 md:py-5 flex items-center justify-between bg-[#0a0f1a]">
+      <header className="w-full px-5 md:px-8 lg:px-12 py-4 md:py-5 flex items-center justify-between bg-[#FAFAF8] border-b border-foreground/[0.06]">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-white/10 rounded-md flex items-center justify-center">
-            <span className="text-white font-bold text-sm">N</span>
+          <div className="w-8 h-8 bg-foreground rounded-lg flex items-center justify-center">
+            <span className="text-background font-bold text-sm">N</span>
           </div>
-          <span className="font-semibold text-white tracking-tight">Nimara</span>
+          <span className="font-semibold text-foreground tracking-tight">Nimara</span>
         </div>
         <Button 
-          className="bg-[#8b5cf6] hover:bg-[#7c3aed] text-white rounded-full px-5 py-2 text-sm font-semibold transition-all"
+          className="bg-foreground hover:bg-foreground/90 text-background rounded-full px-5 py-2 text-sm font-semibold transition-all"
           asChild
         >
           <a href="#apply">Apply</a>
         </Button>
       </header>
 
-      {/* Hero Section - Minimal & Focused */}
-      <section className="w-full px-5 md:px-8 lg:px-12 py-16 md:py-24 lg:py-32 bg-[#0a0f1a]">
-        <div className="max-w-3xl mx-auto text-center">
-          {/* Headline */}
-          <h1 className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.08] tracking-[-0.03em] mb-5">
-            Get{" "}
-            <span className="text-[#5eead4]">funder-ready</span>
-            <br className="hidden sm:block" />
-            {" "}— in{" "}
-            <span className="text-[#5eead4]">6 weeks.</span>
-          </h1>
+      {/* Hero Section - Light, Premium, Two-Column */}
+      <section className="w-full px-5 md:px-8 lg:px-12 py-12 md:py-20 lg:py-28 bg-[#FAFAF8]">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-[1fr,380px] gap-10 lg:gap-16 items-center">
+            
+            {/* Left Column - Copy */}
+            <div className="text-center lg:text-left">
+              {/* Headline */}
+              <h1 className="text-[2.25rem] sm:text-5xl md:text-[3.5rem] lg:text-6xl font-bold text-foreground leading-[1.1] tracking-[-0.03em] mb-4 md:mb-5">
+                Get funder-ready
+                <br />
+                in 6 weeks.
+              </h1>
 
-          {/* Subhead */}
-          <p className="text-lg md:text-xl text-white/90 mb-10">
-            For Canadian nonprofits with 1–15 staff.
-          </p>
+              {/* Subhead */}
+              <p className="text-base md:text-lg lg:text-xl text-foreground/60 mb-8 md:mb-10">
+                For Canadian nonprofits with 1–15 staff.
+              </p>
 
-          {/* 3 Short Bullets */}
-          <div className="flex flex-col items-center gap-3 mb-10">
-            {bullets.map((bullet) => (
-              <div key={bullet} className="flex items-center gap-3">
-                <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0" />
-                <span className="text-white text-base md:text-lg">{bullet}</span>
+              {/* 3 Short Bullets */}
+              <div className="flex flex-col items-center lg:items-start gap-3 mb-8 md:mb-10">
+                {bullets.map((bullet) => (
+                  <div key={bullet} className="flex items-center gap-3">
+                    <div className="w-5 h-5 rounded-full bg-foreground/[0.08] flex items-center justify-center flex-shrink-0">
+                      <Check className="w-3 h-3 text-foreground/70" />
+                    </div>
+                    <span className="text-foreground/80 text-base md:text-lg">{bullet}</span>
+                  </div>
+                ))}
               </div>
-            ))}
+
+              {/* Primary CTA */}
+              <div className="flex flex-col sm:flex-row items-center lg:items-start gap-4 mb-6">
+                <Button
+                  size="lg"
+                  className="w-full sm:w-auto bg-foreground hover:bg-foreground/90 text-background rounded-full px-10 py-7 text-base font-semibold shadow-lg shadow-foreground/10 transition-all hover:shadow-xl hover:shadow-foreground/15 hover:scale-[1.02] active:scale-[0.98]"
+                  asChild
+                >
+                  <a href="#apply">
+                    Apply for a seat
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </a>
+                </Button>
+                
+                {/* Secondary Link */}
+                <a 
+                  href="#what-you-get" 
+                  className="inline-flex items-center gap-1.5 text-foreground/50 hover:text-foreground text-sm font-medium transition-colors"
+                >
+                  See what you get
+                  <ChevronDown className="w-4 h-4" />
+                </a>
+              </div>
+
+              {/* Price Line */}
+              <p className="text-sm text-foreground/40">
+                $12,000 CAD per org • 15 seats • 2–3 hours/week
+              </p>
+            </div>
+
+            {/* Right Column - Feature Card */}
+            <div className="hidden lg:block">
+              <div className="bg-white rounded-2xl border border-foreground/[0.08] shadow-xl shadow-foreground/[0.04] p-6">
+                <h3 className="text-xs font-semibold uppercase tracking-[0.12em] text-foreground/40 mb-5">
+                  What gets installed
+                </h3>
+                <div className="space-y-4">
+                  {whatGetsInstalled.map(({ icon: Icon, label }) => (
+                    <div key={label} className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-xl bg-[#FAFAF8] flex items-center justify-center flex-shrink-0">
+                        <Icon className="w-4 h-4 text-foreground/50" />
+                      </div>
+                      <span className="text-foreground text-sm font-medium">{label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Primary CTA */}
-          <div className="mb-5">
-            <Button
-              size="lg"
-              className="w-full sm:w-auto bg-[#8b5cf6] hover:bg-[#7c3aed] text-white rounded-full px-12 py-7 text-lg font-semibold shadow-xl shadow-[#8b5cf6]/30 transition-all hover:shadow-2xl hover:shadow-[#8b5cf6]/40 hover:scale-[1.02] active:scale-[0.98]"
-              asChild
-            >
-              <a href="#apply">
-                Apply for a seat
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </a>
-            </Button>
+          {/* Mobile Feature Card */}
+          <div className="lg:hidden mt-10">
+            <div className="bg-white rounded-2xl border border-foreground/[0.08] shadow-lg shadow-foreground/[0.03] p-5">
+              <h3 className="text-xs font-semibold uppercase tracking-[0.12em] text-foreground/40 mb-4 text-center">
+                What gets installed
+              </h3>
+              <div className="grid grid-cols-2 gap-3">
+                {whatGetsInstalled.map(({ icon: Icon, label }) => (
+                  <div key={label} className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-lg bg-[#FAFAF8] flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-4 h-4 text-foreground/50" />
+                    </div>
+                    <span className="text-foreground/80 text-sm">{label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-
-          {/* Secondary Link */}
-          <a 
-            href="#what-you-get" 
-            className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors mb-10"
-          >
-            See what you get
-            <ArrowRight className="w-4 h-4" />
-          </a>
-
-          {/* Price Line */}
-          <p className="text-sm text-white/50">
-            $12,000 CAD per org • 15 seats • 2–3 hours/week
-          </p>
         </div>
       </section>
 
