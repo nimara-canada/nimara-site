@@ -893,11 +893,121 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Placeholder for Price section */}
-      <section id="price" className="py-24 px-6 bg-[#FAFAF8]">
+      {/* Section 8: Price and Seats */}
+      <section id="price" className="w-full px-5 md:px-8 lg:px-12 py-16 md:py-20 lg:py-24 bg-[#FAFAF8]">
+        <div className="max-w-xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-12 md:mb-14">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground tracking-[-0.02em] mb-3">
+              Price and seats
+            </h2>
+            <p className="text-foreground/60 text-base md:text-lg">
+              Simple and clear.
+            </p>
+          </div>
+
+          {/* Main Pricing Card */}
+          <div className="bg-white rounded-2xl border border-foreground/[0.08] shadow-xl shadow-foreground/[0.05] p-6 md:p-8 mb-10">
+            {/* Price */}
+            <div className="text-center mb-6">
+              <p className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground tracking-tight mb-1">
+                $12,000 CAD
+              </p>
+              <p className="text-foreground/50 text-sm md:text-base">
+                per organization
+              </p>
+            </div>
+
+            {/* Seats Badge */}
+            <div className="flex justify-center mb-8">
+              <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-foreground/[0.06] text-foreground border border-foreground/[0.08]">
+                15 seats per cohort
+              </span>
+            </div>
+
+            {/* Divider */}
+            <div className="border-t border-foreground/[0.06] my-6" />
+
+            {/* What's Included */}
+            <div className="mb-6">
+              <h4 className="text-xs font-semibold text-foreground/50 uppercase tracking-wide mb-4">
+                What's included
+              </h4>
+              <ul className="space-y-3">
+                <li className="flex items-center gap-3 text-foreground/80 text-[0.95rem]">
+                  <Check className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                  4 systems set up with you
+                </li>
+                <li className="flex items-center gap-3 text-foreground/80 text-[0.95rem]">
+                  <Check className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                  Weekly labs and office hours
+                </li>
+                <li className="flex items-center gap-3 text-foreground/80 text-[0.95rem]">
+                  <Check className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                  Week 6 stress test
+                </li>
+                <li className="flex items-center gap-3 text-foreground/80 text-[0.95rem]">
+                  <Check className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                  90-day plan
+                </li>
+              </ul>
+            </div>
+
+            {/* Payment Options */}
+            <div className="mb-6">
+              <h4 className="text-xs font-semibold text-foreground/50 uppercase tracking-wide mb-4">
+                Payment options
+              </h4>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-3 text-foreground/70 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
+                  50% now / 50% in week 3
+                </li>
+                <li className="flex items-center gap-3 text-foreground/70 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
+                  Or 3 payments (week 0 / week 2 / week 4)
+                </li>
+              </ul>
+            </div>
+
+            {/* Next Cohort Info */}
+            <p className="text-xs text-foreground/40 text-center mb-6">
+              Next cohort start date shown after you apply.
+            </p>
+
+            {/* CTA Row */}
+            <div className="flex flex-col gap-3">
+              <Button
+                size="lg"
+                className="w-full bg-foreground hover:bg-foreground/90 text-background rounded-full px-8 py-6 text-base font-semibold shadow-lg shadow-foreground/10 transition-all hover:shadow-xl hover:shadow-foreground/15 hover:scale-[1.02] active:scale-[0.98]"
+                asChild
+              >
+                <a href="#apply">
+                  Apply for a seat
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </a>
+              </Button>
+              <a 
+                href="#faq" 
+                className="text-foreground/70 hover:text-foreground text-sm font-medium underline underline-offset-4 decoration-foreground/30 hover:decoration-foreground/50 transition-colors text-center"
+              >
+                FAQ
+              </a>
+            </div>
+          </div>
+
+          {/* Micro note */}
+          <p className="text-xs text-foreground/40 text-center">
+            Nimara supports 0–50 staff. This cohort is only for 1–15 staff.
+          </p>
+        </div>
+      </section>
+
+      {/* Placeholder for FAQ section */}
+      <section id="faq" className="py-24 px-6 bg-white">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-foreground/40 text-sm uppercase tracking-widest">
-            Price section placeholder
+            FAQ section placeholder
           </p>
         </div>
       </section>
