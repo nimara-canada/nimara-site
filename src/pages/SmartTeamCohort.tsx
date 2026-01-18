@@ -1,5 +1,11 @@
-import { FileCheck, Users, BarChart3, FolderSearch, ArrowRight, Check, X, Receipt, Gavel, LineChart, FolderOpen, Plus, Folder, ClipboardList, ShieldCheck, Calendar, Clock, UserCheck, BadgeCheck } from "lucide-react";
+import { FileCheck, Users, BarChart3, FolderSearch, ArrowRight, Check, X, Receipt, Gavel, LineChart, FolderOpen, Plus, Folder, ClipboardList, ShieldCheck, Calendar, Clock, UserCheck, BadgeCheck, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const SmartTeamCohortHero = () => {
   const systems = [
@@ -1003,11 +1009,103 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Placeholder for FAQ section */}
-      <section id="faq" className="py-24 px-6 bg-white">
+      {/* Section 9: FAQ */}
+      <section id="faq" className="w-full px-5 md:px-8 lg:px-12 py-16 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-2xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-12 md:mb-14">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground tracking-[-0.02em] mb-3">
+              FAQ
+            </h2>
+            <p className="text-foreground/60 text-base md:text-lg">
+              Quick answers.
+            </p>
+          </div>
+
+          {/* FAQ Accordion */}
+          <Accordion type="single" collapsible className="mb-10">
+            <AccordionItem value="item-1" className="bg-[#FAFAF8] rounded-xl border border-foreground/[0.06] mb-3 px-5 data-[state=open]:shadow-md transition-shadow">
+              <AccordionTrigger className="text-left text-foreground font-medium py-5 hover:no-underline [&[data-state=open]>svg]:rotate-180">
+                Do we need special software?
+              </AccordionTrigger>
+              <AccordionContent className="text-foreground/70 pb-5 leading-relaxed">
+                No. We use what you already have (Google Drive or Microsoft, plus simple sheets).
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-2" className="bg-[#FAFAF8] rounded-xl border border-foreground/[0.06] mb-3 px-5 data-[state=open]:shadow-md transition-shadow">
+              <AccordionTrigger className="text-left text-foreground font-medium py-5 hover:no-underline [&[data-state=open]>svg]:rotate-180">
+                What if our files are messy?
+              </AccordionTrigger>
+              <AccordionContent className="text-foreground/70 pb-5 leading-relaxed">
+                That's normal. Week 1 sets up the structure, and you clean up as you go.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-3" className="bg-[#FAFAF8] rounded-xl border border-foreground/[0.06] mb-3 px-5 data-[state=open]:shadow-md transition-shadow">
+              <AccordionTrigger className="text-left text-foreground font-medium py-5 hover:no-underline [&[data-state=open]>svg]:rotate-180">
+                We don't have a finance person. Can we still do this?
+              </AccordionTrigger>
+              <AccordionContent className="text-foreground/70 pb-5 leading-relaxed">
+                Yes. The proof process is simple and built for small teams.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-4" className="bg-[#FAFAF8] rounded-xl border border-foreground/[0.06] mb-3 px-5 data-[state=open]:shadow-md transition-shadow">
+              <AccordionTrigger className="text-left text-foreground font-medium py-5 hover:no-underline [&[data-state=open]>svg]:rotate-180">
+                How do you handle privacy?
+              </AccordionTrigger>
+              <AccordionContent className="text-foreground/70 pb-5 leading-relaxed">
+                We use limited access and clear rules. You control what we see.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-5" className="bg-[#FAFAF8] rounded-xl border border-foreground/[0.06] px-5 data-[state=open]:shadow-md transition-shadow">
+              <AccordionTrigger className="text-left text-foreground font-medium py-5 hover:no-underline [&[data-state=open]>svg]:rotate-180">
+                We have 16–50 staff. Can we still work with Nimara?
+              </AccordionTrigger>
+              <AccordionContent className="text-foreground/70 pb-5 leading-relaxed">
+                Yes. This cohort is only for 1–15 staff. For 16–50 staff, book a call instead.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+
+          {/* CTA Row */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-5">
+            <Button
+              size="lg"
+              className="bg-foreground hover:bg-foreground/90 text-background rounded-full px-8 py-6 text-base font-semibold shadow-lg shadow-foreground/10 transition-all hover:shadow-xl hover:shadow-foreground/15 hover:scale-[1.02] active:scale-[0.98]"
+              asChild
+            >
+              <a href="#apply">
+                Apply for a seat
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </a>
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              className="rounded-full px-8 py-6 text-base font-semibold border-foreground/20 hover:bg-foreground/5"
+              asChild
+            >
+              <a href="/book">
+                Book a call
+              </a>
+            </Button>
+          </div>
+
+          {/* Micro note */}
+          <p className="text-xs text-foreground/40 text-center">
+            Nimara supports 0–50 staff. This cohort is only for 1–15 staff.
+          </p>
+        </div>
+      </section>
+
+      {/* Placeholder for next section */}
+      <section className="py-24 px-6 bg-[#FAFAF8]">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-foreground/40 text-sm uppercase tracking-widest">
-            FAQ section placeholder
+            Final CTA section placeholder
           </p>
         </div>
       </section>
