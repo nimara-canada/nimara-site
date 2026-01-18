@@ -387,46 +387,40 @@ const SmartTeamCohortHero = () => {
         className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#0a0f1a]"
         aria-labelledby="early-win-heading"
       >
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           {/* Section Header */}
-          <header className="text-center mb-20 md:mb-28">
-            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-[#5eead4] mb-8">
+          <header className="text-center mb-16 md:mb-20">
+            <p className="text-sm font-medium uppercase tracking-[0.25em] text-[#5eead4] mb-6">
               Early win
             </p>
             <h2 
               id="early-win-heading"
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-[-0.04em] leading-[1.05]"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.03em] leading-[1.1]"
             >
-              You will feel
-              <br />
-              <span className="text-[#5eead4]">progress fast.</span>
+              You will feel progress fast.
             </h2>
           </header>
 
           {/* Week 1 and Week 2 */}
-          <div className="grid md:grid-cols-2 gap-12 md:gap-16 lg:gap-24 mb-20">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-16 lg:gap-20 mb-14">
             {/* Week 1 */}
             <article>
-              <span className="inline-flex items-center px-4 py-2 rounded-full text-sm md:text-base font-medium bg-[#5eead4]/10 text-[#5eead4] mb-8">
+              <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-[#5eead4]/10 text-[#5eead4] mb-6">
                 By the end of Week 1
               </span>
-              <div className="mb-8">
-                <Folder className="w-12 h-12 md:w-14 md:h-14 text-white" strokeWidth={1.5} aria-hidden="true" />
+              <div className="mb-5">
+                <Folder className="w-10 h-10 text-white/80" strokeWidth={1.5} aria-hidden="true" />
               </div>
-              <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 tracking-[-0.02em]">
+              <h3 className="text-xl md:text-2xl font-semibold text-white mb-5 tracking-[-0.01em]">
                 Your file system is set up.
               </h3>
-              <ul className="space-y-4" aria-label="Week 1 deliverables">
-                <li className="flex items-center gap-4 text-lg md:text-xl text-white/60 font-light">
-                  <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0" aria-hidden="true" />
+              <ul className="space-y-3" aria-label="Week 1 deliverables">
+                <li className="flex items-center gap-3 text-base md:text-lg text-white/50">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#5eead4]/50 flex-shrink-0" aria-hidden="true" />
                   A clear folder map
                 </li>
-                <li className="flex items-center gap-4 text-lg md:text-xl text-white/60 font-light">
-                  <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0" aria-hidden="true" />
-                  Simple naming rules
-                </li>
-                <li className="flex items-center gap-4 text-lg md:text-xl text-white/60 font-light">
-                  <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0" aria-hidden="true" />
+                <li className="flex items-center gap-3 text-base md:text-lg text-white/50">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#5eead4]/50 flex-shrink-0" aria-hidden="true" />
                   Key documents easy to find
                 </li>
               </ul>
@@ -434,26 +428,22 @@ const SmartTeamCohortHero = () => {
 
             {/* Week 2 */}
             <article>
-              <span className="inline-flex items-center px-4 py-2 rounded-full text-sm md:text-base font-medium bg-[#5eead4]/10 text-[#5eead4] mb-8">
+              <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-[#5eead4]/10 text-[#5eead4] mb-6">
                 By the end of Week 2
               </span>
-              <div className="mb-8">
-                <Receipt className="w-12 h-12 md:w-14 md:h-14 text-white" strokeWidth={1.5} aria-hidden="true" />
+              <div className="mb-5">
+                <Receipt className="w-10 h-10 text-white/80" strokeWidth={1.5} aria-hidden="true" />
               </div>
-              <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 tracking-[-0.02em]">
-                You will finish 10 proof bundles.
+              <h3 className="text-xl md:text-2xl font-semibold text-white mb-5 tracking-[-0.01em]">
+                You finish 10 proof bundles.
               </h3>
-              <ul className="space-y-4" aria-label="Week 2 deliverables">
-                <li className="flex items-center gap-4 text-lg md:text-xl text-white/60 font-light">
-                  <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0" aria-hidden="true" />
+              <ul className="space-y-3" aria-label="Week 2 deliverables">
+                <li className="flex items-center gap-3 text-base md:text-lg text-white/50">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#5eead4]/50 flex-shrink-0" aria-hidden="true" />
                   Approval, invoice, and payment proof
                 </li>
-                <li className="flex items-center gap-4 text-lg md:text-xl text-white/60 font-light">
-                  <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0" aria-hidden="true" />
-                  What was delivered
-                </li>
-                <li className="flex items-center gap-4 text-lg md:text-xl text-white/60 font-light">
-                  <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0" aria-hidden="true" />
+                <li className="flex items-center gap-3 text-base md:text-lg text-white/50">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#5eead4]/50 flex-shrink-0" aria-hidden="true" />
                   Saved in the right place
                 </li>
               </ul>
@@ -461,20 +451,20 @@ const SmartTeamCohortHero = () => {
           </div>
 
           {/* Reassurance Line */}
-          <p className="text-center text-xl md:text-2xl text-white/50 font-light mb-16">
-            This is when most teams feel the biggest relief.
+          <p className="text-center text-base md:text-lg text-white/40 mb-12">
+            Most teams feel relief here.
           </p>
 
           {/* CTA */}
           <div className="text-center">
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-white hover:bg-white/90 text-[#0a0f1a] rounded-xl px-12 py-8 text-lg md:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/50"
+              className="w-full sm:w-auto bg-white hover:bg-white/90 text-[#0a0f1a] rounded-xl px-10 py-7 text-base font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/50"
               asChild
             >
               <a href="#apply">
                 Apply for a seat
-                <ArrowRight className="ml-3 w-5 h-5" aria-hidden="true" />
+                <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
               </a>
             </Button>
           </div>
