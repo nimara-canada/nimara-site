@@ -1,4 +1,4 @@
-import { FileCheck, Users, BarChart3, FolderSearch, ArrowRight } from "lucide-react";
+import { FileCheck, Users, BarChart3, FolderSearch, ArrowRight, Check, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const SmartTeamCohortHero = () => {
@@ -137,6 +137,115 @@ const SmartTeamCohortHero = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Section 2: Is This For You? */}
+      <section className="w-full px-5 md:px-8 lg:px-12 py-16 md:py-20 lg:py-24 bg-[#FAFAF8]">
+        <div className="max-w-4xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-10 md:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground tracking-[-0.02em] mb-3">
+              Is this for you?
+            </h2>
+            <p className="text-foreground/50 text-sm md:text-base">
+              Answer these quickly.
+            </p>
+          </div>
+
+          {/* Two-Column Cards */}
+          <div className="grid md:grid-cols-2 gap-4 md:gap-6 mb-10">
+            {/* Left Card - Fit */}
+            <div className="bg-white rounded-2xl border border-foreground/[0.08] shadow-lg shadow-foreground/[0.03] p-6 md:p-8">
+              <h3 className="text-lg font-semibold text-foreground mb-5">
+                This is a fit if:
+              </h3>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-3.5 h-3.5 text-emerald-600" />
+                  </div>
+                  <span className="text-foreground/70 text-[0.95rem] leading-relaxed">
+                    You have capacity building funding (or budget set aside)
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-3.5 h-3.5 text-emerald-600" />
+                  </div>
+                  <span className="text-foreground/70 text-[0.95rem] leading-relaxed">
+                    You can assign one Ops Lead
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-3.5 h-3.5 text-emerald-600" />
+                  </div>
+                  <span className="text-foreground/70 text-[0.95rem] leading-relaxed">
+                    You can commit 2–3 hours/week for 6 weeks
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Right Card - Not a Fit */}
+            <div className="bg-white rounded-2xl border border-foreground/[0.08] shadow-lg shadow-foreground/[0.03] p-6 md:p-8">
+              <h3 className="text-lg font-semibold text-foreground mb-5">
+                Not a fit if:
+              </h3>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <X className="w-3.5 h-3.5 text-red-500" />
+                  </div>
+                  <span className="text-foreground/70 text-[0.95rem] leading-relaxed">
+                    You want free advice
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <X className="w-3.5 h-3.5 text-red-500" />
+                  </div>
+                  <span className="text-foreground/70 text-[0.95rem] leading-relaxed">
+                    You can't share documents
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <X className="w-3.5 h-3.5 text-red-500" />
+                  </div>
+                  <span className="text-foreground/70 text-[0.95rem] leading-relaxed">
+                    You can't make weekly time
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* CTA Row */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-5">
+            <Button
+              size="lg"
+              className="bg-foreground hover:bg-foreground/90 text-background rounded-full px-8 py-6 text-base font-semibold shadow-lg shadow-foreground/10 transition-all hover:shadow-xl hover:shadow-foreground/15 hover:scale-[1.02] active:scale-[0.98]"
+              asChild
+            >
+              <a href="#apply">
+                Apply for a seat
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </a>
+            </Button>
+            <a 
+              href="#what-you-get" 
+              className="text-foreground/70 hover:text-foreground text-sm font-medium underline underline-offset-4 decoration-foreground/30 hover:decoration-foreground/50 transition-colors"
+            >
+              See what you get
+            </a>
+          </div>
+
+          {/* Micro note */}
+          <p className="text-xs text-foreground/40 text-center">
+            Nimara supports 0–50 staff. This cohort is only for 1–15 staff.
+          </p>
         </div>
       </section>
 
