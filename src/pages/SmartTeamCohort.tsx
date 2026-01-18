@@ -196,149 +196,83 @@ const SmartTeamCohortHero = () => {
       </section>
 
       {/* Section 3: What You Get */}
-      <section id="what-you-get" className="w-full px-5 md:px-8 lg:px-12 py-20 md:py-28 lg:py-32 bg-[#FAFAF8]">
-        <div className="max-w-4xl mx-auto">
+      <section id="what-you-get" className="w-full px-5 md:px-8 lg:px-12 py-20 md:py-28 lg:py-36 bg-[#0a0f1a]">
+        <div className="max-w-5xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-14 md:mb-20">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground tracking-[-0.03em] mb-4">
+          <div className="text-center mb-16 md:mb-24">
+            <span className="text-[11px] md:text-xs font-semibold uppercase tracking-[0.2em] text-white/40 mb-6 block">
               What you get
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.03em] leading-[1.1] mb-6">
+              4 systems built with you
+              <br />
+              <span className="text-[#5eead4]">— in 6 weeks.</span>
             </h2>
-            <p className="text-foreground/50 text-base md:text-lg">
-              We set up these 4 systems with you.
+            <p className="text-white/60 text-base md:text-lg max-w-2xl mx-auto mb-10">
+              We set up these 4 systems with you. Plus a 90-day plan to keep it running.
             </p>
-          </div>
-
-          {/* 4 System Cards - 2x2 Grid */}
-          <div className="grid md:grid-cols-2 gap-5 md:gap-6 lg:gap-8 mb-10 md:mb-14">
-            {/* Card 1: Spending Proof */}
-            <div className="bg-white rounded-2xl border border-foreground/[0.05] p-7 md:p-8 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_16px_-4px_rgba(0,0,0,0.08)] transition-shadow duration-300">
-              <div className="flex items-center gap-3.5 mb-5">
-                <div className="w-9 h-9 rounded-lg bg-[#8b5cf6]/8 flex items-center justify-center">
-                  <Receipt className="w-4.5 h-4.5 text-[#8b5cf6]" />
-                </div>
-                <h3 className="text-lg md:text-xl font-semibold text-foreground tracking-[-0.01em]">
-                  Spending Proof System
-                </h3>
-              </div>
-              <p className="text-foreground/45 text-sm mb-5">
-                Pull proof fast when funders ask.
-              </p>
-              <ul className="space-y-2.5">
-                <li className="flex items-center gap-3 text-foreground/70 text-[0.9rem]">
-                  <div className="w-1 h-1 rounded-full bg-foreground/25 flex-shrink-0" />
-                  Approval + invoice
-                </li>
-                <li className="flex items-center gap-3 text-foreground/70 text-[0.9rem]">
-                  <div className="w-1 h-1 rounded-full bg-foreground/25 flex-shrink-0" />
-                  Payment proof + delivery
-                </li>
-              </ul>
-            </div>
-
-            {/* Card 2: Board Decision */}
-            <div className="bg-white rounded-2xl border border-foreground/[0.05] p-7 md:p-8 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_16px_-4px_rgba(0,0,0,0.08)] transition-shadow duration-300">
-              <div className="flex items-center gap-3.5 mb-5">
-                <div className="w-9 h-9 rounded-lg bg-[#8b5cf6]/8 flex items-center justify-center">
-                  <Gavel className="w-4.5 h-4.5 text-[#8b5cf6]" />
-                </div>
-                <h3 className="text-lg md:text-xl font-semibold text-foreground tracking-[-0.01em]">
-                  Board Decision System
-                </h3>
-              </div>
-              <p className="text-foreground/45 text-sm mb-5">
-                Meetings that lead to action.
-              </p>
-              <ul className="space-y-2.5">
-                <li className="flex items-center gap-3 text-foreground/70 text-[0.9rem]">
-                  <div className="w-1 h-1 rounded-full bg-foreground/25 flex-shrink-0" />
-                  Agenda + minutes
-                </li>
-                <li className="flex items-center gap-3 text-foreground/70 text-[0.9rem]">
-                  <div className="w-1 h-1 rounded-full bg-foreground/25 flex-shrink-0" />
-                  Decisions + action tracker
-                </li>
-              </ul>
-            </div>
-
-            {/* Card 3: Simple Reporting */}
-            <div className="bg-white rounded-2xl border border-foreground/[0.05] p-7 md:p-8 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_16px_-4px_rgba(0,0,0,0.08)] transition-shadow duration-300">
-              <div className="flex items-center gap-3.5 mb-5">
-                <div className="w-9 h-9 rounded-lg bg-[#8b5cf6]/8 flex items-center justify-center">
-                  <LineChart className="w-4.5 h-4.5 text-[#8b5cf6]" />
-                </div>
-                <h3 className="text-lg md:text-xl font-semibold text-foreground tracking-[-0.01em]">
-                  Simple Reporting System
-                </h3>
-              </div>
-              <p className="text-foreground/45 text-sm mb-5">
-                Updates without stress.
-              </p>
-              <ul className="space-y-2.5">
-                <li className="flex items-center gap-3 text-foreground/70 text-[0.9rem]">
-                  <div className="w-1 h-1 rounded-full bg-foreground/25 flex-shrink-0" />
-                  Small dashboard (5–10 numbers)
-                </li>
-                <li className="flex items-center gap-3 text-foreground/70 text-[0.9rem]">
-                  <div className="w-1 h-1 rounded-full bg-foreground/25 flex-shrink-0" />
-                  2-page update template
-                </li>
-              </ul>
-            </div>
-
-            {/* Card 4: Find-It-Fast Files */}
-            <div className="bg-white rounded-2xl border border-foreground/[0.05] p-7 md:p-8 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_16px_-4px_rgba(0,0,0,0.08)] transition-shadow duration-300">
-              <div className="flex items-center gap-3.5 mb-5">
-                <div className="w-9 h-9 rounded-lg bg-[#8b5cf6]/8 flex items-center justify-center">
-                  <FolderOpen className="w-4.5 h-4.5 text-[#8b5cf6]" />
-                </div>
-                <h3 className="text-lg md:text-xl font-semibold text-foreground tracking-[-0.01em]">
-                  Find-It-Fast File System
-                </h3>
-              </div>
-              <p className="text-foreground/45 text-sm mb-5">
-                Find key documents in minutes.
-              </p>
-              <ul className="space-y-2.5">
-                <li className="flex items-center gap-3 text-foreground/70 text-[0.9rem]">
-                  <div className="w-1 h-1 rounded-full bg-foreground/25 flex-shrink-0" />
-                  Folder map + naming
-                </li>
-                <li className="flex items-center gap-3 text-foreground/70 text-[0.9rem]">
-                  <div className="w-1 h-1 rounded-full bg-foreground/25 flex-shrink-0" />
-                  Basic access rules
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Plus Callout - Quiet */}
-          <div className="bg-white/60 border border-foreground/[0.04] rounded-xl px-6 py-5 mb-12 md:mb-16 flex items-center gap-4 max-w-xl mx-auto">
-            <span className="text-[11px] font-semibold uppercase tracking-[0.15em] text-[#8b5cf6] flex-shrink-0">
-              Plus
-            </span>
-            <span className="text-foreground/60 text-sm">
-              A 90-day plan to keep it running after week 6.
-            </span>
-          </div>
-
-          {/* CTA Row */}
-          <div className="flex flex-col items-center gap-5">
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-[#8b5cf6] hover:bg-[#7c3aed] text-white rounded-full px-10 py-7 text-base font-semibold shadow-xl shadow-[#8b5cf6]/20 transition-all hover:shadow-2xl hover:shadow-[#8b5cf6]/30 hover:scale-[1.02] active:scale-[0.98]"
+              className="bg-white hover:bg-white/90 text-[#0a0f1a] rounded-lg px-8 py-6 text-base font-semibold transition-all hover:scale-[1.02] active:scale-[0.98]"
               asChild
             >
-              <a href="#apply">
-                Apply for a seat
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </a>
+              <a href="#apply">Get started</a>
             </Button>
-            <a 
-              href="#price" 
-              className="text-foreground/50 hover:text-foreground/70 text-sm font-medium transition-colors"
-            >
-              See price and seats
-            </a>
+          </div>
+
+          {/* 4 Features - 2x2 Grid */}
+          <div className="grid md:grid-cols-2 gap-x-12 lg:gap-x-20 gap-y-14 md:gap-y-16">
+            {/* Feature 1: Spending Proof */}
+            <div>
+              <div className="mb-6">
+                <Receipt className="w-12 h-12 text-white" strokeWidth={1.5} />
+              </div>
+              <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
+                Spending Proof System
+              </h3>
+              <p className="text-white/50 text-base leading-relaxed">
+                Pull proof fast when funders ask. Approval + invoice, payment proof + delivery — all in one place.
+              </p>
+            </div>
+
+            {/* Feature 2: Board Decision */}
+            <div>
+              <div className="mb-6">
+                <Gavel className="w-12 h-12 text-white" strokeWidth={1.5} />
+              </div>
+              <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
+                Board Decision System
+              </h3>
+              <p className="text-white/50 text-base leading-relaxed">
+                Meetings that lead to action. Agenda + minutes, decisions + action tracker ready to go.
+              </p>
+            </div>
+
+            {/* Feature 3: Simple Reporting */}
+            <div>
+              <div className="mb-6">
+                <LineChart className="w-12 h-12 text-white" strokeWidth={1.5} />
+              </div>
+              <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
+                Simple Reporting System
+              </h3>
+              <p className="text-white/50 text-base leading-relaxed">
+                Updates without stress. Small dashboard (5–10 numbers) and a 2-page update template.
+              </p>
+            </div>
+
+            {/* Feature 4: Find-It-Fast Files */}
+            <div>
+              <div className="mb-6">
+                <FolderOpen className="w-12 h-12 text-white" strokeWidth={1.5} />
+              </div>
+              <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
+                Find-It-Fast File System
+              </h3>
+              <p className="text-white/50 text-base leading-relaxed">
+                Find key documents in minutes. Folder map + naming rules and basic access controls.
+              </p>
+            </div>
           </div>
         </div>
       </section>
