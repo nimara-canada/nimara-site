@@ -9,12 +9,14 @@ import {
 
 const SmartTeamCohortHero = () => {
   const benefits = [
-    "Prove spending in minutes",
-    "Run clean board meetings",
-    "Pull reports when funders ask",
+    { icon: Receipt, text: "Spending proof you can pull fast" },
+    { icon: Gavel, text: "Clean board minutes + decisions tracked" },
+    { icon: LineChart, text: "Simple reporting (dashboard + 2-page update)" },
+    { icon: FolderSearch, text: "Files organized so you can find anything" },
   ];
 
-  const proofFlow = ["SCOPE", "BUILD", "TEST", "HANDOVER"];
+  const trustChips = ["Canada-only", "Confidentiality-first", "Built for small teams"];
+  const timeline = ["Week 1: files set up", "Week 2: 10 proof bundles", "Week 6: stress test"];
 
   return (
     <div className="min-h-screen bg-[#FAFAF8]">
@@ -35,10 +37,10 @@ const SmartTeamCohortHero = () => {
       </header>
 
       {/* Hero Section - Dark Premium */}
-      <section className="w-full px-5 md:px-8 lg:px-12 py-20 md:py-28 lg:py-36 bg-[#0a0f1a]">
+      <section className="w-full px-5 md:px-8 lg:px-12 py-12 md:py-20 lg:py-24 bg-[#0a0f1a]">
         <div className="max-w-4xl mx-auto text-center">
           {/* Headline with accent colors */}
-          <h1 className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-[-0.03em] mb-6">
+          <h1 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-[-0.03em] mb-4">
             Get{" "}
             <span className="text-[#5eead4]">funder-ready</span>
             <br className="hidden sm:block" />
@@ -46,40 +48,57 @@ const SmartTeamCohortHero = () => {
             <span className="text-[#5eead4]">6 weeks.</span>
           </h1>
 
-          {/* Subhead */}
-          <p className="text-lg md:text-xl text-white/60 mb-10 max-w-2xl mx-auto">
-            4 simple systems set up with you — so you can prove spending, report faster, and find documents in minutes.
+          {/* Subhead - visible immediately */}
+          <p className="text-base md:text-lg font-medium text-white/90 mb-3">
+            Nimara Smart Team Cohort for Canadian nonprofits with 1–15 staff.
           </p>
 
-          {/* Benefits with checkmarks */}
-          <div className="flex flex-col items-center gap-3 mb-10">
+          {/* Support line */}
+          <p className="text-sm md:text-base text-white/70 mb-8 max-w-2xl mx-auto leading-relaxed">
+            We set up 4 simple systems with you so you can prove spending, run clean board meetings, report faster, and find documents in minutes.
+          </p>
+
+          {/* Benefits with checkmarks - 4 items */}
+          <div className="flex flex-col items-center gap-2.5 mb-6">
             {benefits.map((benefit) => (
-              <div key={benefit} className="flex items-center gap-3">
-                <Check className="w-5 h-5 text-[#5eead4]" />
-                <span className="text-white/80 text-base md:text-lg">{benefit}</span>
+              <div key={benefit.text} className="flex items-center gap-3">
+                <Check className="w-4 h-4 text-[#5eead4] flex-shrink-0" />
+                <span className="text-white/90 text-sm md:text-base">{benefit.text}</span>
               </div>
             ))}
           </div>
 
-          {/* Proof Trail Flow */}
-          <div className="flex items-center justify-center gap-2 md:gap-3 mb-12 flex-wrap">
-            {proofFlow.map((step, index) => (
-              <div key={step} className="flex items-center gap-2 md:gap-3">
-                <span className="text-[11px] md:text-xs font-medium tracking-[0.15em] text-white/40 uppercase">
+          {/* Trust chips */}
+          <div className="flex items-center justify-center gap-2 md:gap-3 mb-6 flex-wrap">
+            {trustChips.map((chip) => (
+              <span
+                key={chip}
+                className="text-[11px] md:text-xs font-medium tracking-wide text-white/60 bg-white/[0.08] px-3 py-1.5 rounded-full border border-white/[0.08]"
+              >
+                {chip}
+              </span>
+            ))}
+          </div>
+
+          {/* Timeline - Week progress */}
+          <div className="flex items-center justify-center gap-2 md:gap-4 mb-8 flex-wrap">
+            {timeline.map((step, index) => (
+              <div key={step} className="flex items-center gap-2 md:gap-4">
+                <span className="text-[11px] md:text-xs font-medium text-white/70">
                   {step}
                 </span>
-                {index < proofFlow.length - 1 && (
-                  <ArrowRight className="w-3.5 h-3.5 text-white/20" />
+                {index < timeline.length - 1 && (
+                  <span className="text-white/30">•</span>
                 )}
               </div>
             ))}
           </div>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-[#8b5cf6] hover:bg-[#7c3aed] text-white rounded-full px-10 py-7 text-lg font-semibold shadow-xl shadow-[#8b5cf6]/25 transition-all hover:shadow-2xl hover:shadow-[#8b5cf6]/30 hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full sm:w-auto bg-[#8b5cf6] hover:bg-[#7c3aed] text-white rounded-full px-10 py-6 text-base md:text-lg font-semibold shadow-xl shadow-[#8b5cf6]/25 transition-all hover:shadow-2xl hover:shadow-[#8b5cf6]/30 hover:scale-[1.02] active:scale-[0.98]"
               asChild
             >
               <a href="#apply">
@@ -89,16 +108,21 @@ const SmartTeamCohortHero = () => {
             </Button>
             <a 
               href="#what-you-get" 
-              className="text-white/60 hover:text-white text-base font-medium transition-colors inline-flex items-center gap-1"
+              className="text-white/70 hover:text-white text-sm md:text-base font-medium transition-colors inline-flex items-center gap-1"
             >
               See what you get
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>
 
-          {/* Trust line */}
-          <p className="text-sm text-white/40">
-            For Canadian nonprofits with 1–15 staff. $12,000 CAD per org. 15 seats only.
+          {/* Price line - more readable */}
+          <p className="text-sm md:text-base text-white/80 font-medium mb-3">
+            $12,000 CAD per org • 15 seats • 2–3 hours/week
+          </p>
+
+          {/* Micro note - staff size clarity */}
+          <p className="text-xs md:text-sm text-white/50">
+            Nimara supports 0–50 staff. This cohort is only for 1–15 staff.
           </p>
         </div>
       </section>
