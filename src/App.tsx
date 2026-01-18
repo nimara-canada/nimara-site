@@ -36,6 +36,7 @@ import ThanksBooked from "./pages/ThanksBooked";
 
 import PathA from "./pages/PathA";
 import PathB from "./pages/PathB";
+import SmartTeamCohort from "./pages/SmartTeamCohort";
 import PrivacyAuditDashboard from "./pages/admin/PrivacyAuditDashboard";
 import PrivacyAuditWizard from "./pages/admin/PrivacyAuditWizard";
 import PrivacyAuditFindings from "./pages/admin/PrivacyAuditFindings";
@@ -89,6 +90,7 @@ const App = () => (
             <Route path="/path-b" element={<PathB />} />
             <Route path="/check" element={<ExternalRedirect to={TYPEFORM_HEALTH_CHECK_URL} />} />
             <Route path="/free-check" element={<ExternalRedirect to={TYPEFORM_HEALTH_CHECK_URL} />} />
+            <Route path="/smart-team-cohort" element={<SmartTeamCohort />} />
             
             {/* Admin routes */}
             <Route path="/admin/privacy-audit" element={<PrivacyAuditDashboard />} />
