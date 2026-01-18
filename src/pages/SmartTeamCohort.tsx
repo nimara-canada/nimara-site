@@ -1,4 +1,4 @@
-import { FileCheck, Users, BarChart3, FolderSearch, ArrowRight, Check, X } from "lucide-react";
+import { FileCheck, Users, BarChart3, FolderSearch, ArrowRight, Check, X, Receipt, Gavel, LineChart, FolderOpen, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const SmartTeamCohortHero = () => {
@@ -249,11 +249,178 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Placeholder for next section */}
-      <section id="what-you-get" className="py-24 px-6 bg-white">
+      {/* Section 3: What You Get */}
+      <section id="what-you-get" className="w-full px-5 md:px-8 lg:px-12 py-16 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-5xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-12 md:mb-14">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground tracking-[-0.02em] mb-3">
+              What you get
+            </h2>
+            <p className="text-foreground/60 text-base md:text-lg">
+              We set up these 4 systems with you:
+            </p>
+          </div>
+
+          {/* 4 System Cards - 2x2 Grid */}
+          <div className="grid md:grid-cols-2 gap-4 md:gap-5 mb-8">
+            {/* Card 1: Spending Proof */}
+            <div className="bg-[#FAFAF8] rounded-2xl border border-foreground/[0.06] p-6 md:p-7">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-xl bg-foreground/[0.05] flex items-center justify-center">
+                  <Receipt className="w-5 h-5 text-foreground/60" />
+                </div>
+                <h3 className="text-lg font-semibold text-foreground">
+                  Spending Proof System
+                </h3>
+              </div>
+              <p className="text-foreground/60 text-[0.95rem] mb-4 leading-relaxed">
+                So you can show where money went, fast.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2.5 text-foreground/70 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
+                  Who approved it
+                </li>
+                <li className="flex items-center gap-2.5 text-foreground/70 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
+                  Invoice and payment proof
+                </li>
+                <li className="flex items-center gap-2.5 text-foreground/70 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
+                  What was delivered
+                </li>
+              </ul>
+            </div>
+
+            {/* Card 2: Board Decision */}
+            <div className="bg-[#FAFAF8] rounded-2xl border border-foreground/[0.06] p-6 md:p-7">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-xl bg-foreground/[0.05] flex items-center justify-center">
+                  <Gavel className="w-5 h-5 text-foreground/60" />
+                </div>
+                <h3 className="text-lg font-semibold text-foreground">
+                  Board Decision System
+                </h3>
+              </div>
+              <p className="text-foreground/60 text-[0.95rem] mb-4 leading-relaxed">
+                So board meetings lead to action.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2.5 text-foreground/70 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
+                  Simple agenda and minutes
+                </li>
+                <li className="flex items-center gap-2.5 text-foreground/70 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
+                  Decisions written down
+                </li>
+                <li className="flex items-center gap-2.5 text-foreground/70 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
+                  Action tracker
+                </li>
+              </ul>
+            </div>
+
+            {/* Card 3: Simple Reporting */}
+            <div className="bg-[#FAFAF8] rounded-2xl border border-foreground/[0.06] p-6 md:p-7">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-xl bg-foreground/[0.05] flex items-center justify-center">
+                  <LineChart className="w-5 h-5 text-foreground/60" />
+                </div>
+                <h3 className="text-lg font-semibold text-foreground">
+                  Simple Reporting System
+                </h3>
+              </div>
+              <p className="text-foreground/60 text-[0.95rem] mb-4 leading-relaxed">
+                So you can send updates without stress.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2.5 text-foreground/70 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
+                  Small dashboard (5–10 numbers)
+                </li>
+                <li className="flex items-center gap-2.5 text-foreground/70 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
+                  2-page update template
+                </li>
+                <li className="flex items-center gap-2.5 text-foreground/70 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
+                  Simple reporting schedule
+                </li>
+              </ul>
+            </div>
+
+            {/* Card 4: Find-It-Fast Files */}
+            <div className="bg-[#FAFAF8] rounded-2xl border border-foreground/[0.06] p-6 md:p-7">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-xl bg-foreground/[0.05] flex items-center justify-center">
+                  <FolderOpen className="w-5 h-5 text-foreground/60" />
+                </div>
+                <h3 className="text-lg font-semibold text-foreground">
+                  Find-It-Fast File System
+                </h3>
+              </div>
+              <p className="text-foreground/60 text-[0.95rem] mb-4 leading-relaxed">
+                So your team can find key documents in minutes.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2.5 text-foreground/70 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
+                  Where files go
+                </li>
+                <li className="flex items-center gap-2.5 text-foreground/70 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
+                  What to name them
+                </li>
+                <li className="flex items-center gap-2.5 text-foreground/70 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 flex-shrink-0" />
+                  Basic access rules
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Plus Box */}
+          <div className="bg-foreground/[0.03] border border-foreground/[0.08] rounded-xl p-5 md:p-6 mb-10 flex items-center gap-4">
+            <div className="w-10 h-10 rounded-full bg-foreground/[0.06] flex items-center justify-center flex-shrink-0">
+              <Plus className="w-5 h-5 text-foreground/50" />
+            </div>
+            <div>
+              <span className="font-semibold text-foreground text-sm">Plus: </span>
+              <span className="text-foreground/70 text-sm">
+                A 90-day plan to keep it running after week 6.
+              </span>
+            </div>
+          </div>
+
+          {/* CTA Row */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button
+              size="lg"
+              className="bg-foreground hover:bg-foreground/90 text-background rounded-full px-8 py-6 text-base font-semibold shadow-lg shadow-foreground/10 transition-all hover:shadow-xl hover:shadow-foreground/15 hover:scale-[1.02] active:scale-[0.98]"
+              asChild
+            >
+              <a href="#apply">
+                Apply for a seat
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </a>
+            </Button>
+            <a 
+              href="#how-it-works" 
+              className="text-foreground/70 hover:text-foreground text-sm font-medium underline underline-offset-4 decoration-foreground/30 hover:decoration-foreground/50 transition-colors"
+            >
+              How it works
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Placeholder for How It Works section */}
+      <section id="how-it-works" className="py-24 px-6 bg-[#FAFAF8]">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-foreground/40 text-sm uppercase tracking-widest">
-            What you get section placeholder
+            How it works section placeholder
           </p>
         </div>
       </section>
