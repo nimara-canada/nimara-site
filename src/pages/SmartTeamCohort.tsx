@@ -1101,14 +1101,96 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Placeholder for next section */}
-      <section className="py-24 px-6 bg-[#FAFAF8]">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-foreground/40 text-sm uppercase tracking-widest">
-            Final CTA section placeholder
+      {/* Section 10: Final CTA Strip */}
+      <section id="apply" className="w-full px-5 md:px-8 lg:px-12 py-16 md:py-20 lg:py-24 bg-foreground">
+        <div className="max-w-3xl mx-auto text-center">
+          {/* Heading */}
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-background tracking-[-0.02em] mb-4">
+            Ready to get funder-ready?
+          </h2>
+          <p className="text-background/70 text-base md:text-lg mb-8 max-w-xl mx-auto">
+            Apply now. We'll review your application and send next steps within 2 business days.
+          </p>
+
+          {/* Main CTA */}
+          <Button
+            size="lg"
+            className="w-full sm:w-auto bg-background hover:bg-background/90 text-foreground rounded-full px-10 py-7 text-lg font-semibold shadow-xl transition-all hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] mb-6"
+            asChild
+          >
+            {/* 
+              TRACKING PLACEHOLDER: 
+              - GA4: Track 'apply_click' event on click
+              - Google Ads: Track conversion on /apply or form submission
+            */}
+            <a href="/apply">
+              Apply for a seat
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </a>
+          </Button>
+
+          {/* Time note */}
+          <p className="text-background/50 text-sm mb-8">
+            Takes about 2 minutes.
+          </p>
+
+          {/* Trust reinforcement */}
+          <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
+            <span className="inline-flex items-center gap-2 text-background/60 text-sm">
+              <ShieldCheck className="w-4 h-4" />
+              Full refund guarantee
+            </span>
+            <span className="inline-flex items-center gap-2 text-background/60 text-sm">
+              <Check className="w-4 h-4" />
+              15 seats only
+            </span>
+            <span className="inline-flex items-center gap-2 text-background/60 text-sm">
+              <Clock className="w-4 h-4" />
+              6 weeks
+            </span>
+          </div>
+
+          {/* Staff size clarity */}
+          <p className="text-xs text-background/40">
+            Nimara supports 0–50 staff. This cohort is only for 1–15 staff.
           </p>
         </div>
       </section>
+
+      {/* Simple Footer */}
+      <footer className="w-full px-5 md:px-8 lg:px-12 py-8 bg-[#FAFAF8] border-t border-foreground/[0.06]">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 bg-foreground rounded-md flex items-center justify-center">
+              <span className="text-background font-bold text-xs">N</span>
+            </div>
+            <span className="text-sm text-foreground/60">© 2025 Nimara</span>
+          </div>
+          <div className="flex items-center gap-6 text-sm text-foreground/50">
+            <a href="/privacy" className="hover:text-foreground transition-colors">Privacy</a>
+            <a href="/terms" className="hover:text-foreground transition-colors">Terms</a>
+            <a href="mailto:hello@nimara.ca" className="hover:text-foreground transition-colors">hello@nimara.ca</a>
+          </div>
+        </div>
+      </footer>
+
+      {/* 
+        TRACKING PLACEHOLDERS:
+        
+        Google Analytics 4 (GA4):
+        - Page view: automatically tracked
+        - Scroll depth: track 25%, 50%, 75%, 100%
+        - CTA clicks: track 'apply_click' event with button location
+        - Form submission: track 'apply_submit' event
+        
+        Google Ads Conversion:
+        - Primary conversion: form submission or /thank-you page load
+        - Add conversion snippet to /thank-you page:
+          gtag('event', 'conversion', {'send_to': 'AW-XXXXXXXXX/XXXXXXX'});
+        
+        Thank-you page should display:
+        "We received your application. We'll review it and send next steps within 2 business days."
+      */}
     </div>
   );
 };
