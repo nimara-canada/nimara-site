@@ -383,92 +383,98 @@ const SmartTeamCohortHero = () => {
       </section>
 
       {/* Section 5: Early Win */}
-      <section className="w-full px-5 md:px-8 lg:px-12 py-20 md:py-28 lg:py-36 bg-[#0a0f1a]">
+      <section 
+        className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#0a0f1a]"
+        aria-labelledby="early-win-heading"
+      >
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16 md:mb-24">
-            <span className="text-[11px] md:text-xs font-semibold uppercase tracking-[0.2em] text-[#5eead4] mb-6 block">
+          <header className="text-center mb-20 md:mb-28">
+            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-[#5eead4] mb-8">
               Early win
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.03em] leading-[1.1] mb-6">
+            </p>
+            <h2 
+              id="early-win-heading"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-[-0.04em] leading-[1.05]"
+            >
               You will feel
               <br />
               <span className="text-[#5eead4]">progress fast.</span>
             </h2>
-          </div>
+          </header>
 
           {/* Week 1 and Week 2 */}
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-20 mb-16">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-16 lg:gap-24 mb-20">
             {/* Week 1 */}
-            <div>
-              <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-[#5eead4]/10 text-[#5eead4] mb-6">
+            <article>
+              <span className="inline-flex items-center px-4 py-2 rounded-full text-sm md:text-base font-medium bg-[#5eead4]/10 text-[#5eead4] mb-8">
                 By the end of Week 1
               </span>
-              <div className="mb-6">
-                <Folder className="w-10 h-10 text-white" strokeWidth={1.5} />
+              <div className="mb-8">
+                <Folder className="w-12 h-12 md:w-14 md:h-14 text-white" strokeWidth={1.5} aria-hidden="true" />
               </div>
-              <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 tracking-[-0.02em]">
                 Your file system is set up.
               </h3>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-3 text-white/50 text-base">
-                  <Check className="w-4 h-4 text-[#5eead4] flex-shrink-0" />
+              <ul className="space-y-4" aria-label="Week 1 deliverables">
+                <li className="flex items-center gap-4 text-lg md:text-xl text-white/60 font-light">
+                  <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0" aria-hidden="true" />
                   A clear folder map
                 </li>
-                <li className="flex items-center gap-3 text-white/50 text-base">
-                  <Check className="w-4 h-4 text-[#5eead4] flex-shrink-0" />
+                <li className="flex items-center gap-4 text-lg md:text-xl text-white/60 font-light">
+                  <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0" aria-hidden="true" />
                   Simple naming rules
                 </li>
-                <li className="flex items-center gap-3 text-white/50 text-base">
-                  <Check className="w-4 h-4 text-[#5eead4] flex-shrink-0" />
+                <li className="flex items-center gap-4 text-lg md:text-xl text-white/60 font-light">
+                  <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0" aria-hidden="true" />
                   Key documents easy to find
                 </li>
               </ul>
-            </div>
+            </article>
 
             {/* Week 2 */}
-            <div>
-              <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-[#5eead4]/10 text-[#5eead4] mb-6">
+            <article>
+              <span className="inline-flex items-center px-4 py-2 rounded-full text-sm md:text-base font-medium bg-[#5eead4]/10 text-[#5eead4] mb-8">
                 By the end of Week 2
               </span>
-              <div className="mb-6">
-                <Receipt className="w-10 h-10 text-white" strokeWidth={1.5} />
+              <div className="mb-8">
+                <Receipt className="w-12 h-12 md:w-14 md:h-14 text-white" strokeWidth={1.5} aria-hidden="true" />
               </div>
-              <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 tracking-[-0.02em]">
                 You will finish 10 proof bundles.
               </h3>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-3 text-white/50 text-base">
-                  <Check className="w-4 h-4 text-[#5eead4] flex-shrink-0" />
+              <ul className="space-y-4" aria-label="Week 2 deliverables">
+                <li className="flex items-center gap-4 text-lg md:text-xl text-white/60 font-light">
+                  <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0" aria-hidden="true" />
                   Approval, invoice, and payment proof
                 </li>
-                <li className="flex items-center gap-3 text-white/50 text-base">
-                  <Check className="w-4 h-4 text-[#5eead4] flex-shrink-0" />
+                <li className="flex items-center gap-4 text-lg md:text-xl text-white/60 font-light">
+                  <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0" aria-hidden="true" />
                   What was delivered
                 </li>
-                <li className="flex items-center gap-3 text-white/50 text-base">
-                  <Check className="w-4 h-4 text-[#5eead4] flex-shrink-0" />
+                <li className="flex items-center gap-4 text-lg md:text-xl text-white/60 font-light">
+                  <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0" aria-hidden="true" />
                   Saved in the right place
                 </li>
               </ul>
-            </div>
+            </article>
           </div>
 
           {/* Reassurance Line */}
-          <p className="text-center text-white/40 text-base mb-12">
+          <p className="text-center text-xl md:text-2xl text-white/50 font-light mb-16">
             This is when most teams feel the biggest relief.
           </p>
 
-          {/* CTA Row */}
+          {/* CTA */}
           <div className="text-center">
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-white hover:bg-white/90 text-[#0a0f1a] rounded-lg px-8 py-6 text-base font-semibold transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full sm:w-auto bg-white hover:bg-white/90 text-[#0a0f1a] rounded-xl px-12 py-8 text-lg md:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/50"
               asChild
             >
               <a href="#apply">
                 Apply for a seat
-                <ArrowRight className="ml-2 w-4 h-4" />
+                <ArrowRight className="ml-3 w-5 h-5" aria-hidden="true" />
               </a>
             </Button>
           </div>
