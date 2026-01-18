@@ -1,4 +1,4 @@
-import { FileCheck, Users, BarChart3, FolderSearch, ArrowRight, Check, X, Receipt, Gavel, LineChart, FolderOpen, Plus, Folder, ClipboardList, ShieldCheck, Calendar, Clock, UserCheck } from "lucide-react";
+import { FileCheck, Users, BarChart3, FolderSearch, ArrowRight, Check, X, Receipt, Gavel, LineChart, FolderOpen, Plus, Folder, ClipboardList, ShieldCheck, Calendar, Clock, UserCheck, BadgeCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const SmartTeamCohortHero = () => {
@@ -681,11 +681,106 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
+      {/* Section 6: Stress Test */}
+      <section className="w-full px-5 md:px-8 lg:px-12 py-16 md:py-20 lg:py-24 bg-[#FAFAF8]">
+        <div className="max-w-3xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-12 md:mb-14">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground tracking-[-0.02em] mb-3">
+              Stress test
+            </h2>
+            <p className="text-foreground/60 text-base md:text-lg">
+              We check that it works in real life.
+            </p>
+          </div>
+
+          {/* Main Card */}
+          <div className="bg-white rounded-2xl border border-foreground/[0.08] shadow-lg shadow-foreground/[0.04] p-6 md:p-8 mb-10">
+            {/* Card Header */}
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-11 h-11 rounded-xl bg-foreground/[0.05] flex items-center justify-center">
+                  <ShieldCheck className="w-5 h-5 text-foreground/60" />
+                </div>
+                <h3 className="text-xl font-semibold text-foreground">
+                  Week 6 stress test
+                </h3>
+              </div>
+              {/* Verified Badge */}
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-700">
+                <BadgeCheck className="w-3.5 h-3.5" />
+                Verified
+              </span>
+            </div>
+
+            {/* Card Intro */}
+            <p className="text-foreground/70 text-[0.95rem] mb-5">
+              You will be asked to show:
+            </p>
+
+            {/* Bullets */}
+            <ul className="space-y-3 mb-6">
+              <li className="flex items-center gap-3 text-foreground/80 text-[0.95rem]">
+                <div className="w-6 h-6 rounded-full bg-foreground/[0.05] flex items-center justify-center flex-shrink-0">
+                  <Check className="w-3.5 h-3.5 text-foreground/50" />
+                </div>
+                Proof for a real purchase
+              </li>
+              <li className="flex items-center gap-3 text-foreground/80 text-[0.95rem]">
+                <div className="w-6 h-6 rounded-full bg-foreground/[0.05] flex items-center justify-center flex-shrink-0">
+                  <Check className="w-3.5 h-3.5 text-foreground/50" />
+                </div>
+                A board decision record
+              </li>
+              <li className="flex items-center gap-3 text-foreground/80 text-[0.95rem]">
+                <div className="w-6 h-6 rounded-full bg-foreground/[0.05] flex items-center justify-center flex-shrink-0">
+                  <Check className="w-3.5 h-3.5 text-foreground/50" />
+                </div>
+                Your latest report
+              </li>
+              <li className="flex items-center gap-3 text-foreground/80 text-[0.95rem]">
+                <div className="w-6 h-6 rounded-full bg-foreground/[0.05] flex items-center justify-center flex-shrink-0">
+                  <Check className="w-3.5 h-3.5 text-foreground/50" />
+                </div>
+                A key document in under 3 minutes
+              </li>
+            </ul>
+
+            {/* Why it matters */}
+            <div className="pt-5 border-t border-foreground/[0.06]">
+              <p className="text-foreground/60 text-sm">
+                If you can't show it fast, we help fix it.
+              </p>
+            </div>
+          </div>
+
+          {/* CTA Row */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button
+              size="lg"
+              className="bg-foreground hover:bg-foreground/90 text-background rounded-full px-8 py-6 text-base font-semibold shadow-lg shadow-foreground/10 transition-all hover:shadow-xl hover:shadow-foreground/15 hover:scale-[1.02] active:scale-[0.98]"
+              asChild
+            >
+              <a href="#apply">
+                Apply for a seat
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </a>
+            </Button>
+            <a 
+              href="#how-it-works" 
+              className="text-foreground/70 hover:text-foreground text-sm font-medium underline underline-offset-4 decoration-foreground/30 hover:decoration-foreground/50 transition-colors"
+            >
+              How it works
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Placeholder for next section */}
-      <section id="weekly-plan" className="py-24 px-6 bg-[#FAFAF8]">
+      <section id="weekly-plan" className="py-24 px-6 bg-white">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-foreground/40 text-sm uppercase tracking-widest">
-            Weekly plan section placeholder
+            Next section placeholder
           </p>
         </div>
       </section>
