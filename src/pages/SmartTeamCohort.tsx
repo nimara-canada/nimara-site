@@ -8,15 +8,11 @@ import {
 } from "@/components/ui/accordion";
 
 const SmartTeamCohortHero = () => {
-  const benefits = [
-    { icon: Receipt, text: "Spending proof you can pull fast" },
-    { icon: Gavel, text: "Clean board minutes + decisions tracked" },
-    { icon: LineChart, text: "Simple reporting (dashboard + 2-page update)" },
-    { icon: FolderSearch, text: "Files organized so you can find anything" },
+  const bullets = [
+    "Prove spending in minutes",
+    "Run clean board meetings",
+    "Send reports fast when funders ask",
   ];
-
-  const trustChips = ["Canada-only", "Confidentiality-first", "Built for small teams"];
-  const timeline = ["Week 1: files set up", "Week 2: 10 proof bundles", "Week 6: stress test"];
 
   return (
     <div className="min-h-screen bg-[#FAFAF8]">
@@ -36,69 +32,38 @@ const SmartTeamCohortHero = () => {
         </Button>
       </header>
 
-      {/* Hero Section - Dark Premium */}
-      <section className="w-full px-5 md:px-8 lg:px-12 py-12 md:py-20 lg:py-24 bg-[#0a0f1a]">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Headline with accent colors */}
-          <h1 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-[-0.03em] mb-4">
+      {/* Hero Section - Minimal & Focused */}
+      <section className="w-full px-5 md:px-8 lg:px-12 py-16 md:py-24 lg:py-32 bg-[#0a0f1a]">
+        <div className="max-w-3xl mx-auto text-center">
+          {/* Headline */}
+          <h1 className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.08] tracking-[-0.03em] mb-5">
             Get{" "}
             <span className="text-[#5eead4]">funder-ready</span>
             <br className="hidden sm:block" />
-            — in{" "}
+            {" "}— in{" "}
             <span className="text-[#5eead4]">6 weeks.</span>
           </h1>
 
-          {/* Subhead - visible immediately */}
-          <p className="text-base md:text-lg font-medium text-white/90 mb-3">
-            Nimara Smart Team Cohort for Canadian nonprofits with 1–15 staff.
+          {/* Subhead */}
+          <p className="text-lg md:text-xl text-white/90 mb-10">
+            For Canadian nonprofits with 1–15 staff.
           </p>
 
-          {/* Support line */}
-          <p className="text-sm md:text-base text-white/70 mb-8 max-w-2xl mx-auto leading-relaxed">
-            We set up 4 simple systems with you so you can prove spending, run clean board meetings, report faster, and find documents in minutes.
-          </p>
-
-          {/* Benefits with checkmarks - 4 items */}
-          <div className="flex flex-col items-center gap-2.5 mb-6">
-            {benefits.map((benefit) => (
-              <div key={benefit.text} className="flex items-center gap-3">
-                <Check className="w-4 h-4 text-[#5eead4] flex-shrink-0" />
-                <span className="text-white/90 text-sm md:text-base">{benefit.text}</span>
+          {/* 3 Short Bullets */}
+          <div className="flex flex-col items-center gap-3 mb-10">
+            {bullets.map((bullet) => (
+              <div key={bullet} className="flex items-center gap-3">
+                <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0" />
+                <span className="text-white text-base md:text-lg">{bullet}</span>
               </div>
             ))}
           </div>
 
-          {/* Trust chips */}
-          <div className="flex items-center justify-center gap-2 md:gap-3 mb-6 flex-wrap">
-            {trustChips.map((chip) => (
-              <span
-                key={chip}
-                className="text-[11px] md:text-xs font-medium tracking-wide text-white/60 bg-white/[0.08] px-3 py-1.5 rounded-full border border-white/[0.08]"
-              >
-                {chip}
-              </span>
-            ))}
-          </div>
-
-          {/* Timeline - Week progress */}
-          <div className="flex items-center justify-center gap-2 md:gap-4 mb-8 flex-wrap">
-            {timeline.map((step, index) => (
-              <div key={step} className="flex items-center gap-2 md:gap-4">
-                <span className="text-[11px] md:text-xs font-medium text-white/70">
-                  {step}
-                </span>
-                {index < timeline.length - 1 && (
-                  <span className="text-white/30">•</span>
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+          {/* Primary CTA */}
+          <div className="mb-5">
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-[#8b5cf6] hover:bg-[#7c3aed] text-white rounded-full px-10 py-6 text-base md:text-lg font-semibold shadow-xl shadow-[#8b5cf6]/25 transition-all hover:shadow-2xl hover:shadow-[#8b5cf6]/30 hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full sm:w-auto bg-[#8b5cf6] hover:bg-[#7c3aed] text-white rounded-full px-12 py-7 text-lg font-semibold shadow-xl shadow-[#8b5cf6]/30 transition-all hover:shadow-2xl hover:shadow-[#8b5cf6]/40 hover:scale-[1.02] active:scale-[0.98]"
               asChild
             >
               <a href="#apply">
@@ -106,23 +71,20 @@ const SmartTeamCohortHero = () => {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </a>
             </Button>
-            <a 
-              href="#what-you-get" 
-              className="text-white/70 hover:text-white text-sm md:text-base font-medium transition-colors inline-flex items-center gap-1"
-            >
-              See what you get
-              <ArrowRight className="w-4 h-4" />
-            </a>
           </div>
 
-          {/* Price line - more readable */}
-          <p className="text-sm md:text-base text-white/80 font-medium mb-3">
-            $12,000 CAD per org • 15 seats • 2–3 hours/week
-          </p>
+          {/* Secondary Link */}
+          <a 
+            href="#what-you-get" 
+            className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-sm font-medium transition-colors mb-10"
+          >
+            See what you get
+            <ArrowRight className="w-4 h-4" />
+          </a>
 
-          {/* Micro note - staff size clarity */}
-          <p className="text-xs md:text-sm text-white/50">
-            Nimara supports 0–50 staff. This cohort is only for 1–15 staff.
+          {/* Price Line */}
+          <p className="text-sm text-white/50">
+            $12,000 CAD per org • 15 seats • 2–3 hours/week
           </p>
         </div>
       </section>
