@@ -93,7 +93,7 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Section 2: Is This For You? */}
+      {/* Section 2: Is This a Fit? */}
       <section 
         className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#0a0f1a]"
         aria-labelledby="fit-heading"
@@ -102,18 +102,18 @@ const SmartTeamCohortHero = () => {
           {/* Section Header */}
           <header className="text-center mb-16 md:mb-20">
             <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-[#5eead4] mb-6">
-              Is this for you?
+              Is this a fit?
             </p>
             <h2 
               id="fit-heading"
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.03em] leading-[1.1] mb-6"
             >
-              Built for teams that are
+              We only accept <span className="text-[#5eead4]">15 organizations</span>
               <br />
-              <span className="text-[#5eead4]">ready to get organized.</span>
+              per cohort.
             </h2>
             <p className="text-lg md:text-xl text-white/50 font-light max-w-2xl mx-auto">
-              Not free advice. Real systems, built with you.
+              We filter strictly to ensure every team graduates audit-proof.
             </p>
           </header>
 
@@ -121,33 +121,61 @@ const SmartTeamCohortHero = () => {
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 lg:gap-24 mb-16 md:mb-20">
             {/* Left Column - Fit */}
             <div>
-              <h3 className="text-sm md:text-base font-semibold uppercase tracking-[0.2em] text-white/40 mb-8">
+              <h3 className="text-sm md:text-base font-semibold uppercase tracking-[0.2em] text-[#5eead4] mb-8">
                 This is a fit if
               </h3>
-              <ul className="space-y-5" aria-label="Good fit criteria">
+              <ul className="space-y-6" aria-label="Good fit criteria">
                 <li className="flex items-start gap-4">
                   <div className="w-7 h-7 rounded-full bg-[#5eead4]/20 flex items-center justify-center flex-shrink-0 mt-1">
                     <Check className="w-4 h-4 text-[#5eead4]" aria-hidden="true" />
                   </div>
-                  <span className="text-white text-lg md:text-xl font-light leading-relaxed">
-                    You have funding (or budget set aside)
-                  </span>
+                  <div>
+                    <span className="text-white text-lg md:text-xl font-medium leading-relaxed block">
+                      You have a ~$10k budget.
+                    </span>
+                    <span className="text-white/50 text-base font-light">
+                      Tuition is $9,450 CAD and eligible for Capacity Building grants.
+                    </span>
+                  </div>
                 </li>
                 <li className="flex items-start gap-4">
                   <div className="w-7 h-7 rounded-full bg-[#5eead4]/20 flex items-center justify-center flex-shrink-0 mt-1">
                     <Check className="w-4 h-4 text-[#5eead4]" aria-hidden="true" />
                   </div>
-                  <span className="text-white text-lg md:text-xl font-light leading-relaxed">
-                    You can assign one Ops Lead
-                  </span>
+                  <div>
+                    <span className="text-white text-lg md:text-xl font-medium leading-relaxed block">
+                      You use a cloud stack.
+                    </span>
+                    <span className="text-white/50 text-base font-light">
+                      Specifically Google Workspace or Microsoft 365.
+                    </span>
+                  </div>
                 </li>
                 <li className="flex items-start gap-4">
                   <div className="w-7 h-7 rounded-full bg-[#5eead4]/20 flex items-center justify-center flex-shrink-0 mt-1">
                     <Check className="w-4 h-4 text-[#5eead4]" aria-hidden="true" />
                   </div>
-                  <span className="text-white text-lg md:text-xl font-light leading-relaxed">
-                    You can commit 2–3 hours/week for 6 weeks
-                  </span>
+                  <div>
+                    <span className="text-white text-lg md:text-xl font-medium leading-relaxed block">
+                      You can commit 4 hours/week.
+                    </span>
+                    <span className="text-white/50 text-base font-light">
+                      We do the real work together in labs; we don't just lecture.
+                    </span>
+                  </div>
+                </li>
+                <li className="flex items-start gap-4">
+                  <div className="w-7 h-7 rounded-full bg-[#5eead4]/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <Check className="w-4 h-4 text-[#5eead4]" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <span className="text-white text-lg md:text-xl font-medium leading-relaxed block">
+                      You are a Canadian Nonprofit.
+                    </span>
+                    <span className="text-white/50 text-base font-light">
+                      Current cohort is optimized for Canadian reporting standards.
+                    </span>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -157,30 +185,58 @@ const SmartTeamCohortHero = () => {
               <h3 className="text-sm md:text-base font-semibold uppercase tracking-[0.2em] text-white/40 mb-8">
                 Not a fit if
               </h3>
-              <ul className="space-y-5" aria-label="Not a good fit criteria">
+              <ul className="space-y-6" aria-label="Not a good fit criteria">
                 <li className="flex items-start gap-4">
                   <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 mt-1">
                     <X className="w-4 h-4 text-white/40" aria-hidden="true" />
                   </div>
-                  <span className="text-white/50 text-lg md:text-xl font-light leading-relaxed">
-                    You want free advice
-                  </span>
+                  <div>
+                    <span className="text-white/70 text-lg md:text-xl font-medium leading-relaxed block">
+                      You want 'Done-For-You.'
+                    </span>
+                    <span className="text-white/40 text-base font-light">
+                      This is a collaborative implementation; your team must learn the systems to keep them.
+                    </span>
+                  </div>
                 </li>
                 <li className="flex items-start gap-4">
                   <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 mt-1">
                     <X className="w-4 h-4 text-white/40" aria-hidden="true" />
                   </div>
-                  <span className="text-white/50 text-lg md:text-xl font-light leading-relaxed">
-                    You can't share documents
-                  </span>
+                  <div>
+                    <span className="text-white/70 text-lg md:text-xl font-medium leading-relaxed block">
+                      You are still paper-based.
+                    </span>
+                    <span className="text-white/40 text-base font-light">
+                      We cannot automate physical filing cabinets or manual ledgers.
+                    </span>
+                  </div>
                 </li>
                 <li className="flex items-start gap-4">
                   <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 mt-1">
                     <X className="w-4 h-4 text-white/40" aria-hidden="true" />
                   </div>
-                  <span className="text-white/50 text-lg md:text-xl font-light leading-relaxed">
-                    You can't make weekly time
-                  </span>
+                  <div>
+                    <span className="text-white/70 text-lg md:text-xl font-medium leading-relaxed block">
+                      You can't share screens.
+                    </span>
+                    <span className="text-white/40 text-base font-light">
+                      We need to see your folders and workflows to fix them in real-time.
+                    </span>
+                  </div>
+                </li>
+                <li className="flex items-start gap-4">
+                  <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 mt-1">
+                    <X className="w-4 h-4 text-white/40" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <span className="text-white/70 text-lg md:text-xl font-medium leading-relaxed block">
+                      You don't have a dedicated Ops Lead.
+                    </span>
+                    <span className="text-white/40 text-base font-light">
+                      The ED cannot do this alone; you need an admin/ops lead to own the system.
+                    </span>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -198,9 +254,6 @@ const SmartTeamCohortHero = () => {
                 <ArrowRight className="ml-3 w-5 h-5" aria-hidden="true" />
               </a>
             </Button>
-            <p className="text-sm text-white/30 mt-8">
-              Nimara supports 0–50 staff. This cohort is only for 1–15 staff.
-            </p>
           </div>
         </div>
       </section>
