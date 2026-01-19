@@ -9,9 +9,18 @@ import {
 
 const SmartTeamCohortHero = () => {
   const bullets = [
-    "Prove spending in minutes",
-    "Run clean board meetings",
-    "Send reports fast when funders ask",
+    {
+      main: "Prove spending in minutes",
+      sub: "Automated audit trails for every expense."
+    },
+    {
+      main: "Run clean board meetings",
+      sub: "Instant minutes, decisions, and action trackers."
+    },
+    {
+      main: "Secure your next grant",
+      sub: "Professional reporting templates that funders trust."
+    },
   ];
 
   return (
@@ -37,37 +46,44 @@ const SmartTeamCohortHero = () => {
         className="w-full px-6 md:px-10 lg:px-16 py-20 md:py-28 lg:py-36 bg-[#0a0f1a]"
         aria-labelledby="hero-heading"
       >
-          <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center">
           {/* Headline */}
           <h1 
             id="hero-heading"
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] tracking-[-0.04em] mb-8"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] tracking-[-0.04em] mb-6"
           >
-            Get <span className="text-[#5eead4]">funder-ready</span>
+            Get <span className="text-[#5eead4]">audit-proof</span> and{" "}
+            <span className="text-[#5eead4]">grant-ready</span>
             <br className="hidden sm:block" />
             — in <span className="text-[#5eead4]">6 weeks.</span>
           </h1>
 
           {/* Subhead */}
           <p className="text-xl md:text-2xl text-white/70 font-light mb-12">
-            For Canadian nonprofits with 1–15 staff.
+            A hands-on implementation cohort for{" "}
+            <span className="text-white font-medium">Canadian nonprofits with 1–15 staff.</span>
           </p>
 
-          {/* 3 Short Bullets */}
-          <ul className="flex flex-col items-center gap-4 mb-12" aria-label="Key benefits">
+          {/* Benefit Bullets */}
+          <ul className="flex flex-col items-center gap-5 mb-12" aria-label="Key benefits">
             {bullets.map((bullet) => (
-              <li key={bullet} className="flex items-center gap-4">
-                <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0" aria-hidden="true" />
-                <span className="text-white text-lg md:text-xl font-light">{bullet}</span>
+              <li key={bullet.main} className="flex items-start gap-4 text-left max-w-md">
+                <div className="w-6 h-6 rounded-full bg-[#5eead4]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Check className="w-4 h-4 text-[#5eead4]" aria-hidden="true" />
+                </div>
+                <div>
+                  <span className="text-white text-lg md:text-xl font-medium block">{bullet.main}</span>
+                  <span className="text-white/50 text-base font-light">{bullet.sub}</span>
+                </div>
               </li>
             ))}
           </ul>
 
           {/* Primary CTA */}
-          <div className="mb-6">
+          <div className="mb-4">
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-[#8b5cf6] hover:bg-[#7c3aed] text-white rounded-xl px-14 py-8 text-lg md:text-xl font-semibold shadow-xl shadow-[#8b5cf6]/30 transition-all hover:shadow-2xl hover:shadow-[#8b5cf6]/40 hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8b5cf6]/50"
+              className="w-full sm:w-auto bg-[#8b5cf6] hover:bg-[#7c3aed] text-white rounded-xl px-14 py-8 text-lg md:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8b5cf6]/50"
               asChild
             >
               <a href="#apply">
@@ -82,13 +98,13 @@ const SmartTeamCohortHero = () => {
             href="#what-you-get" 
             className="inline-flex items-center gap-2 text-white/50 hover:text-white text-base font-medium transition-colors mb-12"
           >
-            See what you get
-            <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            See the 4 systems you'll build
+            <ChevronDown className="w-4 h-4" aria-hidden="true" />
           </a>
 
-          {/* Price Line */}
-          <p className="text-base md:text-lg text-white/40">
-            $12,000 CAD per org • 15 seats • 2–3 hours/week
+          {/* Trust Bar */}
+          <p className="text-base md:text-lg text-white/50">
+            <span className="text-white font-semibold">$9,450 CAD</span> per org • 15 seats per cohort • 4 hours/week
           </p>
         </div>
       </section>
