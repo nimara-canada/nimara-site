@@ -680,82 +680,83 @@ const SmartTeamCohortHero = () => {
             </p>
             <h2 
               id="guarantee-heading"
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.03em] leading-[1.1]"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.03em] leading-[1.1] mb-6"
             >
-              We take the risk <span className="text-[#5eead4]">seriously.</span>
+              We take the risk seriously.
             </h2>
+            <p className="text-lg md:text-xl text-white/50">
+              A clear, fair promise. No long fine print.
+            </p>
           </header>
 
           {/* Main Guarantee Statement */}
-          <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 md:p-12 mb-12 max-w-2xl mx-auto">
-            <div className="flex items-start gap-5 mb-10">
-              <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#5eead4]/20 flex items-center justify-center flex-shrink-0">
-                <ShieldCheck className="w-7 h-7 md:w-8 md:h-8 text-[#5eead4]" aria-hidden="true" />
-              </div>
-              <p className="text-xl md:text-2xl lg:text-3xl font-semibold text-white leading-snug pt-2">
-                If we do not set up the 4 systems, you get a full refund.
+          <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 md:p-12 mb-12 max-w-3xl mx-auto">
+            {/* Primary Refund Statement */}
+            <div className="text-center mb-10 pb-10 border-b border-white/10">
+              <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-snug">
+                If we do not set up the 4 systems, you get a full refund{' '}
+                <span className="text-[#5eead4]">($9,450 CAD)</span>.
               </p>
             </div>
 
             {/* Two Column Layout */}
-            <div className="grid md:grid-cols-2 gap-10 mb-10">
+            <div className="grid md:grid-cols-2 gap-10">
               {/* To Qualify */}
               <div>
-                <h4 className="text-sm font-semibold text-white/40 uppercase tracking-[0.2em] mb-6">
+                <h4 className="text-sm font-semibold text-white uppercase tracking-[0.2em] mb-6">
                   To qualify, you must:
                 </h4>
                 <ul className="space-y-4" aria-label="Qualification requirements">
-                  <li className="flex items-center gap-3 text-white/70 text-lg">
-                    <Check className="w-4 h-4 text-[#5eead4] flex-shrink-0" aria-hidden="true" />
-                    Attend 5 of the 6 weeks
+                  <li className="flex items-center gap-3 text-white/70 text-base md:text-lg">
+                    <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0" aria-hidden="true" />
+                    Attend 5 of the 6 weeks.
                   </li>
-                  <li className="flex items-center gap-3 text-white/70 text-lg">
-                    <Check className="w-4 h-4 text-[#5eead4] flex-shrink-0" aria-hidden="true" />
-                    Submit the weekly items
+                  <li className="flex items-center gap-3 text-white/70 text-base md:text-lg">
+                    <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0" aria-hidden="true" />
+                    Submit the weekly items.
                   </li>
-                  <li className="flex items-center gap-3 text-white/70 text-lg">
-                    <Check className="w-4 h-4 text-[#5eead4] flex-shrink-0" aria-hidden="true" />
-                    Share the needed documents
+                  <li className="flex items-center gap-3 text-white/70 text-base md:text-lg">
+                    <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0" aria-hidden="true" />
+                    Share the needed documents.
                   </li>
                 </ul>
               </div>
 
               {/* The 4 Systems */}
               <div>
-                <h4 className="text-sm font-semibold text-white/40 uppercase tracking-[0.2em] mb-6">
+                <h4 className="text-sm font-semibold text-white uppercase tracking-[0.2em] mb-6">
                   The 4 systems are:
                 </h4>
                 <ul className="space-y-4" aria-label="The 4 systems">
-                  <li className="flex items-center gap-3 text-white/50 text-lg">
-                    <span className="w-1.5 h-1.5 rounded-full bg-white/30 flex-shrink-0" aria-hidden="true" />
-                    Spending proof
+                  <li className="flex items-center gap-3 text-white/70 text-base md:text-lg">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#5eead4] flex-shrink-0" aria-hidden="true" />
+                    Audit-Ready Spending Proof
                   </li>
-                  <li className="flex items-center gap-3 text-white/50 text-lg">
-                    <span className="w-1.5 h-1.5 rounded-full bg-white/30 flex-shrink-0" aria-hidden="true" />
-                    Board decisions
+                  <li className="flex items-center gap-3 text-white/70 text-base md:text-lg">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#5eead4] flex-shrink-0" aria-hidden="true" />
+                    Professional Board Decisions
                   </li>
-                  <li className="flex items-center gap-3 text-white/50 text-lg">
-                    <span className="w-1.5 h-1.5 rounded-full bg-white/30 flex-shrink-0" aria-hidden="true" />
-                    Simple reporting
+                  <li className="flex items-center gap-3 text-white/70 text-base md:text-lg">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#5eead4] flex-shrink-0" aria-hidden="true" />
+                    Simple Funder Reporting
                   </li>
-                  <li className="flex items-center gap-3 text-white/50 text-lg">
-                    <span className="w-1.5 h-1.5 rounded-full bg-white/30 flex-shrink-0" aria-hidden="true" />
-                    Find-it-fast files
+                  <li className="flex items-center gap-3 text-white/70 text-base md:text-lg">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#5eead4] flex-shrink-0" aria-hidden="true" />
+                    Find-it-Fast File System
                   </li>
                 </ul>
               </div>
             </div>
-
-            <p className="text-white/40 text-base text-center border-t border-white/10 pt-8">
-              Clear and fair. No long fine print.
-            </p>
           </div>
 
-          {/* CTA */}
+          {/* Final Action Section */}
           <div className="text-center">
+            <p className="text-lg md:text-xl text-white/50 mb-8 italic">
+              Designed for Executive Directors who need systems that actually work.
+            </p>
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-[#5eead4] hover:bg-[#5eead4]/90 text-[#0a0f1a] rounded-xl px-12 py-8 text-lg font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#5eead4]/50"
+              className="w-full sm:w-auto bg-gradient-to-r from-[#7c3aed] via-[#a855f7] to-[#7c3aed] hover:opacity-90 text-white rounded-xl px-12 py-8 text-lg font-semibold shadow-[0_0_30px_rgba(168,85,247,0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#a855f7]/50"
               asChild
             >
               <a href="#apply">
@@ -763,8 +764,8 @@ const SmartTeamCohortHero = () => {
                 <ArrowRight className="ml-3 w-5 h-5" aria-hidden="true" />
               </a>
             </Button>
-            <p className="text-sm text-white/30 mt-8">
-              Nimara supports 0–50 staff. This cohort is only for 1–15 staff.
+            <p className="text-sm text-white/40 mt-6">
+              Next cohort starts soon • 15 spots total
             </p>
           </div>
         </div>
