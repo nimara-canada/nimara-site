@@ -912,46 +912,46 @@ const SmartTeamCohortHero = () => {
           <Accordion type="single" collapsible className="mb-14">
             <AccordionItem value="item-1" className="bg-white/[0.03] rounded-xl border border-white/10 mb-4 px-6 data-[state=open]:bg-white/[0.05] transition-all">
               <AccordionTrigger className="text-left text-white text-lg font-medium py-6 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-white/50">
-                Do we need special software?
+                How do I know if we can afford the $9,450 CAD tuition?
               </AccordionTrigger>
               <AccordionContent className="text-white/50 text-base pb-6 leading-relaxed">
-                No. We use what you already have (Google Drive or Microsoft, plus simple sheets).
+                Most of our participants use Capacity Building Grants or Operational Funding to cover the full cost. If you have a budget line for "Organizational Development" or "Systems Improvement," this program is a perfect fit. We provide all the documentation and receipts your funder needs to approve the expense.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-2" className="bg-white/[0.03] rounded-xl border border-white/10 mb-4 px-6 data-[state=open]:bg-white/[0.05] transition-all">
               <AccordionTrigger className="text-left text-white text-lg font-medium py-6 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-white/50">
-                What if our files are messy?
+                Can we actually build 4 systems in just 6 weeks?
               </AccordionTrigger>
               <AccordionContent className="text-white/50 text-base pb-6 leading-relaxed">
-                That's normal. Week 1 sets up the structure, and you clean up as you go.
+                Yes, because this is not a lecture series—it is a hands-on implementation lab. We "install" the systems alongside you during our weekly 90-minute working sessions. By the end of Week 1, your file system is already set up; by the end of Week 6, you pass a live "Stress Test" to prove your systems work under pressure.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-3" className="bg-white/[0.03] rounded-xl border border-white/10 mb-4 px-6 data-[state=open]:bg-white/[0.05] transition-all">
               <AccordionTrigger className="text-left text-white text-lg font-medium py-6 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-white/50">
-                We don't have a finance person. Can we still do this?
+                What happens if our Ops Lead is already at capacity?
               </AccordionTrigger>
               <AccordionContent className="text-white/50 text-base pb-6 leading-relaxed">
-                Yes. The proof process is simple and built for small teams.
+                The "Nimara Smart Team" approach is designed to give time back, not take it away. While we require a 4-hour weekly block for 6 weeks, this investment eliminates the 10+ hours a month currently wasted hunting for receipts, prepping for board meetings, and manually building funder reports. If you are too busy to fix your systems, you are the exact team that needs this most.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-4" className="bg-white/[0.03] rounded-xl border border-white/10 mb-4 px-6 data-[state=open]:bg-white/[0.05] transition-all">
               <AccordionTrigger className="text-left text-white text-lg font-medium py-6 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-white/50">
-                How do you handle privacy?
+                Do we need to buy new software or change how we work?
               </AccordionTrigger>
               <AccordionContent className="text-white/50 text-base pb-6 leading-relaxed">
-                We use limited access and clear rules. You control what we see.
+                No. We build your 4 systems using the tools you already have, specifically Google Workspace or Microsoft 365. We don't add "new tech" to your plate; we simply organize your current environment so that it is audit-proof and easy for any staff member to use.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-5" className="bg-white/[0.03] rounded-xl border border-white/10 px-6 data-[state=open]:bg-white/[0.05] transition-all">
               <AccordionTrigger className="text-left text-white text-lg font-medium py-6 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-white/50">
-                We have 16–50 staff. Can we still work with Nimara?
+                What is the "Stress Test," and what if we fail it?
               </AccordionTrigger>
               <AccordionContent className="text-white/50 text-base pb-6 leading-relaxed">
-                Yes. This cohort is only for 1–15 staff. For 16–50 staff, book a call instead.
+                The Stress Test is our live verification that your organization is truly funder-ready. You will be asked to find a specific key document, board decision, or expense proof bundle in under 3 minutes. If you can't, we stay with you and keep working until the system is fixed. This ensures you never graduate without a functional, foolproof system.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
