@@ -43,66 +43,63 @@ const SmartTeamCohortHero = () => {
 
       {/* Hero Section */}
       <section 
-        className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-nim-navy"
+        className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-32 lg:py-40 bg-nim-navy"
         aria-labelledby="hero-heading"
       >
         <div className="max-w-4xl mx-auto text-center">
           {/* Headline */}
           <h1 
             id="hero-heading"
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.08] tracking-[-0.03em] mb-8"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[1.12] tracking-[-0.02em] mb-6 sm:mb-8"
           >
             Get <span className="text-nim-mint">audit-proof</span> and{" "}
             <span className="text-nim-mint">grant-ready</span>
-            <br className="hidden md:block" />
-            <span className="md:hidden"> </span>— in <span className="text-nim-mint">6 weeks.</span>
+            <br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>— in <span className="text-nim-mint">6 weeks.</span>
           </h1>
 
           {/* Subhead */}
-          <p className="text-xl md:text-2xl lg:text-3xl text-white/70 font-light mb-10">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/70 font-light mb-8 sm:mb-10">
             A hands-on implementation cohort for{" "}
             <span className="text-white font-medium">Canadian nonprofits with 1–15 staff.</span>
           </p>
 
-          {/* Logistics Bar - High Visibility */}
-          <div className="inline-flex flex-wrap items-center justify-center gap-4 md:gap-6 px-8 py-5 bg-white/[0.05] border border-white/10 rounded-2xl mb-12">
-            <span className="flex items-center gap-2 text-nim-mint text-base md:text-lg font-semibold">
-              <Calendar className="w-5 h-5" aria-hidden="true" />
+          {/* Logistics Bar - Mobile Optimized */}
+          <div className="grid grid-cols-2 sm:inline-flex sm:flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6 px-4 sm:px-8 py-4 sm:py-5 bg-white/[0.05] border border-white/10 rounded-xl sm:rounded-2xl mb-8 sm:mb-12">
+            <span className="flex items-center justify-center gap-2 text-nim-mint text-sm sm:text-base md:text-lg font-semibold col-span-2">
+              <Calendar className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
               Starts Feb 11
             </span>
-            <span className="hidden sm:block w-1.5 h-1.5 rounded-full bg-white/30" aria-hidden="true" />
-            <span className="text-white/70 text-base md:text-lg">100% Virtual</span>
-            <span className="hidden sm:block w-1.5 h-1.5 rounded-full bg-white/30" aria-hidden="true" />
-            <span className="text-white font-semibold text-base md:text-lg">$9,450 CAD</span>
-            <span className="hidden sm:block w-1.5 h-1.5 rounded-full bg-white/30" aria-hidden="true" />
-            <span className="text-white/70 text-base md:text-lg">15 spots</span>
+            <span className="text-white/70 text-sm sm:text-base md:text-lg text-center">100% Virtual</span>
+            <span className="text-white font-semibold text-sm sm:text-base md:text-lg text-center">$9,450 CAD</span>
+            <span className="text-white/70 text-sm sm:text-base md:text-lg text-center col-span-2">15 spots</span>
           </div>
 
           {/* Benefit Bullets */}
-          <ul className="flex flex-col items-center gap-6 mb-14" aria-label="Key benefits">
+          <ul className="flex flex-col items-start sm:items-center gap-4 sm:gap-6 mb-10 sm:mb-14" aria-label="Key benefits">
             {bullets.map((bullet) => (
-              <li key={bullet.main} className="flex items-start gap-4 text-left max-w-lg">
-                <div className="w-7 h-7 rounded-full bg-nim-mint/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Check className="w-4 h-4 text-nim-mint" aria-hidden="true" />
+              <li key={bullet.main} className="flex items-start gap-3 sm:gap-4 text-left max-w-lg">
+                <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-nim-mint/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-nim-mint" aria-hidden="true" />
                 </div>
                 <div>
-                  <span className="text-white text-xl md:text-2xl font-medium block">{bullet.main}</span>
-                  <span className="text-white/50 text-lg">{bullet.sub}</span>
+                  <span className="text-white text-lg sm:text-xl md:text-2xl font-medium block">{bullet.main}</span>
+                  <span className="text-white/50 text-base sm:text-lg">{bullet.sub}</span>
                 </div>
               </li>
             ))}
           </ul>
 
           {/* Primary CTA */}
-          <div className="mb-6">
+          <div className="mb-4 sm:mb-6">
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-2xl px-16 py-8 text-xl md:text-2xl font-semibold shadow-[0_0_40px_hsl(var(--primary)/0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50"
+              className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl sm:rounded-2xl px-8 sm:px-16 py-6 sm:py-8 text-lg sm:text-xl md:text-2xl font-semibold shadow-[0_0_40px_hsl(var(--primary)/0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50"
               asChild
             >
               <a href="https://form.typeform.com/to/Dsi3pXkx" target="_blank" rel="noopener noreferrer">
                 Apply for a seat
-                <ArrowRight className="ml-3 w-6 h-6" aria-hidden="true" />
+                <ArrowRight className="ml-2 sm:ml-3 w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
               </a>
             </Button>
           </div>
@@ -110,14 +107,14 @@ const SmartTeamCohortHero = () => {
           {/* Secondary Link */}
           <a 
             href="#what-you-get" 
-            className="inline-flex items-center gap-2 text-white/50 hover:text-white text-lg font-medium transition-colors mb-14"
+            className="inline-flex items-center gap-2 text-white/50 hover:text-white text-base sm:text-lg font-medium transition-colors mb-10 sm:mb-14"
           >
             See the 4 systems you'll build
-            <ChevronDown className="w-5 h-5" aria-hidden="true" />
+            <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
           </a>
 
           {/* Trust Bar */}
-          <p className="text-lg md:text-xl text-white/40">
+          <p className="text-base sm:text-lg md:text-xl text-white/40">
             4 hours/week • Full refund if we don't deliver
           </p>
         </div>
@@ -125,84 +122,85 @@ const SmartTeamCohortHero = () => {
 
       {/* Section 2: Is This a Fit? - LIGHT */}
       <section 
-        className="w-full px-6 md:px-10 lg:px-16 py-28 md:py-36 lg:py-44 bg-nim-cloud"
+        className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-36 lg:py-44 bg-nim-cloud"
         aria-labelledby="fit-heading"
       >
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
-          <header className="text-center mb-20 md:mb-24">
-            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-nim-teal mb-8">
+          <header className="text-center mb-12 sm:mb-16 md:mb-24">
+            <p className="text-xs sm:text-sm md:text-base font-medium uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-teal mb-4 sm:mb-8">
               Is this a fit?
             </p>
             <h2 
               id="fit-heading"
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-nim-navy tracking-[-0.03em] leading-[1.08] mb-8"
+              className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-bold text-nim-navy tracking-[-0.02em] leading-[1.15] mb-4 sm:mb-8"
             >
-              We only accept <span className="text-nim-teal">15 organizations</span>
+              We only accept <span className="text-nim-teal">15 organizations</span>{" "}
+              <span className="md:hidden">per cohort.</span>
               <br className="hidden md:block" />
-              per cohort.
+              <span className="hidden md:inline">per cohort.</span>
             </h2>
-            <p className="text-xl md:text-2xl text-nim-slate-dark font-light max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl text-nim-slate-dark font-light max-w-2xl mx-auto">
               We filter strictly to ensure every team graduates audit-proof.
             </p>
           </header>
 
           {/* Two-Column Layout */}
-          <div className="grid md:grid-cols-2 gap-16 md:gap-20 lg:gap-28 mb-20">
+          <div className="grid md:grid-cols-2 gap-10 sm:gap-12 md:gap-20 lg:gap-28 mb-12 sm:mb-16 md:mb-20">
             {/* Left Column - Fit */}
             <div>
-              <h3 className="text-base font-semibold uppercase tracking-[0.2em] text-nim-teal mb-10">
+              <h3 className="text-sm sm:text-base font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-nim-teal mb-6 sm:mb-10">
                 This is a fit if
               </h3>
-              <ul className="space-y-8" aria-label="Good fit criteria">
-                <li className="flex items-start gap-5">
-                  <div className="w-8 h-8 rounded-full bg-nim-teal/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Check className="w-5 h-5 text-nim-teal" aria-hidden="true" />
+              <ul className="space-y-5 sm:space-y-8" aria-label="Good fit criteria">
+                <li className="flex items-start gap-3 sm:gap-5">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-nim-teal/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-4 h-4 sm:w-5 sm:h-5 text-nim-teal" aria-hidden="true" />
                   </div>
                   <div>
-                    <span className="text-nim-navy text-xl md:text-2xl font-medium leading-relaxed block">
+                    <span className="text-nim-navy text-lg sm:text-xl md:text-2xl font-medium leading-relaxed block">
                       You have a ~$10k budget.
                     </span>
-                    <span className="text-nim-slate-dark text-lg">
+                    <span className="text-nim-slate-dark text-base sm:text-lg">
                       Tuition is $9,450 CAD and eligible for Capacity Building grants.
                     </span>
                   </div>
                 </li>
-                <li className="flex items-start gap-5">
-                  <div className="w-8 h-8 rounded-full bg-nim-teal/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Check className="w-5 h-5 text-nim-teal" aria-hidden="true" />
+                <li className="flex items-start gap-3 sm:gap-5">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-nim-teal/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-4 h-4 sm:w-5 sm:h-5 text-nim-teal" aria-hidden="true" />
                   </div>
                   <div>
-                    <span className="text-nim-navy text-xl md:text-2xl font-medium leading-relaxed block">
+                    <span className="text-nim-navy text-lg sm:text-xl md:text-2xl font-medium leading-relaxed block">
                       You use a cloud stack.
                     </span>
-                    <span className="text-nim-slate-dark text-lg">
+                    <span className="text-nim-slate-dark text-base sm:text-lg">
                       Specifically Google Workspace or Microsoft 365.
                     </span>
                   </div>
                 </li>
-                <li className="flex items-start gap-5">
-                  <div className="w-8 h-8 rounded-full bg-nim-teal/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Check className="w-5 h-5 text-nim-teal" aria-hidden="true" />
+                <li className="flex items-start gap-3 sm:gap-5">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-nim-teal/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-4 h-4 sm:w-5 sm:h-5 text-nim-teal" aria-hidden="true" />
                   </div>
                   <div>
-                    <span className="text-nim-navy text-xl md:text-2xl font-medium leading-relaxed block">
+                    <span className="text-nim-navy text-lg sm:text-xl md:text-2xl font-medium leading-relaxed block">
                       You can commit 4 hours/week.
                     </span>
-                    <span className="text-nim-slate-dark text-lg">
+                    <span className="text-nim-slate-dark text-base sm:text-lg">
                       We do the real work together in labs; we don't just lecture.
                     </span>
                   </div>
                 </li>
-                <li className="flex items-start gap-5">
-                  <div className="w-8 h-8 rounded-full bg-nim-teal/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Check className="w-5 h-5 text-nim-teal" aria-hidden="true" />
+                <li className="flex items-start gap-3 sm:gap-5">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-nim-teal/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-4 h-4 sm:w-5 sm:h-5 text-nim-teal" aria-hidden="true" />
                   </div>
                   <div>
-                    <span className="text-nim-navy text-xl md:text-2xl font-medium leading-relaxed block">
+                    <span className="text-nim-navy text-lg sm:text-xl md:text-2xl font-medium leading-relaxed block">
                       You are a Canadian Nonprofit.
                     </span>
-                    <span className="text-nim-slate-dark text-lg">
+                    <span className="text-nim-slate-dark text-base sm:text-lg">
                       Current cohort is optimized for Canadian reporting standards.
                     </span>
                   </div>
@@ -212,58 +210,58 @@ const SmartTeamCohortHero = () => {
 
             {/* Right Column - Not a Fit */}
             <div>
-              <h3 className="text-base font-semibold uppercase tracking-[0.2em] text-nim-slate mb-10">
+              <h3 className="text-sm sm:text-base font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-nim-slate mb-6 sm:mb-10">
                 Not a fit if
               </h3>
-              <ul className="space-y-8" aria-label="Not a good fit criteria">
-                <li className="flex items-start gap-5">
-                  <div className="w-8 h-8 rounded-full bg-nim-slate/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <X className="w-5 h-5 text-nim-slate" aria-hidden="true" />
+              <ul className="space-y-5 sm:space-y-8" aria-label="Not a good fit criteria">
+                <li className="flex items-start gap-3 sm:gap-5">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-nim-slate/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <X className="w-4 h-4 sm:w-5 sm:h-5 text-nim-slate" aria-hidden="true" />
                   </div>
                   <div>
-                    <span className="text-nim-slate-dark text-xl md:text-2xl font-medium leading-relaxed block">
+                    <span className="text-nim-slate-dark text-lg sm:text-xl md:text-2xl font-medium leading-relaxed block">
                       You want 'Done-For-You.'
                     </span>
-                    <span className="text-nim-slate text-lg">
+                    <span className="text-nim-slate text-base sm:text-lg">
                       This is a collaborative implementation; your team must learn the systems to keep them.
                     </span>
                   </div>
                 </li>
-                <li className="flex items-start gap-5">
-                  <div className="w-8 h-8 rounded-full bg-nim-slate/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <X className="w-5 h-5 text-nim-slate" aria-hidden="true" />
+                <li className="flex items-start gap-3 sm:gap-5">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-nim-slate/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <X className="w-4 h-4 sm:w-5 sm:h-5 text-nim-slate" aria-hidden="true" />
                   </div>
                   <div>
-                    <span className="text-nim-slate-dark text-xl md:text-2xl font-medium leading-relaxed block">
+                    <span className="text-nim-slate-dark text-lg sm:text-xl md:text-2xl font-medium leading-relaxed block">
                       You are still paper-based.
                     </span>
-                    <span className="text-nim-slate text-lg">
+                    <span className="text-nim-slate text-base sm:text-lg">
                       We cannot automate physical filing cabinets or manual ledgers.
                     </span>
                   </div>
                 </li>
-                <li className="flex items-start gap-5">
-                  <div className="w-8 h-8 rounded-full bg-nim-slate/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <X className="w-5 h-5 text-nim-slate" aria-hidden="true" />
+                <li className="flex items-start gap-3 sm:gap-5">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-nim-slate/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <X className="w-4 h-4 sm:w-5 sm:h-5 text-nim-slate" aria-hidden="true" />
                   </div>
                   <div>
-                    <span className="text-nim-slate-dark text-xl md:text-2xl font-medium leading-relaxed block">
+                    <span className="text-nim-slate-dark text-lg sm:text-xl md:text-2xl font-medium leading-relaxed block">
                       You can't share screens.
                     </span>
-                    <span className="text-nim-slate text-lg">
+                    <span className="text-nim-slate text-base sm:text-lg">
                       We need to see your folders and workflows to fix them in real-time.
                     </span>
                   </div>
                 </li>
-                <li className="flex items-start gap-5">
-                  <div className="w-8 h-8 rounded-full bg-nim-slate/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <X className="w-5 h-5 text-nim-slate" aria-hidden="true" />
+                <li className="flex items-start gap-3 sm:gap-5">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-nim-slate/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <X className="w-4 h-4 sm:w-5 sm:h-5 text-nim-slate" aria-hidden="true" />
                   </div>
                   <div>
-                    <span className="text-nim-slate-dark text-xl md:text-2xl font-medium leading-relaxed block">
+                    <span className="text-nim-slate-dark text-lg sm:text-xl md:text-2xl font-medium leading-relaxed block">
                       You don't have a dedicated Ops Lead.
                     </span>
-                    <span className="text-nim-slate text-lg">
+                    <span className="text-nim-slate text-base sm:text-lg">
                       The ED cannot do this alone; you need an admin/ops lead to own the system.
                     </span>
                   </div>
@@ -275,12 +273,12 @@ const SmartTeamCohortHero = () => {
           <div className="text-center">
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-nim-teal hover:bg-nim-teal/90 text-white rounded-2xl px-14 py-8 text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-teal/50"
+              className="w-full sm:w-auto bg-nim-teal hover:bg-nim-teal/90 text-white rounded-xl sm:rounded-2xl px-8 sm:px-14 py-6 sm:py-8 text-lg sm:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-teal/50"
               asChild
             >
               <a href="https://form.typeform.com/to/Dsi3pXkx" target="_blank" rel="noopener noreferrer">
                 Apply for a seat
-                <ArrowRight className="ml-3 w-6 h-6" aria-hidden="true" />
+                <ArrowRight className="ml-2 sm:ml-3 w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
               </a>
             </Button>
           </div>
@@ -290,86 +288,87 @@ const SmartTeamCohortHero = () => {
       {/* Section 3: What You Get - LIGHT with Cards */}
       <section 
         id="what-you-get" 
-        className="w-full px-6 md:px-10 lg:px-16 py-28 md:py-36 lg:py-44 bg-nim-cloud"
+        className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-36 lg:py-44 bg-nim-cloud"
         aria-labelledby="what-you-get-heading"
       >
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
-          <header className="text-center mb-20 md:mb-24">
-            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-nim-slate mb-8">
+          <header className="text-center mb-12 sm:mb-16 md:mb-24">
+            <p className="text-xs sm:text-sm md:text-base font-medium uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-slate mb-4 sm:mb-8">
               What you get
             </p>
             <h2 
               id="what-you-get-heading"
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-nim-navy tracking-[-0.03em] leading-[1.08] mb-8"
+              className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-bold text-nim-navy tracking-[-0.02em] leading-[1.15] mb-4 sm:mb-8"
             >
               4 systems built with you
-              <br />
+              <br className="hidden sm:block" />
+              <span className="sm:hidden"> </span>
               <span className="text-nim-teal">— in 6 weeks.</span>
             </h2>
-            <p className="text-xl md:text-2xl text-nim-slate-dark font-light max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl text-nim-slate-dark font-light max-w-2xl mx-auto">
               We implement these 4 pillars during our labs. You walk away with a 90-day plan to keep them running.
             </p>
           </header>
 
           {/* 4 Features - 2x2 Grid with Card Styling */}
-          <div className="grid md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 mb-20">
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-10 lg:gap-12 mb-12 sm:mb-16 md:mb-20">
             {/* Feature 1: Spending Proof */}
-            <article className="bg-white rounded-3xl p-10 md:p-12 border border-border shadow-soft">
-              <div className="mb-6">
-                <div className="w-16 h-16 rounded-2xl bg-nim-cloud border border-border flex items-center justify-center">
-                  <ShieldCheck className="w-8 h-8 text-nim-navy" strokeWidth={1.5} aria-hidden="true" />
+            <article className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 border border-border shadow-soft">
+              <div className="mb-4 sm:mb-6">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-nim-cloud border border-border flex items-center justify-center">
+                  <ShieldCheck className="w-6 h-6 sm:w-8 sm:h-8 text-nim-navy" strokeWidth={1.5} aria-hidden="true" />
                 </div>
               </div>
-              <h3 className="text-2xl md:text-3xl font-semibold text-nim-navy mb-4 tracking-[-0.02em]">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-nim-navy mb-3 sm:mb-4 tracking-[-0.02em]">
                 Spending Proof System
               </h3>
-              <p className="text-lg md:text-xl text-nim-slate-dark font-light leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-nim-slate-dark font-light leading-relaxed">
                 Stop hunting for receipts. One central location for invoices, approvals, and payment proof.
               </p>
             </article>
 
             {/* Feature 2: Board Decision */}
-            <article className="bg-white rounded-3xl p-10 md:p-12 border border-border shadow-soft">
-              <div className="mb-6">
-                <div className="w-16 h-16 rounded-2xl bg-nim-cloud border border-border flex items-center justify-center">
-                  <ClipboardList className="w-8 h-8 text-nim-navy" strokeWidth={1.5} aria-hidden="true" />
+            <article className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 border border-border shadow-soft">
+              <div className="mb-4 sm:mb-6">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-nim-cloud border border-border flex items-center justify-center">
+                  <ClipboardList className="w-6 h-6 sm:w-8 sm:h-8 text-nim-navy" strokeWidth={1.5} aria-hidden="true" />
                 </div>
               </div>
-              <h3 className="text-2xl md:text-3xl font-semibold text-nim-navy mb-4 tracking-[-0.02em]">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-nim-navy mb-3 sm:mb-4 tracking-[-0.02em]">
                 Board Decision System
               </h3>
-              <p className="text-lg md:text-xl text-nim-slate-dark font-light leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-nim-slate-dark font-light leading-relaxed">
                 Professional governance made simple. Live action trackers, automated minutes, and decision logs.
               </p>
             </article>
 
             {/* Feature 3: Simple Reporting */}
-            <article className="bg-white rounded-3xl p-10 md:p-12 border border-border shadow-soft">
-              <div className="mb-6">
-                <div className="w-16 h-16 rounded-2xl bg-nim-cloud border border-border flex items-center justify-center">
-                  <LineChart className="w-8 h-8 text-nim-navy" strokeWidth={1.5} aria-hidden="true" />
+            <article className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 border border-border shadow-soft">
+              <div className="mb-4 sm:mb-6">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-nim-cloud border border-border flex items-center justify-center">
+                  <LineChart className="w-6 h-6 sm:w-8 sm:h-8 text-nim-navy" strokeWidth={1.5} aria-hidden="true" />
                 </div>
               </div>
-              <h3 className="text-2xl md:text-3xl font-semibold text-nim-navy mb-4 tracking-[-0.02em]">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-nim-navy mb-3 sm:mb-4 tracking-[-0.02em]">
                 Simple Reporting System
               </h3>
-              <p className="text-lg md:text-xl text-nim-slate-dark font-light leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-nim-slate-dark font-light leading-relaxed">
                 Report to funders in minutes, not days. A 10-number dashboard and a 2-page update template.
               </p>
             </article>
 
             {/* Feature 4: Find-It-Fast Files */}
-            <article className="bg-white rounded-3xl p-10 md:p-12 border border-border shadow-soft">
-              <div className="mb-6">
-                <div className="w-16 h-16 rounded-2xl bg-nim-cloud border border-border flex items-center justify-center">
-                  <FolderSearch className="w-8 h-8 text-nim-navy" strokeWidth={1.5} aria-hidden="true" />
+            <article className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 border border-border shadow-soft">
+              <div className="mb-4 sm:mb-6">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-nim-cloud border border-border flex items-center justify-center">
+                  <FolderSearch className="w-6 h-6 sm:w-8 sm:h-8 text-nim-navy" strokeWidth={1.5} aria-hidden="true" />
                 </div>
               </div>
-              <h3 className="text-2xl md:text-3xl font-semibold text-nim-navy mb-4 tracking-[-0.02em]">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-nim-navy mb-3 sm:mb-4 tracking-[-0.02em]">
                 Find-It-Fast File System
               </h3>
-              <p className="text-lg md:text-xl text-nim-slate-dark font-light leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-nim-slate-dark font-light leading-relaxed">
                 Your organization's 'Source of Truth.' Optimized folder maps, naming rules, and access controls.
               </p>
             </article>
@@ -379,15 +378,15 @@ const SmartTeamCohortHero = () => {
           <div className="text-center">
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-nim-navy hover:bg-nim-navy/90 text-white rounded-2xl px-14 py-8 text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-navy/50"
+              className="w-full sm:w-auto bg-nim-navy hover:bg-nim-navy/90 text-white rounded-xl sm:rounded-2xl px-8 sm:px-14 py-6 sm:py-8 text-lg sm:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-navy/50"
               asChild
             >
               <a href="#apply">
                 Apply for a seat
-                <ArrowRight className="ml-3 w-6 h-6" aria-hidden="true" />
+                <ArrowRight className="ml-2 sm:ml-3 w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
               </a>
             </Button>
-            <p className="text-lg text-nim-slate mt-8">
+            <p className="text-base sm:text-lg text-nim-slate mt-6 sm:mt-8">
               <span className="text-nim-navy font-semibold">$9,450 CAD</span> • 15 spots per cohort • 4 hours/week
             </p>
           </div>
@@ -397,81 +396,81 @@ const SmartTeamCohortHero = () => {
       {/* Section 4: How It Works - LIGHT */}
       <section 
         id="how-it-works" 
-        className="w-full px-6 md:px-10 lg:px-16 py-28 md:py-36 lg:py-44 bg-nim-cloud"
+        className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-36 lg:py-44 bg-nim-cloud"
         aria-labelledby="how-it-works-heading"
       >
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
-          <header className="text-center mb-20 md:mb-28">
-            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-nim-teal mb-10">
+          <header className="text-center mb-12 sm:mb-16 md:mb-28">
+            <p className="text-xs sm:text-sm md:text-base font-medium uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-teal mb-6 sm:mb-10">
               How it works
             </p>
             <h2 
               id="how-it-works-heading"
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-nim-navy tracking-[-0.04em] leading-[1.05] mb-10"
+              className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold text-nim-navy tracking-[-0.03em] leading-[1.1] mb-6 sm:mb-10"
             >
               4 hours a week.
               <br />
               <span className="text-nim-slate-dark">100% Online.</span>
             </h2>
-            <p className="text-2xl md:text-3xl text-nim-slate-dark font-light max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-3xl text-nim-slate-dark font-light max-w-2xl mx-auto leading-relaxed">
               One Ops Lead. We build the infrastructure with you.
             </p>
           </header>
 
           {/* Weekly Schedule Detail */}
-          <div className="bg-white rounded-3xl border border-border shadow-soft p-10 md:p-14 mb-20">
-            <h3 className="text-2xl md:text-3xl font-semibold text-nim-navy mb-10 text-center">Your Weekly Commitment</h3>
-            <div className="grid md:grid-cols-3 gap-10 md:gap-12">
+          <div className="bg-white rounded-2xl sm:rounded-3xl border border-border shadow-soft p-6 sm:p-8 md:p-14 mb-12 sm:mb-16 md:mb-20">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-nim-navy mb-6 sm:mb-8 md:mb-10 text-center">Your Weekly Commitment</h3>
+            <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-12">
               <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-nim-teal/10 flex items-center justify-center">
-                  <Users className="w-8 h-8 text-nim-teal" aria-hidden="true" />
+                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-3 sm:mb-4 md:mb-6 rounded-full bg-nim-teal/10 flex items-center justify-center">
+                  <Users className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-nim-teal" aria-hidden="true" />
                 </div>
-                <p className="text-nim-navy font-semibold text-xl mb-2">Strategy Session</p>
-                <p className="text-nim-slate-dark text-lg">90 minutes</p>
+                <p className="text-nim-navy font-semibold text-sm sm:text-base md:text-xl mb-1 sm:mb-2">Strategy</p>
+                <p className="text-nim-slate-dark text-xs sm:text-sm md:text-lg">90 min</p>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-nim-teal/10 flex items-center justify-center">
-                  <FileCheck className="w-8 h-8 text-nim-teal" aria-hidden="true" />
+                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-3 sm:mb-4 md:mb-6 rounded-full bg-nim-teal/10 flex items-center justify-center">
+                  <FileCheck className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-nim-teal" aria-hidden="true" />
                 </div>
-                <p className="text-nim-navy font-semibold text-xl mb-2">Implementation Lab</p>
-                <p className="text-nim-slate-dark text-lg">90 minutes</p>
+                <p className="text-nim-navy font-semibold text-sm sm:text-base md:text-xl mb-1 sm:mb-2">Lab</p>
+                <p className="text-nim-slate-dark text-xs sm:text-sm md:text-lg">90 min</p>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-nim-teal/10 flex items-center justify-center">
-                  <Clock className="w-8 h-8 text-nim-teal" aria-hidden="true" />
+                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-3 sm:mb-4 md:mb-6 rounded-full bg-nim-teal/10 flex items-center justify-center">
+                  <Clock className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-nim-teal" aria-hidden="true" />
                 </div>
-                <p className="text-nim-navy font-semibold text-xl mb-2">Prep & Sorting</p>
-                <p className="text-nim-slate-dark text-lg">1 hour</p>
+                <p className="text-nim-navy font-semibold text-sm sm:text-base md:text-xl mb-1 sm:mb-2">Prep</p>
+                <p className="text-nim-slate-dark text-xs sm:text-sm md:text-lg">1 hour</p>
               </div>
             </div>
           </div>
 
           {/* 6-Week Timeline */}
-          <div className="mb-20">
-            <h3 className="text-2xl md:text-3xl font-semibold text-nim-navy mb-12 text-center">6-Week Roadmap</h3>
-            <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+          <div className="mb-12 sm:mb-16 md:mb-20">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-nim-navy mb-6 sm:mb-8 md:mb-12 text-center">6-Week Roadmap</h3>
+            <div className="grid grid-cols-3 md:grid-cols-6 gap-2 sm:gap-3 md:gap-4">
               {[
-                { week: "Week 1", date: "Feb 11", focus: "File System", highlight: true },
-                { week: "Week 2", date: "Feb 18", focus: "Spending Proof", highlight: true },
-                { week: "Week 3", date: "Feb 25", focus: "Board System", highlight: false },
-                { week: "Week 4", date: "Mar 4", focus: "Reporting", highlight: false },
-                { week: "Week 5", date: "Mar 11", focus: "Integration", highlight: false },
-                { week: "Week 6", date: "Mar 18", focus: "Stress Test", highlight: true },
+                { week: "Week 1", date: "Feb 11", focus: "Files", highlight: true },
+                { week: "Week 2", date: "Feb 18", focus: "Spending", highlight: true },
+                { week: "Week 3", date: "Feb 25", focus: "Board", highlight: false },
+                { week: "Week 4", date: "Mar 4", focus: "Reports", highlight: false },
+                { week: "Week 5", date: "Mar 11", focus: "Integrate", highlight: false },
+                { week: "Week 6", date: "Mar 18", focus: "Test", highlight: true },
               ].map((item, index) => (
                 <div 
                   key={item.week}
-                  className={`relative p-5 rounded-2xl text-center ${
+                  className={`relative p-3 sm:p-4 md:p-5 rounded-xl sm:rounded-2xl text-center ${
                     item.highlight 
                       ? 'bg-nim-teal/10 border-2 border-nim-teal/30' 
                       : 'bg-white border border-border'
                   }`}
                 >
-                  <p className={`text-xs font-semibold uppercase tracking-wider mb-2 ${
+                  <p className={`text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-1 sm:mb-2 ${
                     item.highlight ? 'text-nim-teal' : 'text-nim-slate'
                   }`}>{item.week}</p>
-                  <p className="text-base text-nim-slate-dark mb-2">{item.date}</p>
-                  <p className={`text-base font-medium ${
+                  <p className="text-xs sm:text-sm md:text-base text-nim-slate-dark mb-1 sm:mb-2">{item.date}</p>
+                  <p className={`text-xs sm:text-sm md:text-base font-medium ${
                     item.highlight ? 'text-nim-navy' : 'text-nim-slate-dark'
                   }`}>{item.focus}</p>
                 </div>
@@ -480,49 +479,49 @@ const SmartTeamCohortHero = () => {
           </div>
 
           {/* 3-Step Flow */}
-          <ol className="grid md:grid-cols-3 gap-12 md:gap-16 lg:gap-20 mb-20" aria-label="Program steps">
+          <ol className="grid sm:grid-cols-3 gap-8 sm:gap-10 md:gap-16 lg:gap-20 mb-12 sm:mb-16 md:mb-20" aria-label="Program steps">
             <li className="text-center">
               <div 
-                className="inline-flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-nim-teal/40 text-nim-teal text-2xl md:text-3xl font-bold mb-8"
+                className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full border-2 border-nim-teal/40 text-nim-teal text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 md:mb-8"
                 aria-hidden="true"
               >
                 01
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-nim-navy mb-4 tracking-[-0.02em]">
+              <h3 className="text-lg sm:text-xl md:text-3xl font-bold text-nim-navy mb-2 sm:mb-4 tracking-[-0.02em]">
                 Build Your Source of Truth
               </h3>
-              <p className="text-lg md:text-xl text-nim-slate-dark font-light leading-relaxed">
-                Stop losing documents. We set up your digital folder map, naming rules, and access controls in Week 1.
+              <p className="text-base sm:text-lg md:text-xl text-nim-slate-dark font-light leading-relaxed">
+                Stop losing documents. We set up your digital folder map and access controls.
               </p>
             </li>
 
             <li className="text-center">
               <div 
-                className="inline-flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-nim-teal/40 text-nim-teal text-2xl md:text-3xl font-bold mb-8"
+                className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full border-2 border-nim-teal/40 text-nim-teal text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 md:mb-8"
                 aria-hidden="true"
               >
                 02
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-nim-navy mb-4 tracking-[-0.02em]">
+              <h3 className="text-lg sm:text-xl md:text-3xl font-bold text-nim-navy mb-2 sm:mb-4 tracking-[-0.02em]">
                 Install the 4 Systems
               </h3>
-              <p className="text-lg md:text-xl text-nim-slate-dark font-light leading-relaxed">
-                Direct implementation. We build your spending proof, board decision, and reporting workflows together.
+              <p className="text-base sm:text-lg md:text-xl text-nim-slate-dark font-light leading-relaxed">
+                Direct implementation. We build your spending proof, board, and reporting workflows.
               </p>
             </li>
 
             <li className="text-center">
               <div 
-                className="inline-flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-nim-teal/40 text-nim-teal text-2xl md:text-3xl font-bold mb-8"
+                className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full border-2 border-nim-teal/40 text-nim-teal text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 md:mb-8"
                 aria-hidden="true"
               >
                 03
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-nim-navy mb-4 tracking-[-0.02em]">
+              <h3 className="text-lg sm:text-xl md:text-3xl font-bold text-nim-navy mb-2 sm:mb-4 tracking-[-0.02em]">
                 The Stress Test
               </h3>
-              <p className="text-lg md:text-xl text-nim-slate-dark font-light leading-relaxed">
-                Prove it works. We live-test your ability to find any document or proof bundle in under 3 minutes.
+              <p className="text-base sm:text-lg md:text-xl text-nim-slate-dark font-light leading-relaxed">
+                Prove it works. Live-test your ability to find any document in under 3 minutes.
               </p>
             </li>
           </ol>
@@ -531,15 +530,15 @@ const SmartTeamCohortHero = () => {
           <div className="text-center">
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-nim-navy hover:bg-nim-navy/90 text-white rounded-2xl px-14 py-8 text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-navy/50"
+              className="w-full sm:w-auto bg-nim-navy hover:bg-nim-navy/90 text-white rounded-xl sm:rounded-2xl px-8 sm:px-14 py-6 sm:py-8 text-lg sm:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-navy/50"
               asChild
             >
               <a href="#apply">
                 Apply for a seat
-                <ArrowRight className="ml-3 w-6 h-6" aria-hidden="true" />
+                <ArrowRight className="ml-2 sm:ml-3 w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
               </a>
             </Button>
-            <p className="text-lg text-nim-slate mt-8">
+            <p className="text-base sm:text-lg text-nim-slate mt-6 sm:mt-8">
               <span className="text-nim-navy font-semibold">$9,450 CAD</span> per org • Starts Feb 11
             </p>
           </div>
