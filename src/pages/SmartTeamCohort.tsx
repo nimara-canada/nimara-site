@@ -100,7 +100,7 @@ const SmartTeamCohortHero = () => {
               className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-2xl px-16 py-8 text-xl md:text-2xl font-semibold shadow-[0_0_40px_hsl(var(--primary)/0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50"
               asChild
             >
-              <a href="#apply">
+              <a href="https://form.typeform.com/to/Dsi3pXkx" target="_blank" rel="noopener noreferrer">
                 Apply for a seat
                 <ArrowRight className="ml-3 w-6 h-6" aria-hidden="true" />
               </a>
@@ -278,7 +278,7 @@ const SmartTeamCohortHero = () => {
               className="w-full sm:w-auto bg-nim-teal hover:bg-nim-teal/90 text-white rounded-2xl px-14 py-8 text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-teal/50"
               asChild
             >
-              <a href="#apply">
+              <a href="https://form.typeform.com/to/Dsi3pXkx" target="_blank" rel="noopener noreferrer">
                 Apply for a seat
                 <ArrowRight className="ml-3 w-6 h-6" aria-hidden="true" />
               </a>
@@ -925,7 +925,7 @@ const SmartTeamCohortHero = () => {
                 className="w-full bg-nim-mint hover:bg-nim-mint/90 text-nim-navy rounded-2xl px-10 py-8 text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-mint/50"
                 asChild
               >
-                <a href="#apply">
+                <a href="https://form.typeform.com/to/Dsi3pXkx" target="_blank" rel="noopener noreferrer">
                   Apply for a seat
                   <ArrowRight className="ml-3 w-6 h-6" aria-hidden="true" />
                 </a>
@@ -1021,7 +1021,7 @@ const SmartTeamCohortHero = () => {
               className="w-full sm:w-auto bg-nim-navy hover:bg-nim-navy/90 text-white rounded-2xl px-12 py-8 text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-navy/50"
               asChild
             >
-              <a href="#apply">
+              <a href="https://form.typeform.com/to/Dsi3pXkx" target="_blank" rel="noopener noreferrer">
                 Apply for a seat
                 <ArrowRight className="ml-3 w-6 h-6" aria-hidden="true" />
               </a>
@@ -1075,7 +1075,7 @@ const SmartTeamCohortHero = () => {
             className="w-full sm:w-auto bg-nim-mint hover:bg-nim-mint/90 text-nim-navy rounded-2xl px-16 py-8 text-xl md:text-2xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-mint/50 mb-8"
             asChild
           >
-            <a href="/apply">
+            <a href="https://form.typeform.com/to/Dsi3pXkx" target="_blank" rel="noopener noreferrer">
               Apply for a seat
               <ArrowRight className="ml-3 w-6 h-6" aria-hidden="true" />
             </a>
