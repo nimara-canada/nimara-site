@@ -52,10 +52,10 @@ const SmartTeamCohortHero = () => {
             id="hero-heading"
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.1] tracking-[-0.03em] mb-6"
           >
-            Get <span className="text-[#5eead4]">audit-proof</span> and{" "}
-            <span className="text-[#5eead4]">grant-ready</span>
+            Get <span className="text-[#ACFCE3]">audit-proof</span> and{" "}
+            <span className="text-[#ACFCE3]">grant-ready</span>
             <br className="hidden md:block" />
-            <span className="md:hidden"> </span>— in <span className="text-[#5eead4]">6 weeks.</span>
+            <span className="md:hidden"> </span>— in <span className="text-[#ACFCE3]">6 weeks.</span>
           </h1>
 
           {/* Subhead */}
@@ -68,8 +68,8 @@ const SmartTeamCohortHero = () => {
           <ul className="flex flex-col items-center gap-5 mb-12" aria-label="Key benefits">
             {bullets.map((bullet) => (
               <li key={bullet.main} className="flex items-start gap-4 text-left max-w-md">
-                <div className="w-6 h-6 rounded-full bg-[#5eead4]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Check className="w-4 h-4 text-[#5eead4]" aria-hidden="true" />
+                <div className="w-6 h-6 rounded-full bg-[#ACFCE3]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Check className="w-4 h-4 text-[#ACFCE3]" aria-hidden="true" />
                 </div>
                 <div>
                   <span className="text-white text-lg md:text-xl font-medium block">{bullet.main}</span>
@@ -117,14 +117,14 @@ const SmartTeamCohortHero = () => {
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-16 md:mb-20">
-            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-[#0d9488] mb-6">
+            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-[#14b8a6] mb-6">
               Is this a fit?
             </p>
             <h2 
               id="fit-heading"
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#0a0f1a] tracking-[-0.03em] leading-[1.1] mb-6"
             >
-              We only accept <span className="text-[#0d9488]">15 organizations</span>
+              We only accept <span className="text-[#14b8a6]">15 organizations</span>
               <br />
               per cohort.
             </h2>
@@ -137,13 +137,13 @@ const SmartTeamCohortHero = () => {
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 lg:gap-24 mb-16 md:mb-20">
             {/* Left Column - Fit */}
             <div>
-              <h3 className="text-sm md:text-base font-semibold uppercase tracking-[0.2em] text-[#0d9488] mb-8">
+              <h3 className="text-sm md:text-base font-semibold uppercase tracking-[0.2em] text-[#14b8a6] mb-8">
                 This is a fit if
               </h3>
               <ul className="space-y-6" aria-label="Good fit criteria">
                 <li className="flex items-start gap-4">
-                  <div className="w-7 h-7 rounded-full bg-[#0d9488]/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Check className="w-4 h-4 text-[#0d9488]" aria-hidden="true" />
+                  <div className="w-7 h-7 rounded-full bg-[#14b8a6]/10 flex items-center justify-center flex-shrink-0 mt-1">
+                    <Check className="w-4 h-4 text-[#14b8a6]" aria-hidden="true" />
                   </div>
                   <div>
                     <span className="text-[#0a0f1a] text-lg md:text-xl font-medium leading-relaxed block">
@@ -155,8 +155,8 @@ const SmartTeamCohortHero = () => {
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
-                  <div className="w-7 h-7 rounded-full bg-[#0d9488]/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Check className="w-4 h-4 text-[#0d9488]" aria-hidden="true" />
+                  <div className="w-7 h-7 rounded-full bg-[#14b8a6]/10 flex items-center justify-center flex-shrink-0 mt-1">
+                    <Check className="w-4 h-4 text-[#14b8a6]" aria-hidden="true" />
                   </div>
                   <div>
                     <span className="text-[#0a0f1a] text-lg md:text-xl font-medium leading-relaxed block">
@@ -168,8 +168,8 @@ const SmartTeamCohortHero = () => {
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
-                  <div className="w-7 h-7 rounded-full bg-[#0d9488]/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Check className="w-4 h-4 text-[#0d9488]" aria-hidden="true" />
+                  <div className="w-7 h-7 rounded-full bg-[#14b8a6]/10 flex items-center justify-center flex-shrink-0 mt-1">
+                    <Check className="w-4 h-4 text-[#14b8a6]" aria-hidden="true" />
                   </div>
                   <div>
                     <span className="text-[#0a0f1a] text-lg md:text-xl font-medium leading-relaxed block">
@@ -181,8 +181,8 @@ const SmartTeamCohortHero = () => {
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
-                  <div className="w-7 h-7 rounded-full bg-[#0d9488]/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Check className="w-4 h-4 text-[#0d9488]" aria-hidden="true" />
+                  <div className="w-7 h-7 rounded-full bg-[#14b8a6]/10 flex items-center justify-center flex-shrink-0 mt-1">
+                    <Check className="w-4 h-4 text-[#14b8a6]" aria-hidden="true" />
                   </div>
                   <div>
                     <span className="text-[#0a0f1a] text-lg md:text-xl font-medium leading-relaxed block">
@@ -258,11 +258,10 @@ const SmartTeamCohortHero = () => {
             </div>
           </div>
 
-          {/* Single CTA - Centered */}
           <div className="text-center">
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-[#0d9488] hover:bg-[#0d9488]/90 text-white rounded-xl px-12 py-8 text-lg font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#0d9488]/50"
+              className="w-full sm:w-auto bg-[#14b8a6] hover:bg-[#14b8a6]/90 text-white rounded-xl px-12 py-8 text-lg font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#14b8a6]/50"
               asChild
             >
               <a href="#apply">
@@ -292,7 +291,7 @@ const SmartTeamCohortHero = () => {
             >
               4 systems built with you
               <br />
-              <span className="text-[#0d9488]">— in 6 weeks.</span>
+              <span className="text-[#14b8a6]">— in 6 weeks.</span>
             </h2>
             <p className="text-lg md:text-xl text-[#2D3748] font-light max-w-2xl mx-auto">
               We implement these 4 pillars during our labs. You walk away with a 90-day plan to keep them running effortlessly.
@@ -390,7 +389,7 @@ const SmartTeamCohortHero = () => {
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-16 md:mb-24">
-            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-[#0d9488] mb-8">
+            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-[#14b8a6] mb-8">
               How it works
             </p>
             <h2 
@@ -411,7 +410,7 @@ const SmartTeamCohortHero = () => {
             {/* Step 1 */}
             <li className="text-center">
               <div 
-                className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-[#0d9488]/40 text-[#0d9488] text-xl md:text-2xl font-bold mb-6"
+                className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-[#14b8a6]/40 text-[#14b8a6] text-xl md:text-2xl font-bold mb-6"
                 aria-hidden="true"
               >
                 01
@@ -427,7 +426,7 @@ const SmartTeamCohortHero = () => {
             {/* Step 2 */}
             <li className="text-center">
               <div 
-                className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-[#0d9488]/40 text-[#0d9488] text-xl md:text-2xl font-bold mb-6"
+                className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-[#14b8a6]/40 text-[#14b8a6] text-xl md:text-2xl font-bold mb-6"
                 aria-hidden="true"
               >
                 02
@@ -443,7 +442,7 @@ const SmartTeamCohortHero = () => {
             {/* Step 3 */}
             <li className="text-center">
               <div 
-                className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-[#0d9488]/40 text-[#0d9488] text-xl md:text-2xl font-bold mb-6"
+                className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-[#14b8a6]/40 text-[#14b8a6] text-xl md:text-2xl font-bold mb-6"
                 aria-hidden="true"
               >
                 03
@@ -496,7 +495,7 @@ const SmartTeamCohortHero = () => {
         <div className="max-w-4xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-16 md:mb-20">
-            <p className="text-sm font-medium uppercase tracking-[0.25em] text-[#5eead4] mb-6">
+            <p className="text-sm font-medium uppercase tracking-[0.25em] text-[#ACFCE3] mb-6">
               Early win
             </p>
             <h2 
@@ -514,7 +513,7 @@ const SmartTeamCohortHero = () => {
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 lg:gap-20 mb-14">
             {/* Week 1 */}
             <article>
-              <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-[#5eead4]/10 text-[#5eead4] mb-6">
+              <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-[#ACFCE3]/10 text-[#ACFCE3] mb-6">
                 By the end of Week 1
               </span>
               <div className="mb-5">
@@ -525,11 +524,11 @@ const SmartTeamCohortHero = () => {
               </h3>
               <ul className="space-y-3" aria-label="Week 1 deliverables">
                 <li className="flex items-center gap-3 text-base md:text-lg text-white/50">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#5eead4]/50 flex-shrink-0" aria-hidden="true" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#ACFCE3]/50 flex-shrink-0" aria-hidden="true" />
                   A 'Source of Truth' folder map installed.
                 </li>
                 <li className="flex items-center gap-3 text-base md:text-lg text-white/50">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#5eead4]/50 flex-shrink-0" aria-hidden="true" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#ACFCE3]/50 flex-shrink-0" aria-hidden="true" />
                   Key docs (Charity status, Bylaws) found in &lt; 2 mins.
                 </li>
               </ul>
@@ -537,7 +536,7 @@ const SmartTeamCohortHero = () => {
 
             {/* Week 2 */}
             <article>
-              <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-[#5eead4]/10 text-[#5eead4] mb-6">
+              <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-[#ACFCE3]/10 text-[#ACFCE3] mb-6">
                 By the end of Week 2
               </span>
               <div className="mb-5">
@@ -548,11 +547,11 @@ const SmartTeamCohortHero = () => {
               </h3>
               <ul className="space-y-3" aria-label="Week 2 deliverables">
                 <li className="flex items-center gap-3 text-base md:text-lg text-white/50">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#5eead4]/50 flex-shrink-0" aria-hidden="true" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#ACFCE3]/50 flex-shrink-0" aria-hidden="true" />
                   Your first 10 expenses fully documented.
                 </li>
                 <li className="flex items-center gap-3 text-base md:text-lg text-white/50">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#5eead4]/50 flex-shrink-0" aria-hidden="true" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#ACFCE3]/50 flex-shrink-0" aria-hidden="true" />
                   Approval + Invoice + Payment proof linked perfectly.
                 </li>
               </ul>
@@ -591,7 +590,7 @@ const SmartTeamCohortHero = () => {
         <div className="max-w-3xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-14 md:mb-16">
-            <p className="text-sm font-medium uppercase tracking-[0.25em] text-[#5eead4] mb-6">
+            <p className="text-sm font-medium uppercase tracking-[0.25em] text-[#ACFCE3] mb-6">
               Ultimate proof
             </p>
             <h2 
@@ -617,28 +616,28 @@ const SmartTeamCohortHero = () => {
 
             <ul className="space-y-5 mb-8" aria-label="Stress test requirements">
               <li className="flex items-start gap-3 text-base">
-                <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0 mt-0.5" aria-hidden="true" />
+                <Check className="w-5 h-5 text-[#ACFCE3] flex-shrink-0 mt-0.5" aria-hidden="true" />
                 <div>
                   <span className="text-white font-medium">Proof for a real purchase:</span>
                   <span className="text-white/50 ml-1">(Linked invoice, approval, and payment).</span>
                 </div>
               </li>
               <li className="flex items-start gap-3 text-base">
-                <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0 mt-0.5" aria-hidden="true" />
+                <Check className="w-5 h-5 text-[#ACFCE3] flex-shrink-0 mt-0.5" aria-hidden="true" />
                 <div>
                   <span className="text-white font-medium">A board decision record:</span>
                   <span className="text-white/50 ml-1">(Minute log and action tracker).</span>
                 </div>
               </li>
               <li className="flex items-start gap-3 text-base">
-                <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0 mt-0.5" aria-hidden="true" />
+                <Check className="w-5 h-5 text-[#ACFCE3] flex-shrink-0 mt-0.5" aria-hidden="true" />
                 <div>
                   <span className="text-white font-medium">Your latest funder report:</span>
                   <span className="text-white/50 ml-1">(Generated via your new dashboard).</span>
                 </div>
               </li>
               <li className="flex items-start gap-3 text-base">
-                <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0 mt-0.5" aria-hidden="true" />
+                <Check className="w-5 h-5 text-[#ACFCE3] flex-shrink-0 mt-0.5" aria-hidden="true" />
                 <div>
                   <span className="text-white font-medium">The 3-Minute Rule:</span>
                   <span className="text-white/50 ml-1">Find any key document in under 180 seconds.</span>
@@ -675,7 +674,7 @@ const SmartTeamCohortHero = () => {
         <div className="max-w-4xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-16 md:mb-20">
-            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-[#5eead4] mb-6">
+            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-[#ACFCE3] mb-6">
               Guarantee
             </p>
             <h2 
@@ -695,7 +694,7 @@ const SmartTeamCohortHero = () => {
             <div className="text-center mb-10 pb-10 border-b border-white/10">
               <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-snug">
                 If we do not set up the 4 systems, you get a full refund{' '}
-                <span className="text-[#5eead4]">($9,450 CAD)</span>.
+                <span className="text-[#ACFCE3]">($9,450 CAD)</span>.
               </p>
             </div>
 
@@ -708,15 +707,15 @@ const SmartTeamCohortHero = () => {
                 </h4>
                 <ul className="space-y-4" aria-label="Qualification requirements">
                   <li className="flex items-center gap-3 text-white/70 text-base md:text-lg">
-                    <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0" aria-hidden="true" />
+                    <Check className="w-5 h-5 text-[#ACFCE3] flex-shrink-0" aria-hidden="true" />
                     Attend 5 of the 6 weeks.
                   </li>
                   <li className="flex items-center gap-3 text-white/70 text-base md:text-lg">
-                    <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0" aria-hidden="true" />
+                    <Check className="w-5 h-5 text-[#ACFCE3] flex-shrink-0" aria-hidden="true" />
                     Submit the weekly items.
                   </li>
                   <li className="flex items-center gap-3 text-white/70 text-base md:text-lg">
-                    <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0" aria-hidden="true" />
+                    <Check className="w-5 h-5 text-[#ACFCE3] flex-shrink-0" aria-hidden="true" />
                     Share the needed documents.
                   </li>
                 </ul>
@@ -729,19 +728,19 @@ const SmartTeamCohortHero = () => {
                 </h4>
                 <ul className="space-y-4" aria-label="The 4 systems">
                   <li className="flex items-center gap-3 text-white/70 text-base md:text-lg">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#5eead4] flex-shrink-0" aria-hidden="true" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#ACFCE3] flex-shrink-0" aria-hidden="true" />
                     Audit-Ready Spending Proof
                   </li>
                   <li className="flex items-center gap-3 text-white/70 text-base md:text-lg">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#5eead4] flex-shrink-0" aria-hidden="true" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#ACFCE3] flex-shrink-0" aria-hidden="true" />
                     Professional Board Decisions
                   </li>
                   <li className="flex items-center gap-3 text-white/70 text-base md:text-lg">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#5eead4] flex-shrink-0" aria-hidden="true" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#ACFCE3] flex-shrink-0" aria-hidden="true" />
                     Simple Funder Reporting
                   </li>
                   <li className="flex items-center gap-3 text-white/70 text-base md:text-lg">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#5eead4] flex-shrink-0" aria-hidden="true" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#ACFCE3] flex-shrink-0" aria-hidden="true" />
                     Find-it-Fast File System
                   </li>
                 </ul>
@@ -780,14 +779,14 @@ const SmartTeamCohortHero = () => {
         <div className="max-w-xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-16 md:mb-20">
-            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-[#5eead4] mb-6">
+            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-[#ACFCE3] mb-6">
               Price and seats
             </p>
             <h2 
               id="price-heading"
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.03em] leading-[1.1]"
             >
-              Simple and <span className="text-[#5eead4]">clear.</span>
+              Simple and <span className="text-[#ACFCE3]">clear.</span>
             </h2>
           </header>
 
@@ -805,7 +804,7 @@ const SmartTeamCohortHero = () => {
 
             {/* Seats Badge */}
             <div className="flex justify-center mb-12">
-              <span className="inline-flex items-center px-6 py-3 rounded-full text-base font-semibold bg-[#5eead4]/10 text-[#5eead4] border border-[#5eead4]/20">
+              <span className="inline-flex items-center px-6 py-3 rounded-full text-base font-semibold bg-[#ACFCE3]/10 text-[#ACFCE3] border border-[#ACFCE3]/20">
                 15 seats per cohort
               </span>
             </div>
@@ -820,19 +819,19 @@ const SmartTeamCohortHero = () => {
               </h4>
               <ul className="space-y-4" aria-label="What's included">
                 <li className="flex items-center gap-4 text-white text-lg">
-                  <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0" aria-hidden="true" />
+                  <Check className="w-5 h-5 text-[#ACFCE3] flex-shrink-0" aria-hidden="true" />
                   4 systems set up with you
                 </li>
                 <li className="flex items-center gap-4 text-white text-lg">
-                  <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0" aria-hidden="true" />
+                  <Check className="w-5 h-5 text-[#ACFCE3] flex-shrink-0" aria-hidden="true" />
                   Weekly labs and office hours
                 </li>
                 <li className="flex items-center gap-4 text-white text-lg">
-                  <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0" aria-hidden="true" />
+                  <Check className="w-5 h-5 text-[#ACFCE3] flex-shrink-0" aria-hidden="true" />
                   Week 6 stress test
                 </li>
                 <li className="flex items-center gap-4 text-white text-lg">
-                  <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0" aria-hidden="true" />
+                  <Check className="w-5 h-5 text-[#ACFCE3] flex-shrink-0" aria-hidden="true" />
                   90-day plan
                 </li>
               </ul>
@@ -864,7 +863,7 @@ const SmartTeamCohortHero = () => {
             <div className="flex flex-col gap-4">
               <Button
                 size="lg"
-                className="w-full bg-[#5eead4] hover:bg-[#5eead4]/90 text-[#0a0f1a] rounded-xl px-8 py-7 text-lg font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#5eead4]/50"
+                className="w-full bg-[#ACFCE3] hover:bg-[#ACFCE3]/90 text-[#0a0f1a] rounded-xl px-8 py-7 text-lg font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#ACFCE3]/50"
                 asChild
               >
                 <a href="#apply">
@@ -897,14 +896,14 @@ const SmartTeamCohortHero = () => {
         <div className="max-w-2xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-16 md:mb-20">
-            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-[#0d9488] mb-6">
+            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-[#14b8a6] mb-6">
               FAQ
             </p>
             <h2 
               id="faq-heading"
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#0a0f1a] tracking-[-0.03em] leading-[1.1]"
             >
-              Quick <span className="text-[#0d9488]">answers.</span>
+              Quick <span className="text-[#14b8a6]">answers.</span>
             </h2>
           </header>
 
@@ -995,7 +994,7 @@ const SmartTeamCohortHero = () => {
       >
         <div className="max-w-3xl mx-auto text-center">
           {/* Guarantee Badge */}
-          <div className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-semibold bg-[#5eead4]/10 text-[#5eead4] border border-[#5eead4]/20 mb-8">
+          <div className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-semibold bg-[#ACFCE3]/10 text-[#ACFCE3] border border-[#ACFCE3]/20 mb-8">
             <ShieldCheck className="w-4 h-4 mr-2" aria-hidden="true" />
             Full refund guarantee: $9,450 CAD
           </div>
@@ -1005,7 +1004,7 @@ const SmartTeamCohortHero = () => {
             id="apply-heading"
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.03em] mb-6"
           >
-            Ready to get <span className="text-[#5eead4]">funder-ready?</span>
+            Ready to get <span className="text-[#ACFCE3]">funder-ready?</span>
           </h2>
           <p className="text-lg md:text-xl text-white/60 font-light mb-12 max-w-xl mx-auto">
             Apply now. We'll review your application and send next steps within 2 business days.
@@ -1014,7 +1013,7 @@ const SmartTeamCohortHero = () => {
           {/* Main CTA */}
           <Button
             size="lg"
-            className="w-full sm:w-auto bg-[#5eead4] hover:bg-[#5eead4]/90 text-[#0a0f1a] rounded-xl px-14 py-8 text-lg md:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#5eead4]/50 mb-6"
+            className="w-full sm:w-auto bg-[#ACFCE3] hover:bg-[#ACFCE3]/90 text-[#0a0f1a] rounded-xl px-14 py-8 text-lg md:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#ACFCE3]/50 mb-6"
             asChild
           >
             <a href="/apply">
@@ -1031,15 +1030,15 @@ const SmartTeamCohortHero = () => {
           {/* Trust reinforcement */}
           <div className="flex flex-wrap items-center justify-center gap-8 mb-10">
             <span className="inline-flex items-center gap-2 text-white/60 text-base font-medium">
-              <Check className="w-5 h-5 text-[#5eead4]" aria-hidden="true" />
+              <Check className="w-5 h-5 text-[#ACFCE3]" aria-hidden="true" />
               15 seats only
             </span>
             <span className="inline-flex items-center gap-2 text-white/60 text-base font-medium">
-              <Clock className="w-5 h-5 text-[#5eead4]" aria-hidden="true" />
+              <Clock className="w-5 h-5 text-[#ACFCE3]" aria-hidden="true" />
               6 weeks
             </span>
             <span className="inline-flex items-center gap-2 text-white/60 text-base font-medium">
-              <ShieldCheck className="w-5 h-5 text-[#5eead4]" aria-hidden="true" />
+              <ShieldCheck className="w-5 h-5 text-[#ACFCE3]" aria-hidden="true" />
               $9,450 CAD
             </span>
           </div>
@@ -1055,7 +1054,7 @@ const SmartTeamCohortHero = () => {
       <footer className="w-full px-6 md:px-10 lg:px-16 py-12 bg-[#0a0f1a] border-t border-white/10">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="flex items-center gap-4">
-            <div className="w-10 h-10 bg-[#5eead4] rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-[#ACFCE3] rounded-lg flex items-center justify-center">
               <span className="text-[#0a0f1a] font-bold text-base">N</span>
             </div>
             <span className="text-base text-white/60">© 2025 Nimara</span>
