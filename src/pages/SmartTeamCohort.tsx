@@ -501,10 +501,13 @@ const SmartTeamCohortHero = () => {
             </p>
             <h2 
               id="early-win-heading"
-              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.03em] leading-[1.1]"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.03em] leading-[1.1] mb-6"
             >
-              You will feel progress fast.
+              Feel the relief in the first 14 days.
             </h2>
+            <p className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto">
+              We don't wait 6 weeks to show results. We engineer early wins so your team can breathe.
+            </p>
           </header>
 
           {/* Week 1 and Week 2 */}
@@ -515,19 +518,19 @@ const SmartTeamCohortHero = () => {
                 By the end of Week 1
               </span>
               <div className="mb-5">
-                <Folder className="w-10 h-10 text-white/80" strokeWidth={1.5} aria-hidden="true" />
+                <FolderOpen className="w-10 h-10 text-white/80" strokeWidth={1.5} aria-hidden="true" />
               </div>
               <h3 className="text-xl md:text-2xl font-semibold text-white mb-5 tracking-[-0.01em]">
-                Your file system is set up.
+                Your File System is Done.
               </h3>
               <ul className="space-y-3" aria-label="Week 1 deliverables">
                 <li className="flex items-center gap-3 text-base md:text-lg text-white/50">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#5eead4]/50 flex-shrink-0" aria-hidden="true" />
-                  A clear folder map
+                  A 'Source of Truth' folder map installed.
                 </li>
                 <li className="flex items-center gap-3 text-base md:text-lg text-white/50">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#5eead4]/50 flex-shrink-0" aria-hidden="true" />
-                  Key documents easy to find
+                  Key docs (Charity status, Bylaws) found in &lt; 2 mins.
                 </li>
               </ul>
             </article>
@@ -538,34 +541,34 @@ const SmartTeamCohortHero = () => {
                 By the end of Week 2
               </span>
               <div className="mb-5">
-                <Receipt className="w-10 h-10 text-white/80" strokeWidth={1.5} aria-hidden="true" />
+                <ShieldCheck className="w-10 h-10 text-white/80" strokeWidth={1.5} aria-hidden="true" />
               </div>
               <h3 className="text-xl md:text-2xl font-semibold text-white mb-5 tracking-[-0.01em]">
-                You finish 10 proof bundles.
+                10 Audit-Ready Bundles.
               </h3>
               <ul className="space-y-3" aria-label="Week 2 deliverables">
                 <li className="flex items-center gap-3 text-base md:text-lg text-white/50">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#5eead4]/50 flex-shrink-0" aria-hidden="true" />
-                  Approval, invoice, and payment proof
+                  Your first 10 expenses fully documented.
                 </li>
                 <li className="flex items-center gap-3 text-base md:text-lg text-white/50">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#5eead4]/50 flex-shrink-0" aria-hidden="true" />
-                  Saved in the right place
+                  Approval + Invoice + Payment proof linked perfectly.
                 </li>
               </ul>
             </article>
           </div>
 
-          {/* Reassurance Line */}
-          <p className="text-center text-base md:text-lg text-white/40 mb-12">
-            Most teams feel relief here.
+          {/* Emotional Closer */}
+          <p className="text-center text-base md:text-lg text-white/40 italic mb-12">
+            Most Executive Directors feel the weight lift right here.
           </p>
 
           {/* CTA */}
           <div className="text-center">
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-white hover:bg-white/90 text-[#0a0f1a] rounded-xl px-10 py-7 text-base font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/50"
+              className="w-full sm:w-auto bg-gradient-to-r from-[#7c3aed] via-[#a855f7] to-[#7c3aed] hover:opacity-90 text-white rounded-xl px-10 py-7 text-base font-semibold shadow-[0_0_30px_rgba(168,85,247,0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#a855f7]/50"
               asChild
             >
               <a href="#apply">
@@ -573,6 +576,9 @@ const SmartTeamCohortHero = () => {
                 <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
               </a>
             </Button>
+            <p className="text-sm md:text-base text-white/40 mt-6">
+              <span className="text-white font-semibold">$9,450 CAD</span> • 15 spots per cohort
+            </p>
           </div>
         </div>
       </section>
