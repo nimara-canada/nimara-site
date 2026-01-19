@@ -389,7 +389,7 @@ const SmartTeamCohortHero = () => {
       >
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
-          <header className="text-center mb-20 md:mb-28">
+          <header className="text-center mb-16 md:mb-24">
             <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-[#5eead4] mb-8">
               How it works
             </p>
@@ -397,76 +397,75 @@ const SmartTeamCohortHero = () => {
               id="how-it-works-heading"
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-[-0.04em] leading-[1.05] mb-8"
             >
-              2–3 hours/week.
+              4 hours a week.
               <br />
               <span className="text-white/70">6 weeks total.</span>
             </h2>
-            <p className="text-xl md:text-2xl text-white/60 font-light max-w-xl mx-auto leading-relaxed">
-              One Ops Lead. We build it with you.
+            <p className="text-xl md:text-2xl text-white/60 font-light max-w-2xl mx-auto leading-relaxed">
+              One Ops Lead. We build the infrastructure with you.
             </p>
           </header>
 
           {/* 3-Step Flow */}
-          <ol className="grid md:grid-cols-3 gap-12 md:gap-16 lg:gap-20 mb-20 md:mb-28" aria-label="Program steps">
+          <ol className="grid md:grid-cols-3 gap-10 md:gap-12 lg:gap-16 mb-16 md:mb-20" aria-label="Program steps">
             {/* Step 1 */}
             <li className="text-center">
               <div 
-                className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-[#5eead4]/40 text-[#5eead4] text-xl md:text-2xl font-bold mb-8"
+                className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-[#5eead4]/40 text-[#5eead4] text-xl md:text-2xl font-bold mb-6"
                 aria-hidden="true"
               >
                 01
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-[-0.02em]">
-                Set up your files
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-3 tracking-[-0.02em]">
+                Build Your Source of Truth
               </h3>
-              <p className="text-lg md:text-xl text-white/50 font-light">
-                Stop losing documents.
+              <p className="text-base md:text-lg text-white/50 font-light leading-relaxed">
+                Stop losing documents. We set up your digital folder map, naming rules, and access controls in Week 1.
               </p>
             </li>
 
             {/* Step 2 */}
             <li className="text-center">
               <div 
-                className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-[#5eead4]/40 text-[#5eead4] text-xl md:text-2xl font-bold mb-8"
+                className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-[#5eead4]/40 text-[#5eead4] text-xl md:text-2xl font-bold mb-6"
                 aria-hidden="true"
               >
                 02
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-[-0.02em]">
-                Set up 4 systems
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-3 tracking-[-0.02em]">
+                Install the 4 Systems
               </h3>
-              <p className="text-lg md:text-xl text-white/50 font-light">
-                Proof, board, reporting, and files.
+              <p className="text-base md:text-lg text-white/50 font-light leading-relaxed">
+                Direct implementation. We build your spending proof, board decision, and reporting workflows together in our weekly labs.
               </p>
             </li>
 
             {/* Step 3 */}
             <li className="text-center">
               <div 
-                className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-[#5eead4]/40 text-[#5eead4] text-xl md:text-2xl font-bold mb-8"
+                className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-[#5eead4]/40 text-[#5eead4] text-xl md:text-2xl font-bold mb-6"
                 aria-hidden="true"
               >
                 03
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-[-0.02em]">
-                Prove it works
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-3 tracking-[-0.02em]">
+                The Stress Test
               </h3>
-              <p className="text-lg md:text-xl text-white/50 font-light">
-                Stress test + 90-day plan.
+              <p className="text-base md:text-lg text-white/50 font-light leading-relaxed">
+                Prove it works. We live-test your ability to find any document or proof bundle in under 3 minutes before you graduate.
               </p>
             </li>
           </ol>
 
           {/* Schedule Row */}
-          <div className="border-t border-white/10 pt-12 mb-16 md:mb-20">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-center">
+          <div className="border-t border-white/10 pt-10 mb-14 md:mb-16">
+            <div className="flex flex-col items-center text-center gap-3">
               <span className="text-sm md:text-base font-semibold uppercase tracking-[0.2em] text-white/50">
                 Weekly schedule
               </span>
-              <span className="hidden sm:block text-white/20 text-2xl" aria-hidden="true">—</span>
-              <span className="text-lg md:text-xl text-white/70 font-light">
-                1 group (90 min) • 1 lab (90 min) • office hours (optional)
-              </span>
+              <p className="text-base md:text-lg text-white/70 font-light max-w-xl">
+                1 Group Strategy Session (90 min) + 1 Implementation Lab (90 min) + 1 hour of prep/sorting
+              </p>
             </div>
           </div>
 
@@ -474,7 +473,7 @@ const SmartTeamCohortHero = () => {
           <div className="text-center">
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-[#5eead4] hover:bg-[#5eead4]/90 text-[#0a0f1a] rounded-xl px-12 py-8 text-lg md:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#5eead4]/50"
+              className="w-full sm:w-auto bg-[#8b5cf6] hover:bg-[#7c3aed] text-white rounded-xl px-12 py-8 text-lg font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8b5cf6]/50"
               asChild
             >
               <a href="#apply">
@@ -482,6 +481,9 @@ const SmartTeamCohortHero = () => {
                 <ArrowRight className="ml-3 w-5 h-5" aria-hidden="true" />
               </a>
             </Button>
+            <p className="text-sm md:text-base text-white/40 mt-6">
+              <span className="text-white font-semibold">$9,450 CAD</span> per org • 15 spots per cohort
+            </p>
           </div>
         </div>
       </section>
