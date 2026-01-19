@@ -131,14 +131,14 @@ const SmartTeamCohortHero = () => {
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-20 md:mb-24">
-            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-teal-600 mb-8">
+            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-nim-teal mb-8">
               Is this a fit?
             </p>
             <h2 
               id="fit-heading"
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-nim-navy tracking-[-0.03em] leading-[1.08] mb-8"
             >
-              We only accept <span className="text-teal-600">15 organizations</span>
+              We only accept <span className="text-nim-teal">15 organizations</span>
               <br className="hidden md:block" />
               per cohort.
             </h2>
@@ -151,13 +151,13 @@ const SmartTeamCohortHero = () => {
           <div className="grid md:grid-cols-2 gap-16 md:gap-20 lg:gap-28 mb-20">
             {/* Left Column - Fit */}
             <div>
-              <h3 className="text-base font-semibold uppercase tracking-[0.2em] text-teal-600 mb-10">
+              <h3 className="text-base font-semibold uppercase tracking-[0.2em] text-nim-teal mb-10">
                 This is a fit if
               </h3>
               <ul className="space-y-8" aria-label="Good fit criteria">
                 <li className="flex items-start gap-5">
-                  <div className="w-8 h-8 rounded-full bg-teal-500/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Check className="w-5 h-5 text-teal-600" aria-hidden="true" />
+                  <div className="w-8 h-8 rounded-full bg-nim-teal/10 flex items-center justify-center flex-shrink-0 mt-1">
+                    <Check className="w-5 h-5 text-nim-teal" aria-hidden="true" />
                   </div>
                   <div>
                     <span className="text-nim-navy text-xl md:text-2xl font-medium leading-relaxed block">
@@ -169,8 +169,8 @@ const SmartTeamCohortHero = () => {
                   </div>
                 </li>
                 <li className="flex items-start gap-5">
-                  <div className="w-8 h-8 rounded-full bg-teal-500/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Check className="w-5 h-5 text-teal-600" aria-hidden="true" />
+                  <div className="w-8 h-8 rounded-full bg-nim-teal/10 flex items-center justify-center flex-shrink-0 mt-1">
+                    <Check className="w-5 h-5 text-nim-teal" aria-hidden="true" />
                   </div>
                   <div>
                     <span className="text-nim-navy text-xl md:text-2xl font-medium leading-relaxed block">
@@ -182,8 +182,8 @@ const SmartTeamCohortHero = () => {
                   </div>
                 </li>
                 <li className="flex items-start gap-5">
-                  <div className="w-8 h-8 rounded-full bg-teal-500/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Check className="w-5 h-5 text-teal-600" aria-hidden="true" />
+                  <div className="w-8 h-8 rounded-full bg-nim-teal/10 flex items-center justify-center flex-shrink-0 mt-1">
+                    <Check className="w-5 h-5 text-nim-teal" aria-hidden="true" />
                   </div>
                   <div>
                     <span className="text-nim-navy text-xl md:text-2xl font-medium leading-relaxed block">
@@ -195,8 +195,8 @@ const SmartTeamCohortHero = () => {
                   </div>
                 </li>
                 <li className="flex items-start gap-5">
-                  <div className="w-8 h-8 rounded-full bg-teal-500/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Check className="w-5 h-5 text-teal-600" aria-hidden="true" />
+                  <div className="w-8 h-8 rounded-full bg-nim-teal/10 flex items-center justify-center flex-shrink-0 mt-1">
+                    <Check className="w-5 h-5 text-nim-teal" aria-hidden="true" />
                   </div>
                   <div>
                     <span className="text-nim-navy text-xl md:text-2xl font-medium leading-relaxed block">
@@ -275,7 +275,7 @@ const SmartTeamCohortHero = () => {
           <div className="text-center">
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-teal-600 hover:bg-teal-600/90 text-white rounded-2xl px-14 py-8 text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-teal-600/50"
+              className="w-full sm:w-auto bg-nim-teal hover:bg-nim-teal/90 text-white rounded-2xl px-14 py-8 text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-teal/50"
               asChild
             >
               <a href="#apply">
@@ -305,7 +305,7 @@ const SmartTeamCohortHero = () => {
             >
               4 systems built with you
               <br />
-              <span className="text-teal-600">— in 6 weeks.</span>
+              <span className="text-nim-teal">— in 6 weeks.</span>
             </h2>
             <p className="text-xl md:text-2xl text-nim-slate-dark font-light max-w-2xl mx-auto">
               We implement these 4 pillars during our labs. You walk away with a 90-day plan to keep them running.
@@ -403,7 +403,7 @@ const SmartTeamCohortHero = () => {
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-20 md:mb-28">
-            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-teal-600 mb-10">
+            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-nim-teal mb-10">
               How it works
             </p>
             <h2 
@@ -424,22 +424,22 @@ const SmartTeamCohortHero = () => {
             <h3 className="text-2xl md:text-3xl font-semibold text-nim-navy mb-10 text-center">Your Weekly Commitment</h3>
             <div className="grid md:grid-cols-3 gap-10 md:gap-12">
               <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-teal-500/10 flex items-center justify-center">
-                  <Users className="w-8 h-8 text-teal-600" aria-hidden="true" />
+                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-nim-teal/10 flex items-center justify-center">
+                  <Users className="w-8 h-8 text-nim-teal" aria-hidden="true" />
                 </div>
                 <p className="text-nim-navy font-semibold text-xl mb-2">Strategy Session</p>
                 <p className="text-nim-slate-dark text-lg">90 minutes</p>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-teal-500/10 flex items-center justify-center">
-                  <FileCheck className="w-8 h-8 text-teal-600" aria-hidden="true" />
+                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-nim-teal/10 flex items-center justify-center">
+                  <FileCheck className="w-8 h-8 text-nim-teal" aria-hidden="true" />
                 </div>
                 <p className="text-nim-navy font-semibold text-xl mb-2">Implementation Lab</p>
                 <p className="text-nim-slate-dark text-lg">90 minutes</p>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-teal-500/10 flex items-center justify-center">
-                  <Clock className="w-8 h-8 text-teal-600" aria-hidden="true" />
+                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-nim-teal/10 flex items-center justify-center">
+                  <Clock className="w-8 h-8 text-nim-teal" aria-hidden="true" />
                 </div>
                 <p className="text-nim-navy font-semibold text-xl mb-2">Prep & Sorting</p>
                 <p className="text-nim-slate-dark text-lg">1 hour</p>
@@ -463,12 +463,12 @@ const SmartTeamCohortHero = () => {
                   key={item.week}
                   className={`relative p-5 rounded-2xl text-center ${
                     item.highlight 
-                      ? 'bg-teal-500/10 border-2 border-teal-500/30' 
+                      ? 'bg-nim-teal/10 border-2 border-nim-teal/30' 
                       : 'bg-white border border-border'
                   }`}
                 >
                   <p className={`text-xs font-semibold uppercase tracking-wider mb-2 ${
-                    item.highlight ? 'text-teal-600' : 'text-nim-slate'
+                    item.highlight ? 'text-nim-teal' : 'text-nim-slate'
                   }`}>{item.week}</p>
                   <p className="text-base text-nim-slate-dark mb-2">{item.date}</p>
                   <p className={`text-base font-medium ${
@@ -483,7 +483,7 @@ const SmartTeamCohortHero = () => {
           <ol className="grid md:grid-cols-3 gap-12 md:gap-16 lg:gap-20 mb-20" aria-label="Program steps">
             <li className="text-center">
               <div 
-                className="inline-flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-teal-500/40 text-teal-600 text-2xl md:text-3xl font-bold mb-8"
+                className="inline-flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-nim-teal/40 text-nim-teal text-2xl md:text-3xl font-bold mb-8"
                 aria-hidden="true"
               >
                 01
@@ -498,7 +498,7 @@ const SmartTeamCohortHero = () => {
 
             <li className="text-center">
               <div 
-                className="inline-flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-teal-500/40 text-teal-600 text-2xl md:text-3xl font-bold mb-8"
+                className="inline-flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-nim-teal/40 text-nim-teal text-2xl md:text-3xl font-bold mb-8"
                 aria-hidden="true"
               >
                 02
@@ -513,7 +513,7 @@ const SmartTeamCohortHero = () => {
 
             <li className="text-center">
               <div 
-                className="inline-flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-teal-500/40 text-teal-600 text-2xl md:text-3xl font-bold mb-8"
+                className="inline-flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-nim-teal/40 text-nim-teal text-2xl md:text-3xl font-bold mb-8"
                 aria-hidden="true"
               >
                 03
@@ -955,14 +955,14 @@ const SmartTeamCohortHero = () => {
         <div className="max-w-2xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-20">
-            <p className="text-base font-medium uppercase tracking-[0.25em] text-teal-600 mb-8">
+            <p className="text-base font-medium uppercase tracking-[0.25em] text-nim-teal mb-8">
               FAQ
             </p>
             <h2 
               id="faq-heading"
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-nim-navy tracking-[-0.03em] leading-[1.08]"
             >
-              Quick <span className="text-teal-600">answers.</span>
+              Quick <span className="text-nim-teal">answers.</span>
             </h2>
           </header>
 
