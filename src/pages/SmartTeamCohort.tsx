@@ -109,26 +109,26 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Section 2: Is This a Fit? */}
+      {/* Section 2: Is This a Fit? - OFF-WHITE */}
       <section 
-        className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#0a0f1a]"
+        className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#F9F9F9]"
         aria-labelledby="fit-heading"
       >
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-16 md:mb-20">
-            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-[#5eead4] mb-6">
+            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-[#0d9488] mb-6">
               Is this a fit?
             </p>
             <h2 
               id="fit-heading"
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.03em] leading-[1.1] mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#0a0f1a] tracking-[-0.03em] leading-[1.1] mb-6"
             >
-              We only accept <span className="text-[#5eead4]">15 organizations</span>
+              We only accept <span className="text-[#0d9488]">15 organizations</span>
               <br />
               per cohort.
             </h2>
-            <p className="text-lg md:text-xl text-white/50 font-light max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-[#2D3748] font-light max-w-2xl mx-auto">
               We filter strictly to ensure every team graduates audit-proof.
             </p>
           </header>
@@ -137,58 +137,58 @@ const SmartTeamCohortHero = () => {
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 lg:gap-24 mb-16 md:mb-20">
             {/* Left Column - Fit */}
             <div>
-              <h3 className="text-sm md:text-base font-semibold uppercase tracking-[0.2em] text-[#5eead4] mb-8">
+              <h3 className="text-sm md:text-base font-semibold uppercase tracking-[0.2em] text-[#0d9488] mb-8">
                 This is a fit if
               </h3>
               <ul className="space-y-6" aria-label="Good fit criteria">
                 <li className="flex items-start gap-4">
-                  <div className="w-7 h-7 rounded-full bg-[#5eead4]/20 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Check className="w-4 h-4 text-[#5eead4]" aria-hidden="true" />
+                  <div className="w-7 h-7 rounded-full bg-[#0d9488]/10 flex items-center justify-center flex-shrink-0 mt-1">
+                    <Check className="w-4 h-4 text-[#0d9488]" aria-hidden="true" />
                   </div>
                   <div>
-                    <span className="text-white text-lg md:text-xl font-medium leading-relaxed block">
+                    <span className="text-[#0a0f1a] text-lg md:text-xl font-medium leading-relaxed block">
                       You have a ~$10k budget.
                     </span>
-                    <span className="text-white/50 text-base font-light">
+                    <span className="text-[#2D3748] text-base font-light">
                       Tuition is $9,450 CAD and eligible for Capacity Building grants.
                     </span>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
-                  <div className="w-7 h-7 rounded-full bg-[#5eead4]/20 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Check className="w-4 h-4 text-[#5eead4]" aria-hidden="true" />
+                  <div className="w-7 h-7 rounded-full bg-[#0d9488]/10 flex items-center justify-center flex-shrink-0 mt-1">
+                    <Check className="w-4 h-4 text-[#0d9488]" aria-hidden="true" />
                   </div>
                   <div>
-                    <span className="text-white text-lg md:text-xl font-medium leading-relaxed block">
+                    <span className="text-[#0a0f1a] text-lg md:text-xl font-medium leading-relaxed block">
                       You use a cloud stack.
                     </span>
-                    <span className="text-white/50 text-base font-light">
+                    <span className="text-[#2D3748] text-base font-light">
                       Specifically Google Workspace or Microsoft 365.
                     </span>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
-                  <div className="w-7 h-7 rounded-full bg-[#5eead4]/20 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Check className="w-4 h-4 text-[#5eead4]" aria-hidden="true" />
+                  <div className="w-7 h-7 rounded-full bg-[#0d9488]/10 flex items-center justify-center flex-shrink-0 mt-1">
+                    <Check className="w-4 h-4 text-[#0d9488]" aria-hidden="true" />
                   </div>
                   <div>
-                    <span className="text-white text-lg md:text-xl font-medium leading-relaxed block">
+                    <span className="text-[#0a0f1a] text-lg md:text-xl font-medium leading-relaxed block">
                       You can commit 4 hours/week.
                     </span>
-                    <span className="text-white/50 text-base font-light">
+                    <span className="text-[#2D3748] text-base font-light">
                       We do the real work together in labs; we don't just lecture.
                     </span>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
-                  <div className="w-7 h-7 rounded-full bg-[#5eead4]/20 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Check className="w-4 h-4 text-[#5eead4]" aria-hidden="true" />
+                  <div className="w-7 h-7 rounded-full bg-[#0d9488]/10 flex items-center justify-center flex-shrink-0 mt-1">
+                    <Check className="w-4 h-4 text-[#0d9488]" aria-hidden="true" />
                   </div>
                   <div>
-                    <span className="text-white text-lg md:text-xl font-medium leading-relaxed block">
+                    <span className="text-[#0a0f1a] text-lg md:text-xl font-medium leading-relaxed block">
                       You are a Canadian Nonprofit.
                     </span>
-                    <span className="text-white/50 text-base font-light">
+                    <span className="text-[#2D3748] text-base font-light">
                       Current cohort is optimized for Canadian reporting standards.
                     </span>
                   </div>
@@ -198,58 +198,58 @@ const SmartTeamCohortHero = () => {
 
             {/* Right Column - Not a Fit */}
             <div>
-              <h3 className="text-sm md:text-base font-semibold uppercase tracking-[0.2em] text-white/40 mb-8">
+              <h3 className="text-sm md:text-base font-semibold uppercase tracking-[0.2em] text-[#64748b] mb-8">
                 Not a fit if
               </h3>
               <ul className="space-y-6" aria-label="Not a good fit criteria">
                 <li className="flex items-start gap-4">
-                  <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <X className="w-4 h-4 text-white/40" aria-hidden="true" />
+                  <div className="w-7 h-7 rounded-full bg-[#64748b]/10 flex items-center justify-center flex-shrink-0 mt-1">
+                    <X className="w-4 h-4 text-[#64748b]" aria-hidden="true" />
                   </div>
                   <div>
-                    <span className="text-white/70 text-lg md:text-xl font-medium leading-relaxed block">
+                    <span className="text-[#2D3748] text-lg md:text-xl font-medium leading-relaxed block">
                       You want 'Done-For-You.'
                     </span>
-                    <span className="text-white/40 text-base font-light">
+                    <span className="text-[#64748b] text-base font-light">
                       This is a collaborative implementation; your team must learn the systems to keep them.
                     </span>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
-                  <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <X className="w-4 h-4 text-white/40" aria-hidden="true" />
+                  <div className="w-7 h-7 rounded-full bg-[#64748b]/10 flex items-center justify-center flex-shrink-0 mt-1">
+                    <X className="w-4 h-4 text-[#64748b]" aria-hidden="true" />
                   </div>
                   <div>
-                    <span className="text-white/70 text-lg md:text-xl font-medium leading-relaxed block">
+                    <span className="text-[#2D3748] text-lg md:text-xl font-medium leading-relaxed block">
                       You are still paper-based.
                     </span>
-                    <span className="text-white/40 text-base font-light">
+                    <span className="text-[#64748b] text-base font-light">
                       We cannot automate physical filing cabinets or manual ledgers.
                     </span>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
-                  <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <X className="w-4 h-4 text-white/40" aria-hidden="true" />
+                  <div className="w-7 h-7 rounded-full bg-[#64748b]/10 flex items-center justify-center flex-shrink-0 mt-1">
+                    <X className="w-4 h-4 text-[#64748b]" aria-hidden="true" />
                   </div>
                   <div>
-                    <span className="text-white/70 text-lg md:text-xl font-medium leading-relaxed block">
+                    <span className="text-[#2D3748] text-lg md:text-xl font-medium leading-relaxed block">
                       You can't share screens.
                     </span>
-                    <span className="text-white/40 text-base font-light">
+                    <span className="text-[#64748b] text-base font-light">
                       We need to see your folders and workflows to fix them in real-time.
                     </span>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
-                  <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <X className="w-4 h-4 text-white/40" aria-hidden="true" />
+                  <div className="w-7 h-7 rounded-full bg-[#64748b]/10 flex items-center justify-center flex-shrink-0 mt-1">
+                    <X className="w-4 h-4 text-[#64748b]" aria-hidden="true" />
                   </div>
                   <div>
-                    <span className="text-white/70 text-lg md:text-xl font-medium leading-relaxed block">
+                    <span className="text-[#2D3748] text-lg md:text-xl font-medium leading-relaxed block">
                       You don't have a dedicated Ops Lead.
                     </span>
-                    <span className="text-white/40 text-base font-light">
+                    <span className="text-[#64748b] text-base font-light">
                       The ED cannot do this alone; you need an admin/ops lead to own the system.
                     </span>
                   </div>
@@ -262,7 +262,7 @@ const SmartTeamCohortHero = () => {
           <div className="text-center">
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-[#5eead4] hover:bg-[#5eead4]/90 text-[#0a0f1a] rounded-xl px-12 py-8 text-lg font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#5eead4]/50"
+              className="w-full sm:w-auto bg-[#0d9488] hover:bg-[#0d9488]/90 text-white rounded-xl px-12 py-8 text-lg font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#0d9488]/50"
               asChild
             >
               <a href="#apply">
@@ -274,89 +274,89 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Section 3: What You Get */}
+      {/* Section 3: What You Get - OFF-WHITE with Cards */}
       <section 
         id="what-you-get" 
-        className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#0a0f1a]"
+        className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#F9F9F9]"
         aria-labelledby="what-you-get-heading"
       >
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-16 md:mb-20">
-            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-white/40 mb-6">
+            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-[#64748b] mb-6">
               What you get
             </p>
             <h2 
               id="what-you-get-heading"
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.03em] leading-[1.1] mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#0a0f1a] tracking-[-0.03em] leading-[1.1] mb-6"
             >
               4 systems built with you
               <br />
-              <span className="text-[#5eead4]">— in 6 weeks.</span>
+              <span className="text-[#0d9488]">— in 6 weeks.</span>
             </h2>
-            <p className="text-lg md:text-xl text-white/50 font-light max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-[#2D3748] font-light max-w-2xl mx-auto">
               We implement these 4 pillars during our labs. You walk away with a 90-day plan to keep them running effortlessly.
             </p>
           </header>
 
-          {/* 4 Features - 2x2 Grid */}
+          {/* 4 Features - 2x2 Grid with Card Styling */}
           <div className="grid md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 mb-16 md:mb-20">
             {/* Feature 1: Spending Proof */}
-            <article className="bg-white/5 rounded-2xl p-8 md:p-10 border border-white/10">
+            <article className="bg-white rounded-2xl p-8 md:p-10 border border-[#e5e7eb] shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
               <div className="mb-5">
-                <div className="w-14 h-14 rounded-xl bg-[#5eead4]/10 flex items-center justify-center">
-                  <ShieldCheck className="w-7 h-7 text-[#5eead4]" strokeWidth={1.5} aria-hidden="true" />
+                <div className="w-14 h-14 rounded-xl bg-[#F9F9F9] border border-[#e5e7eb] flex items-center justify-center">
+                  <ShieldCheck className="w-7 h-7 text-[#0a0f1a]" strokeWidth={1.5} aria-hidden="true" />
                 </div>
               </div>
-              <h3 className="text-xl md:text-2xl font-semibold text-white mb-3 tracking-[-0.01em]">
+              <h3 className="text-xl md:text-2xl font-semibold text-[#0a0f1a] mb-3 tracking-[-0.01em]">
                 Spending Proof System
               </h3>
-              <p className="text-base md:text-lg text-white/50 font-light leading-relaxed">
+              <p className="text-base md:text-lg text-[#2D3748] font-light leading-relaxed">
                 Stop hunting for receipts. One central location for invoices, approvals, and payment proof.
               </p>
             </article>
 
             {/* Feature 2: Board Decision */}
-            <article className="bg-white/5 rounded-2xl p-8 md:p-10 border border-white/10">
+            <article className="bg-white rounded-2xl p-8 md:p-10 border border-[#e5e7eb] shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
               <div className="mb-5">
-                <div className="w-14 h-14 rounded-xl bg-[#5eead4]/10 flex items-center justify-center">
-                  <ClipboardList className="w-7 h-7 text-[#5eead4]" strokeWidth={1.5} aria-hidden="true" />
+                <div className="w-14 h-14 rounded-xl bg-[#F9F9F9] border border-[#e5e7eb] flex items-center justify-center">
+                  <ClipboardList className="w-7 h-7 text-[#0a0f1a]" strokeWidth={1.5} aria-hidden="true" />
                 </div>
               </div>
-              <h3 className="text-xl md:text-2xl font-semibold text-white mb-3 tracking-[-0.01em]">
+              <h3 className="text-xl md:text-2xl font-semibold text-[#0a0f1a] mb-3 tracking-[-0.01em]">
                 Board Decision System
               </h3>
-              <p className="text-base md:text-lg text-white/50 font-light leading-relaxed">
+              <p className="text-base md:text-lg text-[#2D3748] font-light leading-relaxed">
                 Professional governance made simple. Live action trackers, automated minutes, and decision logs.
               </p>
             </article>
 
             {/* Feature 3: Simple Reporting */}
-            <article className="bg-white/5 rounded-2xl p-8 md:p-10 border border-white/10">
+            <article className="bg-white rounded-2xl p-8 md:p-10 border border-[#e5e7eb] shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
               <div className="mb-5">
-                <div className="w-14 h-14 rounded-xl bg-[#5eead4]/10 flex items-center justify-center">
-                  <LineChart className="w-7 h-7 text-[#5eead4]" strokeWidth={1.5} aria-hidden="true" />
+                <div className="w-14 h-14 rounded-xl bg-[#F9F9F9] border border-[#e5e7eb] flex items-center justify-center">
+                  <LineChart className="w-7 h-7 text-[#0a0f1a]" strokeWidth={1.5} aria-hidden="true" />
                 </div>
               </div>
-              <h3 className="text-xl md:text-2xl font-semibold text-white mb-3 tracking-[-0.01em]">
+              <h3 className="text-xl md:text-2xl font-semibold text-[#0a0f1a] mb-3 tracking-[-0.01em]">
                 Simple Reporting System
               </h3>
-              <p className="text-base md:text-lg text-white/50 font-light leading-relaxed">
+              <p className="text-base md:text-lg text-[#2D3748] font-light leading-relaxed">
                 Report to funders in minutes, not days. A 10-number dashboard and a 2-page update template.
               </p>
             </article>
 
             {/* Feature 4: Find-It-Fast Files */}
-            <article className="bg-white/5 rounded-2xl p-8 md:p-10 border border-white/10">
+            <article className="bg-white rounded-2xl p-8 md:p-10 border border-[#e5e7eb] shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
               <div className="mb-5">
-                <div className="w-14 h-14 rounded-xl bg-[#5eead4]/10 flex items-center justify-center">
-                  <FolderSearch className="w-7 h-7 text-[#5eead4]" strokeWidth={1.5} aria-hidden="true" />
+                <div className="w-14 h-14 rounded-xl bg-[#F9F9F9] border border-[#e5e7eb] flex items-center justify-center">
+                  <FolderSearch className="w-7 h-7 text-[#0a0f1a]" strokeWidth={1.5} aria-hidden="true" />
                 </div>
               </div>
-              <h3 className="text-xl md:text-2xl font-semibold text-white mb-3 tracking-[-0.01em]">
+              <h3 className="text-xl md:text-2xl font-semibold text-[#0a0f1a] mb-3 tracking-[-0.01em]">
                 Find-It-Fast File System
               </h3>
-              <p className="text-base md:text-lg text-white/50 font-light leading-relaxed">
+              <p className="text-base md:text-lg text-[#2D3748] font-light leading-relaxed">
                 Your organization's 'Source of Truth.' Optimized folder maps, naming rules, and access controls.
               </p>
             </article>
@@ -366,7 +366,7 @@ const SmartTeamCohortHero = () => {
           <div className="text-center">
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-[#8b5cf6] hover:bg-[#7c3aed] text-white rounded-xl px-12 py-8 text-lg font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8b5cf6]/50"
+              className="w-full sm:w-auto bg-[#0a0f1a] hover:bg-[#0a0f1a]/90 text-white rounded-xl px-12 py-8 text-lg font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#0a0f1a]/50"
               asChild
             >
               <a href="#apply">
@@ -374,34 +374,34 @@ const SmartTeamCohortHero = () => {
                 <ArrowRight className="ml-3 w-5 h-5" aria-hidden="true" />
               </a>
             </Button>
-            <p className="text-sm md:text-base text-white/40 mt-6">
-              <span className="text-white font-semibold">$9,450 CAD</span> • 15 spots per cohort • 4 hours/week
+            <p className="text-sm md:text-base text-[#64748b] mt-6">
+              <span className="text-[#0a0f1a] font-semibold">$9,450 CAD</span> • 15 spots per cohort • 4 hours/week
             </p>
           </div>
         </div>
       </section>
 
-      {/* Section 4: How It Works */}
+      {/* Section 4: How It Works - OFF-WHITE */}
       <section 
         id="how-it-works" 
-        className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#0a0f1a]"
+        className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#F9F9F9]"
         aria-labelledby="how-it-works-heading"
       >
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-16 md:mb-24">
-            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-[#5eead4] mb-8">
+            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-[#0d9488] mb-8">
               How it works
             </p>
             <h2 
               id="how-it-works-heading"
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-[-0.04em] leading-[1.05] mb-8"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#0a0f1a] tracking-[-0.04em] leading-[1.05] mb-8"
             >
               4 hours a week.
               <br />
-              <span className="text-white/70">6 weeks total.</span>
+              <span className="text-[#2D3748]">6 weeks total.</span>
             </h2>
-            <p className="text-xl md:text-2xl text-white/60 font-light max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-[#2D3748] font-light max-w-2xl mx-auto leading-relaxed">
               One Ops Lead. We build the infrastructure with you.
             </p>
           </header>
@@ -411,15 +411,15 @@ const SmartTeamCohortHero = () => {
             {/* Step 1 */}
             <li className="text-center">
               <div 
-                className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-[#5eead4]/40 text-[#5eead4] text-xl md:text-2xl font-bold mb-6"
+                className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-[#0d9488]/40 text-[#0d9488] text-xl md:text-2xl font-bold mb-6"
                 aria-hidden="true"
               >
                 01
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-3 tracking-[-0.02em]">
+              <h3 className="text-xl md:text-2xl font-bold text-[#0a0f1a] mb-3 tracking-[-0.02em]">
                 Build Your Source of Truth
               </h3>
-              <p className="text-base md:text-lg text-white/50 font-light leading-relaxed">
+              <p className="text-base md:text-lg text-[#2D3748] font-light leading-relaxed">
                 Stop losing documents. We set up your digital folder map, naming rules, and access controls in Week 1.
               </p>
             </li>
@@ -427,15 +427,15 @@ const SmartTeamCohortHero = () => {
             {/* Step 2 */}
             <li className="text-center">
               <div 
-                className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-[#5eead4]/40 text-[#5eead4] text-xl md:text-2xl font-bold mb-6"
+                className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-[#0d9488]/40 text-[#0d9488] text-xl md:text-2xl font-bold mb-6"
                 aria-hidden="true"
               >
                 02
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-3 tracking-[-0.02em]">
+              <h3 className="text-xl md:text-2xl font-bold text-[#0a0f1a] mb-3 tracking-[-0.02em]">
                 Install the 4 Systems
               </h3>
-              <p className="text-base md:text-lg text-white/50 font-light leading-relaxed">
+              <p className="text-base md:text-lg text-[#2D3748] font-light leading-relaxed">
                 Direct implementation. We build your spending proof, board decision, and reporting workflows together in our weekly labs.
               </p>
             </li>
@@ -443,27 +443,27 @@ const SmartTeamCohortHero = () => {
             {/* Step 3 */}
             <li className="text-center">
               <div 
-                className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-[#5eead4]/40 text-[#5eead4] text-xl md:text-2xl font-bold mb-6"
+                className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-[#0d9488]/40 text-[#0d9488] text-xl md:text-2xl font-bold mb-6"
                 aria-hidden="true"
               >
                 03
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-3 tracking-[-0.02em]">
+              <h3 className="text-xl md:text-2xl font-bold text-[#0a0f1a] mb-3 tracking-[-0.02em]">
                 The Stress Test
               </h3>
-              <p className="text-base md:text-lg text-white/50 font-light leading-relaxed">
+              <p className="text-base md:text-lg text-[#2D3748] font-light leading-relaxed">
                 Prove it works. We live-test your ability to find any document or proof bundle in under 3 minutes before you graduate.
               </p>
             </li>
           </ol>
 
           {/* Schedule Row */}
-          <div className="border-t border-white/10 pt-10 mb-14 md:mb-16">
+          <div className="border-t border-[#e5e7eb] pt-10 mb-14 md:mb-16">
             <div className="flex flex-col items-center text-center gap-3">
-              <span className="text-sm md:text-base font-semibold uppercase tracking-[0.2em] text-white/50">
+              <span className="text-sm md:text-base font-semibold uppercase tracking-[0.2em] text-[#64748b]">
                 Weekly schedule
               </span>
-              <p className="text-base md:text-lg text-white/70 font-light max-w-xl">
+              <p className="text-base md:text-lg text-[#2D3748] font-light max-w-xl">
                 1 Group Strategy Session (90 min) + 1 Implementation Lab (90 min) + 1 hour of prep/sorting
               </p>
             </div>
@@ -473,7 +473,7 @@ const SmartTeamCohortHero = () => {
           <div className="text-center">
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-[#8b5cf6] hover:bg-[#7c3aed] text-white rounded-xl px-12 py-8 text-lg font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8b5cf6]/50"
+              className="w-full sm:w-auto bg-[#0a0f1a] hover:bg-[#0a0f1a]/90 text-white rounded-xl px-12 py-8 text-lg font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#0a0f1a]/50"
               asChild
             >
               <a href="#apply">
@@ -481,8 +481,8 @@ const SmartTeamCohortHero = () => {
                 <ArrowRight className="ml-3 w-5 h-5" aria-hidden="true" />
               </a>
             </Button>
-            <p className="text-sm md:text-base text-white/40 mt-6">
-              <span className="text-white font-semibold">$9,450 CAD</span> per org • 15 spots per cohort
+            <p className="text-sm md:text-base text-[#64748b] mt-6">
+              <span className="text-[#0a0f1a] font-semibold">$9,450 CAD</span> per org • 15 spots per cohort
             </p>
           </div>
         </div>
@@ -796,7 +796,7 @@ const SmartTeamCohortHero = () => {
             {/* Price */}
             <div className="text-center mb-10">
               <p className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight mb-3">
-                $12,000
+                $9,450
               </p>
               <p className="text-white/50 text-lg md:text-xl font-light">
                 CAD per organization
@@ -888,69 +888,69 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Section 9: FAQ */}
+      {/* Section 9: FAQ - OFF-WHITE */}
       <section 
         id="faq" 
-        className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#0a0f1a]"
+        className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#F9F9F9]"
         aria-labelledby="faq-heading"
       >
         <div className="max-w-2xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-16 md:mb-20">
-            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-[#5eead4] mb-6">
+            <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-[#0d9488] mb-6">
               FAQ
             </p>
             <h2 
               id="faq-heading"
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.03em] leading-[1.1]"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#0a0f1a] tracking-[-0.03em] leading-[1.1]"
             >
-              Quick <span className="text-[#5eead4]">answers.</span>
+              Quick <span className="text-[#0d9488]">answers.</span>
             </h2>
           </header>
 
           {/* FAQ Accordion */}
           <Accordion type="single" collapsible className="mb-14">
-            <AccordionItem value="item-1" className="bg-white/[0.03] rounded-xl border border-white/10 mb-4 px-6 data-[state=open]:bg-white/[0.05] transition-all">
-              <AccordionTrigger className="text-left text-white text-lg font-medium py-6 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-white/50">
+            <AccordionItem value="item-1" className="bg-white rounded-xl border border-[#e5e7eb] mb-4 px-6 data-[state=open]:bg-[#fafafa] transition-all shadow-sm">
+              <AccordionTrigger className="text-left text-[#0a0f1a] text-lg font-medium py-6 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-[#64748b]">
                 How do I know if we can afford the $9,450 CAD tuition?
               </AccordionTrigger>
-              <AccordionContent className="text-white/50 text-base pb-6 leading-relaxed">
+              <AccordionContent className="text-[#2D3748] text-base pb-6 leading-relaxed">
                 Most of our participants use Capacity Building Grants or Operational Funding to cover the full cost. If you have a budget line for "Organizational Development" or "Systems Improvement," this program is a perfect fit. We provide all the documentation and receipts your funder needs to approve the expense.
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-2" className="bg-white/[0.03] rounded-xl border border-white/10 mb-4 px-6 data-[state=open]:bg-white/[0.05] transition-all">
-              <AccordionTrigger className="text-left text-white text-lg font-medium py-6 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-white/50">
+            <AccordionItem value="item-2" className="bg-white rounded-xl border border-[#e5e7eb] mb-4 px-6 data-[state=open]:bg-[#fafafa] transition-all shadow-sm">
+              <AccordionTrigger className="text-left text-[#0a0f1a] text-lg font-medium py-6 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-[#64748b]">
                 Can we actually build 4 systems in just 6 weeks?
               </AccordionTrigger>
-              <AccordionContent className="text-white/50 text-base pb-6 leading-relaxed">
+              <AccordionContent className="text-[#2D3748] text-base pb-6 leading-relaxed">
                 Yes, because this is not a lecture series—it is a hands-on implementation lab. We "install" the systems alongside you during our weekly 90-minute working sessions. By the end of Week 1, your file system is already set up; by the end of Week 6, you pass a live "Stress Test" to prove your systems work under pressure.
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-3" className="bg-white/[0.03] rounded-xl border border-white/10 mb-4 px-6 data-[state=open]:bg-white/[0.05] transition-all">
-              <AccordionTrigger className="text-left text-white text-lg font-medium py-6 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-white/50">
+            <AccordionItem value="item-3" className="bg-white rounded-xl border border-[#e5e7eb] mb-4 px-6 data-[state=open]:bg-[#fafafa] transition-all shadow-sm">
+              <AccordionTrigger className="text-left text-[#0a0f1a] text-lg font-medium py-6 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-[#64748b]">
                 What happens if our Ops Lead is already at capacity?
               </AccordionTrigger>
-              <AccordionContent className="text-white/50 text-base pb-6 leading-relaxed">
+              <AccordionContent className="text-[#2D3748] text-base pb-6 leading-relaxed">
                 The "Nimara Smart Team" approach is designed to give time back, not take it away. While we require a 4-hour weekly block for 6 weeks, this investment eliminates the 10+ hours a month currently wasted hunting for receipts, prepping for board meetings, and manually building funder reports. If you are too busy to fix your systems, you are the exact team that needs this most.
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-4" className="bg-white/[0.03] rounded-xl border border-white/10 mb-4 px-6 data-[state=open]:bg-white/[0.05] transition-all">
-              <AccordionTrigger className="text-left text-white text-lg font-medium py-6 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-white/50">
+            <AccordionItem value="item-4" className="bg-white rounded-xl border border-[#e5e7eb] mb-4 px-6 data-[state=open]:bg-[#fafafa] transition-all shadow-sm">
+              <AccordionTrigger className="text-left text-[#0a0f1a] text-lg font-medium py-6 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-[#64748b]">
                 Do we need to buy new software or change how we work?
               </AccordionTrigger>
-              <AccordionContent className="text-white/50 text-base pb-6 leading-relaxed">
+              <AccordionContent className="text-[#2D3748] text-base pb-6 leading-relaxed">
                 No. We build your 4 systems using the tools you already have, specifically Google Workspace or Microsoft 365. We don't add "new tech" to your plate; we simply organize your current environment so that it is audit-proof and easy for any staff member to use.
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-5" className="bg-white/[0.03] rounded-xl border border-white/10 px-6 data-[state=open]:bg-white/[0.05] transition-all">
-              <AccordionTrigger className="text-left text-white text-lg font-medium py-6 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-white/50">
+            <AccordionItem value="item-5" className="bg-white rounded-xl border border-[#e5e7eb] px-6 data-[state=open]:bg-[#fafafa] transition-all shadow-sm">
+              <AccordionTrigger className="text-left text-[#0a0f1a] text-lg font-medium py-6 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-[#64748b]">
                 What is the "Stress Test," and what if we fail it?
               </AccordionTrigger>
-              <AccordionContent className="text-white/50 text-base pb-6 leading-relaxed">
+              <AccordionContent className="text-[#2D3748] text-base pb-6 leading-relaxed">
                 The Stress Test is our live verification that your organization is truly funder-ready. You will be asked to find a specific key document, board decision, or expense proof bundle in under 3 minutes. If you can't, we stay with you and keep working until the system is fixed. This ensures you never graduate without a functional, foolproof system.
               </AccordionContent>
             </AccordionItem>
@@ -960,7 +960,7 @@ const SmartTeamCohortHero = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-white hover:bg-white/90 text-[#0a0f1a] rounded-xl px-10 py-7 text-lg font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/50"
+              className="w-full sm:w-auto bg-[#0a0f1a] hover:bg-[#0a0f1a]/90 text-white rounded-xl px-10 py-7 text-lg font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#0a0f1a]/50"
               asChild
             >
               <a href="#apply">
@@ -971,7 +971,7 @@ const SmartTeamCohortHero = () => {
             <Button
               variant="outline"
               size="lg"
-              className="w-full sm:w-auto rounded-xl px-10 py-7 text-lg font-semibold border-white/20 text-white hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/20"
+              className="w-full sm:w-auto rounded-xl px-10 py-7 text-lg font-semibold border-[#0a0f1a]/20 text-[#0a0f1a] hover:bg-[#0a0f1a]/10 hover:text-[#0a0f1a] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#0a0f1a]/20"
               asChild
             >
               <a href="/book">
@@ -981,34 +981,40 @@ const SmartTeamCohortHero = () => {
           </div>
 
           {/* Micro note */}
-          <p className="text-sm text-white/30 text-center">
+          <p className="text-sm text-[#64748b] text-center">
             Nimara supports 0–50 staff. This cohort is only for 1–15 staff.
           </p>
         </div>
       </section>
 
-      {/* Section 10: Final CTA Strip */}
+      {/* Section 10: Final CTA Strip - DARK */}
       <section 
         id="apply" 
-        className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#5eead4]"
+        className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#0a0f1a]"
         aria-labelledby="apply-heading"
       >
         <div className="max-w-3xl mx-auto text-center">
+          {/* Guarantee Badge */}
+          <div className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-semibold bg-[#5eead4]/10 text-[#5eead4] border border-[#5eead4]/20 mb-8">
+            <ShieldCheck className="w-4 h-4 mr-2" aria-hidden="true" />
+            Full refund guarantee: $9,450 CAD
+          </div>
+
           {/* Heading */}
           <h2 
             id="apply-heading"
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#0a0f1a] tracking-[-0.03em] mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.03em] mb-6"
           >
-            Ready to get funder-ready?
+            Ready to get <span className="text-[#5eead4]">funder-ready?</span>
           </h2>
-          <p className="text-lg md:text-xl text-[#0a0f1a]/70 font-light mb-12 max-w-xl mx-auto">
+          <p className="text-lg md:text-xl text-white/60 font-light mb-12 max-w-xl mx-auto">
             Apply now. We'll review your application and send next steps within 2 business days.
           </p>
 
           {/* Main CTA */}
           <Button
             size="lg"
-            className="w-full sm:w-auto bg-[#0a0f1a] hover:bg-[#0a0f1a]/90 text-white rounded-xl px-14 py-8 text-lg md:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#0a0f1a]/50 mb-6"
+            className="w-full sm:w-auto bg-[#5eead4] hover:bg-[#5eead4]/90 text-[#0a0f1a] rounded-xl px-14 py-8 text-lg md:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#5eead4]/50 mb-6"
             asChild
           >
             <a href="/apply">
@@ -1018,28 +1024,28 @@ const SmartTeamCohortHero = () => {
           </Button>
 
           {/* Time note */}
-          <p className="text-[#0a0f1a]/50 text-base mb-12">
+          <p className="text-white/40 text-base mb-12">
             Takes about 2 minutes.
           </p>
 
           {/* Trust reinforcement */}
           <div className="flex flex-wrap items-center justify-center gap-8 mb-10">
-            <span className="inline-flex items-center gap-2 text-[#0a0f1a]/70 text-base font-medium">
-              <ShieldCheck className="w-5 h-5" aria-hidden="true" />
-              Full refund guarantee
-            </span>
-            <span className="inline-flex items-center gap-2 text-[#0a0f1a]/70 text-base font-medium">
-              <Check className="w-5 h-5" aria-hidden="true" />
+            <span className="inline-flex items-center gap-2 text-white/60 text-base font-medium">
+              <Check className="w-5 h-5 text-[#5eead4]" aria-hidden="true" />
               15 seats only
             </span>
-            <span className="inline-flex items-center gap-2 text-[#0a0f1a]/70 text-base font-medium">
-              <Clock className="w-5 h-5" aria-hidden="true" />
+            <span className="inline-flex items-center gap-2 text-white/60 text-base font-medium">
+              <Clock className="w-5 h-5 text-[#5eead4]" aria-hidden="true" />
               6 weeks
+            </span>
+            <span className="inline-flex items-center gap-2 text-white/60 text-base font-medium">
+              <ShieldCheck className="w-5 h-5 text-[#5eead4]" aria-hidden="true" />
+              $9,450 CAD
             </span>
           </div>
 
           {/* Staff size clarity */}
-          <p className="text-sm text-[#0a0f1a]/40">
+          <p className="text-sm text-white/30">
             Nimara supports 0–50 staff. This cohort is only for 1–15 staff.
           </p>
         </div>
