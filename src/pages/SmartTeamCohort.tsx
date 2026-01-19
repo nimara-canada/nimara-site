@@ -1,30 +1,18 @@
 import { FileCheck, Users, BarChart3, FolderSearch, ArrowRight, Check, X, Receipt, Gavel, LineChart, FolderOpen, Plus, Folder, ClipboardList, ShieldCheck, Calendar, Clock, UserCheck, BadgeCheck, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 const SmartTeamCohortHero = () => {
-  const bullets = [
-    {
-      main: "Prove spending in minutes",
-      sub: "Automated audit trails for every expense."
-    },
-    {
-      main: "Run clean board meetings",
-      sub: "Instant minutes, decisions, and action trackers."
-    },
-    {
-      main: "Secure your next grant",
-      sub: "Professional reporting templates that funders trust."
-    },
-  ];
-
-  return (
-    <div className="min-h-screen bg-nim-cloud">
+  const bullets = [{
+    main: "Prove spending in minutes",
+    sub: "Automated audit trails for every expense."
+  }, {
+    main: "Run clean board meetings",
+    sub: "Instant minutes, decisions, and action trackers."
+  }, {
+    main: "Secure your next grant",
+    sub: "Professional reporting templates that funders trust."
+  }];
+  return <div className="min-h-screen bg-nim-cloud">
       {/* Minimal Header */}
       <header className="w-full px-5 md:px-8 lg:px-12 py-4 md:py-5 flex items-center justify-between bg-nim-navy">
         <div className="flex items-center gap-2">
@@ -33,25 +21,16 @@ const SmartTeamCohortHero = () => {
           </div>
           <span className="font-semibold text-white tracking-tight">Nimara</span>
         </div>
-        <Button 
-          className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-5 py-2 text-sm font-semibold transition-all"
-          asChild
-        >
+        <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-5 py-2 text-sm font-semibold transition-all" asChild>
           <a href="#apply">Apply</a>
         </Button>
       </header>
 
       {/* Hero Section */}
-      <section 
-        className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-32 lg:py-40 bg-nim-navy"
-        aria-labelledby="hero-heading"
-      >
+      <section className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-32 lg:py-40 bg-nim-navy" aria-labelledby="hero-heading">
         <div className="max-w-4xl mx-auto text-center">
           {/* Headline */}
-          <h1 
-            id="hero-heading"
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[1.12] tracking-[-0.02em] mb-6 sm:mb-8"
-          >
+          <h1 id="hero-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[1.12] tracking-[-0.02em] mb-6 sm:mb-8">
             Get <span className="text-nim-mint">audit-proof</span> and{" "}
             <span className="text-nim-mint">grant-ready</span>
             <br className="hidden sm:block" />
@@ -77,8 +56,7 @@ const SmartTeamCohortHero = () => {
 
           {/* Benefit Bullets */}
           <ul className="flex flex-col items-start sm:items-center gap-4 sm:gap-6 mb-10 sm:mb-14" aria-label="Key benefits">
-            {bullets.map((bullet) => (
-              <li key={bullet.main} className="flex items-start gap-3 sm:gap-4 text-left max-w-lg">
+            {bullets.map(bullet => <li key={bullet.main} className="flex items-start gap-3 sm:gap-4 text-left max-w-lg">
                 <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-nim-mint/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-nim-mint" aria-hidden="true" />
                 </div>
@@ -86,17 +64,12 @@ const SmartTeamCohortHero = () => {
                   <span className="text-white text-lg sm:text-xl md:text-2xl font-medium block">{bullet.main}</span>
                   <span className="text-white/50 text-base sm:text-lg">{bullet.sub}</span>
                 </div>
-              </li>
-            ))}
+              </li>)}
           </ul>
 
           {/* Primary CTA */}
           <div className="mb-4 sm:mb-6">
-            <Button
-              size="lg"
-              className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl sm:rounded-2xl px-8 sm:px-16 py-6 sm:py-8 text-lg sm:text-xl md:text-2xl font-semibold shadow-[0_0_40px_hsl(var(--primary)/0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50"
-              asChild
-            >
+            <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl sm:rounded-2xl px-8 sm:px-16 py-6 sm:py-8 text-lg sm:text-xl md:text-2xl font-semibold shadow-[0_0_40px_hsl(var(--primary)/0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50" asChild>
               <a href="https://form.typeform.com/to/Dsi3pXkx" target="_blank" rel="noopener noreferrer">
                 Apply for a seat
                 <ArrowRight className="ml-2 sm:ml-3 w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
@@ -105,10 +78,7 @@ const SmartTeamCohortHero = () => {
           </div>
 
           {/* Secondary Link */}
-          <a 
-            href="#what-you-get" 
-            className="inline-flex items-center gap-2 text-white/50 hover:text-white text-base sm:text-lg font-medium transition-colors mb-10 sm:mb-14"
-          >
+          <a href="#what-you-get" className="inline-flex items-center gap-2 text-white/50 hover:text-white text-base sm:text-lg font-medium transition-colors mb-10 sm:mb-14">
             See the 4 systems you'll build
             <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
           </a>
@@ -121,20 +91,14 @@ const SmartTeamCohortHero = () => {
       </section>
 
       {/* Section 2: Is This a Fit? - LIGHT */}
-      <section 
-        className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-36 lg:py-44 bg-nim-cloud"
-        aria-labelledby="fit-heading"
-      >
+      <section className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-36 lg:py-44 bg-nim-cloud" aria-labelledby="fit-heading">
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-12 sm:mb-16 md:mb-24">
             <p className="text-xs sm:text-sm md:text-base font-medium uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-teal mb-4 sm:mb-8">
               Is this a fit?
             </p>
-            <h2 
-              id="fit-heading"
-              className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-bold text-nim-navy tracking-[-0.02em] leading-[1.15] mb-4 sm:mb-8"
-            >
+            <h2 id="fit-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-bold text-nim-navy tracking-[-0.02em] leading-[1.15] mb-4 sm:mb-8">
               We only accept <span className="text-nim-teal">15 organizations</span>{" "}
               <span className="md:hidden">per cohort.</span>
               <br className="hidden md:block" />
@@ -271,11 +235,7 @@ const SmartTeamCohortHero = () => {
           </div>
 
           <div className="text-center">
-            <Button
-              size="lg"
-              className="w-full sm:w-auto bg-nim-teal hover:bg-nim-teal/90 text-white rounded-xl sm:rounded-2xl px-8 sm:px-14 py-6 sm:py-8 text-lg sm:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-teal/50"
-              asChild
-            >
+            <Button size="lg" className="w-full sm:w-auto bg-nim-teal hover:bg-nim-teal/90 text-white rounded-xl sm:rounded-2xl px-8 sm:px-14 py-6 sm:py-8 text-lg sm:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-teal/50" asChild>
               <a href="https://form.typeform.com/to/Dsi3pXkx" target="_blank" rel="noopener noreferrer">
                 Apply for a seat
                 <ArrowRight className="ml-2 sm:ml-3 w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
@@ -286,21 +246,14 @@ const SmartTeamCohortHero = () => {
       </section>
 
       {/* Section 3: What You Get - LIGHT with Cards */}
-      <section 
-        id="what-you-get" 
-        className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-36 lg:py-44 bg-nim-cloud"
-        aria-labelledby="what-you-get-heading"
-      >
+      <section id="what-you-get" className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-36 lg:py-44 bg-nim-cloud" aria-labelledby="what-you-get-heading">
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-12 sm:mb-16 md:mb-24">
             <p className="text-xs sm:text-sm md:text-base font-medium uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-slate mb-4 sm:mb-8">
               What you get
             </p>
-            <h2 
-              id="what-you-get-heading"
-              className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-bold text-nim-navy tracking-[-0.02em] leading-[1.15] mb-4 sm:mb-8"
-            >
+            <h2 id="what-you-get-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-bold text-nim-navy tracking-[-0.02em] leading-[1.15] mb-4 sm:mb-8">
               4 systems built with you
               <br className="hidden sm:block" />
               <span className="sm:hidden"> </span>
@@ -376,11 +329,7 @@ const SmartTeamCohortHero = () => {
 
           {/* CTA */}
           <div className="text-center">
-            <Button
-              size="lg"
-              className="w-full sm:w-auto bg-nim-navy hover:bg-nim-navy/90 text-white rounded-xl sm:rounded-2xl px-8 sm:px-14 py-6 sm:py-8 text-lg sm:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-navy/50"
-              asChild
-            >
+            <Button size="lg" className="w-full sm:w-auto bg-nim-navy hover:bg-nim-navy/90 text-white rounded-xl sm:rounded-2xl px-8 sm:px-14 py-6 sm:py-8 text-lg sm:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-navy/50" asChild>
               <a href="#apply">
                 Apply for a seat
                 <ArrowRight className="ml-2 sm:ml-3 w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
@@ -394,21 +343,14 @@ const SmartTeamCohortHero = () => {
       </section>
 
       {/* Section 4: How It Works - LIGHT */}
-      <section 
-        id="how-it-works" 
-        className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-36 lg:py-44 bg-nim-cloud"
-        aria-labelledby="how-it-works-heading"
-      >
+      <section id="how-it-works" className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-36 lg:py-44 bg-nim-cloud" aria-labelledby="how-it-works-heading">
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-12 sm:mb-16 md:mb-28">
             <p className="text-xs sm:text-sm md:text-base font-medium uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-teal mb-6 sm:mb-10">
               How it works
             </p>
-            <h2 
-              id="how-it-works-heading"
-              className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold text-nim-navy tracking-[-0.03em] leading-[1.1] mb-6 sm:mb-10"
-            >
+            <h2 id="how-it-works-heading" className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold text-nim-navy tracking-[-0.03em] leading-[1.1] mb-6 sm:mb-10">
               4 hours a week.
               <br />
               <span className="text-nim-slate-dark">100% Online.</span>
@@ -450,41 +392,48 @@ const SmartTeamCohortHero = () => {
           <div className="mb-12 sm:mb-16 md:mb-20">
             <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-nim-navy mb-6 sm:mb-8 md:mb-12 text-center">6-Week Roadmap</h3>
             <div className="grid grid-cols-3 md:grid-cols-6 gap-2 sm:gap-3 md:gap-4">
-              {[
-                { week: "Week 1", date: "Feb 11", focus: "Files", highlight: true },
-                { week: "Week 2", date: "Feb 18", focus: "Spending", highlight: true },
-                { week: "Week 3", date: "Feb 25", focus: "Board", highlight: false },
-                { week: "Week 4", date: "Mar 4", focus: "Reports", highlight: false },
-                { week: "Week 5", date: "Mar 11", focus: "Integrate", highlight: false },
-                { week: "Week 6", date: "Mar 18", focus: "Test", highlight: true },
-              ].map((item, index) => (
-                <div 
-                  key={item.week}
-                  className={`relative p-3 sm:p-4 md:p-5 rounded-xl sm:rounded-2xl text-center ${
-                    item.highlight 
-                      ? 'bg-nim-teal/10 border-2 border-nim-teal/30' 
-                      : 'bg-white border border-border'
-                  }`}
-                >
-                  <p className={`text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-1 sm:mb-2 ${
-                    item.highlight ? 'text-nim-teal' : 'text-nim-slate'
-                  }`}>{item.week}</p>
+              {[{
+              week: "Week 1",
+              date: "Feb 11",
+              focus: "Files",
+              highlight: true
+            }, {
+              week: "Week 2",
+              date: "Feb 18",
+              focus: "Spending",
+              highlight: true
+            }, {
+              week: "Week 3",
+              date: "Feb 25",
+              focus: "Board",
+              highlight: false
+            }, {
+              week: "Week 4",
+              date: "Mar 4",
+              focus: "Reports",
+              highlight: false
+            }, {
+              week: "Week 5",
+              date: "Mar 11",
+              focus: "Integrate",
+              highlight: false
+            }, {
+              week: "Week 6",
+              date: "Mar 18",
+              focus: "Test",
+              highlight: true
+            }].map((item, index) => <div key={item.week} className={`relative p-3 sm:p-4 md:p-5 rounded-xl sm:rounded-2xl text-center ${item.highlight ? 'bg-nim-teal/10 border-2 border-nim-teal/30' : 'bg-white border border-border'}`}>
+                  <p className={`text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-1 sm:mb-2 ${item.highlight ? 'text-nim-teal' : 'text-nim-slate'}`}>{item.week}</p>
                   <p className="text-xs sm:text-sm md:text-base text-nim-slate-dark mb-1 sm:mb-2">{item.date}</p>
-                  <p className={`text-xs sm:text-sm md:text-base font-medium ${
-                    item.highlight ? 'text-nim-navy' : 'text-nim-slate-dark'
-                  }`}>{item.focus}</p>
-                </div>
-              ))}
+                  <p className={`text-xs sm:text-sm md:text-base font-medium ${item.highlight ? 'text-nim-navy' : 'text-nim-slate-dark'}`}>{item.focus}</p>
+                </div>)}
             </div>
           </div>
 
           {/* 3-Step Flow */}
           <ol className="grid sm:grid-cols-3 gap-8 sm:gap-10 md:gap-16 lg:gap-20 mb-12 sm:mb-16 md:mb-20" aria-label="Program steps">
             <li className="text-center">
-              <div 
-                className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full border-2 border-nim-teal/40 text-nim-teal text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 md:mb-8"
-                aria-hidden="true"
-              >
+              <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full border-2 border-nim-teal/40 text-nim-teal text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 md:mb-8" aria-hidden="true">
                 01
               </div>
               <h3 className="text-lg sm:text-xl md:text-3xl font-bold text-nim-navy mb-2 sm:mb-4 tracking-[-0.02em]">
@@ -496,10 +445,7 @@ const SmartTeamCohortHero = () => {
             </li>
 
             <li className="text-center">
-              <div 
-                className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full border-2 border-nim-teal/40 text-nim-teal text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 md:mb-8"
-                aria-hidden="true"
-              >
+              <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full border-2 border-nim-teal/40 text-nim-teal text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 md:mb-8" aria-hidden="true">
                 02
               </div>
               <h3 className="text-lg sm:text-xl md:text-3xl font-bold text-nim-navy mb-2 sm:mb-4 tracking-[-0.02em]">
@@ -511,10 +457,7 @@ const SmartTeamCohortHero = () => {
             </li>
 
             <li className="text-center">
-              <div 
-                className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full border-2 border-nim-teal/40 text-nim-teal text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 md:mb-8"
-                aria-hidden="true"
-              >
+              <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full border-2 border-nim-teal/40 text-nim-teal text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 md:mb-8" aria-hidden="true">
                 03
               </div>
               <h3 className="text-lg sm:text-xl md:text-3xl font-bold text-nim-navy mb-2 sm:mb-4 tracking-[-0.02em]">
@@ -528,11 +471,7 @@ const SmartTeamCohortHero = () => {
 
           {/* CTA */}
           <div className="text-center">
-            <Button
-              size="lg"
-              className="w-full sm:w-auto bg-nim-navy hover:bg-nim-navy/90 text-white rounded-xl sm:rounded-2xl px-8 sm:px-14 py-6 sm:py-8 text-lg sm:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-navy/50"
-              asChild
-            >
+            <Button size="lg" className="w-full sm:w-auto bg-nim-navy hover:bg-nim-navy/90 text-white rounded-xl sm:rounded-2xl px-8 sm:px-14 py-6 sm:py-8 text-lg sm:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-navy/50" asChild>
               <a href="#apply">
                 Apply for a seat
                 <ArrowRight className="ml-2 sm:ml-3 w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
@@ -546,20 +485,14 @@ const SmartTeamCohortHero = () => {
       </section>
 
       {/* Section 5: Early Win - DARK */}
-      <section 
-        className="w-full px-6 md:px-10 lg:px-16 py-28 md:py-36 lg:py-44 bg-nim-navy"
-        aria-labelledby="early-win-heading"
-      >
+      <section className="w-full px-6 md:px-10 lg:px-16 py-28 md:py-36 lg:py-44 bg-nim-navy" aria-labelledby="early-win-heading">
         <div className="max-w-4xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-20">
             <p className="text-base font-medium uppercase tracking-[0.25em] text-nim-mint mb-8">
               Early win
             </p>
-            <h2 
-              id="early-win-heading"
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-[-0.03em] leading-[1.08] mb-8"
-            >
+            <h2 id="early-win-heading" className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-[-0.03em] leading-[1.08] mb-8">
               Feel the relief by <span className="text-nim-mint">February 25.</span>
             </h2>
             <p className="text-xl md:text-2xl text-white/50 max-w-2xl mx-auto">
@@ -623,11 +556,7 @@ const SmartTeamCohortHero = () => {
 
           {/* CTA */}
           <div className="text-center">
-            <Button
-              size="lg"
-              className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-2xl px-14 py-8 text-xl font-semibold shadow-[0_0_40px_hsl(var(--primary)/0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50"
-              asChild
-            >
+            <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-2xl px-14 py-8 text-xl font-semibold shadow-[0_0_40px_hsl(var(--primary)/0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50" asChild>
               <a href="#apply">
                 Apply for a seat
                 <ArrowRight className="ml-3 w-5 h-5" aria-hidden="true" />
@@ -641,20 +570,14 @@ const SmartTeamCohortHero = () => {
       </section>
 
       {/* Section 6: Ultimate Proof - DARK */}
-      <section 
-        className="w-full px-6 md:px-10 lg:px-16 py-28 md:py-36 lg:py-44 bg-nim-navy"
-        aria-labelledby="ultimate-proof-heading"
-      >
+      <section className="w-full px-6 md:px-10 lg:px-16 py-28 md:py-36 lg:py-44 bg-nim-navy" aria-labelledby="ultimate-proof-heading">
         <div className="max-w-3xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-16">
             <p className="text-base font-medium uppercase tracking-[0.25em] text-nim-mint mb-8">
               Ultimate proof
             </p>
-            <h2 
-              id="ultimate-proof-heading"
-              className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-[-0.03em] leading-[1.08] mb-8"
-            >
+            <h2 id="ultimate-proof-heading" className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-[-0.03em] leading-[1.08] mb-8">
               We check that it works in real life.
             </h2>
             <p className="text-xl md:text-2xl text-white/50 max-w-2xl mx-auto">
@@ -710,11 +633,7 @@ const SmartTeamCohortHero = () => {
 
           {/* CTA */}
           <div className="text-center">
-            <Button
-              size="lg"
-              className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-2xl px-14 py-8 text-xl font-semibold shadow-[0_0_40px_hsl(var(--primary)/0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50"
-              asChild
-            >
+            <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-2xl px-14 py-8 text-xl font-semibold shadow-[0_0_40px_hsl(var(--primary)/0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50" asChild>
               <a href="#apply">
                 Apply for a seat
                 <ArrowRight className="ml-3 w-5 h-5" aria-hidden="true" />
@@ -725,20 +644,14 @@ const SmartTeamCohortHero = () => {
       </section>
 
       {/* Section 7: Guarantee - DARK */}
-      <section 
-        className="w-full px-4 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-navy"
-        aria-labelledby="guarantee-heading"
-      >
+      <section className="w-full px-4 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-navy" aria-labelledby="guarantee-heading">
         <div className="max-w-4xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-10 sm:mb-14 md:mb-20">
             <p className="text-xs sm:text-sm md:text-base font-medium uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-mint mb-4 sm:mb-6 md:mb-8">
               Guarantee
             </p>
-            <h2 
-              id="guarantee-heading"
-              className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.02em] sm:tracking-[-0.03em] leading-[1.1] sm:leading-[1.08] mb-4 sm:mb-6 md:mb-8"
-            >
+            <h2 id="guarantee-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.02em] sm:tracking-[-0.03em] leading-[1.1] sm:leading-[1.08] mb-4 sm:mb-6 md:mb-8">
               We take the risk seriously.
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-white/50">
@@ -811,11 +724,7 @@ const SmartTeamCohortHero = () => {
             <p className="text-base sm:text-lg md:text-xl text-white/50 mb-6 sm:mb-8 md:mb-10 italic">
               Designed for Executive Directors who need systems that actually work.
             </p>
-            <Button
-              size="lg"
-              className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl sm:rounded-2xl px-8 sm:px-10 md:px-14 py-5 sm:py-6 md:py-8 text-base sm:text-lg md:text-xl font-semibold shadow-[0_0_40px_hsl(var(--primary)/0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50"
-              asChild
-            >
+            <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl sm:rounded-2xl px-8 sm:px-10 md:px-14 py-5 sm:py-6 md:py-8 text-base sm:text-lg md:text-xl font-semibold shadow-[0_0_40px_hsl(var(--primary)/0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50" asChild>
               <a href="#apply">
                 Apply for a seat
                 <ArrowRight className="ml-2 sm:ml-3 w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
@@ -829,21 +738,14 @@ const SmartTeamCohortHero = () => {
       </section>
 
       {/* Section 8: Price and Seats - DARK */}
-      <section 
-        id="price" 
-        className="w-full px-4 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-navy"
-        aria-labelledby="price-heading"
-      >
+      <section id="price" className="w-full px-4 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-navy" aria-labelledby="price-heading">
         <div className="max-w-xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-10 sm:mb-14 md:mb-20">
             <p className="text-xs sm:text-sm md:text-base font-medium uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-mint mb-4 sm:mb-6 md:mb-8">
               Price and seats
             </p>
-            <h2 
-              id="price-heading"
-              className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.02em] sm:tracking-[-0.03em] leading-[1.1] sm:leading-[1.08]"
-            >
+            <h2 id="price-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.02em] sm:tracking-[-0.03em] leading-[1.1] sm:leading-[1.08]">
               Simple and <span className="text-nim-mint">clear.</span>
             </h2>
           </header>
@@ -919,20 +821,13 @@ const SmartTeamCohortHero = () => {
 
             {/* CTA */}
             <div className="flex flex-col gap-4 sm:gap-5">
-              <Button
-                size="lg"
-                className="w-full bg-nim-mint hover:bg-nim-mint/90 text-nim-navy rounded-xl sm:rounded-2xl px-6 sm:px-8 md:px-10 py-5 sm:py-6 md:py-8 text-base sm:text-lg md:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-mint/50"
-                asChild
-              >
+              <Button size="lg" className="w-full bg-nim-mint hover:bg-nim-mint/90 text-nim-navy rounded-xl sm:rounded-2xl px-6 sm:px-8 md:px-10 py-5 sm:py-6 md:py-8 text-base sm:text-lg md:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-mint/50" asChild>
                 <a href="https://form.typeform.com/to/Dsi3pXkx" target="_blank" rel="noopener noreferrer">
                   Apply for a seat
                   <ArrowRight className="ml-2 sm:ml-3 w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
                 </a>
               </Button>
-              <a 
-                href="#faq" 
-                className="text-white/50 hover:text-white text-base sm:text-lg font-medium transition-colors text-center"
-              >
+              <a href="#faq" className="text-white/50 hover:text-white text-base sm:text-lg font-medium transition-colors text-center">
                 FAQ
               </a>
             </div>
@@ -946,21 +841,14 @@ const SmartTeamCohortHero = () => {
       </section>
 
       {/* Section 9: FAQ - LIGHT */}
-      <section 
-        id="faq" 
-        className="w-full px-4 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-cloud"
-        aria-labelledby="faq-heading"
-      >
+      <section id="faq" className="w-full px-4 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-cloud" aria-labelledby="faq-heading">
         <div className="max-w-2xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-10 sm:mb-14 md:mb-20">
             <p className="text-xs sm:text-sm md:text-base font-medium uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-teal mb-4 sm:mb-6 md:mb-8">
               FAQ
             </p>
-            <h2 
-              id="faq-heading"
-              className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-nim-navy tracking-[-0.02em] sm:tracking-[-0.03em] leading-[1.1] sm:leading-[1.08]"
-            >
+            <h2 id="faq-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-nim-navy tracking-[-0.02em] sm:tracking-[-0.03em] leading-[1.1] sm:leading-[1.08]">
               Quick <span className="text-nim-teal">answers.</span>
             </h2>
           </header>
@@ -1015,22 +903,13 @@ const SmartTeamCohortHero = () => {
 
           {/* CTA */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 mb-6 sm:mb-8 md:mb-10">
-            <Button
-              size="lg"
-              className="w-full sm:w-auto bg-nim-navy hover:bg-nim-navy/90 text-white rounded-xl sm:rounded-2xl px-8 sm:px-10 md:px-12 py-5 sm:py-6 md:py-8 text-base sm:text-lg md:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-navy/50"
-              asChild
-            >
+            <Button size="lg" className="w-full sm:w-auto bg-nim-navy hover:bg-nim-navy/90 text-white rounded-xl sm:rounded-2xl px-8 sm:px-10 md:px-12 py-5 sm:py-6 md:py-8 text-base sm:text-lg md:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-navy/50" asChild>
               <a href="https://form.typeform.com/to/Dsi3pXkx" target="_blank" rel="noopener noreferrer">
                 Apply for a seat
                 <ArrowRight className="ml-2 sm:ml-3 w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
               </a>
             </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="w-full sm:w-auto rounded-xl sm:rounded-2xl px-8 sm:px-10 md:px-12 py-5 sm:py-6 md:py-8 text-base sm:text-lg md:text-xl font-semibold border-nim-navy/20 text-nim-navy hover:bg-nim-navy/10 hover:text-nim-navy focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-navy/20"
-              asChild
-            >
+            <Button variant="outline" size="lg" className="w-full sm:w-auto rounded-xl sm:rounded-2xl px-8 sm:px-10 md:px-12 py-5 sm:py-6 md:py-8 text-base sm:text-lg md:text-xl font-semibold border-nim-navy/20 text-nim-navy hover:bg-nim-navy/10 hover:text-nim-navy focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-navy/20" asChild>
               <a href="/book">
                 Book a call
               </a>
@@ -1039,17 +918,16 @@ const SmartTeamCohortHero = () => {
 
           {/* Micro note */}
           <p className="text-xs sm:text-sm md:text-base text-nim-slate text-center">
-            Nimara supports 0–50 staff. This cohort is only for 1–15 staff.
+            ​Nimara supports Canadian Non-Profits with 0-50. This cohort is only for organizations with 1-15 staff.                                      
+ 
+
+
           </p>
         </div>
       </section>
 
       {/* Section 10: Final CTA Strip - DARK */}
-      <section 
-        id="apply" 
-        className="w-full px-4 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-navy"
-        aria-labelledby="apply-heading"
-      >
+      <section id="apply" className="w-full px-4 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-navy" aria-labelledby="apply-heading">
         <div className="max-w-3xl mx-auto text-center">
           {/* Guarantee Badge */}
           <div className="inline-flex items-center px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-full text-sm sm:text-base font-semibold bg-nim-mint/10 text-nim-mint border border-nim-mint/20 mb-6 sm:mb-8 md:mb-10">
@@ -1058,10 +936,7 @@ const SmartTeamCohortHero = () => {
           </div>
 
           {/* Heading */}
-          <h2 
-            id="apply-heading"
-            className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.02em] sm:tracking-[-0.03em] leading-[1.1] sm:leading-[1.08] mb-4 sm:mb-6 md:mb-8"
-          >
+          <h2 id="apply-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.02em] sm:tracking-[-0.03em] leading-[1.1] sm:leading-[1.08] mb-4 sm:mb-6 md:mb-8">
             Ready to get <span className="text-nim-mint">funder-ready?</span>
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-white/60 font-light mb-8 sm:mb-10 md:mb-14 max-w-xl mx-auto">
@@ -1069,11 +944,7 @@ const SmartTeamCohortHero = () => {
           </p>
 
           {/* Main CTA */}
-          <Button
-            size="lg"
-            className="w-full sm:w-auto bg-nim-mint hover:bg-nim-mint/90 text-nim-navy rounded-xl sm:rounded-2xl px-8 sm:px-12 md:px-16 py-5 sm:py-6 md:py-8 text-base sm:text-lg md:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-mint/50 mb-5 sm:mb-6 md:mb-8"
-            asChild
-          >
+          <Button size="lg" className="w-full sm:w-auto bg-nim-mint hover:bg-nim-mint/90 text-nim-navy rounded-xl sm:rounded-2xl px-8 sm:px-12 md:px-16 py-5 sm:py-6 md:py-8 text-base sm:text-lg md:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-mint/50 mb-5 sm:mb-6 md:mb-8" asChild>
             <a href="https://form.typeform.com/to/Dsi3pXkx" target="_blank" rel="noopener noreferrer">
               Apply for a seat
               <ArrowRight className="ml-2 sm:ml-3 w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
@@ -1124,8 +995,6 @@ const SmartTeamCohortHero = () => {
           </nav>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default SmartTeamCohortHero;
