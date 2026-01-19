@@ -583,56 +583,71 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Section 6: Stress Test */}
+      {/* Section 6: Ultimate Proof */}
       <section 
         className="w-full px-6 md:px-10 lg:px-16 py-24 md:py-32 lg:py-40 bg-[#0a0f1a]"
-        aria-labelledby="stress-test-heading"
+        aria-labelledby="ultimate-proof-heading"
       >
         <div className="max-w-3xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-14 md:mb-16">
             <p className="text-sm font-medium uppercase tracking-[0.25em] text-[#5eead4] mb-6">
-              Stress test
+              Ultimate proof
             </p>
             <h2 
-              id="stress-test-heading"
-              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.03em] leading-[1.1]"
+              id="ultimate-proof-heading"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.03em] leading-[1.1] mb-6"
             >
               We check that it works in real life.
             </h2>
+            <p className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto">
+              Before you graduate, we live-test your new systems.
+            </p>
           </header>
 
           {/* Card */}
           <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 md:p-12 mb-12">
             <h3 className="text-xl md:text-2xl font-semibold text-white mb-6">
-              Week 6 stress test
+              The Week 6 Stress Test
             </h3>
 
             <p className="text-white/50 text-base mb-6">
-              You show:
+              You will show:
             </p>
 
-            <ul className="space-y-3 mb-8" aria-label="Stress test requirements">
-              <li className="flex items-center gap-3 text-white/70 text-base">
-                <Check className="w-4 h-4 text-[#5eead4]/70 flex-shrink-0" aria-hidden="true" />
-                Proof for a real purchase
+            <ul className="space-y-5 mb-8" aria-label="Stress test requirements">
+              <li className="flex items-start gap-3 text-base">
+                <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0 mt-0.5" aria-hidden="true" />
+                <div>
+                  <span className="text-white font-medium">Proof for a real purchase:</span>
+                  <span className="text-white/50 ml-1">(Linked invoice, approval, and payment).</span>
+                </div>
               </li>
-              <li className="flex items-center gap-3 text-white/70 text-base">
-                <Check className="w-4 h-4 text-[#5eead4]/70 flex-shrink-0" aria-hidden="true" />
-                A board decision record
+              <li className="flex items-start gap-3 text-base">
+                <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0 mt-0.5" aria-hidden="true" />
+                <div>
+                  <span className="text-white font-medium">A board decision record:</span>
+                  <span className="text-white/50 ml-1">(Minute log and action tracker).</span>
+                </div>
               </li>
-              <li className="flex items-center gap-3 text-white/70 text-base">
-                <Check className="w-4 h-4 text-[#5eead4]/70 flex-shrink-0" aria-hidden="true" />
-                Your latest report
+              <li className="flex items-start gap-3 text-base">
+                <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0 mt-0.5" aria-hidden="true" />
+                <div>
+                  <span className="text-white font-medium">Your latest funder report:</span>
+                  <span className="text-white/50 ml-1">(Generated via your new dashboard).</span>
+                </div>
               </li>
-              <li className="flex items-center gap-3 text-white/70 text-base">
-                <Check className="w-4 h-4 text-[#5eead4]/70 flex-shrink-0" aria-hidden="true" />
-                A key document in under 3 minutes
+              <li className="flex items-start gap-3 text-base">
+                <Check className="w-5 h-5 text-[#5eead4] flex-shrink-0 mt-0.5" aria-hidden="true" />
+                <div>
+                  <span className="text-white font-medium">The 3-Minute Rule:</span>
+                  <span className="text-white/50 ml-1">Find any key document in under 180 seconds.</span>
+                </div>
               </li>
             </ul>
 
-            <p className="text-white/40 text-sm border-t border-white/10 pt-6">
-              If you can't show it fast, we help fix it.
+            <p className="text-white/40 text-sm border-t border-white/10 pt-6 italic">
+              If you can't show it fast, we stay with you until it's fixed.
             </p>
           </div>
 
@@ -640,7 +655,7 @@ const SmartTeamCohortHero = () => {
           <div className="text-center">
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-white hover:bg-white/90 text-[#0a0f1a] rounded-xl px-10 py-7 text-base font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/50"
+              className="w-full sm:w-auto bg-gradient-to-r from-[#7c3aed] via-[#a855f7] to-[#7c3aed] hover:opacity-90 text-white rounded-xl px-10 py-7 text-base font-semibold shadow-[0_0_30px_rgba(168,85,247,0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#a855f7]/50"
               asChild
             >
               <a href="#apply">
