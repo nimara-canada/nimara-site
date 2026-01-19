@@ -59,10 +59,24 @@ const SmartTeamCohortHero = () => {
           </h1>
 
           {/* Subhead */}
-          <p className="text-xl md:text-2xl text-white/70 font-light mb-12">
+          <p className="text-xl md:text-2xl text-white/70 font-light mb-8">
             A hands-on implementation cohort for{" "}
             <span className="text-white font-medium">Canadian nonprofits with 1–15 staff.</span>
           </p>
+
+          {/* Logistics Bar - High Visibility */}
+          <div className="inline-flex flex-wrap items-center justify-center gap-3 md:gap-4 px-6 py-4 bg-white/[0.05] border border-white/10 rounded-xl mb-10">
+            <span className="flex items-center gap-2 text-[#ACFCE3] text-sm md:text-base font-semibold">
+              <Calendar className="w-4 h-4" aria-hidden="true" />
+              Starts Wednesday, Feb 11
+            </span>
+            <span className="hidden sm:block w-1 h-1 rounded-full bg-white/30" aria-hidden="true" />
+            <span className="text-white/70 text-sm md:text-base">100% Virtual</span>
+            <span className="hidden sm:block w-1 h-1 rounded-full bg-white/30" aria-hidden="true" />
+            <span className="text-white font-semibold text-sm md:text-base">$9,450 CAD</span>
+            <span className="hidden sm:block w-1 h-1 rounded-full bg-white/30" aria-hidden="true" />
+            <span className="text-white/70 text-sm md:text-base">15 spots total</span>
+          </div>
 
           {/* Benefit Bullets */}
           <ul className="flex flex-col items-center gap-5 mb-12" aria-label="Key benefits">
@@ -83,7 +97,7 @@ const SmartTeamCohortHero = () => {
           <div className="mb-4">
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-[#8b5cf6] hover:bg-[#7c3aed] text-white rounded-xl px-14 py-8 text-lg md:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8b5cf6]/50"
+              className="w-full sm:w-auto bg-gradient-to-r from-[#7c3aed] via-[#a855f7] to-[#7c3aed] hover:opacity-90 text-white rounded-xl px-14 py-8 text-lg md:text-xl font-semibold shadow-[0_0_30px_rgba(168,85,247,0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8b5cf6]/50"
               asChild
             >
               <a href="#apply">
@@ -104,7 +118,7 @@ const SmartTeamCohortHero = () => {
 
           {/* Trust Bar */}
           <p className="text-base md:text-lg text-white/50">
-            <span className="text-white font-semibold">$9,450 CAD</span> per org • 15 seats per cohort • 4 hours/week
+            4 hours/week commitment • Full refund if we don't deliver
           </p>
         </div>
       </section>
@@ -398,12 +412,72 @@ const SmartTeamCohortHero = () => {
             >
               4 hours a week.
               <br />
-              <span className="text-[#2D3748]">6 weeks total.</span>
+              <span className="text-[#2D3748]">100% Online.</span>
             </h2>
             <p className="text-xl md:text-2xl text-[#2D3748] font-light max-w-2xl mx-auto leading-relaxed">
               One Ops Lead. We build the infrastructure with you.
             </p>
           </header>
+
+          {/* Weekly Schedule Detail */}
+          <div className="bg-white rounded-2xl border border-[#e5e7eb] shadow-[0_4px_20px_rgba(0,0,0,0.04)] p-8 md:p-10 mb-16 md:mb-20">
+            <h3 className="text-lg md:text-xl font-semibold text-[#0a0f1a] mb-6 text-center">Your Weekly Commitment</h3>
+            <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+              <div className="text-center">
+                <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-[#14b8a6]/10 flex items-center justify-center">
+                  <Users className="w-6 h-6 text-[#14b8a6]" aria-hidden="true" />
+                </div>
+                <p className="text-[#0a0f1a] font-semibold mb-1">Strategy Session</p>
+                <p className="text-[#2D3748] text-sm">90 minutes</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-[#14b8a6]/10 flex items-center justify-center">
+                  <FileCheck className="w-6 h-6 text-[#14b8a6]" aria-hidden="true" />
+                </div>
+                <p className="text-[#0a0f1a] font-semibold mb-1">Implementation Lab</p>
+                <p className="text-[#2D3748] text-sm">90 minutes</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-[#14b8a6]/10 flex items-center justify-center">
+                  <Clock className="w-6 h-6 text-[#14b8a6]" aria-hidden="true" />
+                </div>
+                <p className="text-[#0a0f1a] font-semibold mb-1">Prep & Sorting</p>
+                <p className="text-[#2D3748] text-sm">1 hour</p>
+              </div>
+            </div>
+          </div>
+
+          {/* 6-Week Timeline */}
+          <div className="mb-16 md:mb-20">
+            <h3 className="text-lg md:text-xl font-semibold text-[#0a0f1a] mb-8 text-center">6-Week Roadmap</h3>
+            <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+              {[
+                { week: "Week 1", date: "Feb 11", focus: "File System", highlight: true },
+                { week: "Week 2", date: "Feb 18", focus: "Spending Proof", highlight: true },
+                { week: "Week 3", date: "Feb 25", focus: "Board System", highlight: false },
+                { week: "Week 4", date: "Mar 4", focus: "Reporting", highlight: false },
+                { week: "Week 5", date: "Mar 11", focus: "Integration", highlight: false },
+                { week: "Week 6", date: "Mar 18", focus: "Stress Test", highlight: true },
+              ].map((item, index) => (
+                <div 
+                  key={item.week}
+                  className={`relative p-4 rounded-xl text-center ${
+                    item.highlight 
+                      ? 'bg-[#14b8a6]/10 border-2 border-[#14b8a6]/30' 
+                      : 'bg-white border border-[#e5e7eb]'
+                  }`}
+                >
+                  <p className={`text-xs font-semibold uppercase tracking-wider mb-1 ${
+                    item.highlight ? 'text-[#14b8a6]' : 'text-[#64748b]'
+                  }`}>{item.week}</p>
+                  <p className="text-sm text-[#2D3748] mb-2">{item.date}</p>
+                  <p className={`text-sm font-medium ${
+                    item.highlight ? 'text-[#0a0f1a]' : 'text-[#2D3748]'
+                  }`}>{item.focus}</p>
+                </div>
+              ))}
+            </div>
+          </div>
 
           {/* 3-Step Flow */}
           <ol className="grid md:grid-cols-3 gap-10 md:gap-12 lg:gap-16 mb-16 md:mb-20" aria-label="Program steps">
@@ -456,18 +530,6 @@ const SmartTeamCohortHero = () => {
             </li>
           </ol>
 
-          {/* Schedule Row */}
-          <div className="border-t border-[#e5e7eb] pt-10 mb-14 md:mb-16">
-            <div className="flex flex-col items-center text-center gap-3">
-              <span className="text-sm md:text-base font-semibold uppercase tracking-[0.2em] text-[#64748b]">
-                Weekly schedule
-              </span>
-              <p className="text-base md:text-lg text-[#2D3748] font-light max-w-xl">
-                1 Group Strategy Session (90 min) + 1 Implementation Lab (90 min) + 1 hour of prep/sorting
-              </p>
-            </div>
-          </div>
-
           {/* CTA */}
           <div className="text-center">
             <Button
@@ -481,7 +543,7 @@ const SmartTeamCohortHero = () => {
               </a>
             </Button>
             <p className="text-sm md:text-base text-[#64748b] mt-6">
-              <span className="text-[#0a0f1a] font-semibold">$9,450 CAD</span> per org • 15 spots per cohort
+              <span className="text-[#0a0f1a] font-semibold">$9,450 CAD</span> per org • Starts Feb 11
             </p>
           </div>
         </div>
@@ -502,56 +564,56 @@ const SmartTeamCohortHero = () => {
               id="early-win-heading"
               className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.03em] leading-[1.1] mb-6"
             >
-              Feel the relief in the first 14 days.
+              Feel the relief by <span className="text-[#ACFCE3]">February 25.</span>
             </h2>
             <p className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto">
-              We don't wait 6 weeks to show results. We engineer early wins so your team can breathe.
+              Just 14 days after start. We don't wait 6 weeks to show results.
             </p>
           </header>
 
           {/* Week 1 and Week 2 */}
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 lg:gap-20 mb-14">
             {/* Week 1 */}
-            <article>
+            <article className="bg-white/[0.03] border border-white/10 rounded-2xl p-8">
               <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-[#ACFCE3]/10 text-[#ACFCE3] mb-6">
-                By the end of Week 1
+                Week 1 • Feb 11–18
               </span>
               <div className="mb-5">
-                <FolderOpen className="w-10 h-10 text-white/80" strokeWidth={1.5} aria-hidden="true" />
+                <FolderOpen className="w-10 h-10 text-[#ACFCE3]" strokeWidth={1.5} aria-hidden="true" />
               </div>
               <h3 className="text-xl md:text-2xl font-semibold text-white mb-5 tracking-[-0.01em]">
                 Your File System is Done.
               </h3>
               <ul className="space-y-3" aria-label="Week 1 deliverables">
-                <li className="flex items-center gap-3 text-base md:text-lg text-white/50">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#ACFCE3]/50 flex-shrink-0" aria-hidden="true" />
+                <li className="flex items-center gap-3 text-base md:text-lg text-white/70">
+                  <Check className="w-4 h-4 text-[#ACFCE3] flex-shrink-0" aria-hidden="true" />
                   A 'Source of Truth' folder map installed.
                 </li>
-                <li className="flex items-center gap-3 text-base md:text-lg text-white/50">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#ACFCE3]/50 flex-shrink-0" aria-hidden="true" />
+                <li className="flex items-center gap-3 text-base md:text-lg text-white/70">
+                  <Check className="w-4 h-4 text-[#ACFCE3] flex-shrink-0" aria-hidden="true" />
                   Key docs (Charity status, Bylaws) found in &lt; 2 mins.
                 </li>
               </ul>
             </article>
 
             {/* Week 2 */}
-            <article>
+            <article className="bg-white/[0.03] border border-white/10 rounded-2xl p-8">
               <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-[#ACFCE3]/10 text-[#ACFCE3] mb-6">
-                By the end of Week 2
+                Week 2 • Feb 18–25
               </span>
               <div className="mb-5">
-                <ShieldCheck className="w-10 h-10 text-white/80" strokeWidth={1.5} aria-hidden="true" />
+                <ShieldCheck className="w-10 h-10 text-[#ACFCE3]" strokeWidth={1.5} aria-hidden="true" />
               </div>
               <h3 className="text-xl md:text-2xl font-semibold text-white mb-5 tracking-[-0.01em]">
                 10 Audit-Ready Bundles.
               </h3>
               <ul className="space-y-3" aria-label="Week 2 deliverables">
-                <li className="flex items-center gap-3 text-base md:text-lg text-white/50">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#ACFCE3]/50 flex-shrink-0" aria-hidden="true" />
+                <li className="flex items-center gap-3 text-base md:text-lg text-white/70">
+                  <Check className="w-4 h-4 text-[#ACFCE3] flex-shrink-0" aria-hidden="true" />
                   Your first 10 expenses fully documented.
                 </li>
-                <li className="flex items-center gap-3 text-base md:text-lg text-white/50">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#ACFCE3]/50 flex-shrink-0" aria-hidden="true" />
+                <li className="flex items-center gap-3 text-base md:text-lg text-white/70">
+                  <Check className="w-4 h-4 text-[#ACFCE3] flex-shrink-0" aria-hidden="true" />
                   Approval + Invoice + Payment proof linked perfectly.
                 </li>
               </ul>
@@ -562,7 +624,6 @@ const SmartTeamCohortHero = () => {
           <p className="text-center text-base md:text-lg text-white/40 italic mb-12">
             Most Executive Directors feel the weight lift right here.
           </p>
-
           {/* CTA */}
           <div className="text-center">
             <Button
@@ -764,7 +825,7 @@ const SmartTeamCohortHero = () => {
               </a>
             </Button>
             <p className="text-sm text-white/40 mt-6">
-              Next cohort starts soon • 15 spots total
+              Starts Feb 11 • 15 spots total
             </p>
           </div>
         </div>
@@ -855,8 +916,8 @@ const SmartTeamCohortHero = () => {
             </div>
 
             {/* Next Cohort Info */}
-            <p className="text-sm text-white/30 text-center mb-10">
-              Next cohort start date shown after you apply.
+            <p className="text-sm text-[#ACFCE3] text-center mb-10 font-medium">
+              Next cohort: Wednesday, February 11, 2025
             </p>
 
             {/* CTA */}
