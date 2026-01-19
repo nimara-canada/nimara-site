@@ -54,38 +54,38 @@ const NimaraHeroPremium = () => {
       opacity: heroOpacity,
       y: heroY
     }}>
-        <div className="flex-1 w-full max-w-3xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto px-6 lg:px-12 xl:px-16 2xl:px-20 py-20 lg:py-28 xl:py-32 2xl:py-36 flex flex-col justify-center">
+        <div className="flex-1 w-full max-w-3xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20 py-12 sm:py-16 md:py-20 lg:py-28 xl:py-32 2xl:py-36 flex flex-col justify-center">
           
           {/* Single Column - Clean Copy */}
           <div className="text-center">
             {/* Main Headline */}
-            <h1 id="hero-heading" style={revealStyle(100)} className="mb-8 md:mb-10 xl:mb-12 text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-white leading-[1.05] tracking-[-0.02em]">
+            <h1 id="hero-heading" style={revealStyle(100)} className="mb-6 sm:mb-8 md:mb-10 xl:mb-12 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-white leading-[1.1] sm:leading-[1.05] tracking-[-0.02em]">
               We make funding easier to <span className="text-accent">win</span> — and <span className="text-accent">manage</span>.
             </h1>
 
             {/* Subheadline */}
-            <p style={revealStyle(200)} className="text-lg md:text-xl lg:text-[1.35rem] leading-snug max-w-[48ch] mx-auto mb-12 text-white/80">
+            <p style={revealStyle(200)} className="text-base sm:text-lg md:text-xl lg:text-[1.35rem] leading-snug max-w-[48ch] mx-auto mb-8 sm:mb-10 md:mb-12 text-white/80">
               Every receipt, approval, and payment — documented and ready.
             </p>
 
             {/* Bullets - centered alignment */}
-            <ul style={revealStyle(250)} className="inline-flex flex-col items-start gap-3 mb-8 text-left" aria-label="Key benefits">
-              <li className="flex items-center gap-3 text-base md:text-lg text-white/75">
-                <Check className="w-5 h-5 flex-shrink-0 text-accent" aria-hidden="true" />
+            <ul style={revealStyle(250)} className="inline-flex flex-col items-start gap-2 sm:gap-3 mb-6 sm:mb-8 text-left" aria-label="Key benefits">
+              <li className="flex items-center gap-2 sm:gap-3 text-sm sm:text-base md:text-lg text-white/75">
+                <Check className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 text-accent" aria-hidden="true" />
                 <span>Find proof of payment in minutes</span>
               </li>
-              <li className="flex items-center gap-3 text-base md:text-lg text-white/75">
-                <Check className="w-5 h-5 flex-shrink-0 text-accent" aria-hidden="true" />
+              <li className="flex items-center gap-2 sm:gap-3 text-sm sm:text-base md:text-lg text-white/75">
+                <Check className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 text-accent" aria-hidden="true" />
                 <span>Track grant spending without guesswork</span>
               </li>
-              <li className="flex items-center gap-3 text-base md:text-lg text-white/75">
-                <Check className="w-5 h-5 flex-shrink-0 text-accent" aria-hidden="true" />
+              <li className="flex items-center gap-2 sm:gap-3 text-sm sm:text-base md:text-lg text-white/75">
+                <Check className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 text-accent" aria-hidden="true" />
                 <span>Pull reports when funders ask</span>
               </li>
             </ul>
 
             {/* Proof Trail */}
-            <div style={revealStyle(275)} className="flex items-center justify-center gap-3 text-[11px] md:text-xs uppercase tracking-[0.15em] text-white/40 mb-10" aria-label="Proof trail flow">
+            <div style={revealStyle(275)} className="flex items-center justify-center gap-2 sm:gap-3 text-[10px] sm:text-[11px] md:text-xs uppercase tracking-[0.1em] sm:tracking-[0.15em] text-white/40 mb-8 sm:mb-10" aria-label="Proof trail flow">
               <span>Receipt</span>
               <span className="text-white/20">→</span>
               <span>Approval</span>
@@ -96,23 +96,23 @@ const NimaraHeroPremium = () => {
             </div>
 
             {/* CTAs */}
-            <div style={revealStyle(300)} className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6" role="group" aria-label="Get started options">
+            <div style={revealStyle(300)} className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 md:gap-6" role="group" aria-label="Get started options">
               {/* Primary CTA */}
-              <Link to="/capacity-buildout" className="inline-flex items-center gap-3 px-8 py-4 font-semibold rounded-lg select-none transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent bg-primary text-primary-foreground">
+              <Link to="/capacity-buildout" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold rounded-lg select-none transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent bg-primary text-primary-foreground">
                 Book a free call
-                <span className="text-lg" aria-hidden="true">→</span>
+                <span className="text-base sm:text-lg" aria-hidden="true">→</span>
               </Link>
 
               {/* Secondary CTA */}
-              <a href={TYPEFORM_HEALTH_CHECK_URL} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 text-base text-white hover:opacity-80 select-none transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 rounded">
+              <a href={TYPEFORM_HEALTH_CHECK_URL} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 text-sm sm:text-base text-white hover:opacity-80 select-none transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 rounded">
                 Try the 6-minute check
                 <span className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span>
               </a>
             </div>
 
             {/* Trust line */}
-            <div style={revealStyle(400)} className="mt-8">
-              <p className="text-sm md:text-[0.9rem] text-white/55 tracking-[0.02em]">
+            <div style={revealStyle(400)} className="mt-6 sm:mt-8">
+              <p className="text-xs sm:text-sm md:text-[0.9rem] text-white/55 tracking-[0.02em]">
                 For Canadian nonprofits with 0–50 staff. Not an audit firm.
               </p>
             </div>
