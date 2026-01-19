@@ -282,7 +282,7 @@ const SmartTeamCohortHero = () => {
       >
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
-          <header className="text-center mb-16 md:mb-24">
+          <header className="text-center mb-16 md:mb-20">
             <p className="text-sm md:text-base font-medium uppercase tracking-[0.25em] text-white/40 mb-6">
               What you get
             </p>
@@ -294,71 +294,89 @@ const SmartTeamCohortHero = () => {
               <br />
               <span className="text-[#5eead4]">— in 6 weeks.</span>
             </h2>
-            <p className="text-lg md:text-xl text-white/50 font-light max-w-2xl mx-auto mb-10">
-              We set up these 4 systems with you. Plus a 90-day plan to keep it running.
+            <p className="text-lg md:text-xl text-white/50 font-light max-w-2xl mx-auto">
+              We implement these 4 pillars during our labs. You walk away with a 90-day plan to keep them running effortlessly.
             </p>
-            <Button
-              size="lg"
-              className="bg-white hover:bg-white/90 text-[#0a0f1a] rounded-xl px-10 py-7 text-lg font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/50"
-              asChild
-            >
-              <a href="#apply">Get started</a>
-            </Button>
           </header>
 
           {/* 4 Features - 2x2 Grid */}
-          <div className="grid md:grid-cols-2 gap-x-12 lg:gap-x-20 gap-y-16 md:gap-y-20">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 mb-16 md:mb-20">
             {/* Feature 1: Spending Proof */}
-            <article>
-              <div className="mb-6">
-                <Receipt className="w-12 h-12 md:w-14 md:h-14 text-white/90" strokeWidth={1.5} aria-hidden="true" />
+            <article className="bg-white/5 rounded-2xl p-8 md:p-10 border border-white/10">
+              <div className="mb-5">
+                <div className="w-14 h-14 rounded-xl bg-[#5eead4]/10 flex items-center justify-center">
+                  <ShieldCheck className="w-7 h-7 text-[#5eead4]" strokeWidth={1.5} aria-hidden="true" />
+                </div>
               </div>
-              <h3 className="text-2xl md:text-3xl font-semibold text-white mb-4 tracking-[-0.01em]">
+              <h3 className="text-xl md:text-2xl font-semibold text-white mb-3 tracking-[-0.01em]">
                 Spending Proof System
               </h3>
-              <p className="text-lg md:text-xl text-white/50 font-light leading-relaxed">
-                Pull proof fast when funders ask. Approval + invoice, payment proof + delivery — all in one place.
+              <p className="text-base md:text-lg text-white/50 font-light leading-relaxed">
+                Stop hunting for receipts. One central location for invoices, approvals, and payment proof.
               </p>
             </article>
 
             {/* Feature 2: Board Decision */}
-            <article>
-              <div className="mb-6">
-                <Gavel className="w-12 h-12 md:w-14 md:h-14 text-white/90" strokeWidth={1.5} aria-hidden="true" />
+            <article className="bg-white/5 rounded-2xl p-8 md:p-10 border border-white/10">
+              <div className="mb-5">
+                <div className="w-14 h-14 rounded-xl bg-[#5eead4]/10 flex items-center justify-center">
+                  <ClipboardList className="w-7 h-7 text-[#5eead4]" strokeWidth={1.5} aria-hidden="true" />
+                </div>
               </div>
-              <h3 className="text-2xl md:text-3xl font-semibold text-white mb-4 tracking-[-0.01em]">
+              <h3 className="text-xl md:text-2xl font-semibold text-white mb-3 tracking-[-0.01em]">
                 Board Decision System
               </h3>
-              <p className="text-lg md:text-xl text-white/50 font-light leading-relaxed">
-                Meetings that lead to action. Agenda + minutes, decisions + action tracker ready to go.
+              <p className="text-base md:text-lg text-white/50 font-light leading-relaxed">
+                Professional governance made simple. Live action trackers, automated minutes, and decision logs.
               </p>
             </article>
 
             {/* Feature 3: Simple Reporting */}
-            <article>
-              <div className="mb-6">
-                <LineChart className="w-12 h-12 md:w-14 md:h-14 text-white/90" strokeWidth={1.5} aria-hidden="true" />
+            <article className="bg-white/5 rounded-2xl p-8 md:p-10 border border-white/10">
+              <div className="mb-5">
+                <div className="w-14 h-14 rounded-xl bg-[#5eead4]/10 flex items-center justify-center">
+                  <LineChart className="w-7 h-7 text-[#5eead4]" strokeWidth={1.5} aria-hidden="true" />
+                </div>
               </div>
-              <h3 className="text-2xl md:text-3xl font-semibold text-white mb-4 tracking-[-0.01em]">
+              <h3 className="text-xl md:text-2xl font-semibold text-white mb-3 tracking-[-0.01em]">
                 Simple Reporting System
               </h3>
-              <p className="text-lg md:text-xl text-white/50 font-light leading-relaxed">
-                Updates without stress. Small dashboard (5–10 numbers) and a 2-page update template.
+              <p className="text-base md:text-lg text-white/50 font-light leading-relaxed">
+                Report to funders in minutes, not days. A 10-number dashboard and a 2-page update template.
               </p>
             </article>
 
             {/* Feature 4: Find-It-Fast Files */}
-            <article>
-              <div className="mb-6">
-                <FolderOpen className="w-12 h-12 md:w-14 md:h-14 text-white/90" strokeWidth={1.5} aria-hidden="true" />
+            <article className="bg-white/5 rounded-2xl p-8 md:p-10 border border-white/10">
+              <div className="mb-5">
+                <div className="w-14 h-14 rounded-xl bg-[#5eead4]/10 flex items-center justify-center">
+                  <FolderSearch className="w-7 h-7 text-[#5eead4]" strokeWidth={1.5} aria-hidden="true" />
+                </div>
               </div>
-              <h3 className="text-2xl md:text-3xl font-semibold text-white mb-4 tracking-[-0.01em]">
+              <h3 className="text-xl md:text-2xl font-semibold text-white mb-3 tracking-[-0.01em]">
                 Find-It-Fast File System
               </h3>
-              <p className="text-lg md:text-xl text-white/50 font-light leading-relaxed">
-                Find key documents in minutes. Folder map + naming rules and basic access controls.
+              <p className="text-base md:text-lg text-white/50 font-light leading-relaxed">
+                Your organization's 'Source of Truth.' Optimized folder maps, naming rules, and access controls.
               </p>
             </article>
+          </div>
+
+          {/* CTA */}
+          <div className="text-center">
+            <Button
+              size="lg"
+              className="w-full sm:w-auto bg-[#8b5cf6] hover:bg-[#7c3aed] text-white rounded-xl px-12 py-8 text-lg font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8b5cf6]/50"
+              asChild
+            >
+              <a href="#apply">
+                Apply for a seat
+                <ArrowRight className="ml-3 w-5 h-5" aria-hidden="true" />
+              </a>
+            </Button>
+            <p className="text-sm md:text-base text-white/40 mt-6">
+              <span className="text-white font-semibold">$9,450 CAD</span> • 15 spots per cohort • 4 hours/week
+            </p>
           </div>
         </div>
       </section>
