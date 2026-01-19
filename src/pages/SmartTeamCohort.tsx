@@ -50,12 +50,12 @@ const SmartTeamCohortHero = () => {
           {/* Headline */}
           <h1 
             id="hero-heading"
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] tracking-[-0.04em] mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.1] tracking-[-0.03em] mb-6"
           >
             Get <span className="text-[#5eead4]">audit-proof</span> and{" "}
             <span className="text-[#5eead4]">grant-ready</span>
-            <br className="hidden sm:block" />
-            — in <span className="text-[#5eead4]">6 weeks.</span>
+            <br className="hidden md:block" />
+            <span className="md:hidden"> </span>— in <span className="text-[#5eead4]">6 weeks.</span>
           </h1>
 
           {/* Subhead */}
