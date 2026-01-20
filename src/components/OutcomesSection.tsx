@@ -22,18 +22,18 @@ const OutcomesSection: React.FC = () => {
     <section 
       ref={sectionRef}
       aria-labelledby="outcomes-heading"
-      className="relative py-24 lg:py-32 overflow-hidden"
+      className="relative py-16 sm:py-20 md:py-24 lg:py-32 overflow-hidden"
       style={{ backgroundColor: 'hsl(270, 60%, 92%)' }}
     >
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Header */}
-        <header className="text-center mb-16 lg:mb-20">
+        <header className="text-center mb-10 sm:mb-12 md:mb-16 lg:mb-20">
           {/* Category label */}
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="text-xs font-semibold uppercase tracking-[0.2em] mb-6"
+            className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] mb-4 sm:mb-6"
             style={{ color: 'hsl(270, 40%, 45%)' }}
           >
             Systems & Outcomes
@@ -44,7 +44,7 @@ const OutcomesSection: React.FC = () => {
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-6 text-foreground"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-4 sm:mb-6 text-foreground"
           >
             Where Nimara installs systems that stick
           </motion.h2>
@@ -53,7 +53,7 @@ const OutcomesSection: React.FC = () => {
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8"
+            className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-6 sm:mb-8"
           >
             Real working tools and routines—so you can track, prove, and report without scrambling.
           </motion.p>
@@ -67,7 +67,7 @@ const OutcomesSection: React.FC = () => {
               href={CALENDLY_BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-6 py-3 text-sm font-medium rounded-full bg-white text-foreground hover:bg-white/90 transition-all duration-200 shadow-sm"
+              className="inline-flex items-center justify-center px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-medium rounded-full bg-white text-foreground hover:bg-white/90 transition-all duration-200 shadow-sm"
             >
               See what's included
             </a>
@@ -75,17 +75,17 @@ const OutcomesSection: React.FC = () => {
         </header>
 
         {/* Cards Grid */}
-        <ul className="grid md:grid-cols-3 gap-6 lg:gap-8" role="list" aria-label="What you get">
+        <ul className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8" role="list" aria-label="What you get">
           
           {/* Card 1 - Clear decisions and ownership */}
           <motion.li
             initial={{ opacity: 0, y: 32 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="h-full"
+            className="h-full sm:col-span-2 md:col-span-1"
           >
             <article 
-              className="h-full rounded-3xl p-6 lg:p-8 relative overflow-hidden min-h-[420px] flex flex-col border"
+              className="h-full rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 relative overflow-hidden min-h-[320px] sm:min-h-[380px] md:min-h-[420px] flex flex-col border"
               style={{ 
                 backgroundColor: 'hsl(270, 50%, 95%)',
                 borderColor: 'hsl(270, 40%, 85%)'
@@ -156,7 +156,7 @@ const OutcomesSection: React.FC = () => {
               {/* Title and description */}
               <div className="relative z-10 mt-auto">
                 <motion.h3 
-                  className="text-xl font-bold text-foreground mb-2"
+                  className="text-lg sm:text-xl font-bold text-foreground mb-1.5 sm:mb-2"
                   initial={{ opacity: 0, y: 10 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.5 }}
@@ -164,7 +164,7 @@ const OutcomesSection: React.FC = () => {
                   Clear decisions and ownership
                 </motion.h3>
                 <motion.p
-                  className="text-sm text-muted-foreground"
+                  className="text-xs sm:text-sm text-muted-foreground"
                   initial={{ opacity: 0, y: 10 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.55 }}
@@ -183,7 +183,7 @@ const OutcomesSection: React.FC = () => {
             className="h-full"
           >
             <article 
-              className="h-full rounded-3xl p-6 lg:p-8 relative overflow-hidden min-h-[420px] flex flex-col border"
+              className="h-full rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 relative overflow-hidden min-h-[320px] sm:min-h-[380px] md:min-h-[420px] flex flex-col border"
               style={{ 
                 backgroundColor: 'hsl(270, 50%, 95%)',
                 borderColor: 'hsl(270, 40%, 85%)'
@@ -242,7 +242,7 @@ const OutcomesSection: React.FC = () => {
               {/* Title and description */}
               <div className="relative z-10 mt-auto">
                 <motion.h3 
-                  className="text-xl font-bold text-foreground mb-2"
+                  className="text-lg sm:text-xl font-bold text-foreground mb-1.5 sm:mb-2"
                   initial={{ opacity: 0, y: 10 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.6 }}
@@ -250,7 +250,7 @@ const OutcomesSection: React.FC = () => {
                   Clean tracking across your work
                 </motion.h3>
                 <motion.p
-                  className="text-sm text-muted-foreground"
+                  className="text-xs sm:text-sm text-muted-foreground"
                   initial={{ opacity: 0, y: 10 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.65 }}
@@ -266,10 +266,10 @@ const OutcomesSection: React.FC = () => {
             initial={{ opacity: 0, y: 32 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="h-full"
+            className="h-full sm:col-span-2 md:col-span-1"
           >
             <article 
-              className="h-full rounded-3xl p-6 lg:p-8 relative overflow-hidden min-h-[420px] flex flex-col border"
+              className="h-full rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 relative overflow-hidden min-h-[320px] sm:min-h-[380px] md:min-h-[420px] flex flex-col border"
               style={{ 
                 backgroundColor: 'hsl(270, 50%, 95%)',
                 borderColor: 'hsl(270, 40%, 85%)'
@@ -321,7 +321,7 @@ const OutcomesSection: React.FC = () => {
               {/* Title and description */}
               <div className="relative z-10 mt-auto">
                 <motion.h3 
-                  className="text-xl font-bold text-foreground mb-2"
+                  className="text-lg sm:text-xl font-bold text-foreground mb-1.5 sm:mb-2"
                   initial={{ opacity: 0, y: 10 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.7 }}
@@ -329,7 +329,7 @@ const OutcomesSection: React.FC = () => {
                   Proof tied to the deliverable
                 </motion.h3>
                 <motion.p
-                  className="text-sm text-muted-foreground"
+                  className="text-xs sm:text-sm text-muted-foreground"
                   initial={{ opacity: 0, y: 10 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.75 }}
@@ -346,15 +346,15 @@ const OutcomesSection: React.FC = () => {
           initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="text-center mt-12"
+          className="text-center mt-8 sm:mt-10 md:mt-12"
         >
-          <p className="text-sm text-muted-foreground mb-6">
+          <p className="text-xs sm:text-sm text-muted-foreground mb-4 sm:mb-6">
             Examples only. We cover board, money & grants, people, programs, fundraising, volunteers, tools & files.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
             <Link
               to="/capacity-buildout"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-xl bg-foreground text-background hover:bg-foreground/90 transition-all duration-200"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold rounded-xl bg-foreground text-background hover:bg-foreground/90 transition-all duration-200"
             >
               Book a free 20-minute call
               <span aria-hidden="true">→</span>
@@ -364,7 +364,7 @@ const OutcomesSection: React.FC = () => {
               href={TYPEFORM_HEALTH_CHECK_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 text-base font-medium text-foreground hover:text-primary transition-colors duration-200"
+              className="group inline-flex items-center gap-2 text-sm sm:text-base font-medium text-foreground hover:text-primary transition-colors duration-200"
             >
               Take the free 6-minute check
               <span className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span>
