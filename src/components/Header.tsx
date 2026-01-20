@@ -216,7 +216,7 @@ export const Header = ({ activeRoute = "/", hideCTA = false }: HeaderProps) => {
                   </div>
 
                   {/* Mobile nav links */}
-                  <nav aria-label="Mobile navigation" className="flex-1 p-6">
+                  <nav aria-label="Mobile navigation" className="flex-1 px-4 py-6 overflow-y-auto">
                     <div className="space-y-1">
                       {navigation.map((item, index) => (
                         <a
@@ -224,10 +224,10 @@ export const Header = ({ activeRoute = "/", hideCTA = false }: HeaderProps) => {
                           href={item.href}
                           aria-current={isRouteActive(item.href, activeRoute) ? "page" : undefined}
                           className={cn(
-                            "block py-4 text-lg font-medium transition-colors",
+                            "flex items-center min-h-[52px] px-4 py-3 text-lg font-medium rounded-xl transition-colors active:bg-muted/50",
                             isRouteActive(item.href, activeRoute)
-                              ? "text-primary"
-                              : "text-foreground hover:text-primary"
+                              ? "text-primary bg-primary/5"
+                              : "text-foreground hover:text-primary hover:bg-muted/30"
                           )}
                           style={{
                             opacity: reducedMotion ? 1 : 0,
@@ -241,17 +241,17 @@ export const Header = ({ activeRoute = "/", hideCTA = false }: HeaderProps) => {
                       ))}
                     </div>
 
-                    <div className="mt-8 pt-8 border-t border-border/50">
-                      <span className="text-xs font-medium tracking-[0.15em] uppercase text-muted-foreground mb-4 block">
+                    <div className="mt-6 pt-6 border-t border-border/50">
+                      <span className="text-xs font-medium tracking-[0.15em] uppercase text-muted-foreground mb-3 block px-4">
                         Join Our Team
                       </span>
                       <a
                         href="/partners"
-                        className="inline-flex items-center gap-2 text-foreground hover:text-primary transition-colors group"
+                        className="flex items-center justify-between min-h-[52px] px-4 py-3 text-foreground hover:text-primary hover:bg-muted/30 rounded-xl transition-colors active:bg-muted/50 group"
                         onClick={() => setIsOpen(false)}
                       >
                         <span>For Consultants</span>
-                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                        <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                       </a>
                     </div>
                   </nav>
@@ -278,13 +278,13 @@ export const Header = ({ activeRoute = "/", hideCTA = false }: HeaderProps) => {
 
       {/* Mobile Sticky Bottom CTA */}
       {!hideCTA && (
-        <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden p-4 bg-background/98 backdrop-blur-md border-t border-border/50">
+        <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 bg-background/98 backdrop-blur-md border-t border-border/50">
           <a
             href="/start-here"
-            className="flex items-center justify-center gap-2 w-full h-12 bg-primary text-primary-foreground font-medium rounded-full select-none transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98] active:translate-y-px"
+            className="flex items-center justify-center gap-2 w-full min-h-[52px] bg-primary text-primary-foreground text-base font-medium rounded-full select-none transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98] active:translate-y-px"
           >
             Get Started
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-5 h-5" />
           </a>
         </div>
       )}

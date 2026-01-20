@@ -18,47 +18,47 @@ const legalLinks = [
 
 export const Footer = () => {
   return (
-    <footer className="bg-nim-navy relative overflow-hidden">
+    <footer className="bg-nim-navy relative overflow-hidden pb-20 md:pb-0">
       {/* Subtle gradient */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent" />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-12 py-20 md:py-28">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-12 md:py-28">
         {/* Main footer content */}
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 mb-16 md:mb-24">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-12 md:mb-24">
           {/* Left - Brand */}
           <div className="lg:col-span-5">
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-white leading-[1.1] mb-6">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-white leading-[1.1] mb-4 md:mb-6">
               Nimara
             </h2>
-            <p className="text-white/50 leading-relaxed max-w-sm mb-8">
+            <p className="text-white/50 leading-relaxed max-w-sm mb-6 md:mb-8 text-sm sm:text-base">
               Simple systems for money, files, and reporting — so funding is easier to win and manage.
             </p>
             <a
               href="/start-here"
-              className="group inline-flex items-center gap-2 text-white font-medium select-none transition-all duration-150 active:opacity-70"
+              className="group inline-flex items-center gap-2 min-h-[48px] text-white font-medium select-none transition-all duration-150 active:opacity-70"
             >
               <span className="relative">
                 Get Started
                 <span className="absolute left-0 -bottom-0.5 w-full h-px bg-white/30 group-hover:bg-white transition-colors duration-150" />
               </span>
-              <ArrowRight className="w-4 h-4 transition-transform duration-150 group-hover:translate-x-1" />
+              <ArrowRight className="w-5 h-5 transition-transform duration-150 group-hover:translate-x-1" />
             </a>
           </div>
 
           {/* Right - Navigation */}
           <div className="lg:col-span-7">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
               {/* Column 1 - Main nav */}
               <div>
-                <p className="text-xs tracking-widest text-white/40 uppercase mb-5">
+                <p className="text-xs tracking-widest text-white/40 uppercase mb-4 md:mb-5">
                   Navigation
                 </p>
-                <ul className="space-y-3">
+                <ul className="space-y-1">
                   {navigation.map((item) => (
                     <li key={item.name}>
                       <a
                         href={item.href}
-                        className="text-white/70 hover:text-white transition-all duration-150 active:opacity-70 select-none"
+                        className="inline-flex items-center min-h-[44px] text-white/70 hover:text-white transition-all duration-150 active:opacity-70 select-none"
                       >
                         {item.name}
                       </a>
@@ -69,14 +69,14 @@ export const Footer = () => {
 
               {/* Column 2 - Connect */}
               <div>
-                <p className="text-xs tracking-widest text-white/40 uppercase mb-5">
+                <p className="text-xs tracking-widest text-white/40 uppercase mb-4 md:mb-5">
                   Connect
                 </p>
-                <ul className="space-y-3">
+                <ul className="space-y-1">
                   <li>
                     <a
                       href="/partners"
-                      className="text-white/70 hover:text-white transition-all duration-150 active:opacity-70 select-none"
+                      className="inline-flex items-center min-h-[44px] text-white/70 hover:text-white transition-all duration-150 active:opacity-70 select-none"
                     >
                       For Consultants
                     </a>
@@ -84,7 +84,7 @@ export const Footer = () => {
                   <li>
                     <a
                       href="mailto:hello@nimara.ca"
-                      className="text-white/70 hover:text-white transition-all duration-150 active:opacity-70 select-none"
+                      className="inline-flex items-center min-h-[44px] text-white/70 hover:text-white transition-all duration-150 active:opacity-70 select-none"
                     >
                       hello@nimara.ca
                     </a>
@@ -92,7 +92,7 @@ export const Footer = () => {
                   <li>
                     <a
                       href="/start-here"
-                      className="text-white/70 hover:text-white transition-all duration-150 active:opacity-70 select-none"
+                      className="inline-flex items-center min-h-[44px] text-white/70 hover:text-white transition-all duration-150 active:opacity-70 select-none"
                     >
                       Start Here
                     </a>
@@ -101,18 +101,18 @@ export const Footer = () => {
               </div>
 
               {/* Column 3 - Legal */}
-              <div>
-                <p className="text-xs tracking-widest text-white/40 uppercase mb-5">
+              <div className="col-span-2 md:col-span-1 mt-4 md:mt-0">
+                <p className="text-xs tracking-widest text-white/40 uppercase mb-4 md:mb-5">
                   Legal
                 </p>
-                <ul className="space-y-3">
+                <ul className="flex flex-wrap md:flex-col gap-x-6 gap-y-1">
                   {legalLinks.map((item) => (
                     <li key={item.name}>
                       <a
                         href={item.href}
                         target={item.external ? "_blank" : undefined}
                         rel={item.external ? "noopener noreferrer" : undefined}
-                        className="text-white/70 hover:text-white transition-all duration-150 active:opacity-70 select-none"
+                        className="inline-flex items-center min-h-[44px] text-white/70 hover:text-white transition-all duration-150 active:opacity-70 select-none"
                       >
                         {item.name}
                       </a>
@@ -125,12 +125,12 @@ export const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-white/10">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-white/40">
+        <div className="pt-6 md:pt-8 border-t border-white/10">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-3 md:gap-4">
+            <p className="text-xs sm:text-sm text-white/40">
               © {new Date().getFullYear()} Nimara. All Rights Reserved.
             </p>
-            <p className="text-sm text-white/40">
+            <p className="text-xs sm:text-sm text-white/40">
               Made In Canada 🍁
             </p>
           </div>
