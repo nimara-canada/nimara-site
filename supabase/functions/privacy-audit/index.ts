@@ -1,6 +1,18 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { 
+  timingSafeEqual, 
+  checkRateLimit, 
+  resetRateLimit, 
+  getClientIp,
+  generateSessionToken
+} from '../_shared/security.ts';
 
 const allowedOrigins = ['https://nimara.ca', 'https://www.nimara.ca'];
+
+// In-memory session store (for edge function scope)
+// In production, consider using a database or KV store for persistence
+const sessionStore = new Map<string, { createdAt: number; expiresAt: number }>();
+const SESSION_DURATION_MS = 60 * 60 * 1000; // 1 hour
 
 const getCorsHeaders = (req: Request) => {
   const origin = req.headers.get('origin') || '';
@@ -12,9 +24,38 @@ const getCorsHeaders = (req: Request) => {
 
 interface AuditRequest {
   action: string;
-  password: string;
+  password?: string;
+  sessionToken?: string;
   data?: any;
   id?: string;
+}
+
+/**
+ * Validate session token
+ */
+function validateSession(token: string): boolean {
+  const session = sessionStore.get(token);
+  if (!session) return false;
+  
+  const now = Date.now();
+  if (now > session.expiresAt) {
+    sessionStore.delete(token);
+    return false;
+  }
+  
+  return true;
+}
+
+/**
+ * Clean up expired sessions
+ */
+function cleanupSessions(): void {
+  const now = Date.now();
+  for (const [token, session] of sessionStore.entries()) {
+    if (now > session.expiresAt) {
+      sessionStore.delete(token);
+    }
+  }
 }
 
 Deno.serve(async (req) => {
@@ -33,13 +74,85 @@ Deno.serve(async (req) => {
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
     const body: AuditRequest = await req.json();
-    const { action, password, data, id } = body;
+    const { action, password, sessionToken, data, id } = body;
 
-    // Verify password
-    if (password !== adminPassword) {
-      console.log('Invalid password attempt');
+    const clientIp = getClientIp(req);
+
+    // Handle login action with rate limiting
+    if (action === 'login') {
+      // Check rate limit
+      const rateLimit = checkRateLimit(clientIp, {
+        maxAttempts: 5,
+        windowMs: 60 * 60 * 1000,     // 1 hour
+        lockoutMs: 15 * 60 * 1000,    // 15 minutes
+      });
+
+      if (!rateLimit.allowed) {
+        console.log(`Rate limited IP: ${clientIp}`);
+        return new Response(
+          JSON.stringify({ 
+            error: 'Too many failed attempts. Please try again later.',
+            retryAfter: rateLimit.retryAfter 
+          }),
+          { 
+            status: 429, 
+            headers: { 
+              ...corsHeaders, 
+              'Content-Type': 'application/json',
+              'Retry-After': String(rateLimit.retryAfter || 900)
+            } 
+          }
+        );
+      }
+
+      // Use constant-time comparison for password
+      if (!password || !timingSafeEqual(password, adminPassword)) {
+        console.log(`Invalid password attempt from IP: ${clientIp}`);
+        return new Response(
+          JSON.stringify({ error: 'Invalid password' }),
+          { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+
+      // Password correct - reset rate limit and create session
+      resetRateLimit(clientIp);
+      cleanupSessions();
+      
+      const token = await generateSessionToken();
+      const now = Date.now();
+      sessionStore.set(token, {
+        createdAt: now,
+        expiresAt: now + SESSION_DURATION_MS,
+      });
+
+      console.log(`Successful login from IP: ${clientIp}`);
       return new Response(
-        JSON.stringify({ error: 'Invalid password' }),
+        JSON.stringify({ 
+          data: { 
+            sessionToken: token,
+            expiresIn: SESSION_DURATION_MS 
+          } 
+        }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Handle logout action
+    if (action === 'logout') {
+      if (sessionToken) {
+        sessionStore.delete(sessionToken);
+      }
+      return new Response(
+        JSON.stringify({ data: { success: true } }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // For all other actions, validate session token
+    if (!sessionToken || !validateSession(sessionToken)) {
+      console.log('Invalid or expired session token');
+      return new Response(
+        JSON.stringify({ error: 'Invalid or expired session' }),
         { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }

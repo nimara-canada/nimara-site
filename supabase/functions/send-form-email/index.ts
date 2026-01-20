@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "https://esm.sh/resend@4.0.0";
+import { escapeHtml } from "../_shared/security.ts";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
@@ -168,8 +169,10 @@ const buildEmailBody = (formCode: string, payload: Record<string, any>): string 
 
 const buildUserConfirmationEmail = (formCode: string, payload: Record<string, any>): { subject: string; html: string } | null => {
   if (formCode === "URGENT_HELP") {
-    const firstName = (payload.name || "").split(" ")[0] || "there";
-    const helpType = getHelpTypeLabel(payload.help_type || "");
+    const firstName = escapeHtml((payload.name || "").split(" ")[0] || "there");
+    const helpType = escapeHtml(getHelpTypeLabel(payload.help_type || ""));
+    const details = escapeHtml(payload.details || "");
+    const deadline = payload.deadline ? escapeHtml(payload.deadline) : null;
     
     return {
       subject: "We got your message — Nimara",
@@ -197,8 +200,8 @@ const buildUserConfirmationEmail = (formCode: string, payload: Record<string, an
     <h2 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #718096; text-transform: uppercase; letter-spacing: 0.5px;">
       What you told us
     </h2>
-    <p style="margin: 0; font-size: 15px; color: #4a5568; white-space: pre-wrap;">${payload.details || ""}</p>
-    ${payload.deadline ? `<p style="margin: 16px 0 0 0; font-size: 14px; color: #718096;">Deadline: ${payload.deadline}</p>` : ""}
+    <p style="margin: 0; font-size: 15px; color: #4a5568; white-space: pre-wrap;">${details}</p>
+    ${deadline ? `<p style="margin: 16px 0 0 0; font-size: 14px; color: #718096;">Deadline: ${deadline}</p>` : ""}
   </div>
   
   <div style="text-align: center; padding: 16px 0;">
