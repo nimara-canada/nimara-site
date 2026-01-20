@@ -107,9 +107,7 @@ const FullScreenCard = ({
 }: FullScreenCardProps) => {
   return <div className={`h-full w-full ${card.bgClass} flex items-center justify-center px-6 md:px-12`}>
       <div className="max-w-4xl mx-auto text-center">
-        <p className={`text-sm md:text-base uppercase tracking-widest mb-4 md:mb-6 ${card.subtextClass}`}>
-          With Nimara, you can
-        </p>
+        <p className={`text-sm md:text-base uppercase tracking-widest mb-4 md:mb-6 ${card.subtextClass}`}>WITH NIMARA, YOU GET</p>
         <h3 className={`text-4xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 ${card.textClass}`}>
           {card.title}
         </h3>
