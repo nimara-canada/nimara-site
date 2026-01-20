@@ -105,17 +105,17 @@ function PremiumVisualCard({ color, lineColor, statNumber, statLabel, substat, b
           initial={{ y: 20, opacity: 0 }}
           animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-xl p-6 min-w-[180px]"
+          className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 bg-white rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-5 w-[70%] sm:w-[65%] max-w-[200px]"
         >
           {badge && (
-            <span className={`inline-block px-3 py-1 text-xs font-semibold rounded-full border mb-3 ${badgeColors[badge.color]}`}>
+            <span className={`inline-block px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-semibold rounded-full border mb-2 sm:mb-3 ${badgeColors[badge.color]}`}>
               {badge.text}
             </span>
           )}
-          <div className="text-4xl font-bold text-primary mb-1">{statNumber}</div>
-          <div className="text-sm font-medium text-muted-foreground">{statLabel}</div>
+          <div className="text-3xl sm:text-4xl font-bold text-primary mb-0.5 sm:mb-1">{statNumber}</div>
+          <div className="text-xs sm:text-sm font-medium text-muted-foreground">{statLabel}</div>
           {substat && (
-            <div className="text-xs text-muted-foreground/70 mt-1">{substat}</div>
+            <div className="text-xs text-muted-foreground/70 mt-0.5 sm:mt-1">{substat}</div>
           )}
         </motion.div>
       </div>

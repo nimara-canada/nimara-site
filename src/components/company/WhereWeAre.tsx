@@ -39,25 +39,25 @@ const LocationVisual = ({ isInView }: { isInView: boolean }) => (
         initial={{ opacity: 0, y: 40 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.5 }}
-        className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-6 w-[85%] max-w-[260px]"
+        className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 lg:bottom-8 lg:right-8 bg-white rounded-xl sm:rounded-2xl shadow-2xl p-4 sm:p-5 lg:p-6 w-[75%] sm:w-[70%] max-w-[280px]"
       >
         {/* Header */}
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center">
-            <MapPin className="w-5 h-5 text-blue-600" />
+        <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
+            <MapPin className="w-4 h-4 text-blue-600" />
           </div>
-          <span className="text-base font-semibold text-nim-navy">Location:</span>
+          <span className="text-sm sm:text-base font-semibold text-nim-navy">Location:</span>
         </div>
         
         {/* Message */}
-        <p className="text-nim-navy text-lg font-medium mb-4 leading-snug">
+        <p className="text-nim-navy text-sm sm:text-base font-medium mb-3 sm:mb-4 leading-snug">
           Coast to coast, 100% remote.
         </p>
         
         {/* Chips */}
-        <div className="flex flex-wrap gap-2">
-          <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-medium">Canada-wide</span>
-          <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-medium">Remote</span>
+        <div className="flex flex-wrap gap-1.5 sm:gap-2">
+          <span className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-medium">Canada-wide</span>
+          <span className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-medium">Remote</span>
         </div>
       </motion.div>
     </motion.div>

@@ -89,12 +89,12 @@ function PremiumVisualCard({ color, lineColor, icon: Icon, badge, isInView }: Vi
           initial={{ y: 20, opacity: 0 }}
           animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-xl p-6 min-w-[160px]"
+          className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 bg-white rounded-xl sm:rounded-2xl shadow-xl p-3 sm:p-4 w-[60%] sm:w-[55%] max-w-[160px]"
         >
-          <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-3 mx-auto">
-            <Icon className="w-6 h-6 text-primary" />
+          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-primary/10 flex items-center justify-center mb-2 sm:mb-3 mx-auto">
+            <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
           </div>
-          <span className="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-accent/20 text-primary border border-accent/30">
+          <span className="inline-block px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-semibold rounded-full bg-accent/20 text-primary border border-accent/30">
             {badge}
           </span>
         </motion.div>

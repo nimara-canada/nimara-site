@@ -169,13 +169,13 @@ const StartHereSection = () => {
                     initial={{ opacity: 0, y: 20, x: 20 }}
                     animate={isInView ? { opacity: 1, y: 0, x: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.7 }}
-                    className="absolute -top-4 right-4 lg:right-0 bg-white rounded-xl p-4 w-[160px]"
+                    className="absolute top-2 right-2 sm:top-4 sm:right-4 lg:right-0 bg-white rounded-lg sm:rounded-xl p-3 sm:p-4 w-[140px] sm:w-[160px] shadow-lg"
                   >
-                    <div className="flex items-center gap-2 mb-2">
-                      <FileCheck className="w-4 h-4 text-nim-purple" />
-                      <span className="text-xs font-semibold text-nim-navy">Quick Check</span>
+                    <div className="flex items-center gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
+                      <FileCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-nim-purple" />
+                      <span className="text-[10px] sm:text-xs font-semibold text-nim-navy">Quick Check</span>
                     </div>
-                    <div className="w-full h-1.5 bg-nim-mist rounded-full overflow-hidden mb-1">
+                    <div className="w-full h-1 sm:h-1.5 bg-nim-mist rounded-full overflow-hidden mb-0.5 sm:mb-1">
                       <motion.div
                         className="h-full bg-nim-mint rounded-full"
                         initial={{ width: 0 }}
@@ -183,7 +183,7 @@ const StartHereSection = () => {
                         transition={{ duration: 0.8, delay: 1.0 }}
                       />
                     </div>
-                    <span className="text-[10px] text-nim-slate">2/3 complete</span>
+                    <span className="text-[9px] sm:text-[10px] text-nim-slate">2/3 complete</span>
                   </motion.div>
 
                   {/* Floating UI Card - Bottom */}
@@ -191,17 +191,17 @@ const StartHereSection = () => {
                     initial={{ opacity: 0, y: -20, x: -20 }}
                     animate={isInView ? { opacity: 1, y: 0, x: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.85 }}
-                    className="absolute -bottom-4 left-0 lg:-left-4 bg-white rounded-xl p-4 w-[200px]"
+                    className="absolute bottom-2 left-2 sm:bottom-4 sm:left-0 lg:-left-4 bg-white rounded-lg sm:rounded-xl p-3 sm:p-4 w-[160px] sm:w-[200px] shadow-lg"
                   >
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-xs font-semibold text-nim-navy">Fix Details</span>
-                      <span className="text-nim-slate">•••</span>
+                    <div className="flex items-center justify-between mb-2 sm:mb-3">
+                      <span className="text-[10px] sm:text-xs font-semibold text-nim-navy">Fix Details</span>
+                      <span className="text-nim-slate text-xs">•••</span>
                     </div>
-                    <div className="flex items-center gap-4 text-[10px]">
+                    <div className="flex items-center gap-2 sm:gap-4 text-[9px] sm:text-[10px]">
                       <div>
                         <p className="text-nim-slate uppercase tracking-wide mb-0.5">Area</p>
-                        <p className="font-medium text-nim-navy flex items-center gap-1">
-                          <Clock className="w-3 h-3 text-nim-purple" />
+                        <p className="font-medium text-nim-navy flex items-center gap-0.5 sm:gap-1">
+                          <Clock className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-nim-purple" />
                           Board
                         </p>
                       </div>
@@ -209,7 +209,7 @@ const StartHereSection = () => {
                         <p className="text-nim-slate uppercase tracking-wide mb-0.5">Status</p>
                         <p className="font-medium text-nim-navy">In Progress</p>
                       </div>
-                      <div>
+                      <div className="hidden sm:block">
                         <p className="text-nim-slate uppercase tracking-wide mb-0.5">Timeline</p>
                         <p className="font-medium text-nim-navy">2 weeks</p>
                       </div>
