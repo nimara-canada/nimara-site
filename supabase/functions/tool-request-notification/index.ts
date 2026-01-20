@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
+import { escapeHtml } from "../_shared/security.ts";
 
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 
@@ -32,21 +33,27 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Sending tool request notification for:", { name, email, tool_name });
 
+    // Escape all user input for HTML safety
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safeToolName = escapeHtml(tool_name);
+    const safeMessage = message ? escapeHtml(message) : '';
+
     // Email to Nimara team
     const adminEmailHtml = `
       <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
         <h2 style="color: #202654; margin-bottom: 24px;">New Integration Request</h2>
         
         <div style="background-color: #f8f9fa; border-radius: 8px; padding: 20px; margin-bottom: 20px;">
-          <p style="margin: 0 0 12px 0;"><strong>Tool Requested:</strong> ${tool_name}</p>
-          <p style="margin: 0 0 12px 0;"><strong>Name:</strong> ${name}</p>
-          <p style="margin: 0;"><strong>Email:</strong> <a href="mailto:${email}" style="color: #7C3AED;">${email}</a></p>
+          <p style="margin: 0 0 12px 0;"><strong>Tool Requested:</strong> ${safeToolName}</p>
+          <p style="margin: 0 0 12px 0;"><strong>Name:</strong> ${safeName}</p>
+          <p style="margin: 0;"><strong>Email:</strong> <a href="mailto:${safeEmail}" style="color: #7C3AED;">${safeEmail}</a></p>
         </div>
         
-        ${message ? `
+        ${safeMessage ? `
           <div style="margin-bottom: 20px;">
             <p style="margin: 0 0 8px 0;"><strong>Additional Details:</strong></p>
-            <p style="margin: 0; color: #666; white-space: pre-wrap;">${message}</p>
+            <p style="margin: 0; color: #666; white-space: pre-wrap;">${safeMessage}</p>
           </div>
         ` : ''}
         
@@ -64,17 +71,17 @@ const handler = async (req: Request): Promise<Response> => {
         <h2 style="color: #202654; margin-bottom: 24px;">We received your request!</h2>
         
         <p style="color: #333; font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
-          Hi ${name},
+          Hi ${safeName},
         </p>
         
         <p style="color: #333; font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
-          Thank you for requesting support for <strong>${tool_name}</strong>. We've added your request to our integration roadmap and will prioritize based on demand.
+          Thank you for requesting support for <strong>${safeToolName}</strong>. We've added your request to our integration roadmap and will prioritize based on demand.
         </p>
         
         <div style="background-color: #f8f9fa; border-radius: 8px; padding: 20px; margin-bottom: 20px;">
           <p style="margin: 0 0 8px 0; color: #666; font-size: 14px;"><strong>Your request:</strong></p>
-          <p style="margin: 0; color: #333;">${tool_name}</p>
-          ${message ? `<p style="margin: 12px 0 0 0; color: #666; font-size: 14px;">${message}</p>` : ''}
+          <p style="margin: 0; color: #333;">${safeToolName}</p>
+          ${safeMessage ? `<p style="margin: 12px 0 0 0; color: #666; font-size: 14px;">${safeMessage}</p>` : ''}
         </div>
         
         <p style="color: #333; font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
@@ -107,7 +114,7 @@ const handler = async (req: Request): Promise<Response> => {
         body: JSON.stringify({
           from: "Nimara <onboarding@resend.dev>",
           to: ["hello@nimara.ca"],
-          subject: `New Tool Request: ${tool_name}`,
+          subject: `New Tool Request: ${safeToolName}`,
           html: adminEmailHtml,
         }),
       }),

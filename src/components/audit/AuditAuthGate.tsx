@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Lock, Shield } from "lucide-react";
-import { verifyPassword, isAuthenticated, clearStoredPassword } from "@/lib/auditApi";
+import { verifyPassword, isAuthenticated, logout } from "@/lib/auditApi";
 import { useToast } from "@/hooks/use-toast";
 
 interface AuditAuthGateProps {
@@ -47,8 +47,8 @@ export function AuditAuthGate({ children }: AuditAuthGateProps) {
     }
   };
 
-  const handleLogout = () => {
-    clearStoredPassword();
+  const handleLogout = async () => {
+    await logout();
     setIsAuthed(false);
   };
 
