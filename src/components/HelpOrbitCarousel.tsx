@@ -163,14 +163,14 @@ function CardContent({ card, Icon }: { card: CardData; Icon: LucideIcon }) {
       </div>
 
       {/* Card content */}
-      <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+      <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8">
         <h3
-          className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-3 ${card.textColor}`}
+          className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-2 sm:mb-3 ${card.textColor}`}
         >
           {card.title.split(" ")[0]}
         </h3>
         <p
-          className={`text-base md:text-lg ${
+          className={`text-sm sm:text-base md:text-lg ${
             card.color === "bg-white" ? "text-muted-foreground" : "text-white/80"
           }`}
         >
@@ -222,19 +222,19 @@ export default function HelpOrbitCarousel() {
     >
       {/* Sticky content wrapper */}
       <motion.div 
-        className="sticky top-0 min-h-screen flex items-center py-12 md:py-20"
+        className="sticky top-0 min-h-screen flex items-center py-8 sm:py-12 md:py-20"
         style={{ opacity: stickyOpacity, y: stickyY }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-16 items-center">
             {/* Left side - Headline and description */}
             <div className="order-2 lg:order-1">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6 md:mb-8">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4 sm:mb-6 md:mb-8">
                 What we{" "}
                 <span className="relative inline-block">
                   help
                   <svg
-                    className="absolute -bottom-2 left-0 w-full"
+                    className="absolute -bottom-1 sm:-bottom-2 left-0 w-full"
                     viewBox="0 0 100 12"
                     preserveAspectRatio="none"
                   >
@@ -250,13 +250,13 @@ export default function HelpOrbitCarousel() {
                 you with
               </h2>
 
-              <p className="text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed mb-8 md:mb-10 max-w-lg">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed mb-6 sm:mb-8 md:mb-10 max-w-lg">
                 From messy spreadsheets to streamlined systems. We handle the
                 operational heavy lifting so you can focus on mission.
               </p>
 
               {/* Progress list that highlights as cards stack */}
-              <div className="space-y-3 md:space-y-4 mb-8 md:mb-10">
+              <div className="space-y-2 sm:space-y-3 md:space-y-4 mb-6 sm:mb-8 md:mb-10">
                 {cards.map((card, index) => (
                   <CardListItem
                     key={card.id}
@@ -269,15 +269,15 @@ export default function HelpOrbitCarousel() {
 
               <a
                 href="/start-here"
-                className="inline-flex items-center gap-2 text-foreground font-semibold hover:gap-3 transition-all duration-300"
+                className="inline-flex items-center gap-2 text-sm sm:text-base text-foreground font-semibold hover:gap-3 transition-all duration-300"
               >
                 See how we can help
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
             </div>
 
             {/* Right side - Stacking cards */}
-            <div className="order-1 lg:order-2 relative h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px]">
+            <div className="order-1 lg:order-2 relative h-[280px] sm:h-[350px] md:h-[400px] lg:h-[500px]">
               {cards.map((card, index) => (
                 <StackingCard
                   key={card.id}
@@ -323,13 +323,13 @@ function CardListItem({
 
   return (
     <motion.div
-      className="flex items-center gap-3 group"
+      className="flex items-center gap-2 sm:gap-3 group"
       style={{
         opacity: useTransform(isActive, (active: boolean) => (active ? 1 : 0.4)),
       }}
     >
       <motion.div
-        className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors duration-500`}
+        className={`w-6 h-6 sm:w-8 sm:h-8 rounded-md sm:rounded-lg flex items-center justify-center transition-colors duration-500`}
         style={{
           backgroundColor: useTransform(isActive, (active: boolean) =>
             active ? card.color.replace("bg-", "").replace("[", "").replace("]", "") : "hsl(var(--muted))"
@@ -339,9 +339,9 @@ function CardListItem({
           scale: 1,
         }}
       >
-        <card.icon className="w-4 h-4 text-white" />
+        <card.icon className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
       </motion.div>
-      <span className="font-medium text-sm md:text-base text-foreground">
+      <span className="font-medium text-xs sm:text-sm md:text-base text-foreground">
         {card.title}
       </span>
     </motion.div>

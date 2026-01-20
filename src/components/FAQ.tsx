@@ -30,14 +30,14 @@ export const FAQ = () => {
   return (
     <section
       id="faq"
-      className="py-20 md:py-28 lg:py-32 bg-background"
+      className="py-16 sm:py-20 md:py-28 lg:py-32 bg-background"
       aria-labelledby="faq-heading"
     >
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Heading */}
         <h2
           id="faq-heading"
-          className="text-3xl sm:text-4xl md:text-5xl font-semibold text-foreground mb-12 md:mb-16 tracking-tight"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-8 sm:mb-12 md:mb-16 tracking-tight"
         >
           Questions?
         </h2>
@@ -55,28 +55,28 @@ export const FAQ = () => {
                 <dt>
                   <button
                     onClick={() => toggleFAQ(index)}
-                    className="w-full py-6 md:py-7 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded group"
+                    className="w-full py-4 sm:py-5 md:py-6 lg:py-7 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded group"
                     aria-expanded={isOpen}
                     aria-controls={`faq-answer-${index}`}
                     id={`faq-question-${index}`}
                   >
                     {/* Question */}
-                    <span className="text-base md:text-lg font-normal text-foreground pr-4">
+                    <span className="text-sm sm:text-base md:text-lg font-normal text-foreground pr-3 sm:pr-4">
                       {faq.question}
                     </span>
 
                     {/* Plus/Minus Button */}
                     <span 
-                      className="w-10 h-10 md:w-11 md:h-11 rounded-full bg-foreground flex items-center justify-center shrink-0 transition-transform duration-200"
+                      className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 lg:w-11 lg:h-11 rounded-full bg-foreground flex items-center justify-center shrink-0 transition-transform duration-200"
                       aria-hidden="true"
                       style={{ transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)' }}
                     >
                       <svg 
-                        width="16" 
-                        height="16" 
+                        width="14" 
+                        height="14" 
                         viewBox="0 0 16 16" 
                         fill="none" 
-                        className="text-background"
+                        className="text-background sm:w-4 sm:h-4"
                       >
                         <path 
                           d="M8 3V13M3 8H13" 
@@ -100,8 +100,8 @@ export const FAQ = () => {
                       transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                       className="overflow-hidden"
                     >
-                      <div className="pb-6 pr-16">
-                        <p className="text-muted-foreground leading-relaxed text-base">
+                      <div className="pb-4 sm:pb-5 md:pb-6 pr-10 sm:pr-12 md:pr-16">
+                        <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
                           {faq.answer}
                         </p>
                       </div>
