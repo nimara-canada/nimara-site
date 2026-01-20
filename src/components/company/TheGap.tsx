@@ -40,33 +40,33 @@ const GapVisual = ({ isInView }: { isInView: boolean }) => (
         initial={{ opacity: 0, y: 40 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.5 }}
-        className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-6 lg:p-8 w-[85%] max-w-[300px]"
+        className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 lg:bottom-8 lg:right-8 bg-white rounded-xl sm:rounded-2xl shadow-2xl p-4 sm:p-5 lg:p-6 w-[75%] sm:w-[70%] max-w-[280px]"
       >
         {/* Header */}
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center">
-            <AlertCircle className="w-5 h-5 text-amber-600" />
+        <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-amber-100 flex items-center justify-center flex-shrink-0">
+            <AlertCircle className="w-4 h-4 text-amber-600" />
           </div>
-          <span className="text-base font-semibold text-nim-navy">The Problem:</span>
+          <span className="text-sm sm:text-base font-semibold text-nim-navy">The Problem:</span>
         </div>
         
         {/* Message */}
-        <p className="text-nim-navy text-lg font-medium mb-6 leading-snug">
+        <p className="text-nim-navy text-sm sm:text-base font-medium mb-3 sm:mb-4 leading-snug">
           Strong work, scattered records. Reporting becomes a scramble.
         </p>
         
         {/* Stats box */}
-        <div className="bg-gray-50 rounded-xl p-4 border border-gray-100">
-          <div className="flex items-baseline gap-2 mb-1">
+        <div className="bg-gray-50 rounded-lg p-3 border border-gray-100">
+          <div className="flex items-baseline gap-1.5 mb-0.5">
             <motion.span
-              className="text-4xl font-bold text-nim-navy tracking-tight"
+              className="text-3xl sm:text-4xl font-bold text-nim-navy tracking-tight"
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.5, delay: 0.9 }}
             >
               4
             </motion.span>
-            <span className="text-sm text-gray-600">basics we fix</span>
+            <span className="text-xs sm:text-sm text-gray-600">basics we fix</span>
           </div>
           <p className="text-xs text-gray-500">Files • Tracking • Spending • Reports</p>
         </div>
