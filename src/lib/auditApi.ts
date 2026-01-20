@@ -14,6 +14,11 @@ export const clearStoredPassword = (): void => {
   sessionStorage.removeItem(STORAGE_KEY);
 };
 
+// Alias for logout functionality
+export const logout = async (): Promise<void> => {
+  clearStoredPassword();
+};
+
 export const isAuthenticated = (): boolean => {
   return !!getStoredPassword();
 };
