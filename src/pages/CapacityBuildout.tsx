@@ -1,18 +1,18 @@
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform, useSpring } from 'framer-motion';
+import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { ScrollToTop } from '@/components/ScrollToTop';
 import { MotionPreferencesProvider, useMotionPreferences, DROPBOX_EASING_CSS } from '@/hooks/use-scroll-reveal';
 import { CALENDLY_BOOKING_URL, TYPEFORM_HEALTH_CHECK_URL, CONTACT_EMAIL } from '@/constants/urls';
 import { 
-  Check, X, ArrowRight, Clipboard, MessageSquare, FileCheck, Calendar,
+  Check, X, ArrowRight, ChevronDown,
   ClipboardList, DollarSign, Users, BarChart3, Heart, HandHelping, FolderOpen,
   LucideIcon, Plus
 } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import {
   Accordion,
   AccordionContent,
@@ -59,23 +59,22 @@ function ScrollRevealBlock({ children, delay = 0 }: { children: React.ReactNode;
   );
 }
 
-// Area selection data with icons and colors matching HelpOrbitCarousel
+// Area selection data with icons
 interface AreaData {
   id: string;
   label: string;
   icon: LucideIcon;
   shortDesc: string;
-  color: string;
 }
 
 const areas: AreaData[] = [
-  { id: 'board', label: 'Board & Governance', icon: ClipboardList, shortDesc: 'Meetings, decisions, approvals', color: 'hsl(220, 53%, 12%)' },
-  { id: 'money', label: 'Money & Grants', icon: DollarSign, shortDesc: 'Spending, receipts, grant records', color: 'hsl(220, 40%, 18%)' },
-  { id: 'people', label: 'People', icon: Users, shortDesc: 'Roles, contracts, onboarding', color: 'hsl(220, 35%, 24%)' },
-  { id: 'programs', label: 'Programs', icon: BarChart3, shortDesc: 'Services, outcomes, tracking', color: 'hsl(220, 53%, 12%)' },
-  { id: 'fundraising', label: 'Fundraising', icon: Heart, shortDesc: 'Donor records, giving history', color: 'hsl(262, 45%, 28%)' },
-  { id: 'volunteers', label: 'Volunteers', icon: HandHelping, shortDesc: 'Onboarding, tracking, records', color: 'hsl(220, 40%, 18%)' },
-  { id: 'tools', label: 'Tools & Files', icon: FolderOpen, shortDesc: 'Folders, templates, routines', color: 'hsl(220, 35%, 24%)' },
+  { id: 'board', label: 'Board & Governance', icon: ClipboardList, shortDesc: 'Meetings, decisions, approvals' },
+  { id: 'money', label: 'Money & Grants', icon: DollarSign, shortDesc: 'Spending, receipts, grant records' },
+  { id: 'people', label: 'People', icon: Users, shortDesc: 'Roles, contracts, onboarding' },
+  { id: 'programs', label: 'Programs', icon: BarChart3, shortDesc: 'Services, outcomes, tracking' },
+  { id: 'fundraising', label: 'Fundraising', icon: Heart, shortDesc: 'Donor records, giving history' },
+  { id: 'volunteers', label: 'Volunteers', icon: HandHelping, shortDesc: 'Onboarding, tracking, records' },
+  { id: 'tools', label: 'Tools & Files', icon: FolderOpen, shortDesc: 'Folders, templates, routines' },
 ];
 
 // FAQ data
@@ -98,187 +97,153 @@ const faqs = [
   }
 ];
 
-// Premium Visual Card with noise texture and geometric lines
-interface PremiumVisualCardProps {
-  color: string;
-  lineColor: string;
-  isInView: boolean;
-  children: React.ReactNode;
-}
+// 1. Hero Section - Dark Navy matching homepage
+const HeroSection = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const heroRef = useRef<HTMLElement>(null);
+  const { reducedMotion } = useMotionPreferences();
 
-function PremiumVisualCard({ color, lineColor, isInView, children }: PremiumVisualCardProps) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.6, delay: 0.2 }}
-      className="relative w-full"
-    >
-      {/* Main colored panel */}
-      <div 
-        className="relative rounded-3xl overflow-hidden aspect-[4/3]"
-        style={{ backgroundColor: color }}
-      >
-        {/* Noise texture overlay */}
-        <div 
-          className="absolute inset-0 opacity-40 mix-blend-overlay pointer-events-none"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E")`,
-          }}
-        />
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
 
-        {/* Geometric lines */}
-        <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
-          <line x1="20%" y1="0" x2="20%" y2="100%" stroke={lineColor} strokeWidth="1" opacity="0.3" />
-          <line x1="80%" y1="0" x2="80%" y2="100%" stroke={lineColor} strokeWidth="1" opacity="0.3" />
-          <line x1="0" y1="30%" x2="100%" y2="30%" stroke={lineColor} strokeWidth="1" opacity="0.2" />
-          <line x1="0" y1="70%" x2="100%" y2="70%" stroke={lineColor} strokeWidth="1" opacity="0.2" />
-        </svg>
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: reducedMotion ? 1000 : 100,
+    damping: reducedMotion ? 100 : 30,
+    restDelta: 0.001
+  });
 
-        {/* Content */}
-        {children}
-      </div>
-    </motion.div>
-  );
-}
-
-// Sticky Header with scroll-based transparency
-const StickyHeader = () => {
-  const [scrolled, setScrolled] = useState(false);
+  const heroOpacity = useTransform(smoothProgress, [0, 0.5], [1, reducedMotion ? 1 : 0]);
+  const heroY = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : 100]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    setIsLoaded(true);
   }, []);
 
-  return (
-    <motion.header 
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-white/95 backdrop-blur-md border-b border-border' 
-          : 'bg-transparent border-b border-transparent'
-      }`}
-    >
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link to="/" className="group flex items-center gap-2.5">
-          <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors duration-300 ${
-            scrolled ? 'bg-foreground' : 'bg-foreground'
-          }`}>
-            <span className="text-sm font-bold text-background">N</span>
-          </div>
-          <span className={`font-semibold text-lg tracking-tight transition-colors duration-300 ${
-            scrolled ? 'text-foreground' : 'text-foreground'
-          }`}>
-            Nimara
-          </span>
-        </Link>
-        <Button 
-          asChild 
-          size="default" 
-          className={`rounded-full px-6 font-semibold transition-all duration-300 ${
-            scrolled 
-              ? 'bg-primary hover:bg-primary/90 text-primary-foreground' 
-              : 'bg-foreground hover:bg-foreground/90 text-background'
-          }`}
-        >
-          <a href="#booking">
-            Book a call
-          </a>
-        </Button>
-      </div>
-    </motion.header>
-  );
-};
-
-// 1. Hero Section - Clean, Bold Style
-const HeroSection = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const revealStyle = (delay: number = 0): React.CSSProperties => reducedMotion ? {
+    opacity: 1,
+    transform: 'none'
+  } : {
+    opacity: isLoaded ? 1 : 0,
+    transform: isLoaded ? 'translateY(0)' : 'translateY(24px)',
+    transition: `opacity 700ms ${DROPBOX_EASING_CSS} ${delay}ms, transform 700ms ${DROPBOX_EASING_CSS} ${delay}ms`
+  };
 
   return (
-    <section 
-      ref={ref}
-      className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-20"
-      style={{ backgroundColor: '#f0efec' }}
-    >
-      <div className="relative z-10 w-full max-w-4xl mx-auto px-6 py-20 lg:py-28 text-center">
-        {/* Bold Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground tracking-[-0.03em] leading-[1.05] mb-6 uppercase"
-          style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
-        >
-          Ready to get<br />funder-ready?
-        </motion.h1>
+    <section ref={heroRef} id="hero" aria-labelledby="hero-heading" className="min-h-screen relative overflow-hidden bg-secondary-background">
+      {/* Subtle grid pattern */}
+      <div 
+        className="absolute inset-0 opacity-[0.02] pointer-events-none" 
+        aria-hidden="true" 
+        style={{
+          backgroundImage: `linear-gradient(hsl(var(--foreground) / 0.08) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground) / 0.08) 1px, transparent 1px)`,
+          backgroundSize: '80px 80px'
+        }} 
+      />
 
-        {/* Subhead */}
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto mb-10"
-        >
-          Built by a former grant fund manager. Nimara helps Canadian nonprofits build the systems funders actually look for.
-        </motion.p>
-
-        {/* CTA Button - Purple Rounded */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-col items-center gap-6"
-        >
-          <Button 
-            asChild 
-            size="lg" 
-            className="bg-primary hover:bg-primary/90 text-primary-foreground px-12 py-7 text-base font-semibold rounded-full uppercase tracking-wide"
-          >
-            <a href="#booking">
-              Book a call
-            </a>
-          </Button>
-
-          {/* Secondary link */}
-          <a
-            href={TYPEFORM_HEALTH_CHECK_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors text-sm underline underline-offset-4"
-          >
-            Or try the 6-minute check first
-          </a>
-        </motion.div>
-
-        {/* Trust Badges */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-wrap items-center justify-center gap-3 mt-14"
-        >
-          {['Canada-only', 'From $6,499 CAD/area', 'Not grant writers'].map((badge) => (
-            <span 
-              key={badge}
-              className="px-4 py-2 bg-foreground/5 border border-foreground/10 text-muted-foreground text-sm font-medium rounded-full"
+      <motion.div 
+        className="relative z-10 min-h-screen flex flex-col" 
+        style={{ opacity: heroOpacity, y: heroY }}
+      >
+        <div className="flex-1 w-full max-w-3xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20 py-12 sm:py-16 md:py-20 lg:py-28 xl:py-32 2xl:py-36 flex flex-col justify-center">
+          <div className="text-center">
+            {/* Main Headline */}
+            <h1 
+              id="hero-heading" 
+              style={revealStyle(100)} 
+              className="mb-6 sm:mb-8 md:mb-10 xl:mb-12 text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[6.5rem] font-extrabold text-white leading-[1.05] tracking-[-0.03em]"
             >
-              {badge}
-            </span>
-          ))}
+              Ready to get <span className="text-accent">funder-ready</span>?
+            </h1>
+
+            {/* Subheadline */}
+            <p 
+              style={revealStyle(200)} 
+              className="text-base sm:text-lg md:text-xl lg:text-[1.35rem] leading-snug max-w-[48ch] mx-auto mb-8 sm:mb-10 md:mb-12 text-white/80"
+            >
+              Built by a former grant fund manager. Nimara helps Canadian nonprofits build the systems funders actually look for.
+            </p>
+
+            {/* Bullets */}
+            <ul 
+              style={revealStyle(250)} 
+              className="inline-flex flex-col items-start gap-2 sm:gap-3 mb-6 sm:mb-8 text-left" 
+              aria-label="Key benefits"
+            >
+              <li className="flex items-center gap-2 sm:gap-3 text-sm sm:text-base md:text-lg text-white/75">
+                <Check className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 text-accent" aria-hidden="true" />
+                <span>From $6,499 CAD per area</span>
+              </li>
+              <li className="flex items-center gap-2 sm:gap-3 text-sm sm:text-base md:text-lg text-white/75">
+                <Check className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 text-accent" aria-hidden="true" />
+                <span>Canada-only specialists</span>
+              </li>
+              <li className="flex items-center gap-2 sm:gap-3 text-sm sm:text-base md:text-lg text-white/75">
+                <Check className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 text-accent" aria-hidden="true" />
+                <span>Not grant writers — we build systems</span>
+              </li>
+            </ul>
+
+            {/* CTAs */}
+            <div 
+              style={revealStyle(300)} 
+              className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 md:gap-6" 
+              role="group" 
+              aria-label="Get started options"
+            >
+              {/* Primary CTA */}
+              <a 
+                href="#booking" 
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold rounded-lg select-none transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent bg-primary text-primary-foreground"
+              >
+                Book a call
+                <span className="text-base sm:text-lg" aria-hidden="true">→</span>
+              </a>
+
+              {/* Secondary CTA */}
+              <a 
+                href={TYPEFORM_HEALTH_CHECK_URL} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="group inline-flex items-center gap-2 text-sm sm:text-base text-white hover:opacity-80 select-none transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 rounded"
+              >
+                Or try the 6-minute check first
+                <span className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span>
+              </a>
+            </div>
+
+            {/* Trust line */}
+            <div style={revealStyle(400)} className="mt-6 sm:mt-8">
+              <p className="text-xs sm:text-sm md:text-[0.9rem] text-white/55 tracking-[0.02em]">
+                For Canadian nonprofits with 0–50 staff. Not an audit firm.
+              </p>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Scroll Indicator */}
+      <motion.div 
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2" 
+        style={{ opacity: useTransform(smoothProgress, [0, 0.15], [1, 0]) }} 
+        aria-hidden="true"
+      >
+        <span style={revealStyle(800)} className="text-[11px] uppercase tracking-[0.2em] text-white/60">
+          Scroll
+        </span>
+        <motion.div 
+          animate={reducedMotion ? {} : { y: [0, 6, 0] }} 
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <ChevronDown className="w-5 h-5 text-white/60" />
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 };
 
-// 2. Interactive Area Selection - Premium Editorial Style
+// 2. Interactive Area Selection
 const AreaSelectionSection = () => {
   const [selectedAreas, setSelectedAreas] = useState<string[]>([]);
   const ref = useRef<HTMLDivElement>(null);
@@ -293,62 +258,65 @@ const AreaSelectionSection = () => {
   };
 
   return (
-    <section ref={ref} className="py-24 md:py-32 bg-white">
-      <div className="max-w-5xl mx-auto px-6">
-        {/* Header - Centered, Bold */}
-        <div className="text-center mb-20">
+    <section ref={ref} className="py-20 md:py-28 lg:py-36 bg-background">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        {/* Header */}
+        <div className="text-center mb-16 md:mb-20">
           <ScrollRevealBlock>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-foreground tracking-[-0.03em] leading-[1.05] mb-6 uppercase">
-              Choose your focus
+            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.15em] sm:tracking-[0.2em] uppercase text-primary mb-4 sm:mb-6">
+              Choose Your Focus
+            </p>
+          </ScrollRevealBlock>
+          <ScrollRevealBlock delay={50}>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-foreground leading-[1.1] sm:leading-[1.05] mb-6 sm:mb-8">
+              Pick at least <span className="text-primary">2 areas</span>
             </h2>
           </ScrollRevealBlock>
           <ScrollRevealBlock delay={100}>
-            <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto">
-              Pick at least 2 areas. We'll start with what's most urgent.
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-xl mx-auto">
+              We'll start with what's most urgent.
             </p>
           </ScrollRevealBlock>
         </div>
 
-        {/* Premium Area Cards - Editorial Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-16">
+        {/* Area Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 mb-12 md:mb-16">
           {areas.map((area, index) => {
             const isSelected = selectedAreas.includes(area.id);
+            const Icon = area.icon;
             return (
               <ScrollRevealBlock key={area.id} delay={150 + index * 40}>
                 <motion.button
                   onClick={() => toggleArea(area.id)}
                   whileTap={{ scale: 0.995 }}
-                  className={`group relative w-full text-left transition-all duration-500 ${
+                  className={`group relative w-full text-left transition-all duration-300 ${
                     isSelected ? 'z-10' : ''
                   }`}
                 >
-                  {/* Card */}
                   <div 
-                    className={`relative p-8 md:p-10 rounded-sm overflow-hidden transition-all duration-500 ${
+                    className={`relative p-6 sm:p-8 md:p-10 rounded-xl border-2 overflow-hidden transition-all duration-300 ${
                       isSelected
-                        ? 'bg-foreground text-background'
-                        : 'bg-[#f7f6f3] hover:bg-[#efede8]'
+                        ? 'bg-primary border-primary text-primary-foreground'
+                        : 'bg-card border-border hover:border-primary/30 hover:bg-muted/50'
                     }`}
                   >
-                    {/* Top row: Number + Selection indicator */}
-                    <div className="flex items-start justify-between mb-12">
-                      <span className={`text-xs font-medium tracking-[0.15em] uppercase transition-colors duration-500 ${
-                        isSelected ? 'text-background/50' : 'text-foreground/30'
-                      }`}>
-                        0{index + 1}
-                      </span>
+                    {/* Top row: Icon + Selection indicator */}
+                    <div className="flex items-start justify-between mb-6 sm:mb-8">
+                      <Icon className={`w-6 h-6 transition-colors duration-300 ${
+                        isSelected ? 'text-primary-foreground' : 'text-primary'
+                      }`} />
                       
                       {/* Selection circle */}
-                      <div className={`w-5 h-5 rounded-full border transition-all duration-300 flex items-center justify-center ${
+                      <div className={`w-5 h-5 rounded-full border-2 transition-all duration-300 flex items-center justify-center ${
                         isSelected 
-                          ? 'border-background bg-background' 
-                          : 'border-foreground/20 group-hover:border-foreground/40'
+                          ? 'border-primary-foreground bg-primary-foreground' 
+                          : 'border-border group-hover:border-primary/50'
                       }`}>
                         {isSelected && (
                           <motion.div
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
-                            className="w-2.5 h-2.5 rounded-full bg-foreground"
+                            className="w-2.5 h-2.5 rounded-full bg-primary"
                           />
                         )}
                       </div>
@@ -356,25 +324,16 @@ const AreaSelectionSection = () => {
 
                     {/* Content */}
                     <div>
-                      <h3 className={`text-2xl md:text-3xl font-semibold tracking-[-0.02em] mb-3 transition-colors duration-500 ${
-                        isSelected ? 'text-background' : 'text-foreground'
+                      <h3 className={`text-xl sm:text-2xl md:text-3xl font-semibold tracking-[-0.02em] mb-2 sm:mb-3 transition-colors duration-300 ${
+                        isSelected ? 'text-primary-foreground' : 'text-foreground'
                       }`}>
                         {area.label}
                       </h3>
-                      <p className={`text-sm leading-relaxed transition-colors duration-500 ${
-                        isSelected ? 'text-background/70' : 'text-foreground/50'
+                      <p className={`text-sm sm:text-base leading-relaxed transition-colors duration-300 ${
+                        isSelected ? 'text-primary-foreground/80' : 'text-muted-foreground'
                       }`}>
                         {area.shortDesc}
                       </p>
-                    </div>
-
-                    {/* Subtle corner accent on hover/selected */}
-                    <div className={`absolute bottom-0 right-0 w-24 h-24 transition-opacity duration-500 ${
-                      isSelected ? 'opacity-10' : 'opacity-0 group-hover:opacity-5'
-                    }`}>
-                      <div className={`absolute bottom-4 right-4 w-12 h-12 border-r-2 border-b-2 ${
-                        isSelected ? 'border-background' : 'border-foreground'
-                      }`} />
                     </div>
                   </div>
                 </motion.button>
@@ -383,10 +342,10 @@ const AreaSelectionSection = () => {
           })}
         </div>
 
-        {/* Selection Counter & CTA - Minimal bottom bar */}
+        {/* Selection Counter & CTA */}
         <ScrollRevealBlock delay={500}>
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-8 py-8 border-t border-foreground/10">
-            <div className="flex items-center gap-6">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 sm:gap-8 py-6 sm:py-8 border-t border-border">
+            <div className="flex items-center gap-4 sm:gap-6">
               {/* Visual counter dots */}
               <div className="flex items-center gap-1.5">
                 {areas.map((area) => (
@@ -394,19 +353,19 @@ const AreaSelectionSection = () => {
                     key={area.id}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
                       selectedAreas.includes(area.id) 
-                        ? 'bg-foreground scale-110' 
-                        : 'bg-foreground/15'
+                        ? 'bg-primary scale-110' 
+                        : 'bg-border'
                     }`}
                   />
                 ))}
               </div>
               
-              <div className="h-4 w-px bg-foreground/10" />
+              <div className="h-4 w-px bg-border" />
               
               <p className="text-sm text-muted-foreground">
                 <span className="font-semibold text-foreground">{selectedAreas.length}</span> of {areas.length} selected
                 {selectedAreas.length < 2 && (
-                  <span className="ml-2 text-foreground/40">· {2 - selectedAreas.length} more required</span>
+                  <span className="ml-2 text-muted-foreground/60">· {2 - selectedAreas.length} more required</span>
                 )}
               </p>
             </div>
@@ -414,19 +373,19 @@ const AreaSelectionSection = () => {
             <Button 
               asChild={selectedAreas.length >= 2}
               size="lg" 
-              className={`px-10 py-6 text-sm font-semibold rounded-full uppercase tracking-[0.1em] transition-all duration-500 ${
+              className={`w-full sm:w-auto px-8 sm:px-10 py-5 sm:py-6 text-sm font-semibold rounded-lg transition-all duration-300 ${
                 selectedAreas.length >= 2 
-                  ? 'bg-foreground hover:bg-foreground/90 text-background' 
-                  : 'bg-foreground/5 text-foreground/30 cursor-not-allowed pointer-events-none'
+                  ? 'bg-primary hover:bg-primary/90 text-primary-foreground' 
+                  : 'bg-muted text-muted-foreground cursor-not-allowed pointer-events-none'
               }`}
             >
               {selectedAreas.length >= 2 ? (
                 <a href="#booking">
-                  Continue
+                  Continue →
                 </a>
               ) : (
                 <span>
-                  Continue
+                  Continue →
                 </span>
               )}
             </Button>
@@ -437,11 +396,8 @@ const AreaSelectionSection = () => {
   );
 };
 
-// 3. Process Steps - Premium Editorial Style
+// 3. Process Steps
 const ProcessSection = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   const steps = [
     {
       title: "Before the call",
@@ -461,69 +417,59 @@ const ProcessSection = () => {
   ];
 
   return (
-    <section ref={ref} className="py-24 md:py-32" style={{ backgroundColor: '#f0efec' }}>
-      <div className="max-w-5xl mx-auto px-6">
-        {/* Header - Centered, Bold */}
-        <div className="text-center mb-20">
+    <section className="py-20 md:py-28 lg:py-36 bg-muted">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        {/* Header */}
+        <div className="text-center mb-16 md:mb-20">
           <ScrollRevealBlock>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-foreground tracking-[-0.03em] leading-[1.05] mb-6 uppercase">
-              The process
-            </h2>
-          </ScrollRevealBlock>
-          <ScrollRevealBlock delay={100}>
-            <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto">
-              Simple. Clear. No surprises.
+            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.15em] sm:tracking-[0.2em] uppercase text-primary mb-4 sm:mb-6">
+              How It Works
             </p>
+          </ScrollRevealBlock>
+          <ScrollRevealBlock delay={50}>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-foreground leading-[1.1] sm:leading-[1.05] mb-6 sm:mb-8">
+              Simple. Clear. <span className="text-primary">No surprises.</span>
+            </h2>
           </ScrollRevealBlock>
         </div>
 
-        {/* Premium Editorial Cards */}
-        <div className="grid md:grid-cols-3 gap-3 mb-12">
+        {/* Process Cards */}
+        <div className="grid md:grid-cols-3 gap-4 sm:gap-6 mb-12">
           {steps.map((step, index) => (
             <ScrollRevealBlock key={step.title} delay={200 + index * 80}>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                className="group relative bg-white p-8 md:p-10 rounded-sm h-full flex flex-col"
-              >
+              <div className="group relative bg-card border border-border p-6 sm:p-8 md:p-10 rounded-xl h-full flex flex-col hover:border-primary/30 transition-colors duration-300">
                 {/* Number */}
-                <span className="text-xs font-medium tracking-[0.15em] uppercase text-foreground/30 mb-10">
+                <span className="text-xs font-medium tracking-[0.15em] uppercase text-primary mb-8 sm:mb-10">
                   0{index + 1}
                 </span>
                 
                 {/* Title */}
-                <h3 className="text-2xl md:text-3xl font-semibold tracking-[-0.02em] text-foreground mb-4">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-[-0.02em] text-foreground mb-3 sm:mb-4">
                   {step.title}
                 </h3>
                 
                 {/* Description */}
-                <p className="text-foreground/50 leading-relaxed mb-8">
+                <p className="text-muted-foreground leading-relaxed mb-6 sm:mb-8">
                   {step.description}
                 </p>
                 
-                {/* Outcome - at bottom */}
-                <div className="mt-auto pt-6 border-t border-foreground/10">
-                  <p className="text-xs font-medium tracking-[0.05em] uppercase text-foreground/70">
+                {/* Outcome */}
+                <div className="mt-auto pt-4 sm:pt-6 border-t border-border">
+                  <p className="text-xs font-medium tracking-[0.05em] uppercase text-muted-foreground">
                     You get
                   </p>
-                  <p className="text-base font-semibold text-foreground mt-1">
+                  <p className="text-base sm:text-lg font-semibold text-foreground mt-1">
                     {step.outcome}
                   </p>
                 </div>
-
-                {/* Subtle corner accent */}
-                <div className="absolute bottom-0 right-0 w-16 h-16 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div className="absolute bottom-4 right-4 w-8 h-8 border-r border-b border-foreground/10" />
-                </div>
-              </motion.div>
+              </div>
             </ScrollRevealBlock>
           ))}
         </div>
 
-        {/* Pricing line - minimal */}
+        {/* Pricing line */}
         <ScrollRevealBlock delay={500}>
-          <p className="text-center text-foreground/40 text-sm tracking-wide">
+          <p className="text-center text-muted-foreground text-sm tracking-wide">
             From $6,499 CAD per area · Minimum 2 areas
           </p>
         </ScrollRevealBlock>
@@ -532,7 +478,7 @@ const ProcessSection = () => {
   );
 };
 
-// 4. Preparation Section - Clean Neutral Style
+// 4. Preparation Section
 const PreparationSection = () => {
   const items = [
     "What funding or deadline is coming up",
@@ -541,25 +487,25 @@ const PreparationSection = () => {
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-white">
-      <div className="max-w-3xl mx-auto px-6">
-        <div className="text-center mb-12">
+    <section className="py-20 md:py-28 lg:py-36 bg-background">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6">
+        <div className="text-center mb-10 sm:mb-12">
           <ScrollRevealBlock>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-foreground tracking-[-0.03em] leading-[1.05] uppercase">
-              What we'll ask on the call
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground tracking-tight leading-[1.1]">
+              What we'll ask <span className="text-primary">on the call</span>
             </h2>
           </ScrollRevealBlock>
         </div>
         
         <ScrollRevealBlock delay={100}>
-          <div className="bg-white rounded-2xl border border-border p-8 md:p-10">
-            <ul className="space-y-5">
+          <div className="bg-card rounded-xl border border-border p-6 sm:p-8 md:p-10">
+            <ul className="space-y-4 sm:space-y-5">
               {items.map((item, index) => (
-                <li key={index} className="flex items-start gap-4">
-                  <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Check className="w-3.5 h-3.5 text-primary-foreground" />
+                <li key={index} className="flex items-start gap-3 sm:gap-4">
+                  <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-primary-foreground" />
                   </div>
-                  <span className="text-foreground text-lg">{item}</span>
+                  <span className="text-foreground text-base sm:text-lg">{item}</span>
                 </li>
               ))}
             </ul>
@@ -570,50 +516,47 @@ const PreparationSection = () => {
   );
 };
 
-// 5. Pricing Block - Clean Neutral Style
+// 5. Pricing Block
 const PricingBlock = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <section ref={ref} className="py-24 md:py-32" style={{ backgroundColor: '#f0efec' }}>
-      <div className="max-w-3xl mx-auto px-6">
-        {/* Header - Centered, Bold */}
-        <div className="text-center mb-12">
+    <section className="py-20 md:py-28 lg:py-36 bg-muted">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6">
+        {/* Header */}
+        <div className="text-center mb-10 sm:mb-12">
           <ScrollRevealBlock>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-foreground tracking-[-0.03em] leading-[1.05] uppercase">
-              Pricing
+            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.15em] sm:tracking-[0.2em] uppercase text-primary mb-4 sm:mb-6">
+              Investment
+            </p>
+          </ScrollRevealBlock>
+          <ScrollRevealBlock delay={50}>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight leading-[1.1]">
+              Transparent pricing
             </h2>
           </ScrollRevealBlock>
         </div>
 
         <ScrollRevealBlock delay={100}>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-white rounded-2xl border border-border p-10 md:p-14 text-center"
-          >
-            <div className="mb-6">
-              <span className="text-5xl md:text-6xl font-black text-foreground">
+          <div className="bg-card rounded-xl border border-border p-8 sm:p-10 md:p-14 text-center">
+            <div className="mb-4 sm:mb-6">
+              <span className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground">
                 $6,499
               </span>
-              <span className="text-muted-foreground ml-2 text-lg">CAD / area</span>
+              <span className="text-muted-foreground ml-2 text-base sm:text-lg">CAD / area</span>
             </div>
-            <p className="text-foreground font-semibold text-lg mb-4">
+            <p className="text-foreground font-semibold text-base sm:text-lg mb-3 sm:mb-4">
               Minimum 2 areas (starting at $12,998 CAD)
             </p>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground text-sm sm:text-base">
               Final price depends on what you already have and what's missing.
             </p>
-          </motion.div>
+          </div>
         </ScrollRevealBlock>
       </div>
     </section>
   );
 };
 
-// 6. Fit Filter - Clean Neutral Style
+// 6. Fit Filter
 const FitFilterSection = () => {
   const bestFit = [
     "Less stress at reporting time",
@@ -628,36 +571,36 @@ const FitFilterSection = () => {
   ];
 
   return (
-    <section className="py-24 md:py-32 bg-white">
-      <div className="max-w-4xl mx-auto px-6">
-        {/* Header - Centered, Bold */}
-        <div className="text-center mb-14">
+    <section className="py-20 md:py-28 lg:py-36 bg-background">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        {/* Header */}
+        <div className="text-center mb-12 sm:mb-14">
           <ScrollRevealBlock>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground tracking-[-0.03em] leading-[1.05] uppercase mb-6">
-              Is this right for you?
-            </h2>
-          </ScrollRevealBlock>
-          <ScrollRevealBlock delay={100}>
-            <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto">
-              Let's make sure we're a good fit before you book.
+            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.15em] sm:tracking-[0.2em] uppercase text-primary mb-4 sm:mb-6">
+              Is This Right For You?
             </p>
+          </ScrollRevealBlock>
+          <ScrollRevealBlock delay={50}>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight leading-[1.1] mb-4 sm:mb-6">
+              Let's make sure we're a <span className="text-primary">good fit</span>
+            </h2>
           </ScrollRevealBlock>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
           {/* Best Fit */}
-          <ScrollRevealBlock delay={200}>
-            <div className="h-full bg-white rounded-2xl border border-border p-8 md:p-10">
-              <h3 className="text-xl font-bold text-foreground mb-6">
+          <ScrollRevealBlock delay={100}>
+            <div className="h-full bg-card rounded-xl border border-border p-6 sm:p-8 md:p-10">
+              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-4 sm:mb-6">
                 Best fit if you want
               </h3>
-              <ul className="space-y-4">
+              <ul className="space-y-3 sm:space-y-4">
                 {bestFit.map((item, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Check className="w-3.5 h-3.5 text-primary-foreground" />
+                    <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Check className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-primary-foreground" />
                     </div>
-                    <span className="text-foreground">{item}</span>
+                    <span className="text-foreground text-sm sm:text-base">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -665,18 +608,18 @@ const FitFilterSection = () => {
           </ScrollRevealBlock>
 
           {/* Not a Fit */}
-          <ScrollRevealBlock delay={300}>
-            <div className="h-full bg-white rounded-2xl border border-border p-8 md:p-10">
-              <h3 className="text-xl font-bold text-foreground mb-6">
+          <ScrollRevealBlock delay={200}>
+            <div className="h-full bg-card rounded-xl border border-border p-6 sm:p-8 md:p-10">
+              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-4 sm:mb-6">
                 Not a fit if you want
               </h3>
-              <ul className="space-y-4">
+              <ul className="space-y-3 sm:space-y-4">
                 {notAFit.map((item, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-foreground/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <X className="w-3.5 h-3.5 text-foreground/60" />
+                    <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-muted flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <X className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-muted-foreground" />
                     </div>
-                    <span className="text-foreground">{item}</span>
+                    <span className="text-foreground text-sm sm:text-base">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -688,15 +631,20 @@ const FitFilterSection = () => {
   );
 };
 
-// 7. Booking Section - Clean Neutral Style
+// 7. Booking Section
 const BookingSection = () => {
   return (
-    <section id="booking" className="py-24 md:py-32" style={{ backgroundColor: '#f0efec' }}>
-      <div className="max-w-3xl mx-auto px-6">
-        {/* Header - Centered, Bold */}
-        <div className="text-center mb-12">
+    <section id="booking" className="py-20 md:py-28 lg:py-36 bg-secondary-background">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6">
+        {/* Header */}
+        <div className="text-center mb-10 sm:mb-12">
           <ScrollRevealBlock>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-foreground tracking-[-0.03em] leading-[1.05] uppercase">
+            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.15em] sm:tracking-[0.2em] uppercase text-accent mb-4 sm:mb-6">
+              Get Started
+            </p>
+          </ScrollRevealBlock>
+          <ScrollRevealBlock delay={50}>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white tracking-tight leading-[1.1]">
               Book your call
             </h2>
           </ScrollRevealBlock>
@@ -704,7 +652,7 @@ const BookingSection = () => {
 
         {/* Calendly Embed */}
         <ScrollRevealBlock delay={200}>
-          <div className="w-full bg-white border border-border rounded-2xl overflow-hidden" style={{ height: '700px' }}>
+          <div className="w-full bg-white border border-white/10 rounded-xl overflow-hidden" style={{ height: '700px' }}>
             <iframe
               src={CALENDLY_BOOKING_URL}
               width="100%"
@@ -718,11 +666,11 @@ const BookingSection = () => {
 
         {/* Backup Contact */}
         <ScrollRevealBlock delay={300}>
-          <p className="text-center text-muted-foreground mt-8 mb-14">
+          <p className="text-center text-white/60 mt-6 sm:mt-8 mb-12 sm:mb-14">
             Prefer email?{' '}
             <a 
               href={`mailto:${CONTACT_EMAIL}`}
-              className="text-foreground font-medium underline underline-offset-4 hover:text-foreground/80 transition-colors"
+              className="text-white font-medium underline underline-offset-4 hover:text-white/80 transition-colors"
             >
               {CONTACT_EMAIL}
             </a>
@@ -732,10 +680,10 @@ const BookingSection = () => {
         {/* FAQ Section */}
         <ScrollRevealBlock delay={400}>
           <div className="max-w-4xl mx-auto">
-            <div className="flex flex-col md:flex-row md:gap-16">
+            <div className="flex flex-col md:flex-row md:gap-12 lg:gap-16">
               {/* Title on the left */}
-              <div className="md:w-48 flex-shrink-0 mb-8 md:mb-0">
-                <h3 className="text-3xl md:text-4xl font-black text-foreground uppercase">FAQs</h3>
+              <div className="md:w-32 lg:w-48 flex-shrink-0 mb-6 sm:mb-8 md:mb-0">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">FAQs</h3>
               </div>
               
               {/* Accordion on the right */}
@@ -745,15 +693,15 @@ const BookingSection = () => {
                     <AccordionItem 
                       key={index} 
                       value={`item-${index}`} 
-                      className="border-b-0 border-t border-dashed border-foreground/20 py-1"
+                      className="border-b-0 border-t border-dashed border-white/20 py-1"
                     >
-                      <AccordionTrigger className="text-left text-foreground hover:no-underline py-5 text-base md:text-lg font-medium [&>svg]:hidden group flex justify-between items-center gap-4">
+                      <AccordionTrigger className="text-left text-white hover:no-underline py-4 sm:py-5 text-sm sm:text-base md:text-lg font-medium [&>svg]:hidden group flex justify-between items-center gap-4">
                         <span className="flex-1">{faq.question}</span>
-                        <span className="w-10 h-10 rounded-full bg-foreground flex items-center justify-center flex-shrink-0 group-data-[state=open]:rotate-45 transition-transform duration-200">
-                          <Plus className="w-5 h-5 text-background" />
+                        <span className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white flex items-center justify-center flex-shrink-0 group-data-[state=open]:rotate-45 transition-transform duration-200">
+                          <Plus className="w-4 h-4 sm:w-5 sm:h-5 text-secondary-background" />
                         </span>
                       </AccordionTrigger>
-                      <AccordionContent className="text-muted-foreground pb-5 pr-14">
+                      <AccordionContent className="text-white/70 pb-4 sm:pb-5 pr-12 sm:pr-14 text-sm sm:text-base">
                         {faq.answer}
                       </AccordionContent>
                     </AccordionItem>
@@ -772,7 +720,7 @@ const BookingSection = () => {
 const CapacityBuildout = () => {
   return (
     <MotionPreferencesProvider>
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-background">
         <ScrollToTop />
         
         <Helmet>
@@ -792,9 +740,9 @@ const CapacityBuildout = () => {
           <meta name="twitter:description" content="Tell us what you need help with. We'll give you a clear scope and price." />
         </Helmet>
         
-        <StickyHeader />
+        <Header />
         
-        <main id="main">
+        <main id="main" style={{ paddingTop: 'calc(var(--announcement-height, 0px) + 5rem)' }}>
           <HeroSection />
           <AreaSelectionSection />
           <ProcessSection />
