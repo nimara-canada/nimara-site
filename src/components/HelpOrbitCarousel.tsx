@@ -1,5 +1,5 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
+import { motion, useInView } from "framer-motion";
 import {
   ClipboardList,
   DollarSign,
@@ -80,82 +80,23 @@ const cards: CardData[] = [
   },
 ];
 
-// Individual card component with its own scroll-based animation
-function StackingCard({
-  card,
-  index,
-  totalCards,
-  scrollProgress,
-}: {
-  card: CardData;
-  index: number;
-  totalCards: number;
-  scrollProgress: ReturnType<typeof useSpring>;
-}) {
+// Individual card component
+function MarqueeCard({ card }: { card: CardData }) {
   const Icon = card.icon;
 
-  // Calculate stacking offset - each card stacks slightly below previous
-  const stackOffset = index * 8;
-
-  // First card is always visible - no animation needed
-  if (index === 0) {
-    return (
-      <div
-        className={`absolute inset-x-4 md:inset-x-0 rounded-3xl shadow-2xl ${card.color} overflow-hidden`}
-        style={{
-          zIndex: 1,
-          top: 0,
-          height: "calc(100% - 48px)",
-        }}
-      >
-        <CardContent card={card} Icon={Icon} />
-      </div>
-    );
-  }
-
-  // Cards 2-7: Distribute scroll range among remaining cards
-  // Each card gets an equal portion of the scroll range
-  const animatingCards = totalCards - 1; // 6 cards animate
-  const cardIndex = index - 1; // 0-5 for cards 2-7
-  
-  const cardStart = cardIndex / animatingCards;
-  const cardEnd = (cardIndex + 0.7) / animatingCards; // Slightly faster for snappier feel
-
-  // Transform for y position - card slides up from below (no fade)
-  const y = useTransform(
-    scrollProgress,
-    [cardStart, cardEnd],
-    ["110%", "0%"]
-  );
-
   return (
-    <motion.div
-      className={`absolute inset-x-4 md:inset-x-0 rounded-3xl shadow-2xl ${card.color} overflow-hidden`}
-      style={{
-        y,
-        zIndex: index + 1,
-        top: stackOffset,
-        height: "calc(100% - 48px)",
-      }}
+    <div
+      className={`flex-shrink-0 w-[280px] sm:w-[320px] md:w-[360px] h-[200px] sm:h-[240px] md:h-[280px] rounded-3xl shadow-xl ${card.color} overflow-hidden relative group transition-transform duration-300 hover:scale-[1.02]`}
     >
-      <CardContent card={card} Icon={Icon} />
-    </motion.div>
-  );
-}
-
-// Extracted card content for reuse
-function CardContent({ card, Icon }: { card: CardData; Icon: LucideIcon }) {
-  return (
-    <>
       {/* Corner icon */}
-      <div className="absolute top-6 right-6">
+      <div className="absolute top-5 right-5">
         <div
-          className={`w-12 h-12 rounded-full flex items-center justify-center ${
+          className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center ${
             card.color === "bg-white" ? "bg-primary/10" : "bg-white/20"
           }`}
         >
           <Icon
-            className={`w-6 h-6 ${
+            className={`w-5 h-5 sm:w-6 sm:h-6 ${
               card.color === "bg-white" ? "text-primary" : "text-white"
             }`}
           />
@@ -163,14 +104,14 @@ function CardContent({ card, Icon }: { card: CardData; Icon: LucideIcon }) {
       </div>
 
       {/* Card content */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8">
+      <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 md:p-8">
         <h3
-          className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-2 sm:mb-3 ${card.textColor}`}
+          className={`text-2xl sm:text-3xl md:text-4xl font-bold mb-2 ${card.textColor}`}
         >
-          {card.title.split(" ")[0]}
+          {card.title}
         </h3>
         <p
-          className={`text-sm sm:text-base md:text-lg ${
+          className={`text-sm sm:text-base ${
             card.color === "bg-white" ? "text-muted-foreground" : "text-white/80"
           }`}
         >
@@ -186,190 +127,121 @@ function CardContent({ card, Icon }: { card: CardData; Icon: LucideIcon }) {
             : "bg-gradient-to-t from-black/10 to-transparent"
         }`}
       />
-    </>
+    </div>
   );
 }
 
 export default function HelpOrbitCarousel() {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const [isPaused, setIsPaused] = useState(false);
 
-  // Track scroll progress within this section
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
-
-  // Smooth the progress for premium feel
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 80,
-    damping: 30,
-    restDelta: 0.001,
-  });
-
-  // Calculate active card index for left side highlighting
-  const activeIndex = useTransform(smoothProgress, [0, 1], [0, cards.length - 1]);
-
-  // Subtle fade out as user scrolls past - less intense transition
-  const stickyOpacity = useTransform(smoothProgress, [0.9, 1], [1, 0.3]);
-  const stickyY = useTransform(smoothProgress, [0.9, 1], [0, -20]);
+  // Duplicate cards for seamless infinite scroll
+  const duplicatedCards = [...cards, ...cards];
 
   return (
     <section
-      ref={containerRef}
+      ref={sectionRef}
       id="what-we-help-with"
-      className="relative bg-[#f5f5f0]"
-      style={{ minHeight: "350vh" }}
+      className="py-16 sm:py-20 md:py-24 lg:py-32 bg-[#f5f5f0] overflow-hidden"
     >
-      {/* Sticky content wrapper */}
-      <motion.div 
-        className="sticky top-0 min-h-screen flex items-center py-8 sm:py-12 md:py-20"
-        style={{ opacity: stickyOpacity, y: stickyY }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-16 items-center">
-            {/* Left side - Headline and description */}
-            <div className="order-2 lg:order-1">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4 sm:mb-6 md:mb-8">
-                What we{" "}
-                <span className="relative inline-block">
-                  help
-                  <svg
-                    className="absolute -bottom-1 sm:-bottom-2 left-0 w-full"
-                    viewBox="0 0 100 12"
-                    preserveAspectRatio="none"
-                  >
-                    <path
-                      d="M0,8 Q25,0 50,8 T100,8"
-                      stroke="#a78bfa"
-                      strokeWidth="3"
-                      fill="none"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </span>{" "}
-                you with
-              </h2>
-
-              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed mb-6 sm:mb-8 md:mb-10 max-w-lg">
-                From messy spreadsheets to streamlined systems. We handle the
-                operational heavy lifting so you can focus on mission.
-              </p>
-
-              {/* Progress list that highlights as cards stack */}
-              <div className="space-y-2 sm:space-y-3 md:space-y-4 mb-6 sm:mb-8 md:mb-10">
-                {cards.map((card, index) => (
-                  <CardListItem
-                    key={card.id}
-                    card={card}
-                    index={index}
-                    activeIndex={activeIndex}
-                  />
-                ))}
-              </div>
-
-              <a
-                href="/start-here"
-                className="inline-flex items-center gap-2 text-sm sm:text-base text-foreground font-semibold hover:gap-3 transition-all duration-300"
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 sm:mb-12 md:mb-16">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-4"
+        >
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4 sm:mb-6">
+            What we{" "}
+            <span className="relative inline-block">
+              help
+              <svg
+                className="absolute -bottom-1 sm:-bottom-2 left-0 w-full"
+                viewBox="0 0 100 12"
+                preserveAspectRatio="none"
               >
-                See how we can help
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-              </a>
-            </div>
-
-            {/* Right side - Stacking cards */}
-            <div className="order-1 lg:order-2 relative h-[280px] sm:h-[350px] md:h-[400px] lg:h-[500px]">
-              {cards.map((card, index) => (
-                <StackingCard
-                  key={card.id}
-                  card={card}
-                  index={index}
-                  totalCards={cards.length}
-                  scrollProgress={smoothProgress}
+                <path
+                  d="M0,8 Q25,0 50,8 T100,8"
+                  stroke="#a78bfa"
+                  strokeWidth="3"
+                  fill="none"
+                  strokeLinecap="round"
                 />
-              ))}
-            </div>
-          </div>
+              </svg>
+            </span>{" "}
+            you with
+          </h2>
+
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            From messy spreadsheets to streamlined systems. We handle the
+            operational heavy lifting so you can focus on mission.
+          </p>
+        </motion.div>
+      </div>
+
+      {/* Marquee container */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : {}}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="relative"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        {/* Gradient fade edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 bg-gradient-to-r from-[#f5f5f0] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 bg-gradient-to-l from-[#f5f5f0] to-transparent z-10 pointer-events-none" />
+
+        {/* Scrolling cards */}
+        <div
+          className="flex gap-4 sm:gap-6 md:gap-8"
+          style={{
+            animation: `marquee-scroll 45s linear infinite`,
+            animationPlayState: isPaused ? "paused" : "running",
+            width: "max-content",
+          }}
+        >
+          {duplicatedCards.map((card, index) => (
+            <MarqueeCard key={`${card.id}-${index}`} card={card} />
+          ))}
         </div>
       </motion.div>
 
-      {/* Scroll progress indicator */}
+      {/* CTA */}
       <motion.div
-        className="fixed right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-2"
-        style={{ opacity: stickyOpacity }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        className="text-center mt-10 sm:mt-12 md:mt-16"
       >
-        {cards.map((_, index) => (
-          <ScrollDot key={index} index={index} activeIndex={activeIndex} />
-        ))}
+        <a
+          href="/start-here"
+          className="inline-flex items-center gap-2 text-sm sm:text-base text-foreground font-semibold hover:gap-3 transition-all duration-300 group"
+        >
+          See how we can help
+          <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-1" />
+        </a>
       </motion.div>
+
+      {/* CSS Animation */}
+      <style>{`
+        @keyframes marquee-scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+          .flex[style*="animation"] {
+            animation: none !important;
+          }
+        }
+      `}</style>
     </section>
-  );
-}
-
-// Card list item with scroll-based highlighting
-function CardListItem({
-  card,
-  index,
-  activeIndex,
-}: {
-  card: CardData;
-  index: number;
-  activeIndex: ReturnType<typeof useTransform<number, number>>;
-}) {
-  // First card (Board) is always active, others activate based on scroll
-  const isActive = useTransform(activeIndex, (latest: number) => {
-    if (index === 0) return true; // Board is always highlighted
-    return Math.round(latest) >= index;
-  });
-
-  return (
-    <motion.div
-      className="flex items-center gap-2 sm:gap-3 group"
-      style={{
-        opacity: useTransform(isActive, (active: boolean) => (active ? 1 : 0.4)),
-      }}
-    >
-      <motion.div
-        className={`w-6 h-6 sm:w-8 sm:h-8 rounded-md sm:rounded-lg flex items-center justify-center transition-colors duration-500`}
-        style={{
-          backgroundColor: useTransform(isActive, (active: boolean) =>
-            active ? card.color.replace("bg-", "").replace("[", "").replace("]", "") : "hsl(var(--muted))"
-          ),
-        }}
-        animate={{
-          scale: 1,
-        }}
-      >
-        <card.icon className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
-      </motion.div>
-      <span className="font-medium text-xs sm:text-sm md:text-base text-foreground">
-        {card.title}
-      </span>
-    </motion.div>
-  );
-}
-
-// Scroll progress dot indicator
-function ScrollDot({
-  index,
-  activeIndex,
-}: {
-  index: number;
-  activeIndex: ReturnType<typeof useTransform<number, number>>;
-}) {
-  const isActive = useTransform(activeIndex, (latest: number) => Math.round(latest) === index);
-  const isPast = useTransform(activeIndex, (latest: number) => Math.round(latest) > index);
-
-  return (
-    <motion.div
-      className="w-2 h-2 rounded-full transition-all duration-300"
-      style={{
-        backgroundColor: useTransform(
-          [isActive, isPast] as any,
-          ([active, past]: [boolean, boolean]) =>
-            active ? "hsl(var(--primary))" : past ? "hsl(var(--primary) / 0.5)" : "hsl(var(--muted))"
-        ),
-        scale: useTransform(isActive, (active: boolean) => (active ? 1.5 : 1)),
-      }}
-    />
   );
 }
