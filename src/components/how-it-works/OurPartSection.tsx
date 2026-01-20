@@ -30,7 +30,7 @@ const OurPartSection: React.FC = () => {
             className="relative order-2 lg:order-1"
           >
             <div 
-              className="rounded-3xl p-8 lg:p-10 relative overflow-hidden"
+              className="rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 relative overflow-hidden min-h-[240px] sm:min-h-[280px]"
               style={{ backgroundColor: 'hsl(262, 60%, 88%)' }}
             >
               {/* Noise texture */}
@@ -47,11 +47,11 @@ const OurPartSection: React.FC = () => {
                 <line x1="70%" y1="0%" x2="30%" y2="100%" stroke="hsl(262, 50%, 50%)" strokeWidth="1" />
               </svg>
 
-              <div className="relative bg-white rounded-2xl p-6 shadow-xl">
-                <p className="text-nim-navy font-medium text-lg leading-relaxed">
+              <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 shadow-xl w-[85%] sm:w-[80%] max-w-[280px]">
+                <p className="text-nim-navy font-medium text-sm sm:text-base leading-relaxed">
                   "We build the system, train your team, and support you for 90 days."
                 </p>
-                <p className="text-sm text-muted-foreground mt-4">— The Nimara commitment</p>
+                <p className="text-xs sm:text-sm text-muted-foreground mt-2 sm:mt-3">— The Nimara commitment</p>
               </div>
             </div>
           </motion.div>

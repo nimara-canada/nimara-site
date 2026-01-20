@@ -136,31 +136,31 @@ const StepVisual: React.FC<{ step: typeof steps[0]; isInView: boolean }> = ({ st
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-5 lg:p-6 w-[88%] max-w-[280px]"
+          className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 lg:bottom-8 lg:right-8 bg-white rounded-xl sm:rounded-2xl shadow-2xl p-4 sm:p-5 lg:p-6 w-[75%] sm:w-[70%] max-w-[280px]"
         >
           {/* Header */}
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-9 h-9 rounded-xl bg-nim-purple/15 flex items-center justify-center">
+          <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-nim-purple/15 flex items-center justify-center flex-shrink-0">
               <Icon className="w-4 h-4 text-nim-purple" />
             </div>
-            <span className="text-sm font-semibold text-nim-navy">{step.name}</span>
+            <span className="text-sm sm:text-base font-semibold text-nim-navy">{step.name}</span>
           </div>
           
           {/* Stats box */}
-          <div className="bg-gray-50 rounded-xl p-4 border border-gray-100">
-            <div className="flex items-baseline gap-2 mb-1">
+          <div className="bg-gray-50 rounded-lg p-3 border border-gray-100">
+            <div className="flex items-baseline gap-1.5 mb-0.5">
               <motion.span
-                className="text-4xl font-bold text-nim-navy tracking-tight"
+                className="text-3xl sm:text-4xl font-bold text-nim-navy tracking-tight"
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
                 transition={{ duration: 0.5, delay: 0.9 }}
               >
                 {step.visual.statNumber}
               </motion.span>
-              <span className="text-sm text-gray-600">{step.visual.statLabel}</span>
+              <span className="text-xs sm:text-sm text-gray-600">{step.visual.statLabel}</span>
             </div>
-            <p className="text-xs text-gray-500 mb-3">{step.visual.substat}</p>
-            <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold ${badgeColors[step.visual.badge.color as keyof typeof badgeColors]}`}>
+            <p className="text-xs text-gray-500 mb-2">{step.visual.substat}</p>
+            <div className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-semibold ${badgeColors[step.visual.badge.color as keyof typeof badgeColors]}`}>
               <Check className="w-3 h-3" strokeWidth={3} />
               {step.visual.badge.text}
             </div>
