@@ -9,10 +9,10 @@ import teamDavid from "@/assets/team-david.jpg";
 
 const operators = [
   {
-    name: "Benard Serunyigo",
+    name: "Ben Serunyigo",
     role: "Founder & CEO",
     image: teamBenard,
-    alt: "Portrait of Benard Serunyigo, Founder of Nimara",
+    alt: "Portrait of Ben Serunyigo, Founder of Nimara",
     initials: "BS",
   },
   {
