@@ -10,6 +10,7 @@ import WithNimara from "@/components/WithNimara";
 import StartingPointSplit from "@/components/StartingPointSplit";
 import TheProcess from "@/components/company/TheProcess";
 import HelpOrbitCarousel from "@/components/HelpOrbitCarousel";
+import NoNewSoftwareSection from "@/components/NoNewSoftwareSection";
 import OutcomesSection from "@/components/OutcomesSection";
 import { FAQ } from "@/components/FAQ";
 import { FinalCTA } from "@/components/FinalCTA";
@@ -112,6 +113,9 @@ const Index = () => {
           
           {/* What We Help With - 7 Areas */}
           <HelpOrbitCarousel />
+          
+          {/* No New Software */}
+          <NoNewSoftwareSection />
           
           {/* What You Get - Outcomes */}
           <OutcomesSection />
