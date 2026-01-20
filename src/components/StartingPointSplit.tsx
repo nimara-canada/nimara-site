@@ -35,41 +35,35 @@ const PremiumFolderVisual = ({ isInView }: { isInView: boolean }) => (
         initial={{ opacity: 0, y: 40 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.5 }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl sm:rounded-2xl shadow-2xl p-4 sm:p-6 lg:p-8 w-[90%] sm:w-[85%] max-w-[320px]"
+        className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 lg:bottom-8 lg:right-8 bg-white rounded-xl sm:rounded-2xl shadow-2xl p-4 sm:p-5 lg:p-6 w-[75%] sm:w-[70%] max-w-[280px]"
       >
         {/* Header */}
-        <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-nim-purple/15 flex items-center justify-center">
-            <FolderOpen className="w-4 h-4 sm:w-5 sm:h-5 text-nim-purple" />
+        <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-nim-purple/15 flex items-center justify-center flex-shrink-0">
+            <FolderOpen className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-nim-purple" />
           </div>
           <span className="text-sm sm:text-base font-semibold text-nim-navy">Your Project:</span>
         </div>
         
         {/* Message */}
-        <p className="text-nim-navy text-base sm:text-lg font-medium mb-4 sm:mb-6 leading-snug">
+        <p className="text-nim-navy text-sm sm:text-base font-medium mb-3 sm:mb-4 leading-snug">
           Board policies, grant tracking, and file systems — ready in 6 weeks.
         </p>
         
         {/* Stats box */}
-        <div className="bg-gray-50 rounded-lg sm:rounded-xl p-3 sm:p-4 border border-gray-100">
-          <div className="flex items-baseline gap-2 mb-1">
+        <div className="bg-gray-50 rounded-lg p-3 border border-gray-100">
+          <div className="flex items-baseline gap-1.5 mb-0.5">
             <motion.span
-              className="text-4xl sm:text-5xl font-bold text-nim-navy tracking-tight"
+              className="text-3xl sm:text-4xl font-bold text-nim-navy tracking-tight"
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.5, delay: 0.9 }}
             >
               3
             </motion.span>
-            <span className="text-sm sm:text-base text-gray-600">systems built</span>
+            <span className="text-xs sm:text-sm text-gray-600">systems built</span>
           </div>
-          <p className="text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">vs. 0 before starting</p>
-          <div className="flex items-center gap-2">
-            <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-green-100 flex items-center justify-center">
-              <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-green-600 rotate-[-45deg]" />
-            </div>
-            <span className="text-xs sm:text-sm font-semibold text-green-600">100% ready for funders</span>
-          </div>
+          <p className="text-xs text-gray-500">vs. 0 before starting</p>
         </div>
       </motion.div>
     </motion.div>
