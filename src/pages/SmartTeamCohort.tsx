@@ -4,13 +4,13 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 const SmartTeamCohortHero = () => {
   const bullets = [{
     main: "Prove spending in minutes",
-    sub: "Automated audit trails for every expense."
+    sub: "Every expense linked to invoice + approval + payment."
   }, {
-    main: "Run clean board meetings",
-    sub: "Instant minutes, decisions, and action trackers."
+    main: "Run board meetings that stick",
+    sub: "Decisions tracked. Actions followed up."
   }, {
-    main: "Secure your next grant",
-    sub: "Professional reporting templates that funders trust."
+    main: "Impress funders, not chase them",
+    sub: "Reports ready in 3 clicks."
   }];
   return <div className="min-h-screen bg-nim-cloud">
       {/* Minimal Header */}
@@ -105,7 +105,7 @@ const SmartTeamCohortHero = () => {
               <span className="hidden md:inline">per cohort.</span>
             </h2>
             <p className="text-lg sm:text-xl md:text-2xl text-nim-slate-dark font-light max-w-2xl mx-auto">
-              We filter strictly to ensure every team graduates audit-proof.
+              Strict filters = every team graduates audit-proof.
             </p>
           </header>
 
@@ -260,7 +260,7 @@ const SmartTeamCohortHero = () => {
               <span className="text-nim-teal">— in 6 weeks.</span>
             </h2>
             <p className="text-lg sm:text-xl md:text-2xl text-nim-slate-dark font-light max-w-2xl mx-auto">
-              We implement these 4 pillars during our labs. You walk away with a 90-day plan to keep them running.
+              Built with you in live labs. Plus a 90-day plan to keep them running.
             </p>
           </header>
 
@@ -276,9 +276,16 @@ const SmartTeamCohortHero = () => {
               <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-nim-navy mb-3 sm:mb-4 tracking-[-0.02em]">
                 Spending Proof System
               </h3>
-              <p className="text-base sm:text-lg md:text-xl text-nim-slate-dark font-light leading-relaxed">
-                Stop hunting for receipts. One central location for invoices, approvals, and payment proof.
-              </p>
+              <ul className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed space-y-2">
+                <li className="flex items-start gap-2">
+                  <span className="text-nim-teal mt-1.5">•</span>
+                  <span>Invoice + approval + payment in one bundle</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-nim-teal mt-1.5">•</span>
+                  <span>Find any expense in under 60 seconds</span>
+                </li>
+              </ul>
             </article>
 
             {/* Feature 2: Board Decision */}
@@ -291,9 +298,16 @@ const SmartTeamCohortHero = () => {
               <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-nim-navy mb-3 sm:mb-4 tracking-[-0.02em]">
                 Board Decision System
               </h3>
-              <p className="text-base sm:text-lg md:text-xl text-nim-slate-dark font-light leading-relaxed">
-                Professional governance made simple. Live action trackers, automated minutes, and decision logs.
-              </p>
+              <ul className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed space-y-2">
+                <li className="flex items-start gap-2">
+                  <span className="text-nim-teal mt-1.5">•</span>
+                  <span>Decisions logged with date and owner</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-nim-teal mt-1.5">•</span>
+                  <span>Action items auto-tracked to completion</span>
+                </li>
+              </ul>
             </article>
 
             {/* Feature 3: Simple Reporting */}
@@ -306,9 +320,16 @@ const SmartTeamCohortHero = () => {
               <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-nim-navy mb-3 sm:mb-4 tracking-[-0.02em]">
                 Simple Reporting System
               </h3>
-              <p className="text-base sm:text-lg md:text-xl text-nim-slate-dark font-light leading-relaxed">
-                Report to funders in minutes, not days. A 10-number dashboard and a 2-page update template.
-              </p>
+              <ul className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed space-y-2">
+                <li className="flex items-start gap-2">
+                  <span className="text-nim-teal mt-1.5">•</span>
+                  <span>Funder reports in 3 clicks</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-nim-teal mt-1.5">•</span>
+                  <span>Numbers match your books automatically</span>
+                </li>
+              </ul>
             </article>
 
             {/* Feature 4: Find-It-Fast Files */}
@@ -319,11 +340,18 @@ const SmartTeamCohortHero = () => {
                 </div>
               </div>
               <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-nim-navy mb-3 sm:mb-4 tracking-[-0.02em]">
-                Find-It-Fast File System
+                Find-it-Fast File System
               </h3>
-              <p className="text-base sm:text-lg md:text-xl text-nim-slate-dark font-light leading-relaxed">
-                Your organization's 'Source of Truth.' Optimized folder maps, naming rules, and access controls.
-              </p>
+              <ul className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed space-y-2">
+                <li className="flex items-start gap-2">
+                  <span className="text-nim-teal mt-1.5">•</span>
+                  <span>Any document in under 3 minutes</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-nim-teal mt-1.5">•</span>
+                  <span>Folder names your whole team understands</span>
+                </li>
+              </ul>
             </article>
           </div>
 
@@ -859,8 +887,8 @@ const SmartTeamCohortHero = () => {
               <AccordionTrigger className="text-left text-nim-navy text-base sm:text-lg md:text-xl font-medium py-4 sm:py-5 md:py-7 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-nim-slate">
                 How do I know if we can afford the $9,450 CAD tuition?
               </AccordionTrigger>
-              <AccordionContent className="text-nim-slate-dark text-sm sm:text-base md:text-lg pb-4 sm:pb-5 md:pb-7 leading-relaxed">
-                Most of our participants use Capacity Building Grants or Operational Funding to cover the full cost. If you have a budget line for "Organizational Development" or "Systems Improvement," this program is a perfect fit. We provide all the documentation and receipts your funder needs to approve the expense.
+            <AccordionContent className="text-nim-slate-dark text-sm sm:text-base md:text-lg pb-4 sm:pb-5 md:pb-7 leading-relaxed">
+                Most participants use Capacity Building Grants or "Systems Improvement" budget lines. We provide the receipts your funder needs.
               </AccordionContent>
             </AccordionItem>
 
@@ -868,8 +896,8 @@ const SmartTeamCohortHero = () => {
               <AccordionTrigger className="text-left text-nim-navy text-base sm:text-lg md:text-xl font-medium py-4 sm:py-5 md:py-7 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-nim-slate">
                 Can we actually build 4 systems in just 6 weeks?
               </AccordionTrigger>
-              <AccordionContent className="text-nim-slate-dark text-sm sm:text-base md:text-lg pb-4 sm:pb-5 md:pb-7 leading-relaxed">
-                Yes, because this is not a lecture series—it is a hands-on implementation lab. We "install" the systems alongside you during our weekly 90-minute working sessions. By the end of Week 1, your file system is already set up; by the end of Week 6, you pass a live "Stress Test" to prove your systems work under pressure.
+            <AccordionContent className="text-nim-slate-dark text-sm sm:text-base md:text-lg pb-4 sm:pb-5 md:pb-7 leading-relaxed">
+                Yes. We build together in live labs—not lectures. Week 1: your file system is done. Week 6: you pass a live Stress Test.
               </AccordionContent>
             </AccordionItem>
 
@@ -877,8 +905,8 @@ const SmartTeamCohortHero = () => {
               <AccordionTrigger className="text-left text-nim-navy text-base sm:text-lg md:text-xl font-medium py-4 sm:py-5 md:py-7 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-nim-slate">
                 What happens if our Ops Lead is already at capacity?
               </AccordionTrigger>
-              <AccordionContent className="text-nim-slate-dark text-sm sm:text-base md:text-lg pb-4 sm:pb-5 md:pb-7 leading-relaxed">
-                The "Nimara Smart Team" approach is designed to give time back, not take it away. While we require a 4-hour weekly block for 6 weeks, this investment eliminates the 10+ hours a month currently wasted hunting for receipts, prepping for board meetings, and manually building funder reports.
+            <AccordionContent className="text-nim-slate-dark text-sm sm:text-base md:text-lg pb-4 sm:pb-5 md:pb-7 leading-relaxed">
+                4 hours/week for 6 weeks saves 10+ hours/month forever. We fix the systems that waste your time.
               </AccordionContent>
             </AccordionItem>
 
@@ -886,8 +914,8 @@ const SmartTeamCohortHero = () => {
               <AccordionTrigger className="text-left text-nim-navy text-base sm:text-lg md:text-xl font-medium py-4 sm:py-5 md:py-7 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-nim-slate">
                 Do we need to buy new software or change how we work?
               </AccordionTrigger>
-              <AccordionContent className="text-nim-slate-dark text-sm sm:text-base md:text-lg pb-4 sm:pb-5 md:pb-7 leading-relaxed">
-                No. We build your 4 systems using the tools you already have, specifically Google Workspace or Microsoft 365. We don't add "new tech" to your plate; we simply organize your current environment so that it is audit-proof and easy for any staff member to use.
+            <AccordionContent className="text-nim-slate-dark text-sm sm:text-base md:text-lg pb-4 sm:pb-5 md:pb-7 leading-relaxed">
+                No new software. We use your existing Google Workspace or Microsoft 365—just better organized.
               </AccordionContent>
             </AccordionItem>
 
@@ -895,8 +923,8 @@ const SmartTeamCohortHero = () => {
               <AccordionTrigger className="text-left text-nim-navy text-base sm:text-lg md:text-xl font-medium py-4 sm:py-5 md:py-7 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-nim-slate">
                 What is the "Stress Test," and what if we fail it?
               </AccordionTrigger>
-              <AccordionContent className="text-nim-slate-dark text-sm sm:text-base md:text-lg pb-4 sm:pb-5 md:pb-7 leading-relaxed">
-                The Stress Test is our live verification that your organization is truly funder-ready. You will be asked to find a specific key document, board decision, or expense proof bundle in under 3 minutes. If you can't, we stay with you and keep working until the system is fixed.
+            <AccordionContent className="text-nim-slate-dark text-sm sm:text-base md:text-lg pb-4 sm:pb-5 md:pb-7 leading-relaxed">
+                Live test: find a key document in under 3 minutes. Can't do it? We stay until it's fixed.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
