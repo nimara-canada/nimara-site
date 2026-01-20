@@ -41,13 +41,6 @@ const ProblemSection = () => {
         </motion.p>
       </div>
       
-      {/* Gradient fade to next section */}
-      <div 
-        className="absolute bottom-0 left-0 right-0 h-32 md:h-40 pointer-events-none"
-        style={{
-          background: "linear-gradient(to bottom, hsl(var(--background)) 0%, hsl(var(--background) / 0) 100%)"
-        }}
-      />
     </section>
   );
 };
