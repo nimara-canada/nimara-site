@@ -34,30 +34,30 @@ const StoryVisual = ({ isInView }: { isInView: boolean }) => (
         initial={{ opacity: 0, y: 40 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.5 }}
-        className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-6 lg:p-8 w-[85%] max-w-[300px]"
+        className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 lg:bottom-8 lg:right-8 bg-white rounded-xl sm:rounded-2xl shadow-2xl p-4 sm:p-5 lg:p-6 w-[75%] sm:w-[70%] max-w-[280px]"
       >
         {/* Header */}
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 rounded-xl bg-nim-purple/15 flex items-center justify-center">
-            <Heart className="w-5 h-5 text-nim-purple" />
+        <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-nim-purple/15 flex items-center justify-center flex-shrink-0">
+            <Heart className="w-4 h-4 text-nim-purple" />
           </div>
-          <span className="text-base font-semibold text-nim-navy">Our Why:</span>
+          <span className="text-sm sm:text-base font-semibold text-nim-navy">Our Why:</span>
         </div>
         
         {/* Quote */}
-        <p className="text-nim-navy text-lg font-medium mb-6 leading-snug italic">
+        <p className="text-nim-navy text-sm sm:text-base font-medium mb-3 sm:mb-4 leading-snug italic">
           "Good work isn't enough. Funders need working systems."
         </p>
         
         {/* Stats box */}
-        <div className="bg-gray-50 rounded-xl p-4 border border-gray-100">
-          <div className="flex items-center gap-2 mb-2">
-            <div className="w-6 h-6 rounded-full bg-nim-mint flex items-center justify-center">
-              <Target className="w-3.5 h-3.5 text-nim-navy" />
+        <div className="bg-gray-50 rounded-lg p-3 border border-gray-100">
+          <div className="flex items-center gap-1.5 mb-1">
+            <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-nim-mint flex items-center justify-center">
+              <Target className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-nim-navy" />
             </div>
-            <span className="text-sm font-semibold text-nim-navy">Our Focus</span>
+            <span className="text-xs sm:text-sm font-semibold text-nim-navy">Our Focus</span>
           </div>
-          <p className="text-sm text-gray-600">Simple basics that stick.</p>
+          <p className="text-xs text-gray-600">Simple basics that stick.</p>
         </div>
       </motion.div>
     </motion.div>
