@@ -6,7 +6,7 @@ const cards = [{
   microLine: "Decisions, roles, and files stay consistent.",
   bgClass: "bg-background",
   textClass: "text-foreground",
-  subtextClass: "text-muted-foreground"
+  subtextClass: "text-foreground/80"
 }, {
   title: "Control",
   description: "Tracking that stays clean.",
