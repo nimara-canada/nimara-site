@@ -64,7 +64,7 @@ export const CompanyHero = () => {
             {/* Main Headline */}
             <h1 
               style={revealStyle(100)}
-              className="mb-8 text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.05] tracking-[-0.02em]"
+              className="mb-8 text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white leading-[1.05] tracking-[-0.03em]"
             >
               We help nonprofits get the <span className="text-accent">basics</span> working.
             </h1>

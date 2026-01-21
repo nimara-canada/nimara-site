@@ -25,7 +25,7 @@ export const NewConsultantHero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-white mb-10 leading-[1.05] tracking-tight font-sans"
+            className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white mb-10 leading-[1.05] tracking-[-0.03em] font-sans"
           >
             Build working basics
             <br />
