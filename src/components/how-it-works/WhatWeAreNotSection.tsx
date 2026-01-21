@@ -35,7 +35,7 @@ const WhatWeAreNotSection: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground"
+            className="text-[2.25rem] sm:text-5xl md:text-6xl font-extrabold tracking-[-0.03em] leading-[1.05] text-foreground"
           >
             What we are <span className="text-muted-foreground">not</span>
           </motion.h2>
