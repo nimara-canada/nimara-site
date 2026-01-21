@@ -26,7 +26,7 @@ const NextStepSection: React.FC = () => {
           </p>
           <h2 
             id="next-step-heading"
-            className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-10"
+            className="text-[2.25rem] sm:text-5xl md:text-6xl font-extrabold tracking-[-0.03em] leading-[1.05] text-foreground mb-10"
           >
             Next <span className="text-primary">step</span>
           </h2>
