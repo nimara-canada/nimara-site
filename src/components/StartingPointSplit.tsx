@@ -168,7 +168,7 @@ const StartingPointSplit = () => {
         <span className="text-xs sm:text-sm font-semibold text-primary uppercase tracking-widest mb-2 sm:mb-3 block">
           Start here
         </span>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
+        <h2 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-[-0.03em] text-foreground leading-[1.05] mb-3 sm:mb-4">
           Choose where to start.
         </h2>
         <p className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto">

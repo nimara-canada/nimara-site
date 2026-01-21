@@ -120,7 +120,7 @@ export default function HelpOrbitCarousel() {
           transition={{ duration: 0.6 }}
           className="text-center mb-4"
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-4 sm:mb-6">
+          <h2 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-[-0.03em] text-white leading-[1.05] mb-4 sm:mb-6">
             What We{" "}
             <span className="text-nim-mint">Help</span>{" "}
             You With
