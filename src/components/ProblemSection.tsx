@@ -21,7 +21,7 @@ const ProblemSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-extrabold tracking-[-0.03em] text-foreground leading-[1.05] mb-6 sm:mb-8 md:mb-12"
+          className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[6.5rem] font-extrabold tracking-[-0.03em] text-foreground leading-[1.05] mb-6 sm:mb-8 md:mb-12"
         >
           Good organizations still lose funding
           <br className="hidden sm:block" />
