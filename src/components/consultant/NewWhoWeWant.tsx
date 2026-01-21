@@ -1,4 +1,6 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView, useScroll, useTransform, useSpring } from "framer-motion";
+import { Check, Plus } from "lucide-react";
 
 const fitCriteria = [
   "You've worked inside nonprofits (ops, admin, finance support, programs, HR support, project work)",
@@ -15,79 +17,128 @@ const niceToHave = [
 ];
 
 export const NewWhoWeWant = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30
+  });
+
+  const sectionY = useTransform(smoothProgress, [0, 0.3], [60, 0]);
+  const sectionOpacity = useTransform(smoothProgress, [0, 0.2], [0, 1]);
+
   return (
-    <section className="bg-background py-28 md:py-36">
-      <div className="container mx-auto px-6 sm:px-8 lg:px-16">
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="max-w-2xl mb-20"
-        >
-          <p className="text-muted-foreground/60 uppercase tracking-[0.25em] text-xs mb-6">
-            Who We're Looking For
-          </p>
-          <h2 className="font-sans text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-foreground leading-[1.05] tracking-[-0.03em] mb-6">
-            Who We're <span className="italic font-light">Looking For</span>
-          </h2>
-          <p className="text-muted-foreground/70 text-base leading-relaxed font-light">
-            We want people who can make things simple and finish the work.
-          </p>
-        </motion.div>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32">
-          {/* Must have */}
-          <motion.div 
+    <section 
+      ref={sectionRef}
+      className="relative py-20 md:py-28 lg:py-40 bg-background overflow-hidden"
+    >
+      {/* Subtle background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-muted/30 via-transparent to-transparent pointer-events-none" />
+
+      <motion.div 
+        className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
+        style={{ y: sectionY, opacity: sectionOpacity }}
+      >
+        {/* Header */}
+        <div className="mb-12 lg:mb-20">
+          <motion.div
             initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.1 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8 }}
+            className="flex items-center gap-4 mb-8"
           >
-            <h3 className="font-sans text-sm font-medium text-foreground/80 mb-10 pb-5 border-b border-border/50 tracking-wide">
+            <span className="text-xs font-medium tracking-[0.2em] uppercase text-muted-foreground">
+              Who We're Looking For
+            </span>
+            <div className="h-px flex-1 bg-border" />
+          </motion.div>
+          
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-[-0.03em] leading-[1.05] text-foreground"
+          >
+            Who We're <span className="italic font-light text-muted-foreground">Looking For</span>
+          </motion.h2>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg text-muted-foreground max-w-lg mt-6"
+          >
+            We want people who can make things simple and finish the work.
+          </motion.p>
+        </div>
+
+        {/* Two columns */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+          {/* Must have */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <h3 className="text-sm font-semibold text-foreground/80 mb-8 pb-4 border-b border-border tracking-wide uppercase">
               You Might Be A Fit If
             </h3>
-            <div className="space-y-7">
+            <div className="space-y-5">
               {fitCriteria.map((criterion, index) => (
-                <div 
+                <motion.div 
                   key={index}
-                  className="flex gap-8"
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.4 + index * 0.08 }}
+                  className="group flex gap-4"
                 >
-                  <span className="text-muted-foreground/25 text-xs font-light tracking-wider w-5 flex-shrink-0 pt-1">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <p className="text-foreground/70 leading-relaxed font-light">{criterion}</p>
-                </div>
+                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <Check className="w-3.5 h-3.5 text-primary" />
+                  </div>
+                  <p className="text-foreground/70 leading-relaxed font-light group-hover:text-foreground transition-colors">
+                    {criterion}
+                  </p>
+                </motion.div>
               ))}
             </div>
           </motion.div>
           
           {/* Nice to have */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <h3 className="font-sans text-sm font-medium text-foreground/80 mb-10 pb-5 border-b border-border/50 tracking-wide">
+            <h3 className="text-sm font-semibold text-foreground/80 mb-8 pb-4 border-b border-border tracking-wide uppercase">
               Nice To Have
             </h3>
-            <div className="space-y-7">
+            <div className="space-y-5">
               {niceToHave.map((item, index) => (
-                <div 
+                <motion.div 
                   key={index}
-                  className="flex gap-8"
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.5 + index * 0.08 }}
+                  className="group flex gap-4"
                 >
-                  <span className="text-muted-foreground/25 text-xs font-light tracking-wider w-5 flex-shrink-0 pt-1">
-                    +
-                  </span>
-                  <p className="text-muted-foreground/60 leading-relaxed font-light">{item}</p>
-                </div>
+                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-muted flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                    <Plus className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors" />
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed font-light group-hover:text-foreground/70 transition-colors">
+                    {item}
+                  </p>
+                </motion.div>
               ))}
             </div>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
