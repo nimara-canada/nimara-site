@@ -47,7 +47,7 @@ const WithNimara = () => {
     return <section className="bg-[#f5f5f0]">
         {cards.map((card, index) => <div key={index} className={`${card.bgClass} min-h-[60vh] flex items-center justify-center px-6 py-20`}>
             <div className="max-w-4xl mx-auto text-center">
-              <h3 className={`text-3xl md:text-5xl font-bold mb-6 ${card.textClass}`}>
+              <h3 className={`text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-[-0.03em] mb-6 ${card.textClass}`}>
                 {card.title}
               </h3>
               <p className={`text-xl md:text-2xl leading-relaxed ${card.subtextClass}`}>
@@ -108,7 +108,7 @@ const FullScreenCard = ({
   return <div className={`h-full w-full ${card.bgClass} flex items-center justify-center px-6 md:px-12`}>
       <div className="max-w-4xl mx-auto text-center">
         <p className={`text-sm md:text-base uppercase tracking-widest mb-4 md:mb-6 ${card.subtextClass}`}>WITH NIMARA, YOU GET</p>
-        <h3 className={`text-4xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 ${card.textClass}`}>
+        <h3 className={`text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-[-0.03em] mb-6 md:mb-8 ${card.textClass}`}>
           {card.title}
         </h3>
         <p className={`text-xl md:text-2xl lg:text-3xl leading-relaxed max-w-2xl mx-auto mb-4 ${card.subtextClass}`}>
