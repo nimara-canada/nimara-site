@@ -69,7 +69,7 @@ const HowItWorksPageHero: React.FC = () => {
             <h1 
               id="page-heading"
               style={revealStyle(200)} 
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.05] tracking-[-0.02em] mb-8"
+              className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white leading-[1.05] tracking-[-0.03em] mb-8"
             >
               6 steps to systems
               <br />
