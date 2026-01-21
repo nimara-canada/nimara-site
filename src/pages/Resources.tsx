@@ -372,7 +372,7 @@ function ResourcesContent() {
             
             <h1 
               style={revealStyle(100)}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.08] tracking-tight mb-6"
+              className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white leading-[1.05] tracking-[-0.03em] mb-6"
             >
               Tools that make <span className="text-accent">nonprofit work</span> easier
             </h1>
@@ -434,7 +434,7 @@ function ResourcesContent() {
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">
                   Start with one
                 </p>
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                <h2 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-foreground leading-[1.05] tracking-[-0.03em] mb-4">
                   Pick the tool that matches your <span className="text-primary">biggest pain</span>
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-xl mx-auto">
@@ -460,7 +460,7 @@ function ResourcesContent() {
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary text-center mb-4">
                 Quick tips
               </p>
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-4">
+              <h2 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-foreground text-center leading-[1.05] tracking-[-0.03em] mb-4">
                 So the tools actually <span className="text-primary">work</span>
               </h2>
               <p className="text-center text-muted-foreground mb-10 max-w-lg mx-auto">
@@ -491,7 +491,7 @@ function ResourcesContent() {
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">
                   Want help?
                 </p>
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                <h2 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-foreground leading-[1.05] tracking-[-0.03em] mb-4">
                   Want this set up <span className="text-primary">for your team?</span>
                 </h2>
                 <p className="text-lg text-muted-foreground">
@@ -544,7 +544,7 @@ function ResourcesContent() {
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary text-center mb-4">
                 Questions
               </p>
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-10">
+              <h2 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-foreground text-center leading-[1.05] tracking-[-0.03em] mb-10">
                 Common questions
               </h2>
             </ScrollRevealBlock>
@@ -587,7 +587,7 @@ function ResourcesContent() {
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent mb-6">
                 Not sure where to start?
               </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <h2 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.05] tracking-[-0.03em] mb-4">
                 Let us point you to the <span className="text-accent">best next step</span>
               </h2>
               <p className="text-lg text-white/60 mb-10">
