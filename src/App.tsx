@@ -60,7 +60,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/consultants" element={<Consultants />} />
-            <Route path="/partners" element={<Partners />} />
+            <Route path="/partners" element={<Navigate to="/consultants" replace />} />
             <Route path="/company" element={<Company />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/book-a-call" element={<ExternalRedirect to={CALENDLY_BOOKING_URL} />} />
