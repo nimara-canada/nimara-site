@@ -7,7 +7,7 @@ export const FinalCTA = () => {
     <section className="py-16 sm:py-20 md:py-28 lg:py-32 xl:py-40 bg-nim-navy">
       <div className="container max-w-4xl mx-auto px-4 text-center">
         {/* Heading */}
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-primary-foreground mb-6 sm:mb-8 md:mb-10 lg:mb-12 tracking-tight leading-tight">
+        <h2 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-primary-foreground mb-6 sm:mb-8 md:mb-10 lg:mb-12 tracking-[-0.03em] leading-[1.05]">
           Ready to get organized?
           <br className="hidden sm:block" />
           <span className="sm:hidden"> </span>Start with one area.
