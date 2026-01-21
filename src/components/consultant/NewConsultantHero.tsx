@@ -47,7 +47,8 @@ export const NewConsultantHero = () => {
       ref={heroRef}
       id="consultant-hero"
       aria-labelledby="consultant-hero-heading"
-      className="min-h-screen relative overflow-hidden bg-secondary-background"
+      className="min-h-screen relative overflow-hidden"
+      style={{ backgroundColor: 'hsl(222, 47%, 7%)' }}
     >
       {/* Subtle grid pattern */}
       <div 
@@ -139,7 +140,7 @@ export const NewConsultantHero = () => {
             >
               <Link 
                 to="/consultants/apply" 
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold rounded-lg select-none transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent bg-primary text-primary-foreground"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold rounded-lg select-none transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary bg-primary text-primary-foreground"
               >
                 Apply to Join Nimara
                 <span className="text-base sm:text-lg" aria-hidden="true">→</span>
