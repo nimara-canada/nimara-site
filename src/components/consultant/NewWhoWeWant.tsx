@@ -28,7 +28,7 @@ export const NewWhoWeWant = () => {
           <p className="text-muted-foreground/60 uppercase tracking-[0.25em] text-xs mb-6">
             Who We're Looking For
           </p>
-          <h2 className="font-sans text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight mb-6">
+          <h2 className="font-sans text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-foreground leading-[1.05] tracking-[-0.03em] mb-6">
             Who We're <span className="italic font-light">Looking For</span>
           </h2>
           <p className="text-muted-foreground/70 text-base leading-relaxed font-light">
