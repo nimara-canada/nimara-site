@@ -65,7 +65,7 @@ const TheProcess: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light tracking-tight leading-[1.15] sm:leading-[1.1] mb-3 sm:mb-4 text-white"
+            className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-[-0.03em] leading-[1.05] mb-3 sm:mb-4 text-white"
           >
             Clear systems in 4 simple steps.
           </motion.h2>
