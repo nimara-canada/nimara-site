@@ -44,7 +44,7 @@ export const NewHowItWorks = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="font-sans text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight"
+              className="font-sans text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-foreground leading-[1.05] tracking-[-0.03em]"
             >
               How It <span className="italic font-light">Works</span>
             </motion.h2>
