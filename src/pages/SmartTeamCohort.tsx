@@ -270,18 +270,18 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Section 4: How It Works */}
-      <section id="how-it-works" className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-cloud" aria-labelledby="how-it-works-heading">
-        <div className="max-w-4xl mx-auto">
+      {/* Section 4: How It Works - DARK PREMIUM */}
+      <section id="how-it-works" className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-navy" aria-labelledby="how-it-works-heading">
+        <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-12 sm:mb-16 md:mb-20">
-            <p className="text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-teal mb-4 sm:mb-6">
+            <p className="text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#F5F0E8]/60 mb-4 sm:mb-6">
               How It Works
             </p>
-            <h2 id="how-it-works-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-nim-navy tracking-[-0.02em] leading-[1.15] mb-4 sm:mb-6">
+            <h2 id="how-it-works-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.02em] leading-[1.15] mb-4 sm:mb-6">
               6 Weeks. 4 Systems. Done With You.
             </h2>
-            <p className="text-lg sm:text-xl md:text-2xl text-nim-slate-dark font-light">
+            <p className="text-lg sm:text-xl md:text-2xl text-[#F5F0E8]/80 font-light">
               One Ops Lead works with you the whole time. We build it in your tools.
             </p>
           </header>
@@ -289,65 +289,83 @@ const SmartTeamCohortHero = () => {
           {/* 3-Step Process */}
           <div className="grid sm:grid-cols-3 gap-8 sm:gap-10 md:gap-12 mb-12 sm:mb-16 md:mb-20">
             {/* Step 1 */}
-            <div className="text-center">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-4 sm:mb-6 rounded-xl bg-nim-teal text-white flex items-center justify-center text-lg sm:text-xl font-bold">
+            <article className="text-center">
+              <div className="mb-6 sm:mb-8">
+                <svg className="w-12 h-12 sm:w-16 sm:h-16 mx-auto" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="32" cy="32" r="24" className="text-[#F5F0E8]" />
+                  <path d="M24 32l5 5 11-11" className="text-[#F5F0E8]" />
+                </svg>
+              </div>
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4 sm:mb-5 rounded-full border-2 border-[#F5F0E8]/30 text-[#F5F0E8] flex items-center justify-center text-lg sm:text-xl font-light">
                 1
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-nim-navy mb-2 sm:mb-3">
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">
                 We Find the Gaps
               </h3>
-              <p className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
                 Week 1: We look at what you have. We find what's missing.
               </p>
-            </div>
+            </article>
 
             {/* Step 2 */}
-            <div className="text-center">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-4 sm:mb-6 rounded-xl bg-nim-teal text-white flex items-center justify-center text-lg sm:text-xl font-bold">
+            <article className="text-center">
+              <div className="mb-6 sm:mb-8">
+                <svg className="w-12 h-12 sm:w-16 sm:h-16 mx-auto" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="12" y="16" width="40" height="32" rx="3" className="text-[#F5F0E8]" />
+                  <path d="M20 28h24M20 36h16" className="text-[#F5F0E8]" />
+                </svg>
+              </div>
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4 sm:mb-5 rounded-full border-2 border-[#F5F0E8]/30 text-[#F5F0E8] flex items-center justify-center text-lg sm:text-xl font-light">
                 2
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-nim-navy mb-2 sm:mb-3">
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">
                 We Build Together
               </h3>
-              <p className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
                 Weeks 2-5: One system per week. Built with you watching.
               </p>
-            </div>
+            </article>
 
             {/* Step 3 */}
-            <div className="text-center">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-4 sm:mb-6 rounded-xl bg-nim-teal text-white flex items-center justify-center text-lg sm:text-xl font-bold">
+            <article className="text-center">
+              <div className="mb-6 sm:mb-8">
+                <svg className="w-12 h-12 sm:w-16 sm:h-16 mx-auto" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M16 32h32M32 16v32" className="text-[#F5F0E8]" />
+                  <circle cx="32" cy="32" r="20" className="text-[#F5F0E8]" />
+                </svg>
+              </div>
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4 sm:mb-5 rounded-full border-2 border-[#F5F0E8]/30 text-[#F5F0E8] flex items-center justify-center text-lg sm:text-xl font-light">
                 3
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-nim-navy mb-2 sm:mb-3">
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">
                 We Test Everything
               </h3>
-              <p className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
                 Week 6: We pretend to be an auditor. If it breaks, we fix it.
               </p>
-            </div>
+            </article>
           </div>
 
           {/* Time Commitment Card */}
-          <div className="bg-nim-mint/5 rounded-2xl sm:rounded-3xl p-8 sm:p-10 md:p-14 text-center">
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-nim-navy mb-2 sm:mb-3">
-              4 hours a week. <span className="text-nim-teal">100% Online.</span>
+          <div className="border border-[#F5F0E8]/20 rounded-2xl sm:rounded-3xl p-8 sm:p-10 md:p-14 text-center">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-3">
+              4 hours a week. <span className="text-nim-mint">100% Online.</span>
             </h3>
-            <p className="text-base sm:text-lg text-nim-slate-dark mb-8 sm:mb-10">
+            <p className="text-base sm:text-lg text-[#F5F0E8]/70 mb-8 sm:mb-10">
               Your weekly time commitment:
             </p>
             <div className="grid grid-cols-3 gap-6 sm:gap-8 md:gap-12 max-w-xl mx-auto">
               <div className="text-center">
-                <p className="text-nim-navy font-bold text-base sm:text-lg mb-1">Group Call</p>
-                <p className="text-nim-teal font-semibold text-lg sm:text-xl">90 min</p>
+                <p className="text-[#F5F0E8]/80 font-medium text-base sm:text-lg mb-1">Group Call</p>
+                <p className="text-nim-mint font-semibold text-lg sm:text-xl">90 min</p>
               </div>
               <div className="text-center">
-                <p className="text-nim-navy font-bold text-base sm:text-lg mb-1">Build Session</p>
-                <p className="text-nim-teal font-semibold text-lg sm:text-xl">90 min</p>
+                <p className="text-[#F5F0E8]/80 font-medium text-base sm:text-lg mb-1">Build Session</p>
+                <p className="text-nim-mint font-semibold text-lg sm:text-xl">90 min</p>
               </div>
               <div className="text-center">
-                <p className="text-nim-navy font-bold text-base sm:text-lg mb-1">Your Prep</p>
-                <p className="text-nim-teal font-semibold text-lg sm:text-xl">1 hour</p>
+                <p className="text-[#F5F0E8]/80 font-medium text-base sm:text-lg mb-1">Your Prep</p>
+                <p className="text-nim-mint font-semibold text-lg sm:text-xl">1 hour</p>
               </div>
             </div>
           </div>
