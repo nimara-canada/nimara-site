@@ -24,6 +24,8 @@ All colors MUST be HSL.
     --nim-purple: 262 82% 58%; /* #7C3AED */
     --nim-mint: 162 91% 83%; /* #ACFCE3 */
     --nim-teal: 168 76% 40%; /* #14b8a6 - accessible teal for light backgrounds */
+    --nim-mara: 203 45% 53%; /* #5B94B8 - mara cara blue */
+    --nim-mara-deep: 203 50% 45%; /* Deeper mara blue */
     --nim-slate: 220 13% 38%; /* #555d6e - muted text, improved AA contrast ~5.8:1 */
     --nim-slate-dark: 220 13% 28%; /* #3d4451 - body text, high contrast ~8.5:1 */
     --nim-white: 0 0% 100%; /* #FFFFFF */

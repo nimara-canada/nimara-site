@@ -2,71 +2,74 @@ import { FileCheck, Users, BarChart3, FolderSearch, ArrowRight, Check, X, Receip
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 const SmartTeamCohortHero = () => {
-  const bullets = [{
-    main: "Prove spending in minutes",
-    sub: "Every expense linked to invoice + approval + payment."
-  }, {
-    main: "Run board meetings that stick",
-    sub: "Decisions tracked. Actions followed up."
-  }, {
-    main: "Impress funders, not chase them",
-    sub: "Reports ready in 3 clicks."
-  }];
   return <div className="min-h-screen bg-nim-cloud">
-      {/* Announcement Bar */}
-      <div className="w-full px-4 py-3 bg-nim-navy text-center">
-        <p className="text-sm sm:text-base text-white">
-          <span className="text-nim-mint font-semibold">Only 15 spots</span>
-          {" "}in the February cohort. Applications close soon.
-        </p>
-      </div>
+      {/* Hero Section with Mara Cara Blue */}
+      <section className="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden" aria-labelledby="hero-heading">
+        {/* Mara Cara Blue Background with subtle gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-nim-mara via-nim-mara-deep to-nim-mara" />
+        
+        {/* Subtle noise texture overlay */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{ 
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+        }} />
+        
+        {/* Very subtle radial glow */}
+        <div className="absolute inset-0 bg-gradient-radial from-white/5 via-transparent to-transparent" />
 
-      {/* Hero Section */}
-      <section className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-32 lg:py-40 bg-nim-navy" aria-labelledby="hero-heading">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.08] border border-white/10 text-white text-xs sm:text-sm font-semibold uppercase tracking-[0.15em] mb-8 sm:mb-10">
-            For Canadian Nonprofits • 1-15 Staff
+        {/* Content */}
+        <div className="relative z-10 w-full px-5 sm:px-6 md:px-10 lg:px-16 py-20 sm:py-28 md:py-32">
+          <div className="max-w-4xl mx-auto text-center">
+            {/* Badge - Clean white pill */}
+            <div className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-xs sm:text-sm font-medium uppercase tracking-[0.12em] mb-10 sm:mb-12">
+              <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+              For Canadian Nonprofits • 1-15 Staff
+            </div>
+
+            {/* Headline - Bold and clean */}
+            <h1 id="hero-heading" className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white leading-[1.05] tracking-[-0.03em] mb-8 sm:mb-10">
+              Stop Running Your
+              <br />
+              Nonprofit From Memory
+            </h1>
+
+            {/* Subhead - Elegant and light */}
+            <p className="text-lg sm:text-xl md:text-2xl text-white/85 font-light leading-relaxed mb-12 sm:mb-14 max-w-2xl mx-auto">
+              We build the systems that let you stop being the only one who knows where everything is. In 6 weeks. Together.
+            </p>
+
+            {/* Logistics Bar - Glassmorphic horizontal strip */}
+            <div className="inline-flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-10 px-8 sm:px-12 py-5 sm:py-6 bg-white/[0.08] backdrop-blur-md border border-white/15 rounded-2xl mb-12 sm:mb-14">
+              <div className="flex items-center gap-2 text-white">
+                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 opacity-70" aria-hidden="true" />
+                <span className="text-sm sm:text-base md:text-lg font-medium">Feb 11, 2026</span>
+              </div>
+              <div className="hidden sm:block w-px h-5 bg-white/20" />
+              <span className="text-white/70 text-sm sm:text-base md:text-lg">100% Virtual</span>
+              <div className="hidden sm:block w-px h-5 bg-white/20" />
+              <span className="text-white font-semibold text-sm sm:text-base md:text-lg">$9,450 CAD</span>
+              <div className="hidden sm:block w-px h-5 bg-white/20" />
+              <span className="text-white/70 text-sm sm:text-base md:text-lg">15 spots</span>
+            </div>
+
+            {/* Primary CTA - Clean white button */}
+            <div className="mb-5 sm:mb-6">
+              <Button size="lg" className="group w-full sm:w-auto bg-white hover:bg-white/95 text-nim-mara-deep rounded-full px-12 sm:px-16 py-6 sm:py-7 text-base sm:text-lg font-bold shadow-[0_8px_32px_rgba(0,0,0,0.12)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.18)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/50" asChild>
+                <a href="https://form.typeform.com/to/Dsi3pXkx" target="_blank" rel="noopener noreferrer">
+                  Apply for a Seat
+                  <ArrowRight className="ml-3 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+                </a>
+              </Button>
+            </div>
+
+            {/* Microcopy */}
+            <p className="text-sm sm:text-base text-white/60 font-light">
+              SBCCI grant-eligible • Application takes 5 minutes
+            </p>
           </div>
-
-          {/* Headline */}
-          <h1 id="hero-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[1.12] tracking-[-0.02em] mb-6 sm:mb-8">
-            Stop Running Your Nonprofit
-            <br />
-            <span className="text-nim-mint">From Memory</span>
-          </h1>
-
-          {/* Subhead */}
-          <p className="text-lg sm:text-xl md:text-2xl text-white/70 font-light mb-10 sm:mb-12 max-w-2xl mx-auto">
-            We build the systems that let you stop being the only one who knows where everything is. In 6 weeks. Together.
-          </p>
-
-          {/* Logistics Bar */}
-          <div className="grid grid-cols-2 sm:inline-flex sm:flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6 px-4 sm:px-8 py-4 sm:py-5 bg-white/[0.05] border border-white/10 rounded-xl sm:rounded-2xl mb-10 sm:mb-12">
-            <span className="flex items-center justify-center gap-2 text-nim-mint text-sm sm:text-base md:text-lg font-semibold col-span-2">
-              <Calendar className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
-              Starts Feb 11, 2026
-            </span>
-            <span className="text-white/70 text-sm sm:text-base md:text-lg text-center">100% Virtual</span>
-            <span className="text-white font-semibold text-sm sm:text-base md:text-lg text-center">$9,450 CAD</span>
-            <span className="text-white/70 text-sm sm:text-base md:text-lg text-center col-span-2">15 spots</span>
-          </div>
-
-          {/* Primary CTA */}
-          <div className="mb-4 sm:mb-5">
-            <Button size="lg" className="w-full sm:w-auto bg-nim-mint hover:bg-nim-mint/90 text-nim-navy rounded-xl sm:rounded-2xl px-10 sm:px-16 py-6 sm:py-7 text-lg sm:text-xl font-bold uppercase tracking-wide shadow-[0_0_40px_hsl(var(--nim-mint)/0.3)] transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-mint/50" asChild>
-              <a href="https://form.typeform.com/to/Dsi3pXkx" target="_blank" rel="noopener noreferrer">
-                Apply Now
-                <ArrowRight className="ml-2 sm:ml-3 w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
-              </a>
-            </Button>
-          </div>
-
-          {/* Microcopy */}
-          <p className="text-sm sm:text-base text-white/50">
-            SBCCI grant-eligible • Takes 5 minutes
-          </p>
         </div>
+
+        {/* Bottom gradient fade to content */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-nim-cloud to-transparent" />
       </section>
 
       {/* Section 2: Sound Familiar? - LIGHT */}
