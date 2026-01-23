@@ -270,18 +270,18 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Section 4: How It Works - DARK PREMIUM */}
-      <section id="how-it-works" className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-navy" aria-labelledby="how-it-works-heading">
+      {/* Section 4: How It Works - LIGHT */}
+      <section id="how-it-works" className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-cloud" aria-labelledby="how-it-works-heading">
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-12 sm:mb-16 md:mb-20">
-            <p className="text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#F5F0E8]/60 mb-4 sm:mb-6">
+            <p className="text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-teal mb-4 sm:mb-6">
               How It Works
             </p>
-            <h2 id="how-it-works-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.02em] leading-[1.15] mb-4 sm:mb-6">
+            <h2 id="how-it-works-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-nim-navy tracking-[-0.02em] leading-[1.15] mb-4 sm:mb-6">
               6 Weeks. 4 Systems. Done With You.
             </h2>
-            <p className="text-lg sm:text-xl md:text-2xl text-[#F5F0E8]/80 font-light">
+            <p className="text-lg sm:text-xl md:text-2xl text-nim-slate-dark font-light">
               One Ops Lead works with you the whole time. We build it in your tools.
             </p>
           </header>
@@ -292,17 +292,17 @@ const SmartTeamCohortHero = () => {
             <article className="text-center">
               <div className="mb-6 sm:mb-8">
                 <svg className="w-12 h-12 sm:w-16 sm:h-16 mx-auto" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="32" cy="32" r="24" className="text-[#F5F0E8]" />
-                  <path d="M24 32l5 5 11-11" className="text-[#F5F0E8]" />
+                  <circle cx="32" cy="32" r="24" className="text-nim-teal" />
+                  <path d="M24 32l5 5 11-11" className="text-nim-teal" />
                 </svg>
               </div>
-              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4 sm:mb-5 rounded-full border-2 border-[#F5F0E8]/30 text-[#F5F0E8] flex items-center justify-center text-lg sm:text-xl font-light">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4 sm:mb-5 rounded-full border-2 border-nim-teal/30 text-nim-teal flex items-center justify-center text-lg sm:text-xl font-light">
                 1
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">
+              <h3 className="text-lg sm:text-xl font-bold text-nim-navy mb-2 sm:mb-3">
                 We Find the Gaps
               </h3>
-              <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed">
                 Week 1: We look at what you have. We find what's missing.
               </p>
             </article>
@@ -311,17 +311,17 @@ const SmartTeamCohortHero = () => {
             <article className="text-center">
               <div className="mb-6 sm:mb-8">
                 <svg className="w-12 h-12 sm:w-16 sm:h-16 mx-auto" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="12" y="16" width="40" height="32" rx="3" className="text-[#F5F0E8]" />
-                  <path d="M20 28h24M20 36h16" className="text-[#F5F0E8]" />
+                  <rect x="12" y="16" width="40" height="32" rx="3" className="text-nim-teal" />
+                  <path d="M20 28h24M20 36h16" className="text-nim-teal" />
                 </svg>
               </div>
-              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4 sm:mb-5 rounded-full border-2 border-[#F5F0E8]/30 text-[#F5F0E8] flex items-center justify-center text-lg sm:text-xl font-light">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4 sm:mb-5 rounded-full border-2 border-nim-teal/30 text-nim-teal flex items-center justify-center text-lg sm:text-xl font-light">
                 2
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">
+              <h3 className="text-lg sm:text-xl font-bold text-nim-navy mb-2 sm:mb-3">
                 We Build Together
               </h3>
-              <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed">
                 Weeks 2-5: One system per week. Built with you watching.
               </p>
             </article>
@@ -330,42 +330,42 @@ const SmartTeamCohortHero = () => {
             <article className="text-center">
               <div className="mb-6 sm:mb-8">
                 <svg className="w-12 h-12 sm:w-16 sm:h-16 mx-auto" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M16 32h32M32 16v32" className="text-[#F5F0E8]" />
-                  <circle cx="32" cy="32" r="20" className="text-[#F5F0E8]" />
+                  <path d="M16 32h32M32 16v32" className="text-nim-teal" />
+                  <circle cx="32" cy="32" r="20" className="text-nim-teal" />
                 </svg>
               </div>
-              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4 sm:mb-5 rounded-full border-2 border-[#F5F0E8]/30 text-[#F5F0E8] flex items-center justify-center text-lg sm:text-xl font-light">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4 sm:mb-5 rounded-full border-2 border-nim-teal/30 text-nim-teal flex items-center justify-center text-lg sm:text-xl font-light">
                 3
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">
+              <h3 className="text-lg sm:text-xl font-bold text-nim-navy mb-2 sm:mb-3">
                 We Test Everything
               </h3>
-              <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed">
                 Week 6: We pretend to be an auditor. If it breaks, we fix it.
               </p>
             </article>
           </div>
 
           {/* Time Commitment Card */}
-          <div className="border border-[#F5F0E8]/20 rounded-2xl sm:rounded-3xl p-8 sm:p-10 md:p-14 text-center">
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-3">
-              4 hours a week. <span className="text-nim-mint">100% Online.</span>
+          <div className="bg-white border border-border rounded-2xl sm:rounded-3xl p-8 sm:p-10 md:p-14 text-center shadow-sm">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-nim-navy mb-2 sm:mb-3">
+              4 hours a week. <span className="text-nim-teal">100% Online.</span>
             </h3>
-            <p className="text-base sm:text-lg text-[#F5F0E8]/70 mb-8 sm:mb-10">
+            <p className="text-base sm:text-lg text-nim-slate-dark mb-8 sm:mb-10">
               Your weekly time commitment:
             </p>
             <div className="grid grid-cols-3 gap-6 sm:gap-8 md:gap-12 max-w-xl mx-auto">
               <div className="text-center">
-                <p className="text-[#F5F0E8]/80 font-medium text-base sm:text-lg mb-1">Group Call</p>
-                <p className="text-nim-mint font-semibold text-lg sm:text-xl">90 min</p>
+                <p className="text-nim-slate-dark font-medium text-base sm:text-lg mb-1">Group Call</p>
+                <p className="text-nim-teal font-semibold text-lg sm:text-xl">90 min</p>
               </div>
               <div className="text-center">
-                <p className="text-[#F5F0E8]/80 font-medium text-base sm:text-lg mb-1">Build Session</p>
-                <p className="text-nim-mint font-semibold text-lg sm:text-xl">90 min</p>
+                <p className="text-nim-slate-dark font-medium text-base sm:text-lg mb-1">Build Session</p>
+                <p className="text-nim-teal font-semibold text-lg sm:text-xl">90 min</p>
               </div>
               <div className="text-center">
-                <p className="text-[#F5F0E8]/80 font-medium text-base sm:text-lg mb-1">Your Prep</p>
-                <p className="text-nim-mint font-semibold text-lg sm:text-xl">1 hour</p>
+                <p className="text-nim-slate-dark font-medium text-base sm:text-lg mb-1">Your Prep</p>
+                <p className="text-nim-teal font-semibold text-lg sm:text-xl">1 hour</p>
               </div>
             </div>
           </div>
@@ -450,24 +450,24 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Section 6: Ultimate Proof - DARK PREMIUM */}
-      <section className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-navy" aria-labelledby="ultimate-proof-heading">
+      {/* Section 6: Ultimate Proof - LIGHT */}
+      <section className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-cloud" aria-labelledby="ultimate-proof-heading">
         <div className="max-w-3xl mx-auto">
           {/* Promise Card */}
-          <div className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-2xl sm:rounded-3xl p-8 sm:p-10 md:p-14">
+          <div className="bg-white border border-border rounded-2xl sm:rounded-3xl p-8 sm:p-10 md:p-14 shadow-sm">
             {/* Shield Icon */}
             <div className="flex justify-center mb-6 sm:mb-8">
               <svg className="w-12 h-12 sm:w-16 sm:h-16" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M32 8L12 16v16c0 12 8 20 20 24 12-4 20-12 20-24V16L32 8z" className="text-[#F5F0E8]" />
+                <path d="M32 8L12 16v16c0 12 8 20 20 24 12-4 20-12 20-24V16L32 8z" className="text-nim-teal" />
                 <path d="M24 32l6 6 10-12" className="text-nim-mint" />
               </svg>
             </div>
             
-            <h2 id="ultimate-proof-heading" className="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-[-0.02em] text-center mb-4 sm:mb-6">
+            <h2 id="ultimate-proof-heading" className="text-xl sm:text-2xl md:text-3xl font-bold text-nim-navy tracking-[-0.02em] text-center mb-4 sm:mb-6">
               The "It Has to Work" Promise
             </h2>
             
-            <p className="text-base sm:text-lg text-[#F5F0E8]/80 text-center max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-nim-slate-dark text-center max-w-2xl mx-auto leading-relaxed">
               In Week 6, we test your systems like an auditor would. We ask for receipts. 
               We ask for board decisions. We ask for files. If your systems can't find 
               things fast, we keep working until they can. No extra cost.
@@ -576,61 +576,61 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Section 8: Price and Seats - DARK */}
-      <section id="price" className="w-full px-4 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-navy" aria-labelledby="price-heading">
+      {/* Section 8: Price and Seats - LIGHT */}
+      <section id="price" className="w-full px-4 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-cloud" aria-labelledby="price-heading">
         <div className="max-w-xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-10 sm:mb-14 md:mb-20">
-            <p className="text-xs sm:text-sm md:text-base font-medium uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-mint mb-4 sm:mb-6 md:mb-8">
+            <p className="text-xs sm:text-sm md:text-base font-medium uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-teal mb-4 sm:mb-6 md:mb-8">
               Price and seats
             </p>
-            <h2 id="price-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.02em] sm:tracking-[-0.03em] leading-[1.1] sm:leading-[1.08]">
-              Simple and <span className="text-nim-mint">clear.</span>
+            <h2 id="price-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-nim-navy tracking-[-0.02em] sm:tracking-[-0.03em] leading-[1.1] sm:leading-[1.08]">
+              Simple and <span className="text-nim-teal">clear.</span>
             </h2>
           </header>
 
           {/* Main Pricing Card */}
-          <div className="bg-white/[0.03] border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 lg:p-14 mb-8 sm:mb-10 md:mb-12">
+          <div className="bg-white border border-border rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 lg:p-14 mb-8 sm:mb-10 md:mb-12 shadow-sm">
             {/* Price */}
             <div className="text-center mb-8 sm:mb-10 md:mb-12">
-              <p className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight mb-2 sm:mb-3 md:mb-4">
+              <p className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-nim-navy tracking-tight mb-2 sm:mb-3 md:mb-4">
                 $9,450
               </p>
-              <p className="text-white/50 text-base sm:text-lg md:text-xl font-light">
+              <p className="text-nim-slate-dark text-base sm:text-lg md:text-xl font-light">
                 CAD per organization
               </p>
             </div>
 
             {/* Seats Badge */}
             <div className="flex justify-center mb-8 sm:mb-10 md:mb-14">
-              <span className="inline-flex items-center px-5 sm:px-6 md:px-8 py-3 sm:py-3.5 md:py-4 rounded-full text-sm sm:text-base md:text-lg font-semibold bg-nim-mint/10 text-nim-mint border border-nim-mint/20">
+              <span className="inline-flex items-center px-5 sm:px-6 md:px-8 py-3 sm:py-3.5 md:py-4 rounded-full text-sm sm:text-base md:text-lg font-semibold bg-nim-teal/10 text-nim-teal border border-nim-teal/20">
                 15 seats per cohort
               </span>
             </div>
 
             {/* Divider */}
-            <div className="border-t border-white/10 my-8 sm:my-10 md:my-12" />
+            <div className="border-t border-border my-8 sm:my-10 md:my-12" />
 
             {/* What's Included */}
             <div className="mb-8 sm:mb-10 md:mb-12">
-              <h4 className="text-xs sm:text-sm font-semibold text-white/40 uppercase tracking-[0.15em] sm:tracking-[0.2em] mb-4 sm:mb-6 md:mb-8">
+              <h4 className="text-xs sm:text-sm font-semibold text-nim-slate uppercase tracking-[0.15em] sm:tracking-[0.2em] mb-4 sm:mb-6 md:mb-8">
                 What's included
               </h4>
               <ul className="space-y-3 sm:space-y-4 md:space-y-5" aria-label="What's included">
-                <li className="flex items-center gap-3 sm:gap-4 md:gap-5 text-white text-base sm:text-lg md:text-xl">
-                  <Check className="w-5 h-5 sm:w-6 sm:h-6 text-nim-mint flex-shrink-0" aria-hidden="true" />
+                <li className="flex items-center gap-3 sm:gap-4 md:gap-5 text-nim-navy text-base sm:text-lg md:text-xl">
+                  <Check className="w-5 h-5 sm:w-6 sm:h-6 text-nim-teal flex-shrink-0" aria-hidden="true" />
                   4 systems set up with you
                 </li>
-                <li className="flex items-center gap-3 sm:gap-4 md:gap-5 text-white text-base sm:text-lg md:text-xl">
-                  <Check className="w-5 h-5 sm:w-6 sm:h-6 text-nim-mint flex-shrink-0" aria-hidden="true" />
+                <li className="flex items-center gap-3 sm:gap-4 md:gap-5 text-nim-navy text-base sm:text-lg md:text-xl">
+                  <Check className="w-5 h-5 sm:w-6 sm:h-6 text-nim-teal flex-shrink-0" aria-hidden="true" />
                   Weekly labs and office hours
                 </li>
-                <li className="flex items-center gap-3 sm:gap-4 md:gap-5 text-white text-base sm:text-lg md:text-xl">
-                  <Check className="w-5 h-5 sm:w-6 sm:h-6 text-nim-mint flex-shrink-0" aria-hidden="true" />
+                <li className="flex items-center gap-3 sm:gap-4 md:gap-5 text-nim-navy text-base sm:text-lg md:text-xl">
+                  <Check className="w-5 h-5 sm:w-6 sm:h-6 text-nim-teal flex-shrink-0" aria-hidden="true" />
                   Week 6 stress test
                 </li>
-                <li className="flex items-center gap-3 sm:gap-4 md:gap-5 text-white text-base sm:text-lg md:text-xl">
-                  <Check className="w-5 h-5 sm:w-6 sm:h-6 text-nim-mint flex-shrink-0" aria-hidden="true" />
+                <li className="flex items-center gap-3 sm:gap-4 md:gap-5 text-nim-navy text-base sm:text-lg md:text-xl">
+                  <Check className="w-5 h-5 sm:w-6 sm:h-6 text-nim-teal flex-shrink-0" aria-hidden="true" />
                   90-day plan
                 </li>
               </ul>
@@ -638,42 +638,42 @@ const SmartTeamCohortHero = () => {
 
             {/* Payment Options */}
             <div className="mb-8 sm:mb-10 md:mb-12">
-              <h4 className="text-xs sm:text-sm font-semibold text-white/40 uppercase tracking-[0.15em] sm:tracking-[0.2em] mb-4 sm:mb-6 md:mb-8">
+              <h4 className="text-xs sm:text-sm font-semibold text-nim-slate uppercase tracking-[0.15em] sm:tracking-[0.2em] mb-4 sm:mb-6 md:mb-8">
                 Payment options
               </h4>
               <ul className="space-y-3 sm:space-y-4" aria-label="Payment options">
-                <li className="flex items-center gap-3 sm:gap-4 text-white/50 text-sm sm:text-base md:text-lg">
-                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white/30 flex-shrink-0" aria-hidden="true" />
+                <li className="flex items-center gap-3 sm:gap-4 text-nim-slate-dark text-sm sm:text-base md:text-lg">
+                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-nim-slate/30 flex-shrink-0" aria-hidden="true" />
                   50% now / 50% in week 3
                 </li>
-                <li className="flex items-center gap-3 sm:gap-4 text-white/50 text-sm sm:text-base md:text-lg">
-                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white/30 flex-shrink-0" aria-hidden="true" />
+                <li className="flex items-center gap-3 sm:gap-4 text-nim-slate-dark text-sm sm:text-base md:text-lg">
+                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-nim-slate/30 flex-shrink-0" aria-hidden="true" />
                   Or 3 payments (week 0 / week 2 / week 4)
                 </li>
               </ul>
             </div>
 
             {/* Next Cohort Info */}
-            <p className="text-sm sm:text-base text-nim-mint text-center mb-8 sm:mb-10 md:mb-12 font-medium">
-              Next cohort: Wednesday, February 11, 2025
+            <p className="text-sm sm:text-base text-nim-teal text-center mb-8 sm:mb-10 md:mb-12 font-medium">
+              Next cohort: Wednesday, February 11, 2026
             </p>
 
             {/* CTA */}
             <div className="flex flex-col gap-4 sm:gap-5">
-              <Button size="lg" className="w-full bg-nim-mint hover:bg-nim-mint/90 text-nim-navy rounded-xl sm:rounded-2xl px-6 sm:px-8 md:px-10 py-5 sm:py-6 md:py-8 text-base sm:text-lg md:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-mint/50" asChild>
+              <Button size="lg" className="w-full bg-nim-navy hover:bg-nim-navy/90 text-white rounded-xl sm:rounded-2xl px-6 sm:px-8 md:px-10 py-5 sm:py-6 md:py-8 text-base sm:text-lg md:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-navy/50" asChild>
                 <a href="https://form.typeform.com/to/Dsi3pXkx" target="_blank" rel="noopener noreferrer">
                   Apply for a seat
                   <ArrowRight className="ml-2 sm:ml-3 w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
                 </a>
               </Button>
-              <a href="#faq" className="text-white/50 hover:text-white text-base sm:text-lg font-medium transition-colors text-center">
+              <a href="#faq" className="text-nim-slate hover:text-nim-navy text-base sm:text-lg font-medium transition-colors text-center">
                 FAQ
               </a>
             </div>
           </div>
 
           {/* Micro note */}
-          <p className="text-xs sm:text-sm md:text-base text-white/30 text-center">
+          <p className="text-xs sm:text-sm md:text-base text-nim-slate text-center">
             Nimara supports 0–50 staff. This cohort is only for 1–15 staff.
           </p>
         </div>
