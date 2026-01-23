@@ -41,7 +41,7 @@ const SmartTeamCohortHero = () => {
 
             {/* Subhead - Elegant and light */}
             <p className="text-lg sm:text-xl md:text-2xl text-white/80 font-light leading-relaxed mb-12 sm:mb-14 max-w-2xl mx-auto">
-              We build the systems that let you stop being the only one who knows where everything is. In 6 weeks. Together.
+              When you can't find a receipt, can't show your impact, or can't explain where the money went — funders notice. And they don't come back. We help you build simple systems that prove you're fundable.
             </p>
 
             {/* Logistics Bar - Glassmorphic horizontal strip */}
