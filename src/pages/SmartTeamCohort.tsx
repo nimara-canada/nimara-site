@@ -13,79 +13,68 @@ const SmartTeamCohortHero = () => {
     sub: "Reports ready in 3 clicks."
   }];
   return <div className="min-h-screen bg-nim-cloud">
-      {/* Minimal Header */}
-      <header className="w-full px-5 md:px-8 lg:px-12 py-4 md:py-5 flex items-center justify-between bg-nim-navy">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-white/10 rounded-md flex items-center justify-center">
-            <span className="text-white font-bold text-sm">N</span>
-          </div>
-          <span className="font-semibold text-white tracking-tight">Nimara</span>
-        </div>
-        <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-5 py-2 text-sm font-semibold transition-all" asChild>
-          <a href="#apply">Apply</a>
-        </Button>
-      </header>
+      {/* Announcement Bar */}
+      <div className="w-full px-4 py-3 bg-nim-navy text-center">
+        <p className="text-sm sm:text-base text-white">
+          <span className="mr-1.5">🚀</span>
+          <span className="text-nim-mint font-semibold">Only 15 spots</span>
+          {" "}in the February cohort. Applications close soon.
+        </p>
+      </div>
 
       {/* Hero Section */}
-      <section className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-32 lg:py-40 bg-nim-navy" aria-labelledby="hero-heading">
+      <section className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-cloud" aria-labelledby="hero-heading">
         <div className="max-w-4xl mx-auto text-center">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-nim-navy text-white text-xs sm:text-sm font-semibold uppercase tracking-[0.15em] mb-8 sm:mb-10">
+            For Canadian Nonprofits • 1-15 Staff
+          </div>
+
           {/* Headline */}
-          <h1 id="hero-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[1.12] tracking-[-0.02em] mb-6 sm:mb-8">
-            Get <span className="text-nim-mint">audit-proof</span> and{" "}
-            <span className="text-nim-mint">grant-ready</span>
-            <br className="hidden sm:block" />
-            <span className="sm:hidden"> </span>— in <span className="text-nim-mint">6 weeks.</span>
+          <h1 id="hero-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-nim-navy leading-[1.12] tracking-[-0.02em] mb-6 sm:mb-8">
+            Stop Running Your Nonprofit
+            <br />
+            <span className="text-nim-teal">From Memory</span>
           </h1>
 
           {/* Subhead */}
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/70 font-light mb-8 sm:mb-10">
-            A hands-on implementation cohort for{" "}
-            <span className="text-white font-medium">Canadian nonprofits with 1–15 staff.</span>
+          <p className="text-lg sm:text-xl md:text-2xl text-nim-slate-dark font-light mb-10 sm:mb-12 max-w-2xl mx-auto">
+            We build the systems that let you stop being the only one who knows where everything is. In 6 weeks. Together.
           </p>
 
-          {/* Logistics Bar - Mobile Optimized */}
-          <div className="grid grid-cols-2 sm:inline-flex sm:flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6 px-4 sm:px-8 py-4 sm:py-5 bg-white/[0.05] border border-white/10 rounded-xl sm:rounded-2xl mb-8 sm:mb-12">
-            <span className="flex items-center justify-center gap-2 text-nim-mint text-sm sm:text-base md:text-lg font-semibold col-span-2">
-              <Calendar className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
-              Starts Feb 11
+          {/* Logistics Bar */}
+          <div className="inline-flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8 mb-10 sm:mb-12">
+            <span className="flex items-center gap-2 text-nim-navy text-sm sm:text-base md:text-lg font-medium">
+              <span className="text-lg">📅</span>
+              Starts Feb 11, 2026
             </span>
-            <span className="text-white/70 text-sm sm:text-base md:text-lg text-center">100% Virtual</span>
-            <span className="text-white font-semibold text-sm sm:text-base md:text-lg text-center">$9,450 CAD</span>
-            <span className="text-white/70 text-sm sm:text-base md:text-lg text-center col-span-2">15 spots</span>
+            <span className="flex items-center gap-2 text-nim-navy text-sm sm:text-base md:text-lg font-medium">
+              <span className="text-lg">💻</span>
+              100% Virtual
+            </span>
+            <span className="flex items-center gap-2 text-nim-navy text-sm sm:text-base md:text-lg font-medium">
+              <span className="text-lg">👥</span>
+              15 Spots Only
+            </span>
+            <span className="flex items-center gap-2 text-nim-navy text-sm sm:text-base md:text-lg font-medium">
+              <span className="text-lg">💰</span>
+              $9,450 CAD
+            </span>
           </div>
 
-          {/* Benefit Bullets */}
-          <ul className="flex flex-col items-start sm:items-center gap-4 sm:gap-6 mb-10 sm:mb-14" aria-label="Key benefits">
-            {bullets.map(bullet => <li key={bullet.main} className="flex items-start gap-3 sm:gap-4 text-left max-w-lg">
-                <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-nim-mint/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-nim-mint" aria-hidden="true" />
-                </div>
-                <div>
-                  <span className="text-white text-lg sm:text-xl md:text-2xl font-medium block">{bullet.main}</span>
-                  <span className="text-white/50 text-base sm:text-lg">{bullet.sub}</span>
-                </div>
-              </li>)}
-          </ul>
-
           {/* Primary CTA */}
-          <div className="mb-4 sm:mb-6">
-            <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl sm:rounded-2xl px-8 sm:px-16 py-6 sm:py-8 text-lg sm:text-xl md:text-2xl font-semibold shadow-[0_0_40px_hsl(var(--primary)/0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50" asChild>
+          <div className="mb-4 sm:mb-5">
+            <Button size="lg" className="w-full sm:w-auto bg-nim-mint hover:bg-nim-mint/90 text-nim-navy rounded-xl sm:rounded-2xl px-10 sm:px-16 py-6 sm:py-7 text-lg sm:text-xl font-bold uppercase tracking-wide shadow-lg transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-mint/50" asChild>
               <a href="https://form.typeform.com/to/Dsi3pXkx" target="_blank" rel="noopener noreferrer">
-                Apply for a seat
+                Apply Now
                 <ArrowRight className="ml-2 sm:ml-3 w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
               </a>
             </Button>
           </div>
 
-          {/* Secondary Link */}
-          <a href="#what-you-get" className="inline-flex items-center gap-2 text-white/50 hover:text-white text-base sm:text-lg font-medium transition-colors mb-10 sm:mb-14">
-            See the 4 systems you'll build
-            <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
-          </a>
-
-          {/* Trust Bar */}
-          <p className="text-base sm:text-lg md:text-xl text-white/40">
-            4 hours/week • Full refund if we don't deliver
+          {/* Microcopy */}
+          <p className="text-sm sm:text-base text-nim-slate">
+            SBCCI grant-eligible • Takes 5 minutes
           </p>
         </div>
       </section>
