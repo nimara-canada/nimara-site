@@ -72,6 +72,13 @@ export default {
           mist: "hsl(var(--nim-mist))",
           cloud: "hsl(var(--nim-cloud))",
         },
+        inst: {
+          oxford: "hsl(var(--inst-oxford))",
+          slate: "hsl(var(--inst-slate))",
+          crisp: "hsl(var(--inst-crisp))",
+          blue: "hsl(var(--inst-blue))",
+          gold: "hsl(var(--inst-gold))",
+        },
         body: {
           DEFAULT: "hsl(var(--body))",
           muted: "hsl(var(--body-muted))",
@@ -100,6 +107,7 @@ export default {
       },
       fontFamily: {
         sans: ['DM Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        serif: ['Instrument Serif', 'Georgia', 'serif'],
         mono: ['IBM Plex Mono', 'monospace'],
       },
       spacing: {
