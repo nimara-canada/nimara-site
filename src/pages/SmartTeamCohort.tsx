@@ -130,127 +130,75 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Section 3: What You Get - LIGHT with Cards */}
-      <section id="what-you-get" className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-36 lg:py-44 bg-nim-cloud" aria-labelledby="what-you-get-heading">
-        <div className="max-w-5xl mx-auto">
+      {/* Section 3: The Solution - What You Get */}
+      <section id="what-you-get" className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-cloud" aria-labelledby="what-you-get-heading">
+        <div className="max-w-4xl mx-auto">
           {/* Section Header */}
-          <header className="text-center mb-12 sm:mb-16 md:mb-24">
-            <p className="text-xs sm:text-sm md:text-base font-medium uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-slate mb-4 sm:mb-8">
-              What you get
+          <header className="text-center mb-12 sm:mb-16 md:mb-20">
+            <p className="text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-teal mb-4 sm:mb-6">
+              The Solution
             </p>
-            <h2 id="what-you-get-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-bold text-nim-navy tracking-[-0.02em] leading-[1.15] mb-4 sm:mb-8">
-              4 systems built with you
-              <br className="hidden sm:block" />
-              <span className="sm:hidden"> </span>
-              <span className="text-nim-teal">— in 6 weeks.</span>
+            <h2 id="what-you-get-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-nim-navy tracking-[-0.02em] leading-[1.15] mb-4 sm:mb-6">
+              We Don't Teach. We Build With You.
             </h2>
-            <p className="text-lg sm:text-xl md:text-2xl text-nim-slate-dark font-light max-w-2xl mx-auto">
-              Built with you in live labs. Plus a 90-day plan to keep them running.
+            <p className="text-lg sm:text-xl md:text-2xl text-nim-slate-dark font-light max-w-3xl mx-auto">
+              In 6 weeks, we install 4 systems directly in your Google Drive or Microsoft 365. Not training videos. Real, working systems.
             </p>
           </header>
 
-          {/* 4 Features - 2x2 Grid with Card Styling */}
-          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-10 lg:gap-12 mb-12 sm:mb-16 md:mb-20">
-            {/* Feature 1: Spending Proof */}
-            <article className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 border border-border shadow-soft">
-              <div className="mb-4 sm:mb-6">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-nim-cloud border border-border flex items-center justify-center">
-                  <ShieldCheck className="w-6 h-6 sm:w-8 sm:h-8 text-nim-navy" strokeWidth={1.5} aria-hidden="true" />
-                </div>
-              </div>
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-nim-navy mb-3 sm:mb-4 tracking-[-0.02em]">
-                Spending Proof System
+          {/* 4 System Cards - 2x2 Grid */}
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+            {/* Card 1: Money System */}
+            <article className="bg-nim-mint/5 rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10 text-center">
+              <h3 className="text-xl sm:text-2xl font-bold text-nim-teal mb-3 sm:mb-4">
+                Your Money System
               </h3>
-              <ul className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed space-y-2">
-                <li className="flex items-start gap-2">
-                  <span className="text-nim-teal mt-1.5">•</span>
-                  <span>Invoice + approval + payment in one bundle</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-nim-teal mt-1.5">•</span>
-                  <span>Find any expense in under 60 seconds</span>
-                </li>
-              </ul>
+              <p className="text-xs sm:text-sm font-medium uppercase tracking-widest text-nim-slate mb-3">
+                What it does:
+              </p>
+              <p className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed">
+                Tracks every dollar. Receipts go in one place. Grant spending is always up to date. Audit-ready.
+              </p>
             </article>
 
-            {/* Feature 2: Board Decision */}
-            <article className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 border border-border shadow-soft">
-              <div className="mb-4 sm:mb-6">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-nim-cloud border border-border flex items-center justify-center">
-                  <ClipboardList className="w-6 h-6 sm:w-8 sm:h-8 text-nim-navy" strokeWidth={1.5} aria-hidden="true" />
-                </div>
-              </div>
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-nim-navy mb-3 sm:mb-4 tracking-[-0.02em]">
-                Board Decision System
+            {/* Card 2: Board System */}
+            <article className="bg-nim-mint/5 rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10 text-center">
+              <h3 className="text-xl sm:text-2xl font-bold text-nim-teal mb-3 sm:mb-4">
+                Your Board System
               </h3>
-              <ul className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed space-y-2">
-                <li className="flex items-start gap-2">
-                  <span className="text-nim-teal mt-1.5">•</span>
-                  <span>Decisions logged with date and owner</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-nim-teal mt-1.5">•</span>
-                  <span>Action items auto-tracked to completion</span>
-                </li>
-              </ul>
+              <p className="text-xs sm:text-sm font-medium uppercase tracking-widest text-nim-slate mb-3">
+                What it does:
+              </p>
+              <p className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed">
+                Every decision is logged. Clear rules for who signs what. Board meetings run smoothly.
+              </p>
             </article>
 
-            {/* Feature 3: Simple Reporting */}
-            <article className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 border border-border shadow-soft">
-              <div className="mb-4 sm:mb-6">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-nim-cloud border border-border flex items-center justify-center">
-                  <LineChart className="w-6 h-6 sm:w-8 sm:h-8 text-nim-navy" strokeWidth={1.5} aria-hidden="true" />
-                </div>
-              </div>
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-nim-navy mb-3 sm:mb-4 tracking-[-0.02em]">
-                Simple Reporting System
+            {/* Card 3: File System */}
+            <article className="bg-nim-mint/5 rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10 text-center">
+              <h3 className="text-xl sm:text-2xl font-bold text-nim-teal mb-3 sm:mb-4">
+                Your File System
               </h3>
-              <ul className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed space-y-2">
-                <li className="flex items-start gap-2">
-                  <span className="text-nim-teal mt-1.5">•</span>
-                  <span>Funder reports in 3 clicks</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-nim-teal mt-1.5">•</span>
-                  <span>Numbers match your books automatically</span>
-                </li>
-              </ul>
+              <p className="text-xs sm:text-sm font-medium uppercase tracking-widest text-nim-slate mb-3">
+                What it does:
+              </p>
+              <p className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed">
+                One place for everything. Anyone can find any file in under 2 minutes. Even if you're away.
+              </p>
             </article>
 
-            {/* Feature 4: Find-It-Fast Files */}
-            <article className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 border border-border shadow-soft">
-              <div className="mb-4 sm:mb-6">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-nim-cloud border border-border flex items-center justify-center">
-                  <FolderSearch className="w-6 h-6 sm:w-8 sm:h-8 text-nim-navy" strokeWidth={1.5} aria-hidden="true" />
-                </div>
-              </div>
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-nim-navy mb-3 sm:mb-4 tracking-[-0.02em]">
-                Find-it-Fast File System
+            {/* Card 4: Impact System */}
+            <article className="bg-nim-mint/5 rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10 text-center">
+              <h3 className="text-xl sm:text-2xl font-bold text-nim-teal mb-3 sm:mb-4">
+                Your Impact System
               </h3>
-              <ul className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed space-y-2">
-                <li className="flex items-start gap-2">
-                  <span className="text-nim-teal mt-1.5">•</span>
-                  <span>Any document in under 3 minutes</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-nim-teal mt-1.5">•</span>
-                  <span>Folder names your whole team understands</span>
-                </li>
-              </ul>
+              <p className="text-xs sm:text-sm font-medium uppercase tracking-widest text-nim-slate mb-3">
+                What it does:
+              </p>
+              <p className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed">
+                Shows your results in 3 clicks. Numbers and stories ready for any funder report.
+              </p>
             </article>
-          </div>
-
-          {/* CTA */}
-          <div className="text-center">
-            <Button size="lg" className="w-full sm:w-auto bg-nim-navy hover:bg-nim-navy/90 text-white rounded-xl sm:rounded-2xl px-8 sm:px-14 py-6 sm:py-8 text-lg sm:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-navy/50" asChild>
-              <a href="#apply">
-                Apply for a seat
-                <ArrowRight className="ml-2 sm:ml-3 w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
-              </a>
-            </Button>
-            <p className="text-base sm:text-lg text-nim-slate mt-6 sm:mt-8">
-              <span className="text-nim-navy font-semibold">$9,450 CAD</span> • 15 spots per cohort • 4 hours/week
-            </p>
           </div>
         </div>
       </section>
