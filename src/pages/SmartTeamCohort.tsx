@@ -69,157 +69,63 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Section 2: Is This a Fit? - LIGHT */}
-      <section className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-36 lg:py-44 bg-nim-cloud" aria-labelledby="fit-heading">
+      {/* Section 2: Sound Familiar? - LIGHT */}
+      <section className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-cloud" aria-labelledby="familiar-heading">
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
-          <header className="text-center mb-12 sm:mb-16 md:mb-24">
-            <p className="text-xs sm:text-sm md:text-base font-medium uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-teal mb-4 sm:mb-8">
-              Is this a fit?
+          <header className="text-center mb-12 sm:mb-16 md:mb-20">
+            <p className="text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-teal mb-4 sm:mb-6">
+              Sound Familiar?
             </p>
-            <h2 id="fit-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-bold text-nim-navy tracking-[-0.02em] leading-[1.15] mb-4 sm:mb-8">
-              We only accept <span className="text-nim-teal">15 organizations</span>{" "}
-              <span className="md:hidden">per cohort.</span>
-              <br className="hidden md:block" />
-              <span className="hidden md:inline">per cohort.</span>
+            <h2 id="familiar-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-nim-navy tracking-[-0.02em] leading-[1.15] mb-4 sm:mb-6">
+              You're Doing Everything From Memory
             </h2>
-            <p className="text-lg sm:text-xl md:text-2xl text-nim-slate-dark font-light max-w-2xl mx-auto">
-              Strict filters = every team graduates audit-proof.
+            <p className="text-lg sm:text-xl md:text-2xl text-nim-slate-dark font-light">
+              And it's exhausting.
             </p>
           </header>
 
-          {/* Two-Column Layout */}
-          <div className="grid md:grid-cols-2 gap-10 sm:gap-12 md:gap-20 lg:gap-28 mb-12 sm:mb-16 md:mb-20">
-            {/* Left Column - Fit */}
-            <div>
-              <h3 className="text-sm sm:text-base font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-nim-teal mb-6 sm:mb-10">
-                This is a fit if
+          {/* Pain Point Cards - 3+1 Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+            {/* Card 1 */}
+            <article className="bg-nim-mint/5 rounded-xl sm:rounded-2xl p-6 sm:p-8 border-l-4 border-nim-teal">
+              <h3 className="text-lg sm:text-xl font-bold text-nim-navy mb-2 sm:mb-3">
+                "Where's that receipt?"
               </h3>
-              <ul className="space-y-5 sm:space-y-8" aria-label="Good fit criteria">
-                <li className="flex items-start gap-3 sm:gap-5">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-nim-teal/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Check className="w-4 h-4 sm:w-5 sm:h-5 text-nim-teal" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <span className="text-nim-navy text-lg sm:text-xl md:text-2xl font-medium leading-relaxed block">
-                      You have a ~$10k budget.
-                    </span>
-                    <span className="text-nim-slate-dark text-base sm:text-lg">
-                      Tuition is $9,450 CAD and eligible for Capacity Building grants.
-                    </span>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3 sm:gap-5">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-nim-teal/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Check className="w-4 h-4 sm:w-5 sm:h-5 text-nim-teal" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <span className="text-nim-navy text-lg sm:text-xl md:text-2xl font-medium leading-relaxed block">
-                      You use a cloud stack.
-                    </span>
-                    <span className="text-nim-slate-dark text-base sm:text-lg">
-                      Specifically Google Workspace or Microsoft 365.
-                    </span>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3 sm:gap-5">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-nim-teal/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Check className="w-4 h-4 sm:w-5 sm:h-5 text-nim-teal" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <span className="text-nim-navy text-lg sm:text-xl md:text-2xl font-medium leading-relaxed block">
-                      You can commit 4 hours/week.
-                    </span>
-                    <span className="text-nim-slate-dark text-base sm:text-lg">
-                      We do the real work together in labs; we don't just lecture.
-                    </span>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3 sm:gap-5">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-nim-teal/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Check className="w-4 h-4 sm:w-5 sm:h-5 text-nim-teal" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <span className="text-nim-navy text-lg sm:text-xl md:text-2xl font-medium leading-relaxed block">
-                      You are a Canadian Nonprofit.
-                    </span>
-                    <span className="text-nim-slate-dark text-base sm:text-lg">
-                      Current cohort is optimized for Canadian reporting standards.
-                    </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
+              <p className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed">
+                You spend hours looking for documents every time a funder asks.
+              </p>
+            </article>
 
-            {/* Right Column - Not a Fit */}
-            <div>
-              <h3 className="text-sm sm:text-base font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-nim-slate mb-6 sm:mb-10">
-                Not a fit if
+            {/* Card 2 */}
+            <article className="bg-nim-mint/5 rounded-xl sm:rounded-2xl p-6 sm:p-8 border-l-4 border-nim-teal">
+              <h3 className="text-lg sm:text-xl font-bold text-nim-navy mb-2 sm:mb-3">
+                "I can't take a vacation."
               </h3>
-              <ul className="space-y-5 sm:space-y-8" aria-label="Not a good fit criteria">
-                <li className="flex items-start gap-3 sm:gap-5">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-nim-slate/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <X className="w-4 h-4 sm:w-5 sm:h-5 text-nim-slate" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <span className="text-nim-slate-dark text-lg sm:text-xl md:text-2xl font-medium leading-relaxed block">
-                      You want 'Done-For-You.'
-                    </span>
-                    <span className="text-nim-slate text-base sm:text-lg">
-                      This is a collaborative implementation; your team must learn the systems to keep them.
-                    </span>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3 sm:gap-5">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-nim-slate/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <X className="w-4 h-4 sm:w-5 sm:h-5 text-nim-slate" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <span className="text-nim-slate-dark text-lg sm:text-xl md:text-2xl font-medium leading-relaxed block">
-                      You are still paper-based.
-                    </span>
-                    <span className="text-nim-slate text-base sm:text-lg">
-                      We cannot automate physical filing cabinets or manual ledgers.
-                    </span>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3 sm:gap-5">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-nim-slate/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <X className="w-4 h-4 sm:w-5 sm:h-5 text-nim-slate" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <span className="text-nim-slate-dark text-lg sm:text-xl md:text-2xl font-medium leading-relaxed block">
-                      You can't share screens.
-                    </span>
-                    <span className="text-nim-slate text-base sm:text-lg">
-                      We need to see your folders and workflows to fix them in real-time.
-                    </span>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3 sm:gap-5">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-nim-slate/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <X className="w-4 h-4 sm:w-5 sm:h-5 text-nim-slate" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <span className="text-nim-slate-dark text-lg sm:text-xl md:text-2xl font-medium leading-relaxed block">
-                      You don't have a dedicated Ops Lead.
-                    </span>
-                    <span className="text-nim-slate text-base sm:text-lg">
-                      The ED cannot do this alone; you need an admin/ops lead to own the system.
-                    </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
+              <p className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed">
+                If you step away, nobody knows how to find anything.
+              </p>
+            </article>
 
-          <div className="text-center">
-            <Button size="lg" className="w-full sm:w-auto bg-nim-teal hover:bg-nim-teal/90 text-white rounded-xl sm:rounded-2xl px-8 sm:px-14 py-6 sm:py-8 text-lg sm:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-teal/50" asChild>
-              <a href="https://form.typeform.com/to/Dsi3pXkx" target="_blank" rel="noopener noreferrer">
-                Apply for a seat
-                <ArrowRight className="ml-2 sm:ml-3 w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
-              </a>
-            </Button>
+            {/* Card 3 */}
+            <article className="bg-nim-mint/5 rounded-xl sm:rounded-2xl p-6 sm:p-8 border-l-4 border-nim-teal">
+              <h3 className="text-lg sm:text-xl font-bold text-nim-navy mb-2 sm:mb-3">
+                "What if we get audited?"
+              </h3>
+              <p className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed">
+                You know your records aren't ready. It keeps you up at night.
+              </p>
+            </article>
+
+            {/* Card 4 */}
+            <article className="bg-nim-mint/5 rounded-xl sm:rounded-2xl p-6 sm:p-8 border-l-4 border-nim-teal sm:col-span-2 lg:col-span-1">
+              <h3 className="text-lg sm:text-xl font-bold text-nim-navy mb-2 sm:mb-3">
+                "We do good work, but..."
+              </h3>
+              <p className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed">
+                You struggle to prove your impact when funders ask for numbers.
+              </p>
+            </article>
           </div>
         </div>
       </section>
