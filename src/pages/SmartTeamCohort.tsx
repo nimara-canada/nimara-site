@@ -394,53 +394,34 @@ const SmartTeamCohortHero = () => {
           {/* Section Header */}
           <header className="text-center mb-10 sm:mb-14 md:mb-20">
             <p className="text-xs sm:text-sm md:text-base font-medium uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-mint mb-4 sm:mb-6 md:mb-8">
-              Guarantee
+              Our Promise
             </p>
             <h2 id="guarantee-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.02em] sm:tracking-[-0.03em] leading-[1.1] sm:leading-[1.08] mb-4 sm:mb-6 md:mb-8">
-              We take the risk seriously.
+              We Don't Leave Until It Works.
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-white/50">
-              A clear, fair promise. No long fine print.
+              No fine print. No excuses.
             </p>
           </header>
 
           {/* Main Guarantee Statement */}
           <div className="bg-white/[0.03] border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 lg:p-14 mb-8 sm:mb-10 md:mb-14 max-w-3xl mx-auto">
-            {/* Primary Refund Statement */}
-            <div className="text-center mb-8 sm:mb-10 md:mb-12 pb-6 sm:pb-8 md:pb-12 border-b border-white/10">
-              <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-snug">
-                If we do not set up the 4 systems, you get a full refund{' '}
-                <span className="text-nim-mint">($9,450 CAD)</span>.
+            {/* Primary Statement */}
+            <div className="mb-8 sm:mb-10 md:mb-12">
+              <p className="text-base sm:text-lg md:text-xl text-white/70 leading-relaxed mb-6 sm:mb-8">
+                In Week 6, we stress-test everything. We act like an auditor. We ask for receipts. We ask for board decisions. We ask for files.
+              </p>
+              <p className="text-xl sm:text-2xl md:text-3xl font-bold text-nim-mint leading-snug">
+                If your systems don't pass, we keep working with you — at no extra cost — until they do.
               </p>
             </div>
 
             {/* Two Column Layout */}
             <div className="grid sm:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
-              {/* To Qualify */}
-              <div>
-                <h4 className="text-xs sm:text-sm font-semibold text-white uppercase tracking-[0.15em] sm:tracking-[0.2em] mb-4 sm:mb-6 md:mb-8">
-                  To qualify, you must:
-                </h4>
-                <ul className="space-y-3 sm:space-y-4 md:space-y-5" aria-label="Qualification requirements">
-                  <li className="flex items-center gap-3 sm:gap-4 text-white/70 text-base sm:text-lg md:text-xl">
-                    <Check className="w-5 h-5 sm:w-6 sm:h-6 text-nim-mint flex-shrink-0" aria-hidden="true" />
-                    Attend 5 of the 6 weeks.
-                  </li>
-                  <li className="flex items-center gap-3 sm:gap-4 text-white/70 text-base sm:text-lg md:text-xl">
-                    <Check className="w-5 h-5 sm:w-6 sm:h-6 text-nim-mint flex-shrink-0" aria-hidden="true" />
-                    Submit the weekly items.
-                  </li>
-                  <li className="flex items-center gap-3 sm:gap-4 text-white/70 text-base sm:text-lg md:text-xl">
-                    <Check className="w-5 h-5 sm:w-6 sm:h-6 text-nim-mint flex-shrink-0" aria-hidden="true" />
-                    Share the needed documents.
-                  </li>
-                </ul>
-              </div>
-
               {/* The 4 Systems */}
               <div>
-                <h4 className="text-xs sm:text-sm font-semibold text-white uppercase tracking-[0.15em] sm:tracking-[0.2em] mb-4 sm:mb-6 md:mb-8">
-                  The 4 systems are:
+                <h4 className="text-xs sm:text-sm font-semibold text-nim-mint uppercase tracking-[0.15em] sm:tracking-[0.2em] mb-4 sm:mb-6 md:mb-8">
+                  The 4 systems we build:
                 </h4>
                 <ul className="space-y-3 sm:space-y-4 md:space-y-5" aria-label="The 4 systems">
                   <li className="flex items-center gap-3 sm:gap-4 text-white/70 text-base sm:text-lg md:text-xl">
@@ -453,22 +434,47 @@ const SmartTeamCohortHero = () => {
                   </li>
                   <li className="flex items-center gap-3 sm:gap-4 text-white/70 text-base sm:text-lg md:text-xl">
                     <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-nim-mint flex-shrink-0" aria-hidden="true" />
-                    Simple Funder Reporting
+                    Find-it-Fast File System
                   </li>
                   <li className="flex items-center gap-3 sm:gap-4 text-white/70 text-base sm:text-lg md:text-xl">
                     <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-nim-mint flex-shrink-0" aria-hidden="true" />
-                    Find-it-Fast File System
+                    Simple Funder Reporting
                   </li>
                 </ul>
               </div>
+
+              {/* We Expect You To */}
+              <div>
+                <h4 className="text-xs sm:text-sm font-semibold text-white uppercase tracking-[0.15em] sm:tracking-[0.2em] mb-4 sm:mb-6 md:mb-8">
+                  We expect you to:
+                </h4>
+                <ul className="space-y-3 sm:space-y-4 md:space-y-5" aria-label="Expectations">
+                  <li className="flex items-center gap-3 sm:gap-4 text-white/70 text-base sm:text-lg md:text-xl">
+                    <Check className="w-5 h-5 sm:w-6 sm:h-6 text-nim-mint flex-shrink-0" aria-hidden="true" />
+                    Attend 5 of the 6 weeks
+                  </li>
+                  <li className="flex items-center gap-3 sm:gap-4 text-white/70 text-base sm:text-lg md:text-xl">
+                    <Check className="w-5 h-5 sm:w-6 sm:h-6 text-nim-mint flex-shrink-0" aria-hidden="true" />
+                    Complete the weekly tasks
+                  </li>
+                  <li className="flex items-center gap-3 sm:gap-4 text-white/70 text-base sm:text-lg md:text-xl">
+                    <Check className="w-5 h-5 sm:w-6 sm:h-6 text-nim-mint flex-shrink-0" aria-hidden="true" />
+                    Share the documents we need
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Footer Note */}
+            <div className="mt-8 sm:mt-10 md:mt-12 pt-6 sm:pt-8 border-t border-white/10">
+              <p className="text-base sm:text-lg text-white/50 italic text-center">
+                Designed for Executive Directors who need systems that actually work.
+              </p>
             </div>
           </div>
 
           {/* Final Action Section */}
           <div className="text-center">
-            <p className="text-base sm:text-lg md:text-xl text-white/50 mb-6 sm:mb-8 md:mb-10 italic">
-              Designed for Executive Directors who need systems that actually work.
-            </p>
             <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl sm:rounded-2xl px-8 sm:px-10 md:px-14 py-5 sm:py-6 md:py-8 text-base sm:text-lg md:text-xl font-semibold shadow-[0_0_40px_hsl(var(--primary)/0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50" asChild>
               <a href="#apply">
                 Apply for a seat
