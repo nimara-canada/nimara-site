@@ -141,72 +141,129 @@ const SmartTeamCohortHero = () => {
       </section>
 
       {/* Section 3: The Solution - What You Get */}
-      <section id="what-you-get" className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-cloud" aria-labelledby="what-you-get-heading">
-        <div className="max-w-4xl mx-auto">
+      <section id="what-you-get" className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-navy" aria-labelledby="what-you-get-heading">
+        <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-12 sm:mb-16 md:mb-20">
-            <p className="text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-teal mb-4 sm:mb-6">
+            <p className="text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-mint mb-4 sm:mb-6">
               The Solution
             </p>
-            <h2 id="what-you-get-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-nim-navy tracking-[-0.02em] leading-[1.15] mb-4 sm:mb-6">
+            <h2 id="what-you-get-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.02em] leading-[1.15] mb-4 sm:mb-6">
               We Don't Teach. We Build With You.
             </h2>
-            <p className="text-lg sm:text-xl md:text-2xl text-nim-slate-dark font-light max-w-3xl mx-auto">
-              In 6 weeks, we install 4 systems directly in your Google Drive or Microsoft 365. Not training videos. Real, working systems.
+            <p className="text-lg sm:text-xl md:text-2xl text-white/70 font-light max-w-3xl mx-auto">
+              In 6 weeks, we install 4 systems directly in your Google Drive or Microsoft 365.
             </p>
           </header>
 
-          {/* 4 System Cards - 2x2 Grid */}
-          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+          {/* 6 Feature Cards - 3x2 Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 sm:gap-x-12 md:gap-x-16 gap-y-12 sm:gap-y-16 md:gap-y-20">
             {/* Card 1: Money System */}
-            <article className="bg-nim-mint/5 rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10 text-center">
-              <h3 className="text-xl sm:text-2xl font-bold text-nim-teal mb-3 sm:mb-4">
+            <article className="text-left">
+              {/* Minimal Line Icon */}
+              <div className="mb-6 sm:mb-8">
+                <svg className="w-12 h-12 sm:w-16 sm:h-16" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 52V28M24 52V20M36 52V32M48 52V16" className="text-[#F5F0E8]" />
+                  <path d="M12 52h4M24 52h4M36 52h4M48 52h4" className="text-[#F5F0E8]" />
+                </svg>
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4">
                 Your Money System
               </h3>
-              <p className="text-xs sm:text-sm font-medium uppercase tracking-widest text-nim-slate mb-3">
-                What it does:
-              </p>
-              <p className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
                 Tracks every dollar. Receipts go in one place. Grant spending is always up to date. Audit-ready.
               </p>
             </article>
 
             {/* Card 2: Board System */}
-            <article className="bg-nim-mint/5 rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10 text-center">
-              <h3 className="text-xl sm:text-2xl font-bold text-nim-teal mb-3 sm:mb-4">
+            <article className="text-left">
+              {/* Minimal Line Icon */}
+              <div className="mb-6 sm:mb-8">
+                <svg className="w-12 h-12 sm:w-16 sm:h-16" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20 20L32 8L44 20M32 8V40" className="text-[#F5F0E8]" />
+                  <path d="M20 44L32 56L44 44M32 56V40" className="text-[#F5F0E8]" />
+                  <path d="M8 32L20 20M56 32L44 20" className="text-[#F5F0E8]" />
+                  <path d="M8 32L20 44M56 32L44 44" className="text-[#F5F0E8]" />
+                </svg>
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4">
                 Your Board System
               </h3>
-              <p className="text-xs sm:text-sm font-medium uppercase tracking-widest text-nim-slate mb-3">
-                What it does:
-              </p>
-              <p className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
                 Every decision is logged. Clear rules for who signs what. Board meetings run smoothly.
               </p>
             </article>
 
             {/* Card 3: File System */}
-            <article className="bg-nim-mint/5 rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10 text-center">
-              <h3 className="text-xl sm:text-2xl font-bold text-nim-teal mb-3 sm:mb-4">
+            <article className="text-left">
+              {/* Minimal Line Icon */}
+              <div className="mb-6 sm:mb-8">
+                <svg className="w-12 h-12 sm:w-16 sm:h-16" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="8" y="8" width="20" height="20" className="text-[#F5F0E8]" />
+                  <rect x="36" y="8" width="20" height="20" className="text-[#F5F0E8]" />
+                  <rect x="8" y="36" width="20" height="20" className="text-[#F5F0E8]" />
+                  <rect x="36" y="36" width="20" height="20" className="text-[#F5F0E8]" />
+                </svg>
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4">
                 Your File System
               </h3>
-              <p className="text-xs sm:text-sm font-medium uppercase tracking-widest text-nim-slate mb-3">
-                What it does:
-              </p>
-              <p className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
                 One place for everything. Anyone can find any file in under 2 minutes. Even if you're away.
               </p>
             </article>
 
             {/* Card 4: Impact System */}
-            <article className="bg-nim-mint/5 rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10 text-center">
-              <h3 className="text-xl sm:text-2xl font-bold text-nim-teal mb-3 sm:mb-4">
+            <article className="text-left">
+              {/* Minimal Line Icon */}
+              <div className="mb-6 sm:mb-8">
+                <svg className="w-12 h-12 sm:w-16 sm:h-16" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="12" y="8" width="40" height="28" rx="2" className="text-[#F5F0E8]" />
+                  <path d="M20 20h24M20 28h16" className="text-[#F5F0E8]" />
+                  <circle cx="18" cy="48" r="4" className="text-[#F5F0E8]" />
+                  <circle cx="32" cy="48" r="4" className="text-[#F5F0E8]" />
+                  <circle cx="46" cy="48" r="4" className="text-[#F5F0E8]" />
+                </svg>
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4">
                 Your Impact System
               </h3>
-              <p className="text-xs sm:text-sm font-medium uppercase tracking-widest text-nim-slate mb-3">
-                What it does:
-              </p>
-              <p className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
                 Shows your results in 3 clicks. Numbers and stories ready for any funder report.
+              </p>
+            </article>
+
+            {/* Card 5: Dedicated Support */}
+            <article className="text-left">
+              {/* Minimal Line Icon */}
+              <div className="mb-6 sm:mb-8">
+                <svg className="w-12 h-12 sm:w-16 sm:h-16" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="32" cy="24" r="12" className="text-[#F5F0E8]" />
+                  <path d="M16 56c0-8.837 7.163-16 16-16s16 7.163 16 16" className="text-[#F5F0E8]" />
+                </svg>
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4">
+                Dedicated Support
+              </h3>
+              <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
+                One Ops Lead works with you the whole time. Not a call center. A real person who knows your org.
+              </p>
+            </article>
+
+            {/* Card 6: Proven Process */}
+            <article className="text-left">
+              {/* Minimal Line Icon */}
+              <div className="mb-6 sm:mb-8">
+                <svg className="w-12 h-12 sm:w-16 sm:h-16" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="12" y="12" width="40" height="40" rx="4" className="text-[#F5F0E8]" />
+                  <path d="M24 32l6 6 10-12" className="text-[#F5F0E8]" />
+                </svg>
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4">
+                Proven Process
+              </h3>
+              <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
+                Built from 50+ nonprofit installs. We know what works. You get systems that stick.
               </p>
             </article>
           </div>
