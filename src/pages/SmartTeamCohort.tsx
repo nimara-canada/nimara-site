@@ -372,15 +372,15 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Section 5: Is This Right For You? - LIGHT */}
-      <section className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-cloud" aria-labelledby="right-for-you-heading">
+      {/* Section 5: Is This Right For You? - DARK PREMIUM */}
+      <section className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-navy" aria-labelledby="right-for-you-heading">
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-12 sm:mb-16 md:mb-20">
-            <p className="text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-teal mb-4 sm:mb-6">
+            <p className="text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#F5F0E8]/60 mb-4 sm:mb-6">
               Is This Right For You?
             </p>
-            <h2 id="right-for-you-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-nim-navy tracking-[-0.02em] leading-[1.15]">
+            <h2 id="right-for-you-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.02em] leading-[1.15]">
               This Works Best If...
             </h2>
           </header>
@@ -388,61 +388,61 @@ const SmartTeamCohortHero = () => {
           {/* Two Column Cards */}
           <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
             {/* Apply If... Card */}
-            <article className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10 shadow-sm">
-              <h3 className="flex items-center gap-2 text-lg sm:text-xl font-bold text-nim-teal mb-6 sm:mb-8">
+            <article className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10">
+              <h3 className="flex items-center gap-2 text-lg sm:text-xl font-bold text-nim-mint mb-6 sm:mb-8">
                 <Check className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
                 Apply if you...
               </h3>
               <ul className="space-y-4 sm:space-y-5">
                 <li className="flex items-start gap-3">
-                  <Check className="w-4 h-4 sm:w-5 sm:h-5 text-nim-teal flex-shrink-0 mt-0.5" aria-hidden="true" />
-                  <span className="text-base sm:text-lg text-nim-slate-dark">Have 1-15 staff members</span>
+                  <Check className="w-4 h-4 sm:w-5 sm:h-5 text-nim-mint flex-shrink-0 mt-0.5" aria-hidden="true" />
+                  <span className="text-base sm:text-lg text-[#F5F0E8]/80">Have 1-15 staff members</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Check className="w-4 h-4 sm:w-5 sm:h-5 text-nim-teal flex-shrink-0 mt-0.5" aria-hidden="true" />
-                  <span className="text-base sm:text-lg text-nim-slate-dark">Use Google or Microsoft for your files</span>
+                  <Check className="w-4 h-4 sm:w-5 sm:h-5 text-nim-mint flex-shrink-0 mt-0.5" aria-hidden="true" />
+                  <span className="text-base sm:text-lg text-[#F5F0E8]/80">Use Google or Microsoft for your files</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Check className="w-4 h-4 sm:w-5 sm:h-5 text-nim-teal flex-shrink-0 mt-0.5" aria-hidden="true" />
-                  <span className="text-base sm:text-lg text-nim-slate-dark">Are tired of being the "only one who knows"</span>
+                  <Check className="w-4 h-4 sm:w-5 sm:h-5 text-nim-mint flex-shrink-0 mt-0.5" aria-hidden="true" />
+                  <span className="text-base sm:text-lg text-[#F5F0E8]/80">Are tired of being the "only one who knows"</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Check className="w-4 h-4 sm:w-5 sm:h-5 text-nim-teal flex-shrink-0 mt-0.5" aria-hidden="true" />
-                  <span className="text-base sm:text-lg text-nim-slate-dark">Want working systems, not another workshop</span>
+                  <Check className="w-4 h-4 sm:w-5 sm:h-5 text-nim-mint flex-shrink-0 mt-0.5" aria-hidden="true" />
+                  <span className="text-base sm:text-lg text-[#F5F0E8]/80">Want working systems, not another workshop</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Check className="w-4 h-4 sm:w-5 sm:h-5 text-nim-teal flex-shrink-0 mt-0.5" aria-hidden="true" />
-                  <span className="text-base sm:text-lg text-nim-slate-dark">Can commit 4 hours a week for 6 weeks</span>
+                  <Check className="w-4 h-4 sm:w-5 sm:h-5 text-nim-mint flex-shrink-0 mt-0.5" aria-hidden="true" />
+                  <span className="text-base sm:text-lg text-[#F5F0E8]/80">Can commit 4 hours a week for 6 weeks</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Check className="w-4 h-4 sm:w-5 sm:h-5 text-nim-teal flex-shrink-0 mt-0.5" aria-hidden="true" />
-                  <span className="text-base sm:text-lg text-nim-slate-dark">Have SBCCI or similar capacity grant</span>
+                  <Check className="w-4 h-4 sm:w-5 sm:h-5 text-nim-mint flex-shrink-0 mt-0.5" aria-hidden="true" />
+                  <span className="text-base sm:text-lg text-[#F5F0E8]/80">Have SBCCI or similar capacity grant</span>
                 </li>
               </ul>
             </article>
 
             {/* Don't Apply If... Card */}
-            <article className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10 shadow-sm">
-              <h3 className="flex items-center gap-2 text-lg sm:text-xl font-bold text-destructive mb-6 sm:mb-8">
+            <article className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10">
+              <h3 className="flex items-center gap-2 text-lg sm:text-xl font-bold text-red-400 mb-6 sm:mb-8">
                 <X className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
                 Don't apply if you...
               </h3>
               <ul className="space-y-4 sm:space-y-5">
                 <li className="flex items-start gap-3">
-                  <X className="w-4 h-4 sm:w-5 sm:h-5 text-destructive flex-shrink-0 mt-0.5" aria-hidden="true" />
-                  <span className="text-base sm:text-lg text-nim-slate-dark">Want to figure it out yourself</span>
+                  <X className="w-4 h-4 sm:w-5 sm:h-5 text-red-400 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                  <span className="text-base sm:text-lg text-[#F5F0E8]/80">Want to figure it out yourself</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <X className="w-4 h-4 sm:w-5 sm:h-5 text-destructive flex-shrink-0 mt-0.5" aria-hidden="true" />
-                  <span className="text-base sm:text-lg text-nim-slate-dark">Are looking for training videos to watch</span>
+                  <X className="w-4 h-4 sm:w-5 sm:h-5 text-red-400 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                  <span className="text-base sm:text-lg text-[#F5F0E8]/80">Are looking for training videos to watch</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <X className="w-4 h-4 sm:w-5 sm:h-5 text-destructive flex-shrink-0 mt-0.5" aria-hidden="true" />
-                  <span className="text-base sm:text-lg text-nim-slate-dark">Can't make time for weekly sessions</span>
+                  <X className="w-4 h-4 sm:w-5 sm:h-5 text-red-400 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                  <span className="text-base sm:text-lg text-[#F5F0E8]/80">Can't make time for weekly sessions</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <X className="w-4 h-4 sm:w-5 sm:h-5 text-destructive flex-shrink-0 mt-0.5" aria-hidden="true" />
-                  <span className="text-base sm:text-lg text-nim-slate-dark">Already have smooth-running systems</span>
+                  <X className="w-4 h-4 sm:w-5 sm:h-5 text-red-400 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                  <span className="text-base sm:text-lg text-[#F5F0E8]/80">Already have smooth-running systems</span>
                 </li>
               </ul>
             </article>
@@ -450,21 +450,24 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Section 6: Ultimate Proof - DARK */}
-      <section className="w-full px-6 md:px-10 lg:px-16 py-28 md:py-36 lg:py-44 bg-nim-navy" aria-labelledby="ultimate-proof-heading">
+      {/* Section 6: Ultimate Proof - DARK PREMIUM */}
+      <section className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-navy" aria-labelledby="ultimate-proof-heading">
         <div className="max-w-3xl mx-auto">
           {/* Promise Card */}
-          <div className="bg-white border border-nim-teal/30 rounded-3xl p-10 md:p-14 shadow-sm">
+          <div className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-2xl sm:rounded-3xl p-8 sm:p-10 md:p-14">
             {/* Shield Icon */}
-            <div className="flex justify-center mb-8">
-              <Shield className="w-12 h-12 text-nim-teal" aria-hidden="true" />
+            <div className="flex justify-center mb-6 sm:mb-8">
+              <svg className="w-12 h-12 sm:w-16 sm:h-16" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M32 8L12 16v16c0 12 8 20 20 24 12-4 20-12 20-24V16L32 8z" className="text-[#F5F0E8]" />
+                <path d="M24 32l6 6 10-12" className="text-nim-mint" />
+              </svg>
             </div>
             
-            <h2 id="ultimate-proof-heading" className="text-2xl md:text-3xl font-bold text-nim-navy tracking-[-0.02em] text-center mb-6">
+            <h2 id="ultimate-proof-heading" className="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-[-0.02em] text-center mb-4 sm:mb-6">
               The "It Has to Work" Promise
             </h2>
             
-            <p className="text-lg text-nim-slate-dark text-center max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-[#F5F0E8]/80 text-center max-w-2xl mx-auto leading-relaxed">
               In Week 6, we test your systems like an auditor would. We ask for receipts. 
               We ask for board decisions. We ask for files. If your systems can't find 
               things fast, we keep working until they can. No extra cost.
@@ -676,62 +679,62 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Section 9: FAQ - LIGHT */}
-      <section id="faq" className="w-full px-4 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-cloud" aria-labelledby="faq-heading">
+      {/* Section 9: FAQ - DARK PREMIUM */}
+      <section id="faq" className="w-full px-4 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-navy" aria-labelledby="faq-heading">
         <div className="max-w-2xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-10 sm:mb-14 md:mb-20">
-            <p className="text-xs sm:text-sm md:text-base font-medium uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-teal mb-4 sm:mb-6 md:mb-8">
+            <p className="text-xs sm:text-sm md:text-base font-medium uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#F5F0E8]/60 mb-4 sm:mb-6 md:mb-8">
               FAQ
             </p>
-            <h2 id="faq-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-nim-navy tracking-[-0.02em] sm:tracking-[-0.03em] leading-[1.1] sm:leading-[1.08]">
-              Quick <span className="text-nim-teal">answers.</span>
+            <h2 id="faq-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.02em] sm:tracking-[-0.03em] leading-[1.1] sm:leading-[1.08]">
+              Quick <span className="text-nim-mint">answers.</span>
             </h2>
           </header>
 
           {/* FAQ Accordion */}
           <Accordion type="single" collapsible className="mb-10 sm:mb-12 md:mb-16">
-            <AccordionItem value="item-1" className="bg-white rounded-xl sm:rounded-2xl border border-border mb-3 sm:mb-4 px-4 sm:px-6 md:px-8 data-[state=open]:bg-nim-cloud transition-all shadow-soft">
-              <AccordionTrigger className="text-left text-nim-navy text-base sm:text-lg md:text-xl font-medium py-4 sm:py-5 md:py-7 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-nim-slate">
+            <AccordionItem value="item-1" className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-xl sm:rounded-2xl mb-3 sm:mb-4 px-4 sm:px-6 md:px-8 data-[state=open]:bg-white/[0.05] transition-all">
+              <AccordionTrigger className="text-left text-white text-base sm:text-lg md:text-xl font-medium py-4 sm:py-5 md:py-7 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-[#F5F0E8]/60">
                 How do I know if we can afford the $9,450 CAD tuition?
               </AccordionTrigger>
-            <AccordionContent className="text-nim-slate-dark text-sm sm:text-base md:text-lg pb-4 sm:pb-5 md:pb-7 leading-relaxed">
+              <AccordionContent className="text-[#F5F0E8]/70 text-sm sm:text-base md:text-lg pb-4 sm:pb-5 md:pb-7 leading-relaxed">
                 Most participants use Capacity Building Grants or "Systems Improvement" budget lines. We provide the receipts your funder needs.
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-2" className="bg-white rounded-xl sm:rounded-2xl border border-border mb-3 sm:mb-4 px-4 sm:px-6 md:px-8 data-[state=open]:bg-nim-cloud transition-all shadow-soft">
-              <AccordionTrigger className="text-left text-nim-navy text-base sm:text-lg md:text-xl font-medium py-4 sm:py-5 md:py-7 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-nim-slate">
+            <AccordionItem value="item-2" className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-xl sm:rounded-2xl mb-3 sm:mb-4 px-4 sm:px-6 md:px-8 data-[state=open]:bg-white/[0.05] transition-all">
+              <AccordionTrigger className="text-left text-white text-base sm:text-lg md:text-xl font-medium py-4 sm:py-5 md:py-7 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-[#F5F0E8]/60">
                 Can we actually build 4 systems in just 6 weeks?
               </AccordionTrigger>
-            <AccordionContent className="text-nim-slate-dark text-sm sm:text-base md:text-lg pb-4 sm:pb-5 md:pb-7 leading-relaxed">
+              <AccordionContent className="text-[#F5F0E8]/70 text-sm sm:text-base md:text-lg pb-4 sm:pb-5 md:pb-7 leading-relaxed">
                 Yes. We build together in live labs—not lectures. Week 1: your file system is done. Week 6: you pass a live Stress Test.
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-3" className="bg-white rounded-xl sm:rounded-2xl border border-border mb-3 sm:mb-4 px-4 sm:px-6 md:px-8 data-[state=open]:bg-nim-cloud transition-all shadow-soft">
-              <AccordionTrigger className="text-left text-nim-navy text-base sm:text-lg md:text-xl font-medium py-4 sm:py-5 md:py-7 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-nim-slate">
+            <AccordionItem value="item-3" className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-xl sm:rounded-2xl mb-3 sm:mb-4 px-4 sm:px-6 md:px-8 data-[state=open]:bg-white/[0.05] transition-all">
+              <AccordionTrigger className="text-left text-white text-base sm:text-lg md:text-xl font-medium py-4 sm:py-5 md:py-7 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-[#F5F0E8]/60">
                 What happens if our Ops Lead is already at capacity?
               </AccordionTrigger>
-            <AccordionContent className="text-nim-slate-dark text-sm sm:text-base md:text-lg pb-4 sm:pb-5 md:pb-7 leading-relaxed">
+              <AccordionContent className="text-[#F5F0E8]/70 text-sm sm:text-base md:text-lg pb-4 sm:pb-5 md:pb-7 leading-relaxed">
                 4 hours/week for 6 weeks saves 10+ hours/month forever. We fix the systems that waste your time.
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-4" className="bg-white rounded-xl sm:rounded-2xl border border-border mb-3 sm:mb-4 px-4 sm:px-6 md:px-8 data-[state=open]:bg-nim-cloud transition-all shadow-soft">
-              <AccordionTrigger className="text-left text-nim-navy text-base sm:text-lg md:text-xl font-medium py-4 sm:py-5 md:py-7 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-nim-slate">
+            <AccordionItem value="item-4" className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-xl sm:rounded-2xl mb-3 sm:mb-4 px-4 sm:px-6 md:px-8 data-[state=open]:bg-white/[0.05] transition-all">
+              <AccordionTrigger className="text-left text-white text-base sm:text-lg md:text-xl font-medium py-4 sm:py-5 md:py-7 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-[#F5F0E8]/60">
                 Do we need to buy new software or change how we work?
               </AccordionTrigger>
-            <AccordionContent className="text-nim-slate-dark text-sm sm:text-base md:text-lg pb-4 sm:pb-5 md:pb-7 leading-relaxed">
+              <AccordionContent className="text-[#F5F0E8]/70 text-sm sm:text-base md:text-lg pb-4 sm:pb-5 md:pb-7 leading-relaxed">
                 No new software. We use your existing Google Workspace or Microsoft 365—just better organized.
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-5" className="bg-white rounded-xl sm:rounded-2xl border border-border px-4 sm:px-6 md:px-8 data-[state=open]:bg-nim-cloud transition-all shadow-soft">
-              <AccordionTrigger className="text-left text-nim-navy text-base sm:text-lg md:text-xl font-medium py-4 sm:py-5 md:py-7 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-nim-slate">
+            <AccordionItem value="item-5" className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-xl sm:rounded-2xl px-4 sm:px-6 md:px-8 data-[state=open]:bg-white/[0.05] transition-all">
+              <AccordionTrigger className="text-left text-white text-base sm:text-lg md:text-xl font-medium py-4 sm:py-5 md:py-7 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-[#F5F0E8]/60">
                 What is the "Stress Test," and what if we fail it?
               </AccordionTrigger>
-            <AccordionContent className="text-nim-slate-dark text-sm sm:text-base md:text-lg pb-4 sm:pb-5 md:pb-7 leading-relaxed">
+              <AccordionContent className="text-[#F5F0E8]/70 text-sm sm:text-base md:text-lg pb-4 sm:pb-5 md:pb-7 leading-relaxed">
                 Live test: find a key document in under 3 minutes. Can't do it? We stay until it's fixed.
               </AccordionContent>
             </AccordionItem>
@@ -739,13 +742,13 @@ const SmartTeamCohortHero = () => {
 
           {/* CTA */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 mb-6 sm:mb-8 md:mb-10">
-            <Button size="lg" className="w-full sm:w-auto bg-nim-navy hover:bg-nim-navy/90 text-white rounded-xl sm:rounded-2xl px-8 sm:px-10 md:px-12 py-5 sm:py-6 md:py-8 text-base sm:text-lg md:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-navy/50" asChild>
+            <Button size="lg" className="w-full sm:w-auto bg-nim-mint hover:bg-nim-mint/90 text-nim-navy rounded-xl sm:rounded-2xl px-8 sm:px-10 md:px-12 py-5 sm:py-6 md:py-8 text-base sm:text-lg md:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-mint/50" asChild>
               <a href="https://form.typeform.com/to/Dsi3pXkx" target="_blank" rel="noopener noreferrer">
                 Apply for a seat
                 <ArrowRight className="ml-2 sm:ml-3 w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
               </a>
             </Button>
-            <Button variant="outline" size="lg" className="w-full sm:w-auto rounded-xl sm:rounded-2xl px-8 sm:px-10 md:px-12 py-5 sm:py-6 md:py-8 text-base sm:text-lg md:text-xl font-semibold border-nim-navy/20 text-nim-navy hover:bg-nim-navy/10 hover:text-nim-navy focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-navy/20" asChild>
+            <Button variant="outline" size="lg" className="w-full sm:w-auto rounded-xl sm:rounded-2xl px-8 sm:px-10 md:px-12 py-5 sm:py-6 md:py-8 text-base sm:text-lg md:text-xl font-semibold border-[#F5F0E8]/20 text-white hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/20" asChild>
               <a href="/book">
                 Book a call
               </a>
@@ -753,11 +756,8 @@ const SmartTeamCohortHero = () => {
           </div>
 
           {/* Micro note */}
-          <p className="text-xs sm:text-sm md:text-base text-nim-slate text-center">
-            ​Nimara supports Canadian Non-Profits with 0-50. This cohort is only for organizations with 1-15 staff.                                      
- 
-
-
+          <p className="text-xs sm:text-sm md:text-base text-[#F5F0E8]/40 text-center">
+            Nimara supports Canadian Non-Profits with 0-50 staff. This cohort is only for organizations with 1-15 staff.
           </p>
         </div>
       </section>
