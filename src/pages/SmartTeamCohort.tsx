@@ -36,7 +36,7 @@ const SmartTeamCohortHero = () => {
             <h1 id="hero-heading" className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white leading-[1.05] tracking-[-0.03em] mb-8 sm:mb-10">
               Stop Running Your
               <br />
-              Nonprofit From Memory
+              Nonprofit From Your Head
             </h1>
 
             {/* Subhead - Elegant and light */}
