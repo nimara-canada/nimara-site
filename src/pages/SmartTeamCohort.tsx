@@ -3,25 +3,32 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 const SmartTeamCohortHero = () => {
   return <div className="min-h-screen bg-nim-cloud">
-      {/* Hero Section with Mara Cara Blue */}
+      {/* Hero Section with Nimara Dark Navy */}
       <section className="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden" aria-labelledby="hero-heading">
-        {/* Mara Cara Blue Background with subtle gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-nim-mara via-nim-mara-deep to-nim-mara" />
+        {/* Deep Navy Background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-nim-navy via-nim-navy-deep to-nim-navy" />
         
-        {/* Subtle noise texture overlay */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{ 
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-        }} />
+        {/* Premium dotted pattern overlay */}
+        <div 
+          className="absolute inset-0 opacity-[0.15]" 
+          style={{ 
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(172, 252, 227, 0.4) 1px, transparent 0)`,
+            backgroundSize: '24px 24px',
+          }} 
+        />
         
-        {/* Very subtle radial glow */}
-        <div className="absolute inset-0 bg-gradient-radial from-white/5 via-transparent to-transparent" />
+        {/* Subtle gradient glow from center */}
+        <div className="absolute inset-0 bg-gradient-radial from-nim-mint/5 via-transparent to-transparent" />
+        
+        {/* Top edge glow line */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-nim-mint/30 to-transparent" />
 
         {/* Content */}
         <div className="relative z-10 w-full px-5 sm:px-6 md:px-10 lg:px-16 py-20 sm:py-28 md:py-32">
           <div className="max-w-4xl mx-auto text-center">
-            {/* Badge - Clean white pill */}
-            <div className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-xs sm:text-sm font-medium uppercase tracking-[0.12em] mb-10 sm:mb-12">
-              <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+            {/* Badge - Mint accent pill */}
+            <div className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-nim-mint/10 backdrop-blur-sm border border-nim-mint/20 text-nim-mint text-xs sm:text-sm font-medium uppercase tracking-[0.12em] mb-10 sm:mb-12">
+              <span className="w-2 h-2 rounded-full bg-nim-mint animate-pulse" />
               For Canadian Nonprofits • 1-15 Staff
             </div>
 
@@ -33,27 +40,27 @@ const SmartTeamCohortHero = () => {
             </h1>
 
             {/* Subhead - Elegant and light */}
-            <p className="text-lg sm:text-xl md:text-2xl text-white/85 font-light leading-relaxed mb-12 sm:mb-14 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl text-white/80 font-light leading-relaxed mb-12 sm:mb-14 max-w-2xl mx-auto">
               We build the systems that let you stop being the only one who knows where everything is. In 6 weeks. Together.
             </p>
 
             {/* Logistics Bar - Glassmorphic horizontal strip */}
-            <div className="inline-flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-10 px-8 sm:px-12 py-5 sm:py-6 bg-white/[0.08] backdrop-blur-md border border-white/15 rounded-2xl mb-12 sm:mb-14">
+            <div className="inline-flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-10 px-8 sm:px-12 py-5 sm:py-6 bg-white/[0.05] backdrop-blur-md border border-nim-mint/15 rounded-2xl mb-12 sm:mb-14">
               <div className="flex items-center gap-2 text-white">
-                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 opacity-70" aria-hidden="true" />
+                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-nim-mint/70" aria-hidden="true" />
                 <span className="text-sm sm:text-base md:text-lg font-medium">Feb 11, 2026</span>
               </div>
-              <div className="hidden sm:block w-px h-5 bg-white/20" />
+              <div className="hidden sm:block w-px h-5 bg-nim-mint/20" />
               <span className="text-white/70 text-sm sm:text-base md:text-lg">100% Virtual</span>
-              <div className="hidden sm:block w-px h-5 bg-white/20" />
-              <span className="text-white font-semibold text-sm sm:text-base md:text-lg">$9,450 CAD</span>
-              <div className="hidden sm:block w-px h-5 bg-white/20" />
+              <div className="hidden sm:block w-px h-5 bg-nim-mint/20" />
+              <span className="text-nim-mint font-semibold text-sm sm:text-base md:text-lg">$9,450 CAD</span>
+              <div className="hidden sm:block w-px h-5 bg-nim-mint/20" />
               <span className="text-white/70 text-sm sm:text-base md:text-lg">15 spots</span>
             </div>
 
-            {/* Primary CTA - Clean white button */}
+            {/* Primary CTA - Mint accent button */}
             <div className="mb-5 sm:mb-6">
-              <Button size="lg" className="group w-full sm:w-auto bg-white hover:bg-white/95 text-nim-mara-deep rounded-full px-12 sm:px-16 py-6 sm:py-7 text-base sm:text-lg font-bold shadow-[0_8px_32px_rgba(0,0,0,0.12)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.18)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/50" asChild>
+              <Button size="lg" className="group w-full sm:w-auto bg-nim-mint hover:bg-nim-mint/90 text-nim-navy rounded-full px-12 sm:px-16 py-6 sm:py-7 text-base sm:text-lg font-bold shadow-[0_8px_32px_rgba(172,252,227,0.25)] hover:shadow-[0_12px_40px_rgba(172,252,227,0.35)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-mint/50" asChild>
                 <a href="https://form.typeform.com/to/Dsi3pXkx" target="_blank" rel="noopener noreferrer">
                   Apply for a Seat
                   <ArrowRight className="ml-3 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
@@ -62,7 +69,7 @@ const SmartTeamCohortHero = () => {
             </div>
 
             {/* Microcopy */}
-            <p className="text-sm sm:text-base text-white/60 font-light">
+            <p className="text-sm sm:text-base text-white/50 font-light">
               SBCCI grant-eligible • Application takes 5 minutes
             </p>
           </div>
