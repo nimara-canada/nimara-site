@@ -75,8 +75,6 @@ const SmartTeamCohortHero = () => {
           </div>
         </div>
 
-        {/* Bottom gradient fade to next light section */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-nim-cloud to-transparent" />
       </section>
 
       {/* Section 2: Sound Familiar? - OFF-WHITE */}
