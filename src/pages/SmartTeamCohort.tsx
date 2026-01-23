@@ -287,87 +287,80 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Section 5: Early Win - DARK */}
-      <section className="w-full px-6 md:px-10 lg:px-16 py-28 md:py-36 lg:py-44 bg-nim-navy" aria-labelledby="early-win-heading">
-        <div className="max-w-4xl mx-auto">
+      {/* Section 5: Is This Right For You? - LIGHT */}
+      <section className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-cloud" aria-labelledby="right-for-you-heading">
+        <div className="max-w-5xl mx-auto">
           {/* Section Header */}
-          <header className="text-center mb-20">
-            <p className="text-base font-medium uppercase tracking-[0.25em] text-nim-mint mb-8">
-              Early win
+          <header className="text-center mb-12 sm:mb-16 md:mb-20">
+            <p className="text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-teal mb-4 sm:mb-6">
+              Is This Right For You?
             </p>
-            <h2 id="early-win-heading" className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-[-0.03em] leading-[1.08] mb-8">
-              Feel the relief by <span className="text-nim-mint">February 25.</span>
+            <h2 id="right-for-you-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-nim-navy tracking-[-0.02em] leading-[1.15]">
+              This Works Best If...
             </h2>
-            <p className="text-xl md:text-2xl text-white/50 max-w-2xl mx-auto">
-              Just 14 days after start. We don't wait 6 weeks to show results.
-            </p>
           </header>
 
-          {/* Week 1 and Week 2 */}
-          <div className="grid md:grid-cols-2 gap-8 md:gap-10 mb-16">
-            {/* Week 1 */}
-            <article className="bg-white/[0.03] border border-white/10 rounded-3xl p-10">
-              <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-nim-mint/10 text-nim-mint mb-8">
-                Week 1 • Feb 11–18
-              </span>
-              <div className="mb-6">
-                <FolderOpen className="w-12 h-12 text-nim-mint" strokeWidth={1.5} aria-hidden="true" />
-              </div>
-              <h3 className="text-2xl md:text-3xl font-semibold text-white mb-6 tracking-[-0.02em]">
-                Your File System is Done.
+          {/* Two Column Cards */}
+          <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+            {/* Apply If... Card */}
+            <article className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10 shadow-sm">
+              <h3 className="flex items-center gap-2 text-lg sm:text-xl font-bold text-nim-teal mb-6 sm:mb-8">
+                <Check className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+                Apply if you...
               </h3>
-              <ul className="space-y-4" aria-label="Week 1 deliverables">
-                <li className="flex items-center gap-4 text-lg md:text-xl text-white/70">
-                  <Check className="w-5 h-5 text-nim-mint flex-shrink-0" aria-hidden="true" />
-                  A 'Source of Truth' folder map installed.
+              <ul className="space-y-4 sm:space-y-5">
+                <li className="flex items-start gap-3">
+                  <Check className="w-4 h-4 sm:w-5 sm:h-5 text-nim-teal flex-shrink-0 mt-0.5" aria-hidden="true" />
+                  <span className="text-base sm:text-lg text-nim-slate-dark">Have 1-15 staff members</span>
                 </li>
-                <li className="flex items-center gap-4 text-lg md:text-xl text-white/70">
-                  <Check className="w-5 h-5 text-nim-mint flex-shrink-0" aria-hidden="true" />
-                  Key docs found in &lt; 2 mins.
+                <li className="flex items-start gap-3">
+                  <Check className="w-4 h-4 sm:w-5 sm:h-5 text-nim-teal flex-shrink-0 mt-0.5" aria-hidden="true" />
+                  <span className="text-base sm:text-lg text-nim-slate-dark">Use Google or Microsoft for your files</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check className="w-4 h-4 sm:w-5 sm:h-5 text-nim-teal flex-shrink-0 mt-0.5" aria-hidden="true" />
+                  <span className="text-base sm:text-lg text-nim-slate-dark">Are tired of being the "only one who knows"</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check className="w-4 h-4 sm:w-5 sm:h-5 text-nim-teal flex-shrink-0 mt-0.5" aria-hidden="true" />
+                  <span className="text-base sm:text-lg text-nim-slate-dark">Want working systems, not another workshop</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check className="w-4 h-4 sm:w-5 sm:h-5 text-nim-teal flex-shrink-0 mt-0.5" aria-hidden="true" />
+                  <span className="text-base sm:text-lg text-nim-slate-dark">Can commit 4 hours a week for 6 weeks</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check className="w-4 h-4 sm:w-5 sm:h-5 text-nim-teal flex-shrink-0 mt-0.5" aria-hidden="true" />
+                  <span className="text-base sm:text-lg text-nim-slate-dark">Have SBCCI or similar capacity grant</span>
                 </li>
               </ul>
             </article>
 
-            {/* Week 2 */}
-            <article className="bg-white/[0.03] border border-white/10 rounded-3xl p-10">
-              <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-nim-mint/10 text-nim-mint mb-8">
-                Week 2 • Feb 18–25
-              </span>
-              <div className="mb-6">
-                <ShieldCheck className="w-12 h-12 text-nim-mint" strokeWidth={1.5} aria-hidden="true" />
-              </div>
-              <h3 className="text-2xl md:text-3xl font-semibold text-white mb-6 tracking-[-0.02em]">
-                10 Audit-Ready Bundles.
+            {/* Don't Apply If... Card */}
+            <article className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10 shadow-sm">
+              <h3 className="flex items-center gap-2 text-lg sm:text-xl font-bold text-destructive mb-6 sm:mb-8">
+                <X className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+                Don't apply if you...
               </h3>
-              <ul className="space-y-4" aria-label="Week 2 deliverables">
-                <li className="flex items-center gap-4 text-lg md:text-xl text-white/70">
-                  <Check className="w-5 h-5 text-nim-mint flex-shrink-0" aria-hidden="true" />
-                  Your first 10 expenses fully documented.
+              <ul className="space-y-4 sm:space-y-5">
+                <li className="flex items-start gap-3">
+                  <X className="w-4 h-4 sm:w-5 sm:h-5 text-destructive flex-shrink-0 mt-0.5" aria-hidden="true" />
+                  <span className="text-base sm:text-lg text-nim-slate-dark">Want to figure it out yourself</span>
                 </li>
-                <li className="flex items-center gap-4 text-lg md:text-xl text-white/70">
-                  <Check className="w-5 h-5 text-nim-mint flex-shrink-0" aria-hidden="true" />
-                  Approval + Invoice + Payment proof linked.
+                <li className="flex items-start gap-3">
+                  <X className="w-4 h-4 sm:w-5 sm:h-5 text-destructive flex-shrink-0 mt-0.5" aria-hidden="true" />
+                  <span className="text-base sm:text-lg text-nim-slate-dark">Are looking for training videos to watch</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <X className="w-4 h-4 sm:w-5 sm:h-5 text-destructive flex-shrink-0 mt-0.5" aria-hidden="true" />
+                  <span className="text-base sm:text-lg text-nim-slate-dark">Can't make time for weekly sessions</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <X className="w-4 h-4 sm:w-5 sm:h-5 text-destructive flex-shrink-0 mt-0.5" aria-hidden="true" />
+                  <span className="text-base sm:text-lg text-nim-slate-dark">Already have smooth-running systems</span>
                 </li>
               </ul>
             </article>
-          </div>
-
-          {/* Emotional Closer */}
-          <p className="text-center text-lg md:text-xl text-white/40 italic mb-14">
-            Most Executive Directors feel the weight lift right here.
-          </p>
-
-          {/* CTA */}
-          <div className="text-center">
-            <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-2xl px-14 py-8 text-xl font-semibold shadow-[0_0_40px_hsl(var(--primary)/0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50" asChild>
-              <a href="#apply">
-                Apply for a seat
-                <ArrowRight className="ml-3 w-5 h-5" aria-hidden="true" />
-              </a>
-            </Button>
-            <p className="text-lg text-white/40 mt-8">
-              <span className="text-white font-semibold">$9,450 CAD</span> • 15 spots per cohort
-            </p>
           </div>
         </div>
       </section>
