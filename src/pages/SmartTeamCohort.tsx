@@ -75,23 +75,22 @@ const SmartTeamCohortHero = () => {
           </div>
         </div>
 
-        {/* Bottom gradient fade to next dark section */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-nim-navy to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-nim-mint/20 to-transparent" />
+        {/* Bottom gradient fade to next light section */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-nim-cloud to-transparent" />
       </section>
 
-      {/* Section 2: Sound Familiar? - DARK PREMIUM */}
-      <section className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-navy" aria-labelledby="familiar-heading">
+      {/* Section 2: Sound Familiar? - OFF-WHITE */}
+      <section className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-cloud" aria-labelledby="familiar-heading">
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-12 sm:mb-16 md:mb-20">
-            <p className="text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#F5F0E8]/60 mb-4 sm:mb-6">
+            <p className="text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-slate-dark/60 mb-4 sm:mb-6">
               Sound Familiar?
             </p>
-            <h2 id="familiar-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.02em] leading-[1.15] mb-4 sm:mb-6">
+            <h2 id="familiar-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-nim-navy tracking-[-0.02em] leading-[1.15] mb-4 sm:mb-6">
               You're Doing Everything From Memory
             </h2>
-            <p className="text-lg sm:text-xl md:text-2xl text-[#F5F0E8]/80 font-light">
+            <p className="text-lg sm:text-xl md:text-2xl text-nim-slate-dark/80 font-light">
               And it's exhausting.
             </p>
           </header>
@@ -99,41 +98,41 @@ const SmartTeamCohortHero = () => {
           {/* Pain Point Cards - 3+1 Grid */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {/* Card 1 */}
-            <article className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 border-l-4 border-l-nim-mint">
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">
+            <article className="bg-white border border-nim-slate-dark/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 border-l-4 border-l-nim-teal shadow-sm">
+              <h3 className="text-lg sm:text-xl font-bold text-nim-navy mb-2 sm:mb-3">
                 "Where's that receipt?"
               </h3>
-              <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-nim-slate-dark/80 font-light leading-relaxed">
                 You spend hours looking for documents every time a funder asks.
               </p>
             </article>
 
             {/* Card 2 */}
-            <article className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 border-l-4 border-l-nim-mint">
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">
+            <article className="bg-white border border-nim-slate-dark/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 border-l-4 border-l-nim-teal shadow-sm">
+              <h3 className="text-lg sm:text-xl font-bold text-nim-navy mb-2 sm:mb-3">
                 "I can't take a vacation."
               </h3>
-              <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-nim-slate-dark/80 font-light leading-relaxed">
                 If you step away, nobody knows how to find anything.
               </p>
             </article>
 
             {/* Card 3 */}
-            <article className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 border-l-4 border-l-nim-mint">
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">
+            <article className="bg-white border border-nim-slate-dark/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 border-l-4 border-l-nim-teal shadow-sm">
+              <h3 className="text-lg sm:text-xl font-bold text-nim-navy mb-2 sm:mb-3">
                 "What if we get audited?"
               </h3>
-              <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-nim-slate-dark/80 font-light leading-relaxed">
                 You know your records aren't ready. It keeps you up at night.
               </p>
             </article>
 
             {/* Card 4 */}
-            <article className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 border-l-4 border-l-nim-mint sm:col-span-2 lg:col-span-1">
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">
+            <article className="bg-white border border-nim-slate-dark/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 border-l-4 border-l-nim-teal shadow-sm sm:col-span-2 lg:col-span-1">
+              <h3 className="text-lg sm:text-xl font-bold text-nim-navy mb-2 sm:mb-3">
                 "We do good work, but..."
               </h3>
-              <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-nim-slate-dark/80 font-light leading-relaxed">
                 You struggle to prove your impact when funders ask for numbers.
               </p>
             </article>
