@@ -203,144 +203,86 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Section 4: How It Works - LIGHT */}
-      <section id="how-it-works" className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-36 lg:py-44 bg-nim-cloud" aria-labelledby="how-it-works-heading">
-        <div className="max-w-5xl mx-auto">
+      {/* Section 4: How It Works */}
+      <section id="how-it-works" className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-cloud" aria-labelledby="how-it-works-heading">
+        <div className="max-w-4xl mx-auto">
           {/* Section Header */}
-          <header className="text-center mb-12 sm:mb-16 md:mb-28">
-            <p className="text-xs sm:text-sm md:text-base font-medium uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-teal mb-6 sm:mb-10">
-              How it works
+          <header className="text-center mb-12 sm:mb-16 md:mb-20">
+            <p className="text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-teal mb-4 sm:mb-6">
+              How It Works
             </p>
-            <h2 id="how-it-works-heading" className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold text-nim-navy tracking-[-0.03em] leading-[1.1] mb-6 sm:mb-10">
-              4 hours a week.
-              <br />
-              <span className="text-nim-slate-dark">100% Online.</span>
+            <h2 id="how-it-works-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-nim-navy tracking-[-0.02em] leading-[1.15] mb-4 sm:mb-6">
+              6 Weeks. 4 Systems. Done With You.
             </h2>
-            <p className="text-lg sm:text-xl md:text-3xl text-nim-slate-dark font-light max-w-2xl mx-auto leading-relaxed">
-              One Ops Lead. We build the infrastructure with you.
+            <p className="text-lg sm:text-xl md:text-2xl text-nim-slate-dark font-light">
+              One Ops Lead works with you the whole time. We build it in your tools.
             </p>
           </header>
 
-          {/* Weekly Schedule Detail */}
-          <div className="bg-white rounded-2xl sm:rounded-3xl border border-border shadow-soft p-6 sm:p-8 md:p-14 mb-12 sm:mb-16 md:mb-20">
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-nim-navy mb-6 sm:mb-8 md:mb-10 text-center">Your Weekly Commitment</h3>
-            <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-12">
-              <div className="text-center">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-3 sm:mb-4 md:mb-6 rounded-full bg-nim-teal/10 flex items-center justify-center">
-                  <Users className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-nim-teal" aria-hidden="true" />
-                </div>
-                <p className="text-nim-navy font-semibold text-sm sm:text-base md:text-xl mb-1 sm:mb-2">Strategy</p>
-                <p className="text-nim-slate-dark text-xs sm:text-sm md:text-lg">90 min</p>
+          {/* 3-Step Process */}
+          <div className="grid sm:grid-cols-3 gap-8 sm:gap-10 md:gap-12 mb-12 sm:mb-16 md:mb-20">
+            {/* Step 1 */}
+            <div className="text-center">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-4 sm:mb-6 rounded-xl bg-nim-teal text-white flex items-center justify-center text-lg sm:text-xl font-bold">
+                1
               </div>
-              <div className="text-center">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-3 sm:mb-4 md:mb-6 rounded-full bg-nim-teal/10 flex items-center justify-center">
-                  <FileCheck className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-nim-teal" aria-hidden="true" />
-                </div>
-                <p className="text-nim-navy font-semibold text-sm sm:text-base md:text-xl mb-1 sm:mb-2">Lab</p>
-                <p className="text-nim-slate-dark text-xs sm:text-sm md:text-lg">90 min</p>
+              <h3 className="text-lg sm:text-xl font-bold text-nim-navy mb-2 sm:mb-3">
+                We Find the Gaps
+              </h3>
+              <p className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed">
+                Week 1: We look at what you have. We find what's missing.
+              </p>
+            </div>
+
+            {/* Step 2 */}
+            <div className="text-center">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-4 sm:mb-6 rounded-xl bg-nim-teal text-white flex items-center justify-center text-lg sm:text-xl font-bold">
+                2
               </div>
-              <div className="text-center">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-3 sm:mb-4 md:mb-6 rounded-full bg-nim-teal/10 flex items-center justify-center">
-                  <Clock className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-nim-teal" aria-hidden="true" />
-                </div>
-                <p className="text-nim-navy font-semibold text-sm sm:text-base md:text-xl mb-1 sm:mb-2">Prep</p>
-                <p className="text-nim-slate-dark text-xs sm:text-sm md:text-lg">1 hour</p>
+              <h3 className="text-lg sm:text-xl font-bold text-nim-navy mb-2 sm:mb-3">
+                We Build Together
+              </h3>
+              <p className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed">
+                Weeks 2-5: One system per week. Built with you watching.
+              </p>
+            </div>
+
+            {/* Step 3 */}
+            <div className="text-center">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-4 sm:mb-6 rounded-xl bg-nim-teal text-white flex items-center justify-center text-lg sm:text-xl font-bold">
+                3
               </div>
+              <h3 className="text-lg sm:text-xl font-bold text-nim-navy mb-2 sm:mb-3">
+                We Test Everything
+              </h3>
+              <p className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed">
+                Week 6: We pretend to be an auditor. If it breaks, we fix it.
+              </p>
             </div>
           </div>
 
-          {/* 6-Week Timeline */}
-          <div className="mb-12 sm:mb-16 md:mb-20">
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-nim-navy mb-6 sm:mb-8 md:mb-12 text-center">6-Week Roadmap</h3>
-            <div className="grid grid-cols-3 md:grid-cols-6 gap-2 sm:gap-3 md:gap-4">
-              {[{
-              week: "Week 1",
-              date: "Feb 11",
-              focus: "Files",
-              highlight: true
-            }, {
-              week: "Week 2",
-              date: "Feb 18",
-              focus: "Spending",
-              highlight: true
-            }, {
-              week: "Week 3",
-              date: "Feb 25",
-              focus: "Board",
-              highlight: false
-            }, {
-              week: "Week 4",
-              date: "Mar 4",
-              focus: "Reports",
-              highlight: false
-            }, {
-              week: "Week 5",
-              date: "Mar 11",
-              focus: "Integrate",
-              highlight: false
-            }, {
-              week: "Week 6",
-              date: "Mar 18",
-              focus: "Test",
-              highlight: true
-            }].map((item, index) => <div key={item.week} className={`relative p-3 sm:p-4 md:p-5 rounded-xl sm:rounded-2xl text-center ${item.highlight ? 'bg-nim-teal/10 border-2 border-nim-teal/30' : 'bg-white border border-border'}`}>
-                  <p className={`text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-1 sm:mb-2 ${item.highlight ? 'text-nim-teal' : 'text-nim-slate'}`}>{item.week}</p>
-                  <p className="text-xs sm:text-sm md:text-base text-nim-slate-dark mb-1 sm:mb-2">{item.date}</p>
-                  <p className={`text-xs sm:text-sm md:text-base font-medium ${item.highlight ? 'text-nim-navy' : 'text-nim-slate-dark'}`}>{item.focus}</p>
-                </div>)}
-            </div>
-          </div>
-
-          {/* 3-Step Flow */}
-          <ol className="grid sm:grid-cols-3 gap-8 sm:gap-10 md:gap-16 lg:gap-20 mb-12 sm:mb-16 md:mb-20" aria-label="Program steps">
-            <li className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full border-2 border-nim-teal/40 text-nim-teal text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 md:mb-8" aria-hidden="true">
-                01
-              </div>
-              <h3 className="text-lg sm:text-xl md:text-3xl font-bold text-nim-navy mb-2 sm:mb-4 tracking-[-0.02em]">
-                Build Your Source of Truth
-              </h3>
-              <p className="text-base sm:text-lg md:text-xl text-nim-slate-dark font-light leading-relaxed">
-                Stop losing documents. We set up your digital folder map and access controls.
-              </p>
-            </li>
-
-            <li className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full border-2 border-nim-teal/40 text-nim-teal text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 md:mb-8" aria-hidden="true">
-                02
-              </div>
-              <h3 className="text-lg sm:text-xl md:text-3xl font-bold text-nim-navy mb-2 sm:mb-4 tracking-[-0.02em]">
-                Install the 4 Systems
-              </h3>
-              <p className="text-base sm:text-lg md:text-xl text-nim-slate-dark font-light leading-relaxed">
-                Direct implementation. We build your spending proof, board, and reporting workflows.
-              </p>
-            </li>
-
-            <li className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full border-2 border-nim-teal/40 text-nim-teal text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 md:mb-8" aria-hidden="true">
-                03
-              </div>
-              <h3 className="text-lg sm:text-xl md:text-3xl font-bold text-nim-navy mb-2 sm:mb-4 tracking-[-0.02em]">
-                The Stress Test
-              </h3>
-              <p className="text-base sm:text-lg md:text-xl text-nim-slate-dark font-light leading-relaxed">
-                Prove it works. Live-test your ability to find any document in under 3 minutes.
-              </p>
-            </li>
-          </ol>
-
-          {/* CTA */}
-          <div className="text-center">
-            <Button size="lg" className="w-full sm:w-auto bg-nim-navy hover:bg-nim-navy/90 text-white rounded-xl sm:rounded-2xl px-8 sm:px-14 py-6 sm:py-8 text-lg sm:text-xl font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nim-navy/50" asChild>
-              <a href="#apply">
-                Apply for a seat
-                <ArrowRight className="ml-2 sm:ml-3 w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
-              </a>
-            </Button>
-            <p className="text-base sm:text-lg text-nim-slate mt-6 sm:mt-8">
-              <span className="text-nim-navy font-semibold">$9,450 CAD</span> per org • Starts Feb 11
+          {/* Time Commitment Card */}
+          <div className="bg-nim-mint/5 rounded-2xl sm:rounded-3xl p-8 sm:p-10 md:p-14 text-center">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-nim-navy mb-2 sm:mb-3">
+              4 hours a week. <span className="text-nim-teal">100% Online.</span>
+            </h3>
+            <p className="text-base sm:text-lg text-nim-slate-dark mb-8 sm:mb-10">
+              Your weekly time commitment:
             </p>
+            <div className="grid grid-cols-3 gap-6 sm:gap-8 md:gap-12 max-w-xl mx-auto">
+              <div className="text-center">
+                <p className="text-nim-navy font-bold text-base sm:text-lg mb-1">Group Call</p>
+                <p className="text-nim-teal font-semibold text-lg sm:text-xl">90 min</p>
+              </div>
+              <div className="text-center">
+                <p className="text-nim-navy font-bold text-base sm:text-lg mb-1">Build Session</p>
+                <p className="text-nim-teal font-semibold text-lg sm:text-xl">90 min</p>
+              </div>
+              <div className="text-center">
+                <p className="text-nim-navy font-bold text-base sm:text-lg mb-1">Your Prep</p>
+                <p className="text-nim-teal font-semibold text-lg sm:text-xl">1 hour</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
