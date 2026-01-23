@@ -1,4 +1,4 @@
-import { FileCheck, Users, BarChart3, FolderSearch, ArrowRight, Check, X, Receipt, Gavel, LineChart, FolderOpen, Plus, Folder, ClipboardList, ShieldCheck, Calendar, Clock, UserCheck, BadgeCheck, ChevronDown } from "lucide-react";
+import { FileCheck, Users, BarChart3, FolderSearch, ArrowRight, Check, X, Receipt, Gavel, LineChart, FolderOpen, Plus, Folder, ClipboardList, ShieldCheck, Shield, Calendar, Clock, UserCheck, BadgeCheck, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 const SmartTeamCohortHero = () => {
@@ -368,73 +368,22 @@ const SmartTeamCohortHero = () => {
       {/* Section 6: Ultimate Proof - DARK */}
       <section className="w-full px-6 md:px-10 lg:px-16 py-28 md:py-36 lg:py-44 bg-nim-navy" aria-labelledby="ultimate-proof-heading">
         <div className="max-w-3xl mx-auto">
-          {/* Section Header */}
-          <header className="text-center mb-16">
-            <p className="text-base font-medium uppercase tracking-[0.25em] text-nim-mint mb-8">
-              Ultimate proof
-            </p>
-            <h2 id="ultimate-proof-heading" className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-[-0.03em] leading-[1.08] mb-8">
-              We check that it works in real life.
+          {/* Promise Card */}
+          <div className="bg-white border border-nim-teal/30 rounded-3xl p-10 md:p-14 shadow-sm">
+            {/* Shield Icon */}
+            <div className="flex justify-center mb-8">
+              <Shield className="w-12 h-12 text-nim-teal" aria-hidden="true" />
+            </div>
+            
+            <h2 id="ultimate-proof-heading" className="text-2xl md:text-3xl font-bold text-nim-navy tracking-[-0.02em] text-center mb-6">
+              The "It Has to Work" Promise
             </h2>
-            <p className="text-xl md:text-2xl text-white/50 max-w-2xl mx-auto">
-              Before you graduate, we live-test your new systems.
+            
+            <p className="text-lg text-nim-slate-dark text-center max-w-2xl mx-auto leading-relaxed">
+              In Week 6, we test your systems like an auditor would. We ask for receipts. 
+              We ask for board decisions. We ask for files. If your systems can't find 
+              things fast, we keep working until they can. No extra cost.
             </p>
-          </header>
-
-          {/* Card */}
-          <div className="bg-white/[0.03] border border-white/10 rounded-3xl p-10 md:p-14 mb-14">
-            <h3 className="text-2xl md:text-3xl font-semibold text-white mb-8">
-              The Week 6 Stress Test
-            </h3>
-
-            <p className="text-white/50 text-lg mb-8">
-              You will show:
-            </p>
-
-            <ul className="space-y-6 mb-10" aria-label="Stress test requirements">
-              <li className="flex items-start gap-4 text-lg">
-                <Check className="w-6 h-6 text-nim-mint flex-shrink-0 mt-0.5" aria-hidden="true" />
-                <div>
-                  <span className="text-white font-medium">Proof for a real purchase:</span>
-                  <span className="text-white/50 ml-2">(Linked invoice, approval, and payment).</span>
-                </div>
-              </li>
-              <li className="flex items-start gap-4 text-lg">
-                <Check className="w-6 h-6 text-nim-mint flex-shrink-0 mt-0.5" aria-hidden="true" />
-                <div>
-                  <span className="text-white font-medium">A board decision record:</span>
-                  <span className="text-white/50 ml-2">(Minute log and action tracker).</span>
-                </div>
-              </li>
-              <li className="flex items-start gap-4 text-lg">
-                <Check className="w-6 h-6 text-nim-mint flex-shrink-0 mt-0.5" aria-hidden="true" />
-                <div>
-                  <span className="text-white font-medium">Your latest funder report:</span>
-                  <span className="text-white/50 ml-2">(Generated via your new dashboard).</span>
-                </div>
-              </li>
-              <li className="flex items-start gap-4 text-lg">
-                <Check className="w-6 h-6 text-nim-mint flex-shrink-0 mt-0.5" aria-hidden="true" />
-                <div>
-                  <span className="text-white font-medium">The 3-Minute Rule:</span>
-                  <span className="text-white/50 ml-2">Find any key document in under 180 seconds.</span>
-                </div>
-              </li>
-            </ul>
-
-            <p className="text-white/40 text-base border-t border-white/10 pt-8 italic">
-              If you can't show it fast, we stay with you until it's fixed.
-            </p>
-          </div>
-
-          {/* CTA */}
-          <div className="text-center">
-            <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-2xl px-14 py-8 text-xl font-semibold shadow-[0_0_40px_hsl(var(--primary)/0.4)] transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50" asChild>
-              <a href="#apply">
-                Apply for a seat
-                <ArrowRight className="ml-3 w-5 h-5" aria-hidden="true" />
-              </a>
-            </Button>
           </div>
         </div>
       </section>
