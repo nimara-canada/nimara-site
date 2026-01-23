@@ -77,18 +77,18 @@ const SmartTeamCohortHero = () => {
 
       </section>
 
-      {/* Section 2: Sound Familiar? - OFF-WHITE */}
-      <section className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-cloud" aria-labelledby="familiar-heading">
+      {/* Section 2: Sound Familiar? - DARK */}
+      <section className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-navy" aria-labelledby="familiar-heading">
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-12 sm:mb-16 md:mb-20">
-            <p className="text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-slate-dark/60 mb-4 sm:mb-6">
+            <p className="text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#F5F0E8]/60 mb-4 sm:mb-6">
               Sound Familiar?
             </p>
-            <h2 id="familiar-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-nim-navy tracking-[-0.02em] leading-[1.15] mb-4 sm:mb-6">
+            <h2 id="familiar-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.02em] leading-[1.15] mb-4 sm:mb-6">
               You're Doing Everything From Memory
             </h2>
-            <p className="text-lg sm:text-xl md:text-2xl text-nim-slate-dark/80 font-light">
+            <p className="text-lg sm:text-xl md:text-2xl text-[#F5F0E8]/80 font-light">
               And it's exhausting.
             </p>
           </header>
@@ -96,41 +96,41 @@ const SmartTeamCohortHero = () => {
           {/* Pain Point Cards - 3+1 Grid */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {/* Card 1 */}
-            <article className="bg-white border border-nim-slate-dark/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 border-l-4 border-l-nim-teal shadow-sm">
-              <h3 className="text-lg sm:text-xl font-bold text-nim-navy mb-2 sm:mb-3">
+            <article className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 border-l-4 border-l-nim-mint">
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">
                 "Where's that receipt?"
               </h3>
-              <p className="text-base sm:text-lg text-nim-slate-dark/80 font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
                 You spend hours looking for documents every time a funder asks.
               </p>
             </article>
 
             {/* Card 2 */}
-            <article className="bg-white border border-nim-slate-dark/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 border-l-4 border-l-nim-teal shadow-sm">
-              <h3 className="text-lg sm:text-xl font-bold text-nim-navy mb-2 sm:mb-3">
+            <article className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 border-l-4 border-l-nim-mint">
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">
                 "I can't take a vacation."
               </h3>
-              <p className="text-base sm:text-lg text-nim-slate-dark/80 font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
                 If you step away, nobody knows how to find anything.
               </p>
             </article>
 
             {/* Card 3 */}
-            <article className="bg-white border border-nim-slate-dark/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 border-l-4 border-l-nim-teal shadow-sm">
-              <h3 className="text-lg sm:text-xl font-bold text-nim-navy mb-2 sm:mb-3">
+            <article className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 border-l-4 border-l-nim-mint">
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">
                 "What if we get audited?"
               </h3>
-              <p className="text-base sm:text-lg text-nim-slate-dark/80 font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
                 You know your records aren't ready. It keeps you up at night.
               </p>
             </article>
 
             {/* Card 4 */}
-            <article className="bg-white border border-nim-slate-dark/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 border-l-4 border-l-nim-teal shadow-sm sm:col-span-2 lg:col-span-1">
-              <h3 className="text-lg sm:text-xl font-bold text-nim-navy mb-2 sm:mb-3">
+            <article className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 border-l-4 border-l-nim-mint sm:col-span-2 lg:col-span-1">
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">
                 "We do good work, but..."
               </h3>
-              <p className="text-base sm:text-lg text-nim-slate-dark/80 font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
                 You struggle to prove your impact when funders ask for numbers.
               </p>
             </article>
@@ -268,18 +268,18 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Section 4: How It Works - LIGHT */}
-      <section id="how-it-works" className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-cloud" aria-labelledby="how-it-works-heading">
+      {/* Section 4: How It Works - DARK */}
+      <section id="how-it-works" className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-navy" aria-labelledby="how-it-works-heading">
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-12 sm:mb-16 md:mb-20">
-            <p className="text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-teal mb-4 sm:mb-6">
+            <p className="text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-mint mb-4 sm:mb-6">
               How It Works
             </p>
-            <h2 id="how-it-works-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-nim-navy tracking-[-0.02em] leading-[1.15] mb-4 sm:mb-6">
+            <h2 id="how-it-works-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.02em] leading-[1.15] mb-4 sm:mb-6">
               6 Weeks. 4 Systems. Done With You.
             </h2>
-            <p className="text-lg sm:text-xl md:text-2xl text-nim-slate-dark font-light">
+            <p className="text-lg sm:text-xl md:text-2xl text-[#F5F0E8]/80 font-light">
               One Ops Lead works with you the whole time. We build it in your tools.
             </p>
           </header>
@@ -290,17 +290,17 @@ const SmartTeamCohortHero = () => {
             <article className="text-center">
               <div className="mb-6 sm:mb-8">
                 <svg className="w-12 h-12 sm:w-16 sm:h-16 mx-auto" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="32" cy="32" r="24" className="text-nim-teal" />
-                  <path d="M24 32l5 5 11-11" className="text-nim-teal" />
+                  <circle cx="32" cy="32" r="24" className="text-nim-mint" />
+                  <path d="M24 32l5 5 11-11" className="text-nim-mint" />
                 </svg>
               </div>
-              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4 sm:mb-5 rounded-full border-2 border-nim-teal/30 text-nim-teal flex items-center justify-center text-lg sm:text-xl font-light">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4 sm:mb-5 rounded-full border-2 border-nim-mint/30 text-nim-mint flex items-center justify-center text-lg sm:text-xl font-light">
                 1
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-nim-navy mb-2 sm:mb-3">
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">
                 We Find the Gaps
               </h3>
-              <p className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
                 Week 1: We look at what you have. We find what's missing.
               </p>
             </article>
@@ -309,17 +309,17 @@ const SmartTeamCohortHero = () => {
             <article className="text-center">
               <div className="mb-6 sm:mb-8">
                 <svg className="w-12 h-12 sm:w-16 sm:h-16 mx-auto" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="12" y="16" width="40" height="32" rx="3" className="text-nim-teal" />
-                  <path d="M20 28h24M20 36h16" className="text-nim-teal" />
+                  <rect x="12" y="16" width="40" height="32" rx="3" className="text-nim-mint" />
+                  <path d="M20 28h24M20 36h16" className="text-nim-mint" />
                 </svg>
               </div>
-              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4 sm:mb-5 rounded-full border-2 border-nim-teal/30 text-nim-teal flex items-center justify-center text-lg sm:text-xl font-light">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4 sm:mb-5 rounded-full border-2 border-nim-mint/30 text-nim-mint flex items-center justify-center text-lg sm:text-xl font-light">
                 2
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-nim-navy mb-2 sm:mb-3">
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">
                 We Build Together
               </h3>
-              <p className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
                 Weeks 2-5: One system per week. Built with you watching.
               </p>
             </article>
@@ -328,23 +328,23 @@ const SmartTeamCohortHero = () => {
             <article className="text-center">
               <div className="mb-6 sm:mb-8">
                 <svg className="w-12 h-12 sm:w-16 sm:h-16 mx-auto" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M16 32h32M32 16v32" className="text-nim-teal" />
-                  <circle cx="32" cy="32" r="20" className="text-nim-teal" />
+                  <path d="M16 32h32M32 16v32" className="text-nim-mint" />
+                  <circle cx="32" cy="32" r="20" className="text-nim-mint" />
                 </svg>
               </div>
-              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4 sm:mb-5 rounded-full border-2 border-nim-teal/30 text-nim-teal flex items-center justify-center text-lg sm:text-xl font-light">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4 sm:mb-5 rounded-full border-2 border-nim-mint/30 text-nim-mint flex items-center justify-center text-lg sm:text-xl font-light">
                 3
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-nim-navy mb-2 sm:mb-3">
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">
                 We Test Everything
               </h3>
-              <p className="text-base sm:text-lg text-nim-slate-dark font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
                 Week 6: We pretend to be an auditor. If it breaks, we fix it.
               </p>
             </article>
           </div>
 
-          {/* Time Commitment Card */}
+          {/* Time Commitment Card - WHITE ACCENT */}
           <div className="bg-white border border-border rounded-2xl sm:rounded-3xl p-8 sm:p-10 md:p-14 text-center shadow-sm">
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-nim-navy mb-2 sm:mb-3">
               4 hours a week. <span className="text-nim-teal">100% Online.</span>
@@ -448,10 +448,10 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Section 6: Ultimate Proof - LIGHT */}
-      <section className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-cloud" aria-labelledby="ultimate-proof-heading">
+      {/* Section 6: Ultimate Proof - DARK */}
+      <section className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-navy" aria-labelledby="ultimate-proof-heading">
         <div className="max-w-3xl mx-auto">
-          {/* Promise Card */}
+          {/* Promise Card - WHITE ACCENT */}
           <div className="bg-white border border-border rounded-2xl sm:rounded-3xl p-8 sm:p-10 md:p-14 shadow-sm">
             {/* Shield Icon */}
             <div className="flex justify-center mb-6 sm:mb-8">
@@ -574,16 +574,16 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Section 8: Price and Seats - LIGHT */}
-      <section id="price" className="w-full px-4 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-cloud" aria-labelledby="price-heading">
+      {/* Section 8: Price and Seats - DARK */}
+      <section id="price" className="w-full px-4 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-navy" aria-labelledby="price-heading">
         <div className="max-w-xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-10 sm:mb-14 md:mb-20">
-            <p className="text-xs sm:text-sm md:text-base font-medium uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-teal mb-4 sm:mb-6 md:mb-8">
+            <p className="text-xs sm:text-sm md:text-base font-medium uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-mint mb-4 sm:mb-6 md:mb-8">
               Price and seats
             </p>
-            <h2 id="price-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-nim-navy tracking-[-0.02em] sm:tracking-[-0.03em] leading-[1.1] sm:leading-[1.08]">
-              Simple and <span className="text-nim-teal">clear.</span>
+            <h2 id="price-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.02em] sm:tracking-[-0.03em] leading-[1.1] sm:leading-[1.08]">
+              Simple and <span className="text-nim-mint">clear.</span>
             </h2>
           </header>
 
@@ -671,7 +671,7 @@ const SmartTeamCohortHero = () => {
           </div>
 
           {/* Micro note */}
-          <p className="text-xs sm:text-sm md:text-base text-nim-slate text-center">
+          <p className="text-xs sm:text-sm md:text-base text-[#F5F0E8]/60 text-center">
             Nimara supports 0–50 staff. This cohort is only for 1–15 staff.
           </p>
         </div>
