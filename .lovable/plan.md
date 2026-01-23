@@ -1,75 +1,144 @@
-# Plan: Make Final CTA Contact Form White
 
-## Overview
-Change the contact form in the Final CTA section from a semi-transparent glass effect to a solid white background, with appropriate text and input styling for readability.
+# Plan: Unified Dark-Dominant Design for Smart Team Cohort Page
 
-## Current State
-- Form has `bg-white/10 backdrop-blur-sm` (translucent glass effect)
-- Labels use `text-white/80` (light text for dark backgrounds)
-- Inputs use `bg-white/10 border-white/20 text-white placeholder-white/40`
-- Button uses `bg-nim-mint text-nim-navy` (should remain as-is)
-- Footer text uses `text-white/40`
+## The Problem
+The current page alternates between dark navy and off-white (nim-cloud) backgrounds section-by-section, creating visual chaos:
+- Hero → Dark
+- Sound Familiar → Light  
+- The Solution → Dark
+- How It Works → Light
+- Is This Right For You → Dark
+- Ultimate Proof → Light
+- Guarantee → Dark
+- Price → Light
+- FAQ → Dark
+- Final CTA → Dark
 
-## Changes Required
+This "zebra" switching every section hurts the premium feel and makes the page harder on the eyes.
 
-### File: `src/pages/CapacityBuildout.tsx`
+## The Solution
+Use **dark navy as the dominant background** across the entire page, with **strategic white cards/elements** as secondary accents to highlight key information. This creates:
+- Visual consistency and calm
+- A premium, authoritative feel
+- Better eye comfort (no jarring switches)
+- White elements draw attention to important content
 
-#### 1. Update Form Container (Line 1175)
-**From:**
+## Visual Strategy
+
+```text
++--------------------------------------------+
+|           HERO (Dark Navy)                 |
+|   [Hero content remains unchanged]         |
++--------------------------------------------+
+|                                            |
+|       SOUND FAMILIAR (Dark Navy)           |
+|   Pain points in subtle glassmorphic cards |
+|                                            |
++--------------------------------------------+
+|                                            |
+|       THE SOLUTION (Dark Navy)             |
+|   [Already dark - no change needed]        |
+|                                            |
++--------------------------------------------+
+|                                            |
+|       HOW IT WORKS (Dark Navy)             |
+|   White card for time commitment box       |
+|   Steps use light text on dark             |
+|                                            |
++--------------------------------------------+
+|                                            |
+|       IS THIS RIGHT FOR YOU (Dark Navy)    |
+|   [Already dark - no change needed]        |
+|                                            |
++--------------------------------------------+
+|                                            |
+|       ULTIMATE PROOF (Dark Navy)           |
+|   White card for the Promise               |
+|                                            |
++--------------------------------------------+
+|                                            |
+|       GUARANTEE (Dark Navy)                |
+|   [Already dark - no change needed]        |
+|                                            |
++--------------------------------------------+
+|                                            |
+|       PRICE (Dark Navy)                    |
+|   White card for pricing details           |
+|                                            |
++--------------------------------------------+
+|                                            |
+|       FAQ (Dark Navy)                      |
+|   [Already dark - no change needed]        |
+|                                            |
++--------------------------------------------+
+|                                            |
+|       FINAL CTA (Dark Navy)                |
+|   [Already dark - no change needed]        |
+|                                            |
++--------------------------------------------+
 ```
-className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/20"
-```
-**To:**
-```
-className="bg-white rounded-2xl p-6 md:p-8 border border-gray-200 shadow-lg"
-```
 
-#### 2. Update All Label Styles (Lines 1180, 1196, 1212, 1227)
-**From:** `text-white/80`
-**To:** `text-gray-700`
+## Section-by-Section Changes
 
-#### 3. Update Required Asterisk (Lines 1181, 1197, 1228)
-Keep `text-nim-mint` for visual consistency (mint works on white background)
+### Section 2: Sound Familiar?
+- **Current**: `bg-nim-cloud` (light background)
+- **New**: `bg-nim-navy` (dark background)
+- Update typography: headlines to white, subheads to cream (`#F5F0E8`/80)
+- Pain point cards: glassmorphic style (`bg-white/[0.03]` with subtle cream borders)
+- Left border accent: mint (`border-l-nim-mint`)
 
-#### 4. Update Optional Text (Line 1213)
-**From:** `text-white/40`
-**To:** `text-gray-400`
+### Section 4: How It Works
+- **Current**: `bg-nim-cloud` (light background)
+- **New**: `bg-nim-navy` (dark background)
+- Update typography: headlines to white, body to cream
+- Step icons: change from `text-nim-teal` to `text-nim-mint`
+- Numbered circles: update borders and text to mint tones
+- **Time Commitment Card**: Keep as prominent white card (`bg-white`) to draw attention to key info
+  - This white card becomes the "secondary accent" element
+  - Text inside: navy headlines, teal accents
 
-#### 5. Update All Input Styles (Lines 1189, 1205, 1220, 1236)
-**From:**
-```
-bg-white/10 border-white/20 text-white placeholder-white/40
-```
-**To:**
-```
-bg-gray-50 border-gray-300 text-gray-900 placeholder-gray-400
-```
+### Section 6: Ultimate Proof ("It Has to Work" Promise)
+- **Current**: `bg-nim-cloud` (light background)
+- **New**: `bg-nim-navy` (dark background)
+- **Promise Card**: Keep as white card (`bg-white`) for emphasis
+  - Shield icon: mint/teal tones
+  - Text: navy headlines, slate-dark body
 
-#### 6. Update Footer Text (Line 1263)
-**From:** `text-white/40`
-**To:** `text-gray-500`
+### Section 8: Price and Seats
+- **Current**: `bg-nim-cloud` (light background)
+- **New**: `bg-nim-navy` (dark background)
+- Update header typography: white headlines, mint accents
+- **Pricing Card**: Keep as white card (`bg-white`) for prominence
+  - Price: navy text
+  - Accents: teal badges
+  - CTA button: navy background with white text
+- Micro note: update to cream/white subdued text
 
-#### 7. Update Success State Container (Line 1160)
-**From:**
-```
-className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center border border-white/20"
-```
-**To:**
-```
-className="bg-white rounded-2xl p-8 text-center border border-gray-200 shadow-lg"
-```
+### Sections Already Dark (No Changes Needed)
+- Section 1: Hero
+- Section 3: The Solution
+- Section 5: Is This Right For You
+- Section 7: Guarantee
+- Section 9: FAQ
+- Section 10: Final CTA
+- Footer
 
-#### 8. Update Success State Text (Lines 1165-1166)
-**From:** `text-white` and `text-white/70`
-**To:** `text-gray-900` and `text-gray-600`
+## Design Rationale
+- **Dark dominance**: Creates an immersive, premium experience
+- **White cards as focal points**: The few white elements (Time Commitment, Promise, Pricing) naturally draw the eye to the most important conversion elements
+- **Consistent visual rhythm**: No more jarring light/dark switches every section
+- **Better for extended reading**: Dark backgrounds are easier on the eyes for longer content pages
 
-## Summary
-- 1 file modified: `src/pages/CapacityBuildout.tsx`
-- Form container: solid white with subtle shadow
-- Labels: dark gray for readability
-- Inputs: light gray background with dark text
-- Button: unchanged (mint background already works well)
-- Success state: matching white card style
+## Technical Details
 
-## Critical Files for Implementation
-- src/pages/CapacityBuildout.tsx - Contains the FinalCTASection with the contact form (lines 1090-1271)
+### Files Modified
+- `src/pages/SmartTeamCohort.tsx`
+
+### CSS Token Usage
+- Dark backgrounds: `bg-nim-navy`
+- Light cards: `bg-white` with `border border-border` and `shadow-sm`
+- Primary text on dark: `text-white`
+- Secondary text on dark: `text-[#F5F0E8]/80` (warm cream at 80% opacity)
+- Muted text on dark: `text-[#F5F0E8]/60` or `text-white/50`
+- Accent color: `text-nim-mint` (on dark) or `text-nim-teal` (on light cards)
+- Glassmorphic cards: `bg-white/[0.03]` with `border border-[#F5F0E8]/10`
