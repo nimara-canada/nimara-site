@@ -30,7 +30,7 @@ All colors MUST be HSL.
     --nim-slate-dark: 220 13% 28%; /* #3d4451 - body text, high contrast ~8.5:1 */
     --nim-white: 0 0% 100%; /* #FFFFFF */
     --nim-mist: 226 33% 93%; /* #E9ECF4 */
-    --nim-cloud: 220 50% 97%; /* #F7F9FC */
+    --nim-cloud: 40 16% 90%; /* #E8E4DE - warm cream/beige */
 
     /* Semantic tokens mapped to brand */
     --background: var(--nim-white);
