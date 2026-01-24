@@ -165,13 +165,18 @@ const FullScreenCard = ({ card }: { card: CardData }) => {
           <div className="flex flex-col justify-between relative z-10">
             {/* Top: Step Number + Description */}
             <div>
-              {/* Step Number */}
-              <div className={`w-12 h-12 rounded-full border-2 ${card.borderClass} flex items-center justify-center mb-8`}>
-                <span className={`text-lg font-medium ${card.textClass}`}>{card.step}</span>
+              {/* Step Number - Paper Tiger style */}
+              <div className="flex items-baseline gap-4 mb-8">
+                <span className={`text-[10px] font-semibold tracking-[0.3em] uppercase ${card.subtextClass} opacity-60`}>
+                  Step
+                </span>
+                <span className={`text-5xl lg:text-6xl font-black ${card.textClass} tracking-[-0.04em]`}>
+                  {String(card.step).padStart(2, '0')}
+                </span>
               </div>
 
-              {/* Description */}
-              <p className={`text-lg lg:text-xl ${card.subtextClass} leading-relaxed max-w-md mb-8`}>
+              {/* Description - larger, more impactful */}
+              <p className={`text-xl lg:text-2xl ${card.subtextClass} leading-relaxed max-w-lg mb-10 font-medium`}>
                 {card.description}
               </p>
 
@@ -189,10 +194,10 @@ const FullScreenCard = ({ card }: { card: CardData }) => {
             </div>
 
             {/* Bottom: Big Word + Learn More */}
-            <div className="mt-auto pt-12 lg:pt-20">
-              {/* Big Word */}
+            <div className="mt-auto pt-12 lg:pt-16">
+              {/* Big Word - Paper Tiger ultra-bold style */}
               <h2 
-                className={`text-[3.5rem] sm:text-[5rem] md:text-[6rem] lg:text-[7rem] xl:text-[8rem] font-black leading-[0.85] tracking-[-0.04em] uppercase ${card.textClass}`}
+                className={`text-[clamp(4rem,15vw,10rem)] font-black leading-[0.85] tracking-[-0.05em] uppercase ${card.textClass}`}
                 style={{ fontWeight: 900 }}
               >
                 {card.title}
