@@ -32,7 +32,7 @@ const steps = [
 
 export function HowItWorksTimeline() {
   return (
-    <section className="py-20 md:py-28 bg-[#F8F9FC]">
+    <section className="py-20 md:py-28 bg-muted">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Header */}
         <div className="text-center mb-16 md:mb-20">
@@ -41,7 +41,7 @@ export function HowItWorksTimeline() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-[#6945D8] mb-4"
+            className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-4"
           >
             How It Works
           </motion.span>
@@ -50,7 +50,7 @@ export function HowItWorksTimeline() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl md:text-4xl lg:text-[44px] font-bold text-[#1A1A1A] mb-5 leading-tight"
+            className="text-3xl md:text-4xl lg:text-[44px] font-bold text-foreground mb-5 leading-tight"
           >
             Scattered to strong in 4 steps.
           </motion.h2>
@@ -59,7 +59,7 @@ export function HowItWorksTimeline() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg text-[#4B5563] max-w-xl mx-auto"
+            className="text-lg text-muted-foreground max-w-xl mx-auto"
           >
             Simple systems. Clear proof. No more guessing.
           </motion.p>
@@ -68,7 +68,7 @@ export function HowItWorksTimeline() {
         {/* Desktop Timeline */}
         <div className="hidden md:block relative">
           {/* Timeline connector - continuous line through all circles */}
-          <div className="absolute top-[30px] left-[12.5%] right-[12.5%] h-1 rounded-full bg-gradient-to-r from-[#6945D8] to-[#ACFCE3] z-0" />
+          <div className="absolute top-[30px] left-[12.5%] right-[12.5%] h-1 rounded-full bg-gradient-to-r from-primary to-accent z-0" />
           
           {/* Steps */}
           <div className="grid grid-cols-4 gap-6 relative z-10">
@@ -84,25 +84,25 @@ export function HowItWorksTimeline() {
                 {/* Step number circle */}
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className={`relative w-[60px] h-[60px] rounded-full bg-[#ACFCE3] border-[3px] border-white shadow-[0_4px_12px_rgba(105,69,216,0.15)] flex items-center justify-center ${step.number === 4 ? 'shadow-[0_0_20px_rgba(172,252,227,0.5)]' : ''}`}
+                  className={`relative w-[60px] h-[60px] rounded-full bg-accent border-[3px] border-background shadow-lg flex items-center justify-center ${step.number === 4 ? 'shadow-[0_0_20px_hsl(var(--accent)/0.5)]' : ''}`}
                 >
-                  <span className="text-2xl font-bold text-[#202654]">{step.number}</span>
+                  <span className="text-2xl font-bold text-foreground">{step.number}</span>
                   {step.number === 4 && (
-                    <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-[#6945D8] flex items-center justify-center shadow-md animate-pulse">
-                      <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />
+                    <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-primary flex items-center justify-center shadow-md animate-pulse">
+                      <Check className="w-3.5 h-3.5 text-primary-foreground" strokeWidth={3} />
                     </div>
                   )}
                 </motion.div>
                 
                 {/* Step content - tighter grouping */}
                 <div className="mt-4">
-                  <h3 className="text-xl font-bold text-[#1A1A1A]">
+                  <h3 className="text-xl font-bold text-foreground">
                     {step.title}
                   </h3>
-                  <p className="text-[15px] font-medium text-[#6945D8] mt-1">
+                  <p className="text-[15px] font-medium text-primary mt-1">
                     {step.subtitle}
                   </p>
-                  <p className="text-[15px] text-[#4B5563] mt-3 max-w-[220px] mx-auto leading-relaxed">
+                  <p className="text-[15px] text-muted-foreground mt-3 max-w-[220px] mx-auto leading-relaxed">
                     {step.description}
                   </p>
                 </div>
@@ -114,7 +114,7 @@ export function HowItWorksTimeline() {
         {/* Mobile Timeline */}
         <div className="md:hidden relative">
           {/* Vertical timeline connector - continuous line */}
-          <div className="absolute left-[30px] top-[30px] bottom-[30px] w-1 rounded-full bg-gradient-to-b from-[#6945D8] to-[#ACFCE3] z-0" />
+          <div className="absolute left-[30px] top-[30px] bottom-[30px] w-1 rounded-full bg-gradient-to-b from-primary to-accent z-0" />
           
           {/* Steps */}
           <div className="space-y-10 relative z-10">
@@ -128,24 +128,24 @@ export function HowItWorksTimeline() {
                 className="flex gap-5"
               >
                 {/* Step number circle */}
-                <div className={`relative w-[60px] h-[60px] rounded-full bg-[#ACFCE3] border-[3px] border-white shadow-[0_4px_12px_rgba(105,69,216,0.15)] flex items-center justify-center flex-shrink-0 ${step.number === 4 ? 'shadow-[0_0_20px_rgba(172,252,227,0.5)]' : ''}`}>
-                  <span className="text-2xl font-bold text-[#202654]">{step.number}</span>
+                <div className={`relative w-[60px] h-[60px] rounded-full bg-accent border-[3px] border-background shadow-lg flex items-center justify-center flex-shrink-0 ${step.number === 4 ? 'shadow-[0_0_20px_hsl(var(--accent)/0.5)]' : ''}`}>
+                  <span className="text-2xl font-bold text-foreground">{step.number}</span>
                   {step.number === 4 && (
-                    <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-[#6945D8] flex items-center justify-center shadow-md animate-pulse">
-                      <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />
+                    <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-primary flex items-center justify-center shadow-md animate-pulse">
+                      <Check className="w-3.5 h-3.5 text-primary-foreground" strokeWidth={3} />
                     </div>
                   )}
                 </div>
                 
                 {/* Step content */}
                 <div className="pt-1">
-                  <h3 className="text-xl font-bold text-[#1A1A1A]">
+                  <h3 className="text-xl font-bold text-foreground">
                     {step.title}
                   </h3>
-                  <p className="text-[15px] font-medium text-[#6945D8] mt-1">
+                  <p className="text-[15px] font-medium text-primary mt-1">
                     {step.subtitle}
                   </p>
-                  <p className="text-[15px] text-[#4B5563] mt-2 leading-relaxed">
+                  <p className="text-[15px] text-muted-foreground mt-2 leading-relaxed">
                     {step.description}
                   </p>
                 </div>
@@ -160,16 +160,16 @@ export function HowItWorksTimeline() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-center mt-16 md:mt-20 pt-10 border-t border-[#E5E7EB]"
+          className="text-center mt-16 md:mt-20 pt-10 border-t border-border"
         >
-          <p className="text-xl font-medium text-[#1A1A1A] mb-5">
+          <p className="text-xl font-medium text-foreground mb-5">
             Ready to start?
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
               asChild
               size="lg"
-              className="bg-[#6945D8] hover:bg-[#5835C8] text-white px-8 py-6 text-base font-medium rounded-lg group w-full sm:w-auto shadow-lg shadow-[#6945D8]/20 hover:shadow-xl hover:shadow-[#6945D8]/30 transition-all duration-200"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-base font-medium rounded-lg group w-full sm:w-auto shadow-lg transition-all duration-200"
             >
               <a href="https://calendly.com/nimara-benard/discovery-call" target="_blank" rel="noopener noreferrer">
                 Book a 20-min Fit Call
@@ -178,7 +178,7 @@ export function HowItWorksTimeline() {
             </Button>
             <Link
               to="/free-check"
-              className="inline-flex items-center text-[#4B5563] hover:text-[#6945D8] transition-colors font-medium group"
+              className="inline-flex items-center text-muted-foreground hover:text-primary transition-colors font-medium group"
             >
               Take the Free Health Check first
               <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />

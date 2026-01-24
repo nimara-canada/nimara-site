@@ -16,7 +16,6 @@ const ProblemSection = () => {
     <section 
       ref={sectionRef}
       className="bg-background h-screen flex flex-col items-center justify-center snap-start snap-always relative overflow-hidden"
-      style={{ position: 'relative' }}
     >
       <motion.div 
         style={{ opacity, y }}
@@ -28,11 +27,10 @@ const ProblemSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="font-black tracking-[-0.04em] leading-[0.95] text-[clamp(2rem,6.4vw,5.6rem)] uppercase"
-          style={{ color: '#202654' }}
+          className="font-black tracking-[-0.04em] leading-[0.95] text-[clamp(2rem,6.4vw,5.6rem)] uppercase text-foreground"
         >
           GOOD ORGANIZATIONS STILL LOSE FUNDING{' '}
-          <span style={{ color: '#6945D8' }}>WHEN SYSTEMS ARE WEAK.</span>
+          <span className="text-primary">WHEN SYSTEMS ARE WEAK.</span>
         </motion.h2>
       </motion.div>
 
@@ -43,14 +41,14 @@ const ProblemSection = () => {
         transition={{ delay: 1.2, duration: 0.6 }}
         className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-[10px] font-medium tracking-[0.2em] uppercase" style={{ color: '#96A0B5' }}>
+        <span className="text-[10px] font-medium tracking-[0.2em] uppercase text-muted-foreground">
           Scroll
         </span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <ChevronDown className="w-5 h-5" style={{ color: '#96A0B5' }} />
+          <ChevronDown className="w-5 h-5 text-muted-foreground" />
         </motion.div>
       </motion.div>
     </section>

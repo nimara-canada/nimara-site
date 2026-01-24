@@ -33,18 +33,18 @@ const faqs = [
 
 export const CapacityFAQ = () => {
   return (
-    <section className="py-20 md:py-28 bg-[#F8F9FC]">
+    <section className="py-20 md:py-28 bg-muted">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-12 md:mb-16">
-            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-[#6945D8] mb-4">
+            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-4">
               FAQ
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#202654] mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
               Questions you might have
             </h2>
-            <p className="text-lg text-[#4A4A4A]">
+            <p className="text-lg text-muted-foreground">
               Honest answers. No surprises.
             </p>
           </div>
@@ -55,12 +55,12 @@ export const CapacityFAQ = () => {
               <AccordionItem 
                 key={index} 
                 value={`item-${index}`}
-                className="bg-white border border-gray-100 rounded-lg px-6 shadow-sm data-[state=open]:shadow-md transition-shadow"
+                className="bg-background border border-border rounded-lg px-6 shadow-sm data-[state=open]:shadow-md transition-shadow"
               >
-                <AccordionTrigger className="text-left text-[#202654] font-semibold text-lg py-5 hover:no-underline">
+                <AccordionTrigger className="text-left text-foreground font-semibold text-lg py-5 hover:no-underline">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-[#4A4A4A] text-base pb-5 leading-relaxed">
+                <AccordionContent className="text-muted-foreground text-base pb-5 leading-relaxed">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -68,23 +68,23 @@ export const CapacityFAQ = () => {
           </Accordion>
 
           {/* Guarantee Block */}
-          <div className="mt-16 md:mt-20 bg-[#ACFCE3]/15 border-l-4 border-[#ACFCE3] rounded-lg p-8 md:p-10">
+          <div className="mt-16 md:mt-20 bg-accent/15 border-l-4 border-accent rounded-lg p-8 md:p-10">
             <div className="flex flex-col md:flex-row md:items-start gap-6">
               <div className="flex-shrink-0">
-                <div className="w-14 h-14 rounded-full bg-[#ACFCE3]/30 flex items-center justify-center">
-                  <ShieldCheck className="w-7 h-7 text-[#202654]" />
+                <div className="w-14 h-14 rounded-full bg-accent/30 flex items-center justify-center">
+                  <ShieldCheck className="w-7 h-7 text-foreground" />
                 </div>
               </div>
               <div className="flex-1">
-                <h3 className="text-xl md:text-2xl font-bold text-[#202654] mb-3">
+                <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3">
                   Our promise
                 </h3>
-                <p className="text-[#4A4A4A] text-base md:text-lg leading-relaxed mb-6">
+                <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-6">
                   If we don't deliver what we promised, you get your money back. No fine print. No hoops. We only win when your systems actually work.
                 </p>
                 <Button 
                   asChild
-                  className="bg-[#6945D8] hover:bg-[#5835C8] text-white font-semibold px-6 py-3 h-auto rounded-lg"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 py-3 h-auto rounded-lg"
                 >
                   <a href={CALENDLY_BOOKING_URL} target="_blank" rel="noopener noreferrer">
                     Book a 20-min Fit Call →

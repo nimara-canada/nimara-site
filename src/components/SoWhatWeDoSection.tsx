@@ -15,7 +15,6 @@ export const SoWhatWeDoSection = () => {
     <section 
       ref={sectionRef}
       className="bg-background h-screen flex flex-col items-center justify-center snap-start snap-always relative overflow-hidden"
-      style={{ position: 'relative' }}
     >
       {/* Decorative line above */}
       <motion.div 
@@ -35,8 +34,7 @@ export const SoWhatWeDoSection = () => {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="font-black tracking-[-0.04em] leading-[0.95] uppercase text-[clamp(1.6rem,8vw,5.6rem)]"
-          style={{ color: '#000000' }}
+          className="font-black tracking-[-0.04em] leading-[0.95] uppercase text-[clamp(1.6rem,8vw,5.6rem)] text-foreground"
         >
           SO WHAT DO WE DO, EXACTLY?
         </motion.h2>
@@ -59,8 +57,7 @@ export const SoWhatWeDoSection = () => {
               repeat: Infinity, 
               ease: "easeInOut" 
             }}
-            className="w-2 h-2 rounded-full"
-            style={{ backgroundColor: '#6945D8' }}
+            className="w-2 h-2 rounded-full bg-primary"
           />
         </motion.div>
       </motion.div>

@@ -48,9 +48,9 @@ const faqs = [
 
 const SmartTeamCohortFAQ = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="bg-[#0f1629] py-6 px-6">
+      <header className="bg-secondary-background py-6 px-6">
         <div className="max-w-[1000px] mx-auto">
           <Link 
             to="/smart-team-cohort" 
@@ -67,13 +67,13 @@ const SmartTeamCohortFAQ = () => {
         <div className="max-w-[700px] mx-auto">
           {/* Page Header */}
           <div className="text-center mb-16">
-            <p className="text-sm font-semibold uppercase tracking-[2px] text-[#6945D8] mb-4">
+            <p className="text-sm font-semibold uppercase tracking-[2px] text-primary mb-4">
               Smart Team Cohort
             </p>
-            <h1 className="text-[clamp(36px,5vw,56px)] font-extrabold text-[#202654] leading-[1.1] tracking-[-0.02em] mb-6">
+            <h1 className="text-[clamp(36px,5vw,56px)] font-extrabold text-foreground leading-[1.1] tracking-[-0.02em] mb-6">
               Frequently Asked Questions
             </h1>
-            <p className="text-lg text-[#96A0B5]">
+            <p className="text-lg text-muted-foreground">
               Everything you need to know about the February 2026 cohort.
             </p>
           </div>
@@ -84,12 +84,12 @@ const SmartTeamCohortFAQ = () => {
               <AccordionItem 
                 key={index} 
                 value={`item-${index}`}
-                className="border-b border-[#E8E8E8]"
+                className="border-b border-border"
               >
-                <AccordionTrigger className="text-left text-lg font-semibold text-[#202654] py-6 hover:no-underline hover:text-[#6945D8]">
+                <AccordionTrigger className="text-left text-lg font-semibold text-foreground py-6 hover:no-underline hover:text-primary">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-[#96A0B5] text-base leading-relaxed pb-6">
+                <AccordionContent className="text-muted-foreground text-base leading-relaxed pb-6">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -98,20 +98,20 @@ const SmartTeamCohortFAQ = () => {
 
           {/* Bottom CTA */}
           <div className="mt-16 text-center">
-            <p className="text-[#96A0B5] mb-6">
+            <p className="text-muted-foreground mb-6">
               Still have questions?
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a 
                 href="mailto:hello@nimara.ca" 
-                className="text-[#6945D8] font-medium hover:underline"
+                className="text-primary font-medium hover:underline"
               >
                 Email us at hello@nimara.ca
               </a>
-              <span className="hidden sm:block text-[#96A0B5]">or</span>
+              <span className="hidden sm:block text-muted-foreground">or</span>
               <Link 
                 to="/smart-team-cohort" 
-                className="text-[#6945D8] font-medium hover:underline"
+                className="text-primary font-medium hover:underline"
               >
                 Apply for February Cohort →
               </Link>
@@ -121,8 +121,8 @@ const SmartTeamCohortFAQ = () => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-[#0f1629] py-12 px-6 text-center">
-        <p className="text-sm text-[#96A0B5]">
+      <footer className="bg-secondary-background py-12 px-6 text-center">
+        <p className="text-sm text-white/60">
           Starts Feb 11, 2026 • 15 spots • $9,450 CAD
         </p>
       </footer>

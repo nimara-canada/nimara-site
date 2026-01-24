@@ -54,7 +54,7 @@ export default function Integrations() {
 
             {/* CTA Section */}
             <section className="mt-20">
-              <div className="bg-[#202654] rounded-2xl p-12 text-center text-white relative overflow-hidden">
+              <div className="bg-secondary-background rounded-2xl p-12 text-center text-white relative overflow-hidden">
                 {/* Subtle background glow */}
                 <div className="absolute inset-0 opacity-30">
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
@@ -71,7 +71,7 @@ export default function Integrations() {
                     href={CALENDLY_BOOKING_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 bg-[#ACFCE3] text-[#202654] hover:bg-[#9EEBD4] font-semibold px-8 py-3 rounded-lg transition-colors"
+                    className="inline-flex items-center justify-center gap-2 bg-accent text-accent-foreground hover:bg-accent/90 font-semibold px-8 py-3 rounded-lg transition-colors"
                   >
                     Schedule a Call
                     <ArrowRight className="w-4 h-4" />
