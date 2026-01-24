@@ -3,7 +3,7 @@ import { Menu, X, ArrowRight } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import nimaraLogo from "@/assets/nimara-logo.png";
+import nimaraLogo from "@/assets/nimara-logo-brand.svg";
 import { useMotionPreferences, DROPBOX_EASING_CSS } from "@/hooks/use-scroll-reveal";
 import { CALENDLY_BOOKING_URL, TYPEFORM_HEALTH_CHECK_URL } from "@/constants/urls";
 
@@ -129,12 +129,12 @@ export const Header = ({ activeRoute = "/", hideCTA = false }: HeaderProps) => {
                 alt="Nimara"
                 className="w-auto object-contain"
                 style={{
-                  height: isScrolled ? "100px" : "120px",
+                  height: isScrolled ? "40px" : "48px",
                   ...transitionStyle,
                 }}
                 fetchPriority="high"
-                width="360"
-                height="120"
+                width="180"
+                height="48"
               />
             </a>
 
@@ -212,7 +212,7 @@ export const Header = ({ activeRoute = "/", hideCTA = false }: HeaderProps) => {
                 <div className="flex flex-col h-full bg-background">
                   {/* Mobile nav header */}
                   <div className="p-6 border-b border-border/50">
-                    <img src={nimaraLogo} alt="Nimara" className="h-10" />
+                    <img src={nimaraLogo} alt="Nimara" className="h-8" />
                   </div>
 
                   {/* Mobile nav links */}
