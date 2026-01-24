@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import ProblemSection from "@/components/ProblemSection";
 import SoWhatWeDoSection from "@/components/SoWhatWeDoSection";
+import DiagnoseCard from "@/components/DiagnoseCard";
 import WithNimara from "@/components/WithNimara";
 
 import StartingPointSplit from "@/components/StartingPointSplit";
@@ -103,6 +104,9 @@ const Index = () => {
           
           {/* Transition Question */}
           <SoWhatWeDoSection />
+          
+          {/* Step 1: Diagnose */}
+          <DiagnoseCard />
           
           {/* With Nimara, you can - 3 Features */}
           <WithNimara />
