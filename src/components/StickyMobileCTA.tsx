@@ -25,15 +25,28 @@ export const StickyMobileCTA = ({ href, label = "Apply Now" }: StickyMobileCTAPr
 
   return (
     <div 
-      className="fixed bottom-0 left-0 right-0 z-[1000] md:hidden bg-nim-navy p-4 shadow-[0_-4px_20px_rgba(0,0,0,0.2)] transform transition-transform duration-300"
-      style={{ transform: isVisible ? 'translateY(0)' : 'translateY(100%)' }}
+      className="fixed bottom-0 left-0 right-0 z-[1000] md:hidden bg-nim-navy shadow-[0_-4px_20px_rgba(0,0,0,0.2)] transform transition-transform duration-300"
+      style={{ 
+        transform: isVisible ? 'translateY(0)' : 'translateY(100%)',
+        paddingBottom: 'max(16px, env(safe-area-inset-bottom))',
+        paddingTop: '16px',
+        paddingLeft: '16px',
+        paddingRight: '16px'
+      }}
+      role="complementary"
+      aria-label="Quick apply action"
     >
       <Button 
         size="lg" 
-        className="w-full bg-[#3ECFB2] hover:bg-[#35b89d] text-nim-navy rounded-xl py-4 text-base font-bold shadow-[0_8px_30px_rgba(62,207,178,0.4)] transition-all hover:-translate-y-0.5" 
+        className="w-full min-h-[48px] bg-[#3ECFB2] hover:bg-[#35b89d] text-nim-navy rounded-xl py-4 text-base font-bold shadow-[0_8px_30px_rgba(62,207,178,0.4)] transition-all hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3ECFB2] focus-visible:ring-offset-2 focus-visible:ring-offset-nim-navy" 
         asChild
       >
-        <a href={href} target="_blank" rel="noopener noreferrer">
+        <a 
+          href={href} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          aria-label={`${label} - opens application form in new tab`}
+        >
           {label}
           <ArrowRight className="ml-2 w-5 h-5" aria-hidden="true" />
         </a>
