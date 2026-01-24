@@ -193,7 +193,7 @@ const SmartTeamCohort = () => {
         <div className="max-w-[1000px] mx-auto">
           {/* Label */}
           <p className="text-sm font-semibold uppercase tracking-[2px] text-[#96A0B5] mb-6">
-            With the Nonprofit Machine, you get
+            After Implementation, you get
           </p>
 
           {/* Big Rotating Word */}
