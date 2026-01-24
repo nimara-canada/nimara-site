@@ -9,7 +9,7 @@ const MaintainCard = () => {
   return (
     <section 
       ref={sectionRef}
-      className="bg-[hsl(15,70%,75%)] text-[hsl(var(--nim-navy))] relative overflow-hidden"
+      className="bg-[hsl(var(--nim-mint))] text-[hsl(var(--nim-navy))] relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 min-h-[70vh] lg:min-h-[80vh]">
@@ -129,7 +129,7 @@ const MaintainCard = () => {
                   {/* Corner accent */}
                   <div 
                     className="w-5 h-5 rounded-full"
-                    style={{ backgroundColor: 'hsl(15, 70%, 55%)' }}
+                    style={{ backgroundColor: 'hsl(var(--nim-mint-dark))' }}
                   />
                 </div>
 
