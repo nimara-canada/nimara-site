@@ -210,12 +210,12 @@ const SmartTeamCohort = () => {
 
           {/* Subheadline */}
           <p className="text-[clamp(24px,4vw,28px)] font-medium text-[#202654] mb-4">
-            A shared system everyone follows.
+            Systems your whole team can follow.
           </p>
 
           {/* Description */}
           <p className="text-lg text-[#96A0B5]">
-            Decisions, files, and spending — documented and ready.
+            Every decision, file, and dollar — tracked and ready when funders ask.
           </p>
         </div>
       </section>
