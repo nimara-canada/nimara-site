@@ -7,6 +7,7 @@ import HeroSection from "@/components/HeroSection";
 import ProblemSection from "@/components/ProblemSection";
 import SoWhatWeDoSection from "@/components/SoWhatWeDoSection";
 import DiagnoseCard from "@/components/DiagnoseCard";
+import InstallCard from "@/components/InstallCard";
 
 import StartingPointSplit from "@/components/StartingPointSplit";
 import TheProcess from "@/components/company/TheProcess";
@@ -107,7 +108,10 @@ const Index = () => {
           {/* Step 1: Diagnose */}
           <DiagnoseCard />
           
+          {/* Step 2: Install */}
+          <InstallCard />
           
+
           {/* Start Here - Pick what fits you */}
           <StartingPointSplit />
           
