@@ -70,7 +70,7 @@ const SmartTeamCohortHero = () => {
 
             {/* Microcopy */}
             <p className="text-sm sm:text-base text-white/50 font-light">
-              SBCCI grant-eligible • Application takes 5 minutes
+              Capacity building grant eligible • Application takes 5 minutes
             </p>
           </div>
         </div>
@@ -726,10 +726,10 @@ const SmartTeamCohortHero = () => {
 
             <AccordionItem value="item-4" className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-xl sm:rounded-2xl mb-3 sm:mb-4 px-4 sm:px-6 md:px-8 data-[state=open]:bg-white/[0.05] transition-all">
               <AccordionTrigger className="text-left text-white text-base sm:text-lg md:text-xl font-medium py-4 sm:py-5 md:py-7 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-[#F5F0E8]/60">
-                What if I don't have an SBCCI grant?
+                What if I don't have a capacity building grant?
               </AccordionTrigger>
               <AccordionContent className="text-[#F5F0E8]/70 text-sm sm:text-base md:text-lg pb-4 sm:pb-5 md:pb-7 leading-relaxed">
-                This works for any nonprofit. SBCCI just makes it easier to pay for. Other capacity grants work too.
+                This works for any nonprofit. Capacity building grants just make it easier to pay for. Other grants work too.
               </AccordionContent>
             </AccordionItem>
 
