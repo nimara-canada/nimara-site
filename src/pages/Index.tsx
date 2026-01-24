@@ -98,13 +98,15 @@ const Index = () => {
           {/* Hero - full height entry */}
           <HeroSection />
           
-          {/* Problem + Transition - Full screen snap sections */}
-          <div className="snap-y snap-mandatory">
-            {/* The Problem */}
-            <ProblemSection />
-            
-            {/* Transition Question */}
-            <SoWhatWeDoSection />
+          {/* Problem + Transition - Magazine-style scroll sections */}
+          <div className="h-[200vh] relative">
+            <div className="sticky top-0 h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth overscroll-contain">
+              {/* The Problem */}
+              <ProblemSection />
+              
+              {/* Transition Question */}
+              <SoWhatWeDoSection />
+            </div>
           </div>
           
           {/* Steps 1-3: Diagnose, Install, Maintain - Scroll stacked cards */}
