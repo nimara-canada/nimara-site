@@ -1,13 +1,41 @@
 import { useState, useEffect } from "react";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, Plus, Minus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { StickyMobileCTA } from "@/components/StickyMobileCTA";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+
+const FAQS = [
+  {
+    question: "When does it start?",
+    answer: "February 11, 2026. The cohort runs for 6 weeks and ends March 25, 2026."
+  },
+  {
+    question: "How much time do I need each week?",
+    answer: "About 4 hours: one 90-minute group call, one 90-minute build session, and about an hour of prep. All online."
+  },
+  {
+    question: "Do I need to buy new software?",
+    answer: "No. We build everything in the tools you already have — Google Workspace or Microsoft 365."
+  },
+  {
+    question: "Is this just training?",
+    answer: "No. Training gives you knowledge and leaves. We build the actual systems in your actual tools. When we leave, the systems work."
+  },
+  {
+    question: "Why only 15 spots?",
+    answer: "We give each organization personal attention. More than 15 means less attention for you."
+  },
+  {
+    question: "What's the refund policy?",
+    answer: "We offer a full refund if systems aren't successfully installed by Week 6, provided you meet our attendance and document-sharing requirements."
+  }
+];
 
 const ROTATING_WORDS = ["Clarity", "Confidence", "Proof", "Control"];
 
 const SmartTeamCohort = () => {
   const [wordIndex, setWordIndex] = useState(0);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -265,7 +293,60 @@ const SmartTeamCohort = () => {
         </div>
       </section>
 
-      {/* ========== SECTION 7: FINAL CTA ========== */}
+      {/* ========== SECTION 7: FAQ ========== */}
+      <section className="bg-white py-[140px] px-6">
+        <div className="max-w-[700px] mx-auto">
+          {/* Label */}
+          <p className="text-center text-sm font-semibold uppercase tracking-[2px] text-[#6945D8] mb-6">
+            Questions
+          </p>
+
+          {/* Headline */}
+          <h2 className="text-center text-[clamp(36px,5vw,56px)] font-extrabold text-[#202654] leading-[1.1] mb-16">
+            Before you apply
+          </h2>
+
+          {/* FAQ Items */}
+          <div className="space-y-0">
+            {FAQS.map((faq, index) => (
+              <div key={index} className="border-b border-[#E8E8E8]">
+                <button
+                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                  className="w-full py-6 flex items-center justify-between text-left group"
+                >
+                  <span className="text-lg font-semibold text-[#202654] group-hover:text-[#6945D8] transition-colors pr-4">
+                    {faq.question}
+                  </span>
+                  <span className="w-8 h-8 rounded-full bg-[#202654] flex items-center justify-center shrink-0 transition-transform duration-200" style={{ transform: openFaq === index ? 'rotate(180deg)' : 'rotate(0deg)' }}>
+                    {openFaq === index ? (
+                      <Minus className="w-4 h-4 text-white" />
+                    ) : (
+                      <Plus className="w-4 h-4 text-white" />
+                    )}
+                  </span>
+                </button>
+                <AnimatePresence initial={false}>
+                  {openFaq === index && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <p className="pb-6 pr-12 text-base text-[#96A0B5] leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========== SECTION 8: FINAL CTA ========== */}
       <section className="bg-[#0f1629] py-[140px] px-6 text-center">
         <div className="max-w-[1000px] mx-auto">
           {/* Headline */}
