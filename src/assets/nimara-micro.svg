@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+  <!-- MICRO-MARK: Simplified N for 16px/24px use -->
+  <!-- Optimized stroke weights for small sizes -->
+  <g>
+    <polygon fill="#202654" points="0,24 0,0 6,0 6,14 18,0 24,0 9,19 9,24"/>
+    <polygon fill="#202654" points="18,24 18,10 6,24 0,24 15,6 15,0 24,0 24,24"/>
+    <polygon fill="#6945D8" points="20,0 24,0 24,5"/>
+  </g>
+</svg>

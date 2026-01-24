@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 40" fill="none">
+  <!-- N-MARK: One-color White -->
+  <g fill="#FFFFFF">
+    <polygon points="0,40 0,0 8,0 8,24 28,0 36,0 12,32 12,40"/>
+    <polygon points="28,40 28,16 8,40 0,40 24,10 24,0 36,0 36,40"/>
+    <polygon points="30,0 36,0 36,7"/>
+  </g>
+</svg>
