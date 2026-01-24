@@ -2,12 +2,12 @@ import { motion } from 'framer-motion';
 
 export const SoWhatWeDoSection = () => {
   return (
-    <section className="bg-background">
+    <section className="bg-background min-h-[60vh] flex items-center justify-center">
       <div 
-        className="max-w-5xl mx-auto text-center flex items-center justify-center"
-        style={{ padding: '140px 24px' }}
+        className="max-w-5xl mx-auto text-center px-6"
+        style={{ padding: '120px 24px' }}
       >
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
