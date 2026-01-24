@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 const domains = [
@@ -47,17 +47,13 @@ const domains = [
 ];
 
 export default function WhatWeHelpWith() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
   return (
     <section
-      ref={containerRef}
-      className="relative"
       style={{ backgroundColor: "#0f1629" }}
       aria-labelledby="domains-heading"
     >
-      {/* Header - Sticky intro */}
-      <div className="h-screen flex items-center justify-center sticky top-0">
+      {/* Header - Full screen intro */}
+      <div className="h-screen flex items-center justify-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -108,7 +104,7 @@ export default function WhatWeHelpWith() {
         </motion.div>
       </div>
 
-      {/* Domain Cards - Full screen each */}
+      {/* Domain Cards - Each full screen, no sticky */}
       {domains.map((domain, idx) => (
         <DomainCard
           key={domain.index}
@@ -118,9 +114,6 @@ export default function WhatWeHelpWith() {
           isLeft={idx % 2 === 0}
         />
       ))}
-
-      {/* Final spacer for last card to scroll away */}
-      <div className="h-[50vh]" />
     </section>
   );
 }
@@ -137,41 +130,38 @@ function DomainCard({
   isLeft: boolean;
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(cardRef, { amount: 0.5 });
   
   const { scrollYProgress } = useScroll({
     target: cardRef,
     offset: ["start end", "end start"]
   });
 
-  // Parallax and fade effects
-  const y = useTransform(scrollYProgress, [0, 0.5, 1], [100, 0, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.9, 1, 1, 0.95]);
+  // Smooth parallax - content slides up as you scroll
+  const y = useTransform(scrollYProgress, [0, 0.5, 1], [60, 0, -60]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   return (
     <div 
       ref={cardRef}
-      className="h-screen flex items-center justify-center sticky top-0"
-      style={{ zIndex: index + 1 }}
+      className="min-h-screen flex items-center justify-center py-20"
     >
       <motion.div
-        style={{ y, opacity, scale }}
+        style={{ y, opacity }}
         className="w-full max-w-5xl mx-auto px-6"
       >
-        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+        <div className={`grid md:grid-cols-2 gap-8 md:gap-16 items-center ${isLeft ? '' : 'md:direction-rtl'}`}>
           {/* Left side - Index & Progress */}
-          <div className={`${isLeft ? 'order-1' : 'order-1 md:order-2'} flex flex-col items-center md:items-end`}>
+          <div className={`flex flex-col ${isLeft ? 'items-start md:items-end' : 'items-start md:items-start md:order-2'}`}>
             {/* Large index number */}
-            <motion.span
-              className="font-mono text-[120px] md:text-[180px] lg:text-[220px] font-bold leading-none"
+            <span
+              className="font-mono text-[100px] md:text-[160px] lg:text-[200px] font-bold leading-none select-none"
               style={{ 
                 color: "transparent",
-                WebkitTextStroke: "1px rgba(172, 252, 227, 0.3)"
+                WebkitTextStroke: "1px rgba(172, 252, 227, 0.25)"
               }}
             >
               {domain.index}
-            </motion.span>
+            </span>
             
             {/* Progress indicator */}
             <div className="flex items-center gap-2 mt-4">
@@ -180,8 +170,7 @@ function DomainCard({
                   key={i}
                   className="w-2 h-2 rounded-full transition-all duration-300"
                   style={{
-                    backgroundColor: i === index ? "#ACFCE3" : "rgba(255,255,255,0.2)",
-                    transform: i === index ? "scale(1.2)" : "scale(1)"
+                    backgroundColor: i === index ? "#ACFCE3" : "rgba(255,255,255,0.15)"
                   }}
                 />
               ))}
@@ -189,29 +178,29 @@ function DomainCard({
           </div>
 
           {/* Right side - Content */}
-          <div className={`${isLeft ? 'order-2' : 'order-2 md:order-1'}`}>
+          <div className={`${isLeft ? '' : 'md:order-1'}`}>
             {/* Vertical accent line */}
             <div 
-              className="w-px h-16 mb-8 hidden md:block"
+              className="w-px h-12 mb-6"
               style={{ backgroundColor: "#ACFCE3" }}
             />
 
             {/* Subtitle */}
             <p 
-              className="text-sm font-medium tracking-widest uppercase mb-4"
+              className="text-xs font-medium tracking-[0.2em] uppercase mb-3"
               style={{ color: "rgba(255,255,255,0.4)" }}
             >
               {domain.subtitle}
             </p>
 
             {/* Title */}
-            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-5 leading-tight">
               {domain.title}
             </h3>
 
             {/* Description */}
             <p 
-              className="text-lg md:text-xl leading-relaxed max-w-md"
+              className="text-base md:text-lg leading-relaxed max-w-md"
               style={{ color: "rgba(255,255,255,0.6)" }}
             >
               {domain.description}
@@ -219,12 +208,12 @@ function DomainCard({
 
             {/* Card indicator */}
             <div 
-              className="mt-8 pt-8 flex items-center gap-4"
-              style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}
+              className="mt-8 pt-6 flex items-center gap-4"
+              style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}
             >
               <span 
-                className="text-sm font-mono"
-                style={{ color: "rgba(255,255,255,0.4)" }}
+                className="text-xs font-mono tracking-wide"
+                style={{ color: "rgba(255,255,255,0.35)" }}
               >
                 Domain {String(index + 1).padStart(2, '0')} of {String(total).padStart(2, '0')}
               </span>
