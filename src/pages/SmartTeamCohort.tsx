@@ -585,10 +585,10 @@ const SmartTeamCohortHero = () => {
           {/* Section Header */}
           <header className="text-center mb-10 sm:mb-14 md:mb-20">
             <p className="text-xs sm:text-sm md:text-base font-medium uppercase tracking-[0.2em] sm:tracking-[0.25em] text-nim-mint mb-4 sm:mb-6 md:mb-8">
-              Price and seats
+              Your Investment
             </p>
             <h2 id="price-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.02em] sm:tracking-[-0.03em] leading-[1.1] sm:leading-[1.08]">
-              Simple and <span className="text-nim-mint">clear.</span>
+              One Price. <span className="text-nim-mint">Everything Included.</span>
             </h2>
           </header>
 
