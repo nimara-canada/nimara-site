@@ -22,8 +22,7 @@ const OutcomesSection: React.FC = () => {
     <section 
       ref={sectionRef}
       aria-labelledby="outcomes-heading"
-      className="relative py-16 sm:py-20 md:py-24 lg:py-32 overflow-hidden"
-      style={{ backgroundColor: 'hsl(270, 60%, 92%)' }}
+      className="relative py-16 sm:py-20 md:py-24 lg:py-32 overflow-hidden bg-purple-section-bg"
     >
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Header */}
@@ -33,8 +32,7 @@ const OutcomesSection: React.FC = () => {
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] mb-4 sm:mb-6"
-            style={{ color: 'hsl(270, 40%, 45%)' }}
+            className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] mb-4 sm:mb-6 text-purple-section-label"
           >
             Systems & Outcomes
           </motion.p>
@@ -85,11 +83,7 @@ const OutcomesSection: React.FC = () => {
             className="h-full sm:col-span-2 md:col-span-1"
           >
             <article 
-              className="h-full rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 relative overflow-hidden min-h-[320px] sm:min-h-[380px] md:min-h-[420px] flex flex-col border"
-              style={{ 
-                backgroundColor: 'hsl(270, 50%, 95%)',
-                borderColor: 'hsl(270, 40%, 85%)'
-              }}
+              className="h-full rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 relative overflow-hidden min-h-[320px] sm:min-h-[380px] md:min-h-[420px] flex flex-col border bg-purple-section-card border-purple-section-border"
             >
               {/* Decorative wavy lines */}
               <WavyLines className="absolute inset-0 w-full h-full text-nim-purple pointer-events-none" />

@@ -35,33 +35,37 @@ const features = [{
   title: "Canada-hosted.",
   description: "Records kept 7 years."
 }];
+
 export const WhatWeBelieve = () => {
-  return <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+  return (
+    <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
       <div className="max-w-4xl mx-auto">
         <div className="flex items-center gap-3 mb-8">
-          <div className="w-10 h-10 rounded-full bg-[#7C3AED] flex items-center justify-center flex-shrink-0">
-            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+            <svg className="w-5 h-5 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#202654]">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             What makes us different
           </h2>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {features.map((feature, index) => <div key={index} className="flex items-start gap-4 bg-[#F8F9FC] border border-[#E5E7EB] rounded-2xl p-6">
-              
+          {features.map((feature, index) => (
+            <div key={index} className="flex items-start gap-4 bg-muted border border-border rounded-2xl p-6">
               <div>
-                <h3 className="text-lg font-semibold text-[#202654] mb-2">
+                <h3 className="text-lg font-semibold text-foreground mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-[#96A0B5]">
+                <p className="text-muted-foreground">
                   {feature.description}
                 </p>
               </div>
-            </div>)}
+            </div>
+          ))}
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };

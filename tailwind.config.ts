@@ -90,6 +90,12 @@ export default {
           dark: "hsl(var(--mint-dark))",
           foreground: "hsl(var(--mint-foreground))",
         },
+        "purple-section": {
+          bg: "hsl(var(--purple-section-bg))",
+          card: "hsl(var(--purple-section-card))",
+          border: "hsl(var(--purple-section-border))",
+          label: "hsl(var(--purple-section-label))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
