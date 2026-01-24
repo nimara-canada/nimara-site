@@ -86,22 +86,22 @@ const SmartTeamCohortHero = () => {
               Sound Familiar?
             </p>
             <h2 id="familiar-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.02em] leading-[1.15] mb-4 sm:mb-6">
-              You're Doing Everything From Memory
+              Everything Lives in Your Head
             </h2>
             <p className="text-lg sm:text-xl md:text-2xl text-[#F5F0E8]/80 font-light">
-              And it's exhausting.
+              And funders can tell.
             </p>
           </header>
 
-          {/* Pain Point Cards - 3+1 Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+          {/* Pain Point Cards - 2x2 Grid */}
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-10 sm:mb-12 md:mb-16">
             {/* Card 1 */}
             <article className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 border-l-4 border-l-nim-mint">
               <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">
                 "Where's that receipt?"
               </h3>
               <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
-                You spend hours looking for documents every time a funder asks.
+                When funders ask for proof and you can't find it fast — they notice.
               </p>
             </article>
 
@@ -111,7 +111,7 @@ const SmartTeamCohortHero = () => {
                 "I can't take a vacation."
               </h3>
               <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
-                If you step away, nobody knows how to find anything.
+                If you step away, nobody can answer funder questions. That's a red flag.
               </p>
             </article>
 
@@ -121,20 +121,25 @@ const SmartTeamCohortHero = () => {
                 "What if we get audited?"
               </h3>
               <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
-                You know your records aren't ready. It keeps you up at night.
+                Messy records lead to audit findings. Audit findings mean funders don't come back.
               </p>
             </article>
 
             {/* Card 4 */}
-            <article className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 border-l-4 border-l-nim-mint sm:col-span-2 lg:col-span-1">
+            <article className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 border-l-4 border-l-nim-mint">
               <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">
                 "We do good work, but..."
               </h3>
               <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
-                You struggle to prove your impact when funders ask for numbers.
+                You can't prove it. No proof = no trust. No trust = no second grant.
               </p>
             </article>
           </div>
+
+          {/* Bottom Line */}
+          <p className="text-center text-lg sm:text-xl md:text-2xl text-nim-mint font-medium">
+            Organized nonprofits get funded. Messy ones get passed over.
+          </p>
         </div>
       </section>
 
