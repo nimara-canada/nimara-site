@@ -16,6 +16,7 @@ const ProblemSection = () => {
     <section 
       ref={sectionRef}
       className="bg-background h-screen flex flex-col items-center justify-center snap-start snap-always relative overflow-hidden"
+      style={{ position: 'relative' }}
     >
       <motion.div 
         style={{ opacity, y }}
