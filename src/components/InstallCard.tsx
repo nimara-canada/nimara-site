@@ -9,7 +9,7 @@ const InstallCard = () => {
   return (
     <section 
       ref={sectionRef}
-      className="bg-[hsl(260,45%,70%)] text-[hsl(var(--nim-navy))] relative overflow-hidden"
+      className="bg-[hsl(var(--nim-purple))] text-white relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 min-h-[70vh] lg:min-h-[80vh]">
@@ -24,9 +24,9 @@ const InstallCard = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.5 }}
-                className="w-12 h-12 rounded-full border-2 border-[hsl(var(--nim-navy))]/40 flex items-center justify-center mb-8"
+                className="w-12 h-12 rounded-full border-2 border-white/40 flex items-center justify-center mb-8"
               >
-                <span className="text-lg font-medium text-[hsl(var(--nim-navy))]">2</span>
+                <span className="text-lg font-medium text-white">2</span>
               </motion.div>
 
               {/* Description */}
@@ -34,7 +34,7 @@ const InstallCard = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-lg lg:text-xl text-[hsl(var(--nim-navy))]/80 leading-relaxed max-w-md mb-8"
+                className="text-lg lg:text-xl text-white/80 leading-relaxed max-w-md mb-8"
               >
                 We don't teach. We install. We build the system inside your tools—approvals, trackers, board templates, source-of-truth folders, and a proof dashboard your team can actually run.
               </motion.p>
@@ -44,14 +44,14 @@ const InstallCard = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="flex flex-wrap items-center gap-3 text-sm text-[hsl(var(--nim-navy))]/50"
+                className="flex flex-wrap items-center gap-3 text-sm text-white/50"
               >
                 <span>Google Drive</span>
-                <span className="w-1 h-1 rounded-full bg-[hsl(var(--nim-navy))]/30" />
+                <span className="w-1 h-1 rounded-full bg-white/30" />
                 <span>Microsoft 365</span>
-                <span className="w-1 h-1 rounded-full bg-[hsl(var(--nim-navy))]/30" />
+                <span className="w-1 h-1 rounded-full bg-white/30" />
                 <span>Templates</span>
-                <span className="w-1 h-1 rounded-full bg-[hsl(var(--nim-navy))]/30" />
+                <span className="w-1 h-1 rounded-full bg-white/30" />
                 <span>Dashboards</span>
               </motion.div>
             </div>
@@ -63,7 +63,7 @@ const InstallCard = () => {
                 initial={{ opacity: 0, y: 40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7, delay: 0.3 }}
-                className="text-[3.5rem] sm:text-[5rem] md:text-[6rem] lg:text-[7rem] xl:text-[8rem] font-black leading-[0.85] tracking-[-0.04em] uppercase text-[hsl(var(--nim-navy))]"
+                className="text-[3.5rem] sm:text-[5rem] md:text-[6rem] lg:text-[7rem] xl:text-[8rem] font-black leading-[0.85] tracking-[-0.04em] uppercase text-white"
                 style={{ fontWeight: 900 }}
               >
                 Install
@@ -74,16 +74,16 @@ const InstallCard = () => {
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
                 transition={{ duration: 0.5, delay: 0.5 }}
-                className="mt-8 pt-6 border-t border-[hsl(var(--nim-navy))]/20 max-w-md"
+                className="mt-8 pt-6 border-t border-white/20 max-w-md"
               >
                 <a 
                   href="/how-nimara-works" 
                   className="inline-flex items-center justify-between w-full group"
                 >
-                  <span className="text-lg text-[hsl(var(--nim-navy))]/80 group-hover:text-[hsl(var(--nim-navy))] transition-colors">
+                  <span className="text-lg text-white/80 group-hover:text-white transition-colors">
                     Learn more: Install
                   </span>
-                  <ArrowUpRight className="w-5 h-5 text-[hsl(var(--nim-navy))]/60 group-hover:text-[hsl(var(--nim-navy))] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                  <ArrowUpRight className="w-5 h-5 text-white/60 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
                 </a>
               </motion.div>
 
@@ -92,7 +92,7 @@ const InstallCard = () => {
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
                 transition={{ duration: 0.5, delay: 0.6 }}
-                className="text-sm text-[hsl(var(--nim-navy))]/40 mt-4 italic"
+                className="text-sm text-white/40 mt-4 italic"
               >
                 We build the helper machine.
               </motion.p>
@@ -131,7 +131,7 @@ const InstallCard = () => {
                   {/* Corner accent */}
                   <div 
                     className="w-5 h-5 rounded-full"
-                    style={{ backgroundColor: 'hsl(260, 45%, 70%)' }}
+                    style={{ backgroundColor: 'hsl(var(--nim-purple))' }}
                   />
                 </div>
 
