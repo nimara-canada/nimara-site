@@ -206,8 +206,8 @@ const FullScreenCard = ({ card }: { card: CardData }) => {
             </div>
           </div>
 
-          {/* Right Column - Poster Card - BIGGER */}
-          <div className="hidden lg:flex items-center justify-end">
+          {/* Right Column - Poster Card - Full height */}
+          <div className="hidden lg:block h-screen">
             <PosterCard card={card} />
           </div>
         </div>
@@ -220,135 +220,133 @@ const PosterCard = ({ card }: { card: CardData }) => {
   const { poster } = card;
 
   return (
-    <div className="relative w-[340px] lg:w-[380px] xl:w-[420px] 2xl:w-[460px]">
+    <div 
+      className="relative h-full w-[320px] xl:w-[380px] 2xl:w-[420px]"
+      style={{ backgroundColor: poster.bg }}
+    >
+      {/* Noise texture overlay */}
       <div 
-        className="relative rounded-2xl overflow-hidden shadow-2xl"
-        style={{ backgroundColor: poster.bg, aspectRatio: '3/4' }}
-      >
-        {/* Noise texture overlay */}
-        <div 
-          className="absolute inset-0 opacity-20 mix-blend-overlay pointer-events-none"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-          }}
-        />
+        className="absolute inset-0 opacity-20 mix-blend-overlay pointer-events-none"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        }}
+      />
 
-        {/* Top label */}
-        <div className="absolute top-5 left-5 right-5">
-          <span 
-            className="text-[10px] uppercase tracking-[0.2em] font-semibold"
-            style={{ color: card.step === 2 ? 'rgba(255,255,255,0.7)' : 'rgba(20,26,58,0.7)' }}
-          >
-            {poster.label}
-          </span>
-        </div>
+      {/* Top label */}
+      <div className="absolute top-8 left-8 right-8">
+        <span 
+          className="text-[11px] uppercase tracking-[0.25em] font-semibold"
+          style={{ color: card.step === 2 ? 'rgba(255,255,255,0.7)' : 'rgba(20,26,58,0.6)' }}
+        >
+          {poster.label}
+        </span>
+      </div>
 
-        {/* Corner accent */}
-        <div 
-          className="absolute top-5 right-5 w-5 h-5 rounded-full"
-          style={{ backgroundColor: poster.accentColor }}
-        />
+      {/* Corner accent */}
+      <div 
+        className="absolute top-8 right-8 w-6 h-6 rounded-full"
+        style={{ backgroundColor: poster.accentColor }}
+      />
 
-        {/* Pattern based on card type */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          {poster.pattern === "circles" && (
-            <svg width="140" height="140" viewBox="0 0 140 140" className="opacity-30">
-              <circle cx="70" cy="70" r="60" fill="none" stroke="hsl(var(--nim-navy))" strokeWidth="1" strokeDasharray="3 5" />
-              <circle cx="70" cy="70" r="45" fill="none" stroke="hsl(var(--nim-navy))" strokeWidth="1" strokeDasharray="3 5" />
-              <circle cx="70" cy="70" r="30" fill="none" stroke="hsl(var(--nim-navy))" strokeWidth="1" strokeDasharray="3 5" />
-              <circle cx="70" cy="70" r="12" fill="hsl(var(--nim-navy))" opacity="0.3" />
-            </svg>
-          )}
-          {poster.pattern === "dots" && (
-            <svg width="160" height="160" viewBox="0 0 160 160" className="opacity-20">
-              {[...Array(7)].map((_, row) => (
-                [...Array(7)].map((_, col) => (
-                  <circle key={`${row}-${col}`} cx={20 + col * 20} cy={20 + row * 20} r="2" fill="white" />
-                ))
-              ))}
-            </svg>
-          )}
-          {poster.pattern === "calendar" && (
-            <svg width="160" height="120" viewBox="0 0 160 120" className="opacity-20">
-              {[...Array(4)].map((_, row) => (
-                [...Array(7)].map((_, col) => (
-                  <g key={`${row}-${col}`}>
-                    <rect 
-                      x={10 + col * 20} 
-                      y={10 + row * 25} 
-                      width="16" 
-                      height="20" 
-                      fill="none" 
-                      stroke="hsl(var(--nim-navy))" 
-                      strokeWidth="1"
-                      rx="2"
+      {/* Pattern based on card type - LARGER patterns */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        {poster.pattern === "circles" && (
+          <svg width="220" height="220" viewBox="0 0 220 220" className="opacity-25">
+            <circle cx="110" cy="110" r="100" fill="none" stroke="hsl(var(--nim-navy))" strokeWidth="1" strokeDasharray="4 6" />
+            <circle cx="110" cy="110" r="75" fill="none" stroke="hsl(var(--nim-navy))" strokeWidth="1" strokeDasharray="4 6" />
+            <circle cx="110" cy="110" r="50" fill="none" stroke="hsl(var(--nim-navy))" strokeWidth="1" strokeDasharray="4 6" />
+            <circle cx="110" cy="110" r="20" fill="hsl(var(--nim-navy))" opacity="0.2" />
+          </svg>
+        )}
+        {poster.pattern === "dots" && (
+          <svg width="200" height="200" viewBox="0 0 200 200" className="opacity-15">
+            {[...Array(9)].map((_, row) => (
+              [...Array(9)].map((_, col) => (
+                <circle key={`${row}-${col}`} cx={20 + col * 20} cy={20 + row * 20} r="2.5" fill="white" />
+              ))
+            ))}
+          </svg>
+        )}
+        {poster.pattern === "calendar" && (
+          <svg width="200" height="160" viewBox="0 0 200 160" className="opacity-15">
+            {[...Array(5)].map((_, row) => (
+              [...Array(7)].map((_, col) => (
+                <g key={`${row}-${col}`}>
+                  <rect 
+                    x={15 + col * 25} 
+                    y={10 + row * 28} 
+                    width="20" 
+                    height="24" 
+                    fill="none" 
+                    stroke="hsl(var(--nim-navy))" 
+                    strokeWidth="1"
+                    rx="3"
+                  />
+                  {(row * 7 + col) % 3 === 0 && (
+                    <path 
+                      d={`M${19 + col * 25},${22 + row * 28} L${24 + col * 25},${27 + row * 28} L${31 + col * 25},${18 + row * 28}`}
+                      fill="none"
+                      stroke="hsl(var(--nim-navy))"
+                      strokeWidth="1.5"
                     />
-                    {(row * 7 + col) % 3 === 0 && (
-                      <path 
-                        d={`M${14 + col * 20},${20 + row * 25} L${18 + col * 20},${24 + row * 25} L${24 + col * 20},${16 + row * 25}`}
-                        fill="none"
-                        stroke="hsl(var(--nim-navy))"
-                        strokeWidth="1.5"
-                      />
-                    )}
-                  </g>
-                ))
-              ))}
-            </svg>
-          )}
-        </div>
+                  )}
+                </g>
+              ))
+            ))}
+          </svg>
+        )}
+      </div>
 
-        {/* Bottom stats - varies by card */}
-        <div className="absolute bottom-5 left-5 right-5">
-          {card.step === 1 && (
-            <div className="space-y-2">
-              <span 
-                className="text-3xl sm:text-4xl font-black tracking-tight block"
-                style={{ color: 'hsl(var(--nim-navy))' }}
-              >
-                {poster.mainText}
-              </span>
-              <p 
-                className="text-sm font-medium"
-                style={{ color: 'rgba(20,26,58,0.7)' }}
-              >
-                {poster.subText}
-              </p>
+      {/* Bottom stats - varies by card */}
+      <div className="absolute bottom-10 left-8 right-8">
+        {card.step === 1 && (
+          <div className="space-y-2">
+            <span 
+              className="text-4xl xl:text-5xl font-black tracking-tight block"
+              style={{ color: 'hsl(var(--nim-navy))' }}
+            >
+              {poster.mainText}
+            </span>
+            <p 
+              className="text-base font-medium"
+              style={{ color: 'rgba(20,26,58,0.6)' }}
+            >
+              {poster.subText}
+            </p>
+          </div>
+        )}
+        
+        {card.step === 2 && (
+          <div className="space-y-3">
+            <span className="text-4xl xl:text-5xl font-black tracking-tight text-white block">
+              {poster.mainText}
+            </span>
+            <div className="flex flex-wrap gap-x-2 gap-y-1">
+              {poster.subTexts?.map((text, i) => (
+                <span key={i} className="text-base text-white/60 font-medium">
+                  {text}{i < (poster.subTexts?.length || 0) - 1 ? " •" : ""}
+                </span>
+              ))}
             </div>
-          )}
-          
-          {card.step === 2 && (
-            <div className="space-y-3">
-              <span className="text-3xl sm:text-4xl font-black tracking-tight text-white block">
-                {poster.mainText}
-              </span>
-              <div className="flex flex-wrap gap-x-2 gap-y-1">
-                {poster.subTexts?.map((text, i) => (
-                  <span key={i} className="text-sm text-white/70 font-medium">
-                    {text}{i < (poster.subTexts?.length || 0) - 1 ? " •" : ""}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
-          
-          {card.step === 3 && (
-            <div className="space-y-2">
-              <span 
-                className="text-3xl sm:text-4xl font-black tracking-tight block"
-                style={{ color: 'hsl(var(--nim-navy))' }}
-              >
-                {poster.mainText}
-              </span>
-              <p 
-                className="text-sm font-medium"
-                style={{ color: 'rgba(20,26,58,0.7)' }}
-              >
-                {poster.subText}
-              </p>
-            </div>
-          )}
-        </div>
+          </div>
+        )}
+        
+        {card.step === 3 && (
+          <div className="space-y-2">
+            <span 
+              className="text-4xl xl:text-5xl font-black tracking-tight block"
+              style={{ color: 'hsl(var(--nim-navy))' }}
+            >
+              {poster.mainText}
+            </span>
+            <p 
+              className="text-base font-medium"
+              style={{ color: 'rgba(20,26,58,0.6)' }}
+            >
+              {poster.subText}
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
