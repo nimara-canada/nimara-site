@@ -37,7 +37,7 @@ const cards = [
       label: "System Install",
       accentColor: "hsl(var(--nim-purple))",
       mainText: "7 DOMAINS",
-      subTexts: ["Money", "Leadership", "Memory", "Trust"],
+      subTexts: ["Governance", "Finance", "HR", "Data", "Fundraising", "Volunteers", "Programs"],
       pattern: "dots"
     }
   },
