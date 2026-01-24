@@ -49,62 +49,68 @@ const domains = [
 export default function WhatWeHelpWith() {
   return (
     <section
-      style={{ backgroundColor: "#0f1629" }}
+      className="relative bg-secondary-background"
       aria-labelledby="domains-heading"
     >
+      {/* Subtle grid pattern - matches Hero */}
+      <div 
+        className="absolute inset-0 opacity-[0.02] pointer-events-none" 
+        aria-hidden="true"
+        style={{
+          backgroundImage: `linear-gradient(hsl(var(--foreground) / 0.08) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground) / 0.08) 1px, transparent 1px)`,
+          backgroundSize: '80px 80px'
+        }} 
+      />
+
       {/* Header - Full screen intro */}
-      <div className="h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="text-center px-6"
         >
-          <p 
-            className="text-sm font-mono tracking-widest uppercase mb-6"
-            style={{ color: "#ACFCE3" }}
-          >
+          {/* Category label - matches other sections */}
+          <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-accent mb-6">
             The Framework
           </p>
+          
+          {/* Paper Tiger headline */}
           <h2
             id="domains-heading"
-            className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6"
+            className="text-[clamp(2.5rem,8vw,7rem)] font-black tracking-[-0.04em] leading-[0.9] text-white mb-6 uppercase"
           >
-            7 Domains
+            7 <span className="text-accent">Domains</span>
           </h2>
-          <p 
-            className="text-lg md:text-xl max-w-md mx-auto"
-            style={{ color: "rgba(255,255,255,0.5)" }}
-          >
+          
+          <p className="text-base sm:text-lg md:text-xl max-w-md mx-auto text-white/60 mb-12">
             Scroll to explore each area we build.
           </p>
           
-          {/* Scroll indicator */}
+          {/* Scroll indicator - matches Hero */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 0.6 }}
-            className="mt-12"
           >
             <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="w-6 h-10 rounded-full border-2 mx-auto flex items-start justify-center pt-2"
-              style={{ borderColor: "rgba(255,255,255,0.3)" }}
+              animate={{ y: [0, 6, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              className="flex flex-col items-center gap-2"
             >
-              <motion.div
-                animate={{ opacity: [1, 0.3, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="w-1 h-2 rounded-full"
-                style={{ backgroundColor: "#ACFCE3" }}
-              />
+              <span className="text-[11px] uppercase tracking-[0.2em] text-white/60">
+                Scroll
+              </span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-white/60">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </motion.div>
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Domain Cards - Each full screen, no sticky */}
+      {/* Domain Cards */}
       {domains.map((domain, idx) => (
         <DomainCard
           key={domain.index}
@@ -114,6 +120,9 @@ export default function WhatWeHelpWith() {
           isLeft={idx % 2 === 0}
         />
       ))}
+
+      {/* Bottom spacer */}
+      <div className="h-[20vh]" />
     </section>
   );
 }
@@ -136,86 +145,70 @@ function DomainCard({
     offset: ["start end", "end start"]
   });
 
-  // Smooth parallax - content slides up as you scroll
-  const y = useTransform(scrollYProgress, [0, 0.5, 1], [60, 0, -60]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  // Smooth parallax
+  const y = useTransform(scrollYProgress, [0, 0.5, 1], [50, 0, -50]);
+  const opacity = useTransform(scrollYProgress, [0, 0.25, 0.75, 1], [0, 1, 1, 0]);
 
   return (
     <div 
       ref={cardRef}
-      className="min-h-screen flex items-center justify-center py-20"
+      className="min-h-screen flex items-center justify-center py-20 relative z-10"
     >
       <motion.div
         style={{ y, opacity }}
-        className="w-full max-w-5xl mx-auto px-6"
+        className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
       >
-        <div className={`grid md:grid-cols-2 gap-8 md:gap-16 items-center ${isLeft ? '' : 'md:direction-rtl'}`}>
-          {/* Left side - Index & Progress */}
-          <div className={`flex flex-col ${isLeft ? 'items-start md:items-end' : 'items-start md:items-start md:order-2'}`}>
-            {/* Large index number */}
+        <div className={`grid lg:grid-cols-2 gap-8 lg:gap-16 items-center`}>
+          {/* Left side - Large Index */}
+          <div className={`flex flex-col ${isLeft ? 'lg:items-end lg:order-1' : 'lg:items-start lg:order-2'}`}>
+            {/* Massive index number - Paper Tiger style */}
             <span
-              className="font-mono text-[100px] md:text-[160px] lg:text-[200px] font-bold leading-none select-none"
+              className="font-black text-[clamp(6rem,20vw,14rem)] leading-none select-none tracking-[-0.04em]"
               style={{ 
                 color: "transparent",
-                WebkitTextStroke: "1px rgba(172, 252, 227, 0.25)"
+                WebkitTextStroke: "2px hsl(var(--accent) / 0.25)"
               }}
             >
               {domain.index}
             </span>
             
-            {/* Progress indicator */}
-            <div className="flex items-center gap-2 mt-4">
+            {/* Progress dots */}
+            <div className="flex items-center gap-2 mt-6">
               {domains.map((_, i) => (
                 <div
                   key={i}
-                  className="w-2 h-2 rounded-full transition-all duration-300"
-                  style={{
-                    backgroundColor: i === index ? "#ACFCE3" : "rgba(255,255,255,0.15)"
-                  }}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    i === index ? 'bg-accent scale-125' : 'bg-white/20'
+                  }`}
                 />
               ))}
             </div>
           </div>
 
           {/* Right side - Content */}
-          <div className={`${isLeft ? '' : 'md:order-1'}`}>
-            {/* Vertical accent line */}
-            <div 
-              className="w-px h-12 mb-6"
-              style={{ backgroundColor: "#ACFCE3" }}
-            />
+          <div className={`${isLeft ? 'lg:order-2' : 'lg:order-1'}`}>
+            {/* Accent line */}
+            <div className="w-px h-12 bg-accent mb-6" />
 
-            {/* Subtitle */}
-            <p 
-              className="text-xs font-medium tracking-[0.2em] uppercase mb-3"
-              style={{ color: "rgba(255,255,255,0.4)" }}
-            >
+            {/* Subtitle - uppercase tracking */}
+            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.2em] uppercase text-white/40 mb-3">
               {domain.subtitle}
             </p>
 
-            {/* Title */}
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-5 leading-tight">
+            {/* Title - bold, clean */}
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight tracking-tight">
               {domain.title}
             </h3>
 
             {/* Description */}
-            <p 
-              className="text-base md:text-lg leading-relaxed max-w-md"
-              style={{ color: "rgba(255,255,255,0.6)" }}
-            >
+            <p className="text-base sm:text-lg text-white/70 leading-relaxed max-w-md mb-8">
               {domain.description}
             </p>
 
-            {/* Card indicator */}
-            <div 
-              className="mt-8 pt-6 flex items-center gap-4"
-              style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}
-            >
-              <span 
-                className="text-xs font-mono tracking-wide"
-                style={{ color: "rgba(255,255,255,0.35)" }}
-              >
-                Domain {String(index + 1).padStart(2, '0')} of {String(total).padStart(2, '0')}
+            {/* Domain counter - mono style */}
+            <div className="pt-6 border-t border-white/10">
+              <span className="text-xs font-mono tracking-wide text-white/40">
+                Domain {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
               </span>
             </div>
           </div>
