@@ -1,144 +1,65 @@
 
-# Plan: Unified Dark-Dominant Design for Smart Team Cohort Page
+# Fix Nimara Logo Display
 
-## The Problem
-The current page alternates between dark navy and off-white (nim-cloud) backgrounds section-by-section, creating visual chaos:
-- Hero → Dark
-- Sound Familiar → Light  
-- The Solution → Dark
-- How It Works → Light
-- Is This Right For You → Dark
-- Ultimate Proof → Light
-- Guarantee → Dark
-- Price → Light
-- FAQ → Dark
-- Final CTA → Dark
+## Problem Identified
 
-This "zebra" switching every section hurts the premium feel and makes the page harder on the eyes.
+The current logo file has two issues causing it to appear tiny in the header:
 
-## The Solution
-Use **dark navy as the dominant background** across the entire page, with **strategic white cards/elements** as secondary accents to highlight key information. This creates:
-- Visual consistency and calm
-- A premium, authoritative feel
-- Better eye comfort (no jarring switches)
-- White elements draw attention to important content
+1. **Excessive whitespace/padding**: The PNG has large amounts of empty space around the actual logo content
+2. **Solid background**: The image includes a light gray/white background that appears as a visible box
 
-## Visual Strategy
+When the header constrains the logo to 48px height, most of that height is consumed by the background/padding, making the actual logo mark and text very small.
 
-```text
-+--------------------------------------------+
-|           HERO (Dark Navy)                 |
-|   [Hero content remains unchanged]         |
-+--------------------------------------------+
-|                                            |
-|       SOUND FAMILIAR (Dark Navy)           |
-|   Pain points in subtle glassmorphic cards |
-|                                            |
-+--------------------------------------------+
-|                                            |
-|       THE SOLUTION (Dark Navy)             |
-|   [Already dark - no change needed]        |
-|                                            |
-+--------------------------------------------+
-|                                            |
-|       HOW IT WORKS (Dark Navy)             |
-|   White card for time commitment box       |
-|   Steps use light text on dark             |
-|                                            |
-+--------------------------------------------+
-|                                            |
-|       IS THIS RIGHT FOR YOU (Dark Navy)    |
-|   [Already dark - no change needed]        |
-|                                            |
-+--------------------------------------------+
-|                                            |
-|       ULTIMATE PROOF (Dark Navy)           |
-|   White card for the Promise               |
-|                                            |
-+--------------------------------------------+
-|                                            |
-|       GUARANTEE (Dark Navy)                |
-|   [Already dark - no change needed]        |
-|                                            |
-+--------------------------------------------+
-|                                            |
-|       PRICE (Dark Navy)                    |
-|   White card for pricing details           |
-|                                            |
-+--------------------------------------------+
-|                                            |
-|       FAQ (Dark Navy)                      |
-|   [Already dark - no change needed]        |
-|                                            |
-+--------------------------------------------+
-|                                            |
-|       FINAL CTA (Dark Navy)                |
-|   [Already dark - no change needed]        |
-|                                            |
-+--------------------------------------------+
-```
+## Solution
 
-## Section-by-Section Changes
+Create a clean, transparent-background SVG logo that matches the new brand design exactly:
 
-### Section 2: Sound Familiar?
-- **Current**: `bg-nim-cloud` (light background)
-- **New**: `bg-nim-navy` (dark background)
-- Update typography: headlines to white, subheads to cream (`#F5F0E8`/80)
-- Pain point cards: glassmorphic style (`bg-white/[0.03]` with subtle cream borders)
-- Left border accent: mint (`border-l-nim-mint`)
+- **N icon mark**: Navy blue diagonal stripes with a purple accent triangle
+- **NIMARA wordmark**: Navy blue serif text
+- **No background**: Transparent, allowing it to work on any page background
+- **Tight bounding box**: Minimal padding so the logo uses full available height
 
-### Section 4: How It Works
-- **Current**: `bg-nim-cloud` (light background)
-- **New**: `bg-nim-navy` (dark background)
-- Update typography: headlines to white, body to cream
-- Step icons: change from `text-nim-teal` to `text-nim-mint`
-- Numbered circles: update borders and text to mint tones
-- **Time Commitment Card**: Keep as prominent white card (`bg-white`) to draw attention to key info
-  - This white card becomes the "secondary accent" element
-  - Text inside: navy headlines, teal accents
+## Implementation Steps
 
-### Section 6: Ultimate Proof ("It Has to Work" Promise)
-- **Current**: `bg-nim-cloud` (light background)
-- **New**: `bg-nim-navy` (dark background)
-- **Promise Card**: Keep as white card (`bg-white`) for emphasis
-  - Shield icon: mint/teal tones
-  - Text: navy headlines, slate-dark body
+### Step 1: Create New SVG Logo File
 
-### Section 8: Price and Seats
-- **Current**: `bg-nim-cloud` (light background)
-- **New**: `bg-nim-navy` (dark background)
-- Update header typography: white headlines, mint accents
-- **Pricing Card**: Keep as white card (`bg-white`) for prominence
-  - Price: navy text
-  - Accents: teal badges
-  - CTA button: navy background with white text
-- Micro note: update to cream/white subdued text
+Create `src/assets/nimara-logo-new.svg` with:
+- Transparent background (no white/gray rectangle)
+- ViewBox tightly cropped to logo content
+- Navy blue (`#1a1a4e` or `#202654`) for the N-mark and wordmark
+- Purple accent (`#7c3aed`) for the triangle detail on the N-mark
+- Proper aspect ratio matching the original design
 
-### Sections Already Dark (No Changes Needed)
-- Section 1: Hero
-- Section 3: The Solution
-- Section 5: Is This Right For You
-- Section 7: Guarantee
-- Section 9: FAQ
-- Section 10: Final CTA
-- Footer
+### Step 2: Update Header Component
 
-## Design Rationale
-- **Dark dominance**: Creates an immersive, premium experience
-- **White cards as focal points**: The few white elements (Time Commitment, Promise, Pricing) naturally draw the eye to the most important conversion elements
-- **Consistent visual rhythm**: No more jarring light/dark switches every section
-- **Better for extended reading**: Dark backgrounds are easier on the eyes for longer content pages
+Modify `src/components/Header.tsx`:
+- Import the new SVG file instead of the PNG
+- Adjust sizing if needed (the SVG should now properly fill the 48px height)
+- Keep existing responsive height behavior (48px default, 40px when scrolled)
 
-## Technical Details
+### Step 3: Update Footer Component
 
-### Files Modified
-- `src/pages/SmartTeamCohort.tsx`
+Check `src/components/Footer.tsx` for any logo usage and update to use the new SVG.
 
-### CSS Token Usage
-- Dark backgrounds: `bg-nim-navy`
-- Light cards: `bg-white` with `border border-border` and `shadow-sm`
-- Primary text on dark: `text-white`
-- Secondary text on dark: `text-[#F5F0E8]/80` (warm cream at 80% opacity)
-- Muted text on dark: `text-[#F5F0E8]/60` or `text-white/50`
-- Accent color: `text-nim-mint` (on dark) or `text-nim-teal` (on light cards)
-- Glassmorphic cards: `bg-white/[0.03]` with `border border-[#F5F0E8]/10`
+### Step 4: Update Mobile Menu
+
+The mobile menu sidebar also displays the logo (line 215 in Header.tsx) - ensure it uses the same new asset.
+
+### Step 5: Clean Up
+
+Remove the old `src/assets/nimara-logo.png` file that has the whitespace issues.
+
+## Technical Notes
+
+- SVG is preferred over PNG for logos as it scales perfectly at any size
+- The transparent background ensures the logo works on both light and dark page sections
+- The existing height constraints in Header.tsx (40-48px) will work correctly once the SVG has no padding
+
+## Files to Modify
+
+| File | Action |
+|------|--------|
+| `src/assets/nimara-logo-new.svg` | Create - New transparent SVG matching brand design |
+| `src/components/Header.tsx` | Edit - Update import to use new SVG |
+| `src/components/Footer.tsx` | Edit - Update logo if used |
+| `src/assets/nimara-logo.png` | Delete - Remove old file with issues |
