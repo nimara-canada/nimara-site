@@ -85,14 +85,14 @@ const NimaraHeroPremium = () => {
             </ul>
 
             {/* Proof Trail */}
-            <div style={revealStyle(275)} className="flex items-center justify-center gap-2 sm:gap-3 text-[10px] sm:text-[11px] md:text-xs uppercase tracking-[0.1em] sm:tracking-[0.15em] text-white/40 mb-8 sm:mb-10" aria-label="Proof trail flow">
-              <span>Receipt</span>
+            <div style={revealStyle(275)} className="flex items-center justify-center gap-2 sm:gap-3 text-[10px] sm:text-[11px] md:text-xs uppercase tracking-[0.1em] sm:tracking-[0.15em] text-white/40 mb-8 sm:mb-10" aria-label="Process flow">
+              <span>Diagnostic</span>
               <span className="text-white/20">→</span>
-              <span>Approval</span>
+              <span>Build</span>
               <span className="text-white/20">→</span>
-              <span>Payment</span>
+              <span>Test</span>
               <span className="text-white/20">→</span>
-              <span>Report</span>
+              <span>Launch</span>
             </div>
 
             {/* CTAs */}
