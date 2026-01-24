@@ -5,43 +5,36 @@ const domains = [
   {
     index: "01",
     title: "Governance & Strategy",
-    subtitle: "Board Operations",
     description: "Clear roles, decisions, and a board that can operate without chaos.",
   },
   {
     index: "02",
     title: "Finance & Compliance",
-    subtitle: "Money Management",
     description: "Budgeting, approvals, receipts, and a clean audit trail.",
   },
   {
     index: "03",
     title: "HR / People",
-    subtitle: "Team Systems",
     description: "Hiring, onboarding, policies, and performance basics that protect the org.",
   },
   {
     index: "04",
     title: "Data & Systems",
-    subtitle: "Digital Infrastructure",
     description: "Files, tools, access, and reporting you can actually trust.",
   },
   {
     index: "05",
     title: "Fundraising & Donor Standards",
-    subtitle: "Donor Relations",
     description: "Donor data, receipting, and compliant fundraising practice.",
   },
   {
     index: "06",
     title: "Volunteer Management",
-    subtitle: "Volunteer Ops",
     description: "Screening, onboarding, supervision, and retention.",
   },
   {
     index: "07",
     title: "Program & Evaluation",
-    subtitle: "Impact Tracking",
     description: "Delivery backbone, outcomes, and simple measurement loops.",
   }
 ];
@@ -159,21 +152,22 @@ function DomainCard({
         className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
       >
         <div className={`grid lg:grid-cols-2 gap-8 lg:gap-16 items-center`}>
-          {/* Left side - Large Index */}
+          {/* Left side - Small Index */}
           <div className={`flex flex-col ${isLeft ? 'lg:items-end lg:order-1' : 'lg:items-start lg:order-2'}`}>
-            {/* Massive index number - Paper Tiger style */}
+            {/* Small index number */}
             <span
-              className="font-black text-[clamp(6rem,20vw,14rem)] leading-none select-none tracking-[-0.04em]"
-              style={{ 
-                color: "transparent",
-                WebkitTextStroke: "2px hsl(var(--accent) / 0.25)"
-              }}
+              className="font-bold text-sm sm:text-base tracking-[0.2em] text-white/30 mb-4"
             >
               {domain.index}
             </span>
             
+            {/* Massive domain title - Paper Tiger H1 */}
+            <h3 className="text-[clamp(2.5rem,8vw,6rem)] font-black text-white leading-[0.9] tracking-[-0.04em] uppercase">
+              {domain.title}
+            </h3>
+            
             {/* Progress dots */}
-            <div className="flex items-center gap-2 mt-6">
+            <div className="flex items-center gap-2 mt-8">
               {domains.map((_, i) => (
                 <div
                   key={i}
@@ -189,16 +183,6 @@ function DomainCard({
           <div className={`${isLeft ? 'lg:order-2' : 'lg:order-1'}`}>
             {/* Accent line */}
             <div className="w-px h-12 bg-accent mb-6" />
-
-            {/* Subtitle - uppercase tracking */}
-            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.2em] uppercase text-white/40 mb-3">
-              {domain.subtitle}
-            </p>
-
-            {/* Title - bold, clean */}
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight tracking-tight">
-              {domain.title}
-            </h3>
 
             {/* Description */}
             <p className="text-base sm:text-lg text-white/70 leading-relaxed max-w-md mb-8">
