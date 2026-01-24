@@ -36,7 +36,7 @@ const cards = [
       bg: "hsl(var(--nim-navy))",
       label: "System Install",
       accentColor: "hsl(var(--nim-purple))",
-      mainText: "4 ENGINES",
+      mainText: "7 DOMAINS",
       subTexts: ["Money", "Leadership", "Memory", "Trust"],
       pattern: "dots"
     }
