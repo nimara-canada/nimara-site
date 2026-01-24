@@ -25,7 +25,7 @@ export const StickyMobileCTA = ({ href, label = "Apply Now" }: StickyMobileCTAPr
 
   return (
     <div 
-      className="fixed bottom-0 left-0 right-0 z-[1000] md:hidden bg-nim-navy shadow-[0_-4px_20px_rgba(0,0,0,0.2)] transform transition-transform duration-300"
+      className="fixed bottom-0 left-0 right-0 z-[1000] md:hidden bg-[#0f1629] shadow-[0_-4px_20px_rgba(0,0,0,0.3)] transform transition-transform duration-300"
       style={{ 
         transform: isVisible ? 'translateY(0)' : 'translateY(100%)',
         paddingBottom: 'max(16px, env(safe-area-inset-bottom))',
@@ -38,7 +38,7 @@ export const StickyMobileCTA = ({ href, label = "Apply Now" }: StickyMobileCTAPr
     >
       <Button 
         size="lg" 
-        className="w-full min-h-[48px] bg-[#3ECFB2] hover:bg-[#35b89d] text-nim-navy rounded-xl py-4 text-base font-bold shadow-[0_8px_30px_rgba(62,207,178,0.4)] transition-all hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3ECFB2] focus-visible:ring-offset-2 focus-visible:ring-offset-nim-navy" 
+        className="w-full min-h-[48px] bg-[#6945D8] hover:bg-[#5835C0] text-white rounded-lg py-4 text-base font-semibold shadow-[0_4px_20px_rgba(105,69,216,0.4)] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6945D8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f1629]" 
         asChild
       >
         <a 
