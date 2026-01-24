@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export const SoWhatWeDoSection = () => {
   return (
-    <section className="bg-background min-h-[60vh] flex items-center justify-center">
+    <section className="bg-background min-h-screen flex items-center justify-center">
       <div 
         className="max-w-5xl mx-auto text-center px-6"
         style={{ padding: '120px 24px' }}
