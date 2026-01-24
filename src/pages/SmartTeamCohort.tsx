@@ -154,8 +154,8 @@ const SmartTeamCohortHero = () => {
             <h2 id="what-you-get-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.02em] leading-[1.15] mb-4 sm:mb-6">
               We Don't Teach. We Build With You.
             </h2>
-            <p className="text-lg sm:text-xl md:text-2xl text-white/70 font-light max-w-3xl mx-auto">
-              In 6 weeks, we install 4 systems directly in your Google Drive or Microsoft 365.
+            <p className="text-lg sm:text-xl md:text-2xl text-[#F5F0E8]/80 font-light max-w-3xl mx-auto">
+              4 systems. 6 weeks. Built right inside your Google or Microsoft tools.
             </p>
           </header>
 
@@ -174,7 +174,7 @@ const SmartTeamCohortHero = () => {
                 Your Money System
               </h3>
               <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
-                Tracks every dollar. Receipts go in one place. Grant spending is always up to date. Audit-ready.
+                Every dollar tracked. Every receipt in one place. Ready when funders ask.
               </p>
             </article>
 
@@ -193,7 +193,7 @@ const SmartTeamCohortHero = () => {
                 Your Board System
               </h3>
               <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
-                Every decision is logged. Clear rules for who signs what. Board meetings run smoothly.
+                Every decision logged. Clear signing rules. Funders see a professional board.
               </p>
             </article>
 
@@ -212,7 +212,7 @@ const SmartTeamCohortHero = () => {
                 Your File System
               </h3>
               <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
-                One place for everything. Anyone can find any file in under 2 minutes. Even if you're away.
+                One place for everything. Anyone finds any file in 2 minutes — even without you.
               </p>
             </article>
 
@@ -232,7 +232,7 @@ const SmartTeamCohortHero = () => {
                 Your Impact System
               </h3>
               <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
-                Shows your results in 3 clicks. Numbers and stories ready for any funder report.
+                Your results in 3 clicks. Numbers and stories ready for any funder report.
               </p>
             </article>
 
@@ -249,7 +249,7 @@ const SmartTeamCohortHero = () => {
                 Dedicated Support
               </h3>
               <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
-                One Ops Lead works with you the whole time. Not a call center. A real person who knows your org.
+                One Ops Lead the whole time. A real person who knows your org. Not a call center.
               </p>
             </article>
 
@@ -263,10 +263,10 @@ const SmartTeamCohortHero = () => {
                 </svg>
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4">
-                Proven Process
+                <span className="text-nim-mint mr-2">✓</span>Proven Process
               </h3>
               <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
-                Built from 50+ nonprofit installs. We know what works. You get systems that stick.
+                Built from real nonprofit installs. Systems that actually stick.
               </p>
             </article>
           </div>
