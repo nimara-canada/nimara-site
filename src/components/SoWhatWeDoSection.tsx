@@ -12,15 +12,14 @@ export const SoWhatWeDoSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight uppercase"
           style={{ 
-            fontSize: '64px',
-            fontWeight: 800,
-            color: '#202654',
+            color: '#000000',
             lineHeight: 1.1,
+            fontStretch: 'condensed',
           }}
-          className="tracking-[-0.03em]"
         >
-          So what do we do, <span style={{ color: '#6945D8' }}>exactly?</span>
+          SO WHAT DO WE DO, EXACTLY?
         </motion.h2>
       </div>
     </section>
