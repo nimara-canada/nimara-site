@@ -688,10 +688,10 @@ const SmartTeamCohortHero = () => {
           {/* Section Header */}
           <header className="text-center mb-10 sm:mb-14 md:mb-20">
             <p className="text-xs sm:text-sm md:text-base font-medium uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#F5F0E8]/60 mb-4 sm:mb-6 md:mb-8">
-              FAQ
+              Questions
             </p>
             <h2 id="faq-heading" className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.02em] sm:tracking-[-0.03em] leading-[1.1] sm:leading-[1.08]">
-              Quick <span className="text-nim-mint">answers.</span>
+              Quick <span className="text-nim-mint">Answers</span>
             </h2>
           </header>
 
@@ -699,46 +699,55 @@ const SmartTeamCohortHero = () => {
           <Accordion type="single" collapsible className="mb-10 sm:mb-12 md:mb-16">
             <AccordionItem value="item-1" className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-xl sm:rounded-2xl mb-3 sm:mb-4 px-4 sm:px-6 md:px-8 data-[state=open]:bg-white/[0.05] transition-all">
               <AccordionTrigger className="text-left text-white text-base sm:text-lg md:text-xl font-medium py-4 sm:py-5 md:py-7 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-[#F5F0E8]/60">
-                How do I know if we can afford the $9,450 CAD tuition?
+                When does it start?
               </AccordionTrigger>
               <AccordionContent className="text-[#F5F0E8]/70 text-sm sm:text-base md:text-lg pb-4 sm:pb-5 md:pb-7 leading-relaxed">
-                Most participants use Capacity Building Grants or "Systems Improvement" budget lines. We provide the receipts your funder needs.
+                February 11, 2026. The cohort runs for 6 weeks and ends March 25, 2026.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-2" className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-xl sm:rounded-2xl mb-3 sm:mb-4 px-4 sm:px-6 md:px-8 data-[state=open]:bg-white/[0.05] transition-all">
               <AccordionTrigger className="text-left text-white text-base sm:text-lg md:text-xl font-medium py-4 sm:py-5 md:py-7 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-[#F5F0E8]/60">
-                Can we actually build 4 systems in just 6 weeks?
+                How much time do I need each week?
               </AccordionTrigger>
               <AccordionContent className="text-[#F5F0E8]/70 text-sm sm:text-base md:text-lg pb-4 sm:pb-5 md:pb-7 leading-relaxed">
-                Yes. We build together in live labs—not lectures. Week 1: your file system is done. Week 6: you pass a live Stress Test.
+                About 4 hours: one 90-minute group call, one 90-minute build session, and about an hour of prep. All online.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-3" className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-xl sm:rounded-2xl mb-3 sm:mb-4 px-4 sm:px-6 md:px-8 data-[state=open]:bg-white/[0.05] transition-all">
               <AccordionTrigger className="text-left text-white text-base sm:text-lg md:text-xl font-medium py-4 sm:py-5 md:py-7 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-[#F5F0E8]/60">
-                What happens if our Ops Lead is already at capacity?
+                Do I need to buy new software?
               </AccordionTrigger>
               <AccordionContent className="text-[#F5F0E8]/70 text-sm sm:text-base md:text-lg pb-4 sm:pb-5 md:pb-7 leading-relaxed">
-                4 hours/week for 6 weeks saves 10+ hours/month forever. We fix the systems that waste your time.
+                No. We build everything in the tools you already have — Google Workspace or Microsoft 365.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-4" className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-xl sm:rounded-2xl mb-3 sm:mb-4 px-4 sm:px-6 md:px-8 data-[state=open]:bg-white/[0.05] transition-all">
               <AccordionTrigger className="text-left text-white text-base sm:text-lg md:text-xl font-medium py-4 sm:py-5 md:py-7 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-[#F5F0E8]/60">
-                Do we need to buy new software or change how we work?
+                What if I don't have an SBCCI grant?
               </AccordionTrigger>
               <AccordionContent className="text-[#F5F0E8]/70 text-sm sm:text-base md:text-lg pb-4 sm:pb-5 md:pb-7 leading-relaxed">
-                No new software. We use your existing Google Workspace or Microsoft 365—just better organized.
+                This works for any nonprofit. SBCCI just makes it easier to pay for. Other capacity grants work too.
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-5" className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-xl sm:rounded-2xl px-4 sm:px-6 md:px-8 data-[state=open]:bg-white/[0.05] transition-all">
+            <AccordionItem value="item-5" className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-xl sm:rounded-2xl mb-3 sm:mb-4 px-4 sm:px-6 md:px-8 data-[state=open]:bg-white/[0.05] transition-all">
               <AccordionTrigger className="text-left text-white text-base sm:text-lg md:text-xl font-medium py-4 sm:py-5 md:py-7 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-[#F5F0E8]/60">
-                What is the "Stress Test," and what if we fail it?
+                Is this just training?
               </AccordionTrigger>
               <AccordionContent className="text-[#F5F0E8]/70 text-sm sm:text-base md:text-lg pb-4 sm:pb-5 md:pb-7 leading-relaxed">
-                Live test: find a key document in under 3 minutes. Can't do it? We stay until it's fixed.
+                No. Training gives you knowledge and leaves. We build the actual systems in your actual tools. When we leave, the systems work.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-6" className="bg-white/[0.03] border border-[#F5F0E8]/10 rounded-xl sm:rounded-2xl px-4 sm:px-6 md:px-8 data-[state=open]:bg-white/[0.05] transition-all">
+              <AccordionTrigger className="text-left text-white text-base sm:text-lg md:text-xl font-medium py-4 sm:py-5 md:py-7 hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-[#F5F0E8]/60">
+                Why only 15 spots?
+              </AccordionTrigger>
+              <AccordionContent className="text-[#F5F0E8]/70 text-sm sm:text-base md:text-lg pb-4 sm:pb-5 md:pb-7 leading-relaxed">
+                We give each organization personal attention. More than 15 means less attention for you.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
