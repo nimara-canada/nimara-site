@@ -98,11 +98,14 @@ const Index = () => {
           {/* Hero - full height entry */}
           <HeroSection />
           
-          {/* The Problem */}
-          <ProblemSection />
-          
-          {/* Transition Question */}
-          <SoWhatWeDoSection />
+          {/* Problem + Transition - Full screen snap sections */}
+          <div className="snap-y snap-mandatory">
+            {/* The Problem */}
+            <ProblemSection />
+            
+            {/* Transition Question */}
+            <SoWhatWeDoSection />
+          </div>
           
           {/* Steps 1-3: Diagnose, Install, Maintain - Scroll stacked cards */}
           <StepCardsStack />

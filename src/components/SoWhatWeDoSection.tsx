@@ -2,10 +2,9 @@ import { motion } from 'framer-motion';
 
 export const SoWhatWeDoSection = () => {
   return (
-    <section className="bg-background min-h-screen flex items-center justify-center">
+    <section className="bg-background min-h-screen flex items-center justify-center snap-start">
       <div 
         className="max-w-5xl mx-auto text-center px-6"
-        style={{ padding: '120px 24px' }}
       >
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
