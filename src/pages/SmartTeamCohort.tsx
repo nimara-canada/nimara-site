@@ -122,7 +122,66 @@ const SmartTeamCohort = () => {
         </div>
       </section>
 
-      {/* ========== SECTION 2: VALUE STATEMENT ========== */}
+      {/* ========== SECTION 2: SOUND FAMILIAR? (PROBLEM) ========== */}
+      <section className="bg-white py-[140px] px-6">
+        <div className="max-w-[900px] mx-auto">
+          {/* Label */}
+          <p className="text-center text-sm font-semibold uppercase tracking-[2px] text-[#96A0B5] mb-6">
+            Sound Familiar?
+          </p>
+
+          {/* Headline */}
+          <h2 className="text-center text-[clamp(36px,5vw,56px)] font-extrabold text-[#202654] leading-[1.1] mb-4">
+            Everything lives in your <span className="text-[#ACFCE3]">head.</span>
+          </h2>
+
+          {/* Subtitle */}
+          <p className="text-center text-xl text-[#96A0B5] mb-16">
+            And funders can tell.
+          </p>
+
+          {/* 2x2 Pain Points Grid */}
+          <div className="grid sm:grid-cols-2 gap-6 mb-16">
+            {[
+              { 
+                quote: "Where's that receipt?", 
+                pain: "When funders ask for proof and you can't find it fast — they notice."
+              },
+              { 
+                quote: "I can't take a vacation.", 
+                pain: "If you step away, nobody can answer funder questions. That's a red flag."
+              },
+              { 
+                quote: "What if we get audited?", 
+                pain: "Messy records lead to audit findings. Audit findings mean funders don't come back."
+              },
+              { 
+                quote: "We do good work, but...", 
+                pain: "You can't prove it. No proof = no trust. No trust = no second grant."
+              }
+            ].map((item, i) => (
+              <div 
+                key={i} 
+                className="border-l-2 border-[#ACFCE3] pl-6 py-4"
+              >
+                <p className="text-lg font-semibold text-[#202654] mb-2 italic">
+                  "{item.quote}"
+                </p>
+                <p className="text-base text-[#96A0B5] leading-relaxed">
+                  {item.pain}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom Line */}
+          <p className="text-center text-xl font-semibold text-[#202654]">
+            Organized nonprofits get funded. <span className="text-[#96A0B5]">Messy ones get passed over.</span>
+          </p>
+        </div>
+      </section>
+
+      {/* ========== SECTION 3: VALUE STATEMENT ========== */}
       <section className="bg-white py-[140px] md:py-[180px] px-6 text-center">
         <div className="max-w-[1000px] mx-auto">
           {/* Label */}
