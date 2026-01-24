@@ -61,8 +61,10 @@ export default {
         },
         nim: {
           navy: "hsl(var(--nim-navy))",
+          "navy-deep": "hsl(var(--nim-navy-deep))",
           purple: "hsl(var(--nim-purple))",
           mint: "hsl(var(--nim-mint))",
+          "mint-dark": "hsl(var(--nim-mint-dark))",
           teal: "hsl(var(--nim-teal))",
           mara: "hsl(var(--nim-mara))",
           "mara-deep": "hsl(var(--nim-mara-deep))",

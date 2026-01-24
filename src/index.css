@@ -19,10 +19,11 @@ All colors MUST be HSL.
     --nimara-mint: 165 94% 83%;
     --nimara-bg: 220 50% 97%;
     /* Nimara brand tokens */
-    --nim-navy: 220 53% 8%; /* #0B1120 */
-    --nim-navy-deep: 222 60% 5%; /* Deeper dark navy */
+    --nim-navy: 197 52% 11%; /* #0d1f2d - warmer dark teal-black */
+    --nim-navy-deep: 197 55% 8%; /* Deeper warmer navy */
     --nim-purple: 262 82% 58%; /* #7C3AED */
     --nim-mint: 162 91% 83%; /* #ACFCE3 */
+    --nim-mint-dark: 165 54% 42%; /* #35b89d - darker mint for hover */
     --nim-teal: 168 76% 40%; /* #14b8a6 - accessible teal for light backgrounds */
     --nim-mara: 203 45% 53%; /* #5B94B8 - mara cara blue */
     --nim-mara-deep: 203 50% 45%; /* Deeper mara blue */
@@ -30,7 +31,7 @@ All colors MUST be HSL.
     --nim-slate-dark: 220 13% 28%; /* #3d4451 - body text, high contrast ~8.5:1 */
     --nim-white: 0 0% 100%; /* #FFFFFF */
     --nim-mist: 226 33% 93%; /* #E9ECF4 */
-    --nim-cloud: 40 16% 90%; /* #E8E4DE - warm cream/beige */
+    --nim-cloud: 192 22% 95%; /* #f0f5f7 - light teal tint */
 
     /* Semantic tokens mapped to brand */
     --background: var(--nim-white);
