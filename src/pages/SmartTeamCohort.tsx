@@ -9,13 +9,10 @@ const SmartTeamCohortHero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-nim-navy via-nim-navy-deep to-nim-navy" />
         
         {/* Premium dotted pattern overlay */}
-        <div 
-          className="absolute inset-0 opacity-[0.15]" 
-          style={{ 
-            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(172, 252, 227, 0.4) 1px, transparent 0)`,
-            backgroundSize: '24px 24px',
-          }} 
-        />
+        <div className="absolute inset-0 opacity-[0.15]" style={{
+        backgroundImage: `radial-gradient(circle at 1px 1px, rgba(172, 252, 227, 0.4) 1px, transparent 0)`,
+        backgroundSize: '24px 24px'
+      }} />
         
         {/* Subtle gradient glow from center */}
         <div className="absolute inset-0 bg-gradient-radial from-nim-mint/5 via-transparent to-transparent" />
@@ -735,9 +732,7 @@ const SmartTeamCohortHero = () => {
               </a>
             </Button>
             <Button variant="outline" size="lg" className="w-full sm:w-auto rounded-xl sm:rounded-2xl px-8 sm:px-10 md:px-12 py-5 sm:py-6 md:py-8 text-base sm:text-lg md:text-xl font-semibold border-[#F5F0E8]/20 text-white hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/20" asChild>
-              <a href="/book">
-                Book a call
-              </a>
+              
             </Button>
           </div>
 
