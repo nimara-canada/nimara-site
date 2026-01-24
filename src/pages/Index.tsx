@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import ProblemSection from "@/components/ProblemSection";
+import SoWhatWeDoSection from "@/components/SoWhatWeDoSection";
 import WithNimara from "@/components/WithNimara";
 
 import StartingPointSplit from "@/components/StartingPointSplit";
@@ -99,6 +100,9 @@ const Index = () => {
           
           {/* The Problem */}
           <ProblemSection />
+          
+          {/* Transition Question */}
+          <SoWhatWeDoSection />
           
           {/* With Nimara, you can - 3 Features */}
           <WithNimara />
