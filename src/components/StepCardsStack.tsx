@@ -158,11 +158,11 @@ interface CardData {
 
 const FullScreenCard = ({ card }: { card: CardData }) => {
   return (
-    <div className={`h-full w-full ${card.bgClass} flex items-center px-6 lg:px-12`}>
-      <div className="max-w-7xl mx-auto w-full">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <div className={`h-full w-full ${card.bgClass} flex items-center px-6 lg:px-16 xl:px-24`}>
+      <div className="max-w-[1400px] mx-auto w-full">
+        <div className="grid lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 xl:gap-32 items-center">
           {/* Left Column - Content */}
-          <div className="flex flex-col justify-between relative z-10">
+          <div className="flex flex-col h-full min-h-[70vh] lg:min-h-[80vh] py-12 lg:py-16">
             {/* Top: Step Number + Description */}
             <div>
               {/* Step Number */}
@@ -171,35 +171,28 @@ const FullScreenCard = ({ card }: { card: CardData }) => {
               </div>
 
               {/* Description */}
-              <p className={`text-lg lg:text-xl ${card.subtextClass} leading-relaxed max-w-md mb-8`}>
+              <p className={`text-lg lg:text-xl ${card.subtextClass} leading-relaxed max-w-lg mb-6`}>
                 {card.description}
               </p>
 
-              {/* Tool Icons Row */}
-              <div className={`flex flex-wrap items-center gap-3 text-sm ${card.subtextClass} opacity-60`}>
-                {card.tools.map((tool, i) => (
-                  <span key={i} className="flex items-center gap-3">
-                    {tool}
-                    {i < card.tools.length - 1 && (
-                      <span className={`w-1 h-1 rounded-full ${card.bgClass === "bg-[hsl(var(--nim-mint))]" ? "bg-[hsl(var(--nim-navy))]/30" : "bg-white/30"}`} />
-                    )}
-                  </span>
-                ))}
-              </div>
+              {/* Kid-language sub-line */}
+              <p className={`text-sm ${card.subtextClass} opacity-50 italic`}>
+                {card.kidLine}
+              </p>
             </div>
 
             {/* Bottom: Big Word + Learn More */}
-            <div className="mt-auto pt-12 lg:pt-20">
-              {/* Big Word */}
+            <div className="mt-auto">
+              {/* Big Word - MUCH larger like reference */}
               <h2 
-                className={`text-[3.5rem] sm:text-[5rem] md:text-[6rem] lg:text-[7rem] xl:text-[8rem] font-black leading-[0.85] tracking-[-0.04em] uppercase ${card.textClass}`}
+                className={`text-[4rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] xl:text-[12rem] 2xl:text-[14rem] font-black leading-[0.8] tracking-[-0.04em] uppercase ${card.textClass}`}
                 style={{ fontWeight: 900 }}
               >
                 {card.title}
               </h2>
 
               {/* Learn More Link */}
-              <div className={`mt-8 pt-6 border-t ${card.borderClass} max-w-md`}>
+              <div className={`mt-8 pt-6 border-t ${card.borderClass} max-w-lg`}>
                 <a 
                   href="/how-nimara-works" 
                   className="inline-flex items-center justify-between w-full group"
@@ -210,16 +203,11 @@ const FullScreenCard = ({ card }: { card: CardData }) => {
                   <ArrowUpRight className={`w-5 h-5 ${card.subtextClass} group-hover:translate-x-1 group-hover:-translate-y-1 transition-all`} />
                 </a>
               </div>
-
-              {/* Kid-language sub-line */}
-              <p className={`text-sm ${card.subtextClass} opacity-50 mt-4 italic`}>
-                {card.kidLine}
-              </p>
             </div>
           </div>
 
-          {/* Right Column - Poster Card */}
-          <div className="flex items-center justify-center lg:justify-end">
+          {/* Right Column - Poster Card - BIGGER */}
+          <div className="hidden lg:flex items-center justify-end">
             <PosterCard card={card} />
           </div>
         </div>
@@ -232,9 +220,9 @@ const PosterCard = ({ card }: { card: CardData }) => {
   const { poster } = card;
 
   return (
-    <div className="relative w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[340px]">
+    <div className="relative w-[340px] lg:w-[380px] xl:w-[420px] 2xl:w-[460px]">
       <div 
-        className="relative rounded-xl overflow-hidden shadow-2xl"
+        className="relative rounded-2xl overflow-hidden shadow-2xl"
         style={{ backgroundColor: poster.bg, aspectRatio: '3/4' }}
       >
         {/* Noise texture overlay */}
