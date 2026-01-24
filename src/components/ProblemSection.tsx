@@ -2,10 +2,9 @@ import { motion } from "framer-motion";
 
 const ProblemSection = () => {
   return (
-    <section className="bg-background">
+    <section className="bg-background min-h-screen flex items-center justify-center snap-start">
       <div 
-        className="max-w-5xl mx-auto text-center"
-        style={{ padding: '160px 24px' }}
+        className="max-w-5xl mx-auto text-center px-6"
       >
         {/* Label */}
         <motion.p
