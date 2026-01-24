@@ -344,7 +344,7 @@ const SmartTeamCohortHero = () => {
                 We Test Everything
               </h3>
               <p className="text-base sm:text-lg text-[#F5F0E8]/80 font-light leading-relaxed">
-                Week 6: We pretend to be an auditor. If it breaks, we fix it.
+                Week 6: We test it like an auditor would. If it breaks, we fix it.
               </p>
             </article>
           </div>
