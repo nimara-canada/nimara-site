@@ -123,25 +123,20 @@ const SmartTeamCohort = () => {
       </section>
 
       {/* ========== SECTION 2: SOUND FAMILIAR? (PROBLEM) ========== */}
-      <section className="bg-white py-[140px] px-6">
-        <div className="max-w-[900px] mx-auto">
-          {/* Label */}
-          <p className="text-center text-sm font-semibold uppercase tracking-[2px] text-[#96A0B5] mb-6">
-            Sound Familiar?
-          </p>
-
-          {/* Headline */}
-          <h2 className="text-center text-[clamp(36px,5vw,56px)] font-extrabold text-[#202654] leading-[1.1] mb-4">
-            Everything lives in your <span className="text-[#ACFCE3]">head.</span>
+      <section className="bg-[#0f1629] py-20 md:py-28 lg:py-36 px-6">
+        <div className="max-w-3xl mx-auto">
+          {/* Headline - Large, left-aligned like homepage FAQ */}
+          <h2 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-4 tracking-[-0.03em] leading-[1.05]">
+            Sound familiar?
           </h2>
-
+          
           {/* Subtitle */}
-          <p className="text-center text-xl text-[#96A0B5] mb-16">
-            And funders can tell.
+          <p className="text-lg sm:text-xl text-white/60 mb-12 md:mb-16 max-w-xl">
+            Everything lives in your head. <span className="text-[#ACFCE3]">And funders can tell.</span>
           </p>
 
-          {/* 2x2 Pain Points Grid */}
-          <div className="grid sm:grid-cols-2 gap-6 mb-16">
+          {/* Pain Points - Numbered list like editorial style */}
+          <div className="space-y-0">
             {[
               { 
                 quote: "Where's that receipt?", 
@@ -162,22 +157,34 @@ const SmartTeamCohort = () => {
             ].map((item, i) => (
               <div 
                 key={i} 
-                className="border-l-2 border-[#ACFCE3] pl-6 py-4"
+                className="border-b border-white/10 py-6 sm:py-8 flex gap-6 items-start group"
               >
-                <p className="text-lg font-semibold text-[#202654] mb-2 italic">
-                  "{item.quote}"
-                </p>
-                <p className="text-base text-[#96A0B5] leading-relaxed">
-                  {item.pain}
-                </p>
+                {/* Number */}
+                <span className="text-sm font-semibold text-[#ACFCE3] tabular-nums shrink-0 pt-1">
+                  0{i + 1}
+                </span>
+                
+                {/* Content */}
+                <div className="flex-1">
+                  <p className="text-base sm:text-lg font-medium text-white mb-2">
+                    <span className="italic">"{item.quote}"</span>
+                  </p>
+                  <p className="text-sm sm:text-base text-white/60 leading-relaxed">
+                    {item.pain}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
 
           {/* Bottom Line */}
-          <p className="text-center text-xl font-semibold text-[#202654]">
-            Organized nonprofits get funded. <span className="text-[#96A0B5]">Messy ones get passed over.</span>
-          </p>
+          <div className="mt-12 md:mt-16 pt-8 border-t border-white/10">
+            <p className="text-xl sm:text-2xl font-semibold text-white leading-snug">
+              Organized nonprofits get funded.
+              <br />
+              <span className="text-white/50">Messy ones get passed over.</span>
+            </p>
+          </div>
         </div>
       </section>
 
