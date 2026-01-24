@@ -9,29 +9,23 @@ const SmartTeamCohortHero = () => {
       {/* Sticky Mobile CTA */}
       <StickyMobileCTA href="https://form.typeform.com/to/Dsi3pXkx" label="Apply Now" />
 
-      {/* Hero Section with Nimara Dark Navy */}
+      {/* Hero Section with Deep Indigo Background */}
       <section className="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden" aria-labelledby="hero-heading">
-        {/* Deep Navy Background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-nim-navy via-nim-navy-deep to-nim-navy" />
+        {/* Deep Indigo Background #202654 */}
+        <div className="absolute inset-0 bg-[#202654]" />
         
-        {/* Premium dotted pattern overlay */}
-        <div className="absolute inset-0 opacity-[0.15]" style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(62, 207, 178, 0.4) 1px, transparent 0)`,
-          backgroundSize: '24px 24px'
-        }} />
+        {/* Subtle gradient overlay for depth */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#202654] to-[#1a1f45]" />
         
-        {/* Subtle gradient glow from center */}
-        <div className="absolute inset-0 bg-gradient-radial from-[#3ECFB2]/5 via-transparent to-transparent" />
-        
-        {/* Top edge glow line */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#3ECFB2]/30 to-transparent" />
+        {/* Top edge glow line - purple accent */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#6945D8]/40 to-transparent" />
 
         {/* Content */}
         <div className="relative z-10 w-full px-5 sm:px-6 md:px-10 lg:px-16 py-24 sm:py-28 md:py-32">
           <div className="max-w-4xl mx-auto text-center">
-            {/* Badge - Mint accent pill */}
-            <div className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#3ECFB2]/10 backdrop-blur-sm border border-[#3ECFB2]/20 text-[#3ECFB2] text-sm font-semibold uppercase tracking-[3px] mb-10 sm:mb-12">
-              <span className="w-2 h-2 rounded-full bg-[#3ECFB2] animate-pulse" />
+            {/* Badge - Transparent with purple border, mint text */}
+            <div className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-transparent border border-[#6945D8] text-[#ACFCE3] text-sm font-semibold uppercase tracking-[3px] mb-10 sm:mb-12">
+              <span className="w-2 h-2 rounded-full bg-[#ACFCE3] animate-pulse" />
               For Canadian Nonprofits • 1-15 Staff
             </div>
 
@@ -39,7 +33,7 @@ const SmartTeamCohortHero = () => {
             <h1 id="hero-heading" className="text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[4.5rem] font-black text-white leading-[1.1] tracking-[-0.03em] mb-5">
               Stop Running Your
               <br />
-              Nonprofit From Your Head
+              Nonprofit <span className="text-[#ACFCE3]">From Your Head</span>
             </h1>
 
             {/* Subhead - 20px, font-weight: 500 */}
@@ -47,25 +41,25 @@ const SmartTeamCohortHero = () => {
               When you can't find a receipt, can't show your impact, or can't explain where the money went — funders notice. And they don't come back. We help you build simple systems that prove you're fundable.
             </p>
 
-            {/* Logistics Bar - Glassmorphic horizontal strip */}
-            <div className="inline-flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-10 px-8 sm:px-12 py-5 sm:py-6 bg-white/[0.05] backdrop-blur-md border border-[#3ECFB2]/15 rounded-2xl mb-12 sm:mb-14">
+            {/* Logistics Bar - Details strip */}
+            <div className="inline-flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-10 px-8 sm:px-12 py-5 sm:py-6 bg-white/[0.05] backdrop-blur-md border border-white/10 rounded-2xl mb-12 sm:mb-14">
               <div className="flex items-center gap-2 text-white">
-                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-[#3ECFB2]/70" aria-hidden="true" />
+                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-white/70" aria-hidden="true" />
                 <span className="text-sm sm:text-base md:text-lg font-medium">Feb 11, 2026</span>
               </div>
-              <div className="hidden sm:block w-px h-5 bg-[#3ECFB2]/20" />
+              <div className="hidden sm:block w-px h-5 bg-white/20" />
               <span className="text-white/80 text-sm sm:text-base md:text-lg">100% Virtual</span>
-              <div className="hidden sm:block w-px h-5 bg-[#3ECFB2]/20" />
-              <span className="text-[#3ECFB2] font-semibold text-sm sm:text-base md:text-lg">$9,450 CAD</span>
-              <div className="hidden sm:block w-px h-5 bg-[#3ECFB2]/20" />
+              <div className="hidden sm:block w-px h-5 bg-white/20" />
+              <span className="text-[#ACFCE3] font-semibold text-sm sm:text-base md:text-lg">$9,450 CAD</span>
+              <div className="hidden sm:block w-px h-5 bg-white/20" />
               <span className="text-white/80 text-sm sm:text-base md:text-lg">15 spots</span>
             </div>
 
-            {/* Primary CTA - Mint accent button */}
+            {/* Primary CTA - Purple button */}
             <div className="mb-4">
               <Button 
                 size="lg" 
-                className="group w-full sm:w-auto min-h-[48px] bg-[#3ECFB2] hover:bg-[#35b89d] text-nim-navy rounded-full px-12 sm:px-16 py-6 sm:py-7 text-base sm:text-lg font-bold shadow-[0_8px_30px_rgba(62,207,178,0.4)] hover:shadow-[0_12px_40px_rgba(62,207,178,0.5)] transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98]" 
+                className="group w-full sm:w-auto min-h-[48px] bg-[#6945D8] hover:bg-[#5835C0] text-white rounded-full px-12 sm:px-16 py-6 sm:py-7 text-base sm:text-lg font-bold shadow-[0_4px_20px_rgba(105,69,216,0.4)] hover:shadow-[0_8px_30px_rgba(105,69,216,0.5)] transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98]" 
                 asChild
               >
                 <a 
@@ -80,13 +74,13 @@ const SmartTeamCohortHero = () => {
               </Button>
             </div>
 
-            {/* Microcopy */}
-            <p className="text-sm sm:text-base text-white/60 font-normal mb-4">
+            {/* Microcopy - Slate color */}
+            <p className="text-sm sm:text-base text-[#96A0B5] font-normal mb-4">
               Covers capacity building grants • 5-minute application
             </p>
 
             {/* Urgency line */}
-            <p className="text-sm text-white/50 font-normal">
+            <p className="text-sm text-[#96A0B5]/80 font-normal">
               Applications close January 31, 2026
             </p>
           </div>
