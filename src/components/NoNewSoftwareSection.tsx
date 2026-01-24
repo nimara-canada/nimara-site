@@ -21,7 +21,7 @@ const NoNewSoftwareSection = () => {
         </p>
 
         {/* Headline */}
-        <h2 className="text-[clamp(2.5rem,8vw,7rem)] font-black tracking-[-0.04em] text-white leading-[0.95] mb-6 uppercase">
+        <h2 className="text-[clamp(2rem,6.4vw,5.6rem)] font-black tracking-[-0.04em] text-white leading-[0.95] mb-6 uppercase">
           WORKS WITH THE TOOLS YOU ALREADY USE
         </h2>
 
