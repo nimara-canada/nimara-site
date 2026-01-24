@@ -37,9 +37,9 @@ export const FAQ = () => {
         {/* Heading */}
         <h2
           id="faq-heading"
-          className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-foreground mb-8 sm:mb-12 md:mb-16 tracking-[-0.03em] leading-[1.05]"
+          className="text-[clamp(2.5rem,8vw,7rem)] font-black text-foreground mb-8 sm:mb-12 md:mb-16 tracking-[-0.04em] leading-[0.95] uppercase"
         >
-          Questions?
+          QUESTIONS?
         </h2>
 
         {/* FAQ Items */}

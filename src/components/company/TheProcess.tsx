@@ -65,9 +65,9 @@ const TheProcess: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-[-0.03em] leading-[1.05] mb-3 sm:mb-4 text-white"
+            className="text-[clamp(2.5rem,8vw,7rem)] font-black tracking-[-0.04em] leading-[0.95] mb-3 sm:mb-4 text-white uppercase"
           >
-            Clear systems in 4 simple steps.
+            CLEAR SYSTEMS IN 4 SIMPLE STEPS.
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

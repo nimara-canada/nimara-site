@@ -44,9 +44,9 @@ const OutcomesSection: React.FC = () => {
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-[-0.03em] leading-[1.05] mb-4 sm:mb-6 text-foreground"
+            className="text-[clamp(2.5rem,8vw,7rem)] font-black tracking-[-0.04em] leading-[0.95] mb-4 sm:mb-6 text-foreground uppercase"
           >
-            Where Nimara installs systems that stick
+            WHERE NIMARA INSTALLS SYSTEMS THAT STICK
           </motion.h2>
 
           <motion.p
