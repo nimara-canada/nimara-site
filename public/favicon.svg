@@ -1,8 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-  <!-- FAVICON: Micro N-mark optimized for 16px -->
-  <g>
-    <polygon fill="#202654" points="0,24 0,0 6,0 6,14 18,0 24,0 9,19 9,24"/>
-    <polygon fill="#202654" points="18,24 18,10 6,24 0,24 15,6 15,0 24,0 24,24"/>
-    <polygon fill="#6945D8" points="20,0 24,0 24,5"/>
+  <!-- FAVICON: Two diagonal bands, simplified for 16px -->
+  <g fill="#141A3A">
+    <polygon points="0,0 10,0 0,10"/>
+    <polygon points="0,10 0,17 10,7 10,0"/>
+    <polygon points="7,24 24,7 24,0 14,0 14,7 7,14"/>
+    <polygon points="7,24 14,24 24,14 24,7"/>
+    <polygon points="14,24 24,24 24,14"/>
   </g>
 </svg>

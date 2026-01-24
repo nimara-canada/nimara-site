@@ -1,41 +1,39 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 40" fill="none">
   <defs>
     <style>
-      .navy { fill: #202654; }
-      .purple { fill: #6945D8; }
+      .navy { fill: #141A3A; }
+      .purple { fill: #6B3FA0; }
     </style>
   </defs>
   
-  <!-- N-MARK: Geometric Abstract N -->
-  <!-- Two diagonal strokes with clean negative space -->
+  <!-- ICON: Square with two parallel 45° diagonal bands + purple corner wedge -->
   <g>
-    <!-- Left diagonal stroke -->
-    <polygon class="navy" points="0,40 0,0 8,0 8,24 28,0 36,0 12,32 12,40"/>
-    <!-- Right diagonal stroke -->  
-    <polygon class="navy" points="28,40 28,16 8,40 0,40 24,10 24,0 36,0 36,40"/>
-    <!-- Purple accent triangle - top right corner -->
-    <polygon class="purple" points="30,0 36,0 36,7"/>
+    <!-- First diagonal band (upper-left area) -->
+    <polygon class="navy" points="0,0 16,0 0,16"/>
+    <polygon class="navy" points="0,16 0,28 16,12 16,0"/>
+    
+    <!-- Second diagonal band (lower-right area) -->
+    <polygon class="navy" points="12,40 40,12 40,0 24,0 24,12 12,24"/>
+    <polygon class="navy" points="12,40 24,40 40,24 40,12"/>
+    <polygon class="navy" points="24,40 40,40 40,24"/>
+    
+    <!-- Purple accent wedge - top-right corner, hypotenuse at 45° -->
+    <polygon class="purple" points="32,0 40,0 40,8"/>
   </g>
   
-  <!-- WORDMARK: NIMARA - Serif, expanded tracking -->
-  <!-- Spacing from icon = ~height of I (approx 12px gap after 36px icon = starts at 48) -->
+  <!-- WORDMARK: NIMARA - Institutional serif, expanded tracking -->
   <g>
-    <!-- N - Serif with subtle bracketed serifs -->
-    <path class="navy" d="M52,8 L52,32 L56,32 L56,16 L68,32 L73,32 L73,8 L69,8 L69,24 L57,8 Z"/>
-    
-    <!-- I - Simple with serifs -->
-    <path class="navy" d="M80,8 L80,32 L84,32 L84,8 Z"/>
-    
-    <!-- M - Wide with angled strokes -->
-    <path class="navy" d="M91,8 L91,32 L95,32 L95,16 L102,28 L109,16 L109,32 L113,32 L113,8 L108,8 L102,20 L96,8 Z"/>
-    
-    <!-- A - Balanced with crossbar -->
-    <path class="navy" d="M120,32 L125,8 L131,8 L136,32 L132,32 L130.5,26 L125.5,26 L124,32 Z M126.5,22.5 L129.5,22.5 L128,14 Z"/>
-    
-    <!-- R - Balanced bowl and leg -->
-    <path class="navy" d="M142,8 L142,32 L146,32 L146,22 L150,22 L154,32 L159,32 L154.5,21.5 C157,20.5 158.5,18 158.5,15 C158.5,11 155.5,8 151,8 Z M146,11.5 L150.5,11.5 C153,11.5 154.5,13 154.5,15.5 C154.5,18 153,19 150.5,19 L146,19 Z"/>
-    
-    <!-- A - Final letter -->
-    <path class="navy" d="M165,32 L170,8 L176,8 L181,32 L177,32 L175.5,26 L170.5,26 L169,32 Z M171.5,22.5 L174.5,22.5 L173,14 Z"/>
+    <!-- N -->
+    <path class="navy" d="M54,8 L54,32 L58,32 L58,15 L70,32 L75,32 L75,8 L71,8 L71,25 L59,8 Z"/>
+    <!-- I -->
+    <path class="navy" d="M82,8 L82,32 L86,32 L86,8 Z"/>
+    <!-- M -->
+    <path class="navy" d="M93,8 L93,32 L97,32 L97,15 L104,27 L111,15 L111,32 L115,32 L115,8 L110,8 L104,19 L98,8 Z"/>
+    <!-- A -->
+    <path class="navy" d="M122,32 L127,8 L133,8 L138,32 L134,32 L132.5,26 L127.5,26 L126,32 Z M128.5,22.5 L131.5,22.5 L130,13 Z"/>
+    <!-- R -->
+    <path class="navy" d="M144,8 L144,32 L148,32 L148,22 L152,22 L156,32 L161,32 L156.5,21.5 C159,20.5 160.5,18 160.5,15 C160.5,11 157.5,8 153,8 Z M148,11.5 L152.5,11.5 C155,11.5 156.5,13 156.5,15.5 C156.5,18 155,19 152.5,19 L148,19 Z"/>
+    <!-- A -->
+    <path class="navy" d="M167,32 L172,8 L178,8 L183,32 L179,32 L177.5,26 L172.5,26 L171,32 Z M173.5,22.5 L176.5,22.5 L175,13 Z"/>
   </g>
 </svg>

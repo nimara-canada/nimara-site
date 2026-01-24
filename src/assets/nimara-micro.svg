@@ -1,9 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-  <!-- MICRO-MARK: Simplified N for 16px/24px use -->
-  <!-- Optimized stroke weights for small sizes -->
-  <g>
-    <polygon fill="#202654" points="0,24 0,0 6,0 6,14 18,0 24,0 9,19 9,24"/>
-    <polygon fill="#202654" points="18,24 18,10 6,24 0,24 15,6 15,0 24,0 24,24"/>
-    <polygon fill="#6945D8" points="20,0 24,0 24,5"/>
+  <!-- MICRO-MARK: Simplified for 16-24px - two diagonal bands, no purple wedge -->
+  <g fill="#141A3A">
+    <!-- First diagonal band -->
+    <polygon points="0,0 10,0 0,10"/>
+    <polygon points="0,10 0,17 10,7 10,0"/>
+    
+    <!-- Second diagonal band -->
+    <polygon points="7,24 24,7 24,0 14,0 14,7 7,14"/>
+    <polygon points="7,24 14,24 24,14 24,7"/>
+    <polygon points="14,24 24,24 24,14"/>
   </g>
 </svg>

@@ -1,18 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 40" fill="none">
-  <defs>
-    <style>
-      .navy { fill: #202654; }
-      .purple { fill: #6945D8; }
-    </style>
-  </defs>
-  
-  <!-- N-MARK: Geometric Abstract N - Icon Only -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
+  <!-- ICON: Two parallel 45° diagonal navy bands with white gap + purple corner wedge -->
   <g>
-    <!-- Left diagonal stroke -->
-    <polygon class="navy" points="0,40 0,0 8,0 8,24 28,0 36,0 12,32 12,40"/>
-    <!-- Right diagonal stroke -->  
-    <polygon class="navy" points="28,40 28,16 8,40 0,40 24,10 24,0 36,0 36,40"/>
-    <!-- Purple accent triangle -->
-    <polygon class="purple" points="30,0 36,0 36,7"/>
+    <!-- First diagonal band (upper-left) -->
+    <polygon fill="#141A3A" points="0,0 16,0 0,16"/>
+    <polygon fill="#141A3A" points="0,16 0,28 16,12 16,0"/>
+    
+    <!-- Second diagonal band (lower-right) -->
+    <polygon fill="#141A3A" points="12,40 40,12 40,0 24,0 24,12 12,24"/>
+    <polygon fill="#141A3A" points="12,40 24,40 40,24 40,12"/>
+    <polygon fill="#141A3A" points="24,40 40,40 40,24"/>
+    
+    <!-- Purple accent wedge - top-right corner -->
+    <polygon fill="#6B3FA0" points="32,0 40,0 40,8"/>
   </g>
 </svg>
