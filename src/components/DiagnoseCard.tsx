@@ -12,10 +12,10 @@ const DiagnoseCard = () => {
       className="bg-[hsl(var(--nim-navy))] text-white relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 lg:py-24">
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 min-h-[70vh] lg:min-h-[80vh]">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 min-h-[70vh] lg:min-h-[80vh]">
           
           {/* Left Column - Content */}
-          <div className="lg:col-span-7 flex flex-col justify-between">
+          <div className="flex flex-col justify-between relative z-10">
             
             {/* Top: Step Number + Description */}
             <div>
@@ -26,7 +26,7 @@ const DiagnoseCard = () => {
                 transition={{ duration: 0.5 }}
                 className="w-12 h-12 rounded-full border-2 border-white/40 flex items-center justify-center mb-8"
               >
-                <span className="text-lg font-medium">1</span>
+                <span className="text-lg font-medium text-white">1</span>
               </motion.div>
 
               {/* Description */}
@@ -34,7 +34,7 @@ const DiagnoseCard = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-lg lg:text-xl text-white/80 leading-relaxed max-w-lg mb-8"
+                className="text-lg lg:text-xl text-white/80 leading-relaxed max-w-md mb-8"
               >
                 We find the gaps that make funding stressful. We review your finance flow, board decisions, files, and reporting—then give you a simple scorecard and the exact order to fix it.
               </motion.p>
@@ -44,7 +44,7 @@ const DiagnoseCard = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="flex items-center gap-4 text-sm text-white/50"
+                className="flex flex-wrap items-center gap-3 text-sm text-white/50"
               >
                 <span>Google Drive</span>
                 <span className="w-1 h-1 rounded-full bg-white/30" />
@@ -57,13 +57,13 @@ const DiagnoseCard = () => {
             </div>
 
             {/* Bottom: Big Word + Learn More */}
-            <div className="mt-auto pt-16 lg:pt-24">
+            <div className="mt-auto pt-12 lg:pt-20">
               {/* Big Word */}
               <motion.h2
                 initial={{ opacity: 0, y: 40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7, delay: 0.3 }}
-                className="text-[4rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] xl:text-[12rem] font-black leading-[0.85] tracking-[-0.04em] uppercase"
+                className="text-[3.5rem] sm:text-[5rem] md:text-[6rem] lg:text-[7rem] xl:text-[8rem] font-black leading-[0.85] tracking-[-0.04em] uppercase text-white"
                 style={{ fontWeight: 900 }}
               >
                 Diagnose
@@ -74,7 +74,7 @@ const DiagnoseCard = () => {
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
                 transition={{ duration: 0.5, delay: 0.5 }}
-                className="mt-8 pt-6 border-t border-white/20"
+                className="mt-8 pt-6 border-t border-white/20 max-w-md"
               >
                 <a 
                   href="/how-nimara-works" 
@@ -100,74 +100,71 @@ const DiagnoseCard = () => {
           </div>
 
           {/* Right Column - Poster Card */}
-          <div className="lg:col-span-5 flex items-center justify-center lg:justify-end">
+          <div className="flex items-center justify-center lg:justify-end">
             <motion.div
               initial={{ opacity: 0, x: 40, rotate: 2 }}
               animate={isInView ? { opacity: 1, x: 0, rotate: 3 } : {}}
               transition={{ duration: 0.7, delay: 0.4 }}
-              className="relative w-full max-w-[320px] lg:max-w-[380px]"
+              className="relative w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[340px]"
             >
               {/* Poster Card */}
               <div 
-                className="relative rounded-sm overflow-hidden shadow-2xl"
+                className="relative rounded-xl overflow-hidden shadow-2xl"
                 style={{ 
-                  backgroundColor: 'hsl(165, 45%, 75%)',
+                  backgroundColor: 'hsl(165, 45%, 85%)',
                   aspectRatio: '3/4'
                 }}
               >
                 {/* Noise texture overlay */}
                 <div 
-                  className="absolute inset-0 opacity-30 mix-blend-overlay pointer-events-none"
+                  className="absolute inset-0 opacity-20 mix-blend-overlay pointer-events-none"
                   style={{
                     backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
                   }}
                 />
 
                 {/* Top label */}
-                <div className="absolute top-6 left-6 right-6">
-                  <span className="text-xs uppercase tracking-widest text-[hsl(var(--nim-navy))]/60 font-medium">
+                <div className="absolute top-5 left-5 right-5">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--nim-navy))]/70 font-semibold">
                     Nonprofit Health Check
                   </span>
                 </div>
 
+                {/* Corner accent */}
+                <div 
+                  className="absolute top-5 right-5 w-5 h-5 rounded-full"
+                  style={{ backgroundColor: 'hsl(var(--nim-navy))' }}
+                />
+
                 {/* Center content - Abstract visual */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative">
-                    {/* Concentric circles made of dots - abstract visual */}
-                    <svg width="180" height="180" viewBox="0 0 180 180" className="opacity-40">
-                      <circle cx="90" cy="90" r="80" fill="none" stroke="hsl(var(--nim-navy))" strokeWidth="1" strokeDasharray="2 4" />
-                      <circle cx="90" cy="90" r="60" fill="none" stroke="hsl(var(--nim-navy))" strokeWidth="1" strokeDasharray="2 4" />
-                      <circle cx="90" cy="90" r="40" fill="none" stroke="hsl(var(--nim-navy))" strokeWidth="1" strokeDasharray="2 4" />
-                      <circle cx="90" cy="90" r="20" fill="hsl(var(--nim-navy))" opacity="0.2" />
-                    </svg>
-                  </div>
+                  <svg width="140" height="140" viewBox="0 0 140 140" className="opacity-30">
+                    <circle cx="70" cy="70" r="60" fill="none" stroke="hsl(var(--nim-navy))" strokeWidth="1" strokeDasharray="3 5" />
+                    <circle cx="70" cy="70" r="45" fill="none" stroke="hsl(var(--nim-navy))" strokeWidth="1" strokeDasharray="3 5" />
+                    <circle cx="70" cy="70" r="30" fill="none" stroke="hsl(var(--nim-navy))" strokeWidth="1" strokeDasharray="3 5" />
+                    <circle cx="70" cy="70" r="12" fill="hsl(var(--nim-navy))" opacity="0.3" />
+                  </svg>
                 </div>
 
                 {/* Bottom stats */}
-                <div className="absolute bottom-6 left-6 right-6">
-                  <div className="flex items-end justify-between">
+                <div className="absolute bottom-5 left-5 right-5">
+                  <div className="flex items-end justify-between gap-4">
                     <div>
                       <span 
-                        className="text-5xl sm:text-6xl font-black tracking-tight"
+                        className="text-4xl sm:text-5xl font-black tracking-tight block"
                         style={{ color: 'hsl(var(--nim-navy))' }}
                       >
                         NOHC
                       </span>
                     </div>
                     <div className="text-right">
-                      <p className="text-xs text-[hsl(var(--nim-navy))]/60 leading-tight">
+                      <p className="text-[10px] sm:text-xs text-[hsl(var(--nim-navy))]/60 leading-tight font-medium">
                         Tier 0 → 4<br />
                         1 Scorecard
                       </p>
                     </div>
                   </div>
                 </div>
-
-                {/* Corner accent */}
-                <div 
-                  className="absolute top-4 right-4 w-6 h-6 rounded-full"
-                  style={{ backgroundColor: 'hsl(var(--nim-navy))' }}
-                />
               </div>
             </motion.div>
           </div>
