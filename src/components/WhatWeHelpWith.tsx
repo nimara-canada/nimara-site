@@ -1,188 +1,189 @@
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Button } from "@/components/ui/button";
-import { CALENDLY_BOOKING_URL, TYPEFORM_HEALTH_CHECK_URL } from "@/constants/urls";
-import { 
-  Users, 
-  Wallet, 
-  UserCog, 
-  LayoutGrid, 
-  Heart, 
-  HandHeart, 
-  FolderOpen 
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { CALENDLY_BOOKING_URL } from "@/constants/urls";
 
-const areas = [
-  { icon: Users, title: "Board", description: "Decisions, minutes, approvals", color: "from-violet-500 to-purple-600" },
-  { icon: Wallet, title: "Money & Grants", description: "Track spending, find proof", color: "from-emerald-500 to-teal-600" },
-  { icon: UserCog, title: "People", description: "Roles, hiring, handoffs", color: "from-blue-500 to-indigo-600" },
-  { icon: LayoutGrid, title: "Programs", description: "Plans, updates, tracking", color: "from-orange-500 to-red-500" },
-  { icon: Heart, title: "Fundraising", description: "Donors + thank-yous", color: "from-pink-500 to-rose-600" },
-  { icon: HandHeart, title: "Volunteers", description: "Roles + onboarding", color: "from-amber-500 to-orange-600" },
-  { icon: FolderOpen, title: "Tools & Files", description: "Folders + templates", color: "from-cyan-500 to-blue-600" },
+const cards = [
+  {
+    label: "We document",
+    title: "Your Board",
+    description: "Your board runs with clear records — no more chasing people.",
+  },
+  {
+    label: "We track",
+    title: "Your Money",
+    description: "Find proof for funders in minutes, not days.",
+  },
+  {
+    label: "We systemize",
+    title: "Your People",
+    description: "New staff get up to speed fast. Nothing stuck in anyone's head.",
+  },
+  {
+    label: "We organize",
+    title: "Your Programs",
+    description: "Show what you're doing and whether it's working.",
+  },
+  {
+    label: "We connect",
+    title: "Your Donors",
+    description: "Know who gave, when, and how to keep them giving.",
+  },
+  {
+    label: "We coordinate",
+    title: "Your Volunteers",
+    description: "Volunteers know what they signed up for — and stay longer.",
+  },
+  {
+    label: "We structure",
+    title: "Your Files",
+    description: "Anyone on your team can find what they need.",
+  },
 ];
 
-export const WhatWeHelpWith = () => {
+export default function WhatWeHelpWith() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
-  
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "center center"]
-  });
-
-  // Scale cards from 0.7 to 1 as user scrolls
-  const cardScale = useTransform(scrollYProgress, [0, 0.8], [0.65, 1]);
-  const cardOpacity = useTransform(scrollYProgress, [0, 0.5], [0.5, 1]);
 
   return (
     <section
       ref={sectionRef}
-      className="py-24 lg:py-32 bg-background overflow-hidden"
+      className="py-[80px] md:py-[120px]"
+      style={{ backgroundColor: "#0f1629" }}
       aria-labelledby="help-heading"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-        {/* Header */}
-        <div className="mb-16 lg:mb-20">
-          <motion.h2
-            id="help-heading"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-semibold text-foreground tracking-tight mb-4"
-          >
-            What we help with
-          </motion.h2>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        {/* Headline */}
+        <motion.h2
+          id="help-heading"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center text-[40px] md:text-[72px] font-extrabold leading-[1.1] tracking-tight mb-6"
+        >
+          <span className="text-white">WHAT WE </span>
+          <span style={{ color: "#ACFCE3" }}>HELP</span>
+          <span className="text-white"> YOU WITH</span>
+        </motion.h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-lg text-muted-foreground max-w-xl"
-          >
-            Pick one. Start there. Add more later.
-          </motion.p>
+        {/* Subtext */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-center text-[20px] leading-relaxed max-w-[600px] mx-auto mb-[72px]"
+          style={{ color: "rgba(255,255,255,0.7)" }}
+        >
+          We build the systems that keep you organized, accountable, and funder-ready.
+        </motion.p>
+
+        {/* Cards Grid - 4-3 Layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {/* First row - 4 cards */}
+          {cards.slice(0, 4).map((card, index) => (
+            <Card key={card.title} card={card} index={index} isInView={isInView} />
+          ))}
+        </div>
+        
+        {/* Second row - 3 cards centered */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[calc(75%+12px)] lg:max-w-[calc(75%-6px)] mx-auto mb-16">
+          {cards.slice(4, 7).map((card, index) => (
+            <Card key={card.title} card={card} index={index + 4} isInView={isInView} />
+          ))}
         </div>
 
-        {/* Stacking cards with scroll-linked scaling */}
-        <motion.div
-          style={{ scale: cardScale, opacity: cardOpacity }}
-          className="mb-16"
-        >
-          {/* Mobile: horizontal scroll */}
-          <div className="lg:hidden overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide">
-            <div className="flex gap-3" style={{ width: 'max-content' }}>
-              {areas.map((area, index) => {
-                const Icon = area.icon;
-                return (
-                  <motion.div
-                    key={area.title}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.4, delay: 0.2 + index * 0.05 }}
-                    className={`w-[150px] shrink-0 bg-gradient-to-br ${area.color} text-white rounded-2xl p-5 shadow-lg`}
-                  >
-                    <Icon className="w-6 h-6 mb-3 opacity-90" strokeWidth={1.5} />
-                    <h3 className="text-sm font-semibold mb-1">{area.title}</h3>
-                    <p className="text-xs opacity-80 leading-snug">{area.description}</p>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Desktop: fanned stack with colors */}
-          <div className="hidden lg:flex justify-center items-center relative h-[320px]">
-            {areas.map((area, index) => {
-              const Icon = area.icon;
-              const totalCards = areas.length;
-              const centerIndex = (totalCards - 1) / 2;
-              const offset = index - centerIndex;
-              
-              return (
-                <motion.div
-                  key={area.title}
-                  className={`absolute w-[180px] bg-gradient-to-br ${area.color} text-white rounded-3xl p-6 cursor-pointer shadow-2xl`}
-                  initial={{ 
-                    opacity: 0,
-                    x: 0,
-                    rotate: 0,
-                    scale: 0.8
-                  }}
-                  animate={isInView ? { 
-                    opacity: 1,
-                    x: offset * 95,
-                    rotate: offset * 4,
-                    scale: 1,
-                    y: Math.abs(offset) * 12
-                  } : {}}
-                  transition={{ 
-                    duration: 0.7, 
-                    delay: 0.3 + index * 0.08,
-                    type: "spring",
-                    stiffness: 80,
-                    damping: 15
-                  }}
-                  whileHover={{ 
-                    y: -24,
-                    scale: 1.08,
-                    rotate: 0,
-                    zIndex: 50,
-                    transition: { duration: 0.25 }
-                  }}
-                  style={{ 
-                    zIndex: totalCards - Math.abs(offset),
-                    transformOrigin: "center bottom"
-                  }}
-                >
-                  <Icon className="w-7 h-7 mb-5 opacity-90" strokeWidth={1.5} />
-                  <h3 className="text-lg font-semibold mb-1">{area.title}</h3>
-                  <p className="text-sm opacity-80 leading-snug">{area.description}</p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </motion.div>
-
-        {/* Helper text + CTAs */}
+        {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-6"
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="flex justify-center"
         >
-          <p className="text-muted-foreground">
-            Not sure where to start?
-          </p>
-
-          <div
-            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3"
-            role="group"
-            aria-label="Call to action"
+          <a
+            href={CALENDLY_BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 px-8 py-4 text-[16px] font-semibold text-white rounded-lg transition-all duration-300 hover:-translate-y-1"
+            style={{
+              border: "1px solid rgba(255,255,255,0.2)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.05)";
+              e.currentTarget.style.borderColor = "rgba(255,255,255,0.4)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "transparent";
+              e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)";
+            }}
           >
-            <Button asChild size="lg" className="px-6 rounded-full">
-              <a
-                href={CALENDLY_BOOKING_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Book a free call
-              </a>
-            </Button>
-            <Button asChild variant="outline" size="lg" className="px-6 rounded-full">
-              <a
-                href={TYPEFORM_HEALTH_CHECK_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Take the free check
-              </a>
-            </Button>
-          </div>
+            See How We Can Help
+            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
         </motion.div>
       </div>
     </section>
   );
-};
+}
 
-export default WhatWeHelpWith;
+function Card({ 
+  card, 
+  index, 
+  isInView 
+}: { 
+  card: { label: string; title: string; description: string }; 
+  index: number; 
+  isInView: boolean;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: 0.2 + index * 0.05 }}
+      className="group rounded-2xl transition-all duration-300 hover:-translate-y-1"
+      style={{
+        backgroundColor: "rgba(255,255,255,0.03)",
+        border: "1px solid rgba(255,255,255,0.08)",
+        padding: "40px 32px",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.05)";
+        e.currentTarget.style.borderColor = "rgba(172,252,227,0.3)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.03)";
+        e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
+      }}
+    >
+      {/* Label */}
+      <p 
+        className="text-[14px] font-medium mb-2"
+        style={{ color: "rgba(255,255,255,0.5)" }}
+      >
+        {card.label}
+      </p>
+      
+      {/* Title */}
+      <h3 className="text-[24px] font-bold text-white mb-4">
+        {card.title}
+      </h3>
+      
+      {/* Description */}
+      <p 
+        className="text-[16px] leading-[1.6] mb-6"
+        style={{ color: "rgba(255,255,255,0.6)" }}
+      >
+        {card.description}
+      </p>
+      
+      {/* Link */}
+      <a
+        href="#"
+        className="inline-flex items-center gap-1 text-[14px] font-semibold transition-all duration-300"
+        style={{ color: "#ACFCE3" }}
+      >
+        Learn more
+        <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+      </a>
+    </motion.div>
+  );
+}

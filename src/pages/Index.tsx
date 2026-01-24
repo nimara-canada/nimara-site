@@ -10,7 +10,7 @@ import StepCardsStack from "@/components/StepCardsStack";
 
 import StartingPointSplit from "@/components/StartingPointSplit";
 import TheProcess from "@/components/company/TheProcess";
-import HelpOrbitCarousel from "@/components/HelpOrbitCarousel";
+import WhatWeHelpWith from "@/components/WhatWeHelpWith";
 import NoNewSoftwareSection from "@/components/NoNewSoftwareSection";
 import OutcomesSection from "@/components/OutcomesSection";
 import { FAQ } from "@/components/FAQ";
@@ -115,7 +115,7 @@ const Index = () => {
           <TheProcess />
           
           {/* What We Help With - 7 Areas */}
-          <HelpOrbitCarousel />
+          <WhatWeHelpWith />
           
           {/* No New Software */}
           <NoNewSoftwareSection />
