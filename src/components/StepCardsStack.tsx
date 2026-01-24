@@ -25,7 +25,7 @@ const cards = [
   {
     step: 2,
     title: "Install",
-    description: "We don't teach. We install. We build the system inside your tools—approvals, trackers, board templates, source-of-truth folders, and a proof dashboard your team can actually run.",
+    description: "We don't teach. We install. We build working systems inside your tools — trackers, templates, folders, and dashboards your team can actually use.",
     tools: ["Google Drive", "Microsoft 365", "Templates", "Dashboards"],
     kidLine: "We build the helper machine.",
     bgClass: "bg-[hsl(var(--nim-purple))]",
@@ -36,10 +36,8 @@ const cards = [
       bg: "hsl(var(--nim-navy))",
       label: "System Install",
       accentColor: "hsl(var(--nim-purple))",
-      mainText: "4 Engines",
+      mainText: "4 ENGINES",
       subTexts: ["Money", "Leadership", "Memory", "Trust"],
-      timeline: "6 Weeks",
-      timelineDesc: "Mock Audit",
       pattern: "dots"
     }
   },
@@ -336,25 +334,15 @@ const PosterCard = ({ card }: { card: CardData }) => {
           
           {card.step === 2 && (
             <div className="space-y-3">
-              <div className="flex items-center justify-between pb-3 border-b border-white/20">
-                <span className="text-2xl sm:text-3xl font-black tracking-tight text-white">
-                  {poster.mainText}
-                </span>
-                <span className="text-2xl sm:text-3xl font-black tracking-tight text-white">
-                  {poster.timeline}
-                </span>
-              </div>
-              <div className="flex items-center justify-between">
-                <div className="flex flex-wrap gap-1.5">
-                  {poster.subTexts?.map((text, i) => (
-                    <span key={i} className="text-[10px] uppercase tracking-wider text-white/60 font-medium">
-                      {text}{i < (poster.subTexts?.length || 0) - 1 ? " •" : ""}
-                    </span>
-                  ))}
-                </div>
-                <span className="text-[10px] uppercase tracking-wider text-white/60 font-medium">
-                  {poster.timelineDesc}
-                </span>
+              <span className="text-3xl sm:text-4xl font-black tracking-tight text-white block">
+                {poster.mainText}
+              </span>
+              <div className="flex flex-wrap gap-x-2 gap-y-1">
+                {poster.subTexts?.map((text, i) => (
+                  <span key={i} className="text-sm text-white/70 font-medium">
+                    {text}{i < (poster.subTexts?.length || 0) - 1 ? " •" : ""}
+                  </span>
+                ))}
               </div>
             </div>
           )}
