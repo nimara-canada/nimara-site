@@ -275,8 +275,8 @@ All colors MUST be HSL.
   .bg-hero-background *:focus-visible,
   [class*="bg-nim-navy"] *:focus-visible,
   [class*="bg-gradient"] *:focus-visible {
-    outline: 2px solid hsl(var(--nim-mint));
-    box-shadow: 0 0 0 4px hsl(var(--nim-navy) / 0.8), 0 0 0 6px hsl(var(--nim-mint));
+    outline: 2px solid #3ECFB2;
+    outline-offset: 4px;
   }
 
   /* High contrast focus for critical interactive elements */
@@ -287,9 +287,16 @@ All colors MUST be HSL.
   select:focus-visible,
   textarea:focus-visible,
   [tabindex]:not([tabindex="-1"]):focus-visible {
-    outline: 2px solid hsl(var(--nim-purple));
-    outline-offset: 2px;
-    box-shadow: 0 0 0 4px hsl(var(--background)), 0 0 0 6px hsl(var(--nim-purple));
+    outline: 2px solid #3ECFB2;
+    outline-offset: 4px;
+  }
+
+  /* Focus styles on light backgrounds - use darker mint for contrast */
+  .bg-white *:focus-visible,
+  .bg-nim-cloud *:focus-visible,
+  [class*="bg-white"] *:focus-visible {
+    outline: 2px solid hsl(var(--nim-teal));
+    outline-offset: 4px;
   }
 
   /* Skip to content link */

@@ -65,10 +65,15 @@ const SmartTeamCohortHero = () => {
             <div className="mb-4">
               <Button 
                 size="lg" 
-                className="group w-full sm:w-auto bg-[#3ECFB2] hover:bg-[#35b89d] text-nim-navy rounded-full px-12 sm:px-16 py-6 sm:py-7 text-base sm:text-lg font-bold shadow-[0_8px_30px_rgba(62,207,178,0.4)] hover:shadow-[0_12px_40px_rgba(62,207,178,0.5)] transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#3ECFB2]/50" 
+                className="group w-full sm:w-auto min-h-[48px] bg-[#3ECFB2] hover:bg-[#35b89d] text-nim-navy rounded-full px-12 sm:px-16 py-6 sm:py-7 text-base sm:text-lg font-bold shadow-[0_8px_30px_rgba(62,207,178,0.4)] hover:shadow-[0_12px_40px_rgba(62,207,178,0.5)] transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98]" 
                 asChild
               >
-                <a href="https://form.typeform.com/to/Dsi3pXkx" target="_blank" rel="noopener noreferrer">
+                <a 
+                  href="https://form.typeform.com/to/Dsi3pXkx" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label="Apply now - opens application form in new tab"
+                >
                   Apply Now
                   <ArrowRight className="ml-3 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
                 </a>
@@ -538,10 +543,10 @@ const SmartTeamCohortHero = () => {
           <div className="text-center">
             <Button 
               size="lg" 
-              className="w-full sm:w-auto bg-[#3ECFB2] hover:bg-[#35b89d] text-nim-navy rounded-xl sm:rounded-2xl px-10 md:px-14 py-6 md:py-8 text-lg md:text-xl font-bold shadow-[0_8px_30px_rgba(62,207,178,0.4)] transition-all hover:-translate-y-0.5 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#3ECFB2]/50" 
+              className="w-full sm:w-auto min-h-[48px] bg-[#3ECFB2] hover:bg-[#35b89d] text-nim-navy rounded-xl sm:rounded-2xl px-10 md:px-14 py-6 md:py-8 text-lg md:text-xl font-bold shadow-[0_8px_30px_rgba(62,207,178,0.4)] transition-all hover:-translate-y-0.5 active:scale-[0.98]" 
               asChild
             >
-              <a href="#apply">
+              <a href="#apply" aria-label="Apply now - scroll to application section">
                 Apply Now
                 <ArrowRight className="ml-3 w-6 h-6" aria-hidden="true" />
               </a>
@@ -642,15 +647,24 @@ const SmartTeamCohortHero = () => {
             <div className="flex flex-col gap-5">
               <Button 
                 size="lg" 
-                className="w-full bg-[#3ECFB2] hover:bg-[#35b89d] text-nim-navy rounded-xl sm:rounded-2xl px-8 md:px-10 py-6 md:py-8 text-lg md:text-xl font-bold shadow-[0_8px_30px_rgba(62,207,178,0.4)] transition-all hover:-translate-y-0.5 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#3ECFB2]/50" 
+                className="w-full min-h-[48px] bg-[#3ECFB2] hover:bg-[#35b89d] text-nim-navy rounded-xl sm:rounded-2xl px-8 md:px-10 py-6 md:py-8 text-lg md:text-xl font-bold shadow-[0_8px_30px_rgba(62,207,178,0.4)] transition-all hover:-translate-y-0.5 active:scale-[0.98]" 
                 asChild
               >
-                <a href="https://form.typeform.com/to/Dsi3pXkx" target="_blank" rel="noopener noreferrer">
+                <a 
+                  href="https://form.typeform.com/to/Dsi3pXkx" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label="Apply now - opens application form in new tab"
+                >
                   Apply Now
                   <ArrowRight className="ml-3 w-6 h-6" aria-hidden="true" />
                 </a>
               </Button>
-              <a href="#faq" className="text-nim-slate hover:text-nim-navy text-lg font-medium transition-colors text-center">
+              <a 
+                href="#faq" 
+                className="min-h-[44px] flex items-center justify-center text-nim-slate hover:text-nim-navy text-lg font-medium transition-colors text-center"
+                aria-label="View frequently asked questions"
+              >
                 FAQ
               </a>
             </div>
@@ -747,10 +761,15 @@ const SmartTeamCohortHero = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-5 mb-10">
             <Button 
               size="lg" 
-              className="w-full sm:w-auto bg-[#3ECFB2] hover:bg-[#35b89d] text-nim-navy rounded-xl sm:rounded-2xl px-10 md:px-12 py-6 md:py-8 text-lg md:text-xl font-bold shadow-[0_8px_30px_rgba(62,207,178,0.4)] transition-all hover:-translate-y-0.5 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#3ECFB2]/50" 
+              className="w-full sm:w-auto min-h-[48px] bg-[#3ECFB2] hover:bg-[#35b89d] text-nim-navy rounded-xl sm:rounded-2xl px-10 md:px-12 py-6 md:py-8 text-lg md:text-xl font-bold shadow-[0_8px_30px_rgba(62,207,178,0.4)] transition-all hover:-translate-y-0.5 active:scale-[0.98]" 
               asChild
             >
-              <a href="https://form.typeform.com/to/Dsi3pXkx" target="_blank" rel="noopener noreferrer">
+              <a 
+                href="https://form.typeform.com/to/Dsi3pXkx" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="Apply now - opens application form in new tab"
+              >
                 Apply Now
                 <ArrowRight className="ml-3 w-6 h-6" aria-hidden="true" />
               </a>
@@ -783,10 +802,15 @@ const SmartTeamCohortHero = () => {
           {/* Main CTA - Updated */}
           <Button 
             size="lg" 
-            className="w-full sm:w-auto bg-[#3ECFB2] hover:bg-[#35b89d] text-nim-navy rounded-xl sm:rounded-2xl px-12 md:px-16 py-6 md:py-8 text-lg md:text-xl font-bold shadow-[0_8px_30px_rgba(62,207,178,0.4)] transition-all hover:-translate-y-0.5 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#3ECFB2]/50 mb-8" 
+            className="w-full sm:w-auto min-h-[48px] bg-[#3ECFB2] hover:bg-[#35b89d] text-nim-navy rounded-xl sm:rounded-2xl px-12 md:px-16 py-6 md:py-8 text-lg md:text-xl font-bold shadow-[0_8px_30px_rgba(62,207,178,0.4)] transition-all hover:-translate-y-0.5 active:scale-[0.98] mb-8" 
             asChild
           >
-            <a href="https://form.typeform.com/to/Dsi3pXkx" target="_blank" rel="noopener noreferrer">
+            <a 
+              href="https://form.typeform.com/to/Dsi3pXkx" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              aria-label="Apply now - opens application form in new tab"
+            >
               Apply Now
               <ArrowRight className="ml-3 w-6 h-6" aria-hidden="true" />
             </a>
@@ -829,10 +853,26 @@ const SmartTeamCohortHero = () => {
             </div>
             <span className="text-lg text-white/60">© 2025 Nimara</span>
           </div>
-          <nav className="flex items-center gap-12 text-lg text-white/40" aria-label="Footer navigation">
-            <a href="/privacy" className="hover:text-white transition-colors">Privacy</a>
-            <a href="/terms" className="hover:text-white transition-colors">Terms</a>
-            <a href="mailto:hello@nimara.ca" className="hover:text-white transition-colors">hello@nimara.ca</a>
+          <nav className="flex items-center gap-8 md:gap-12 text-lg text-white/40" aria-label="Footer navigation">
+            <a 
+              href="/privacy" 
+              className="min-h-[44px] flex items-center hover:text-white transition-colors"
+            >
+              Privacy
+            </a>
+            <a 
+              href="/terms" 
+              className="min-h-[44px] flex items-center hover:text-white transition-colors"
+            >
+              Terms
+            </a>
+            <a 
+              href="mailto:hello@nimara.ca" 
+              className="min-h-[44px] flex items-center hover:text-white transition-colors"
+              aria-label="Send email to hello@nimara.ca"
+            >
+              hello@nimara.ca
+            </a>
           </nav>
         </div>
       </footer>
