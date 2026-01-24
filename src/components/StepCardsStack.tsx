@@ -6,7 +6,7 @@ const cards = [
   {
     step: 1,
     title: "Diagnose",
-    description: "We find the gaps that make funding stressful. We review your finance flow, board decisions, files, and reporting—then give you a simple scorecard and the exact order to fix it.",
+    description: "We find the gaps that make funding stressful. We review your finances, decisions, files, and reporting — then give you a scorecard and the exact order to fix it.",
     tools: ["Google Drive", "Microsoft 365", "Sheets", "Excel"],
     kidLine: "We look for the mess.",
     bgClass: "bg-[hsl(var(--nim-navy))]",
@@ -17,8 +17,8 @@ const cards = [
       bg: "hsl(165, 45%, 85%)",
       label: "Nonprofit Health Check",
       accentColor: "hsl(var(--nim-navy))",
-      mainText: "NOHC",
-      stats: ["Tier 0 → 4", "1 Scorecard"],
+      mainText: "TIER 0 → 4",
+      subText: "Know where you stand",
       pattern: "circles"
     }
   },
@@ -152,6 +152,7 @@ interface CardData {
     label: string;
     accentColor: string;
     mainText?: string;
+    subText?: string;
     subTexts?: string[];
     stats?: any;
     timeline?: string;
@@ -317,19 +318,19 @@ const PosterCard = ({ card }: { card: CardData }) => {
         {/* Bottom stats - varies by card */}
         <div className="absolute bottom-5 left-5 right-5">
           {card.step === 1 && (
-            <div className="flex items-end justify-between gap-4">
+            <div className="space-y-2">
               <span 
-                className="text-4xl sm:text-5xl font-black tracking-tight"
+                className="text-3xl sm:text-4xl font-black tracking-tight block"
                 style={{ color: 'hsl(var(--nim-navy))' }}
               >
                 {poster.mainText}
               </span>
-              <div className="text-right">
-                <p className="text-[10px] sm:text-xs leading-tight font-medium" style={{ color: 'rgba(20,26,58,0.6)' }}>
-                  {poster.stats?.[0]}<br />
-                  {poster.stats?.[1]}
-                </p>
-              </div>
+              <p 
+                className="text-sm font-medium"
+                style={{ color: 'rgba(20,26,58,0.7)' }}
+              >
+                {poster.subText}
+              </p>
             </div>
           )}
           
