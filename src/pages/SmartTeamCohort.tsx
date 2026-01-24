@@ -87,18 +87,18 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Section 2: Sound Familiar? - DARK */}
-      <section className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 md:py-[100px] bg-nim-navy" aria-labelledby="familiar-heading">
+      {/* Section 2: Sound Familiar? - LIGHT */}
+      <section className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 md:py-[100px] bg-white" aria-labelledby="familiar-heading">
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <header className="text-center mb-12">
-            <p className="text-sm font-bold uppercase tracking-[3px] text-white/60 mb-4">
+            <p className="text-sm font-bold uppercase tracking-[3px] text-[#6945D8] mb-4">
               Sound Familiar?
             </p>
-            <h2 id="familiar-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-[3rem] font-extrabold text-white tracking-[-0.02em] leading-[1.1] mb-5">
+            <h2 id="familiar-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-[3rem] font-extrabold text-[#202654] tracking-[-0.02em] leading-[1.1] mb-5">
               Everything Lives in Your Head
             </h2>
-            <p className="text-lg sm:text-xl text-white/80 font-medium">
+            <p className="text-lg sm:text-xl text-[#96A0B5] font-medium">
               And funders can tell.
             </p>
           </header>
@@ -106,48 +106,48 @@ const SmartTeamCohortHero = () => {
           {/* Pain Point Cards - 2x2 Grid */}
           <div className="grid sm:grid-cols-2 gap-6 md:gap-8 mb-16">
             {/* Card 1 */}
-            <article className="bg-white shadow-[0_4px_20px_rgba(0,0,0,0.06)] rounded-xl sm:rounded-2xl p-8 border-l-4 border-l-[#3ECFB2]">
-              <h3 className="text-xl font-bold text-nim-navy mb-3">
+            <article className="bg-white shadow-[0_4px_20px_rgba(32,38,84,0.08)] rounded-xl sm:rounded-2xl p-8 border-l-4 border-l-[#6945D8]">
+              <h3 className="text-xl font-bold text-[#202654] mb-3">
                 "Where's that receipt?"
               </h3>
-              <p className="text-[17px] text-nim-slate-dark font-normal leading-[1.6]">
+              <p className="text-[17px] text-[#96A0B5] font-normal leading-[1.6]">
                 When funders ask for proof and you can't find it fast — they notice.
               </p>
             </article>
 
             {/* Card 2 */}
-            <article className="bg-white shadow-[0_4px_20px_rgba(0,0,0,0.06)] rounded-xl sm:rounded-2xl p-8 border-l-4 border-l-[#3ECFB2]">
-              <h3 className="text-xl font-bold text-nim-navy mb-3">
+            <article className="bg-white shadow-[0_4px_20px_rgba(32,38,84,0.08)] rounded-xl sm:rounded-2xl p-8 border-l-4 border-l-[#6945D8]">
+              <h3 className="text-xl font-bold text-[#202654] mb-3">
                 "I can't take a vacation."
               </h3>
-              <p className="text-[17px] text-nim-slate-dark font-normal leading-[1.6]">
+              <p className="text-[17px] text-[#96A0B5] font-normal leading-[1.6]">
                 If you step away, nobody can answer funder questions. That's a red flag.
               </p>
             </article>
 
             {/* Card 3 */}
-            <article className="bg-white shadow-[0_4px_20px_rgba(0,0,0,0.06)] rounded-xl sm:rounded-2xl p-8 border-l-4 border-l-[#3ECFB2]">
-              <h3 className="text-xl font-bold text-nim-navy mb-3">
+            <article className="bg-white shadow-[0_4px_20px_rgba(32,38,84,0.08)] rounded-xl sm:rounded-2xl p-8 border-l-4 border-l-[#6945D8]">
+              <h3 className="text-xl font-bold text-[#202654] mb-3">
                 "What if we get audited?"
               </h3>
-              <p className="text-[17px] text-nim-slate-dark font-normal leading-[1.6]">
+              <p className="text-[17px] text-[#96A0B5] font-normal leading-[1.6]">
                 Messy records lead to audit findings. Audit findings mean funders don't come back.
               </p>
             </article>
 
             {/* Card 4 */}
-            <article className="bg-white shadow-[0_4px_20px_rgba(0,0,0,0.06)] rounded-xl sm:rounded-2xl p-8 border-l-4 border-l-[#3ECFB2]">
-              <h3 className="text-xl font-bold text-nim-navy mb-3">
+            <article className="bg-white shadow-[0_4px_20px_rgba(32,38,84,0.08)] rounded-xl sm:rounded-2xl p-8 border-l-4 border-l-[#6945D8]">
+              <h3 className="text-xl font-bold text-[#202654] mb-3">
                 "We do good work, but..."
               </h3>
-              <p className="text-[17px] text-nim-slate-dark font-normal leading-[1.6]">
+              <p className="text-[17px] text-[#96A0B5] font-normal leading-[1.6]">
                 You can't prove it. No proof = no trust. No trust = no second grant.
               </p>
             </article>
           </div>
 
-          {/* Bottom Line - styled as requested */}
-          <p className="text-center text-2xl font-semibold text-[#3ECFB2] mt-16">
+          {/* Bottom Line - Purple emphasis */}
+          <p className="text-center text-2xl font-semibold text-[#6945D8] mt-16">
             Organized nonprofits get funded. Messy ones get passed over.
           </p>
         </div>
