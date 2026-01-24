@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 60" fill="none">
+  <!-- N Icon Mark -->
+  <g>
+    <!-- Navy blue square background for N -->
+    <rect x="0" y="0" width="60" height="60" rx="4" fill="#1a1a4e"/>
+    
+    <!-- Diagonal stripes of the N - using clipping mask -->
+    <defs>
+      <clipPath id="n-clip">
+        <path d="M12 48V12h8l20 28V12h8v36h-8L20 20v28h-8z"/>
+      </clipPath>
+    </defs>
+    
+    <!-- Stripes inside the N shape -->
+    <g clip-path="url(#n-clip)">
+      <!-- Diagonal stripes from bottom-left to top-right -->
+      <line x1="-5" y1="65" x2="65" y2="-5" stroke="white" stroke-width="6"/>
+      <line x1="5" y1="65" x2="75" y2="-5" stroke="white" stroke-width="6"/>
+      <line x1="15" y1="65" x2="85" y2="-5" stroke="white" stroke-width="6"/>
+      <line x1="25" y1="65" x2="95" y2="-5" stroke="white" stroke-width="6"/>
+      <line x1="35" y1="65" x2="105" y2="-5" stroke="white" stroke-width="6"/>
+      <line x1="45" y1="65" x2="115" y2="-5" stroke="white" stroke-width="6"/>
+    </g>
+    
+    <!-- Purple accent triangle in upper right -->
+    <path d="M48 12L48 24L36 12Z" fill="#7c3aed"/>
+  </g>
+  
+  <!-- NIMARA Wordmark -->
+  <text x="76" y="42" font-family="'DM Serif Display', Georgia, serif" font-size="36" font-weight="400" fill="#1a1a4e" letter-spacing="0.02em">NIMARA</text>
+</svg>
