@@ -44,9 +44,9 @@ const cards = [
   {
     step: 3,
     title: "Maintain",
-    description: "We keep it from falling apart. You get a simple playbook, checklists, and a maintenance rhythm—so when staff change, the system still works.",
+    description: "Systems fail when people leave. Yours won't. You get a playbook and a rhythm that keeps everything running — so you stay funder-ready, year after year.",
     tools: ["Checklists", "Monthly rhythm", "Quarterly tune-up"],
-    kidLine: "We help you keep it tidy.",
+    kidLine: "We make sure it doesn't break.",
     bgClass: "bg-[hsl(var(--nim-mint))]",
     textClass: "text-[hsl(var(--nim-navy))]",
     subtextClass: "text-[hsl(var(--nim-navy))]/70",
@@ -55,11 +55,8 @@ const cards = [
       bg: "hsl(30, 30%, 95%)",
       label: "Maintenance Rhythm",
       accentColor: "hsl(var(--nim-mint-dark))",
-      stats: [
-        { value: "30 min", label: "/ month" },
-        { value: "1", label: "Playbook" },
-        { value: "Q4", label: "Check" }
-      ],
+      mainText: "QUARTERLY CHECK",
+      subText: "Stay funder-ready",
       pattern: "calendar"
     }
   }
@@ -349,22 +346,18 @@ const PosterCard = ({ card }: { card: CardData }) => {
           
           {card.step === 3 && (
             <div className="space-y-2">
-              {poster.stats?.map((stat: { value: string; label: string }, i: number) => (
-                <div key={i} className="flex items-baseline justify-between">
-                  <span 
-                    className="text-xl sm:text-2xl font-black tracking-tight"
-                    style={{ color: 'hsl(var(--nim-navy))' }}
-                  >
-                    {stat.value}
-                  </span>
-                  <span 
-                    className="text-[10px] uppercase tracking-wider font-medium"
-                    style={{ color: 'rgba(20,26,58,0.6)' }}
-                  >
-                    {stat.label}
-                  </span>
-                </div>
-              ))}
+              <span 
+                className="text-3xl sm:text-4xl font-black tracking-tight block"
+                style={{ color: 'hsl(var(--nim-navy))' }}
+              >
+                {poster.mainText}
+              </span>
+              <p 
+                className="text-sm font-medium"
+                style={{ color: 'rgba(20,26,58,0.7)' }}
+              >
+                {poster.subText}
+              </p>
             </div>
           )}
         </div>
