@@ -168,8 +168,8 @@ const StartingPointSplit = () => {
         <span className="text-xs sm:text-sm font-semibold text-primary uppercase tracking-widest mb-2 sm:mb-3 block">
           Start here
         </span>
-        <h2 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-[-0.03em] text-foreground leading-[1.05] mb-3 sm:mb-4">
-          Choose where to start.
+        <h2 className="text-[clamp(2.5rem,8vw,7rem)] font-black tracking-[-0.04em] text-foreground leading-[0.95] mb-3 sm:mb-4 uppercase">
+          CHOOSE WHERE TO START.
         </h2>
         <p className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto">
           Most nonprofits start in one of these two places.

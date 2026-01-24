@@ -40,7 +40,7 @@ const ProblemSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="font-black tracking-[-0.03em] leading-[0.95] text-[clamp(2.5rem,8vw,6.5rem)]"
+          className="font-black tracking-[-0.04em] leading-[0.95] text-[clamp(2.5rem,8vw,7rem)] uppercase"
           style={{ color: '#202654' }}
         >
           GOOD ORGANIZATIONS STILL LOSE FUNDING{' '}

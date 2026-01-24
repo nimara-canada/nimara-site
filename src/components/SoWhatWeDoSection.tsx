@@ -35,7 +35,7 @@ export const SoWhatWeDoSection = () => {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="font-black tracking-[-0.04em] leading-[0.9] uppercase text-[clamp(2rem,10vw,7rem)]"
+          className="font-black tracking-[-0.04em] leading-[0.95] uppercase text-[clamp(2rem,10vw,7rem)]"
           style={{ color: '#000000' }}
         >
           SO WHAT DO WE DO, EXACTLY?
