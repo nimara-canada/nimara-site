@@ -453,32 +453,6 @@ const SmartTeamCohortHero = () => {
         </div>
       </section>
 
-      {/* Section 6: Ultimate Proof - DARK */}
-      <section className="w-full px-5 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-navy" aria-labelledby="ultimate-proof-heading">
-        <div className="max-w-3xl mx-auto">
-          {/* Promise Card - WHITE ACCENT */}
-          <div className="bg-white border border-border rounded-2xl sm:rounded-3xl p-8 sm:p-10 md:p-14 shadow-sm">
-            {/* Shield Icon */}
-            <div className="flex justify-center mb-6 sm:mb-8">
-              <svg className="w-12 h-12 sm:w-16 sm:h-16" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M32 8L12 16v16c0 12 8 20 20 24 12-4 20-12 20-24V16L32 8z" className="text-nim-teal" />
-                <path d="M24 32l6 6 10-12" className="text-nim-mint" />
-              </svg>
-            </div>
-            
-            <h2 id="ultimate-proof-heading" className="text-xl sm:text-2xl md:text-3xl font-bold text-nim-navy tracking-[-0.02em] text-center mb-4 sm:mb-6">
-              The "It Has to Work" Promise
-            </h2>
-            
-            <p className="text-base sm:text-lg text-nim-slate-dark text-center max-w-2xl mx-auto leading-relaxed">
-              In Week 6, we test your systems like an auditor would. We ask for receipts. 
-              We ask for board decisions. We ask for files. If your systems can't find 
-              things fast, we keep working until they can. No extra cost.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Section 7: Guarantee - DARK */}
       <section className="w-full px-4 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 md:py-28 lg:py-36 bg-nim-navy" aria-labelledby="guarantee-heading">
         <div className="max-w-4xl mx-auto">
