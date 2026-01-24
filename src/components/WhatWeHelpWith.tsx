@@ -1,4 +1,4 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const domains = [
@@ -47,155 +47,191 @@ const domains = [
 ];
 
 export default function WhatWeHelpWith() {
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const containerRef = useRef<HTMLDivElement>(null);
 
   return (
     <section
-      ref={sectionRef}
-      className="py-20 md:py-28 lg:py-36"
+      ref={containerRef}
+      className="relative"
       style={{ backgroundColor: "#0f1629" }}
       aria-labelledby="domains-heading"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-        {/* Header */}
+      {/* Header - Sticky intro */}
+      <div className="h-screen flex items-center justify-center sticky top-0">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16 md:mb-24"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center px-6"
         >
+          <p 
+            className="text-sm font-mono tracking-widest uppercase mb-6"
+            style={{ color: "#ACFCE3" }}
+          >
+            The Framework
+          </p>
           <h2
             id="domains-heading"
-            className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4"
+            className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6"
           >
-            The 7 Domains
+            7 Domains
           </h2>
-          <p className="text-lg md:text-xl max-w-xl mx-auto" style={{ color: "rgba(255,255,255,0.6)" }}>
-            Pick a domain. See what "funder-ready" looks like.
+          <p 
+            className="text-lg md:text-xl max-w-md mx-auto"
+            style={{ color: "rgba(255,255,255,0.5)" }}
+          >
+            Scroll to explore each area we build.
           </p>
-        </motion.div>
-
-        {/* Timeline */}
-        <div className="relative">
-          {/* Central vertical line */}
-          <div 
-            className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 hidden md:block"
-            style={{ backgroundColor: "#ACFCE3" }}
-          />
-
-          {/* Domain items */}
-          <div className="space-y-16 md:space-y-0">
-            {domains.map((domain, idx) => (
-              <DomainItem
-                key={domain.index}
-                domain={domain}
-                index={idx}
-                isInView={isInView}
-                isLeft={idx % 2 === 0}
+          
+          {/* Scroll indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 0.6 }}
+            className="mt-12"
+          >
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="w-6 h-10 rounded-full border-2 mx-auto flex items-start justify-center pt-2"
+              style={{ borderColor: "rgba(255,255,255,0.3)" }}
+            >
+              <motion.div
+                animate={{ opacity: [1, 0.3, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="w-1 h-2 rounded-full"
+                style={{ backgroundColor: "#ACFCE3" }}
               />
-            ))}
-          </div>
-        </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </div>
+
+      {/* Domain Cards - Full screen each */}
+      {domains.map((domain, idx) => (
+        <DomainCard
+          key={domain.index}
+          domain={domain}
+          index={idx}
+          total={domains.length}
+          isLeft={idx % 2 === 0}
+        />
+      ))}
+
+      {/* Final spacer for last card to scroll away */}
+      <div className="h-[50vh]" />
     </section>
   );
 }
 
-function DomainItem({
+function DomainCard({
   domain,
   index,
-  isInView,
+  total,
   isLeft
 }: {
   domain: typeof domains[0];
   index: number;
-  isInView: boolean;
+  total: number;
   isLeft: boolean;
 }) {
-  const itemRef = useRef(null);
-  const itemInView = useInView(itemRef, { once: true, margin: "-50px" });
+  const cardRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(cardRef, { amount: 0.5 });
+  
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Parallax and fade effects
+  const y = useTransform(scrollYProgress, [0, 0.5, 1], [100, 0, -100]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.9, 1, 1, 0.95]);
 
   return (
     <div 
-      ref={itemRef}
-      className={`relative md:min-h-[280px] flex items-center ${isLeft ? 'md:justify-start' : 'md:justify-end'}`}
+      ref={cardRef}
+      className="h-screen flex items-center justify-center sticky top-0"
+      style={{ zIndex: index + 1 }}
     >
-      {/* Node on the timeline - desktop only */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 hidden md:block">
-        <motion.div
-          initial={{ scale: 0, opacity: 0 }}
-          animate={itemInView ? { scale: 1, opacity: 1 } : {}}
-          transition={{ duration: 0.4, delay: 0.2 }}
-          className="w-3 h-3 rounded-full border-2"
-          style={{ 
-            backgroundColor: "#0f1629",
-            borderColor: "#ACFCE3"
-          }}
-        />
-      </div>
-
-      {/* Content card */}
       <motion.div
-        initial={{ 
-          opacity: 0, 
-          x: isLeft ? -30 : 30 
-        }}
-        animate={itemInView ? { 
-          opacity: 1, 
-          x: 0 
-        } : {}}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        className={`
-          w-full md:w-[calc(50%-40px)] 
-          ${isLeft ? 'md:pr-8' : 'md:pl-8'}
-        `}
+        style={{ y, opacity, scale }}
+        className="w-full max-w-5xl mx-auto px-6"
       >
-        <div 
-          className="p-6 md:p-8 rounded-lg transition-all duration-300 hover:translate-y-[-2px]"
-          style={{ 
-            backgroundColor: "rgba(255,255,255,0.03)",
-            border: "1px solid rgba(255,255,255,0.08)"
-          }}
-        >
-          {/* Index number */}
-          <span 
-            className="font-mono text-sm mb-4 block"
-            style={{ color: "#ACFCE3" }}
-          >
-            {domain.index}
-          </span>
+        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+          {/* Left side - Index & Progress */}
+          <div className={`${isLeft ? 'order-1' : 'order-1 md:order-2'} flex flex-col items-center md:items-end`}>
+            {/* Large index number */}
+            <motion.span
+              className="font-mono text-[120px] md:text-[180px] lg:text-[220px] font-bold leading-none"
+              style={{ 
+                color: "transparent",
+                WebkitTextStroke: "1px rgba(172, 252, 227, 0.3)"
+              }}
+            >
+              {domain.index}
+            </motion.span>
+            
+            {/* Progress indicator */}
+            <div className="flex items-center gap-2 mt-4">
+              {domains.map((_, i) => (
+                <div
+                  key={i}
+                  className="w-2 h-2 rounded-full transition-all duration-300"
+                  style={{
+                    backgroundColor: i === index ? "#ACFCE3" : "rgba(255,255,255,0.2)",
+                    transform: i === index ? "scale(1.2)" : "scale(1)"
+                  }}
+                />
+              ))}
+            </div>
+          </div>
 
-          {/* Title */}
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
-            {domain.title}
-          </h3>
+          {/* Right side - Content */}
+          <div className={`${isLeft ? 'order-2' : 'order-2 md:order-1'}`}>
+            {/* Vertical accent line */}
+            <div 
+              className="w-px h-16 mb-8 hidden md:block"
+              style={{ backgroundColor: "#ACFCE3" }}
+            />
 
-          {/* Subtitle */}
-          <p 
-            className="text-base mb-4"
-            style={{ color: "rgba(255,255,255,0.5)" }}
-          >
-            {domain.subtitle}
-          </p>
+            {/* Subtitle */}
+            <p 
+              className="text-sm font-medium tracking-widest uppercase mb-4"
+              style={{ color: "rgba(255,255,255,0.4)" }}
+            >
+              {domain.subtitle}
+            </p>
 
-          {/* Description */}
-          <p 
-            className="text-base leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.7)" }}
-          >
-            {domain.description}
-          </p>
+            {/* Title */}
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+              {domain.title}
+            </h3>
+
+            {/* Description */}
+            <p 
+              className="text-lg md:text-xl leading-relaxed max-w-md"
+              style={{ color: "rgba(255,255,255,0.6)" }}
+            >
+              {domain.description}
+            </p>
+
+            {/* Card indicator */}
+            <div 
+              className="mt-8 pt-8 flex items-center gap-4"
+              style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}
+            >
+              <span 
+                className="text-sm font-mono"
+                style={{ color: "rgba(255,255,255,0.4)" }}
+              >
+                Domain {String(index + 1).padStart(2, '0')} of {String(total).padStart(2, '0')}
+              </span>
+            </div>
+          </div>
         </div>
       </motion.div>
-
-      {/* Mobile timeline indicator */}
-      <div className="absolute left-0 top-6 w-8 flex items-center justify-center md:hidden">
-        <div 
-          className="w-2 h-2 rounded-full"
-          style={{ backgroundColor: "#ACFCE3" }}
-        />
-      </div>
     </div>
   );
 }
