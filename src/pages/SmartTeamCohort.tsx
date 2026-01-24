@@ -419,7 +419,7 @@ const SmartTeamCohortHero = () => {
                 </li>
                 <li className="flex items-start gap-3">
                   <Check className="w-4 h-4 sm:w-5 sm:h-5 text-nim-mint flex-shrink-0 mt-0.5" aria-hidden="true" />
-                  <span className="text-base sm:text-lg text-[#F5F0E8]/80">Have SBCCI or similar capacity grant</span>
+                  <span className="text-base sm:text-lg text-[#F5F0E8]/80">Have Capacity Building grant or similar grant</span>
                 </li>
               </ul>
             </article>
