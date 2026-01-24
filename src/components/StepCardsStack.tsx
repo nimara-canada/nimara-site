@@ -24,7 +24,7 @@ const cards = [
   },
   {
     step: 2,
-    title: "Install",
+    title: "Build",
     description: "We don't teach. We install. We build working systems inside your tools — trackers, templates, folders, and dashboards your team can actually use.",
     tools: ["Google Drive", "Microsoft 365", "Templates", "Dashboards"],
     kidLine: "We build the helper machine.",
