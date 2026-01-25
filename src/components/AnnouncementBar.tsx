@@ -1,15 +1,12 @@
 import { useState, useEffect } from "react";
-import { X, ArrowRight, Sparkles } from "lucide-react";
+import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useTranslation } from "react-i18next";
 
 const STORAGE_KEY = "nim_announce_cohort_feb_2026";
 const END_DATE = new Date("2026-02-11T00:00:00");
 
 export const AnnouncementBar = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const { i18n } = useTranslation();
-  const language = i18n.language as 'en' | 'fr';
 
   useEffect(() => {
     const isDismissed = localStorage.getItem(STORAGE_KEY) === "dismissed";
@@ -56,7 +53,7 @@ export const AnnouncementBar = () => {
   return (
     <AnimatePresence>
       {isVisible && (
-        <motion.aside
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
@@ -64,49 +61,39 @@ export const AnnouncementBar = () => {
           role="region"
           aria-label="Site announcement"
           id="announcement_cohort_feb_2026"
-          className="fixed top-0 left-0 right-0 z-[60] bg-primary"
+          className="sticky top-0 z-[60] bg-[#6D28D9] text-white"
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-3">
-            <div className="flex items-center justify-between gap-4">
-              {/* Content */}
-              <div className="flex-1 flex items-center justify-center gap-2 sm:gap-4">
-                <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-foreground/20 text-primary-foreground text-xs font-medium tracking-wide uppercase">
-                  <Sparkles className="w-3 h-3" />
-                  Feb 11
-                </span>
-                <p className="text-sm sm:text-base text-primary-foreground text-center font-medium">
-                  {language === 'fr' 
-                    ? "Cohorte Smart Team — Lancement le 11 février 2026" 
-                    : "Smart Team Cohort launching Feb 11, 2026"
-                  }
-                </p>
-                <a
-                  href="/smart-team-cohort"
-                  onClick={handleLinkClick}
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-foreground hover:text-primary-foreground/80 transition-colors group whitespace-nowrap"
-                >
-                  <span className="relative">
-                    {language === 'fr' ? "En savoir plus" : "Learn more"}
-                    <span className="absolute left-0 -bottom-0.5 w-0 h-px bg-primary-foreground transition-all duration-300 group-hover:w-full" />
-                  </span>
-                  <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
-                </a>
-              </div>
+          <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-2">
+            {/* Left: badge + message */}
+            <div className="flex min-w-0 items-center gap-3">
+              <span className="hidden sm:inline-flex shrink-0 items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold tracking-wide">
+                <span className="opacity-90">FEB 11</span>
+              </span>
+              <p className="min-w-0 truncate text-sm font-medium">
+                Smart Team Cohort launching Feb 11, 2026
+              </p>
+            </div>
 
-              {/* Dismiss button */}
-              <motion.button
+            {/* Right: actions */}
+            <div className="flex shrink-0 items-center gap-2">
+              <a
+                href="/smart-team-cohort"
+                onClick={handleLinkClick}
+                className="inline-flex items-center gap-1 rounded-md px-2 py-1 text-sm font-semibold underline underline-offset-4 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-white/70"
+              >
+                Learn more <span aria-hidden="true">→</span>
+              </a>
+              <button
                 type="button"
                 aria-label="Dismiss announcement"
                 onClick={handleDismiss}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full hover:bg-primary-foreground/10 transition-colors"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-md hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/70"
               >
-                <X aria-hidden="true" className="w-5 h-5 text-primary-foreground" />
-              </motion.button>
+                <X className="h-5 w-5" />
+              </button>
             </div>
           </div>
-        </motion.aside>
+        </motion.div>
       )}
     </AnimatePresence>
   );
