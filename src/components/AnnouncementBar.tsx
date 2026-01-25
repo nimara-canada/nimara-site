@@ -79,8 +79,8 @@ export const AnnouncementBar = () => {
                 Feb 11
               </span>
               <p className="min-w-0 text-sm sm:text-[15px] font-medium tracking-wide opacity-95">
-                <span className="hidden sm:inline">Smart Team Cohort launching Feb 11, 2026</span>
-                <span className="sm:hidden">Smart Team Cohort — Feb 11</span>
+                <span className="hidden sm:inline">Capacity Building Cohort for 1-15 staff launching Feb 11, 2026</span>
+                <span className="sm:hidden">Capacity Cohort — Feb 11</span>
               </p>
               <a
                 href="/smart-team-cohort"
