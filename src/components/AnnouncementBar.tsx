@@ -61,9 +61,18 @@ export const AnnouncementBar = () => {
           role="region"
           aria-label="Site announcement"
           id="announcement_cohort_feb_2026"
-          className="sticky top-0 z-[60] bg-gradient-to-r from-[#5B21B6] via-[#6D28D9] to-[#7C3AED] text-white shadow-sm"
+          className="sticky top-0 z-[60] bg-gradient-to-r from-[#5B21B6] via-[#6D28D9] to-[#7C3AED] text-white shadow-sm overflow-hidden"
         >
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 py-2.5">
+          {/* Shimmer overlay */}
+          <div 
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%)',
+              animation: 'shimmer 3s ease-in-out infinite',
+            }}
+          />
+          
+          <div className="relative mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 py-2.5">
             {/* Left: badge + message */}
             <div className="flex min-w-0 flex-1 items-center justify-center gap-3 sm:gap-4">
               <span className="hidden sm:inline-flex shrink-0 items-center rounded-full bg-white/20 backdrop-blur-sm px-3 py-1 text-[11px] font-semibold tracking-widest uppercase">
@@ -95,6 +104,14 @@ export const AnnouncementBar = () => {
               <X className="h-4 w-4 opacity-80" />
             </button>
           </div>
+          
+          {/* Shimmer keyframes */}
+          <style>{`
+            @keyframes shimmer {
+              0% { transform: translateX(-100%); }
+              100% { transform: translateX(100%); }
+            }
+          `}</style>
         </motion.div>
       )}
     </AnimatePresence>
