@@ -50,7 +50,7 @@ const SmartTeamCohort = () => {
       <StickyMobileCTA href="https://form.typeform.com/to/Dsi3pXkx" label="Apply Now" />
 
       {/* ========== SECTION 1: HERO ========== */}
-      <section className="relative min-h-screen flex items-center justify-center bg-[#0f1629] px-6 py-20">
+      <section id="overview" className="relative min-h-screen flex items-center justify-center bg-[#0f1629] px-6 py-20" style={{ scrollMarginTop: '90px' }}>
         <div className="max-w-[1000px] mx-auto text-center">
           {/* Label */}
           <p className="text-sm font-semibold uppercase tracking-[2px] text-[#96A0B5] mb-8">
@@ -102,13 +102,13 @@ const SmartTeamCohort = () => {
               className="bg-[#6945D8] hover:bg-[#5835C0] text-white rounded-lg px-10 py-5 text-base font-semibold transition-all duration-300 hover:-translate-y-0.5" 
               asChild
             >
-              <a href="https://form.typeform.com/to/Dsi3pXkx" target="_blank" rel="noopener noreferrer">
+              <a href="#apply">
                 Apply for February Cohort
                 <ArrowRight className="ml-2 w-5 h-5" />
               </a>
             </Button>
             <a 
-              href="#how-it-works" 
+              href="#how" 
               className="text-base font-medium text-white hover:text-[#ACFCE3] transition-colors"
             >
               See how it works →
@@ -123,7 +123,7 @@ const SmartTeamCohort = () => {
       </section>
 
       {/* ========== SECTION 2: SOUND FAMILIAR? (PROBLEM) ========== */}
-      <section className="bg-[#0f1629] py-20 md:py-28 lg:py-36 px-6">
+      <section id="pain" className="bg-[#0f1629] py-20 md:py-28 lg:py-36 px-6" style={{ scrollMarginTop: '90px' }}>
         <div className="max-w-3xl mx-auto">
           {/* Headline - Large, left-aligned like homepage FAQ */}
           <h2 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-4 tracking-[-0.03em] leading-[1.05]">
@@ -188,8 +188,8 @@ const SmartTeamCohort = () => {
         </div>
       </section>
 
-      {/* ========== SECTION 3: VALUE STATEMENT ========== */}
-      <section className="bg-white py-[140px] md:py-[180px] px-6 text-center">
+      {/* ========== SECTION 3: VALUE STATEMENT (PROOF) ========== */}
+      <section id="proof" className="bg-white py-[140px] md:py-[180px] px-6 text-center" style={{ scrollMarginTop: '90px' }}>
         <div className="max-w-[1000px] mx-auto">
           {/* Label */}
           <p className="text-sm font-semibold uppercase tracking-[2px] text-[#96A0B5] mb-6">
@@ -220,8 +220,8 @@ const SmartTeamCohort = () => {
         </div>
       </section>
 
-      {/* ========== SECTION 3: THE 4 SYSTEMS ========== */}
-      <section className="bg-[#0f1629] py-[140px] px-6">
+      {/* ========== SECTION 4: THE 4 SYSTEMS (BUILD) ========== */}
+      <section id="build" className="bg-[#0f1629] py-[140px] px-6" style={{ scrollMarginTop: '90px' }}>
         <div className="max-w-[1000px] mx-auto">
           {/* Label */}
           <p className="text-center text-sm font-semibold uppercase tracking-[2px] text-[#ACFCE3] mb-6">
@@ -253,8 +253,8 @@ const SmartTeamCohort = () => {
         </div>
       </section>
 
-      {/* ========== SECTION 4: HOW IT WORKS ========== */}
-      <section id="how-it-works" className="bg-white py-[140px] px-6">
+      {/* ========== SECTION 5: HOW IT WORKS ========== */}
+      <section id="how" className="bg-white py-[140px] px-6" style={{ scrollMarginTop: '90px' }}>
         <div className="max-w-[1000px] mx-auto">
           {/* Label */}
           <p className="text-center text-sm font-semibold uppercase tracking-[2px] text-[#6945D8] mb-6">
@@ -283,8 +283,8 @@ const SmartTeamCohort = () => {
         </div>
       </section>
 
-      {/* ========== SECTION 5: TIME COMMITMENT ========== */}
-      <section className="bg-[#0f1629] py-[100px] px-6 text-center">
+      {/* ========== SECTION 6: TIME COMMITMENT (SCHEDULE) ========== */}
+      <section id="schedule" className="bg-[#0f1629] py-[100px] px-6 text-center" style={{ scrollMarginTop: '90px' }}>
         <div className="max-w-[1000px] mx-auto">
           {/* Headline */}
           <h2 className="text-[clamp(32px,5vw,48px)] font-extrabold text-white mb-16">
@@ -307,8 +307,8 @@ const SmartTeamCohort = () => {
         </div>
       </section>
 
-      {/* ========== SECTION 6: PRICING ========== */}
-      <section className="bg-white py-[140px] px-6 text-center">
+      {/* ========== SECTION 7: PRICING ========== */}
+      <section id="pricing" className="bg-white py-[140px] px-6 text-center" style={{ scrollMarginTop: '90px' }}>
         <div className="max-w-[1000px] mx-auto">
           {/* Label */}
           <p className="text-sm font-semibold uppercase tracking-[2px] text-[#6945D8] mb-6">
@@ -345,7 +345,7 @@ const SmartTeamCohort = () => {
               className="w-full bg-[#6945D8] hover:bg-[#5835C0] text-white rounded-lg py-5 text-base font-semibold transition-all duration-300" 
               asChild
             >
-              <a href="https://form.typeform.com/to/Dsi3pXkx" target="_blank" rel="noopener noreferrer">
+              <a href="#apply">
                 Apply for February Cohort
                 <ArrowRight className="ml-2 w-5 h-5" />
               </a>
@@ -412,8 +412,8 @@ const SmartTeamCohort = () => {
         </div>
       </section>
 
-      {/* ========== SECTION 8: FINAL CTA ========== */}
-      <section className="bg-[#0f1629] py-[140px] px-6 text-center">
+      {/* ========== SECTION 9: FINAL CTA (APPLY) ========== */}
+      <section id="apply" className="bg-[#0f1629] py-[140px] px-6 text-center" style={{ scrollMarginTop: '90px' }}>
         <div className="max-w-[1000px] mx-auto">
           {/* Headline */}
           <h2 className="text-[clamp(40px,6vw,64px)] font-extrabold text-white mb-12">
