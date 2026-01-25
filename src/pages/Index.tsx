@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import { useLocation } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { AnnouncementBar } from "@/components/AnnouncementBar";
 import HeroSection from "@/components/HeroSection";
 import ProblemSection from "@/components/ProblemSection";
 import SoWhatWeDoSection from "@/components/SoWhatWeDoSection";
@@ -92,9 +93,10 @@ const Index = () => {
           </script>
         </Helmet>
         
+        <AnnouncementBar />
         <Header />
         
-        <main id="main" className="space-y-0" style={{ paddingTop: '5rem' }}>
+        <main id="main" className="space-y-0" style={{ paddingTop: 'calc(var(--announcement-height, 0px) + 5rem)' }}>
           {/* Hero - full height entry */}
           <HeroSection />
           
