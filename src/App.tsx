@@ -42,6 +42,7 @@ import PrivacyAuditDashboard from "./pages/admin/PrivacyAuditDashboard";
 import PrivacyAuditWizard from "./pages/admin/PrivacyAuditWizard";
 import PrivacyAuditFindings from "./pages/admin/PrivacyAuditFindings";
 import PrivacyAuditTemplates from "./pages/admin/PrivacyAuditTemplates";
+import CohortApplyThankYou from "./pages/CohortApplyThankYou";
 
 // Redirect component for external URLs
 const ExternalRedirect = ({ to }: { to: string }) => {
@@ -93,6 +94,7 @@ const App = () => (
             <Route path="/free-check" element={<ExternalRedirect to={TYPEFORM_HEALTH_CHECK_URL} />} />
             <Route path="/smart-team-cohort" element={<SmartTeamCohort />} />
             <Route path="/smart-team-cohort/faq" element={<SmartTeamCohortFAQ />} />
+            <Route path="/cohort/apply/thank-you" element={<CohortApplyThankYou />} />
             
             {/* Admin routes */}
             <Route path="/admin/privacy-audit" element={<PrivacyAuditDashboard />} />
