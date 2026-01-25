@@ -61,13 +61,13 @@ export const AnnouncementBar = () => {
           role="region"
           aria-label="Site announcement"
           id="announcement_cohort_feb_2026"
-          className="sticky top-0 z-[60] bg-gradient-to-r from-[#5B21B6] via-[#6D28D9] to-[#7C3AED] text-white shadow-sm overflow-hidden"
+          className="sticky top-0 z-[60] bg-[#ACFCE3] text-[#141A3A] shadow-sm overflow-hidden"
         >
           {/* Shimmer overlay */}
           <div 
             className="absolute inset-0 pointer-events-none"
             style={{
-              background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%)',
+              background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.25) 50%, transparent 100%)',
               animation: 'shimmer 3s ease-in-out infinite',
             }}
           />
@@ -75,7 +75,7 @@ export const AnnouncementBar = () => {
           <div className="relative mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 py-2.5">
             {/* Left: badge + message */}
             <div className="flex min-w-0 flex-1 items-center justify-center gap-3 sm:gap-4">
-              <span className="hidden sm:inline-flex shrink-0 items-center rounded-full bg-white/20 backdrop-blur-sm px-3 py-1 text-[11px] font-semibold tracking-widest uppercase">
+              <span className="hidden sm:inline-flex shrink-0 items-center rounded-full bg-[#141A3A]/10 backdrop-blur-sm px-3 py-1 text-[11px] font-semibold tracking-widest uppercase">
                 Feb 11
               </span>
               <p className="min-w-0 text-sm sm:text-[15px] font-medium tracking-wide opacity-95">
@@ -85,9 +85,9 @@ export const AnnouncementBar = () => {
               <a
                 href="/smart-team-cohort"
                 onClick={handleLinkClick}
-                className="group inline-flex items-center gap-1.5 text-sm font-semibold hover:opacity-80 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#6D28D9] rounded-sm"
+                className="group inline-flex items-center gap-1.5 text-sm font-semibold hover:opacity-80 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-[#141A3A]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#ACFCE3] rounded-sm"
               >
-                <span className="underline underline-offset-[3px] decoration-white/40 group-hover:decoration-white/70 transition-all">
+                <span className="underline underline-offset-[3px] decoration-[#141A3A]/40 group-hover:decoration-[#141A3A]/70 transition-all">
                   Learn more
                 </span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
@@ -99,7 +99,7 @@ export const AnnouncementBar = () => {
               type="button"
               aria-label="Dismiss announcement"
               onClick={handleDismiss}
-              className="ml-4 shrink-0 inline-flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+              className="ml-4 shrink-0 inline-flex h-8 w-8 items-center justify-center rounded-full hover:bg-[#141A3A]/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#141A3A]/50"
             >
               <X className="h-4 w-4 opacity-80" />
             </button>
