@@ -110,11 +110,11 @@ export const Header = ({
             </a>
 
             {/* Desktop Navigation */}
-            <nav aria-label="Primary" className="hidden lg:flex items-center gap-1">
-              {navigation.map(item => <a key={item.name} href={item.href} aria-current={isRouteActive(item.href, activeRoute) ? "page" : undefined} className={cn("group relative px-4 py-2 text-sm font-medium min-h-[44px] inline-flex items-center select-none", "transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)]", "active:translate-y-[-1px] active:opacity-85", isRouteActive(item.href, activeRoute) ? "text-primary" : "text-foreground/70 hover:text-foreground")}>
+            <nav aria-label="Primary" className="hidden lg:flex items-center gap-2">
+              {navigation.map(item => <a key={item.name} href={item.href} aria-current={isRouteActive(item.href, activeRoute) ? "page" : undefined} className={cn("group relative px-5 py-3 text-base font-medium min-h-[48px] inline-flex items-center select-none", "transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)]", "active:translate-y-[-1px] active:opacity-85", isRouteActive(item.href, activeRoute) ? "text-primary" : "text-foreground/80 hover:text-foreground")}>
                   <span className="relative">
                     {item.name}
-                    <span className={cn("absolute left-0 -bottom-0.5 h-px bg-primary", isRouteActive(item.href, activeRoute) ? "w-full" : "w-0 group-hover:w-full")} style={{
+                    <span className={cn("absolute left-0 -bottom-0.5 h-[2px] bg-primary", isRouteActive(item.href, activeRoute) ? "w-full" : "w-0 group-hover:w-full")} style={{
                   transition: `width 200ms ${DROPBOX_EASING_CSS}`
                 }} />
                   </span>
@@ -122,18 +122,18 @@ export const Header = ({
             </nav>
 
             {/* Desktop CTA */}
-            {!hideCTA && <div className="hidden lg:flex items-center gap-6">
-                <a href="/partners" className="group text-sm text-muted-foreground hover:text-foreground transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] active:opacity-70 select-none">
+            {!hideCTA && <div className="hidden lg:flex items-center gap-8">
+                <a href="/partners" className="group text-base font-medium text-muted-foreground hover:text-foreground transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] active:opacity-70 select-none">
                   <span className="relative">
                     For Consultants
-                    <span className="absolute left-0 -bottom-0.5 w-0 h-px bg-foreground group-hover:w-full" style={{
+                    <span className="absolute left-0 -bottom-0.5 w-0 h-[2px] bg-foreground group-hover:w-full" style={{
                   transition: `width 200ms ${DROPBOX_EASING_CSS}`
                 }} />
                   </span>
                 </a>
-                <a href="/start-here" className="inline-flex items-center gap-2 h-11 px-6 bg-primary text-primary-foreground text-sm font-medium rounded-full select-none transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/25 active:scale-[0.98] active:translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                <a href="/start-here" className="inline-flex items-center gap-2.5 h-12 px-7 bg-primary text-primary-foreground text-base font-semibold rounded-full select-none transition-all duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/25 active:scale-[0.98] active:translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                   <span>Get Started</span>
-                  <ArrowRight className="w-4 h-4 transition-transform duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] group-hover:translate-x-0.5" />
+                  <ArrowRight className="w-5 h-5 transition-transform duration-150 ease-[cubic-bezier(0.65,0,0.45,1)] group-hover:translate-x-0.5" />
                 </a>
               </div>}
 
