@@ -1,16 +1,11 @@
-import { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useMotionPreferences, DROPBOX_EASING_CSS } from '@/hooks/use-scroll-reveal';
-import { ChevronDown, Check, ArrowRight } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { ArrowRight } from 'lucide-react';
 import { CALENDLY_BOOKING_URL } from '@/constants/urls';
-
-type StaffSize = '0-15' | '16+';
 
 const CapacityHero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [staffSize, setStaffSize] = useState<StaffSize>('0-15');
   const heroRef = useRef<HTMLElement>(null);
   const { reducedMotion } = useMotionPreferences();
 
@@ -26,7 +21,7 @@ const CapacityHero = () => {
   });
 
   const heroOpacity = useTransform(smoothProgress, [0, 0.5], [1, reducedMotion ? 1 : 0]);
-  const heroY = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : 100]);
+  const heroY = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : 50]);
 
   useEffect(() => {
     setIsLoaded(true);
@@ -37,194 +32,77 @@ const CapacityHero = () => {
     transform: 'none'
   } : {
     opacity: isLoaded ? 1 : 0,
-    transform: isLoaded ? 'translateY(0)' : 'translateY(24px)',
-    transition: `opacity 700ms ${DROPBOX_EASING_CSS} ${delay}ms, transform 700ms ${DROPBOX_EASING_CSS} ${delay}ms`
+    transform: isLoaded ? 'translateY(0)' : 'translateY(20px)',
+    transition: `opacity 600ms ${DROPBOX_EASING_CSS} ${delay}ms, transform 600ms ${DROPBOX_EASING_CSS} ${delay}ms`
   };
-
-  // Dynamic content based on staff size
-  const isSmallOrg = staffSize === '0-15';
-  const pricing = isSmallOrg ? '$6,999' : 'Custom';
-  const ctaText = isSmallOrg ? 'Book a 15-min fit call' : 'Request a custom quote';
 
   return (
     <section 
       ref={heroRef} 
       id="hero" 
-      aria-labelledby="hero-heading" 
-      className="min-h-screen relative overflow-hidden bg-secondary-background"
+      aria-label="Hero section"
+      className="relative overflow-hidden bg-secondary-background"
     >
-      {/* Subtle grid pattern */}
-      <div 
-        className="absolute inset-0 opacity-[0.02] pointer-events-none" 
-        aria-hidden="true" 
-        style={{
-          backgroundImage: `linear-gradient(hsl(var(--foreground) / 0.08) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground) / 0.08) 1px, transparent 1px)`,
-          backgroundSize: '80px 80px'
-        }} 
-      />
-
       <motion.div 
-        className="relative z-10 min-h-screen flex flex-col" 
+        className="relative z-10" 
         style={{ opacity: heroOpacity, y: heroY }}
       >
-        <div className="flex-1 w-full max-w-3xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20 pt-4 sm:pt-6 md:pt-8 lg:pt-12 pb-12 sm:pb-16 md:pb-20 lg:pb-28 flex flex-col justify-center">
+        {/* Container with exact specs: max-w-[1200px], py-[120px/80px], px-[40px] */}
+        <div className="w-full max-w-[1200px] mx-auto px-5 sm:px-6 md:px-10 pt-[60px] sm:pt-[80px] md:pt-[120px] pb-[48px] sm:pb-[60px] md:pb-[80px]">
           
-          {/* Single Column - Clean Copy */}
           <div className="text-center">
-            {/* Eyebrow */}
-            <p 
-              style={revealStyle(50)} 
-              className="text-[10px] sm:text-[11px] md:text-xs font-semibold tracking-[0.15em] uppercase text-accent mb-4 sm:mb-6"
-            >
-              Capacity-building implementation
-            </p>
-
-            {/* Main Headline */}
+            {/* Headline: 56px desktop, 36px mobile, weight 700, line-height 1.1, tracking -0.02em */}
             <h1 
               id="hero-heading" 
-              style={revealStyle(100)} 
-              className="mb-6 sm:mb-8 md:mb-10 xl:mb-12 text-[clamp(1.75rem,5vw,4rem)] font-black text-white leading-[1] tracking-[-0.03em]"
+              style={revealStyle(0)} 
+              className="text-[36px] sm:text-[42px] md:text-[56px] font-bold text-white leading-[1.1] tracking-[-0.02em] max-w-[800px] mx-auto mb-6 sm:mb-8"
             >
-              Turn grant funding into systems your team actually uses — <span className="text-accent">in 6 weeks.</span>
+              Build systems funders trust — in 6 weeks.
             </h1>
 
-            {/* Subheadline */}
+            {/* Subhead: 20px desktop, 18px mobile, weight 400, line-height 1.5, mint color */}
             <p 
-              style={revealStyle(150)} 
-              className="text-base sm:text-lg md:text-xl lg:text-[1.35rem] leading-snug max-w-[52ch] mx-auto mb-8 sm:mb-10 md:mb-12 text-white/80"
+              style={revealStyle(50)} 
+              className="text-[16px] sm:text-[18px] md:text-[20px] font-normal leading-[1.5] text-accent max-w-[640px] mx-auto mb-9 sm:mb-12"
             >
-              We install funder-ready workflows for spending proof, board decisions, reporting, and file systems — inside the tools you already use.
+              We install proof-ready workflows inside the tools you already use. No new software. No guesswork.
             </p>
 
-            {/* Bullets */}
-            <ul 
-              style={revealStyle(200)} 
-              className="inline-flex flex-col items-start gap-2 sm:gap-3 mb-8 sm:mb-10 text-left" 
-              aria-label="What's included"
-            >
-              <li className="flex items-center gap-2 sm:gap-3 text-sm sm:text-base md:text-lg text-white/75">
-                <Check className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 text-accent" aria-hidden="true" />
-                <span>Works with Google Workspace / Microsoft 365</span>
-              </li>
-              <li className="flex items-center gap-2 sm:gap-3 text-sm sm:text-base md:text-lg text-white/75">
-                <Check className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 text-accent" aria-hidden="true" />
-                <span>Integrates with QuickBooks / Xero</span>
-              </li>
-              <li className="flex items-center gap-2 sm:gap-3 text-sm sm:text-base md:text-lg text-white/75">
-                <Check className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 text-accent" aria-hidden="true" />
-                <span>100% virtual — no on-site required</span>
-              </li>
-            </ul>
-
-            {/* Staff Size Toggle */}
-            <div style={revealStyle(250)} className="mb-6 sm:mb-8">
-              <p className="text-xs sm:text-sm text-white/50 mb-3">Select your team size</p>
-              <div 
-                className="inline-flex bg-white/5 rounded-full p-1 border border-white/10" 
-                role="radiogroup" 
-                aria-label="Select staff size"
-              >
-                <button
-                  type="button"
-                  role="radio"
-                  aria-checked={staffSize === '0-15'}
-                  onClick={() => setStaffSize('0-15')}
-                  className={cn(
-                    "px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base font-semibold rounded-full transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-secondary-background",
-                    staffSize === '0-15'
-                      ? "bg-accent text-secondary-background"
-                      : "text-white/70 hover:text-white"
-                  )}
-                >
-                  0–15 staff
-                </button>
-                <button
-                  type="button"
-                  role="radio"
-                  aria-checked={staffSize === '16+'}
-                  onClick={() => setStaffSize('16+')}
-                  className={cn(
-                    "px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base font-semibold rounded-full transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-secondary-background",
-                    staffSize === '16+'
-                      ? "bg-accent text-secondary-background"
-                      : "text-white/70 hover:text-white"
-                  )}
-                >
-                  16+ staff
-                </button>
-              </div>
-            </div>
-
-            {/* Dynamic Pricing */}
-            <div style={revealStyle(275)} className="mb-6 sm:mb-8">
-              <p className="text-white/50 text-sm mb-1">
-                {isSmallOrg ? 'Starting at' : 'Pricing'}
-              </p>
-              <p className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
-                {pricing}
-              </p>
-              {!isSmallOrg && (
-                <p className="text-white/50 text-sm mt-1">Based on complexity</p>
-              )}
-            </div>
-
-            {/* CTAs */}
-            <div 
-              style={revealStyle(300)} 
-              className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 md:gap-6" 
-              role="group" 
-              aria-label="Get started options"
-            >
-              {/* Primary CTA */}
+            {/* Actions container */}
+            <div style={revealStyle(100)} className="flex flex-col items-center gap-4">
+              {/* Primary CTA: 18px, weight 600, purple bg, 18px/36px padding, 8px radius */}
               <a 
                 href={CALENDLY_BOOKING_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold rounded-lg select-none transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent bg-primary text-primary-foreground"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-9 py-[18px] text-[18px] font-semibold rounded-lg text-white bg-primary transition-all duration-200 hover:bg-[#5838B8] hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(105,69,216,0.3)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-secondary-background"
               >
-                {ctaText}
+                Book a 15-min fit call
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </a>
 
-              {/* Secondary CTA */}
+              {/* Secondary Link: 16px, weight 400, slate color, hover mint + underline */}
               <a 
                 href="#domains"
                 onClick={(e) => {
                   e.preventDefault();
                   document.getElementById('domains')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="group inline-flex items-center gap-2 text-sm sm:text-base text-white hover:opacity-80 select-none transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 rounded"
+                className="text-[16px] font-normal text-[#96A0B5] transition-all duration-200 hover:text-accent hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-secondary-background rounded"
               >
                 See the 7 domains
-                <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:translate-y-0.5" aria-hidden="true" />
               </a>
             </div>
 
-            {/* Trust line */}
-            <div style={revealStyle(400)} className="mt-8 sm:mt-10">
-              <p className="text-xs sm:text-sm md:text-[0.9rem] text-white/55 tracking-[0.02em]">
-                For Canadian nonprofits with 0–50 staff. Not an audit firm.
-              </p>
-            </div>
+            {/* Pricing Note: 14px, weight 400, slate color, opacity 0.8 */}
+            <p 
+              style={revealStyle(150)} 
+              className="mt-6 text-[14px] font-normal text-[#96A0B5]/80"
+            >
+              Starting at $6,999
+            </p>
           </div>
         </div>
-      </motion.div>
-
-      {/* Scroll Indicator */}
-      <motion.div 
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2" 
-        style={{ opacity: useTransform(smoothProgress, [0, 0.15], [1, 0]) }} 
-        aria-hidden="true"
-      >
-        <span style={revealStyle(800)} className="text-[11px] uppercase tracking-[0.2em] text-white/60">
-          Scroll
-        </span>
-        <motion.div 
-          animate={reducedMotion ? {} : { y: [0, 6, 0] }} 
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <ChevronDown className="w-5 h-5 text-white/60" />
-        </motion.div>
       </motion.div>
     </section>
   );
