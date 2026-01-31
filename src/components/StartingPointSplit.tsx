@@ -184,7 +184,7 @@ const StartingPointSplit = () => {
         variants={containerVariants}
         className="flex flex-col gap-4 sm:gap-6 lg:gap-8 pb-12 sm:pb-16 md:pb-24"
       >
-        {/* Card 1: I know what we need - Premium card with floating UI */}
+        {/* Card 1: I know what we want to fix - Premium card with floating UI */}
         <motion.div
           variants={itemVariants}
           className="w-full px-3 sm:px-4 md:px-8"
@@ -211,7 +211,7 @@ const StartingPointSplit = () => {
                     transition={{ duration: 0.5, delay: 0.3 }}
                     className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-5 text-nim-navy tracking-tight"
                   >
-                    I know what we need
+                    I know what we want to fix
                   </motion.h3>
                   
                   {/* One-liner */}
@@ -221,12 +221,12 @@ const StartingPointSplit = () => {
                     transition={{ duration: 0.5, delay: 0.35 }}
                     className="text-sm sm:text-base lg:text-lg mb-5 sm:mb-8 text-nim-slate"
                   >
-                    Tell us what you want to set up. We help you build it.
+                    Tell us what area you want to improve. We'll help you plan the first steps.
                   </motion.p>
                   
                   {/* Bullets */}
                   <ul className="space-y-2 sm:space-y-3 mb-6 sm:mb-10">
-                    {['Tell us what you need', 'We set it up with you', 'You get something ready to use'].map((bullet, i) => (
+                    {['Pick your area(s)', '30-minute call', 'Clear next steps'].map((bullet, i) => (
                       <motion.li
                         key={i}
                         initial={{ opacity: 0, x: -16 }}
@@ -254,7 +254,7 @@ const StartingPointSplit = () => {
                       className="mb-3 sm:mb-4 text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-6 rounded-full bg-nim-purple text-white hover:bg-nim-purple/90 w-full sm:w-auto"
                     >
                       <a href="https://calendly.com/nimara-ops/capacity-call">
-                        Book a free call
+                        Book a 30-min call
                         <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
                       </a>
                     </Button>
@@ -267,7 +267,7 @@ const StartingPointSplit = () => {
                     transition={{ duration: 0.5, delay: 0.7 }}
                     className="text-xs sm:text-sm text-nim-slate"
                   >
-                    Best if you already know what you want.
+                    We may suggest a full check first.
                   </motion.p>
                 </div>
               </div>
