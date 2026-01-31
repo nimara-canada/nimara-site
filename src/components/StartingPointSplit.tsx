@@ -327,7 +327,7 @@ const StartingPointSplit = () => {
                   
                   {/* Bullets - mint accent */}
                   <ul className="space-y-2 sm:space-y-3 mb-6 sm:mb-10">
-                    {['Free • 6 minutes', 'No documents needed', 'Get a clear next step'].map((bullet, i) => (
+                    {['Free • 6 minutes', 'No documents needed', 'See your top gaps'].map((bullet, i) => (
                       <motion.li
                         key={i}
                         initial={{ opacity: 0, x: -16 }}
@@ -368,7 +368,7 @@ const StartingPointSplit = () => {
                     transition={{ duration: 0.5, delay: 0.7 }}
                     className="text-xs sm:text-sm text-nim-slate"
                   >
-                    Upgrade available (we review your documents).
+                    Want a deeper review? We can look at your documents.
                   </motion.p>
                 </div>
               </div>
