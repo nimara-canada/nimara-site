@@ -603,7 +603,10 @@ const CapacityBuildout = () => {
         <Header />
         
         <main id="main" style={{ paddingTop: 'calc(var(--announcement-height, 0px) + 5rem)' }}>
-          <CapacityHero />
+          <CapacityHero 
+            selectedDomains={selectedDomains}
+            onDomainsChange={setSelectedDomains}
+          />
           <DomainsSection 
             selectedDomains={selectedDomains}
             onDomainsChange={setSelectedDomains}
