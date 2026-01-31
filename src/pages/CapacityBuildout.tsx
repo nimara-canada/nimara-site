@@ -20,6 +20,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import CapacityHero from '@/components/capacity/CapacityHero';
+import DomainsSection from '@/components/capacity/DomainsSection';
 
 // Scroll reveal wrapper component
 function ScrollRevealBlock({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
@@ -575,6 +576,8 @@ const BookingSection = () => {
 
 // Main Page Component
 const CapacityBuildout = () => {
+  const [selectedDomains, setSelectedDomains] = useState<string[]>([]);
+
   return (
     <MotionPreferencesProvider>
       <div className="min-h-screen bg-background">
@@ -601,6 +604,10 @@ const CapacityBuildout = () => {
         
         <main id="main" style={{ paddingTop: 'calc(var(--announcement-height, 0px) + 5rem)' }}>
           <CapacityHero />
+          <DomainsSection 
+            selectedDomains={selectedDomains}
+            onDomainsChange={setSelectedDomains}
+          />
           <AreaSelectionSection />
           <ProcessSection />
           <PreparationSection />
