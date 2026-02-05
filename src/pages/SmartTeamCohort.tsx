@@ -62,11 +62,9 @@ const SmartTeamCohort = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-[clamp(48px,8vw,80px)] font-extrabold text-white leading-[1.05] tracking-[-0.02em] mb-8"
+            className="text-[clamp(2rem,6.4vw,5.6rem)] font-black text-white leading-[0.95] tracking-[-0.04em] mb-8 uppercase"
           >
-            Stop running your
-            <br />
-            nonprofit from your — <span className="text-[#ACFCE3]">head.</span>
+            Stop running your nonprofit from your — <span className="text-accent">head.</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -203,7 +201,7 @@ const SmartTeamCohort = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.5 }}
-            className="text-[clamp(64px,12vw,120px)] font-extrabold text-[#202654] leading-[1] mb-8"
+            className="text-[clamp(2.5rem,10vw,7rem)] font-black text-foreground leading-[0.95] tracking-[-0.04em] uppercase mb-8"
           >
             {ROTATING_WORDS[wordIndex]}
           </motion.h2>
@@ -229,7 +227,7 @@ const SmartTeamCohort = () => {
           </p>
 
           {/* Headline */}
-          <h2 className="text-center text-[clamp(36px,5vw,56px)] font-extrabold text-white leading-[1.1] mb-20">
+          <h2 className="text-center text-[clamp(2rem,5vw,3.5rem)] font-black text-white leading-[0.95] tracking-[-0.04em] uppercase mb-20">
             4 systems. 6 weeks.
             <br />
             Built in your tools.
@@ -262,7 +260,7 @@ const SmartTeamCohort = () => {
           </p>
 
           {/* Headline */}
-          <h2 className="text-center text-[clamp(36px,5vw,56px)] font-extrabold text-[#202654] leading-[1.1] mb-20">
+          <h2 className="text-center text-[clamp(2rem,5vw,3.5rem)] font-black text-foreground leading-[0.95] tracking-[-0.04em] uppercase mb-20">
             6 weeks. Done with you.
           </h2>
 
@@ -274,9 +272,9 @@ const SmartTeamCohort = () => {
               { num: "3", title: "We test everything", desc: "Week 6: Stress test" }
             ].map((step, i) => (
               <div key={i} className="flex-1 text-center">
-                <p className="text-5xl font-extrabold text-[#6945D8] mb-4">{step.num}</p>
-                <h3 className="text-xl font-bold text-[#202654] mb-2">{step.title}</h3>
-                <p className="text-base text-[#96A0B5]">{step.desc}</p>
+                <p className="text-5xl font-black text-primary mb-4">{step.num}</p>
+                <h3 className="text-xl font-bold text-foreground mb-2">{step.title}</h3>
+                <p className="text-base text-muted-foreground">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -287,7 +285,7 @@ const SmartTeamCohort = () => {
       <section id="schedule" className="bg-[#0f1629] py-[100px] px-6 text-center" style={{ scrollMarginTop: '90px' }}>
         <div className="max-w-[1000px] mx-auto">
           {/* Headline */}
-          <h2 className="text-[clamp(32px,5vw,48px)] font-extrabold text-white mb-16">
+          <h2 className="text-[clamp(2rem,5vw,3rem)] font-black text-white leading-[0.95] tracking-[-0.04em] uppercase mb-16">
             4 hours a week. — <span className="text-[#ACFCE3]">100% online.</span>
           </h2>
 
@@ -316,14 +314,14 @@ const SmartTeamCohort = () => {
           </p>
 
           {/* Headline */}
-          <h2 className="text-[clamp(36px,5vw,48px)] font-extrabold text-[#202654] mb-16">
+          <h2 className="text-[clamp(2rem,5vw,3rem)] font-black text-foreground leading-[0.95] tracking-[-0.04em] uppercase mb-16">
             One price. Everything included.
           </h2>
 
           {/* Pricing Card */}
           <div className="max-w-[480px] mx-auto bg-white border-2 border-[#E8E8E8] rounded-3xl p-12 md:p-16">
-            <p className="text-6xl font-extrabold text-[#202654] leading-[1]">$9,450</p>
-            <p className="text-base text-[#96A0B5] mb-10">CAD per organization</p>
+            <p className="text-6xl font-black text-foreground leading-[1]">$9,450</p>
+            <p className="text-base text-muted-foreground mb-10">CAD per organization</p>
 
             <ul className="text-left space-y-0 mb-10">
               {[

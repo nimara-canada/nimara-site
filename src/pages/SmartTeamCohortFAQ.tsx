@@ -70,7 +70,7 @@ const SmartTeamCohortFAQ = () => {
             <p className="text-sm font-semibold uppercase tracking-[2px] text-primary mb-4">
               Smart Team Cohort
             </p>
-            <h1 className="text-[clamp(36px,5vw,56px)] font-extrabold text-foreground leading-[1.1] tracking-[-0.02em] mb-6">
+            <h1 className="text-[clamp(2rem,5vw,3.5rem)] font-black text-foreground leading-[0.95] tracking-[-0.04em] uppercase mb-6">
               Frequently Asked Questions
             </h1>
             <p className="text-lg text-muted-foreground">
