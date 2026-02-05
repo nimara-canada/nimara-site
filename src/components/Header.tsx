@@ -88,9 +88,7 @@ export const Header = ({
 
       <header className={cn("fixed left-0 right-0 w-full border-b", isScrolled ? "border-border/50 shadow-sm" : "border-transparent")} style={{
       top: "var(--announcement-height, 0px)",
-      backgroundColor: isScrolled ? "hsl(var(--background))" : "hsl(var(--background) / 0.8)",
-      backdropFilter: "blur(12px)",
-      WebkitBackdropFilter: "blur(12px)",
+      backgroundColor: "hsl(var(--background))",
       zIndex: 9999,
       isolation: "isolate",
       transform: isHidden ? "translateY(-100%)" : "translateY(0)",
