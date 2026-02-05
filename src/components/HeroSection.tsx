@@ -42,7 +42,7 @@ const NimaraHeroPremium = () => {
     transform: isLoaded ? 'translateY(0)' : 'translateY(24px)',
     transition: `opacity 700ms ${DROPBOX_EASING_CSS} ${delay}ms, transform 700ms ${DROPBOX_EASING_CSS} ${delay}ms`
   };
-  return <section ref={heroRef} id="hero" aria-labelledby="hero-heading" className="min-h-screen relative overflow-hidden bg-secondary-background">
+  return <section ref={heroRef} id="hero" aria-labelledby="hero-heading" className="min-h-screen relative overflow-hidden bg-secondary-background -mt-20" style={{ paddingTop: '5rem' }}>
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none" aria-hidden="true" style={{
       backgroundImage: `linear-gradient(hsl(var(--foreground) / 0.08) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground) / 0.08) 1px, transparent 1px)`,
