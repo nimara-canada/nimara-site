@@ -152,7 +152,7 @@ const Partners = () => {
             }} transition={{
               duration: 1,
               delay: 0.4
-            }} className="font-sans text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-white mb-10 leading-[1.05] tracking-tight">
+            }} className="text-[clamp(2rem,6.4vw,5.6rem)] font-black text-white mb-10 leading-[0.95] tracking-[-0.04em] uppercase">
                 Join Nimara's National Team Of Operators.
               </motion.h1>
               
@@ -228,7 +228,7 @@ const Partners = () => {
               }} transition={{
                 duration: 0.8,
                 delay: 0.1
-              }} className="font-sans text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight mb-10">
+              }} className="text-[clamp(1.75rem,5vw,3.5rem)] font-black text-foreground leading-[0.95] tracking-[-0.04em] uppercase mb-10">
                   We Help Canadian Nonprofits Build <span className="italic font-light">Core Systems.</span>
                 </motion.h2>
                 <motion.p initial={{
@@ -296,7 +296,7 @@ const Partners = () => {
               }} transition={{
                 duration: 0.8,
                 delay: 0.1
-              }} className="font-sans text-3xl md:text-4xl font-semibold text-white leading-tight tracking-tight">
+              }} className="text-[clamp(1.75rem,5vw,3.5rem)] font-black text-white leading-[0.95] tracking-[-0.04em] uppercase">
                   How It <span className="italic font-light">Works</span>
                 </motion.h2>
               </div>
@@ -348,7 +348,7 @@ const Partners = () => {
               <p className="text-muted-foreground/60 uppercase tracking-[0.25em] text-xs mb-6">
                 Transparency
               </p>
-              <h2 className="font-sans text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight">
+              <h2 className="text-[clamp(1.75rem,5vw,3.5rem)] font-black text-foreground leading-[0.95] tracking-[-0.04em] uppercase">
                 Important Terms—<span className="italic font-light">Upfront.</span>
               </h2>
             </motion.div>
@@ -392,7 +392,7 @@ const Partners = () => {
                 <p className="text-white/30 uppercase tracking-[0.25em] text-xs mb-6">
                   Requirements
                 </p>
-                <h2 className="font-sans text-3xl md:text-4xl font-semibold text-white leading-tight tracking-tight mb-12">
+                <h2 className="text-[clamp(1.75rem,5vw,3.5rem)] font-black text-white leading-[0.95] tracking-[-0.04em] uppercase mb-12">
                   Who We're <span className="italic font-light">Looking For</span>
                 </h2>
                 <div className="space-y-6">
