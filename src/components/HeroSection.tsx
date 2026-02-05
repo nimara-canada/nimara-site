@@ -54,7 +54,7 @@ const NimaraHeroPremium = () => {
       opacity: heroOpacity,
       y: heroY
     }}>
-        <div className="flex-1 w-full max-w-3xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20 pt-4 sm:pt-6 md:pt-8 lg:pt-12 pb-12 sm:pb-16 md:pb-20 lg:pb-28 flex flex-col justify-center">
+        <div className="flex-1 w-full max-w-3xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20 pt-0 pb-12 sm:pb-16 md:pb-20 lg:pb-28 flex flex-col justify-center">
           
           {/* Single Column - Clean Copy */}
           <div className="text-center">
