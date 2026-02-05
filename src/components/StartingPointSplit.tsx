@@ -191,84 +191,56 @@ const StartingPointSplit = () => {
         >
           <div className="max-w-7xl mx-auto relative overflow-hidden" style={{ backgroundColor: '#faf8f5' }}>
             <div className="grid lg:grid-cols-2">
-              {/* Text Content - Left side */}
-              <div className="flex items-center px-4 sm:px-6 md:px-12 lg:px-16 py-8 sm:py-10 md:py-16 order-2 lg:order-1">
-                <div className="max-w-lg">
-                  {/* Badge */}
+              {/* Text Content - Left side - Editorial style */}
+              <div className="flex items-center px-4 sm:px-6 md:px-12 lg:px-16 py-10 sm:py-12 md:py-20 order-2 lg:order-1">
+                <div className="max-w-md">
+                  {/* Uppercase tracking label */}
                   <motion.span
                     initial={{ opacity: 0, y: 12 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6 bg-nim-purple/10 text-nim-purple"
+                    className="block text-[11px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-foreground/60 mb-4 sm:mb-6"
                   >
-                    01
+                    Option 1
                   </motion.span>
                   
-                  {/* Title */}
+                  {/* Large headline - editorial serif style */}
                   <motion.h3
                     initial={{ opacity: 0, y: 16 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.3 }}
-                    className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-5 text-nim-navy tracking-tight"
+                    className="text-[clamp(1.75rem,4vw,2.75rem)] font-bold mb-4 sm:mb-6 text-foreground tracking-tight leading-[1.1]"
                   >
                     I know what we want to fix
                   </motion.h3>
                   
-                  {/* One-liner */}
+                  {/* Description paragraph */}
                   <motion.p
                     initial={{ opacity: 0, y: 16 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.5, delay: 0.35 }}
-                    className="text-sm sm:text-base lg:text-lg mb-5 sm:mb-8 text-nim-slate"
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-10 leading-relaxed"
                   >
-                    Tell us what area you want to improve. We'll help you plan the first steps.
+                    Tell us what area you want to improve. We'll help you plan the first steps in a 30-minute call.
                   </motion.p>
                   
-                  {/* Bullets */}
-                  <ul className="space-y-2 sm:space-y-3 mb-6 sm:mb-10">
-                    {['Pick your area(s)', '30-minute call', 'Clear next steps'].map((bullet, i) => (
-                      <motion.li
-                        key={i}
-                        initial={{ opacity: 0, x: -16 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ duration: 0.4, delay: 0.4 + i * 0.08 }}
-                        className="flex items-start gap-2 sm:gap-3"
-                      >
-                        <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-nim-mint flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <Check className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-nim-navy" strokeWidth={3} />
-                        </div>
-                        <span className="text-nim-slate-dark text-xs sm:text-sm lg:text-base">{bullet}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                  
-                  {/* Button */}
+                  {/* Ghost/outlined button */}
                   <motion.div
                     initial={{ opacity: 0, y: 16 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.5, delay: 0.6 }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
                   >
                     <Button 
                       asChild 
+                      variant="outline"
                       size="lg" 
-                      className="mb-3 sm:mb-4 text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-6 rounded-full bg-nim-purple text-white hover:bg-nim-purple/90 w-full sm:w-auto"
+                      className="text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-6 rounded-full border-foreground/20 text-foreground hover:bg-foreground hover:text-background transition-colors"
                     >
                       <a href="https://calendly.com/nimara-ops/capacity-call">
                         Book a 30-min call
-                        <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
                       </a>
                     </Button>
                   </motion.div>
-                  
-                  {/* Helper text */}
-                  <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={isInView ? { opacity: 1 } : {}}
-                    transition={{ duration: 0.5, delay: 0.7 }}
-                    className="text-xs sm:text-sm text-nim-slate"
-                  >
-                    We may suggest a full check first.
-                  </motion.p>
                 </div>
               </div>
               
