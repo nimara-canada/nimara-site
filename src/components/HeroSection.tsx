@@ -42,7 +42,9 @@ const NimaraHeroPremium = () => {
     transform: isLoaded ? 'translateY(0)' : 'translateY(24px)',
     transition: `opacity 700ms ${DROPBOX_EASING_CSS} ${delay}ms, transform 700ms ${DROPBOX_EASING_CSS} ${delay}ms`
   };
-  return <section ref={heroRef} id="hero" aria-labelledby="hero-heading" className="min-h-screen relative overflow-hidden bg-secondary-background -mt-20" style={{ paddingTop: '5rem' }}>
+  return <section ref={heroRef} id="hero" aria-labelledby="hero-heading" className="min-h-screen relative overflow-hidden bg-secondary-background -mt-20" style={{
+    paddingTop: '5rem'
+  }}>
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none" aria-hidden="true" style={{
       backgroundImage: `linear-gradient(hsl(var(--foreground) / 0.08) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground) / 0.08) 1px, transparent 1px)`,
@@ -104,7 +106,7 @@ const NimaraHeroPremium = () => {
               </Link>
 
               {/* Secondary CTA */}
-              <a href={TYPEFORM_HEALTH_CHECK_URL} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 text-sm sm:text-base text-white hover:opacity-80 select-none transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 rounded">
+              <a target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 text-sm sm:text-base text-white hover:opacity-80 select-none transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 rounded" href="https://nimara.ca/free-check">
                 Try the 6-minute check
                 <span className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span>
               </a>
