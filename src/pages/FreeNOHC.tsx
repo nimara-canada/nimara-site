@@ -35,7 +35,7 @@ const FreeNOHC = () => {
             {/* Eyebrow */}
             <span className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-6">
               <Clock className="w-3.5 h-3.5" />
-              90 seconds · completely free
+              4 minutes · completely free
             </span>
 
             {/* Headline */}
@@ -101,7 +101,7 @@ const FreeNOHC = () => {
               Ready?
             </h2>
             <p className="text-primary-foreground/60 mb-8">
-              It takes 90 seconds. No email required to start.
+              It takes 4 minutes. No email required to start.
             </p>
             <Button
               asChild
