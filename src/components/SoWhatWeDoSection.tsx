@@ -14,7 +14,7 @@ export const SoWhatWeDoSection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="bg-background h-screen flex flex-col items-center justify-center snap-start snap-always relative overflow-hidden"
+      className="bg-background min-h-[70vh] flex flex-col items-center justify-center snap-start snap-always relative overflow-hidden"
     >
       {/* Decorative line above */}
       <motion.div 

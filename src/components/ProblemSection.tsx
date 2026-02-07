@@ -15,7 +15,7 @@ const ProblemSection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="bg-background min-h-[85vh] flex flex-col items-center justify-center snap-start snap-always relative overflow-hidden py-16"
+      className="bg-background min-h-[70vh] flex flex-col items-center justify-center snap-start snap-always relative overflow-hidden py-12"
     >
       <motion.div 
         style={{ opacity, y }}

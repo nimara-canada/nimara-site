@@ -56,7 +56,7 @@ export default function WhatWeHelpWith() {
       />
 
       {/* Header - Full screen intro */}
-      <div className="min-h-screen flex items-center justify-center relative z-10">
+      <div className="min-h-[70vh] flex items-center justify-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -145,7 +145,7 @@ function DomainCard({
   return (
     <div 
       ref={cardRef}
-      className="min-h-screen flex items-center justify-center py-20 relative z-10"
+      className="min-h-[70vh] flex items-center justify-center py-16 relative z-10"
     >
       <motion.div
         style={{ y, opacity }}
