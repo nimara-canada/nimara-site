@@ -44,9 +44,6 @@ export const FinalCTA = () => {
               </motion.span>
             </AnimatePresence>
           </span>
-          <br className="hidden sm:block" />
-          <span className="sm:hidden"> </span>
-          project together
         </h2>
 
         {/* Button */}
