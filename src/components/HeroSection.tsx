@@ -106,10 +106,10 @@ const NimaraHeroPremium = () => {
               </Link>
 
               {/* Secondary CTA */}
-              <a target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 text-sm sm:text-base text-white hover:opacity-80 select-none transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 rounded" href="https://nimara.ca/free-check">
+              <Link to="/free-check" className="group inline-flex items-center gap-2 text-sm sm:text-base text-white hover:opacity-80 select-none transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 rounded">
                 Try the 6-minute check
                 <span className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span>
-              </a>
+              </Link>
             </div>
 
             {/* Trust line */}
