@@ -34,7 +34,7 @@ const domains = [
   },
   {
     index: "07",
-    title: "Program & Evaluation",
+    title: "Programs and Service Delivery Management",
     description: "Delivery backbone, outcomes, and simple measurement loops.",
   }
 ];
