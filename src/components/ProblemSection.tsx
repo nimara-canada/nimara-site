@@ -27,7 +27,7 @@ const ProblemSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="font-black tracking-[-0.04em] leading-[0.95] text-[clamp(2rem,6.4vw,5.6rem)] uppercase text-foreground"
+          className="font-black tracking-[-0.03em] leading-[1.05] text-[clamp(2.2rem,6vw,5rem)] uppercase text-foreground"
         >
           GOOD ORGANIZATIONS STILL LOSE FUNDING{' '}
           <span className="text-primary">WHEN SYSTEMS ARE WEAK.</span>

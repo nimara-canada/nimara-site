@@ -8,7 +8,7 @@ const NoNewSoftwareSection = () => {
     <section className="py-20 sm:py-24 lg:py-32 bg-secondary-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
         {/* Headline */}
-        <h2 className="text-[clamp(2rem,6.4vw,5.6rem)] font-black tracking-[-0.04em] text-white leading-[0.95] mb-6 uppercase">
+        <h2 className="text-[clamp(2.2rem,6vw,5rem)] font-black tracking-[-0.03em] text-white leading-[1.05] mb-6 uppercase">
           We build inside <span className="text-accent">your tools</span>
         </h2>
 

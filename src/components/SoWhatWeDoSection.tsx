@@ -34,7 +34,7 @@ export const SoWhatWeDoSection = () => {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="font-black tracking-[-0.04em] leading-[0.95] uppercase text-[clamp(1.6rem,8vw,5.6rem)] text-foreground"
+          className="font-black tracking-[-0.03em] leading-[1.05] uppercase text-[clamp(2.2rem,6vw,5rem)] text-foreground"
         >
           SO WHAT DO WE DO, EXACTLY?
         </motion.h2>
