@@ -72,7 +72,7 @@ export default function WhatWeHelpWith() {
           {/* Paper Tiger headline */}
           <h2
             id="domains-heading"
-            className="text-[clamp(2.5rem,8vw,7rem)] font-black tracking-[-0.04em] leading-[0.9] text-white mb-6 uppercase"
+            className="text-[clamp(2.2rem,6vw,5rem)] font-black tracking-[-0.03em] leading-[1.05] text-white mb-6 uppercase"
           >
             7 <span className="text-accent">Domains</span>
           </h2>
