@@ -3,31 +3,29 @@ import { Link } from "react-router-dom";
 import { ChevronDown, ArrowRight } from "lucide-react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useMotionPreferences, DROPBOX_EASING_CSS } from "@/hooks/use-scroll-reveal";
-
 const NimaraHeroPremium = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [email, setEmail] = useState("");
   const heroRef = useRef<HTMLElement>(null);
-  const { reducedMotion } = useMotionPreferences();
-
-  const { scrollYProgress } = useScroll({
+  const {
+    reducedMotion
+  } = useMotionPreferences();
+  const {
+    scrollYProgress
+  } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"]
   });
-
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: reducedMotion ? 1000 : 100,
     damping: reducedMotion ? 100 : 30,
     restDelta: 0.001
   });
-
   const heroOpacity = useTransform(smoothProgress, [0, 0.5], [1, reducedMotion ? 1 : 0]);
   const heroY = useTransform(smoothProgress, [0, 1], [0, reducedMotion ? 0 : 100]);
-
   useEffect(() => {
     setIsLoaded(true);
   }, []);
-
   const revealStyle = (delay: number = 0): React.CSSProperties => reducedMotion ? {
     opacity: 1,
     transform: 'none'
@@ -36,16 +34,19 @@ const NimaraHeroPremium = () => {
     transform: isLoaded ? 'translateY(0)' : 'translateY(24px)',
     transition: `opacity 700ms ${DROPBOX_EASING_CSS} ${delay}ms, transform 700ms ${DROPBOX_EASING_CSS} ${delay}ms`
   };
-
-  return (
-    <section ref={heroRef} id="hero" aria-labelledby="hero-heading" className="min-h-screen relative overflow-hidden bg-secondary-background -mt-20" style={{ paddingTop: '5rem' }}>
+  return <section ref={heroRef} id="hero" aria-labelledby="hero-heading" className="min-h-screen relative overflow-hidden bg-secondary-background -mt-20" style={{
+    paddingTop: '5rem'
+  }}>
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none" aria-hidden="true" style={{
-        backgroundImage: `linear-gradient(hsl(var(--foreground) / 0.08) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground) / 0.08) 1px, transparent 1px)`,
-        backgroundSize: '80px 80px'
-      }} />
+      backgroundImage: `linear-gradient(hsl(var(--foreground) / 0.08) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground) / 0.08) 1px, transparent 1px)`,
+      backgroundSize: '80px 80px'
+    }} />
 
-      <motion.div className="relative z-10 min-h-screen flex flex-col" style={{ opacity: heroOpacity, y: heroY }}>
+      <motion.div className="relative z-10 min-h-screen flex flex-col" style={{
+      opacity: heroOpacity,
+      y: heroY
+    }}>
         <div className="flex-1 w-full max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 pt-0 pb-12 sm:pb-16 md:pb-20 lg:pb-28 flex flex-col justify-center">
           <div className="text-center">
             {/* Main Headline */}
@@ -64,28 +65,15 @@ const NimaraHeroPremium = () => {
 
             {/* Inline email + CTA */}
             <div style={revealStyle(300)} className="max-w-xl mx-auto mb-6 sm:mb-8">
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  if (email) {
-                    window.location.href = `/capacity-buildout?email=${encodeURIComponent(email)}`;
-                  }
-                }}
-                className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-0"
-              >
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  required
-                  className="flex-1 h-12 sm:h-14 px-5 rounded-xl sm:rounded-r-none border border-white/20 bg-white/5 text-white placeholder:text-white/40 text-base focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
-                />
-                <button
-                  type="submit"
-                  className="h-12 sm:h-14 px-6 sm:px-8 rounded-xl sm:rounded-l-none bg-accent text-accent-foreground font-semibold text-base whitespace-nowrap hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
-                >
-                  Book a free call
+              <form onSubmit={e => {
+              e.preventDefault();
+              if (email) {
+                window.location.href = `/capacity-buildout?email=${encodeURIComponent(email)}`;
+              }
+            }} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-0">
+                <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Enter your email" required className="flex-1 h-12 sm:h-14 px-5 rounded-xl sm:rounded-r-none border border-white/20 bg-white/5 text-white placeholder:text-white/40 text-base focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" />
+                <button type="submit" className="h-12 sm:h-14 px-6 sm:px-8 rounded-xl sm:rounded-l-none bg-accent text-accent-foreground font-semibold text-base whitespace-nowrap hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent">
+                  ​Take A Free 6 Minutes Check       
                 </button>
               </form>
             </div>
@@ -98,9 +86,9 @@ const NimaraHeroPremium = () => {
             </div>
 
             <div style={revealStyle(450)}>
-              <Link to="/free-check" className="group inline-flex items-center gap-2 text-sm sm:text-base text-white/80 hover:text-white transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 rounded">
-                Prefer a quick check?{" "}
-                <span className="underline underline-offset-4 decoration-white/40 group-hover:decoration-white transition-colors">Take a free 6 minutes check</span>
+              <Link to="/free-check" className="group inline-flex items-center gap-2 text-sm sm:text-base text-white/80 hover:text-white transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 rounded">Prefer to talk to Nimara?
+Take a free 6 minutes check{" "}
+                <span className="underline underline-offset-4 decoration-white/40 group-hover:decoration-white transition-colors">​Book A Call      </span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
               </Link>
             </div>
@@ -117,16 +105,21 @@ const NimaraHeroPremium = () => {
 
       {/* Scroll Indicator */}
       <motion.div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2" style={{
-        opacity: useTransform(smoothProgress, [0, 0.15], [1, 0])
-      }} aria-hidden="true">
+      opacity: useTransform(smoothProgress, [0, 0.15], [1, 0])
+    }} aria-hidden="true">
         <span style={revealStyle(800)} className="text-[11px] uppercase tracking-[0.2em] text-white/60">
           Scroll
         </span>
-        <motion.div animate={reducedMotion ? {} : { y: [0, 6, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}>
+        <motion.div animate={reducedMotion ? {} : {
+        y: [0, 6, 0]
+      }} transition={{
+        duration: 1.5,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }}>
           <ChevronDown className="w-5 h-5 text-white/60" />
         </motion.div>
       </motion.div>
-    </section>
-  );
+    </section>;
 };
 export default NimaraHeroPremium;
