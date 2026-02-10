@@ -14,7 +14,7 @@ export const SoWhatWeDoSection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="bg-background min-h-[70vh] flex flex-col items-center justify-center snap-start snap-always relative overflow-hidden"
+      className="bg-secondary-background min-h-[70vh] flex flex-col items-center justify-center snap-start snap-always relative overflow-hidden"
     >
       {/* Decorative line above */}
       <motion.div 
@@ -22,7 +22,7 @@ export const SoWhatWeDoSection = () => {
         whileInView={{ scaleX: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-16 h-px bg-foreground/20 origin-center"
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-16 h-px bg-white/20 origin-center"
       />
 
       <motion.div 
@@ -34,7 +34,7 @@ export const SoWhatWeDoSection = () => {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="font-black tracking-[-0.03em] leading-[1.05] uppercase text-[clamp(2.2rem,6vw,5rem)] text-foreground"
+          className="font-black tracking-[-0.03em] leading-[1.05] uppercase text-[clamp(2.2rem,6vw,5rem)] text-white"
         >
           SO WHAT DO WE DO, EXACTLY?
         </motion.h2>
@@ -57,7 +57,7 @@ export const SoWhatWeDoSection = () => {
               repeat: Infinity, 
               ease: "easeInOut" 
             }}
-            className="w-2 h-2 rounded-full bg-primary"
+            className="w-2 h-2 rounded-full bg-accent"
           />
         </motion.div>
       </motion.div>
@@ -68,7 +68,7 @@ export const SoWhatWeDoSection = () => {
         whileInView={{ scaleX: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-16 h-px bg-foreground/20 origin-center"
+        className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-16 h-px bg-white/20 origin-center"
       />
     </section>
   );
