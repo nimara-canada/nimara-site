@@ -130,7 +130,7 @@ export const Header = ({
                   </span>
                 </a>
                 <a href="https://nimara.ca/capacity-buildout" className="inline-flex items-center gap-3 h-14 px-8 bg-primary text-primary-foreground text-[15px] font-bold tracking-normal rounded-full select-none transition-all duration-200 ease-[cubic-bezier(0.65,0,0.45,1)] hover:scale-[1.03] hover:shadow-xl hover:shadow-primary/30 active:scale-[0.97] active:translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
-                  <span>Get Started</span>
+                  <span>Book A Call</span>
                   <ArrowRight className="w-5 h-5 transition-transform duration-200 ease-[cubic-bezier(0.65,0,0.45,1)] group-hover:translate-x-0.5" />
                 </a>
               </div>}
