@@ -102,7 +102,7 @@ const CapacityHero = ({ selectedDomains, onDomainsChange }: CapacityHeroProps) =
               <h1 
                 id="hero-heading" 
                 style={revealStyle(50)} 
-                className="text-[28px] sm:text-[36px] md:text-[42px] lg:text-[48px] font-bold text-white leading-[1.1] tracking-[-0.02em] mb-5 sm:mb-6"
+                className="text-[clamp(2.2rem,6vw,5rem)] font-black text-white leading-[1.05] tracking-[-0.03em] mb-5 sm:mb-6 uppercase"
               >
                 Build funder-ready operations across 7 domains.
               </h1>
