@@ -62,9 +62,7 @@ const OutcomesSection: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <a
-              href={CALENDLY_BOOKING_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/capacity-buildout"
               className="inline-flex items-center justify-center px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-medium rounded-full bg-white text-foreground hover:bg-white/90 transition-all duration-200 shadow-sm"
             >
               See what's included

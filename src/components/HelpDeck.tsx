@@ -414,7 +414,7 @@ export const HelpDeck = () => {
             <p className="text-muted-foreground">Not sure where to start?</p>
             <div className="flex gap-3">
               <Button asChild size="lg" className="px-6 rounded-full bg-nim-purple hover:bg-nim-purple/90">
-                <a href={CALENDLY_BOOKING_URL} target="_blank" rel="noopener noreferrer">
+                <a href="/capacity-buildout">
                   Book a free call
                 </a>
               </Button>
@@ -502,7 +502,7 @@ export const HelpDeck = () => {
               <p className="text-muted-foreground">Not sure where to start?</p>
               <div className="flex flex-col gap-3">
                 <Button asChild size="lg" className="rounded-full bg-nim-purple hover:bg-nim-purple/90">
-                  <a href={CALENDLY_BOOKING_URL} target="_blank" rel="noopener noreferrer">
+                  <a href="/capacity-buildout">
                     Book a free call
                   </a>
                 </Button>
@@ -654,7 +654,7 @@ export const HelpDeck = () => {
               <p className="text-muted-foreground">Not sure where to start?</p>
               <div className="flex gap-3">
                 <Button asChild size="lg" className="px-6 rounded-full bg-nim-purple hover:bg-nim-purple/90">
-                  <a href={CALENDLY_BOOKING_URL} target="_blank" rel="noopener noreferrer">
+                  <a href="/capacity-buildout">
                     Book a free call
                   </a>
                 </Button>

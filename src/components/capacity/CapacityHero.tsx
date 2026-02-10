@@ -210,9 +210,7 @@ const CapacityHero = ({ selectedDomains, onDomainsChange }: CapacityHeroProps) =
 
               {/* Primary CTA */}
               <a 
-                href={CALENDLY_BOOKING_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/capacity-buildout"
                 className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 text-[16px] font-semibold rounded-xl text-white bg-primary transition-all duration-200 hover:bg-[#5838B8] hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(105,69,216,0.35)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-secondary-background"
               >
                 {isSmallTeam ? 'Book a 30-min Scope Call' : 'Request a custom quote'}

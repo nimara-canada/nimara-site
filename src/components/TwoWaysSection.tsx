@@ -263,9 +263,7 @@ export const TwoWaysSection = () => {
           className="mt-10 sm:mt-12 md:mt-16 text-center"
         >
           <a
-            href={CALENDLY_BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/capacity-buildout"
             className="text-xs sm:text-sm text-muted-foreground/70 hover:text-foreground transition-colors duration-300"
           >
             Not sure which path? <span className="underline underline-offset-4 decoration-muted-foreground/30 hover:decoration-foreground/50">Book a free call</span>

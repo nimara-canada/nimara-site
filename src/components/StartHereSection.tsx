@@ -129,9 +129,7 @@ const StartHereSection = () => {
 
                 {/* CTA Button */}
                 <motion.a
-                  href={CALENDLY_BOOKING_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/capacity-buildout"
                   initial={{ opacity: 0, y: 16 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.6 }}

@@ -66,7 +66,7 @@ const App = () => (
             <Route path="/partners" element={<Navigate to="/consultants" replace />} />
             <Route path="/company" element={<Company />} />
             <Route path="/signin" element={<SignIn />} />
-            <Route path="/book-a-call" element={<ExternalRedirect to={CALENDLY_BOOKING_URL} />} />
+            <Route path="/book-a-call" element={<Navigate to="/capacity-buildout" replace />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/accessibility" element={<Accessibility />} />

@@ -71,7 +71,7 @@ const PathB = () => {
               Learn About NOHC Snapshot
             </Button>
             <p className="mt-4 text-secondary-foreground/70 text-sm">
-              <a href="/book-a-call" className="underline hover:text-secondary-foreground">
+              <a href="/capacity-buildout" className="underline hover:text-secondary-foreground">
                 Not sure if this is right? Talk through options.
               </a>
             </p>
@@ -135,7 +135,7 @@ const PathB = () => {
                   <li>• You're still figuring out your core mission and programs.</li>
                 </ul>
                 <p className="text-sm text-muted-foreground">
-                  Not sure? <a href={CALENDLY_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="text-primary underline">Talk through options</a> with us on a short call.
+                  Not sure? <a href="/capacity-buildout" className="text-primary underline">Talk through options</a> with us on a short call.
                 </p>
               </CardContent>
             </Card>
@@ -406,7 +406,7 @@ const PathB = () => {
                   <a href="/health-score">Learn About NOHC Snapshot</a>
                 </Button>
                 <p className="text-secondary-foreground/70 text-sm text-center mb-6">
-                  Prefer to talk first? <a href={CALENDLY_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="text-accent underline">Book a consultation call.</a>
+                  Prefer to talk first? <a href="/capacity-buildout" className="text-accent underline">Book a consultation call.</a>
                 </p>
                 
                 <Accordion type="single" collapsible className="w-full">

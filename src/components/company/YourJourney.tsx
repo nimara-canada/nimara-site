@@ -207,9 +207,7 @@ const YourJourney: React.FC = () => {
               Ready To Start Your Journey?
             </p>
             <a
-              href={CALENDLY_BOOKING_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/capacity-buildout"
               className="inline-flex items-center gap-3 text-foreground font-medium group"
             >
               <span className="group-hover:text-primary transition-colors">Book A Discovery Call</span>

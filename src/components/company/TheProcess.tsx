@@ -145,9 +145,7 @@ const TheProcess: React.FC = () => {
             className="w-full sm:w-auto bg-white text-secondary-background hover:bg-white/90 font-medium px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base"
           >
             <a 
-              href={CALENDLY_BOOKING_URL} 
-              target="_blank" 
-              rel="noopener noreferrer"
+              href="/capacity-buildout"
             >
               Book a free call
             </a>
