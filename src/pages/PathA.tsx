@@ -214,7 +214,7 @@ const PathA = () => {
               className="mt-4 text-secondary-foreground/80 text-sm"
             >
               <a 
-                href="/book-a-call" 
+                href="/capacity-buildout" 
                 className="underline hover:text-secondary-foreground focus:text-secondary-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm"
               >
                 Not sure if this is right? Talk through options.
@@ -283,7 +283,7 @@ const PathA = () => {
                     ))}
                   </ul>
                   <p className="text-sm text-muted-foreground">
-                    In those cases, <a href="/path-b" className="text-primary underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm">Path B (NOHC Snapshot + System Phase)</a> or a <a href={CALENDLY_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="text-primary underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm">quick call to talk through options</a> is better.
+                    In those cases, <a href="/path-b" className="text-primary underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm">Path B (NOHC Snapshot + System Phase)</a> or a <a href="/capacity-buildout" className="text-primary underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm">quick call to talk through options</a> is better.
                   </p>
                 </CardContent>
               </Card>
@@ -467,7 +467,7 @@ const PathA = () => {
                   <p className="text-secondary-foreground/80 text-sm text-center mb-6">
                     Prefer to talk first?{" "}
                     <a 
-                      href="/book-a-call" 
+                      href="/capacity-buildout" 
                       className="text-accent underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm"
                     >
                       Book a short call instead.

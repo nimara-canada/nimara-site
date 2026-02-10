@@ -65,9 +65,7 @@ const HeroSection = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6"
           >
             <a
-              href={CALENDLY_BOOKING_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/capacity-buildout"
               className="inline-flex items-center gap-3 px-7 py-4 bg-primary text-primary-foreground font-semibold rounded-lg transition-all duration-150 hover:bg-primary/90 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98]"
             >
               Book an Organization Check
@@ -357,9 +355,7 @@ const HowItWorks = () => {
         {/* CTA */}
         <div style={getItemStyle(2 + steps.length)} className="text-center">
           <a
-            href={CALENDLY_BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/capacity-buildout"
             className="inline-flex items-center gap-3 px-7 py-4 bg-white text-primary font-semibold rounded-lg transition-all duration-150 hover:bg-white/90 hover:scale-[1.02] active:scale-[0.98]"
           >
             Book an Organization Check
@@ -468,9 +464,7 @@ const Pricing = () => {
               <p className="text-sm text-muted-foreground mb-4">{tier.desc}</p>
               {tier.isCta ? (
                 <a
-                  href={CALENDLY_BOOKING_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/capacity-buildout"
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-semibold rounded-lg transition-all duration-150 hover:bg-primary/90 hover:scale-[1.02] active:scale-[0.98] text-sm"
                 >
                   {tier.price}

@@ -116,7 +116,7 @@ const NimaraLoop = () => {
             className="text-muted-foreground hover:text-foreground"
             asChild
           >
-            <a href={CALENDLY_BOOKING_URL} target="_blank" rel="noopener noreferrer">
+            <a href="/capacity-buildout">
               Book a free call
               <ArrowRight className="ml-1 h-4 w-4" aria-hidden="true" />
             </a>

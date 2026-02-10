@@ -68,9 +68,7 @@ export default function Integrations() {
                   </p>
 
                   <a
-                    href={CALENDLY_BOOKING_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/capacity-buildout"
                     className="inline-flex items-center justify-center gap-2 bg-accent text-accent-foreground hover:bg-accent/90 font-semibold px-8 py-3 rounded-lg transition-colors"
                   >
                     Schedule a Call

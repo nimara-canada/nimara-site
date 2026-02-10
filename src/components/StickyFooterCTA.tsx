@@ -98,7 +98,7 @@ export default function StickyFooterCTA() {
                   Take the free 6-minute check →
                 </a>
                 <Button asChild size="default" className="gap-2">
-                  <a href={CALENDLY_BOOKING_URL} target="_blank" rel="noopener noreferrer">
+                  <a href="/capacity-buildout">
                     Book a free call
                     <ArrowRight className="w-4 h-4" />
                   </a>
@@ -120,7 +120,7 @@ export default function StickyFooterCTA() {
               </p>
               
               <Button asChild size="default" className="w-full gap-2">
-                <a href={CALENDLY_BOOKING_URL} target="_blank" rel="noopener noreferrer">
+                <a href="/capacity-buildout">
                   Book a free call
                   <ArrowRight className="w-4 h-4" />
                 </a>

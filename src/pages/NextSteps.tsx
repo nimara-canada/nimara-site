@@ -75,7 +75,7 @@ export default function NextSteps() {
       (window as any).gtag("event", "next_steps_schedule_call_clicked");
     }
     // Navigate to booking page or open link
-    window.open("/book-a-call", "_blank");
+    window.open("/capacity-buildout", "_blank");
   };
 
   const handleOptionalOpen = () => {

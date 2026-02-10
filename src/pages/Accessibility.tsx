@@ -144,9 +144,7 @@ const Accessibility = () => {
                 <p>
                   <strong className="text-foreground">Prefer a call?</strong> Book a call at{" "}
                   <a 
-                    href={CALENDLY_BOOKING_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/capacity-buildout"
                     className="text-primary hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
                   >
                     our booking page

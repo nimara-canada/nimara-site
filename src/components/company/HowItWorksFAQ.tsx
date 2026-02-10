@@ -85,7 +85,7 @@ const HowItWorksFAQ: React.FC = () => {
                   asChild
                   className="w-full bg-nim-purple hover:bg-nim-purple/90 text-white rounded-full group"
                 >
-                  <a href={CALENDLY_BOOKING_URL} target="_blank" rel="noopener noreferrer">
+                  <a href="/capacity-buildout">
                     Book a 20-min Fit Call
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </a>
