@@ -156,7 +156,7 @@ const StartingPointSplit = () => {
   };
 
   return (
-    <section ref={sectionRef} className="bg-secondary-background">
+    <section ref={sectionRef} style={{ backgroundColor: '#faf8f5' }}>
       {/* Header */}
       <motion.div
         initial="hidden"
@@ -165,13 +165,13 @@ const StartingPointSplit = () => {
         variants={itemVariants}
         className="text-center py-12 sm:py-16 md:py-24 px-4 sm:px-6"
       >
-        <span className="text-xs sm:text-sm font-semibold text-accent uppercase tracking-widest mb-2 sm:mb-3 block">
+        <span className="text-xs sm:text-sm font-semibold text-primary uppercase tracking-widest mb-2 sm:mb-3 block">
           Start here
         </span>
-        <h2 className="text-[clamp(2.2rem,6vw,5rem)] font-black tracking-[-0.03em] text-white leading-[1.05] mb-3 sm:mb-4 uppercase">
+        <h2 className="text-[clamp(2.2rem,6vw,5rem)] font-black tracking-[-0.03em] text-foreground leading-[1.05] mb-3 sm:mb-4 uppercase">
           CHOOSE WHERE TO START.
         </h2>
-        <p className="text-base sm:text-lg text-white/60 max-w-xl mx-auto">
+        <p className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto">
           Most nonprofits start in one of these two places.
         </p>
       </motion.div>
@@ -189,7 +189,7 @@ const StartingPointSplit = () => {
           variants={itemVariants}
           className="w-full px-3 sm:px-4 md:px-8"
         >
-          <div className="max-w-7xl mx-auto relative overflow-hidden">
+          <div className="max-w-7xl mx-auto relative overflow-hidden" style={{ backgroundColor: '#faf8f5' }}>
             <div className="grid lg:grid-cols-2">
               {/* Text Content - Left side - Editorial style */}
               <div className="flex items-center px-4 sm:px-6 md:px-12 lg:px-16 py-10 sm:py-12 md:py-20 order-2 lg:order-1">
@@ -199,7 +199,7 @@ const StartingPointSplit = () => {
                     initial={{ opacity: 0, y: 12 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    className="block text-[11px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-white/60 mb-4 sm:mb-6"
+                    className="block text-[11px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-foreground/60 mb-4 sm:mb-6"
                   >
                     Option 1
                   </motion.span>
@@ -209,7 +209,7 @@ const StartingPointSplit = () => {
                     initial={{ opacity: 0, y: 16 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.3 }}
-                    className="text-[clamp(1.75rem,4vw,2.75rem)] font-bold mb-4 sm:mb-6 text-white tracking-tight leading-[1.1]"
+                    className="text-[clamp(1.75rem,4vw,2.75rem)] font-bold mb-4 sm:mb-6 text-foreground tracking-tight leading-[1.1]"
                   >
                     I know what we want to fix
                   </motion.h3>
@@ -219,7 +219,7 @@ const StartingPointSplit = () => {
                     initial={{ opacity: 0, y: 16 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.4 }}
-                    className="text-base sm:text-lg text-white/60 mb-8 sm:mb-10 leading-relaxed"
+                    className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-10 leading-relaxed"
                   >
                     Tell us what area you want to improve. We'll help you plan the first steps in a 30-minute call.
                   </motion.p>
@@ -234,7 +234,7 @@ const StartingPointSplit = () => {
                       asChild 
                       variant="outline"
                       size="lg" 
-                      className="text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-6 rounded-full border-white/20 text-white hover:bg-white hover:text-secondary-background transition-colors"
+                      className="text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-6 rounded-full border-foreground/20 text-foreground hover:bg-foreground hover:text-background transition-colors"
                     >
                       <a href="https://calendly.com/nimara-ops/capacity-call">
                         Book a 30-min call
@@ -257,7 +257,7 @@ const StartingPointSplit = () => {
           variants={itemVariants}
           className="w-full px-3 sm:px-4 md:px-8"
         >
-          <div className="max-w-7xl mx-auto relative overflow-hidden">
+          <div className="max-w-7xl mx-auto relative overflow-hidden" style={{ backgroundColor: '#faf8f5' }}>
             <div className="grid lg:grid-cols-2">
               {/* Visual - Left side */}
               <div className="relative order-1 min-h-[360px] sm:min-h-[400px] lg:min-h-[480px] overflow-visible px-2 sm:px-4 lg:px-0">
@@ -272,7 +272,7 @@ const StartingPointSplit = () => {
                     initial={{ opacity: 0, y: 12 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    className="block text-[11px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-white/60 mb-4 sm:mb-6"
+                    className="block text-[11px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-foreground/60 mb-4 sm:mb-6"
                   >
                     Option 2
                   </motion.span>
@@ -282,7 +282,7 @@ const StartingPointSplit = () => {
                     initial={{ opacity: 0, y: 16 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.3 }}
-                    className="text-[clamp(1.75rem,4vw,2.75rem)] font-bold mb-4 sm:mb-6 text-white tracking-tight leading-[1.1]"
+                    className="text-[clamp(1.75rem,4vw,2.75rem)] font-bold mb-4 sm:mb-6 text-foreground tracking-tight leading-[1.1]"
                   >
                     I want to see what's missing
                   </motion.h3>
@@ -292,7 +292,7 @@ const StartingPointSplit = () => {
                     initial={{ opacity: 0, y: 16 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.4 }}
-                    className="text-base sm:text-lg text-white/60 mb-8 sm:mb-10 leading-relaxed"
+                    className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-10 leading-relaxed"
                   >
                     Take a free 6-minute check. No documents needed. See your top gaps and get a clear next step.
                   </motion.p>
@@ -307,7 +307,7 @@ const StartingPointSplit = () => {
                       asChild 
                       variant="outline"
                       size="lg" 
-                      className="text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-6 rounded-full border-white/20 text-white hover:bg-white hover:text-secondary-background transition-colors"
+                      className="text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-6 rounded-full border-foreground/20 text-foreground hover:bg-foreground hover:text-background transition-colors"
                     >
                       <a href="https://tally.so/r/wa9dLv">
                         Take the free check
