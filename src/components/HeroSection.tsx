@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ChevronDown, ArrowRight } from "lucide-react";
+import { TYPEFORM_HEALTH_CHECK_URL } from "@/constants/urls";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useMotionPreferences, DROPBOX_EASING_CSS } from "@/hooks/use-scroll-reveal";
 const NimaraHeroPremium = () => {
@@ -72,9 +73,9 @@ const NimaraHeroPremium = () => {
               }
             }} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-0">
                 <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Enter your email" required className="flex-1 h-12 sm:h-14 px-5 rounded-xl sm:rounded-r-none border border-white/20 bg-white/5 text-white placeholder:text-white/40 text-base focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" />
-                <button type="submit" className="h-12 sm:h-14 px-6 sm:px-8 rounded-xl sm:rounded-l-none bg-accent text-accent-foreground font-semibold text-base whitespace-nowrap hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent">
-                  ​Take A Free 6 Minutes Check       
-                </button>
+                <a href={TYPEFORM_HEALTH_CHECK_URL} target="_blank" rel="noopener noreferrer" className="h-12 sm:h-14 px-6 sm:px-8 rounded-xl sm:rounded-l-none bg-accent text-accent-foreground font-semibold text-base whitespace-nowrap hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent flex items-center justify-center">
+                  Take A Free 6 Minutes Check
+                </a>
               </form>
             </div>
 
