@@ -100,7 +100,7 @@ const NimaraHeroPremium = () => {
             <div style={revealStyle(450)}>
               <Link to="/free-check" className="group inline-flex items-center gap-2 text-sm sm:text-base text-white/80 hover:text-white transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 rounded">
                 Prefer a quick check?{" "}
-                <span className="underline underline-offset-4 decoration-white/40 group-hover:decoration-white transition-colors">Try the 6-minute assessment</span>
+                <span className="underline underline-offset-4 decoration-white/40 group-hover:decoration-white transition-colors">Try a free 5 minutes assessment</span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
               </Link>
             </div>
